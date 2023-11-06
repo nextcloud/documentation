@@ -30,7 +30,6 @@ To create a task we use the ``\OCP\TextToImage\Task`` class. Its constructor tak
 .. code-block:: php
 
     $text2imageTask = new Task($documentTitle, "my_app", 8, $userId, (string) $documentId);
-    $text2imageManager->scheduleTask($text2imageTask);
 
 The task class objects have the following methods available:
 
@@ -42,6 +41,54 @@ The task class objects have the following methods available:
  * ``getIdentifier()`` This returns the original scheduler-defined identifier for the task
  * ``getUserId()`` This returns the originating user ID of the task.
  * ``getOutputImages()`` This method will return ``null`` unless the task is successful, if its, it will return a list of ``IImage`` objects
+
+You could run the task directly as follows. However, this will block the current PHP process until the task is done, which can sometimes take dozens of minutes, depending on which provider is used.
+
+.. code-block:: php
+
+    try {
+        $text2imageManager->runTask($text2imageTask);
+    } catch (\OCP\PreConditionNotMetException|\OCP\TextToImage\Exception\TaskFailureException $e) {
+        // task failed
+        // return error
+    }
+    // task was successful
+
+The wiser choice, when you are in the context of a HTTP controller, is to schedule the task for execution in a background job, as follows:
+
+.. code-block:: php
+
+    try {
+        $text2imageManager->scheduleTask($text2imageTask);
+    } catch (\OCP\PreConditionNotMetException|\OCP\DB\Exception $e) {
+        // scheduling task failed
+    }
+    // task was scheduled successfully
+
+Of course, you might want to schedule the task in a background job **only** if it takes longer than the request timeout. This is what runOrScheduleTask does.
+
+.. code-block:: php
+
+    try {
+        $text2imageManager->runOrScheduleTask($text2imageTask);
+    } catch (\OCP\PreConditionNotMetException|\OCP\DB\Exception $e) {
+        // scheduling task failed
+        // return error
+    } catch (\OCP\TextToImage\Exception\TaskFailureException $e) {
+        // task was run but failed
+        // status will be STATUS_FAILED
+        // return error
+    }
+
+    switch ($text2imageTask->getStatus()) {
+    case \OCP\TextToImage\Task::STATUS_SUCCESSFUL:
+        // task was run directly and was successful
+    case \OCP\TextToImage\Task::STATUS_RUNNING:
+    case \OCP\TextToImage\Task::STATUS_SCHEDULED:
+        // task was deferred to background job
+    default:
+        // something went wrong
+    }
 
 Task statuses
 ^^^^^^^^^^^^^
