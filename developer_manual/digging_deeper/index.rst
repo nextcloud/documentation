@@ -27,6 +27,7 @@ Digging deeper
    talk
    translation
    text_processing
+   text2image
    two-factor-provider
    users
    dashboard
