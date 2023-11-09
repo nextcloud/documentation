@@ -101,6 +101,7 @@ Psalm will catch these problems for you if you configured the issue handlers men
 
     .. code-block:: php
         :caption: Bad
+        :emphasize-lines: 2
 
         /**
          * @return array
@@ -115,6 +116,7 @@ Psalm will catch these problems for you if you configured the issue handlers men
 
     .. code-block:: php
         :caption: Good
+        :emphasize-lines: 2
 
         /**
          * @return array{id: int, name: string}
@@ -222,6 +224,7 @@ All 2xx responses should return the same data structure and all 4xx should also 
 
     .. code-block:: php
         :caption: Bad
+        :emphasize-lines: 2,7,9
 
         /**
          * @return DataResponse<Http::STATUS_OK, array{name: string}, array{}>|DataResponse<Http::STATUS_CREATED, array{id: int, name: string}, array{}>
@@ -249,6 +252,7 @@ All 2xx responses should return the same data structure and all 4xx should also 
 
     .. code-block:: php
         :caption: Good
+        :emphasize-lines: 2,7,9
 
         /**
          * @return DataResponse<Http::STATUS_OK|Http::STATUS_CREATED, array{id: int, name: string}, array{}>
@@ -284,6 +288,7 @@ Use the ``setHeaders`` method instead.
 
     .. code-block:: php
         :caption: Bad
+        :emphasize-lines: 2
 
         $response = new DataResponse();
         $response->addHeader("X-My-Header", "some value");
@@ -291,6 +296,7 @@ Use the ``setHeaders`` method instead.
 
     .. code-block:: php
         :caption: Good
+        :emphasize-lines: 2
 
         $response = new DataResponse();
         $response->setHeaders(["X-My-Header" => "some value"]);
@@ -622,6 +628,7 @@ The name of every type definition has to start with the app ID.
 To import and use the type definition you have to import it in your controller:
 
 .. code-block:: php
+    :emphasize-lines: 2
 
     /**
      * @psalm-import-type TodoItem from ResponseDefinitions
@@ -653,6 +660,7 @@ For this example our ``update`` will throw an exception when the ETag does not m
 Adding the correct annotation works like this:
 
 .. code-block:: php
+    :emphasize-lines: 4
 
     /**
      * ...
@@ -672,16 +680,17 @@ How to ignore certain endpoints
 -------------------------------
 
 The tool already ignores all the endpoints that are not reachable from the outside, but some apps have reachable endpoints that are not APIs (e.g. serving some HTML).
-To ignore those you can add the ``#[IgnoreOpenAPI]`` attribute or if you still support PHP 7 the ``@IgnoreOpenAPI`` annotation to the controller method or the controller class:
+To ignore those you can add the ``#[OpenAPI(scope: OpenAPI::SCOPE_IGNORE)]`` attribute or if you still support PHP 7 the ``@IgnoreOpenAPI`` annotation to the controller method or the controller class:
 
 .. code-block:: php
+    :emphasize-lines: 4,6
 
     /**
      * ...
      *
      * @IgnoreOpenAPI
      */
-    #[IgnoreOpenAPI]
+    #[OpenAPI(scope: OpenAPI::SCOPE_IGNORE)]
     #[NoAdminRequired]
     public function show(): TemplateResponse {
         ...
@@ -708,6 +717,7 @@ Imagine we take the same Todo app of the previous example and want to expose som
 Now you have to add the correct return type annotation:
 
 .. code-block:: php
+    :emphasize-lines: 3
 
     class Capabilities implements ICapability {
         /**
@@ -725,9 +735,49 @@ Now you have to add the correct return type annotation:
 
 The capabilities will automatically appear in the generated specification.
 
+Scopes
+------
+
+In some cases a consumer of the API might not want or need to implement all APIs your app offers.
+Examples are federation between apps on different servers, administration related endpoints, and more.
+The default client which should implement the main functionality is called ``OpenAPI::SCOPE_DEFAULT``.
+Constants are available in ``OCP\AppFramework\Http\Attribute\OpenAPI::SCOPE_*`` for better cross-app experience.
+A controller and methods can have multiple scopes, however when a method has the attribute set,
+all scopes from the controller are ignored.
+
+Methods that require admin permissions due to missing ``#[NoAdminRequired]`` or ``#[PublicPage]`` attribute or the
+matching annotation, default to the ``OpenAPI::SCOPE_ADMINISTRATION`` scope.
+
+.. code-block:: php
+
+    #[OpenAPI(scope: OpenAPI::SCOPE_ADMINISTRATION)]
+    #[OpenAPI(scope: OpenAPI::SCOPE_FEDERATION)]
+    #[OpenAPI(scope: OpenAPI::SCOPE_DEFAULT)]
+    #[OpenAPI(scope: 'myscope')]
+    public function show(): TemplateResponse {
+        ...
+    }
+
+The different scopes will be saved as ``openapi.json`` for the default scope and ``openapi-{scope}.json`` for the others.
+
+Tags
+^^^^
+
+To organize the API endpoints within a scope, tags can be used to group them. By default the controller name is used.
+Tags can also differ between different scopes.
+
+.. code-block:: php
+
+    #[OpenAPI(scope: OpenAPI::SCOPE_DEFAULT, tags: ['mytag1'])]
+    #[OpenAPI(scope: OpenAPI::SCOPE_ADMINISTRATION, tags: ['settings', 'custom2'])]
+    public function saveSettings(): TemplateResponse {
+        ...
+    }
+
 How to generate the specification
 ---------------------------------
 
-If you followed the installation instructions for openapi-extractor you can run ``composer exec generate-spec`` in your apps root folder and you will have a new file called ``openapi.json``.
+If you followed the installation instructions for openapi-extractor you can run ``composer exec generate-spec`` in your
+apps root folder and you will have a new file called ``openapi.json`` (depending on the used scopes).
 If the tool fails somewhere it will tell you what is wrong and often times also how to fix the problem.
 Additionally you should run psalm to check for any problems.
