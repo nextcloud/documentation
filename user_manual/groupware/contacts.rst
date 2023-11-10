@@ -17,7 +17,7 @@ contact picture and manage your address books.
 Adding Contacts
 ---------------
 
-When you first access the Contacts app, the system address book containing all 
+When you first access the Contacts app, the system address book containing all
 users on the instance you are allowed to see, plus an empty default address book becomes available:
 
 .. figure:: ../images/contacts_empty.png
@@ -88,7 +88,7 @@ To edit or remove contact information:
 
 Changes or removals that you made to any contact information are implemented immediately.
 
-Not all contacts will be editable for you. The system address book does not allow you to modify 
+Not all contacts will be editable for you. The system address book does not allow you to modify
 someone elses data, only your own. Your own data can also be modified in the :doc:`user settings <../userpreferences>`.
 
 
@@ -157,19 +157,19 @@ Circles support 4 types of roles:
 - Admin can configure circle options (+moderator permissions)
 - Owner
 
-**Member**  
+**Member**
 
 Member is the role with the lowest permissions. A member can only access the resources shared with the circle, and view the members of the circle.
 
-**Moderator**  
+**Moderator**
 
 In addition to member permissions, a moderator can invite, confirm invitations and manage members of the circle.
 
-**Admin**  
+**Admin**
 
 In addition to moderator permissions, an admin can configure circle options.
 
-**Owner**  
+**Owner**
 
 In addition to admin permissions, an owner can transfer the circle ownership to another member of the circle. There can be only one single owner per circle.
 
@@ -183,3 +183,11 @@ Circle options
 ~~~~~~~~~~~~~~
 
 Various self-explanatory options are available to configure a circle, to manage invites and membership, visibility of the circle, allowance of other circle membership and password protection.
+
+Shared items
+~~~~~~~~~~~~
+.. versionadded:: 5.5
+
+.. figure:: ./images/shared-items.png
+
+Items that are shared between two contacts will be displayed in the contact app. This includes media, calendar events, chat rooms, and shared deck cards, all of which will be visible in the contact details. This functionality is limited to contacts listed in the system address book. Currently, our system only supports shared items between two contacts.
