@@ -3501,6 +3501,18 @@ Enables fetching open graph metadata from remote urls
 
 Defaults to ``true``
 
+unified_search.enabled
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'unified_search.enabled' => false,
+
+Enable use of old unified search
+
+Defaults to ``false``
+
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
 
