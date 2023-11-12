@@ -307,31 +307,6 @@ More information on configuration of phpredis session handler can be found on th
 
 ..  _install_redis_label:
 
-Additional Redis installation help
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If your version of **Mint** or **Ubuntu** does not package the required version of 
-``php-redis``, then try `this Redis guide on Tech and Me
-<https://www.techandme.se/install-redis-cache-on-ubuntu-server-with-php-7-and-nextcloud/>`_
-for a complete Redis installation on Ubuntu 14.04 using PECL. 
-These instructions are adaptable for **any distro** that does not package the 
-supported version, or that does not package Redis at all, such as **SUSE Linux 
-Enterprise Server** and **Red Hat Enterprise Linux**.
-
-For PHP 7.0 and PHP 7.1 use Redis PHP module 3.1.x or later.
-  
-See `<https://pecl.php.net/package/redis>`_
-
-On Debian/Mint/Ubuntu, use ``apt-cache`` to see the available 
-``php-redis`` version, or the version of your installed package::
-
- apt-cache policy php-redis
- 
-On CentOS and Fedora, the ``yum`` command shows available and installed version 
-information::
-
- yum search php-pecl-redis
-
 
 Memcached
 ---------
