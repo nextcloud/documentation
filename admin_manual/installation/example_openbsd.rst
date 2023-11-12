@@ -91,7 +91,7 @@ Create a virtualhost in ``/etc/httpd.conf`` and add the following content to it:
 		  block return 301 "https://$SERVER_NAME/nextcloud/public.php?service=webfinger"
 	  }
 
-	  location match "/nextcloud/oc[ms]%-provider/*" {
+	  location match "/nextcloud/ocs-provider/*" {
 		  directory index index.php
 		  pass
 	  }
