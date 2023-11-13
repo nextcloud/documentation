@@ -146,6 +146,7 @@ Added APIs
   * WebAssembly compilation and execution in worker threads is not affected by this directive (browsers allow compilation and execution of WebAssembly in worker threads by default)
   * ``OCP\Authentication\Token\IProvider::getToken`` to get a token by its token string id
   * ``OCP\Authentication\Token\IToken`` public interface for tokens returned by the function above. Please use those instead of things from ``OC`` namespace.
+  * ``OCP\User\Backend\IProvideEnabledStateBackend`` for user backends that wants to alter disabled state of users (used by user_ldap to mark remnants as disabled if the option is enabled).
 
 Changed APIs
 ^^^^^^^^^^^^
