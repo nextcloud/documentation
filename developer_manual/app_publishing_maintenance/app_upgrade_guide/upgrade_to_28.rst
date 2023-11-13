@@ -144,6 +144,8 @@ Added APIs
 
   * ``wasm-unsafe-eval`` is `supported by most browsers <https://caniuse.com/mdn-http_headers_content-security-policy_script-src_wasm-unsafe-eval>`_
   * WebAssembly compilation and execution in worker threads is not affected by this directive (browsers allow compilation and execution of WebAssembly in worker threads by default)
+  * ``OCP\Authentication\Token\IProvider::getToken`` to get a token by its token string id
+  * ``OCP\Authentication\Token\IToken`` public interface for tokens returned by the function above. Please use those instead of things from ``OC`` namespace.
 
 Changed APIs
 ^^^^^^^^^^^^
