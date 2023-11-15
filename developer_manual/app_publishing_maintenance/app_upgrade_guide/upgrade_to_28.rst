@@ -141,9 +141,27 @@ Added APIs
 * ``\OCP\IPhoneNumberUtil::convertToStandardFormat`` to convert input into an E164 formatted phone number. See :ref:`phonenumberutil` for an example.
 * ``\OCP\IPhoneNumberUtil::getCountryCodeForRegion`` to get the E164 country code for a given region. See :ref:`phonenumberutil` for an example.
 * ``\OCP\AppFramework\Http\EmptyContentSecurityPolicy::allowEvalWasm(bool)``: sets ``wasm-unsafe-eval`` in ``script-src`` of the Content Security Policy `to allow compilation and execution of WebAssembly on the page <https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src#unsafe_webassembly_execution>`_
+* ``\OCP\FilesMetadata\IMetadataBackgroundEvent::getNode``
+* ``\OCP\FilesMetadata\IMetadataBackgroundEvent::getMetadata``
+* ``\OCP\FilesMetadata\IMetadataLiveEvent::getNode``
+* ``\OCP\FilesMetadata\IMetadataLiveEvent::getMetadata``
+* ``\OCP\FilesMetadata\IMetadataLiveEvent::requestBackgroundJob``
+* ``\OCP\FilesMetadata\IFilesMetadataManager::refreshMetadata``
+* ``\OCP\FilesMetadata\IFilesMetadataManager::getMetadata``
+* ``\OCP\FilesMetadata\IFilesMetadataManager::saveMetadata``
+* ``\OCP\FilesMetadata\IFilesMetadataManager::deleteMetadata``
+* ``\OCP\FilesMetadata\IFilesMetadataManager::getMetadataQuery``
+* ``\OCP\FilesMetadata\IFilesMetadataManager::getKnownMetadata``
+* ``\OCP\FilesMetadata\IFilesMetadataManager::initMetadata``
+* ``\OCP\FilesMetadata\IMetadataQuery::retrieveMetadata``
+* ``\OCP\FilesMetadata\IMetadataQuery::extractMetadata``
+* ``\OCP\FilesMetadata\IMetadataQuery::joinIndex``
+* ``\OCP\FilesMetadata\IMetadataQuery::getMetadataKeyField``
+* ``\OCP\FilesMetadata\IMetadataQuery::getMetadataValueField``
 
   * ``wasm-unsafe-eval`` is `supported by most browsers <https://caniuse.com/mdn-http_headers_content-security-policy_script-src_wasm-unsafe-eval>`_
   * WebAssembly compilation and execution in worker threads is not affected by this directive (browsers allow compilation and execution of WebAssembly in worker threads by default)
+
 
 Changed APIs
 ^^^^^^^^^^^^
@@ -202,6 +220,8 @@ Added events
 * Typed event ``OCP\DB\Events\AddMissingPrimaryKeyEvent`` to add missing indices to the database schema.
 * Typed event ``OCP\Files\Events\NodeAddedToFavorite`` was added
 * Typed event ``OCP\Files\Events\NodeRemovedFromFavorite`` was added
+* Typed event ``OCP\FilesMetadata\Event\MetadataBackgroundEvent`` was added
+* Typed event ``OCP\FilesMetadata\Event\MetadataLiveEvent`` was added
 * Typed event ``OCP\Share\Events\BeforeShareCreatedEvent`` was added
 * Typed event ``OCP\Share\Events\BeforeShareDeletedEvent`` was added
 * Typed event ``OCP\Share\Events\ShareAcceptedEvent`` was added
@@ -280,7 +300,11 @@ Removed events
 
 
 
+Removed WebDAV properties
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
+* <nc:file-metadata-size>
+* <nc:file-metadata-gps>
 
 
 

@@ -11,6 +11,7 @@ Digging deeper
    classloader
    continuous_integration
    email
+   files-metadata
    flow
    http_client
    javascript-apis
