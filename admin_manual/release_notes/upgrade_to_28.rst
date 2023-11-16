@@ -17,3 +17,8 @@ Beginning with Nextcloud 28, the monitoring endpoint no longer provides informat
 You can still ask the monitoring endpoint to show new app updates by using the URL parameter skipApps=false. However, please do not check this endpoint too often.
 
 https://github.com/nextcloud/serverinfo#api
+
+Web server configuration
+------------------------
+
+* The recommended :ref:`nginx configuration<nginx-config>` changed as Nextcloud Talk now serves audio files with ``.ogg`` / ``.flac`` extension, make sure to add these extensions to the list of static files.

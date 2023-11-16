@@ -16,4 +16,4 @@ Nextcloud 27 exposes the :ref:`system address book<system-address-book>`. Restri
 Web server configuration
 ------------------------
 
-* The recommended :ref:`nginx configuration<nginx-config>` changed as Nextcloud now supports module javascript with the ``.mjs`` extension, make sure to add this extension to the list of static files.
+* The recommended :ref:`nginx configuration<nginx-config>` changed as Nextcloud now supports module javascript with the ``.mjs`` and audio files with ``.ogg`` / ``.flac`` extension, make sure to add these extensions to the list of static files.
