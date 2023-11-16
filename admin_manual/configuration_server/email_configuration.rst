@@ -124,7 +124,7 @@ Let's assume that we need to override the email header::
 
    class MyClass extends EMailTemplate
    {
-      protected $header = <<<EOF
+      protected string $header = <<<EOF
          <table align="center" class="wrapper">
                // your theme email header modification
          </table>
