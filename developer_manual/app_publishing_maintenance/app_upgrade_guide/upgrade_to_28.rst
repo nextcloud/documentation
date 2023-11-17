@@ -131,6 +131,7 @@ The details of this change can also be seen in the todo items that are linked fr
 Added APIs
 ^^^^^^^^^^
 
+* ``\OCP\AppFramework\Http\EmptyContentSecurityPolicy::useStrictDynamicOnScripts`` to set 'strict-dynamic' on the 'script-src-elem' CSP, this is set by default to true to allow apps using module JS to import dependencies.
 * ``\OCP\Mail\IMessage::setSubject`` to set an email subject. See :ref:`email` for an example.
 * ``\OCP\Mail\IMessage::setHtmlBody`` and ``\OCP\Mail\IMessage::setPlainBody`` to set an email body See :ref:`email` for an example.
 * ``\OCP\IEventSourceFactory`` to create a ``OCP\IEventSource`` instance.
