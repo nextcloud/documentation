@@ -9,6 +9,11 @@ System requirements
 
 To be documented
 
+Web server configuration
+------------------------
+
+* The recommended :ref:`nginx configuration<nginx-config>` changed as Nextcloud Talk now serves audio files with ``.ogg`` / ``.flac`` extension, make sure to add these extensions to the list of static files.
+
 Monitoring
 ----------
 
