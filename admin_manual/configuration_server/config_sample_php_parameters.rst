@@ -1855,20 +1855,6 @@ custom path for LibreOffice/OpenOffice binary
 
 Defaults to ``''`` (empty string)
 
-preview_office_cl_parameters
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-::
-
-	'preview_office_cl_parameters' =>
-		' --headless --nologo --nofirststartwizard --invisible --norestore '.
-		'--convert-to png --outdir ',
-
-Use this if LibreOffice/OpenOffice requires additional arguments.
-
-Defaults to ``''`` (empty string)
-
 preview_ffmpeg_path
 ^^^^^^^^^^^^^^^^^^^
 
@@ -1942,6 +1928,7 @@ concerns:
  - ``OC\Preview\StarOffice``
  - ``OC\Preview\SVG``
  - ``OC\Preview\TIFF``
+ - ``OC\Preview\EMF``
 
 
 Defaults to the following providers:
