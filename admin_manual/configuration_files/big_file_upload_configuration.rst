@@ -65,7 +65,7 @@ for how to configure those values correctly:
 
 Apache
 ^^^^^^
-* `LimitRequestBody <https://httpd.apache.org/docs/current/en/mod/core.html#limitrequestbody>`_ (In Apache HTTP Server <=2.4.53 this defaulted to unlimited, but now defaults to 1 GiB. The new default limits uploads from non-chunking clients to 1 GiB. If this is a concern in your environment, override the new default by either manually setting it to ``0`` or to a value similar to that used for your local environment's PHP ``upload_max_filesize / post_max_size / memory_limit`` parameters.)
+* `LimitRequestBody <https://httpd.apache.org/docs/current/en/mod/core.html#limitrequestbody>`_ (In Apache HTTP Server <=2.4.53 this defaulted to unlimited, but now defaults to 1 GiB. The new default limits uploads from non-chunking clients to 1 GiB. It also impacts chunked uploads if a maximum chunk size >1 GiB is permitted by the client configuration. If this is a concern in your environment, override the new default by either manually setting it to ``0`` or to a value similar to that used for your local environment's PHP ``upload_max_filesize / post_max_size / memory_limit`` parameters. For chunking clients, as an alternative, the default maximum chunk size can be reduced to 1 GiB. The trade-off is the maximum upload file size (assuming no other limitations elsewhere) will be cut to 10000 TiB rather than 50000 TiB - i.e 10,000 * maxChunkSize.)
 * `SSLRenegBufferSize <https://httpd.apache.org/docs/current/mod/mod_ssl.html#sslrenegbuffersize>`_
 * `Timeout <https://httpd.apache.org/docs/current/mod/core.html#timeout>`_
 
