@@ -9,6 +9,11 @@ System requirements
 
 To be documented
 
+Web server configuration
+------------------------
+
+* The recommended :ref:`nginx configuration<nginx-config>` changed as Nextcloud Talk now serves audio files with ``.ogg`` / ``.flac`` extension, make sure to add these extensions to the list of static files.
+
 Monitoring
 ----------
 
@@ -18,7 +23,23 @@ You can still ask the monitoring endpoint to show new app updates by using the U
 
 https://github.com/nextcloud/serverinfo#api
 
-Web server configuration
-------------------------
+Previews for Office files using LibreOffice
+-------------------------------------------
 
-* The recommended :ref:`nginx configuration<nginx-config>` changed as Nextcloud Talk now serves audio files with ``.ogg`` / ``.flac`` extension, make sure to add these extensions to the list of static files.
+Nextcloud can generate previews for Office files using LibreOffice.
+
+Since Nextcloud 28, you can also create previews for EMF files. 
+To enable it, add ``'OC\Preview\EMF'`` to ``enabledPreviewProviders``.
+
+
+Until Nextcloud 28, the same LibreOffice user profile was used to generate the previews. LibreOffice can only be invoked once per user profile, so the generation of a preview for an office file would fail if another one were created right now.
+
+Beginning with Nextcloud 28, a different LibreOffice user profile is used for each file. Downside: If you upload 100 emf files, you may end up with 100 LibreOffice 
+invocations. Though, you can use ``preview_concurrency_new`` and ``preview_concurrency_all`` to limit the number of previews that can be generated concurrently when php-sysvsem is available.
+
+The configuration option ``preview_office_cl_parameters`` was removed with Nextcloud 28. 
+We expect LibreOffice to be started with the given parameters, so it's unfavorable to have a configuration option to change the parameters. 
+Please reach out to us via https://github.com/nextcloud/server/pull/41395 if that's causing any trouble for you. 
+
+
+.. tip:: Previews for EMF files can be enabled without a local LibreOffice installation if you are already using Nextcloud Office / Collabora. Make sure you have Nextcloud Office 8.3.0 installed and add ``'OCA\Richdocuments\Preview\EMF'`` to ``enabledPreviewProviders``.
