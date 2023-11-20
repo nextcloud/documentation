@@ -40,3 +40,6 @@ invocations. Though, you can use ``preview_concurrency_new`` and ``preview_concu
 The configuration option ``preview_office_cl_parameters`` was removed with Nextcloud 28. 
 We expect LibreOffice to be started with the given parameters, so it's unfavorable to have a configuration option to change the parameters. 
 Please reach out to us via https://github.com/nextcloud/server/pull/41395 if that's causing any trouble for you. 
+
+
+.. tip:: Previews for EMF files can be enabled without a local LibreOffice installation if you are already using Nextcloud Office / Collabora. Make sure you have Nextcloud Office 8.3.0 installed and add ``'OCA\Richdocuments\Preview\EMF'`` to ``enabledPreviewProviders``.
