@@ -14,43 +14,11 @@ Configure your sharing policy on your Admin page in the Sharing section.
 
 * Check ``Allow apps to use the Share API`` to enable users to share files. If
   this is not checked, no users can create file shares.
-* Check ``Set default expiration date for shares`` to set a default expiration date
-  on local user and group shares.
-* Check ``Enforce expiration date`` to always enforce the configured expiration date
-  on local user and group shares.
 
-    .. note:: Users will not be able to set the expiration date further
-        in the future than the enforced expiration date, although they
-        will be able to set a more recent date.
-        Also note that users will be able to update the expiration date again at
-        a later point. The expiration date is based on the current date and not on the share
-        creation date. The user will be able to extend the expiration date again whenever a
-        previous expiration date is close to be reached.
-
-* Check ``Allow users to share via link`` to enable creating public shares for
-  people who are not Nextcloud users via hyperlink.
-* Check ``Allow public uploads`` to allow anyone to upload files to public shares.
-* Check ``Always ask for a password`` to proactively ask a user to set a password
-  for a share link.
-* Check ``Enforce password protection`` to force users to set a password on all
-  public share links. This does not apply to local user and group shares.
-* Check ``Set default expiration date for link shares`` to set a default expiration date on
-  public shares.
-* Check ``Enforce expiration date`` to always enforce the configured expiration date
-  on public shares.
-
-    .. note:: Users will not be able to set the expiration date further
-        in the future than the enforced expiration date, although they
-        will be able to set a more recent date.
-        Also note that users will be able to update the expiration date again at
-        a later point. The expiration date is based on the current date and not on the share
-        creation date. The user will be able to extend the expiration date again whenever a
-        previous expiration date is close to be reached.
-
-* Check ``Allow resharing`` to enable users to re-share files shared with them.
-* Check ``Allow sharing with groups`` to enable users to share with groups.
-* Check ``Restrict users to only share with users in their groups`` to confine
-  sharing within group memberships.
+  * Check ``Allow resharing`` to enable users to re-share files shared with them.
+  * Check ``Allow sharing with groups`` to enable users to share with groups.
+  * Check ``Restrict users to only share with users in their groups`` to confine
+    sharing within group memberships.
 
     .. note:: This setting does not apply to the Federated Cloud sharing
        feature. If :doc:`Federated Cloud Sharing
@@ -58,20 +26,62 @@ Configure your sharing policy on your Admin page in the Sharing section.
        enabled, users can still share items with any users on any instances
        (including the one they are on) via a remote share.
 
+* Check ``Allow users to share via link and email`` to enable creating public shares for
+  people who are not Nextcloud users via hyperlink.
+
+  * Check ``Allow public uploads`` to allow anyone to upload files to public shares.
+  * Check ``Always ask for a password`` to proactively ask a user to set a password
+    for a share link.
+  * Check ``Enforce password protection`` to force users to set a password on all
+    public share links. This does not apply to local user and group shares.
+  * Add groups to ``Exclude groups from creating link shares`` to no apply the settings
+    for that groups.
+
 * Check ``Exclude groups from sharing`` to prevent members of specific groups
   from creating any file shares in those groups. When you check this, you'll
-  get a dropdown list of all your groups to choose from. Members of excluded
-  groups can still receive shares, but not create any.
+  get a dropdown list of all your groups to choose from. Type any group name to search for.
+  Members of excluded groups can still receive shares, but not create any.
+* Check ``Set default expiration date for shares`` to set a default expiration date
+  on local user and group shares.
+
+  * Check ``Enforce expiration date`` to always enforce the configured expiration date
+    on local user and group shares.
+
+    .. note:: Users will not be able to set the expiration date further
+        in the future than the enforced expiration date, although they
+        will be able to set a more recent date.
+        Also note that users will be able to update the expiration date again at
+        a later point. The expiration date is based on the current date and not on the share
+        creation date. The user will be able to extend the expiration date again whenever a
+        previous expiration date is close to be reached.
+
+* Check ``Set default expiration date for shares via link or email`` to set a default expiration date on
+  public shares.
+
+  * Check ``Enforce expiration date`` to always enforce the configured expiration date
+    on public shares.
+
+    .. note:: Users will not be able to set the expiration date further
+        in the future than the enforced expiration date, although they
+        will be able to set a more recent date.
+        Also note that users will be able to update the expiration date again at
+        a later point. The expiration date is based on the current date and not on the share
+        creation date. The user will be able to extend the expiration date again whenever a
+        previous expiration date is close to be reached.
+
+
 * Check ``Allow username autocompletion in share dialog and allow access to the system address book`` to enable
   auto-completion of Nextcloud usernames and list the system address book as resource when syncing contacts with CardDAV.
-* Check ``Allow username autocompletion to users within the same groups and limit system address books to users in the same groups`` to limit
-  username autocompletion to users from within the same groups as the share owner. Also t* Check ``Allow username autocompletion to users within the same groups and limit system address books to users in the same groups`` to limit
-* Check ``Allow username autocompletion to users based on phone number integration`` to limit
-  username autocompletion to users when the share owner has synced their phone address book via the Nextcloud Talk mobile clients and it contained the phone number the user configured in their profile.
+
+  * Check ``Allow username autocompletion to users within the same groups and limit system address books to users in the same groups`` to limit
+    username autocompletion to users from within the same groups as the share owner.
+  * Check ``Allow username autocompletion to users based on phone number integration`` to limit
+    username autocompletion to users when the share owner has synced their phone address book via the Nextcloud Talk mobile clients and it contained the phone number the user configured in their profile.
+
 * Check ``Allow autocompletion when entering the full name or email address (ignoring missing phonebook match and being in the same group)``
   to show despite of the previous restrictions a user suggestion, when the complete display name or user id was typed.
 * Check ``Show disclaimer text on the public link upload page`` to set and show
-  a disclaimer text on public links with hidden file lists.
+  a disclaimer text on public links with hidden file lists. If you enable this feature a text input will be shown to input the disclaimer text.
 
 With ``Default share permissions`` you are able to set the default permissions
 for user-shares (``Create``, ``Change``, ``Delete`` and ``Reshare``) without
