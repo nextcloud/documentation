@@ -33,8 +33,8 @@ in the :file:`config/config.php`.
 If users shall be unable to change their language, but users have different languages,
 this value can be set to ``true`` instead of a language code.
 
-.. note:: Please check `Transifex language codes
-   <https://explore.transifex.com/languages/>`_ for the list of valid language
+.. note:: Please check `ISO 639-1 language codes
+   <https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes>`_ for the list of valid language
    codes.
 
 Default locale
