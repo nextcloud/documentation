@@ -22,6 +22,28 @@ The maximum delay is 25 seconds.
 After a successful login the attempts will be cleared. And once a user is
 properly authenticated they will no longer be hit by the delay.
 
+Brute force protection and load balancer/reverse proxy
+------------------------------------------------------
+
+If you are behind a reverse proxy or load balancer it is important you make sure it is
+setup properly. Especially the **trusted_proxies** and **forwarded_for_headers**
+`config.php` variables need to be set correctly. Otherwise it can happen
+that Nextcloud actually starts throttling all traffic coming from the reverse
+proxy or load balancer. For more information see :doc:`reverse_proxy_configuration`.
+
+
+Exclude IP addresses from brute force protection
+------------------------------------------------
+
+It's possible to exlude IP addresses from the brute force protection.
+
+- Enable the bruteforcesettings app
+- Login as admin and go to Administration settings -> Security
+
+.. warning::
+
+    Note that any excluded IP address can perform authentication attempts without any throttling.
+    Its best to exclude as few IP addresses as you can, or even none at all. 
 
 Troubleshooting
 ---------------
@@ -31,9 +53,4 @@ run into a situation where login is often very slow for all users the first
 step is to inspect the `bruteforce_attempts` table. There you can see
 which IP addresses are actually throttled.
 
-If you are behind a reverse proxy or load balancer it is important you make sure it is
-setup properly. Especially the **trusted_proxies** and **forwarded_for_headers**
-`config.php` variables need to be set correctly. Otherwise it can happen
-that Nextcloud actually starts throttling all traffic coming from the reverse
-proxy or load balancer. For more information see :doc:`reverse_proxy_configuration`.
 
