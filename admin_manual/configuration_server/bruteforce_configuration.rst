@@ -22,6 +22,16 @@ The maximum delay is 25 seconds.
 After a successful login the attempts will be cleared. And once a user is
 properly authenticated they will no longer be hit by the delay.
 
+Brute-force IP whitelist
+------------------------
+
+You can set an whitelist of IP adress.
+This can be set in Admin settings > Security
+You need to have the native app `bruteforcesettings` enabled.
+
+Note that any whitelisted IP can perform authentication attempts without any
+throttling.  For security reasons, it is recommended to whitelist as few hosts
+as possible or ideally even none at all. 
 
 Troubleshooting
 ---------------
