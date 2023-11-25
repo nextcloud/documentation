@@ -380,6 +380,21 @@ code.
 
 Defaults to ``false``
 
+default_timezone
+^^^^^^^^^^^^^^^^
+
+
+::
+
+	'default_timezone' => 'Europe/Berlin',
+
+This sets the default timezone on your Nextcloud server, using IANA
+identifiers like ``Europe/Berlin`` or ``Pacific/Auckland``. The default
+timezone parameter is only used when the timezone of the user can't be
+determined.
+
+Defaults to ``UTC``
+
 knowledgebaseenabled
 ^^^^^^^^^^^^^^^^^^^^
 
