@@ -544,6 +544,12 @@ Biography Field:
   Multi line value with unix LF line ending.
   Windows CRLF and Macintosh CR line endings will be replaced with unix LF line ending.
 
+Birthday Field:
+  The LDAP attribute holding the users birth date.
+
+Anniversary Field:
+  The LDAP attribute holding the users anniversary date.
+
 Expert settings
 ---------------
 
