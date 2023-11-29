@@ -6,6 +6,24 @@ This document provides a quick overview of the OCS API endpoints supported in Ne
 
 All requests need to provide authentication information, either as a Basic Auth header or by passing a set of valid session cookies, if not stated otherwise.
 
+Authentication
+--------------
+
+Authentication can happen either via username / password (or app token) or with OIDC tokens, see the examples below:
+
+
+Username/Password:
+
+.. code-block:: bash
+
+    curl -u username:password -X GET 'https://cloud.example.com/ocs/v1.php/...' -H "OCS-APIRequest: true"
+
+
+OIDC Token:
+
+.. code-block:: bash
+
+    curl -X GET 'https://cloud.example.com/ocs/v1.php/...' -H "OCS-APIRequest: true" -H "Authorization: Bearer ID_TOKEN"
 
 Testing requests with curl
 --------------------------
