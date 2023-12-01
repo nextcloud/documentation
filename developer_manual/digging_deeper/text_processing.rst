@@ -102,13 +102,13 @@ Of course, you might want to schedule the task in a background job **only** if i
     }
 
     switch ($summaryTask->getStatus()) {
-    case \OCP\TextProcessing\Task::STATUS_SUCCESSFUL:
-        // task was run directly and was successful
-    case \OCP\TextProcessing\Task::STATUS_RUNNING:
-    case \OCP\TextProcessing\Task::STATUS_SCHEDULED:
-        // task was deferred to background job
-    default:
-        // something went wrong
+        case \OCP\TextProcessing\Task::STATUS_SUCCESSFUL:
+            // task was run directly and was successful
+        case \OCP\TextProcessing\Task::STATUS_RUNNING:
+        case \OCP\TextProcessing\Task::STATUS_SCHEDULED:
+            // task was deferred to background job
+        default:
+            // something went wrong
     }
 
 Task statuses
