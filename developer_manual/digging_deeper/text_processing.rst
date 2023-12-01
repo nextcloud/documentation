@@ -19,6 +19,10 @@ To consume the  Language Model API, you will need to :ref:`inject<dependency-inj
  * ``scheduleTask(Task $task)`` This method provides the actual prompt functionality. The task is defined using the Task class. This method runs the task asynchronously in a background job.
  * ``getTask(int $id)`` This method fetches a task specified by its id.
 
+.. versionadded:: 28.0.0
+
+ * ``runOrScheduleTask(Task $task)`` This method also runs a task, but fist checks the expected runtime of the provider to be used. If the runtime fits inside the available processing time for the current request the task is run synchronously, otherwise it is scheduled as a background job. The task is defined using the Task class.
+
 
 If you would like to use the text processing functionality in a client, there are also OCS endpoints available for this: :ref:`OCS Text Processing API<ocs-textprocessing-api>`
 
@@ -37,9 +41,8 @@ To create a task we use the ``\OCP\TextProcessing\Task`` class. Its constructor 
 
 .. code-block:: php
 
-    if (in_array(SummaryTaskType::class, $languageModelManager->getAvailableTaskTypes()) {
+    if (in_array(SummaryTaskType::class, $textprocessingManager->getAvailableTaskTypes()) {
         $summaryTask = new Task(SummaryTaskType::class, $emailText, "my_app", $userId, (string) $emailId);
-        $languageModelManager->scheduleTask($summaryTask);
     } else {
         // cannot use summarization
     }
@@ -54,6 +57,59 @@ The task class objects have the following methods available:
  * ``getAppId()`` This returns the originating application ID of the task.
  * ``getIdentifier()`` This returns the original scheduler-defined identifier for the task
  * ``getUserId()`` This returns the originating user ID of the task.
+
+You could now run the task directly as follows. However, this will block the current PHP process until the task is done, which can sometimes take dozens of minutes, depending on which provider is used.
+
+.. code-block:: php
+
+    try {
+        $textprocessingManager->runTask($summaryTask);
+    } catch (\OCP\PreConditionNotMetException|\OCP\TextProcessing\Exception\TaskFailureException $e) {
+        // task failed
+        // return error
+    }
+    // task was successful
+
+The wiser choice, when you are in the context of a HTTP controller, is to schedule the task for execution in a background job, as follows:
+
+.. code-block:: php
+
+    try {
+        $textprocessingManager->scheduleTask($summaryTask);
+    } catch (\OCP\PreConditionNotMetException|\OCP\DB\Exception $e) {
+        // scheduling task failed
+    }
+    // task was scheduled successfully
+
+Conditional scheduling of tasks
+###############################
+
+.. versionadded:: 28.0.0
+
+Of course, you might want to schedule the task in a background job **only** if it takes longer than the request timeout. This is what ``runOrScheduleTask`` does.
+
+.. code-block:: php
+
+    try {
+        $textprocessingManager->runOrScheduleTask($summaryTask);
+    } catch (\OCP\PreConditionNotMetException|\OCP\DB\Exception $e) {
+        // scheduling task failed
+        // return error
+    } catch (\OCP\TextProcessing\Exception\TaskFailureException $e) {
+        // task was run but failed
+        // status will be STATUS_FAILED
+        // return error
+    }
+
+    switch ($summaryTask->getStatus()) {
+        case \OCP\TextProcessing\Task::STATUS_SUCCESSFUL:
+            // task was run directly and was successful
+        case \OCP\TextProcessing\Task::STATUS_RUNNING:
+        case \OCP\TextProcessing\Task::STATUS_SCHEDULED:
+            // task was deferred to background job
+        default:
+            // something went wrong
+    }
 
 Task statuses
 ^^^^^^^^^^^^^
@@ -163,6 +219,102 @@ The method ``getName`` returns a string to identify the registered provider in t
 The method ``process`` implements the text processing step, e.g. it passes the prompt to a language model. In case execution fails for some reason, you should throw a ``RuntimeException`` with an explanatory error message.
 
 The class would typically be saved into a file in ``lib/TextProcessing`` of your app but you are free to put it elsewhere as long as it's loadable by Nextcloud's :ref:`dependency injection container<dependency-injection>`.
+
+Processing tasks in the context of a user
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. versionadded:: 28.0.0
+
+Sometimes the processing of a text processing task may depend upon which user requested the task. You can now obtain this information in your provider by additionally implementing the ``OCP\TextProcessing\IProviderWithUserId`` interface:
+
+.. code-block:: php
+    :emphasize-lines: 10,14,16,31,32,33
+
+    <?php
+
+    declare(strict_types=1);
+
+    namespace OCA\MyApp\TextProcessing;
+
+    use OCA\MyApp\AppInfo\Application;
+    use OCP\Files\File;
+    use OCP\TextProcessing\IProvider;
+    use OCP\TextProcessing\IProviderWithUserId;
+    use OCP\TextProcessing\SummaryTaskType;
+    use OCP\IL10N;
+
+    class Provider implements IProvider, IProviderWithUserId {
+
+        private ?string $userId = null;
+
+        public function __construct(
+            private IL10N $l,
+        ) {
+        }
+
+        public function getName(): string {
+            return $this->l->t('My awesome text processing provider');
+        }
+
+        public function getTaskType(): string {
+            return SummaryTaskType::class;
+        }
+
+        public function setUserId(?string $userId): void {
+            $this->userId = $userId;
+        }
+
+        public function process(string $input): string {
+            // Return the output here, making use of $this->userId
+        }
+    }
+
+Streamlining processing for fast providers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. versionadded:: 28.0.0
+
+Downstream consumers of the TextProcessing API can optimize execution of tasks if they know how long a task will run with your provider. To allow this kind of optimization you can provide an estimate of how much time your provider typically takes. To do this you simply implement the additional ``OCP\TextProcessing\IProviderWithExpectedRuntime`` interface
+
+.. code-block:: php
+    :emphasize-lines: 10,14,29,30,31
+
+    <?php
+
+    declare(strict_types=1);
+
+    namespace OCA\MyApp\TextProcessing;
+
+    use OCA\MyApp\AppInfo\Application;
+    use OCP\Files\File;
+    use OCP\TextProcessing\IProvider;
+    use OCP\TextProcessing\IProviderWithExpectedRuntime;
+    use OCP\TextProcessing\SummaryTaskType;
+    use OCP\IL10N;
+
+    class Provider implements IProvider, IProviderWithExpectedRuntime {
+
+        public function __construct(
+            private IL10N $l,
+        ) {
+        }
+
+        public function getName(): string {
+            return $this->l->t('My awesome text processing provider');
+        }
+
+        public function getTaskType(): string {
+            return SummaryTaskType::class;
+        }
+
+        public function getExpectedRuntime(): int {
+            return 10; // expected runtime of a task is 10s
+        }
+
+        public function process(string $input): string {
+            // Return the output here
+        }
+    }
 
 Providing more task types
 ^^^^^^^^^^^^^^^^^^^^^^^^^
