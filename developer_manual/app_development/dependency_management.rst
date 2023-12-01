@@ -13,6 +13,20 @@ Composer
 
 You can add 3rd party php packages with `Composer`_. Composer will download the specified packages to a directory of your choice, typically to ``/vendor``. In order to benefit from Composer's autoloader, you'll want to add a ``require_once`` to the ``register`` method of your ``Application`` class in the :ref:`bootstrapping<Bootstrapping>` code of your app.
 
+Remove unneeded files from packages
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It is heavily recommended to remove files that are not required in production from the final packages.
+This especially, but not exclusively, refers to:
+
+* Developer files, e.g. ``/Makefile``
+* CI workflows, e.g. ``/.github``
+* Test assets, e.g. ``/tests``
+* Configuration of development tools, e.g. ``/phpunit.xml``, ``/psalm.xml``
+* Git or other version control code, e.g. ``/.git``
+
+You can check the `Server's .gitignore <https://github.com/nextcloud/3rdparty/blob/master/.gitignore>`_ file for more inspiration.
+
 .. _app-composer-dependency-hell:
 
 Dependency hell
