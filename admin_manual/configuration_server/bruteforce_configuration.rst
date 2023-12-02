@@ -26,6 +26,7 @@ Exclude IP addresses from brute force protection
 ------------------------
 
 It's possible to exlude IP addresses from the brute force protection.
+
 - Enable the bruteforcesettings app
 - Login as admin and go to Administration settings -> Security
 
