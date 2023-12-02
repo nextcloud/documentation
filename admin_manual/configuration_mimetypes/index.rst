@@ -21,6 +21,9 @@ command to propagate the changes through the system. This example is for
 Ubuntu Linux::
 
   $ sudo -u www-data php occ maintenance:mimetype:update-js
+
+  # you may also need to update the mimetype for existing files, see nextcloud/server#30566
+  $ sudo -u www-data php occ maintenance:mimetype:update-db --repair-filecache
   
 See :doc:`../configuration_server/occ_command` to learn more about ``occ``.
 
