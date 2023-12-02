@@ -165,6 +165,29 @@ Edit tags
 2. Click *Edit tags*
 3. On the tags modal, set/unset tags
 
+Change color for tags
+~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 3.5
+
+.. figure:: images/change-tag-color.png
+
+Upon creating a tag, a randomly assigned color is automatically chosen. Once the tag is saved, you have the flexibility to customize its color according to your preferences. This feature can be found on the Tag modal action menu.
+
+Delete tags
+~~~~~~~~~~~
+
+.. versionadded:: 3.5
+
+.. figure:: images/delete-tag.png
+
+You now have the ability to delete tags that you have previously created. To access this feature:
+
+1. Open the action menu of an envelope/thread.
+2. Select Edit tags.
+3. Within the tags modal, open the action menu for the specific tag you wish to delete.
+
+.. note:: Please note that default tags such as Work, To do, Personal, and Later cannot be deleted, they can only be renamed.
 
 Message actions
 ---------------

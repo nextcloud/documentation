@@ -4,7 +4,7 @@ Contacts Menu
 
 Nextcloud shows a *Contacts menu* in the right corner of the header. This menu lists a user's contacts. These contact entries can be extended by apps.
 
-Apps that extend the contacts menu implement an IProvider. The providers ``process`` method is called for every entry show in the contacts menu.
+Apps that extend the contacts menu implement an IProvider or IBulkProvider. The ``process`` method of IProvider is called for every entry show in the contacts menu. The ``process`` method of IBulkProvider is called for all entries at once. If it's cheaper to fetch data in one operation, use the IBulkProvider.
 
 .. code-block:: php
     :caption: lib/ContactsMenu/MyProvider.php
@@ -22,10 +22,28 @@ Apps that extend the contacts menu implement an IProvider. The providers ``proce
         }
     }
 
+Alternatively, as a bulk provider:
+
+.. code-block:: php
+    :caption: lib/ContactsMenu/MyBulkProvider.php
+
+    <?php
+
+    namespace OCA\MyApp\ContactsMenu;
+
+    use OCP\Contacts\ContactsMenu\IEntry;
+    use OCP\Contacts\ContactsMenu\IProvider;
+
+    class MyBulkProvider implements IBulkProvider {
+        public function process(array $entries): void {
+            // todo: something useful in bulk
+        }
+    }
+
 
 .. code-block:: xml
     :caption: appinfo/info.xml
-    :emphasize-lines: 6-8
+    :emphasize-lines: 6-10
 
     <?xml version="1.0"?>
     <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
@@ -33,7 +51,9 @@ Apps that extend the contacts menu implement an IProvider. The providers ``proce
         <id>my_app</id>
         <name>My App</name>
         <contactsmenu>
-            <provider>OCA\MyApp\ContactsMenu\LinkActionProvider</provider>
+            <provider>OCA\MyApp\ContactsMenu\MyProvider</provider>
+            <!-- or -->
+            <provider>OCA\MyApp\ContactsMenu\MyBulkProvider</provider>
         </contactsmenu>
     </info>
 

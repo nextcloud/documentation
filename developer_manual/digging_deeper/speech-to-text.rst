@@ -56,13 +56,13 @@ The corresponding ``MyReferenceListener`` class can look like:
             }
 
             if ($event instanceof TranscriptionSuccessfulEvent) {
-                $transcript = $event->getTranscript()
+                $transcript = $event->getTranscript();
                 // store $transcript somewhere
             }
 
-            if ($event instanceof TranscriptionSuccessfulEvent) {
-                $error = $event->getErrorMessage()
-                $userId = $event->getUserId()
+            if ($event instanceof TranscriptionFailedEvent) {
+                $error = $event->getErrorMessage();
+                $userId = $event->getUserId();
                 // Notify relevant user about failure
             }
         }
