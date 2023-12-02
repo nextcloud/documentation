@@ -22,16 +22,14 @@ The maximum delay is 25 seconds.
 After a successful login the attempts will be cleared. And once a user is
 properly authenticated they will no longer be hit by the delay.
 
-Brute-force IP whitelist
+Exclude IP addresses from brute force protection
 ------------------------
 
-You can set an whitelist of IP adress.
-This can be set in Admin settings > Security
-You need to have the native app `bruteforcesettings` enabled.
+It's possible to exlude IP addresses from the brute force protection.
+- Enable the bruteforcesettings app
+- Login as admin and go to Administration settings -> Security
 
-Note that any whitelisted IP can perform authentication attempts without any
-throttling.  For security reasons, it is recommended to whitelist as few hosts
-as possible or ideally even none at all. 
+Note that any excluded IP address can perform authentication attempts without any throttling.  Its best to exclude as few IP addresses as you can, or even none at all. 
 
 Troubleshooting
 ---------------
