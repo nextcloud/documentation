@@ -650,6 +650,65 @@ The value can be modified by::
 
 A value of 0 will update it on every of the named occasions.
 
+Administrative Group mapping
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It is possible to promote **one** LDAP per connection as an admin group, so
+that all its members also have administrative privileges in Nextcloud.
+
+A group can either be promoted via a dedicated ``occ`` call providing a group
+parameter that can be either a nextcloud group ID or a group name that will be
+search against. When a search is executed an exact match is required.
+
+Example usage::
+
+  $ php occ ldap:promote-group --help
+  Description:
+    declares the specified group as admin group (only one is possible per LDAP configuration)
+
+  Usage:
+    ldap:promote-group [options] [--] <group>
+
+  Arguments:
+    group                 the group ID in Nextcloud or a group name
+
+  Options:
+    -y, --yes             do not ask for confirmation
+  …
+
+  # Example
+  $ php occ ldap:promote-group  "Nextcloud Admins"
+  Promote Nextcloud Admins to the admin group (y|N)? y
+  Group Nextcloud Admins was promoted
+
+  $ php occ ldap:promote-group  "Paramount Court"
+  Promote Nextcloud Admins to the admin group and demote Nextcloud Admins (Group ID: nextcloud_admins) (y|N)? y
+  Group Paramount Court was promoted
+
+  $ php occ ldap:promote-group  "Paramount Court"
+  The specified group is already promoted
+
+.. note:: Note the group ID will only be displayed when it differs from the
+  group's display name.
+
+It is also possible to set the admin group mapping using
+``occ ldap:set-config $configId ldapAdminGroup $groupId``, but as the Nextcloud
+group ID might not be known (yet) it is recommended (especially for automatized
+setups) to use the `promote-group` command, that would also pull in the group
+and determine the group ID.
+
+In order to demote or reset a promotion, an empty string should be set against
+to the targeted config's ldapAdminGroup::
+
+  # Reset an admin group mapping via set-config
+  occ ldap:set-config $configId ldapAdminGroup ""
+  # Example
+  occ ldap:set-config s01 ldapAdminGroup ""
+
+.. tip:: To have more than one administrative groups in a connection, create a
+  holding group in your LDAP directory that contains the single groups as
+  nested members, and promote this one.
+
 Nextcloud avatar integration
 ----------------------------
 
