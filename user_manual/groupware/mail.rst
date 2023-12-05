@@ -19,6 +19,17 @@ Add a new mail account
 
 .. figure:: images/new-mail-account.png
 
+Change sort order
+~~~~~~~~~~~~~~~~~
+
+ .. versionadded:: 3.5
+
+1. Visit mail settings
+2. Go to *Sorting*
+3. You can choose *Oldest* or *Newest* mail first 
+
+.. note:: This change will apply across all your accounts and mailboxes 
+
 Scheduled messages
 ~~~~~~~~~~~~~~~~~~~
 1. Click new message button on top left of your screen
