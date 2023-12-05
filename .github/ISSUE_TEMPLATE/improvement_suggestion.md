@@ -26,7 +26,7 @@ Example: My amazing idea is [...] <!-- Feel free to delete this line -->
   - *Then* return here to bring back your experience to help improve the documentation for clarity, etc. (and link back to the forum discussion in your report!)
 
 #### Protip: If you want to help move things along (or just help out in other ways too) here are some suggestions:
-* Look for areas where you can assist - even seemingingly unrelated areas - *because doing so frees up resources for your favorite topics and ideas*.
+* Look for areas where you can assist - even seemingly unrelated areas - *because doing so frees up resources for your favorite topics and ideas*.
 * Submit a proposed change - that attempts to addresses your issue - as a pull request.
-* Paricipate in a discussion on some other unresolved [submitted idea ("issues")](https://github.com/nextcloud/documentation/issues) to help move it along.
+* Participate in a discussion on some other unresolved [submitted idea ("issues")](https://github.com/nextcloud/documentation/issues) to help move it along.
 * Post a comment or review on someone else's [proposed change ("pull request")](https://github.com/nextcloud/documentation/pulls) to help move it along.
