@@ -9,3 +9,4 @@ Groupware
     calendar
     contacts
     mail
+    out_of_office
