@@ -79,6 +79,22 @@ If you don't wish for users to have this capability, you can disable FreeBusy fo
 Subscriptions
 -------------
 
+Custom public calendars
+~~~~~~~~~~~~~~~~~~~~~~~
+
+In addition to the public holiday calendars, it is possible to define your own calendar.
+They act in the same way as the holiday calendars and can be configured with the following command::
+
+ php occ config:app:set calendar publicCalendars --value '[{"name":"My custom calendar","source":"http://example.com/example.ics"}]'
+
+The setting is specified as a JSON array of objects with the following options:
+
+* ``name`` - name of the calendar in the listing
+* ``source`` - URL of the calendar's ICS file
+* ``displayName`` - optional, to overwrite the name of the subscribed calendar
+* ``description`` - optional, description in the listing
+* ``authors`` - optional, copyrights and so on
+
 Refresh rate
 ~~~~~~~~~~~~
 
