@@ -18,7 +18,7 @@ You can create a direct, one-on-one chat by searching for the name of a user, a 
 
 .. image:: images/chat-with-one-user.png
 
-If you want to create a custom group conversation, click the ``⋮`` button next to the filters button and then on ``Create a new conversation``. 
+If you want to create a custom group conversation, click the button next to the search field and filters button and then on ``Create a new conversation``.
 
 .. image:: images/create-new-conversation.png
     :width: 300px
@@ -40,7 +40,7 @@ You can cancel the creation of a conversation by clicking outside the white menu
 View all open conversations
 ---------------------------
 
-You can view all the conversations that you can join by accessing the conversations list through the ``⋮``  menu next to the filters button and clicking on ``Join open conversations.``
+You can view all the conversations that you can join by clicking the button next to the search field and filters button and then on ``Join open conversations.``
 
 .. image:: images/join-open-conversations.png
     :width: 500px
@@ -158,7 +158,7 @@ You can access your settings and choose a different webcam, microphone and other
 .. image:: images/media-settings.png
     :width: 300px
 
-or change the background 
+From media settings dialog, you can also change the background of your video.
 
 .. image:: images/background-settings-in-call.png
     :width: 300px
