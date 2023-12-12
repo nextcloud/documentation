@@ -94,6 +94,59 @@ You can add emoji using the picker on the left of the text input field.
 .. image:: images/emoji-picker.png
    :width: 450px
 
+Using Markdown
+---------------
+
+You can enhance your messages with a markdown syntax support. See list for usage:
+
+**Headings and dividers**
+
+.. code-block:: none
+
+  # Heading 1
+  ## Heading 2
+  ### Heading 3
+  #### Heading 4
+  ##### Heading 5
+  ###### Heading 6
+
+  Heading
+  ===
+  Normal text
+  ***
+  Normal text
+
+**Inline decorations**
+
+.. code-block:: none
+
+  **bold text** __bold text__
+  *italicized text* _italicized text_
+  `inline code` ``inline code``
+  ```
+  .code-block {
+    display: pre;
+  }
+  ```
+
+**Lists**
+
+.. code-block:: none
+
+  1. Ordered list
+  2. Ordered list
+
+  * Unordered list
+  - Unordered list
+  + Unordered list
+
+**Quotes**
+
+.. code-block:: none
+
+  > blockquote
+  second line of blockquote
+
 Replying to messages and more
 -----------------------------
 
