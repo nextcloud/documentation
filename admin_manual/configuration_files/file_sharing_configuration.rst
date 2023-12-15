@@ -160,3 +160,12 @@ appropriate permissions on it, and then no matter which users come and go, the
 file shares will remain. Because all files added to the share, or edited in it,
 automatically become owned by the owner of the share regardless of who adds or
 edits them.
+
+Using File Drop Share links
+------------------------------
+
+Using a File Drop Share allows users to upload files to Nextcloud through an unauthenticated session.
+File Drop Share links will only work when ``Allow public uploads`` is checked in the Sharing section of the Administration Settings page.
+
+.. note:: File Drop Shares currently have a limitation in that any files uploaded through an unauthenticated session will not be chunked.
+    Therefore the maximum file size that can be uploaded through File Drop Shares depends entirely on settings set within your environment.
