@@ -3302,13 +3302,13 @@ specifications. For those, have an opt-out.
 
 WARNING: only use this if you know what you are doing
 
-simpleSignUpLink.shown
+simpleSignUpLink
 ^^^^^^^^^^^^^^^^^^^^^^
 
 
 ::
 
-	'simpleSignUpLink.shown' => true,
+	'simpleSignUpLink' => true,
 
 By default, there is on public pages a link shown that allows users to
 learn about the "simple sign up" - see https://nextcloud.com/signup/
