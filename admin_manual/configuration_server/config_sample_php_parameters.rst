@@ -3515,6 +3515,18 @@ Enable use of old unified search
 
 Defaults to ``false``
 
+enable_non-accessible_features
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'enable_non-accessible_features' => true,
+
+Enable features that are do respect accessibility standards yet.
+
+Defaults to ``true``
+
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
 
