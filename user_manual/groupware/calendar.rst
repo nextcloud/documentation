@@ -265,6 +265,13 @@ The ``Empty trash bin`` buttons will wipe all trash bin contents in one step.
 
 .. _calendar-working-hours:
 
+Automated User Status
+~~~~~~~~~~~~~~~~~~~~~
+
+When you have a calendar event scheduled that has a "BUSY" status, your user status will be automatically set to "In a meeting" unless you have set yourself to "Do Not Disturb" or "Invisible".
+You can overwrite the status with a custom message any time, or set your calendar events to "FREE".
+Calendars that are transparent will be ignored.
+
 Responding to invitations
 -------------------------
 
