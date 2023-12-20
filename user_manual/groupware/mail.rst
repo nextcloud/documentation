@@ -49,6 +49,8 @@ All inboxes
 ~~~~~~~~~~~~
 All messages from all the accounts you have logged in, will be shown here chronologically.
 
+.. _mail-account-settings:
+
 Account settings
 ~~~~~~~~~~~~~~~~
 Your account settings such as:
@@ -214,3 +216,16 @@ Snoozing a message or thread moves it into a dedicated mailbox until the selecte
 1. Open action menu of an envelope or thread
 2. Click *Snooze*
 3. Select how long the message or thread should be snoozed
+
+
+Filtering and autoresponder
+---------------------------
+
+The Mail app has a simple editor for Sieve scripts and an interface to configure autoresponders. Sieve has to be enabled in the :ref:`account settings <mail-account-settings>`.
+
+Autoresponders
+~~~~~~~~~~~~~~
+
+.. versionadded:: 3.5 Autoresponder can follow system settings.
+
+The autoresponder is off by default. It can be set manually, or follow the system settings. Following system settings means that the long absence message entered on the :ref:`Absence settings section <groupware-absence>` is applied automatically.
