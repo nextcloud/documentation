@@ -35,6 +35,8 @@ Overview of AI features
    "","`Local large language model (via Llama 2) <https://apps.nextcloud.com/apps/llm>`_","Yellow","Yes","Yes","No","Yes"
    "","`OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_","Red","No","No","No","No"
    "","`OpenAI and LocalAI integration (via LocalAI) <https://apps.nextcloud.com/apps/integration_openai>`_","Green","Yes","Yes","Yes","Yes"
+   "Context Chat","`Nextcloud Assistant Context Chat <https://apps.nextcloud.com/apps/context_chat>`_","Yellow","Yes","Yes","No","Yes"
+   "","`Nextcloud Assistant Context Chat (Backend) <https://apps.nextcloud.com/apps/context_chat_backend>`_","Yellow","Yes","Yes","No","Yes"
 
 
 Ethical AI Rating
@@ -102,3 +104,12 @@ Implementing apps
 ~~~~~~~~~~~~~~~~~
 
 * `Text-to-Image Helper <https://apps.nextcloud.com/apps/stt_helper>`_ for providing a Text-to-Image smart picker
+
+Context Chat (Tech preview)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Our Context Chat feature was introduced in Nextcloud Hub 7 (v28). It allows asking questions to the assistant related to your documents in Nextcloud. You will need to install both the context_chat app as well as the context_chat_backend External App. Be prepared that things might break or be a little rough around the edges. We look forward to your feedback!
+
+Implementing apps
+~~~~~~~~~~~~~~~~~
+
+* `Assistant <https://apps.nextcloud.com/apps/assistant>`_ for the context chat task
