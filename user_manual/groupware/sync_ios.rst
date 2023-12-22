@@ -39,6 +39,16 @@ You should now find your contacts in the address book of your iPhone.
 .. note:: Beginning with iOS 12 an SSL encryption is necessary. Therefore do **not** disable **SSL**
   (For this reason a certificate is required at your domain, https://letsencrypt.org/ will do).
 
+The usual link syntax looks like this:
+
+https://<fqdn-of-server>/remote.php/dav/calendars/<username>/<calendar-name>/
+
+iOS is a little bit special and usually requires the following syntax:
+
+https://<fqdn-of-server>/remote.php/dav/principals/users/<username>/
+
+Also additionally, in order to connect NextCloud calendar or contacts on iOS you need first to generate an app password as follows:
+Settings → Personal → Security → “Create new app password” → Copy the credentials and use them within the iOS.
 
 If it's still not working, have a look at `Troubleshooting Contacts & Calendar`_ or `Troubleshooting Service Discovery`_.
 
