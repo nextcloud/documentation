@@ -43,9 +43,8 @@ You can quit the prompt by entering::
 
 Now download the archive of the latest Nextcloud version:
 
-* Go to the `Nextcloud Download Page <https://nextcloud.com/install>`_.
-* Go to **Download Nextcloud Server > Download > Archive file for
-  server owners** and download either the tar.bz2 or .zip archive.
+* Go to the `Nextcloud Install Page <https://nextcloud.com/install>`_.
+* Go to **Download Server > Community Projects** and download either the tar.bz2 or .zip archive.
 * This downloads a file named nextcloud-x.y.z.tar.bz2 or nextcloud-x.y.z.zip
   (where x.y.z is the version number).
 * Download its corresponding checksum file, e.g. nextcloud-x.y.z.tar.bz2.md5,
