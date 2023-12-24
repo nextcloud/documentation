@@ -2,6 +2,39 @@
 Encryption configuration
 ========================
 
+Overview
+--------
+
+With Nextcloud there are multiple ways of integrating encryption of your *files* or data - at-rest and/or in transport - beyond just HTTPS and/or any underlying storage platform/OS encryption capability.
+
+VPNs are one and OS (*-ish*) level encryption another - as well as outsourcing (entrusting) encryption to a third-party - are all commonly utilized, generally reliable, and often sound ways of accomodating additional transport encryption (and authorization/authentication) and at-rest data secrecy scenarios.
+
+They are also all external to - and largely outside the control and influence of - Nextcloud.
+
+Those will not be covered here.
+
+We will be focusing on two built around trusting Nextcloud, basically trusting the underlying OS (and hardware), but not necessarily fully trusting the underlying storage. And also around another approach based on not wanting to trust Nextcloud (or what it's running on) - or at least as little as possible.
+
+Unfortunately the latter can't be combined with the former at present. Fortunately, in many environments, there are reasonable alternative - or in some cases even more appropriate - approaches *outside of Nextcloud itself*.
+
+The three methods that are configured within Nextcloud itself are covered here, but not the countless other approaches - and combinations that exist outside of Nextcloud. **For those we suggest connecting with the Nextcloud Help Forum.**
+
+*Of course, as with any aspect of Nextcloud, Enterprise support is always an option if an SLA is important (and an enterprise consultation can help nudge you in the right direction, reduce frustration, save time, or uncover a better way).*
+
+Combinations Provided via Nextcloud 
+-------------------------------
+
+One combination is based on trusting the Nextcloud Server host itself (and generally its local storage), but not necessarily trusting remote storage (often referred to as "External Storage" within Nextcloud).
+
+That particular combination gets referred to as Server-side Encryption[1] or just "Encryption" in Nextcloud because it's implemented primarily by the optional app `encryption` (and because it implements one of the main means of protecting data stored externally, but accessed purely via Nextcloud.
+
+[1]
+
+
+
+Server-side Encryption
+----------------------
+
 The primary purpose of the Nextcloud server-side encryption is to protect users' 
 files on remote storage, such as Dropbox and Google Drive, and to do it easily 
 and seamlessly from within Nextcloud.
