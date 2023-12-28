@@ -79,7 +79,7 @@ Disable preview image generation
 
 Nextcloud is able to generate preview images of common filetypes such as images 
 or text files. By default the preview generation for some file types that we 
-consider secure enough for deployment is enabled by default. However, 
+consider secure enough for deployment is enabled. However, 
 administrators should be aware that these previews are generated using PHP 
 libraries written in C which might be vulnerable to attack vectors.
 
