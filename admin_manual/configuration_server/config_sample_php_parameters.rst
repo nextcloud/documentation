@@ -218,6 +218,19 @@ Enable persistent connexions to the database.
 This setting uses the "persistent" option from doctrine dbal, which in turn
 uses the PDO::ATTR_PERSISTENT option from the pdo driver.
 
+dbreplica
+^^^^^^^^^
+
+
+::
+
+	'dbreplica' => [
+		['user' => 'replica1', 'password', 'host' => '', 'dbname' => ''],
+		['user' => 'replica1', 'password', 'host' => '', 'dbname' => ''],
+	],
+
+Specify read only replicas to be used by Nextcloud when querying the database
+
 installed
 ^^^^^^^^^
 
