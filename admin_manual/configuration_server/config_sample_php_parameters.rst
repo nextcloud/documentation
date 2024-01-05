@@ -106,6 +106,10 @@ you use SQLite.
 
 Default to ``data/`` in the Nextcloud directory.
 
+.. warning:: This parameter should not be changed after finishing the initial
+	installation of Nextcloud. Doing so might lead to side effects and affect 
+	several features.
+
 version
 ^^^^^^^
 
