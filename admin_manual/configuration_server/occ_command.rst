@@ -42,6 +42,7 @@ occ command Directory
 * :ref:`two_factor_auth_label`
 * :ref:`disable_user_label`
 * :ref:`system_tags_commands_label`
+* :ref:`antivirus_commands_label`
 * `Debugging`_
 
 .. _http_user_label:
@@ -1716,6 +1717,27 @@ invisible  No       No
 
 | ¹ User can see the tag
 | ² User can assign the tag to a file
+
+.. _antivirus_commands_label:
+
+Antivirus
+---------
+
+Get info about files in the scan queue::
+
+  sudo -u www php occ files_antivirus:status [-v]
+
+Manually trigger the background scan::
+
+  sudo -u www php occ files_antivirus:background-scan [-v] [-m MAX]
+
+Manually scan a single file::
+
+  sudo -u www php occ files_antivirus:scan <path>
+
+Mark a file as scanned or unscanned::
+
+  sudo -u www php occ files_antivirus:mark <path> <scanned|unscanned>
 
 .. _occ_debugging:
 
