@@ -99,7 +99,7 @@ You can use simple callback to react on events. They will receive the event obje
     class Application extends App {
         public function __construct() {
             parent::__construct('myapp');
-                /* @var IEventDispatcher $eventDispatcher */
+                /* @var IEventDispatcher $dispatcher */
                 $dispatcher = $this->getContainer()->query(IEventDispatcher::class);
                 $dispatcher->addListener(AddEvent::class, function(AddEvent $event) {
                     // ...
