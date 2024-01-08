@@ -42,3 +42,10 @@ Address Book Sync
 ^^^^^^^^^^^^^^^^^
 
 The address book is updated automatically with every added, modified, disabled or removed user. Admins can also trigger a full rewrite of the address book :ref:`with occ<occ-dav-sync-system-address-book>`.
+
+Shared items
+------------
+
+.. versionadded:: 5.5.0
+
+For this feature, the shipped `related resources app <https://apps.nextcloud.com/apps/related_resources>`_ needs to be enabled.
