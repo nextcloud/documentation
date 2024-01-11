@@ -285,6 +285,8 @@ The general availability independent of scheduled events can be set in the group
 
 .. figure:: images/caldav_availability.png
 
+You can configure one-time absences on top of your regular availability in the :ref:`Absence settings section <groupware-absence>`.
+
 Birthday calendar
 -----------------
 
