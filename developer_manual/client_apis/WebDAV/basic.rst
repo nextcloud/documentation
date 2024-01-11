@@ -453,11 +453,14 @@ You can set some special headers that Nextcloud will interpret.
 |                 | | The server will return the hash in a header named either:     |                                          |
 |                 | | ``X-Hash-MD5``, ``X-Hash-SHA1``, or ``X-Hash-SHA256``.        |                                          |
 +-----------------+-----------------------------------------------------------------+------------------------------------------+
-| OC-Chunked      | Specify that the sent data is part of a chunk upload.           | ``true``                                 |
-+-----------------+-----------------------------------------------------------------+------------------------------------------+
 | OC-Total-Length | | Contains the total size of the file during a chunk upload.    | ``4052412``                              |
 |                 | | This allow the server to abort faster if the remaining        |                                          |
 |                 | | user's quota is not enough.                                   |                                          |
++-----------------+-----------------------------------------------------------------+------------------------------------------+
+| OC-Chunked      | | Used for legacy chunk upload to differentiate a regular       | Deprecated ⚠️                            |
+|                 | | upload from a chunked upload. It allowed checking for quota   |                                          |
+| (deprecated)    | | and various other things. Nowadays, you need to provide the   | You do not have to provide this anymore  |
+|                 | | ``OC-Total-Length`` header on the ``PUT`` requests instead.   |                                          |
 +-----------------+-----------------------------------------------------------------+------------------------------------------+
 
 Response Headers
