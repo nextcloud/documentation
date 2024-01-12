@@ -217,14 +217,20 @@ In case some translation strings may be translated wrongly because they have mul
 
 .. code-block:: javascript
 
-    // TRANSLATORS name that is appended to copied files with the same name, will be put in parenthesis and appened with a number if it is the second+ copy
+    // TRANSLATORS name that is appended to copied files with the same name, will be put in parenthesis and appended with a number if it is the second+ copy
     var copyNameLocalized = t('files', 'copy');
 
 **Vue**
 
-Currently, commenting in Vue files is not possible.
-Vue files are not read via gettext and synchronized with Transifex.
-As a small help, the file in question as well as the line of code is written in the translation comment (``// TRANSLATORS``).
+This covers vue html templates in vue sfc components.
+For vue js code, see the javascript section.
+
+.. code-block:: html
+
+    <NcActionCheckbox :checked="isRequired">
+        <!-- TRANSLATORS Making this question necessary to be answered when submitting to a form -->
+        {{ t('forms', 'Required') }}
+    </NcActionCheckbox>
 
 **C++ (Qt)**
 
