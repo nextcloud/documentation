@@ -15,11 +15,22 @@ Routes map a URL and a method to a controller method. Routes are defined inside 
         ],
     ];
 
+.. versionadded:: 29
+
+You can also use attributes on the Controller method to define routes.
+They support all the same parameters (except for ``name`` which is not needed).
+``FrontpageRoute`` has to be used for routes that were in the ``routes`` section and ``ApiRoute`` has to be used for routes that were in the ``ocs`` section.
+
+.. code-block:: php
+
+    #[FrontpageRoute(verb: 'GET', url: '/')]
+
+    #[ApiRoute(verb: 'GET', url: '/')]
 
 The route array contains the following parts:
 
 * **url**: The URL that is matched after */index.php/apps/myapp*
-* **name**: The controller and the method to call; *page#index* is being mapped to *PageController->index()*, *articles_api#drop_latest* would be mapped to *ArticlesApiController->dropLatest()*. The controller in the example above would be stored in :file:`lib/Controller/PageController.php`.
+* **name**: The controller and the method to call; *page#index* is being mapped to *PageController->index()*, *articles_api#drop_latest* would be mapped to *ArticlesApiController->dropLatest()*. The controller in the example above would be stored in :file:`lib/Controller/PageController.php`. This parameter is not needed for the attributes.
 * **verb** (Optional, defaults to GET): The HTTP method that should be matched, (e.g. GET, POST, PUT, DELETE, HEAD, OPTIONS, PATCH)
 * **requirements** (Optional): lets you match and extract URLs that have slashes in them (see :ref:`matching-suburls`)
 * **postfix** (Optional): lets you define a route id postfix. Since each route name will be transformed to a route id (**page#method** -> **myapp.page.method**) and the route id can only exist once you can use the postfix option to alter the route id creation by adding a string to the route id, e.g., **'name' => 'page#method', 'postfix' => 'test'** will yield the route id **myapp.page.methodtest**. This makes it possible to add more than one route/URL for a controller method
