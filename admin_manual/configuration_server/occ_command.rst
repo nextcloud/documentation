@@ -859,6 +859,7 @@ Commands for handling shares::
  sharing
   sharing:cleanup-remote-storages  Cleanup shared storage entries that have no matching entry in the shares_external table
   sharing:expiration-notification  Notify share initiators when a share will expire the next day
+  sharing:delete-orphan-shares     Delete shares where the owner no longer has access to the file or the file is not available anymore
 
 .. _files_external_label:
 
