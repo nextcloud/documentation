@@ -265,6 +265,10 @@ To update all apps::
 
     sudo -u www-data php occ app:update --all
 
+To show available update(s) without updating::
+
+    sudo -u www-data php occ app:update --showonly
+
 .. _background_jobs_selector_label:
 
 Background jobs selector
