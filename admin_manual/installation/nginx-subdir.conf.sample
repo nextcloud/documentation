@@ -6,7 +6,7 @@ upstream php-handler {
 # Set the `immutable` cache control options only for assets with a cache busting `v` argument
 map $arg_v $asset_immutable {
     "" "";
-    default "immutable";
+    default ", immutable";
 }
 
 server {
@@ -46,6 +46,15 @@ server {
     # in all major browsers and getting removed from this list
     # could take several months.
     #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload" always;
+
+    # Set .wasm MIME type
+    # Either include it in the default mime.types list
+    # and include that list explicitly or add the file extension
+    # only for Nextcloud like below:
+    include mime.types;
+    types {
+	application/wasm wasm;
+    }
 
     location = /robots.txt {
         allow all;
@@ -156,12 +165,15 @@ server {
 
         location ~ \.(?:css|js|svg|gif|png|jpg|ico|wasm|tflite|map)$ {
             try_files $uri /nextcloud/index.php$request_uri;
-            add_header Cache-Control "public, max-age=15778463, $asset_immutable";
+            # HTTP response headers borrowed from Nextcloud `.htaccess`
+            add_header Cache-Control                     "public, max-age=15778463$asset_immutable";
+            add_header Referrer-Policy                   "no-referrer"       always;
+            add_header X-Content-Type-Options            "nosniff"           always;
+            add_header X-Frame-Options                   "SAMEORIGIN"        always;
+            add_header X-Permitted-Cross-Domain-Policies "none"              always;
+            add_header X-Robots-Tag                      "noindex, nofollow" always;
+            add_header X-XSS-Protection                  "1; mode=block"     always;
             access_log off;     # Optional: Don't log access to assets
-
-            location ~ \.wasm$ {
-                default_type application/wasm;
-            }
         }
 
         location ~ \.woff2?$ {
