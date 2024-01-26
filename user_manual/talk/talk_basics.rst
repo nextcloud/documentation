@@ -18,18 +18,47 @@ You can create a direct, one-on-one chat by searching for the name of a user, a 
 
 .. image:: images/chat-with-one-user.png
 
-If you want to create a custom group conversation, click the ``plus`` button next to the search field. You can then pick a name for the conversation and select if the conversation should be open to external users and if other users on the server can see and join the conversation.
+If you want to create a custom group conversation, click the ``⋮`` button next to the filters button and then on ``Create a new conversation``. 
 
-.. image:: images/creating-group-room.png
+.. image:: images/create-new-conversation.png
+    :width: 300px
+
+You can then pick a name for the conversation, put a description, and set up an avatar for it (with uploaded photo or emoji), and select if the conversation should be open to external users and if other users on the server can see and join the conversation.
+
+.. image:: images/creating-open-conversation.png
+    :width: 500px
 
 In the second step, you get to add participants and finalize the creation of the conversation.
 
 .. image:: images/add-participants.png
+    :width: 500px
 
 You can cancel the creation of a conversation by clicking outside the white menu area at any time.
 
 .. image:: images/new-room.png
 
+View all open conversations
+---------------------------
+
+You can view all the conversations that you can join by accessing the conversations list through the ``⋮``  menu next to the filters button and clicking on ``Join open conversations.``
+
+.. image:: images/join-open-conversations.png
+    :width: 500px
+
+Filter your conversations
+-------------------------
+
+You can filter your conversations using the filter button located next to the search field. There are two options for filtering:
+1. Filter unread mentions: This option allows you to view group conversations with unread mentions or unread one-on-one conversations.
+2. Filter unread messages: This option allows you to view all unread messages in all joined conversations.
+
+.. image:: images/filters-menu.png
+    :width: 250px
+
+You can then clear the filter from the filters menu.
+
+.. image:: images/clear-filter.png
+    :width: 250px
 
 Sharing files in a chat
 -----------------------
@@ -43,12 +72,15 @@ First, you can simply drag'n'drop them on the chat.
 Second, you can select a file from your Nextcloud Files or a file manager by choosing the little paperclip and selecting where you'd like to pick the file from.
 
 .. image:: images/share-files-in-chat.png
+   :width: 500px
 
 .. image:: images/share-files-in-chat-selection.png
+    :width: 450px
 
 You can add more files until you are done and decide to share the files.
 
 .. image:: images/talk-upload-files.png
+   :width: 500px
 
 All users will be able to click the files to view, edit or download them, irrespective of them having a user account. Users with an account will have the file automatically shared with them while external guest users will get them shared as a public link.
 
@@ -60,6 +92,7 @@ Inserting emoji
 You can add emoji using the picker on the left of the text input field.
 
 .. image:: images/emoji-picker.png
+   :width: 450px
 
 Replying to messages and more
 -----------------------------
@@ -67,10 +100,12 @@ Replying to messages and more
 You can reply to a message using the arrow that appears when you hover a message.
 
 .. image:: images/reply.png
+   :width: 450px
 
 In the ``...`` menu you can also choose to reply privately. This will open a one-on-one chat.
 
 .. image:: images/chat-message-menu.png
+   :width: 450px
 
 Here you can also create a direct link to the message or mark it unread so you will scroll back there next time you enter the chat. When it is a file, you can view the file in Files.
 
@@ -83,18 +118,25 @@ Changing permissions of a user that joined a public conversation will also perma
 
 .. image:: images/participant-menu.png
 
-Moderators can configure the conversation. Select ``Conversation settings`` from the gear menu of the conversation on the top to access the settings.
+Moderators can configure the conversation. Select ``Conversation settings`` from the ``...`` menu of the conversation on the top to access the settings.
 
 .. image:: images/open-settings.png
+    :width: 300px
 
 Here you can configure the description, guest access, if the conversation is visible to others on the server and more.
 
-.. image:: images/chat-room-settings.png
+.. image:: images/conversation-settings-dialog.png
+   :width: 450px
 
 Starting a call
 ---------------
 
-When you're in a conversation, you can start a call any time with the ``Start call`` button. Other participants will get notified and can join the call. If somebody else has started a call already, the button will change in a green ``Join call`` button.
+When you're in a conversation, you can start a call any time with the ``Start call`` button. Other participants will get notified and can join the call.
+
+.. image:: images/device-settings-before-call.png
+    :width: 300px
+
+If somebody else has started a call already, the button will change in a green ``Join call`` button.
 
 .. image:: images/join-call.png
 
@@ -104,7 +146,15 @@ You can hide your video (useful during a screen share) with the little arrow jus
 
 You can access your settings and choose a different webcam, microphone and other settings in the ``...`` menu in the top bar.
 
-.. image:: images/call-menu.png
+.. image:: images/media-settings.png
+    :width: 300px
+
+or change the background 
+
+.. image:: images/background-settings-in-call.png
+    :width: 300px
+
+You can change other settings in the ``Talk settings`` dialog.
 
 .. image:: images/talk-settings.png
 
