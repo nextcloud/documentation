@@ -23,9 +23,9 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - openSUSE Leap 15.5                                                  |
 |                  | - CentOS Stream                                                       |
 +------------------+-----------------------------------------------------------------------+
-| Database         | - **MySQL 8.0+** or MariaDB 10.3/10.4/10.5/**10.6** (recommended)     |
+| Database         | - **MySQL 8.0+** or MariaDB 10.3/10.5/**10.6** (recommended)/10.11    |
 |                  | - Oracle Database 11g (*only as part of an enterprise subscription*)  |
-|                  | - PostgreSQL 10/11/12/13/14/15                                        |
+|                  | - PostgreSQL 12/13/14/15                                              |
 |                  | - SQLite (*only recommended for testing and minimal-instances*)       |
 +------------------+-----------------------------------------------------------------------+
 | Webserver        | - **Apache 2.4 with** ``mod_php`` **or** ``php-fpm`` (recommended)    |
