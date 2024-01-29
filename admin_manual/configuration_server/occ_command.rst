@@ -1115,6 +1115,7 @@ Security
 Use these commands to manage server-wide SSL certificates or reset brute-force slow-downs. These are useful when you create federation shares with other Nextcloud servers that use self-signed certificates::
 
  security
+  security:bruteforce:attempts  list brute-force attemps for given IP address
   security:bruteforce:reset     resets brute-force attemps for given IP address
   security:certificates         list trusted certificates
   security:certificates:import  import trusted certificate
