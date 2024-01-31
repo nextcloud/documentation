@@ -1501,6 +1501,20 @@ configured for ``loglevel`` or Warning if that is not set either.
 
 Defaults to ``2``
 
+loglevel_dirty_database_queries
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'loglevel_dirty_database_queries' => 0,
+
+Loglevel used by the dirty database query detection. Useful to identify
+potential database bugs in production. Set this to loglevel or higher to
+see dirty queries in the logs.
+
+Defaults to ``0`` (debug)
+
 syslog_tag
 ^^^^^^^^^^
 
