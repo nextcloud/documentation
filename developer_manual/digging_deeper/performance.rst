@@ -72,6 +72,11 @@ If you do bigger changes in the architecture or the database structure you shoul
 
 The recommendation is to automatically do 10000 PROPFINDs or file uploads, measure the time and compare the time before and after the change.
 
+Cached data
+-----------
+
+Starting from Nextcloud 26, user and group display names now are cached. Use the ``IUserManager::getDisplayName`` or ``IGroupManager::getDisplayName`` functions to avoid roundtrips to the database.
+
 Getting help
 ------------
 
