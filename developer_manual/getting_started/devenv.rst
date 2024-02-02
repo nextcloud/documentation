@@ -108,10 +108,10 @@ When upgrading the server code you might need to upgrade the app code as well be
 
 .. note:: The same applies to all the apps listed under ``alwaysEnabled`` in `shipped.json <https://github.com/nextcloud/server/blob/master/core/shipped.json#L49>`_ but most are already present in the server repository.
 
+.. _debugmode:
+
 Enabling debug mode
 ^^^^^^^^^^^^^^^^^^^
-
-.. _debugmode:
 
 .. note:: Do not enable this for production! This can create security problems and is only meant for debugging and development!
 

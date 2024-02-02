@@ -60,6 +60,52 @@ If you increase the long_query_time to 100 and add log-queries-not-using-indexes
   slow_query_log_file = /var/log/mysql/mysql-slow.log
   long_query_time=100
 
+Writing scalable transactions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Database queries and transactions have to work efficiently no matter the size of the Nextcloud installations. They have to work with simple SQLite, a single node Postgres and a MariaDB Galera cluster to give some examples.
+
+Database clusters
+~~~~~~~~~~~~~~~~~
+
+Single instance database offer strong consistency. Clusters can offer it too, but it comes with a performance penalty and admins occasionally choose to relax these guarantees to increase throughput. One of these allowed inconsistencies can happen on read/write split clusters, where some nodes handle only read (SELECT) operations while other can handle read and write (SELECT, INSERT, UPDATE and DELETE). Keeping replica nodes in sync with primary nodes is expensive. Allowing a few milliseconds of delay for the data to propagate from primary to replica allows the primary to process more queries.
+
+.. versionadded:: 29
+  Nextcloud installations can have a primary connection and a number of replica connections. The database abstraction will automatically split read and write operations. Reads go to a replica, unless they happen in a transaction. Writes always go to the primary. As soon as a table has been written to, subsequent reads go to the primary too.
+
+Other installations do this split inside the cluster or with a database load balancer that sends queries to one or another node based on criteria, round robin, etc. This means that Nextcloud can't always influence where queries are executed.
+
+It is important for Nextcloud developers to keep this in mind when writing database queries, especially when it is a series of queries. The next sections cover common anti-patterns and solutions.
+
+Reading data that has just been written
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A common pattern that works fine with small databases but falls apart on overloaded clusters are causal reads. These happen when a Nextcloud process INSERTs new data and reads that data right away. This can be obvious to spot in the code, but sometimes this is also obfuscated because of event listeners that react on new data.
+
+There are two patterns to avoid the "dirty" read:
+
+  1. **Wrap the write+read operation in a transaction**. Nextcloud's read/write split, but also other database cluster load balancers will ensure that the queries of a transactions go to one single database node of a cluster. That ensures that data written is instantly available to be read back. This approach guarantees consistency, but puts additional load on the primary node because it has to execute the read operation too. This is best used in contained code blocks. Do not span transactions for event listeners because their execution might lead to :ref:`long transactions<performance-long-transactions>` and locking issues.
+  2. **Avoid the read operation**. If the code allows it, avoid the read operation all together. You should know what was just written. If you need the auto increment ID, use the database's *last insert ID* feature. Proceed with this data, pass it to event listeners, etc. This approach guarantees consistency, too, but also improves overall performance.
+
+.. tip::
+  Nextcloud can help you identify read after write without the need to set up a cluster for your development environment. If you change the loglevel to 0 (debug), dirty reads will trigger a log entry. Monitor the log when testing your code.
+
+  Look out for messages like ``dirty table reads: SELECT `id` FROM `*PREFIX*jobs` WHERE (`class` = :dcValue1) AND (`argument_hash` = :dcValue2) LIMIT 1``. Use the log entry's *trace* to locate the code that executed the query.
+
+  Be aware that the dirty read detection is not perfect and might wrongly log a dirty read when you write and read unrelated data. As an example, you may read user *alice*, update her data, and then read *bob*'s data and do the same. Even if the database replicates slow, you will not read data that doesn't exist yet. Since Nextcloud tracks on a table level, it still warns.
+
+.. _performance-long-transactions:
+
+Long transactions
+~~~~~~~~~~~~~~~~~
+
+Transactions are crucial for changes that belong together but they can cause problems under load. That's because the longer the transaction is open, the more other queries may have to wait for a lock to be released. This can lead to contention, timing out requests and deadlocks. So use transaction wisely and try to keep them as short as possible. Don't mix them database operations with file system operations, for example.
+
+.. tip::
+  Nextcloud can help you identify slow transactions. If you change the loglevel to 0 (debug), slow transaction will cause a log message at commit/rollback.
+
+  Look out for messages like ``Transaction took longer than 1s: 7.1270351409912`` and ``Transaction rollback took longer than 1s: 1.2153599501``.
+
 Cached data
 ^^^^^^^^^^^
 
