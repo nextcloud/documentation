@@ -18,7 +18,7 @@ Table of contents
     getting_started/index
     basics/index
     app_development/index
-    core/index
+    server/index
     digging_deeper/index
     app_publishing_maintenance/index
     design/index

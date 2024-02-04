@@ -79,7 +79,7 @@ Disable preview image generation
 
 Nextcloud is able to generate preview images of common filetypes such as images 
 or text files. By default the preview generation for some file types that we 
-consider secure enough for deployment is enabled by default. However, 
+consider secure enough for deployment is enabled. However, 
 administrators should be aware that these previews are generated using PHP 
 libraries written in C which might be vulnerable to attack vectors.
 
@@ -87,6 +87,15 @@ For high security deployments we recommend disabling the preview generation by
 setting the ``enable_previews`` switch to ``false`` in ``config.php``. As an 
 administrator you are also able to manage which preview providers are enabled by 
 modifying the ``enabledPreviewProviders`` option switch.
+
+Disable Debug Mode
+^^^^^^^^^^^^^^^^^^
+
+Verify that ``debug`` is ``false`` in your ``config.php``. The default is ``false`` 
+in new installations (or when not specified). It should not be enabled in production 
+environments or outside of targeted troubleshooting situations. When enabled, things 
+like server-wide WebDAV collection listings are permitted. It is intended for local 
+development and usage in controlled environments only.
 
 .. _use_https_label:
 
@@ -227,15 +236,18 @@ security headers are shipped.
 Connections to remote servers
 -----------------------------
 
-Some Nextcloud functionality requires connecting to remote servers. Depending on 
-your server setup those are possible connections:
+Some Nextcloud functionalites require connecting to remote servers. Depending on 
+your server setup, these are the possible connections:
 
 - www.nextcloud.com, www.startpage.com, www.eff.org, www.edri.org for checking the internet connection
-- apps.nextcloud.com for the available apps
-- updates.nextcloud.com for Nextcloud updates
-- lookup.nextcloud.com For updating and lookup in the federated sharing addressbook
-- push-notifications.nextcloud.com for sending push notifications to mobile clients
-- surveyserver.nextcloud.com if the admin has agreed to share anonymized data
+- cloud.nextcloud.com (https) for validating the enterprise subscription
+- updates.nextcloud.com (https) for Nextcloud server updates
+- push-notifications.nextcloud.com (https) for sending push notifications to mobile clients
+- pushfeed.nextcloud.com (https) for the Nextcloud announcements app
+- lookup.nextcloud.com (https) for updating and lookups to the federated sharing addressbook
+- surveyserver.nextcloud.com (https) if the admin has agreed to share anonymized data
+- apps.nextcloud.com (https) for available apps and their updates 
+- github.com (https) for downloading Nextcloud standard apps
 - Any remote Nextcloud server that is connected with federated sharing
 
 Setup fail2ban

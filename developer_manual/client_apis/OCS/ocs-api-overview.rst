@@ -6,6 +6,24 @@ This document provides a quick overview of the OCS API endpoints supported in Ne
 
 All requests need to provide authentication information, either as a Basic Auth header or by passing a set of valid session cookies, if not stated otherwise.
 
+Authentication
+--------------
+
+Authentication can happen either via username / password (or app token) or with OIDC tokens, see the examples below:
+
+
+Username/Password:
+
+.. code-block:: bash
+
+    curl -u username:password -X GET 'https://cloud.example.com/ocs/v1.php/...' -H "OCS-APIRequest: true"
+
+
+OIDC Token:
+
+.. code-block:: bash
+
+    curl -X GET 'https://cloud.example.com/ocs/v1.php/...' -H "OCS-APIRequest: true" -H "Authorization: Bearer ID_TOKEN"
 
 Testing requests with curl
 --------------------------
@@ -59,6 +77,7 @@ This request returns the available metadata of a user. Admin users can see the i
 			</quota>
 			<email>user@foo.de</email>
 			<displayname>John Doe</displayname>
+			<display-name>John Doe</display-name>
 			<phone></phone>
 			<address></address>
 			<website>https://example.com</website>
@@ -180,7 +199,7 @@ This when the primary color is e.g. set to ``#000000`` the ``color-elemenet-dark
 Text and icons on these elements should use ``color-text``.
 
 
-The background value can either be an URL to the background image or a hex color value.
+The background value can either be a URL to the background image or a hex color value.
 
 Direct Download
 ---------------

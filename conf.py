@@ -8,7 +8,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 sys.path.insert(0, os.path.abspath(dir_path + '/_ext'))
 now = datetime.datetime.now()
 
-extensions = []
+extensions = ['sphinx_rtd_theme', 'sphinx_rtd_dark_mode']
 
 # General information about the project.
 copyright = str(now.year) + ' Nextcloud GmbH'
@@ -36,8 +36,8 @@ html_logo = "../_shared_assets/static/logo-white.png"
 rst_epilog =  '.. |version| replace:: %s' % version
 
 # building the versions list
-version_start = 24		# THIS IS THE SUPPORTED VERSION NUMBER
-version_stable = 25		# INCREASE THIS NUMBER TO THE LATEST STABLE VERSION NUMBER
+version_start = 26		# THIS IS THE SUPPORTED VERSION NUMBER
+version_stable = 28		# INCREASE THIS NUMBER TO THE LATEST STABLE VERSION NUMBER
 
 # Also search for "TODO ON RELEASE" in the rst files
 
@@ -70,3 +70,8 @@ html_context = {
 
 edit_on_github_project = 'nextcloud/documentation'
 edit_on_github_branch = 'master'
+
+# user starts in light mode
+default_dark_mode = False
+
+latex_engine = "xelatex"

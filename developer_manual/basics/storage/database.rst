@@ -35,9 +35,9 @@ Inside your database layer class you can now start running queries like:
                    $qb->expr()->eq('id', $qb->createNamedParameter($id, IQueryBuilder::PARAM_INT))
                );
 
-            $cursor = $qb->execute();
-            $row = $cursor->fetch();
-            $cursor->closeCursor();
+            $result = $qb->executeQuery();
+            $row = $result->fetchAssociative();
+            $result->closeCursor();
 
             return $row;
         }
@@ -183,9 +183,9 @@ To create a mapper, inherit from the mapper base class and call the parent const
                    $qb->expr()->eq('name', $qb->createNamedParameter($name, IQueryBuilder::PARAM_STR))
                );
 
-            $cursor = $qb->execute();
-            $row = $cursor->fetch();
-            $cursor->closeCursor();
+            $result = $qb->executeQuery();
+            $row = $result->fetchAssociative();
+            $result->closeCursor();
 
             return $row['count'];
         }
@@ -366,6 +366,14 @@ It makes sense to apply some general tips from the beginning, so you don't have 
 
     <?php
     $table->addUniqueIndex(['your', 'column', 'names', '...'], 'table_name_uniq_feature');
+
+Querying the database provider
+------------------------------
+
+If you would like to find out which database your app is runnning on, use the ``IDBConnection::getDatabaseProvider`` method.
+This can be helpful in cases where specific databases have their own
+requirements, such as Oracle limiting ``IN``- queries to 1000 expressions.
+
 
 Supporting more databases
 -------------------------

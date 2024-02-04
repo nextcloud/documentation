@@ -11,60 +11,71 @@ jobs:
   user_manual:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: ammaraskar/sphinx-action@master
+    - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+    - uses: actions/setup-python@v5
       with:
-        docs-folder: "user_manual/"
-        pre-build-command: pip install -r requirements.txt
-        build-command: make html
+        python-version: '3.10'
+    - name: Install pip dependencies
+      run: pip install -r requirements.txt
+    - name: Build using Makefile
+      run: cd user_manual && make html
     - name: Pack  the results in local tar file
       shell: bash
       run: tar czf /tmp/documentation.tar.gz -C user_manual/_build/html .
     - name: Upload static documentation
-      uses: actions/upload-artifact@v3.1.2
+      uses: actions/upload-artifact@v4.2.0
       with:
         name: User manual.zip
         path: "/tmp/documentation.tar.gz"
+
   user_manual-en:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: ammaraskar/sphinx-action@master
+    - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+    - uses: actions/setup-python@v5
       with:
-        docs-folder: "user_manual/"
-        pre-build-command: pip install -r requirements.txt
-        build-command: make html-lang-en
+        python-version: '3.10'
+    - name: Install pip dependencies
+      run: pip install -r requirements.txt
+    - name: Build using Makefile
+      run: cd user_manual && make html-lang-en
+
   developer_manual:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: ammaraskar/sphinx-action@master
+    - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+    - uses: actions/setup-python@v5
       with:
-        docs-folder: "developer_manual/"
-        pre-build-command: pip install -r requirements.txt
-        build-command: make html
+        python-version: '3.10'
+    - name: Install pip dependencies
+      run: pip install -r requirements.txt
+    - name: Build using Makefile
+      run: cd developer_manual && make html
     - name: Pack the results in local tar file
       shell: bash
       run: tar czf /tmp/documentation.tar.gz -C developer_manual/_build/html/com .
     - name: Upload static documentation
-      uses: actions/upload-artifact@v3.1.2
+      uses: actions/upload-artifact@v4.2.0
       with:
         name: Developer manual.zip
         path: "/tmp/documentation.tar.gz"
+
   admin_manual:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: ammaraskar/sphinx-action@master
+    - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+    - uses: actions/setup-python@v5
       with:
-        docs-folder: "admin_manual/"
-        pre-build-command: pip install -r requirements.txt
-        build-command: make html
+        python-version: '3.10'
+    - name: Install pip dependencies
+      run: pip install -r requirements.txt
+    - name: Build using Makefile
+      run: cd admin_manual && make html
     - name: Pack the results in local tar file
       shell: bash
       run: tar czf /tmp/documentation.tar.gz -C admin_manual/_build/html/com .
     - name: Upload static documentation
-      uses: actions/upload-artifact@v3.1.2
+      uses: actions/upload-artifact@v4.2.0
       with:
         name: Administration manual.zip
         path: "/tmp/documentation.tar.gz"

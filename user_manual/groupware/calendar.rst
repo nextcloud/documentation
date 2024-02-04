@@ -1,3 +1,5 @@
+.. _calendar-app:
+
 ======================
 Using the Calendar app
 ======================
@@ -91,7 +93,7 @@ There's also an « embedding code » that provides an HTML iframe to embed you
 Multiple calendars can be shared together by adding their unique tokens to the end of an embed link. Individual tokens can be found at the end of each calendar's public link. The full address will look like
 ``https://cloud.example.com/index.php/apps/calendar/embed/<token1>-<token2>-<token3>``
 
-To change the default view or date of an embedded calendar, you need to provide an URL that looks like ``https://cloud.example.com/index.php/apps/calendar/embed/<token>/<view>/<date>``.
+To change the default view or date of an embedded calendar, you need to provide a URL that looks like ``https://cloud.example.com/index.php/apps/calendar/embed/<token>/<view>/<date>``.
 In this url you need to replace the following variables:
 
 - ``<token>`` with the calendar's token,
@@ -108,12 +110,24 @@ supporting this interoperable standard (RFC 5545) we made Nextcloud calendar
 compatible to Google Calendar, Apple iCloud and many other calendar-servers
 you can exchange your calendars with, including subscription links from calendar published on other Nextcloud instances, as described above.
 
-1. Click on ``+ New Subscription`` in the left sidebar.
-2. Type in or paste the link of the shared calendar you want to subscribe to.
+1. Click on ``+ New calendar`` in the left sidebar
+2. Click on ``+ New subscription from link (read-only)``
+3. Type in or paste the link of the shared calendar you want to subscribe to.
 
 Finished. Your calendar subscriptions will be updated regularly.
 
 .. note:: Subscriptions are refreshed every week by default. Your administrator may have changed this setting.
+
+Subscribe to a Holiday Calendar
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 4.4
+
+You can subscribe to a read-only holiday calendar provided by `Thunderbird <https://www.thunderbird.net/calendar/holidays/>`_.
+
+1. Click on ``+ New calendar`` in the left sidebar
+2. Click on ``+ Add holiday calendar``
+3. Find your country or region and click ``Subscribe``
 
 Managing Events
 ---------------
@@ -177,6 +191,9 @@ Attendees may be other users on your Nextcloud instances, contacts in your addre
 .. figure:: images/calendar_event_invitation_level.png
    :scale: 80%
 
+.. versionchanged:: 25
+   Attendee email response links no longer offer inputs to add a comment or invite additional guests to the event.
+
 .. tip:: When adding other Nextcloud users as attendees to an event, you may access their free-busy information if available, helping you determine when the best time slot for your event is. Set your :ref:`working hours<calendar-working-hours>` to let others know when you are available. Free-busy information is only available for other users on the same Nextcloud instance.
 
 .. attention:: Only the calendar owner can send out invitations. The sharees are not able to do that, whether they have write access to the event's calendar or not.
@@ -189,6 +206,21 @@ Assign rooms and resources to an event
 Similar to attendees you can add rooms and resources to your events. The system will make sure that each room and resource is booked without conflict. The first time a user adds the room or resource to an event, it will show as accepted. Any further events at overlapping times will show the room or resource as rejected.
 
 .. note:: Rooms and resources are not managed by Nextcloud itself and the Calendar app will not allow you to add or change a resource. Your Administrator has to install and possibly configure resource back ends before you can use them as a user.
+
+Add attachments to events
+~~~~~~~~~~~~~~~~~~~~~~~~~
+You can import attachments to your events either by uploading them or adding them from files
+
+.. figure:: images/calendar_adding_attachments.png
+   :scale: 40%
+
+.. note:: Attachments can be added while creating new events or editing existent ones.
+   Newly uploaded files will be saved in files by default in the calendar folder in the root directory.
+
+You can change the attachment folder by going to ``Calendar settings`` in the bottom left corner and changing ``default attachments location``.
+
+.. figure:: images/calendar_attachments_location.png
+   :scale: 60%
 
 Set up reminders
 ~~~~~~~~~~~~~~~~
@@ -233,6 +265,13 @@ The ``Empty trash bin`` buttons will wipe all trash bin contents in one step.
 
 .. _calendar-working-hours:
 
+Automated User Status
+~~~~~~~~~~~~~~~~~~~~~
+
+When you have a calendar event scheduled that has a "BUSY" status, your user status will be automatically set to "In a meeting" unless you have set yourself to "Do Not Disturb" or "Invisible".
+You can overwrite the status with a custom message any time, or set your calendar events to "FREE".
+Calendars that are transparent will be ignored.
+
 Responding to invitations
 -------------------------
 
@@ -252,6 +291,8 @@ Availability (Working Hours)
 The general availability independent of scheduled events can be set in the groupware settings of Nextcloud. These settings will be reflected in the free-busy view when you :ref:`schedule a meeting with other people<calendar-attendees>` in Calendar. Some connected clients like Thunderbird will show this data as well.
 
 .. figure:: images/caldav_availability.png
+
+You can configure one-time absences on top of your regular availability in the :ref:`Absence settings section <groupware-absence>`.
 
 Birthday calendar
 -----------------
@@ -283,27 +324,27 @@ appointment will take place and a more detailed description of what this appoint
 
 .. figure:: images/appointment_config_basics.png
 
-The duration of the appointment can be picked from a predefined list. Next, you can set the desired increment. The increment is the rate at which possible slots are available. 
-For example, you could have one hour long slots, but you give them away at 30 minute increments so an attendee can book at 9:00AM but also at 9:30AM. 
-Optional infos about location and a description give the attendees some more context.Every booked appointment will be written into one of your calendars, so you can chose which one that should be. Appointments can be *public* or *private*. 
+The duration of the appointment can be picked from a predefined list. Next, you can set the desired increment. The increment is the rate at which possible slots are available.
+For example, you could have one hour long slots, but you give them away at 30 minute increments so an attendee can book at 9:00AM but also at 9:30AM.
+Optional infos about location and a description give the attendees some more context.Every booked appointment will be written into one of your calendars, so you can chose which one that should be. Appointments can be *public* or *private*.
 Public appointments can be discovered through the profile page of a Nextcloud user. Private appointments are only accessible to the people who receive the secret URL.
 
 .. figure:: images/appointment_config_calendar_settings.png
 
-.. note:: Only slots that do not conflict with existing events in your conflict calendars will be shown to attendees.
+.. note:: Only slots that do not conflict with existing events in your calendars will be shown to attendees.
 
 The organizer of an appointment can specify at which times of the week it's generally possible to book a slot. This could be the working hours but also any other customized schedule.
 
 .. figure:: images/appointment_config_booking_hours.png
 
-Some appointments require time to prepare, e.g. when you meet at a venue and you have to drive there. 
+Some appointments require time to prepare, e.g. when you meet at a venue and you have to drive there.
 The organizer can chose to select a time duration that must be free. Only slots that do not conflict with other events during the preparation time will be available. Moreover there is the option to specify a time after each appointment that has to be free.
 To prevent an attendee from booking too short notice it's possible to configure how soon the next possible appointment might take place.
 Setting a maximum number of slots per day can limit how many appointments are possibly booked by attendees.
 
 .. figure:: images/appointment_config_limits.png
 
-The configured appointment will then be listed in the left sidebar. Via the three dot menu, you can preview the appointment. You can copy the link to the appointment and share it with your target attendees, 
+The configured appointment will then be listed in the left sidebar. Via the three dot menu, you can preview the appointment. You can copy the link to the appointment and share it with your target attendees,
 or let them discover your public appointment via the profile page. You can also edit or delete the appointment configuration.
 
 .. figure:: images/appointment_config_options.png
@@ -311,8 +352,8 @@ or let them discover your public appointment via the profile page. You can also 
 Booking an appointment
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The booking page shows an attendee the title, location, description and length of an appointment. 
-For a selected day there will be a list with all the possible time slots. On days with no available slots, 
+The booking page shows an attendee the title, location, description and length of an appointment.
+For a selected day there will be a list with all the possible time slots. On days with no available slots,
 too many conflicts or a reached daily maximum limit of already booked appointments, the list might be empty.
 
 .. figure:: images/appointment_booking_1.png
@@ -323,7 +364,7 @@ For the booking, attendees have to enter a name and an email address. Optionally
 
 When the booking was successful, a confirmation dialogue will be shown to the attendee.
 
-.. figure:: images/appointment_booking_3.png 
+.. figure:: images/appointment_booking_3.png
 
 To verify that the attendee email address is valid, a confirmation email will be sent to them.
 
@@ -336,8 +377,8 @@ Only after the attendee clicks the confirmation link from the email the appointm
 The attendee will receive another email confirming the details of their appointment.
 
 .. figure:: images/appointment_booking_email_2.png
- 
-.. note:: If a slot has not been confirmed, it will still show up as bookable. Until then the time slot might also be booked by another user who confirms their booking earlier. 
+
+.. note:: If a slot has not been confirmed, it will still show up as bookable. Until then the time slot might also be booked by another user who confirms their booking earlier.
    The system will detect the conflict and offer to pick a new time slot.
 
 Working with the booked appointment
@@ -354,3 +395,9 @@ If the appointment has the setting "Add time before event" or "Add time after th
 As with any other event that has attendees, changes and cancellations will trigger a notification to the attendee's email.
 
 If attendees wish to cancel the appointment they have to get in contact with the organizer, so that the organizer can cancel or even delete the event.
+
+Create Talk room for booked appointments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can create a Talk room directly from the calendar app for a booked appointment. The option can be found on the 'Create appointment' modal. A unique link will be generated for every booked appointment and sent via the confirmation email when you check this option.
+

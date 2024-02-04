@@ -8,10 +8,11 @@ Clients and Client APIs
     :maxdepth: 2
 
     general
-    android_library/index
-    WebDAV/index
-    OCS/index
-    LoginFlow/index
-    RemoteWipe/index
     activity-api
+    android_library/index
+    files
+    LoginFlow/index
+    OCS/index
+    RemoteWipe/index
+    WebDAV/index
 

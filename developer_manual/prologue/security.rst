@@ -103,7 +103,7 @@ It may also be wise to choose a proper JavaScript framework like AngularJS which
 Clickjacking
 ------------
 
-`Clickjacking <https://en.wikipedia.org/wiki/Clickjacking>`_ tricks the user to click into an invisible iframe to perform an arbitrary action (e.g. delete an user account)
+`Clickjacking <https://en.wikipedia.org/wiki/Clickjacking>`_ tricks the user to click into an invisible iframe to perform an arbitrary action (e.g. delete a user account)
 
 To prevent such attacks Nextcloud sends the `X-Frame-Options` header to all template responses. Don't remove this header if you don't really need it!
 
@@ -227,7 +227,7 @@ To prevent CSRF in an app, be sure to call the following method at the top of al
   <?php
   OCP\JSON::callCheck();
 
-If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitly exclude it by setting the @NoCSRFRequired annotation before the controller method, see :doc:`../basics/controllers`
+If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitly exclude it by setting the ``#[NoCSRFRequired]`` attribute or ``@NoCSRFRequired`` annotation before the controller method, see :doc:`../basics/controllers`
 
 Unvalidated redirects
 ---------------------

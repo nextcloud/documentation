@@ -16,6 +16,8 @@ account recently:
 
 You can use the trash icon to disconnect any of the browsers in the list.
 
+.. _managing_devices:
+
 Managing devices
 ----------------
 

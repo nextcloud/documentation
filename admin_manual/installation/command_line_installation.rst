@@ -19,14 +19,15 @@ this example for Debian/Ubuntu. You must run ``occ`` as your HTTP user; see
 of running the graphical Installation Wizard::
 
  $ cd /var/www/nextcloud/
- $ sudo -u www-data php occ  maintenance:install --database \
- "mysql" --database-name "nextcloud"  --database-user "root" --database-pass \
- "password" --admin-user "admin" --admin-pass "password" 
+ $ sudo -u www-data php occ  maintenance:install \
+ --database='mysql' --database-name='nextcloud' \
+ --database-user='root' --database-pass='password' \
+ --admin-user='admin' --admin-pass='password'
  Nextcloud is not installed - only a limited number of commands are available
  Nextcloud was successfully installed
  
 Note that you must change to the root Nextcloud directory, as in the example 
-above, to run ``occ  maintenance:install``, or the installation will fail with 
+above, to run ``occ maintenance:install``, or the installation will fail with 
 a PHP fatal error message.
 
 Supported databases are::

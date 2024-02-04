@@ -1,12 +1,12 @@
-===========================
-Nextcloud design guidelines
-===========================
+==============================
+Interface & interaction design
+==============================
 
 .. toctree:: 
-		:maxdepth: 2
+	:maxdepth: 2
 
-		introduction
-		foundations
-		layout
-		layoutcomponents
-		atomiccomponents
+	introduction
+	foundations
+	layout
+	layoutcomponents
+	atomiccomponents

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# ownCloud Documentation documentation build configuration file, created by
+# Nextcloud Documentation documentation build configuration file, created by
 # sphinx-quickstart on Mon Oct 22 23:16:40 2012-2014.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -301,11 +301,6 @@ todo_include_todos = True
 
 # substitutions go here
 rst_epilog =  '.. |version| replace:: %s' % version
-
-intersphinx_mapping = {
-  'admin_manual': ('https://docs.nextcloud.com/server/%s/admin_manual/' % (version), '../admin_manual/_build/html/com/objects.inv'),
-  'developer_manual': ('https://docs.nextcloud.com/server/%s/developer_manual/' % (version), '../developer_manual/_build/html/com/objects.inv'),
-}
 
 current_docs = 'user_manual'
 

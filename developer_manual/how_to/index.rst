@@ -83,19 +83,29 @@ Then add an external storage in the web UI using the following configuration:
 - Hostname: localhost
 - Port: 9000
 - Region: leave empty
+- Storage class: leave empty
+- Enable SSL: false
 - Enable path style: yes
 
 SMB external storage
 --------------------
 
+SMB external storage can be tested with Docker. The following commands create an SMB server with a public (shared) directory and user home directories for the credentials ``smb1:pwd1`` and ``smb2:pwd2``.
+
 ::
 
     occ app:enable files_external
 
-    mkdir /tmp/samba
+    mkdir -p /tmp/samba/{public,home/{smb1,smb2}}
+    chmod a+rw /tmp/samba/home/smb*
     docker run -it -p 139:139 -p 445:445 \
-        -v /tmp/samba:/smbmount dperson/samba \
-        -u "user;password" -s "public;/smbmount;yes;no;yes"
+        -v /tmp/samba/public:/smbpublic \
+        -v /tmp/samba/home:/smbhome \
+        dperson/samba \
+        -u "smb1;pwd1" \
+        -u "smb2;pwd2" \
+        -s "public;/smbmount;yes;no;yes" \
+        -s "home;/smbhome/%U;yes;no;no;all;none"
 
 Make sure that smbclient is installed on your Nextcloud server and has the following configuration:
 
@@ -111,7 +121,8 @@ The setup can be verified with
 
 ::
 
-    smbclient //127.0.0.1/public -u user
+    smbclient //127.0.0.1/public -U smb1                 # Shared storage for all users
+    smbclient //127.0.0.1/home -U smb1 --password=pwd1   # Home storage
 
 SAML setup with onelogin
 ------------------------

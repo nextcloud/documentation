@@ -76,7 +76,24 @@ usually access them by pressing F12.
 PHP version and information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You will need to know your PHP version and configurations. To do this, create a
+You will need to know the PHP version and configuration that is in-use on your 
+Nextcloud server. This will not necessarily be the same version and configuration as 
+can be reached from the command-line. The simplest way to gather this information is 
+by using what's commonly referenced as ``phpinfo()``.
+
+The most accurate - and easiest - way to access ``phpinfo`` is by checking it from 
+within Nextcloud itself. Of course, this requires that Nextcloud is functioning 
+enough that you can log in as an administrator and access the 
+**Administration settings -> System** menu. If so, you can enable the exposure of 
+``phpinfo`` data by toggling it on via ``occ``:
+
+``./occ config:app:set --value=yes serverinfo phpinfo``
+
+From then on a new button labeled **Show phpinfo** will be visible in the web 
+interface under **Administration settings -> System**. Clicking it will expose 
+just about everything you may want to know about your PHP environment.
+
+If accessing the Nextcloud web interface is not an option, you may create a
 plain-text file named **phpinfo.php** and place it in your Web root, for
 example ``/var/www/html/phpinfo.php``. (Your Web root may be in a different
 location; your Linux distribution documentation will tell you where.) This file
@@ -249,7 +266,8 @@ subfolder like ``nextcloud``, then ``https://example.com/nextcloud/remote.php/da
 For the first case the :file:`.htaccess` file shipped with Nextcloud should do
 this work for you when you're running Apache. You need to make sure that your
 Web server is using this file. Additionally, you need the mod_rewrite Apache
-module installed to process these redirects. When running Nginx please refer to
+module installed and ``AllowOverride All`` set in your :file:`apache2.conf`
+or vHost-file to process these redirects. When running Nginx please refer to
 :doc:`../installation/nginx`.
 
 
@@ -259,13 +277,22 @@ document root of your Web server and add the following lines::
 
     <IfModule mod_rewrite.c>
       RewriteEngine on
-      RewriteRule ^/\.well-known/carddav /nextcloud/remote.php/dav [R=301,L]
-      RewriteRule ^/\.well-known/caldav /nextcloud/remote.php/dav [R=301,L]
-      RewriteRule ^/\.well-known/webfinger /nextcloud/index.php/.well-known/webfinger [R=301,L]
-      RewriteRule ^/\.well-known/nodeinfo /nextcloud/index.php/.well-known/nodeinfo [R=301,L]
+      RewriteRule ^\.well-known/carddav /nextcloud/remote.php/dav [R=301,L]
+      RewriteRule ^\.well-known/caldav /nextcloud/remote.php/dav [R=301,L]
+      RewriteRule ^\.well-known/webfinger /nextcloud/index.php/.well-known/webfinger [R=301,L]
+      RewriteRule ^\.well-known/nodeinfo /nextcloud/index.php/.well-known/nodeinfo [R=301,L]
     </IfModule>
 
 Make sure to change /nextcloud to the actual subfolder your Nextcloud instance is running in.
+
+.. note:: If you put the above directives directly into an Apache
+   configuration file (usually within ``/etc/apache2/``)
+   instead of ``.htaccess``, you need to prepend the first argument of
+   each ``RewriteRule`` option with a forward slash ``/``, for example
+   ``^/\.well-known/carddav``.
+   This is because Apache normalizes paths for the use in ``.htaccess``
+   files by dropping any number of leading slashes, but it does not
+   do so for the use in its main configuration files.
 
 If you are running NGINX, make sure ``location = /.well-known/carddav {`` and ``location = /.well-known/caldav {`` are properly configured as described in :doc:`../installation/nginx`, adapt to use a subfolder if necessary.
 
@@ -384,6 +411,8 @@ does not match the actual data stored in the user's ``data/$userId/files`` direc
 
    Metadata, versions, trashbin and encryption keys are not counted in the used space above.
    Please refer to the `quota documentation <https://docs.nextcloud.com/server/latest/user_manual/en/files/quota.html>`_ for details.
+
+.. TODO ON RELEASE: Update version number above on release
 
 Running the following command can help fix the sizes and quota for a given user::
 

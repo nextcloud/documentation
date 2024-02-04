@@ -16,13 +16,14 @@ For best performance, stability and functionality we have documented some recomm
 +==================+=======================================================================+
 | Operating System | - **Ubuntu 22.04 LTS** (recommended)                                  |
 | (64-bit)         | - Ubuntu 20.04 LTS                                                    |
-|                  | - **Red Hat Enterprise Linux 8** (recommended)                        |
-|                  | - Debian 11 (Bullseye)                                                |
+|                  | - **Red Hat Enterprise Linux 9** (recommended)                        |
+|                  | - Red Hat Enterprise Linux 8                                          |
+|                  | - Debian 12 (Bookworm)                                                |
 |                  | - SUSE Linux Enterprise Server 15                                     |
-|                  | - openSUSE Leap 15.4                                                  |
+|                  | - openSUSE Leap 15.5                                                  |
 |                  | - CentOS Stream                                                       |
 +------------------+-----------------------------------------------------------------------+
-| Database         | - **MySQL 8.0+ or MariaDB 10.3/10.4/10.5/10.6** (recommended)         |
+| Database         | - **MySQL 8.0+** or MariaDB 10.3/10.4/10.5/**10.6** (recommended)     |
 |                  | - Oracle Database 11g (*only as part of an enterprise subscription*)  |
 |                  | - PostgreSQL 10/11/12/13/14/15                                        |
 |                  | - SQLite (*only recommended for testing and minimal-instances*)       |
@@ -30,9 +31,10 @@ For best performance, stability and functionality we have documented some recomm
 | Webserver        | - **Apache 2.4 with** ``mod_php`` **or** ``php-fpm`` (recommended)    |
 |                  | - nginx with ``php-fpm``                                              |
 +------------------+-----------------------------------------------------------------------+
-| PHP Runtime      | - 8.0                                                                 |
-|                  | - **8.1** (*recommended*)                                             |
-|                  | - 8.2                                                                 |
+| PHP Runtime      | - 8.0 (*deprecated*)                                                  |
+|                  | - 8.1                                                                 |
+|                  | - **8.2** (*recommended*)                                             |
+|                  | - 8.3                                                                 |
 +------------------+-----------------------------------------------------------------------+
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
@@ -42,6 +44,7 @@ CPU Architecture and OS
 A 64-bit CPU, OS and PHP is required for Nextcloud to run well.
 
 32-bit systems are supported, with the following known limitations:
+
 - Dates before Unix Epoch (1970-01-01) are not supported
 - Dates after 2038 are not supported
 
@@ -107,13 +110,13 @@ of our mobile apps.
 Files App
 ^^^^^^^^^
 
-- **iOS** 14.0+
+- **iOS** 15.0+
 - **Android** 6.0+
 
 Talk App
 ^^^^^^^^
 
-- **iOS** 14.0+
+- **iOS** 15.0+
 - **Android** 6.0+
 - **Nextcloud Server** 14.0+
 - **Nextcloud Talk** 4.0+

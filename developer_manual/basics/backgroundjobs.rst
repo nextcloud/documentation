@@ -1,3 +1,5 @@
+.. _app-backgroundjobs:
+
 ======================
 Background jobs (Cron)
 ======================
@@ -62,6 +64,8 @@ to pass on to the service to run the background job.
 The ``run`` function is the main thing you need to implement and where all the
 logic happens.
 
+.. _app-backgroundjobs-time-sensitivity:
+
 Heavy load and time insensitive
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -80,6 +84,20 @@ or similar things, consider flagging it as time insensitive in the constructor.
 
 This allows the Nextcloud to delay the job until a given nightly time window so the users
 are not that impacted by the heavy load of the background job.
+
+Configuring parallelism
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. versionadded:: 27
+
+With resource-heavy background jobs that run for longer than a few minutes, be they ``QueuedJob`` and ``TimedJob`` instances, you may want to restrict parallelism to prevent multiple such jobs from clogging up the server's resources. You can do this with the ``setAllowParallelRuns`` method of ``OCP\BackgroundJob\Job`` (``QueuedJob`` and ``TimedJob`` both inherit from this class, so they also have this available).
+
+.. code-block:: php
+
+    <?php
+
+    // Only run one instance of this job at a time
+    $this->setAllowParallelRuns(false);
 
 Registering a background job
 ----------------------------
@@ -144,3 +162,40 @@ For example you could add or remove a certain job based on some controller:
 
 This provides more fine grained control and you can pass arguments to your background
 jobs easily.
+
+Scheduling
+^^^^^^^^^^
+
+A background job can be scheduled to run after a specific time and date. This avoids maintaining a time check inside a background job.
+
+Beware that the reliability of the execution time is limited. Systems that do not use system cron may have no active users and therefore no reliable cron trigger at the target time. System cron can also not guarantee that the job is picked up right away if the background job queue is full. The only guarantee you get is that the job is not picked up earlier than the specified time.
+
+.. code-block:: php
+    :caption: lib/Service/ShareService.php
+    :emphasize-lines: 19-23
+
+    <?php
+
+    namespace OCA\MyApp\Service;
+
+    use OCA\MyApp\BackgroundJob\RevokeShare;
+    use OCP\BackgroundJob\IJobList;
+
+    class ShareService {
+
+        private IJobList $jobList
+
+        public function __construct(IJobList $jobList) {
+            $this->jobList = $jobList;
+        }
+
+        public function shareWithUser(string $uid, int $expiration) {
+            // create an expiring share
+
+            $this->jobList->scheduleAfter(
+                RevokeShare::class, 
+                ['id' => $shareId],
+                $expiration,
+            );
+        }
+    }

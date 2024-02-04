@@ -1,12 +1,13 @@
 name: AutoMerge Transifex Pull Requests
-on: pull_request
+on:
+  pull_request:
 
 jobs:
   approve:
     runs-on: ubuntu-latest
     name: Approve
     steps:
-      - uses: hmarr/auto-approve-action@v2.2.1
+      - uses: hmarr/auto-approve-action@v3.2.1
         if: github.actor == 'transifex-integration[bot]'
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
@@ -14,11 +15,12 @@ jobs:
   automerge:
     runs-on: ubuntu-latest
     name: Auto-merge
+    needs: approve
     steps:
-      - uses: pascalgn/automerge-action@v0.15.6
+      - uses: pascalgn/automerge-action@v0.16.2
         if: github.actor == 'transifex-integration[bot]'
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           MERGE_LABELS: ""
           MERGE_RETRIES: 10
-          MERGE_RETRY_SLEEP: 60000
+          MERGE_RETRY_SLEEP: 120000

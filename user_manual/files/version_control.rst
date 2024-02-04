@@ -36,6 +36,8 @@ versions until it meets the disk space limit again.
 Naming a version
 ----------------
 
+.. warning:: Naming a version is currently not available when the group folders or S3 versioning apps are enabled.
+
 You can give a name to a version.
 
 .. figure:: ../images/files_versions_actions.png
@@ -45,5 +47,7 @@ When a version has a name, it will be excluded from the automatic expiration pro
 
 Deleting a version
 ------------------
+
+.. warning:: Deleting a version is currently not available when the group folders or S3 versioning apps are enabled.
 
 You can also manually delete a version without waiting for the automatic expiration process.

@@ -59,9 +59,8 @@ steps are required:
    `F-Droid <https://f-droid.org/packages/org.dmfs.tasks/>`__).
 3. Create a new account ("+" button).
 4. Select **Connection with URL and username**.
-   **Base URL:** URL of your Nextcloud instance (e.g. ``https://sub.example.com/remote.php/dav``) and 
-   **Contact Group Method:** as credentials.
-5. Choose the option ``Groups are per-contact categories``.
+   **Base URL:** URL of your Nextcloud instance (e.g. ``https://sub.example.com/remote.php/dav``) and your credentials.
+5. For the **Contact Group Method:** choose the option ``Groups are per-contact categories``.
 6. Click **Connect**.
 7. Select the data you want to sync.
 8. When requested, grant access permissions to DAVx⁵ for your
@@ -71,6 +70,11 @@ steps are required:
    to be able to send calendar invitation). If your email address is
    registered in your Nextcloud preferences and you have set up your
    account using the Nextcloud mobile app, this all should be aready the case.
+
+
+.. note:: Using user name and password will not work if 2-Factor-Authentication
+   is enabed and will throw a generic "Unknown resource" error.
+   Use a dedicated App password instead.
 
 
 .. tip:: DAVx⁵ lists the calendar subscriptions made through the Nextcloud Calendar app, but you need to install the `ICSx⁵ (formerly known as ICSDroid) <https://icsx5.bitfire.at/>`__ app on your Android device, `from the Google Play Store <https://play.google.com/store/apps/details?id=at.bitfire.icsdroid>`__ or `from F-Droid <https://f-droid.org/packages/at.bitfire.icsdroid/>`__ to sync them.

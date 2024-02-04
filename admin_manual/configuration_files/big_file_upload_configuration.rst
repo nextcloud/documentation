@@ -65,7 +65,7 @@ for how to configure those values correctly:
 
 Apache
 ^^^^^^
-* `LimitRequestBody <https://httpd.apache.org/docs/current/en/mod/core.html#limitrequestbody>`_
+* `LimitRequestBody <https://httpd.apache.org/docs/current/en/mod/core.html#limitrequestbody>`_ (In Apache HTTP Server <=2.4.53 this defaulted to unlimited, but now defaults to 1 GiB. The new default limits uploads from non-chunking clients to 1 GiB. If this is a concern in your environment, override the new default by either manually setting it to ``0`` or to a value similar to that used for your local environment's PHP ``upload_max_filesize / post_max_size / memory_limit`` parameters.)
 * `SSLRenegBufferSize <https://httpd.apache.org/docs/current/mod/mod_ssl.html#sslrenegbuffersize>`_
 * `Timeout <https://httpd.apache.org/docs/current/mod/core.html#timeout>`_
 
@@ -162,6 +162,7 @@ Put in a value in bytes (in this example, 20MB). Set ``--value 0`` for no chunki
 
 Default is 10485760 (10 MiB).
 
+.. note:: Changing ``max_chunk_size`` will not have any performance impact on files uploaded through File Drop shares as unauthenticated file uploads are not chunked.
 
 Large file upload on object storage
 -----------------------------------
@@ -172,5 +173,11 @@ on object storage as the individual chunks get downloaded from the storage and w
 to the actual file on the Nextcloud servers temporary directory. It is recommended to increase
 the size of your temp directory accordingly and also ensure that request timeouts are high
 enough for PHP, webservers or any load balancers involved.
+
+Federated Cloud Sharing
+-----------------------
+
+If you are using `Federated Cloud Sharing <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/federated_cloud_sharing_configuration.html>`_ and want to share large files, you can increase the timeout values for requests to the federated servers.
+Therefore, you can set ``davstorage.request_timeout`` in your ``config.php``. The default value is 30 seconds.
 
 .. TODO ON RELEASE: Update version number above on release

@@ -9,7 +9,8 @@ and seamlessly from within Nextcloud.
 Server-side encryption separates encryption of local and remote storage. 
 This allows you to encrypt remote storage, such as Dropbox and 
 Google, without having to also encrypt your home storage on your Nextcloud 
-server.
+server (en- or disable the checkbox "enabling encryption on your home 
+storage" in the **Server-side encryption** section of your Admin page.)
 
 .. note:: Nextcloud supports Authenticated Encryption for all
    newly encrypted files. See https://hackerone.com/reports/108082 for more 
@@ -260,9 +261,9 @@ disable it::
 
 Fix Bad signature errors::
 
- occ encryption:fix-encrypted-versions --all
- occ encryption:fix-encrypted-versions <userid>
- occ encryption:fix-encrypted-versions <userid> -p <path>
+ occ encryption:fix-encrypted-version --all
+ occ encryption:fix-encrypted-version <userid>
+ occ encryption:fix-encrypted-version <userid> -p <path>
 
 Fix key not found errors::
 
@@ -274,17 +275,19 @@ Disabling encryption
 --------------------
 
 You may disable encryption only with ``occ``. Make sure you have backups of all 
-encryption keys, including users'. Put your Nextcloud server into 
-maintenance mode, and then disable your encryption module with these commands::
+encryption keys, including users'.
+Disable your encryption module with this command::
 
- occ maintenance:mode --on
- occ encryption:disable
  occ encryption:decrypt-all
 
-Take it out of maintenance mode when you are finished::
+It will put your server into maintenance mode and back.
+It also takes care of disabling encryption when all files have been decrypted.
+If the command is aborted some files have been decrypted and others are still encrypted.
+In this case the command will keep the encryption turned on
+and Nextcloud can handle this situation fine.
+You can proceed decrypting the remaining files by calling the command again
+once the problems that caused the abortion have been resolved.
 
- occ maintenance:mode --off
- 
 .. warning:: Disabling encryption without decrypting all the files will lead to decryption errors in the future as this state causes unpredictable behaviors.
 .. note:: The ``occ encryption:decrypt-all`` can take a lot of time. You can run one user at a time like so: ``occ encryption:decrypt-all <user-id>``.
 

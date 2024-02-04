@@ -13,7 +13,6 @@ Overview
 The term "events" is a bit broad in Nextcloud and there are multiple ways of emitting them.
 
 * `OCP event dispatcher`_
-* `Symfony event dispatcher`_
 * `Hooks`_
 * `Public Emitter`_
 
@@ -30,7 +29,7 @@ The name should reflect the subject and the actions. Suffixing event classes wit
 
 For example, if a user is created, a `UserCreatedEvent` will be emitted.
 
-Events are usually evmitted *after* the event has happened. If it's emitted before, it should be prefixed with `Before`.
+Events are usually emitted *after* the event has happened. If it's emitted before, it should be prefixed with `Before`.
 
 Thus `BeforeUserCreatedEvent` is emitted *before* the user data is written to the database.
 
@@ -100,7 +99,7 @@ You can use simple callback to react on events. They will receive the event obje
     class Application extends App {
         public function __construct() {
             parent::__construct('myapp');
-                /* @var IEventDispatcher $eventDispatcher */
+                /* @var IEventDispatcher $dispatcher */
                 $dispatcher = $this->getContainer()->query(IEventDispatcher::class);
                 $dispatcher->addListener(AddEvent::class, function(AddEvent $event) {
                     // ...
@@ -301,12 +300,26 @@ This event is triggered when a user deletes a card in an address-book.
 
 This event is triggered when a user updates a card in an address-book.
 
+``OCA\DAV\Events\SabrePluginAddEvent``
+**************************************
+
+.. versionadded:: 28
+
+This event is triggered during the setup of the SabreDAV server to allow the registration of additional plugins.
+
 ``\OCA\DAV\Events\SabrePluginAuthInitEvent``
 ********************************************
 
 .. versionadded:: 20
 
 This event is triggered during the setup of the SabreDAV server to allow the registration of additional authentication backends.
+
+``\OCP\BeforeSabrePubliclyLoadedEvent``
+***************************************
+
+.. versionadded:: 26
+
+This event is triggered when accessing public webdav endpoints.
 
 ``\OCA\DAV\Events\SubscriptionCreatedEvent``
 ********************************************
@@ -350,6 +363,13 @@ This event is triggered when the files app is rendered. It can be used to add ad
 
 Emitted before the rendering step of the public share page happens. The event holds a flag that specifies if it is the authentication page of a public share.
 
+``\OCA\Files_Trashbin\Events\MoveToTrashEvent``
+***********************************************
+
+.. versionadded:: 28
+
+Emitted after a file or folder is moved to the trashbin.
+
 ``\OCA\Settings\Events\BeforeTemplateRenderedEvent``
 ********************************************************
 
@@ -378,12 +398,40 @@ This event is triggered right after the LDAP user backend is registered.
 
 This event is triggered whenever the viewer is loaded and extensions should be loaded.
 
+``\OCP\Accounts\UserUpdatedEvent``
+**********************************
+
+.. versionadded:: 28
+
+This event is triggered when the account data of a user was updated.
+
+``\OCP\App\Events\AppEnableEvent``
+**********************************
+
+.. versionadded:: 27
+
+This event is triggered when an app is enabled.
+
+``\OCP\App\Events\AppUpdateEvent``
+**********************************
+
+.. versionadded:: 27
+
+This event is triggered when an app is updated.
+
+``\OCP\App\Events\AppDisableEvent``
+***********************************
+
+.. versionadded:: 27
+
+This event is triggered when an app is disabled.
+
 ``\OCP\AppFramework\Http\Events\BeforeTemplateRenderedEvent``
 *************************************************************
 
 .. versionadded:: 20
 
-Emitted before the rendering step of each TemplateResponse. The event holds a flag that specifies if an user is logged in.
+Emitted before the rendering step of each TemplateResponse. The event holds a flag that specifies if a user is logged in.
 
 ``\OCP\Authentication\Events\LoginFailedEvent``
 ***********************************************
@@ -392,10 +440,50 @@ Emitted before the rendering step of each TemplateResponse. The event holds a fl
 
 Emitted when the authentication fails, but only if the login name can be associated with an existing user.
 
+``\OCP\Authentication\TwoFactorAuth\TwoFactorProviderChallengeFailed``
+**********************************************************************
+
+.. versionadded:: 28
+
+``\OCP\Authentication\TwoFactorAuth\TwoFactorProviderChallengePassed``
+**********************************************************************
+
+.. versionadded:: 28
+
+``\OCP\Authentication\TwoFactorAuth\TwoFactorProviderForUserRegistered``
+************************************************************************
+
+.. versionadded:: 28
+
+``\OCP\Authentication\TwoFactorAuth\TwoFactorProviderForUserUnregistered``
+**************************************************************************
+
+.. versionadded:: 28
+
+``\OCP\Authentication\TwoFactorAuth\TwoFactorProviderUserDeleted``
+******************************************************************
+
+.. versionadded:: 28
+
 ``\OCP\Authentication\TwoFactorAuth\TwoFactorProviderDisabled``
 ***************************************************************
 
 .. versionadded:: 20
+
+``\OCP\Collaboration\Reference\RenderReferenceEvent``
+*****************************************************
+
+.. versionadded:: 25
+
+Event emitted when apps might render references like link previews or smart picker widgets.
+
+This can be used to inject scripts for extending that. Further details can be found in the
+:ref:`Reference providers` deep dive.
+
+``\OCP\Comments\CommentsEntityEvent``
+*************************************
+
+.. versionadded:: 28
 
 ``\OCP\Contacts\Events\ContactInteractedWithEvent``
 ***************************************************
@@ -407,6 +495,39 @@ Event emitted by apps whenever there was an interaction with another user or con
 It is an event that allows apps to notify other components about an interaction between two users. This can be used to build better recommendations and suggestions in user interfaces.
 
 Emitters should add at least one identifier (uid, email, federated cloud ID) of the recipient of the interaction.
+
+``\OCP\DB\Events\AddMissingColumnsEvent``
+*****************************************
+
+.. versionadded:: 28
+
+Event to allow apps to register information about missing database columns
+
+This event will be dispatched for checking on the admin settings and when running
+``occ db:add-missing-columns`` which will then create those columns or can be used
+to generate the SQL statements for manual execution.
+
+``\OCP\DB\Events\AddMissingIndicesEvent``
+*****************************************
+
+.. versionadded:: 28
+
+Event to allow apps to register information about missing database indices
+
+This event will be dispatched for checking on the admin settings and when running
+``occ db:add-missing-indices`` which will then create those indices or can be used
+to generate the SQL statements for manual execution.
+
+``\OCP\DB\Events\AddMissingPrimaryKeyEvent``
+********************************************
+
+.. versionadded:: 28
+
+Event to allow apps to register information about missing database primary keys
+
+This event will be dispatched for checking on the admin settings and when running
+``occ db:add-missing-primary-keys`` which will then create those indices or can be used
+to generate the SQL statements for manual execution.
 
 ``\OCP\DirectEditing\RegisterDirectEditorEvent``
 ************************************************
@@ -445,10 +566,20 @@ Event to allow to register the direct editor.
 
 .. versionadded:: 18
 
+``\OCP\Files\Events\NodeAddedToFavorite``
+*****************************************
+
+.. versionadded:: 28
+
 ``\OCP\Files\Events\NodeRemovedFromCache``
 ******************************************
 
 .. versionadded:: 18
+
+``\OCP\Files\Events\NodeRemovedFromFavorite``
+*********************************************
+
+.. versionadded:: 28
 
 ``\OCP\Group\Events\BeforeGroupCreatedEvent``
 *********************************************
@@ -473,6 +604,11 @@ Event to allow to register the direct editor.
 Deprecated in 20.0.0 - it can't be guaranteed that this event is triggered in all case (e.g. for LDAP users this isn't possible)
 
 ``\OCP\Group\Events\GroupCreatedEvent``
+***************************************
+
+.. versionadded:: 26
+
+``\OCP\Group\Events\GroupChangedEvent``
 ***************************************
 
 .. versionadded:: 18
@@ -509,6 +645,13 @@ Deprecated in 20.0.0 - it can't be guaranteed that this event is triggered in al
 
 Emitted before a system mail is sent. It can be used to alter the message.
 
+``\OCP\Preview\BeforePreviewFetchedEvent``
+******************************************
+
+.. versionadded:: 26
+
+Emitted before a file preview is being fetched. It can be used to block preview rendering by throwing a ``OCP\Files\NotFoundException``.
+
 ``\OCP\Security\CSP\AddContentSecurityPolicyEvent``
 ***************************************************
 
@@ -535,15 +678,45 @@ WARNING: Using this API incorrectly may make the instance more insecure. Do thin
 
 Event that allows to register a feature policy header to a request.
 
+``\OCP\Share\Events\BeforeShareCreatedEvent``
+*********************************************
+
+.. versionadded:: 28
+
+``\OCP\Share\Events\BeforeShareDeletedEvent``
+*********************************************
+
+.. versionadded:: 28
+
+``\OCP\Share\Events\ShareAcceptedEvent``
+****************************************
+
+.. versionadded:: 28
+
 ``\OCP\Share\Events\ShareCreatedEvent``
 ***************************************
 
 .. versionadded:: 18
 
+``\OCP\Share\Events\ShareDeletedEvent``
+***************************************
+
+.. versionadded:: 21
+
+``\OCP\Share\Events\ShareDeletedFromSelfEvent``
+***********************************************
+
+.. versionadded:: 28
+
 ``\OCP\Share\Events\VerifyMountPointEvent``
 *******************************************
 
 .. versionadded:: 19
+
+``\OCP\SystemTag\SystemTagsEntityEvent``
+****************************************
+
+.. versionadded:: 28
 
 ``\OCP\User\Events\BeforeUserLoggedInWithCookieEvent``
 ******************************************************
@@ -619,6 +792,11 @@ Emitted before a user is logged out.
 
 .. versionadded:: 18
 
+``\OCP\User\Events\UserFirstTimeLoggedInEvent``
+***********************************************
+
+.. versionadded:: 28
+
 ``\OCP\User\Events\UserLiveStatusEvent``
 ****************************************
 
@@ -657,14 +835,6 @@ Emitted when the workflow engine settings page is loaded.
 ***********************************************
 
 .. versionadded:: 18
-
-Symfony event dispatcher
-------------------------
-
-.. warning:: Using the Symfony event dispatcher mechanism is discouraged. Use the `OCP event dispatcher`_ abstraction instead.
-
-tbd
-
 
 Hooks
 -----
@@ -709,7 +879,7 @@ The hook logic should be in a separate class that is being registered in the `Ap
              */
             $container->registerService('UserHooks', function($c) {
                 return new UserHooks(
-                    $c->query('ServerContainer')->getUserManager()
+                    $c->get(\OCP\IUserManager::class)
                 );
             });
         }
@@ -771,7 +941,7 @@ The following hooks are available:
 Session
 ```````
 
-Injectable from the ServerContainer by calling the method **getUserSession()**.
+Injectable from the ServerContainer with the ``\OCP\IUserSession`` service.
 
 Hooks available in scope **\\OC\\User**:
 
@@ -789,7 +959,7 @@ Hooks available in scope **\\OC\\User**:
 UserManager
 ```````````
 
-Injectable from the ServerContainer by calling the method **getUserManager()**.
+Injectable from the ServerContainer with the ``\OCP\IUserManager`` service.
 
 Hooks available in scope **\\OC\\User**:
 

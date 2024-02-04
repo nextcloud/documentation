@@ -13,7 +13,7 @@ HTTP client instances are built using the client service `factory <https://en.wi
 
     <?php
 
-    use OCP\Http\IClientService;
+    use OCP\Http\Client\IClientService;
 
     class MyRemoteServerIntegration {
         private IClientService $clientService;

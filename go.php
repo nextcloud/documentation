@@ -4,6 +4,7 @@
 ############## Adjust when editing docs ##################
 
 $mapping = array(
+    'admin'                   => '/admin_manual',
     'admin-2fa'               => '/admin_manual/configuration_user/two_factor-auth.html',
     'admin-antivirus-configuration'     => '/admin_manual/configuration_server/antivirus_configuration.html',
     'admin-background-jobs'   => '/admin_manual/configuration_server/background_jobs_configuration.html',
@@ -12,6 +13,7 @@ $mapping = array(
     'admin-code-integrity'    => '/admin_manual/issues/code_signing.html',
     'admin-config'            => '/admin_manual/configuration_server/config_sample_php_parameters.html',
     'admin-db-conversion'     => '/admin_manual/configuration_database/db_conversion.html',
+    'admin-db-transaction'    => '/admin_manual/configuration_database/linux_database_configuration.html#database-read-committed-transaction-isolation-level',
     'admin-delegation'        => '/admin_manual/configuration_server/admin_delegation_configuration.html',
     'admin-email'             => '/admin_manual/configuration_server/email_configuration.html',
     'admin-encryption'        => '/admin_manual/configuration_files/encryption_configuration.html',
@@ -27,6 +29,7 @@ $mapping = array(
     'admin-performance'       => '/admin_manual/installation/server_tuning.html',
     'admin-php-fpm'           => '/admin_manual/installation/source_installation.html#php-fpm-tips-label',
     'admin-php-opcache'       => '/admin_manual/installation/server_tuning.html#enable-php-opcache',
+    'admin-php-modules'       => '/admin_manual/installation/php_configuration.html#php-modules',
     'admin-provisioning-api'  => '/admin_manual/configuration_user/user_provisioning_api.html',
     'admin-reverse-proxy'     => '/admin_manual/configuration_server/reverse_proxy_configuration.html',
     'admin-security'          => '/admin_manual/installation/harden_server.html',
@@ -45,10 +48,12 @@ $mapping = array(
     'admin-warnings'          => '/admin_manual/configuration_server/security_setup_warnings.html',
     'admin-workflowengine'    => '/admin_manual/file_workflows/index.html',
 
+    'developer-backports'     => '/developer_manual/getting_started/development_process.html#bugfixes',
     'developer-code-integrity'=> '/developer_manual/app/code_signing.html',
     'developer-manual'        => '/developer_manual',
     'developer-theming'       => '/developer_manual/core/theming.html',
 
+    'user'                    => '/user_manual',
     'user-2fa'                => '/user_manual/en/user_2fa.html',
     'user-encryption'         => '/user_manual/en/files/encrypting_files.html',
     'user-files'              => '/user_manual/en/files/index.html',

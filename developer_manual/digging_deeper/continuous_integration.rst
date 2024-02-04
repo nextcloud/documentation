@@ -99,13 +99,13 @@ Afterwards you'll be able to check the app with the following ``psalm.xml`` that
         </issueHandlers>
     </psalm>
 
-.. Note:: The definition suppresses usages of the global and static class ``OC`` like ``\OC::$server``, which is
-discouraged but still found in some apps. The doctrine suppression is currently necessary as the database mappers and
-schema abstractions leak some of the 3rd party libraries of Nextcloud that are not known to Psalm.
+.. note:: The definition suppresses usages of the global and static class ``OC`` like ``\OC::$server``, which is
+    discouraged but still found in some apps. The doctrine suppression is currently necessary as the database mappers
+    and schema abstractions leak some of the 3rd party libraries of Nextcloud that are not known to Psalm.
 
 
 You can put this process into a GitHub Action that is run for every pull request.
-Check our `simple github action <https://github.com/nextcloud/.github/blob/master/workflow-templates/psalm.yml>`_ from
+Check our `psalm github action <https://github.com/nextcloud/.github/blob/master/workflow-templates/psalm.yml>`_ from
 our `nextcloud template repository <https://github.com/nextcloud/.github>`_.
 
 If you want to support multiple versions of Nextcloud server with a single app version, checkout this slightly

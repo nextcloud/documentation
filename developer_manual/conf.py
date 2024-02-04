@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# ownCloud Documentation documentation build configuration file, created by
+# Nextcloud Documentation documentation build configuration file, created by
 # sphinx-quickstart on Mon Oct 22 23:16:40 2012-2014.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -29,7 +29,7 @@ from conf import *
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions += ['sphinx.ext.todo', 'rst2pdf.pdfbuilder', 'sphinx.ext.intersphinx', 'sphinxcontrib.phpdomain']
+extensions += ['sphinx.ext.todo', 'rst2pdf.pdfbuilder', 'sphinx.ext.intersphinx', 'sphinxcontrib.phpdomain', 'sphinx_toolbox.collapse', 'sphinx_reredirects']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['../_shared_assets/templates']
@@ -126,7 +126,7 @@ html_short_title = "Developer Manual"
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['../_shared_assets/static']
+html_static_path = ['../_shared_assets/static', '_static']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
@@ -297,12 +297,6 @@ epub_copyright = u'2012-2017, The Nextcloud developers'
 # Include todos?
 todo_include_todos = True
 
-# allow to reference other documenation
-intersphinx_mapping = {
-  'admin_manual': ('https://docs.nextcloud.com/server/%s/admin_manual/' % (version), '../admin_manual/_build/html/com/objects.inv'),
-  'user_manual': ('https://docs.nextcloud.com/server/%s/user_manual/en/' % (version), '../user_manual/_build/html/en/objects.inv'),
-}
-
 current_docs = 'developer_manual'
 
 from sphinx.builders.html import StandaloneHTMLBuilder
@@ -319,4 +313,15 @@ html_context['theme_vcs_pageview_mode'] += current_docs
 
 highlight_options = {
   'php': {'startinline': True},
+}
+
+# Redirect old URLs
+# https://documatt.gitlab.io/sphinx-reredirects/usage.html
+redirects = {
+  "core/index": "../server",
+  "core/code-back-end": "../server/code-back-end.html",
+  "core/code-front-end": "../server/code-front-end.html",
+  "core/externalapi": "../server/externalapi.html",
+  "core/static-analysis": "../server/static-analysis.html",
+  "core/unit-testing": "../server/unit-testing.html"
 }

@@ -4,7 +4,7 @@ Settings
 
 .. sectionauthor:: Carl Schwan <carl@carlschwan.eu>
 
-Each Nextcloud applications can provide both personal and admin settings. For this
+Each Nextcloud application can provide both personal and admin settings. For this
 you will need to create a section implementing `IIconSection`. This section will be
 used in the setting sidebar to create a new entry.
 
@@ -46,7 +46,7 @@ In our case we will create an admin section class in **<myapp>/lib/Sections/Note
     }
 
 
-The next steps is to fill the new admin section with am admin setting. For that, we create a new class
+The next step is to fill the new admin section with am admin setting. For that, we create a new class
 in *<myapp>/lib/Settings/NotesAdmin.php**.
 
 .. code-block:: php
@@ -110,7 +110,7 @@ The last missing part is to register both classes inside **<myapp>/appinfo/info.
    `<personal>` instead.
 
 Additionally since Nextcloud 23, groups can be granted authorization to access individual
-admin settings (`see admin docs <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/admin_delegation_configuration>`_).
+admin settings (`see admin docs <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/admin_delegation_configuration.html>`_).
 This is a feature that needs to be enabled for each admin setting class.
 To do so, the setting class needs to implement `IDelegatedSettings` instead of `ISettings`
 and implement two additional methods.
@@ -139,7 +139,7 @@ and implement two additional methods.
 
         public function getAuthorizedAppConfig(): array {
             return [
-                // Allow list of regex that the user can modify with this setting.
+                // Allow a list of regex that the user can modify with this setting.
                 'notes' => ['/notes_.*/', '/my_notes_setting/'],
             ];
         }
@@ -147,35 +147,51 @@ and implement two additional methods.
 
 Additionally, if your setting class needs to fetch data or send data to some admin-only
 controllers, you will need to mark the methods in the controller as accessible by the
-setting with annotations.
+setting with attribute.
+
+.. note::
+
+    The attribute is only available in Nextcloud 27 or later. In older versions, the ``@AuthorizedAdminSetting(settings=OCA\NotesTutorial\Settings\NotesAdmin)`` annotation can be used.
 
 .. code-block:: php
+    :emphasize-lines: 8
 
     <?php
+    use OCP\AppFramework\Http\Attribute\AuthorizedAdminSetting;
     class NotesSettingsController extends Controller {
         /**
          * Save settings
-         * @PasswordConfirmationRequired
-         * @AuthorizedAdminSetting(settings=OCA\NotesTutorial\Settings\NotesAdmin)
          */
-         public function saveSettings($mySetting) {
-             ....
-         }
-         ...
+        #[PasswordConfirmationRequired]
+        #[AuthorizedAdminSetting(settings: 'OCA\NotesTutorial\Settings\NotesAdmin')]
+        public function saveSettings($mySetting) {
+            ....
+        }
+        ...
     }
 
 
-If you have several classes that implement `IDelegatedSettings` for a function. You must add them in the key "settings" and they must seperate with semi-colons.
+If you have several ``IDelegatedSettings`` classes that are needed for a function, simply add the annotation multiple times.
+them in the key "settings" and they must separate with semi-colons.
+
+.. note::
+
+    If you use the deprecated annotation specify the classes separated by semicolons:
+
+    ``@AuthorizedAdminSetting(settings=OCA\NotesTutorial\Settings\NotesAdmin;OCA\NotesTutorial\Settings\NotesSubAdmin)``
 
 .. code-block:: php
+    :emphasize-lines: 8-9
 
     <?php
+    use OCP\AppFramework\Http\Attribute\AuthorizedAdminSetting;
     class NotesSettingsController extends Controller {
         /**
          * Save settings
-         * @PasswordConfirmationRequired
-         * @AuthorizedAdminSetting(settings=OCA\NotesTutorial\Settings\NotesAdmin;OCA\NotesTutorial\Settings\NotesSubAdmin)
          */
+        #[PasswordConfirmationRequired]
+        #[AuthorizedAdminSetting(settings: 'OCA\NotesTutorial\Settings\NotesAdmin')]
+        #[AuthorizedAdminSetting(settings: 'OCA\NotesTutorial\Settings\NotesSubAdmin')]
          public function saveSettings($mySetting) {
              ....
          }

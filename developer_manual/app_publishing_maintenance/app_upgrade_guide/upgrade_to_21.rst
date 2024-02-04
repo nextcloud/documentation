@@ -7,7 +7,7 @@ Upgrade to Nextcloud 21
 Back-end changes
 ----------------
 
-The biggest change in Nextcloud 21 is the initial support for PHP8 and the corresponding updates of many core dependencies, which could have direct and indirect consequences for apps.
+The biggest change in Nextcloud 21 is the initial support for PHP 8 and the corresponding updates of many core dependencies, which could have direct and indirect consequences for apps.
 
 PHP 8 support
 ^^^^^^^^^^^^^

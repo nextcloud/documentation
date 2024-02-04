@@ -2,115 +2,39 @@
 Installation on Linux
 =====================
 
+There are multiple ways of installing Nextcloud depending on your preferences, requirements and goals.
+
+If you prefer an automated installation, you have the option to:
+
+* use the `official Nextcloud AIO Docker-based image <https://github.com/nextcloud/all-in-one#nextcloud-all-in-one>`_. Nextcloud AIO stands for Nextcloud All-in-One and provides easy deployment and maintenance with most features included in this one Nextcloud instance. It includes Office, a turnkey Backup solution, Imaginary (for previews of heic, heif, illustrator, pdf, svg, tiff and webp) and more.
+* use the `community Snap Package <https://snapcraft.io/nextcloud>`_. This includes a full production-ready stack, will maintain your HTTPS certificates for you, and will automatically update as needed to stay secure.
+* use the `community Nextcloud VM Appliance <https://github.com/nextcloud/vm/>`_ (aka Nextcloud Virtual Machine or NcVM). This helps you create a personal or corporate Nextcloud Server faster and easier. It can be used install directly on a clean Ubuntu Server or downloaded as a fully functioning VM.
+* use the `community NextcloudPi scripts <https://nextcloudpi.com/>`_ (based on Debian). It will setup everything for you and include scripts for automated installation of apps like: Collabora, OnlyOffice, Talk and so on.
+* use the `community Nextcloud Docker image <https://hub.docker.com/_/nextcloud/>`_. This image is designed to be used in a micro-service environment. There are two versions of the image you can choose from: the Apache one contains a full Nextcloud installation including an Apache web server. The second option is an FPM installation and runs a FastCGI process that serves your Nextcloud installation (you will need to supply your preferred web, database and other desired supplementary services).
+
+.. note:: Please note that the community options are not officially supported by Nextcloud GmbH.
+
 In case you prefer installing from the source tarball, you can setup Nextcloud
 from scratch using a classic LAMP stack (Linux, Apache, MySQL/MariaDB, PHP).
 This document provides a complete walk-through for installing Nextcloud on
 Ubuntu 18.04 LTS Server with Apache and MariaDB, using `the Nextcloud .tar
 archive <https://nextcloud.com/install/>`_. This method is recommended to install Nextcloud.
 
-.. note:: Admins of SELinux-enabled distributions such as CentOS, Fedora, and
-   Red Hat Enterprise Linux may need to set new rules to enable installing
-   Nextcloud. See :ref:`selinux_tips_label` for a suggested configuration.
-
-
-If you prefer a more automated installation of Nextcloud and there are no packages for your Linux distribution, you have the option to
-install the community `Snap Package <https://snapcraft.io/nextcloud>`_. This includes a full production-ready stack, will maintain your HTTPS certificates for you, and will automatically update as needed to stay secure. You can also use the `Nextcloud VM scripts <https://github.com/nextcloud/vm/>`_ to install directly on a clean Ubuntu Server or `NextcloudPi scripts <https://nextcloudpi.com/>`_ (similar project based on Debian). It will setup everything for you and include scripts for automated installation of apps like; Collabora, OnlyOffice, Talk and so on. Please note that those three options are not officially supported by Nextcloud GmbH.
-
-
 This installation guide is giving a general overview of required dependencies and their configuration. For a distribution specific setup guide have a look at the :doc:`./example_ubuntu` and :doc:`./example_centos`.
 
 .. _prerequisites_label:
 
+
+.. note:: Admins of SELinux-enabled distributions such as CentOS, Fedora, and
+   Red Hat Enterprise Linux may need to set new rules to enable installing
+   Nextcloud. See :ref:`selinux_tips_label` for a suggested configuration.
+
 Prerequisites for manual installation
 -------------------------------------
 
-The Nextcloud .tar archive contains all of the required PHP modules. This
-section lists all required and optional PHP modules.  Consult the `PHP manual
-<https://php.net/manual/en/extensions.php>`_ for more information on modules.
-Your Linux distribution should have packages for all required modules. You can
-check the presence of a module by typing ``php -m | grep -i <module_name>``.
-If you get a result, the module is present.
-
-Required:
-
-* PHP (see :doc:`./system_requirements` for a list of supported versions)
-* PHP module ctype
-* PHP module curl
-* PHP module dom
-* PHP module fileinfo (included with PHP)
-* PHP module filter (only on Mageia and FreeBSD)
-* PHP module GD
-* PHP module hash (only on FreeBSD)
-* PHP module JSON (included with PHP >= 8.0)
-* PHP module libxml (Linux package libxml2 must be >=2.7.0)
-* PHP module mbstring
-* PHP module openssl (included with PHP >= 8.0)
-* PHP module posix
-* PHP module session
-* PHP module SimpleXML
-* PHP module XMLReader
-* PHP module XMLWriter
-* PHP module zip
-* PHP module zlib
-
-Database connectors (pick the one for your database:)
-
-* PHP module pdo_sqlite (>= 3, usually not recommended for performance reasons)
-* PHP module pdo_mysql (MySQL/MariaDB)
-* PHP module pdo_pgsql (PostgreSQL)
-
-*Recommended* packages:
-
-* PHP module bz2 (recommended, required for extraction of apps)
-* PHP module intl (increases language translation performance and fixes sorting
-  of non-ASCII characters)
-
-Required for specific apps:
-
-* PHP module ldap (for LDAP integration)
-* PHP module smbclient  (SMB/CIFS integration, see
-  :doc:`../configuration_files/external_storage/smb`)
-* PHP module ftp (for FTP storage / external user authentication)
-* PHP module imap (for external user authentication)
-* PHP module bcmath (for passwordless login)
-* PHP module gmp (for passwordless login)
-
-Recommended for specific apps (*optional*):
-
-* PHP module gmp (for SFTP storage)
-* PHP module exif (for image rotation in pictures app)
-
-For enhanced server performance (*optional*) select one of the following
-memcaches:
-
-* PHP module apcu (>= 4.0.6)
-* PHP module memcached
-* PHP module redis (>= 2.2.6, required for Transactional File Locking)
-
-See :doc:`../configuration_server/caching_configuration` to learn how to select
-and configure a memcache.
-
-For preview generation (*optional*):
-
-* PHP module imagick
-* avconv or ffmpeg
-* OpenOffice or LibreOffice
-
-.. note::
-   If the preview generation of PDF files fails with a "not authorized" error message, you must adjust the imagick policy file.
-   See https://cromwell-intl.com/open-source/pdf-not-authorized.html
-
-For command line processing (*optional*):
-
-* PHP module pcntl (enables command interruption by pressing ``ctrl-c``)
-
-.. note::
-   You also need to ensure that pcntl_signal and pcntl_signal_dispatch are not disabled
-   in your php.ini file.
-
-For command line updater (*optional*):
-
-* PHP module phar (upgrades Nextcloud by running ``sudo -u www-data php /var/www/nextcloud/updater/updater.phar``)
+The Nextcloud .tar archive contains all of the required PHP modules.
+Your Linux distribution should have packages for all required modules.
+See :doc:`php_configuration` for a list of required and suggested modules.
 
 You don’t need the WebDAV module for your Web server (i.e. Apache’s
 ``mod_webdav``), as Nextcloud has a built-in WebDAV server of its own,
@@ -267,7 +191,7 @@ the default site. Open a terminal and run::
           a certificate signed by a signing authority. Check with your domain name
           registrar or hosting service for good deals on commercial certificates.
           Or use a free `Let's Encrypt <https://letsencrypt.org/>`_ ones.
- 
+
 .. _installation_wizard_label:
 
 Installation wizard
@@ -288,6 +212,18 @@ To use ``occ`` see :doc:`command_line_installation`.
 
 To use the graphical Installation Wizard see :doc:`installation_wizard`.
 
+.. _background_jobs_label:
+
+Setting up background jobs
+--------------------------
+
+Nextcloud requires that some tasks are run regularly. These may include
+maintenance tasks to ensure optimal performance or time sensitive tasks like
+sending notifications.
+
+See :doc:`../configuration_server/background_jobs_configuration` for a detailed
+description and the benefits.
+
 .. _selinux_tips_label:
 
 SELinux configuration tips
@@ -295,30 +231,6 @@ SELinux configuration tips
 
 See :doc:`selinux_configuration` for a suggested configuration for
 SELinux-enabled distributions such as Fedora and CentOS.
-
-.. _php_ini_tips_label:
-
-php.ini configuration notes
----------------------------
-
-Keep in mind that changes to ``php.ini`` may have to be configured on more than one
-ini file. This can be the case, for example, for the ``date.timezone`` setting.
-
-**php.ini - used by the Web server:**
-::
-
-    /etc/php/8.0/apache2/php.ini
-  or
-    /etc/php/8.0/fpm/php.ini
-  or ...
-
-**php.ini - used by the php-cli and so by Nextcloud CRON jobs:**
-::
-
-    /etc/php/8.0/cli/php.ini
-
-.. note:: Path names have to be set in respect of the installed PHP
-          (8.0, 8.1 or 8.2) as applicable.
 
 .. _php_fpm_tips_label:
 
@@ -494,14 +406,14 @@ Installation via install script
 
 One of the easiest ways of installing is to use the Nextcloud VM or NextcloudPI scripts. It's basically just two steps:
 
-1. Download the latest `installation script <https://github.com/nextcloud/vm/blob/master/nextcloud_install_production.sh/>`_.
+1. Download the latest `VM installation script <https://github.com/nextcloud/vm/blob/master/nextcloud_install_production.sh/>`_.
 2. Run the script with::
 
     sudo bash nextcloud_install_production.sh
-    
+
 or
 
-1. Download the latest `installation script <https://raw.githubusercontent.com/nextcloud/nextcloudpi/master/install.sh/>`_.
+1. Download the latest `PI installation script <https://raw.githubusercontent.com/nextcloud/nextcloudpi/master/install.sh/>`_.
 2. Run the script with::
 
     sudo bash install.sh

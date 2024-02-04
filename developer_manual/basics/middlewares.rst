@@ -4,12 +4,15 @@ Middlewares
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-Middleware is logic that is run before and after each request and is modelled after `Django's Middleware system <https://docs.djangoproject.com/en/dev/topics/http/middleware/>`_. It offers the following hooks:
+Middleware is logic that is run before and after each request and is modeled after `Django's Middleware system <https://docs.djangoproject.com/en/dev/topics/http/middleware/>`_. It offers the following hooks:
 
 * ``beforeController``: This is executed before a controller method is being executed. This allows you to plug additional checks or logic before that method, like for instance security checks
 * ``afterException``: This is being run when either the beforeController method or the controller method itself is throwing an exception. The middleware is asked in reverse order to handle the exception and to return a response. If the middleware can't handle the exception, it throws the exception again
 * ``afterController``: This is being run after a successful controller method call and allows the manipulation of a Response object. The middleware is run in reverse order
 * ``beforeOutput``: This is being run after the response object has been rendered and allows the manipulation of the outputted text. The middleware is run in reverse order
+
+.. figure:: ../images/middleware-flow-horiz.png
+   :alt: Middleware flow chart
 
 To generate your own middleware, simply inherit from the Middleware class and overwrite the methods that should be used.
 
@@ -66,12 +69,14 @@ The middleware can be registered in the app's ``Application`` class:
 
     }
 
+.. _global_middlewares:
+
 Global Middlewares
 ------------------
 
 .. versionadded:: 26
 
-Registered middlewares will only intercept requests of the same app by default. To make a middleware *global* and trigger for other apps' middlewares, add `true` as second argument of the ``registerMiddleware`` call:
+Registered middleware will only intercept requests of the same app by default. To make a middleware *global* and trigger for other apps' middleware, add `true` as the second argument of the ``registerMiddleware`` call:
 
 .. code-block:: php
     :caption: lib/AppInfo/Application.php
@@ -108,7 +113,7 @@ Dependency Injection Container Registration
 
 .. deprecated:: 20
 
-Middlewares can also be added using the **registerMiddleware** method of the container:
+Middleware can also be added using the **registerMiddleware** method of the container:
 
 .. code-block:: php
   :caption: lib/AppInfo/Application.php
@@ -126,7 +131,7 @@ Middlewares can also be added using the **registerMiddleware** method of the con
 
       public function __construct(array $urlParams = []) {
           parent::__construct('myapp', $urlParams);
-  
+
           $container = $this->getContainer();
 
           // executed in the order that it is registered
@@ -140,7 +145,7 @@ Middlewares can also be added using the **registerMiddleware** method of the con
   The order is important! The middleware that is registered first gets run first in the **beforeController** method. For all other hooks, the order is being reversed, meaning: if a middleware is registered first, it gets run last.
 
 
-Parsing annotations 
+Parsing annotations
 -------------------
 
 Sometimes it is useful to conditionally execute code before or after a controller method. This can be done by defining custom annotations. An example would be to add a custom authentication method or simply add an additional header to the response. To access the parsed annotations, inject the **ControllerMethodReflector** class:

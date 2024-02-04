@@ -5,9 +5,9 @@ Transfer Ownership
 Users can transfer the ownership of files and folders to other users. Sharing
 ownerships of those transferred files/folders will also be transferred.
 
-#. Navigate to *Settings* > *Personal* > *Sharing* > *Files*.
-#. Click on *Choose file or folder to transfer* >> A file picker opens, showing all files and folders in the user's account.
-#. Pick a file or folder and click on *Choose* >> The chosen file or folder name gets displayed.
+#. Navigate to *Settings* (top-right menu) > *Sharing*.
+#. In the *Files* section, click on *Choose file or folder to transfer*. A file picker opens, showing all files and folders in the user's account.
+#. Pick a file or folder and click on *Choose*. The chosen file or folder name gets displayed.
 #. Click on *Change* to change the choice if necessary.
 #. Pick a new owner by typing their name into the search field next to *New owner*.
 #. Click on *Transfer*.

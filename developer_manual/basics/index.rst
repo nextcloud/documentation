@@ -13,6 +13,7 @@ Basic concepts
    events
    front-end/index
    backgroundjobs
+   caching
    logging
    setting
    storage/index

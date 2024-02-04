@@ -106,33 +106,63 @@ For developers that want to ease the translation process, please read `this docu
 Building
 --------
 
+Nightly Automated Build Steps
+=============================
+
+1. **Fetch sources**
+2. ``git clone https://github.com/nextcloud/documentation.git``
+3. ``cd documentation``
+4. ``git checkout <branch name>``
+5. **Install**
+6. ``npm install svgexport -g --unsafe-perm=true``
+7. ``pip3 install -r requirements.txt``
+8. ``make all``
+
+
 Building HTML
 =============
 
-1. Install `pipenv` - https://pipenv.readthedocs.io/en/latest/
-2. Create a Python environment (typically inside this repository): `pipenv --python 3.9`
-3. Change into the environment: `pipenv shell`
-4. Install the dependencies `pip install -r requirements.txt`
-5. Now you can use `make ...` to build all the stuff - for example `make html` to build the HTML flavor of all manuals
+Using pipenv
+^^^^^^^^^^^^
 
-To change into this environment you need to run `pipenv shell` to launch the shell and to exit you can use either `exit` or `Ctrl` + `D`.
+1. Install ``pipenv`` - https://pipenv.readthedocs.io/en/latest/
+2. Change into the environment: ``pipenv shell``
+3. Install the dependencies ``pip install -r requirements.txt``
+4. Now you can use ``make ...`` to build all the stuff - for example ``make html`` to build the HTML flavor of all manuals
+   The build assets will be put into the individual documentation subdirectories like ``developer_manual/_build/html/com``
 
-When editing the documentation installing `sphinx-autobuild` though pip can be helpful. This will watch file changes and automatically reload the html preview:
+To change into this environment you need to run ``pipenv shell`` to launch the shell and to exit you can use either ``exit`` or ``Ctrl`` + ``D``.
 
-1. Install `pip install sphinx-autobuild`
-2. Enter the documentation section `cd user_manual`
-3. Watch for file changes `make SPHINXBUILD=sphinx-autobuild html`
-4. Open http://127.0.0.1:8000 in the browser and start editing
+Using venv
+^^^^^^^^^^
+
+1. Install ``python3-venv``
+2. Only once: Create a venv (typically inside this repository): ``python -m venv venv``
+3. Activate the environment (inside this repository): ``source venv/bin/activate``
+4. Install the dependencies ``pip install -r requirements.txt``
+5. Now you can use ``make ...`` to build all the stuff - for example ``make html`` to build the HTML flavor of all manuals
+   The build assets will be put into the individual documentation subdirectories like ``developer_manual/_build/html/com``
+
+Autobuilding
+^^^^^^^^^^^^
+
+When editing the documentation installing ``sphinx-autobuild`` though pip can be helpful. This will watch file changes and automatically reload the html preview:
+
+1. Install ``pip install sphinx-autobuild``
+2. When building the developer documentation make sure to execute ``make openapi-spec`` in the repository root
+3. Enter the documentation section ``cd user_manual``
+4. Watch for file changes ``make SPHINXBUILD=sphinx-autobuild html``
+5. Open http://127.0.0.1:8000 in the browser and start editing
 
 Building PDF
 ============
 
 1. Follow instructions for "Building HTML" above
-2. Install `latexmk` and `texlive-latex-extra` - https://pipenv.readthedocs.io/en/latest/
-3. Create a Python environment (typically inside this repository): `pipenv --python 3.9`
-4. Change into the environment: `pipenv shell`
-5. Install the dependencies `pip install -r requirements.txt`
-6. Now you can use `make ...` to build all the stuff - for example `make pdf` to build the PDF flavor of all manuals
+2. Install ``latexmk`` and ``texlive-latex-extra`` - https://pipenv.readthedocs.io/en/latest/
+3. Create a Python environment (typically inside this repository): ``pipenv --python 3.9``
+4. Change into the environment: ``pipenv shell``
+5. Install the dependencies ``pip install -r requirements.txt``
+6. Now you can use ``make ...`` to build all the stuff - for example ``make pdf`` to build the PDF flavor of all manuals
 
 Using the VSCode DevContainer
 =============================

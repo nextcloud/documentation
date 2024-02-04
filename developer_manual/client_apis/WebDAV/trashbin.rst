@@ -34,10 +34,10 @@ This will automatically restore the item to its original location.
 Deleting from the trashbin
 --------------------------
 
-To delete from the trashbin just perform a delete on the item.
+To delete from the trashbin just perform a :code:`DELETE` on the item.
 
 
 Emptying the trashbin
 ---------------------
 
-Perform a delete on `https://cloud.example.com/remote.php/dav/trashbin/USER/trash`
+Perform a :code:`DELETE` on `https://cloud.example.com/remote.php/dav/trashbin/USER/trash`

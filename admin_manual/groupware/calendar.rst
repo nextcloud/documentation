@@ -79,6 +79,22 @@ If you don't wish for users to have this capability, you can disable FreeBusy fo
 Subscriptions
 -------------
 
+Custom public calendars
+~~~~~~~~~~~~~~~~~~~~~~~
+
+In addition to the public holiday calendars, it is possible to define your own calendar.
+They act in the same way as the holiday calendars and can be configured with the following command::
+
+ php occ config:app:set calendar publicCalendars --value '[{"name":"My custom calendar","source":"http://example.com/example.ics"}]'
+
+The setting is specified as a JSON array of objects with the following options:
+
+* ``name`` - name of the calendar in the listing
+* ``source`` - URL of the calendar's ICS file
+* ``displayName`` - optional, to overwrite the name of the subscribed calendar
+* ``description`` - optional, description in the listing
+* ``authors`` - optional, copyrights and so on
+
 Refresh rate
 ~~~~~~~~~~~~
 
@@ -115,13 +131,13 @@ Where the value is the number of seconds for the period. Setting the value to ``
 Resources and rooms
 -------------------
 
-The Nextcloud CalDAV back end support resources and rooms. Resources and room can be booked for appointments and the system will schedule them so they can only be used once at a time. Those resources and rooms have to be provided by an app that provides a back end for this.
+The Nextcloud CalDAV backend supports resources and rooms. Resources and rooms can be booked for appointments, and the system will schedule them so they can only be used once at a time. Those resources and rooms have to be provided by an app that provides a backend for this.
 
-Once a back end app is installed the app typically allows admins or even users to define the resources, but this is subject of the specific implementation.
+Once a backend app is installed, the app typically allows admins, or even users, to define the resources, but this is subject of the specific implementation.
 
-Nextcloud periodically queries all registered back ends. Therefore new and updated resources and rooms will show with a delay.
+Nextcloud periodically queries all registered backends, therefore new/updated resources and rooms will show with a delay.
 
-Known back ends
-~~~~~~~~~~~~~~~
+Known backends
+~~~~~~~~~~~~~~
 
-* `Calendar Resource Management <https://github.com/nextcloud/calendar_resource_management>`_: database back end with CLI configuration for admins
+* `Calendar Resource Management <https://github.com/nextcloud/calendar_resource_management>`_: database backend with CLI configuration for admins

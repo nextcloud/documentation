@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2022 Nextcloud GmbH
+# Copyright (C) 2023 Nextcloud GmbH
 # This file is distributed under the same license as the Nextcloud latest User Manual package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud latest User Manual latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-03 12:01+0000\n"
+"POT-Creation-Date: 2023-08-19 18:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,556 +21,744 @@ msgid "Accessing Nextcloud files using WebDAV"
 msgstr ""
 
 #: ../../files/access_webdav.rst:5
-msgid "Nextcloud fully supports the WebDAV protocol, and you can connect and synchronize with your Nextcloud files over WebDAV. In this chapter you will learn how to connect Linux, macOS, Windows, and mobile devices to your Nextcloud server via WebDAV. Before we get into configuring WebDAV, let's take a quick look at the recommended way of connecting client devices to your Nextcloud servers."
+msgid "Nextcloud fully supports the WebDAV protocol, and you can connect and synchronize with Nextcloud Files over WebDAV. In this chapter, you will learn how to connect Linux, macOS, Windows, and mobile devices to your Nextcloud server."
 msgstr ""
 
-#: ../../files/access_webdav.rst:11
-msgid "In the following examples, you should replace **example.com/nextcloud** with the URL of your Nextcloud server (omit the directory part if the installation is in the root of your domain), and \"USERNAME\" with the username of the connecting user."
+#: ../../files/access_webdav.rst:9
+msgid "WebDAV stands for Distributed Authoring and Versioning. It is an HTTP extension that makes it easy to create, read, and edit files hosted on remote Web servers. With a WebDAV, client you can access your Nextcloud Files (including shares) on Linux, macOS and Windows in a similar way as any remote network share, and stay synchronized."
 msgstr ""
 
-#: ../../files/access_webdav.rst:15
-msgid "See the WebDAV URL (bottom left in settings) on your Nextcloud."
+#: ../../files/access_webdav.rst:14
+msgid "Before we get into configuring WebDAV, let's take a quick look at the recommended way of connecting client devices to Nextcloud."
 msgstr ""
 
-#: ../../files/access_webdav.rst:17
-msgid "In the following examples, you must use an app-password for login, which you can generate in your security settings."
+#: ../../files/access_webdav.rst:18
+msgid "Official Nextcloud desktop and mobile clients"
 msgstr ""
 
 #: ../../files/access_webdav.rst:20
-msgid "Nextcloud Desktop and mobile clients"
+msgid "The recommended way to synchronize a computer with a Nextcloud server is by using the `official Nextcloud sync clients <https://nextcloud.com/install/#install-clients>`_. You can configure the client to save files in any local directory and you can choose which directories on the Nextcloud server to sync with. The client displays the current connection status and logs all activity, so you always know which remote files have been downloaded to your PC and you can verify that files created and updated on your local PC are properly synchronized with the server."
 msgstr ""
 
-#: ../../files/access_webdav.rst:22
-msgid "The recommended way to synchronize a desktop PC with a Nextcloud server is by using `Nextcloud/ownCloud sync clients <https://nextcloud.com/install/#install-clients>`_. You can configure the client to save files in any local directory and you can choose which directories on the Nextcloud server to sync with. The client displays the current connection status and logs all activity, so you always know which remote files have been downloaded to your PC and you can verify that files created and updated on your local PC are properly synchronized with the server."
+#: ../../files/access_webdav.rst:28
+msgid "The recommended way to synchronize Android and Apple iOS devices is by using the `official Nextcloud mobile apps <https://nextcloud.com/install/>`_."
 msgstr ""
 
-#: ../../files/access_webdav.rst:30
-msgid "The recommended way to synchronize Nextcloud server with Android and Apple iOS devices is by using the `mobile apps <https://nextcloud.com/install/>`_."
-msgstr ""
-
-#: ../../files/access_webdav.rst:34
-msgid "To connect your mobile app to a Nextcloud server use the base URL and folder only::"
+#: ../../files/access_webdav.rst:31
+msgid "To connect the official Nextcloud apps to a Nextcloud server use the same URL you use to access Nextcloud from your web browser - e.g.::"
 msgstr ""
 
 #: ../../files/access_webdav.rst:39
-msgid "In addition to the mobile apps provided by Nextcloud or ownCloud, you can use other apps to connect to Nextcloud from your mobile device using WebDAV. `WebDAV Navigator`_ is a good (proprietary) app for `Android devices`_ and `iPhones`_. The URL to use on these is::"
+msgid "Third-party WebDAV clients"
 msgstr ""
 
-#: ../../files/access_webdav.rst:46
-msgid "WebDAV configuration"
+#: ../../files/access_webdav.rst:41
+msgid "If you prefer, you may also connect your computer to your Nextcloud server by using any third-party client that supports the WebDAV protocol (including what may be built into your operating system)."
+msgstr ""
+
+#: ../../files/access_webdav.rst:45
+msgid "You can also use third-party WebDAV capable apps to connect your mobile device to Nextcloud."
 msgstr ""
 
 #: ../../files/access_webdav.rst:48
-msgid "If you prefer, you may also connect your desktop PC to your Nextcloud server by using the WebDAV protocol rather than using a special client application. Web Distributed Authoring and Versioning (WebDAV) is a Hypertext Transfer Protocol (HTTP) extension that makes it easy to create, read, and edit files on Web servers. With WebDAV you can access your Nextcloud shares on Linux, macOS and Windows in the same way as any remote network share, and stay synchronized."
+msgid "When using third-party clients, keep in mind that they may not be optimized for use with Nextcloud or implement capabilities you consider important to your use case."
+msgstr ""
+
+#: ../../files/access_webdav.rst:51
+msgid "Mobile clients that Nextcloud community members have reported using include:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:53
+msgid "`FolderSync (Android) <https://foldersync.io/>`_"
+msgstr ""
+
+#: ../../files/access_webdav.rst:54
+msgid "`WebDAV Navigator (iPhone) <https://apps.apple.com/us/app/webdav-navigator/id382551345>`_"
 msgstr ""
 
 #: ../../files/access_webdav.rst:56
-msgid "Accessing files using Linux"
+msgid "The URL to use when configuring third-party apps to connect to Nextcloud is a bit lengthier than the one for official clients::"
 msgstr ""
 
-#: ../../files/access_webdav.rst:58
-msgid "You can access files in Linux operating systems using the following methods."
+#: ../../files/access_webdav.rst:62
+msgid "When using a third-party WebDAV client (including your operating system's built-in client), you should use an application password for login rather than your regular password. In addition improved security, this `increases performance significantly <https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151>_`. To configure an application password, log into the Nextcloud Web interface, click on the avatar in the top right and choose *Personal settings*. Then choose *Security* in the left sidebar and scroll to the very bottom. There you can create an app password (which can also be revoked in the future without changing your main user password)."
 msgstr ""
 
-#: ../../files/access_webdav.rst:61
-msgid "Nautilus file manager"
+#: ../../files/access_webdav.rst:71
+msgid "In the following examples, you should replace **example.com/nextcloud** with the URL of your Nextcloud server (omit the directory part if the installation is in the root of your domain), and **USERNAME** with the username of the connecting user."
 msgstr ""
 
-#: ../../files/access_webdav.rst:63
-msgid "**When you configure your Nextcloud account in the** `GNOME Control Center <../groupware/sync_gnome.html>`_, **your files will automatically be mounted by Nautilus as a WebDAV share, unless you deselect file access**."
-msgstr ""
-
-#: ../../files/access_webdav.rst:67
-msgid "You can also mount your Nextcloud files manually. Use the ``davs://`` protocol to connect the Nautilus file manager to your Nextcloud share::"
-msgstr ""
-
-#: ../../files/access_webdav.rst:73
-msgid "If your server connection is not HTTPS-secured, use ``dav://`` instead of ``davs://``:"
+#: ../../files/access_webdav.rst:75
+msgid "See the WebDAV URL (bottom left in settings) on your Nextcloud."
 msgstr ""
 
 #: ../../files/access_webdav.rst:79
-msgid "The same method works for other file managers that use GVfs, such as MATE's Caja and Cinnamon's Nepomuk."
+msgid "Accessing files using Linux"
+msgstr ""
+
+#: ../../files/access_webdav.rst:81
+msgid "You can access files in Linux operating systems using the following methods."
 msgstr ""
 
 #: ../../files/access_webdav.rst:84
-msgid "Accessing files with KDE and Dolphin file manager"
+msgid "Nautilus file manager"
 msgstr ""
 
 #: ../../files/access_webdav.rst:86
-msgid "To access your Nextcloud files using the Dolphin file manager in KDE, use the ``webdav://`` protocol::"
+msgid "**When you configure your Nextcloud account in the** `GNOME Control Center <../groupware/sync_gnome.html>`_, **your files will automatically be mounted by Nautilus as a WebDAV share, unless you deselect file access**."
 msgstr ""
 
-#: ../../files/access_webdav.rst:94
-msgid "You can create a permanent link to your Nextcloud server:"
+#: ../../files/access_webdav.rst:90
+msgid "You can also mount your Nextcloud files manually. Use the ``davs://`` protocol to connect the Nautilus file manager to your Nextcloud share::"
 msgstr ""
 
 #: ../../files/access_webdav.rst:96
-msgid "Open Dolphin and click \"Network\" in the left hand \"Places\" column."
+msgid "If your server connection is not HTTPS-secured, use ``dav://`` instead of ``davs://``:"
 msgstr ""
 
-#: ../../files/access_webdav.rst:97
-msgid "Click on the icon labeled **Add a Network Folder**. The resulting dialog should appear with WebDAV already selected."
+#: ../../files/access_webdav.rst:None
+msgid "Screenshot of configuring Nautilus file manager to use WebDAV"
 msgstr ""
 
-#: ../../files/access_webdav.rst:99
-msgid "If WebDAV is not selected, select it."
+#: ../../files/access_webdav.rst:102
+msgid "The same method works for other file managers that use GVFS, such as MATE's Caja and Cinnamon's Nemo."
 msgstr ""
 
-#: ../../files/access_webdav.rst:100
-msgid "Click **Next**."
+#: ../../files/access_webdav.rst:106
+msgid "Accessing files with KDE and Dolphin file manager"
 msgstr ""
 
-#: ../../files/access_webdav.rst:101
-msgid "Enter the following settings:"
+#: ../../files/access_webdav.rst:108
+msgid "To access your Nextcloud files using the Dolphin file manager in KDE, use the ``webdav://`` protocol::"
 msgstr ""
 
-#: ../../files/access_webdav.rst:103
-msgid "Name: The name you want to see in the **Places** bookmark, for example Nextcloud."
-msgstr ""
-
-#: ../../files/access_webdav.rst:105
-msgid "User: The Nextcloud username you used to log in, for example admin."
-msgstr ""
-
-#: ../../files/access_webdav.rst:107
-msgid "Server: The Nextcloud domain name, for example **example.com** (without **http://** before or directories afterwards)."
-msgstr ""
-
-#: ../../files/access_webdav.rst:109
-msgid "Folder -- Enter the path ``nextcloud/remote.php/dav/files/USERNAME/``."
-msgstr ""
-
-#: ../../files/access_webdav.rst:110
-msgid "(Optional) Check the \"Create icon\" checkbox for a bookmark to appear in the Places column."
-msgstr ""
-
-#: ../../files/access_webdav.rst:112
-msgid "(Optional) Provide any special settings or an SSL certificate in the \"Port & Encrypted\" checkbox."
+#: ../../files/access_webdav.rst:None
+msgid "Screenshot of configuring Dolphin file manager to use WebDAV"
 msgstr ""
 
 #: ../../files/access_webdav.rst:116
-msgid "Creating WebDAV mounts on the Linux command line"
+msgid "You can create a permanent link to your Nextcloud server:"
 msgstr ""
 
 #: ../../files/access_webdav.rst:118
-msgid "You can create WebDAV mounts from the Linux command line. This is useful if you prefer to access Nextcloud the same way as any other remote filesystem mount. The following example shows how to create a personal mount and have it mounted automatically every time you log in to your Linux computer."
+msgid "Open Dolphin and click \"Network\" in the left-hand \"Places\" column."
+msgstr ""
+
+#: ../../files/access_webdav.rst:119
+msgid "Click on the icon labeled **Add a Network Folder**. The resulting dialog should appear with WebDAV already selected."
+msgstr ""
+
+#: ../../files/access_webdav.rst:121
+msgid "If WebDAV is not selected, select it."
+msgstr ""
+
+#: ../../files/access_webdav.rst:122
+msgid "Click **Next**."
 msgstr ""
 
 #: ../../files/access_webdav.rst:123
-msgid "Install the ``davfs2`` WebDAV filesystem driver, which allows you to mount WebDAV shares just like any other remote filesystem. Use this command to install it on Debian/Ubuntu::"
+msgid "Enter the following settings:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:125
+msgid "Name: the name you want to see in the **Places** bookmark, for example, Nextcloud."
+msgstr ""
+
+#: ../../files/access_webdav.rst:127
+msgid "User: the Nextcloud username you used to log in, for example, admin."
 msgstr ""
 
 #: ../../files/access_webdav.rst:129
-msgid "Use this command to install it on CentOS, Fedora, and openSUSE::"
+msgid "Server: the Nextcloud domain name, for example, **example.com** (without **http://** before or directories afterwards)."
 msgstr ""
 
-#: ../../files/access_webdav.rst:133
-msgid "Add yourself to the ``davfs2`` group::"
+#: ../../files/access_webdav.rst:131
+msgid "Folder -- Enter the path ``nextcloud/remote.php/dav/files/USERNAME/``."
 msgstr ""
 
-#: ../../files/access_webdav.rst:137
-msgid "Then create a ``nextcloud`` directory in your home directory for the mountpoint, and ``.davfs2/`` for your personal configuration file::"
+#: ../../files/access_webdav.rst:132
+msgid "(Optional) Check the \"Create icon\" checkbox for a bookmark to appear in the Places column."
 msgstr ""
 
-#: ../../files/access_webdav.rst:143
-msgid "Copy ``/etc/davfs2/secrets`` to ``~/.davfs2``::"
+#: ../../files/access_webdav.rst:134
+msgid "(Optional) Provide any special settings or an SSL certificate in the \"Port & Encrypted\" checkbox."
 msgstr ""
 
-#: ../../files/access_webdav.rst:147
-msgid "Set yourself as the owner and make the permissions read-write owner only::"
+#: ../../files/access_webdav.rst:139
+msgid "Creating WebDAV mounts on the Linux command line"
+msgstr ""
+
+#: ../../files/access_webdav.rst:141
+msgid "You can create WebDAV mounts from the Linux command line. This is useful if you prefer to access Nextcloud the same way as any other remote filesystem mount. The following example shows how to create a personal mount and have it mounted automatically every time you log in to your Linux computer."
+msgstr ""
+
+#: ../../files/access_webdav.rst:146
+msgid "Install the ``davfs2`` WebDAV filesystem driver, which allows you to mount WebDAV shares just like any other remote filesystem. Use this command to install it on Debian/Ubuntu::"
 msgstr ""
 
 #: ../../files/access_webdav.rst:152
+msgid "Use this command to install it on CentOS, Fedora, and openSUSE::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:156
+msgid "Add yourself to the ``davfs2`` group::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:160
+msgid "Then create a ``nextcloud`` directory in your home directory for the mount point, and ``.davfs2/`` for your personal configuration file::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:166
+msgid "Copy ``/etc/davfs2/secrets`` to ``~/.davfs2``::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:170
+msgid "Set yourself as the owner and make the permissions read-write owner only::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:175
 msgid "Add your Nextcloud login credentials to the end of the ``secrets`` file, using your Nextcloud server URL and your Nextcloud username and password::"
 msgstr ""
 
-#: ../../files/access_webdav.rst:161
+#: ../../files/access_webdav.rst:184
 msgid "Add the mount information to ``/etc/fstab``::"
 msgstr ""
 
-#: ../../files/access_webdav.rst:167
+#: ../../files/access_webdav.rst:188
 msgid "Then test that it mounts and authenticates by running the following command. If you set it up correctly you won't need root permissions::"
 msgstr ""
 
-#: ../../files/access_webdav.rst:172
+#: ../../files/access_webdav.rst:193
 msgid "You should also be able to unmount it::"
 msgstr ""
 
-#: ../../files/access_webdav.rst:176
+#: ../../files/access_webdav.rst:197
 msgid "Now every time you login to your Linux system your Nextcloud share should automatically mount via WebDAV in your ``~/nextcloud`` directory. If you prefer to mount it manually, change ``auto`` to ``noauto`` in ``/etc/fstab``."
 msgstr ""
 
-#: ../../files/access_webdav.rst:181
+#: ../../files/access_webdav.rst:203
 msgid "Known issues"
 msgstr ""
 
-#: ../../files/access_webdav.rst:184
-#: ../../files/access_webdav.rst:195
-#: ../../files/access_webdav.rst:364
+#: ../../files/access_webdav.rst:206
+#: ../../files/access_webdav.rst:217
 #: ../../files/access_webdav.rst:386
-#: ../../files/access_webdav.rst:404
-#: ../../files/access_webdav.rst:414
-#: ../../files/access_webdav.rst:443
+#: ../../files/access_webdav.rst:408
+#: ../../files/access_webdav.rst:426
+#: ../../files/access_webdav.rst:439
+#: ../../files/access_webdav.rst:449
 msgid "Problem"
 msgstr ""
 
-#: ../../files/access_webdav.rst:185
+#: ../../files/access_webdav.rst:207
 msgid "Resource temporarily unavailable"
 msgstr ""
 
-#: ../../files/access_webdav.rst:188
-#: ../../files/access_webdav.rst:199
-#: ../../files/access_webdav.rst:392
-#: ../../files/access_webdav.rst:409
-#: ../../files/access_webdav.rst:418
-#: ../../files/access_webdav.rst:449
+#: ../../files/access_webdav.rst:210
+#: ../../files/access_webdav.rst:221
+#: ../../files/access_webdav.rst:414
+#: ../../files/access_webdav.rst:444
+#: ../../files/access_webdav.rst:453
 msgid "Solution"
 msgstr ""
 
-#: ../../files/access_webdav.rst:189
+#: ../../files/access_webdav.rst:211
 msgid "If you experience trouble when you create a file in the directory, edit ``/etc/davfs2/davfs2.conf`` and add::"
 msgstr ""
 
-#: ../../files/access_webdav.rst:196
+#: ../../files/access_webdav.rst:218
 msgid "Certificate warnings"
 msgstr ""
 
-#: ../../files/access_webdav.rst:201
+#: ../../files/access_webdav.rst:223
 msgid "If you use a self-signed certificate, you will get a warning. To change this, you need to configure ``davfs2`` to recognize your certificate. Copy ``mycertificate.pem`` to ``/etc/davfs2/certs/``. Then edit ``/etc/davfs2/davfs2.conf`` and uncomment the line ``servercert``. Now add the path of your certificate as in this example::"
 msgstr ""
 
-#: ../../files/access_webdav.rst:210
+#: ../../files/access_webdav.rst:233
 msgid "Accessing files using macOS"
 msgstr ""
 
-#: ../../files/access_webdav.rst:212
-msgid "The macOS Finder suffers from a `series of implementation problems <http://sabre.io/dav/clients/finder/>`_ and should only be used if the Nextcloud server runs on **Apache** and **mod_php**, or **Nginx 1.3.8+**. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like `Cyberduck <https://cyberduck.io/>`_ (see instructions `here <https://docs.nextcloud.com/server/stable/user_manual/files/access_webdav.html#accessing-files-using-cyberduck>`_) and `Filezilla <https://filezilla-project.org>`_. Commercial clients include `Mountain Duck <https://mountainduck.io/>`_, `Forklift <https://binarynights.com/>`_, `Transmit <https://panic.com/>`_, and `Commander One <https://mac.eltima.com/>`_."
+#: ../../files/access_webdav.rst:235
+msgid "The macOS Finder suffers from a `series of implementation problems <http://sabre.io/dav/clients/finder/>`_ and should only be used if the Nextcloud server runs on **Apache** and **mod_php**, or **Nginx 1.3.8+**. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like `Cyberduck <https://cyberduck.io/>`_ (see instructions `here <https://docs.nextcloud.com/server/latest/user_manual/files/access_webdav.html#accessing-files-using-cyberduck>`_) and `Filezilla <https://filezilla-project.org>`_. Commercial clients include `Mountain Duck <https://mountainduck.io/>`_, `Forklift <https://binarynights.com/>`_, `Transmit <https://panic.com/>`_, and `Commander One <https://mac.eltima.com/>`_."
 msgstr ""
 
-#: ../../files/access_webdav.rst:214
+#: ../../files/access_webdav.rst:239
 msgid "To access files through the macOS Finder:"
 msgstr ""
 
-#: ../../files/access_webdav.rst:216
-msgid "From the Finder’s top menu bar, choose **Go > Connect to Server…**:"
+#: ../../files/access_webdav.rst:241
+msgid "From the Finder's top menu bar, choose **Go > Connect to Server…**:"
 msgstr ""
 
-#: ../../files/access_webdav.rst:221
-msgid "When the **Connect to Server…** window opens, enter your Nextcloud server’s WebDAV address in the **Server Address:** field, i.e.::"
+#: ../../files/access_webdav.rst:0
+msgid "Screenshot of entering your Nextcloud server address on macOS"
 msgstr ""
 
-#: ../../files/access_webdav.rst:228
+#: ../../files/access_webdav.rst:246
+msgid "When the **Connect to Server…** window opens, enter your Nextcloud server's WebDAV address in the **Server Address:** field, i.e.::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:0
+msgid "Screenshot: Enter Nextcloud server address in \"Connect to Server…\" dialog box"
+msgstr ""
+
+#: ../../files/access_webdav.rst:253
 msgid "Click **Connect**. Your WebDAV server should appear on the Desktop as a shared disk drive."
 msgstr ""
 
-#: ../../files/access_webdav.rst:232
+#: ../../files/access_webdav.rst:257
 msgid "Accessing files using Microsoft Windows"
 msgstr ""
 
-#: ../../files/access_webdav.rst:234
-msgid "If you use the native Windows implementation of WebDAV, you can map Nextcloud to a new drive using Windows Explorer. Mapping to a drive enables you to browse files stored on a Nextcloud server the way you would files stored in a mapped network drive."
+#: ../../files/access_webdav.rst:259
+msgid "If you use the native Windows implementation of WebDAV, you can map Nextcloud to a new drive using Windows Explorer. Mapping to a drive enables you to browse files stored on a Nextcloud server the way you would browse files stored in a mapped network drive."
 msgstr ""
 
-#: ../../files/access_webdav.rst:238
+#: ../../files/access_webdav.rst:263
 msgid "Using this feature requires network connectivity. If you want to store your files offline, use the Desktop Client to sync all files on your Nextcloud to one or more directories of your local hard drive."
 msgstr ""
 
-#: ../../files/access_webdav.rst:242
-msgid "Windows 10 now defaults to allow Basic Authentication if HTTPS is enabled prior to mapping your drive. On older versions of Windows, you must permit the use of Basic Authentication in the Windows Registry: launch ``regedit`` and navigate to ``HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters``. Create or edit the ``DWORD`` value ``BasicAuthLevel`` (Windows Vista, 7 and 8) or ``UseBasicAuth`` (Windows XP and Windows Server 2003) and set its value data to ``1`` for SSL connections. Value ``0`` means that Basic Authentication is disabled, a value of ``2`` allows both SSL and non-SSL connections (not recommended). Then exit Registry Editor, and restart the computer."
+#: ../../files/access_webdav.rst:267
+msgid "Windows 10 now defaults to allow Basic Authentication if HTTPS is enabled before mapping your drive."
 msgstr ""
 
-#: ../../files/access_webdav.rst:254
-msgid "Mapping drives with the command line"
-msgstr ""
-
-#: ../../files/access_webdav.rst:256
-msgid "The following example shows how to map a drive using the command line. To map the drive:"
-msgstr ""
-
-#: ../../files/access_webdav.rst:259
-msgid "Open a command prompt in Windows."
-msgstr ""
-
-#: ../../files/access_webdav.rst:260
-msgid "Enter the following line in the command prompt to map to the computer Z drive::"
-msgstr ""
-
-#: ../../files/access_webdav.rst:266
-msgid "where <drive_path> is the URL to your Nextcloud server."
-msgstr ""
-
-#: ../../files/access_webdav.rst:268
-msgid "For example: ``net use Z: https://example.com/nextcloud/remote.php/dav/files/USERNAME/ /user:youruser yourpassword``"
+#: ../../files/access_webdav.rst:269
+msgid "On older versions of Windows, you must permit the use of Basic Authentication in the Windows Registry:"
 msgstr ""
 
 #: ../../files/access_webdav.rst:271
-msgid "The computer maps the files of your Nextcloud account to the drive letter Z."
+msgid "launch ``regedit`` and navigate to ``HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters``."
 msgstr ""
 
-#: ../../files/access_webdav.rst:273
-msgid "Though not recommended, you can also mount the Nextcloud server using HTTP, leaving the connection unencrypted. If you plan to use HTTP connections on devices while in a public place, we strongly recommend using a VPN tunnel to provide the necessary security."
+#: ../../files/access_webdav.rst:272
+msgid "Create or edit the ``BasicAuthLevel`` (Windows Vista, 7 and 8), or ``UseBasicAuth`` (Windows XP and Windows Server 2003), ``DWORD`` value and set its value data to ``1`` for SSL connections. A value of ``0`` means that Basic Authentication is disabled, and a value of ``2`` allows both SSL and non-SSL connections (not recommended)."
 msgstr ""
 
-#: ../../files/access_webdav.rst:278
-msgid "An alternative command syntax is::"
+#: ../../files/access_webdav.rst:274
+msgid "Then exit Registry Editor, and restart the computer."
 msgstr ""
 
-#: ../../files/access_webdav.rst:284
-msgid "Mapping drives with Windows Explorer"
+#: ../../files/access_webdav.rst:277
+msgid "Mapping drives with the command line"
 msgstr ""
 
-#: ../../files/access_webdav.rst:286
-msgid "To map a drive using the Microsoft Windows Explorer:"
+#: ../../files/access_webdav.rst:279
+msgid "The following example shows how to map a drive using the command line. To map the drive:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:282
+msgid "Open a command prompt in Windows."
+msgstr ""
+
+#: ../../files/access_webdav.rst:283
+msgid "Enter the following line in the command prompt to map to the computer Z drive::"
 msgstr ""
 
 #: ../../files/access_webdav.rst:288
-msgid "Open Windows Explorer on your MS Windows computer."
+msgid "with <drive_path> as the URL to your Nextcloud server. For example::"
 msgstr ""
 
-#: ../../files/access_webdav.rst:289
-msgid "Right-click on **Computer** entry and select **Map network drive…** from the drop-down menu."
-msgstr ""
-
-#: ../../files/access_webdav.rst:291
-msgid "Choose a local network drive to which you want to map Nextcloud."
-msgstr ""
-
-#: ../../files/access_webdav.rst:292
-msgid "Specify the address to your Nextcloud instance, followed by **/remote.php/dav/files/USERNAME/**."
+#: ../../files/access_webdav.rst:293
+msgid "The computer maps the files of your Nextcloud account to the drive letter Z."
 msgstr ""
 
 #: ../../files/access_webdav.rst:295
-msgid "For example::"
+msgid "If you get the following error ``System error 67 has occurred. The network name cannot be found.``, open the **Services** app and make sure that the ``WebClient`` service is running and started automatically at startup."
 msgstr ""
 
-#: ../../files/access_webdav.rst:299
-msgid "For SSL protected servers, check **Reconnect at sign-in** to ensure that the mapping is persistent upon subsequent reboots. If you want to connect to the Nextcloud server as a different user, check **Connect using different credentials**."
+#: ../../files/access_webdav.rst:300
+msgid "Though not recommended, you can also mount the Nextcloud server using HTTP, leaving the connection unencrypted."
 msgstr ""
 
-#: ../../files/access_webdav.rst:308
-msgid "Click the ``Finish`` button."
+#: ../../files/access_webdav.rst:302
+msgid "If you plan to use HTTP connections on devices while in a public place, we strongly recommend using a VPN tunnel to provide the necessary security."
+msgstr ""
+
+#: ../../files/access_webdav.rst:304
+msgid "An alternative command syntax is::"
 msgstr ""
 
 #: ../../files/access_webdav.rst:310
-msgid "Windows Explorer maps the network drive, making your Nextcloud instance available."
+msgid "Mapping drives with Windows Explorer"
+msgstr ""
+
+#: ../../files/access_webdav.rst:312
+msgid "To map a drive using Microsoft Windows Explorer:"
 msgstr ""
 
 #: ../../files/access_webdav.rst:314
-msgid "Accessing files using Cyberduck"
+msgid "Open Windows Explorer on your MS Windows computer."
 msgstr ""
 
-#: ../../files/access_webdav.rst:316
-msgid "`Cyberduck <https://cyberduck.io/>`_ is an open source FTP and SFTP, WebDAV, OpenStack Swift, and Amazon S3 browser designed for file transfers on macOS and Windows."
+#: ../../files/access_webdav.rst:315
+msgid "Right-click on **Computer** entry and select **Map network drive…** from the drop-down menu."
 msgstr ""
 
-#: ../../files/access_webdav.rst:320
-msgid "This example uses Cyberduck version 4.2.1."
+#: ../../files/access_webdav.rst:317
+msgid "Choose a local network drive to which you want to map Nextcloud."
 msgstr ""
 
-#: ../../files/access_webdav.rst:322
-msgid "To use Cyberduck:"
+#: ../../files/access_webdav.rst:318
+msgid "Specify the address to your Nextcloud instance, followed by **/remote.php/dav/files/USERNAME/**."
 msgstr ""
 
-#: ../../files/access_webdav.rst:324
-msgid "Specify a server without any leading protocol information. For example:"
+#: ../../files/access_webdav.rst:321
+msgid "For example::"
 msgstr ""
 
-#: ../../files/access_webdav.rst:326
-msgid "``example.com``"
+#: ../../files/access_webdav.rst:325
+msgid "For SSL-protected servers, check **Reconnect at sign-in** to ensure that the mapping is persistent upon subsequent reboots. If you want to connect to the Nextcloud server as a different user, check **Connect using different credentials**."
 msgstr ""
 
-#: ../../files/access_webdav.rst:328
-msgid "Specify the appropriate port. The port you choose depends on whether or not your Nextcloud server supports SSL. Cyberduck requires that you select a different connection type if you plan to use SSL. For example:"
-msgstr ""
-
-#: ../../files/access_webdav.rst:332
-msgid "80 (for WebDAV)"
+#: ../../files/access_webdav.rst:0
+msgid "Screenshot of mapping WebDAV on Windows Explorer"
 msgstr ""
 
 #: ../../files/access_webdav.rst:334
-msgid "443 (for WebDAV (HTTPS/SSL))"
+msgid "Click the ``Finish`` button."
 msgstr ""
 
 #: ../../files/access_webdav.rst:336
-msgid "Use the 'More Options' drop-down menu to add the rest of your WebDAV URL into the 'Path' field. For example:"
+msgid "Windows Explorer maps the network drive, making your Nextcloud instance available."
 msgstr ""
 
-#: ../../files/access_webdav.rst:339
-msgid "``remote.php/dav/files/USERNAME/``"
+#: ../../files/access_webdav.rst:340
+msgid "Accessing files using Cyberduck"
 msgstr ""
 
-#: ../../files/access_webdav.rst:341
-msgid "Now Cyberduck enables file access to the Nextcloud server."
+#: ../../files/access_webdav.rst:342
+msgid "`Cyberduck <https://cyberduck.io/>`_ is an open source FTP, SFTP, WebDAV, OpenStack Swift, and Amazon S3 browser designed for file transfers on macOS and Windows."
 msgstr ""
 
 #: ../../files/access_webdav.rst:344
-msgid "Accessing public shares over WebDAV"
+msgid "This example uses Cyberduck version 4.2.1."
 msgstr ""
 
 #: ../../files/access_webdav.rst:346
-msgid "Nextcloud provides the possibility to access public shares over WebDAV."
+msgid "To use Cyberduck:"
 msgstr ""
 
 #: ../../files/access_webdav.rst:348
-msgid "To access the public share, open::"
+msgid "Specify a server without any leading protocol information."
+msgstr ""
+
+#: ../../files/access_webdav.rst:350
+msgid "For example: ``example.com``"
 msgstr ""
 
 #: ../../files/access_webdav.rst:352
-msgid "in a WebDAV client, use the share token as username and the (optional) share password as password."
+msgid "Specify the appropriate port."
 msgstr ""
 
-#: ../../files/access_webdav.rst:355
-msgid "**Settings** → **Administration** → **Sharing** → **Allow users on this server to send shares to other servers**. This option also allows WebDAV access to public shares needs to be enabled in order to make this feature work, except if cURL is being used (see below)."
+#: ../../files/access_webdav.rst:354
+msgid "The port you choose depends on whether or not your Nextcloud server supports SSL. Cyberduck requires that you select a different connection type if you plan to use SSL."
 msgstr ""
 
-#: ../../files/access_webdav.rst:361
-msgid "Known problems"
+#: ../../files/access_webdav.rst:358
+msgid "For example:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:357
+msgid "``80`` for unencrypted WebDAV"
+msgstr ""
+
+#: ../../files/access_webdav.rst:358
+msgid "``443`` for secure WebDAV (HTTPS/SSL)"
+msgstr ""
+
+#: ../../files/access_webdav.rst:360
+msgid "Use the 'More Options' drop-down menu to add the rest of your WebDAV URL into the 'Path' field."
+msgstr ""
+
+#: ../../files/access_webdav.rst:363
+msgid "For example: ``remote.php/dav/files/USERNAME/``"
 msgstr ""
 
 #: ../../files/access_webdav.rst:365
+msgid "Now Cyberduck enables file access to the Nextcloud server."
+msgstr ""
+
+#: ../../files/access_webdav.rst:369
+msgid "Accessing public shares over WebDAV"
+msgstr ""
+
+#: ../../files/access_webdav.rst:371
+msgid "Nextcloud provides the possibility to access public shares anonymously over WebDAV."
+msgstr ""
+
+#: ../../files/access_webdav.rst:373
+msgid "To access the public share, open::"
+msgstr ""
+
+#: ../../files/access_webdav.rst:377
+msgid "in a WebDAV client, use the share token as username and the (optional) share password as the password. For example, with a share link https://example.com/s/kFy9Lek5sm928xP, ``kFy9Lek5sm928xP`` will be the username."
+msgstr ""
+
+#: ../../files/access_webdav.rst:379
+msgid "**Settings** → **Administration** → **Sharing** → **Allow users on this server to send shares to other servers**. This option also allows WebDAV access to public shares and needs to be enabled to make this feature work, except if cURL is being used (see below)."
+msgstr ""
+
+#: ../../files/access_webdav.rst:383
+msgid "Known problems"
+msgstr ""
+
+#: ../../files/access_webdav.rst:387
 msgid "Windows does not connect using HTTPS."
 msgstr ""
 
-#: ../../files/access_webdav.rst:368
+#: ../../files/access_webdav.rst:390
 msgid "Solution 1"
 msgstr ""
 
-#: ../../files/access_webdav.rst:370
+#: ../../files/access_webdav.rst:392
 msgid "The Windows WebDAV Client might not support Server Name Indication (SNI) on encrypted connections. If you encounter an error mounting an SSL-encrypted Nextcloud instance, contact your provider about assigning a dedicated IP address for your SSL-based server."
 msgstr ""
 
-#: ../../files/access_webdav.rst:376
+#: ../../files/access_webdav.rst:398
 msgid "Solution 2"
 msgstr ""
 
-#: ../../files/access_webdav.rst:378
+#: ../../files/access_webdav.rst:400
 msgid "The Windows WebDAV Client might not support TLSv1.1 and TLSv1.2 connections. If you have restricted your server config to only provide TLSv1.1 and above the connection to your server might fail. Please refer to the WinHTTP_ documentation for further information."
 msgstr ""
 
-#: ../../files/access_webdav.rst:388
+#: ../../files/access_webdav.rst:410
 msgid "You receive the following error message: **Error 0x800700DF: The file size exceeds the limit allowed and cannot be saved.**"
 msgstr ""
 
-#: ../../files/access_webdav.rst:394
+#: ../../files/access_webdav.rst:416
 msgid "Windows limits the maximum size a file transferred from or to a WebDAV share may have. You can increase the value **FileSizeLimitInBytes** in **HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\WebClient\\\\Parameters** by clicking on **Modify**."
 msgstr ""
 
-#: ../../files/access_webdav.rst:399
+#: ../../files/access_webdav.rst:421
 msgid "To increase the limit to the maximum value of 4GB, select **Decimal**, enter a value of **4294967295**, and reboot Windows or restart the **WebClient** service."
 msgstr ""
 
-#: ../../files/access_webdav.rst:406
-msgid "Accessing your files from Microsoft Office via WebDAV fails."
-msgstr ""
-
-#: ../../files/access_webdav.rst:411
-msgid "Known problems and their solutions are documented in the KB2123563_ article."
-msgstr ""
-
-#: ../../files/access_webdav.rst:415
-msgid "Cannot map Nextcloud as a WebDAV drive in Windows using self-signed certificate."
-msgstr ""
-
-#: ../../files/access_webdav.rst:420
-msgid "Go to the your Nextcloud instance via your favorite Web browser."
-msgstr ""
-
-#: ../../files/access_webdav.rst:421
-msgid "Click through until you get to the certificate error in the browser status line."
-msgstr ""
-
-#: ../../files/access_webdav.rst:423
-msgid "View the cert, then from the Details tab, select Copy to File."
-msgstr ""
-
-#: ../../files/access_webdav.rst:424
-msgid "Save to the desktop with an arbitrary name, for example ``myNextcloud.pem``."
-msgstr ""
-
-#: ../../files/access_webdav.rst:425
-msgid "Start, Run, MMC."
-msgstr ""
-
-#: ../../files/access_webdav.rst:426
-msgid "File, Add/Remove Snap-In."
-msgstr ""
-
-#: ../../files/access_webdav.rst:427
-msgid "Select Certificates, Click Add, My User Account, then Finish, then OK."
-msgstr ""
-
 #: ../../files/access_webdav.rst:428
-msgid "Dig down to Trust Root Certification Authorities, Certificates."
-msgstr ""
-
-#: ../../files/access_webdav.rst:429
-msgid "Right-Click Certificate, Select All Tasks, Import."
-msgstr ""
-
-#: ../../files/access_webdav.rst:430
-msgid "Select the Save Cert from the Desktop."
-msgstr ""
-
-#: ../../files/access_webdav.rst:431
-msgid "Select Place all Certificates in the following Store, Click Browse."
+msgid "Adding a WebDAV drive on Windows via the above described steps does not display the correct size of in Nextcloud available space and instead shows the size of the C: drive with its available space."
 msgstr ""
 
 #: ../../files/access_webdav.rst:432
-msgid "Check the Box that says Show Physical Stores, Expand out Trusted Root Certification Authorities, and select Local Computer there, click OK, Complete the Import."
+msgid "Answer"
 msgstr ""
 
-#: ../../files/access_webdav.rst:435
-msgid "Check the list to make sure it shows up. You will probably need to Refresh before you see it. Exit MMC."
+#: ../../files/access_webdav.rst:434
+msgid "Unfortunately is this a limitation of WebDAV itself, because it does not provide a way for the client to get the available free space from the server. Windows automatically falls back to show the size of the C: drive with its available space instead. So unfortunately there is no real solution to this problem."
 msgstr ""
 
-#: ../../files/access_webdav.rst:437
-msgid "Open Browser, select Tools, Delete Browsing History."
+#: ../../files/access_webdav.rst:441
+msgid "Accessing your files from Microsoft Office via WebDAV fails."
 msgstr ""
 
-#: ../../files/access_webdav.rst:438
-msgid "Select all but In Private Filtering Data, complete."
+#: ../../files/access_webdav.rst:446
+msgid "Known problems and their solutions are documented in the KB2123563_ article."
 msgstr ""
 
-#: ../../files/access_webdav.rst:439
-msgid "Go to Internet Options, Content Tab, Clear SSL State."
-msgstr ""
-
-#: ../../files/access_webdav.rst:440
-msgid "Close browser, then re-open and test."
-msgstr ""
-
-#: ../../files/access_webdav.rst:445
-msgid "You cannot download more than 50 MB or upload large files when the upload takes longer than 30 minutes using Web Client in Windows 7."
-msgstr ""
-
-#: ../../files/access_webdav.rst:451
-msgid "Workarounds are documented in the KB2668751_ article."
+#: ../../files/access_webdav.rst:450
+msgid "Cannot map Nextcloud as a WebDAV drive in Windows using a self-signed certificate."
 msgstr ""
 
 #: ../../files/access_webdav.rst:455
-msgid "Accessing files using cURL"
+msgid "Access to your Nextcloud instance via your favorite Web browser."
 msgstr ""
 
-#: ../../files/access_webdav.rst:457
-msgid "Since WebDAV is an extension of HTTP, cURL can be used to script file operations."
+#: ../../files/access_webdav.rst:456
+msgid "Click through until you get to the certificate error in the browser status line."
+msgstr ""
+
+#: ../../files/access_webdav.rst:458
+msgid "View the certificate, then from the Details tab, select Copy to File."
 msgstr ""
 
 #: ../../files/access_webdav.rst:459
-msgid "**Settings** → **Administration** → **Sharing** → **Allow users on this server to send shares to other servers**. If this option is disabled the option ``--header \"X-Requested-With: XMLHttpRequest\"`` needs to be passed to cURL."
+msgid "Save the file to your desktop with an arbitrary name, for example ``myNextcloud.pem``."
+msgstr ""
+
+#: ../../files/access_webdav.rst:461
+msgid "Go to Start menu > Run, type MMC, and click OK to open Microsoft Management Console."
+msgstr ""
+
+#: ../../files/access_webdav.rst:463
+msgid "Go to File > Add/Remove Snap-In."
 msgstr ""
 
 #: ../../files/access_webdav.rst:464
-msgid "To create a folder with the current date as name:"
+msgid "Select Certificates, Click Add, choose My User Account, then Finish, and finally OK."
+msgstr ""
+
+#: ../../files/access_webdav.rst:466
+msgid "Dig down to Trust Root Certification Authorities, Certificates."
+msgstr ""
+
+#: ../../files/access_webdav.rst:467
+msgid "Right-Click Certificate, Select All Tasks, and Import."
+msgstr ""
+
+#: ../../files/access_webdav.rst:468
+msgid "Select the saved certificate from the Desktop."
+msgstr ""
+
+#: ../../files/access_webdav.rst:469
+msgid "Select Place all Certificates in the following Store, and click Browse."
 msgstr ""
 
 #: ../../files/access_webdav.rst:470
-msgid "To upload a file ``error.log`` into that directory:"
+msgid "Check the Box that says Show Physical Stores, expand out Trusted Root Certification Authorities, select Local Computer there, click OK, and Complete the Import."
 msgstr ""
 
-#: ../../files/access_webdav.rst:476
-msgid "To move a file:"
+#: ../../files/access_webdav.rst:473
+msgid "Check the list to make sure the certificate shows up. You will probably need to Refresh before you see it."
+msgstr ""
+
+#: ../../files/access_webdav.rst:475
+msgid "Exit MMC."
+msgstr ""
+
+#: ../../files/access_webdav.rst:477
+msgid "For Firefox users:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:479
+msgid "Launch your browser, go to Application menu > History > Clear recent history..."
+msgstr ""
+
+#: ../../files/access_webdav.rst:480
+msgid "Select 'Everything' in the 'Time range to clear' dropdown menu"
+msgstr ""
+
+#: ../../files/access_webdav.rst:481
+msgid "Select the 'Active Logins' check box"
 msgstr ""
 
 #: ../../files/access_webdav.rst:482
+msgid "Click the 'Clear now' button"
+msgstr ""
+
+#: ../../files/access_webdav.rst:483
+#: ../../files/access_webdav.rst:489
+msgid "Close the browser, then re-open and test."
+msgstr ""
+
+#: ../../files/access_webdav.rst:485
+msgid "For Chrome-based browsers (Chrome, Chromium, Microsoft Edge) users:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:487
+msgid "Open Windows Control Panel, navigate down to Internet Options"
+msgstr ""
+
+#: ../../files/access_webdav.rst:488
+msgid "In the Content tab, click the Clear SSL State button."
+msgstr ""
+
+#: ../../files/access_webdav.rst:493
+msgid "Accessing files using cURL"
+msgstr ""
+
+#: ../../files/access_webdav.rst:495
+msgid "Since WebDAV is an extension of HTTP, cURL can be used to script file operations."
+msgstr ""
+
+#: ../../files/access_webdav.rst:497
+msgid "**Settings** → **Administration** → **Sharing** → **Allow users on this server to send shares to other servers**. If this option is disabled, the option ``--header \"X-Requested-With: XMLHttpRequest\"`` needs to be passed to cURL."
+msgstr ""
+
+#: ../../files/access_webdav.rst:500
+msgid "To create a folder with the current date as name:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:506
+msgid "To upload a file ``error.log`` into that directory:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:512
+msgid "To move a file:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:518
 msgid "To get the properties of files in the root folder:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:557
+msgid "Accessing files using WinSCP"
+msgstr ""
+
+#: ../../files/access_webdav.rst:559
+msgid "`WinSCP <https://winscp.net/eng/docs/introduction/>`_  is an open source free SFTP, FTP, WebDAV, S3, and SCP client for Windows. Its main function is file transfer between a local and a remote computer. Beyond this, WinSCP offers scripting and basic file management functionality."
+msgstr ""
+
+#: ../../files/access_webdav.rst:561
+msgid "You can `download <https://winscp.net/eng/downloads.php/>`_ the portable version of WinSCP and run it on Linux through `Wine <https://wiki.winehq.org/Main_Page/>`_."
+msgstr ""
+
+#: ../../files/access_webdav.rst:563
+msgid "To run WinSCP on Linux, download wine through your distribution's package manager, then run it with the command: ``wine WinSCP.exe``."
+msgstr ""
+
+#: ../../files/access_webdav.rst:565
+msgid "To connect to Nextcloud:"
+msgstr ""
+
+#: ../../files/access_webdav.rst:567
+msgid "Start WinSCP"
+msgstr ""
+
+#: ../../files/access_webdav.rst:568
+msgid "Press 'Session' in the menu"
+msgstr ""
+
+#: ../../files/access_webdav.rst:569
+msgid "Press the 'New Session' menu option"
+msgstr ""
+
+#: ../../files/access_webdav.rst:570
+msgid "Set the 'File protocol' dropdown to WebDAV"
+msgstr ""
+
+#: ../../files/access_webdav.rst:571
+msgid "Set the 'Encryption' dropdown to TLS/SSL Implicit encryption"
+msgstr ""
+
+#: ../../files/access_webdav.rst:572
+msgid "Fill in the hostname field: ``example.com``"
+msgstr ""
+
+#: ../../files/access_webdav.rst:573
+msgid "Fill in the username field: ``NEXTCLOUDUSERNAME``"
+msgstr ""
+
+#: ../../files/access_webdav.rst:574
+msgid "Fill in the password field: ``NEXTCLOUDPASSWORD``"
+msgstr ""
+
+#: ../../files/access_webdav.rst:575
+msgid "Press the 'Advanced...' button"
+msgstr ""
+
+#: ../../files/access_webdav.rst:576
+msgid "Navigate to 'Environment', 'Directories' on the left side"
+msgstr ""
+
+#: ../../files/access_webdav.rst:577
+msgid "Fill in the 'Remote directory' field with the following: ``/nextcloud/remote.php/dav/files/NEXTCLOUDUSERNAME/``"
+msgstr ""
+
+#: ../../files/access_webdav.rst:578
+msgid "Press the 'OK' button"
+msgstr ""
+
+#: ../../files/access_webdav.rst:579
+msgid "Press the 'Save' button"
+msgstr ""
+
+#: ../../files/access_webdav.rst:580
+msgid "Select the desired options and press the 'OK' button"
+msgstr ""
+
+#: ../../files/access_webdav.rst:581
+msgid "Press the 'Login' button to connect to Nextcloud"
+msgstr ""
+
+#: ../../files/access_webdav.rst:583
+msgid "it is recommended to use an app password for the password if you use TOTP as WinSCP does not understand TOTP with Nextcloud at the time of writing (2022-11-07)."
 msgstr ""

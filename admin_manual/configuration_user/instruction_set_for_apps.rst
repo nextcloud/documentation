@@ -23,7 +23,7 @@ Example
 ^^^^^^^
 ::
 
-  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/apps?filter=enabled
+  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/apps?filter=enabled -H "OCS-APIRequest: true"
 
 * Gets enabled apps
 
@@ -64,7 +64,7 @@ Example
 ^^^^^^^
 ::
 
-  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/apps/files
+  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/apps/files -H "OCS-APIRequest: true"
 
 * Get app info for the ``files`` app
 
@@ -121,7 +121,7 @@ Example
 ^^^^^^^
 ::
 
-  $ curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor
+  $ curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor -H "OCS-APIRequest: true"
 
 * Enable the ``files_texteditor`` app
 
@@ -157,7 +157,7 @@ Example
 ^^^^^^^
 ::
 
-  $ curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor
+  $ curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor -H "OCS-APIRequest: true"
 
 * Disable the ``files_texteditor`` app
 

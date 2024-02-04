@@ -13,8 +13,9 @@ Offering a RESTful API is not different from creating a :doc:`route <../basics/r
     <?php
     namespace OCA\MyApp\Controller;
 
-    use \OCP\AppFramework\ApiController;
-    use \OCP\IRequest;
+    use OCP\AppFramework\ApiController;
+    use OCP\AppFramework\Http\Attribute\CORS;
+    use OCP\IRequest;
 
     class AuthorApiController extends ApiController {
 
@@ -22,9 +23,7 @@ Offering a RESTful API is not different from creating a :doc:`route <../basics/r
             parent::__construct($appName, $request);
         }
 
-        /**
-         * @CORS
-         */
+        #[CORS]
         public function index() {
 
         }
@@ -38,9 +37,9 @@ CORS also needs a separate URL for the preflighted **OPTIONS** request that can 
     <?php
     // appinfo/routes.php
     array(
-        'name' => 'author_api#preflighted_cors', 
-        'url' => '/api/1.0/{path}', 
-        'verb' => 'OPTIONS', 
+        'name' => 'author_api#preflighted_cors',
+        'url' => '/api/1.0/{path}',
+        'verb' => 'OPTIONS',
         'requirements' => array('path' => '.+')
     )
 
@@ -72,8 +71,8 @@ To add an additional method or header or allow less headers, simply pass additio
 
         public function __construct($appName, IRequest $request) {
             parent::__construct(
-                $appName, 
-                $request, 
+                $appName,
+                $request,
                 'PUT, POST, GET, DELETE, PATCH',
                 'Authorization, Content-Type, Accept',
                 1728000);

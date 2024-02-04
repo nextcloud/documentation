@@ -235,11 +235,12 @@ working connection. This provides controls to disable the current
 configuration,
 configure replica hosts, and various performance-enhancing options.
 
-The Advanced Settings are structured into three parts:
+The Advanced Settings are structured into four parts:
 
 * Connection Settings
 * Directory Settings
 * Special Attributes
+* User Profile Attributes
 
 Connection settings
 ^^^^^^^^^^^^^^^^^^^
@@ -435,16 +436,19 @@ Special attributes
 Quota Field:
   Nextcloud can read an LDAP attribute and set the user quota according to its
   value. Specify the attribute here, and it will return human-readable values,
-  e.g. "2 GB". Any quota set in LDAP overrides quotas set on the Nextcloud user
-  management page.
+  e.g. "2 GB".
 
   * Example: *NextcloudQuota*
 
+.. warning:: LDAP quota parameters override quota parameters set in the Nextcloud user management page.
+
 Quota Default:
-  Override Nextcloud default quota for LDAP users who do not have a quota set in
-  the Quota Field.
+  Specifies a default quota for LDAP users who do not have a quota set in
+  the above Quota Field.
 
   * Example: *15 GB*
+
+.. warning:: LDAP quota parameters override quota parameters set in the Nextcloud user management page.
 
 Email Field:
   Set the user's email from their LDAP attribute. Leave it empty for default
@@ -465,6 +469,80 @@ In new Nextcloud installations the home folder rule is enforced. This means that
 In migrated Nextcloud installations the old behavior still applies, which is using the Nextcloud username as the home folder when an LDAP attribute is not set. You may change this enforcing the home folder rule with the ``occ`` command in Nextcloud, like this example on Ubuntu::
 
   sudo -u www-data php occ config:app:set user_ldap enforce_home_folder_naming_rule --value=1
+
+.. _LDAP_User_Profile_Attributes:
+
+User Profile attributes
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: ../images/ldap-advanced-4-attributes.png
+   :alt: User Profile Attributes.
+
+After configuring those attributes, the User Profile data will be overwritten with the according data from LDAP.  The checksum of data from LDAP will be stored in user settings ``user_ldap``, ``lastProfileChecksum`` and profile update is skipped as long as data from LDAP doesn't change.  If ``memcache.distributed`` is enabled in ``config.php`` the checksum will be cached and the checking will be skipped, as long as the cached value exists (expires after ``ldapCacheTTL`` seconds).
+
+Please be aware:
+  - The user can change the data in profile, but it will get overwritten if changed in LDAP
+  - The user can change the visibility scope in profile
+  - The default visibility can be adjusted with setting the ``account_manager.default_property_scope`` array in ``config.php``
+  - If multiple attribute values are present, only the first distributed value is used
+  - All user profile properties are limited to 2048 character
+  - Having misformatted data in LDAP will most probably leave you with empty user profile fields
+  - Setting the global ``profile.enabled => false`` on ``config.php`` skips the code
+
+By calling ``php occ ldap:check-user --update <uid>`` the users data from LDAP will be displayed and the profile gets updated. To get the correct ``<uid>`` value for any user you can use ``php occ user:list``.
+
+.. note:: After unsetting an attribute name here, the data won't be deleted from user profile. Setting an nonexisting attribute will empty the corresponding profile field.
+
+Phone Field:
+  The LDAP Attribute holding the phone number, to copy to the Profile Phone field.
+  The phone number has to be formatted in international syntax without delimiters (E.164).
+  Be sure to format phone numbers like ``+4966612345678``.
+
+  * Example: *telephoneNumber*
+  * Example: *mobile*
+
+.. note:: You should set your ``default_phone_region`` in ``config.php``.
+
+Website Field:
+  The LDAP attribute holding the website URI.
+  The URI must start with ``https://`` or ``http://`` others are currently not allowed in Nextcloud user profile.
+  If using ``labeledURI`` attributes the label (everything after first SPACE) gets removed.
+
+  * Example: *wWWHomePage*
+  * Example: *labeledURI*
+
+Address Field:
+  The LDAP attribute holding the users address. Named Location on user profile page.
+  Nextcloud wants a single line value like ``city, country`` or ``somewhere under the loving sun``.
+  Multi line postalAddress format will get reformatted, DOLLAR sign delimiter gets replaced with COMMA+SPACE.
+
+  * Example: *postalAddress*
+  * Example: *localityName*
+
+Twitter Field:
+  The LDAP attribute holding the Twitter account name.
+
+Fediverse Field:
+  The LDAP attribute holding the users Fediverse address.
+
+Organisation Field:
+  The LDAP attribute holding the Organisation name.
+
+  * Example: *company*
+  * Example: *o* or *organizationName*
+
+Role Field:
+  The LDAP attribute holding the organizational role, within the organisation or job title.
+
+  * Example: *title*
+
+Headline Field:
+  The LDAP attribute holding the users headline.
+
+Biography Field:
+  The LDAP attribute holding the users about i.e. short biography.
+  Multi line value with unix LF line ending.
+  Windows CRLF and Macintosh CR line endings will be replaced with unix LF line ending.
 
 Expert settings
 ---------------
@@ -574,6 +652,65 @@ The value can be modified by::
   sudo -u www-data php occ config:app:set user_ldap updateAttributesInterval --value=86400
 
 A value of 0 will update it on every of the named occasions.
+
+Administrative Group mapping
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It is possible to promote **one** LDAP per connection as an admin group, so
+that all its members also have administrative privileges in Nextcloud.
+
+A group can either be promoted via a dedicated ``occ`` call providing a group
+parameter that can be either a nextcloud group ID or a group name that will be
+search against. When a search is executed an exact match is required.
+
+Example usage::
+
+  $ php occ ldap:promote-group --help
+  Description:
+    declares the specified group as admin group (only one is possible per LDAP configuration)
+
+  Usage:
+    ldap:promote-group [options] [--] <group>
+
+  Arguments:
+    group                 the group ID in Nextcloud or a group name
+
+  Options:
+    -y, --yes             do not ask for confirmation
+  …
+
+  # Example
+  $ php occ ldap:promote-group  "Nextcloud Admins"
+  Promote Nextcloud Admins to the admin group (y|N)? y
+  Group Nextcloud Admins was promoted
+
+  $ php occ ldap:promote-group  "Paramount Court"
+  Promote Nextcloud Admins to the admin group and demote Nextcloud Admins (Group ID: nextcloud_admins) (y|N)? y
+  Group Paramount Court was promoted
+
+  $ php occ ldap:promote-group  "Paramount Court"
+  The specified group is already promoted
+
+.. note:: Note the group ID will only be displayed when it differs from the
+  group's display name.
+
+It is also possible to set the admin group mapping using
+``occ ldap:set-config $configId ldapAdminGroup $groupId``, but as the Nextcloud
+group ID might not be known (yet) it is recommended (especially for automatized
+setups) to use the `promote-group` command, that would also pull in the group
+and determine the group ID.
+
+In order to demote or reset a promotion, an empty string should be set against
+to the targeted config's ldapAdminGroup::
+
+  # Reset an admin group mapping via set-config
+  occ ldap:set-config $configId ldapAdminGroup ""
+  # Example
+  occ ldap:set-config s01 ldapAdminGroup ""
+
+.. tip:: To have more than one administrative groups in a connection, create a
+  holding group in your LDAP directory that contains the single groups as
+  nested members, and promote this one.
 
 Nextcloud avatar integration
 ----------------------------
@@ -717,6 +854,10 @@ allow a better performance on our side. They are typically checked twice a day
 in batches from all users again. Beside that they are also refreshed during a
 login for this user or can be fetched manually via the occ command 
 ``occ ldap:check-user --update USERID`` where ``USERID`` is Nextcloud's user id.
+
+For groups, a cache of memberships is stored in the database to be able to trigger
+events when a membership is added or removed. This cache is updated by a background
+job, and can be force updated using ``occ ldap:check-group --update GROUPID``.
 
 Caching
 ^^^^^^^

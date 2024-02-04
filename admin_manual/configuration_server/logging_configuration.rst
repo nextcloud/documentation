@@ -2,7 +2,11 @@
 Logging
 =======
 
-Use your Nextcloud log to review system status, or to help debug problems. You may adjust logging levels, and choose between using the Nextcloud log or your syslog. If additional audit information is required, you can optionally activate the **admin_audit** app, which by default generates a separate audit.log file in the data directory.
+Use your Nextcloud log to review system status, or to help debug problems. You may adjust logging levels, and choose how and where log data is stored. If additional event logging is required, you can optionally activate the **admin_audit** app. 
+
+When ``file`` based logging is utilized, both the Nextcloud log and, optionally, the **admit_audit** app log can be viewed within the Nextcloud interface under *Administration settings -> Logging* (this functionality is provided by the **logreader** app).
+
+Further configuration and usage details for both the standard Nextcloud log and the optional **admin_audit** app log can be found below. 
 
 Log level
 ---------
@@ -129,21 +133,14 @@ Log field breakdown
 * **data** additional structured data (if applicable)
 * **version**: Nextcloud version at the time of request
 
-Empty value are written as two dashes: "--".
+Empty value are written as two dashes: ``--``.
 
-Admin audit log
----------------
+Admin audit log (Optional)
+--------------------------
 
-If ``loglevel`` in ``config.php`` is set to ``2`` or higher, audit logging needs to be triggered explicitly by adding the following setting to to ``config.php``:
+By enabling the **admin_audit** app, additional information about various events can be logged. Similar to the normal logging, the audit log can be provided to any of the existing logging mechanisms in :file:`config/config.php`. The default behavior, if no parameters are specified after the app is enabled, is ``file`` based logging to a file called ``audit.log`` stored in the ``datadirectory``.
 
-::
-
-	'log.condition' => [
-		'apps' => ['admin_audit'],
-	],
-
-
-Similar to the normal logging, the audit log can be written to any of the existing logging mechanism in :file:`config/config.php`:
+If you wish to override this and log to syslog instead the following would be one approach:
 
 ::
 
@@ -151,13 +148,41 @@ Similar to the normal logging, the audit log can be written to any of the existi
 	"syslog_tag_audit" => "Nextcloud",
 	"logfile_audit" => "",
 
-Previously the logfile could be defined in the app config. This config is still used when the system config is not provided:
+Log level interaction
+~~~~~~~~~~~~~~~~~~~~~
+
+If system ``loglevel`` in ``config.php`` is set to ``2`` or higher, audit logging needs to be triggered explicitly by adding the following setting to ``config.php``:
+
+::
+
+	"log.condition" => [
+		"apps" => ["admin_audit"],
+	],
+
+Find detailed documentation on auditable events for enterprises in our `customer portal <https://portal.nextcloud.com/article/using-the-audit-log-44.html>`_.
+
+Integrating into the Web Interface
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The built-in NC ``logreader`` app (which is what provides the *Administration settings->Logging* interface) only accesses the file-based ``nextcloud.log``. The **admin_audit** app log output, however, can be integrated into the web interface by configuring it to *also* log to the ``nextcloud.log``.
+
+Add the following to your ``config.php`` (adjusting the path to your own ``nextcloud.log`` path):
+
+::
+
+	'log.condition' => [
+		'apps' => [ 'admin_audit'],
+	],
+	'logfile_audit' => '/var/www/html/data/nextcloud.log',
+
+Configuring through admin_audit app settings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Previously the audit logfile was defined in the app config. This config is still used when the system config is not provided, but is considered a legacy parameter.
 
 ::
 
 	occ config:app:set admin_audit logfile --value=/var/log/nextcloud/audit.log
-
-Find detailed documentation on auditable events for enterprises in our `customer portal <https://portal.nextcloud.com/article/using-the-audit-log-44.html>`_.
 
 .. _PHP date function: http://www.php.net/manual/en/function.date.php
 

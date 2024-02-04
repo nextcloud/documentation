@@ -127,6 +127,10 @@ To start the MySQL command line mode use::
 
   mysql -uroot -p
 
+When using MariaDB use::
+
+  mariadb -uroot -p
+
 Then a **mysql>** or **MariaDB [root]>** prompt will appear. Now enter the following lines and confirm them with the enter key:
 
 ::
@@ -134,7 +138,6 @@ Then a **mysql>** or **MariaDB [root]>** prompt will appear. Now enter the follo
   CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
   CREATE DATABASE IF NOT EXISTS nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
   GRANT ALL PRIVILEGES on nextcloud.* to 'username'@'localhost';
-  FLUSH privileges;
 
 You can quit the prompt by entering::
 

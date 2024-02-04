@@ -4,48 +4,17 @@
 Migrations
 ==========
 
-In the past, apps had a `appinfo/database.xml`-file which holds their database schema
-for installation and update and was a functional method for installing apps which
-had some trouble with upgrading apps (e.g. apps were not able to rename columns
-without losing the data stored in the original column):
-
-.. code-block:: php
-
-   <?xml version="1.0" encoding="ISO-8859-1" ?>
-   <database>
-            <name>*dbname*</name>
-            <create>true</create>
-            <overwrite>false</overwrite>
-            <charset>utf8</charset>
-            <table>
-                    <name>*dbprefix*twofactor_backupcodes</name>
-                    <declaration>
-                          <field>
-                                  <name>id</name>
-                                  <type>integer</type>
-                                  <autoincrement>1</autoincrement>
-                                  <default>0</default>
-                                  <notnull>true</notnull>
-                                  <length>4</length>
-                          </field>
-    ...
-
-
-The limitations of this method will be bypassed with migrations. A migration can
-consist of 3 different methods:
+Migrations change the database schema and operate in three steps:
 
 * Pre schema changes
-* Actual schema changes
+* Schema changes
 * Post schema changes
 
 Apps can have multiple migrations, which allows a way more flexible updating process.
 For example, you can rename a column while copying all the content with 3 steps
 packed in 2 migrations.
 
-After creating migrations for your current database and installation routine,
-in order to make use of migrations, you need to delete the old `appinfo/database.xml`
-file. The Nextcloud updater logic only allows to use one or the other.
-But as soon as the `database.xml` file is gone, it will look for your migration
+The Nextcloud updater logic will look for your migration
 files in the apps `lib/Migration` folder.
 
 .. note:: While in theory you can run any code in the pre- and post-steps, we
@@ -155,8 +124,8 @@ with migrations, which are only available if you are running your
 Nextcloud **in debug mode**:
 
 * `migrations:execute`: Executes a single migration version manually.
-  The version argument is the class name of the migration, while the 
-  postfix "Version" is skipped. For example if your migration was named
+  The version argument is the class name of the migration, without the 
+  "Version" prefix. For example if your migration was named
   `Version2404Date20220903071748` the version would be `2404Date20220903071748`.
 * `migrations:generate`:
   This is needed to create a new migration file. This takes 2 arguments,
@@ -172,3 +141,20 @@ Nextcloud **in debug mode**:
 
 .. note:: After generating a migration, you might need to run `composer dump-autoload`
    to be able to execute it.
+
+Adding indices
+--------------
+
+Adding indices to existing tables can take long time, especially on large tables. Therefore it is recommended to not add the indices in the migration itself, but to indicate the index requirement to the server by adding a listener for the ``AddMissingIndicesEvent``. This way the migration can be executed in a separate step and do not block the upgrade process. For new installations the index should still be added to the migration that creates the table.
+
+.. code-block:: php
+
+   class AddMissingIndicesListener implements IEventListener {
+      public function handle(Event $event): void {
+         if (!$event instanceof AddMissingIndicesEvent) {
+            return;
+         }
+
+         $event->addMissingIndex('my_table', 'my_index', ['column_a', 'column_b']);
+      }
+   }

@@ -169,10 +169,65 @@ Executable
 When you are satisfied with how ClamAV is operating, you might want to go
 back and change all of your logging to less verbose levels.
 
+Confirm everything is working
+-----------------------------
+
+Every antivirus provider implements a test virus string, that way tests are quite easy. You find the files here:
+https://www.eicar.org/download-anti-malware-testfile/
+
+Uploading the file will trigger an error:
+   "Virus Win.Test.EICAR_HDB-1 is detected in the file. Upload cannot be completed."
+
+Manage the background scanner
+-----------------------------
+
+The background scanner does not require any manual intervention.
+However at times you might want to inspect it or perform tasks on it.
+
+Get info about files in the scan queue
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    sudo -u www php occ files_antivirus:status [-v]
+
+
+Manually trigger the background scan
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    sudo -u www php occ files_antivirus:background-scan [-v] [-m MAX]
+
+Manually scan a single file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    sudo -u www php occ files_antivirus:scan <path>
+
+Mark a file as scanned or unscanned
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+    sudo -u www php occ files_antivirus:mark <path> <scanned|unscanned>
+  
+Files marked as scanned will not be scanned for the next four weeks.
+
+Configuring ICAP on Nextcloud
+-----------------------------
+
+Nextcloud offers the integration of antivirus protection based on the ICAP protocol.
+The settings are outlined here.
+Additional documentation is work in progress.
+
+.. figure:: ../images/antivirus-icap.png
+
 
 Disabling background scan task
 ------------------------------
 
-You can disable background scan with occ to only scan files during upload.
+You can disable background scan with occ to only scan files during upload::
 
-    occ config:app:set files_antivirus av_background_scan --value="off"
+    sudo -u www php occ config:app:set files_antivirus av_background_scan --value="off"

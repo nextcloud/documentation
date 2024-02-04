@@ -8,7 +8,7 @@ Applications can expose entities with specific events on the one hand, and opera
 
 An example flow might be converting Word documents into PDF when they are added to one folder, then move that Word document to another folder once it's finished. This workflow would deal with the file entity's create event and act on that file.
 
-At 36c3 blizzz gave a talk explaining Flow and `how to write actions and triggers. <https://mirror.eu.oneandone.net/projects/media.ccc.de/congress/2019/h264-sd/36c3-oio-174-eng-Building_Nextcloud_Flow_sd.mp4>`_ You can `find the slides of their talk here. <https://nextcloud.com/wp-content/themes/next/assets/files/Building_nextcloud_flow.pdf>`_
+At 36c3 blizzz gave a talk explaining Flow and `how to write actions and triggers. <https://media.ccc.de/v/36c3-oio-174-building-nextcloud-flow>`_ You can `find the slides of their talk here. <https://web.archive.org/web/20220219081809/https://nextcloud.com/wp-content/themes/next/assets/files/Building_nextcloud_flow.pdf>`_
 
 Entities
 ========

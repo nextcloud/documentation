@@ -58,6 +58,12 @@ User accounts have the following properties:
   cannot upload or sync data. You have the the option to include external
   storage in user quotas.
 
+*Manager*
+  Every user can have one organizational manager. The manager property goes into
+  the system address book card of the user and is used for the Contacts app's
+  organization chart, for example. Setting a manager does **not** change any
+  authorization level of the user or their manager.
+
 Creating a new user
 -------------------
 
@@ -195,6 +201,11 @@ appears at the far right. After clicking on it, you will see the **Disable** opt
 The user will not longer be able to access their Nextcloud until you enable them again.
 Also all external shares, via public link or email, will not be accessible.
 Internal shares will still be working, so that other users on Nextcloud can continue working.
+
+If you wish for internal shares to be disabled as well when a user is disabled,
+activate the configuration option files_sharing:hide_disabled_user_shares::
+
+ occ config:app:set files_sharing hide_disabled_user_shares --value yes
 
 You will find all disabled users in the **disabled**-section on the left pane.
 Enabling users is as easy as disabling them. Just click on the "..."-menu, and

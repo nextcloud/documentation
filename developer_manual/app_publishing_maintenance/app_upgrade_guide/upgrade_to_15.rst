@@ -25,7 +25,7 @@ Removed APIs
 Back-end changes
 ----------------
 
-* Removed php7.0 support
+* Removed PHP 7.0 support
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^

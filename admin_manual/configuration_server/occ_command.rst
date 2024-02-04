@@ -16,6 +16,7 @@ occ command Directory
 ---------------------
 
 * :ref:`http_user_label`
+* :ref:`run_commands_in_maintenance_mode`
 * :ref:`apps_commands_label`
 * :ref:`background_jobs_selector_label`
 * :ref:`config_commands_label`
@@ -41,6 +42,7 @@ occ command Directory
 * :ref:`two_factor_auth_label`
 * :ref:`disable_user_label`
 * :ref:`system_tags_commands_label`
+* :ref:`antivirus_commands_label`
 * `Debugging`_
 
 .. _http_user_label:
@@ -160,6 +162,17 @@ This output option is available on all list and list-like commands:
 ``status``, ``check``, ``app:list``, ``config:list``, ``encryption:status``
 and ``encryption:list-modules``
 
+Environment variables
+^^^^^^^^^^^^^^^^^^^^^
+
+``sudo`` does not forward environment variables by default. Put the variables before the ``php`` command::
+
+  sudo -u www-data NC_debug=true php occ status
+
+Alternatively, you can ``export`` the variable or use the ``-E`` switch for ``sudo``::
+
+  NC_debug=true sudo -E -u www-data php occ status
+
 Enabling autocompletion
 -----------------------
 
@@ -185,6 +198,20 @@ you need to specify ``--program occ`` after the ``--generate-hook``.
 
 If you want the completion to apply automatically for all new shell sessions, add the command to your
 shell's profile (eg. ``~/.bash_profile`` or ``~/.zshrc``).
+
+.. _run_commands_in_maintenance_mode:
+
+Run commands in maintenance mode
+--------------------------------
+
+In maintenance mode, apps are not loaded [1]_, so commands from apps are unavailable. Commands integrated into Nextcloud server are available in maintenance mode.
+
+We discourage the use of maintenance mode unless the command explicitly prompts you to do so or unless the commands' documentation explicitly states that maintenance mode should be used.
+
+A command may use events to communicate with other apps. An app can only react to an event when loaded. Example: The command user:delete deletes a user account. UserDeletedEvent is emitted. Calendar app implements an event listener to delete user data [2]_. In maintenance mode, the Calendar app is not loaded, and hence the user data not deleted.
+
+.. [1] Exception: `The settings app is loaded <https://github.com/nextcloud/server/blob/75f17b60945e15effc3eea41393eef2b13937226/lib/base.php#L780>`_
+.. [2] `Calendar app event listener for UserDeletedEvent <https://github.com/nextcloud/calendar/blob/87e8586971a8676dc15a90f0cd969274678b7009/lib/Listener/UserDeletedListener.php>`_
 
 .. _apps_commands_label:
 
@@ -237,6 +264,10 @@ To update an app, for instance Contacts::
 To update all apps::
 
     sudo -u www-data php occ app:update --all
+
+To show available update(s) without updating::
+
+    sudo -u www-data php occ app:update --showonly
 
 .. _background_jobs_selector_label:
 
@@ -500,8 +531,14 @@ bernie::
 
  sudo -u www-data php occ dav:sync-birthday-calendar bernie
 
-``dav:sync-system-addressbook`` synchronizes all users to the system
-addressbook::
+
+.. _occ-dav-sync-system-address-book:
+
+Sync system address book
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+``dav:sync-system-addressbook`` synchronizes all users to the :ref:`system
+address book<system-address-book>`::
 
  sudo -u www-data php occ dav:sync-system-addressbook
 
@@ -606,10 +643,7 @@ user::
 
  sudo -u www-data php occ encryption:decrypt freda
 
-Users must have enabled recovery keys on their Personal pages. You must first
-put your Nextcloud server into :ref:`maintenance
-mode <maintenance_commands_label>` to prevent any user activity until
-decryption is completed.
+Users must have enabled recovery keys on their Personal pages.
 
 Note that if you do not have master key/recovery key enabled, you can ONLY
 decrypt files per user, one user at a time and NOT when in maintenance mode.
@@ -830,6 +864,7 @@ Commands for handling shares::
  sharing
   sharing:cleanup-remote-storages  Cleanup shared storage entries that have no matching entry in the shares_external table
   sharing:expiration-notification  Notify share initiators when a share will expire the next day
+  sharing:delete-orphan-shares     Delete shares where the owner no longer has access to the file or the file is not available anymore
 
 .. _files_external_label:
 
@@ -917,6 +952,7 @@ you can run the following LDAP commands with ``occ``::
 
  ldap
   ldap:check-user               checks whether a user exists on LDAP.
+  ldap:check-group              checks whether a group exists on LDAP.
   ldap:create-empty-config      creates an empty LDAP configuration
   ldap:delete-config            deletes an existing LDAP configuration
   ldap:search                   executes a user or group search
@@ -960,6 +996,11 @@ is not in one of the disabled connections, and exists on an active connection,
 use the ``--force`` option to force it to check all active LDAP connections::
 
  sudo -u www-data php occ ldap:check-user --force robert
+
+``ldap:check-group`` checks whether a group still exists in the LDAP directory.
+Use with ``--update`` to update the group membership cache on the Nextcloud side::
+
+ sudo -u www-data php occ ldap:check-group --update mygroup
 
 ``ldap:create-empty-config`` creates an empty LDAP configuration. The first
 one you create has ``configID`` ``s01``, and all subsequent configurations
@@ -1079,6 +1120,7 @@ Security
 Use these commands to manage server-wide SSL certificates or reset brute-force slow-downs. These are useful when you create federation shares with other Nextcloud servers that use self-signed certificates::
 
  security
+  security:bruteforce:attempts  list brute-force attemps for given IP address
   security:bruteforce:reset     resets brute-force attemps for given IP address
   security:certificates         list trusted certificates
   security:certificates:import  import trusted certificate
@@ -1101,6 +1143,70 @@ Remove a certificate::
 
  sudo -u www-data php occ security:certificates:remove [certificate name]
 
+Status
+------
+
+Use the status command to retrieve information about the current installation::
+
+ $ sudo -u www-data php occ status
+   - installed: true
+   - version: 25.0.2.3
+   - versionstring: 25.0.2
+   - edition:
+   - maintenance: false
+   - needsDbUpgrade: false
+   - productname: Nextcloud
+   - extendedSupport: false
+
+This information can also be formatted via JSON instead of plain text::
+
+ $ php occ status --output=json_pretty
+ {
+     "installed": true,
+     "version": "25.0.2.3",
+     "versionstring": "25.0.2",
+     "edition": "",
+     "maintenance": false,
+     "needsDbUpgrade": false,
+     "productname": "Nextcloud",
+     "extendedSupport": false
+ }
+
+Status return code
+^^^^^^^^^^^^^^^^^^
+
+And finally, the ``-e`` (for exit code) parameter can be used to check
+the state of the nextcloud installation via return code::
+
+ $ php occ status -e
+ $ echo $?
+ 0
+ $ php occ maintenance:mode --on
+ Maintenance mode enabled
+ $ php occ status -e
+ $ echo $?
+ 1
+ $ php occ maintenance:mode --off
+ Maintenance mode disabled
+ $ php occ status -e
+ $ echo $?
+ 0
+
+Note that by default there is no output when run with ``-e``. This is
+intentional, so it can be used in scripts, monitoring checks, and systemd
+units.
+
++-------------+--------------------------------------------------------+
+| Return code | Description                                            |
++=============+========================================================+
+| 0           | normal operation                                       |
++-------------+--------------------------------------------------------+
+| 1           | maintenance mode is enabled; the instance is currently |
+|             | unavailable to users.                                  |
++-------------+--------------------------------------------------------+
+| 2           | ``php occ upgrade`` is required                        |
++-------------+--------------------------------------------------------+
+
 .. _trashbin_label:
 
 Trashbin
@@ -1109,8 +1215,8 @@ Trashbin
 ::
 
  trashbin
-  trashbin:cleanup  [--all-users] [--] [<user_id>...]  Remove deleted files
-  trashbin:restore  [--all-users] [--] [<user_id>...]  Restore deleted files
+  trashbin:cleanup  [--all-users] [--] [<user_id>...]  Permanently remove deleted files
+  trashbin:restore  [--all-users] [--scope[=SCOPE]] [--since[=SINCE]] [--until[=UNTIL]] [--dry-run] [--] [<user_id>...]  Restore deleted files according to the given filters
 
 .. note::
   This command is only available when the "Deleted files" app
@@ -1119,7 +1225,7 @@ Trashbin
 The ``trashbin:cleanup  [--all-users] [--] [<user_id>...]`` command removes the deleted files of the specified
 users in a space-delimited list, or all users if --all-users is specified.
 
-This example removes the deleted files of all users::
+This example permanently removes the deleted files of all users::
 
   sudo -u www-data php occ trashbin:cleanup --all-users
   Remove all deleted files for all users
@@ -1130,22 +1236,42 @@ This example removes the deleted files of all users::
    rosa
    edward
 
-This example removes the deleted files of users molly and freda::
+This example permanently removes the deleted files of users molly and freda::
 
  sudo -u www-data php occ trashbin:cleanup molly freda
  Remove deleted files of   molly
  Remove deleted files of   freda
 
-The ``trashbin:restore  [--all-users] [--] [<user_id>...]`` command restores the deleted files of the specified
+The ``trashbin:restore  [--all-users] [--scope[=SCOPE]] [--since[=SINCE]] [--until[=UNTIL]] [--dry-run] [--] [<user_id>...]`` command restores the deleted files of the specified
 users in a space-delimited list, or all users if --all-users is specified.
 
-This example restores the deleted files of all users::
+This example restores the deleted user-files of all users::
 
  sudo -u www-data php occ trashbin:restore --all-users
 
-This example restores the deleted files of users molly and freda::
+This example restores the deleted user-files of users molly and freda::
 
  sudo -u www-data php occ trashbin:restore molly freda
+
+The ``--scope`` option can be used to limit the restore to a specific scope.
+Possible values are "user", "groupfolders" or "all" [default: "user"].
+
+This example restores the deleted files of all groupfolders which are visible to the user freda::
+
+  sudo -u www-data php occ trashbin:restore --scope groupfolders freda
+
+The ``--since`` and ``--until`` options can be used to limit the restore to files deleted inside of the given time period.
+
+This example restores the locally deleted files and files of any groupfolders which are visible to the user
+freda. Additionally the files have to be deleted between ``01.08.2023 11:55:22`` and ``02.08.2023 01:33``::
+
+  sudo -u www-data php occ trashbin:restore --scope all --since "01.08.2023 11:55:22" --until "02.08.2023 01:33" freda
+
+The ``--dry-run`` option can be used to simulate the restore without actually restoring the files.
+ 
+.. note::
+  You can use the verbose options (``-v`` or ``-vv``) to get more information about 
+  the restore process and why some files might be skipped.
 
 .. _user_commands_label:
 
@@ -1597,6 +1723,27 @@ invisible  No       No
 
 | ¹ User can see the tag
 | ² User can assign the tag to a file
+
+.. _antivirus_commands_label:
+
+Antivirus
+---------
+
+Get info about files in the scan queue::
+
+  sudo -u www php occ files_antivirus:status [-v]
+
+Manually trigger the background scan::
+
+  sudo -u www php occ files_antivirus:background-scan [-v] [-m MAX]
+
+Manually scan a single file::
+
+  sudo -u www php occ files_antivirus:scan <path>
+
+Mark a file as scanned or unscanned::
+
+  sudo -u www php occ files_antivirus:mark <path> <scanned|unscanned>
 
 .. _occ_debugging:
 
