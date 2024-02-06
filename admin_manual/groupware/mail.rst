@@ -98,3 +98,16 @@ The mail app supports summarizing message threads that contain 3 or more message
 The feature is opt-in, it is disabled by default and can be enabled in mail adminstration settings.
 
 Administration settings > Groupware > Mail app > Enable thread summary
+
+Smart Replies
+--------------
+
+.. versionadded:: 3.6.0
+
+The Mail app supports smart replies, based on processing emails with AI.
+
+.. note:: `A text generation AI integration <https://apps.nextcloud.com/apps/integration_openai>`_ has to be available to enable this feature.
+
+The feature is opt-in, it is disabled by default and can be enabled in Mail adminstration settings.
+
+Administration settings > Groupware > Mail app > Enable smart replies
