@@ -240,6 +240,14 @@ Snoozing a message or thread moves it into a dedicated mailbox until the selecte
 2. Click *Snooze*
 3. Select how long the message or thread should be snoozed
 
+Smart replies 
+~~~~~~~~~~~~~
+
+.. versionadded:: 3.6
+
+When you open a message in the Mail app, it proposes AI-generated replies. By simply clicking on a suggested reply, the composer opens with the response pre-filled.
+
+.. note:: Please note that the feature has to be enabled by the administrator
 
 Filtering and autoresponder
 ---------------------------
