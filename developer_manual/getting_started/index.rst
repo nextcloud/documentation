@@ -8,4 +8,3 @@ Getting started
    development_process
    devenv
    codingguidelines
-   debugging
