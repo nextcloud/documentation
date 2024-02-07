@@ -121,32 +121,6 @@ The `MyAppWidget` class needs to be registered during the :ref:`app bootstrap<Bo
         }
     }
 
-For compatibility reasons the widget registration can also be performed by
-listening to the `OCP\\Dashboard\\RegisterWidgetEvent` for apps that still
-need to support older versions where the new app boostrap flow is not available,
-however this method is deprecated and will be removed once Nextcloud 19 is EOL.
-
-.. code-block:: php
-
-    <?php
-
-    use OCP\Dashboard\RegisterWidgetEvent;
-    use OCP\EventDispatcher\IEventDispatcher;
-
-    class Application extends App {
-        public function __construct(array $urlParams = []) {
-            parent::__construct(self::APP_ID, $urlParams);
-            $container = $this->getContainer();
-
-            /** @var IEventDispatcher $dispatcher */
-            $dispatcher = $container->getServer()->get(IEventDispatcher::class);
-            $dispatcher->addListener(RegisterWidgetEvent::class, function (RegisterWidgetEvent $event) use ($container): void {
-                    \OCP\Util::addScript('myapp', 'dashboard');
-                    $event->registerWidget(MyAppWidget::class);
-            });
-        }
-    }
-
 The IConditionalWidget interface
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

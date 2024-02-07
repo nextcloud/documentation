@@ -80,7 +80,7 @@ Deprecated events
 Removed events
 ^^^^^^^^^^^^^^
 
-* tbd
+* ``OCP\Dashboard\RegisterWidgetEvent`` was deprecated in Nextcloud 20 and is now removed. Use ``OCP\AppFramework\Bootstrap\IRegistrationContext::registerDashboardWidget`` from within your app bootstrap.
 
 Changed behavior
 ^^^^^^^^^^^^^^^^
