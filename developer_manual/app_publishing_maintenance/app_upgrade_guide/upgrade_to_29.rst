@@ -39,6 +39,11 @@ Removed APIs
 
 * tbd
 
+Removed globals
+^^^^^^^^^^^^^^^
+
+* Global ``autosize`` is removed, it was deprecated for over 4 years and scheduled for removal with Nextcloud 20. If you still need it you should ship your own version.
+
 Back-end changes
 ----------------
 
