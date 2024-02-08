@@ -66,6 +66,8 @@ Removed APIs
 ^^^^^^^^^^^^
 
 * ``OCP\Log\ILogFactory::getCustomLogger``: use ``\OCP\Log\ILogFactory::getCustomPsrLogger`` to get a customized :ref:`PSR3 <psr3>` logger
+* ``oc_share`` table: Due to massive performance impact on queries when selecting additionally for ``item_type``,
+  it is no longer allowed, to use the ``oc_share`` table for any other types than ``file`` and ``folder``.
 
 Added events
 ^^^^^^^^^^^^
