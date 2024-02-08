@@ -1,5 +1,5 @@
 =======================
-Upgrade to Nextcloud 28
+Upgrade to Nextcloud 29
 =======================
 
 General
