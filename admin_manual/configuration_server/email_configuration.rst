@@ -259,12 +259,24 @@ of the Admin settings page.
 Troubleshooting
 ---------------
 
-If you are unable to send email, try turning on debugging. Do this by enabling
-the ``mail_smtpdebug`` parameter in ``config/config.php``.
+Enabling debug mode
+"""""""""""""""""""
+
+If you are unable to send email, it might be useful to activate further debug
+messages by enabling the ``mail_smtpdebug`` parameter and temporarily setting your NC loglevel to DEBUG:
 
 ::
 
-    "mail_smtpdebug" => true;
+    "mail_smtpdebug" => true,
+    "loglevel" => 0,
+
+Be cautious setting your ``loglevel`` to DEBUG (``0``) since it'll apply to everything occurring on your NC instance, not just email. 
+And don't forget to set it back to a more reasonable level when you're done troubleshooting:
+
+::
+
+    "mail_smtpdebug" => false,
+    "loglevel" => 2,
 
 .. note:: Immediately after pressing the **Send email** button, as described
    before, several **SMTP -> get_lines(): ...** messages appear on the screen.
