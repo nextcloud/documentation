@@ -60,7 +60,7 @@ Deprecated APIs
 Removed APIs
 ^^^^^^^^^^^^
 
-* tbd
+* ``OCP\Log\ILogFactory::getCustomLogger``: use ``\OCP\Log\ILogFactory::getCustomPsrLogger`` to get a customized :ref:`PSR3 <psr3>` logger
 
 Added events
 ^^^^^^^^^^^^
