@@ -128,6 +128,15 @@ Here you can configure the description, guest access, if the conversation is vis
 .. image:: images/conversation-settings-dialog.png
    :width: 450px
 
+Messages expiration
+-------------------
+
+A moderator can configure message expiration under the ``Conversation settings`` within the ``Moderation`` section. Once a message reaches its expiration time, it is automatically removed from the conversation.
+The available expiration durations are 1 hour, 8 hours, 1 day, 1 week, 4 weeks, or never (which is the default setting).
+
+.. image:: images/messages-expiration.png
+
+
 Starting a call
 ---------------
 
