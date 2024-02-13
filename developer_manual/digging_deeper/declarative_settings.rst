@@ -9,7 +9,9 @@ Declarative settings
 .. versionadded:: 29.0.0
 
 With Nextcloud 29 there is a new way to define app settings in a declarative way.
-This means that you can just register your settings schema without writing a custom settings handling front-end and back-end code (except more complex settings logic and design is required).
+This means that you can just register your settings schema 
+without writing a custom settings handling front-end and back-end code 
+(except when more complex settings logic or design is required).
 
 Registering settings schema
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -17,9 +19,13 @@ Registering settings schema
 There are two ways to register a declarative settings schema:
 
 1. Class-based using ``OCP\Settings\IDeclarativeSettingsForm`` interface
-2. Using event listener for ``OCP\Settings\RegisterDeclarativeSettingsFormEvent``
+2. By using an event listener for the ``OCP\Settings\RegisterDeclarativeSettingsFormEvent``
 
-Also, you can register multiple declarative settings schemas per app.
+Additionally, you can register multiple declarative parameter schemes per application.
+
+.. note::
+
+	Form fields ids (configkeys) must be unique within an app.
 
 Class-based schema registration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -313,6 +319,11 @@ Supported field types are declared in  ``OCP\Settings\DeclarativeSettingsTypes``
 - ``DeclarativeSettingsTypes::MULTI_SELECT`` - input type select for setting with multiple options
 
 The examples of each field type are listed below.
+
+.. note::
+
+	Field order is the same as in the schema array.
+
 
 Basic input types
 -----------------
