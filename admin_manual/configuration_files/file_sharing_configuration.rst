@@ -18,7 +18,10 @@ Configure your sharing policy on your Admin page in the Sharing section.
   * Check ``Allow resharing`` to enable users to re-share files shared with them.
   * Check ``Allow sharing with groups`` to enable users to share with groups.
   * Check ``Restrict users to only share with users in their groups`` to confine
-    sharing within group memberships.
+    sharing within group memberships. When you check this, you'll
+    get an optional dropdown list of ignored groups when checking group membership.
+    Type any group name to search for.
+    Ignored groups are not used to determine if users may share with each others.
 
     .. note:: This setting does not apply to the Federated Cloud sharing
        feature. If :doc:`Federated Cloud Sharing
