@@ -64,6 +64,55 @@ The method ``translate`` translates the passed string and returns the translatio
 
 The class would typically be saved into a file in ``lib/Translation`` of your app but you are free to put it elsewhere as long as it's loadable by Nextcloud's :ref:`dependency injection container<dependency-injection>`.
 
+Provider with user context
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. versionadded:: 29.0.0
+
+Sometimes the processing of a the task may depend upon which user requested the task.
+You can now obtain this information in your provider by additionally implementing the ``OCP\Translation\ITranslationProviderWithUserId`` interface:
+
+.. code-block:: php
+    :emphasize-lines: 9,12,14,29,30,31
+
+    <?php
+
+    declare(strict_types=1);
+
+    namespace OCA\MyApp\Translation;
+
+    use OCA\MyApp\AppInfo\Application;
+    use OCP\Files\File;
+    use OCP\Translation\ITranslationProviderWithUserId;
+    use OCP\IL10N;
+
+    class Provider implements ITranslationProviderWithUserId {
+
+        private ?string $userId = null;
+
+        public function __construct(
+            private IL10N $l,
+        ) {
+        }
+
+        public function getName(): string {
+            return $this->l->t('My awesome translation provider');
+        }
+
+        public function getAvailableLanguages(): array {
+            // Return an array of OCP\Translation\LanguageTuple objects here
+        }
+
+        public function setUserId(?string $userId): void {
+            $this->userId = $userId;
+        }
+
+        public function translate(?string $fromLanguage, string $toLanguage, string $text): string {
+            // Do some fancy machine translation and return translated string
+        }
+    }
+
+
 Providing language detection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
