@@ -99,6 +99,38 @@ forcing them.
 
 .. _transfer_userfiles_label:
 
+Advanced settings
+-------------------------------------------------------------------
+
+Here are some edge case settings which are not editable from the web interface, because they are only useful to small subset of administrators.
+
+You can use the ``occ`` command to update those, for example:
+
+.. code-block:: bash
+
+  occ config:app:set core shareapi_restrict_user_enumeration_full_match_email --value yes
+
+- ``core.shareapi_restrict_user_enumeration_full_match_ignore_second_display_name``
+    + When full match is activated, ignore the appended second display name.
+    + Default: ``no``
+    + Examples:
+
+      +---------------+--------------+------------------------------+------------+
+      | Setting value | Search query |          User name           | Will match |
+      +===============+==============+==============================+============+
+      | ``yes``       | User 1       | User 1 (Second display name) | yes        |
+      +---------------+--------------+------------------------------+------------+
+      | ``no``        | User 1       | User 1 (Second display name) | no         |
+      +---------------+--------------+------------------------------+------------+
+
+- ``core.shareapi_restrict_user_enumeration_full_match_userid``
+    + When full match is activated, do not match user ID
+    + Default: ``yes``
+
+- ``core.shareapi_restrict_user_enumeration_full_match_email``
+    + When full match is activated, do not match user email
+    + Default: ``yes``
+
 Distinguish between max expiration date and default expiration date
 -------------------------------------------------------------------
 
