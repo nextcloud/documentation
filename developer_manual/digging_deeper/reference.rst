@@ -666,6 +666,42 @@ in a custom fashion:
 
 .. _data-for-clients:
 
+Interactive widgets
+~~~~~~~~~~~~~~~~~~~
+
+If you want to provide a custom widget that is interactive you can use the ``interactive`` attribute that is passed along the ``registerWidget`` function.
+
+Apps will determine if they can render the interactive widget or not.
+
+When writing a custom widget make sure properly handle different restrictions to ensure that the widget is usable in any integrating app.
+
+- The width of the widget should be flexible and not exceed the width of the parent element.
+- The height can be flexible but might be limited by the parent element, so ensure that the widget can be scrolled if necessary
+- Your script will be loaded on every page that uses widget rendering so make sure to keep the script size as small as possible and use lazy loading for any additional resources
+
+.. code-block:: javascript
+
+    import { registerCustomPickerElement, registerWidget, NcCustomPickerRenderResult } from '@nextcloud/vue/dist/Functions/registerReference.js'
+
+    registerWidget('my_rich_object_type', async (el, { richObjectType, richObject, accessible, interactive }) => {
+        const { default: Vue } = await import('vue')
+        const { default: MyWidget } = await import('./views/MyWidget.vue')
+
+        const Widget = Vue.extend(MyWidget)
+        const vueElement = new Widget({
+            propsData: {
+                richObjectType,
+                richObject,
+                accessible,
+                interactive,
+            },
+        }).$mount(el)
+
+        return new NcCustomPickerRenderResult(vueElement.$el, vueElement)
+    }, (el, renderResult) => {
+        renderResult.object.$destroy()
+    }, true)
+
 Provide generic data for clients
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
