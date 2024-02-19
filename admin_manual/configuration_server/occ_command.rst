@@ -1110,18 +1110,21 @@ command after modifying ``config/mimetypemapping.json``. If you change a
 mimetype, run ``maintenance:mimetype:update-db --repair-filecache`` to apply the
 change to existing files.
 
-Run the ``maintenance:theme:update`` command if the icons of your custom theme are not updated correctly. This updates the mimetypelist.js and cleares the image cache.
+Run the ``maintenance:theme:update`` command if the icons of your custom theme are not 
+updated correctly. This updates the mimetypelist.js and cleares the image cache.
 
 .. _security_commands_label:
 
 Security
 --------
 
-Use these commands to manage server-wide SSL certificates or reset brute-force slow-downs. These are useful when you create federation shares with other Nextcloud servers that use self-signed certificates::
+Use these commands to manage server-wide security related parameters. Currently this 
+includes :doc:`bruteforce_configuration` and SSL certificates (the latter are useful when 
+creating federation connections with other Nextcloud servers that use self-signed certificates::
 
  security
-  security:bruteforce:attempts  list brute-force attemps for given IP address
-  security:bruteforce:reset     resets brute-force attemps for given IP address
+  security:bruteforce:attempts  list brute-force attempts for given IP address
+  security:bruteforce:reset     resets brute-force attempts for given IP address
   security:certificates         list trusted certificates
   security:certificates:import  import trusted certificate
   security:certificates:remove  remove trusted certificate
