@@ -1122,8 +1122,8 @@ includes :doc:`bruteforce_configuration` and SSL certificates (the latter are us
 creating federation connections with other Nextcloud servers that use self-signed certificates::
 
  security
-  security:bruteforce:attempts  list brute-force attempts for given IP address
-  security:bruteforce:reset     resets brute-force attempts for given IP address
+  security:bruteforce:attempts  show bruteforce attempts status for a given IP address
+  security:bruteforce:reset     resets bruteforce attempts for a given IP address
   security:certificates         list trusted certificates
   security:certificates:import  import trusted certificate
   security:certificates:remove  remove trusted certificate
