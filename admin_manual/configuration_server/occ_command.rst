@@ -237,20 +237,49 @@ Install but don't enable::
 
  sudo -u www-data php occ app:install --keep-disabled twofactor_totp
 
+Install regardless of the Nextcloud version requirement::
+
+ sudo -u www-data php occ app:install --force twofactor_totp
+
 List all of your installed apps, and show whether they are
 enabled or disabled::
 
  sudo -u www-data php occ app:list
+
+List non-shipped installed apps only::
+
+ sudo -u www-data php occ app:list --shipped false
 
 Enable an app, for example the External Storage Support app::
 
  sudo -u www-data php occ app:enable files_external
  files_external enabled
 
+Enable an app regardless of the Nextcloud version requirement::
+
+ sudo -u www-data php occ app:enable --force files_external
+ files_external enabled
+
+Enable an app for specific groups of users::
+
+ sudo -u www-data php occ app:enable --groups admin --groups sales files_external
+ files_external enabled for groups: admin, sales
+
 Disable an app::
 
  sudo -u www-data php occ app:disable files_external
  files_external disabled
+
+Disable and remove an app::
+
+ sudo -u www-data php occ app:remove files_external
+ files_external disabled
+ files_external 1.21.0 removed
+
+Remove an app, but keep the app data::
+
+ sudo -u www-data php occ app:remove --keep-data files_external
+ files_external 1.21.0 removed
 
 You can get the full filepath to an app::
 
@@ -827,7 +856,7 @@ before removing a user::
 The transferred files will appear inside a new sub-directory in the destination user's home.
 
 .. note::
-  Unless server side encryption is enabled, **the command will init the <destination-user> file system** in Nextcloud versions **22.2.6, 23.0.3 and since 24**. When it is unable to create the user's folder in the data directory it will show the following error: ``unable to rename, destination directory is not writable``. Before 22.2.6 the command ``occ files:transfer-ownership`` would only work after the user has logged in for the first time. 
+  Unless server side encryption is enabled, **the command will init the <destination-user> file system** in Nextcloud versions **22.2.6, 23.0.3 and since 24**. When it is unable to create the user's folder in the data directory it will show the following error: ``unable to rename, destination directory is not writable``. Before 22.2.6 the command ``occ files:transfer-ownership`` would only work after the user has logged in for the first time.
 
 If the destination user has no files at all (empty home), it is possible to also transfer all the source user's files by passing ``--move``::
 
@@ -1110,7 +1139,7 @@ command after modifying ``config/mimetypemapping.json``. If you change a
 mimetype, run ``maintenance:mimetype:update-db --repair-filecache`` to apply the
 change to existing files.
 
-Run the ``maintenance:theme:update`` command if the icons of your custom theme are not 
+Run the ``maintenance:theme:update`` command if the icons of your custom theme are not
 updated correctly. This updates the mimetypelist.js and cleares the image cache.
 
 .. _security_commands_label:
@@ -1118,8 +1147,8 @@ updated correctly. This updates the mimetypelist.js and cleares the image cache.
 Security
 --------
 
-Use these commands to manage server-wide security related parameters. Currently this 
-includes :doc:`bruteforce_configuration` and SSL certificates (the latter are useful when 
+Use these commands to manage server-wide security related parameters. Currently this
+includes :doc:`bruteforce_configuration` and SSL certificates (the latter are useful when
 creating federation connections with other Nextcloud servers that use self-signed certificates::
 
  security
@@ -1271,9 +1300,9 @@ freda. Additionally the files have to be deleted between ``01.08.2023 11:55:22``
   sudo -u www-data php occ trashbin:restore --scope all --since "01.08.2023 11:55:22" --until "02.08.2023 01:33" freda
 
 The ``--dry-run`` option can be used to simulate the restore without actually restoring the files.
- 
+
 .. note::
-  You can use the verbose options (``-v`` or ``-vv``) to get more information about 
+  You can use the verbose options (``-v`` or ``-vv``) to get more information about
   the restore process and why some files might be skipped.
 
 .. _user_commands_label:
