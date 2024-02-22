@@ -141,3 +141,22 @@ Known backends
 ~~~~~~~~~~~~~~
 
 * `Calendar Resource Management <https://github.com/nextcloud/calendar_resource_management>`_: database backend with CLI configuration for admins
+
+Rate limits
+-----------
+
+Nextcloud rate limits the creation of calendars and subscriptions if too many items are created within a short time frame. The default is 10 calendars or subscriptions per hour. This can be customized as follows::
+
+  # Set limit to 15 items per 30 minutes
+  php occ config:app:set calendar rateLimitCalendarCreation --type=integer --value=15
+  php occ config:app:set calendar rateLimitPeriodCalendarCreation --type=integer --value=1800
+
+Additionally, the maximum number of calendars and subscriptions a user may create is limited to 30 items. This can be customized too::
+
+  # Allow users to create 50 calendars/subscriptions
+  php occ config:app:set calendar maximumCalendarsSubscriptions --type=integer --value=50
+
+or::
+
+  # Allow users to create calendars/subscriptions without restriction
+  php occ config:app:set calendar maximumCalendarsSubscriptions --type=integer --value=-1
