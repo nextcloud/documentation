@@ -24,7 +24,6 @@ Digging deeper
    rest_apis
    search
    settings
-   declarative_settings
    speech-to-text
    talk
    translation

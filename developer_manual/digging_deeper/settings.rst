@@ -4,6 +4,12 @@
 Settings
 ========
 
+.. toctree::
+   :maxdepth: 3
+
+   declarative_settings
+
+
 .. sectionauthor:: Arthur Schiwon <blizzz@arthur-schiwon.de>
 
 An app can register both admin settings as well as personal settings.
