@@ -77,9 +77,9 @@ folder. The key **url** defines the HTTP web path to that folder, starting at
 the Nextcloud web root. The key **writable** indicates if a user can install apps
 in that folder.
 
-.. note:: To ensure that the default **/apps/** folder only contains apps
-   shipped with Nextcloud, follow this example to setup an **/apps2/** folder
-   which will be used to store all other apps.
+Example: To ensure that the default ``/apps/`` folder only contains apps shipped 
+with Nextcloud, follow this example to setup an ``/extra-apps/`` folder
+which will be used to store any additional apps you install:
 
 ::
 
@@ -90,18 +90,22 @@ in that folder.
                 "writable" => false,
         ],
         [
-                "path"     => OC::$SERVERROOT . "/apps2",
-                "url"      => "/apps2",
+                "path"     => OC::$SERVERROOT . "/extra-apps",
+                "url"      => "/extra-apps",
                 "writable" => true,
         ],
     ],
 
-.. note:: Apps paths can be located outside the server root.  However, for any
-   **path** outside the server root, you need to create a symlink in  the server
-   root that points **url** to **path**.
-   For instance, if **path** is ``/var/local/lib/nextcloud/apps``, and **url**
-   is ``/apps2``, then you would do this in the server root:
-   ``ln -sf /var/local/lib/nextcloud/apps ./apps2``
+.. danger:: Make sure that the values you choose for ``path`` and ``url`` for any custom
+   apps directories do not conflict with directories which already exist in your Nextcloud 
+   Server root (installation directory).
+
+.. tip:: Apps paths can be located outside the server root.  However, for any
+   **path** outside the server root, you need to create a symbolic link in the server
+   root that points **url** to **path**. For instance, if **path** is
+   ``/var/local/lib/nextcloud/extra-apps``, and **url** is ``/extra-apps``, then 
+   you would use the command ``ln`` to create the symbolic link like this: 
+   ``ln -sf /var/local/lib/nextcloud/extra-apps ./extra-apps``
 
 Using a self hosted apps store
 ------------------------------
