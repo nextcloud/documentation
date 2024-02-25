@@ -24,8 +24,8 @@ First create up the target (new) database (along with its associated username an
 * :ref:`db-config-mysql-label`
 * :ref:`db-config-postgresql-label`
 
-Since the above uses the database name ``nextcloud`` for the newly created database we will do so here for consistency, but you are free to use whatever database name you prefer. Use
-the database username and password you specified when creating the new database.
+Since the above db instructions uses the database name ``nextcloud`` for the newly created database we will do so here for consistency, but you are free to use whatever database name you prefer. Use
+the database name, database username, and database password you specified when creating the new database.
 
 Triggering the conversion
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -57,8 +57,8 @@ Let's convert our existing (functioning) sqlite3 installation to be MariaDB/MySQ
 
   php occ db:convert-type --password="<password>" --port="3306" --all-apps mysql <username> <hostname> nextcloud
 
-.. note:: It was unnecessary to specify the port in this example because``3306`` is already the default. We did so 
-   merely for demonstration purposes and completeness in case the reader is using non-standard port on their target 
+.. note:: It was unnecessary to specify the port in this example because ``3306`` is already the default. We did so 
+   merely for demonstration purposes and completeness in case the reader is using a non-standard port on their target 
    database server.
 
 On success the converter will automatically configure the new database in your
