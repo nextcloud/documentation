@@ -35,6 +35,9 @@ The ``occ db:convert-type`` command handles all the tasks of the conversion. The
 
   php occ db:convert-type [options] type username hostname database
 
+``type`` should be the target database type. The same values are available here as for the ``config.php`` ``dbtype`` parameter. It should be one of: ``mysql`` for MariaDB/MySQL, 
+``pgsql`` for PostgresSQL, or ``oci`` for Oracle.
+
 The options:
 
 * ``--port="3306"``                       the database port (optional) [defaults to "3306"]
