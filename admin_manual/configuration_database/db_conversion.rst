@@ -47,8 +47,8 @@ The options:
 * ``-n, --no-interaction``                do not ask any interactive question
 
 .. note:: The conversion tool searches for apps in your configured app folders and uses
-the schema (table) definitions in the apps to create the new tables. Any tables that still exist for removed
-apps will not be converted (even with option ``--all-apps``).
+   the schema (table) definitions in the apps to create the new tables. Any tables that still exist for removed
+   apps will not be converted (even with option ``--all-apps``).
 
 Let's convert our existing (functioning) sqlite3 installation to be MariaDB/MySQL based:
 
