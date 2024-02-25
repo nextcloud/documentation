@@ -20,8 +20,9 @@ Establishing the target database
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 First create up the target (new) database (along with its associated username and password) by following the manual database configuration instructions for your chosen target database type: 
-- :ref:`db-config-mysql-label`
-- :ref:`db-config-postgresql-label`
+
+* :ref:`db-config-mysql-label`
+* :ref:`db-config-postgresql-label`
 
 Since the above use the database name "nextcloud" for the newly created database we will do so here for consistency, but you are free to use whatever database name you prefer. Use
 the database username and password you specified when creating the new database.
