@@ -67,12 +67,14 @@ Nextcloud config ``config.php``.
 If you are converting to a MySQL/MariaDB database, you will also want to set ``mysql.utf8mb4`` parameter to true in your ``config.php``:
 
 ::
+
    php occ config:system:set mysql.utf8mb4 --type boolean --value="true"
 
 If you like, you can view the changes that were made by looking for the ``db*`` parameters in your ``config.php`` (you could also use this command before 
 doing the conversion to compare your configuration before/after):
 
 ::
+
    grep db config/config.php
 
 Inconvertible tables
