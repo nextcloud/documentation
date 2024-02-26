@@ -5,6 +5,8 @@ Upgrade to Nextcloud 29
 General
 -------
 
+* The Circles app will be renamed to Teams. Apps that use the terms Circle/Circles need to get adjusted to use Team/Teams instead. For example ``share to circle`` would become ``share to team``.
+
 info.xml
 ^^^^^^^^
 
