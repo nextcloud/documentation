@@ -36,6 +36,8 @@ Parameters
 ----------
 For setting up Nextcloud to use any database, use the instructions in :doc:`../installation/installation_wizard`. You should not have to edit the respective values in the :file:`config/config.php`.  However, in special cases (for example, if you want to connect your Nextcloud instance to a database created by a previous installation of Nextcloud), some modification might be required.
 
+.. _db-config-mysql-label:
+
 Configuring a MySQL or MariaDB database
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -181,6 +183,8 @@ This just covers the SSL database configuration on the Nextcloud server. First y
   ],
 
 Adjust the paths to the pem files for your environment.
+
+.. _db-config-postgresql-label:
 
 PostgreSQL database
 ^^^^^^^^^^^^^^^^^^^
