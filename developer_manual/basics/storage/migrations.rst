@@ -91,23 +91,23 @@ Construction of migration classes
 ---------------------------------
 
 All migration classes are constructed via :ref:`dependency-injection`. So if your migration
-steps need additional dependencies, these can be defined in the constructor of your migration 
-class. 
+steps need additional dependencies, these can be defined in the constructor of your migration
+class.
 
 **Example:** If your migration needs to execute SQL statements, inject a `OCP\\IDBConnection`
 instance into your migration class like this:
 
 .. code-block:: php
-        
+
    class Version2404Date20220903071748 extends SimpleMigrationStep {
- 
+
       /** @var IDBConnection */
       private $db;
 
       public function __construct(IDBConnection $db) {
          $this->db = $db;
       }
-      
+
       public function postSchemaChange(IOutput $output, \Closure $schemaClosure, array $options) {
          $query = $this->db->getQueryBuilder();
          // execute some SQL ...
@@ -124,7 +124,7 @@ with migrations, which are only available if you are running your
 Nextcloud **in debug mode**:
 
 * `migrations:execute`: Executes a single migration version manually.
-  The version argument is the class name of the migration, without the 
+  The version argument is the class name of the migration, without the
   "Version" prefix. For example if your migration was named
   `Version2404Date20220903071748` the version would be `2404Date20220903071748`.
 * `migrations:generate`:
@@ -156,5 +156,26 @@ Adding indices to existing tables can take long time, especially on large tables
          }
 
          $event->addMissingIndex('my_table', 'my_index', ['column_a', 'column_b']);
+      }
+   }
+
+Replacing indices
+-----------------
+
+.. versionadded:: 29.0.0
+
+Similar to adding an index to an existing table, it could be necessary to replace one or more indices with a new one. To avoid a gap between dropping the old indices in a migration and adding the new one through ``AddMissingIndicesEvent``, it is possible to do both at once in ``AddMissingIndicesEvent``.
+
+.. note:: Make sure to not use the same index name for the new index as for old indices.
+
+.. code-block:: php
+
+   class ReplaceIndicesListener implements IEventListener {
+      public function handle(Event $event): void {
+         if (!$event instanceof AddMissingIndicesEvent) {
+            return;
+         }
+
+         $event->replaceIndex('my_table', ['my_old_index_one', 'my_old_index_two'], 'my_new_index', ['column_a', 'column_b'], false);
       }
    }
