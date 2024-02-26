@@ -62,7 +62,7 @@ Let's convert our existing (functioning) sqlite3 installation to be MariaDB/MySQ
    database server.
 
 On success the converter will automatically configure the new database in your
-Nextcloud config ``config.php``. 
+Nextcloud config ``config.php``.
 
 If you are converting to a MySQL/MariaDB database, you will also want to set ``mysql.utf8mb4`` parameter to true in your ``config.php``:
 
