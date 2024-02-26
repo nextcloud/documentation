@@ -10,11 +10,14 @@ Nextcloud requires a database in which administrative data is stored. The follow
 
 The MySQL or MariaDB databases are the recommended database engines.
 
+.. tip:: Not all versions of every supported database are recommended. Please review the Nextcloud :ref:`system_requirements`
+
 Requirements
 ------------
 
-Choosing to use MySQL / MariaDB, PostgreSQL, or Oracle as your database
-requires that you install and set up the server software first.
+* Decide whether you wish to use MySQL / MariaDB, PostgreSQL, or Oracle as your database
+* Pick a recommendeded version of your database by checking the Nextcloud :ref:`system_requirements`
+* Install and set up the chosen database server software (and preferrred version) before deploying Nextcloud Server
 
 .. note:: The steps for configuring a third party database are beyond the
   scope of this document.  Please refer to the documentation for your specific
