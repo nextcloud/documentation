@@ -21,7 +21,9 @@ Configure your sharing policy on your Admin page in the Sharing section.
     sharing within group memberships. When you check this, you'll
     get an optional dropdown list of ignored groups when checking group membership.
     Type any group name to search for.
-    Ignored groups are not used to determine if users may share with each others.
+
+    * Groups added to ``Ignore the following groups when checking group membership`` won't
+      be taken in account to determine if users are in same groups and may share with each others.
 
     .. note:: This setting does not apply to the Federated Cloud sharing
        feature. If :doc:`Federated Cloud Sharing
