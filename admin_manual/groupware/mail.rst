@@ -86,28 +86,32 @@ Mailbox Share
 -------------
 Users can share mailboxes with each other. So far, there is no UI for users to change the ACL in the Mail app, but if you want to use it, you need to enable it on the IMAP sever and configure the shares there.
 
+.. _mail_llm_processing:
+
+LLM Processing
+--------------
+
+The Mail app can optionally use large language models to process emails and offer assistance features like thread summaries, smart replies and event agendas.
+
+.. note:: A fast text processing integration like `<https://apps.nextcloud.com/apps/integration_openai>`_ is required for best results.
+
+The feature can be enabled in the Mail administration settings.
+
+Administration settings > Groupware > Mail app > Enable text processing through LLMs
+
+.. _mail_thread_summary:
+
 Thread Summary
 --------------
 
-.. _mail_thread_summary:
+.. versionchanged:: 3.6.0
+    This configuration option was merged into :ref:`mail_llm_processing`
 
 The mail app supports summarizing message threads that contain 3 or more messages.
 
 .. warning:: `A text generation AI integration <https://apps.nextcloud.com/apps/integration_openai>`_ should be already in place to enable this feature.
 
-The feature is opt-in, it is disabled by default and can be enabled in mail adminstration settings.
+The feature is opt-in, it is disabled by default and can be enabled in mail administration settings.
 
 Administration settings > Groupware > Mail app > Enable thread summary
 
-Smart Replies
---------------
-
-.. versionadded:: 3.6.0
-
-The Mail app supports smart replies, based on processing emails with AI.
-
-.. note:: `A text generation AI integration <https://apps.nextcloud.com/apps/integration_openai>`_ has to be available to enable this feature.
-
-The feature is opt-in, it is disabled by default and can be enabled in Mail adminstration settings.
-
-Administration settings > Groupware > Mail app > Enable smart replies
