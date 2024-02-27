@@ -1432,7 +1432,16 @@ authentication servers such as LDAP::
  | total users      | 98 |
  |                  |    |
  | user directories | 2  |
+ | active users     | 15 |
+ | disabled users   | 0  |
  +------------------+----+
+
+`active users` shows the number of users which logged in at least once.
+`disabled users` shows the number of users which are disabled.
+
+There might be a discrepancy between the total number of users compared to the number of active users and the number of disabled users.
+Users that have never logged in before are not counted as active or disabled users.
+Some user backends also do not allow a count for the number of users.
 
 .. _group_commands_label:
 
