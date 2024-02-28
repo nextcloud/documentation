@@ -360,7 +360,7 @@ It makes sense to apply some general tips from the beginning, so you don't have 
     <?php
     $table->setPrimaryKey(['id']);
 
-4. Manually set the name of your indexes. It will help you to manipulate them if needed in the future. Note that the names of the index are "global" database wide in some database platforms so having generic names can create conflicts. We check (as of v28) for uniqueness across all tables at installation time and during updates. This happens *regardless of the in-use database platform* to maintain broad compatibility (and consistency).
+4. Manually set the name of your indexes. It will help you to manipulate them if needed in the future. Note that the names of the index are "global" database wide in some database platforms so having generic names can create conflicts. Since Nextcloud 28 uniqueness across all tables is ensured at installation time and during updates. This happens *regardless of the in-use database platform* to maintain broad compatibility and consistency.
 
 .. code-block:: php
 
