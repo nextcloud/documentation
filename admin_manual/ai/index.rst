@@ -94,7 +94,7 @@ Implementing apps
 
 * `Assistant <https://apps.nextcloud.com/apps/assistant>`_ for various tasks
 * `Mail <https://apps.nextcloud.com/apps/mail>`_ for summarizing mail threads (see :ref:`the Nextcloud Mail docs<mail_thread_summary>` for how to enable this)
-
+* `SummarAI <https://apps.nextcloud.com/apps/summarai>`_ for summarizing chat histories in `Talk <https://apps.nextcloud.com/apps/spreed>`_
 
 Image generation
 ^^^^^^^^^^^^^^^^
