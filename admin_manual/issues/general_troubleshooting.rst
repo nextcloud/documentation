@@ -386,7 +386,7 @@ Unofficially moving the data directory can be done as follows:
 6. Ensure permissions are still correct
 7. Restart apache
 
-.. warning
+.. warning::
    However this is not supported and you risk breaking your database.
 
 For a safe moving of data directory, supported by Nextcloud, recommended actions are:
@@ -398,7 +398,7 @@ For a safe moving of data directory, supported by Nextcloud, recommended actions
 5. Ensure permissions are still correct
 6. Restart apache
 
-.. warning
+.. warning::
    Note, you may need to configure your webserver to support symlinks.
 
 Troubleshooting quota or size issues
