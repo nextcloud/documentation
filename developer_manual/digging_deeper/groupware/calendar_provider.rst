@@ -16,7 +16,7 @@ All snippets are prefixed by ``<?php`` to make you aware that this is still php 
 Registering the calendar with the Nextcloud API interface
 ---------------------------------------------------------
 
-At the time of writing, the support by the Nextcloud calender to provide a custom app is limited. Read-only calendars are possible while writable calenders require a bit more work on your side.
+At the time of writing, the support by the Nextcloud calendar to provide a custom app is limited. Read-only calendars are possible while writable calendars require a bit more work on your side.
 
 Read-only support
 ~~~~~~~~~~~~~~~~~
@@ -76,7 +76,7 @@ Handling iMIP data
 
 You may implement the ``IHandleIMipMessage`` interface to process iMIP data you receive in a client and want to pass on for processing to the backend. 
 
-Please be aware that there are some security considerations to take into account. You can find more infomation on these and the conditions that have to be fulfilled for iMIP data to be processed in the `RFC <https://www.rfc-editor.org/rfc/rfc6047>`_
+Please be aware that there are some security considerations to take into account. You can find more information on these and the conditions that have to be fulfilled for iMIP data to be processed in the `RFC <https://www.rfc-editor.org/rfc/rfc6047>`_
 
 .. code-block:: php
 
@@ -434,7 +434,7 @@ The calendar should not be removed by means of the CalDAV interface. Thus, nothi
 Getting the modification timestamp
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-The last time the calender is modified allows clients to optimize their requests. This method should return the corresponding unix timestamp.
+The last time the calendar is modified allows clients to optimize their requests. This method should return the corresponding unix timestamp.
 
 A fallback is to provide the value ``null`` as return value. This tells that the last modification time is not known at the moment.
 
@@ -684,7 +684,7 @@ The method ``getAppId`` returns the name of the app.
 
 The method ``fetchAllForCalendarHome`` returns a list of all `Calendars`  that the app knows of.
 
-Note  that the ``principalUri`` is passed by the caller, while the ``calendarUri`` in the constructor of the calendar instance is a (relative) uri (string) that identifies the calender uniquely. The uri can then be used in the calendar class to extract the appropriate entries that should be present in the calendar.
+Note  that the ``principalUri`` is passed by the caller, while the ``calendarUri`` in the constructor of the calendar instance is a (relative) uri (string) that identifies the calendar uniquely. The uri can then be used in the calendar class to extract the appropriate entries that should be present in the calendar.
 
 The function ``hasCalendarInCalendarHome`` checks if a certain combination of ``principalUri`` and ``calendarUri`` exist. Here, it is just hard-coded to exactly one calendar, but in your own implementation you should do more stringent checks.
 
@@ -723,10 +723,10 @@ Finally, there is a function to query for a single calendar instance using ``get
         }
     }
 
-Register the calender provider
+Register the calendar provider
 ------------------------------
 
-As a last step, you must register the calendar provider in your ``info.xml``. With all these steps done, you should be able to see the calender(s) in the calendar app and the CalDAV interface of the core.
+As a last step, you must register the calendar provider in your ``info.xml``. With all these steps done, you should be able to see the calendar(s) in the calendar app and the CalDAV interface of the core.
 
 .. code-block:: xml
 
