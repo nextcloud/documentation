@@ -52,7 +52,12 @@ The result should look like this::
     ALTER DATABASE nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 5. Set the ``mysql.utf8mb4`` config to true in your config.php::
-
+>>>>>>>>>>>>>>>>>>>>
+This command doesn't work if nextcloud is in maintenance mode. It says:
+Nextcloud is in maintenance mode, hence the database isn't accessible.
+Cannot perform any command except 'maintenance:mode --off'
+I would have reported this documentation problem in some other way if I knew what other ways there were available.
+<<<<<<<<<<<<<<<<<<<<
     $ sudo -u www-data php occ config:system:set mysql.utf8mb4 --type boolean --value="true"
 
 6. Convert all existing tables to the new collation by running the repair step::
