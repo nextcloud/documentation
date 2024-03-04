@@ -736,7 +736,9 @@ mail_domain
 
 The return address that you want to appear on emails sent by the Nextcloud
 server, for example ``nc-admin@example.com``, substituting your own domain,
-of course.
+of course. Please note that this is *not* the domain used for the SMTP protocol handhshake.
+So if you want to have the server responding with an EHLO reply identifiying itself properly,
+please configure ``overwrite.cli.url``_ accordingly.
 
 mail_from_address
 ^^^^^^^^^^^^^^^^^
@@ -995,7 +997,7 @@ addresses starting with ``10.0.0.`` and ending with 1 to 3:
 
 Defaults to ``''`` (empty string)
 
-overwrite.cli.url
+.. _overwrite.cli.url
 ^^^^^^^^^^^^^^^^^
 
 
