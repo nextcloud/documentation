@@ -21,6 +21,8 @@ The Versions app never uses more than 50% of the user's currently available
 free space. If the stored versions exceed this limit, Nextcloud deletes the 
 oldest file versions until it meets the disk space limit again.
 
+.. note:: Versions named by a user will never be deleted.
+
 You may alter the default pattern in ``config.php``. The default setting is 
 ``auto``, which sets the default pattern::
 
