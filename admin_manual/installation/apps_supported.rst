@@ -28,6 +28,7 @@ Nextcloud Files
 * `Files access control <https://github.com/nextcloud/files_accesscontrol>`_
 * `Files <https://github.com/nextcloud/server/tree/master/apps/files>`_
 * `Files Automated Tagging <https://github.com/nextcloud/files_automatedtagging>`_
+* `Files download limit <https://github.com/nextcloud/files_downloadlimit>`_
 * `First run wizard <https://github.com/nextcloud/firstrunwizard>`_
 * `Flow <https://github.com/nextcloud/server/tree/master/apps/workflowengine>`_
 * `Full Text Search <https://github.com/nextcloud/fulltextsearch>`_
