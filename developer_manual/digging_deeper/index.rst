@@ -7,6 +7,7 @@ Digging deeper
 
    api
    changelog
+   config/index
    debugging
    classloader
    continuous_integration

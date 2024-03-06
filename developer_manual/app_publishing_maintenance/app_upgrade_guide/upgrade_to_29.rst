@@ -29,7 +29,7 @@ Added APIs
 Changed APIs
 ^^^^^^^^^^^^
 
-* tbd
+* `IAppConfig` has been fully reworked, most of previous methods are now deprecated. The new version of the API implements multiple settings for app config values to define their laziness and sensitivity.
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^

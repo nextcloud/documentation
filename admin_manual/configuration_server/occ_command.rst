@@ -341,6 +341,21 @@ The ``config`` commands are used to configure the Nextcloud server::
   config:system:get      Get a system config value
   config:system:set      Set a system config value
 
+
+While setting a configuration value, multiple options are available:
+
+     - ``--value=VALUE`` change the configuration value
+     - ``--type=TYPE`` change the type of the value. Use carefully; can break your instance
+     - ``--lazy|--no-lazy`` set value as `lazy`
+     - ``--sensitive|--no-sensitive`` set value as `sensitive`
+     - ``--update-only`` only updates if a value is already stored
+
+.. note::
+	See `Appconfig Concepts`_ to learn more about `typed value`, `lazy` and `sensitive` flag.
+
+.. _Appconfig Concepts: https://docs.nextcloud.com/server/latest/developer_manual/digging_deeper/config/appconfig.html#concept-overview
+
+
 You can list all configuration values with one command::
 
  sudo -u www-data php occ config:list
