@@ -57,7 +57,7 @@ Added APIs
 Changed APIs
 ^^^^^^^^^^^^
 
-* tbd
+* ``OCP\IURLGenerator::URL_REGEX_NO_MODIFIERS``: Changed to match localhost and hostnames with ports.
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
