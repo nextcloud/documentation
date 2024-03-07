@@ -19,7 +19,7 @@ Registering settings schema
 There are two ways to register a declarative settings schema:
 
 1. Class-based using ``OCP\Settings\IDeclarativeSettingsForm`` interface
-2. By using an event listener for the ``OCP\Settings\RegisterDeclarativeSettingsFormEvent``
+2. By using an event listener for the ``OCP\Settings\Events\DeclarativeSettingsRegisterFormEvent``
 
 Additionally, you can register multiple declarative parameter schemes per application.
 
@@ -102,7 +102,7 @@ After that, you can register schema class using ``IRegistrationContext->register
 Event-based schema registration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To register a declarative settings schema using an event system you need to implement event listener for ``OCP\Settings\RegisterDeclarativeSettingsFormEvent``:
+To register a declarative settings schema using an event system you need to implement event listener for ``OCP\Settings\Events\DeclarativeSettingsRegisterFormEvent``:
 
 .. code-block:: php
 
@@ -115,7 +115,7 @@ To register a declarative settings schema using an event system you need to impl
 	use OCP\EventDispatcher\Event;
 	use OCP\EventDispatcher\IEventListener;
 	use OCP\Settings\DeclarativeSettingsTypes;
-	use OCP\Settings\RegisterDeclarativeSettingsFormEvent;
+	use OCP\Settings\Events\DeclarativeSettingsRegisterFormEvent;
 
 	class RegisterDeclarativeSettingsListener implements IEventListener {
 
@@ -123,7 +123,7 @@ To register a declarative settings schema using an event system you need to impl
 		}
 
 		public function handle(Event $event): void {
-			if (!($event instanceof RegisterDeclarativeSettingsFormEvent)) {
+			if (!($event instanceof DeclarativeSettingsRegisterFormEvent)) {
 				return;
 			}
 
@@ -147,7 +147,7 @@ And register the event listener as usually in your ``AppInfo/Application.php`` r
 
 	use OCP\AppFramework\App;
 	use OCP\AppFramework\Bootstrap\IRegistrationContext;
-	use OCP\Settings\RegisterDeclarativeSettingsFormEvent;
+	use OCP\Settings\Events\DeclarativeSettingsRegisterFormEvent;
 	use OCA\MyApp\Listener\RegisterDeclarativeSettingsListener;
 
 	class Application extends App {
@@ -156,7 +156,7 @@ And register the event listener as usually in your ``AppInfo/Application.php`` r
 		}
 
 		public function register(IRegistrationContext $context): void {
-			$context->registerEventListener(RegisterDeclarativeSettingsFormEvent::class, RegisterDeclarativeSettingsListener::class);
+			$context->registerEventListener(DeclarativeSettingsRegisterFormEvent::class, RegisterDeclarativeSettingsListener::class);
 		}
 	}
 
@@ -195,10 +195,10 @@ External storage type
 
 Handling of an external (``storage_type='external'``) storage type is always done via listening to the following events:
 
-1. ``OCP\Settings\GetDeclarativeSettingsValueEvent`` - to return the declarative setting value from your storage
-2. ``OCP\Settings\SetDeclarativeSettingsValueEvent`` - to save the declarative setting value where you want to
+1. ``OCP\Settings\Events\DeclarativeSettingsGetValueEvent`` - to return the declarative setting value from your storage
+2. ``OCP\Settings\Events\DeclarativeSettingsSetValueEvent`` - to save the declarative setting value where you want to
 
-Example of GetDeclarativeSettingsValueEvent event listener:
+Example of DeclarativeSettingsGetValueEvent event listener:
 
 .. code-block:: php
 	:emphasize-lines: 27,28
@@ -212,7 +212,7 @@ Example of GetDeclarativeSettingsValueEvent event listener:
 	use OCP\EventDispatcher\Event;
 	use OCP\EventDispatcher\IEventListener;
 	use OCP\IConfig;
-	use OCP\Settings\GetDeclarativeSettingsValueEvent;
+	use OCP\Settings\Events\DeclarativeSettingsGetValueEvent;
 
 	class GetDeclarativeSettingsValueListener implements IEventListener {
 
@@ -220,7 +220,7 @@ Example of GetDeclarativeSettingsValueEvent event listener:
 		}
 
 		public function handle(Event $event): void {
-			if (!$event instanceof GetDeclarativeSettingsValueEvent) {
+			if (!$event instanceof DeclarativeSettingsGetValueEvent) {
 				return;
 			}
 
@@ -234,7 +234,7 @@ Example of GetDeclarativeSettingsValueEvent event listener:
 		}
 	}
 
-Example of SetDeclarativeSettingsValueEvent event listener:
+Example of DeclarativeSettingsSetValueEvent event listener:
 
 .. code-block:: php
 	:emphasize-lines: 27
@@ -248,7 +248,7 @@ Example of SetDeclarativeSettingsValueEvent event listener:
 	use OCP\EventDispatcher\Event;
 	use OCP\EventDispatcher\IEventListener;
 	use OCP\IConfig;
-	use OCP\Settings\SetDeclarativeSettingsValueEvent;
+	use OCP\Settings\Events\DeclarativeSettingsSetValueEvent;
 
 	class SetDeclarativeSettingsValueListener implements IEventListener {
 
@@ -256,7 +256,7 @@ Example of SetDeclarativeSettingsValueEvent event listener:
 		}
 
 		public function handle(Event $event): void {
-			if (!$event instanceof SetDeclarativeSettingsValueEvent) {
+			if (!$event instanceof DeclarativeSettingsSetValueEvent) {
 				return;
 			}
 
@@ -283,8 +283,8 @@ Register get/set listeners
 
 	use OCP\AppFramework\App;
 	use OCP\AppFramework\Bootstrap\IRegistrationContext;
-	use OCP\Settings\GetDeclarativeSettingsValueEvent;
-	use OCP\Settings\SetDeclarativeSettingsValueEvent;
+	use OCP\Settings\Events\DeclarativeSettingsGetValueEvent;
+	use OCP\Settings\Events\DeclarativeSettingsSetValueEvent;
 	use OCA\MyApp\Listener\GetDeclarativeSettingsValueListener;
 	use OCA\MyApp\Listener\SetDeclarativeSettingsValueListener;
 
@@ -294,8 +294,8 @@ Register get/set listeners
 		}
 
 		public function register(IRegistrationContext $context): void {
-			$context->registerEventListener(GetDeclarativeSettingsValueEvent::class, GetDeclarativeSettingsValueListener::class);
-			$context->registerEventListener(SetDeclarativeSettingsValueEvent::class, SetDeclarativeSettingsValueListener::class);
+			$context->registerEventListener(DeclarativeSettingsGetValueEvent::class, GetDeclarativeSettingsValueListener::class);
+			$context->registerEventListener(DeclarativeSettingsSetValueEvent::class, SetDeclarativeSettingsValueListener::class);
 		}
 	}
 
