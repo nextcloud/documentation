@@ -22,6 +22,9 @@ version = 'latest'
 # The full version, including alpha/beta/rc tags.
 release = version
 
+# General information about the project.
+project = u'Nextcloud Server (%s)' % (version)
+
 # RTD theme options
 html_theme_options = {
     'logo_only': True,
