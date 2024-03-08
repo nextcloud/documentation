@@ -641,6 +641,7 @@ Encryption
   encryption:decrypt-all               Disable server-side encryption and
                                        decrypt all files
   encryption:disable                   Disable encryption
+  encryption:drop-legacy-filekey       Drop legacy filekey for files still using it
   encryption:enable                    Enable encryption
   encryption:enable-master-key         Enable the master key. Only available
                                        for fresh installations with no existing
@@ -702,6 +703,13 @@ user data instead of individual user keys. This is especially useful to enable
 single-sign on. Use this only on fresh installations with no existing data, or
 on systems where encryption has not already been enabled. It is not possible to
 disable it.
+
+``encryption:drop-legacy-filekey`` scans the files for the legacy filekey
+format using RC4 and get rid of it (if master key is enabled). The operation can
+be quite slow as it needs to rewrite each encrypted file. If you do not do it files
+will be migrated to drop their legacy filekey on the first modification. If you have
+old files from Nextcloud<25 still using base64 encoding this will migrate them to the
+binary format and save about 33% disk space.
 
 See :doc:`../configuration_files/encryption_configuration` to learn more.
 
