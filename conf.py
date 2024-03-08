@@ -1,12 +1,23 @@
 # global configuration for every documentation added at the end
 
 import os, sys, datetime
+from subprocess import Popen, PIPE
 
 import sphinx_rtd_theme
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 sys.path.insert(0, os.path.abspath(dir_path + '/_ext'))
 now = datetime.datetime.now()
+
+def get_version():
+
+    pipe = Popen('git branch | grep \*', stdout=PIPE, shell=True, universal_newlines=True)
+    version = pipe.stdout.read()
+
+    if version:
+        return version[:2]
+    else:
+        return 'unknown'
 
 extensions = ['sphinx_rtd_theme', 'sphinx_rtd_dark_mode']
 
@@ -18,7 +29,7 @@ copyright = str(now.year) + ' Nextcloud GmbH'
 # built documents.
 #
 # The short X.Y version.
-version = 'latest'
+version = get_version().strip()
 # The full version, including alpha/beta/rc tags.
 release = version
 
