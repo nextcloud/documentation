@@ -28,10 +28,8 @@ Encryption and decryption are performed on the Nextcloud server. All files sent
 to remote storage will be encrypted by the Nextcloud server, and upon retrieval, 
 decrypted before serving them to you and anyone you have shared them with.
 
-.. note:: Encrypting files increases their size by roughly 35%, so you must 
-   take this into account when you are provisioning storage and setting 
-   storage quotas. User's quotas are based on the unencrypted file size, and 
-   not the encrypted file size.
+.. note:: Encryption files generate a slight overhead in size by ~1% (35% before Nextcloud 25).
+   User's quotas are based on the unencrypted file size, and not the encrypted file size.
 
 When files on external storage are encrypted in Nextcloud, you cannot share them 
 directly from the external storage services, but only through Nextcloud sharing 
