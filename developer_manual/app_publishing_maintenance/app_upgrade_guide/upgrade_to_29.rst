@@ -21,25 +21,10 @@ Make sure your ``appinfo/info.xml`` allows for Nextcloud 29.
 Front-end changes
 -----------------
 
-Added APIs
-^^^^^^^^^^
-
-* tbd
-
 Changed APIs
 ^^^^^^^^^^^^
 
 * `IAppConfig` has been fully reworked, most of previous methods are now deprecated. The new version of the API implements multiple settings for app config values to define their laziness and sensitivity.
-
-Deprecated APIs
-^^^^^^^^^^^^^^^
-
-* tbd
-
-Removed APIs
-^^^^^^^^^^^^
-
-* tbd
 
 Removed globals
 ^^^^^^^^^^^^^^^
@@ -49,20 +34,10 @@ Removed globals
 Back-end changes
 ----------------
 
-Added APIs
-^^^^^^^^^^
-
-* tbd
-
 Changed APIs
 ^^^^^^^^^^^^
 
 * ``OCP\IURLGenerator::URL_REGEX_NO_MODIFIERS``: Changed to match localhost and hostnames with ports.
-
-Deprecated APIs
-^^^^^^^^^^^^^^^
-
-* tbd
 
 Removed APIs
 ^^^^^^^^^^^^
@@ -71,16 +46,6 @@ Removed APIs
 * ``oc_share`` table: Due to massive performance impact on queries when selecting additionally for ``item_type``,
   it is no longer allowed, to use the ``oc_share`` table for any other types than ``file`` and ``folder``.
 * ``OC\BackgroundJob\Job``, ``OC\BackgroundJob\QueuedJob`` and ``OC\BackgroundJob\TimedJob``: use the ``OCP`` versions.
-
-Added events
-^^^^^^^^^^^^
-
-* tbd
-
-Deprecated events
-^^^^^^^^^^^^^^^^^
-
-* tbd
 
 Removed events
 ^^^^^^^^^^^^^^
