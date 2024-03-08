@@ -19,7 +19,7 @@ def get_version():
 
     if version == "master":
 	    return "upcoming"
-    if version[:6] == "stable":
+    elif version[:6] == "stable":
         return version[-2:]
     else:
         return "%s" % (version)
