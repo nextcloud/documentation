@@ -1,6 +1,6 @@
-===========================================
-What's new for users in Nextcloud |version|
-===========================================
+==========
+What's new
+==========
 
 1. Easier way to select a new app:
 
