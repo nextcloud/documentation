@@ -14,10 +14,15 @@ def get_version():
     pipe = Popen('git branch | grep \*', stdout=PIPE, shell=True, universal_newlines=True)
     version = pipe.stdout.read()
 
-    if version:
-        return version[:2]
+    null, version = version.split("*",1)
+    version = version.strip()
+
+    if version == "master":
+	    return "upcoming"
+    if version[:6] == "stable":
+        return version[-2:]
     else:
-        return 'unknown'
+        return "%s" % (version)
 
 extensions = ['sphinx_rtd_theme', 'sphinx_rtd_dark_mode']
 
@@ -29,7 +34,7 @@ copyright = str(now.year) + ' Nextcloud GmbH'
 # built documents.
 #
 # The short X.Y version.
-version = get_version().strip()
+version = get_version()
 # The full version, including alpha/beta/rc tags.
 release = version
 
@@ -47,7 +52,7 @@ html_theme_options = {
 html_logo = "../_shared_assets/static/logo-white.png"
 
 # substitutions go here
-rst_epilog =  '.. |version| replace:: %s' % version
+#rst_epilog =  '.. |version| replace:: %s' % version
 
 # building the versions list
 version_start = 26		# THIS IS THE SUPPORTED VERSION NUMBER
