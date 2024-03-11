@@ -378,3 +378,15 @@ The following elements are either deprecated or for internal use only and will f
 * **remote**
 * **requiremin**
 * **requiremax**
+
+.. _app changelog:
+
+Changelog
+---------
+
+Apps can provide a changelog. This should be written in the `keep a changelog <https://keepachangelog.com/>`_.
+
+If the apps provide a ``CHANGELOG.md`` file in the project root, this file will be used to show changes for the released version in the app store and for administrators in the app settings.
+
+Moreover, since Nextcloud 29, if the ``updatenotification`` app is enabled, apps can also provide a changelog for the users.
+The app will notify users about after the app update if either a ``CHANGELOG.language.md`` (where ``language`` is the language code of that user) or a fallback ``CHANGELOG.en.md`` is available.

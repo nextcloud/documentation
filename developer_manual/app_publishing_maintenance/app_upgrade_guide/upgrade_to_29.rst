@@ -6,6 +6,8 @@ General
 -------
 
 * The Circles app will be renamed to Teams. Apps that use the terms Circle/Circles need to get adjusted to use Team/Teams instead. For example ``share to circle`` would become ``share to team``.
+* The ``updatenotification`` app now also supports notifications for apps that were updated.
+  If the updated app provides a ``CHANGELOG.language.md`` or ``CHANGELOG.en.md`` file, it will create notifications for users about these changes. See also the :ref:`app changelog<app changelog>` section.
 
 info.xml
 ^^^^^^^^

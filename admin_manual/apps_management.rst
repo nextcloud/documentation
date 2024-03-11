@@ -62,6 +62,25 @@ update all apps.
 .. note:: **Beta releases**: You can also install beta releases of apps directly from here by 
           switching your Nextcloud to the beta channel in the admin overview.
 
+Update notifications
+^^^^^^^^^^^^^^^^^^^^
+
+The always installed ``updatenotification`` app allows administrators to be notified on available app and Nextcloud updates.
+Moreover, since Nextcloud 29, this app also allows to notify users about updated apps and the changes that are included in the update.
+This notification is enabled by default if the app provides a changelog.
+
+To disable user notifications use:
+
+::
+
+  occ config:app:set --type boolean --value="false" updatenotification app_updated.enabled
+
+By default guest users, when using the guests app, are not notified, to enable notifications also for them use:
+
+::
+
+  occ config:app:set --type boolean --value="true" updatenotification app_updated.notify_guests
+
 Using private API
 -----------------
 
