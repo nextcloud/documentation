@@ -3456,22 +3456,6 @@ Enable profile globally
 
 Defaults to ``true``
 
-enable_file_metadata
-^^^^^^^^^^^^^^^^^^^^
-
-
-::
-
-	'enable_file_metadata' => true,
-
-Enable file metadata collection
-
-This is helpful for the mobile clients and will enable few optimizations in
-the future for the preview generation.
-
-Note that when enabled, this data will be stored in the database and might increase
-the database storage.
-
 account_manager.default_property_scope
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
