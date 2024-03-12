@@ -49,3 +49,23 @@ Shared items
 .. versionadded:: 5.5.0
 
 For this feature, the shipped `related resources app <https://apps.nextcloud.com/apps/related_resources>`_ needs to be enabled.
+
+.. _carddav-data-retention:
+
+Data retention
+--------------
+
+.. versionadded:: 26.0.0
+
+You can configure how long Nextcloud keeps some of the contacts data.
+
+Sync tokens
+^^^^^^^^^^^
+
+The CardDAV backend keeps track of any modifications of address books. That is anything added, modified or removed. The data is used for differential synchronization of offline clients like Thunderbird. At a certain point in time, the data can be considered outdated assuming there will be no more client needing it. This can help keep the database table `addressbookchanges` small::
+
+  php occ config:app:set totalNumberOfSyncTokensToKeep --value=30000
+
+The default is keeping 10,000 entries. This option should be set adequate to the number of users. E.g. on an installation with 5000 active synced addressbooks the system would only keep an average of 10 changes per sync. This will lead to premature data deletion and synchronization problems.
+
+.. warning:: This setting will also influence :ref:`CalDAV data retention<caldav-data-retention>`.
