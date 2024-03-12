@@ -510,17 +510,16 @@ Dav commands
 A set of commands to create and manage addressbooks and calendars::
 
  dav
-  dav:create-addressbook        Create a dav addressbook
-  dav:create-calendar           Create a dav calendar
-  dav:delete-calendar           Delete a dav calendar
-  dav:list-calendars            List all calendars of a user
-  dav:move-calendar             Move a calendar from a user to another
-  dav:remove-invalid-shares     Remove invalid dav shares
-  dav:send-event-reminders      Sends event reminders
-  dav:sync-birthday-calendar    Synchronizes the birthday calendar
-  dav:sync-system-addressbook   Synchronizes users to the system
-                                addressbook
-
+  dav:create-addressbook                 Create a dav addressbook
+  dav:create-calendar                    Create a dav calendar
+  dav:delete-calendar                    Delete a dav calendar
+  dav:fix-missing-caldav-changes         Insert missing calendarchanges rows for existing events
+  dav:list-calendars                     List all calendars of a user
+  dav:move-calendar                      Move a calendar from an user to another
+  dav:remove-invalid-shares              Remove invalid dav shares
+  dav:send-event-reminders               Sends event reminders
+  dav:sync-birthday-calendar             Synchronizes the birthday calendar
+  dav:sync-system-addressbook            Synchronizes users to the system addressbook
 
 The syntax for ``dav:create-addressbook`` and  ``dav:create-calendar`` is
 ``dav:create-addressbook [user] [name]``. This example creates the addressbook
@@ -551,6 +550,8 @@ This example will delete the birthday calendar of user molly::
 This example will list all calendars for user annie::
 
  sudo -u www-data php occ dav:list-calendars annie
+
+``dav:dav:fix-missing-caldav-changes [user]`` tries to restore calendar sync changes when data in the calendarchanges table has been lost. If the user ID is omitted, the command runs for all users. This can take a while.
 
 ``dav::move-calendar [name] [sourceuid] [destinationuid]`` allows the admin
 to move a calendar named ``name`` from a user ``sourceuid`` to the user
