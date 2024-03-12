@@ -18,7 +18,7 @@ You can create a direct, one-on-one chat by searching for the name of a user, a 
 
 .. image:: images/chat-with-one-user.png
 
-If you want to create a custom group conversation, click the ``⋮`` button next to the filters button and then on ``Create a new conversation``. 
+If you want to create a custom group conversation, click the button next to the search field and filters button and then on ``Create a new conversation``.
 
 .. image:: images/create-new-conversation.png
     :width: 300px
@@ -40,7 +40,7 @@ You can cancel the creation of a conversation by clicking outside the white menu
 View all open conversations
 ---------------------------
 
-You can view all the conversations that you can join by accessing the conversations list through the ``⋮``  menu next to the filters button and clicking on ``Join open conversations.``
+You can view all the conversations that you can join by clicking the button next to the search field and filters button and then on ``Join open conversations.``
 
 .. image:: images/join-open-conversations.png
     :width: 500px
@@ -92,6 +92,72 @@ Inserting emoji
 You can add emoji using the picker on the left of the text input field.
 
 .. image:: images/emoji-picker.png
+   :width: 450px
+
+Using Markdown
+---------------
+
+You can enhance your messages with a markdown syntax support. See list for usage:
+
+**Headings and dividers**
+
+.. code-block:: none
+
+  # Heading 1
+  ## Heading 2
+  ### Heading 3
+  #### Heading 4
+  ##### Heading 5
+  ###### Heading 6
+
+  Heading
+  ===
+  Normal text
+  ***
+  Normal text
+
+**Inline decorations**
+
+.. code-block:: none
+
+  **bold text** __bold text__
+  *italicized text* _italicized text_
+  `inline code` ``inline code``
+  ```
+  .code-block {
+    display: pre;
+  }
+  ```
+
+**Lists**
+
+.. code-block:: none
+
+  1. Ordered list
+  2. Ordered list
+
+  * Unordered list
+  - Unordered list
+  + Unordered list
+
+**Quotes**
+
+.. code-block:: none
+
+  > blockquote
+  second line of blockquote
+
+Setting reminder on messages
+----------------------------
+
+You can set reminders on specific messages. If there's an important message you want to be notified about later, simply hover over it and click on the reminder icon.
+
+.. image:: images/set-message-reminder.png
+   :width: 450px
+
+In the submenu, you can select an appropriate time to receive a notification later.
+
+.. image:: images/configure-message-reminder.png
    :width: 450px
 
 Replying to messages and more
@@ -158,7 +224,7 @@ You can access your settings and choose a different webcam, microphone and other
 .. image:: images/media-settings.png
     :width: 300px
 
-or change the background 
+From media settings dialog, you can also change the background of your video.
 
 .. image:: images/background-settings-in-call.png
     :width: 300px
