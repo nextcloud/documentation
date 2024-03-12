@@ -10,6 +10,13 @@ Using the Mail app
 Managing your mail account
 ---------------------------
 
+Switch layout
+~~~~~~~~~~~~~
+1. Visit mail settings
+2. Click the layout that you desire
+
+ .. versionadded:: 3.6
+
 Add a new mail account
 ~~~~~~~~~~~~~~~~~~~~~~~
 
