@@ -147,6 +147,19 @@ You can enhance your messages with a markdown syntax support. See list for usage
   > blockquote
   second line of blockquote
 
+Setting reminder on messages
+----------------------------
+
+You can set reminders on specific messages. If there's an important message you want to be notified about later, simply hover over it and click on the reminder icon.
+
+.. image:: images/set-message-reminder.png
+   :width: 450px
+
+In the submenu, you can select an appropriate time to receive a notification later.
+
+.. image:: images/configure-message-reminder.png
+   :width: 450px
+
 Replying to messages and more
 -----------------------------
 
