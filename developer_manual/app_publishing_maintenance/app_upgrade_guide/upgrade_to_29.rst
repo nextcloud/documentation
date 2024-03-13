@@ -36,6 +36,11 @@ Removed globals
 Back-end changes
 ----------------
 
+Added APIs
+^^^^^^^^^^
+
+* The Attributes ``OCP\AppFramework\Http\Attribute\ApiRoute`` and ``OCP\AppFramework\Http\Attribute\FrontpageRoute`` can be used for routing registering routes. See :doc:`/basics/routing` for documentation.
+
 Changed APIs
 ^^^^^^^^^^^^
 
