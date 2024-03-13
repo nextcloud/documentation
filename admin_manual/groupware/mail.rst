@@ -93,6 +93,8 @@ LLM Processing
 
 The Mail app can optionally use large language models to process emails and offer assistance features like thread summaries, smart replies and event agendas.
 
+.. note:: The supported languages depend on the used large language model.
+
 .. note:: A fast text processing integration like `<https://apps.nextcloud.com/apps/integration_openai>`_ is required for best results.
 
 The feature can be enabled in the Mail administration settings.

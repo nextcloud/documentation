@@ -10,6 +10,13 @@ Using the Mail app
 Managing your mail account
 ---------------------------
 
+Switch layout
+~~~~~~~~~~~~~
+1. Visit mail settings
+2. Click the layout that you desire
+
+ .. versionadded:: 3.6
+
 Add a new mail account
 ~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -26,9 +33,9 @@ Change sort order
 
 1. Visit mail settings
 2. Go to *Sorting*
-3. You can choose *Oldest* or *Newest* mail first 
+3. You can choose *Oldest* or *Newest* mail first
 
-.. note:: This change will apply across all your accounts and mailboxes 
+.. note:: This change will apply across all your accounts and mailboxes
 
 Scheduled messages
 ~~~~~~~~~~~~~~~~~~~
@@ -85,7 +92,7 @@ Enable mail body search
 
 Mail bodies can now be searched, this feature is opt-in because of potential performance issues.
 
-To enable it: 
+To enable it:
 
 1) Visit Account settings
 2) Go to Mailbox search
@@ -93,7 +100,7 @@ To enable it:
 
 .. warning:: If you want to also enable it for unified mailboxes you have to do so in Mail settings
 
-By enabling it the main search box will now search in both subjects and mail bodies, and a sperate *Body* option 
+By enabling it the main search box will now search in both subjects and mail bodies, and a sperate *Body* option
 will appear in advanced search.
 
 Account delegation
@@ -242,7 +249,7 @@ Snoozing a message or thread moves it into a dedicated mailbox until the selecte
 2. Click *Snooze*
 3. Select how long the message or thread should be snoozed
 
-Smart replies 
+Smart replies
 ~~~~~~~~~~~~~
 
 .. versionadded:: 3.6
