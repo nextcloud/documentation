@@ -6,7 +6,7 @@ Nextcloud manuals style guide
 
 See the `Documentation README <https://github.com/nextcloud/documentation/blob/master/README.rst>`_ for information on setting up your documentation build environment
 
-See `reStructuredText Primer <http://sphinx-doc.org/rest.html>`_ for a complete 
+See `reStructuredText Primer <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_ for a complete 
 Sphinx/RST markup reference.
 
 This is the official style guide for the Nextcloud Administration and User 
