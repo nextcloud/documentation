@@ -1,3 +1,5 @@
+.. _occ:
+
 =====================
 Using the occ command
 =====================
@@ -1630,13 +1632,13 @@ In the case of a user losing access to the second factor (e.g. lost phone with
 two-factor SMS verification), the admin can try to disable the two-factor
 check for that user via the occ command::
 
- sudo -u www-data php occ twofactor:disable <uid> <provider_id>
+ sudo -u www-data php occ twofactorauth:disable <uid> <provider_id>
 
 .. note:: This is not supported by all providers.
 
 To re-enable two-factor auth again use the following commmand::
 
- sudo -u www-data php occ twofactor:enable <uid> <provider_id>
+ sudo -u www-data php occ twofactorauth:enable <uid> <provider_id>
 
 .. note:: This is not supported by all providers.
 
