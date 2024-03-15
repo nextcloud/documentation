@@ -45,6 +45,7 @@ Changed APIs
 ^^^^^^^^^^^^
 
 * ``OCP\IURLGenerator::URL_REGEX_NO_MODIFIERS``: Changed to match localhost and hostnames with ports.
+* ``OCP\Files\IMimeTypeLoader``: Every method from this interface now has type declarations. Make sure to update your implementation if you have one.
 
 Removed APIs
 ^^^^^^^^^^^^
