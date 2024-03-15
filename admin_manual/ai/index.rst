@@ -33,6 +33,7 @@ Overview of AI features
    "","`Replicate integration <https://apps.nextcloud.com/apps/integration_replicate>`_","Yellow","Yes","Yes - StableDiffusion models by StabilityAI","No","No"
    "Text generation","`Local large language model (via GPT4all Falcon) <https://apps.nextcloud.com/apps/llm>`_","Green","Yes","Yes","Yes","Yes"
    "","`Local large language model (via Llama 2) <https://apps.nextcloud.com/apps/llm>`_","Yellow","Yes","Yes","No","Yes"
+   "","`Local large language model (via NeuralBeagle 14) <https://apps.nextcloud.com/apps/llm>`_","Yellow","Yes","Yes","No","Yes"
    "","`OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_","Red","No","No","No","No"
    "","`OpenAI and LocalAI integration (via LocalAI) <https://apps.nextcloud.com/apps/integration_openai>`_","Green","Yes","Yes","Yes","Yes"
    "Context Chat","`Nextcloud Assistant Context Chat <https://apps.nextcloud.com/apps/context_chat>`_","Yellow","Yes","Yes","No","Yes"
