@@ -37,8 +37,8 @@ openapi-spec: get-server-sources
 		--merged ../developer_manual/_static/openapi.json \
 		$$(ls server/apps/*/openapi.json)
 	cd developer_manual/_static && \
-		wget https://unpkg.com/@stoplight/elements@7.7.17/web-components.min.js -O stoplight-elements.js && \
-		wget https://unpkg.com/@stoplight/elements@7.7.17/styles.min.css -O stoplight-elements.css
+		wget https://unpkg.com/@stoplight/elements@8.1.0/web-components.min.js -O stoplight-elements.js && \
+		wget https://unpkg.com/@stoplight/elements@8.1.0/styles.min.css -O stoplight-elements.css
 
 
 clean:

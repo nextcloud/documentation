@@ -36,10 +36,16 @@ Removed globals
 Back-end changes
 ----------------
 
+Added APIs
+^^^^^^^^^^
+
+* The Attributes ``OCP\AppFramework\Http\Attribute\ApiRoute`` and ``OCP\AppFramework\Http\Attribute\FrontpageRoute`` can be used for routing registering routes. See :doc:`/basics/routing` for documentation.
+
 Changed APIs
 ^^^^^^^^^^^^
 
 * ``OCP\IURLGenerator::URL_REGEX_NO_MODIFIERS``: Changed to match localhost and hostnames with ports.
+* ``OCP\Files\IMimeTypeLoader``: Every method from this interface now has type declarations. Make sure to update your implementation if you have one.
 
 Removed APIs
 ^^^^^^^^^^^^

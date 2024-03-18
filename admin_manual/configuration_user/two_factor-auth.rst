@@ -1,3 +1,5 @@
+.. _two-factor-auth:
+
 =========================
 Two-factor authentication
 =========================
@@ -31,6 +33,16 @@ Once 2FA has been enabled, users have to `activate it in their personal settings
 
 .. TODO ON RELEASE: Update version number above on release
 
+Disabling two-factor authentication
+-----------------------------------
+
+Two-factor providers can be disabled via :ref:`occ <occ>`::
+
+ sudo -u www-data php occ twofactorauth:disable <uid> <provider_id>
+
+User are free to enable this provider again via their personal settings.
+
+.. note:: This operation has to be supported by the provider. If this support is missing, Nextcloud will abort and show an error.
 
 Enforcing two-factor authentication
 -----------------------------------
@@ -53,3 +65,14 @@ a user has 2FA enforced:
 * If no groups are selected, 2FA is enabled for everyone except members of the excluded groups
 * If groups are selected, 2FA is enabled for all members of these. If a user is both in a
   selected *and* excluded group, the selected takes precedence and 2FA is enforced.
+
+Provider removal
+----------------
+
+Nextcloud keeps records about the enabled two-factor authentication providers of every user. If a provider is simply removed/:ref:`disabled <apps_commands_label>`, Nextcloud will still consider the provider active for the user at login and show a warning like *Could not load at least one of your enabled two-factor auth methods*.
+
+The associations of removed providers can be cleaned up via :ref:`occ <occ>`::
+
+ sudo -u www-data php occ twofactorauth:cleanup <provider_id>
+
+.. warning:: This operation is irreversible. Only run it for providers you do not intend to enable again.

@@ -258,6 +258,8 @@ When you open a message in the Mail app, it proposes AI-generated replies. By si
 
 .. note:: Please note that the feature has to be enabled by the administrator
 
+.. note:: Supported languages depend on the used large language model
+
 Filtering and autoresponder
 ---------------------------
 
