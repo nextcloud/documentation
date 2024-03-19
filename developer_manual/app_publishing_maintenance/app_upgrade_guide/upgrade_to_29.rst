@@ -46,6 +46,7 @@ Changed APIs
 
 * ``OCP\IURLGenerator::URL_REGEX_NO_MODIFIERS``: Changed to match localhost and hostnames with ports.
 * ``OCP\Files\IMimeTypeLoader``: Every method from this interface now has type declarations. Make sure to update your implementation if you have one.
+* ``OCP\IRequest::getParam('_route')`` and ``OCP\IRequest::getParams()['_route']``: The route name (consisting of app ID, controller name and controller method) is now all lower case
 
 Removed APIs
 ^^^^^^^^^^^^
