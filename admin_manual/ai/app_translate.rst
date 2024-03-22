@@ -4,7 +4,7 @@ App: Local Machine translation (translate)
 
 .. _ai-app-translate:
 
-The *translate* app is one of the apps that provide machine translation functionality in Nextcloud and act as a translation backend for the :ref:`Nextcloud Assistant app<ai-app-assistant>`, the *text* app and :ref:`other apps making use of the core Translation API<mt-consumer-apps>`. The *translate* app specifically runs only open source models and does so entirely on-premises. Nextcloud customers receive customer support upon request.
+The *translate* app is one of the apps that provide machine translation functionality in Nextcloud and act as a translation backend for the :ref:`Nextcloud Assistant app<ai-app-assistant>`, the *text* app and :ref:`other apps making use of the core Translation API<mt-consumer-apps>`. The *translate* app specifically runs only open source models and does so entirely on-premises. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
 
 The app currently supports the following languages:
 
@@ -19,6 +19,7 @@ As the models are entirely open source, the quality of translations may not be c
 Requirements
 ------------
 
+* Minimal Nextcloud version: 26
 * x86 CPU
 * GNU lib C (musl is not supported)
 * This app does not support using GPU for processing and may thus not be performing ideally for long texts
@@ -34,35 +35,29 @@ Space usage
 Installation
 ------------
 
-You can install the assistant app via the "Apps" page in Nextcloud, or by executing
+0. Make sure the :ref:`Nextcloud Assistant app<ai-app-assistant>` is installed
+1. Install the *translate* app via the "Apps" page in Nextcloud, or by executing
 
-``
-occ app:enable translate
-``
+   occ app:enable translate
+
+Setup
+~~~~~
 
 After installing this app you will need to run:
 
-``
-$ php occ translate:download-models
-``
+   occ translate:download-models
 
 You may also download only specific languages by using the following command:
 
-``
-$ php occ translate:download-models <languages>
-``
+   occ translate:download-models <languages>
 
 For example
 
-``
-$ php occ translate:download-models de en
-``
+   occ translate:download-models de en
 
 will download both en->de and de->en.
 
-``
-$ php occ translate:download-models de en es
-``
+   occ translate:download-models de en es
 
 will download en->de, de->en, en->es, es->en, es->de, de->es
 
@@ -91,3 +86,10 @@ Positive:
 
 Learn more about the Nextcloud Ethical AI Rating `in our blog<https://nextcloud.com/blog/nextcloud-ethical-ai-rating/>`.
 
+Known Limitations
+-----------------
+
+* Language models are likely to generate false information and should thus only be used in situations that are not critical. It's recommended to only use AI at the beginning of a creation process and not at the end, so that outputs of AI serve as a draft for example and not as final product. Always check the output of language models before using it.
+* Make sure to test the translation model you are using it for whether it meets the use-case's quality requirements
+* Language models notoriously have a high energy consumption
+* Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying models. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI)

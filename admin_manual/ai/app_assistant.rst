@@ -6,14 +6,14 @@ Nextcloud Assistant
 
 Nextcloud assistant is the primary graphical user interface for interacting with artificial intelligence features in Nextcloud.
 
-It offers the graphical user interface for text processing tasks like summarizing text, generating headlines, and asking arbitrary questions, for Speech-To-Text transcription of media files, for Text-To-Image picture generation and it integrates with the context_chat app to offer in-context answers about your own data stored in Nextcloud. Nextcloud customers receive customer support upon request.
+It offers the graphical user interface for text processing tasks like summarizing text, generating headlines, and asking arbitrary questions, for Speech-To-Text transcription of media files, for Text-To-Image picture generation and it integrates with the context_chat app to offer in-context answers about your own data stored in Nextcloud. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
 
 Installation
 ------------
 
 You can install the *assistant* app via the "Apps" page in Nextcloud, or by executing
 
-``php occ app:enable assistant``
+   php occ app:enable assistant
 
 App store
 ---------
@@ -32,7 +32,7 @@ Related apps
 
 Artificial intelligence at Nextcloud is built in a modular way, allowing you to choose from a variety of solutions for your needs. In order to make use of the various features of the Assistant you will need additional apps that act as backends to provide the actual implementation of the AI functionality. In the Nextcloud administration settings under "Artificial intelligence" you can select which AI backend app to use for which tasks. Note that some of the backend apps are only community maintained, while others are available for Customer support upon request.
 
-**Note**: At Nextcloud we focus on creating on-premise AI apps that run fully selfhosted on your own servers in order to preserve your privacy and data sovereignty. However, you can also offload these resource-heavy tasks to an :ref:`"AI as a Service" provider<ai-ai_as_a_service>`.
+**Note**: At Nextcloud we focus on creating on-premise AI apps that run fully self-hosted on your own servers in order to preserve your privacy and data sovereignty. However, you can also offload these resource-heavy tasks to an :ref:`"AI as a Service" provider<ai-ai_as_a_service>`.
 
 Machine translation
 ~~~~~~~~~~~~~~~~~~~
