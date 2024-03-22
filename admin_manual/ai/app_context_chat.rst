@@ -40,6 +40,8 @@ Installation
 2. Install the *context_chat_backend* ExApp via the "External Apps" admin page in Nextcloud
 3. Install the *context_chat* app via the "Apps" page in Nextcloud, or by executing
 
+.. code-block::
+
    occ app:enable context_chat
 
 

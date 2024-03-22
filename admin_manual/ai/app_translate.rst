@@ -45,17 +45,25 @@ Setup
 
 After installing this app you will need to run:
 
+.. code-block::
+
    occ translate:download-models
 
 You may also download only specific languages by using the following command:
+
+.. code-block::
 
    occ translate:download-models <languages>
 
 For example
 
+.. code-block::
+
    occ translate:download-models de en
 
 will download both en->de and de->en.
+
+.. code-block::
 
    occ translate:download-models de en es
 
