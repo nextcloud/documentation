@@ -13,6 +13,8 @@ Installation
 
 You can install the *assistant* app via the "Apps" page in Nextcloud, or by executing
 
+.. code-block::
+
    php occ app:enable assistant
 
 App store
