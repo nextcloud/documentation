@@ -12,10 +12,12 @@ Managing your mail account
 
 Switch layout
 ~~~~~~~~~~~~~
-1. Visit mail settings
-2. Click the layout that you desire
-
  .. versionadded:: 3.6
+
+1. Visit mail settings
+2. Choose between *List*, *Vertical split* and *Horizontal split*
+
+.. figure:: images/mail_layout.png
 
 Add a new mail account
 ~~~~~~~~~~~~~~~~~~~~~~~
