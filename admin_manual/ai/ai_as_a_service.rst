@@ -4,7 +4,7 @@ AI as a Service
 
 .. _ai-ai_as_a_service:
 
-At Nextcloud we focus on creating on-premise AI apps that run fully selfhosted on your own servers in order to preserve your privacy and data sovereignty. However, you can also offload these resource-heavy tasks to an "AI as a Service" provider offering API access in exchange for payment. Examples of such providers are OpenAI (<https://platform.openai.com/>), with its ChatGPT APIs providing language model access among other APIs as well as replicate (<https://replicate.com/>).
+At Nextcloud we focus on creating on-premise AI apps that run fully self-hosted on your own servers in order to preserve your privacy and data sovereignty. However, you can also offload these resource-heavy tasks to an "AI as a Service" provider offering API access in exchange for payment. Examples of such providers are `OpenAI <https://platform.openai.com/>`_, with its ChatGPT APIs providing language model access among other APIs as well as `replicate <https://replicate.com/>`_.
 
 Installation
 ------------
