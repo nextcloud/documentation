@@ -33,7 +33,7 @@ As discussed above Nextcloud is using the ``TRANSACTION_READ_COMMITTED`` transac
 level. Some database configurations are enforcing other transaction isolation levels. To avoid
 data loss under high load scenarios (e.g. by using the sync client with many clients/users and
 many parallel operations) you need to configure the transaction isolation level accordingly.
-Please refer to the `MySQL manual <https://dev.mysql.com/doc/refman/5.7/en/set-transaction.html>`_
+Please refer to the `MySQL manual <https://dev.mysql.com/doc/refman/8.0/en/set-transaction.html>`_
 for detailed information.
 
 Parameters
@@ -352,7 +352,7 @@ the respective host name::
   +---------------+--------+
   | Variable_name | Value  |
   +---------------+--------+
-  | version       | 8.0.22 |
+  | version       | 8.0.36 |
   +---------------+--------+
   1 row in set (0.00 sec)
   mysql> quit
@@ -372,7 +372,7 @@ the respective host name::
 ::
 
   postgres=# SELECT version();
-  PostgreSQL 8.4.12 on i686-pc-linux-gnu, compiled by GCC gcc (GCC) 4.1.3 20080704 (prerelease), 32-bit
+  PostgreSQL 16.2 on i686-pc-linux-gnu, compiled by GCC gcc (GCC) 4.1.3 20080704 (prerelease), 32-bit
   (1 row)
   postgres=# \q
 
