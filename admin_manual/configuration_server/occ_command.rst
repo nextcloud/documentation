@@ -1413,10 +1413,20 @@ You can delete users::
 
  sudo -u www-data php occ user:delete fred
 
-View a user's most recent login::
+View a specific user's most recent login::
 
  sudo -u www-data php occ user:lastseen layla
-   layla's last login: 09.01.2020 18:46
+   layla's last login: 2024-03-20 17:18
+
+View a list of all users' most recent login::
+
+ sudo -u www-data php occ user:lastseen --all
+   albert's last login: 2024-03-18 10:30
+   bob has never logged in.
+   layla's last login: 2024-03-20 17:18
+   stephanie's last login: 2024-01-11 13:26
+   
+   
 
 Read user settings::
 
