@@ -201,6 +201,11 @@ Supported properties
 | <nc:is-encrypted />           | Whether the folder is end-to-end encrypted.     | | ``0`` for ``false``                                                                |
 |                               |                                                 | | ``1`` for ``true``                                                                 |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
+| <nc:is-mount-root>            | | This is a special property which is used to   | ``true`` or ``false``                                                                |
+|                               | | determine if a node is a mount root or not,   |                                                                                      |
+|                               | | e.g. a shared folder. If so, then the node    |                                                                                      |
+|                               | | can only be unshared and not deleted.         |                                                                                      |
++-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <oc:tags />                   | List of user specified tags.                    | ``<oc:tag>test</oc:tag>``                                                            |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <oc:favorite />               | The favorite state.                             | | ``0`` for not favourited                                                           |
@@ -250,6 +255,9 @@ Supported properties
 | <oc:checksums />              | An array of checksums.                          | ``<oc:checksum>md5:04c36b75222cd9fd47f2607333029106</oc:checksum>``                  |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:has-preview />            | Whether a preview of the file is available.     | ``true`` or ``false``                                                                |
++-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
+| <nc:hidden>                   | | Defines if a file should be hidden            | ``true`` or ``false``                                                                |
+|                               | | Currently only used for live photos           |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <oc:size />                   | | Unlike ``getcontentlength``, this property    | ``127815235``                                                                        |
 |                               | | also works for folders, reporting the size of |                                                                                      |
