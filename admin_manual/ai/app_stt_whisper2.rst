@@ -44,10 +44,12 @@ Installation
 Supplying alternate models
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This app allows supplying alternate LLM models as *gguf* files in the ``/app/models`` directory of the docker container. You can use any `*faster-whisper* model by Systran on hugging face <https://huggingface.co/Systran>`_ by simply
+This app allows supplying alternate LLM models as *gguf* files in the ``/nc_app_llm2_data`` directory of the docker container. You can use any `*faster-whisper* model by Systran on hugging face <https://huggingface.co/Systran>`_ by simply
 
-1. git cloning the respective repository into the models directory
-2. Selecting the respective model in the Nextcloud AI admin settings
+1. git cloning the respective repository
+2. Copying the folder with the git repository to ``/nc_app_llm2_data`` inside the docker container.
+3. Restarting the Whisper ExApp
+4. Selecting the respective model in the Nextcloud AI admin settings
 
 App store
 ---------

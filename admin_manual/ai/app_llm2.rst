@@ -42,7 +42,12 @@ Installation
 Supplying alternate models
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This app allows supplying alternate LLM models as *gguf* files in the ``/nc_app_<appid>_data`` directory of the docker container.
+This app allows supplying alternate LLM models as *gguf* files in the ``/nc_app_llm2_data`` directory of the docker container.
+
+1. Download a **gguf** model e.g. from huggingface
+2. Copy the **gguf** file to ``/nc_app_llm2_data`` inside the docker container
+3. Restart the llm2 ExApp
+4. Select the new model in the Nextcloud AI admin settings
 
 App store
 ---------
