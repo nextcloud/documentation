@@ -1,10 +1,24 @@
-================
-Release schedule
-================
+================================
+Maintenance and release schedule
+================================
 
-The ``stable`` release channel is the default and also what is recommended for most production environments.
+You can find the detailed schedule for major releases and maintenance releases in our regularly updated `Maintenance and Release Schedule <https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule>`_.
+
+Release channels
+----------------
+
+By default all Nextcloud installations utilize the ``stable`` release channel. This is what is recommended for most environments.
+
+The ``stable`` channel delivers the latest features ready for most users at minimal risk. New major releases are usually only made available in the ``stable`` channel after the first maintenance (bug fix) release. 
+
 
 Within the ``stable`` channel there are two types of releases: *Major* releases and *Maintenance* releases. 
+
+
+Note that Nextcloud does staged roll-outs, making releases incrementally available to the user base over time. 
+
+To update sooner to the new version, use the Beta channel. Around big releases the Beta channel delivers the new major version.
+
 
 Major releases
 --------------
