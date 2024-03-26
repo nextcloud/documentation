@@ -49,6 +49,11 @@ This app allows supplying alternate LLM models as *gguf* files in the ``/nc_app_
 3. Restart the llm2 ExApp
 4. Select the new model in the Nextcloud AI admin settings
 
+Scaling
+-------
+
+It is currently not possible to scale this app, we are working on this. One instance has a rough capacity of 1000 user queries per hour.
+
 App store
 ---------
 

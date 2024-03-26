@@ -47,6 +47,11 @@ Installation
 
 **Note**: Both apps need to be installed and both major version and minor version of the two apps must match for the functionality to work (ie. "v1.3.4" and "v1.3.1"; but not "v1.3.4" and "v2.1.6"; and not "v1.3.4" and "v1.4.5"). Keep this in mind when updating.
 
+Scaling
+-------
+
+It is currently not possible to scale ExApps like Context Chat, we are working on this. One instance has a rough capacity of 1000 user queries per hour.
+
 App store
 ---------
 

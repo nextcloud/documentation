@@ -51,6 +51,11 @@ This app allows supplying alternate LLM models as *gguf* files in the ``/nc_app_
 3. Restarting the Whisper ExApp
 4. Selecting the respective model in the Nextcloud AI admin settings
 
+Scaling
+-------
+
+It is currently not possible to scale this app, we are working on this. One instance has a rough capacity of 4h of transcription throughput per minute (measured with 8 CPU threads on an Intel(R) Xeon(R) Gold 6226R).
+
 App store
 ---------
 
