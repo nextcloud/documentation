@@ -50,7 +50,7 @@ Installation
 Scaling
 -------
 
-It is currently not possible to scale ExApps like Context Chat, we are working on this. One instance has a rough capacity of 1000 user queries per hour.
+It is currently not possible to scale ExApps like Context Chat, we are working on this. Based on our calculations an instance has a rough capacity of 1000 user requests per hour. However, this number is based on theory and we do appreciate real-world feedback on this.
 
 App store
 ---------
