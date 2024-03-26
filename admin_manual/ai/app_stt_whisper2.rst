@@ -54,7 +54,7 @@ This app allows supplying alternate LLM models as *gguf* files in the ``/nc_app_
 Scaling
 -------
 
-It is currently not possible to scale this app, we are working on this. One instance has a rough capacity of 4h of transcription throughput per minute (measured with 8 CPU threads on an Intel(R) Xeon(R) Gold 6226R).
+It is currently not possible to scale this app, we are working on this. Based on our calculations an instance has a rough capacity of 4h of transcription throughput per minute (measured with 8 CPU threads on an Intel(R) Xeon(R) Gold 6226R). It is unclear how close to real-world usage this number is, so we do appreciate real-world feedback on this.
 
 App store
 ---------
