@@ -190,6 +190,7 @@ Optional parameters sometimes needing adjustment:
 
 Optional parameters less commonly needing adjustment:
 
+* :code:`concurrency` defaults to :code:`5` [Note: This defines the maximum number of concurrent multipart uploads]
 * :code:`proxy` defaults to :code:`false`
 * :code:`timeout` defaults to :code:`15`
 * :code:`uploadPartSize` defaults to :code:`524288000`
