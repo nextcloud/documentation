@@ -45,7 +45,7 @@ Major releases typically introduce new functionality and features. Often the cha
 * breaking changes for app developers (e.g. of previously announced as deprecated APIs that have since reached their official removal stage)
 * adjustments required to the runtime environment (e.g. administrators may need to upgrade their PHP version or adjust web server parameters)
 
-A major release version is indicated by the first part of the version string. For example, Nextcloud Server ``v28.0.4`` is major release ``28``. New major releases are typically published three times a year. 
+As previously noted, the major release version is indicated by the first part of the version string. For example, Nextcloud Server ``28.0.4`` is major release ``28``. New major releases are typically published three times a year. 
 
 .. warning:: When using the ``stable`` channel it is possible you'll be *offered* a newer major version to upgrade to *even if* your existing major version has **not** reached End of Life. It is up to you to decide whether to upgrade then or wait until a better time for deploying a major new release. On the other hand, new **maintenance** releases (within the major version you're already running) should be deployed as soon as possible to keep up-to-date with security and critical bug fixes.
 
