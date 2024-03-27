@@ -128,7 +128,11 @@ Major new releases are typically scheduled once every four months with the first
 
 Anticipated dates for each release can be found on `detailed schedule <https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule>`_.
 
-Everyone in the community benefits considerably from the generous testing and feedback of those that choose to deploy beta releases and release candidates in either their own test environments or under controlled real-world conditions. If you are in a position to evaluate a new prospective release, first of all we (the entire community) thanks you. Second, we suggest focusing your efforts on verifying the functionality and features you rely on every day (to make sure these operate as expected). Then if you are so inclinced to also consider evaluating any new functionality that interests you. Please discuss problems that arise at the `Help Forum <https://help.nextcloud.com>`_ and report suspected bugs to `the GitHub repository <https://github.com/nextcloud/server/issues>`_.
+Everyone in the community benefits considerably from the generous testing and feedback of those that choose to deploy beta releases and release candidates in either their own test environments or under controlled real-world conditions. 
+
+If you are in a position to evaluate a new prospective release, we (all the developers and the entire community) thank you! 
+
+We suggest focusing your efforts on verifying the functionality and features you rely on every day (to make sure these operate as expected). Then, if you are so inclined, to consider evaluating any new functionality that interests you. Please discuss problems that arise at the `Help Forum <https://help.nextcloud.com>`_ and report suspected bugs to `the GitHub repository <https://github.com/nextcloud/server/issues>`_.
 
 .. tip:: To update sooner to a new major version or beta version, you may at your discretion adjust your instance to use the ``beta`` channel. Around big releases the ``beta`` channel delivers the newest major version earlier.
 
