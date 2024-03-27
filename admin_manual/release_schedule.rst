@@ -81,7 +81,7 @@ Each is available for new deployments or upgrading to at the administrator's dis
 
 There are differences between each of these major releases. Being aware of these differences can streamline deciding which majors to use and when to update. 
 
-.. note:: These are general guidelines. They are inexact and not absolutes statements about any given release. They are helpful nonetheless to keep in mind when deciding.
+.. note:: These are general guidelines. They are inexact and not absolute statements about any given release. They are helpful nonetheless to keep in mind when deciding.
 
 *latest* stable:
 
