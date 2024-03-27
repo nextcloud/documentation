@@ -58,7 +58,7 @@ Maintenance releases
 
 Maintenance releases fix critical bugs and security issues. Maintenance releases **do not** introduce any new functionality or breaking changes (unless absolutely necessary). This reduces the risk associated with deploying new maintenance releases (within the same major release).
 
-Maintenance releases are indicated by the last part of the version number. For example, ``28.0.4`` is the *fourth* maintenance release for major version ``28`` of Nextcloud Server. It offers fixes for critical bugs and security vulnerabilities addressed since the last maintenance release (``28.0.3`` presumably in this case). Maintenance releases are published approximately four weeks. They are only released for stable major releases that have not reached End of Life status.
+Maintenance releases are indicated by the last part of the version number. For example, ``28.0.4`` is the *fourth* maintenance release for major version ``28`` of Nextcloud Server. It offers fixes for critical bugs and security vulnerabilities addressed since the last maintenance release (``28.0.3`` presumably in this case). Maintenance releases are published approximately every four weeks. They are released for all stable major releases that have not reached End of Life status.
 
 .. note:: As long as a major release is still listed on the `maintenance schedule <https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule>`_ as being *Currently Maintained*, you can expect to receive all relevant fixes for critical bugs or security vulnerabilities (even those made available for newer major releases, if they are relevant to a still supported earlier major).
 
