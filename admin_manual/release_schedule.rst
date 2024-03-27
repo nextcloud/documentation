@@ -5,60 +5,87 @@ Maintenance and release schedule
 Introduction
 ------------
 
-Nextcloud maintains and supports several **major** releases in parallel. Critical bug fixes, including security related ones, are `backported <https://en.wikipedia.org/wiki/Backporting>`_ to all still supported major releases. The End of Life dates (i.e. when support will end) for every major release is `published <https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule>`_ ahead of time (generally one year from initial release).
-This enables you to choose a major version that offers the best balance of code maturity and features for your use case. It also means you can plan out major version upgrades in your environment (e.g. to manage for new system requirements or app compatibility matters as well as the impact of introducing new features and behavior changes to your user base).
+New **major** versions of Nextcloud Server are published every sixteen weeks. In addition, **maintenance releases**, which correct bugs and security vulnerabilities in released major versions, are published approximately every four weeks. We maintain a detailed `schedule for both major and maintenance releases <https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule>`_, including end-of-life dates to faciliate planning deployments, testing, and upgrades.
 
-.. note:: Major releases may be supported for longer through `Enterprise Services <https://nextcloud.com/enterprise/>`_ offered by the core Nextcloud developers via `Nextcloud GmbH <https://nextcloud.com>`_.
+Bug fixes
+---------
+
+Every major version is supported for one year from initial release *if* kept up-to-date by installing all maintenance releases along the way.
+
+Major releases
+--------------
+
+Major releases usually introduce new features and optimizations. They often also include changes "under the hood". The changes are often extensive - e.g.:
+
+* user facing changes in behavior (e.g. the web interface or enabling new client app functionality)
+* breaking changes for app developers (e.g. when previously announced as deprecated APIs reach their official removal stage)
+
+Sometimes adjustments required to the runtime environment (e.g. administrators may need to upgrade to a new PHP version or adjust their web server configuration).
+
+.. danger:: Apps generally define their compatibility based on the major version(s) of Nextcloud Server they support. Consider the compatibility of your favorite and most critical apps, with a prospective major version of Nextcloud Server, before choosing which major version to deploy or deciding when to upgrade to a newly available major version.
+
+Maintenance releases
+--------------------
+
+Maintenance releases fix only critical bugs and security issues. Maintenance releases **do not** introduce any new functionality or breaking changes (unless absolutely necessary). This reduces the risk associated with deploying new maintenance releases.
+
+Maintenance releases are published for all stable major releases that have not reached end-of-life status.
+
+End-of-life status
+------------------
+
+End-of-life status means that support and maintenance ends. Maintenance releases cease for a major version on the one year anniversary of initial release. The major version then moves into end-of-life status and will not receive any further bug or security vulnerabilities corrections.
+
+.. note:: Support for major releases may be extended through `Enterprise Services <https://nextcloud.com/enterprise/>`_ offered by Nextcloud developers via `Nextcloud GmbH <https://nextcloud.com>`_.
+
+The end-of-life dates for all major releases are `published <https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule>`_ ahead of time to ease planning.
+
+Versioning
+----------
+
+A maintenance release is indicated by the last part of the version number. For example, ``28.0.4`` is the *fourth* maintenance release for major version ``28`` of Nextcloud Server. It offers fixes for critical bugs and security vulnerabilities addressed since the last maintenance release (``28.0.3`` presumably in this case). 
+
+A major release is indicated by the first part of the version string. For example, Nextcloud Server ``28.0.4`` is major release ``28``. And ``27.1.7`` is major release ``27``. The highest numbered major release offers the latest features. While the lowest numbered major release offers the most time in the field. 
 
 Deployment planning
 -------------------
 
-You make the decision regarding which major release to deploy first at installation time (i.e. by choosing a particular major version to initially install) and, after that, whenever a new major release is published *or* the major release you are currently using reaches its End of Life date.
+Since several major versions are released throughout the year, the Nextcloud project supports several **major** releases in parallel. 
 
-A major release is indicated by the first part of the version string. For example, Nextcloud Server ``28.0.4`` is major release ``28``. And ``27.1.7`` is major release ``27``. The highest numbered major release offers the latest features. While the lowest numbered major release offers the most time in the field. 
+.. important:: All critical bug fixes, including security related ones, are `backported <https://en.wikipedia.org/wiki/Backporting>`_ to **all** still maintained major releases. 
 
-.. tip:: As long as your in-service major version has not reached End of Life status, all you need to do to keep it up-to-date is to install the latest maintenance releases as they are published. Maintenance releases patch your deployment with the latest bug and security vulnerability fixes *without* introducing other significant changes. This reduces the risk of introducing unexpected new behavior or breaking changes from merely installing a maintenance release. New maintenance releases are published approximately once a month (until a major release reaches End of Life status at which point it'll no longer be supported and becomes unmaintained).
+This approach enables you to select the major version to initially install that offers the best balance of code maturity and features for your use case. It also means you can plan out major upgrades in advance. This makes it easier to manage around new system requirements or app compatibility matters as well as anticipate impact of introducing new features and behavior changes to your user base.
 
-You can find the detailed schedule for major releases and maintenance releases, including End of Life dates, in our regularly updated `Maintenance and Release Schedule <https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule>`_.
+You will, however, need to make a decision regarding which particular major release to initially install. After that, whenver new major release is published, you will also need to decide whether to upgrade sooner or later. You can also wait until the major release you are currently using reaches its end-of-life date. In other words, you may choose to install the latest and greatest major and to always update immediately to the latest and greatest new major. Or you may choose a more conservative approach, hanging back a bit on a slightly older - but still maintained - major version until you are comfortable upgrading.
 
-.. danger:: Apps generally define their compatibility based on the major version(s) of Nextcloud Server they support. Consider the compatibility of your favorite and most critical apps, with a given major version of Nextcloud Server, before choosing which major version to deploy and when to upgrade to a new major version.
+.. tip:: As long as your in-service major version has not reached end-of-life status, all you need to do to keep it up-to-date is to install the latest *maintenance* releases as they are published. Since maintenance releases only patch your Server with the latest bug and security vulnerability fixes, but do **not** introduce other significant changes (i.e. unexpected new behavior or breaking changes), the risk of upgrading to a new maintenance release is far less than upgrading to a new major release.
 
 .. note:: If you're planning to deploy Nextcloud in an enterprise setting and your usage will be mission-critical, the core developers can help you choose, via an `Enterprise services arrangement <https://nextcloud.com/enterprise/>`_, the major version most suitable for your particular use case (and make sure it's deployed optimally).
+
+You can find the detailed schedule for major releases and maintenance releases, including end-of-life dates, in our regularly updated `Maintenance and Release Schedule <https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule>`_.
 
 Release channels
 ----------------
 
-By default all Nextcloud installations utilize the ``stable`` release channel. This is what is recommended for most environments.
+By default all Nextcloud installations utilize the ``stable`` release channel. This is a reasonable default for most environments.
 
-The ``stable`` channel delivers the latest features ready for most users at minimal risk. 
+The ``stable`` channel delivers the latest features that are ready for most users at minimal risk. 
+
+
+XXX
 
 Within the ``stable`` channel there are two types of releases: *Major* releases and *Maintenance* releases. 
 
 .. note:: Nextcloud does staged roll-outs of new releases. New releases, particularly major releases, are usually only made available to >30% of installations via the ``stable`` channel after a week (or more) has passed with no reported widespread critical bugs. Sometimes major versions are even staged until after the first maintenance (bug fix) release has been published. 
 
-Major releases
---------------
-
-Major releases typically introduce new functionality and features. Often the changes introduced are extensive - e.g.
-
-* user facing changes in behavior (e.g. the web interface or client app interactions/APIs)
-* breaking changes for app developers (e.g. of previously announced as deprecated APIs that have since reached their official removal stage)
-* adjustments required to the runtime environment (e.g. administrators may need to upgrade their PHP version or adjust web server parameters)
-
-As previously noted, the major release version is indicated by the first part of the version string. For example, Nextcloud Server ``28.0.4`` is major release ``28``. New major releases are typically published three times a year. 
-
 .. warning:: When using the ``stable`` channel it is possible you'll be *offered* a newer major version to upgrade to *even if* your existing major version has **not** reached End of Life. It is up to you to decide whether to upgrade then or wait until a better time for deploying a major new release. On the other hand, new **maintenance** releases (within the major version you're already running) should be deployed as soon as possible to keep up-to-date with security and critical bug fixes.
 
-Each stable major release of Nextcloud Server periodically receives updates for critical bugs or security issues via **maintenance releases** for one year after initial release.
-
 .. danger:: Making sure you're running an actively maintained **major** release is critical. Once a major release reaches End of Life status it will not receive any further maintenance releases to correct critical bugs or vulnerabilities.
+
 
 Maintenance releases
 --------------------
 
-Maintenance releases fix critical bugs and security issues. Maintenance releases **do not** introduce any new functionality or breaking changes (unless absolutely necessary). This reduces the risk associated with deploying new maintenance releases (within the same major release).
-
-Maintenance releases are indicated by the last part of the version number. For example, ``28.0.4`` is the *fourth* maintenance release for major version ``28`` of Nextcloud Server. It offers fixes for critical bugs and security vulnerabilities addressed since the last maintenance release (``28.0.3`` presumably in this case). Maintenance releases are published approximately every four weeks. They are released for all stable major releases that have not reached End of Life status.
 
 .. note:: As long as a major release is still listed on the `maintenance schedule <https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule>`_ as being *Currently Maintained*, you can expect to receive all relevant fixes for critical bugs or security vulnerabilities (even those made available for newer major releases, if they are relevant to a still supported earlier major).
 
