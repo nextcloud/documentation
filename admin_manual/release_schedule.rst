@@ -15,7 +15,7 @@ Overview
 
 You make the decision regarding which major version to deploy first at deployment time (by choosing a particular major version to initially install) and then whenever a new major version is published *or* the major version you are currently using reaches its End of Life date.
 
-A major release is indicated by the first part of the version string. For example, Nextcloud Server ``28.0.4`` is major release ``28``. The highest numbered major release offers the latest features. While the lowest numbered major release offers the most time in the field. 
+A major release is indicated by the first part of the version string. For example, Nextcloud Server ``28.0.4`` is major release ``28``. And ``27.1.7`` is major release ``27``. The highest numbered major release offers the latest features. While the lowest numbered major release offers the most time in the field. 
 
 .. tip:: As long as your in-service major version has not reached End of Life status, all you need to do to keep it up-to-date is to install the latest maintenance releases as they are published. Maintenance releases patch your deployment with latest bug and security vulnerability fixes without making any other significant changes. This reduces the risk of introducing unexpected new behavior or breaking changes from merely installing a maintenance release. These maintenance releases are published approximately every 4-5 weeks until a major release reaches End of Life status (at which point it'll no longer be supported and will receive no further official maintenance).
 
