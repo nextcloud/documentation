@@ -112,8 +112,6 @@ For example, in March 2024:
 
 .. note:: Major releases may be supported for longer through `Enterprise Subscription <https://nextcloud.com/enterprise/>`_ offerings provided by core Nextcloud developers via `Nextcloud GmbH <https://nextcloud.com>`_.
 
-.. tip:: To update sooner to a new major version, you may at your discretion adjust your instance to use the ``beta`` channel. Around big releases the ``beta`` channel delivers the newest major version earlier.
-
 Staying up-to-date
 ------------------
 
@@ -123,14 +121,18 @@ The release schedule permits the project to support the most recent two (sometim
 
 .. warning:: Having good data backups (and a tested data restore approach!) is recommended generally as well as before any type of update - including for maintenance releases.
 
-Beta and Release candidate releases
------------------------------------
+Beta releases and Release candidates
+------------------------------------
+
+Nextcloud relies considerably on the generous testing and feedback of beta releases and realise candidates (RCs) provided by the community. If you are in a position to evaluate a new prospective release, we suggest focusing first on verifying the functionality and features you rely on every day followed by evaluating any new functionality that interests you. Please discuss problems at the `Help Forum <https://help.nextcloud.com>`_ and report suspected bugs to `the GitHub repository <https://github.com/nextcloud/server/issues>`_.
+
+.. tip:: To update sooner to a new major version or beta version, you may at your discretion adjust your instance to use the ``beta`` channel. Around big releases the ``beta`` channel delivers the newest major version earlier.
 
 Major releases are typically scheduled once every 4 months with the first 10 weeks being the development phase followed by freeze phase with four beta release before two RCs and one final each one with an interval of 1 week. Specific dates for each release can be found on `detailed schedule <https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule>`_.
 
 Maintenance releases are scheduled in a 4 week cycle with one week before the release date having the freeze and RC 1.
 
-Specific dates for each release can be found on `detailed schedule <https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule>`_.
+Anticipated dates for each release can be found on `detailed schedule <https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule>`_.
 
 Downgrading
 -----------
