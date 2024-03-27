@@ -10,10 +10,10 @@ This enables you to choose a major version that offers the best balance of code 
 
 .. note:: Major releases may be supported for longer through `Enterprise Services <https://nextcloud.com/enterprise/>`_ offered by the core Nextcloud developers via `Nextcloud GmbH <https://nextcloud.com>`_.
 
-Overview
---------
+Deployment planning
+-------------------
 
-You make the decision regarding which major version to deploy first at deployment time (by choosing a particular major version to initially install) and then whenever a new major version is published *or* the major version you are currently using reaches its End of Life date.
+You make the decision regarding which major release to deploy first at installation time (i.e. by choosing a particular major version to initially install) and, after that, whenever a new major release is published *or* the major release you are currently using reaches its End of Life date.
 
 A major release is indicated by the first part of the version string. For example, Nextcloud Server ``28.0.4`` is major release ``28``. And ``27.1.7`` is major release ``27``. The highest numbered major release offers the latest features. While the lowest numbered major release offers the most time in the field. 
 
@@ -21,9 +21,9 @@ A major release is indicated by the first part of the version string. For exampl
 
 You can find the detailed schedule for major releases and maintenance releases, including End of Life dates, in our regularly updated `Maintenance and Release Schedule <https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule>`_.
 
-.. tip:: Apps generally define their compatibility based on the major version(s) of Nextcloud Server they support. Consider the compatibility of your favorite and most critical apps, with a given major version of Nextcloud Server, before choosing which major version to deploy and when to upgrade to a new major version.
+.. danger:: Apps generally define their compatibility based on the major version(s) of Nextcloud Server they support. Consider the compatibility of your favorite and most critical apps, with a given major version of Nextcloud Server, before choosing which major version to deploy and when to upgrade to a new major version.
 
-.. note:: Nextcloud GmbH - which employs many of the core developers - offers `Nextcloud Enterprise services <https://nextcloud.com/enterprise/>`_ providing direct access to Nextcloud engineering expertise where usage is mission-critical. Among other things, they can help you choose the major version most appropriate to your use case and make sure it's deployed optimally for it.
+.. note:: if you're using Nextcloud in an enterprise setting and your usage is mission-critical, Nextcloud GmbH - which employs many of the core developers - can help you choose the major version most appropriate to your use case (and make sure it's deployed optimally).
 
 Release channels
 ----------------
@@ -160,3 +160,5 @@ To do so, four things must occur:
 - Upgrade to the next major version *either* when the major you're running reaches End of Life status *or* when the next higher major version offers features or functionality that you can't live without and you've prepared your user base and environment for the changes.
 
 .. tip:: You may need to meet new system requirements to be offered (or to successfully upgrade to) a new major version (the PHP version a common culprit for not being an update - check System Requirements in the Admin Manual for the target major version to make sure your runtime environment is compliant).
+
+Nextcloud GmbH - which employs many of the core developers - offers `Nextcloud Enterprise services <https://nextcloud.com/enterprise/>`_ providing direct access to Nextcloud engineering expertise where usage is mission-critical. Among other things, they can help you choose the major version most appropriate to your use case (and make sure it's deployed optimally).
