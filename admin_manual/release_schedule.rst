@@ -71,15 +71,17 @@ Unfortunately, that does mean you have decisions to make. :-)
 
 At any given point in time there are at least two (and often three) major releases available in the ``stable`` release channel that are equally supported (maintained). 
 
-The co-existing major releases in the ``stable`` release channel are known informally as:
+The co-existing major releases in the ``stable`` release channel are known as:
 
-* *latest stable*
+* *latest stable* (i.e. the highest numbered supported major)
 * *previous stable*
-* *last supported stable*
+* *last supported stable* (i.e. the lowest numbered supported major)
 
-Each is thus available for new deployments or upgrading to at the administrator's discretion (subject to any constraints imposed by installation method).
+Each is available for new deployments or upgrading to at the administrator's discretion (subject to any constraints imposed by installation method).
 
-There are some differences between each of these which are helpful to be aware of when deciding which majors to use and when to update. 
+There are differences between each of these major releases. Being aware of these differences can streamline deciding which majors to use and when to update. 
+
+.. note:: These are general guidelines. They are inexact and not absolutes statements about any given release. They are helpful nonetheless to keep in mind when deciding.
 
 *latest* stable:
 
