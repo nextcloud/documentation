@@ -248,6 +248,8 @@ The following types can be added for a field:
 * ``json`` - JSON data is automatically decoded on reading
 * ``datetime`` - Providing ``\DateTime()`` objects
 
+.. _database-entity-attribute-access:
+
 Accessing attributes
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -316,6 +318,35 @@ mapping, simply override the **columnToProperty** and **propertyToColumn** metho
     }
 
 .. _database-entity-slugs:
+
+Transient attributes
+^^^^^^^^^^^^^^^^^^^^
+
+You can add attributes to an entity class that do not map to a database column. These are called *transient* because they are neither loaded from database rows nor are their values persisted.
+
+.. code-block:: php
+    :caption: lib/Db/User.php
+
+    <?php
+
+    namespace OCA\MyApp\Db;
+
+    use OCP\AppFramework\Db\Entity;
+
+    class User extends Entity {
+        protected string $uid;       // Exists in the database
+        protected $lastLogin; // Does not exist in the database
+
+        public function getLastLogin(): ?int {
+            return $this->lastLogin;
+        }
+
+        public function setLastLogin(int $lastLogin): void {
+            $this->lastLogin = $lastLogin;
+        }
+    }
+
+It is important to define getters and setters for any transient attributes. Do not use the :ref:`magic getters and setters<database-entity-attribute-access>` of attributes that map to database columns.
 
 Slugs
 ^^^^^
