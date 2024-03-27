@@ -23,7 +23,7 @@ You can find the detailed schedule for major releases and maintenance releases, 
 
 .. danger:: Apps generally define their compatibility based on the major version(s) of Nextcloud Server they support. Consider the compatibility of your favorite and most critical apps, with a given major version of Nextcloud Server, before choosing which major version to deploy and when to upgrade to a new major version.
 
-.. note:: if you're using Nextcloud in an enterprise setting and your usage is mission-critical, Nextcloud GmbH - which employs many of the core developers - can help you choose the major version most appropriate to your use case (and make sure it's deployed optimally).
+.. note:: If you're planning to deploy Nextcloud in an enterprise setting and your usage will be mission-critical, the core developers can help you choose, via an `Enterprise services arrangement <https://nextcloud.com/enterprise/>`_, the major version most suitable for your particular use case (and make sure it's deployed optimally).
 
 Release channels
 ----------------
