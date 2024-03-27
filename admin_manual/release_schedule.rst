@@ -144,10 +144,10 @@ Downgrading is not supported between major versions nor maintenance versions at 
 Summary
 -------
 
-* It's up to you to decide which supported major version to deploy and use for your use case.
+* It's up to you to decide which supported major version to deploy for your use case.
 * For the latest functionality (features, optimizations) you will need to run the latest major release.
-* You can find the detailed schedule for major and maintenance releases at: `detailed schedule <https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule>`_.
-* We always recommend that all users run the latest available maintenance release for whatever major version is in use. 
+* You can find the detailed schedule for major and maintenance releases at the `Maintenance and Release Schedule <https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule>`_.
+* We always recommend that all users run the latest available maintenance release for whatever major version they are utilizing. 
 * While upgrading will always contain some level of risk, not upgrading to the latest **maintenance** release for an in-use major version is generally riskier than the risk from upgrading.
 * Before reporting bugs, please make sure you're running a still supported major release *and* the latest maintenance release for it.
 
@@ -163,6 +163,6 @@ To do so, four things must occur:
 - keep your instance running the latest maintenance release within your chosen major version
 - Upgrade to the next major version *either* when the major you're running reaches End of Life status *or* when the next higher major version offers features or functionality that you can't live without and you've prepared your user base and environment for the changes.
 
-.. tip:: You may need to meet new system requirements to be offered (or to successfully upgrade to) a new major version (the PHP version a common culprit for not being an update - check System Requirements in the Admin Manual for the target major version to make sure your runtime environment is compliant).
+.. tip:: You may need to meet new system requirements before the Updater will offer you a new major version (or to successfully upgrade to without encountering problems). A common scenario is needing to upgrade the PHP version. Check the System Requirements section in the Admin Manual for the major version you're targeting to make sure your runtime environment is compliant with any new requirements).
 
-Nextcloud GmbH - which employs many of the core developers - offers `Nextcloud Enterprise services <https://nextcloud.com/enterprise/>`_ providing direct access to Nextcloud engineering expertise where usage is mission-critical. Among other things, they can help you choose the major version most appropriate to your use case (and make sure it's deployed optimally).
+.. tip:: Nextcloud GmbH - which employs many of the core developers - offers `Nextcloud Enterprise services <https://nextcloud.com/enterprise/>`_ providing direct access to Nextcloud engineering expertise where usage is mission-critical. Among other things, they can help you choose the major version most appropriate to your use case (and make sure it's deployed optimally).
