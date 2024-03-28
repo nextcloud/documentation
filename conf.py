@@ -25,6 +25,7 @@ release = version
 # RTD theme options
 html_theme_options = {
 	'logo_only': True,
+	'navigation_with_keys': True,
 	'style_external_links': True,
 	'version_selector': False,
 }
