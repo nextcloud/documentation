@@ -44,7 +44,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Nextcloud %s Developer Manual' % (version)
+#project = u'Nextcloud %s Developer Manual' % (version)
 #copyright = u'2012-2017, The Nextcloud developers'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -109,7 +109,7 @@ html_theme_path = ['../_shared_assets/themes']
 # }
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-#html_title = None
+html_title = "%s Developer Manual" % (project)
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 html_short_title = "Developer Manual"
