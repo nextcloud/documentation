@@ -200,6 +200,16 @@ Attendees may be other users on your Nextcloud instances, contacts in your addre
 
 .. attention:: The server administration needs to setup the e-mail server in the ``Basic settings`` tab, as this mail will be used to send invitations.
 
+Checking attendees' busy times
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+After adding attendees to an event you can click on ``Find a time`` to bring up the "Free / Busy" modal. It allows you to see when each attendee has other events, and can help you decide on a time when everyone is free.
+
+.. figure:: images/calendar_free_busy_modal.png
+   :scale: 70%
+
+By pressing the ``?`` icon you can see the legend for the colors in the timeline, and by clicking and dragging you can modify the start and end times of your event. By pressing ``Suggest automatic slot`` you can also get suggestions on slots when everyone invited is free and available.
+
 Assign rooms and resources to an event
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
