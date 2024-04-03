@@ -109,13 +109,13 @@ Files App
 ^^^^^^^^^
 
 - **iOS** 14.0+
-- **Android** 6.0+
+- **Android** 7.0+
 
 Talk App
 ^^^^^^^^
 
 - **iOS** 14.0+
-- **Android** 6.0+
+- **Android** 7.0+
 - **Nextcloud Server** 14.0+
 - **Nextcloud Talk** 4.0+
 
