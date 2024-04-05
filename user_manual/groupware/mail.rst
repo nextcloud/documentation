@@ -262,6 +262,15 @@ When you open a message in the Mail app, it proposes AI-generated replies. By si
 
 .. note:: Supported languages depend on the used large language model
 
+Thread summary
+--------------
+
+The mail app supports summarizing message threads that contain 3 or more messages.
+
+.. versionadded:: 3.4
+
+.. note:: Please note that the feature has to be enabled by the administrator
+
 Filtering and autoresponder
 ---------------------------
 
