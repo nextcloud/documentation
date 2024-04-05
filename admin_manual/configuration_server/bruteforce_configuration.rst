@@ -96,7 +96,7 @@ additional monitoring or behavior adjustments related to brute force protection.
    
 .. danger::
 
-   You would need to adjust the parameter ``auth-bruteforce-protection-enabled`` in your Nextcloud ``config.php`` to 
+   You would need to adjust the parameter ``auth.bruteforce.protection.enabled`` in your Nextcloud ``config.php`` to 
    disable brute force protection, which is **heavily discouraged for production servers**, particularly if your 
    server is reachable via a public IP address. It allows an attacker to iterate over all users and their passwords 
    as well as two-factor verifications afterwards ultimately leading to admin access.
