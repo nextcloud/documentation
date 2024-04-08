@@ -250,7 +250,7 @@ Here are some example root paths for these ini/config files:
 +-----------------------+-----------------------+
 | Debian/Ubuntu/Mint    | CentOS/Red Hat/Fedora |
 +-----------------------+-----------------------+
-| ``/etc/php/8.0/fpm/`` | ``/etc/php-fpm.d/``   |
+| ``/etc/php/8.3/fpm/`` | ``/etc/php-fpm.d/``   |
 +-----------------------+-----------------------+
 
 In both examples, the ini/config file is called ``www.conf``, and depending on
@@ -277,7 +277,7 @@ you must add them.
 
 Alternatively it is possible to use the environment variables of your system by modifying::
 
-    /etc/php/8.0/fpm/pool.d/www.conf
+    /etc/php/8.3/fpm/pool.d/www.conf
 
 and uncommenting the line::
 

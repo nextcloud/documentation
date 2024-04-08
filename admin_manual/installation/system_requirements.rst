@@ -31,10 +31,9 @@ For best performance, stability and functionality we have documented some recomm
 | Webserver        | - **Apache 2.4 with** ``mod_php`` **or** ``php-fpm`` (recommended)    |
 |                  | - nginx with ``php-fpm``                                              |
 +------------------+-----------------------------------------------------------------------+
-| PHP Runtime      | - 8.0 (*deprecated*)                                                  |
-|                  | - 8.1                                                                 |
-|                  | - **8.2** (*recommended*)                                             |
-|                  | - 8.3                                                                 |
+| PHP Runtime      | - 8.1 (*deprecated*)                                                  |
+|                  | - 8.2                                                                 |
+|                  | - **8.3** (*recommended*)                                             |
 +------------------+-----------------------------------------------------------------------+
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
