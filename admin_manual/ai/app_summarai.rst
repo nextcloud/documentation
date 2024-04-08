@@ -2,7 +2,7 @@
 App: SummarAI (Talk chat summarize bot)
 ==========================================
 
-.. _ai-app-sumarai:
+.. _ai-app-summarai:
 
 The *SummarAI* app is one of the apps that utilize the llm or any other configured llm provider in Nextcloud and act as a configurable bot for `Nextcloud Talk`.
 The *SummarAI* app can be running on only open source models, on-premise or any configured llm provider and does so entirely on-premises.
@@ -49,7 +49,7 @@ Installation
 
 
 Setup (via App Store)
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 
 1. Install the *SummarAI* app via the "Apps" page in Nextcloud
 
@@ -102,6 +102,36 @@ After cloning this app *manually* (cloned via git to your apps directory) you wi
 
 6. Enable the *SummarAI* Bot for the selected Chatroom via the three dots menue of the Chatroom (The Bots settings are located inside the *Bot Section*)
 
+Usage
+-----
+
+- After enabling the *SummarAI* Bot in a Chatroom, you can test its functionality by simply sending the message below:
+
+   - @summarai
+
+   > Hi! I am here and listening
+
+- A full list of the available commands can be received via this message
+
+   - @summarai help
+
+- Add a SummarAI job (The job will be executed daily at the same time):
+
+   - @summarai add <hour>:<minute>
+
+- List scheduled SummarAI jobs:
+
+   - @summarai list
+
+- Delete a SummarAI job:
+
+   - @summarai delete <job_id>
+
+- Prints a help message:
+
+   - @summarai help
+
+
 App store
 ---------
 
@@ -125,7 +155,7 @@ Known Limitations
 -----------------
 
 * The SummarAI Bot cannot access previous conversations, it only recognizes messages from the moment it was enabled in the chatroom.
-* Restarting the server or the SummarAI Docker image will erase any knowledge of messages, as they are not persistently stored.
+* Restarting the server or the SummarAI Docker image will erase any knowledge of messages and added jobs, as they are not persistently stored.
 * Instructional models may occasionally produce inaccurate information. Therefore, they should be employed with caution in non-critical scenarios. It's essential to verify the accuracy of the bot's output before application.
 * Make sure to test the instruction model you are using for whether it meets the use-case's quality requirements
 * Be aware that AI models can consume a significant amount of energy. It's advisable to consider this factor in the planning and operation of AI systems.
