@@ -8,6 +8,13 @@ General
 Front-end changes
 -----------------
 
+Font sizes
+^^^^^^^^^^
+
+Nextcloud now provides meaningful default styles for heading elements.
+This can cause visual regressions if your code does not explicitly set font size and weight.
+If you need to use heading elements outside of text content, you might need to adjust their styles.
+
 Added APIs
 ^^^^^^^^^^
 
