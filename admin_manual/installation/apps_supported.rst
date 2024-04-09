@@ -61,7 +61,7 @@ Nextcloud Files
 * `Text <https://github.com/nextcloud/text>`_
 * `Theming <https://github.com/nextcloud/server/tree/master/apps/theming>`_
 * `Two-Factor backup codes <https://github.com/nextcloud/server/tree/master/apps/twofactor_backupcodes>`_
-* `Two-Factor TOTP Provider<https://github.com/nextcloud/twofactor_totp>`_
+* `Two-Factor TOTP Provider <https://github.com/nextcloud/twofactor_totp>`_
 * `Two-Factor WebAuthn <https://github.com/nextcloud/twofactor_webauthn>`_
 * `Update Notifications <https://github.com/nextcloud/server/tree/master/apps/updatenotification>`_
 * `Versions <https://github.com/nextcloud/server/tree/master/apps/files_versions>`_
