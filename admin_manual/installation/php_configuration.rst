@@ -118,15 +118,15 @@ You can search for a parameter with the following command: ``grep -r date.timezo
 **php.ini - used by the Web server:**
 ::
 
-    /etc/php/8.0/apache2/php.ini
+    /etc/php/8.3/apache2/php.ini
   or
-    /etc/php/8.0/fpm/php.ini
+    /etc/php/8.3/fpm/php.ini
   or ...
 
 **php.ini - used by the php-cli and so by Nextcloud CRON jobs:**
 ::
 
-    /etc/php/8.0/cli/php.ini
+    /etc/php/8.3/cli/php.ini
 
 .. note:: Path names have to be set in respect of the installed PHP
-          (8.0, 8.1 or 8.2) as applicable.
+          (8.1, 8.2 or 8.3) as applicable.
