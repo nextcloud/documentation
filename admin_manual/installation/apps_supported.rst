@@ -60,9 +60,9 @@ Nextcloud Files
 * `Terms of Service <https://github.com/nextcloud/terms_of_service/>`_
 * `Text <https://github.com/nextcloud/text>`_
 * `Theming <https://github.com/nextcloud/server/tree/master/apps/theming>`_
-* `Two factor backup codes <https://github.com/nextcloud/server/tree/master/apps/twofactor_backupcodes>`_
-* `Two factor TOTP Provider <https://github.com/nextcloud/twofactor_totp>`_
-* `Two factor U2F <https://github.com/nextcloud/twofactor_u2f>`_
+* `Two-Factor backup codes <https://github.com/nextcloud/server/tree/master/apps/twofactor_backupcodes>`_
+* `Two-Factor TOTP Provider<https://github.com/nextcloud/twofactor_totp>`_
+* `Two-Factor WebAuthn <https://github.com/nextcloud/twofactor_webauthn>`_
 * `Update Notifications <https://github.com/nextcloud/server/tree/master/apps/updatenotification>`_
 * `Versions <https://github.com/nextcloud/server/tree/master/apps/files_versions>`_
 * `WebDAV endpoint <https://github.com/nextcloud/server/tree/master/apps/dav>`_
@@ -85,7 +85,6 @@ Collaborative editing
 
 * `Collabora Online <https://github.com/nextcloud/richdocuments>`_
 * `ONLYOFFICE <https://github.com/ONLYOFFICE/onlyoffice-nextcloud>`_
-
 
 Global Scale
 ------------
