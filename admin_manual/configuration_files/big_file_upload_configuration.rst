@@ -174,6 +174,8 @@ to the actual file on the Nextcloud servers temporary directory. It is recommend
 the size of your temp directory accordingly and also ensure that request timeouts are high
 enough for PHP, webservers or any load balancers involved.
 
+.. tip:: In more recent versions of Nextcloud Server, when uploading to S3 in *Primary Storage* mode, we use S3 `MultipartUpload`. This allows chunked upload streaming of the chunks directly to S3 so that the final MOVE request no longer needs to assemble the final file on the Nextcloud server. This requires your ``memcache.distributed`` to be set to use Redis (or Memcached), otherwise we fall back on the prior behavior which consumes space on the Nextcloud Server for file assembly (as described above).
+
 Federated Cloud Sharing
 -----------------------
 
