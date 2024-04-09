@@ -20,6 +20,12 @@ Removed APIs
 Removed globals
 ^^^^^^^^^^^^^^^
 
+Deprecated APIs
+^^^^^^^^^^^^^^^
+
+* ``OC.dialogs.fileexists`` was already deprecated in Nextcloud 29, but is now also marked as such.
+  Use ``openConflictPicker`` from `@nextcloud/upload <https://nextcloud-libraries.github.io/nextcloud-upload/functions/openConflictPicker.html>`_ instead.
+
 Back-end changes
 ----------------
 
