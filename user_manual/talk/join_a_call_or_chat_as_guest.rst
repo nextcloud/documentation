@@ -9,11 +9,11 @@ You can find out more about Nextcloud Talk `on our website <https://nextcloud.co
 Joining a chat
 --------------
 
-If you received a link to a chat conversation, you can open this in your browser to join the chat.
+If you received a link to a chat conversation, you can open it in your browser to join the chat. Here, you will be prompted to enter your name before joining.
 
 .. image:: images/guest-view.png
 
-You can change your name by clicking the ``Edit`` button, located top-right.
+You can also change your name later by clicking the ``Edit`` button, located top-right.
 
 .. image:: images/change-name.png
 
@@ -30,7 +30,8 @@ You can start a call any time with the ``Start call`` button. Other participants
 
 Before actually joining the call you will see a device check, where you can pick the right camera and microphone, enable background blur or even join with any devices.
 
-.. image:: images/device-check.png
+.. image:: images/device-settings-before-call.png
+    :width: 300px
 
 During a call, you can find the Camera and Microphone settings in the ``...`` menu in the top bar.
 
