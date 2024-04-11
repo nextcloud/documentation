@@ -57,6 +57,8 @@ This package provides an `Axios <https://www.npmjs.com/package/axios>`_ HTTP cli
 
 This package provides a simple event bus implementation that integrates with server and other apps. Thus it is one of the recommended ways of inter-app communication. Documentation: https://nextcloud-libraries.github.io/nextcloud-event-bus/
 
+.. _js-library_nextcloud-dialogs:
+
 ``@nextcloud/dialogs``
 ^^^^^^^^^^^^^^^^^^^^^^
 

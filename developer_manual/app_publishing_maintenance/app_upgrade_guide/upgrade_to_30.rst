@@ -32,6 +32,16 @@ Deprecated APIs
 
 * ``OC.dialogs.fileexists`` was already deprecated in Nextcloud 29, but is now also marked as such.
   Use ``openConflictPicker`` from `@nextcloud/upload <https://nextcloud-libraries.github.io/nextcloud-upload/functions/openConflictPicker.html>`_ instead.
+* Most ``OC.dialogs`` API is now deprecated and will be removed in the future. For generic dialogs use the ``DialogBuilder`` from the :ref:`js-library_nextcloud-dialogs`.
+  A list of the now deprecated methods:
+
+  * ``OC.dialogs.alert``
+  * ``OC.dialogs.info``
+  * ``OC.dialogs.confirm``
+  * ``OC.dialogs.confirmDestructive``
+  * ``OC.dialogs.confirmHtml``
+  * ``OC.dialogs.prompt``
+  * ``OC.dialogs.message``
 
 Back-end changes
 ----------------
