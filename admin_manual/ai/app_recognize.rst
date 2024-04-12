@@ -15,14 +15,14 @@ Requirements
 ------------
 
 * Nextcloud AIO is not supported but will likely work at sub optimal speed
-* Minimal Nextcloud version: 26
-* at least ~4GB of RAM dedicated for recognize
+* Minimum supported Nextcloud version: 26
+* At least ~4GB of RAM dedicated for recognize
 * x86 CPU
 * GNU lib C
 * Background Jobs must be executed via cron
-* Using GPU processing is supported, but not required; be prepared for slow performance unless you are using GPU
+* Using GPU processing is supported, but not required; slow performance is expected if you are not using a GPU
 * We currently only support NVIDIA GPUs
-* For GPU support you need to install
+* For GPU support you need to install:
 
    * NVIDIA® GPU drivers version 450.80.02 or higher.
    * CUDA® Toolkit 11.x
@@ -38,7 +38,7 @@ Requirements
    * The more cores you have and the more powerful the CPU the better, we recommend 10-20 cores
    * In the app settings you can set the number of cores to use
 
-Space usage
+Disk space usage
 ~~~~~~~~~~~
 
  * ~1.5GB for all models in total
@@ -50,14 +50,14 @@ Installation
 
    occ app:enable recognize
 
-2. Execute the following command on your server terminal of each node that runs background jobs
+2. Execute the following command on your server terminal of each node that runs background jobs:
 
    occ recognize:download-models
 
 3. Go to your Nextcloud Administration settings and open the *recognize* admin settings page
 4. Enable all modes of operation that you want the app to undertake
 5. Enable GPU mode if you have a GPU that you want to use; if you want to use CPU only, you can set the number of cores to use here
-6. Execute the following command on your server terminal to stop background processing of existing files
+6. Execute the following command on your server terminal to stop background processing of existing files:
 
    occ recognize:clear-background-jobs
 
@@ -65,17 +65,17 @@ Installation
 
    occ recognize:classify
 
-8. Execute the following command on your server terminal to calculate face clusters from faces found in all existing files. Run this repeatedly until no more clusters are found.
+8. Execute the following command on your server terminal to calculate face clusters from faces found in all existing files (Run this repeatedly until no more clusters are found):
 
    occ recognize:cluster-faces
 
-9. All new files from this point on will be automatically processed in background tasks without manual intervention.
+9. All new files from this point on will be automatically processed in background tasks without manual intervention
 
 
 Scaling
 -------
 
-It is possible to scale this app by adding multiple "backgroun" nodes to your cluster that will only process background jobs by executing cron.php.
+It is possible to scale this app by adding multiple "background" nodes to your cluster that will only process background jobs by executing cron.php.
 
 App store
 ---------
@@ -85,7 +85,7 @@ You can also find the app in our app store, where you can write a review: `<http
 Repository
 ----------
 
-You can find the app's code repository on GitHub where you can report bugs and contribute fixes and features: `<https://github.com/nextcloud/recognize>`_
+You can find the app's source repository on GitHub where you can report bugs and contribute fixes and features: `<https://github.com/nextcloud/recognize>`_
 
 Nextcloud customers should file bugs directly with our Support system.
 
@@ -104,38 +104,38 @@ Rating for Photo object detection: Green
 
 Positive:
 
-* the software for training and inference of this model is open source
-* the trained model is freely available, and thus can be run on-premises
-* the training data is freely available, making it possible to check or correct for bias or optimise the performance and CO2 usage.
+* The software for training and inference of this model is open source
+* The trained model is freely available, and thus can be run on-premises
+* The training data is freely available, making it possible to check or correct for bias or optimize the performance and CO2 usage.
 
 Rating for Photo face recognition: Green
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Positive:
 
-* the software for training and inference of this model is open source
-* the trained model is freely available, and thus can be run on-premises
-* the training data is freely available, making it possible to check or correct for bias or optimise the performance and CO2 usage.
+* The software for training and inference of this model is open source
+* The trained model is freely available, and thus can be run on-premises
+* The training data is freely available, making it possible to check or correct for bias or optimize the performance and CO2 usage.
 
 Rating for Video action recognition: Green
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Positive:
 
-* the software for training and inferencing of this model is open source
-* the trained model is freely available, and thus can be ran on-premises
-* the training data is freely available, making it possible to check or correct for bias or optimise the performance and CO2 usage.
+* The software for training and inferencing of this model is open source
+* The trained model is freely available, and thus can be ran on-premises
+* The training data is freely available, making it possible to check or correct for bias or optimize the performance and CO2 usage.
 
 Rating Music genre recognition: Yellow
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Positive:
 
-* the software for training and inference of this model is open source
-* the trained model is freely available, and thus can be run on-premises
+* The software for training and inference of this model is open source
+* The trained model is freely available, and thus can be run on-premises
 
 Negative:
 
-* the training data is not freely available, limiting the ability of external parties to check and correct for bias or optimise the model’s performance and CO2 usage.
+* The training data is not freely available, limiting the ability of external parties to check and correct for bias or optimise the model’s performance and CO2 usage.
 
 Learn more about the Nextcloud Ethical AI Rating `in our blog <https://nextcloud.com/blog/nextcloud-ethical-ai-rating/>`_.
