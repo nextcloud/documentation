@@ -92,7 +92,7 @@ Nextcloud customers should file bugs directly with our Support system.
 Known Limitations
 -----------------
 
-* Make sure to test the language model you are using it for whether it meets the use-case's quality requirements
+* Make sure to test whether the functionality meets the use-case's quality requirements
 * Machine learning models notoriously have a high energy consumption
 * Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI)
 
