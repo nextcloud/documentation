@@ -39,7 +39,7 @@ Requirements
    * In the app settings you can set the number of cores to use
 
 Disk space usage
-~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 
  * ~1.5GB for all models in total
 
