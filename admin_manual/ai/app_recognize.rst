@@ -16,7 +16,6 @@ Requirements
 
 * Nextcloud AIO is not supported but will likely work at sub optimal speed
 * Minimum supported Nextcloud version: 26
-* At least ~4GB of RAM dedicated for recognize
 * x86 CPU
 * GNU lib C
 * Background Jobs must be executed via cron
@@ -30,13 +29,14 @@ Requirements
 
 * GPU Sizing
 
-   * The models used by recognize should run on most semi modern GPUs
+   * The models used by recognize require about 1GB of VRAM or less
 
 * CPU Sizing
 
    * If you don't have a GPU, this app will utilize your CPU cores
    * The more cores you have and the more powerful the CPU the better, we recommend 10-20 cores
    * In the app settings you can set the number of cores to use
+   * At least ~4GB of RAM dedicated for recognize
 
 Disk space usage
 ~~~~~~~~~~~~~~~~
