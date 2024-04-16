@@ -348,6 +348,11 @@ User Search Attributes:
     | *displayName*
     | *mail*
 
+Disable users missing from LDAP
+  If this is enabled, users which are missing from LDAP, also known as remnants,
+  will behave as if disabled in Nextcloud. This means for instance that public
+  shares by these users will not work anymore. see also :doc:`user_auth_ldap_cleanup`.
+
 Group Display Name Field:
   The attribute that should be used as Nextcloud group name. Nextcloud allows a
   limited set of characters (a-zA-Z0-9.-_@). Once a group name is assigned it
