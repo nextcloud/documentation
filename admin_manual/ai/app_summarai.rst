@@ -4,7 +4,7 @@ App: SummarAI (Talk chat summarize bot)
 
 .. _ai-app-summarai:
 
-The *SummarAI* app is one of the apps that utilize the llm or any other configured llm provider in Nextcloud and act as a configurable bot for `Nextcloud Talk`.
+The *SummarAI* app is one of the apps that utilize the large language model (llm) or any other configured large language model (llm) provider in Nextcloud and act as a configurable bot for `Nextcloud Talk`.
 The *SummarAI* app can be running on only open source models, on-premise or any configured llm provider and does so entirely on-premises.
 Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
 
@@ -28,24 +28,24 @@ Requirements
 Space usage
 ~~~~~~~~~~~
 
- * ~100MB
+* ~100MB
 
 Installation
 ------------
 
 0. Make sure the following apps are installed:
 
-   `Nextcloud AppAPI app <https://apps.nextcloud.com/apps/app_api>`_
+   - `Nextcloud AppAPI app <https://apps.nextcloud.com/apps/app_api>`_
 
-   `Nextcloud Talk app (Spreed) <https://apps.nextcloud.com/apps/spreed>`_
+   - `Nextcloud Talk app (Spreed) <https://apps.nextcloud.com/apps/spreed>`_
 
-   :ref:`Nextcloud Assistant app<ai-app-assistant>`
+   - :ref:`Nextcloud Assistant app<ai-app-assistant>`
 
-   One of the following AI model providers:
+   - One of the following AI model providers:
 
-   `Nextcloud Local large language model app <https://apps.nextcloud.com/apps/llm>`_
+     - `Nextcloud Local large language model app <https://apps.nextcloud.com/apps/llm>`_
 
-   `Nextcloud OpenAI and LocalAI integration app <https://apps.nextcloud.com/apps/integration_openai>`_
+     - `Nextcloud OpenAI and LocalAI integration app <https://apps.nextcloud.com/apps/integration_openai>`_
 
 
 Setup (via App Store)
