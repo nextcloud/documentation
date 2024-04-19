@@ -1399,6 +1399,33 @@ for the update process.
 
 Defaults to ``false``
 
+Monitoring
+----------
+
+
+serverinfo
+^^^^^^^^^^
+
+
+::
+
+	'serverinfo' => [
+		'job_interval_storage_stats' => '3600'
+		'phpinfo' => 'yes',
+		'restricted_mode' => 'yes',
+		'token' => 'C9E91FB844FCA933403181C7DEE4B910',
+	],
+
+Configuration parameters for the serverinfo app.
+
+Supported keys:
+ - ``job_interval_storage_stats``: interval in seconds to update storages and files.
+ - ``phpinfo``: include PHP info in the monitoring results.
+ - ``restricted_mode``: restricts serverinfo to app directory and local commands.
+ - ``token``: API Token to access the serverinfo app.
+
+Defaults to an array with only a generated token.
+
 Logging
 -------
 
