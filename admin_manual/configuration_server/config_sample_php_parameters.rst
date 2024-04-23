@@ -232,6 +232,18 @@ dbreplica
 
 Specify read only replicas to be used by Nextcloud when querying the database
 
+db.log_request_id
+^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'db.log_request_id' => false,
+
+Add request id to the database query in a comment.
+
+This can be enabled to assist in mapping database logs to Nextcloud logs.
+
 installed
 ^^^^^^^^^
 
