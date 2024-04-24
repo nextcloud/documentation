@@ -17,13 +17,17 @@ Requirements
 ------------
 
 * Minimal Nextcloud version: 28
-* The *context_chat_backend* app is built as an External App and thus depends on AppAPI v2.3.0
+* The *context_chat_backend* app is built as an External App and thus depends on AppAPI v2.3.0 and later
 * Nextcloud AIO is supported
-* Using GPU processing is currently required; we will soon make available a version that works on CPU as well
-* We currently only support NVIDIA GPUs
+* We currently support NVIDIA GPUs and x86_64 CPUs
 * GPU Sizing
 
-   * You will need a GPU with at least 6GB VRAM
+   * A NVIDIA GPU with at least 8GB VRAM
+   * At least 12GB of system RAM
+
+* CPU Sizing
+
+   * At least 12GB of system RAM
 
 Space usage
 ~~~~~~~~~~~
@@ -72,3 +76,4 @@ Known Limitations
 * Make sure to test this app for whether it meets your use-case's quality requirements
 * Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI)
 * Due to technical limitations that we are in the process of mitigating, each task currently incurs a time cost of between 0 and 5 minutes in addition to the actual processing time
+* Nextcloud usernames can be only 56 characters long. This is a limitation of the vector database we use (Chroma DB) and will be fixed soon.
