@@ -85,6 +85,7 @@ Added APIs
 - ``OCP\Notification\IncompleteParsedNotificationException`` is thrown by ``OCP\Notification\IManager::prepare()`` when no ``OCP\Notification\INotifier`` handled the ``OCP\Notification\INotification`` object
 - ``OCP\Notification\InvalidValueException`` is thrown by ``OCP\Notification\IAction::set*()`` and ``OCP\Notification\INotification::set*()`` when the value did not match the required criteria
 - ``OCP\Notification\UnknownNotificationException`` should be thrown by ``OCP\Notification\INotifier::prepare()`` when they didn't handle the notification
+- ``OCA\Files_Trashbin\Trash\ITrashItem::getDeletedBy`` should return the user who deleted the item or null if unknown
 
 Changed APIs
 ^^^^^^^^^^^^
