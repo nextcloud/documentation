@@ -77,7 +77,7 @@ Requirements
 ^^^^^^^^^^^^
 To deliver on the promises above, we have two simple rules.
 
-* You work and communicate according to the values of our `Code of Conduct <../general/code-of-conduct.html>`_
+* You work and communicate according to the values of our `Code of Conduct <https://nextcloud.com/contribute/code-of-conduct/>`_
 * When you are no longer active, our admins can decide to hand over maintainership to another contributor
 
 We want to make sure that when you find other things in life which are more urgent or otherwise are unable to help your project anymore, it does not become 'dead code' as long as there are people who want to keep it alive. This is not fair to users, who would be forced to remove the app and install another.
