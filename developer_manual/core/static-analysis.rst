@@ -17,6 +17,7 @@ The following PHP extensions are required to be installed and enabled to make ps
 * ftp
 * gd
 * iconv
+* imagick
 * json
 * ldap
 * libxml
