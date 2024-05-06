@@ -1,12 +1,28 @@
 # global configuration for every documentation added at the end
 
 import os, sys, datetime
+from subprocess import Popen, PIPE
 
 import sphinx_rtd_theme
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 sys.path.insert(0, os.path.abspath(dir_path + '/_ext'))
 now = datetime.datetime.now()
+
+def get_version():
+
+    pipe = Popen('git branch | grep \*', stdout=PIPE, shell=True, universal_newlines=True)
+    version = pipe.stdout.read()
+
+    null, version = version.split("*",1)
+    version = version.strip()
+
+    if version == "master":
+	    return "upcoming"
+    elif version[:6] == "stable":
+        return version[-2:]
+    else:
+        return "%s" % (version)
 
 extensions = ['sphinx_rtd_theme', 'sphinx_rtd_dark_mode']
 
@@ -18,9 +34,12 @@ copyright = str(now.year) + ' Nextcloud GmbH'
 # built documents.
 #
 # The short X.Y version.
-version = 'latest'
+version = get_version()
 # The full version, including alpha/beta/rc tags.
 release = version
+
+# General information about the project.
+project = u'Nextcloud Server (%s)' % (version)
 
 # RTD theme options
 html_theme_options = {
@@ -33,7 +52,7 @@ html_theme_options = {
 html_logo = "../_shared_assets/static/logo-white.png"
 
 # substitutions go here
-rst_epilog =  '.. |version| replace:: %s' % version
+#rst_epilog =  '.. |version| replace:: %s' % version
 
 # building the versions list
 version_start = 27		# THIS IS THE SUPPORTED VERSION NUMBER
