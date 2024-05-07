@@ -198,13 +198,13 @@ The following options are available to configure when using a redis cluster (all
          'cache-cluster:7004',
          'cache-cluster:7005'
       ],
-      'failover_mode'   => \RedisCluster::FAILOVER_ERROR
+      'failover_mode'   => \RedisCluster::FAILOVER_ERROR,
       'timeout'         => 0.0,
       'read_timeout'    => 0.0,
       'user'            => 'nextcloud',
       'password'        => 'password',
       'dbindex'         => 0,
-   ]
+   ],
       
 .. note:: The port is required as part of the server URL. However, it is not necesarry to list all servers: for example, if all servers are load balanced via the same DNS name, only that server name is required.
 
