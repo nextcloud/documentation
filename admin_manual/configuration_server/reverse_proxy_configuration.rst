@@ -140,8 +140,8 @@ Caddy
 ::
 
     subdomain.example.com {
-        redir /.well-known/carddav /remote.php/dav 301
-        redir /.well-known/caldav /remote.php/dav 301
+        redir /.well-known/carddav /remote.php/dav/ 301
+        redir /.well-known/caldav /remote.php/dav/ 301
 
         reverse_proxy {$NEXTCLOUD_HOST:localhost}
     }
