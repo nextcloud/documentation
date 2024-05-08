@@ -77,7 +77,7 @@ Use APCu for local cache and either Redis cluster ...::
          'cache-cluster:7000',
          'cache-cluster:7001',
       ],
-   ]
+   ],
 
 ... or Memcached cluster ...::
 
@@ -182,7 +182,7 @@ The following options are available to configure when using a single redis serve
      'dbindex'       => 0,
      'timeout'       => 1.5,
      'read_timeout'  => 1.5,
-   ]
+   ],
 
 The following options are available to configure when using a redis cluster (all but ``seeds`` are optional)::
 
@@ -198,13 +198,13 @@ The following options are available to configure when using a redis cluster (all
          'cache-cluster:7004',
          'cache-cluster:7005'
       ],
-      'failover_mode'   => \RedisCluster::FAILOVER_ERROR
+      'failover_mode'   => \RedisCluster::FAILOVER_ERROR,
       'timeout'         => 0.0,
       'read_timeout'    => 0.0,
       'user'            => 'nextcloud',
       'password'        => 'password',
       'dbindex'         => 0,
-   ]
+   ],
       
 .. note:: The port is required as part of the server URL. However, it is not necesarry to list all servers: for example, if all servers are load balanced via the same DNS name, only that server name is required.
 
@@ -229,9 +229,9 @@ To connect via TCP over TLS, add the following  configuration::
          'local_cert' => '/certs/redis.crt',
          'local_pk' => '/certs/redis.key',
          'cafile' => '/certs/ca.crt',
-         'verify_peer_name' => false
-      ]
-   ]
+         'verify_peer_name' => false,
+      ],
+   ],
 
 Connecting to Redis cluster over TLS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -246,9 +246,9 @@ To connect via TCP over TLS, add the following  configuration::
          'local_cert' => '/certs/redis.crt',
          'local_pk' => '/certs/redis.key',
          'cafile' => '/certs/ca.crt',
-         'verify_peer_name' => false
-      ]
-   ]
+         'verify_peer_name' => false,
+      ],
+   ],
 
 Connecting to single Redis server over UNIX socket
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
