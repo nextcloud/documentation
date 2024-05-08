@@ -86,7 +86,7 @@ For example the TextToImage type defines its input shape as follows:
         ];
     }
 
-The task input and output is always an array. In this case, the task input for TextToImage must have an array key named ``'input'`` which must contain a text and an array key named ``'numberOfImages'`` which must contain a number.
+The task input and output are always represented by an associative array. In this case, the task input for TextToImage must have an array key named ``'input'`` which must contain a text and an array key named ``'numberOfImages'`` which must contain a number.
 
 If you want to simply use a task type, you can look up it's input and output shapes above or, if it is not built-in, in the documentation or implementation of the app introducing the task type. If you would like to use task types dynamically without knowing their shapes in advance, you can get their shape information from the ``IManager#getAvailableTaskTypes()`` menthod. The ShapeDescriptor class allows accessing the type data as well as human readable name and description using the ``getName()``, ``getDescription()`` and ``getShapeType()`` methods.
 
