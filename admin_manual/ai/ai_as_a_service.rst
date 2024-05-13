@@ -11,7 +11,8 @@ Installation
 
 In order to use these providers you will need to install the respective app from the app store:
 
-* ``integration_openai``
+* ``integration_openai`` (With this application, you can also connect to a self-hosted LocalAI instance or to any service that implements an API similar to OpenAI, for example Plusserver or MistralAI.)
+
 * ``integration_replicate``
 
 You can then add your API token and rate limits in the administration settings and set the providers live in the "Artificial intelligence" section of the admins settings.
