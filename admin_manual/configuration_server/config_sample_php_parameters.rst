@@ -3247,6 +3247,16 @@ upgrade.cli-upgrade-link
 
 Allows to modify the cli-upgrade link in order to link to a different documentation
 
+documentation_url.server_logs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'documentation_url.server_logs' => '',
+
+Allows to modify the exception server logs documentation link in order to link to a different documentation
+
 debug
 ^^^^^
 
