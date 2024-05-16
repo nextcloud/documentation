@@ -256,11 +256,14 @@ Depending on your server setup, these are the possible connections:
 	- sending push notifications to mobile clients
 	- submitted data: unique device identifier, pblic key, push token
 - pushfeed.nextcloud.com (https)
-	- checking for updates to be shown in the Nextcloud announcements app
+	- optional
+	- checking for updates to be shown in the Nextcloud Announcements app
 - lookup.nextcloud.com (https) 
+	- optional
 	- for updating and lookups to the federated sharing addressbook
 	- submitted data: *pending*
 - surveyserver.nextcloud.com (https) 
+	- optional
 	- if the admin has agreed to share anonymized server data
 	- submitted data: instance id, server versions (incl. php & db), installed apps
 - Any remote Nextcloud server that is connected with federated sharing
