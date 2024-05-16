@@ -254,7 +254,7 @@ Depending on your server setup, these are the possible connections:
 	- to download Nextcloud standard apps
 - push-notifications.nextcloud.com (https) 
 	- sending push notifications to mobile clients
-	- submitted data: unique device identifier, pblic key, push token
+	- submitted data: unique device identifier, public key, push token
 - pushfeed.nextcloud.com (https)
 	- optional
 	- checking for updates to be shown in the Nextcloud Announcements app
