@@ -236,8 +236,8 @@ security headers are shipped.
 Connections to remote servers
 -----------------------------
 
-Some Nextcloud functionalites require connecting to remote servers. 
-This pragraph also outlines the data which is transmitted to the Nextcloud GmbH.
+Some Nextcloud functionalites require the server to connect to remote servers. 
+This pragraph includes the data which is transmitted to the Nextcloud GmbH.
 Depending on your server setup, these are the possible connections:
 
 - www.nextcloud.com, www.startpage.com, www.eff.org, www.edri.org for checking the internet connection
@@ -256,9 +256,10 @@ Depending on your server setup, these are the possible connections:
 	- sending push notifications to mobile clients
 	- submitted data: unique device identifier, pblic key, push token
 - pushfeed.nextcloud.com (https)
-	- for the Nextcloud announcements app
+	- checking for updates to be shown in the Nextcloud announcements app
 - lookup.nextcloud.com (https) 
 	- for updating and lookups to the federated sharing addressbook
+	- submitted data: *pending*
 - surveyserver.nextcloud.com (https) 
 	- if the admin has agreed to share anonymized server data
 	- submitted data: instance id, server versions (incl. php & db), installed apps
