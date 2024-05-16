@@ -236,19 +236,34 @@ security headers are shipped.
 Connections to remote servers
 -----------------------------
 
-Some Nextcloud functionalites require connecting to remote servers. Depending on 
-your server setup, these are the possible connections:
+Some Nextcloud functionalites require connecting to remote servers. 
+This pragraph also outlines the data which is transmitted to the Nextcloud GmbH.
+Depending on your server setup, these are the possible connections:
 
 - www.nextcloud.com, www.startpage.com, www.eff.org, www.edri.org for checking the internet connection
-- cloud.nextcloud.com (https) for validating the enterprise subscription
-- updates.nextcloud.com (https) for Nextcloud server updates
-- push-notifications.nextcloud.com (https) for sending push notifications to mobile clients
-- pushfeed.nextcloud.com (https) for the Nextcloud announcements app
-- lookup.nextcloud.com (https) for updating and lookups to the federated sharing addressbook
-- surveyserver.nextcloud.com (https) if the admin has agreed to share anonymized data
-- apps.nextcloud.com (https) for available apps and their updates 
-- github.com (https) for downloading Nextcloud standard apps
+- cloud.nextcloud.com (https) 
+	- used for enterprise license monitoring
+	- submitted data: subscription key, user count
+- updates.nextcloud.com (https)
+	- to check for available Nextcloud server updates
+	- submitted data: server version, subscription key, install time, instance id, instance size
+- apps.nextcloud.com (https) 
+	- to check for available apps and their updates 
+	- submitted data: subscription key
+- github.com (https) 
+	- to download Nextcloud standard apps
+- push-notifications.nextcloud.com (https) 
+	- sending push notifications to mobile clients
+	- submitted data: unique device identifier, pblic key, push token
+- pushfeed.nextcloud.com (https)
+	- for the Nextcloud announcements app
+- lookup.nextcloud.com (https) 
+	- for updating and lookups to the federated sharing addressbook
+- surveyserver.nextcloud.com (https) 
+	- if the admin has agreed to share anonymized server data
+	- submitted data: instance id, server versions (incl. php & db), installed apps
 - Any remote Nextcloud server that is connected with federated sharing
+
 
 Setup fail2ban
 --------------
