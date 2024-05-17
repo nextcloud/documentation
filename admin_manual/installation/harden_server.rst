@@ -241,8 +241,8 @@ This pragraph also includes the data which is being transmitted to the Nextcloud
 Depending on your server setup, these are the possible connections:
 
 - nextcloud.com, startpage.com, eff.org, edri.org
-	- for checking the internet connection
 	- `optional (config)`_
+	- for checking the internet connection
 - cloud.nextcloud.com
 	- used for enterprise license monitoring
 	- submitted data: subscription key, user count
@@ -258,15 +258,15 @@ Depending on your server setup, these are the possible connections:
 	- sending push notifications to mobile clients
 	- submitted data: unique device identifier, public key, push token
 - pushfeed.nextcloud.com
+	- optional
 	- checking for updates to be shown in the Nextcloud Announcements app
-	- optional
 - lookup.nextcloud.com
-	- for updating and lookups to the federated sharing addressbook
 	- optional
+	- for updating and lookups to the federated sharing addressbook
 	- submitted data: *pending*
 - surveyserver.nextcloud.com
-	- if the admin has agreed to share anonymized server data
 	- optional
+	- if the admin has agreed to share anonymized server data
 	- submitted data: instance id, server versions (incl. php & db), installed apps
 - Any remote Nextcloud server that is connected with federated sharing
 
