@@ -236,7 +236,7 @@ security headers are shipped.
 Connections to remote servers
 -----------------------------
 
-Some Nextcloud functionalites require the server to be able to connect remote servers via https/:443.
+Some functionalites require the Nextcloud server to be able to connect remote systems via https/443.
 This pragraph also includes the data which is being transmitted to the Nextcloud GmbH.
 Depending on your server setup, these are the possible connections:
 
