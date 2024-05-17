@@ -4,82 +4,93 @@ Upgrade manually
 
 .. seealso::
 
-   If you upgrade from a previous major version please see :ref:`critical changes<critical-changes>` first.
+   If you upgrade from a previous major version please see :ref:`critical changes<critical-changes>`
+   first.
 
-Always start by making a fresh backup and disabling all 3rd party apps.
+.. warning::
+
+   When upgrading manually, you must confirm your system meets the 
+   :doc:`../installation/system_requirements` of the new version as well as that you are 
+   following the standard :doc:`upgrade requirements <./upgrade>` (such as upgrading to 
+   the latest maintenance release *before* upgrading to a new major release).
+
+.. important:: Always start by making a fresh backup and disabling all 3rd party apps.
 
 1. Back up your existing Nextcloud Server database, data directory, and 
    ``config.php`` file. (See :doc:`backup`, for restore information see :doc:`restore`)
 
-2. Download and unpack the latest Nextcloud Server release (Archive file) from 
-   `nextcloud.com/install/`_ into an empty directory outside
-   of your current installation.
+2. Choose a target Nextcloud Server release from `<https://nextcloud.com/changelog/>`_ and 
+   download the Archive file (tarball or zip archive) into an empty directory outside of 
+   your current installation. 
    
-   .. note:: To unpack your new tarball, run:
-      unzip nextcloud-[version].zip
-      or
-      tar -xjf nextcloud-[version].tar.bz2
+   .. warning:: You cannot jump more than one major version forward at a time 
+        (i.e. 27->28 is okay, but 27->29 is not).
+  
+3. Unpack the the downloaded tarball or zip archive - e.g.::
+
+        unzip nextcloud-[version].zip
+        (or)
+        tar -xjf nextcloud-[version].tar.bz2
     
+4. Stop your Web server.
 
-3. Stop your Web server.
-
-4. In case you are running a cron-job for nextcloud's house-keeping disable it
-   by commenting the entry in the crontab file
+5. In case you are running a cron-job for nextcloud's house-keeping disable it
+   by commenting the entry in the crontab file::
 
      crontab -u www-data -e
 
    (Put a `#` at the beginning of the corresponding line.)
 
-5. Rename your current Nextcloud directory, for example ``nextcloud-old``.
+6. Rename your current Nextcloud directory, for example ``nextcloud-old``.
 
-6. Unpacking the new archive creates a new ``nextcloud`` directory populated 
+7. Unpacking the new archive creates a new ``nextcloud`` directory populated 
    with your new server files. Move this directory and its contents to the 
    original location of your old server. For example ``/var/www/``, so that 
    once again you have ``/var/www/nextcloud``.
 
-7. Copy the ``config/config.php`` file from your old Nextcloud directory to your new 
+8. Copy the ``config/config.php`` file from your old Nextcloud directory to your new 
    Nextcloud directory.
 
-8. If you keep your ``data/`` directory in your ``nextcloud/`` directory, copy 
+9. If you keep your ``data/`` directory in your ``nextcloud/`` directory, copy 
    it from your old version of Nextcloud to your new ``nextcloud/``. If you keep 
    it outside of ``nextcloud/`` then you don't have to do anything with it, 
    because its location is configured in your original ``config.php``, and 
    none of the upgrade steps touch it.
 
-9. If you are using 3rd party application, it may not always be available in your
-   upgraded/new Nextcloud instance. To check this, compare a list of the apps in
-   the new ``nextcloud/apps/`` folder to a list of the of the apps in your
-   backed-up/old ``nextcloud/apps/`` folder. If you find 3rd party apps in the
-   old folder that needs to be in the new/upgraded instance, simply copy them over
-   and ensure the permissions are set up as shown below.
+10. If you are using 3rd party application, it may not always be available in your
+    upgraded/new Nextcloud instance. To check this, compare a list of the apps in the 
+    new ``nextcloud/apps/`` folder to a list of the of the apps in your backed-up/old 
+    ``nextcloud/apps/`` folder. If you find 3rd party apps in the old folder that needs
+    to be in the new/upgraded instance, simply copy them over and ensure the permissions
+    are set up as shown below.
 
-10. If you have additional apps folders like for example ``nextcloud/apps-extras`` or ``nextcloud/apps-external``,
+11. If you have additional apps folders like for example ``nextcloud/apps-extras`` or ``nextcloud/apps-external``,
     make sure to also transfer/keep these in the upgraded folder.
   
-11. If you are using 3rd party theme make sure to copy it from your ``themes/``
+12. If you are using 3rd party theme make sure to copy it from your ``themes/``
     directory to your new one. It is possible you will have to make some
     modifications to it after the upgrade.
    
-12. Adjust file ownership and permissions::
+13. Adjust file ownership and permissions::
 
      chown -R www-data:www-data nextcloud
      find nextcloud/ -type d -exec chmod 750 {} \;
      find nextcloud/ -type f -exec chmod 640 {} \;
 
-13. Restart your Web server.
+14. Restart your Web server.
 
-14. Now launch the upgrade from the command line using ``occ``, like this 
+15. Now launch the upgrade from the command line using ``occ``, like this 
     example on Ubuntu Linux::
     
      sudo -u www-data php occ upgrade
      
     (!) this MUST be executed from within your nextcloud installation directory
      
-15. The upgrade operation takes a few minutes to a few hours, depending on the 
+16. The upgrade operation takes a few minutes to a few hours, depending on the 
     size of your installation. When it is finished you will see a success 
     message, or an error message that will tell where it went wrong.
 
-16. Re-enable the nextcloud cron-job. (See step 4 above.)
+17. Re-enable the nextcloud cron-job. (See step 4 above.)
 
      crontab -u www-data -e
 
