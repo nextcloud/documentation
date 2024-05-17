@@ -609,7 +609,7 @@ more outdated.
 Tokens are still checked every 5 minutes for validity
 max value: 300
 
-Defaults to ``300``
+Defaults to ``60``
 
 auth.bruteforce.protection.enabled
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
