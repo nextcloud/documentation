@@ -29,6 +29,7 @@ Digging deeper
    talk
    translation
    text_processing
+   task_processing
    text2image
    two-factor-provider
    users
