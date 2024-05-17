@@ -236,37 +236,41 @@ security headers are shipped.
 Connections to remote servers
 -----------------------------
 
-Some Nextcloud functionalites require the server to connect to remote servers. 
-This pragraph includes the data which is transmitted to the Nextcloud GmbH.
+Some Nextcloud functionalites require the server to be able to connect remote servers via https/:443.
+This pragraph also includes the data which is being transmitted to the Nextcloud GmbH.
 Depending on your server setup, these are the possible connections:
 
-- www.nextcloud.com, www.startpage.com, www.eff.org, www.edri.org for checking the internet connection
-- cloud.nextcloud.com (https) 
+- www.nextcloud.com, www.startpage.com, www.eff.org, www.edri.org 
+	- for checking the internet connection
+	- `optional (config)`_
+- cloud.nextcloud.com
 	- used for enterprise license monitoring
 	- submitted data: subscription key, user count
-- updates.nextcloud.com (https)
+- updates.nextcloud.com
 	- to check for available Nextcloud server updates
 	- submitted data: server version, subscription key, install time, instance id, instance size
-- apps.nextcloud.com (https) 
+- apps.nextcloud.com
 	- to check for available apps and their updates 
 	- submitted data: subscription key
-- github.com (https) 
+- github.com
 	- to download Nextcloud standard apps
-- push-notifications.nextcloud.com (https) 
+- push-notifications.nextcloud.com
 	- sending push notifications to mobile clients
 	- submitted data: unique device identifier, public key, push token
-- pushfeed.nextcloud.com (https)
-	- optional
+- pushfeed.nextcloud.com
 	- checking for updates to be shown in the Nextcloud Announcements app
-- lookup.nextcloud.com (https) 
 	- optional
+- lookup.nextcloud.com
 	- for updating and lookups to the federated sharing addressbook
-	- submitted data: *pending*
-- surveyserver.nextcloud.com (https) 
 	- optional
+	- submitted data: *pending*
+- surveyserver.nextcloud.com
 	- if the admin has agreed to share anonymized server data
+	- optional
 	- submitted data: instance id, server versions (incl. php & db), installed apps
 - Any remote Nextcloud server that is connected with federated sharing
+
+.. _optional (config): https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#has-internet-connection
 
 
 Setup fail2ban
