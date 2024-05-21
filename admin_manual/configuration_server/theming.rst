@@ -19,7 +19,8 @@ You can change the following parameters of the look and feel on your instance:
 * Name (e.g. ACME Inc. Cloud)
 * Web link (e.g. https://acme.inc/)
 * Slogan
-* Color: The color of the header bar, checkboxes, and folder icon
+* Primary color: The color used for important buttons, checkboxes, and folder icon
+* Background color: The background color if no image is used, the color of header bar icons is also generated from this
 * Logo: The logo will appear in the header and on the login page. The default has 62/34 px.
 * Background and login image: The background image
 
@@ -37,7 +38,7 @@ Theming configuration can also be adjusted through the ``occ theming:config`` co
 
 The following values are available to be set through this:
 
-- name, url, imprintUrl, privacyUrl, slogan, color ``occ theming:config name "My Example Cloud"``
+- name, url, imprintUrl, privacyUrl, slogan, color, primary_color ``occ theming:config name "My Example Cloud"``
 - background, logo, favicon, logoheader ``occ theming:config logo /tmp/mylogo.png``
 - disable-user-theming (yes/no) ``occ theming:config disable-user-theming yes`` 
 
