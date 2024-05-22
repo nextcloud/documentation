@@ -267,10 +267,11 @@ Depending on your server setup, these are the possible connections:
 - surveyserver.nextcloud.com
 	- optional
 	- if the admin has agreed to share anonymized server data
-	- submitted data: instance id, server versions (incl. php & db), installed apps
+	- submitted data: statistical data. see here for the `detailed field list`_
 - Any remote Nextcloud server that is connected with federated sharing
 
 .. _optional (config): https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#has-internet-connection
+.. _detailed field list : https://github.com/nextcloud/survey_client
 
 
 Setup fail2ban
