@@ -51,7 +51,7 @@ Upgrade manually
 8. Copy the ``config/config.php`` file from your old Nextcloud directory to your new 
    Nextcloud directory.
 
-9. If you keep your ``data/`` directory in your ``nextcloud/`` directory, copy 
+9. If you keep your ``data/`` directory in your ``nextcloud/`` directory, move 
    it from your old version of Nextcloud to your new ``nextcloud/``. If you keep 
    it outside of ``nextcloud/`` then you don't have to do anything with it, 
    because its location is configured in your original ``config.php``, and 
