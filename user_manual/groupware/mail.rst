@@ -88,6 +88,20 @@ Mail can move a message to a different folder when it is marked as junk.
 
    .. figure:: images/mail_move-message-to-junk-folder.png
 
+Search in mailbox
+~~~~~~~~~~~~~~~~~
+.. versionadded:: 2.1
+
+At the top of the envelope list in any mail layout, there is a search field shortcut for searching email subjects. Starting from ``version 3.7``, this shortcut allows you to search by subject, recipient (to), or sender (from) by default.
+
+
+Advance search in mailbox
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 3.4
+
+You can access our advanced search feature through a modal located at the end of the search shortcut.
+
 Enable mail body search
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
    .. versionadded:: 3.5
@@ -102,7 +116,7 @@ To enable it:
 
 .. warning:: If you want to also enable it for unified mailboxes you have to do so in Mail settings
 
-By enabling it the main search box will now search in both subjects and mail bodies, and a sperate *Body* option
+By enabling it the main search box will now search in both subjects and mail bodies, and a separate *Body* option
 will appear in advanced search.
 
 Account delegation
