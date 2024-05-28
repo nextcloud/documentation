@@ -102,6 +102,13 @@ In this url you need to replace the following variables:
 
 On the public page, users are able to get the subscription link for the calendar and export the whole calendar directly.
 
+Calendar Widget
+~~~~~~~~~~~~~~~
+
+You can embed your calendars into supported apps like ``Talk``, ``Notes``, etc... 
+by either sharing the public link to make the embed viewable (read-only) to all users 
+or by using the internal link to make it private.
+
 Subscribe to a Calendar
 ~~~~~~~~~~~~~~~~~~~~~~~
 
