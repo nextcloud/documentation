@@ -16,19 +16,10 @@ Requirements
 
 * This app is built as an External App and thus depends on AppAPI v2.3.0
 * Nextcloud AIO is supported
-* Using GPU processing is supported, but not required; be prepared for slow performance unless you are using GPU
-* We currently only support NVIDIA GPUs
-* GPU Sizing
-
-   * You will need a GPU with enough VRAM to hold the model you choose
-
-      * for 7B parameter models, 5bit-quantized variants and lower should fit on a 8GB VRAM, but of course have lower quality
-      * for 7B parameter models, 6bit-quantized variants and up will need 12GB VRAM
-      * If you want better reasoning capabilities, you will need to look for models with more parameters, like 14B and higher, which of course also need more VRAM
+* Using GPU is currently not supported
 
 * CPU Sizing
 
-   * If you don't have a GPU, this app will utilize your CPU cores
    * The more cores you have and the more powerful the CPU the better, we recommend 10-20 cores
    * The app will hog all cores by default, so it is usually better to run it on a separate machine
 
