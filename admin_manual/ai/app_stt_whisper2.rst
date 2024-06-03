@@ -17,20 +17,10 @@ Requirements
 * Minimal Nextcloud version: 28
 * This app is built as an External App and thus depends on AppAPI v2.3.0
 * Nextcloud AIO is supported
-* Using GPU processing is supported, but not required; be prepared for slow performance unless you are using GPU
-* We currently only support NVIDIA GPUs
-* GPU Sizing
-
-   * You will need a GPU with enough VRAM to hold the model you choose
-
-      * the small model should fit on 2GB VRAM
-      * the large-v2 (the best and largest) will need 6GB VRAM
-
-   * The distil-whisper variants have half the parameters of the original models while supposedly staying within 1% of the original error rate (your mileage may vary)
+* Using GPU is currently not supported
 
 * CPU Sizing
 
-   * If you don't have a GPU, this app will utilize your CPU cores
    * The more cores you have and the more powerful the CPU the better, we recommend 10-20 cores
    * The app will hog all cores by default, so it is usually better to run it on a separate machine
 
