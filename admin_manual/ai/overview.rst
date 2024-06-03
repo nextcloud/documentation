@@ -164,3 +164,15 @@ Backend apps
 ~~~~~~~~~~~~
 
 * :ref:`context_chat + context_chat_backend<ai-app-context_chat>` -  (Customer support available upon request)
+
+
+Frequently Asked Questions
+--------------------------
+
+Why is my prompt slow?
+^^^^^^^^^^^^^^^^^^^^^^
+
+Reasons for slow performance from a user perspective can be
+
+ * Using CPU processing instead of GPU (sometimes this limit is imposed by the used app)
+ * High user demand for the feature: User prompts and AI tasks are usually processed in the order they are received, which can cause delays when a lot of users access these features at the same time.
