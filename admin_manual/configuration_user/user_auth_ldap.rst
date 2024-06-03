@@ -549,6 +549,14 @@ Biography Field:
   Multi line value with unix LF line ending.
   Windows CRLF and Macintosh CR line endings will be replaced with unix LF line ending.
 
+Birthdate Field:
+  The LDAP attribute holding the user's date of birth.
+  Allowed formats:
+
+  * `LDAP GeneralizedTime <https://ldapwiki.com/wiki/Wiki.jsp?page=GeneralizedTime>`_
+  * ``YYYY-MM-DD``
+  * ``YYYYMMDD``
+
 Expert settings
 ---------------
 
