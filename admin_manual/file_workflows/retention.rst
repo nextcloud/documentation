@@ -9,7 +9,7 @@ Example
 -------
 
 After installing the Retention app as described in :doc:`../apps_management`
-navigate to the configuration and locate the Workflow settings.
+navigate to Administration settings and then to Flow.
 
     .. figure:: images/retention_sample.png
        :alt: Sample rule to delete files after 14 days after creation.
