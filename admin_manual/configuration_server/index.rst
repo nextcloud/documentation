@@ -16,6 +16,7 @@ Nextcloud configuration
    language_configuration
    logging_configuration
    antivirus_configuration
+   dashboard_configuration
    reverse_proxy_configuration
    bruteforce_configuration
    automatic_configuration
