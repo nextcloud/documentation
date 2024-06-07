@@ -21,7 +21,7 @@ The layout of an existing user can be read with the following command::
 
 The layout of the dashboard for a specific user can be set with the following command::
 
-  occ user:setting admin dashboard layout --value="calendar,files,activity"
+  occ user:setting admin dashboard layout "calendar,files,activity"
 
 The default layout of the dashboard for all users can be set with the following command::
 
