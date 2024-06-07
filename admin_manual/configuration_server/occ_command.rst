@@ -632,6 +632,8 @@ following command::
 
  sudo -u www-data php occ db:add-missing-indices
 
+Use option ``--dry-run`` to output the SQL queries without running them.
+
 .. _encryption_label:
 
 Encryption
