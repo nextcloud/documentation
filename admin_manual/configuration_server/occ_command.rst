@@ -1272,14 +1272,16 @@ units.
 Trashbin
 --------
 
-::
+These commands allow for manually managing various aspects of the trash bin (deleted files)::
 
  trashbin
-  trashbin:cleanup  [--all-users] [--] [<user_id>...]  Permanently remove deleted files
-  trashbin:restore  [--all-users] [--scope[=SCOPE]] [--since[=SINCE]] [--until[=UNTIL]] [--dry-run] [--] [<user_id>...]  Restore deleted files according to the given filters
+  trashbin:cleanup      Permanently remove deleted files
+  trashbin:expire       Expires the users trashbin
+  trashbin:size         Configure the target trashbin size
+  trashbin:restore      Restore all deleted files according to the given filters
 
 .. note::
-  This command is only available when the "Deleted files" app
+  These commands are only available when the "Deleted files" app
   (``files_trashbin``) is enabled.
 
 The ``trashbin:cleanup  [--all-users] [--] [<user_id>...]`` command removes the deleted files of the specified
