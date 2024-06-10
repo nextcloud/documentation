@@ -160,9 +160,9 @@ Icons
 .. image:: ../images/material-icons.png
    :alt: Material icons
 
-Icons can be used to communicate the intent of an action, or to provide visual interest to the screen. We use monochrome icons on all platforms: `Material Design icons (20 px default filled) <https://fonts.google.com/icons?icon.style=Filled&icon.set=Material+Icons>`_ for web, Android, Windows and Linux, and `SF Symbols (default weight, scale and variant) <https://developer.apple.com/sf-symbols/>`_ for iOS and macOS.
+Icons can be used to communicate the intent of an action, or to provide visual interest to the screen. We use monochrome icons on all platforms: `Material Symbols (not Material Icons, and 20 px default filled) <https://fonts.google.com/icons?icon.set=Material+Symbols&selected=Material+Symbols+Outlined:search:FILL@1;wght@400;GRAD@0;opsz@20&icon.size=20>`_ for web, Android, Windows and Linux, and `SF Symbols (default weight, scale and variant) <https://developer.apple.com/sf-symbols/>`_ for iOS and macOS.
 
-This is except for the icon of the app itself, which can be a custom icon.
+This is except for the icon of the app itself, which can be a custom icon. Most use an app icon from Material Symbols as well though to keep consistency.
 
 Make sure to:
 
