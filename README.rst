@@ -109,14 +109,14 @@ Building
 Nightly Automated Build Steps
 =============================
 
-1. **Fetch sources**
-2. ``git clone https://github.com/nextcloud/documentation.git``
-3. ``cd documentation``
-4. ``git checkout <branch name>``
-5. **Install**
-6. ``npm install svgexport -g --unsafe-perm=true``
-7. ``pip3 install -r requirements.txt``
-8. ``make all``
+1.  **Fetch sources**
+   1.  ``git clone https://github.com/nextcloud/documentation.git``
+   2.  ``cd documentation``
+   3.  ``git checkout <branch name>``
+2.  **Install**
+   1.  ``npm install svgexport -g --unsafe-perm=true``
+   2.  ``pip3 install -r requirements.txt``
+   3.  ``make all``
 
 
 Building HTML
