@@ -55,46 +55,11 @@ If you decide to use a MySQL or MariaDB database, ensure the following:
 
   [mysqld]
   ...
-  transaction_isolation = READ-COMMITTED
-  binlog_format = ROW
-  ...
-
-Your :file:`/etc/mysql/my.cnf` could look like this:
-
-::
-
-  [server]
-  skip_name_resolve = 1
-  innodb_buffer_pool_size = 128M
-  innodb_buffer_pool_instances = 1
-  innodb_flush_log_at_trx_commit = 2
-  innodb_log_buffer_size = 32M
-  innodb_max_dirty_pages_pct = 90
-  query_cache_type = 1
-  query_cache_limit = 2M
-  query_cache_min_res_unit = 2k
-  query_cache_size = 64M
-  tmp_table_size= 64M
-  max_heap_table_size= 64M
-  slow_query_log = 1
-  slow_query_log_file = /var/log/mysql/slow.log
-  long_query_time = 1
-
-  [client-server]
-  !includedir /etc/mysql/conf.d/
-  !includedir /etc/mysql/mariadb.conf.d/
-
-  [client]
-  default-character-set = utf8mb4
-
-  [mysqld]
   character_set_server = utf8mb4
   collation_server = utf8mb4_general_ci
   transaction_isolation = READ-COMMITTED
   binlog_format = ROW
-  innodb_large_prefix=on
-  innodb_file_format=barracuda
-  innodb_file_per_table=1
+  ...
 
 Please refer to the `page in the MySQL manual <https://mariadb.com/kb/en/library/set-transaction/#read-committed>`_.
 
@@ -103,27 +68,6 @@ Please refer to the `page in the MySQL manual <https://mariadb.com/kb/en/library
 * That the **mysql.default_socket** points to the correct socket (if the database runs on the same server as Nextcloud).
 
 .. note:: MariaDB is backwards compatible with MySQL.  All instructions work for both. You will not need to replace mysql with anything.
-
-The PHP configuration in :file:`/etc/php7/conf.d/mysql.ini` could look like this:
-
-::
-
-  # configuration for PHP MySQL module
-  extension=pdo_mysql.so
-
-  [mysql]
-  mysql.allow_local_infile=On
-  mysql.allow_persistent=On
-  mysql.cache_size=2000
-  mysql.max_persistent=-1
-  mysql.max_links=-1
-  mysql.default_port=
-  mysql.default_socket=/var/lib/mysql/mysql.sock  # Debian squeeze: /var/run/mysqld/mysqld.sock
-  mysql.default_host=
-  mysql.default_user=
-  mysql.default_password=
-  mysql.connect_timeout=60
-  mysql.trace_mode=Off
 
 Now you need to create a database user and the database itself by using the
 MySQL command line interface. The database tables will be created by Nextcloud
@@ -199,22 +143,7 @@ For further services and users, we recommend to create a separate
 database or PostgreSQL instance.
 
 If you decide to use a PostgreSQL database make sure that you have installed
-and enabled the PostgreSQL extension in PHP. The PHP configuration in :file:`/etc/php7/conf.d/pgsql.ini` could look
-like this:
-
-::
-
-  # configuration for PHP PostgreSQL module
-  extension=pdo_pgsql.so
-  extension=pgsql.so
-
-  [PostgresSQL]
-  pgsql.allow_persistent = On
-  pgsql.auto_reset_persistent = Off
-  pgsql.max_persistent = -1
-  pgsql.max_links = -1
-  pgsql.ignore_notice = 0
-  pgsql.log_notice = 0
+and enabled the PostgreSQL extension **pdo_pgsql** in PHP.
 
 The default configuration for PostgreSQL (at least in Ubuntu 14.04) is to use the peer authentication method. Check :file:`/etc/postgresql/9.3/main/pg_hba.conf` to find out which authentication method is used in your setup.
 To start the postgres command line mode use::
