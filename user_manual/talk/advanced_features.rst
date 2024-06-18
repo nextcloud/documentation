@@ -159,3 +159,32 @@ This section informs participants that the call may be recorded. To give explici
 .. image:: images/give-recording-consent.png
 .. image:: images/give-recording-consent-checked.png
 
+Federated conversation
+----------------------
+With Federation feature, users can create conversations across different federated Talk instances and use Talk features as if they were on a same server.
+
+**Important** Under current development. Basic chat features are available, more to come in the future!
+
+Feature is required to be set up by the system administration.
+
+Send and accept invites
+^^^^^^^^^^^^^^^^^^^^^^^
+
+The moderator of the conversation can send an invite to participant on a different server:
+
+.. image:: images/federation-invite-send.png
+
+When receiving a notification, user will see a counter of pending invites above the conversations list.
+
+.. image:: images/federation-invite-pending.png
+   :width: 450px
+
+Upon clicking it, more information will be provided about inviting party, and user can either accept or decline the invitation.
+
+.. image:: images/federation-invite-dialog.png
+   :width: 450px
+
+By accepting the invite, conversation will appear in the list as any other one.
+
+.. image:: images/federation-conversations-list.png
+   :width: 450px

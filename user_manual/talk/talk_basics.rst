@@ -14,9 +14,10 @@ Chats and calls take place in conversations. You can create any number of conver
 Creating a chat
 ---------------
 
-You can create a direct, one-on-one chat by searching for the name of a user, a group or a circle and clicking it. For a single user, a conversation is immediately created and you can start your chat. For a group or circle you get to pick a name and settings before you create the conversation and add the participants.
+You can create a direct, one-on-one chat by searching for the name of a user, a group or a team and clicking it. For a single user, a conversation is immediately created and you can start your chat. For a group or circle you get to pick a name and settings before you create the conversation and add the participants.
 
 .. image:: images/chat-with-one-user.png
+    :width: 400px
 
 If you want to create a custom group conversation, click the button next to the search field and filters button and then on ``Create a new conversation``.
 
@@ -33,7 +34,7 @@ In the second step, you get to add participants and finalize the creation of the
 .. image:: images/add-participants.png
     :width: 500px
 
-You can cancel the creation of a conversation by clicking outside the white menu area at any time.
+After confirmation you will be redirected to the new conversation and can start communicating right away.
 
 .. image:: images/new-room.png
 
@@ -94,6 +95,14 @@ You can add emoji using the picker on the left of the text input field.
 .. image:: images/emoji-picker.png
    :width: 450px
 
+Editing messages
+----------------
+
+You can edit messages and captions to file shares up to 6 hours after sending.
+
+.. image:: images/message-editing.png
+   :width: 450px
+
 Using Markdown
 ---------------
 
@@ -147,6 +156,21 @@ You can enhance your messages with a markdown syntax support. See list for usage
   > blockquote
   second line of blockquote
 
+**Task lists**
+
+.. code-block:: none
+
+  - [ ] task to be done
+  - [x] completed task
+
+**Tables**
+
+.. code-block:: none
+
+  Column A | Column B
+  -- | --
+  Data A | Data B
+
 Setting reminder on messages
 ----------------------------
 
@@ -174,6 +198,15 @@ In the ``...`` menu you can also choose to reply privately. This will open a one
    :width: 450px
 
 Here you can also create a direct link to the message or mark it unread so you will scroll back there next time you enter the chat. When it is a file, you can view the file in Files.
+
+Silent messages
+---------------
+
+If you don't want to disturb anyone in the middle of the night, there is a silent mode for chatting.
+While it is enabled, other participants will not receive notifications from your messages.
+
+.. image:: images/message-silent.png
+   :width: 450px
 
 Managing a conversation
 -----------------------
