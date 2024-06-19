@@ -121,22 +121,31 @@ Troubleshooting
 Overview
 ~~~~~~~~
 
-On most setups Nextcloud will work out of the box without any issues. If you
-run into a situation where logging in or connecting is often very slow for multiple users, the first
-step is to check your Nextcloud Server logs to see what IP addresses are being detected (you may need 
-adjust your logging to INFO level temporarily to do so). 
+On most setups Nextcloud will work out of the box without any issues. If you run into a situation where 
+logging in or connecting is often very slow for multiple users, the first step is to check your Nextcloud 
+Server logs to see what IP addresses are being detected (you will need to adjust your ``loglevel`` to ``1`` 
+temporarily to do so).
+
+Look for entries that start with any of the following:
+
+- `Bruteforce attempt from` [...]
+- `IP address throttled` [...]
+- `IP address blocked` [...]
 
 If all clients appear to be coming from the same IP address and that IP address happens to be your 
-proxy, you need to review your ``trusted_proxies`` configuration. If it is a common connection point,
-such as a multi-user office location, it is possible whitelisting is appropriate.
+proxy, you need to review your ``trusted_proxies`` configuration. 
+
+If the IP address is a common connection point, such as a multi-user office location, it can be an option to whitelist it,
+with the draw back that users have to be trust-worthy.
 
 For testing purposes you want want to whitelist your own IP address to see if the problem disappears.
 If it does - and assuming your proxy configuration is correct - you may have a client/device in your
 network that is misbehaving and generating invalid login attempts from your IP address.
 
-For detailed troubleshooting, you may wish to inspect the `bruteforce_attempts` database table. There 
-you can see which IP addresses are throttled and any other metadata stored about their attempts to 
-connect.
+You can use the `occ security:bruteforce:attempts` command to check the realtime status for a given IP address. 
+
+.. note:: The `bruteforce_attempts` database table will be empty if you're using a distributed memory 
+  cache since the database backend is no longer used unless it is the only option available.
 
 Excluding IP addresses from brute force protection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
