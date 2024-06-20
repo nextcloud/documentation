@@ -1,63 +1,41 @@
 .. _occ:
 
-=====================
-Using the occ command
-=====================
+=============
+Using ``occ`` 
+=============
 
 Nextcloud's ``occ`` command (origins from "ownCloud Console") is Nextcloud's command-line
 interface. You can perform many common server operations with ``occ``, such as
 installing and upgrading Nextcloud, manage users, encryption, passwords, LDAP
 setting, and more.
 
-``occ`` is in the :file:`nextcloud/` directory; for example
-:file:`/var/www/nextcloud` on Ubuntu Linux. ``occ`` is a PHP script. **You must
-run it as your HTTP user** to ensure that the correct permissions are maintained
-on your Nextcloud files and directories.
+------------
+Introduction
+------------
 
-occ command Directory
----------------------
+Locating ``occ`` 
+================
 
-* :ref:`http_user_label`
-* :ref:`run_commands_in_maintenance_mode`
-* :ref:`apps_commands_label`
-* :ref:`background_jobs_selector_label`
-* :ref:`config_commands_label`
-* :ref:`dav_label`
-* :ref:`database_conversion_label`
-* :ref:`database_add_indices_label`
-* :ref:`encryption_label`
-* :ref:`federation_sync_label`
-* :ref:`file_operations_label`
-* :ref:`files_external_label`
-* :ref:`integrity_check_label`
-* :ref:`create_javascript_translation_files_label`
-* :ref:`ldap_commands_label`
-* :ref:`logging_commands_label`
-* :ref:`maintenance_commands_label`
-* :ref:`security_commands_label`
-* :ref:`trashbin_label`
-* :ref:`user_commands_label`
-* :ref:`group_commands_label`
-* :ref:`versions_label`
-* :ref:`command_line_installation_label`
-* :ref:`command_line_upgrade_label`
-* :ref:`two_factor_auth_label`
-* :ref:`disable_user_label`
-* :ref:`system_tags_commands_label`
-* :ref:`antivirus_commands_label`
-* `Debugging`_
+``occ`` is located in the top of the Nextcloud installation folder; for example
+:file:`/var/www/html/occ`. ``occ`` is a PHP script. 
 
 .. _http_user_label:
 
-Run occ as your HTTP user
--------------------------
+Running as HTTP User
+====================
+
+You must run ``occ`` as your HTTP user to ensure that the correct permissions are maintained
+on your Nextcloud files and directories.
 
 The HTTP user is different on the various Linux distributions:
 
-* The HTTP user and group in Debian/Ubuntu is www-data.
-* The HTTP user and group in Fedora/CentOS is apache.
-* The HTTP user and group in Arch Linux is http.
-* The HTTP user in openSUSE is wwwrun, and the HTTP group is www.
+* The HTTP user and group in Debian/Ubuntu is ``www-data``.
+* The HTTP user and group in Fedora/CentOS is ``apache``.
+* The HTTP user and group in Arch Linux is ``http``.
+* The HTTP user in openSUSE is ``wwwrun``, and the HTTP group is ``www``.
+
+PHP Versions
+============
 
 If your HTTP server is configured to use a different PHP version than the
 default (/usr/bin/php), ``occ`` should be run with the same version. For
@@ -69,6 +47,61 @@ example, in CentOS 6.5 with SCL-PHP70 installed, the command looks like this::
 
   * ``su --command '/path/to/php ...' username`` -- Note here that the target user specification comes at the end, and the command to execute is specified first.
   * ``runuser --user username -- /path/to/php ...`` -- This wrapper might be used in container contexts (ex: Docker / ``arm32v7/nextcloud``) where both ``sudo`` and ``su`` wrapper utilities cannot be used.
+
+Environment variables
+=====================
+
+``sudo`` does not forward environment variables by default. Put the variables before the ``php`` command::
+
+  sudo -u www-data NC_debug=true php occ status
+
+Alternatively, you can ``export`` the variable or use the ``-E`` switch for ``sudo``::
+
+  NC_debug=true sudo -E -u www-data php occ status
+
+Autocompletion
+==============
+
+.. note:: Command autocompletion currently only works if the user you use to execute the occ commands has a profile.
+  ``www-data`` in most cases is ``nologon`` and therefor **cannot** use this feature.
+
+Autocompletion is available for bash (and bash based consoles).
+To enable it, you have to run **one** of the following commands::
+
+ # BASH ~4.x, ZSH
+ source <(/var/www/html/nextcloud/occ _completion --generate-hook)
+
+ # BASH ~3.x, ZSH
+ /var/www/html/nextcloud/occ _completion --generate-hook | source /dev/stdin
+
+ # BASH (any version)
+ eval $(/var/www/html/nextcloud/occ _completion --generate-hook)
+
+This will allow you to use autocompletion with the full path ``/var/www/html/nextcloud/occ <tab>``.
+
+If you also want to use autocompletion on occ from within the directory without using the full path,
+you need to specify ``--program occ`` after the ``--generate-hook``.
+
+If you want the completion to apply automatically for all new shell sessions, add the command to your
+shell's profile (eg. ``~/.bash_profile`` or ``~/.zshrc``).
+
+.. _run_commands_in_maintenance_mode:
+
+Maintenance mode
+================
+
+In maintenance mode, apps are not loaded [1]_, so commands from most apps are unavailable. Commands integrated into Nextcloud server are available in maintenance mode.
+
+We discourage the use of maintenance mode unless the command explicitly prompts you to do so or unless the commands' documentation explicitly states that maintenance mode should be used.
+
+A command may use events to communicate with other apps. An app can only react to an event when loaded. Example: The command user:delete deletes a user account. UserDeletedEvent is emitted. Calendar app implements an event listener to delete user data [2]_. In maintenance mode, the Calendar app is not loaded, and hence the user data not deleted.
+
+.. [1] Exception: `The settings app is loaded <https://github.com/nextcloud/server/blob/75f17b60945e15effc3eea41393eef2b13937226/lib/base.php#L780>`_
+.. [2] `Calendar app event listener for UserDeletedEvent <https://github.com/nextcloud/calendar/blob/87e8586971a8676dc15a90f0cd969274678b7009/lib/Listener/UserDeletedListener.php>`_
+
+-----------
+Basic Usage
+-----------
 
 Running ``occ`` with no options lists all commands and options, like this
 example on Ubuntu::
@@ -164,61 +197,44 @@ This output option is available on all list and list-like commands:
 ``status``, ``check``, ``app:list``, ``config:list``, ``encryption:status``
 and ``encryption:list-modules``
 
-Environment variables
-^^^^^^^^^^^^^^^^^^^^^
 
-``sudo`` does not forward environment variables by default. Put the variables before the ``php`` command::
+------------------
+Available commands 
+------------------
 
-  sudo -u www-data NC_debug=true php occ status
+* :ref:`apps_commands_label`
+* :ref:`background_jobs_selector_label`
+* :ref:`config_commands_label`
+* :ref:`dav_label`
+* :ref:`database_conversion_label`
+* :ref:`database_add_indices_label`
+* :ref:`encryption_label`
+* :ref:`federation_sync_label`
+* :ref:`file_operations_label`
+* :ref:`files_external_label`
+* :ref:`integrity_check_label`
+* :ref:`create_javascript_translation_files_label`
+* :ref:`ldap_commands_label`
+* :ref:`logging_commands_label`
+* :ref:`maintenance_commands_label`
+* :ref:`security_commands_label`
+* :ref:`trashbin_label`
+* :ref:`user_commands_label`
+* :ref:`group_commands_label`
+* :ref:`versions_label`
+* :ref:`command_line_installation_label`
+* :ref:`command_line_upgrade_label`
+* :ref:`two_factor_auth_label`
+* :ref:`disable_user_label`
+* :ref:`system_tags_commands_label`
+* :ref:`antivirus_commands_label`
+* `Debugging`_
 
-Alternatively, you can ``export`` the variable or use the ``-E`` switch for ``sudo``::
-
-  NC_debug=true sudo -E -u www-data php occ status
-
-Enabling autocompletion
------------------------
-
-.. note:: Command autocompletion currently only works if the user you use to execute the occ commands has a profile.
-  ``www-data`` in most cases is ``nologon`` and therefor **cannot** use this feature.
-
-Autocompletion is available for bash (and bash based consoles).
-To enable it, you have to run **one** of the following commands::
-
- # BASH ~4.x, ZSH
- source <(/var/www/html/nextcloud/occ _completion --generate-hook)
-
- # BASH ~3.x, ZSH
- /var/www/html/nextcloud/occ _completion --generate-hook | source /dev/stdin
-
- # BASH (any version)
- eval $(/var/www/html/nextcloud/occ _completion --generate-hook)
-
-This will allow you to use autocompletion with the full path ``/var/www/html/nextcloud/occ <tab>``.
-
-If you also want to use autocompletion on occ from within the directory without using the full path,
-you need to specify ``--program occ`` after the ``--generate-hook``.
-
-If you want the completion to apply automatically for all new shell sessions, add the command to your
-shell's profile (eg. ``~/.bash_profile`` or ``~/.zshrc``).
-
-.. _run_commands_in_maintenance_mode:
-
-Run commands in maintenance mode
---------------------------------
-
-In maintenance mode, apps are not loaded [1]_, so commands from apps are unavailable. Commands integrated into Nextcloud server are available in maintenance mode.
-
-We discourage the use of maintenance mode unless the command explicitly prompts you to do so or unless the commands' documentation explicitly states that maintenance mode should be used.
-
-A command may use events to communicate with other apps. An app can only react to an event when loaded. Example: The command user:delete deletes a user account. UserDeletedEvent is emitted. Calendar app implements an event listener to delete user data [2]_. In maintenance mode, the Calendar app is not loaded, and hence the user data not deleted.
-
-.. [1] Exception: `The settings app is loaded <https://github.com/nextcloud/server/blob/75f17b60945e15effc3eea41393eef2b13937226/lib/base.php#L780>`_
-.. [2] `Calendar app event listener for UserDeletedEvent <https://github.com/nextcloud/calendar/blob/87e8586971a8676dc15a90f0cd969274678b7009/lib/Listener/UserDeletedListener.php>`_
 
 .. _apps_commands_label:
 
-Apps commands
--------------
+``app`` - Manage apps
+=====================
 
 The ``app`` commands list, enable, and disable apps::
 
@@ -302,8 +318,8 @@ To show available update(s) without updating::
 
 .. _background_jobs_selector_label:
 
-Background jobs selector
-------------------------
+``background`` - Background jobs run method selector
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Use the ``background`` command to select which scheduler you want to use for
 controlling background jobs, Ajax, Webcron, or Cron. This is the same as using
@@ -328,8 +344,8 @@ See :doc:`background_jobs_configuration` to learn more.
 
 .. _config_commands_label:
 
-Config commands
----------------
+``config`` - Configure Nextcloud Server and Apps
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The ``config`` commands are used to configure the Nextcloud server::
 
@@ -506,8 +522,8 @@ before. If you want to be notified in that case, set the
 
 .. _dav_label:
 
-Dav commands
-------------
+``dav`` - Manage DAV (addressbooks, calendars, shares)
+------------------------------------------------------
 
 A set of commands to create and manage addressbooks and calendars::
 
@@ -591,8 +607,24 @@ address book<system-address-book>`::
 
 .. _database_conversion_label:
 
-Database conversion
--------------------
+``db`` - Database management
+----------------------------
+
+.. _database_add_indices_label:
+
+Add missing indices
+^^^^^^^^^^^^^^^^^^^
+
+It might happen that we add from time to time new indices to already existing database tables,
+for example to improve performance. In order to check your database for missing indices run
+following command::
+
+ sudo -u www-data php occ db:add-missing-indices
+
+Use option ``--dry-run`` to output the SQL queries without running them.
+
+Conversions
+^^^^^^^^^^^
 
 The SQLite database is good for testing, and for Nextcloud servers with small
 single-user workloads that do not use sync clients, but production servers with
@@ -621,23 +653,10 @@ This is example converts SQLite to MySQL/MariaDB::
 For a more detailed explanation see
 :doc:`../configuration_database/db_conversion`
 
-.. _database_add_indices_label:
-
-Add missing indices
--------------------
-
-It might happen that we add from time to time new indices to already existing database tables,
-for example to improve performance. In order to check your database for missing indices run
-following command::
-
- sudo -u www-data php occ db:add-missing-indices
-
-Use option ``--dry-run`` to output the SQL queries without running them.
-
 .. _encryption_label:
 
-Encryption
-----------
+``encryption`` - Manage Encryption (Server-Side)
+------------------------------------------------
 
 ``occ`` includes a complete set of commands for managing encryption::
 
@@ -720,8 +739,8 @@ See :doc:`../configuration_files/encryption_configuration` to learn more.
 
 .. _federation_sync_label:
 
-Federation sync
----------------
+``federation`` - Manage Federations
+-----------------------------------
 
 .. note::
   This command is only available when the "Federation" app (``federation``) is
@@ -740,21 +759,26 @@ to synchronize federated servers::
 
 .. _file_operations_label:
 
-File operations
----------------
+``files`` - Manage files
+------------------------
 
-``occ`` has three commands for managing files in Nextcloud::
+``occ`` has various commands for managing files in Nextcloud::
 
  files
-  files:cleanup              Cleanup filecache
-  files:repair-tree          Try and repair malformed filesystem tree structures
-  files:scan                 Rescan filesystem
-  files:scan-app-data        Rescan the AppData folder
-  files:transfer-ownership   All files' and folders' ownerships are moved to another
-                             user. Outgoing shares are moved as well.
-                             Incoming shares are not moved by default because the
-                             sharing user holds the ownership of the respective files.
-                             There is however an option to enable moving incoming shares.
+  files:scan                      rescan filesystem                                                                                                                
+  files:cleanup                   cleanup filecache                                                                                                                
+  files:transfer-ownership        All files and folders are moved to another user - outgoing shares and incoming user file shares (optionally) are moved as well.  
+  files:scan-app-data             rescan the AppData folder                                                                                                        
+  files:repair-tree               Try and repair malformed filesystem tree structures                                                                              
+  files:get                       Get the contents of a file                                                                                                       
+  files:put                       Write contents of a file                                                                                                         
+  files:delete                    Delete a file or folder                                                                                                          
+  files:copy                      Copy a file or folder                                                                                                            
+  files:move                      Move a file or folder                                                                                                            
+  files:object:delete             Delete an object from the object store                                                                                           
+  files:object:get                Get the contents of an object                                                                                                    
+  files:object:put                Write a file to the object store                                                                                                    
+  files:reminders                 List file reminders                                                                                                           
 
 .. _occ_files_scan_label:
 
@@ -913,8 +937,8 @@ See `user documentation <https://docs.nextcloud.com/server/latest/user_manual/en
 
 .. _occ_sharing_label:
 
-Files Sharing
--------------
+``sharing`` - Manage File Sharing
+---------------------------------
 
 Commands for handling shares::
 
@@ -925,8 +949,8 @@ Commands for handling shares::
 
 .. _files_external_label:
 
-Files external
---------------
+``files_external`` - Manage External Storage
+--------------------------------------------
 
 .. note::
   These commands are only available when the "External storage support" app
@@ -959,8 +983,8 @@ and to copy external mount configurations to another Nextcloud server.
 
 .. _integrity_check_label:
 
-Integrity check
----------------
+``integrity`` - Integrity checking
+----------------------------------
 
 Apps which have a ``Featured`` tag MUST be code signed with Nextcloud. Unsigned featured apps won't be installable anymore. Code signing is optional for all third-party applications::
 
@@ -989,16 +1013,19 @@ See :doc:`../issues/code_signing` to learn more.
 
 .. _create_javascript_translation_files_label:
 
-l10n, create JavaScript translation files for apps
---------------------------------------------------
+``l10n`` - l10n, create JavaScript translation files for apps
+--------------------------------------------------------------
 
 This command is for app developers to update their translation mechanism from
 ownCloud 7 to Nextcloud.
 
+ l10n
+  l10n:createjs                          Create javascript translation files for a given app
+
 .. _ldap_commands_label:
 
-LDAP commands
--------------
+``ldap`` - Manage LDAP
+----------------------
 
 .. note::
   These commands are only available when the "LDAP user and group backend" app
@@ -1096,8 +1123,8 @@ documented in :doc:`../configuration_user/user_auth_ldap_cleanup`.
 
 .. _logging_commands_label:
 
-Logging commands
-----------------
+``log`` - Manage/view logs
+--------------------------
 
 These commands view and configure your Nextcloud logging preferences::
 
@@ -1127,8 +1154,8 @@ are ``file``, ``warning``, and ``UTC``. Available options are:
 
 .. _maintenance_commands_label:
 
-Maintenance commands
---------------------
+``maintenance`` - Maintenance commands
+--------------------------------------
 
 Use these commands when you upgrade Nextcloud, manage encryption, perform
 backups and other tasks that require locking users out until you are finished::
@@ -1172,8 +1199,8 @@ updated correctly. This updates the mimetypelist.js and cleares the image cache.
 
 .. _security_commands_label:
 
-Security
---------
+``security`` - Manage Security
+------------------------------
 
 Use these commands to manage server-wide security related parameters. Currently this
 includes :doc:`bruteforce_configuration` and SSL certificates (the latter are useful when
@@ -1203,8 +1230,8 @@ Remove a certificate::
 
  sudo -u www-data php occ security:certificates:remove [certificate name]
 
-Status
-------
+``status`` - Installation Status
+--------------------------------
 
 Use the status command to retrieve information about the current installation::
 
@@ -1269,8 +1296,8 @@ units.
 
 .. _trashbin_label:
 
-Trashbin
---------
+``trashbin`` - Manage Deleted Files
+-----------------------------------
 
 ::
 
@@ -1335,8 +1362,8 @@ The ``--dry-run`` option can be used to simulate the restore without actually re
 
 .. _user_commands_label:
 
-User commands
--------------
+``user`` - Manage Users
+-----------------------
 
 The ``user`` commands create and remove users, reset passwords, display a simple
 report showing how many users you have, and when a user was last logged in::
@@ -1485,8 +1512,8 @@ Some user backends also do not allow a count for the number of users.
 
 .. _group_commands_label:
 
-Group commands
---------------
+``group`` - Manage Groups
+-------------------------
 
 The ``group`` commands create and remove groups, add and remove users in
 groups, display a list of all users in a group::
@@ -1543,8 +1570,8 @@ plain.
 
 .. _versions_label:
 
-Versions
---------
+``versions`` - Manage File Versions
+-----------------------------------
 
 .. note::
   This command is only available when the "Versions" app (``files_versions``) is
