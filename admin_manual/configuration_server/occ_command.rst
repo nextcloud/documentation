@@ -1,31 +1,41 @@
 .. _occ:
 
-=====================
-Using the occ command
-=====================
+=============
+Using ``occ`` 
+=============
 
 Nextcloud's ``occ`` command (origins from "ownCloud Console") is Nextcloud's command-line
 interface. You can perform many common server operations with ``occ``, such as
 installing and upgrading Nextcloud, manage users, encryption, passwords, LDAP
 setting, and more.
 
-Running ``occ`` 
----------------
+------------
+Introduction
+------------
+
+Locating ``occ`` 
+================
 
 ``occ`` is located in the top of the Nextcloud installation folder; for example
 :file:`/var/www/html/occ`. ``occ`` is a PHP script. 
 
 .. _http_user_label:
 
-**You must run ``occ`` as your HTTP user** to ensure that the correct permissions are maintained
+Running as HTTP User
+====================
+
+You must run ``occ`` as your HTTP user to ensure that the correct permissions are maintained
 on your Nextcloud files and directories.
 
 The HTTP user is different on the various Linux distributions:
 
-* The HTTP user and group in Debian/Ubuntu is www-data.
-* The HTTP user and group in Fedora/CentOS is apache.
-* The HTTP user and group in Arch Linux is http.
-* The HTTP user in openSUSE is wwwrun, and the HTTP group is www.
+* The HTTP user and group in Debian/Ubuntu is ``www-data``.
+* The HTTP user and group in Fedora/CentOS is ``apache``.
+* The HTTP user and group in Arch Linux is ``http``.
+* The HTTP user in openSUSE is ``wwwrun``, and the HTTP group is ``www``.
+
+PHP Versions
+============
 
 If your HTTP server is configured to use a different PHP version than the
 default (/usr/bin/php), ``occ`` should be run with the same version. For
@@ -37,6 +47,61 @@ example, in CentOS 6.5 with SCL-PHP70 installed, the command looks like this::
 
   * ``su --command '/path/to/php ...' username`` -- Note here that the target user specification comes at the end, and the command to execute is specified first.
   * ``runuser --user username -- /path/to/php ...`` -- This wrapper might be used in container contexts (ex: Docker / ``arm32v7/nextcloud``) where both ``sudo`` and ``su`` wrapper utilities cannot be used.
+
+Environment variables
+=====================
+
+``sudo`` does not forward environment variables by default. Put the variables before the ``php`` command::
+
+  sudo -u www-data NC_debug=true php occ status
+
+Alternatively, you can ``export`` the variable or use the ``-E`` switch for ``sudo``::
+
+  NC_debug=true sudo -E -u www-data php occ status
+
+Autocompletion
+==============
+
+.. note:: Command autocompletion currently only works if the user you use to execute the occ commands has a profile.
+  ``www-data`` in most cases is ``nologon`` and therefor **cannot** use this feature.
+
+Autocompletion is available for bash (and bash based consoles).
+To enable it, you have to run **one** of the following commands::
+
+ # BASH ~4.x, ZSH
+ source <(/var/www/html/nextcloud/occ _completion --generate-hook)
+
+ # BASH ~3.x, ZSH
+ /var/www/html/nextcloud/occ _completion --generate-hook | source /dev/stdin
+
+ # BASH (any version)
+ eval $(/var/www/html/nextcloud/occ _completion --generate-hook)
+
+This will allow you to use autocompletion with the full path ``/var/www/html/nextcloud/occ <tab>``.
+
+If you also want to use autocompletion on occ from within the directory without using the full path,
+you need to specify ``--program occ`` after the ``--generate-hook``.
+
+If you want the completion to apply automatically for all new shell sessions, add the command to your
+shell's profile (eg. ``~/.bash_profile`` or ``~/.zshrc``).
+
+.. _run_commands_in_maintenance_mode:
+
+Maintenance mode
+================
+
+In maintenance mode, apps are not loaded [1]_, so commands from most apps are unavailable. Commands integrated into Nextcloud server are available in maintenance mode.
+
+We discourage the use of maintenance mode unless the command explicitly prompts you to do so or unless the commands' documentation explicitly states that maintenance mode should be used.
+
+A command may use events to communicate with other apps. An app can only react to an event when loaded. Example: The command user:delete deletes a user account. UserDeletedEvent is emitted. Calendar app implements an event listener to delete user data [2]_. In maintenance mode, the Calendar app is not loaded, and hence the user data not deleted.
+
+.. [1] Exception: `The settings app is loaded <https://github.com/nextcloud/server/blob/75f17b60945e15effc3eea41393eef2b13937226/lib/base.php#L780>`_
+.. [2] `Calendar app event listener for UserDeletedEvent <https://github.com/nextcloud/calendar/blob/87e8586971a8676dc15a90f0cd969274678b7009/lib/Listener/UserDeletedListener.php>`_
+
+-----------
+Basic Usage
+-----------
 
 Running ``occ`` with no options lists all commands and options, like this
 example on Ubuntu::
@@ -132,60 +197,10 @@ This output option is available on all list and list-like commands:
 ``status``, ``check``, ``app:list``, ``config:list``, ``encryption:status``
 and ``encryption:list-modules``
 
-Environment variables
-^^^^^^^^^^^^^^^^^^^^^
 
-``sudo`` does not forward environment variables by default. Put the variables before the ``php`` command::
-
-  sudo -u www-data NC_debug=true php occ status
-
-Alternatively, you can ``export`` the variable or use the ``-E`` switch for ``sudo``::
-
-  NC_debug=true sudo -E -u www-data php occ status
-
-Autocompletion
---------------
-
-.. note:: Command autocompletion currently only works if the user you use to execute the occ commands has a profile.
-  ``www-data`` in most cases is ``nologon`` and therefor **cannot** use this feature.
-
-Autocompletion is available for bash (and bash based consoles).
-To enable it, you have to run **one** of the following commands::
-
- # BASH ~4.x, ZSH
- source <(/var/www/html/nextcloud/occ _completion --generate-hook)
-
- # BASH ~3.x, ZSH
- /var/www/html/nextcloud/occ _completion --generate-hook | source /dev/stdin
-
- # BASH (any version)
- eval $(/var/www/html/nextcloud/occ _completion --generate-hook)
-
-This will allow you to use autocompletion with the full path ``/var/www/html/nextcloud/occ <tab>``.
-
-If you also want to use autocompletion on occ from within the directory without using the full path,
-you need to specify ``--program occ`` after the ``--generate-hook``.
-
-If you want the completion to apply automatically for all new shell sessions, add the command to your
-shell's profile (eg. ``~/.bash_profile`` or ``~/.zshrc``).
-
-.. _run_commands_in_maintenance_mode:
-
-Maintenance mode
-----------------
-
-In maintenance mode, apps are not loaded [1]_, so commands from most apps are unavailable. Commands integrated into Nextcloud server are available in maintenance mode.
-
-We discourage the use of maintenance mode unless the command explicitly prompts you to do so or unless the commands' documentation explicitly states that maintenance mode should be used.
-
-A command may use events to communicate with other apps. An app can only react to an event when loaded. Example: The command user:delete deletes a user account. UserDeletedEvent is emitted. Calendar app implements an event listener to delete user data [2]_. In maintenance mode, the Calendar app is not loaded, and hence the user data not deleted.
-
-.. [1] Exception: `The settings app is loaded <https://github.com/nextcloud/server/blob/75f17b60945e15effc3eea41393eef2b13937226/lib/base.php#L780>`_
-.. [2] `Calendar app event listener for UserDeletedEvent <https://github.com/nextcloud/calendar/blob/87e8586971a8676dc15a90f0cd969274678b7009/lib/Listener/UserDeletedListener.php>`_
-
-
-``occ`` commands 
-----------------
+------------------
+Available commands 
+------------------
 
 * :ref:`apps_commands_label`
 * :ref:`background_jobs_selector_label`
@@ -219,7 +234,7 @@ A command may use events to communicate with other apps. An app can only react t
 .. _apps_commands_label:
 
 ``app`` - Manage apps
----------------------
+=====================
 
 The ``app`` commands list, enable, and disable apps::
 
@@ -303,8 +318,8 @@ To show available update(s) without updating::
 
 .. _background_jobs_selector_label:
 
-``occ`` ``background`` commands - Background jobs run method selector
--------------------------------------------------------------
+``background`` - Background jobs run method selector
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Use the ``background`` command to select which scheduler you want to use for
 controlling background jobs, Ajax, Webcron, or Cron. This is the same as using
@@ -330,7 +345,7 @@ See :doc:`background_jobs_configuration` to learn more.
 .. _config_commands_label:
 
 ``config`` - Configure Nextcloud Server and Apps
-------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The ``config`` commands are used to configure the Nextcloud server::
 
@@ -745,7 +760,7 @@ to synchronize federated servers::
 .. _file_operations_label:
 
 ``files`` - Manage files
----------------
+------------------------
 
 ``occ`` has various commands for managing files in Nextcloud::
 
@@ -923,7 +938,7 @@ See `user documentation <https://docs.nextcloud.com/server/latest/user_manual/en
 .. _occ_sharing_label:
 
 ``sharing`` - Manage File Sharing
--------------
+---------------------------------
 
 Commands for handling shares::
 
@@ -969,7 +984,7 @@ and to copy external mount configurations to another Nextcloud server.
 .. _integrity_check_label:
 
 ``integrity`` - Integrity checking
----------------
+----------------------------------
 
 Apps which have a ``Featured`` tag MUST be code signed with Nextcloud. Unsigned featured apps won't be installable anymore. Code signing is optional for all third-party applications::
 
@@ -1010,7 +1025,7 @@ ownCloud 7 to Nextcloud.
 .. _ldap_commands_label:
 
 ``ldap`` - Manage LDAP
--------------
+----------------------
 
 .. note::
   These commands are only available when the "LDAP user and group backend" app
@@ -1185,7 +1200,7 @@ updated correctly. This updates the mimetypelist.js and cleares the image cache.
 .. _security_commands_label:
 
 ``security`` - Manage Security
---------
+------------------------------
 
 Use these commands to manage server-wide security related parameters. Currently this
 includes :doc:`bruteforce_configuration` and SSL certificates (the latter are useful when
@@ -1348,7 +1363,7 @@ The ``--dry-run`` option can be used to simulate the restore without actually re
 .. _user_commands_label:
 
 ``user`` - Manage Users
--------------
+-----------------------
 
 The ``user`` commands create and remove users, reset passwords, display a simple
 report showing how many users you have, and when a user was last logged in::
