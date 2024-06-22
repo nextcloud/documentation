@@ -33,7 +33,7 @@ same URL you use to access Nextcloud from your web browser - e.g.::
 
     https://cloud.example.com
 
-    https://cloud.example.com/nextcloud (if Nextcloud is installed in a subdirectory)
+    https://example.com/nextcloud (if Nextcloud is installed in a subdirectory called "nextcloud")
 
 Third-party WebDAV clients
 --------------------------
@@ -57,7 +57,7 @@ The URL to use when configuring third-party apps to connect to Nextcloud is a bi
 
     https://cloud.example.com/remote.php/dav/files/USERNAME/
     
-    https://cloud.example.com/nextcloud/remote.php/dav/files/USERNAME/ (if Nextcloud is installed in a subdirectory)
+    https://example.com/nextcloud/remote.php/dav/files/USERNAME/ (if Nextcloud is installed in a subdirectory called "nextcloud")
 
 .. note:: When using a third-party WebDAV client (including your operating system's 
    built-in client), you should use an application password for login rather than your 
