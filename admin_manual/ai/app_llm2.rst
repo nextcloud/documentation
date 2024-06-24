@@ -24,7 +24,7 @@ Requirements
 
    * You will need a GPU with enough VRAM to hold the model you choose
 
-      * here are some examples:
+      * Some examples:
 
          * for 8B parameter models, 5bit-quantized variants and lower should fit on a 8GB VRAM, but of course have slightly lower quality
          * for 8B parameter models, 6bit-quantized variants and up will need 12GB VRAM
