@@ -11,7 +11,7 @@ This app supports input and output in other languages than English, if the under
 This app uses `faster-whisper <https://github.com/SYSTRAN/faster-whisper>`_ under the hood. Output quality will differ depending on which model you use, we recommend the following models:
 
  * OpenAI Whisper large-v2 or v3 (multilingual)
- * OpenAI Whisper medium.en (only supports English)
+ * OpenAI Whisper medium.en (English only)
 
 Requirements
 ------------
