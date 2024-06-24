@@ -36,7 +36,7 @@ Installation
 Supplying alternate models
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This app allows supplying alternate models in the ``/nc_app_llm2_data`` directory of the docker container. You can use any `*faster-whisper* model by Systran on hugging face <https://huggingface.co/Systran>`_ by simply
+This app allows supplying alternate models in the ``/nc_app_llm2_data`` directory of the docker container. You can use any `*faster-whisper* model by Systran on hugging face <https://huggingface.co/Systran>`_ in the following way:
 
 1. git cloning the respective repository
 2. Copying the folder with the git repository to ``/nc_app_llm2_data`` inside the docker container.
