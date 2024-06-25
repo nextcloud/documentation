@@ -12,9 +12,11 @@ Web server configuration
 ------------------------
 
 * The recommended :ref:`nginx configuration<nginx-config>` changed as Nextcloud Talk now serves audio files with ``.ogg`` / ``.flac`` extension, make sure to add these extensions to the list of static files.
-* As some core app now make use of JavaScript modules, make sure your web server is serving ``.mjs`` files with JavaScript MIME type.
-  When using Apache with ``.htaccess`` configuration this will be done automatically, if your Apache is not configured to use the ``.htaccess`` files make sure ``.mjs`` is added as a file extension for JavaScript in ``conf/mime.types``.
-  For NGinx please refer to the our recommended :ref:`nginx configuration<nginx-config>`.
+* As some core app now make use of JavaScript modules, make sure your web server is not rewriting requests to ``.mjs`` files, but serves them with ``text/javascript`` MIME type and proper ``Cache-Control`` header, like ``.js`` and other static file extensions.
+
+  * When using Apache with ``.htaccess`` configuration, this will be done automatically.
+  * For Nginx, please refer to our recommended :ref:`Nginx configuration<nginx-config>`.
+  * For other setups, make sure to add ``.mjs`` to the list of static file extensions in web server configs and in case define its MIME type in ``/etc/mime.types``.
 
 Monitoring
 ----------
