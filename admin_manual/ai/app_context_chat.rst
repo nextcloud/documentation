@@ -13,6 +13,8 @@ Together they provide the ContextChat text processing tasks accessible via the :
 
 The *context_chat* and *context_chat_backend* apps run only open source models and do so entirely on-premises. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
 
+This app supports input and output in languages other than English if the language model supports the language.
+
 Requirements
 ------------
 
