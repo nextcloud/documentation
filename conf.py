@@ -36,7 +36,7 @@ html_logo = "../_shared_assets/static/logo-white.png"
 rst_epilog =  '.. |version| replace:: %s' % version
 
 # building the versions list
-version_start = 27		# THIS IS THE SUPPORTED VERSION NUMBER
+version_start = 28		# THIS IS THE SUPPORTED VERSION NUMBER
 version_stable = 29		# INCREASE THIS NUMBER TO THE LATEST STABLE VERSION NUMBER
 
 # Also search for "TODO ON RELEASE" in the rst files

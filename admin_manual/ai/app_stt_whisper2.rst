@@ -6,10 +6,12 @@ App: Local Whisper Speech-To-Text (stt_whisper2)
 
 The *stt_whisper2* app is one of the apps that provide Speech-To-Text functionality in Nextcloud and act as a media transcription backend for the :ref:`Nextcloud Assistant app<ai-app-assistant>`, the *talk* app and :ref:`other apps making use of the core Translation API<stt-consumer-apps>`. The *stt_whisper2* app specifically runs only open source models and does so entirely on-premises. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
 
+This app supports input and output in languages other than English if the underlying model supports the language.
+
 This app uses `faster-whisper <https://github.com/SYSTRAN/faster-whisper>`_ under the hood. Output quality will differ depending on which model you use, we recommend the following models:
 
- * OpenAI Whisper large-v2 or v3
- * OpenAI Whisper medium.en
+ * OpenAI Whisper large-v2 or v3 (multilingual)
+ * OpenAI Whisper medium.en (English only)
 
 Requirements
 ------------
@@ -17,20 +19,10 @@ Requirements
 * Minimal Nextcloud version: 28
 * This app is built as an External App and thus depends on AppAPI v2.3.0
 * Nextcloud AIO is supported
-* Using GPU processing is supported, but not required; be prepared for slow performance unless you are using GPU
-* We currently only support NVIDIA GPUs
-* GPU Sizing
-
-   * You will need a GPU with enough VRAM to hold the model you choose
-
-      * the small model should fit on 2GB VRAM
-      * the large-v2 (the best and largest) will need 6GB VRAM
-
-   * The distil-whisper variants have half the parameters of the original models while supposedly staying within 1% of the original error rate (your mileage may vary)
+* Using GPU is currently not supported
 
 * CPU Sizing
 
-   * If you don't have a GPU, this app will utilize your CPU cores
    * The more cores you have and the more powerful the CPU the better, we recommend 10-20 cores
    * The app will hog all cores by default, so it is usually better to run it on a separate machine
 
@@ -44,7 +36,7 @@ Installation
 Supplying alternate models
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This app allows supplying alternate LLM models as *gguf* files in the ``/nc_app_llm2_data`` directory of the docker container. You can use any `*faster-whisper* model by Systran on hugging face <https://huggingface.co/Systran>`_ by simply
+This app allows supplying alternate models in the ``/nc_app_llm2_data`` directory of the docker container. You can use any `*faster-whisper* model by Systran on hugging face <https://huggingface.co/Systran>`_ in the following way:
 
 1. git cloning the respective repository
 2. Copying the folder with the git repository to ``/nc_app_llm2_data`` inside the docker container.
