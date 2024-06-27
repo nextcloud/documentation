@@ -221,7 +221,7 @@ Room availability
 ~~~~~~~~~~~~~~~~~
 .. versionadded:: 4.8
 
-In the ``Resources`` section, you can now find ``Room availability``, which lists all the existing rooms. You can check the availability of each room in a manner similar to checking the free/busy status of event attendees.
+If the "Calendar Rooms and Resources" app is installed on your instance, you can now find ``Room availability``  the ``Resources`` section. It lists all the existing rooms. You can check the availability of each room in a manner similar to checking the free/busy status of event attendees.
 
 .. figure:: images/room_availability.png
 
