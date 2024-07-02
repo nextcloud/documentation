@@ -6,13 +6,10 @@ Theming support
 
 The Nextcloud theming app offers some tools for app developers to ensure that apps also match the themed look.
 
-CSS classes
------------
+CSS variables
+-------------
 
-* **.nc-theming-main-background** Background in theming color
-* **.nc-theming-main-text** Text in theming color
-* **.nc-theming-contrast** Text in white/black color to be shown in front of the theming color
-
+There are a lot of CSS variables available, see :ref:`cssvars`.
 
 JavaScript
 ----------
