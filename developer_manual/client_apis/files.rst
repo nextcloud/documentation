@@ -30,7 +30,9 @@ the ``event-bus`` and use the following events:
   * ``files:node:moved``: the node has been moved (and its data is already updated)
   * ``files:node:updated``: the node data has been updated
 
-Example
+All these events use a Node as argument.
+
+Examples
 -------
 
 .. code-block:: ts
@@ -40,6 +42,20 @@ Example
 
   subscribe('files:node:created', (node: Node) => {
     console.log('Node created', node)
+  })
+
+.. code-block:: ts
+
+  import { davGetClient, davGetDefaultPropfind, davResultToNode, davRootPath } from '@nextcloud/files'
+  import { emit } from '@nextcloud/event-bus'
+
+  const client = davGetClient()
+  client.stat(`${davRootPath}${filename}`, {
+    details: true,
+	data: davGetDefaultPropfind(),
+  }).then((result) => {
+	const node = davResultToNode(result.data)
+	emit('files:node:updated', node)
   })
 
 
