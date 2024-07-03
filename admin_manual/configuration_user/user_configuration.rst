@@ -51,7 +51,8 @@ User accounts have the following properties:
 
 *Group Admin*
   Group admins are granted administrative privileges on specific groups, and
-  can add and remove users from their groups.
+  can add and remove users from their groups. This means they can modify the
+  username, password, email, quota, etc. of members of the group.
 
 *Quota*
   The maximum disk space assigned to each user. Any user that exceeds the quota
