@@ -11,9 +11,28 @@ Front-end changes
 Font sizes
 ^^^^^^^^^^
 
-Nextcloud now provides meaningful default styles for heading elements.
-This can cause visual regressions if your code does not explicitly set font size and weight.
-If you need to use heading elements outside of text content, you might need to adjust their styles.
+| Nextcloud now provides meaningful default styles for heading elements.
+| This can cause visual regressions if your code does not explicitly set font size and weight.
+| If you need to use heading elements outside of text content, you might need to adjust their styles.
+
+CSS variables
+^^^^^^^^^^^^^
+
+Some new variables were added with Nextcloud 30, see :ref:`cssvars`
+
++----------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+| Variable                                     | Usage                                                                                                     |
++==============================================+===========================================================================================================+
+| ``--border-radius-element``                  | Border radius of interactive elements such as buttons, input, navigation and list items.                  |
++----------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+| ``--border-width-element``                   | Border width for interactive elements such as text fields and selects                                     |
++----------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+| ``--border-width-element-focused``           | Border width for interactive elements when focussed (adjusted for accessibility)                          |
++----------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+| ``--clickable-area-large``                   | Larger size for the main UI elements                                                                      |
++----------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+| ``--clickable-area-small``                   | Smallest possible size of interactive elements, used by tertiary actions like filter chips                |
++----------------------------------------------+-----------------------------------------------------------------------------------------------------------+
 
 Added APIs
 ^^^^^^^^^^
