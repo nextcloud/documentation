@@ -375,6 +375,20 @@ login or shared items. User's locale preferences configured under "personal
 
 Defaults to ``en``
 
+reduce_to_languages
+^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'reduce_to_languages' => [],
+
+With this setting is possible to reduce the languages available in the
+language chooser. The languages have to be set as array values using ISO_639-1
+language codes such as ``en`` for English, ``de`` for German etc.
+
+For example: Set to ['de', 'fr'] to only allow German and French languages.
+
 default_phone_region
 ^^^^^^^^^^^^^^^^^^^^
 
