@@ -102,6 +102,16 @@ start and end dates are represented as UNIX timestamps.
          * Get the long out-of-office message for auto responders and similar
          */
         public function getMessage(): string;
+
+        /**
+         * Get the replacement user id for auto responders and similar
+         */
+        public function getReplacementUserId(): ?string;
+
+        /**
+         * Get the replacement user displayName for auto responders and similar
+         */
+        public function getReplacementUserDisplayName(): ?string;
     }
 
 It can be serialized to a JSON object with the following structure:
@@ -115,4 +125,6 @@ It can be serialized to a JSON object with the following structure:
         endDate: int,
         shortMessage: string,
         message: string,
+        replacementUserId: string|null,
+        replacementUserDisplayName: string|null
     }
