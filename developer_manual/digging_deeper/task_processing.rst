@@ -31,21 +31,43 @@ The following built-in task types are available:
        * ``input``: ``Text``
     * Output shape:
        * ``output``: ``Text``
+ * ``'core:text2text:chat'``: This task allows chatting with the language model. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToTextChat``
+    * Input shape:
+       * ``system_prompt``: ``Text``
+       * ``input``: ``Text``
+       * ``history``: ``ListOfTexts``
+    * Output shape:
+       * ``output``: ``Text``
+ * ``'core:text2text:formalization'``: This task will reformulate the passed input text to be more formal in tone. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToTextFormalization``
+     * Input shape:
+        * ``input``: ``Text``
+     * Output shape:
+        * ``output``: ``Text``
  * ``'core:text2text:headline'``: This task will generate a headline for the passed input text. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToTextHeadline``
      * Input shape:
         * ``input``: ``Text``
      * Output shape:
         * ``output``: ``Text``
- * ``'core:text2text:topics'``: This task will generate a comma-separated list of topics for the passed input text. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToTextTopics``
-      * Input shape:
-         * ``input``: ``Text``
-      * Output shape:
-         * ``output``: ``Text``
+ * ``'core:text2text:reformulation'``: This task will reformulate the passed input text arbitrarily. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToTextReformulation``
+     * Input shape:
+        * ``input``: ``Text``
+     * Output shape:
+        * ``output``: ``Text``
+ * ``'core:text2text:simplification'``: This task will reformulate the passed input text to be very easy to understand, e.g. by children. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToTextSimplification``
+     * Input shape:
+        * ``input``: ``Text``
+     * Output shape:
+        * ``output``: ``Text``
  * ``'core:text2text:summary'``: This task will summarize the passed input text. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToTextSummary``
       * Input shape:
         * ``input``: ``Text``
       * Output shape:
-         * ``output``: ``Text``
+        * ``output``: ``Text``
+ * ``'core:text2text:topics'``: This task will generate a comma-separated list of topics for the passed input text. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToTextTopics``
+      * Input shape:
+        * ``input``: ``Text``
+      * Output shape:
+        * ``output``: ``Text``
  * ``'core:audio2text'``: This task type is for transcribing audio to text. It is implemented by ``\OCP\TaskProcessing\TaskTypes\AudioToText``
      * Input shape:
         * ``input``: ``Audio``
