@@ -30,7 +30,7 @@ the ``event-bus`` and use the following events:
   * ``files:node:moved``: the node has been moved (and its data is already updated)
   * ``files:node:updated``: the node data has been updated
 
-All these events use a Node as argument.
+All these events use a Node as argument. You can use a webdav client (for example, by using the davGetClient function from `@nextcloud/files <https://nextcloud-libraries.github.io/nextcloud-files/>`__) to retrieve a node from a file's name.
 
 Examples
 -------
@@ -43,21 +43,6 @@ Examples
   subscribe('files:node:created', (node: Node) => {
     console.log('Node created', node)
   })
-
-.. code-block:: ts
-
-  import { davGetClient, davGetDefaultPropfind, davResultToNode, davRootPath } from '@nextcloud/files'
-  import { emit } from '@nextcloud/event-bus'
-
-  const client = davGetClient()
-  client.stat(`${davRootPath}${filename}`, {
-    details: true,
-	data: davGetDefaultPropfind(),
-  }).then((result) => {
-	const node = davResultToNode(result.data)
-	emit('files:node:updated', node)
-  })
-
 
 Router
 ^^^^^^
