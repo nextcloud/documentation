@@ -48,10 +48,11 @@ $mapping = array(
     'admin-warnings'          => '/admin_manual/configuration_server/security_setup_warnings.html',
     'admin-workflowengine'    => '/admin_manual/file_workflows/index.html',
 
-    'developer-backports'     => '/developer_manual/getting_started/development_process.html#bugfixes',
-    'developer-code-integrity'=> '/developer_manual/app/code_signing.html',
     'developer-manual'        => '/developer_manual',
-    'developer-theming'       => '/developer_manual/core/theming.html',
+    'developer-backports'     => '/developer_manual/getting_started/development_process.html#bugfixes',
+    'developer-code-integrity'=> '/developer_manual/app_publishing_maintenance/code_signing.html',
+    'developer-css'           => '/developer_manual/html_css_design/css.html',
+    'developer-theming'       => '/developer_manual/basics/front-end/theming.html',
 
     'user'                    => '/user_manual',
     'user-2fa'                => '/user_manual/en/user_2fa.html',
