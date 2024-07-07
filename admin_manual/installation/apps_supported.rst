@@ -16,7 +16,7 @@ Nextcloud Files
 * `Circles <https://github.com/nextcloud/circles>`_
 * `Collaborative Tags <https://github.com/nextcloud/server/tree/master/apps/systemtags>`_
 * `Comments <https://github.com/nextcloud/server/tree/master/apps/comments>`_
-* `Contacts Interaction <https://github.com/nextcloud/server/tree/master/apps/contactsinteraction>`_
+* `Contacts <https://github.com/nextcloud/contacts>`_
 * `Data Request <https://github.com/nextcloud/data_request>`_
 * `Default encryption module <https://github.com/nextcloud/server/tree/master/apps/encryption>`_
 * `Deleted files <https://github.com/nextcloud/server/tree/master/apps/files_trashbin>`_
@@ -71,7 +71,7 @@ Nextcloud Groupware
 -------------------
 
 * `Calendar <https://github.com/nextcloud/calendar>`_
-* `Contacts <https://github.com/nextcloud/contacts>`_
+* `Contacts Interaction <https://github.com/nextcloud/server/tree/master/apps/contactsinteraction>`_
 * `Deck <https://github.com/nextcloud/deck>`_
 * `Mail <https://github.com/nextcloud/mail>`_
 
