@@ -159,9 +159,7 @@ Press the close button on the modal or the indicator in the bottom right corner 
 Outbox
 ------
 
-When a message has been composed and the "Send" button was clicked, the message is added to the outbox which can be found in the bottom left corner of the left sidebar:
-
-.. figure:: images/mail_outbox.png
+When a message has been composed and the "Send" button was clicked, the message is added to the outbox which can be found in the bottom left corner of the left sidebar.
 
 You can also set the date and time for the send operation to a point in the future (see :ref:`Scheduled messages <mail-scheduled-messages>`)- the message will be kept in the outbox until your choosen date and time arrives, then it will be sent automatically.
 
