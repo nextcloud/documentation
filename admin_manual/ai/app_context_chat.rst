@@ -53,6 +53,21 @@ Installation
 
 **Note**: Both apps need to be installed and both major version and minor version of the two apps must match for the functionality to work (ie. "v1.3.4" and "v1.3.1"; but not "v1.3.4" and "v2.1.6"; and not "v1.3.4" and "v1.4.5"). Keep this in mind when updating.
 
+Initial loading of data
+-----------------------
+
+Context chat will automatically load user data into the Vector DB using background jobs. To speed this up, you can set up multiple background job worker machines and run the following occ commands in parallel on each:
+
+.. code-block::
+
+   occ background-job:worker OCA\ContextChat\BackgroundJobs\StorageCrawlJob
+
+.. code-block::
+
+   occ background-job:worker OCA\ContextChat\BackgroundJobs\IndexerJob
+
+This will ensure that the necessary background jobs are run as often as possible: ``StorageCrawlJob`` will crawl Nextcloud storages and put files that it finds into a queue and ``IndexerJob`` will iterate over the queue and load the file content into the Vector DB.
+
 Scaling
 -------
 
