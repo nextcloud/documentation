@@ -2,9 +2,19 @@
 Supported apps
 ==============
 
-Below is the list of apps supported for Nextcloud |version|. Supported here means that we'll accept bugreports and resolve them in these apps with regard to functionality and compatibility with Nextcloud |version|. To get access to work-arounds, long term support, priority bug fixing and custom consulting, contact Nextcloud GmbH.
+Below is the list of apps supported for Nextcloud |version|. Supported here means that we'll accept bug reports and resolve them in these apps with regard to functionality and compatibility with Nextcloud |version|. 
 
 All apps are licensed under ``AGPLv3``.
+
+To get priority access to work-arounds, long term support, feature development or bug fixing and custom consulting, please contact `Nextcloud GmbH <https://nextcloud.com/>`.
+
+.. note ::
+   Security bugs should be reported via our dedicated security reporting channel. See our `Security Policy <https://github.com/nextcloud/server/blob/master/SECURITY.md>` for specifics.
+
+.. note ::
+   Any apps **not** listed below - even those hosted by the Nextcloud project on GitHub - are generally either maintained by generous third-parties and community members or are still undergoing early development. For assistance 
+   with those apps, refer to their suggested channels, their own development repositories and the `Community Help Forum <https://help.nextcloud.com>`. It may also be possible to encourage further development, in certain
+   cases, by contracting `Nextcloud GmbH <https://nextcloud.com/>` or underwriting the existing maintainers.
 
 Nextcloud Files
 ---------------
