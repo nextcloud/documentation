@@ -86,6 +86,8 @@ Added APIs
 - ``OCP\Notification\InvalidValueException`` is thrown by ``OCP\Notification\IAction::set*()`` and ``OCP\Notification\INotification::set*()`` when the value did not match the required criteria
 - ``OCP\Notification\UnknownNotificationException`` should be thrown by ``OCP\Notification\INotifier::prepare()`` when they didn't handle the notification
 - ``OCA\Files_Trashbin\Trash\ITrashItem::getDeletedBy`` should return the user who deleted the item or null if unknown
+- ``OCP\IUser::getPasswordHash`` should return the password hash of the user
+- ``OCP\IUser::setPasswordHash`` should set the password hash of the user
 
 Changed APIs
 ^^^^^^^^^^^^
