@@ -252,7 +252,7 @@ Depending on your server setup, these are the possible connections:
 - apps.nextcloud.com
 	- to check for available apps and their updates 
 	- submitted data: subscription key
-- github.com
+- github.com, objects.githubusercontent.com
 	- to download Nextcloud standard apps
 - push-notifications.nextcloud.com
 	- sending push notifications to mobile clients
