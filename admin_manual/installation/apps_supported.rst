@@ -34,6 +34,7 @@ Nextcloud Files
 * `Full Text Search - Elasticsearch Platform <https://github.com/nextcloud/fulltextsearch_elasticsearch>`_
 * `Full Text Search - Files <https://github.com/nextcloud/files_fulltextsearch>`_
 * `Full Text Search - Tesseract OCR <https://github.com/daita/files_fulltextsearch_tesseract>`_
+* `Temporary files lock <https://github.com/nextcloud/files_lock>`_ (this is necessary for "Edit files locally" functionality)
 * `Group folders <https://github.com/nextcloud/groupfolders>`_
 * `Guests <https://github.com/nextcloud/guests>`_
 * `LDAP user and group backend <https://github.com/nextcloud/server/tree/master/apps/user_ldap>`_
