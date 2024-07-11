@@ -5,6 +5,16 @@ Upgrade to Nextcloud 30
 General
 -------
 
+Capabilities
+------------
+
+``files``
+^^^^^^^^^
+
+- ``blacklist_files_regex`` is deprecated now use ``forbidden_filenames`` instead
+- ``forbidden_filename_characters`` was added to provide a list of characters not allowed within filenames
+- ``forbidden_filename_extensions`` was added to provide a list of extensions (suffixes) not allwed for filenames
+
 Front-end changes
 -----------------
 
@@ -30,18 +40,20 @@ Removed globals
 Deprecated APIs
 ^^^^^^^^^^^^^^^
 
-* ``OC.dialogs.fileexists`` was already deprecated in Nextcloud 29, but is now also marked as such.
+- ``OC.config.blacklist_files_regex`` is deprecated now, use the ``files`` capabilities instead
+- ``OC.config.forbidden_filename_characters`` is deprecated now, use the ``files`` capabilities instead
+- ``OC.dialogs.fileexists`` was already deprecated in Nextcloud 29, but is now also marked as such.
   Use ``openConflictPicker`` from `@nextcloud/upload <https://nextcloud-libraries.github.io/nextcloud-upload/functions/openConflictPicker.html>`_ instead.
-* Most ``OC.dialogs`` API is now deprecated and will be removed in the future. For generic dialogs use the ``DialogBuilder`` from the :ref:`js-library_nextcloud-dialogs`.
+- Most ``OC.dialogs`` API is now deprecated and will be removed in the future. For generic dialogs use the ``DialogBuilder`` from the :ref:`js-library_nextcloud-dialogs`.
   A list of the now deprecated methods:
 
-  * ``OC.dialogs.alert``
-  * ``OC.dialogs.info``
-  * ``OC.dialogs.confirm``
-  * ``OC.dialogs.confirmDestructive``
-  * ``OC.dialogs.confirmHtml``
-  * ``OC.dialogs.prompt``
-  * ``OC.dialogs.message``
+  - ``OC.dialogs.alert``
+  - ``OC.dialogs.info``
+  - ``OC.dialogs.confirm``
+  - ``OC.dialogs.confirmDestructive``
+  - ``OC.dialogs.confirmHtml``
+  - ``OC.dialogs.prompt``
+  - ``OC.dialogs.message``
 
 Back-end changes
 ----------------
