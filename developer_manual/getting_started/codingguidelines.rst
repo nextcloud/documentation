@@ -71,27 +71,35 @@ Nextcloud is licensed under the `GNU AGPLv3 <https://www.gnu.org/licenses/agpl>`
 .. code-block:: php
 
   /**
-   *
-   * @copyright Copyright (c) <year>, <your name> (<your email address>)
-   *
-   * @license GNU AGPL version 3 or any later version
-   *
-   * This program is free software: you can redistribute it and/or modify
-   * it under the terms of the GNU Affero General Public License as
-   * published by the Free Software Foundation, either version 3 of the
-   * License, or (at your option) any later version.
-   *
-   * This program is distributed in the hope that it will be useful,
-   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   * GNU Affero General Public License for more details.
-   *
-   * You should have received a copy of the GNU Affero General Public License
-   * along with this program.  If not, see <https://www.gnu.org/licenses/>.
-   *
+   * SPDX-FileCopyrightText: [year] [your name] [<your email address>]
+   * SPDX-License-Identifier: AGPL-3.0-or-later
+   */
+   
+The year should then be the creation time and the email address is optional.
+
+If you edit an existing file please, please keep the existing license header as it is and just add your copyright notice, if you consider your changes substantial enough to claim copyright.
+
+In order to do so there are two options:
+
+* If a generic header is already present, please just add yourself to the AUTHORS.md file
+* If no generic header is present, you can add yourself with a copyright line as described above. As a rule of thumb, this is the case if you contributed more than seven lines of code.
+
+An example of a generic license header where adding yourself to the AUTHORS.md
+file is prefered please see the example below
+
+.. code-block:: php
+
+  /**
+   * SPDX-FileCopyrightText: 2024 Nextcloud GmbH and Nextcloud contributors
+   * SPDX-License-Identifier: AGPL-3.0-or-later
    */
 
-If you edit an existing file please add a copyright notice with your name, if you consider your changes substantial enough to claim copyright. As a rule if thumb, this is the case if you contributed more than seven lines of code.
+The Nextcloud GmbH part only applies to employees of the company not to contributors.
+
+For more, general information on SPDX headers and their usage for reuse-compliance, please see 
+
+* `REUSE <https://reuse.software/>`_
+* `SPDX <https://spdx.dev/>`_
 
 User interface
 --------------
