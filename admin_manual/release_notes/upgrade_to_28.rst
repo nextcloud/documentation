@@ -18,6 +18,27 @@ Web server configuration
   * For Nginx, please refer to our recommended :ref:`Nginx configuration<nginx-config>`.
   * For other setups, make sure to add ``.mjs`` to the list of static file extensions in web server configs and in case define its MIME type in ``/etc/mime.types``.
 
+Setup Checks
+------------
+
+The setup checks (the ones visible under *Administration settings->Overview*) that previously ran from the web browser now run server-side rather than from the browser. 
+
+This means that some false positives may be triggered in existing installations after upgrading. This does not mean the checks are invalid or broken. It does mean that local configuration matters that may not have had obvious side effects previously may now prevent the tests from getting accurate results. 
+
+In nearly all cases the resolution is one or more of the following:
+
+- verifying all entries in ``trusted_domains`` and the value of ``overwrite.cli.url`` are valid, resolvable in DNS, and reachable *from the Nextcloud Server itself*
+- verifying that the Server can reach its own URL(s)
+- verifying all ``overwrite*`` config values are reasonable
+
+In diagnosing the above, many admins have found it useful to review not only their `config.php` (for cleanup) but also:
+
+- their local DNS resolvers and ``/etc/hosts`` files for reasonableness
+- their firewall configurations
+- their container network configuration if using Docker/etc (especially for outbound connectivity)
+
+.. tip:: Testing of connectivity and reachability of specific URLs can usually be tested from servers or containers via ``curl`` or ``wget``.
+
 Monitoring
 ----------
 
