@@ -341,7 +341,7 @@ Download the the Appliance here:
 
 The `Nextcloud VM`_ is maintained by
 `T&M Hansson IT <https://www.hanssonit.se/nextcloud-vm/>`_ and several different versions are
-offered. Collabora, OnlyOffice, Full Text Search and other apps can easily be installed with the included scripts which you can choose to run during the first setup, or download them later and run it afterwards. You can find all the currently available automated app installations `on GitHub <https://github.com/nextcloud/vm/tree/master/apps/>`_.
+offered. Collabora, OnlyOffice, Full Text Search and other apps can easily be installed with the included scripts which you can choose to run during the first setup, or download them later and run it afterwards. You can find all the currently available automated app installations `on GitHub <https://github.com/nextcloud/vm/blob/main/apps/>`_.
 
 The VM comes in different sizes and versions.
 
@@ -406,7 +406,7 @@ Installation via install script
 
 One of the easiest ways of installing is to use the Nextcloud VM or NextcloudPI scripts. It's basically just two steps:
 
-1. Download the latest `VM installation script <https://github.com/nextcloud/vm/blob/master/nextcloud_install_production.sh/>`_.
+1. Download the latest `VM installation script <https://github.com/nextcloud/vm/blob/main/nextcloud_install_production.sh/>`_.
 2. Run the script with::
 
     sudo bash nextcloud_install_production.sh
