@@ -18,10 +18,15 @@ Requirements
 
 * This app is built as an External App and thus depends on AppAPI v2.3.0 or higher
 * Nextcloud AIO is supported
-* Using GPU is currently not supported
+* We currently support NVIDIA GPUs and x86_64 CPUs
+* GPU Sizing
+
+   * A NVIDIA GPU with at least 8GB VRAM
+   * At least 12GB of system RAM
 
 * CPU Sizing
 
+   * At least 12GB of system RAM
    * The more cores you have and the more powerful the CPU the better, we recommend 10-20 cores
    * The app will hog all cores by default, so it is usually better to run it on a separate machine
 
@@ -41,6 +46,42 @@ This app allows supplying alternate LLM models as *gguf* files in the ``/nc_app_
 2. Copy the **gguf** file to ``/nc_app_llm2_data`` inside the docker container
 3. Restart the llm2 ExApp
 4. Select the new model in the Nextcloud AI admin settings
+
+
+Configuring alternate models
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Since every model requires slightly different inference parameters, you can pass along a configuration file for the alternate model files you supply.
+
+The configuration file for a model file must have the same name as the model file but must end in ``.json`` instead of ``.gguf``.
+
+The strings ``{system_prompt}`` and ``{user_prompt}`` are variables that will be filled in by the app, so they must be part of your prompt template.
+
+Here is an example config file for Llama 2:
+
+.. code-block:: json
+
+   {
+     "prompt": "<|im_start|> system\n{system_prompt}\n<|im_end|>\n<|im_start|> user\n{user_prompt}\n<|im_end|>\n<|im_start|> assistant\n",
+     "gpt4all_config": {
+       "max_tokens": 4096,
+       "n_predict": 2048,
+       "stop": ["<|im_end|>"]
+     }
+   }
+
+Here is an example configuration for Llama 3:
+
+.. code-block:: json
+
+   {
+     "prompt": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n{system_prompt}<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{user_prompt}<|eot_id|>\n\”<|start_header_id|>assistant<|end_header_id|>\n\n",
+     "gpt4all_config": {
+       "max_tokens": 8000,
+       "n_predict": 4000,
+       "stop": ["<|eot_id|>"]
+     }
+   }
 
 Scaling
 -------
