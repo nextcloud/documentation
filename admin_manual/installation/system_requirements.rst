@@ -14,8 +14,8 @@ For best performance, stability and functionality we have documented some recomm
 +------------------+-----------------------------------------------------------------------+
 | Platform         | Options                                                               |
 +==================+=======================================================================+
-| Operating System | - **Ubuntu 22.04 LTS** (recommended)                                  |
-| (64-bit)         | - Ubuntu 20.04 LTS                                                    |
+| Operating System | - Ubuntu 24.04 LTS                                                    |
+| (64-bit)         | - **Ubuntu 22.04 LTS** (recommended)                                  |
 |                  | - **Red Hat Enterprise Linux 9** (recommended)                        |
 |                  | - Red Hat Enterprise Linux 8                                          |
 |                  | - Debian 12 (Bookworm)                                                |
