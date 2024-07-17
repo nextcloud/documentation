@@ -11,7 +11,6 @@ Installation and server configuration
    source_installation
    installation_wizard
    command_line_installation
-   apps_supported
    selinux_configuration
    nginx
    harden_server
