@@ -103,6 +103,7 @@ Added APIs
 - ``OCP\AppFramework\Http\Attribute\OpenAPI::SCOPE_EX_APP`` attribute for scoping APIs only to be used by ExApps.
 - ``OCP\AppFramework\Http\Attribute\ExAppRequired`` attribute for restricting controller methods to be only accessible by ExApps.
 - ``OCP\Collaboration\Reference\IPublicReferenceProvider`` added for reference providers that support reference lookups from public shares.
+- ``OCP\Files\IFilenameValidator`` was added to allow storage independent filename validation.
 
 Changed APIs
 ^^^^^^^^^^^^
@@ -139,6 +140,9 @@ Deprecated APIs
 
 Removed APIs
 ^^^^^^^^^^^^
+
+- ``OCP\Util::isValidFileName`` was deprecated in 8.1.0 and is now removed, use either ``OCP\Files\Storage\IStorage::verifyPath`` or the new ``OCP\Files\IFilenameValidator``.
+- ``OCP\Util::getForbiddenFileNameChars`` was removed, use either ``OCP\Files\Storage\IStorage::verifyPath`` or the new ``OCP\Files\IFilenameValidator`` for filename validation.
 
 Removed events
 ^^^^^^^^^^^^^^
