@@ -234,10 +234,35 @@ SELinux-enabled distributions such as Fedora and CentOS.
 
 .. _php_fpm_tips_label:
 
-php-fpm configuration notes
----------------------------
+PHP-FPM configuration 
+---------------------
 
-**System environment variables**
+Overview
+^^^^^^^^
+
+`PHP-FPM <https://www.php.net/manual/en/install.fpm.php>`_ is a FastCGI based 
+implementation of PHP containing features useful for busy web sites and large web 
+applications. Using it with Nextcloud is an advanced topic and requires getting
+familiar with how PHP-FPM functions. In most cases the defaults are not ideal for
+use with Nextcloud. Here we'll highlight a few of the most important areas that
+should be adjusted.
+
+Process manager
+^^^^^^^^^^^^^^^
+
+The default value for ``pm.max_children`` in many PHP-FPM installations is
+lower than appropriate. Having a low value may cause client connectivity 
+problems, unexplained errors, and performance problems. It is a common cause
+of *Gateway Timeouts*. Having too high of a value in relation to available
+resources (such as memory), however, will also lead to problems. The default
+value is often ``5``. This greatly limits simultaneously connections to your
+Nextcloud instance and, unless you are severely resource constraints, will 
+underutilize your hardware. Check the :doc:`../installation/server_tuning` 
+chapter for some guidance and resources for coming up with appropriate values,
+as well as other related paramaters.
+
+System environment variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When you are using ``php-fpm``, system environment variables like
 PATH, TMP or others are not automatically populated in the same way as
@@ -292,14 +317,16 @@ Please keep in mind that it is possible to create different settings for
 ``php-cli`` and ``php-fpm``, and for different domains and Web sites.
 The best way to check your settings is with :ref:`label-phpinfo`.
 
-**Maximum upload size**
+Maximum upload size
+^^^^^^^^^^^^^^^^^^^
 
 If you want to increase the maximum upload size, you will also have to modify
 your ``php-fpm`` configuration and increase the ``upload_max_filesize`` and
 ``post_max_size`` values. You will need to restart ``php-fpm`` and your HTTP
 server in order for these changes to be applied.
 
-**.htaccess notes for Apache**
+.htaccess
+^^^^^^^^^
 
 Nextcloud comes with its own ``nextcloud/.htaccess`` file. Because ``php-fpm``
 can't read PHP settings in ``.htaccess`` these settings and permissions must
