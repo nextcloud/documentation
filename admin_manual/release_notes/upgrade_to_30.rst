@@ -9,6 +9,12 @@ System requirements
 * PHP 8.0 is no longer supported.
 * PostgreSQL 9.4 is no longer supported.
 
+Web server configuration
+------------------------
+
+Make sure that your web server is serving files with the ``webp`` extension (WebP images) correctly as static assets.
+This is included in the shipped ``.htaccess`` file but if you use another web server or custom configuration you need to check this manually.
+
 Nextcloud configuration
 -----------------------
 
