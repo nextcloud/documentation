@@ -2868,6 +2868,23 @@ Note that this list is case-insensitive.
 
 Defaults to ``array('.htaccess')``
 
+forbidden_filename_basenames
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'forbidden_filename_basenames' => [],
+
+Disallow the upload of files with specific basenames.
+
+The basename is the name of the file without the extension,
+e.g. for "archive.tar.gz" the basename would be "archive".
+
+Note that this list is case-insensitive.
+
+Defaults to ``array()``
+
 forbidden_filename_characters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
