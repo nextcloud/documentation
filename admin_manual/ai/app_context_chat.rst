@@ -95,3 +95,4 @@ Known Limitations
 * Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI)
 * Due to technical limitations that we are in the process of mitigating, each task currently incurs a time cost of between 0 and 5 minutes in addition to the actual processing time
 * Nextcloud usernames can be only 56 characters long. This is a limitation of the vector database we use (Chroma DB) and will be fixed soon.
+* AI as a service providers like OpenAI integration, LLM2, etc. don't work with this app as of now. We are in process of integrating them.
