@@ -100,6 +100,8 @@ Added APIs
 - ``OCA\Files_Trashbin\Trash\ITrashItem::getDeletedBy`` should return the user who deleted the item or null if unknown
 - ``OCP\IUser::getPasswordHash`` should return the password hash of the user
 - ``OCP\IUser::setPasswordHash`` should set the password hash of the user
+- ``OCP\AppFramework\Http\Attribute\OpenAPI::SCOPE_EX_APP`` attribute for scoping APIs only to be used by ExApps.
+- ``OCP\AppFramework\Http\Attribute\ExAppRequired`` attribute for restricting controller methods to be only accessible by ExApps.
 
 Changed APIs
 ^^^^^^^^^^^^
