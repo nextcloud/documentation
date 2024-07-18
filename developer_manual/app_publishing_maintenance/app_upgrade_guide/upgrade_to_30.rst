@@ -102,6 +102,7 @@ Added APIs
 - ``OCP\IUser::setPasswordHash`` should set the password hash of the user
 - ``OCP\AppFramework\Http\Attribute\OpenAPI::SCOPE_EX_APP`` attribute for scoping APIs only to be used by ExApps.
 - ``OCP\AppFramework\Http\Attribute\ExAppRequired`` attribute for restricting controller methods to be only accessible by ExApps.
+- ``OCP\Collaboration\Reference\IPublicReferenceProvider`` added for reference providers that support reference lookups from public shares.
 
 Changed APIs
 ^^^^^^^^^^^^
