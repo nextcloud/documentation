@@ -139,6 +139,16 @@ Deprecated APIs
 - Using the ``@StrictCookieRequired`` annotation is deprecated and the ``#[OCP\AppFramework\Http\Attribute\StrictCookiesRequired]`` attribute should be used instead.
 - Using the ``@NoCSRFRequired`` annotation is deprecated and the ``#[OCP\AppFramework\Http\Attribute\NoCSRFRequired]`` attribute should be used instead.
 - Using the ``OCP\Group\Backend\ICreateGroupBackend`` interface is now deprecated and the ``OCP\Group\Backend\ICreateNamedGroupBackend`` interface should be used instead.
+- Calling ``OCP\DB\QueryBuilder\IExpressionBuilder::andX()`` without arguments is deprecated and will throw an exception in a future version as the underlying library is removing the functionality.
+- Calling ``OCP\DB\QueryBuilder\IExpressionBuilder::orX()`` without arguments is deprecated and will throw an exception in a future version as the underlying library is removing the functionality.
+- Calling ``OCP\DB\QueryBuilder\IQueryBuilder::delete()`` with ``$alias`` is deprecated and will throw an exception in a future version as the underlying library is removing the functionality.
+- Calling ``OCP\DB\QueryBuilder\IQueryBuilder::getQueryPart()`` is deprecated and will throw an exception in a future version as the underlying library is removing the functionality.
+- Calling ``OCP\DB\QueryBuilder\IQueryBuilder::getQueryParts()`` is deprecated and will throw an exception in a future version as the underlying library is removing the functionality.
+- Calling ``OCP\DB\QueryBuilder\IQueryBuilder::getState()`` is deprecated and will throw an exception in a future version as the underlying library is removing the functionality.
+- Calling ``OCP\DB\QueryBuilder\IQueryBuilder::resetQueryPart()`` is deprecated and will throw an exception in a future version as the underlying library is removing the functionality. Create a new query builder object instead.
+- Calling ``OCP\DB\QueryBuilder\IQueryBuilder::resetQueryParts()`` is deprecated and will throw an exception in a future version as the underlying library is removing the functionality. Create a new query builder object instead.
+- Calling ``OCP\DB\QueryBuilder\IQueryBuilder::update()`` with ``$alias`` is deprecated and will throw an exception in a future version as the underlying library is removing the functionality.
+- Calling ``OCP\IDBConnection::getDatabasePlatform()`` is deprecated and will throw an exception in a future version as the underlying library is renaming and removing platforms which breaks the backwards-compatibility. Use ``getDatabaseProvider()`` instead.
 
 Removed APIs
 ^^^^^^^^^^^^
