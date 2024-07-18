@@ -123,6 +123,19 @@ Changed APIs
 - Calling ``OCP\Notification\INotification::setIcon()`` with a relative URL is deprecated and will throw ``OCP\Notification\InvalidValueException`` in a future version.
 - ``OCP\Notification\INotifier::prepare()`` should no longer throw ``\InvalidArgumentException``. ``OCP\Notification\UnknownNotificationException`` should be thrown when the notifier does not want to handle the notification. ``\InvalidArgumentException`` are logged as debug for now and will be logged as error in the future to help developers find issues from code that unintentionally threw ``\InvalidArgumentException``
 
+Deprecated APIs
+^^^^^^^^^^^^^^^
+
+- Using the ``@PasswordConfirmationRequired`` annotation is deprecated and the ``#[OCP\AppFramework\Http\Attribute\PasswordConfirmationRequired]`` attribute should be used instead.
+- Using the ``@CORS`` annotation is deprecated and the ``#[OCP\AppFramework\Http\Attribute\CORS]`` attribute should be used instead.
+- Using the ``@PublicPage`` annotation is deprecated and the ``#[OCP\AppFramework\Http\Attribute\PublicPage]`` attribute should be used instead.
+- Using the ``@ExAppRequired`` annotation is deprecated and the ``#[OCP\AppFramework\Http\Attribute\ExAppRequired]`` attribute should be used instead.
+- Using the ``@AuthorizedAdminSetting`` annotation is deprecated and the ``#[OCP\AppFramework\Http\Attribute\AuthorizedAdminSetting]`` attribute should be used instead.
+- Using the ``@SubAdminRequired`` annotation is deprecated and the ``#[OCP\AppFramework\Http\Attribute\SubAdminRequired]`` attribute should be used instead.
+- Using the ``@NoAdminRequired`` annotation is deprecated and the ``#[OCP\AppFramework\Http\Attribute\NoAdminRequired]`` attribute should be used instead.
+- Using the ``@StrictCookieRequired`` annotation is deprecated and the ``#[OCP\AppFramework\Http\Attribute\StrictCookiesRequired]`` attribute should be used instead.
+- Using the ``@NoCSRFRequired`` annotation is deprecated and the ``#[OCP\AppFramework\Http\Attribute\NoCSRFRequired]`` attribute should be used instead.
+
 Removed APIs
 ^^^^^^^^^^^^
 
