@@ -105,6 +105,7 @@ Added APIs
 - ``OCP\AppFramework\Http\Attribute\ExAppRequired`` attribute for restricting controller methods to be only accessible by ExApps.
 - ``OCP\Collaboration\Reference\IPublicReferenceProvider`` added for reference providers that support reference lookups from public shares.
 - ``OCP\Files\IFilenameValidator`` was added to allow storage independent filename validation.
+- ``OCP\Files\Storage\IStorage::setOwner()`` was added to allow setting the owner of a storage so it can be handled independently from the current session user. This is especially useful for storages that have a shared ownership like groupfolders, external storages where the storage owner needs to be set to the user that is initializing the storage through their personal mountpoint.
 - ``ShareAPIController::sendShareEmail()`` was added and is accessible via ocs ``/api/v1/shares/{shareId}/send-email``. See :ref:`send-email<Send email>` documentation.
 
 Changed APIs
