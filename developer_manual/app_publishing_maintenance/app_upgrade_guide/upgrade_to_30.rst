@@ -98,14 +98,14 @@ Added APIs
 - ``OCP\Notification\IncompleteParsedNotificationException`` is thrown by ``OCP\Notification\IManager::prepare()`` when no ``OCP\Notification\INotifier`` handled the ``OCP\Notification\INotification`` object
 - ``OCP\Notification\InvalidValueException`` is thrown by ``OCP\Notification\IAction::set*()`` and ``OCP\Notification\INotification::set*()`` when the value did not match the required criteria
 - ``OCP\Notification\UnknownNotificationException`` should be thrown by ``OCP\Notification\INotifier::prepare()`` when they didn't handle the notification
-- ``OCA\Files_Trashbin\Trash\ITrashItem::getDeletedBy`` should return the user who deleted the item or null if unknown
-- ``OCP\IUser::getPasswordHash`` should return the password hash of the user
-- ``OCP\IUser::setPasswordHash`` should set the password hash of the user
+- ``OCA\Files_Trashbin\Trash\ITrashItem::getDeletedBy()`` should return the user who deleted the item or null if unknown
+- ``OCP\IUser::getPasswordHash()`` should return the password hash of the user
+- ``OCP\IUser::setPasswordHash()`` should set the password hash of the user
 - ``OCP\AppFramework\Http\Attribute\OpenAPI::SCOPE_EX_APP`` attribute for scoping APIs only to be used by ExApps.
 - ``OCP\AppFramework\Http\Attribute\ExAppRequired`` attribute for restricting controller methods to be only accessible by ExApps.
 - ``OCP\Collaboration\Reference\IPublicReferenceProvider`` added for reference providers that support reference lookups from public shares.
 - ``OCP\Files\IFilenameValidator`` was added to allow storage independent filename validation.
-- ``ShareAPIController::sendShareEmail`` was added and is accessible via ocs ``/api/v1/shares/{shareId}/send-email``. See :ref:`send-email<Send email>` documentation.
+- ``ShareAPIController::sendShareEmail()`` was added and is accessible via ocs ``/api/v1/shares/{shareId}/send-email``. See :ref:`send-email<Send email>` documentation.
 
 Changed APIs
 ^^^^^^^^^^^^
