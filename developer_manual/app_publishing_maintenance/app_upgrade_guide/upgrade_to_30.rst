@@ -124,6 +124,7 @@ Changed APIs
 - Calling ``OCP\Notification\INotification::setLink()`` with a relative URL is deprecated and will throw ``OCP\Notification\InvalidValueException`` in a future version.
 - Calling ``OCP\Notification\INotification::setIcon()`` with a relative URL is deprecated and will throw ``OCP\Notification\InvalidValueException`` in a future version.
 - ``OCP\Notification\INotifier::prepare()`` should no longer throw ``\InvalidArgumentException``. ``OCP\Notification\UnknownNotificationException`` should be thrown when the notifier does not want to handle the notification. ``\InvalidArgumentException`` are logged as debug for now and will be logged as error in the future to help developers find issues from code that unintentionally threw ``\InvalidArgumentException``
+- ``OCP\IGroupManager`` should be used instead of checking is current user is part of admin group manually.
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
@@ -137,6 +138,7 @@ Deprecated APIs
 - Using the ``@NoAdminRequired`` annotation is deprecated and the ``#[OCP\AppFramework\Http\Attribute\NoAdminRequired]`` attribute should be used instead.
 - Using the ``@StrictCookieRequired`` annotation is deprecated and the ``#[OCP\AppFramework\Http\Attribute\StrictCookiesRequired]`` attribute should be used instead.
 - Using the ``@NoCSRFRequired`` annotation is deprecated and the ``#[OCP\AppFramework\Http\Attribute\NoCSRFRequired]`` attribute should be used instead.
+- Using the ``OCP\Group\Backend\ICreateGroupBackend`` interface is now deprecated and the ``OCP\Group\Backend\ICreateNamedGroupBackend`` interface should be used instead.
 
 Removed APIs
 ^^^^^^^^^^^^
