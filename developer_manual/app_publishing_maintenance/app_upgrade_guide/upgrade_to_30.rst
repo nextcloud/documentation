@@ -128,6 +128,7 @@ Changed APIs
 - ``OCP\Notification\INotifier::prepare()`` should no longer throw ``\InvalidArgumentException``. ``OCP\Notification\UnknownNotificationException`` should be thrown when the notifier does not want to handle the notification. ``\InvalidArgumentException`` are logged as debug for now and will be logged as error in the future to help developers find issues from code that unintentionally threw ``\InvalidArgumentException``
 - ``OCP\IGroupManager::isAdmin()`` should be used instead of checking is current user is part of admin group manually.
 - ``IAttributes`` ``enabled`` key have bee renamed to ``value`` and supports more than boolean.
+- ``OCP\DB\Exception`` uses the reason code ``REASON_LOCK_WAIT_TIMEOUT`` now, instead of ``REASON_SERVER`` for a LockWaitTimeoutException.
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
