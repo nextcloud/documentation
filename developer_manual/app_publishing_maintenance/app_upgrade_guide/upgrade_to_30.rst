@@ -119,6 +119,7 @@ Changed APIs
 - ``OCP\Dashboard\IIconWidget::getIconUrl()`` clarification: The URL must be an absolute URL. The served icon should be dark. The icon will be inverted automatically in mobile clients and when using dark mode.
 - ``OCP\Dashboard\IWidget::getId()`` clarification: Implementations should only return ``a-z``, ``0-9``, ``-`` and ``_`` based strings starting with a letter, as the identifier is used in CSS classes and that is otherwise invalid
 - ``OCP\Dashboard\IWidget::getIconClass()`` clarification: The returned CSS class should render a dark icon. The icon will be inverted automatically in mobile clients and when using dark mode. Therefore, it is NOT recommended to use a css class that sets the background with ``var(--icon-…)``` as those will adapt to dark/bright mode in the web and still be inverted resulting in a dark icon on dark background.
+- ``OCP\Files\Lock\ILockManager::registerLazyLockProvider()`` was added to replace ``registerLockProvider`` and allows to register a lock provider that is only loaded when needed.
 - ``OCP\Notification\IAction::set*()`` (all setters) throw ``OCP\Notification\InvalidValueException`` instead of ``\InvalidArgumentException`` when the value does not match the required criteria.
 - Calling ``OCP\Notification\IAction::setLink()`` with a relative URL is deprecated and will throw ``OCP\Notification\InvalidValueException`` in a future version.
 - ``OCP\Notification\IApp::notify()`` throws ``OCP\Notification\IncompleteNotificationException`` instead of ``\InvalidArgumentException`` when a required field is not set before notifying.
@@ -153,6 +154,7 @@ Deprecated APIs
 - Calling ``OCP\DB\QueryBuilder\IQueryBuilder::resetQueryParts()`` is deprecated and will throw an exception in a future version as the underlying library is removing the functionality. Create a new query builder object instead.
 - Calling ``OCP\DB\QueryBuilder\IQueryBuilder::update()`` with ``$alias`` is deprecated and will throw an exception in a future version as the underlying library is removing the functionality.
 - Calling ``OCP\IDBConnection::getDatabasePlatform()`` is deprecated and will throw an exception in a future version as the underlying library is renaming and removing platforms which breaks the backwards-compatibility. Use ``getDatabaseProvider()`` instead.
+- Calling ``OCP\Files\Lock\ILockManager::registerLockProvider()`` is deprecated and will be removed in the future. Use ``registerLazyLockProvider()`` instead.
 
 Removed APIs
 ^^^^^^^^^^^^
