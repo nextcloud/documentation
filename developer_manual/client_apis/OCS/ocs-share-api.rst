@@ -131,7 +131,7 @@ Update a given share. Only one value can be updated per request.
   shares. This argument expects a well formatted date string, e.g. 'YYYY-MM-DD'
 * PUT Arguments: note - (string) Adds a note for the share recipient.
 * PUT Arguments: attributes - (string) serialized JSON string for :ref:`share attributes<Share attributes>`
-* PUT Arguments: sendMail - (string) send an email to the recipient. This will not send an email on its own. You will have to use the `send-email` endpoint to send the email. (true/false)
+* PUT Arguments: sendMail - (string) send an email to the recipient. This will not send an email on its own. You will have to use the :ref:`send-email<Send email>` endpoint to send the email. (true/false)
 
 .. note:: Only one of the update parameters can be specified at once.
 
@@ -155,7 +155,7 @@ Share attributes are used for more advanced flags like permissions.
         { "scope": "permissions", "key": "download", "value": false }
     ]
 
-.. warning:: Since Nextcloud 30, the `enabled` key have bee renamed to `value` and supports more than boolean.
+.. warning:: Since Nextcloud 30, the ``enabled`` key have bee renamed to ``value`` and supports more than boolean.
  
 Download permission
 """""""""""""""""""
