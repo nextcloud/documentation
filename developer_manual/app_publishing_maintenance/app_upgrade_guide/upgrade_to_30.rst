@@ -104,6 +104,7 @@ Added APIs
 - ``OCP\AppFramework\Http\Attribute\ExAppRequired`` attribute for restricting controller methods to be only accessible by ExApps.
 - ``OCP\Collaboration\Reference\IPublicReferenceProvider`` added for reference providers that support reference lookups from public shares.
 - ``OCP\Files\IFilenameValidator`` was added to allow storage independent filename validation.
+- ``ShareAPIController::sendShareEmail`` was added and is accessible via ocs ``/api/v1/shares/{shareId}/send-email``. See :ref:`send-email<Send email>` documentation.
 
 Changed APIs
 ^^^^^^^^^^^^
@@ -125,6 +126,7 @@ Changed APIs
 - Calling ``OCP\Notification\INotification::setIcon()`` with a relative URL is deprecated and will throw ``OCP\Notification\InvalidValueException`` in a future version.
 - ``OCP\Notification\INotifier::prepare()`` should no longer throw ``\InvalidArgumentException``. ``OCP\Notification\UnknownNotificationException`` should be thrown when the notifier does not want to handle the notification. ``\InvalidArgumentException`` are logged as debug for now and will be logged as error in the future to help developers find issues from code that unintentionally threw ``\InvalidArgumentException``
 - ``OCP\IGroupManager::isAdmin()`` should be used instead of checking is current user is part of admin group manually.
+- ``IAttributes`` ``enabled`` key have bee renamed to ``value`` and supports more than boolean.
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
