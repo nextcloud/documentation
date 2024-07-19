@@ -19,7 +19,7 @@ like a lot, but detailed instructions are below.
 .. important::
    Before upgrading, especially between major versions (e.g. v27.y.z -> v28.y.z) please review
    :ref:`critical changes<critical-changes>` first. These are highlights of changes that may be required
-   in your environment to accomodate changes in Nextcloud Server. These notes are periodically revised as
+   in your environment to accommodate changes in Nextcloud Server. These notes are periodically revised as
    needed so it is a good idea to revisit them even when proceeding with minor and maintenance upgrades just
    in case.
 

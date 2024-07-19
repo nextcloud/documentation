@@ -61,7 +61,7 @@ next to each entry:
 
 If you set your data to **Private**, nobody but you will be able to see it.
 
-If you set your data to **Local**, all logged in users within your Nextcloud instance will be able to see the information, but noone outside of it.
+If you set your data to **Local**, all logged in users within your Nextcloud instance will be able to see the information, but no one outside of it.
 
 If you set your data to **Federated**, the trusted server(s) which are added by your administrator will be able to see this data, in addition to all logged in users.
 

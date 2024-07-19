@@ -34,7 +34,7 @@ Reminder notifications
 ----------------------
 Nextcloud handles sending notifications for events.
 
-Nextcloud currently handles two types of reminder notifications: Build-in Nextcloud notifications and
+Nextcloud currently handles two types of reminder notifications: Built-in Nextcloud notifications and
 email notifications. For the emails to be send, you'll need a configured email server.
 See :doc:`../configuration_server/email_configuration`.
 

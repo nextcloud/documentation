@@ -1,0 +1,17 @@
+name: 'Codespell'
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  codespell:
+    name: Check spelling
+    runs-on: self-hosted
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+      - name: Check spelling
+        uses: codespell-project/actions-codespell@v2

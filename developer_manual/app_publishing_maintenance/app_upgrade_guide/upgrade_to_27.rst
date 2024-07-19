@@ -25,12 +25,12 @@ Front-end changes
 General
 ^^^^^^^
 
-* With Nextcloud 27 you can also provide module javascript files with the ``.mjs`` file extension. For backwards compatibilty you can provide files with the same name but the ``.js`` file extension which will be loaded for Nextcloud versions before 27.
+* With Nextcloud 27 you can also provide module javascript files with the ``.mjs`` file extension. For backwards compatibility you can provide files with the same name but the ``.js`` file extension which will be loaded for Nextcloud versions before 27.
 
 Added APIs
 ^^^^^^^^^^
 
-* A new Files Router API allows you to control the files router service and update views, querys or param without page reload. See :ref:`FilesAPI`
+* A new Files Router API allows you to control the files router service and update views, queries or param without page reload. See :ref:`FilesAPI`
 
 Back-end changes
 ----------------
