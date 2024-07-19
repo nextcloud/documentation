@@ -93,6 +93,7 @@ Added APIs
 - ``OCP\Activity\Exceptions\InvalidValueException`` is thrown by ``OCP\Activity\IEvent::set*()`` when the value did not match the required criteria
 - ``OCP\Activity\Exceptions\SettingNotFoundException`` is thrown by ``OCP\Activity\IManager::getSettingById()`` when no setting with the given identifier registered
 - ``OCP\Activity\Exceptions\UnknownActivityException`` should be thrown by ``OCP\Activity\IProvider::parse()`` when they didn't handle the event
+- ``OCP\Authentication\Token\IToken::SCOPE_FILESYSTEM`` and ``OCP\Authentication\Token\IToken::SCOPE_SKIP_PASSWORD_VALIDATION`` constants were introduced as constants for token scopes. Previously, the value of ``SCOPE_FILESYSTEM`` was hardcoded.
 - ``OCP\Notification\IncompleteNotificationException`` is thrown by ``OCP\Notification\IManager::notify()`` when not all required fields have been set on the ``OCP\Notification\INotification`` object
 - ``OCP\Notification\IncompleteParsedNotificationException`` is thrown by ``OCP\Notification\IManager::prepare()`` when no ``OCP\Notification\INotifier`` handled the ``OCP\Notification\INotification`` object
 - ``OCP\Notification\InvalidValueException`` is thrown by ``OCP\Notification\IAction::set*()`` and ``OCP\Notification\INotification::set*()`` when the value did not match the required criteria
