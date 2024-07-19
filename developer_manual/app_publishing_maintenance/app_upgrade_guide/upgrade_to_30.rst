@@ -5,6 +5,19 @@ Upgrade to Nextcloud 30
 General
 -------
 
+A new dependency type ``backend`` was added to info.xml.
+If your app requires or makes use of the CalDAV backend in server, please add the backend
+``caldav`` to the dependencies of your app.
+
+.. code-block:: xml
+
+   <dependencies>
+       <backend>caldav</backend>
+   </dependencies>
+
+If no app is requiring the CalDAV backend, the CalDAV section in the admin settings will be hidden.
+Currently, there is no other effect but that might change in the future.
+
 Capabilities
 ------------
 
@@ -110,6 +123,8 @@ Added APIs
 - ``ShareAPIController::sendShareEmail()`` was added and is accessible via ocs ``/api/v1/shares/{shareId}/send-email``. See :ref:`send-email<Send email>` documentation.
 - ``OCP\Calendar\Room\IManager::update()`` was added to update all rooms from all backends right now.
 - ``OCP\Calendar\Resource\IManager::update()`` was added to update all resources from all backends right now.
+- ``OCP\App\IAppManager::BACKEND_CALDAV`` was added to represent the caldav backend dependency for ``isBackendRequired()``.
+- ``OCP\App\IAppManager::isBackendRequired()`` was added to check if at least one app requires a specific backend (currently only ``caldav``).
 
 Changed APIs
 ^^^^^^^^^^^^
