@@ -185,10 +185,10 @@ If you are working with an existing API where you can not break compatibility, y
             return DataResponse([]);
         }
 
-DO NOT throw exceptions
-^^^^^^^^^^^^^^^^^^^^^^^
+DO NOT throw non-OCS*Exceptions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Return valid responses with an error message instead.
+Only use OCS*Exceptions as any other Exceptions do not produce JSON responses.
 
 .. collapse:: Examples
 
@@ -196,22 +196,22 @@ Return valid responses with an error message instead.
         :caption: Bad
 
         /**
-         * @throws OCSBadRequestException
+         * @throws BadRequestException
          */
         public function someControllerMethod() {
             ...
-            throw new OCSBadRequestException("some message");
+            throw new BadRequestException([]);
         }
 
     .. code-block:: php
         :caption: Good
 
         /**
-         * @return DataResponse<Http::STATUS_BAD_REQUEST, array{message: string}, array{}>
+         * @throws OCSBadRequestException
          */
         public function someControllerMethod() {
             ...
-            return DataResponse(["message" => "some message"], Http::STATUS_BAD_REQUEST);
+            throw new OCSBadRequestException("some message");
         }
 
 DO use the same data structures for the same group of responses
@@ -643,7 +643,6 @@ How to handle exceptions
 ------------------------
 
 Sometimes you want to end with an exception instead of returning a response.
-It is better to not do it, but when migrating existing APIs you might have to deal with exceptions.
 For this example our ``update`` will throw an exception when the ETag does not match:
 
 .. code-block:: php
@@ -673,8 +672,7 @@ Adding the correct annotation works like this:
     }
 
 The description after the exception class name works exactly like the description for the status codes we added earlier.
-Note that the resulting response will be in plain text and no longer in JSON.
-Therefore it is not recommended to use exceptions to return errors.
+Note that you should only used OCS*Exceptions, as any other Exception will result in a plain text body instead of JSON.
 
 How to ignore certain endpoints
 -------------------------------
