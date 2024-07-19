@@ -125,6 +125,7 @@ Added APIs
 - ``OCP\Calendar\Resource\IManager::update()`` was added to update all resources from all backends right now.
 - ``OCP\App\IAppManager::BACKEND_CALDAV`` was added to represent the caldav backend dependency for ``isBackendRequired()``.
 - ``OCP\App\IAppManager::isBackendRequired()`` was added to check if at least one app requires a specific backend (currently only ``caldav``).
+- ``OCP\Accounts\IAccountManager::PROPERTY_BIRTHDATE`` was added to allow users to configure their date of birth in their profiles.
 
 Changed APIs
 ^^^^^^^^^^^^
