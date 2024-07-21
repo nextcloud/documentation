@@ -210,6 +210,8 @@ Changed APIs
 - ``OCP\IGroupManager::isAdmin()`` should be used instead of checking is current user is part of admin group manually.
 - ``IAttributes`` ``enabled`` key have bee renamed to ``value`` and supports more than boolean.
 - ``OCP\DB\Exception`` uses the reason code ``REASON_LOCK_WAIT_TIMEOUT`` now, instead of ``REASON_SERVER`` for a LockWaitTimeoutException.
+- ``OCP\Share\IShare::setNoExpirationDate()`` now sets an overwrite flag for falsy expiry date values, this flag is used to determine whether the system should overwrite falsy expiry date values before creating a share.
+- ``OCP\Share\IShare::getNoExpirationDate()`` retrieves the value of the ``noExpirationDate`` flag.
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
