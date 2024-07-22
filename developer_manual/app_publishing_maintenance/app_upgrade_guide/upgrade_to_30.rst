@@ -93,6 +93,7 @@ Added APIs
 - ``OCP\Activity\Exceptions\InvalidValueException`` is thrown by ``OCP\Activity\IEvent::set*()`` when the value did not match the required criteria
 - ``OCP\Activity\Exceptions\SettingNotFoundException`` is thrown by ``OCP\Activity\IManager::getSettingById()`` when no setting with the given identifier registered
 - ``OCP\Activity\Exceptions\UnknownActivityException`` should be thrown by ``OCP\Activity\IProvider::parse()`` when they didn't handle the event
+- ``OCP\AppFramework\Db\QbMapper::yieldEntities()`` was added to allow iterating over entities by returning a ``Generator`` without loading all of them into memory.
 - ``OCP\Authentication\Token\IToken::SCOPE_FILESYSTEM`` and ``OCP\Authentication\Token\IToken::SCOPE_SKIP_PASSWORD_VALIDATION`` constants were introduced as constants for token scopes. Previously, the value of ``SCOPE_FILESYSTEM`` was hardcoded.
 - ``OCP\Notification\IncompleteNotificationException`` is thrown by ``OCP\Notification\IManager::notify()`` when not all required fields have been set on the ``OCP\Notification\INotification`` object
 - ``OCP\Notification\IncompleteParsedNotificationException`` is thrown by ``OCP\Notification\IManager::prepare()`` when no ``OCP\Notification\INotifier`` handled the ``OCP\Notification\INotification`` object
@@ -105,6 +106,7 @@ Added APIs
 - ``OCP\AppFramework\Http\Attribute\ExAppRequired`` attribute for restricting controller methods to be only accessible by ExApps.
 - ``OCP\Collaboration\Reference\IPublicReferenceProvider`` added for reference providers that support reference lookups from public shares.
 - ``OCP\Files\IFilenameValidator`` was added to allow storage independent filename validation.
+- ``OCP\Files\Storage\IStorage::setOwner()`` was added to allow setting the owner of a storage so it can be handled independently from the current session user. This is especially useful for storages that have a shared ownership like groupfolders, external storages where the storage owner needs to be set to the user that is initializing the storage through their personal mountpoint.
 - ``ShareAPIController::sendShareEmail()`` was added and is accessible via ocs ``/api/v1/shares/{shareId}/send-email``. See :ref:`send-email<Send email>` documentation.
 
 Changed APIs
@@ -118,6 +120,7 @@ Changed APIs
 - ``OCP\Dashboard\IIconWidget::getIconUrl()`` clarification: The URL must be an absolute URL. The served icon should be dark. The icon will be inverted automatically in mobile clients and when using dark mode.
 - ``OCP\Dashboard\IWidget::getId()`` clarification: Implementations should only return ``a-z``, ``0-9``, ``-`` and ``_`` based strings starting with a letter, as the identifier is used in CSS classes and that is otherwise invalid
 - ``OCP\Dashboard\IWidget::getIconClass()`` clarification: The returned CSS class should render a dark icon. The icon will be inverted automatically in mobile clients and when using dark mode. Therefore, it is NOT recommended to use a css class that sets the background with ``var(--icon-…)``` as those will adapt to dark/bright mode in the web and still be inverted resulting in a dark icon on dark background.
+- ``OCP\Files\Lock\ILockManager::registerLazyLockProvider()`` was added to replace ``registerLockProvider`` and allows to register a lock provider that is only loaded when needed.
 - ``OCP\Notification\IAction::set*()`` (all setters) throw ``OCP\Notification\InvalidValueException`` instead of ``\InvalidArgumentException`` when the value does not match the required criteria.
 - Calling ``OCP\Notification\IAction::setLink()`` with a relative URL is deprecated and will throw ``OCP\Notification\InvalidValueException`` in a future version.
 - ``OCP\Notification\IApp::notify()`` throws ``OCP\Notification\IncompleteNotificationException`` instead of ``\InvalidArgumentException`` when a required field is not set before notifying.
@@ -153,6 +156,7 @@ Deprecated APIs
 - Calling ``OCP\DB\QueryBuilder\IQueryBuilder::resetQueryParts()`` is deprecated and will throw an exception in a future version as the underlying library is removing the functionality. Create a new query builder object instead.
 - Calling ``OCP\DB\QueryBuilder\IQueryBuilder::update()`` with ``$alias`` is deprecated and will throw an exception in a future version as the underlying library is removing the functionality.
 - Calling ``OCP\IDBConnection::getDatabasePlatform()`` is deprecated and will throw an exception in a future version as the underlying library is renaming and removing platforms which breaks the backwards-compatibility. Use ``getDatabaseProvider()`` instead.
+- Calling ``OCP\Files\Lock\ILockManager::registerLockProvider()`` is deprecated and will be removed in the future. Use ``registerLazyLockProvider()`` instead.
 
 Removed APIs
 ^^^^^^^^^^^^
