@@ -69,11 +69,11 @@ steps are required:
 .. note:: Enter your email address as DAVx⁵ account name (mandatory if you want
    to be able to send calendar invitation). If your email address is
    registered in your Nextcloud preferences and you have set up your
-   account using the Nextcloud mobile app, this all should be aready the case.
+   account using the Nextcloud mobile app, this all should be already the case.
 
 
 .. note:: Using user name and password will not work if 2-Factor-Authentication
-   is enabed and will throw a generic "Unknown resource" error.
+   is enabled and will throw a generic "Unknown resource" error.
    Use a dedicated App password instead.
 
 

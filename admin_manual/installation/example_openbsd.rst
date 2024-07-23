@@ -208,7 +208,7 @@ Since in OpenBSD httpd(8) works with a chroot(8) by default, we need to be sure 
 Nextcloud final steps
 ---------------------
 
-Now that we have all in place, you should go to your browser with your URL (I am asuming you have an SSL already installed)::
+Now that we have all in place, you should go to your browser with your URL (I am assuming you have an SSL already installed)::
 
   https://domain.tld
   

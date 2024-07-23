@@ -6,7 +6,7 @@ Task Processing
 
 .. versionadded:: 30.0.0
 
-Nextcloud offers a **Task Processing** API which replaces the previously introduced :ref:`Text Processing<text_processing>`, :ref:`TextToImage<text2image>` and :ref:`Speech-To-Text<speech-to-text>` APIs. The overall idea is that there is a central OCP API that apps can use to schedule all kinds of tasks (mainly inteded for AI tasks). To be technology agnostic any other app can provide this task functionality by registering Task Processing providers for specific Task types.
+Nextcloud offers a **Task Processing** API which replaces the previously introduced :ref:`Text Processing<text_processing>`, :ref:`TextToImage<text2image>` and :ref:`Speech-To-Text<speech-to-text>` APIs. The overall idea is that there is a central OCP API that apps can use to schedule all kinds of tasks (mainly intended for AI tasks). To be technology agnostic any other app can provide this task functionality by registering Task Processing providers for specific Task types.
 
 Consuming the Task Processing API
 ---------------------------------
@@ -110,7 +110,7 @@ For example the TextToImage type defines its input shape as follows:
 
 The task input and output are always represented by an associative array. In this case, the task input for TextToImage must have an array key named ``'input'`` which must contain a text and an array key named ``'numberOfImages'`` which must contain a number.
 
-If you want to simply use a task type, you can look up it's input and output shapes above or, if it is not built-in, in the documentation or implementation of the app introducing the task type. If you would like to use task types dynamically without knowing their shapes in advance, you can get their shape information from the ``IManager#getAvailableTaskTypes()`` menthod. The ShapeDescriptor class allows accessing the type data as well as human readable name and description using the ``getName()``, ``getDescription()`` and ``getShapeType()`` methods.
+If you want to simply use a task type, you can look up it's input and output shapes above or, if it is not built-in, in the documentation or implementation of the app introducing the task type. If you would like to use task types dynamically without knowing their shapes in advance, you can get their shape information from the ``IManager#getAvailableTaskTypes()`` method. The ShapeDescriptor class allows accessing the type data as well as human readable name and description using the ``getName()``, ``getDescription()`` and ``getShapeType()`` methods.
 
 Shape types
 ~~~~~~~~~~~

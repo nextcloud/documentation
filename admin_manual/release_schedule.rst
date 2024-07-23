@@ -7,7 +7,7 @@ Overview
 
 Nextcloud releases multiple major versions *throughout* the year, but maintains support for *each* major version for one full year each through "lighter" maintenance updates (and regularly `backporting <https://en.wikipedia.org/wiki/Backporting>`_ applicable security and bug fixes). This permits a high velocity development cadence, while still giving administrators flexibility when planning deployments, upgrades, and maintenance activities.
 
-A detailed `schedule for upcoming major and maintenance releases <https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule>`_ (as well as end-of-life projections) is regularly updated to faciliate planning deployment, testing, and upgrade planning.
+A detailed `schedule for upcoming major and maintenance releases <https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule>`_ (as well as end-of-life projections) is regularly updated to facilitate planning deployment, testing, and upgrade planning.
 
 Whether you want the latest features and optimizations, want to help with testing, or just want to wait until everything is perfectly ready to go, you've got options with regards to which version of Nextcloud Server to initially deploy as well as how frequently to do major upgrades.
 

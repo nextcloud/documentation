@@ -22,7 +22,7 @@ However some environments require the manual approach. Both approaches are cover
 .. important::
    Before upgrading, especially between major versions (e.g. v27.y.z -> v28.y.z) please review 
    :ref:`critical changes<critical-changes>` first. These are highlights of changes that may be required
-   in your environment to accomodate changes in Nextcloud Server. These notes are periodically revised as
+   in your environment to accommodate changes in Nextcloud Server. These notes are periodically revised as
    needed so it is also a good idea to revisit them periodically, such as when proceeding with maintenance 
    upgrades.
 
@@ -106,7 +106,7 @@ upgrades, or for performing troubleshooting or maintenance. Please see
 the maintenance mode (``maintenance:mode``) or execute repair commands
 (``maintenance:repair``) with the ``occ`` command.
 
-The :doc:`build-in Updater <update>` does this for you before replacing the
+The :doc:`built-in Updater <update>` does this for you before replacing the
 existing Nextcloud code with the code of the new Nextcloud version.
 
 ``maintenance:mode`` locks the sessions of logged-in users and prevents new

@@ -85,7 +85,7 @@ In order to do so there are two options:
 * If no generic header is present, you can add yourself with a copyright line as described above. As a rule of thumb, this is the case if you contributed more than seven lines of code.
 
 An example of a generic license header where adding yourself to the AUTHORS.md
-file is prefered please see the example below
+file is preferred please see the example below
 
 .. code-block:: php
 

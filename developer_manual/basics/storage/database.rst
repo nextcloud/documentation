@@ -401,7 +401,7 @@ It makes sense to apply some general tips from the beginning, so you don't have 
 Querying the database provider
 ------------------------------
 
-If you would like to find out which database your app is runnning on, use the ``IDBConnection::getDatabaseProvider`` method.
+If you would like to find out which database your app is running on, use the ``IDBConnection::getDatabaseProvider`` method.
 This can be helpful in cases where specific databases have their own
 requirements, such as Oracle limiting ``IN``- queries to 1000 expressions.
 
@@ -431,7 +431,7 @@ When Oracle (``oci``) is supported (also when you don't list any databases), Nex
 * String columns can not have a length longer than 4.000 characters, use text instead
 * Boolean columns can not be NotNull
 
-Additionally we assume that Oracle support means you are interested in scaling and therefor check additional restrictions of other databases in clustered setups:
+Additionally we assume that Oracle support means you are interested in scaling and therefore check additional restrictions of other databases in clustered setups:
 
 * Galera Cluster: All tables must have a primary key
 

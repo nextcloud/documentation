@@ -43,7 +43,7 @@ assigned.
 
 So you just need to assign the tag to the folder or file, and then block the
 tag with a rule group. The check is independent of the user's permissions for
-the tag. Therefor restricted and invisible tags are recommended, otherwise a
+the tag. Therefore restricted and invisible tags are recommended, otherwise a
 user could remove and reassign the tag.
 
 This example blocks access to any folder with the tag ``Confidential``.
@@ -75,7 +75,7 @@ Blocking user groups
 When trying to deny access to a group of users, make sure that sharing does not
 allow them to create a way back in. When users are able to create a public link,
 the users can log themselves out and visit their own public link to access the
-files. Since at this point they are no user and therefor no member of the
+files. Since at this point they are no user and therefore no member of the
 blocked group, they will be able to read and change the file.
 
 The recommended work around is to create the same rule again, and deny access
@@ -87,7 +87,7 @@ External storage
 
 While access to files in external storages is not possible via Nextcloud, users
 that have direct access to the external storage, can of course change files
-there directly. Therefor it is recommended to disable the ``Allow users to mount
+there directly. Therefore it is recommended to disable the ``Allow users to mount
 external storage`` option, when trying to to completely lock out users.
 
 .. _available-rules-label:

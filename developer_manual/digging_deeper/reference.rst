@@ -816,7 +816,7 @@ Extending ``ADiscoverableReferenceProvider`` implies defining those methods:
 
 * ``getId``: returns an ID which will be used by the Smart Picker to identify this provider
 * ``getTitle``: returns a (ideally translated) provider title visible in the Smart Picker provider list
-* ``getOrder``: returns an integer to help sorting the providers. The sort order is later superseeded by last usage timestamp
+* ``getOrder``: returns an integer to help sorting the providers. The sort order is later superseded by last usage timestamp
 * ``getIconUrl``: returns the URL of the provider icon, same as the title, the icon will be visible in the provider list
 
 Declare supported Unified Search providers

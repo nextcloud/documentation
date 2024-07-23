@@ -39,7 +39,7 @@ Debug Mode
 
 Verify that ``debug`` is ``false`` in your ``config.php``. The default is ``false`` in new 
 installations (or when not specified). While similar to the DEBUG logging level, this option
-also disables various optimizations (to faciliate easier debugging) and generates additional 
+also disables various optimizations (to facilitate easier debugging) and generates additional 
 debug output both at the browser level and server-side. It should not be enabled in production 
 environments outside of isolated troubleshooting situations.
 

@@ -13,7 +13,7 @@ This can be done by following these steps:
    .. image:: ../images/gnome-online-accounts.png
 
 #. Enter your server URL, username, and password.
-   If you have enabled two-factor authentification (2FA), you need to generate an application password/token, because GNOME Online Accounts
+   If you have enabled two-factor authentication (2FA), you need to generate an application password/token, because GNOME Online Accounts
    `doesn't support Nextcloud's WebFlow login yet <https://gitlab.gnome.org/GNOME/gnome-online-accounts/issues/81>`_
    (`Learn more <https://docs.nextcloud.com/server/latest/user_manual/session_management.html#managing-devices>`_):
 

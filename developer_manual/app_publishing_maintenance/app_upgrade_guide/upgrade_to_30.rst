@@ -26,7 +26,7 @@ Capabilities
 
 - ``blacklist_files_regex`` is deprecated now use ``forbidden_filenames`` instead
 - ``forbidden_filename_characters`` was added to provide a list of characters not allowed within filenames
-- ``forbidden_filename_extensions`` was added to provide a list of extensions (suffixes) not allwed for filenames
+- ``forbidden_filename_extensions`` was added to provide a list of extensions (suffixes) not allowed for filenames
 
 Front-end changes
 -----------------

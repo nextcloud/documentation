@@ -174,7 +174,7 @@ The steps are basically the same as for the web based updater:
     a new update available. Go to the admin settings page and scroll to the
     section "Version". This section has a button to open the updater. This
     section as well as the update notification is only available if the update
-    notication app is enabled in the apps management.
+    notification app is enabled in the apps management.
 
 .. image:: images/updater-1-update-available.png
 
@@ -224,7 +224,7 @@ It is possible to run the command line based updater in a non-interactive mode.
 The updater then doesn't ask any interactive questions. It is assumed that if
 an update is available it should be installed and the ``occ upgrade`` command
 is executed as well. After finishing the maintenance mode will be turned off
-except an error occured during the ``occ upgrade`` or the replacement of the
+except an error occurred during the ``occ upgrade`` or the replacement of the
 code.
 
 To execute this, run the command with the ``--no-interaction`` option. (i.e.

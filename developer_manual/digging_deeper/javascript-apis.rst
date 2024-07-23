@@ -115,7 +115,7 @@ Events
 Network state changes
 ^^^^^^^^^^^^^^^^^^^^^
 
-Your app can react to lost network connectivity, e.g. to gracefully handle this state where no server interaction is possible. Since the communication with the server mostly requires a valid CSRF token, you might not want to send any request before the token was udpated. Nextcloud can notify you when this has happened. Use the ``@nextcloud/event-bus`` to listen for the ``networkOnline`` and ``networkOffline`` events:
+Your app can react to lost network connectivity, e.g. to gracefully handle this state where no server interaction is possible. Since the communication with the server mostly requires a valid CSRF token, you might not want to send any request before the token was updated. Nextcloud can notify you when this has happened. Use the ``@nextcloud/event-bus`` to listen for the ``networkOnline`` and ``networkOffline`` events:
 
 .. code-block:: js
 

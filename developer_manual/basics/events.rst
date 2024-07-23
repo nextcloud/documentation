@@ -4,7 +4,7 @@
 Events
 ======
 
-Events are used to communicate between different aspects of the Nextcloud eco system. They are used in the Nextcloud server internally, for server-to-apps communcation as well as inter-app communication.
+Events are used to communicate between different aspects of the Nextcloud eco system. They are used in the Nextcloud server internally, for server-to-apps communication as well as inter-app communication.
 
 
 Overview
