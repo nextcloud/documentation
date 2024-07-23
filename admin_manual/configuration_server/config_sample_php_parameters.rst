@@ -3191,6 +3191,21 @@ Nextcloud, bypassing access controls and making logs useless!
 
 Defaults to ``'HTTP_X_FORWARDED_FOR'``
 
+allowed_admin_ranges
+^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'allowed_admin_ranges' => ['192.0.2.42/32', '233.252.0.0/24', '2001:db8::13:37/64'],
+
+List of trusted IP ranges for admin actions
+
+If this list is non-empty, all admin actions must be triggered from
+IP addresses inside theses ranges.
+
+Defaults to an empty array.
+
 max_filesize_animated_gifs_public_sharing
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
