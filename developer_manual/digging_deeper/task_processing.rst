@@ -68,6 +68,13 @@ The following built-in task types are available:
         * ``input``: ``Text``
       * Output shape:
         * ``output``: ``Text``
+ * ``'core:text2text:translate'``: This task will translate text from one language to another. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToTextTranslate``
+      * Input shape:
+        * ``input``: ``Text``
+        * ``origin_language``: ``Enum``
+        * ``target_language``: ``Enum``
+      * Output shape:
+        * ``output``: ``Text``
  * ``'core:audio2text'``: This task type is for transcribing audio to text. It is implemented by ``\OCP\TaskProcessing\TaskTypes\AudioToText``
      * Input shape:
         * ``input``: ``Audio``
