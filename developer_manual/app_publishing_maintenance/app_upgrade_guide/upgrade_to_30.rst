@@ -126,6 +126,10 @@ Added APIs
 - ``OCP\App\IAppManager::BACKEND_CALDAV`` was added to represent the caldav backend dependency for ``isBackendRequired()``.
 - ``OCP\App\IAppManager::isBackendRequired()`` was added to check if at least one app requires a specific backend (currently only ``caldav``).
 - ``OCP\Accounts\IAccountManager::PROPERTY_BIRTHDATE`` was added to allow users to configure their date of birth in their profiles.
+- ``OCP\TaskProcessing``` was added to unify task processing of AI tasks and other types of tasks. See :ref:`Task Processing<task_processing>`
+- ``OCP\AppFramework\Bootstrap\IRegistrationContext::registerTaskProcessingProvider()`` was added to allow registering task processing providers
+- ``OCP\AppFramework\Bootstrap\IRegistrationContext::registerTaskProcessingTaskType()`` was added to allow registering task processing task types
+- ``OCP\Files\IRootFolder::getAppDataDirectoryName()`` was added to allow getting the name of the app data directory
 
 Changed APIs
 ^^^^^^^^^^^^
@@ -175,6 +179,10 @@ Deprecated APIs
 - Calling ``OCP\DB\QueryBuilder\IQueryBuilder::update()`` with ``$alias`` is deprecated and will throw an exception in a future version as the underlying library is removing the functionality.
 - Calling ``OCP\IDBConnection::getDatabasePlatform()`` is deprecated and will throw an exception in a future version as the underlying library is renaming and removing platforms which breaks the backwards-compatibility. Use ``getDatabaseProvider()`` instead.
 - Calling ``OCP\Files\Lock\ILockManager::registerLockProvider()`` is deprecated and will be removed in the future. Use ``registerLazyLockProvider()`` instead.
+- Using ``OCP\Translation`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead.
+- Using ``OCP\SpeechToText`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead. Existing ``SpeechToText`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextToImage`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead. Existing ``TextToImage`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextProcessing`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead. Existing ``TextProcessing`` providers will continue to work with the TaskProcessing API until then.
 
 Removed APIs
 ^^^^^^^^^^^^

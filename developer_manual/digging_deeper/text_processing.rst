@@ -6,6 +6,10 @@ Text Processing
 
 .. versionadded:: 27.1.0
 
+.. deprecated:: 30
+    Use the TaskProcessing API instead
+
+
 Nextcloud offers a **Text Processing** API. The overall idea is that there is a central OCP API that apps can use to prompt tasks to Large Language Models and similar text processing tools. To be technology agnostic any app can provide this functionality by registering Text Processing providers.
 
 Consuming the Text Processing API

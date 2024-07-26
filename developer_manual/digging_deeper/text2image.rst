@@ -6,6 +6,9 @@ Text-To-Image
 
 .. versionadded:: 28
 
+.. deprecated:: 30
+    Use the TaskProcessing API instead
+
 Nextcloud offers a **Text-To-Image** API. The overall idea is that there is a central OCP API that apps can use to prompt tasks to latent diffusion AI models and similar image generation tools. To be technology agnostic any app can provide this functionality by registering a Text-To-Image provider.
 
 Consuming the Text-To-Image API

@@ -68,6 +68,13 @@ The following built-in task types are available:
         * ``input``: ``Text``
       * Output shape:
         * ``output``: ``Text``
+ * ``'core:text2text:translate'``: This task will translate text from one language to another. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToTextTranslate``
+      * Input shape:
+        * ``input``: ``Text``
+        * ``origin_language``: ``Enum``
+        * ``target_language``: ``Enum``
+      * Output shape:
+        * ``output``: ``Text``
  * ``'core:audio2text'``: This task type is for transcribing audio to text. It is implemented by ``\OCP\TaskProcessing\TaskTypes\AudioToText``
      * Input shape:
         * ``input``: ``Audio``
@@ -126,6 +133,7 @@ Input and output shape keys can have one of a pre-defined set of types, which ar
     	case Audio = 3;
     	case Video = 4;
     	case File = 5;
+    	case Enum = 6;
     	case ListOfNumbers = 10;
     	case ListOfTexts = 11;
     	case ListOfImages = 12;
@@ -158,6 +166,17 @@ The task class objects have the following methods available:
  * ``getAppId()`` This returns the originating application ID of the task.
  * ``getCustomId()`` This returns the original scheduler-defined identifier for the task
  * ``getUserId()`` This returns the originating user ID of the task.
+ * ``getCompletionExpectedAt()`` This is available after scheduling the task and returns the DateTime when the task is expected to be completed
+ * ``getLastUpdated()`` This returns the time the task was last updated as a unix timestamp
+ * ``getScheduledAt()`` This returns the time the task was scheduled as a unix timestamp
+ * ``getStartedAt()`` This returns the time the task execution started as a unix timestamp
+ * ``getEndedAt()`` This returns the time the task execution ended as a unix timestamp
+ * ``getErrorMessage()`` This returns the error message if the task execution failed
+ * ``getProgress()`` This returns the current task progress, between 0 and 1 while the task is running. Will be 1 when the task is completed
+ * ``setWebhookUri()`` This sets the URI of a webhook that will be notified when the task execution has ended
+ * ``setWebhookMethod()`` This sets the HTTP method that will be used for the webhook when the task execution has ended
+ * ``getWebhookUri()`` This returns the webhook URI that will be notified when the task execution has ended
+ * ``getWebhookMethod()`` This returns the HTTP method that will be used for the webhook when the task execution has ended
 
 You could now schedule the task as follows:
 
@@ -261,7 +280,7 @@ A **Task processing provider** will usually be a class that implements the inter
         ) {
         }
 
-        public function getId() {
+        public function getId(): string {
           return 'myapp:summary';
         }
 
@@ -277,9 +296,41 @@ A **Task processing provider** will usually be a class that implements the inter
             // Return the output here
         }
 
-        public function getExpectedRuntime() {
+        public function getExpectedRuntime(): int {
             // usually takes 1min on average
             return 60;
+        }
+
+        public function getInputShapeDefaults(): array {
+            return [];
+        }
+
+        public function getOptionalInputShape(): array {
+            return [];
+        }
+
+        public function getOptionalInputShapeDefaults(): array {
+            return [];
+        }
+
+        public function getOptionalOutputShape(): array {
+            return [];
+        }
+
+        public function getInputShapeEnumValues(): array {
+            return [];
+        }
+
+        public function getOptionalInputShapeEnumValues(): array {
+            return [];
+        }
+
+        public function getOutputShapeEnumValues(): array {
+            return [];
+        }
+
+        public function getOptionalOutputShapeEnumValues(): array {
+            return [];
         }
     }
 
@@ -287,7 +338,87 @@ The method ``getName`` returns a string to identify the registered provider in t
 
 The method ``process`` implements the text processing step. In case execution fails for some reason, you should throw a ``\OCP\TaskProcessing\Exception\ProcessingException`` with an explanatory error message. Important to note here is that ``Image``, ``Audio``, ``Video`` and ``File`` slots in the input array will be filled with ``\OCP\Files\File`` objects for your convenience. When outputting one of these you should simply return a string, the API will turn the data into a proper file for convenience. The ``$reportProgress`` parameter is a callback that you may use at will to report the task progress as a single float value between 0 and 1. Its return value will indicate if the task is still running (``true``) or if it was cancelled (``false``) and processing should be terminated.
 
-This class would typically be saved into a file in ``lib/TextProcessing`` of your app but you are free to put it elsewhere as long as it's loadable by Nextcloud's :ref:`dependency injection container<dependency-injection>`.
+This class would typically be saved into a file in ``lib/TaskProcessing`` of your app but you are free to put it elsewhere as long as it's loadable by Nextcloud's :ref:`dependency injection container<dependency-injection>`.
+
+Providing additional inputs and outputs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Built-in task types often only specify the most basic input and output slots. If you would like to offer more input options
+with your provider you can specify optional inputs and outputs using the ``getOptionalInputShape`` and ``getOptionalOutputShape`` methods.
+You will need to return an associative array of ``\OCP\TaskProcessing\ShapeDescriptor`` objects.
+
+.. code-block:: php
+
+    public function getOptionalInputShape(): array {
+        return [
+            'tone' => new ShapeDescriptor($this->l->t('Tone of voice'), $this->l->t('Set the tone of voice to be used for the output'), EShapeType::Text)
+        ];
+    }
+
+In the same vein you can also provide optional output shape slots in addition to the pre-defined output slots.
+
+.. code-block:: php
+
+    public function getOptionalOutputShape(): array {
+        return [
+            'co2_emissions' => new ShapeDescriptor($this->l->t('CO2 Emissions'), $this->l->t('The CO2 emissions produced by running this task in metric tons'), EShapeType::Number)
+        ];
+    }
+
+Providing input defaults
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+With the method ``getInputShapeDefaults`` you can specify default values for input slots (which are defined by the task type). For example:
+
+.. code-block:: php
+
+    public function getInputShapeDefaults(): array {
+        return [
+            'input' => 'There was once a man with many cows who wanted to have even more cows.'
+        ];
+    }
+
+Note that you can only specify default values for 'Text' and 'Number' slots.
+
+The same works for your optional input shapes that you defined in ``getOptionalInputShape``:
+
+.. code-block:: php
+
+    public function getOptionalInputShapeDefaults(): array {
+        return [
+            'tone' => 'Formal'
+        ];
+    }
+
+Working with Enum shape types
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Both input and output shapes as well as the optional input and output shapes allow declaring slots of type ``'Enum'``. An Enum
+is a type that only allows values from a pre-defined set. In the case of the TaskProcessing API this set is not defined by the task type, but
+by the provider implementing the task type using ``getInputShapeEnumValues``, ``getOutputShapeEnumValues``, ``getOptionalInputShapeEnumValues`` and ``getOptionalOutputShapeEnumValues``.
+
+You could, for example, implement the above tone of voice slot using an Enum:
+
+.. code-block:: php
+
+    public function getOptionalInputShape(): array {
+        return [
+            'tone' => new ShapeDescriptor($this->l->t('Tone of voice'), $this->l->t('Set the tone of voice to be used for the output'), EShapeType::Enum)
+        ];
+    }
+
+.. code-block:: php
+
+    public function getOptionalInputShapeEnumValues(): array {
+        return [
+            'tone' => [
+                new ShapeEnumValue($this->l->t('Simple'), 'So that a kid could understand'),
+                new ShapeEnumValue($this->l->t('Funny'), 'Funny'),
+                new ShapeEnumValue($this->l->t('Formal'), 'Formal'),
+            ]
+        ];
+    }
+
 
 Providing more task types
 ^^^^^^^^^^^^^^^^^^^^^^^^^
