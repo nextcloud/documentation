@@ -179,6 +179,10 @@ Deprecated APIs
 - Calling ``OCP\DB\QueryBuilder\IQueryBuilder::update()`` with ``$alias`` is deprecated and will throw an exception in a future version as the underlying library is removing the functionality.
 - Calling ``OCP\IDBConnection::getDatabasePlatform()`` is deprecated and will throw an exception in a future version as the underlying library is renaming and removing platforms which breaks the backwards-compatibility. Use ``getDatabaseProvider()`` instead.
 - Calling ``OCP\Files\Lock\ILockManager::registerLockProvider()`` is deprecated and will be removed in the future. Use ``registerLazyLockProvider()`` instead.
+- Using ``OCP\Translation`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead.
+- Using ``OCP\SpeechToText`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead. Existing ``SpeechToText`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextToImage`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead. Existing ``TextToImage`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextProcessing`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead. Existing ``TextProcessing`` providers will continue to work with the TaskProcessing API until then.
 
 Removed APIs
 ^^^^^^^^^^^^
