@@ -126,6 +126,10 @@ Added APIs
 - ``OCP\App\IAppManager::BACKEND_CALDAV`` was added to represent the caldav backend dependency for ``isBackendRequired()``.
 - ``OCP\App\IAppManager::isBackendRequired()`` was added to check if at least one app requires a specific backend (currently only ``caldav``).
 - ``OCP\Accounts\IAccountManager::PROPERTY_BIRTHDATE`` was added to allow users to configure their date of birth in their profiles.
+- ``OCP\TaskProcessing``` was added to unify task processing of AI tasks and other types of tasks. See :ref:`Task Processing<task_processing>`
+- ``OCP\AppFramework\Bootstrap\IRegistrationContext::registerTaskProcessingProvider()`` was added to allow registering task processing providers
+- ``OCP\AppFramework\Bootstrap\IRegistrationContext::registerTaskProcessingTaskType()`` was added to allow registering task processing task types
+- ``OCP\Files\IRootFolder::getAppDataDirectoryName()`` was added to allow getting the name of the app data directory
 
 Changed APIs
 ^^^^^^^^^^^^
