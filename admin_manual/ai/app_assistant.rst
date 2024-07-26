@@ -173,4 +173,4 @@ run the following occ commands a daemon (you can also spawn multiple, for parall
 
    occ background-job:worker 'OC\TaskProcessing\SynchronousBackgroundJob'
 
-Make sure to restart these daemons regularly. For example once a day.
+Make sure to restart these daemons regularly, for example once a day, to make sure the daemon runs the latest code.

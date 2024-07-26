@@ -340,8 +340,8 @@ The method ``process`` implements the text processing step. In case execution fa
 
 This class would typically be saved into a file in ``lib/TaskProcessing`` of your app but you are free to put it elsewhere as long as it's loadable by Nextcloud's :ref:`dependency injection container<dependency-injection>`.
 
-Providing supplemental inputs and outputs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Providing additional inputs and outputs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Built-in task types often only specify the most basic input and output slots. If you would like to offer more input options
 with your provider you can specify optional inputs and outputs using the ``getOptionalInputShape`` and ``getOptionalOutputShape`` methods.
