@@ -41,7 +41,7 @@ Approaching Upgrades
 --------------------
 
 Nextcloud must be upgraded step by step: 
-  * Before you can upgrade to the next major release, Nextcloud upgrades to the latest point release.
+  * Before you can upgrade to the next major release, you need to upgrade to the latest point release of your current major version.
   * Then run the upgrade again to upgrade to the next major release's latest point release.
   * **You cannot skip major releases.** Please re-run the upgrade until you have reached the highest available (or applicable) release.
   * Example: 18.0.5 -> 18.0.11 -> 19.0.5 -> 20.0.2
