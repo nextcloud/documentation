@@ -6,6 +6,9 @@ Machine Translation
 
 .. versionadded:: 26
 
+.. deprecated:: 30
+    Use the TaskProcessing API instead
+
 Nextcloud offers a **Translation** API. The overall idea is that there is a central OCP API that apps can use to request machine translations of text. To be technology agnostic any app can provide this Translation functionality by registering a Translation provider.
 
 Consuming the Translation API

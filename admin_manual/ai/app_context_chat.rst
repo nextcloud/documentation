@@ -57,17 +57,19 @@ Installation
 Initial loading of data
 -----------------------
 
-Context chat will automatically load user data into the Vector DB using background jobs. To speed this up, you can set up multiple background job worker machines and run the following occ commands in parallel on each:
+Context chat will automatically load user data into the Vector DB using background jobs. To speed this up, you can set up multiple background job workers (possibly on dedicated machines) and run the following occ commands as daemons in parallel on each:
 
 .. code-block::
 
-   occ background-job:worker OCA\ContextChat\BackgroundJobs\StorageCrawlJob
+   occ background-job:worker 'OCA\ContextChat\BackgroundJobs\StorageCrawlJob'
 
 .. code-block::
 
-   occ background-job:worker OCA\ContextChat\BackgroundJobs\IndexerJob
+   occ background-job:worker 'OCA\ContextChat\BackgroundJobs\IndexerJob'
 
 This will ensure that the necessary background jobs are run as often as possible: ``StorageCrawlJob`` will crawl Nextcloud storages and put files that it finds into a queue and ``IndexerJob`` will iterate over the queue and load the file content into the Vector DB.
+
+Make sure to restart these daemons regularly. For example once a day.
 
 Scaling
 -------
