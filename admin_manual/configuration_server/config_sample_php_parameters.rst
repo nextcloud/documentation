@@ -1946,13 +1946,10 @@ preview_imaginary_url
 
 Set the URL of the Imaginary service to send image previews to.
 
-Also requires the
- - ``OC\Preview\Imaginary``
-provider to be enabled in the 'enabledPreviewProviders' array, to create previews for these mimetypes:
-bmp, x-bitmap, png, jpeg, gif, heic, heif, svg+xml, tiff, webp and illustrator.
-If you want Imaginary to also create preview images from PDF Documents, you have to add
- - ``OC\Preview\ImaginaryPDF``
-provider as well.
+Also requires the ``OC\Preview\Imaginary``
+provider to be enabled in the 'enabledPreviewProviders' array to create previews for these mimetypes: bmp, x-bitmap, png, jpeg, gif, heic, heif, svg+xml, tiff, webp and illustrator.
+
+If you want Imaginary to also create preview images from PDF Documents, you have to add ``OC\Preview\ImaginaryPDF`` provider as well.
 
 See https://github.com/h2non/imaginary
 
@@ -2317,16 +2314,16 @@ memcached_options
 		\Memcached::OPT_SEND_TIMEOUT =>    50,
 		\Memcached::OPT_RECV_TIMEOUT =>    50,
 		\Memcached::OPT_POLL_TIMEOUT =>    50,
-	
+
 		// Enable compression
 		\Memcached::OPT_COMPRESSION =>          true,
-	
+
 		// Turn on consistent hashing
 		\Memcached::OPT_LIBKETAMA_COMPATIBLE => true,
-	
+
 		// Enable Binary Protocol
 		\Memcached::OPT_BINARY_PROTOCOL =>      true,
-	
+
 		// Binary serializer vill be enabled if the igbinary PECL module is available
 		//\Memcached::OPT_SERIALIZER => \Memcached::SERIALIZER_IGBINARY,
 	],
