@@ -18,8 +18,8 @@ Deep Linking in Android 12 and Above
 For Android 12 and above, an additional configuration step is required to verify the 
 relationship between your app and the host domain using the ``assetlinks.json`` file.
 
-Creating assetlinks.json:
--------------------------
+Creating assetlinks.json
+~~~~~~~~~~~~~~~~~~~~~~~~
 Create a file named assetlinks.json and host it in the .well-known directory of 
 your website (e.g., https://www.cloud.example.com/.well-known/assetlinks.json).
 
