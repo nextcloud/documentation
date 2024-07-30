@@ -14,7 +14,7 @@ For Android 11 and below, deep linking is straightforward and does not require a
 configuration beyond the usual manifest settings.
 
 Deep Linking in Android 12 and Above
-====================================
+------------------------------------
 For Android 12 and above, an additional configuration step is required to verify the 
 relationship between your app and the host domain using the assetlinks.json file.
 
