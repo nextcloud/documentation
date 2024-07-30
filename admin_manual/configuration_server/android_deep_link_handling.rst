@@ -9,7 +9,7 @@ using an assetlinks.json file to ensure the app and the host domain are properly
 associated.
 
 Deep Linking in Android 11 and Below
-====================================
+------------------------------------
 For Android 11 and below, deep linking is straightforward and does not require additional 
 configuration beyond the usual manifest settings.
 
