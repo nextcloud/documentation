@@ -25,6 +25,7 @@ Requirements
 
    * The more cores you have and the more powerful the CPU the better, we recommend 10-20 cores
    * The app will hog all cores by default, so it is usually better to run it on a separate machine
+   * 4GB for the app
 
 Installation
 ------------
