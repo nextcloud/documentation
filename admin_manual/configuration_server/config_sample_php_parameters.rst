@@ -1582,6 +1582,15 @@ log.condition
 		'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
 		'users' => ['sample-user'],
 		'apps' => ['files'],
+		'matches' => [
+			[
+				'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
+				'users' => ['sample-user'],
+				'apps' => ['files'],
+				'loglevel' => 1,
+				'message' => 'contains substring'
+			],
+		],
 	],
 
 Log condition for log level increase based on conditions. Once one of these
@@ -1595,6 +1604,9 @@ Supported conditions:
                this condition is met
  - ``apps``:   if the log message is invoked by one of the specified apps,
                this condition is met
+ - ``matches``: if all the conditions inside a group match,
+               this condition is met. This allows to log only entries to an app
+               by a few users.
 
 Defaults to an empty array.
 
