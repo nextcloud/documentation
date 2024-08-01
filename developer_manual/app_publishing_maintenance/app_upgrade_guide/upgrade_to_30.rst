@@ -35,36 +35,38 @@ Font sizes
 ^^^^^^^^^^
 
 Nextcloud now provides meaningful default styles for heading elements.
+
 This can cause visual regressions if your code does not explicitly set font size and weight.
 If you need to use heading elements outside of text content, you might need to adjust their styles.
 
 Line height
-^^^^^^^^^^
+^^^^^^^^^^^
 
-`--default-line-height` CSS variable is a unitless value `1.5` instead of a unit value `24px`:
-- `line-height` of an element with a non-default font size is now adjusted to the element's font size
-- Unit calculation isn't valid anymore. Use [lh](https://developer.mozilla.org/en-US/docs/Web/CSS/length#lh) unit instead.
+``--default-line-height`` CSS variable is a unitless value ``1.5`` instead of a unit value ``24px``:
 
-```diff
-element1 {
-   /* Invalid CSS calculation. Use lh unit instead */
--  height: calc(var(--default-line-height) * 2);
-+  height: 2lh;
+- *line-height* of an element with a non-default font size is now adjusted to the element's font size
+- Unit calculation isn't valid anymore. Use `lh <https://developer.mozilla.org/en-US/docs/Web/CSS/length#lh>`_ unit instead.
 
--  padding-left: calc(var(--default-line-height) + 10px);
-+  padding-left: calc(1lh + 10px);
-}
+.. code-block:: diff
 
-element2 {
-   font-size: calc(var(--default-font-size), 2);
+    element1 {
+      /* Invalid CSS calculation. Use lh unit instead */
+    -  height: calc(var(--default-line-height) * 2);
+    +  height: 2lh;
 
-   /* Valid usage. No changes are needed if the font-size is default. */
-   line-height: calc(var(--default-line-height) * 2);
+    -  padding-left: calc(var(--default-line-height) + 10px);
+    +  padding-left: calc(1lh + 10px);
+    }
 
-   /* No line-height adjustment is needed anymore */
--   line-height: calc(var(--default-line-height), 2);
-}
-```
+    element2 {
+      font-size: calc(var(--default-font-size), 2);
+
+      /* Valid usage. No changes are needed if the font-size is default. */
+      line-height: calc(var(--default-line-height) * 2);
+
+      /* No line-height adjustment is needed anymore */
+    -   line-height: calc(var(--default-line-height), 2);
+    }
 
 Added APIs
 ^^^^^^^^^^
