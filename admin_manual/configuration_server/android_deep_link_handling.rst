@@ -38,7 +38,6 @@ Example assetlinks.json::
       }
     ]
 
-
 Nextcloud Configuration Limitation
 ==================================
 Due to the additional requirement of hosting an assetlinks.json file 
