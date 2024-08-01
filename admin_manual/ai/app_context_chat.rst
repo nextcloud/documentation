@@ -31,7 +31,7 @@ Requirements
 * CPU Sizing
 
    * At least 12GB of system RAM
-   * Below version 3, 10-20 Cores, the more cores the faster it will be
+   * Below version 3, 10-20 Cores, the more cores (physical cores) the faster the prompt processing will be. Overall performance will increase with an increase in memory bandwidth (more memory sticks and/or higher DDR version)
    * Since version 3, this app makes use of the configured Text To Text Free prompt provider instead of running its own Language model, you will thus need only 4-8 cores for the embedding model
 
 * A dedicated machine is recommended
