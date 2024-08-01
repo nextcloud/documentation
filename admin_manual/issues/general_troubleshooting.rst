@@ -51,14 +51,37 @@ different issues. Always disable 3rd party apps before upgrades, and for
 troubleshooting. Please refer to the :ref:`apps_commands_label` on how
 to disable an app from command line.
 
-Nextcloud logfiles
-^^^^^^^^^^^^^^^^^^
+Internal Server Errors
+^^^^^^^^^^^^^^^^^^^^^^
 
-In a standard Nextcloud installation the log level is set to ``Normal``. To find
-any issues you need to raise the log level to ``All`` in your ``config.php``
-file, or to **Everything** on your Nextcloud Admin page. Please see
-:doc:`../configuration_server/logging_configuration` for more information on
-these log levels.
+An Internal Server Error, sometimes called a "500 error", indicates that the web server 
+encountered an unexpected condition that prevented it from fulfilling the request.
+
+This error response is a generic "catch-all" response. To find out the source of the
+error you will need to check your Nextcloud log (located in `data/nextcloud.log` by 
+default) and possibly your web server's error log (depending on where the failure is
+occurring). 
+
+.. tip:: Whenever possible, Nextcloud will include the "Request id" in the error. This
+    request ID can be searched for in your Nextcloud log file to find entries associated
+    with the failing transaction.
+
+Nextcloud log files
+^^^^^^^^^^^^^^^^^^^
+
+The Nextcloud log file is located in the data directory by default - e.g.
+``data/nextcloud.log``. If the Web UI is still reachable, it is also available
+via *Administration settings->Logging*.
+
+.. tip:: When asking for help, the entire raw log entry is generally required.
+
+.. note:  In a standard Nextcloud installation the log level is set to ``2``. This is 
+    known as the ``WARN`` level. It is sufficient for catching for day-to-day problems 
+    (warnings, errors, and fatal errors).
+
+For some situations you may need to adjust the log level in your ``config.php``
+file. Please see :doc:`../configuration_server/logging_configuration` for more 
+information on these log levels.
 
 Some logging - for example JavaScript console logging - needs debugging
 enabled. Edit :file:`config/config.php` and change ``'debug' => false,`` to
@@ -67,9 +90,6 @@ enabled. Edit :file:`config/config.php` and change ``'debug' => false,`` to
 For JavaScript issues you will also need to view the javascript console. All
 major browsers have developer tools for viewing the console, and you
 usually access them by pressing F12.
-
-.. note:: The logfile of Nextcloud is located in the data directory
-   ``nextcloud/data/nextcloud.log``.
 
 .. _label-phpinfo:
 
