@@ -194,6 +194,7 @@ Added APIs
 - ``OCP\AppFramework\Bootstrap\IRegistrationContext::registerTaskProcessingTaskType()`` was added to allow registering task processing task types
 - ``OCP\Files\IRootFolder::getAppDataDirectoryName()`` was added to allow getting the name of the app data directory
 - ``OCP\AppFramework\Http\JSONResponse()`` constructor now supports passing additional ``json_encode`` flags, see https://www.php.net/manual/en/function.json-encode.php for details
+- ``OCP\Console\ReservedOptions`` was added and contains constants for options reserved for occ core features. ``--debug-log`` and ``--debug-log-level`` are now reserved by occ as they allow to show debug information to the output on any occ command.
 
 Changed APIs
 ^^^^^^^^^^^^
