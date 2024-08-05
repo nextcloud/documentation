@@ -2,6 +2,23 @@
 Calendar / CalDAV
 =================
 
+Calendar server settings
+------------------------
+
+The calendar server can be configured on the Groupware admin settings page.
+You can globally disable sending invitation emails for events, generating the built-in birthday
+calendar, and sending email notifications about upcoming events.
+
+.. figure:: images/settings_calendar-server.png
+
+.. versionadded:: 30 The section will be hidden if no app makes use of the CalDAV backend.
+
+Starting from Nextcloud 30, the calendar server settings section will be hidden if no app uses the
+CalDAV backend.
+Install and enable an appropriate app to show the section again, e.g.
+`Calendar <https://apps.nextcloud.com/apps/calendar>`_ or
+`Tasks <https://apps.nextcloud.com/apps/tasks>`_.
+
 Events
 ------
 
