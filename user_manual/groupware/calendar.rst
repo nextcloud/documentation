@@ -226,7 +226,7 @@ Similar to attendees you can add rooms and resources to your events. The system 
 
 Room availability
 ~~~~~~~~~~~~~~~~~
-.. versionadded:: 4.8
+.. versionadded:: 5.0
 
 If the "Calendar Rooms and Resources" app is installed on your instance, you can now find ``Room availability``  the ``Resources`` section. It lists all the existing rooms. You can check the availability of each room in a manner similar to checking the free/busy status of event attendees.
 
