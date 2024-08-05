@@ -319,3 +319,17 @@ Autoresponders
 .. versionadded:: 3.5 Autoresponder can follow system settings.
 
 The autoresponder is off by default. It can be set manually, or follow the system settings. Following system settings means that the long absence message entered on the :ref:`Absence settings section <groupware-absence>` is applied automatically.
+
+Follow-up reminders
+-------------------
+
+.. versionadded:: 4.0
+
+The Mail app will automatically remind you when an outgoing email did not receive a response.
+Each sent email will be analyzed by an AI to check whether a reply is expected.
+After four days all relevant emails will be shown in your priority inbox.
+
+When clicking on such an email a button will be shown to quickly follow up with all recipients.
+It is also possible to disable follow-up reminders for a sent email.
+
+.. note:: Please note that the feature has to be enabled by the administrator.
