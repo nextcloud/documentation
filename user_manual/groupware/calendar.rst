@@ -203,8 +203,6 @@ Attendees may be other users on your Nextcloud instances, contacts in your addre
 
 .. tip:: When adding other Nextcloud users as attendees to an event, you may access their free-busy information if available, helping you determine when the best time slot for your event is. Set your :ref:`working hours<calendar-working-hours>` to let others know when you are available. Free-busy information is only available for other users on the same Nextcloud instance.
 
-.. attention:: Only the calendar owner can send out invitations. The sharees are not able to do that, whether they have write access to the event's calendar or not.
-
 .. attention:: The server administration needs to setup the e-mail server in the ``Basic settings`` tab, as this mail will be used to send invitations.
 
 Checking attendees' busy times
