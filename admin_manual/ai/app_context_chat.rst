@@ -11,15 +11,15 @@ Context Chat is an :ref:`assistant<ai-app-assistant>` feature that is implemente
 
 Together they provide the ContextChat text processing tasks accessible via the :ref:`Nextcloud Assistant app<ai-app-assistant>`.
 
-The *context_chat* and *context_chat_backend* apps run only open source models and do so entirely on-premises. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
+The *context_chat* and *context_chat_backend* apps will use the Free text to text task processing providers like OpenAI integration, LLM2, etc. and such a provider is required on a fresh install, or it can be configured to run open source models entirely on-premises. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
 
 This app supports input and output in languages other than English if the language model supports the language.
 
 Requirements
 ------------
 
-* Minimal Nextcloud version: 28
-* The *context_chat_backend* app is built as an External App and thus depends on AppAPI v2.3.0 and later
+* Minimal Nextcloud version: 30
+* The *context_chat_backend* app is built as an External App and thus depends on AppAPI >= 2.7.0
 * Nextcloud AIO is supported
 * We currently support NVIDIA GPUs and x86_64 CPUs
 * CUDA >= v12.2 on your host system
@@ -31,8 +31,7 @@ Requirements
 * CPU Sizing
 
    * At least 12GB of system RAM
-   * Below version 3, 10-20 Cores, the more cores (physical cores) the faster the prompt processing will be. Overall performance will increase with an increase in memory bandwidth (more memory sticks and/or higher DDR version)
-   * Since version 3, this app makes use of the configured Text To Text Free prompt provider instead of running its own Language model, you will thus need only 4-8 cores for the embedding model
+   * This app makes use of the configured Text To Text Free prompt provider instead of running its own Language model, you will thus need only 4-8 cores for the embedding model
 
 * A dedicated machine is recommended
 
@@ -55,6 +54,11 @@ Installation
 
    occ app:enable context_chat
 
+4. Optionally, run two instances of this occ command for faster processing of requests:
+
+.. code-block::
+
+   occ background-job:worker 'OC\TaskProcessing\SynchronousBackgroundJob'
 
 **Note**: Both apps need to be installed and both major version and minor version of the two apps must match for the functionality to work (ie. "v1.3.4" and "v1.3.1"; but not "v1.3.4" and "v2.1.6"; and not "v1.3.4" and "v1.4.5"). Keep this in mind when updating.
 
@@ -95,11 +99,7 @@ Nextcloud customers should file bugs directly with our Customer Support.
 Known Limitations
 -----------------
 
-* The underlying language model used by Context Chat cannot be changed
-* We currently only support the English language
 * Language models are likely to generate false information and should thus only be used in situations that are not critical. It's recommended to only use AI at the beginning of a creation process and not at the end, so that outputs of AI serve as a draft for example and not as final product. Always check the output of language models before using it.
 * Make sure to test this app for whether it meets your use-case's quality requirements
 * Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI)
-* Due to technical limitations that we are in the process of mitigating, each task currently incurs a time cost of between 0 and 5 minutes in addition to the actual processing time
 * Nextcloud usernames can be only 56 characters long. This is a limitation of the vector database we use (Chroma DB) and will be fixed soon.
-* AI as a service providers like OpenAI integration, LLM2, etc. don't work with this app as of now. We are in process of integrating them.
