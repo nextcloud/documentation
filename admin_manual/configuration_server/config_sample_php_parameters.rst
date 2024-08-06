@@ -2031,6 +2031,21 @@ Defaults to the following providers:
  - ``OC\Preview\TXT``
  - ``OC\Preview\XBitmap``
 
+metadata_max_filesize
+^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'metadata_max_filesize' => 256,
+
+Maximum file size for metadata generation.
+
+If a file exceeds this size, metadata generation will be skipped.
+Note: memory equivalent to this size will be used for metadata generation.
+
+Default: 256 megabytes.
+
 LDAP
 ----
 
