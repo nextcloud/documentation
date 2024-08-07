@@ -788,6 +788,9 @@ mail_smtpdebug
 
 Enable SMTP class debugging.
 
+NOTE: ``loglevel`` will likely need to be adjusted too. See docs:
+  https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/email_configuration.html#enabling-debug-mode
+
 Defaults to ``false``
 
 mail_smtpmode
@@ -1712,6 +1715,8 @@ customclient_desktop
 		'https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8',
 	'customclient_ios_appid' =>
 			'1125420102',
+	'customclient_fdroid' =>
+		'https://f-droid.org/packages/com.nextcloud.client/',
 
 This section is for configuring the download links for Nextcloud clients, as
 seen in the first-run wizard and on Personal pages.
@@ -1722,6 +1727,7 @@ Defaults to:
 - Android client: ``https://play.google.com/store/apps/details?id=com.nextcloud.client``
 - iOS client: ``https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8``
 - iOS client app id: ``1125420102``
+- F-Droid client: ``https://f-droid.org/packages/com.nextcloud.client/``
 
 Apps
 ----
