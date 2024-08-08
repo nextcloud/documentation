@@ -30,7 +30,7 @@ rarely required with Amazon, but some legacy Amazon datacenters may require it. 
 :code:`Legacy (v2) authentication` unselected.
 
 **If you using a non-Amazon hosted S3 store:** you will need to set the :code:`Hostname` 
-parameter (and can ignore the :code:`Region` parameter). You may need to enable :code:`Enable Path Style` 
+parameter. If your non-Amazon S3 store has a region code, enter it in :code:`Region`. You may need to enable :code:`Enable Path Style` 
 if your non-Amazon S3 store does *not* support requests like :code:`https://bucket.hostname.domain/`.
 Setting :code:`Enable Path Style` to true configures the S3 client to make requests like 
 :code:`https://hostname.domain/bucket` instead. It's rare to need :code:`Legacy (v2) authentication`, but
