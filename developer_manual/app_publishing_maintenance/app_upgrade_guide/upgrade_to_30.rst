@@ -31,6 +31,26 @@ Capabilities
 Front-end changes
 -----------------
 
+Clickable area
+^^^^^^^^^^^^^^
+The size of the CSS variable ``--clickable-area`` variable has shrunk from ``44px`` to ``34px``. 
+This will result in several regressions and paper-cuts in your app that will need to be manually fixed.
+It's recommended to:
+
+1) Link the @nextcloud/vue current master to your app (pull often cause fixes are getting in there too);
+2) Do a codebase-wide search of `44px` and replace with the variable `--default-clickable-area` if appropriate;
+3) Check for regressions and visual bugs;
+4) Report the regression of your app in this issue (you can create a heading with the name of your own app);
+5) Also report @nextlcoud/vue library regressions if they're not reported already in their list;
+6) Fix regression in your app (only the ones that are unrelated to the @nextcloud/vue components);
+
+Line height
+^^^^^^^^^^^
+The ``--default-line-height`` variable has changed from ``24px``` to ``1.5`` for the ``--default-font-size`` this 
+means that the actual value in pixel will go from 24 to 22.5. Although this is a slight change, it's recommended 
+to check for visual regressions in your app.
+
+
 Font sizes
 ^^^^^^^^^^
 
