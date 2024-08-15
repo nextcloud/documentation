@@ -77,6 +77,30 @@ The border radius CSS variables have been refactored:
   - ``--border-radius-pill`` is deprecated now in favor of ``--border-radius-element``.
   - ``--border-radius-rounded`` is deprecated now in favor of ``--border-radius-container``.
 
+CSP Nonce
+^^^^^^^^^
+
+A bug was fixed that prevented Nextcloud form using the ``CSP_NONCE`` environment variable,
+this now means that the CSP nonce for JavaScript assets is no longer (guaranteed to be) based on the CSRF token.
+Instead administrators can choose to use a differently generated token.
+When using JavaScript modules this does not make a difference, as they are imported and the nonce has only to be set on the root module (done by Nextcloud),
+but if you are using Webpack or otherwise dynamically load scripts, you now need adjust the CSP nonce handling.
+
+Get the CSP nonce:
+
+- Either use ``getCSPNonce`` from the ``@nextcloud/auth`` :ref:`package<js-library_nextcloud-auth>`, which is also backwards compatible.
+- Or directly read the nonce from the ``<meta name="csp-nonce" />`` tag.
+
+When using Webpack:
+
+.. code-block:: diff
+
+    - import { getRequestToken } from '@nextcloud/auth'
+    - __webpack_nonce__ = btoa(getRequestToken())
+    + import { getCSPNonce } from '@nextcloud/auth'
+    + __webpack_nonce__ = getCSPNonce()
+
+
 Added APIs
 ^^^^^^^^^^
 
