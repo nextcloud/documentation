@@ -178,6 +178,51 @@ Alternatively, you can ``export`` the variable or use the ``-E`` switch for ``su
 Enabling autocompletion
 -----------------------
 
+Method 1: Using an alias and standard built-in ``complete``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Two script files are used to enable autocompletion::
+
+* bash-tab-completion-occ.sh
+* occ.bash
+
+Run ``bash-tab-completion-occ.sh`` by sourcing the file, using one of these methods:
+
+* ``source bash-tab-completion-occ.sh``
+* ``. bash-tab-completion-occ.sh``
+
+That script will generate an alias for ``occ`` in the form of::
+
+ alias occ='sudo user=... php /path/to/nextcloud/occ'
+
+where the ``user=`` name is derived from the owner of the file
+``config/config.php``.
+
+
+Once the alias has been created, there is an option to run it, then
+have it persist across logins and reboots by optionally appending it to
+``~/.bash_aliases``, if it exists, otherwise to ``~/.bashrc``.
+
+Next, the script will optionally run ``occ.bash``, which enables and handles
+the tab completions.
+
+Finally, the script will offer to copy the ``occ.bash`` to the user's
+completions directory ``~/.local/share/bash-completion/completions/`` so it is
+automatically available for future sessions.
+
+Once the alias is installed and ``occ.bash`` sourced, ``occ [tab][tab]`` will
+offer available options, regardless of present working directory.
+
+``occ.bash`` will attempt to offer completion options of:
+
+* user_ids if, i.e. ``occ files:scan [tab][tab]`` is entered
+* apps if, i.e. occ ``talk:command:list [tab][tab]`` is entered
+* file system entries if, i.e. ``occ files:scan --path [tab][tab]`` is entered
+* file system entries if, i.e. ``occ config:import`` is entered
+
+Method 2: Using symfony
+^^^^^^^^^^^^^^^^^^^^^^^
+
 .. note:: Command autocompletion currently only works if the user you use to execute the occ commands has a profile.
   ``www-data`` in most cases is ``nologon`` and therefore **cannot** use this feature.
 
