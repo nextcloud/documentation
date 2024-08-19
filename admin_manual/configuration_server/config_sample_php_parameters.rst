@@ -788,6 +788,9 @@ mail_smtpdebug
 
 Enable SMTP class debugging.
 
+NOTE: ``loglevel`` will likely need to be adjusted too. See docs:
+  https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/email_configuration.html#enabling-debug-mode
+
 Defaults to ``false``
 
 mail_smtpmode
@@ -1582,6 +1585,15 @@ log.condition
 		'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
 		'users' => ['sample-user'],
 		'apps' => ['files'],
+		'matches' => [
+			[
+				'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
+				'users' => ['sample-user'],
+				'apps' => ['files'],
+				'loglevel' => 1,
+				'message' => 'contains substring'
+			],
+		],
 	],
 
 Log condition for log level increase based on conditions. Once one of these
@@ -1595,6 +1607,9 @@ Supported conditions:
                this condition is met
  - ``apps``:   if the log message is invoked by one of the specified apps,
                this condition is met
+ - ``matches``: if all the conditions inside a group match,
+               this condition is met. This allows to log only entries to an app
+               by a few users.
 
 Defaults to an empty array.
 
@@ -1700,6 +1715,8 @@ customclient_desktop
 		'https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8',
 	'customclient_ios_appid' =>
 			'1125420102',
+	'customclient_fdroid' =>
+		'https://f-droid.org/packages/com.nextcloud.client/',
 
 This section is for configuring the download links for Nextcloud clients, as
 seen in the first-run wizard and on Personal pages.
@@ -1710,6 +1727,7 @@ Defaults to:
 - Android client: ``https://play.google.com/store/apps/details?id=com.nextcloud.client``
 - iOS client: ``https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8``
 - iOS client app id: ``1125420102``
+- F-Droid client: ``https://f-droid.org/packages/com.nextcloud.client/``
 
 Apps
 ----
@@ -1934,7 +1952,8 @@ preview_ffmpeg_path
 
 custom path for ffmpeg binary
 
-Defaults to ``null`` and falls back to searching ``avconv`` and ``ffmpeg`` in the configured ``PATH`` environment
+Defaults to ``null`` and falls back to searching ``avconv`` and ``ffmpeg``
+in the configured ``PATH`` environment
 
 preview_imaginary_url
 ^^^^^^^^^^^^^^^^^^^^^
@@ -1946,13 +1965,12 @@ preview_imaginary_url
 
 Set the URL of the Imaginary service to send image previews to.
 
-Also requires the
- - ``OC\Preview\Imaginary``
-provider to be enabled in the 'enabledPreviewProviders' array, to create previews for these mimetypes:
-bmp, x-bitmap, png, jpeg, gif, heic, heif, svg+xml, tiff, webp and illustrator.
-If you want Imaginary to also create preview images from PDF Documents, you have to add
- - ``OC\Preview\ImaginaryPDF``
-provider as well.
+Also requires the ``OC\Preview\Imaginary`` provider to be enabled in the
+``enabledPreviewProviders`` array, to create previews for these mimetypes: bmp,
+x-bitmap, png, jpeg, gif, heic, heif, svg+xml, tiff, webp and illustrator.
+
+If you want Imaginary to also create preview images from PDF Documents, you
+have to add the ``OC\Preview\ImaginaryPDF`` provider as well.
 
 See https://github.com/h2non/imaginary
 
@@ -2018,6 +2036,21 @@ Defaults to the following providers:
  - ``OC\Preview\PNG``
  - ``OC\Preview\TXT``
  - ``OC\Preview\XBitmap``
+
+metadata_max_filesize
+^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'metadata_max_filesize' => 256,
+
+Maximum file size for metadata generation.
+
+If a file exceeds this size, metadata generation will be skipped.
+Note: memory equivalent to this size will be used for metadata generation.
+
+Default: 256 megabytes.
 
 LDAP
 ----

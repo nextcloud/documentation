@@ -10,6 +10,7 @@ Transforming source files into a deliverable is documented in the :ref:`app-rele
    maintainer
    release_process
    Publishing App on the App Store <https://nextcloudappstore.readthedocs.io/en/latest/developer.html>
+   monetizing
    publishing
    code_signing
    release_automation

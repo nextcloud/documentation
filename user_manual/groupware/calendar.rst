@@ -43,7 +43,7 @@ Import a Calendar
 If you want to transfer your calendar and their respective events to your Nextcloud
 instance, importing is the best way to do so.
 
-.. figure:: images/calendar_settings.png
+.. figure:: images/calendar_settings_sidebar.png
             :scale: 80%
 
 1. Click on the settings-icon labeled with ``Settings & Import`` at the left-bottom.
@@ -70,16 +70,30 @@ hard drive or delete it forever.
 
 .. figure:: images/calendar_dropdown.png
 
-1. Click on the three-dot-menu of the respective calendar.
+Click on the "pen" icon of the respective calendar. You will see a new popup that will allow you to change 
+the calendar name and color, and buttons to delete or export the calendar.
 
-.. figure:: images/calendar_editing.png
+.. figure:: images/calendar_settings.png
 
-2. Click on *Edit name*, *Edit color*, *Export* or *Delete*.
+Calendar Transparency
+~~~~~~~~~~~~~~~~~~~~~
+
+You can toggle the checkbox "Never show me as busy (set calendar to transparent)" to influence if this calendars' events
+are taken into account in Free/Busy calculations. If checked, no events in this calendar will be taken into account, your schedule will 
+always be free, regardless of an events' settings.
+
+.. figure:: images/calendar_transparency.png
 
 Sharing calendars
 ~~~~~~~~~~~~~~~~~
 
-You may share your calendar with other users or groups. Calendars may be shared with write access or read-only. When sharing a calendar with write access, users with whom the calendar is shared will be able to create new events into the calendar as well as edit and delete existing ones.
+You may share your calendar with other users or groups.
+
+.. figure:: images/calendar_sharing_1.png
+
+Calendars may be shared with write access or read-only. When sharing a calendar with write access, users with whom the calendar is shared will be able to create new events into the calendar as well as edit and delete existing ones.
+
+.. figure:: images/calendar_sharing_2.png
 
 .. note:: Calendar shares currently cannot be accepted or rejected. If you want to stop having a calendar that someone shared with you, you can click on the 3-dot menu next to the calendar in the calendar list and click on "Unshare from me". To restore a share, the calendar can be reshared again, either for the whole group, resetting all unshares, or for a single user.
 
@@ -152,8 +166,8 @@ The month-view only requires a single click into the area of the target day.
 
 .. figure:: images/calendar_new-event_month.png
 
-After that, you can type in the event's name (e.g. **Meeting with Lukas**), choose
-the calendar in which you want to save the event to (e.g. **Personal**, **Work**),
+After that, you can type in the event's name (e.g. **Meeting with Linus**), choose
+the calendar in which you want to save the event to (e.g. **Personal**, **Community Events**),
 check and concretize the time span or set the event as an all-day event. Optionally
 you can specify a location and a description.
 
@@ -203,8 +217,6 @@ Attendees may be other users on your Nextcloud instances, contacts in your addre
 
 .. tip:: When adding other Nextcloud users as attendees to an event, you may access their free-busy information if available, helping you determine when the best time slot for your event is. Set your :ref:`working hours<calendar-working-hours>` to let others know when you are available. Free-busy information is only available for other users on the same Nextcloud instance.
 
-.. attention:: Only the calendar owner can send out invitations. The sharees are not able to do that, whether they have write access to the event's calendar or not.
-
 .. attention:: The server administration needs to setup the e-mail server in the ``Basic settings`` tab, as this mail will be used to send invitations.
 
 Checking attendees' busy times
@@ -226,7 +238,7 @@ Similar to attendees you can add rooms and resources to your events. The system 
 
 Room availability
 ~~~~~~~~~~~~~~~~~
-.. versionadded:: 4.8
+.. versionadded:: 5.0
 
 If the "Calendar Rooms and Resources" app is installed on your instance, you can now find ``Room availability``  the ``Resources`` section. It lists all the existing rooms. You can check the availability of each room in a manner similar to checking the free/busy status of event attendees.
 
@@ -237,7 +249,7 @@ Add attachments to events
 You can import attachments to your events either by uploading them or adding them from files
 
 .. figure:: images/calendar_adding_attachments.png
-   :scale: 40%
+   :scale: 80%
 
 .. note:: Attachments can be added while creating new events or editing existent ones.
    Newly uploaded files will be saved in files by default in the calendar folder in the root directory.
@@ -382,10 +394,12 @@ For a selected day there will be a list with all the possible time slots. On day
 too many conflicts or a reached daily maximum limit of already booked appointments, the list might be empty.
 
 .. figure:: images/appointment_booking_1.png
+      :scale: 80%
 
 For the booking, attendees have to enter a name and an email address. Optionally they can also add a comment.
 
 .. figure:: images/appointment_booking_2.png
+      :scale: 80%
 
 When the booking was successful, a confirmation dialogue will be shown to the attendee.
 

@@ -35,12 +35,15 @@ Development
 Most packages are written in TypeScript in order to generate better API docs automatically but also to ensure compatibility with Nextcloud server in a programmatic way. The server is typed in `a dedicated npm package <https://www.npmjs.com/package/@nextcloud/typings>`_ that is used to check type soundness.
 
 
+
 Packages in detail
 ^^^^^^^^^^^^^^^^^^
 
 
 The rest of this section will cover a rough overview of which packages are provided and what they are used for.
 
+
+.. _js-library_nextcloud-auth:
 
 ``@nextcloud/auth``
 ^^^^^^^^^^^^^^^^^^^

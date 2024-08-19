@@ -2,6 +2,24 @@
 Calendar / CalDAV
 =================
 
+Calendar server settings
+------------------------
+
+The calendar server can be configured on the Groupware admin settings page.
+You can globally disable sending invitation emails for events, generating the built-in birthday
+calendar, and sending email notifications about upcoming events.
+
+.. figure:: images/settings_calendar-server.png
+  :scale: 60%
+
+.. versionadded:: 30 The section will be hidden if no app makes use of the CalDAV backend.
+
+Starting from Nextcloud 30, the calendar server settings section will be hidden if no app uses the
+CalDAV backend.
+Install and enable an appropriate app to show the section again, e.g.
+`Calendar <https://apps.nextcloud.com/apps/calendar>`_ or
+`Tasks <https://apps.nextcloud.com/apps/tasks>`_.
+
 Events
 ------
 
@@ -99,9 +117,10 @@ Refresh rate
 ~~~~~~~~~~~~
 
 Calendar subscriptions are cached on server and refreshed periodically.
-The default refresh rate is one week, unless the subscription itself tells otherwise.
+If the calendar server provides a `refresh interval <https://icalendar.org/New-Properties-for-iCalendar-RFC-7986/5-7-refresh-interval-property.html>`_, it is respected.
+Otherwise the default refresh rate is one week.
 
-To set up a different default refresh rate, change the ``calendarSubscriptionRefreshRate`` option::
+To set up a different default refresh rate for calendars without server side refrsh rates, change the ``calendarSubscriptionRefreshRate`` option::
 
  php occ config:app:set dav calendarSubscriptionRefreshRate --value "P1D"
 

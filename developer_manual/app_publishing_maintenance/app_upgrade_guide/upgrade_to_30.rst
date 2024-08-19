@@ -31,12 +31,75 @@ Capabilities
 Front-end changes
 -----------------
 
+Clickable area
+^^^^^^^^^^^^^^
+The size of the CSS variable ``--clickable-area`` variable has shrunk from ``44px`` to ``34px``. 
+This will result in several regressions and paper-cuts in your app that will need to be manually fixed.
+It's recommended to:
+
+1) Link the ``@nextcloud/vue`` current master to your app (pull often cause fixes are getting in there too);
+2) Do a codebase-wide search of `44px` and replace with the variable `--default-clickable-area` if appropriate;
+3) Check for regressions and visual bugs;
+4) Report the regression of your app in this issue (you can create a heading with the name of your own app);
+5) Also report ``@nextlcoud/vue`` library regressions if they're not reported already in their list;
+6) Fix regression in your app (only the ones that are unrelated to the ``@nextcloud/vue`` components);
+
+Line height
+^^^^^^^^^^^
+The ``--default-line-height`` variable has changed from ``24px``` to ``1.5`` for the ``--default-font-size`` this 
+means that the actual value in pixel will go from 24 to 22.5. Although this is a slight change, it's recommended 
+to check for visual regressions in your app.
+
+
 Font sizes
 ^^^^^^^^^^
 
 Nextcloud now provides meaningful default styles for heading elements.
 This can cause visual regressions if your code does not explicitly set font size and weight.
 If you need to use heading elements outside of text content, you might need to adjust their styles.
+
+Border radius
+^^^^^^^^^^^^^
+
+The border radius CSS variables have been refactored:
+
+- Added
+
+  - ``--border-radius-small`` was added for smaller elements like chips.
+  - ``--border-radius-container`` was added for smaller containers like action menus.
+  - ``--border-radius-container-large`` was added for larger containers like body or modals.
+  - ``--border-radius-element`` was added for interactive elements such as buttons, input, navigation and list items.
+
+- Deprecated
+
+  - ``--border-radius`` is deprecated now in favor of ``--border-radius-small``.
+  - ``--border-radius-large`` is deprecated now in favor of ``--border-radius-element``.
+  - ``--border-radius-pill`` is deprecated now in favor of ``--border-radius-element``.
+  - ``--border-radius-rounded`` is deprecated now in favor of ``--border-radius-container``.
+
+CSP Nonce
+^^^^^^^^^
+
+A bug was fixed that prevented Nextcloud form using the ``CSP_NONCE`` environment variable,
+this now means that the CSP nonce for JavaScript assets is no longer (guaranteed to be) based on the CSRF token.
+Instead administrators can choose to use a differently generated token.
+When using JavaScript modules this does not make a difference, as they are imported and the nonce has only to be set on the root module (done by Nextcloud),
+but if you are using Webpack or otherwise dynamically load scripts, you now need adjust the CSP nonce handling.
+
+Get the CSP nonce:
+
+- Either use ``getCSPNonce`` from the ``@nextcloud/auth`` :ref:`package<js-library_nextcloud-auth>`, which is also backwards compatible.
+- Or directly read the nonce from the ``<meta name="csp-nonce" />`` tag.
+
+When using Webpack:
+
+.. code-block:: diff
+
+    - import { getRequestToken } from '@nextcloud/auth'
+    - __webpack_nonce__ = btoa(getRequestToken())
+    + import { getCSPNonce } from '@nextcloud/auth'
+    + __webpack_nonce__ = getCSPNonce()
+
 
 Added APIs
 ^^^^^^^^^^
@@ -179,10 +242,49 @@ Deprecated APIs
 - Calling ``OCP\DB\QueryBuilder\IQueryBuilder::update()`` with ``$alias`` is deprecated and will throw an exception in a future version as the underlying library is removing the functionality.
 - Calling ``OCP\IDBConnection::getDatabasePlatform()`` is deprecated and will throw an exception in a future version as the underlying library is renaming and removing platforms which breaks the backwards-compatibility. Use ``getDatabaseProvider()`` instead.
 - Calling ``OCP\Files\Lock\ILockManager::registerLockProvider()`` is deprecated and will be removed in the future. Use ``registerLazyLockProvider()`` instead.
-- Using ``OCP\Translation`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead.
-- Using ``OCP\SpeechToText`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead. Existing ``SpeechToText`` providers will continue to work with the TaskProcessing API until then.
-- Using ``OCP\TextToImage`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead. Existing ``TextToImage`` providers will continue to work with the TaskProcessing API until then.
-- Using ``OCP\TextProcessing`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead. Existing ``TextProcessing`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\Translation`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`).
+- Using ``OCP\Translation\CouldNotTranslateException`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`).
+- Using ``OCP\Translation\IDetectLanguageProvider`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`).
+- Using ``OCP\Translation\ITranslationManager`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`).
+- Using ``OCP\Translation\ITranslationProvider`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`).
+- Using ``OCP\Translation\ITranslationProviderWithId`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`).
+- Using ``OCP\Translation\ITranslationProviderWithUserId`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`).
+- Using ``OCP\Translation\LanguageTuple`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`).
+- Using ``OCP\SpeechToText`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``SpeechToText`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\SpeechToText\Events\AbstractTranscriptionEvent`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``SpeechToText`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\SpeechToText\Events\TranscriptionFailedEvent`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``SpeechToText`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\SpeechToText\Events\TranscriptionSuccessfulEvent`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``SpeechToText`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\SpeechToText\ISpeechToTextManager`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``SpeechToText`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\SpeechToText\ISpeechToTextProvider`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``SpeechToText`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\SpeechToText\ISpeechToTextProviderWithId`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``SpeechToText`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\SpeechToText\ISpeechToTextProviderWithUserId`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``SpeechToText`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextToImage`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextToImage`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextToImage\Task`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextToImage`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextToImage\IProviderWithUserId`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextToImage`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextToImage\IProvider`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextToImage`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextToImage\IManager`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextToImage`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextToImage\Exception\TextToImageException`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextToImage`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextToImage\Exception\TaskNotFoundException`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextToImage`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextToImage\Exception\TaskFailureException`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextToImage`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextToImage\Events\TaskSuccessfulEvent`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextToImage`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextToImage\Events\TaskFailedEvent`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextToImage`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextToImage\Events\AbstractTextToImageEvent`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextToImage`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextProcessing`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextProcessing`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextProcessing\Events\AbstractTextProcessingEvent`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextProcessing`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextProcessing\Events\TaskFailedEvent`` is deprecated and will be removed in the future.Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextProcessing`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextProcessing\Events\TaskSuccessfulEvent`` is deprecated and will be removed in the future.Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextProcessing`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextProcessing\Exception\TaskFailureException`` is deprecated and will be removed in the future.Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextProcessing`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextProcessing\FreePromptTaskType`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextProcessing`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextProcessing\HeadlineTaskType`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextProcessing`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextProcessing\IManager`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextProcessing`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextProcessing\IProvider`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextProcessing`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextProcessing\IProviderWithExpectedRuntime`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextProcessing`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextProcessing\IProviderWithId`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextProcessing`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextProcessing\IProviderWithUserId`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextProcessing`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextProcessing\ITaskType`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextProcessing`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextProcessing\SummaryTaskType`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextProcessing`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextProcessing\Task`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextProcessing`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\TextProcessing\TopicsTaskType`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextProcessing`` providers will continue to work with the TaskProcessing API until then.
 
 Removed APIs
 ^^^^^^^^^^^^
