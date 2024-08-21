@@ -71,15 +71,15 @@ Usage
 Activating
 ~~~~~~~~~~
 
-Brute force protection is enabled by default on Nextcloud. Its behavior can be adjusted through the 
-``bruteforcesettings`` app (shipped with Server and enabled by default), several ``occ`` commands, and several 
+Brute force protection is enabled by default on Nextcloud. Its behavior can be adjusted through the
+``bruteforcesettings`` app (shipped with Server, but disabled by default), several ``occ`` commands, and several
 ``config.php`` parameters. Its effectiveness is highly dependent on having a properly configured environment, 
 particularly when integrating a reverse proxy with Nextcloud (and associated parameters such as ``trusted_proxies``).
 
 The brute force settings app
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This app, which shipped and enabled by default, makes it possible (via the Web UI) to view the status of a 
+This app (once enabled) makes it possible (via the Web UI) to view the status of a
 connection and modify certain parameters of the brute force protection built into Nextcloud Server.
 
 The user interface added by this app is found under *Administration settings -> Security* under the *Brute-force 
