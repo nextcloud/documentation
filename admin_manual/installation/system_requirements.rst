@@ -14,8 +14,8 @@ For best performance, stability and functionality we have documented some recomm
 +------------------+-----------------------------------------------------------------------+
 | Platform         | Options                                                               |
 +==================+=======================================================================+
-| Operating System | - **Ubuntu 22.04 LTS** (recommended)                                  |
-| (64-bit)         | - Ubuntu 20.04 LTS                                                    |
+| Operating System | - Ubuntu 24.04 LTS                                                    |
+| (64-bit)         | - **Ubuntu 22.04 LTS** (recommended)                                  |
 |                  | - **Red Hat Enterprise Linux 9** (recommended)                        |
 |                  | - Red Hat Enterprise Linux 8                                          |
 |                  | - Debian 12 (Bookworm)                                                |
@@ -24,7 +24,8 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - CentOS Stream                                                       |
 +------------------+-----------------------------------------------------------------------+
 | Database         | - MySQL 8.0 / **8.4** or MariaDB 10.6/ **10.11** (recommended) / 11.4 |
-|                  | - Oracle Database 11g (*only as part of an enterprise subscription*)  |
+|                  | - Oracle Database 11g, 18, 21, 23                                     |
+|                  |   (*only as part of an enterprise subscription*)                      |
 |                  | - PostgreSQL 12/13/14/15/16                                           |
 |                  | - SQLite (*only recommended for testing and minimal-instances*)       |
 +------------------+-----------------------------------------------------------------------+

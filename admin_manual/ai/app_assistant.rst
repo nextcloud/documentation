@@ -6,7 +6,7 @@ Nextcloud Assistant
 
 Nextcloud assistant is the primary graphical user interface for interacting with artificial intelligence features in Nextcloud.
 
-It offers the graphical user interface for text processing tasks like summarizing text, generating headlines, and asking arbitrary questions, for Speech-To-Text transcription of media files, for Text-To-Image picture generation and it integrates with the context_chat app to offer in-context answers about your own data stored in Nextcloud. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
+It offers the graphical user interface for the unified AI Task processing API offering features like summarizing text, generating headlines, asking arbitrary questions, transcription of media files, image generation and it integrates with the context_chat app to offer in-context answers about your own data stored in Nextcloud. The assistant app also offers a chat interface to interact with the chosen language model. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
 
 Find the user documentation here: `<https://github.com/nextcloud/assistant/tree/main/docs/user>`_
 
@@ -142,6 +142,8 @@ Chat with AI
 
 The user instructions that are prepended before the chat messages for the AI model to understand the context of the block of text. This is a good place not only to instruct the AI model to be polite and kind but also to for example answer all the queries in a particular language or better yet, follow the user's language. The sky is the limit.
 
+**Note**: The default instructions are optimized to work well across a variety of language models, but may not be optimal for the specific model you choose. Specifically, the model may be tempted to mention the user's name a bit too often and may mention the user's language in an unusual manner.
+
 2. Chat User Instructions for Title Generation
 
 .. code-block::
@@ -158,3 +160,17 @@ This field is appended to the block of chat messages, i.e. attached after the me
 
 The number of latest messages to consider for generating the next message. This does not include the user instructions, which is always considered in addition to this. This value should be adjusted in case you are hitting the token limit in your conversations too often.
 The AI text generation provider should ideally handle the max token limit case.
+
+Improve AI processing throughput
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Most AI tasks will be run as part of the background job system in Nextcloud which only runs jobs every 5 minutes by default.
+To pick up scheduled jobs faster you can set up background job workers that process AI tasks as soon as they are scheduled:
+
+run the following occ commands a daemon (you can also spawn multiple, for parallel processing):
+
+.. code-block::
+
+   occ background-job:worker 'OC\TaskProcessing\SynchronousBackgroundJob'
+
+Make sure to restart these daemons regularly, for example once a day, to make sure the daemon runs the latest code.

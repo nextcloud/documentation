@@ -709,7 +709,7 @@ Example usage::
 
 It is also possible to set the admin group mapping using
 ``occ ldap:set-config $configId ldapAdminGroup $groupId``, but as the Nextcloud
-group ID might not be known (yet) it is recommended (especially for automatized
+group ID might not be known (yet) it is recommended (especially for automated
 setups) to use the `promote-group` command, that would also pull in the group
 and determine the group ID.
 

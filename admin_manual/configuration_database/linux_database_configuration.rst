@@ -18,7 +18,7 @@ Requirements
 
 * Decide whether you wish to use MySQL / MariaDB, PostgreSQL, or Oracle as your database
 * Pick a recommendeded version of your database by checking the Nextcloud :doc:`System Requirements <../installation/system_requirements>`
-* Install and set up the chosen database server software (and preferrred version) before deploying Nextcloud Server
+* Install and set up the chosen database server software (and preferred version) before deploying Nextcloud Server
 
 .. note:: The steps for configuring a third party database are beyond the
   scope of this document.  Please refer to the documentation for your specific
@@ -208,7 +208,7 @@ like this:
   extension=pdo_pgsql.so
   extension=pgsql.so
 
-  [PostgresSQL]
+  [PostgreSQL]
   pgsql.allow_persistent = On
   pgsql.auto_reset_persistent = Off
   pgsql.max_persistent = -1

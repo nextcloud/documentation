@@ -6,7 +6,7 @@ OCS TaskProcessing API
 
 .. versionadded:: 30.0.0
 
-The OCS Text processing API allows you to run text processing tasks, like prompting large language models implemented by apps using  :ref:`the backend Text Processing API<text_processing>`.
+The OCS Task processing API allows you to run task processing tasks, like prompting large language models implemented by apps using  :ref:`the backend Task Processing API<task_processing>`.
 
 The base URL for all calls to this API is: ``<nextcloud_base_url>/ocs/v2.php/taskprocessing/``
 

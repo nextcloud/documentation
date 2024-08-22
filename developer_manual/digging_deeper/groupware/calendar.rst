@@ -108,7 +108,7 @@ Calendar providers
 -------------------
 
 The Nextcloud groupware integration provides access to internal calendars.
-It is, however, for third party apps possible to provide individual calenders.
+It is, however, for third party apps possible to provide individual calendars.
 The section :ref:`Integration of custom calendar providers<calendar-providers>` describes on how to implement a provider within the Nextcloud server.
 
 Resources

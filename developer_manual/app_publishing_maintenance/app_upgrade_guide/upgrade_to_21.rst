@@ -80,5 +80,5 @@ Nextcloud 21 is the last major release that supports an app's ``appinfo/database
 Replaced well-known handler API
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-There was an old, unused and inofficial mechanism to hook into well-known discovery via config settings. This includes ``host-meta``, ``host-meta.json``, ``nodeinfo`` and ``webfinger``. A :ref:`new public API replaces this mechanism<web-host-metadata>` in Nextcloud 21.
+There was an old, unused and unofficial mechanism to hook into well-known discovery via config settings. This includes ``host-meta``, ``host-meta.json``, ``nodeinfo`` and ``webfinger``. A :ref:`new public API replaces this mechanism<web-host-metadata>` in Nextcloud 21.
 

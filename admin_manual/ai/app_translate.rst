@@ -20,9 +20,11 @@ Requirements
 ------------
 
 * Minimal Nextcloud version: 26
-* x86 CPU
+* x86 CPU with 4-8 cores for the app to use (The more cores the faster it will be)
+* 2GB of RAM for the app should be enough
 * GNU lib C (musl is not supported)
 * This app does not support using GPU for processing and may thus not be performing ideally for long texts
+* The workload will run on the web server workers
 
 (*Note*: Nextcloud AIO is currently not supported due to it using musl)
 

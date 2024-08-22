@@ -93,7 +93,7 @@ individually with the following options:
 * Previews
 * Enable Sharing
 * Filesystem check frequency (Never, Once per direct access)
-* Mac NFD Compatability
+* Mac NFD Compatibility
 * Read Only
 
 The **Encryption** checkbox is visible only when the Encryption app is enabled. Note that server-side

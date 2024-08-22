@@ -90,6 +90,20 @@ Mail can move a message to a different folder when it is marked as junk.
 
    .. figure:: images/mail_move-message-to-junk-folder.png
 
+Search in mailbox
+~~~~~~~~~~~~~~~~~
+.. versionadded:: 2.1
+
+At the top of the envelope list in any mail layout, there is a search field shortcut for searching email subjects. Starting from ``version 3.7``, this shortcut allows you to search by subject, recipient (to), or sender (from) by default.
+
+
+Advance search in mailbox
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 3.4
+
+You can access our advanced search feature through a modal located at the end of the search shortcut.
+
 Enable mail body search
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
    .. versionadded:: 3.5
@@ -104,7 +118,7 @@ To enable it:
 
 .. warning:: If you want to also enable it for unified mailboxes you have to do so in Mail settings
 
-By enabling it the main search box will now search in both subjects and mail bodies, and a sperate *Body* option
+By enabling it the main search box will now search in both subjects and mail bodies, and a separate *Body* option
 will appear in advanced search.
 
 Account delegation
@@ -161,7 +175,7 @@ Outbox
 
 When a message has been composed and the "Send" button was clicked, the message is added to the outbox which can be found in the bottom left corner of the left sidebar.
 
-You can also set the date and time for the send operation to a point in the future (see :ref:`Scheduled messages <mail-scheduled-messages>`)- the message will be kept in the outbox until your choosen date and time arrives, then it will be sent automatically.
+You can also set the date and time for the send operation to a point in the future (see :ref:`Scheduled messages <mail-scheduled-messages>`)- the message will be kept in the outbox until your chosen date and time arrives, then it will be sent automatically.
 
 The outbox is only visible when there is a message waiting to be handled by the outbox.
 
@@ -305,3 +319,17 @@ Autoresponders
 .. versionadded:: 3.5 Autoresponder can follow system settings.
 
 The autoresponder is off by default. It can be set manually, or follow the system settings. Following system settings means that the long absence message entered on the :ref:`Absence settings section <groupware-absence>` is applied automatically.
+
+Follow-up reminders
+-------------------
+
+.. versionadded:: 4.0
+
+The Mail app will automatically remind you when an outgoing email did not receive a response.
+Each sent email will be analyzed by an AI to check whether a reply is expected.
+After four days all relevant emails will be shown in your priority inbox.
+
+When clicking on such an email a button will be shown to quickly follow up with all recipients.
+It is also possible to disable follow-up reminders for a sent email.
+
+.. note:: Please note that the feature has to be enabled by the administrator.

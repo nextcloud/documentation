@@ -24,7 +24,7 @@ needs. The supported caching backends are:
 
 * `APCu <https://pecl.php.net/package/APCu>`_, APCu 4.0.6 and up required.
    A local cache for systems.
-* `Redis <http://redis.io/>`_, PHP module 2.2.6 and up required.
+* `Redis <http://redis.io/>`_, server 4.0.0 and up required.
    For local and distributed caching, as well as transactional file locking.
 * `Memcached <https://www.memcached.org/>`_
    For distributed caching.
@@ -206,7 +206,7 @@ The following options are available to configure when using a redis cluster (all
       'dbindex'         => 0,
    ],
       
-.. note:: The port is required as part of the server URL. However, it is not necesarry to list all servers: for example, if all servers are load balanced via the same DNS name, only that server name is required.
+.. note:: The port is required as part of the server URL. However, it is not necessary to list all servers: for example, if all servers are load balanced via the same DNS name, only that server name is required.
 
 Connecting to single Redis server over TCP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

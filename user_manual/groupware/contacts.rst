@@ -131,7 +131,7 @@ with iOS, macOS, Thunderbird and other CardDAV clients.
 Circles
 -------
 
-Informal collaboration takes place within organizations: an event to organize for a few weeks, a short ideation session between members from differents entities, workshops, a place to joke around and support team building, or simply in very organic organizations where formal structure is kept to a minimum.
+Informal collaboration takes place within organizations: an event to organize for a few weeks, a short ideation session between members from different entities, workshops, a place to joke around and support team building, or simply in very organic organizations where formal structure is kept to a minimum.
 
 For all these reasons, Nextcloud supports Circles, a feature embedded in the Contacts app, where every user is able to create its own circle, a user-defined aggregate of accounts. Circles can be used later on to share files and folders, added to Talk conversations, like a regular group.
 

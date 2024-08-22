@@ -20,7 +20,7 @@ You can disable access to the system address book by using the app config value 
 
 Run ``occ config:app:set dav system_addressbook_exposed --value="no"`` to disable access to the system address book for all users. Please note that this does not influence :ref:`Federated sharing<label-direct-share-link>`.
 
-.. warning:: If clients have already connected to the CalDAV endpoint, the clients might experience sync issues after system address book access was disabled. This can often be remedied by chosing a different default address book on the client and forcing a resync.
+.. warning:: If clients have already connected to the CalDAV endpoint, the clients might experience sync issues after system address book access was disabled. This can often be remedied by choosing a different default address book on the client and forcing a resync.
 
 Privacy and User Property Scopes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

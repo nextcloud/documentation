@@ -177,6 +177,23 @@ information about the TLS settings.
 
 Also ensure that HTTP compression is disabled to mitigate the BREACH attack.
 
+Restrict admin actions to a specific range of IP addresses
+----------------------------------------------------------
+
+Configure ``allowed_admin_ranges`` in ``config.php`` to restrict the admin actions to trusted IP ranges.
+
+This can be achieved with this kind of setting, usually using private IP ranges::
+
+  'allowed_admin_ranges' => [
+    '127.0.0.1/8',
+    '192.168.0.0/16',
+    'fd00::/8',
+  ]
+
+All requests originating from IP addresses outside of these ranges will not be able to execute admin actions.
+
+Administrators connected from untrusted IP addresses will be able to use Nextcloud, but all admin specific actions will be hidden.
+
 Use a dedicated domain for Nextcloud
 ------------------------------------
 
@@ -236,7 +253,7 @@ security headers are shipped.
 Connections to remote servers
 -----------------------------
 
-Some functionalites require the Nextcloud server to be able to connect remote systems via https/443.
+Some functionalities require the Nextcloud server to be able to connect remote systems via https/443.
 This pragraph also includes the data which is being transmitted to the Nextcloud GmbH.
 Depending on your server setup, these are the possible connections:
 
@@ -252,7 +269,7 @@ Depending on your server setup, these are the possible connections:
 - apps.nextcloud.com
 	- to check for available apps and their updates 
 	- submitted data: subscription key
-- github.com
+- github.com, objects.githubusercontent.com
 	- to download Nextcloud standard apps
 - push-notifications.nextcloud.com
 	- sending push notifications to mobile clients

@@ -179,7 +179,7 @@ Enabling autocompletion
 -----------------------
 
 .. note:: Command autocompletion currently only works if the user you use to execute the occ commands has a profile.
-  ``www-data`` in most cases is ``nologon`` and therefor **cannot** use this feature.
+  ``www-data`` in most cases is ``nologon`` and therefore **cannot** use this feature.
 
 Autocompletion is available for bash (and bash based consoles).
 To enable it, you have to run **one** of the following commands::
@@ -1168,7 +1168,7 @@ mimetype, run ``maintenance:mimetype:update-db --repair-filecache`` to apply the
 change to existing files.
 
 Run the ``maintenance:theme:update`` command if the icons of your custom theme are not
-updated correctly. This updates the mimetypelist.js and cleares the image cache.
+updated correctly. This updates the mimetypelist.js and clears the image cache.
 
 .. _security_commands_label:
 
@@ -1748,7 +1748,7 @@ check for that user via the occ command::
 
 .. note:: This is not supported by all providers.
 
-To re-enable two-factor auth again use the following commmand::
+To re-enable two-factor auth again use the following command::
 
  sudo -u www-data php occ twofactorauth:enable <uid> <provider_id>
 

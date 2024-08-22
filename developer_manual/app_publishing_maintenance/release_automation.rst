@@ -106,8 +106,8 @@ If your repository lives within the nextcloud organization you need to use an en
           environment: release
           runs-on: ubuntu-latest
 
-In this example we use the "release" environment, open the settings of your repository and open the "Envionments" tab, add a new environment with the name "release", make sure to activate "Required reviewers" only add the people you trust, they will be able to approve a release.
-Save your rules and at the bottom add the following envionment secrets.
+In this example we use the "release" environment, open the settings of your repository and open the "Environments" tab, add a new environment with the name "release", make sure to activate "Required reviewers" only add the people you trust, they will be able to approve a release.
+Save your rules and at the bottom add the following environment secrets.
 
 * ``APP_PRIVATE_KEY`` your apps private key
 * ``APP_PUBLIC_CRT`` your apps certificate, this one could be public but for easy usage we add it as a secret
@@ -127,7 +127,7 @@ Also make sure to remove ``environment: release`` .
 
 Makefile changes for code signing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-As your certificate and your private key now are stored in environment variables you need somehow covert them to a file.
+As your certificate and your private key now are stored in environment variables you need somehow convert them to a file.
 One example you may use is provided by the news app.
 
 .. code-block:: php

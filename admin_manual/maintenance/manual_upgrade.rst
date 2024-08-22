@@ -2,10 +2,26 @@
 Upgrade manually
 ================
 
-.. seealso::
+Overview
+--------
 
-   If you upgrade from a previous major version please see :ref:`critical changes<critical-changes>`
-   first.
+In some environments using the Built-in Updater in Web mode is not reliable (such as due to web server
+timeouts) and running it in command-line mode is not an option (such as in some shared hosting environments).
+In these cases a manual upgrade may be the best approach.
+
+A manual upgrade consists of downloading and unpacking the Nextcloud Archive file either to your PC or host. Then
+deleting your existing Nextcloud Server installation files and folders, **except ``data/`` and ``config/``**, on 
+your host. Then moving the new Nextcloud Server installation files into the appropriate place on your host, 
+again preserving your existing ``data/`` and ``config/`` files. And doing a few other housekeeping items, such as
+making sure your installed apps are transferred into the new installation and adjusting permissions. That may sound
+like a lot, but detailed instructions are below.
+
+.. important::
+   Before upgrading, especially between major versions (e.g. v27.y.z -> v28.y.z) please review
+   :ref:`critical changes<critical-changes>` first. These are highlights of changes that may be required
+   in your environment to accommodate changes in Nextcloud Server. These notes are periodically revised as
+   needed so it is a good idea to revisit them even when proceeding with minor and maintenance upgrades just
+   in case.
 
 .. warning::
 
@@ -13,6 +29,10 @@ Upgrade manually
    :doc:`../installation/system_requirements` of the new version as well as that you are 
    following the standard :doc:`upgrade requirements <./upgrade>` (such as upgrading to 
    the latest maintenance release *before* upgrading to a new major release).
+
+
+Step-by-Step Manual Upgrade
+---------------------------
 
 .. important:: Always start by making a fresh backup and disabling all 3rd party apps.
 

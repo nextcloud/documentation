@@ -82,7 +82,7 @@ PostgreSQL
 Synchronising with clients after data recovery
 ----------------------------------------------
 
-By default the Nextcloud server is considered the authorative source for the data.
+By default the Nextcloud server is considered the authoritative source for the data.
 If the data on the server and the client differs
 clients will default to fetching the data from the server.
 
