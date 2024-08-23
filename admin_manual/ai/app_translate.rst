@@ -94,7 +94,7 @@ Positive:
 * the trained model is freely available, and thus can be run on-premises
 * the training data is freely available, making it possible to check or correct for bias or optimise the performance and CO2 usage.
 
-Learn more about the Nextcloud Ethical AI Rating `in our blog<https://nextcloud.com/blog/nextcloud-ethical-ai-rating/>`.
+Learn more about the Nextcloud Ethical AI Rating `in our blog <https://nextcloud.com/blog/nextcloud-ethical-ai-rating/>`.
 
 Known Limitations
 -----------------

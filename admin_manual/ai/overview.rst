@@ -23,6 +23,7 @@ Nextcloud uses modularity to separate raw AI functionality from the Graphical Us
    "Related resources","`Related Resources <https://apps.nextcloud.com/apps/related_resources>`_","Green","Yes","Yes","Yes","Yes"
    "Recommended files","recommended_files","Green","Yes","Yes","Yes","Yes"
    "Machine translation","`Translate <https://apps.nextcloud.com/apps/translate>`_","Green","Yes","Yes - Opus models by University Helsinki","Yes","Yes"
+   "","`Local Machine Translation 2 (ExApp) <https://apps.nextcloud.com/apps/translate2>`_","Green","Yes","Yes - MADLAD models by Google","Yes","Yes"
    "","`LibreTranslate integration <https://apps.nextcloud.com/apps/integration_libretranslate>`_","Green","Yes","Yes - OpenNMT models","Yes","Yes"
    "","`DeepL integration <https://apps.nextcloud.com/apps/integration_deepl>`_","Red","No","No","No","No"
    "","`OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_","Red","No","No","No","No"
@@ -85,6 +86,7 @@ Backend apps
 ~~~~~~~~~~~~
 
 * :ref:`translate<ai-app-translate>` - Runs open source AI translation models locally on your own server hardware (Customer support available upon request)
+* :ref:`translate2 (ExApp)<ai-app-translate2>` - Runs open source AI translation models locally on your own server hardware (Customer support available upon request)
 * *integration_deepl* - Integrates with the deepl API to provide translation functionality from Deepl.com servers (Only community supported)
 * *integration_libretranslate* - Integrates with the open source LibreTranslate API to provide translation functionality hosted commercially or on your own hardware (Only community supported)
 
