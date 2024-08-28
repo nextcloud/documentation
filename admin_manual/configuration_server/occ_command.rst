@@ -1141,6 +1141,7 @@ backups and other tasks that require locking users out until you are finished::
   maintenance:repair                  repair this installation
   maintenance:theme:update            Apply custom theme changes
   maintenance:update:htaccess         Updates the .htaccess file
+  maintenance:repair-share-owner      Fix some shares owner if it felt out of sync
 
 ``maintenance:mode`` locks the sessions of all logged-in users, including
 administrators, and displays a status screen warning that the server is in
@@ -1427,8 +1428,8 @@ View a list of all users' most recent login::
    bob has never logged in.
    layla's last login: 2024-03-20 17:18
    stephanie's last login: 2024-01-11 13:26
-   
-   
+
+
 
 Read user settings::
 
