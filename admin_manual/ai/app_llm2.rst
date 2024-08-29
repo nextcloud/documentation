@@ -16,7 +16,7 @@ This app supports input and output in languages other than English if the underl
 Requirements
 ------------
 
-* This app is built as an External App and thus depends on AppAPI v2.3.0 or higher
+* This app is built as an External App and thus depends on AppAPI v3.1.0 or higher
 * Nextcloud AIO is supported
 * We currently support NVIDIA GPUs and x86_64 CPUs
 * CUDA >= v12.2 on your host system
@@ -64,10 +64,10 @@ Here is an example config file for Llama 2:
 
    {
      "prompt": "<|im_start|> system\n{system_prompt}\n<|im_end|>\n<|im_start|> user\n{user_prompt}\n<|im_end|>\n<|im_start|> assistant\n",
-     "gpt4all_config": {
-       "max_tokens": 4096,
-       "n_predict": 2048,
-       "stop": ["<|im_end|>"]
+     "loader_config": {
+        "n_ctx": 4096,
+        "max_tokens": 2048,
+        "stop": ["<|im_end|>"]
      }
    }
 
@@ -76,11 +76,12 @@ Here is an example configuration for Llama 3:
 .. code-block:: json
 
    {
-     "prompt": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n{system_prompt}<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{user_prompt}<|eot_id|>\n\”<|start_header_id|>assistant<|end_header_id|>\n\n",
-     "gpt4all_config": {
-       "max_tokens": 8000,
-       "n_predict": 4000,
-       "stop": ["<|eot_id|>"]
+     "prompt": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n{system_prompt}<|eot_id|><|start_header_id|>user<|end_header_id|>\n{user_prompt}<|eot_id|>\n<|start_header_id|>assistant<|end_header_id|>\n",
+     "loader_config": {
+         "n_ctx": 8000,
+         "max_tokens": 4000,
+         "stop": ["<|eot_id|>"],
+         "temperature": 0.3
      }
    }
 
