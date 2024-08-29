@@ -14,7 +14,7 @@ If you prefer an automated installation, you have the option to:
 
 .. note:: Please note that the community options are not officially supported by Nextcloud GmbH.
 
-.. note:: For an enterprise-ready and scalable intallation based on helm charts (also available for Podman), please contact Nextcloud Sales.
+.. tip:: For an enterprise-ready and scalable installation based on Helm Charts (also available for Podman), please `contact Nextcloud GmbH <https://nextcloud.com/enterprise/>`_.
 
 In case you prefer installing from the source tarball, you can setup Nextcloud
 from scratch using a classic LAMP stack (Linux, Apache, MySQL/MariaDB, PHP).
