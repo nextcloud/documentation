@@ -8,6 +8,7 @@ Artificial Intelligence
     overview
     app_assistant
     app_translate
+    app_translate2
     app_llm2
     app_stt_whisper2
     app_recognize
