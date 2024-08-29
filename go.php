@@ -11,6 +11,7 @@ $mapping = array(
     'admin-backup'            => '/admin_manual/maintenance/backup.html',
     'admin-bigint-conversion' => '/admin_manual/configuration_database/bigint_identifiers.html',
     'admin-code-integrity'    => '/admin_manual/issues/code_signing.html',
+    'admin-cache'             => '/admin_manual/configuration_server/caching_configuration.html',
     'admin-config'            => '/admin_manual/configuration_server/config_sample_php_parameters.html',
     'admin-db-conversion'     => '/admin_manual/configuration_database/db_conversion.html',
     'admin-db-transaction'    => '/admin_manual/configuration_database/linux_database_configuration.html#database-read-committed-transaction-isolation-level',
