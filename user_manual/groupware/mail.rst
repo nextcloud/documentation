@@ -308,6 +308,8 @@ The mail app supports summarizing message threads that contain 3 or more message
 
 .. note:: Please note that the feature has to be enabled by the administrator
 
+.. note:: Please note that this feature only works well with integration_openai. Local LLMs take too long to respond and the summary request is likely to time out and still create significant system load.
+
 Filtering and autoresponder
 ---------------------------
 
