@@ -33,7 +33,7 @@ Front-end changes
 
 Clickable area
 ^^^^^^^^^^^^^^
-The size of the CSS variable ``--clickable-area`` variable has shrunk from ``44px`` to ``34px``. 
+The size of the CSS variable ``--clickable-area`` variable has shrunk from ``44px`` to ``34px``.
 This will result in several regressions and paper-cuts in your app that will need to be manually fixed.
 It's recommended to:
 
@@ -46,8 +46,8 @@ It's recommended to:
 
 Line height
 ^^^^^^^^^^^
-The ``--default-line-height`` variable has changed from ``24px``` to ``1.5`` for the ``--default-font-size`` this 
-means that the actual value in pixel will go from 24 to 22.5. Although this is a slight change, it's recommended 
+The ``--default-line-height`` variable has changed from ``24px``` to ``1.5`` for the ``--default-font-size`` this
+means that the actual value in pixel will go from 24 to 22.5. Although this is a slight change, it's recommended
 to check for visual regressions in your app.
 
 
@@ -193,6 +193,7 @@ Added APIs
 - ``OCP\AppFramework\Bootstrap\IRegistrationContext::registerTaskProcessingProvider()`` was added to allow registering task processing providers
 - ``OCP\AppFramework\Bootstrap\IRegistrationContext::registerTaskProcessingTaskType()`` was added to allow registering task processing task types
 - ``OCP\Files\IRootFolder::getAppDataDirectoryName()`` was added to allow getting the name of the app data directory
+- ``OCP\AppFramework\Http\JSONResponse()`` constructor now supports passing additional ``json_encode`` flags, see https://www.php.net/manual/en/function.json-encode.php for details
 
 Changed APIs
 ^^^^^^^^^^^^
