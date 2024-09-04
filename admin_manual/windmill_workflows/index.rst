@@ -32,3 +32,8 @@ Nextcloud Scripts
 
 Nextcloud makes available a variety of scripts to be used in Windmill for interfacing with Nextcloud apps. You can find them
 at https://hub.windmill.dev/ or in your windmill instance when selecting existing scripts for creating a new workflow.
+
+Authentication
+~~~~~~~~~~~~~~
+
+All bricks have the option to use "AppAPI Authentication" or normal authentication using a Nextcloud resource in Windmill. When using normal authentication you will need to provide the correct password or app password of the user on behalf of whom you want to execute the script. When using "AppAPI Authentication" you can impersonate any Nextcloud user. This will only work when using the ExApp-packaged version of windmill.
