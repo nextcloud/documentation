@@ -20,6 +20,8 @@ Listening to events
 
 You can use the OCS API to add webhooks for specific events: https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index
 
+Note: When authenticating with the OCS API to register webhooks the account you authenticate as must have administrator rights or delegated administrator rights.
+
 Filters
 ~~~~~~~
 
@@ -33,6 +35,7 @@ You can also use additional comparison operators (``$eq, $ne, $gt, $gte, $lt, $l
 
 Nextcloud Webhook Events
 ------------------------
+
 This is a non-exhaustive list of available events. It features the event ID and the available variables for filtering.
 
  * OCA\\Tables\\Event\\RowAddedEvent

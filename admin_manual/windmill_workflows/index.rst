@@ -17,6 +17,11 @@ Installation
 
    occ app:enable webhook_listeners
 
+Selecting the right Workspace
+-----------------------------
+
+When installing Windmill as an ExApp make sure to select the right workspace on the first run: Only the pre-existing "nextcloud" workspace is hooked up to nextcloud's internal event system, all other workspaces will need manual webhook setups for each workflow.
+
 Building a workflow
 -------------------
 
