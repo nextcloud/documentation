@@ -42,3 +42,19 @@ Authentication
 ~~~~~~~~~~~~~~
 
 All bricks have the option to use "AppAPI Authentication" or normal authentication using a Nextcloud resource in Windmill. When using normal authentication you will need to provide the correct password or app password of the user on behalf of whom you want to execute the script. When using "AppAPI Authentication" you can impersonate any Nextcloud user. This will only work when using the ExApp-packaged version of windmill.
+
+Passing values between blocks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When specifying script inputs you can either fill the parameters with static values or make references to the workflow input and the previous workflow steps.
+
+In order to reference the workflow input, use the ``flow_input`` variable. For example, ``flow_input.event.form.hash`` will reference the hash of a form from a nextcloud Forms event.
+
+In order to reference results from previous steps in your parameters, use the ``results`` variable with the id of the step to reference as a sub property. For example, ``results.e.submission.answers`` to use the answers of of a form submission retrieved via the "Get form submission from Nextcloud Forms" script.
+
+Approval/Suspend steps
+~~~~~~~~~~~~~~~~~~~~~~
+
+Windmill allows using so-called approval steps, which are essentially asynchronous scripts that wait for the call to an additional webhook URL. The most prominent use case for this are approval workflows where you get automated input from somewhere which needs to be approved by a human. Once the human approves or disapproves by triggering the webhook URL the workflow will resume.
+
+Using the scripts provided for Nextcloud, you can send approval links to the humans in charge of approving via Nextcloud Talk or a simple notification in Nextcloud. Of course, you may also use any of the other scripts for sending messages available in the Windmill hub.
