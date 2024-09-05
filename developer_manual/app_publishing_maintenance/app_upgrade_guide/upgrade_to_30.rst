@@ -31,6 +31,9 @@ Capabilities
 Front-end changes
 -----------------
 
+The overall design was changed to be less round and more compact,
+as a part of this some CSS variables were added and other deprecated with Nextcloud 30, see :ref:`cssvars`.
+
 Clickable area
 ^^^^^^^^^^^^^^
 The size of the CSS variable ``--clickable-area`` variable has shrunk from ``44px`` to ``34px``.
@@ -99,19 +102,6 @@ When using Webpack:
     - __webpack_nonce__ = btoa(getRequestToken())
     + import { getCSPNonce } from '@nextcloud/auth'
     + __webpack_nonce__ = getCSPNonce()
-
-
-Added APIs
-^^^^^^^^^^
-
-Changed APIs
-^^^^^^^^^^^^
-
-Removed APIs
-^^^^^^^^^^^^
-
-Removed globals
-^^^^^^^^^^^^^^^
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
@@ -292,6 +282,3 @@ Removed APIs
 
 - ``OCP\Util::isValidFileName`` was deprecated in 8.1.0 and is now removed, use either ``OCP\Files\Storage\IStorage::verifyPath`` or the new ``OCP\Files\IFilenameValidator``.
 - ``OCP\Util::getForbiddenFileNameChars`` was removed, use either ``OCP\Files\Storage\IStorage::verifyPath`` or the new ``OCP\Files\IFilenameValidator`` for filename validation.
-
-Removed events
-^^^^^^^^^^^^^^
