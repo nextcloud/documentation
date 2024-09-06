@@ -51,7 +51,7 @@ When specifying script inputs you can either fill the parameters with static val
 
 In order to reference the workflow input, use the ``flow_input`` variable. For example, ``flow_input.event.form.hash`` will reference the hash of a form from a nextcloud Forms event.
 
-In order to reference results from previous steps in your parameters, use the ``results`` variable with the id of the step to reference as a sub property. For example, ``results.e.submission.answers`` to use the answers of of a form submission retrieved via the "Get form submission from Nextcloud Forms" script.
+In order to reference results from previous steps in your parameters, use the ``results`` variable with the id of the step to reference as a sub property. For example, ``results.e.submission.answers`` to use the answers of of a form submission retrieved via the script identified with the letter "e" (A letter identifier is automatically assigned to each script in a workflow).
 
 Approval/Suspend steps
 ~~~~~~~~~~~~~~~~~~~~~~
