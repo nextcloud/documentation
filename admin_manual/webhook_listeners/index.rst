@@ -38,6 +38,42 @@ Nextcloud Webhook Events
 
 This is an exhaustive list of available events. It features the event ID and the available variables for filtering.
 
+ * OCA\\Forms\\Events\\FormSubmittedEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "class": string,
+        "form": array{
+         "id": int,
+         "hash": string,
+	 "title": string,
+	 "description": string,
+	 "ownerId": string,
+	 "fileId": string|null,
+	 "fileFormat": string|null,
+	 "created": int,
+	 "access": int,
+	 "expires": int,
+	 "isAnonymous": bool,
+	 "submitMultiple": bool,
+	 "showExpiration": bool,
+	 "lastUpdated": int,
+	 "submissionMessage": string|null,
+	 "state": int,
+        },
+        "submission": array{
+          "id": int,
+	  "formId": int,
+	  "userId": string,
+	  "timestamp": int,
+        },
+      }
+    }
+
  * OCA\\Tables\\Event\\RowAddedEvent
 
   .. code-block:: text
