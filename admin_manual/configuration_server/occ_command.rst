@@ -45,6 +45,7 @@ occ command Directory
 * :ref:`disable_user_label`
 * :ref:`system_tags_commands_label`
 * :ref:`antivirus_commands_label`
+* :ref:`setupchecks_commands_label`
 * `Debugging`_
 
 .. _http_user_label:
@@ -1826,6 +1827,25 @@ Manually scan a single file::
 Mark a file as scanned or unscanned::
 
   sudo -u www php occ files_antivirus:mark <path> <scanned|unscanned>
+
+.. _setupchecks_commands_label:
+
+Setupchecks
+-----------
+
+Run the setupchecks via occ::
+
+  sudo -u www php occ setupchecks
+
+Example output::
+
+  dav:
+    ✓ DAV system address book: No outstanding DAV system address book sync.
+  network:
+    ✓ WebDAV endpoint: Your web server is properly set up to allow file synchronization over WebDAV.
+    ✓ Data directory protected
+    ✓ Internet connectivity
+    ...
 
 .. _occ_debugging:
 
