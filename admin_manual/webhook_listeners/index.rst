@@ -36,7 +36,7 @@ You can also use additional comparison operators (``$eq, $ne, $gt, $gte, $lt, $l
 Nextcloud Webhook Events
 ------------------------
 
-This is a non-exhaustive list of available events. It features the event ID and the available variables for filtering.
+This is an exhaustive list of available events. It features the event ID and the available variables for filtering.
 
  * OCA\\Tables\\Event\\RowAddedEvent
 
@@ -99,7 +99,33 @@ This is a non-exhaustive list of available events. It features the event ID and 
       }
     }
 
+ * OCP\\Files\\Events\\Node\\BeforeNodeTouchedEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "class": string,
+        "node": array{"id": string, "path": string}
+      }
+    }
+
  * OCP\\Files\\Events\\Node\\BeforeNodeWrittenEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "class": string,
+        "node": array{"id": string, "path": string}
+      }
+    }
+
+ * OCP\\Files\\Events\\Node\\BeforeNodeReadEvent
 
   .. code-block:: text
 
@@ -122,6 +148,141 @@ This is a non-exhaustive list of available events. It features the event ID and 
       "event": array{
         "class": string,
         "node": array{"id": string, "path": string}
+      }
+    }
+
+ * OCP\\Files\\Events\\Node\\NodeCreatedEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "class": string,
+        "node": array{"id": string, "path": string}
+      }
+    }
+
+ * OCP\\Files\\Events\\Node\\NodeTouchedEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "class": string,
+        "node": array{"id": string, "path": string}
+      }
+    }
+
+ * OCP\\Files\\Events\\Node\\NodeWrittenEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "class": string,
+        "node": array{"id": string, "path": string}
+      }
+    }
+
+ * OCP\\Files\\Events\\Node\\NodeReadEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "class": string,
+        "node": array{"id": string, "path": string}
+      }
+    }
+
+ * OCP\\Files\\Events\\Node\\NodeDeletedEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "class": string,
+        "node": array{"id": string, "path": string}
+      }
+    }
+
+ * OCP\\Files\\Events\\Node\\NodeCopiedEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "class": string,
+        "source": array{"id": string, "path": string}
+        "target": array{"id": string, "path": string}
+      }
+    }
+
+ * OCP\\Files\\Events\\Node\\NodeRestoredEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "class": string,
+        "source": array{"id": string, "path": string}
+        "target": array{"id": string, "path": string}
+      }
+    }
+
+ * OCP\\Files\\Events\\Node\\NodeRenamedEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "class": string,
+        "source": array{"id": string, "path": string}
+        "target": array{"id": string, "path": string}
+      }
+    }
+
+ * OCP\\Files\\Events\\Node\\BeforeNodeCopiedEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "class": string,
+        "source": array{"id": string, "path": string}
+        "target": array{"id": string, "path": string}
+      }
+    }
+
+ * OCP\\Files\\Events\\Node\\BeforeNodeRestoredEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "class": string,
+        "source": array{"id": string, "path": string}
+        "target": array{"id": string, "path": string}
       }
     }
 
