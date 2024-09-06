@@ -20,23 +20,24 @@ Installation
 Selecting the right Workspace
 -----------------------------
 
-When installing Windmill as an ExApp make sure to select the right workspace on the first run: Only the pre-existing "nextcloud" workspace is hooked up to nextcloud's internal event system, all other workspaces will need manual webhook setups for each workflow.
+With Windmill installed as an ExApp, the first time one visits Windmill's web interface, make sure to select the right workspace on the first run: Only the pre-existing "nextcloud" workspace is hooked up to nextcloud's internal event system, all other workspaces will need manual webhook setups for each workflow.
+If the wrong workspace is selected on the first run, it is always possible to switch workspace later in the left sidebar.
 
 Building a workflow
 -------------------
 
-Each workflow in windmill is a listener to a Nextcloud Webhook Event. If you are using the ExApp-packaged windmill, it will automatically register webhooks for the workflows you build using the following mechanism. If you are not using the ExApp-packaged windmill install then you will have to register webhooks for your workflows manually via the webhook_listeners API: see https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index
+Each workflow in Windmill is a listener to a Nextcloud Webhook Event. If you are using the ExApp-packaged Windmill, it will automatically register webhooks for the workflows you build using the following mechanism. If you are not using the ExApp-packaged windmill install then you will have to register webhooks for your workflows manually via the webhook_listeners API: see https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index
 
 The magic listener script
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The first script in any workflow you build that should listen to a nextcloud webhook must be ``CORE:LISTEN_TO_EVENT``. It must be an empty script with two parameters that you should fill statically: ``events``, which is a list of event IDs to listen to and ``filters`` a filter condition that allows more fine grained filtering for which events should be used. The filter condition as well as the available events with their payloads is documented in :ref:`the webhook_listeners documentation<webhook_listeners>`.
+The first script (after the "Input" block) in any workflow you build that should listen to a Nextcloud webhook must be ``CORE:LISTEN_TO_EVENT``. It must be an empty script with two parameters that you should fill statically: ``events``, which is a list of event IDs to listen to and ``filters`` a filter condition that allows more fine grained filtering for which events should be used. The filter condition as well as the available events with their payloads is documented in :ref:`the webhook_listeners documentation<webhook_listeners>`.
 
 Nextcloud Scripts
 -----------------
 
 Nextcloud makes available a variety of scripts to be used in Windmill for interfacing with Nextcloud apps. You can find them
-at https://hub.windmill.dev/ or in your windmill instance when selecting existing scripts for creating a new workflow.
+at https://hub.windmill.dev/integrations/nextcloud and https://hub.windmill.dev/integrations/nextcloud/approvals or in your windmill instance when selecting existing scripts for creating a new workflow.
 
 Authentication
 ~~~~~~~~~~~~~~
