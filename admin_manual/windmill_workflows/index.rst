@@ -23,6 +23,14 @@ Selecting the right Workspace
 With Windmill installed as an ExApp, the first time one visits Windmill's web interface, make sure to select the right workspace on the first run: Only the pre-existing "nextcloud" workspace is hooked up to nextcloud's internal event system, all other workspaces will need manual webhook setups for each workflow.
 If the wrong workspace is selected on the first run, it is always possible to switch workspace later in the left sidebar.
 
+.. image:: images/windmill_initial_workspace_selection.png
+   :alt: Screenshot of the workspace selector screen when opening Windmill for the first time
+
+If you wish to change to a different workspace at a later time, you can do so via the workspace selector in the left sidebar of Windmill.
+
+.. image:: images/windmill_later_workspace_selection.png
+   :alt: Screenshot of the workspace selector when a workspace is already opened
+
 Building a workflow
 -------------------
 
@@ -51,7 +59,7 @@ When specifying script inputs you can either fill the parameters with static val
 
 In order to reference the workflow input, use the ``flow_input`` variable. For example, ``flow_input.event.form.hash`` will reference the hash of a form from a nextcloud Forms event.
 
-In order to reference results from previous steps in your parameters, use the ``results`` variable with the id of the step to reference as a sub property. For example, ``results.e.submission.answers`` to use the answers of of a form submission retrieved via the script identified with the letter "e" (A letter identifier is automatically assigned to each script in a workflow).
+Each step in a workflow is automatically assigned a letter identifier. In order to reference results from previous steps in your parameters, use the ``results`` variable with the id of the step to reference as a sub property. For example, use ``results.e.submission.answers`` to use the answers of of a form submission retrieved via the "Get form submission from Nextcloud Forms" script identified with the letter "e".
 
 Approval/Suspend steps
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -59,3 +67,5 @@ Approval/Suspend steps
 Windmill allows using so-called approval steps, which are essentially asynchronous scripts that wait for the call to an additional webhook URL. The most prominent use case for this are approval workflows where you get automated input from somewhere which needs to be approved by a human. Once the human approves or disapproves by triggering the webhook URL the workflow will resume.
 
 Using the scripts provided for Nextcloud, you can send approval links to the humans in charge of approving via Nextcloud Talk or a simple notification in Nextcloud. Of course, you may also use any of the other scripts for sending messages available in the Windmill hub.
+
+Windmill has a default approval user interface at a specific URL, but it is not very nice. We recommend using the ``approve_links`` apps which allows creating a beautiful temporary approval page with a custom message and approve and disapprove buttons.
