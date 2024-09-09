@@ -188,7 +188,7 @@ This can be achieved with this kind of setting, usually using private IP ranges:
     '127.0.0.1/8',
     '192.168.0.0/16',
     'fd00::/8',
-  ]
+  ],
 
 All requests originating from IP addresses outside of these ranges will not be able to execute admin actions.
 
