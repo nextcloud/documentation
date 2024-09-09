@@ -124,7 +124,7 @@ Frontend apps
 * `Assistant <https://apps.nextcloud.com/apps/assistant>`_ for offering a graphical UI for the various tasks and a smart picker
 * `GPTFreePrompt <https://apps.nextcloud.com/apps/gptfreeprompt>`_ for providing an llm smart picker (deprecated; was merged into assistant)
 * `Mail <https://apps.nextcloud.com/apps/mail>`_ for summarizing mail threads (see :ref:`the Nextcloud Mail docs<mail_thread_summary>` for how to enable this)
-* `SummarAI <https://apps.nextcloud.com/apps/summarai>`_ for summarizing chat histories in `Talk <https://apps.nextcloud.com/apps/spreed>`_
+* `Summary Bot <https://apps.nextcloud.com/apps/summarai>`_ for summarizing chat histories in `Talk <https://apps.nextcloud.com/apps/spreed>`_
 
 Backend apps
 ~~~~~~~~~~~~
