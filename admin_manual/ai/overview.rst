@@ -112,7 +112,6 @@ Backend apps
 
 * :ref:`translate2 (ExApp)<ai-app-translate2>` - Runs open source AI translation models locally on your own server hardware (Customer support available upon request)
 * *integration_deepl* - Integrates with the deepl API to provide translation functionality from Deepl.com servers (Only community supported)
-* *integration_libretranslate* - Integrates with the open source LibreTranslate API to provide translation functionality hosted commercially or on your own hardware (Only community supported)
 
 Speech-To-Text
 ^^^^^^^^^^^^^^
