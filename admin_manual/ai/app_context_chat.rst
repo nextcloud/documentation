@@ -100,6 +100,7 @@ Known Limitations
 -----------------
 
 * Language models are likely to generate false information and should thus only be used in situations that are not critical. It's recommended to only use AI at the beginning of a creation process and not at the end, so that outputs of AI serve as a draft for example and not as final product. Always check the output of language models before using it.
+* Context Chat is not integrated into the Chat UI of assistant app, at the moment, but has it's own interface in the assistant modal
 * Make sure to test this app for whether it meets your use-case's quality requirements
 * Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI)
 * Nextcloud usernames can be only 56 characters long. This is a limitation of the vector database we use (Chroma DB) and will be fixed soon.
