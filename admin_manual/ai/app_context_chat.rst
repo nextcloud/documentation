@@ -13,7 +13,7 @@ Together they provide the ContextChat text processing tasks accessible via the :
 
 The *context_chat* and *context_chat_backend* apps will use the Free text to text task processing providers like OpenAI integration, LLM2, etc. and such a provider is required on a fresh install, or it can be configured to run open source models entirely on-premises. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
 
-This app supports input and output in languages other than English if the language model supports the language.
+This app supports input and output mainly in English, other languages may work if the language model supports the language, but are currently not guaranteed to produce good results.
 
 Requirements
 ------------
@@ -100,6 +100,7 @@ Known Limitations
 -----------------
 
 * Language models are likely to generate false information and should thus only be used in situations that are not critical. It's recommended to only use AI at the beginning of a creation process and not at the end, so that outputs of AI serve as a draft for example and not as final product. Always check the output of language models before using it.
+* Context Chat is not integrated into the Chat UI of assistant app, at the moment, but has it's own interface in the assistant modal
 * Make sure to test this app for whether it meets your use-case's quality requirements
 * Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI)
 * Nextcloud usernames can be only 56 characters long. This is a limitation of the vector database we use (Chroma DB) and will be fixed soon.
