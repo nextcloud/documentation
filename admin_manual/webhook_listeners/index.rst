@@ -33,6 +33,18 @@ If you would like to enforce multiple criteria, you can simply pass multiple pro
 
 You can also use additional comparison operators (``$eq, $ne, $gt, $gte, $lt, $lte, $in, $nin``) as well as logical operators (``$and, $or, $not, $nor``). For example use ``{ "time" : { "$lt": 1711971024 } }`` to accept only events prior to April 1st 2024 and ``{ "time" : { "$not": { "$lt": 1711971024 } } }`` to accept events after April 1st 2024.
 
+Speeding up webhook dispatch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This app uses background jobs to trigger the registered webhooks. Thus, by default, webhooks will be triggered only every 5 minutes, as the default cron interval is 5 minutes.
+To trigger webhooks earlier, you can set up a background job worker. The following command will launch a worker for the webhook call background job:
+
+.. code-block:: bash
+
+   occ background-job:worker "OCA\\WebhookListeners\\BackgroundJobs\\WebhookCall"
+
+It is recommended to restart this worker once a day to make sure code changes are effective and avoid memory leaks, for example by registering it as a systemd service with a daily timer.
+
 Nextcloud Webhook Events
 ------------------------
 
