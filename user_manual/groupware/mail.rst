@@ -308,6 +308,8 @@ The mail app supports summarizing message threads that contain 3 or more message
 
 .. note:: Please note that the feature has to be enabled by the administrator
 
+.. note:: Please note that this feature only works well with integration_openai. Local LLMs take too long to respond and the summary request is likely to time out and still create significant system load.
+
 Filtering and autoresponder
 ---------------------------
 
@@ -333,3 +335,38 @@ When clicking on such an email a button will be shown to quickly follow up with 
 It is also possible to disable follow-up reminders for a sent email.
 
 .. note:: Please note that the feature has to be enabled by the administrator.
+
+Security
+--------
+
+Phishing detection
+~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 4.0 
+
+The Mail app will check for potential phishing attempts and will display a warning to the user.
+
+The checks are the following:
+
+* The sender address saved in the addressbook is not the same as the one in the mail account
+* The sender is using a custom email address that doesn't match the from address
+* The sent date is set in the future
+* Links in the message body are not pointing to the displayed text 
+* The reply-to address is not the same as the sender address
+
+.. note:: Please note that the warning does not mean that the message is a phishing attempt. It only means that the Mail app detected a potential phishing attempt.
+
+Internal addresses
+~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 4.0 
+
+The Mail app allows adding internal addresses and domains, and will warn the user if the address is not in the list, when sending and upon receiving a message.
+
+To add an internal address:
+
+1. Open the mail settings
+2. Navigate to Privacy and security section
+3. Enable the internal addresses by ckicjin on the checkbox
+4. Click the Add internal address button 
+5. Enter the address or domain and click Add

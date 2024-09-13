@@ -1166,6 +1166,10 @@ trashbin_retention_obligation
 If the trash bin app is enabled (default), this setting defines the policy
 for when files and folders in the trash bin will be permanently deleted.
 
+If the user quota limit is exceeded due to deleted files in the trash bin,
+retention settings will be ignored and files will be cleaned up until
+the quota requirements are met.
+
 The app allows for two settings, a minimum time for trash bin retention,
 and a maximum time for trash bin retention.
 
@@ -1743,9 +1747,10 @@ defaultapp
 
 	'defaultapp' => 'dashboard,files',
 
-Set the default app to open on login. Use the app names as they appear in the
-URL after clicking them in the Apps menu, such as documents, calendar, and
-gallery. You can use a comma-separated list of app names, so if the first
+Set the default app to open on login. The entry IDs can be retrieved from
+the Navigations OCS API endpoint: https://docs.nextcloud.com/server/latest/develper_manual/_static/openapi.html#/operations/core-navigation-get-apps-navigation.
+
+You can use a comma-separated list of app names, so if the first
 app is not enabled for a user then Nextcloud will try the second one, and so
 on. If no enabled apps are found it defaults to the dashboard app.
 

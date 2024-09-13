@@ -45,6 +45,7 @@ occ command Directory
 * :ref:`disable_user_label`
 * :ref:`system_tags_commands_label`
 * :ref:`antivirus_commands_label`
+* :ref:`setupchecks_commands_label`
 * `Debugging`_
 
 .. _http_user_label:
@@ -1361,7 +1362,7 @@ report showing how many users you have, and when a user was last logged in::
 You can create a new user with their display name, login name, and any group
 memberships with the ``user:add`` command. The syntax is::
 
- user:add [--password-from-env] [--display-name[="..."]] [-g|--group[="..."]]
+ user:add [--password-from-env] [--generate-password] [--display-name[="..."]] [-g|--group[="..."]] [--email EMAIL]
  uid
 
 The ``display-name`` corresponds to the **Full Name** on the Users page in your
@@ -1411,6 +1412,26 @@ You may also use ``password-from-env`` to reset passwords::
  su -s /bin/sh www-data -c 'php occ user:resetpassword --password-from-env
    layla'
    Successfully reset password for layla
+
+``generate-password`` allows you to set a securely generated password for the user.
+This is never shown in the output and can be used to create users with temporary
+passwords. This can be used in conjunction with the ``email`` option to create
+users with a temporary password and send a welcome email to the user's email
+address without user interaction::
+
+ sudo -u www-data php occ user:add layla --generate-password --email layla@example.tld
+   The account "layla" was created successfully
+   Welcome email sent to layla@example.tld
+
+The ``email`` option allows you to set the user's email address when creating
+the user. A welcome email will be sent to the user's email address if
+``newUser.sendEmail`` is set to ``yes`` in ``core``'s app config or not set at all::
+
+ sudo -u www-data php occ user:add layla --email layla@example.tld
+   Enter password:
+   Confirm password:
+   The account "layla" was created successfully
+   Welcome email sent to layla@example.tld
 
 You can delete users::
 
@@ -1826,6 +1847,25 @@ Manually scan a single file::
 Mark a file as scanned or unscanned::
 
   sudo -u www php occ files_antivirus:mark <path> <scanned|unscanned>
+
+.. _setupchecks_commands_label:
+
+Setupchecks
+-----------
+
+Run the setupchecks via occ::
+
+  sudo -u www php occ setupchecks
+
+Example output::
+
+  dav:
+    ✓ DAV system address book: No outstanding DAV system address book sync.
+  network:
+    ✓ WebDAV endpoint: Your web server is properly set up to allow file synchronization over WebDAV.
+    ✓ Data directory protected
+    ✓ Internet connectivity
+    ...
 
 .. _occ_debugging:
 

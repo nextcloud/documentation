@@ -33,6 +33,7 @@ include the following:
 * :doc:`user_2fa`
 * :doc:`userpreferences`
 * Choose the language for your Nextcloud interface
+* Choose your preferred first day of the week
 * Links to desktop and mobile apps
 * Manage your Activity stream and notifications
 * Default folder to save new documents to

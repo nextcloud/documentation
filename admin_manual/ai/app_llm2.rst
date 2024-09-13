@@ -11,7 +11,21 @@ This app uses `ctransformers <https://github.com/marella/ctransformers>`_ under 
 * `Llama3 8b Instruct <https://huggingface.co/QuantFactory/Meta-Llama-3-8B-Instruct-GGUF>`_ (reasonable quality; fast; good acclaim; multilingual output may not be optimal)
 * `Llama3 70B Instruct <https://huggingface.co/QuantFactory/Meta-Llama-3-70B-Instruct-GGUF>`_ (good quality; good acclaim; good multilingual output)
 
+Multilinguality
+---------------
+
 This app supports input and output in languages other than English if the underlying model supports the language.
+
+Llama 3.1 `supports the following languages: <https://huggingface.co/meta-llama/Meta-Llama-3.1-8B-Instruct#multilingual-benchmarks>`_
+
+* English
+* Portuguese
+* Spanish
+* Italian
+* German
+* French
+* Hindi
+* Thai
 
 Requirements
 ------------
