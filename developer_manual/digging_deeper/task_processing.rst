@@ -20,7 +20,7 @@ To consume the  Task Processing API, you will need to :ref:`inject<dependency-in
  * ``deleteTask(Task $task)`` This method deletes a task
  * ``cancelTask(int $id)`` This method cancels a task specified by its id.
 
-If you would like to use the text processing functionality in a client, there are also OCS endpoints available for this: :ref:`OCS Text Processing API<ocs-taskprocessing-api>`
+If you would like to use the task processing functionality in a client, there are also OCS endpoints available for this: :ref:`OCS Task Processing API<ocs-taskprocessing-api>`
 
 Tasks types
 ^^^^^^^^^^^
@@ -336,7 +336,7 @@ A **Task processing provider** will usually be a class that implements the inter
 
 The method ``getName`` returns a string to identify the registered provider in the user interface.
 
-The method ``process`` implements the text processing step. In case execution fails for some reason, you should throw a ``\OCP\TaskProcessing\Exception\ProcessingException`` with an explanatory error message. Important to note here is that ``Image``, ``Audio``, ``Video`` and ``File`` slots in the input array will be filled with ``\OCP\Files\File`` objects for your convenience. When outputting one of these you should simply return a string, the API will turn the data into a proper file for convenience. The ``$reportProgress`` parameter is a callback that you may use at will to report the task progress as a single float value between 0 and 1. Its return value will indicate if the task is still running (``true``) or if it was cancelled (``false``) and processing should be terminated.
+The method ``process`` implements the task processing step. In case execution fails for some reason, you should throw a ``\OCP\TaskProcessing\Exception\ProcessingException`` with an explanatory error message. Important to note here is that ``Image``, ``Audio``, ``Video`` and ``File`` slots in the input array will be filled with ``\OCP\Files\File`` objects for your convenience. When outputting one of these you should simply return a string, the API will turn the data into a proper file for convenience. The ``$reportProgress`` parameter is a callback that you may use at will to report the task progress as a single float value between 0 and 1. Its return value will indicate if the task is still running (``true``) or if it was cancelled (``false``) and processing should be terminated.
 
 This class would typically be saved into a file in ``lib/TaskProcessing`` of your app but you are free to put it elsewhere as long as it's loadable by Nextcloud's :ref:`dependency injection container<dependency-injection>`.
 
