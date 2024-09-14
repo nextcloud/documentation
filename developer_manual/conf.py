@@ -258,7 +258,7 @@ texinfo_documents = [
 epub_title = u'Nextcloud Developer Manual'
 epub_author = u'The Nextcloud developers'
 epub_publisher = u'The Nextcloud developers'
-epub_copyright = u'2012-2017, The Nextcloud developers'
+epub_copyright = u'2012-2024, The Nextcloud developers'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.
@@ -318,10 +318,13 @@ highlight_options = {
 # Redirect old URLs
 # https://documatt.gitlab.io/sphinx-reredirects/usage.html
 redirects = {
+  # Removed 2023
   "core/index": "../server",
   "core/code-back-end": "../server/code-back-end.html",
   "core/code-front-end": "../server/code-front-end.html",
   "core/externalapi": "../server/externalapi.html",
   "core/static-analysis": "../server/static-analysis.html",
-  "core/unit-testing": "../server/unit-testing.html"
+  "core/unit-testing": "../server/unit-testing.html",
+  # Removed 2024-09
+  "digging_deeper/changelog": "../app_publishing_maintenance/app_upgrade_guide/index.html"
 }

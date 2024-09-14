@@ -30,3 +30,8 @@ Previews for PDF files with Imaginary
 
 The preview provider ``OC\Preview\Imaginary`` is no longer generating previews for PDF files.
 Add the new preview provider ``OC\Preview\ImaginaryPDF`` to ``enabledPreviewProviders`` to enable preview generation with Imaginary for PDF files.
+
+Automated clean-up of app password
+----------------------------------
+
+Nextcloud 30 will :ref:`clean-up unused app passwords<authentication-app-password-clean-up>`.

@@ -43,9 +43,8 @@ Machine translation
 
 In order to make use of machine translation features in the assistant, you will need an app that provides a translation backend:
 
-* :ref:`translate<ai-app-translate>` - Runs open source AI translation models locally on your own server hardware (Customer support available upon request)
+* :ref:`translate2 (ExApp)<ai-app-translate2>` - Runs open source AI translation models locally on your own server hardware (Customer support available upon request)
 * *integration_deepl* - Integrates with the deepl API to provide translation functionality from Deepl.com servers (Only community supported)
-* *integration_libretranslate* - Integrates with the open source LibreTranslate API to provide translation functionality hosted commercially or on your own hardware (Only community supported)
 
 Speech-To-Text
 ~~~~~~~~~~~~~~
@@ -68,7 +67,7 @@ Text-To-Image
 
 In order to make use of Text-To-Image features, you will need an app that provides an image generation backend:
 
-* text2image_stablediffusion2 (Customer support available upon request)
+* text2image_stablediffusion (Customer support available upon request)
 * *integration_openai* - Integrates with the OpenAI API to provide AI functionality from OpenAI servers (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 * *integration_replicate* - Integrates with the replicate API to provide AI functionality from replicate servers (see :ref:`AI as a Service<ai-ai_as_a_service>`)
 

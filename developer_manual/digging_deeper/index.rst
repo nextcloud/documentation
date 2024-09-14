@@ -6,7 +6,6 @@ Digging deeper
    :maxdepth: 3
 
    api
-   changelog
    config/index
    debugging
    classloader

@@ -121,6 +121,24 @@ Refresh your Nextcloud admin page, and the cache warning should disappear.
    config file or append ``--define apc.enable_cli=1`` to the cron job call.
 
 
+Depending on your installation size and the number of users and interactions
+with the system you may want to adapt the ``apc.shm_size`` setting in your
+``php.ini``. The default value is 32M which is usually too low for Nextcloud. A
+good starting point is 128M. If you have a lot of users and/or a lot of apps
+installed you may want to increase this value further. Keep in mind that this
+memory needs to be available in your system's memory and kept in mind when
+sizing the amount of workers on your server.
+
+A frequenly resetting cache can lead to unexpected slow downs when the cache is
+being cleared and refilled.
+
+There is an admin check trying to detect too low memory sizing, but make sure to
+monitor the APCu cache status to see if the cache is full and if you need to
+increase the size. `APCu provides a script
+<https://github.com/krakjoe/apcu/blob/master/apc.php>`_ that can help with this,
+otherwise the `serverinfo app <https://github.com/nextcloud/serverinfo>`_ in
+Nextcloud can also show the APCu cache status.
+
 Redis
 -----
 
