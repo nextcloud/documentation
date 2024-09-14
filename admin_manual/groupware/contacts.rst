@@ -49,3 +49,22 @@ Shared items
 .. versionadded:: 5.5.0
 
 For this feature, the shipped `related resources app <https://apps.nextcloud.com/apps/related_resources>`_ needs to be enabled.
+
+Rate limits
+-----------
+
+Nextcloud rate limits the creation of address books and how many can be created in a short period of time. The default is 10 address books per hour. This can be customized as follows::
+
+  # Set limit to 15 items per 30 minutes
+  php occ config:app:set dav rateLimitAddressBookCreation --type=integer --value=15
+  php occ config:app:set dav rateLimitPeriodAddressBookCreation --type=integer --value=1800
+
+Additionally, the maximum number of address books a user may create is limited to 10 items. This can be customized too::
+
+  # Allow users to create 50 addressbooks
+  php occ config:app:set dav maximumAdressbooks --type=integer --value=50
+
+or::
+
+  # Allow users to create address books without restriction
+  php occ config:app:set dav maximumAdressbooks --type=integer --value=-1
