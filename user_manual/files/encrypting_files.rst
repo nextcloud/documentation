@@ -34,7 +34,7 @@ How can encryption be disabled?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The only way to disable encryption is to run the `"decrypt all"
-<https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label>`_
+<https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label>`_
 script, which decrypts all files and disables encryption.
 
 .. TODO ON RELEASE: Update version number above on release
@@ -44,7 +44,7 @@ Is it possible to disable encryption with the recovery key?
 
 Yes, *if* every user uses the `file recovery key
 <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_, `"decrypt all"
-<https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label>`_ will use it to decrypt all files.
+<https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label>`_ will use it to decrypt all files.
 
 .. TODO ON RELEASE: Update version number above on release
 

@@ -102,7 +102,7 @@ Maintenance mode
 
 You can put your Nextcloud server into maintenance mode before performing
 upgrades, or for performing troubleshooting or maintenance. Please see
-:doc:`../configuration_server/occ_command` to learn how to put your server into
+:doc:`../occ_command` to learn how to put your server into
 the maintenance mode (``maintenance:mode``) or execute repair commands
 (``maintenance:repair``) with the ``occ`` command.
 

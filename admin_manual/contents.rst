@@ -10,6 +10,7 @@ Table of contents
     release_schedule
     installation/index
     configuration_server/index
+    occ_command
     apps_management
     configuration_user/index
     configuration_files/index
