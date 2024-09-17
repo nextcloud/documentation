@@ -27,7 +27,7 @@ Basic settings under the Administration settings section.
 
   occ config:app:set settings profile_enabled_by_default --value="0"
 
-Please refer to :doc:`../configuration_server/occ_command` for all available
+Please refer to :doc:`../occ_command` for all available
 ``occ`` commands.
 
 To disable profile globally add the following line to your ``config.php``

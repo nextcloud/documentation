@@ -7,6 +7,5 @@ Nextcloud configuration
    :glob:
 
    security_setup_warnings
-   occ_command
    config_sample_php_parameters
    *

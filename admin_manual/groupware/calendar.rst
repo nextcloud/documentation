@@ -46,7 +46,7 @@ Contacts that have a birthday date filled are automatically added as events to a
 If you deactivate this option, all users will no longer have this calendar.
 
 When activating this option, users birthday calendars won't be available right away because they need to be generated
-by a background task. See :doc:`../configuration_server/occ_command` section DAV commands.
+by a background task. See :doc:`../occ_command` section DAV commands.
 
 Reminder notifications
 ----------------------
@@ -67,7 +67,7 @@ more often than the standard ``cron`` system::
  # crontab -u www-data -e
  */5 * * * * php -f /var/www/nextcloud/occ dav:send-event-reminders
 
-See :doc:`../configuration_server/occ_command` section Dav commands.
+See :doc:`../occ_command` section Dav commands.
 
 You'll also need to change the sending mode from ``background-job`` to ``occ``::
 

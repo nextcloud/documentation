@@ -325,7 +325,7 @@ The other two commands are:
 * ``background:cron``
 * ``background:webcron``
 
-See :doc:`background_jobs_configuration` to learn more.
+See :doc:`configuration_server/background_jobs_configuration` to learn more.
 
 .. _config_commands_label:
 
@@ -1178,7 +1178,7 @@ Security
 --------
 
 Use these commands to manage server-wide security related parameters. Currently this
-includes :doc:`bruteforce_configuration` and SSL certificates (the latter are useful when
+includes :doc:`configuration_server/bruteforce_configuration` and SSL certificates (the latter are useful when
 creating federation connections with other Nextcloud servers that use self-signed certificates::
 
  security
@@ -1359,6 +1359,9 @@ report showing how many users you have, and when a user was last logged in::
                                       the stored private key
 
 
+user:add
+^^^^^^^^
+
 You can create a new user with their display name, login name, and any group
 memberships with the ``user:add`` command. The syntax is::
 
@@ -1398,21 +1401,6 @@ Jones::
  Display name set to "Fred Jones"
  User "fred" added to group "users"
 
-You can reset any user's password, including administrators (see
-:doc:`../configuration_user/reset_admin_password`)::
-
- sudo -u www-data php occ user:resetpassword layla
-   Enter a new password:
-   Confirm the new password:
-   Successfully reset password for layla
-
-You may also use ``password-from-env`` to reset passwords::
-
- export OC_PASS=newpassword
- su -s /bin/sh www-data -c 'php occ user:resetpassword --password-from-env
-   layla'
-   Successfully reset password for layla
-
 ``generate-password`` allows you to set a securely generated password for the user.
 This is never shown in the output and can be used to create users with temporary
 passwords. This can be used in conjunction with the ``email`` option to create
@@ -1433,9 +1421,33 @@ the user. A welcome email will be sent to the user's email address if
    The account "layla" was created successfully
    Welcome email sent to layla@example.tld
 
+user:resetpassword
+^^^^^^^^^^^^^^^^^^
+
+You can reset any user's password, including administrators (see
+:doc:`../configuration_user/reset_admin_password`)::
+
+ sudo -u www-data php occ user:resetpassword layla
+   Enter a new password:
+   Confirm the new password:
+   Successfully reset password for layla
+
+You may also use ``password-from-env`` to reset passwords::
+
+ export OC_PASS=newpassword
+ su -s /bin/sh www-data -c 'php occ user:resetpassword --password-from-env
+   layla'
+   Successfully reset password for layla
+
+user:delete
+^^^^^^^^^^^
+
 You can delete users::
 
  sudo -u www-data php occ user:delete fred
+
+user:lastseen
+^^^^^^^^^^^^^
 
 View a specific user's most recent login::
 
@@ -1450,7 +1462,8 @@ View a list of all users' most recent login::
    layla's last login: 2024-03-20 17:18
    stephanie's last login: 2024-01-11 13:26
 
-
+user:setting
+^^^^^^^^^^^^
 
 Read user settings::
 
@@ -1481,6 +1494,9 @@ Delete a setting::
 
  sudo -u www-data php occ user:setting layla settings email --delete
 
+user:report
+^^^^^^^^^^^
+
 Generate a simple report that counts all users, including users on external user
 authentication servers such as LDAP::
 
@@ -1504,6 +1520,11 @@ authentication servers such as LDAP::
 There might be a discrepancy between the total number of users compared to the number of active users and the number of disabled users.
 Users that have never logged in before are not counted as active or disabled users.
 Some user backends also do not allow a count for the number of users.
+
+user:list
+^^^^^^^^^
+
+You can use the command ``user:list`` to list users. By default it will limit the output to 500 users but you can override that with options ``--limit`` and ``--offset``. Use ``--disabled`` to only list disabled users.
 
 .. _group_commands_label:
 
