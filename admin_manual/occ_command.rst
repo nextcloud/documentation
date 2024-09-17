@@ -1521,6 +1521,11 @@ There might be a discrepancy between the total number of users compared to the n
 Users that have never logged in before are not counted as active or disabled users.
 Some user backends also do not allow a count for the number of users.
 
+user:list
+^^^^^^^^^
+
+You can use the command ``user:list`` to list users. By default it will limit the output to 500 users but you can override that with options ``--limit`` and ``--offset``. Use ``--disabled`` to only list disabled users.
+
 .. _group_commands_label:
 
 Group commands
