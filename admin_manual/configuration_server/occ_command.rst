@@ -1359,6 +1359,9 @@ report showing how many users you have, and when a user was last logged in::
                                       the stored private key
 
 
+user:add
+^^^^^^^^
+
 You can create a new user with their display name, login name, and any group
 memberships with the ``user:add`` command. The syntax is::
 
@@ -1398,21 +1401,6 @@ Jones::
  Display name set to "Fred Jones"
  User "fred" added to group "users"
 
-You can reset any user's password, including administrators (see
-:doc:`../configuration_user/reset_admin_password`)::
-
- sudo -u www-data php occ user:resetpassword layla
-   Enter a new password:
-   Confirm the new password:
-   Successfully reset password for layla
-
-You may also use ``password-from-env`` to reset passwords::
-
- export OC_PASS=newpassword
- su -s /bin/sh www-data -c 'php occ user:resetpassword --password-from-env
-   layla'
-   Successfully reset password for layla
-
 ``generate-password`` allows you to set a securely generated password for the user.
 This is never shown in the output and can be used to create users with temporary
 passwords. This can be used in conjunction with the ``email`` option to create
@@ -1433,9 +1421,33 @@ the user. A welcome email will be sent to the user's email address if
    The account "layla" was created successfully
    Welcome email sent to layla@example.tld
 
+user:resetpassword
+^^^^^^^^^^^^^^^^^^
+
+You can reset any user's password, including administrators (see
+:doc:`../configuration_user/reset_admin_password`)::
+
+ sudo -u www-data php occ user:resetpassword layla
+   Enter a new password:
+   Confirm the new password:
+   Successfully reset password for layla
+
+You may also use ``password-from-env`` to reset passwords::
+
+ export OC_PASS=newpassword
+ su -s /bin/sh www-data -c 'php occ user:resetpassword --password-from-env
+   layla'
+   Successfully reset password for layla
+
+user:delete
+^^^^^^^^^^^
+
 You can delete users::
 
  sudo -u www-data php occ user:delete fred
+
+user:lastseen
+^^^^^^^^^^^^^
 
 View a specific user's most recent login::
 
@@ -1450,7 +1462,8 @@ View a list of all users' most recent login::
    layla's last login: 2024-03-20 17:18
    stephanie's last login: 2024-01-11 13:26
 
-
+user:setting
+^^^^^^^^^^^^
 
 Read user settings::
 
@@ -1480,6 +1493,9 @@ Set a setting::
 Delete a setting::
 
  sudo -u www-data php occ user:setting layla settings email --delete
+
+user:report
+^^^^^^^^^^^
 
 Generate a simple report that counts all users, including users on external user
 authentication servers such as LDAP::
