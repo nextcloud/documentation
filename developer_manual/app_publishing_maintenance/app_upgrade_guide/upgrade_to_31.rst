@@ -35,7 +35,7 @@ to check whether the current Files app instance is a public share or not, and if
 .. code-block:: JavaScript
 
     import { isPublicShare, getSharingToken } from '@nextcloud/sharing/public'
-    
+
     if (isPublicShare()) {
         console.info('This is a public share with the sharing token: ', getSharingToken())
     }
@@ -73,7 +73,7 @@ Added APIs
 Changed APIs
 ^^^^^^^^^^^^
 
-- TBD
+- Clarify ``OCP\Files\Storage\IStorage::getOwner()`` returns ``string|false``.
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
