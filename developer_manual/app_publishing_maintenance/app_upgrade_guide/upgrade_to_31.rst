@@ -68,7 +68,7 @@ Back-end changes
 Added APIs
 ^^^^^^^^^^
 
-- TBD
+- ``OCP\SetupCheck\CheckServerResponseTrait`` was added to ease implementing custom :ref:`setup checks<setup-checks>` which need to check HTTP calls to the the server itself.
 
 Changed APIs
 ^^^^^^^^^^^^

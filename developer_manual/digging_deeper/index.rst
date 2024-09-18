@@ -39,6 +39,7 @@ Digging deeper
    web_host_metadata
    status
    security
+   setup_checks
    profile
    user_migration
    profiler
