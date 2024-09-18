@@ -95,10 +95,10 @@ Traefik 2
 Using Docker labels:
 ::
 
-  traefik.http.routers.nextcloud.middlewares: 'nextcloud_redirectregex'
-  traefik.http.middlewares.nextcloud_redirectregex.redirectregex.permanent: true
-  traefik.http.middlewares.nextcloud_redirectregex.redirectregex.regex: 'https://(.*)/.well-known/(?:card|cal)dav'
-  traefik.http.middlewares.nextcloud_redirectregex.redirectregex.replacement: 'https://$${1}/remote.php/dav'
+  - "traefik.http.routers.nextcloud.middlewares=nextcloud_redirectregex@docker"
+  - "traefik.http.middlewares.nextcloud_redirectregex.redirectregex.permanent=true"
+  - "traefik.http.middlewares.nextcloud_redirectregex.redirectregex.regex=https://(.*)/.well-known/(?:card|cal)dav"
+  - "traefik.http.middlewares.nextcloud_redirectregex.redirectregex.replacement=https://$${1}/remote.php/dav"
 
 Using a TOML file:
 ::
