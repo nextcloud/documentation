@@ -42,4 +42,4 @@ openapi-spec: get-server-sources
 
 
 clean:
-	rm -r admin_manual/_build developer_manual/_build user_manual/_build user_manual_de_/_build
+	rm -vrf admin_manual/_build developer_manual/_build user_manual/_build user_manual_de_/_build
