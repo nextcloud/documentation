@@ -398,6 +398,7 @@ Types:
 * ``\OCP\IUserManager``
 * ``\OCP\IUserSession``
 * ``\Psr\Container\ContainerInterface``
+* ``\Psr\Log\LoggerInterface``
 
 How to enable it
 ^^^^^^^^^^^^^^^^
