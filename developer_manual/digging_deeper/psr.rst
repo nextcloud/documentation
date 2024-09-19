@@ -28,6 +28,8 @@ The dependency injection container can inject an instance of a ``\Psr\Log\Logger
     Nextcloud ships version 1.1.3
 .. versionchanged:: 23
     Nextcloud ships version 1.1.4
+.. versionchanged:: 30
+    Nextcloud ships version 2.0.0
 
 .. _psr4:
 
