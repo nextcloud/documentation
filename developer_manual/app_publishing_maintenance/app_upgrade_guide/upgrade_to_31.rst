@@ -83,4 +83,4 @@ Deprecated APIs
 Removed APIs
 ^^^^^^^^^^^^
 
-- TBD
+- Legacy, non functional, ``OC_App::getForms`` was removed.
