@@ -381,7 +381,6 @@ Types:
 * ``\OCP\Files\IRootFolder``
 * ``\OCP\IGroupManager``
 * ``\OCP\IL10N``
-* ``\OCP\ILogger``
 * ``\OCP\BackgroundJob\IJobList``
 * ``\OCP\INavigationManager``
 * ``\OCP\IPreview``
