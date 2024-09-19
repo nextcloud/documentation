@@ -74,6 +74,7 @@ Changed APIs
 ^^^^^^^^^^^^
 
 - Clarify ``OCP\Files\Storage\IStorage::getOwner()`` returns ``string|false``.
+- The Nextcloud implementation of the ``log`` method of ``Psr\Log\LoggerInterface`` now supports ``Psr\Log\LogLevel`` as log level parameter.
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
@@ -84,3 +85,10 @@ Removed APIs
 ^^^^^^^^^^^^
 
 - Legacy, non functional, ``OC_App::getForms`` was removed.
+- All ``OCP\ILogger`` logging methods, deprecated since Nextcloud 20, are removed.
+    - The interface now only holds the Nextcloud internal logging level constants.
+      For all logging ``Psr\Log\LoggerInterface`` should be used.
+    - The ``OCP\ILogger`` interface can no longer be dependency injected as it now only holds constants.
+    - ``OCP\IServerContainer::getLogger`` was removed, use dependency injection with ``Psr\Log\LoggerInterface`` instead.
+- The internal class ``OC\AppFramework\Logger`` was removed, it should have been never used by apps.
+  All using apps should migrate to ``Psr\Log\LoggerInterface``.
