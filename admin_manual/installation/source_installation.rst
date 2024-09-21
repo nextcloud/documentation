@@ -415,7 +415,7 @@ One of the easiest ways of installing is to use the Nextcloud VM or NextcloudPI 
 
 or
 
-1. Download the latest `PI installation script <https://raw.githubusercontent.com/nextcloud/nextcloudpi/master/install.sh/>`_.
+1. Download the latest `PI installation script <https://raw.githubusercontent.com/nextcloud/nextcloudpi/master/install.sh>`_.
 2. Run the script with::
 
     sudo bash install.sh
