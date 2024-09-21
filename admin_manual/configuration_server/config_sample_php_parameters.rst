@@ -3692,6 +3692,28 @@ Enable features that are do respect accessibility standards yet.
 
 Defaults to ``true``
 
+binary_search_paths
+^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'binary_search_paths' => [
+		'/usr/local/sbin',
+		'/usr/local/bin',
+		'/usr/sbin',
+		'/usr/bin',
+		'/sbin',
+		'/bin',
+		'/opt/bin',
+	],
+
+Directories where nextcloud looks for binaries.
+
+This is used to find external binaries like libreoffice, sendmail, ffmpeg and more.
+
+Defaults to ``['/usr/local/sbin','/usr/local/bin','/usr/sbin','/usr/bin','/sbin','/bin','/opt/bin']``
+
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
 
