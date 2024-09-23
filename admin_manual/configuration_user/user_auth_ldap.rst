@@ -777,6 +777,13 @@ The "s01" refers to the configuration ID as can be retrieved per
 Troubleshooting, tips and tricks
 --------------------------------
 
+Logging
+^^^^^^^
+
+Nextcloud's LDAP implementation is capable of logging lots of additional details about
+its activities. When diagnosing problems, it can be useful to temporarily adjust your 
+``loglevel`` to INFO (``1``) or DEBUG (``0``).
+
 SSL certificate verification (LDAPS, TLS)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
