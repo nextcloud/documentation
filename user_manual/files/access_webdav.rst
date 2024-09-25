@@ -8,7 +8,7 @@ connect Linux, macOS, Windows, and mobile devices to your Nextcloud server.
 
 WebDAV stands for Distributed Authoring and Versioning. It is an HTTP extension 
 that makes it easy to create, read, and edit files hosted on remote Web servers. With 
-a WebDAV, client you can access your Nextcloud Files (including shares) on Linux, 
+a WebDAV client, you can access your Nextcloud Files (including shares) on Linux, 
 macOS and Windows in a similar way as any remote network share, and stay synchronized.
 
 Before we get into configuring WebDAV, let's take a quick look at the
@@ -62,7 +62,7 @@ The URL to use when configuring third-party apps to connect to Nextcloud is a bi
 .. note:: When using a third-party WebDAV client (including your operating system's 
    built-in client), you should use an application password for login rather than your 
    regular password. In addition improved security, this `increases performance significantly 
-   <https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151>_`. To 
+   <https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151>`_. To 
    configure an application password, log into the Nextcloud Web interface, click on the avatar 
    in the top right and choose *Personal settings*. Then choose *Security* in the left 
    sidebar and scroll to the very bottom. There you can create an app password (which can 
