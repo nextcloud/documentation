@@ -87,7 +87,7 @@ For details take a look at :ref:`OCS <ocscontroller>`.
 
             public function someControllerMethod(): DataResponse {
                 ...
-                return DataResponse(...);
+                return new DataResponse(...);
             }
         }
 
@@ -155,7 +155,7 @@ If you are working with an existing API where you can not break compatibility, y
          */
         public function someControllerMethod() {
             ...
-            return DataResponse([]);
+            return new DataResponse([]);
         }
 
     .. code-block:: php
@@ -166,7 +166,7 @@ If you are working with an existing API where you can not break compatibility, y
          */
         public function someControllerMethod() {
             ...
-            return DataResponse(null);
+            return new DataResponse(null);
         }
 
         /**
@@ -174,7 +174,7 @@ If you are working with an existing API where you can not break compatibility, y
          */
         public function someControllerMethod() {
             ...
-            return DataResponse(new \stdClass());
+            return new DataResponse(new \stdClass());
         }
 
         /**
@@ -182,7 +182,7 @@ If you are working with an existing API where you can not break compatibility, y
          */
         public function someControllerMethod() {
             ...
-            return DataResponse([]);
+            return new DataResponse([]);
         }
 
 DO NOT throw non-OCS*Exceptions
@@ -232,9 +232,9 @@ All 2xx responses should return the same data structure and all 4xx should also 
         public function someControllerMethod() {
             ...
             if (...) {
-                return DataResponse(["name" => name], Http::STATUS_OK);
+                return new DataResponse(["name" => name], Http::STATUS_OK);
             } else {
-                return DataResponse(["id" => id, "name" => name], Http::STATUS_CREATED);
+                return new DataResponse(["id" => id, "name" => name], Http::STATUS_CREATED);
             }
         }
 
@@ -244,9 +244,9 @@ All 2xx responses should return the same data structure and all 4xx should also 
         public function someControllerMethod() {
             ...
             if (...) {
-                return DataResponse(["error" => "bad request"], Http::STATUS_BAD_REQUEST);
+                return new DataResponse(["error" => "bad request"], Http::STATUS_BAD_REQUEST);
             } else {
-                return DataResponse(["message" => "forbidden"], Http::STATUS_FORBIDDEN);
+                return new DataResponse(["message" => "forbidden"], Http::STATUS_FORBIDDEN);
             }
         }
 
@@ -260,9 +260,9 @@ All 2xx responses should return the same data structure and all 4xx should also 
         public function someControllerMethod() {
             ...
             if (...) {
-                return DataResponse(["id" => id, "name" => name], Http::STATUS_OK);
+                return new DataResponse(["id" => id, "name" => name], Http::STATUS_OK);
             } else {
-                return DataResponse(["id" => id, "name" => name], Http::STATUS_CREATED);
+                return new DataResponse(["id" => id, "name" => name], Http::STATUS_CREATED);
             }
         }
 
@@ -272,9 +272,9 @@ All 2xx responses should return the same data structure and all 4xx should also 
         public function someControllerMethod() {
             ...
             if (...) {
-                return DataResponse(["error" => "bad request"], Http::STATUS_BAD_REQUEST);
+                return new DataResponse(["error" => "bad request"], Http::STATUS_BAD_REQUEST);
             } else {
-                return DataResponse(["error" => "forbidden"], Http::STATUS_FORBIDDEN);
+                return new DataResponse(["error" => "forbidden"], Http::STATUS_FORBIDDEN);
             }
         }
 
@@ -391,7 +391,7 @@ There you can explain what the APIs in the controller do or give examples an how
              */
             public function someControllerMethod(int $id) {
                 ...
-                return DataResponse(["name" => name], Http::STATUS_CREATED);
+                return new DataResponse(["name" => name], Http::STATUS_CREATED);
             }
         }
 
@@ -414,7 +414,7 @@ There you can explain what the APIs in the controller do or give examples an how
              */
             public function someControllerMethod(int $id) {
                 ...
-                return DataResponse(["name" => name], Http::STATUS_CREATED);
+                return new DataResponse(["name" => name], Http::STATUS_CREATED);
             }
         }
 
