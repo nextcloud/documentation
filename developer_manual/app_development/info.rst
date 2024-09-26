@@ -225,7 +225,7 @@ discussion
     * optional
     * must contain a URL to the project's discussion page/forum
     * will be rendered on the app detail page as the "ask question or discuss" button
-    * if absent, it will default to our forum at https://help.nextcloud.com/ and create a new category in the apps category
+    * if absent, it will default to our forum at https://help.nextcloud.com/
 bugs
     * required
     * must contain a URL to the project's bug tracker
