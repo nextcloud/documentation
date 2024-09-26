@@ -59,7 +59,6 @@ Required for specific apps:
 Recommended for specific apps (*optional*):
 
 * PHP module gmp (for SFTP storage)
-* PHP module exif (for image rotation in pictures app)
 
 For enhanced server performance (*optional*) select one or more of the following
 caches:
