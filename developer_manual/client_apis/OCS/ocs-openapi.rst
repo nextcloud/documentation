@@ -143,7 +143,7 @@ For those endpoints returning ``[]`` in PHP is a problem because the consumer wi
 If you are not able to use ``null`` for whatever reason, use ``new \stdClass()`` instead.
 It will get correctly converted into ``{}`` in the JSON response on Nextcloud 28 and later.
 
-If you are working with an existing API where you can not break compatibility, you can also type the result as ``array<empty>``.
+If you are working with an existing API where you can not break compatibility, you can also type the result as ``list<empty>``.
 
 .. collapse:: Examples
 
@@ -178,7 +178,7 @@ If you are working with an existing API where you can not break compatibility, y
         }
 
         /**
-         * @return DataResponse<Http::STATUS_OK, array<empty>, array{}>
+         * @return DataResponse<Http::STATUS_OK, list<empty>, array{}>
          */
         public function someControllerMethod() {
             ...
@@ -719,7 +719,7 @@ Now you have to add the correct return type annotation:
 
     class Capabilities implements ICapability {
         /**
-         * @return array{todo: array{supported-operations: string[], emojis-supported: bool}}
+         * @return array{todo: array{supported-operations: list<string>, emojis-supported: bool}}
          */
         public function getCapabilities() {
             return [
