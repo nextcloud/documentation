@@ -23,16 +23,16 @@ Required:
 * PHP module GD
 * PHP module hash (only on FreeBSD)
 * PHP module JSON (included with PHP >= 8.0)
-* PHP module libxml (Linux package libxml2 must be >=2.7.0)
+* PHP module libxml (Linux package libxml2 must be >=2.7.0, enabled by default)
 * PHP module mbstring
 * PHP module openssl (included with PHP >= 8.0)
 * PHP module posix
-* PHP module session
-* PHP module SimpleXML
-* PHP module XMLReader
-* PHP module XMLWriter
-* PHP module zip
-* PHP module zlib
+* PHP module session (enabled by default)
+* PHP module SimpleXML (enabled by default)
+* PHP module XMLReader (enabled by default)
+* PHP module XMLWriter (enabled by default)
+* PHP module zip 
+* PHP module zlib (enabled by default)
 
 Database connectors (pick the one for your database):
 
