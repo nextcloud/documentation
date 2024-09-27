@@ -38,11 +38,12 @@ Artificial intelligence at Nextcloud is built in a modular way, allowing you to 
 
 **Note**: At Nextcloud we focus on creating on-premise AI apps that run fully self-hosted on your own servers in order to preserve your privacy and data sovereignty. However, you can also offload these resource-heavy tasks to an :ref:`"AI as a Service" provider<ai-ai_as_a_service>`.
 
+**Note**: When using our on-premise AI apps, make sure you have a GPU with enough VRAM that fits all the features you need. For each app documented here you will find its hardware requirements.
+
 Machine translation
 ~~~~~~~~~~~~~~~~~~~
 
 In order to make use of machine translation features in the assistant, you will need an app that provides a translation backend:
-
 * :ref:`translate2 (ExApp)<ai-app-translate2>` - Runs open source AI translation models locally on your own server hardware (Customer support available upon request)
 * *integration_deepl* - Integrates with the deepl API to provide translation functionality from Deepl.com servers (Only community supported)
 
