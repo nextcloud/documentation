@@ -87,6 +87,21 @@ The following built-in task types are available:
       * Output shape:
          * ``output``: ``ListOfImages``
 
+LLM Prompts and multilingual I/O
+################################
+
+When writing prompts for the TextToText task type in your apps, we recommend testing it with at least
+
+* OpenAI GPT-3.5
+* Llama 3.1
+
+Also, make sure that you instruct the model to use the correct language in its output. By default most models will answer in English if the main prompt is in English, even though the source data is in another language.
+A tweak to make sure of this is to instruct the model as follows:
+
+.. code-block:: php
+
+   "Detect the language used in the text and make sure to answer in the same language without mentioning the language explicitly."
+
 Input and output shapes
 ~~~~~~~~~~~~~~~~~~~~~~~
 
