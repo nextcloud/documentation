@@ -10,11 +10,23 @@ for each operation, further information for each operation can be found in the c
 WebDAV basics
 -------------
 
-The base url for all WebDAV operations for a Nextcloud instance is :code:`/remote.php/dav`.
+The base url for all (authenticated) WebDAV operations for a Nextcloud instance is :code:`/remote.php/dav`.
 
 All requests need to provide authentication information, either as a basic auth header or by passing a set of valid session cookies.
 
-If your Nextcloud installation uses an external auth provider (such as an OIDC server) you may have to create an app password. To do that, go to your personal security settings and create one. It will provide a username and password which you can use within the Basic Auth header.
+If your Nextcloud installation uses an external auth provider (such as an OIDC server) you may have to create an app password.
+To do that, go to your personal security settings and create one. It will provide a username and password which you can use within the Basic Auth header.
+
+Public shares
+^^^^^^^^^^^^^
+
+The :code:`/remote.php/dav` endpoint only allows authenticated access to WebDAV resources,
+for files shared using public link shares a different endpoint is provided which does not require authentication.
+
+The base URL for public link shares is :code:`/public.php/dav`, particularly for files: :code:`/public.php/dav/files/{share_token}`.
+If a password is set for the share then a basic auth header must be sent with ``anonymous`` as the username and the share password as the password.
+
+.. note:: This endpoint for public shares is available since Nextcloud 29.
 
 Testing requests
 ----------------
@@ -343,11 +355,46 @@ You can request properties of a folder without also getting the folder contents 
 Downloading files
 -----------------
 
+.. note:: For shared files this only works if the download permission was not denied by the sharer.
+
 A file can be downloaded by sending a :code:`GET` request to the WebDAV url of the file.
 
 .. code::
 
 	GET remote.php/dav/files/user/path/to/file
+
+.. _webdav-download-folders:
+
+Downloading folders
+-------------------
+
+.. note:: The :code:`GET` method is not defined by the WebDAV standard, this is a Nextcloud specific WebDAV extension.
+.. note:: For shared folders this only works if the download permission was not denied by the sharer.
+
+A folder can be downloaded as an archive by sending a :code:`GET` request to the WebDAV URL of the folder.
+The :code:`Accept` header must be set and contain the MIME type for ZIP archives (:code:`application/zip`) or tarballs (:code:`application/x-tar`).
+
+.. code::
+
+	GET remote.php/dav/files/user/path/to/folder
+	Accept: application/zip
+
+Optionally it is possible to only include some files from the folder in the archive by providing the files using the custom :code:`X-NC-Files` header:
+
+.. code::
+
+	GET remote.php/dav/files/user/path/to/folder
+	Accept: application/zip
+	X-NC-Files: document.txt
+	X-NC-Files: image.png
+
+As setting headers is not possible with HTML links it is also possible to provide this both options as query parameters.
+In this case the :code:`Accept` header value must be passed as the :code:`accept` query parameter.
+The optional files list can be provided as a JSON encoded array through the :code:`files` query parameter.
+
+.. code::
+
+	GET remote.php/dav/files/user/path/to/folder?accept=zip&files=["image.png","document.txt"]
 
 Uploading files
 ---------------
