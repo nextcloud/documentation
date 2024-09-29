@@ -68,6 +68,8 @@ Back-end changes
 Added APIs
 ^^^^^^^^^^
 
+- It is now possible to download folders as zip or tar archives using the WebDAV backend using :code:`GET` requests.
+  See the relevant :ref:`endpoint documentation<webdav-download-folders>`.
 - ``OCP\SetupCheck\CheckServerResponseTrait`` was added to ease implementing custom :ref:`setup checks<setup-checks>` which need to check HTTP calls to the the server itself.
 
 Changed APIs
@@ -79,12 +81,17 @@ Changed APIs
 Deprecated APIs
 ^^^^^^^^^^^^^^^
 
-- TBD
+- The ``/s/{token}/download`` endpoint for downloading public shares is deprecated.
+  Instead use the Nextcloud provided :ref:`WebDAV endpoint<webdav-download-folders>`.
 
 Removed APIs
 ^^^^^^^^^^^^
 
 - Legacy, non functional, ``OC_App::getForms`` was removed.
+- The private and legacy ``OC_Files`` class was removed.
+  Instead use ``OCP\AppFramework\Http\StreamResponse`` or ``OCP\AppFramework\Http\ZipResponse``.
+- The private and legacy Ajax endpoint for downloading file archives (``/apps/files/ajax/download.php``) was removed.
+  Instead use the Nextcloud provided :ref:`WebDAV endpoint<webdav-download-folders>`.
 - All ``OCP\ILogger`` logging methods, deprecated since Nextcloud 20, are removed.
     - The interface now only holds the Nextcloud internal logging level constants.
       For all logging ``Psr\Log\LoggerInterface`` should be used.
