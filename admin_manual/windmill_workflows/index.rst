@@ -73,4 +73,4 @@ In order to turn a newly added step into an approval step, the workflow edit scr
 
 Using the scripts provided for Nextcloud, you can send approval links to the humans in charge of approving via Nextcloud Talk or a simple notification in Nextcloud. Of course, you may also use any of the other scripts for sending messages available in the Windmill hub.
 
-Windmill has a default approval user interface at a specific URL, but it is not very nice. We recommend using the `approve_links <apps.nextcloud.com/apps/approve_links>`_ app which allows creating a beautiful temporary approval page with a custom message and approve and disapprove buttons.
+Windmill has a default approval user interface at a specific URL, but it is not very nice. We recommend using the `approve_links <https://apps.nextcloud.com/apps/approve_links>`_ app which allows creating a beautiful temporary approval page with a custom message and approve and disapprove buttons.
