@@ -12,6 +12,9 @@ Calendar
 #. Select Other as account type.
 #. Select Add CalDAV account.
 #. For server, type the domain name of your server i.e. ``example.com``.
+#. Open Advanced Settings
+#. For server, type the domain name of your server and username i.e. ``example.com/remote.php/dav/principals/users/username/``
+#. Close Advanced Settings
 #. Enter your user name and password.
 #. Select Next.
 
