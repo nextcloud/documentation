@@ -82,7 +82,7 @@ Frontend apps
 * *Text* for offering an inline graphical UI for the various tasks
 * `Assistant <https://apps.nextcloud.com/apps/assistant>`_ for offering a graphical UI for the various tasks and a smart picker
 * `Mail <https://apps.nextcloud.com/apps/mail>`_ for summarizing mail threads (see :ref:`the Nextcloud Mail docs<mail_thread_summary>` for how to enable this)
-* `Summary Bot <https://apps.nextcloud.com/apps/summarai>`_ for summarizing chat histories in `Talk <https://apps.nextcloud.com/apps/spreed>`_
+* `Summary Bot <https://apps.nextcloud.com/apps/summary_bot>`_ for summarizing chat histories in `Talk <https://apps.nextcloud.com/apps/spreed>`_
 
 
 Backend apps
