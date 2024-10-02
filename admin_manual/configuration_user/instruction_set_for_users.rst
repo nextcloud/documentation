@@ -22,16 +22,17 @@ basic HTTP authentication header.
 
 Status codes:
 
-* 100 - successful
-* 101 - invalid input data
-* 102 - username already exists
-* 103 - unknown error occurred whilst adding the user
+* 101 - invalid argument
+* 102 - user already exists
+* 103 - cannot create sub-admins for admin group
 * 104 - group does not exist
 * 105 - insufficient privileges for group
-* 106 - no group specified (required for subadmins)
-* 107 - all errors that contain a hint - for example "Password is among the 1,000,000 most common ones. Please make it unique." (this code was added in 12.0.6 & 13.0.1)
-* 108 - password and email empty. Must set password or an email
-* 109 - invitation email cannot be send
+* 106 - no group specified (required for sub-admins)
+* 107 - hint exceptions
+* 108 - an email address is required, to send a password link to the user.
+* 109 - sub-admin group does not exist
+* 110 - required email address was not provided
+* 111 - could not create non-existing user ID
 
 Example
 ^^^^^^^
@@ -180,9 +181,10 @@ is done by sending a Basic HTTP Authorization header.
 
 Status codes:
 
-* 100 - successful
-* 101 - user not found
-* 102 - invalid input data
+* 101 - invalid argument
+* 107 - password policy (hint exception)
+* 112 - Setting the password is not supported by the users backend
+* 113 - editing field not allowed / field doesn’t exist
 
 Examples
 ^^^^^^^^
