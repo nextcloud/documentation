@@ -175,6 +175,80 @@ Apps can integrate their content with Context Chat to make it available for quer
 * *files*
 * `Analytics <https://apps.nextcloud.com/apps/analytics>`_
 
+.. _ai-overview_improve-ai-task-pickup-speed:
+
+Improve AI task pickup speed
+----------------------------
+
+Most AI tasks will be run as part of the background job system in Nextcloud which only runs jobs every 5 minutes by default.
+To pick up scheduled jobs faster you can set up background job workers that process AI tasks as soon as they are scheduled.
+
+Screen or tmux session
+^^^^^^^^^^^^^^^^^^^^^^
+
+Run the following occ command inside a screen or a tmux session, preferably 4 or more times for parallel processing of multiple requests by different or the same user (and as a requirement for some apps like context_chat).
+It would be best to run one command per screen session or per tmux pane to keep the logs visible and the worker easily restartable.
+
+.. code-block::
+
+   set -e; while true; do sudo -u www-data occ background-job:worker -v -t 60 "OC\TaskProcessing\SynchronousBackgroundJob"; done
+
+You may want to adjust the number of workers and the timeout to your needs. The above command will run with a timeout of 60 seconds which means any changes to the settings or the code will be picked up after 60 seconds (worst case scenario). This timeout does not, in any way, affect the processing or the timeout of the AI tasks.
+The logs of the worker can be checked by attaching to the screen or tmux session.
+
+Systemd service
+^^^^^^^^^^^^^^^
+
+1. Create a systemd service file in ``/etc/systemd/system/nextcloud-ai-worker@.service`` with the following content:
+
+.. code-block::
+
+   [Unit]
+   Description=Nextcloud AI worker %i
+   After=network.target
+
+   [Service]
+   ExecStart=/opt/nextcloud-ai-worker/taskprocessing.sh %i
+   Restart=always
+
+   [Install]
+   WantedBy=multi-user.target
+
+2. Create a shell script in ``/opt/nextcloud-ai-worker/taskprocessing.sh`` with the following content and make sure to make it executable:
+
+.. code-block::
+
+   #!/bin/sh
+   echo "Starting Nextcloud AI Worker $1"
+   sudo -u www-data php occ background-job:worker -t 60 'OC\TaskProcessing\SynchronousBackgroundJob'
+
+Same as above, you may want to adjust the number of workers and the timeout to your needs. The above command will run with a timeout of 60 seconds which means any changes to the settings or the code will be picked up after 60 seconds (worst case scenario). This timeout does not, in any way, affect the processing or the timeout of the AI tasks.
+
+3. Enable and start the service 4 or more times:
+
+.. code-block::
+
+   for i in {1..4}; do systemctl enable --now nextcloud-ai-worker@$i.service; done
+
+The status of the workers can be checked with (replace 1 with the worker number):
+
+.. code-block::
+
+   systemctl status nextcloud-ai-worker@1.service
+
+The list of workers can be checked with:
+
+.. code-block::
+
+   systemctl list-units --type=service | grep nextcloud-ai-worker
+
+The complete logs of the workers can be checked with (replace 1 with the worker number):
+
+.. code-block::
+
+   journalctl -xeu nextcloud-ai-worker@1.service
+
+
 Frequently Asked Questions
 --------------------------
 
