@@ -92,10 +92,10 @@ Both provide a way to transmit data between the backend of the app in the Nextcl
 
 The following combinations of attributes might be useful for various scenarios:
 
-#. Plain frontend route: No special attribute related to CSRF or CORS
+#. Plain frontend route: ``Controller`` class
 #. Plain Frontend with CRSF checks disabled: Add the ``#[NoCSRFRequired]`` attribute
-#. REST route with CORS enabled: Add the ``#[CORS]`` attribute
-#. OCS-based route
+#. REST route with CORS enabled: ``Controller`` class and ``#[CORS]`` attribute on the route
+#. OCS-based route: ``OCSController`` class
 
 There are different ways a clients might interact with your APIs.
 These ways depend on your API configuration (what you allow) and on which route the request is finally made.
@@ -134,13 +134,13 @@ These ways depend on your API configuration (what you allow) and on which route 
       - ---
       - ---
       - yes
-      - yes
+      - no
     * - Transmitted data type
       - plain data
       - plain data
       - plain data
-      - encapsulated data
+      - encapsulated data (JSON or XML)
 
-As a rule of thumb one can conclude that OCS provides a good way to handle most use cases.
+As a rule of thumb one can conclude that OCS provides a good way to handle most use cases including sufficient security checks.
 The only exception to this is if you want to provide an API for external usage where you have to comply with an externally defined API scheme.
-Here, the encapsulation introduced in OCS might be in your way.
+Here, the encapsulation introduced in OCS and CSRF checks might be in your way.
