@@ -515,6 +515,7 @@ A set of commands to create and manage addressbooks and calendars::
  dav
   dav:create-addressbook                 Create a dav addressbook
   dav:create-calendar                    Create a dav calendar
+  dav:create-subscription                Create a dav calendar subscription
   dav:delete-calendar                    Delete a dav calendar
   dav:fix-missing-caldav-changes         Insert missing calendarchanges rows for existing events
   dav:list-calendars                     List all calendars of a user
@@ -535,6 +536,20 @@ This example creates a new calendar for molly::
  sudo -u www-data php occ dav:create-calendar molly mollycal
 
 Molly will immediately see these in the Calendar and Contacts apps.
+
+The syntax for ``dav:create-subscription`` is 
+``dav:create-subscription [user] [name] [url] [optional color]``. This example creates the subscription subscription for the lunar
+calendar ``Lunar Calendar`` for the user molly::
+
+ sudo -u www-data php occ dav:create-subscription molly "Lunar Calendar" webcal://cantonbecker.com/astronomy-calendar/astrocal.ics
+
+Molly will immediately see this new subscription calendar in the Calendar app.
+
+Optionally, a color for the new subscription calendar can be passed as a HEX color code::
+  
+ sudo -u www-data php occ dav:create-subscription molly "Lunar Calendar" calendar webcal://cantonbecker.com/astronomy-calendar/astrocal.ics "#ff5733"
+
+If not set, the theming default color will be used.
 
 ``dav:delete-calendar [--birthday] [-f|--force] <uid> [<name>]`` deletes the
 calendar named ``name`` (or the birthday calendar if ``--birthday`` is
