@@ -90,57 +90,63 @@ Relation of REST and OCS
 There is a close relationship between REST APIs and :ref:`OCS <ocscontroller>`.
 Both provide a way to transmit data between the backend of the app in the Nextcloud server and some frontend.
 
-The following combinations of attributes might be useful for various scenarios:
+The following combinations of attributes might be relevant for various scenarios:
 
 #. Plain frontend route: ``Controller`` class
-#. Plain Frontend with CRSF checks disabled: Add the ``#[NoCSRFRequired]`` attribute
-#. REST route with CORS enabled: ``Controller`` class and ``#[CORS]`` attribute on the route
+#. Plain Frontend with CRSF checks disabled: ``Controller`` class and ``#[NoCSRFRequired]`` attribute on the method
 #. OCS-based route: ``OCSController`` class
+#. OCS-based route with CSRF disabled: ``OCSController`` class and ``#[NoCSRFRequired]`` attribute on the method
+
+.. warning::
+  Adding the ``#[NoCRSFRequired]`` attribute imposes a security risk.
+  You should not add this to your controller methods unless you understand the implications and be sure that you absolutely need the attribute.
 
 There are different ways a clients might interact with your APIs.
 These ways depend on your API configuration (what you allow) and on which route the request is finally made.
 
 - *Access from web frontend* means the user is browses the Nextcloud web frontend with a browser.
 - *Access from an external app* indicates that the user is not using the normal browser (as logged in) but directly navigates a certain URL.
-  This can be in a browser tab or an external program (like an Android app or simply a curl command line).
-- *Access from external website* means that the user browses some third party web site and *magically* data from your app appears.
-  Technically, the other website would embed/load/use images, JSON data, or other resources from a URL pointing to the Nextcloud server.
+  This can be in a new browser tab or an external program (like an Android app or simply a curl command line).
 
-.. list-table:: Comparision of different API types
+.. list-table:: Comparison of different API types
     :header-rows: 1
     :align: center
 
     * - Description
       - 1 (plain)
-      - 2 (no CSRF)
-      - 3 (CORS)
+      - 2 (w/o CSRF)
       - 4 (OCS)
+      - 4 (OCS w/o CSRF)
     * - URL prefix (relative to server)
       - ``/apps/<appid>/``
       - ``/apps/<appid>/``
-      - ``/apps/<appid>/``
+      - ``/ocs/v2.php/apps/<appid>/``
       - ``/ocs/v2.php/apps/<appid>/``
     * - Access from web frontend
       - yes
       - yes (CSRF risk)
+      - yes
       - yes (CSRF risk)
-      - yes
     * - Access from external app
-      - --- (CSRF protection blocks)
-      - yes
-      - yes
-      - yes
-    * - Access from external web page
-      - ---
       - ---
       - yes
+      - yes (with header [#]_)
+      - yes
+    * - Encapsulated data
       - no
-    * - Transmitted data type
-      - plain data
-      - plain data
-      - plain data
-      - encapsulated data (JSON or XML)
+      - no
+      - yes (JSON or XML)
+      - yes (JSON or XML)
+
+Methods from ``Controller`` classes can return ``DataResponse`` objects similar to ``OCSController`` class methods.
+For methods of a ``Controller`` class, the data of this response is sent e.g. as JSON as you provide it.
+Basically, the output is very similar to what ``json_encode`` would do.
+In contrast, the OCS controller will encapsulate the data in an outer shell that provides some more (meta) information.
+For example a status code (similar to the HTTP status code) is transmitted at top level.
+The actual data is transmitted in the ``data`` property.
 
 As a rule of thumb one can conclude that OCS provides a good way to handle most use cases including sufficient security checks.
 The only exception to this is if you want to provide an API for external usage where you have to comply with an externally defined API scheme.
 Here, the encapsulation introduced in OCS and CSRF checks might be in your way.
+
+.. [#] The OCS controller needs the request header ``OCS-APIREQUEST`` to be set to ``true``.
