@@ -47,18 +47,32 @@ Installation
 
 0. Make sure the :ref:`Nextcloud Assistant app<ai-app-assistant>` is installed
 1. :ref:`Install AppAPI and setup a Deploy Demon<ai-app_api>`
-2. Install the *context_chat_backend* ExApp via the "External Apps" admin page in Nextcloud
+2. Install the *context_chat_backend* ExApp via the "External Apps" admin page in Nextcloud, or by executing
+
+.. code-block::
+
+   occ app_api:app:register context_chat_backend
+
 3. Install the *context_chat* app via the "Apps" page in Nextcloud, or by executing
 
 .. code-block::
 
    occ app:enable context_chat
 
-4. Optionally, run two instances of this occ command for faster processing of requests:
+4. Install a text generation backend like *llm2* (via the "External Apps" page in Nextcloud) or *integration_openai* (via the "Apps" page in Nextcloud), or by executing
 
 .. code-block::
 
-   occ background-job:worker 'OC\TaskProcessing\SynchronousBackgroundJob'
+   occ app_api:app:register llm2
+
+or
+
+.. code-block::
+
+   occ app:enable integration_openai
+
+
+5. Optionally but recommended, setup background workers for faster pickup of tasks. See :ref:`the relevant section in AI Overview<ai-overview_improve-ai-task-pickup-speed>` for more information.
 
 **Note**: Both apps need to be installed and both major version and minor version of the two apps must match for the functionality to work (ie. "v1.3.4" and "v1.3.1"; but not "v1.3.4" and "v2.1.6"; and not "v1.3.4" and "v1.4.5"). Keep this in mind when updating.
 
@@ -69,15 +83,15 @@ Context chat will automatically load user data into the Vector DB using backgrou
 
 .. code-block::
 
-   occ background-job:worker 'OCA\ContextChat\BackgroundJobs\StorageCrawlJob'
+   set -e; while true; do sudo -u www-data occ background-job:worker -v -t 60 "OCA\ContextChat\BackgroundJobs\StorageCrawlJob"; done
 
 .. code-block::
 
-   occ background-job:worker 'OCA\ContextChat\BackgroundJobs\IndexerJob'
+   set -e; while true; do sudo -u www-data occ background-job:worker -v -t 60 "OCA\ContextChat\BackgroundJobs\IndexerJob"; done
 
 This will ensure that the necessary background jobs are run as often as possible: ``StorageCrawlJob`` will crawl Nextcloud storages and put files that it finds into a queue and ``IndexerJob`` will iterate over the queue and load the file content into the Vector DB.
 
-Make sure to restart these daemons regularly. For example once a day.
+See :ref:`the task speedup section in AI Overview<ai-overview_improve-ai-task-pickup-speed>` to know better ways to run these jobs.
 
 Scaling
 -------
