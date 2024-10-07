@@ -187,7 +187,7 @@ Screen or tmux session
 ^^^^^^^^^^^^^^^^^^^^^^
 
 Run the following occ command inside a screen or a tmux session, preferably 4 or more times for parallel processing of multiple requests by different or the same user (and as a requirement for some apps like context_chat).
-It would be best to run one command per screen session or per tmux pane to keep the logs visible and the worker easily restartable.
+It would be best to run one command per screen session or per tmux window/pane to keep the logs visible and the worker easily restartable.
 
 .. code-block::
 
