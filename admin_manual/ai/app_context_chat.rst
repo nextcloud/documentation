@@ -83,11 +83,11 @@ Context chat will automatically load user data into the Vector DB using backgrou
 
 .. code-block::
 
-   occ background-job:worker -t 60 'OCA\ContextChat\BackgroundJobs\StorageCrawlJob'
+   set -e; while true; do sudo -u www-data occ background-job:worker -v -t 60 "OCA\ContextChat\BackgroundJobs\StorageCrawlJob"; done
 
 .. code-block::
 
-   occ background-job:worker -t 60 'OCA\ContextChat\BackgroundJobs\IndexerJob'
+   set -e; while true; do sudo -u www-data occ background-job:worker -v -t 60 "OCA\ContextChat\BackgroundJobs\IndexerJob"; done
 
 This will ensure that the necessary background jobs are run as often as possible: ``StorageCrawlJob`` will crawl Nextcloud storages and put files that it finds into a queue and ``IndexerJob`` will iterate over the queue and load the file content into the Vector DB.
 

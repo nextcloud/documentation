@@ -182,6 +182,7 @@ Improve AI task pickup speed
 
 Most AI tasks will be run as part of the background job system in Nextcloud which only runs jobs every 5 minutes by default.
 To pick up scheduled jobs faster you can set up background job workers that process AI tasks as soon as they are scheduled.
+If the PHP code or the Nextcloud settings values are changed while a worker is running, those changes won't be effective inside the runner. For that reason, the worker needs to be restarted regularly. It is done with a timeout of N seconds which means any changes to the settings or the code will be picked up after N seconds (worst case scenario). This timeout does not, in any way, affect the processing or the timeout of the AI tasks.
 
 Screen or tmux session
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -193,7 +194,7 @@ It would be best to run one command per screen session or per tmux window/pane t
 
    set -e; while true; do sudo -u www-data occ background-job:worker -v -t 60 "OC\TaskProcessing\SynchronousBackgroundJob"; done
 
-You may want to adjust the number of workers and the timeout to your needs. The above command will run with a timeout of 60 seconds which means any changes to the settings or the code will be picked up after 60 seconds (worst case scenario). This timeout does not, in any way, affect the processing or the timeout of the AI tasks.
+You may want to adjust the number of workers and the timeout (in seconds) to your needs.
 The logs of the worker can be checked by attaching to the screen or tmux session.
 
 Systemd service
@@ -220,9 +221,10 @@ Systemd service
 
    #!/bin/sh
    echo "Starting Nextcloud AI Worker $1"
+   cd /path/to/nextcloud
    sudo -u www-data php occ background-job:worker -t 60 'OC\TaskProcessing\SynchronousBackgroundJob'
 
-Same as above, you may want to adjust the number of workers and the timeout to your needs. The above command will run with a timeout of 60 seconds which means any changes to the settings or the code will be picked up after 60 seconds (worst case scenario). This timeout does not, in any way, affect the processing or the timeout of the AI tasks.
+You may want to adjust the timeout to your needs (in seconds).
 
 3. Enable and start the service 4 or more times:
 
@@ -246,7 +248,7 @@ The complete logs of the workers can be checked with (replace 1 with the worker 
 
 .. code-block::
 
-   journalctl -xeu nextcloud-ai-worker@1.service
+   journalctl -xeu nextcloud-ai-worker@1.service -f
 
 
 Frequently Asked Questions
