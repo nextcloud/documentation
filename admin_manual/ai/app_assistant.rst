@@ -161,16 +161,7 @@ This field is appended to the block of chat messages, i.e. attached after the me
 The number of latest messages to consider for generating the next message. This does not include the user instructions, which is always considered in addition to this. This value should be adjusted in case you are hitting the token limit in your conversations too often.
 The AI text generation provider should ideally handle the max token limit case.
 
-Improve AI processing throughput
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Improve AI task pickup speed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Most AI tasks will be run as part of the background job system in Nextcloud which only runs jobs every 5 minutes by default.
-To pick up scheduled jobs faster you can set up background job workers that process AI tasks as soon as they are scheduled:
-
-run the following occ commands a daemon (you can also spawn multiple, for parallel processing):
-
-.. code-block::
-
-   occ background-job:worker 'OC\TaskProcessing\SynchronousBackgroundJob'
-
-Make sure to restart these daemons regularly, for example once a day, to make sure the daemon runs the latest code.
+See :ref:`the relevant section in AI Overview<ai-overview_improve-ai-task-pickup-speed>` for more information.
