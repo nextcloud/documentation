@@ -9,7 +9,7 @@ Installation
 
  * Install Windmill
 
-   * Either as a standalone install or via the Windmill External App in Nextcloud (see :ref:`External Apps<ai-app_api>`)
+   * Either as a standalone install or via the External App "Flow" in Nextcloud (see :ref:`External Apps<ai-app_api>`)
 
  * Enable the ``webhook_listeners`` app that comes with Nextcloud
 
@@ -40,6 +40,13 @@ The magic listener script
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The first script (after the "Input" block) in any workflow you build that should listen to a Nextcloud webhook must be ``CORE:LISTEN_TO_EVENT``. It must be an empty script with two parameters that you should fill statically: ``events``, which is a list of event IDs to listen to and ``filters`` a filter condition that allows more fine grained filtering for which events should be used. The filter condition as well as the available events with their payloads is documented in :ref:`the webhook_listeners documentation<webhook_listeners>`.
+
+You can copy the following Deno script for this:
+
+.. code-block:: typescript
+
+   export async function main(events: string[], filters: object) { }
+
 
 Nextcloud Scripts
 -----------------
