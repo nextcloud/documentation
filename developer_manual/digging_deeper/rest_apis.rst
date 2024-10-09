@@ -93,13 +93,20 @@ Both provide a way to transmit data between the backend of the app in the Nextcl
 The following combinations of attributes might be relevant for various scenarios:
 
 #. Plain frontend route: ``Controller`` class
-#. Plain Frontend with CRSF checks disabled: ``Controller`` class and ``#[NoCSRFRequired]`` attribute on the method
+#. Plain frontend with CRSF checks disabled: ``Controller`` class and ``#[NoCSRFRequired]`` attribute on the method
+#. REST route with CORS enabled: ``Controller`` class and ``#[CORS]`` and ``#[NoCSRFRequired]`` attributes on the route
 #. OCS-based route: ``OCSController`` class
-#. OCS-based route with CSRF disabled: ``OCSController`` class and ``#[NoCSRFRequired]`` attribute on the method
+#. OCS-based route with CORS enabled: ``OCSController`` class and ``#[CORS]`` attribute on the method
 
 .. warning::
   Adding the ``#[NoCRSFRequired]`` attribute imposes a security risk.
   You should not add this to your controller methods unless you understand the implications and be sure that you absolutely need the attribute.
+
+.. warning::
+  Adding the attribute ``#[CORS]`` alone is not sufficient to allow access using CORS.
+  The CSRF checker will typically fail, so enabling CORS enforces you to disable the CSRF checker as well.
+  Although the disabled CSRF checker in itself is a security issue to consider, adding CORS opens up this even more.
+  You should make sure, that you understand the implications completely when enabling CORS and do so only when there is a good use case.
 
 There are different ways a clients might interact with your APIs.
 These ways depend on your API configuration (what you allow) and on which route the request is finally made.
@@ -107,6 +114,8 @@ These ways depend on your API configuration (what you allow) and on which route 
 - *Access from web frontend* means the user is browses the Nextcloud web frontend with a browser.
 - *Access from an external app* indicates that the user is not using the normal browser (as logged in) but directly navigates a certain URL.
   This can be in a new browser tab or an external program (like an Android app or simply a curl command line).
+- *Access from external website* means that the user browses some third party web site and *magically* data from your app appears.
+  Technically, the other website would embed/load/use images, JSON data, or other resources from a URL pointing to the Nextcloud server.
 
 .. list-table:: Comparison of different API types
     :header-rows: 1
@@ -115,9 +124,11 @@ These ways depend on your API configuration (what you allow) and on which route 
     * - Description
       - 1 (plain)
       - 2 (w/o CSRF)
+      - 3 (CORS)
       - 4 (OCS)
-      - 4 (OCS w/o CSRF)
+      - 5 (OCS+CORS)
     * - URL prefix (relative to server)
+      - ``/apps/<appid>/``
       - ``/apps/<appid>/``
       - ``/apps/<appid>/``
       - ``/ocs/v2.php/apps/<appid>/``
@@ -125,14 +136,23 @@ These ways depend on your API configuration (what you allow) and on which route 
     * - Access from web frontend
       - yes
       - yes (CSRF risk)
-      - yes
       - yes (CSRF risk)
+      - yes
+      - yes (CSRF risk [#]_)
     * - Access from external app
       - ---
       - yes
+      - yes
       - yes (with header [#]_)
       - yes
+    * - Access from external website
+      - ---
+      - ---
+      - yes
+      - ---
+      - yes
     * - Encapsulated data
+      - no
       - no
       - no
       - yes (JSON or XML)
@@ -149,4 +169,7 @@ As a rule of thumb one can conclude that OCS provides a good way to handle most 
 The only exception to this is if you want to provide an API for external usage where you have to comply with an externally defined API scheme.
 Here, the encapsulation introduced in OCS and CSRF checks might be in your way.
 
+.. [#] Only if you have set ``#[NoCSRFRequired]``.
+       OCS controllers have other CSRF checks in place that might with CORS without disabling the CSRF checks completely. 
+       Using the ``OCS-APIREQUEST`` header is also a CSRF protection but is compatible with CORS.
 .. [#] The OCS controller needs the request header ``OCS-APIREQUEST`` to be set to ``true``.
