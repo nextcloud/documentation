@@ -6,10 +6,13 @@ App: Local large language model (llm2)
 
 The *llm2* app is one of the apps that provide text processing functionality using Large language models in Nextcloud and act as a text processing backend for the :ref:`Nextcloud Assistant app<ai-app-assistant>`, the *mail* app and :ref:`other apps making use of the core Text Processing API<tp-consumer-apps>`. The *llm2* app specifically runs only open source models and does so entirely on-premises. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
 
-This app uses `ctransformers <https://github.com/marella/ctransformers>`_ under the hood and is thus compatible with any model in *gguf* format. Output quality will differ depending on which model you use, we recommend the following models:
+This app uses `llama.cpp <https://github.com/abetlen/llama-cpp-python>`_ under the hood and is thus compatible with any model in *gguf* format.
 
-* `Llama3 8b Instruct <https://huggingface.co/QuantFactory/Meta-Llama-3-8B-Instruct-GGUF>`_ (reasonable quality; fast; good acclaim; multilingual output may not be optimal)
-* `Llama3 70B Instruct <https://huggingface.co/QuantFactory/Meta-Llama-3-70B-Instruct-GGUF>`_ (good quality; good acclaim; good multilingual output)
+However, we only test with Llama 3.1. Output quality will differ depending on which model you use and downstream tasks like summarization or Context Chat may not work on other models.
+We thus recommend the following models:
+
+* `Llama3.1 8b Instruct <https://huggingface.co/QuantFactory/Meta-Llama-3.1-8B-Instruct-GGUF>`_ (reasonable quality; fast; good acclaim; comes shipped with the app)
+* `Llama3.1 70B Instruct <https://huggingface.co/bartowski/Meta-Llama-3.1-70B-Instruct-GGUF>`_ (good quality; good acclaim)
 
 Multilinguality
 ---------------
@@ -26,6 +29,8 @@ Llama 3.1 `supports the following languages: <https://huggingface.co/meta-llama/
 * French
 * Hindi
 * Thai
+
+Note, that other languages may work as well, but only the above languages are guaranteed to work.
 
 Requirements
 ------------
