@@ -24,9 +24,9 @@ release = version
 
 # RTD theme options
 html_theme_options = {
-    'logo_only': True,
-    'style_external_links': True,
-    'display_version': False,
+	'logo_only': True,
+	'style_external_links': True,
+	'version_selector': False,
 }
 
 # relative path to subdirectories
@@ -58,7 +58,6 @@ else:
 html_context = {
 	'current_version': version,
 	'READTHEDOCS': True,
-	'extra_css_files': ['_static/custom.css'],
 
 	# force github plugin
 	'display_github': True,
@@ -67,6 +66,12 @@ html_context = {
 	# If current version is an int, use the stablexxx branches, otherwise, edit on master
 	'theme_vcs_pageview_mode': 'edit/%s/' % github_branch, # to be completed by each individual conf.py
 }
+
+html_static_path = ['_static']
+# Extra CSS relative to html_static_path
+html_css_files = [
+	'custom.css'
+]
 
 edit_on_github_project = 'nextcloud/documentation'
 edit_on_github_branch = 'master'
