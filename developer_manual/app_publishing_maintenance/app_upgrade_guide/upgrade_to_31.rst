@@ -76,6 +76,11 @@ Changed APIs
 ^^^^^^^^^^^^
 
 - Clarify ``OCP\Files\Storage\IStorage::getOwner()`` returns ``string|false``.
+- Added method parameter and return types to all inheritors of ``OCP\Files\Storage\IStorage``. To migrate in a backwards compatible manner:
+
+  #. Add all return types to your implementation now.
+  #. Add all parameter types to your implementation once Nextcloud 31 is the lowest supported version.
+
 - The Nextcloud implementation of the ``log`` method of ``Psr\Log\LoggerInterface`` now supports ``Psr\Log\LogLevel`` as log level parameter.
 
 Deprecated APIs
