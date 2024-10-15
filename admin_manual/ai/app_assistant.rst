@@ -63,6 +63,20 @@ In order to make use of text processing features in the assistant, you will need
 * :ref:`llm2<ai-app-llm2>` - Runs open source AI language models locally on your own server hardware (Customer support available upon request)
 * *integration_openai* - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 
+These apps currently implement the following Assistant Tasks:
+
+* *Generate text* (Tested with OpenAI GPT-3.5 and Llama 3.1 8B)
+* *Summarize* (Tested with OpenAI GPT-3.5 and Llama 3.1 8B)
+* *Generate headline* (Tested with OpenAI GPT-3.5 and Llama 3.1 8B)
+* *Extract topics* (Tested with OpenAI GPT-3.5 and Llama 3.1 8B)
+
+Additionally, *integration_openai* also implements the following Assistant Tasks:
+
+* *Context write* (Tested with OpenAI GPT-3.5)
+* *Reformulate text* (Tested with OpenAI GPT-3.5)
+
+These tasks may work with other models, but we can give no guarantees.
+
 Text-To-Image
 ~~~~~~~~~~~~~
 
@@ -79,6 +93,7 @@ In order to make use of our special Context Chat feature, offering in-context in
 
 * :ref:`context_chat + context_chat_backend<ai-app-context_chat>` -  (Customer support available upon request)
 
+You will also need a text processing provider as specified above (ie. llm2 or integration_openai).
 
 Configuration
 -------------
@@ -161,16 +176,7 @@ This field is appended to the block of chat messages, i.e. attached after the me
 The number of latest messages to consider for generating the next message. This does not include the user instructions, which is always considered in addition to this. This value should be adjusted in case you are hitting the token limit in your conversations too often.
 The AI text generation provider should ideally handle the max token limit case.
 
-Improve AI processing throughput
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Improve AI task pickup speed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Most AI tasks will be run as part of the background job system in Nextcloud which only runs jobs every 5 minutes by default.
-To pick up scheduled jobs faster you can set up background job workers that process AI tasks as soon as they are scheduled:
-
-run the following occ commands a daemon (you can also spawn multiple, for parallel processing):
-
-.. code-block::
-
-   occ background-job:worker 'OC\TaskProcessing\SynchronousBackgroundJob'
-
-Make sure to restart these daemons regularly, for example once a day, to make sure the daemon runs the latest code.
+See :ref:`the relevant section in AI Overview<ai-overview_improve-ai-task-pickup-speed>` for more information.

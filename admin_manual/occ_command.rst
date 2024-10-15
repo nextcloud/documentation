@@ -514,7 +514,9 @@ A set of commands to create and manage addressbooks and calendars::
 
  dav
   dav:create-addressbook                 Create a dav addressbook
+  dav:list-addressbooks                  List all addressbooks of a user
   dav:create-calendar                    Create a dav calendar
+  dav:create-subscription                Create a dav calendar subscription
   dav:delete-calendar                    Delete a dav calendar
   dav:fix-missing-caldav-changes         Insert missing calendarchanges rows for existing events
   dav:list-calendars                     List all calendars of a user
@@ -536,6 +538,20 @@ This example creates a new calendar for molly::
 
 Molly will immediately see these in the Calendar and Contacts apps.
 
+The syntax for ``dav:create-subscription`` is 
+``dav:create-subscription [user] [name] [url] [optional color]``. This example creates the subscription subscription for the lunar
+calendar ``Lunar Calendar`` for the user molly::
+
+ sudo -u www-data php occ dav:create-subscription molly "Lunar Calendar" webcal://cantonbecker.com/astronomy-calendar/astrocal.ics
+
+Molly will immediately see this new subscription calendar in the Calendar app.
+
+Optionally, a color for the new subscription calendar can be passed as a HEX color code::
+  
+ sudo -u www-data php occ dav:create-subscription molly "Lunar Calendar" calendar webcal://cantonbecker.com/astronomy-calendar/astrocal.ics "#ff5733"
+
+If not set, the theming default color will be used.
+
 ``dav:delete-calendar [--birthday] [-f|--force] <uid> [<name>]`` deletes the
 calendar named ``name`` (or the birthday calendar if ``--birthday`` is
 specified) of the user ``uid``. You can use the force option ``-f`` or
@@ -549,10 +565,16 @@ This example will delete the birthday calendar of user molly::
 
  sudo -u www-data php occ dav:delete-calendar --birthday molly
 
-``dav:lists-calendars [user]`` will display a table listing the calendars for a given user.
+``dav:list-calendars [user]`` and ``dav:list-addressbooks [user]`` will display a
+table listing the calendars or addressbooks for a given user.
+
 This example will list all calendars for user annie::
 
  sudo -u www-data php occ dav:list-calendars annie
+
+This example will list all addressbooks for user annie::
+
+ sudo -u www-data php occ dav:list-addressbooks annie
 
 ``dav:dav:fix-missing-caldav-changes [user]`` tries to restore calendar sync changes when data in the calendarchanges table has been lost. If the user ID is omitted, the command runs for all users. This can take a while.
 

@@ -35,7 +35,7 @@ jobs:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
           pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
 
-      - uses: pascalgn/automerge-action@v0.16.3
+      - uses: pascalgn/automerge-action@v0.16.4
         if: steps.cpr.outputs.pull-request-operation == 'created'
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
