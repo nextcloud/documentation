@@ -24,3 +24,8 @@ OpenAI integration
 With this application, you can also connect to a self-hosted LocalAI or Ollama instance or to any service that implements an API similar enough to the OpenAI API, for example Plusserver or MistralAI.
 
 Do note however, that we test the Assistant tasks that this app implements only with OpenAI models and only against the OpenAI API, we thus cannot guarantee other models and APIs will work.
+
+
+Improve performance
+
+Prompts from integration_openai and integration_replicate can have a delay of 5 minutes. This can be optimized and more information can be found `here <https://docs.nextcloud.com/server/latest/admin_manual/ai/overview.html#improve-ai-task-pickup-speed>`_.
