@@ -206,7 +206,7 @@ The logs of the worker can be checked by attaching to the screen or tmux session
 Systemd service
 ^^^^^^^^^^^^^^^
 
-1. Create a systemd service file in ``/etc/systemd/system/nextcloud-ai-worker@.service`` with the following content:
+1. Create a systemd service file in ``/etc/systemd/system/nextcloud-ai-worker@.service`` on the Nextcloud main server/container with the following content:
 
 .. code-block::
 
