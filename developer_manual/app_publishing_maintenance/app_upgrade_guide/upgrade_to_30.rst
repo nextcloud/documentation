@@ -134,7 +134,7 @@ In this release support for PHP 8.0 was removed. Follow the steps below to make 
 .. code-block:: xml
 
   <dependencies>
-    <php min-version="8.1" max-version="8.3" />
+    <php min-version="8.1" max-version="8.4" />
     <nextcloud min-version="27" max-version="30" />
   </dependencies>
 
@@ -145,11 +145,42 @@ In this release support for PHP 8.0 was removed. Follow the steps below to make 
 
   {
     "require": {
-      "php": ">=8.1 <=8.3"
+      "php": ">=8.1 <=8.4"
     }
   }
 
 3. If you have :ref:`continuous integration <app-ci>` set up, remove PHP 8.0 from the matrices of tests and linters.
+
+Support for PHP 8.4 added
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. versionadded:: 30.0.2
+
+In this release support for PHP 8.4 was added. Follow the steps below to make your app compatible.
+
+1. If ``appinfo/info.xml`` has a dependency specification for PHP, increase the ``max-version`` to 8.4.
+
+.. code-block:: xml
+
+  <dependencies>
+    <php min-version="8.1" max-version="8.4" />
+    <nextcloud min-version="26" max-version="28" />
+  </dependencies>
+
+
+2. If your app has a ``composer.json`` and the file contains the PHP restrictions from ``info.xml``, adjust it as well.
+
+.. code-block:: json
+
+  {
+    "require": {
+      "php": ">=8.1 <=8.4"
+    }
+  }
+
+3. If you have :ref:`continuous integration <app-ci>` set up, extend your test matrix with PHP 8.4 tests and linters.
+
+Information about code changes can be found on `php.net <https://www.php.net/migration84>`__ and `stitcher.io <https://stitcher.io/blog/new-in-php-84>`__.
 
 Added APIs
 ^^^^^^^^^^
