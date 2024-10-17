@@ -63,6 +63,20 @@ In order to make use of text processing features in the assistant, you will need
 * :ref:`llm2<ai-app-llm2>` - Runs open source AI language models locally on your own server hardware (Customer support available upon request)
 * *integration_openai* - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 
+These apps currently implement the following Assistant Tasks:
+
+* *Generate text* (Tested with OpenAI GPT-3.5 and Llama 3.1 8B)
+* *Summarize* (Tested with OpenAI GPT-3.5 and Llama 3.1 8B)
+* *Generate headline* (Tested with OpenAI GPT-3.5 and Llama 3.1 8B)
+* *Extract topics* (Tested with OpenAI GPT-3.5 and Llama 3.1 8B)
+
+Additionally, *integration_openai* also implements the following Assistant Tasks:
+
+* *Context write* (Tested with OpenAI GPT-3.5)
+* *Reformulate text* (Tested with OpenAI GPT-3.5)
+
+These tasks may work with other models, but we can give no guarantees.
+
 Text-To-Image
 ~~~~~~~~~~~~~
 
@@ -79,6 +93,7 @@ In order to make use of our special Context Chat feature, offering in-context in
 
 * :ref:`context_chat + context_chat_backend<ai-app-context_chat>` -  (Customer support available upon request)
 
+You will also need a text processing provider as specified above (ie. llm2 or integration_openai).
 
 Configuration
 -------------

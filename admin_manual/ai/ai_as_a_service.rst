@@ -11,8 +11,16 @@ Installation
 
 In order to use these providers you will need to install the respective app from the app store:
 
-* ``integration_openai`` (With this application, you can also connect to a self-hosted LocalAI instance or to any service that implements an API similar to OpenAI, for example Plusserver or MistralAI.)
+* ``integration_openai``
 
 * ``integration_replicate``
 
 You can then add your API token and rate limits in the administration settings and set the providers live in the "Artificial intelligence" section of the admins settings.
+
+
+OpenAI integration
+------------------
+
+With this application, you can also connect to a self-hosted LocalAI or Ollama instance or to any service that implements an API similar enough to the OpenAI API, for example Plusserver or MistralAI.
+
+Do note however, that we test the Assistant tasks that this app implements only with OpenAI models and only against the OpenAI API, we thus cannot guarantee other models and APIs will work.
