@@ -181,7 +181,7 @@ Improve AI task pickup speed
 ----------------------------
 
 Most AI tasks will be run as part of the background job system in Nextcloud which only runs jobs every 5 minutes by default.
-To pick up scheduled jobs faster you can set up a background job inside your Nextcloud main server/container that process AI tasks as soon as they are scheduled.
+To pick up scheduled jobs faster you can set up background job workers inside your Nextcloud main server/container that process AI tasks as soon as they are scheduled.
 If the PHP code or the Nextcloud settings values are changed while a worker is running, those changes won't be effective inside the runner. For that reason, the worker needs to be restarted regularly. It is done with a timeout of N seconds which means any changes to the settings or the code will be picked up after N seconds (worst case scenario). This timeout does not, in any way, affect the processing or the timeout of the AI tasks.
 
 Screen or tmux session
