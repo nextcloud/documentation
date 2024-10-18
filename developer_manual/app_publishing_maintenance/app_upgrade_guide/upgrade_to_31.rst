@@ -70,7 +70,8 @@ Added APIs
 
 - It is now possible to download folders as zip or tar archives using the WebDAV backend using :code:`GET` requests.
   See the relevant :ref:`endpoint documentation<webdav-download-folders>`.
-- ``OCP\SetupCheck\CheckServerResponseTrait`` was added to ease implementing custom :ref:`setup checks<setup-checks>` which need to check HTTP calls to the the server itself.
+- ``OCP\SetupCheck\CheckServerResponseTrait`` was added to ease implementing custom :ref:`setup checks<setup-checks>`
+  which need to check HTTP calls to the the server itself.
 
 Changed APIs
 ^^^^^^^^^^^^
@@ -82,12 +83,28 @@ Changed APIs
   #. Add all parameter types to your implementation once Nextcloud 31 is the lowest supported version.
 
 - The Nextcloud implementation of the ``log`` method of ``Psr\Log\LoggerInterface`` now supports ``Psr\Log\LogLevel`` as log level parameter.
+- The ``OCP\DB\QueryBuilder\IQueryBuilder`` now supports more date / time related parameter types:
+
+  - ``PARAM_DATE_MUTABLE`` and ``PARAM_DATE_IMMUTABLE`` for passing a ``\DateTime`` (``\DateTimeImmutable`` respectively) instance when only interested in the date part.
+  - ``PARAM_TIME_MUTABLE`` and ``PARAM_TIME_IMMUTABLE`` to pass a ``\DateTime`` (``\DateTimeImmutable`` respectively) instance when only interested in the time part.
+  - ``PARAM_DATETIME_MUTABLE`` and ``PARAM_DATETIME_IMMUTABLE`` to pass a ``\DateTime`` (``\DateTimeImmutable`` respectively) instance without handling of the timezone.
+  - ``PARAM_DATETIME_TZ_MUTABLE`` and ``PARAM_DATETIME_TZ_IMMUTABLE`` to pass a ``\DateTime`` (``\DateTimeImmutable`` respectively) instance with handling of the timezone.
+
+- The ``OCP\\DB\\Types`` now support more date and time related types for usage with the ``Entity``:
+
+  - ``DATE_IMMUTABLE`` for fields that will (de)serialized as ``\DateTimeImmutable`` instances with only the date part set.
+  - ``TIME_IMMUTABLE`` for fields that will (de)serialized as ``\DateTimeImmutable`` instances with only the time part set.
+  - ``DATETIME_IMMUTABLE`` for fields that will (de)serialized as ``\DateTimeImmutable`` instances with both the time part set but without timezone information.
+  - ``DATETIME_TZ`` for fields that will (de)serialized as ``\DateTime`` instances with both the time part set and with timezone information.
+  - ``DATETIME_TZ_IMMUTABLE`` for fields that will (de)serialized as ``\DateTimeImmutable`` instances with both the time part set and with timezone information.
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
 
 - The ``/s/{token}/download`` endpoint for downloading public shares is deprecated.
   Instead use the Nextcloud provided :ref:`WebDAV endpoint<webdav-download-folders>`.
+- ``OCP\DB\QueryBuilder\IQueryBuilder::PARAM_DATE`` is deprecated in favor of ``PARAM_DATETIME_MUTABLE``
+  to make clear that this type also includes the time part of a date time instance.
 
 Removed APIs
 ^^^^^^^^^^^^
