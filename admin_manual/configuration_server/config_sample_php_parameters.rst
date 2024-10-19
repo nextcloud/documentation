@@ -549,6 +549,18 @@ davstorage.request_timeout
 
 The timeout in seconds for requests to servers made by the DAV component (e.g., needed for federated shares).
 
+carddav_sync_request_timeout
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'carddav_sync_request_timeout' => 30,
+
+The timeout in seconds for synchronizing address books, e.g. federated system address books (as run by `occ federation:sync-addressbooks`).
+
+Defaults to ``30`` seconds
+
 session_relaxed_expiry
 ^^^^^^^^^^^^^^^^^^^^^^
 
