@@ -268,6 +268,13 @@ Enable an app for specific groups of users::
  sudo -u www-data php occ app:enable --groups admin --groups sales files_external
  files_external enabled for groups: admin, sales
 
+Enable multiple apps simultaneously::
+
+ sudo -u www-data php occ app:enable app1 app2 app3
+ app1 enabled
+ app2 enabled
+ app3 enabled
+
 Disable an app::
 
  sudo -u www-data php occ app:disable files_external
