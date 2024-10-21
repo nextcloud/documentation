@@ -2,11 +2,8 @@
 Configuring Federation Sharing
 ==============================
 
-Federated Cloud Sharing is now managed by the Federation app (9.0+), and is 
-now called Federation sharing. When you enable the Federation app you can 
-easily and securely link file shares between Nextcloud servers, in effect 
-creating a cloud of Nextclouds.
- 
+Federation Sharing allows you to easily and securely link file shares between 
+Nextcloud servers, in effect creating a cloud of Nextclouds.
 
 .. _label-direct-share-link:   
    
