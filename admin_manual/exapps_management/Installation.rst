@@ -50,9 +50,6 @@ where ``<version-tag>`` is the version you want to install.
 
 		./occ app:enable --force app_api
 
-
-To install it in development mode, follow the instructions on this page: :ref:`dev-setup`.
-
 4. Setup Deploy daemon
 **********************
 

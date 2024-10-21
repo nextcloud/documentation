@@ -27,7 +27,7 @@ Here are some common steps to verify the network configuration:
 ExApp deployment issues
 -----------------------
 
-The deployment issues questions are covered in the :ref:`Test Deploy <test_deploy>` section.
+The deployment issues questions are covered in the `Test Deploy <https://nextcloud.github.io/app_api/TestDeploy.html>`_ section.
 Generally speaking, there are three steps to find the proper error message to understand the problem:
 
 1. Check Nextcloud logs
