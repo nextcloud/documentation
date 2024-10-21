@@ -12,6 +12,7 @@ Table of contents
     configuration_server/index
     occ_command
     apps_management
+    exapps_management/index
     configuration_user/index
     configuration_files/index
     file_workflows/index
