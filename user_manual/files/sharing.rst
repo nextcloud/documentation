@@ -61,6 +61,8 @@ For adjusting the acceptance setting, go to **Settings** > **Personal** > **Shar
 .. figure:: ../images/sharing_autoAcceptSetting.png
 
 
+.. warning:: If the owner renames a shared file or folder, the new name will not be reflected on the recipient's side. This is needed to prevent overwriting existing files or folders on the recipient's end.
+
 Others with access
 ------------------
 
