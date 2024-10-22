@@ -1,65 +1,14 @@
 Installation
 ============
 
-There are two ways to install the AppAPI: from the `AppStore <https://apps.nextcloud.com/apps/app_api>`_ or from the source code.
+As of Nextcloud 30, AppAPI is automatically installed by default.
+If AppAPI is not installed, you can still install it from the `App Store <https://apps.nextcloud.com/apps/app_api>`_.
+Simply navigate to the Apps management page in your Nextcloud and search for AppAPI from the Tools category.
 
-.. note::
+Setup deploy daemon
+*******************
 
-   AppAPI 3.0.0 is the last version supported Nextcloud 27.
-
-
-Installation from the AppStore
-------------------------------
-
-Simply navigate to the Apps management page in your Nextcloud and setup the AppAPI from the Tools category.
-
-Installation from the source code
----------------------------------
-
-To install the AppAPI from the source code, follow these steps:
-
-1. Clone the AppAPI repository into your apps directory
-*******************************************************
-
-Clone the latest main branch:
-
-	.. code-block:: bash
-
-		git clone https://github.com/cloud-py-api/app_api.git
-
-or clone a specific version by specifying the version tag:
-
-	.. code-block:: bash
-
-		git clone https://github.com/cloud-py-api/app_api.git --branch <version-tag>
-
-where ``<version-tag>`` is the version you want to install.
-
-
-2. Build frontend assets in production mode
-********************************************
-
-	.. code-block:: bash
-
-		npm ci && npm run build
-
-3. Enable the AppAPI
-********************
-
-	.. code-block:: bash
-
-		./occ app:enable --force app_api
-
-4. Setup Deploy daemon
-**********************
-
-Upon the successful installation of the AppAPI, a one-time configuration is essential.
-Details on this configuration can be found in the subsequent section: :ref:`create-deploy-daemon`.
-
-4.1 Deploy daemon configuration
-*******************************
-
-Deploy daemon configuration steps:
+After successful installation, a one-time configuration of the deploy daemon is required:
 
 1. Go to the AppAPI admin settings.
 2. Click on the "Register Daemon" button.

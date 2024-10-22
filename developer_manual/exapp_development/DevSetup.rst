@@ -7,24 +7,34 @@ We highly recommend using `Julius Haertl docker setup <https://github.com/julius
 
 Suggested IDE: **PhpStorm**, though you can certainly use any IDE of your preference such as **VS Code** or **Vim**.
 
-Get last version from GitHub
-""""""""""""""""""""""""""""
+Installation from the source code
+""""""""""""""""""""""""""""""""""
 
-Assuming you're in the ``apps`` folder of Nextcloud with command :command:`git`::
+Clone the latest main branch:
 
-	git clone https://github.com/cloud-py-api/app_api.git
+	.. code-block:: bash
 
-Change to the ``app_api`` directory with :command:`shell`::
+		git clone https://github.com/cloud-py-api/app_api.git && cd app_api
 
-	cd app_api
+or clone a specific version by specifying the version tag:
 
-Then, build frontend assets in development mode with :command:`shell`::
+	.. code-block:: bash
 
-	npm ci && npm run dev
+		git clone https://github.com/cloud-py-api/app_api.git --branch <version-tag> && cd app_api
 
-After this, you can enable it from the directory where the ``occ`` command resides, with :command:`shell`::
+where ``<version-tag>`` is the version you want to install.
 
-	./occ app:enable --force app_api
+Then, build frontend assets in development mode:
+
+	.. code-block:: bash
+
+		npm ci && npm run build
+
+Enable AppAPI from the directory where the ``occ`` command resides:
+
+	.. code-block:: bash
+
+		./occ app:enable --force app_api
 
 In Place of a Conclusion
 """"""""""""""""""""""""
