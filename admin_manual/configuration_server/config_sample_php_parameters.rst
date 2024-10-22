@@ -3726,6 +3726,36 @@ This is used to find external binaries like libreoffice, sendmail, ffmpeg and mo
 
 Defaults to ``['/usr/local/sbin','/usr/local/bin','/usr/sbin','/usr/bin','/sbin','/bin','/opt/bin']``
 
+files.chunked_upload.max_size
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'files.chunked_upload.max_size' => 100 * 1024 * 1024,
+
+The maximum chunk size to use for chunked uploads.
+
+A bigger chunk size results in higher throughput, but above 100 MiB there are only diminishing returns,
+while services like Cloudflare already limit to 100 MiB.
+
+Defaults to 100 MiB.
+
+files.chunked_upload.max_parallel_count
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'files.chunked_upload.max_parallel_count' => 5,
+
+The maximum number of chunks uploaded in parallel during chunked uploads.
+
+A bigger count results in higher throughput, but will also consume more server workers,
+while the improvements diminish.
+
+Defaults to 5.
+
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
 
