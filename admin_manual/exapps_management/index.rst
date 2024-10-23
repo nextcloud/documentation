@@ -5,7 +5,7 @@ ExApps management
 .. toctree::
    :maxdepth: 2
 
-   Installation
+   AppAPIAndExternalApps
    DeployConfigurations
    CreationOfDeployDaemon
    TestDeploy
