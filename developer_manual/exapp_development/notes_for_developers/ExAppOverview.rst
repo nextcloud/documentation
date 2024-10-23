@@ -246,7 +246,7 @@ It is recommended to follow our Makefile example with the default set of command
 
 .. note::
 
-	Makefile is written to work in the `nextcloud-docker-dev <https://github.com/juliushaertl/nextcloud-docker-dev>`_ dev setup.
+	Makefile is written to work in the `nextcloud-docker-dev <https://github.com/juliusknorr/nextcloud-docker-dev>`_ development environment.
 
 - ``help``: shows the list of available commands.
 - ``build-push-cpu``: builds the Docker image for CPU and uploads it to the Docker registry.

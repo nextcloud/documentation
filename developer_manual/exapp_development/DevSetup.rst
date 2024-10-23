@@ -3,7 +3,7 @@
 Setting up dev environment
 ==========================
 
-We highly recommend using `Julius Haertl docker setup <https://github.com/juliushaertl/nextcloud-docker-dev>`_ for the Nextcloud dev setup.
+We highly recommend using `Julius Knorr's Docker setup <https://github.com/juliusknorr/nextcloud-docker-dev>`_ for Nextcloud development.
 
 Suggested IDE: **PhpStorm**, though you can certainly use any IDE of your preference such as **VS Code** or **Vim**.
 
