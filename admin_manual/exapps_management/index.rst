@@ -10,4 +10,3 @@ ExApps management
    CreationOfDeployDaemon
    TestDeploy
    ManagingExternalApplications
-   Concepts
