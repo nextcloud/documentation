@@ -94,7 +94,7 @@ To simplify the usage, we declare a few constants:
     export const APP_API_PROXY_URL_PREFIX = '/apps/app_api/proxy'
     export const APP_API_ROUTER_BASE = '/apps/app_api/embedded'
 
-The bootstrap of the Vue app (`UI Example boostrap <https://github.com/cloud-py-api/ui_example/blob/main/src/bootstrap.js>`_) is changes as follows:
+The bootstrap of the Vue app (`UI Example bootstrap <https://github.com/cloud-py-api/ui_example/blob/main/src/bootstrap.js>`_) is changed as follows:
 
 .. code-block::
 

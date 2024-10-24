@@ -38,7 +38,7 @@ Heartbeat
 *********
 
 The ``GET /heartbeat`` method is called periodically by Nextcloud to check the ExApp health status,
-if its webserver is running and recieving requests.
+if its webserver is running and receiving requests.
 
 URL: ``GET http://localhost:2345/heartbeat``
 

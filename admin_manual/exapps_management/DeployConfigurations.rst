@@ -306,7 +306,7 @@ where:
 	It can be ``0.0.0.0`` in some specific configurations, when VPN is used
 	or both Nextcloud instance and ExApps are one the same physical machine but different virtual environments.
 
-	Also you can specify something like ``10.10.2.5`` and in this case ``ExApp`` wil try to bind to that address and
+	Also you can specify something like ``10.10.2.5`` and in this case ``ExApp`` will try to bind to that address and
 	AppAPI will try to send request s directly to this address assuming that ExApp itself bound on it.
 
 The simplest implementation is in **Manual-Install** deploy type:

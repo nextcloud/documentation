@@ -107,6 +107,6 @@ Response for this request should contain::
 
 for success and if some error occur during **enabling**, it should be present and not be empty::
 
-	{"error": "i cant handle enabling"}
+	{"error": "i can't handle enabling"}
 
 This is all three steps involved in the applications installation flow.
