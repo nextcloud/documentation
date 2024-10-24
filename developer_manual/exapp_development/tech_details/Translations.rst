@@ -14,7 +14,7 @@ For the front-end part AppAPI will inject the current user's locale ``l10n/<lang
 
 .. note::
 
-	ExApp l10n files are included only on the ExApp UI pages (:ref:`Top Menu <top_menu_section>`), Files (for :ref:`FileAction <file_actions_menu_section>`) and Settings (for :ref:`DeclarativeSettings <declarative_settings_section>`).
+	ExApp l10n files are included only on the ExApp UI pages (:ref:`Top Menu <top_menu_section>`), Files (for :ref:`FileAction <file_actions_menu_section>`) and Settings (for :ref:`DeclarativeSettings <exapp_declarative_settings_section>`).
 
 
 Back-end

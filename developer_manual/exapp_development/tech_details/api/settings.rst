@@ -1,4 +1,4 @@
-.. _declarative_settings_section:
+.. _exapp_declarative_settings_section:
 
 ====================
 Declarative Settings
