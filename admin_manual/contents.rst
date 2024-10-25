@@ -18,6 +18,8 @@ Table of contents
     office/index
     reference/index
     ai/index
+    webhook_listeners/index
+    windmill_workflows/index
     configuration_database/index
     configuration_mimetypes/index
     maintenance/index
