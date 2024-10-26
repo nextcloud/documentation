@@ -651,6 +651,22 @@ Disabling this is discouraged for security reasons.
 
 Defaults to ``true``
 
+auth.bruteforce.protection.force.database
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'auth.bruteforce.protection.force.database' => false,
+
+Whether the brute force protection should write into the database even when a memory cache is available
+
+Using the database is most likely worse for performance, but makes investigating
+issues a lot easier as it's possible to look directly at the table to see all
+logged remote addresses and actions.
+
+Defaults to ``false``
+
 auth.bruteforce.protection.testing
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
