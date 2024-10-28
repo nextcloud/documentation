@@ -549,6 +549,18 @@ davstorage.request_timeout
 
 The timeout in seconds for requests to servers made by the DAV component (e.g., needed for federated shares).
 
+carddav_sync_request_timeout
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'carddav_sync_request_timeout' => 30,
+
+The timeout in seconds for synchronizing address books, e.g. federated system address books (as run by `occ federation:sync-addressbooks`).
+
+Defaults to ``30`` seconds
+
 session_relaxed_expiry
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -638,6 +650,22 @@ Whether the brute force protection shipped with Nextcloud should be enabled or n
 Disabling this is discouraged for security reasons.
 
 Defaults to ``true``
+
+auth.bruteforce.protection.force.database
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'auth.bruteforce.protection.force.database' => false,
+
+Whether the brute force protection should write into the database even when a memory cache is available
+
+Using the database is most likely worse for performance, but makes investigating
+issues a lot easier as it's possible to look directly at the table to see all
+logged remote addresses and actions.
+
+Defaults to ``false``
 
 auth.bruteforce.protection.testing
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3713,6 +3741,36 @@ Directories where nextcloud looks for binaries.
 This is used to find external binaries like libreoffice, sendmail, ffmpeg and more.
 
 Defaults to ``['/usr/local/sbin','/usr/local/bin','/usr/sbin','/usr/bin','/sbin','/bin','/opt/bin']``
+
+files.chunked_upload.max_size
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'files.chunked_upload.max_size' => 100 * 1024 * 1024,
+
+The maximum chunk size to use for chunked uploads.
+
+A bigger chunk size results in higher throughput, but above 100 MiB there are only diminishing returns,
+while services like Cloudflare already limit to 100 MiB.
+
+Defaults to 100 MiB.
+
+files.chunked_upload.max_parallel_count
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'files.chunked_upload.max_parallel_count' => 5,
+
+The maximum number of chunks uploaded in parallel during chunked uploads.
+
+A bigger count results in higher throughput, but will also consume more server workers,
+while the improvements diminish.
+
+Defaults to 5.
 
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
