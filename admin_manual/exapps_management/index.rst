@@ -9,4 +9,4 @@ ExApps management
    DeployConfigurations
    CreationOfDeployDaemon
    TestDeploy
-   ManagingExternalApplications
+   ManagingExApps

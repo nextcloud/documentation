@@ -1,5 +1,5 @@
-Managing External Applications
-==============================
+Managing ExApps
+===============
 
 There are two ways to manage ExApps:
 
@@ -38,8 +38,8 @@ Options
 *******
 
     * ``--force-scopes`` *[optional]* - force scopes approval
-    * ``--json-info JSON-INFO`` **[optional]** - ExApp deploy JSON info (json string)
-    * ``--info-xml INFO-XML`` **[optional]** - path to info.xml file (url or local absolute path)
+    * ``--json-info JSON-INFO`` *[optional]* - ExApp deploy JSON info (json string)
+    * ``--info-xml INFO-XML`` *[optional]* - path to info.xml file (url or local absolute path)
 
 
 Unregister
@@ -77,7 +77,7 @@ Arguments
 Options
 *******
 
-    * ``--info-xml INFO-XML`` **[optional]** - path to info.xml file (url or local absolute path)
+    * ``--info-xml INFO-XML`` *[optional]* - path to info.xml file (url or local absolute path)
     * ``--force-update`` *[optional]* - force ExApp update (do not prompt for confirmation)
     * ``--force-scopes`` *[optional]* - force scopes approval (accept all scopes)
     * ``-e|--enabled`` *[optional]* - enable ExApp after update
