@@ -114,7 +114,6 @@ It is recommended to add opcache to it::
 
   [opcache]
   opcache.enable=1
-  opcache.enable_cli=1
   opcache.memory_consumption=512
   opcache.interned_strings_buffer=8
   opcache.max_accelerated_files=10000
