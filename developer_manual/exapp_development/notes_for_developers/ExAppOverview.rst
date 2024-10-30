@@ -242,11 +242,10 @@ And this can be done with simple bash script, as `in our example for Python <htt
 Makefile
 --------
 
-It is recommended to follow our Makefile example with the default set of commands:
+It is recommended to follow the following default set of commands:
 
 .. note::
-
-	Makefile is written to work in the `nextcloud-docker-dev <https://github.com/juliusknorr/nextcloud-docker-dev>`_ development environment.
+	Makefiles are typically written to work in the `nextcloud-docker-dev <https://github.com/juliusknorr/nextcloud-docker-dev>`_ development environment.
 
 - ``help``: shows the list of available commands.
 - ``build-push-cpu``: builds the Docker image for CPU and uploads it to the Docker registry.
@@ -258,78 +257,5 @@ It is recommended to follow our Makefile example with the default set of command
 - ``convert_translations_nc``: converts translations to Nextcloud format files (json, js).
 - ``convert_to_locale``: copies translations to the common locale/<lang>/LC_MESSAGES/<appid>.(po|mo). Depending on the language, you might need to adjust the script.
 
-
-Example
-*******
-
-Here is an example of regular ExApp Makefile:
-
-.. code-block::
-
-	.DEFAULT_GOAL := help
-
-	.PHONY: help
-	help:
-		@echo "Welcome to Nextcloud Visionatrix. Please use \`make <target>\` where <target> is one of"
-		@echo " "
-		@echo "  Next commands are only for dev environment with nextcloud-docker-dev!"
-		@echo "  They should run from the host you are developing on(with activated venv) and not in the container with Nextcloud!"
-		@echo "  "
-		@echo "  build-push-cpu    build image for CPU and upload to ghcr.io"
-		@echo "  build-push-cuda   build image for CUDA and upload to ghcr.io"
-		@echo "  build-push-rocm   build image for ROCm and upload to ghcr.io"
-		@echo "  "
-		@echo "  run               install Visionatrix for Nextcloud Last"
-		@echo "  "
-		@echo "  For development of this example use PyCharm run configurations. Development is always set for last Nextcloud."
-		@echo "  First run original 'Visionatrix', then run this Visionatrix and then 'make registerXX', after that you can use/debug/develop it and easy test."
-		@echo "  Do not forget to change paths in 'proxy_requests' function to point to correct files for the frontend"
-		@echo "  "
-		@echo "  register          perform registration of running Visionatrix-es into the 'manual_install' deploy daemon."
-		@echo "  "
-		@echo "  L10N (for manual translation):"
-		@echo "  translation_templates      extract translation strings from sources"
-		@echo "  convert_translations_nc    convert translations to Nextcloud format files (json, js)"
-		@echo "  convert_to_locale    		copy translations to the common locale/<lang>/LC_MESSAGES/<appid>.(po|mo)"
-
-	.PHONY: build-push-cpu
-	build-push-cpu:
-		docker login ghcr.io
-		docker buildx build --push --platform linux/arm64/v8,linux/amd64 --tag ghcr.io/cloud-py-api/visionatrix:$$(xmlstarlet sel -t -v "//image-tag" appinfo/info.xml) --build-arg BUILD_TYPE=cpu .
-
-	.PHONY: build-push-cuda
-	build-push-cuda:
-		docker login ghcr.io
-		docker buildx build --push --platform linux/amd64 --tag ghcr.io/cloud-py-api/visionatrix-cuda:$$(xmlstarlet sel -t -v "//image-tag" appinfo/info.xml) --build-arg BUILD_TYPE=cuda .
-
-	.PHONY: build-push-rocm
-	build-push-rocm:
-		docker login ghcr.io
-		docker buildx build --push --platform linux/amd64 --tag ghcr.io/cloud-py-api/visionatrix-rocm:$$(xmlstarlet sel -t -v "//image-tag" appinfo/info.xml) --build-arg BUILD_TYPE=rocm .
-
-	.PHONY: run
-	run:
-		docker exec master-nextcloud-1 sudo -u www-data php occ app_api:app:unregister visionatrix --silent --force || true
-		docker exec master-nextcloud-1 sudo -u www-data php occ app_api:app:register visionatrix --force-scopes \
-			--info-xml https://raw.githubusercontent.com/cloud-py-api/visionatrix/main/appinfo/info.xml
-
-	.PHONY: register
-	register:
-		docker exec master-nextcloud-1 sudo -u www-data php occ app_api:app:unregister visionatrix --silent --force || true
-		docker exec master-nextcloud-1 rm -rf /tmp/vix_l10n && docker cp l10n master-nextcloud-1:/tmp/vix_l10n
-		docker exec master-nextcloud-1 sudo -u www-data php occ app_api:app:register visionatrix manual_install --json-info \
-	  "{\"id\":\"visionatrix\",\"name\":\"Visionatrix\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"port\":9100,\"scopes\":[\"AI_PROVIDERS\", \"FILES\", \"USER_INFO\"], \"translations_folder\":\"\/tmp\/vix_l10n\"}" \
-	  --force-scopes --wait-finish
-
-	.PHONY: translation_templates
-	translation_templates:
-		./translationtool.phar create-pot-files
-
-	.PHONY: convert_translations_nc
-	convert_translations_nc:
-		./translationtool.phar convert-po-files
-
-	.PHONY: convert_to_locale
-	convert_to_locale:
-		./scripts/convert_to_locale.sh
-
+For a complete example, you can take a look at our `Makefile for the Visionatrix app <https://github.com/cloud-py-api/visionatrix/blob/main/Makefile>`_.
+This example also requires the ``xmlstarlet`` program to be installed so that the Makefile can automatically detect the ExApp version from the info.xml file.
