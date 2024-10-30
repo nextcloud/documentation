@@ -2,7 +2,7 @@ Introduction
 ============
 
 **ExApps** (short for "External Apps") are Nextcloud apps that are developed in another programming language (outside of PHP) using the AppAPI OCS API.
-AppAPI is a project introduced by Nextcloud to revolutionize the process of application development within the Nextcloud ecosystem.
+`AppAPI <https://apps.nextcloud.com/apps/app_api>`_ is a project introduced by Nextcloud to revolutionize the process of application development within the Nextcloud ecosystem.
 
 Overview
 --------
