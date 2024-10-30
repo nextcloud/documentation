@@ -20,7 +20,7 @@ Lets go through the ExApp development steps briefly.
 0. Setting up the development environment
 -----------------------------------------
 
-First of all, you need to have a Nextcloud dev setup, refer to :ref:`DevelopmentEnvironment` for more details.
+First of all, you need to have a Nextcloud dev setup, refer to :ref:`dev-setup` for more details.
 
 1. Starting from template
 -------------------------

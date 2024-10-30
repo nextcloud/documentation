@@ -10,7 +10,6 @@ grouped from other parts of documentation.
 .. toctree::
    :maxdepth: 2
 
-   DevelopmentEnvironment
    ExAppDevelopmentSteps
    ExAppOverview
    ExAppLifecycle
