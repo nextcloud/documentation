@@ -3,9 +3,8 @@
 ExApp overview
 ==============
 
-Basic concept of the AppAPI is to provide a way to develop an app for Nextcloud using any language.
-In this way, the ExApp can be written in any language, in particular, the backend part.
-Frontend is kept the same. You can think about ExApp as a microservice.
+The basic concept of the AppAPI is to provide a way to develop/write an app for Nextcloud in any language, especially the backend part.
+The frontend part is usually kept the same. You can think of the ExApp as a microservice.
 
 
 ExApp structure
@@ -60,20 +59,20 @@ It should contain the following fields:
 Backend
 -------
 
-The ExApp backend part can be implemented in any language and framework you want,
-the only requirement here is to follow the microservice architecture and ExApp <-> Nextcloud :ref:`communication flow <ex_app_lifecycle_methods>`.
+The ExApp backend part can be implemented in any language and framework you want.
+The only requirement here is to follow the microservice architecture and ExApp <-> Nextcloud :ref:`communication flow <ex_app_lifecycle_methods>`.
 
 .. note::
 
 	There is a limitation of AppAPI ExApp proxy - the websocket connections are not supported.
 
-Each ExApp container have the environment variables set by AppAPI, you can find more about it :ref:`here <ex_app_env_vars>`.
+Each ExApp container has the environment variables set by AppAPI; you can find out more about them :ref:`here <ex_app_env_vars>`.
 
 Persistent storage
 ******************
 
-For each ExApp, AppAPI creates a Docker volume (``nc_app_<app_id>_data``), that is attached to the ExApp container as a persistent storage.
-It is available inside container under the ``/nc_app_<app_id>_data`` path or via ``APP_PERSISTENT_STORAGE`` env passed by AppAPI.
+For each ExApp, AppAPI creates a Docker volume (``nc_app_<app_id>_data``) that is attached to the ExApp container as persistent storage.
+It is available inside the container under the ``/nc_app_<app_id>_data`` path or via the ``APP_PERSISTENT_STORAGE`` environment variable passed by AppAPI.
 
 
 .. _ex_app_specific_frontend_changes:
@@ -117,7 +116,7 @@ Frontend routing
 ****************
 
 The frontend routing base URL is also adjusted to be loaded via AppAPI proxy.
-For example, the vuex router has the following base URL configuration:
+For example, the **vuex** router has the following base URL configuration:
 
 .. code-block::
 
@@ -146,7 +145,7 @@ Currently, only `manual translations <https://docs.nextcloud.com/server/latest/d
 To add support of your programming language from translations string extraction using Nextcloud translation tool,
 you just need to add your file extensions to it `in createPotFile <https://github.com/nextcloud/docker-ci/blob/master/translations/translationtool/src/translationtool.php#L69>`_
 and down below adjust the ``--language`` and ``keyword`` parameters.
-Our examples using translationtool adjusted in the same way:
+Here is an example using translationtool adjusted in the same way:
 
 .. code-block::
 
@@ -182,18 +181,17 @@ Our examples using translationtool adjusted in the same way:
      				$language .= 'Javascript';
      			}
 
-where we declaring the methods used in source code for translating strings.
+where we declare the methods used in source code for translating strings.
 
-The ExApp translations are stored in the ``l10n`` folder in the ExApp root folder.
-For Nextcloud side it still has to contain the files as for regular Nextcloud apps (.js and .json).
-There ExApp translation files are copied to the Nextcloud server during installation (removed on uninstall),
-and can be used to translate ExApp string on backend or frontend parts the same way as for PHP apps.
+The ExApp translations are stored in the ``l10n`` directory under the ExApp project root directory.
+On the Nextcloud side, it still has to contain the translation files as with regular Nextcloud apps (.js and .json).
+The ExApp translation files are copied to the Nextcloud server during installation (removed on uninstall),
+and can be used to translate ExApp strings on the backend or frontend in the same way as PHP apps.
 
 .. note::
-
-    For the clustered Nextcloud setup, the ExApp translations must be also copied to the other Nextcloud instances,
-    if the apps folder is not shared between the instances.
-    It is done automatically only for the instance, where the installation is performed.
+    In a clustered Nextcloud setup, the ExApp translations must be also copied to the other Nextcloud instances,
+    if the apps folder is not shared between them.
+    It is done automatically only for the instance where the installation is performed.
 
 
 You might need to convert the translation files to the format that is used in your language.
@@ -242,10 +240,7 @@ And this can be done with simple bash script, as `in our example for Python <htt
 Makefile
 --------
 
-It is recommended to follow the following default set of commands:
-
-.. note::
-	Makefiles are typically written to work in the `nextcloud-docker-dev <https://github.com/juliusknorr/nextcloud-docker-dev>`_ development environment.
+It is recommended to use the following default set of commands:
 
 - ``help``: shows the list of available commands.
 - ``build-push-cpu``: builds the Docker image for CPU and uploads it to the Docker registry.
@@ -256,6 +251,9 @@ It is recommended to follow the following default set of commands:
 - ``translation_templates``: execute translationtool.phar to extract translation strings from sources (frontend and backend).
 - ``convert_translations_nc``: converts translations to Nextcloud format files (json, js).
 - ``convert_to_locale``: copies translations to the common locale/<lang>/LC_MESSAGES/<appid>.(po|mo). Depending on the language, you might need to adjust the script.
+
+.. note::
+	These Makefiles are typically written to work in the `nextcloud-docker-dev <https://github.com/juliusknorr/nextcloud-docker-dev>`_ development environment.
 
 For a complete example, you can take a look at our `Makefile for the Visionatrix app <https://github.com/cloud-py-api/visionatrix/blob/main/Makefile>`_.
 This example also requires the ``xmlstarlet`` program to be installed so that the Makefile can automatically detect the ExApp version from the info.xml file.
