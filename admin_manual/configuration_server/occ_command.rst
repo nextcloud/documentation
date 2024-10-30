@@ -1339,16 +1339,21 @@ The ``--dry-run`` option can be used to simulate the restore without actually re
 User commands
 -------------
 
-The ``user`` commands create and remove users, reset passwords, display a simple
+The ``user`` commands create and remove users, reset passwords, manage authentication tokens / sessions, display a simple
 report showing how many users you have, and when a user was last logged in::
 
  user
   user:add                            adds a user
-  user:add-app-password               adds a app password named "cli"
+  user:add-app-password               adds a app password named "cli" (deprecated: alias for user:auth-tokens:add)
+  user:auth-tokens:add                Add app password for the named account
+  user:auth-tokens:delete             Deletes an authentication token
+  user:auth-tokens:list               List authentication tokens of an user
+  user:clear-avatar-cache             clear avatar cache
   user:delete                         deletes the specified user
   user:disable                        disables the specified user
   user:enable                         enables the specified user
   user:info                           shows information about the specific user
+  user:keys:verify                    Verify if the stored public key matches the stored private key
   user:lastseen                       shows when the user was logged in last time
   user:list                           shows list of all registered users
   user:report                         shows how many users have access
