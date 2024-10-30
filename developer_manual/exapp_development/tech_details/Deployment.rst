@@ -6,7 +6,7 @@ Deployment
 Overview
 --------
 
-AppAPI ExApps deployment process in short consists of 2 steps:
+The ExApp deployment process consists of 2 steps:
 
 1. `DaemonConfig registration`_
 2. `ExApp registration`_
@@ -17,14 +17,14 @@ DaemonConfig registration
 -------------------------
 
 The first step is to register DaemonConfig, where your ExApps will be deployed.
-Before that you will need to configure your Docker socket to be accessible by Nextcloud instance and webserver user.
-In case of remote Docker Engine API, you will need to expose it so it is accessible by Nextcloud instance and import certificates.
+Before that, you will need to configure your Docker socket to be accessible by Nextcloud instance and webserver user.
+If you use the remote Docker Engine API, you will need to expose it so it is accessible by Nextcloud instance and import certificates.
 
 .. note::
-	For now only Docker daemon ``accepts-deploy-id: docker-install`` is supported.
-	For development and manually deployed app in docker there is ``accepts-deploy-id: manual-install``.
+	For now, only the Docker daemon ``accepts-deploy-id: docker-install`` is supported.
+	For development and manually deployed apps in Docker, there is ``accepts-deploy-id: manual-install``.
 
-This can be done by ``occ`` CLI command **app_api:daemon:register**:
+This can be done by the ``occ`` **app_api:daemon:register** command:
 
 .. code-block:: bash
 
@@ -48,7 +48,7 @@ Options
 	* ``--gpu`` - ``[optional]`` GPU device to expose to the daemon (e.g. ``/dev/dri``)
 
 .. note::
-	Common configurations are tested by CI in our repository, see `workflows on github <https://github.com/cloud-py-api/app_api/blob/main/.github/workflows/tests-deploy.yml>`_.
+	Common configurations are tested by the CI in our repository, see `workflows on GitHub <https://github.com/cloud-py-api/app_api/blob/main/.github/workflows/tests-deploy.yml>`_.
 
 Example
 *******
@@ -63,8 +63,8 @@ Example of ``occ`` **app_api:daemon:register** command:
 ExApp registration
 ------------------
 
-Second and final step is to deploy and register ExApp in Nextcloud on previously registered daemon.
-This can be done by ``occ`` CLI command **app_api:app:register**:
+The second and final step is to deploy and register ExApp in Nextcloud on a previously registered daemon.
+This can be done by the ``occ`` **app_api:app:register** command:
 
 .. code-block:: bash
 
@@ -84,16 +84,16 @@ Options
 	* ``--json-info JSON-INFO`` **[optional]** - JSON with ExApp description
 
 .. warning::
-	After successful deployment (pull, create and start container), there is a heartbeat check with 90 seconds timeout (will be configurable).
+	After successful deployment (pull, create, and start container), there is a heartbeat check with a 90 second timeout (will be configurable).
 
 Manual install for development
 ******************************
 
-For development purposes, you can install ExApp manually.
+For development purposes, you can install the ExApp manually.
 There is a ``manual-install`` DeployConfig type, which can be used in case of development.
-For ExApp registration with it you need to provide JSON app info or a path to app XML file.
+To register an ExApp with it, you need to provide the app info as a JSON string or a path to the app's XML file.
 
-For all examples and applications we release we usually add manual_install command in it's makefile for easier development.
+For all examples and applications we release, we usually add the ``manual_install`` command in it's Makefile for easier development.
 
 .. code-block::
 
@@ -101,14 +101,15 @@ For all examples and applications we release we usually add manual_install comma
             "{\"id\":\"nc_py_api\",\"name\":\"nc_py_api\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"port\":$APP_PORT,\"scopes\":[\"SYSTEM\", \"FILES\", \"FILES_SHARING\", \"USER_INFO\", \"USER_STATUS\", \"NOTIFICATIONS\", \"WEATHER_STATUS\", \"TALK\"],\"system\":1}" \
             --force-scopes
 
-.. note:: **Deployment/Startup of App should be done by developer when ``manual-install`` DeployConfig type is used.**
+.. note::
+	App deployment/startup should be done by the developer when ``manual-install`` DeployConfig type is used.
 
 .. _ex_app_env_vars:
 
 Deploy env variables
 ********************
 
-Deploy env variables are used to configure ExApp container.
+Deploy env variables are used to configure the ExApp container.
 The following env variables are required and built automatically:
 
 	* ``AA_VERSION`` - AppAPI version
@@ -125,26 +126,22 @@ Application installation scheme
 -------------------------------
 
 1. AppAPI deploys the application and launches it.
-2. AppAPI for `N` seconds (default ``90``) checks the ``/heartbeat`` endpoint with ``GET`` request.
-3. AppAPI sends a ``POST`` to the ``/init`` endpoint.
-
-	.. note:: if ExApp do not implements ``/init`` endpoint and
-		AppAPI receives 501 or 404 status error, AppAPI enables the application by going to point 5.
-
-4. **ExApp** sends an integer from ``0`` to ``100`` to the OCS endpoint ``apps/app_api/apps/status`` indicating the initialization progress. After sending ``100``, the application is considered initialized.
-5. AppAPI sends a PUT to the ``/enabled`` endpoint.
+2. AppAPI for `N` seconds (default ``90``) checks the ``/heartbeat`` endpoint with a ``GET`` request.
+3. AppAPI sends a ``POST`` request to the ``/init`` endpoint. If the ExApp does not implement the ``/init`` endpoint and AppAPI receives a 501 or 404 status code, AppAPI enables the application and goes straight to step 5.
+4. The ExApp sends an integer from ``0`` to ``100`` to the OCS endpoint ``apps/app_api/apps/status`` indicating the initialization progress. After sending ``100``, the application is considered initialized.
+5. AppAPI sends a ``PUT`` request to the ``/enabled`` endpoint.
 
 ExApp info.xml schema
 ---------------------
 
-ExApp info.xml (`example <https://github.com/cloud-py-api/nc_py_api/blob/main/examples/as_app/talk_bot/appinfo/info.xml>`_) file is used to describe ExApp params.
-It is used to generate ExApp docker container and to register ExApp in Nextcloud.
-It has the same structure as Nextcloud appinfo/info.xml file, but with some additional fields:
+The ExApp info.xml (`example <https://github.com/cloud-py-api/nc_py_api/blob/main/examples/as_app/talk_bot/appinfo/info.xml>`_) file is used to describe ExApp parameters.
+It is used to generate the ExApp docker container and register the ExApp in Nextcloud.
+It has the same structure as other Nextcloud appinfo/info.xml files, but with some additional fields:
 
 .. code-block:: xml
 
 	...
-	<ex-app>
+	<external-app>
 		<docker-install>
 			<registry>ghcr.io</registry>
 			<image>cloud-py-api/talk_bot</image>
@@ -155,5 +152,5 @@ It has the same structure as Nextcloud appinfo/info.xml file, but with some addi
 			<value>TALK_BOT</value>
 		</scopes>
 		<system>0</system> // deprecated since AppAPI 3.0.0
-	</ex-app>
+	</external-app>
 	...
