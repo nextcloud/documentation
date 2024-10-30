@@ -1,6 +1,6 @@
-.. _notes_for_developers:
+.. _development_overview:
 
-Notes for Developers
+Development overview
 ====================
 
 This section contains the most common information for ExApp developers,

@@ -7,6 +7,6 @@ ExApp development
 
    Introduction
    DevSetup
+   development_overview/index.rst
    tech_details/index.rst
-   notes_for_developers/index.rst
    faq/index.rst
