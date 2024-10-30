@@ -4,7 +4,7 @@ Authentication
 ==============
 
 AppAPI introduces a distinct method of authentication for external apps.
-This authentication relies on a shared secret between Nextcloud and the external app
+This authentication relies on a shared secret between Nextcloud and the external app.
 
 Authentication flow
 ^^^^^^^^^^^^^^^^^^^
@@ -73,7 +73,7 @@ AppAPIAuth
 ^^^^^^^^^^
 
 AppAPI provides ``AppAPIAuth`` attribute with middleware to validate requests from ExApps.
-In your API controllers you can use it as an PHP attribute.
+In your API controllers, you can use it as a PHP attribute.
 
 AppAPI session keys
 ^^^^^^^^^^^^^^^^^^^
@@ -88,4 +88,4 @@ After successful authentication AppAPI sets `app_api` session key to ``true``.
 .. note::
 
 	The Nextcloud server verifies this session key and allows **CORS protection** and **Two-Factor authentication** to be bypassed for requests coming from ExApps.
-	Also the rate limit is not applied to requests coming from ExApps.
+	Also, the rate limit is not applied to requests coming from ExApps.
