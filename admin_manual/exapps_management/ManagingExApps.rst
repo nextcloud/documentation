@@ -1,14 +1,8 @@
 Managing ExApps
 ===============
 
-There are two ways to manage ExApps:
-
-1. Using OCC CLI tool
-2. Using the ExApp Management UI
-
-
-OCC CLI
-^^^^^^^
+Managing ExApps can be done from App Management UI as with other Nextcloud Apps,
+but you can also use the AppAPI commands in the OCC CLI tool.
 
 There are several commands to work with ExApps:
 
@@ -18,8 +12,6 @@ There are several commands to work with ExApps:
 4. Enable
 5. Disable
 6. List ExApps
-7. List ExApp users (removed since AppAPI 3.0.0)
-8. List ExApp scopes
 
 Register
 --------
@@ -105,13 +97,3 @@ ListExApps command will show all ExApps:
     appid (Display Name): version [enabled/disabled]
     to_gif_example (To Gif Example): 1.0.0 [enabled]
     upscaler_example (Upscaler Example): 1.0.0 [enabled]
-
-Using the ExApp Management UI
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-ExApps management is similar to default Apps management.
-To access ExApps management navigate using Admin settings dropdown menu or from AppAPI admin settings section.
-
-.. note::
-
-	ExApps management support only apps from App Store. For manual-install type use CLI ExApps management commands.
