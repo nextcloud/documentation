@@ -129,4 +129,4 @@ You can search for a parameter with the following command: ``grep -r date.timezo
     /etc/php/8.3/cli/php.ini
 
 .. note:: Path names have to be set in respect of the installed PHP
-          (8.1, 8.2 or 8.3) as applicable.
+          (8.1, 8.2, 8.3 or 8.4) as applicable.

@@ -78,7 +78,7 @@ In that case the ``php``-dependencies entries can be omitted.
 
   <dependencies>
     <php min-version="8.1" max-version="8.4" />
-    <nextcloud min-version="26" max-version="28" />
+    <nextcloud min-version="29" max-version="31" />
   </dependencies>
 
 

@@ -134,7 +134,7 @@ In this release support for PHP 8.0 was removed. Follow the steps below to make 
 .. code-block:: xml
 
   <dependencies>
-    <php min-version="8.1" max-version="8.4" />
+    <php min-version="8.1" max-version="8.3" />
     <nextcloud min-version="27" max-version="30" />
   </dependencies>
 
@@ -145,7 +145,7 @@ In this release support for PHP 8.0 was removed. Follow the steps below to make 
 
   {
     "require": {
-      "php": ">=8.1 <=8.4"
+      "php": ">=8.1 <=8.3"
     }
   }
 
