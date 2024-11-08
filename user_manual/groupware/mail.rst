@@ -155,6 +155,16 @@ Compose messages
 1. Click new message on the top left of your screen
 2. Start writing your message
 
+Mention contacts
+----------------
+
+.. versionadded:: 4.2
+
+You can mention contacts in your message by typing ``@`` and then selecting the contact from the list.
+By doing so the contact will be automatically added as a recipient.
+
+.. note::  Only contacts with a valid email address will be suggested.
+
 Minimize the composer modal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
