@@ -36,8 +36,10 @@ html_logo = "../_shared_assets/static/logo-white.png"
 rst_epilog =  '.. |version| replace:: %s' % version
 
 # building the versions list
-version_start = 28		# THIS IS THE SUPPORTED VERSION NUMBER
-version_stable = 30		# INCREASE THIS NUMBER TO THE LATEST STABLE VERSION NUMBER
+version_start = 28		# THIS IS THE OLDEST SUPPORTED VERSION NUMBER
+
+						# THIS IS THE VERSION THAT IS MAPPED TO https://docs.nextcloud.com/server/stable/
+version_stable = 30		# CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
 
 # Also search for "TODO ON RELEASE" in the rst files
 
