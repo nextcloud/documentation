@@ -449,9 +449,10 @@ Control structures
 CSS
 ---
 
-Take a look at the `Writing Tactical CSS & HTML <https://www.youtube.com/watch?v=hou2wJCh3XE&feature=plcp>`_ video on YouTube.
-
-Don't bind your CSS too much to your HTML structure and try to avoid IDs. Also try to make your CSS reusable by grouping common attributes into classes.
+- Do not bind your CSS to much to your HTML structure.
+- Try to avoid IDs.
+- Try to make your CSS reusable by grouping common attributes into classes.
+- Take a look at the `Writing Tactical CSS & HTML <https://www.youtube.com/watch?v=hou2wJCh3XE&feature=plcp>`_ video on YouTube.
 
 **DO**:
 
@@ -461,7 +462,7 @@ Don't bind your CSS too much to your HTML structure and try to avoid IDs. Also t
       list-style-type: none;
   }
 
-  .list > .list_item {
+  .list > .list__item {
       display: inline-block;
   }
 
@@ -482,4 +483,39 @@ Don't bind your CSS too much to your HTML structure and try to avoid IDs. Also t
       display: inline-block;
   }
 
-**TBD**
+Naming convention
+^^^^^^^^^^^^^^^^^
+
+We recommend to use the BEM (Block-Element-Modifier) naming convention for CSS classes.
+BEM helps with making CSS reusable and better maintainable, especially when using pre-processors like SASS.
+
+**DO**:
+
+.. code-block:: css
+
+  .button {
+      background-color: var(--color-main-background);
+  }
+
+  .button--primary {
+      background-color: var(--color-primary);
+  }
+
+  .button__icon {
+      width: 20px;
+  }
+
+**DON'T**:
+
+.. code-block:: css
+
+  button.btn {
+      background-color: var(--color-main-background);
+  }
+
+  button.btn.primary {
+      background-color: var(--color-primary);
+  }
+  button.btn span.myIcon {
+      width: 20px;
+  }
