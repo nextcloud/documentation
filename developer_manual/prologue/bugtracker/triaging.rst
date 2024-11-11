@@ -75,11 +75,18 @@ Let's go over each step.
 Finding duplicates
 ^^^^^^^^^^^^^^^^^^
 
-To find duplicates, the search tool in GitHub is your first stop. In `this screen <https://github.com/nextcloud/server/issues>`_ you can easily search for a few keywords from the bug report. If you find other bugs with the same content, decide what the best bug report is (often the oldest or the one where one or more developers have already started to engage and discuss the problem). That is the 'master' bug report, you can now close the other one (or comment that it can be closed as duplicate).
+To find duplicates, the search tool in GitHub is your first stop.
+In `this screen <https://github.com/nextcloud/server/issues>`_ you can easily search for a few keywords from the bug report.
+If you find other bugs with the same content, decide what the best bug report is (often the oldest or the one where one or more developers have already started to engage and discuss the problem).
+That is the 'prime' bug report, you can now close the other one (or comment that it can be closed as duplicate).
 
-If the bug report you were reviewing contains additional information, you can add that information to the 'master' bug report in a comment. Mention this bug report (using #<bug report number>) so a developer can look up the original, closed, report and perhaps ask the initial reporter there for additional information.
+If the bug report you were reviewing contains additional information, you can add that information to the 'prime' bug report in a comment.
+Mention this bug report (using #<bug report number>) so a developer can look up the original, closed, report and perhaps ask the initial reporter there for additional information.
 
-If you can't find anything, look in closed bug reports. The problem might be solved already and be listed there! Of course, these other bug reports might be closed as duplicates of the one you are looking at now - if you can't find one that is solved nor can find any duplicates, you can move on to the next step. If you are unsure, just add a comment: "might be a duplicate of #<bug nr here>" will usually suffice.
+If you can't find anything, look in closed bug reports.
+The problem might be solved already and be listed there!
+Of course, these other bug reports might be closed as duplicates of the one you are looking at now - if you can't find one that is solved nor can find any duplicates, you can move on to the next step.
+If you are unsure, just add a comment: "might be a duplicate of #<bug nr here>" will usually suffice.
 
 When the issue is a feature request, you can be helpful in the same way: merge related requests by adding information of one to the other and closing the first.
 

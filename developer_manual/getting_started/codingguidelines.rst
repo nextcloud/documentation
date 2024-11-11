@@ -9,13 +9,20 @@ General
 
 * Ideally, discuss your plans on the `forums <https://help.nextcloud.com>`_ to see if others want to work with you on it
 * We use `GitHub <https://github.com/nextcloud>`_, please get an account there and clone the repositories you want to work on
-* Fixes go directly to master, nevertheless they need to be tested thoroughly.
-* New features are always developed in a branch and only merged to master once they are fully done.
-* Software should work. We only put features into master when they are complete. It's better to not have a feature instead of having one that works poorly.
-* It is best to start working based on an issue - create one if there is none. You describe what you want to do, ask feedback on the direction you take it and take it from there.
-* When you are finished, use the merge request function on GitHub to create a pull request. The other developers will look at it and give you feedback. You can signify that your PR is ready for review by adding the label "3. to review" to it. See `the code review page for more information <../prologue/bugtracker/codereviews.html>`_
-* It is key to keep changes separate and small. The bigger and more hairy a PR grows, the harder it is to get it in. So split things up where you can in smaller changes - if you need a small improvement like a API addition for a big feature addition, get it in first rather than adding it to the big piece of work!
-* Decisions are made by consensus. We strive for making the best technical decisions and as nobody can know everything, we collaborate. That means a first negative comment might not be the final word, neither is positive feedback an immediate GO. Nextcloud is built out of modular pieces (apps) and maintainers have a strong influence. In case of disagreement we consult other seasoned contributors.
+* Fixes go directly to the main branch, nevertheless they need to be tested thoroughly.
+* New features are always developed in a branch and only merged to the main branch once they are fully done.
+* Software should work. We only put features into the main branch when they are complete.
+  It's better to not have a feature instead of having one that works poorly.
+* It is best to start working based on an issue - create one if there is none.
+  You describe what you want to do, ask feedback on the direction you take it and take it from there.
+* When you are finished, use the merge request function on GitHub to create a pull request.
+  The other developers will look at it and give you feedback. You can signify that your PR is ready for review by adding the label "3. to review" to it.
+  See `the code review page for more information <../prologue/bugtracker/codereviews.html>`_
+* It is key to keep changes separate and small. The bigger and more hairy a PR grows, the harder it is to get it in.
+  So split things up where you can in smaller changes - if you need a small improvement like a API addition for a big feature addition, get it in first rather than adding it to the big piece of work!
+* Decisions are made by consensus. We strive for making the best technical decisions and as nobody can know everything, we collaborate.
+  That means a first negative comment might not be the final word, neither is positive feedback an immediate GO. Nextcloud is built out of modular pieces (apps) and maintainers have a strong influence.
+  In case of disagreement we consult other seasoned contributors.
 
 Labels
 ------
@@ -64,12 +71,15 @@ Coding
 * No global variables or functions
 * Unit tests
 * HTML should be HTML5 compliant
-* When you ``git pull``, always ``git pull --rebase`` to avoid generating extra commits like: *merged master into master*
+* When you ``git pull``, always ``git pull --rebase`` to avoid generating extra commits like: *merged main into main*
 
 License headers
 ---------------
 
-Nextcloud is licensed under the `GNU AGPLv3 <https://www.gnu.org/licenses/agpl>`_. From June, 16 2016 on we switched to "GNU AGPLv3 or any later version" for better long-term maintainability. If you create a new file please use this header:
+Nextcloud is licensed under the `GNU AGPLv3 <https://www.gnu.org/licenses/agpl>`_.
+From June, 16 2016 on we switched to "GNU AGPLv3 or any later version" for better long-term maintainability.
+
+If you create a new file please use this header:
 
 .. code-block:: php
 
