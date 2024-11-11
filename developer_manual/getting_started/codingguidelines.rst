@@ -20,7 +20,9 @@ General
 Labels
 ------
 
-We assign labels to issues and pull requests to make it easy to find them and to signal what needs to be done. Some of these are assigned by the developers, others by QA, bug triagers, project lead or maintainers and so on. It is not desired that users/reporters of bugs assign labels themselves, unless they are developers/contributors to Nextcloud.
+We assign labels to issues and pull requests to make it easy to find them and to signal what needs to be done.
+Some of these are assigned by the developers, others by QA, bug triagers, project lead or maintainers and so on.
+It is not desired that users/reporters of bugs assign labels themselves, unless they are developers/contributors to Nextcloud.
 
 The most important labels and their meaning:
 
@@ -31,7 +33,8 @@ The most important labels and their meaning:
   * ``2. developing`` - development in progress
   * ``3. to review`` - ready for review
   * ``4. to release`` - reviewed PR that awaits unfreeze of a branch to get merged or has pending CI jobs
-  * ``needs info`` - this issue needs further information from the reporter, see :doc:`../../prologue/bugtracker/triaging`. This tag is typically combined with ``0. to triage`` to signal a bug report is not confirmed yet or a feature request has not been approved.
+  * ``needs info`` - this issue needs further information from the reporter, see :doc:`../../prologue/bugtracker/triaging`.
+    This tag is typically combined with ``0. to triage`` to signal a bug report is not confirmed yet or a feature request has not been approved.
 
 * Tags showing the type of issue or PR
 
@@ -271,15 +274,16 @@ with ``Data``.
     }
 
 
-JavaScript
-----------
+JavaScript and Typescript
+-------------------------
 
-There is a shared configuration for `eslint <https://eslint.org/>`_ that you can use to automatically format your Nextcloud apps's JavaScript code. It consists of two parts: a `config package <https://github.com/nextcloud/eslint-config>`_ that contains the formatting preferences and a `plugin <https://github.com/nextcloud/eslint-plugin>`_ to detect deprecated and removed APIs in your code. See their readmes for instructions.
+There is a shared configuration for `eslint <https://eslint.org/>`_ that you can use to automatically format your Nextcloud apps's JavaScript code.
+It consists of two parts: a `config package <https://github.com/nextcloud-libraries/eslint-config>`_ that contains the formatting preferences and a `plugin <https://github.com/nextcloud-libraries/eslint-plugin>`_ to detect deprecated and removed APIs in your code. See their readmes for instructions.
 
-* Use a :file:`js/main.js` or :file:`js/app.js` where your program is started
+* Use a :file:`js/main.js` or :file:`js/app.ts` where your program is started
 * Use **const** or **let** to limit variable to local scope
-* Use JavaScript strict mode
-* Use a global namespace object where you bind publicly used functions and objects to
+* Use JavaScript strict mode (automatically the case when using JavaScript modules)
+* Use a global namespace object where you bind publicly used functions and objects to instead of plain global variables.
 
 **DO**:
 
@@ -321,36 +325,37 @@ This is how you'd do inheritance in JavaScript:
 
 .. code-block:: javascript
 
-  // create parent object and bind methods to it
-  var ParentObject = function(name) {
-      this.name = name;
-  };
+  class ParentClass {
+      // a public property
+      name;
+      // names prefixed with # are private in JavaScript and can not be accessed from outside
+      // #privateProperty;
 
-  ParentObject.prototype.sayHello = function() {
-      console.log(this.name);
+      constructor(name) {
+          this.name = name;
+      }
+
+      sayHello() {
+          console.log(this.name);
+      }
   }
 
+  class ChildClass extends ParentClass {
+      age;
 
-  // create childobject, call parents constructor and inherit methods
-  var ChildObject = function(name, age) {
-      ParentObject.call(this, name);
-      this.age = age;
-  };
+      constructor(name, age) {
+          super(name);
+          this.age = age;
+      }
 
-  ChildObject.prototype = Object.create(ParentObject.prototype);
+      // overwrite parent method
+      sayHello() {
+          console.log('child class: ', this.name, this.age);
+      }
+  }
 
-  // overwrite parent method
-  ChildObject.prototype.sayHello = function() {
-      // call parent method if you want to
-      ParentObject.prototype.sayHello.call(this);
-      console.log('childobject');
-  };
-
-  var child = new ChildObject('toni', 23);
-
-  // prints:
-  // toni
-  // childobject
+  const child = new ChildClass('toni', 23)
+  // Prints: child class: toni 23
   child.sayHello();
 
 Objects, functions & variables
@@ -360,18 +365,18 @@ Use *UpperCamelCase* for Objects, *lowerCamelCase* for functions and variables.
 
 .. code-block:: javascript
 
-  var MyObject = function() {
+  const MyObject = function() {
       this.attr = "hi";
   };
 
-  var myFunction = function() {
+  const myFunction = function() {
       return true;
   };
 
-  var myVariable = 'blue';
+  const myVariable = 'blue';
 
-  var objectLiteral = {
-      value1: 'somevalue'
+  const objectLiteral = {
+      value1: 'somevalue',
   };
 
 
@@ -424,7 +429,7 @@ Control structures
   }
 
   // for loop
-  for (var i = 0; i < 4; i++) {
+  for (let i = 0; i < 4; i++) {
       // your code
   }
 
@@ -432,7 +437,7 @@ Control structures
   switch (value) {
 
       case 'hi':
-          // yourcode
+          // your code
           break;
 
       default:
