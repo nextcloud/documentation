@@ -23,6 +23,10 @@ To enable the app, you can run the following commands:
 
 .. code-block:: bash
 
+   cd apps/
+   git clone https://github.com/nextcloud/profiler.git
+   git checkout stable30 # adapt to your version: php occ version |& grep -oP 'Nextcloud \K\d+'
+   cd ..
    npm ci && npm run build
    occ app:enable profiler
    occ profiler:enable # This will also enable the debug mode if not already enabled
