@@ -48,7 +48,7 @@ Options
 	* ``--gpu`` - ``[optional]`` GPU device to expose to the daemon (e.g. ``/dev/dri``)
 
 .. note::
-	Common configurations are tested by the CI in our repository, see `workflows on GitHub <https://github.com/cloud-py-api/app_api/blob/main/.github/workflows/tests-deploy.yml>`_.
+	Common configurations are tested by the CI in our repository, see `workflows on GitHub <https://github.com/nextcloud/app_api/blob/main/.github/workflows/tests-deploy.yml>`_.
 
 Example
 *******
@@ -144,7 +144,7 @@ It has the same structure as other Nextcloud appinfo/info.xml files, but with so
 	<external-app>
 		<docker-install>
 			<registry>ghcr.io</registry>
-			<image>cloud-py-api/talk_bot</image>
+			<image>nextcloud/talk_bot</image>
 			<image-tag>latest</image-tag>
 		</docker-install>
 		<scopes> // deprecated since AppAPI 3.2.0

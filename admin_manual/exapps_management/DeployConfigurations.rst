@@ -17,7 +17,7 @@ Orchestrates the deployment of applications as Docker containers.
 
 	These schemes are only examples of possible configurations.
 
-	We recommend that you use the `AppAPI Docker Socket Proxy <https://github.com/cloud-py-api/docker-socket-proxy>`_ or `AIO Docker Socket Proxy <#nextcloud-in-docker-aio-all-in-one>`_ container.
+	We recommend that you use the `AppAPI Docker Socket Proxy <https://github.com/nextcloud/docker-socket-proxy>`_ or `AIO Docker Socket Proxy <#nextcloud-in-docker-aio-all-in-one>`_ container.
 
 There are several Docker Daemon Deploy configurations (example schemes):
 
@@ -35,8 +35,8 @@ The simplest configuration is when Nextcloud is installed on the host and Docker
 .. mermaid::
 
 	stateDiagram-v2
-		classDef docker fill: #1f97ee, color: transparent, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/cloud-py-api/app_api/main/docs/img/docker.png) no-repeat center center / contain
-		classDef nextcloud fill: #006aa3, color: transparent, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/cloud-py-api/app_api/main/docs/img/nextcloud.svg) no-repeat center center / contain
+		classDef docker fill: #1f97ee, color: transparent, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/app_api/main/docs/img/docker.png) no-repeat center center / contain
+		classDef nextcloud fill: #006aa3, color: transparent, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/app_api/main/docs/img/nextcloud.svg) no-repeat center center / contain
 		classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
 
 		Host
@@ -68,13 +68,13 @@ Suggested config values(template *Custom default*):
 
 ---
 
-Suggested way to communicate with Docker via `Docker Socket Proxy container <https://github.com/cloud-py-api/docker-socket-proxy>`_.
+Suggested way to communicate with Docker via `Docker Socket Proxy container <https://github.com/nextcloud/docker-socket-proxy>`_.
 
 .. mermaid::
 
 	stateDiagram-v2
-		classDef docker fill: #1f97ee, color: transparent, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/cloud-py-api/app_api/main/docs/img/docker.png) no-repeat center center / contain
-		classDef nextcloud fill: #006aa3, color: transparent, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/cloud-py-api/app_api/main/docs/img/nextcloud.svg) no-repeat center center / contain
+		classDef docker fill: #1f97ee, color: transparent, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/app_api/main/docs/img/docker.png) no-repeat center center / contain
+		classDef nextcloud fill: #006aa3, color: transparent, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/app_api/main/docs/img/nextcloud.svg) no-repeat center center / contain
 		classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
 
 		Host
@@ -124,8 +124,8 @@ In this case, the AppAPI uses a Docker Socket Proxy deployed on remote host to a
 .. mermaid::
 
 	stateDiagram-v2
-		classDef docker fill: #1f97ee, color: transparent, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/cloud-py-api/app_api/main/docs/img/docker.png) no-repeat center center / contain
-		classDef nextcloud fill: #006aa3, color: transparent, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/cloud-py-api/app_api/main/docs/img/nextcloud.svg) no-repeat center center / contain
+		classDef docker fill: #1f97ee, color: transparent, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/app_api/main/docs/img/docker.png) no-repeat center center / contain
+		classDef nextcloud fill: #006aa3, color: transparent, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/app_api/main/docs/img/nextcloud.svg) no-repeat center center / contain
 		classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
 
 		Direction LR
@@ -170,8 +170,8 @@ Suggested way to communicate with Docker: via ``docker-socket-proxy``.
 .. mermaid::
 
 	stateDiagram-v2
-		classDef docker fill: #1f97ee, color: transparent, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/cloud-py-api/app_api/main/docs/img/docker.png) no-repeat center center / contain
-		classDef nextcloud fill: #006aa3, color: transparent, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/cloud-py-api/app_api/main/docs/img/nextcloud.svg) no-repeat center center / contain
+		classDef docker fill: #1f97ee, color: transparent, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/app_api/main/docs/img/docker.png) no-repeat center center / contain
+		classDef nextcloud fill: #006aa3, color: transparent, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/app_api/main/docs/img/nextcloud.svg) no-repeat center center / contain
 		classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
 
 		Host
@@ -220,9 +220,9 @@ In case of AppAPI is in Docker AIO setup (installed in Nextcloud container).
 .. mermaid::
 
 	stateDiagram-v2
-		classDef docker fill: #1f97ee, color: transparent, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/cloud-py-api/app_api/main/docs/img/docker.png) no-repeat center center / contain
-		classDef docker2 fill: #1f97ee, color: transparent, font-size: 20px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/cloud-py-api/app_api/main/docs/img/docker.png) no-repeat center center / contain
-		classDef nextcloud fill: #006aa3, color: transparent, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/cloud-py-api/app_api/main/docs/img/nextcloud.svg) no-repeat center center / contain
+		classDef docker fill: #1f97ee, color: transparent, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/app_api/main/docs/img/docker.png) no-repeat center center / contain
+		classDef docker2 fill: #1f97ee, color: transparent, font-size: 20px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/app_api/main/docs/img/docker.png) no-repeat center center / contain
+		classDef nextcloud fill: #006aa3, color: transparent, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/app_api/main/docs/img/nextcloud.svg) no-repeat center center / contain
 		classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
 
 		Host
@@ -260,7 +260,7 @@ Default AIO Deploy Daemon
 *************************
 
 Nextcloud AIO has a specifically created Docker Socket Proxy container to be used as the Deploy Daemon in AppAPI.
-It has `fixed parameters <https://github.com/cloud-py-api/app_api/blob/main/lib/DeployActions/AIODockerActions.php#L52-L74)>`_:
+It has `fixed parameters <https://github.com/nextcloud/app_api/blob/main/lib/DeployActions/AIODockerActions.php#L52-L74)>`_:
 
 * Name: ``docker_aio``
 * Display name: ``AIO Docker Socket Proxy``

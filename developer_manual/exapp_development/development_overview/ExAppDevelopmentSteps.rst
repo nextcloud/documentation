@@ -29,10 +29,10 @@ Next step, is to setup the ExApp skeleton.
 There are several ExApp examples available so you can have a look at them and start from.
 The ExApp template and examples:
 
-	- ``[Python]`` `App Skeleton <https://github.com/cloud-py-api/app-skeleton-python>`_
-	- ``[Python]`` `UI Example Skeleton <https://github.com/cloud-py-api/ui_example>`_
+	- ``[Python]`` `App Skeleton <https://github.com/nextcloud/app-skeleton-python>`_
+	- ``[Python]`` `UI Example Skeleton <https://github.com/nextcloud/ui_example>`_
 	- ``[Python]`` `More complex ExApp UI example with 3rdparty service <https://github.com/cloud-py-api/visionatrix>`_
-	- ``[GoLang]`` `Go Lang ExApp example <https://github.com/cloud-py-api/file_to_text_example>`_
+	- ``[GoLang]`` `Go Lang ExApp example <https://github.com/nextcloud/file_to_text_example>`_
 	- etc.
 
 They contain the basic structure of the ExApp, including:
@@ -80,7 +80,7 @@ Currently, there are 3 main compute devices to target with custom Docker images:
 .. note::
 
 	If the Deploy daemon configured with the GPU compute device,
-	AppAPI will try to pull the Docker image with the GPU support first (``<image_name>:<version>-<cuda|rocm>``, `ref PR <https://github.com/cloud-py-api/app_api/pull/340>`_).
+	AppAPI will try to pull the Docker image with the GPU support first (``<image_name>:<version>-<cuda|rocm>``, `ref PR <https://github.com/nextcloud/app_api/pull/340>`_).
 	If the image is not found, AppAPI will try to pull the base (CPU) image (``<image_name>:<version>``).
 
 

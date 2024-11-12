@@ -9,7 +9,7 @@ The Deploy Daemon (DaemonConfig) is used to orchestrate the deployment of ExApps
 
 	Currently only ``docker-install`` and ``manual-install`` deployment methods are supported.
 
-The recommended daemon configuration is using `AppAPI Docker Socket Proxy <https://github.com/cloud-py-api/docker-socket-proxy>`_.
+The recommended daemon configuration is using `AppAPI Docker Socket Proxy <https://github.com/nextcloud/docker-socket-proxy>`_.
 
 .. image:: ./img/app_api_3.png
 

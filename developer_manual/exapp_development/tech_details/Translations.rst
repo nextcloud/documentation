@@ -21,7 +21,7 @@ Back-end
 ********
 
 For the back-end part of ExApp which can be written in different programming languages it is **up to the developer to decide** how to handle and translations files.
-There is an example repository with translations: `UI example with translations <https://github.com/cloud-py-api/ui_example>`_.
+There is an example repository with translations: `UI example with translations <https://github.com/nextcloud/ui_example>`_.
 
 
 Manual install

@@ -113,7 +113,7 @@ to which AppAPI will attach a ``fileIds`` query parameter with the selected file
 where the ``first_menu`` is the name of the Top Menu ExApp UI page,
 and the ``second_page`` relative route handled on the frontend routing of the ExApp,
 the ``fileIds`` query parameter contains the selected file ids separated by commas.
-After that you can get the files info via webdav search request, see `ui_example <https://github.com/cloud-py-api/ui_example>`_.
+After that you can get the files info via webdav search request, see `ui_example <https://github.com/nextcloud/ui_example>`_.
 
 
 Request flow

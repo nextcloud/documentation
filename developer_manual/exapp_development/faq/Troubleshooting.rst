@@ -21,7 +21,7 @@ Here are some common steps to verify the network configuration:
 
 .. note::
    If your case is not documented here, or doesn't exists on GitHub issues,
-   please feel free to ask it by creating an issue in the `AppAPI repository <https://github.com/cloud-py-api/app_api/issues>`_.
+   please feel free to ask it by creating an issue in the `AppAPI repository <https://github.com/nextcloud/app_api/issues>`_.
 
 
 ExApp deployment issues

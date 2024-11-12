@@ -2,7 +2,7 @@ Docker Socket Proxy
 ===================
 
 The recommended way to setup AppAPI Deploy daemon
-is to use our `Docker Socket Proxy implementation <https://github.com/cloud-py-api/docker-socket-proxy>`_.
+is to use our `Docker Socket Proxy implementation <https://github.com/nextcloud/docker-socket-proxy>`_.
 
 Nextcloud AppAPI DSP
 --------------------
@@ -11,8 +11,8 @@ Nextcloud AppAPI DSP (Docker Socket Proxy) - is a simple Docker container that p
 It is secured with haproxy Basic authentication.
 There are two parts of reverse proxy configuration:
 
-- HaProxy config for `Docker Engine API <https://github.com/cloud-py-api/docker-socket-proxy/blob/main/haproxy.cfg.template>`_
-- HaProxy config for `ExApps <https://github.com/cloud-py-api/docker-socket-proxy/blob/main/haproxy_ex_apps.cfg.template>`_
+- HaProxy config for `Docker Engine API <https://github.com/nextcloud/docker-socket-proxy/blob/main/haproxy.cfg.template>`_
+- HaProxy config for `ExApps <https://github.com/nextcloud/docker-socket-proxy/blob/main/haproxy_ex_apps.cfg.template>`_
 
 .. note::
 
@@ -51,6 +51,6 @@ In this case, you will have to enable these APIs via the environment variables:
 
 	For local Deploy daemon setup other implementations of Docker Socket Proxy may be enough.
 	But for remote Deploy daemon setup, we recommend using our DSP,
-	as `we allow <https://github.com/cloud-py-api/docker-socket-proxy/blob/main/haproxy.cfg.template>`_ only the Docker Engine APIs we actually use in AppAPI,
+	as `we allow <https://github.com/nextcloud/docker-socket-proxy/blob/main/haproxy.cfg.template>`_ only the Docker Engine APIs we actually use in AppAPI,
 	and it is additionally secured with haproxy authentication.
 

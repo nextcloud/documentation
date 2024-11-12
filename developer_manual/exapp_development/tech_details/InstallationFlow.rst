@@ -17,8 +17,8 @@ The suffix will be added as follows:
 	return $imageParams['image_src'] . '/' .
 		$imageParams['image_name'] . '-' . $daemonConfig['computeDevice']['id'] . ':' . $imageParams['image_tag'];
 
-For ``cpu``, AppAPI will first try to get the image from ``ghcr.io/cloud-py-api/skeleton-cpu:latest``.
-In case the image is not found, ``ghcr.io/cloud-py-api/skeleton:latest`` will be pulled.
+For ``cpu``, AppAPI will first try to get the image from ``ghcr.io/nextcloud/skeleton-cpu:latest``.
+In case the image is not found, ``ghcr.io/nextcloud/skeleton:latest`` will be pulled.
 
 If you as an application developer want to have a custom images for any of these values, you can push the extended images to registry in addition to the base one.
 

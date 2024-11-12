@@ -37,7 +37,7 @@ It should contain the following fields:
 	<external-app>
 		<docker-install>
 			<registry>ghcr.io</registry>
-			<image>cloud-py-api/skeleton</image>
+			<image>nextcloud/skeleton</image>
 			<image-tag>latest</image-tag>
 		</docker-install>
 		<scopes> // deprecated and removed since AppAPI 3.2.0
@@ -93,7 +93,7 @@ To simplify the usage, we declare a few constants:
     export const APP_API_PROXY_URL_PREFIX = '/apps/app_api/proxy'
     export const APP_API_ROUTER_BASE = '/apps/app_api/embedded'
 
-The bootstrap of the Vue app (`UI Example bootstrap <https://github.com/cloud-py-api/ui_example/blob/main/src/bootstrap.js>`_) is changed as follows:
+The bootstrap of the Vue app (`UI Example bootstrap <https://github.com/nextcloud/ui_example/blob/main/src/bootstrap.js>`_) is changed as follows:
 
 .. code-block::
 
@@ -195,7 +195,7 @@ and can be used to translate ExApp strings on the backend or frontend in the sam
 
 
 You might need to convert the translation files to the format that is used in your language.
-And this can be done with simple bash script, as `in our example for Python <https://github.com/cloud-py-api/ui_example/blob/main/scripts/convert_to_locale.sh>`_:
+And this can be done with simple bash script, as `in our example for Python <https://github.com/nextcloud/ui_example/blob/main/scripts/convert_to_locale.sh>`_:
 
 
 .. code-block::

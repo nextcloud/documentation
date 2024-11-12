@@ -11,7 +11,7 @@ You can test each Daemon configuration deployment from the AppAPI Admin settings
 Status Checks
 ^^^^^^^^^^^^^
 
-The Deploy test installs a `test-deploy <https://github.com/cloud-py-api/test-deploy>`_ ExApp
+The Deploy test installs a `test-deploy <https://github.com/nextcloud/test-deploy>`_ ExApp
 to verify each step of the deployment process, including a hardware support check -
 for each compute device, there is a separate Docker image.
 

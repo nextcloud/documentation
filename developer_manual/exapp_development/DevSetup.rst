@@ -22,13 +22,13 @@ Clone the latest main branch:
 
 	.. code-block:: bash
 
-		git clone https://github.com/cloud-py-api/app_api.git && cd app_api
+		git clone https://github.com/nextcloud/app_api.git && cd app_api
 
 or clone a specific version by specifying the version tag:
 
 	.. code-block:: bash
 
-		git clone https://github.com/cloud-py-api/app_api.git --branch <version-tag> && cd app_api
+		git clone https://github.com/nextcloud/app_api.git --branch <version-tag> && cd app_api
 
 where ``<version-tag>`` is the version you want to install.
 
@@ -57,7 +57,7 @@ There are two types of Deploy daemons that can be used for development and testi
 Docker Socket Proxy
 *******************
 
-For development and testing locally, the simplest is to use the `Nextcloud AppAPI DSP HTTP <https://github.com/cloud-py-api/docker-socket-proxy?tab=readme-ov-file#httplocal>`_.
+For development and testing locally, the simplest is to use the `Nextcloud AppAPI DSP HTTP <https://github.com/nextcloud/docker-socket-proxy?tab=readme-ov-file#httplocal>`_.
 
 In Place of a Conclusion
 """"""""""""""""""""""""

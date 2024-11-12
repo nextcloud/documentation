@@ -12,13 +12,13 @@ When running the command:
 
 .. code-block:: bash
 
-   php occ app_api:app:register --force-scopes test-deploy docker_socket_proxy --info-xml https://raw.githubusercontent.com/cloud-py-api/test-deploy/main/appinfo/info.xml --test-deploy-mode --no-ansi --no-warnings
+   php occ app_api:app:register --force-scopes test-deploy docker_socket_proxy --info-xml https://raw.githubusercontent.com/nextcloud/test-deploy/main/appinfo/info.xml --test-deploy-mode --no-ansi --no-warnings
 
 You may receive an error similar to:
 
 .. code-block:: text
 
-   file_get_contents(https://raw.githubusercontent.com/cloud-py-api/test-deploy/main/appinfo/info.xml): Failed to open stream: Connection timed out at /var/www/html/custom_apps/app_api/lib/Service/ExAppService.php#277
+   file_get_contents(https://raw.githubusercontent.com/nextcloud/test-deploy/main/appinfo/info.xml): Failed to open stream: Connection timed out at /var/www/html/custom_apps/app_api/lib/Service/ExAppService.php#277
 
 Cause
 -----
@@ -134,7 +134,7 @@ Method 2: Set System-Wide Environment Variables
 
    .. code-block:: bash
 
-	  php occ app_api:app:register --force-scopes test-deploy docker_socket_proxy --info-xml https://raw.githubusercontent.com/cloud-py-api/test-deploy/main/appinfo/info.xml --test-deploy-mode --no-ansi --no-warnings
+	  php occ app_api:app:register --force-scopes test-deploy docker_socket_proxy --info-xml https://raw.githubusercontent.com/nextcloud/test-deploy/main/appinfo/info.xml --test-deploy-mode --no-ansi --no-warnings
 
    It should now work without connectivity issues.
 
