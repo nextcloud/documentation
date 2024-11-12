@@ -85,6 +85,7 @@ You can use two-factor authentication based on hardware tokens. The following de
 *    FIDO2 based:
 
      *    `Nitrokey FIDO2 <https://shop.nitrokey.com/shop/product/nkfi2-nitrokey-fido2-55>`_
+     *    `Nitrokey FIDO U2F <https://shop.nitrokey.com/shop/product/nitrokey-fido-u2f-20>`_
 
 Using client applications with two-factor authentication
 --------------------------------------------------------
