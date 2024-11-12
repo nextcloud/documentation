@@ -1602,14 +1602,15 @@ removes the existing group "beer"::
 
 List configured groups via the ``group:list`` command. The syntax is::
 
- group:list [-l|--limit] [-o|--offset] [--output="..."]
+ group:list [-l|--limit [LIMIT]] [-o|--offset [OFFSET]] [-i|--info] [--output [OUTPUT]]
 
-``limit`` allows you to specify the number of groups to retrieve.
+``limit`` allows you to specify the number of groups to retrieve (default: ``500``).
 
 ``offset`` is an offset for retrieving groups.
 
-``output`` specifies the output format (plain, json or json_pretty). Default is
-plain.
+``info`` Show additional info (backend).
+
+``output`` Output format: ``plain``, ``json`` or ``json_pretty`` (default: ``plain``).
 
 .. _versions_label:
 
