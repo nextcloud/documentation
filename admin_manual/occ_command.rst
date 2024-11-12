@@ -1604,13 +1604,13 @@ List configured groups via the ``group:list`` command. The syntax is::
 
  group:list [-l|--limit [LIMIT]] [-o|--offset [OFFSET]] [-i|--info] [--output [OUTPUT]]
 
-``limit`` allows you to specify the number of groups to retrieve. (default 500)
+``limit`` allows you to specify the number of groups to retrieve (default: ``500``).
 
 ``offset`` is an offset for retrieving groups.
 
-``info`` Show additional info (backend)
+``info`` Show additional info (backend).
 
-``output`` Output format (plain, json or json_pretty, default is plain)
+``output`` Output format: ``plain``, ``json`` or ``json_pretty`` (default: ``plain``).
 
 .. _versions_label:
 
