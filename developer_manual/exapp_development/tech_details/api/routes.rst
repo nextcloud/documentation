@@ -4,11 +4,7 @@
 Routes
 ======
 
-Since AppAPI 3.0.0 ExApps have to declare their routes allowed to be accessed via the AppAPI ExApp proxy.
-
-.. note::
-
-	This routes check applied only for ExApp proxy (``/apps/app_api/proxy/*``).
+All ExApps must declare the routes that are allowed to be accessed via the AppAPI ExApp proxy (``/apps/app_api/proxy/*``).
 
 
 Register
@@ -22,15 +18,19 @@ Example
 
 .. code-block::
 
-	<routes>
-		<route>
-			<url>.*</url>
-			<verb>GET,POST,PUT,DELETE</verb>
-			<access_level>USER</access_level>
-			<headers_to_exclude>[]</headers_to_exclude>
-			<bruteforce_protection>[401, 500]</bruteforce_protection>
-		</route>
-	</routes>
+	...
+	<external-app>
+		<routes>
+			<route>
+				<url>.*</url>
+				<verb>GET,POST,PUT,DELETE</verb>
+				<access_level>USER</access_level>
+				<headers_to_exclude>[]</headers_to_exclude>
+				<bruteforce_protection>[401, 500]</bruteforce_protection>
+			</route>
+		</routes>
+	</external-app>
+	...
 
 where the fields are:
 
@@ -44,4 +44,5 @@ where the fields are:
 Unregister
 ^^^^^^^^^^
 
-ExApp routes are unregistered automatically when the ExApp is uninstalling, or during the ExApp update before registering the new routes.
+ExApp routes are unregistered automatically when the ExApp is uninstalled,
+and new routes are re-registered when the ExApp is updated.

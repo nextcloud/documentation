@@ -1,12 +1,12 @@
 Other OCS APIs
 ==============
 
-With AppAPI authentication it is possible for ExApps to use any other OCS APIs, that doesn't require OCP implementation:
+With AppAPI authentication, it is possible for ExApps to use any other OCS APIs that don't require OCP implementation:
 
 .. note::
 
-	To access these APIs they have to be supported by AppAPI (see :ref:`api_scopes`),
-	and ExApp have to require granted access (in ``info.xml``) to them accordingly.
+	To access these APIs, they have to be supported by AppAPI,
+	and the ExApp must grant access to them (in ``info.xml``) accordingly.
 
 1. Calendar
 2. Contacts

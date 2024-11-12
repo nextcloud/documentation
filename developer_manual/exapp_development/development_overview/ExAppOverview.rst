@@ -40,20 +40,12 @@ It should contain the following fields:
 			<image>nextcloud/skeleton</image>
 			<image-tag>latest</image-tag>
 		</docker-install>
-		<scopes> // deprecated and removed since AppAPI 3.2.0
-			<value>FILES</value>
-			<value>AI_PROVIDERS</value>
-			...
-		</scopes>
-		<system>false</system> // deprecated since AppAPI 3.0.0
 	</external-app>
 
 - **docker-install**: contains the Docker image information for the ExApp.
 	- **registry**: the Docker registry where the image is stored.
 	- **image**: the Docker image name.
 	- **image-tag**: the Docker image tag (version tag).
-- **scopes**: the list of the Nextcloud scopes that the ExApp requires (see :ref:`list of scopes <api_scopes>`).
-- **system**: (deprecated since AppAPI 3.0.0) a boolean value that indicates whether the ExApp is a system app or not.
 
 
 Backend

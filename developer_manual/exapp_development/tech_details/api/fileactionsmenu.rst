@@ -14,14 +14,7 @@ AppAPI takes responsibility to register FileActionsMenu, ExApps needs only to re
 Register
 ^^^^^^^^
 
-.. note::
-
-    With AppAPI 2.6.0 there is a new v2 OCS endpoint with redirect to ExApp UI support:
-    OCS endpoint: ``POST /apps/app_api/api/v2/ui/files-actions-menu``.
-    Old v1 is marked as deprecated.
-
-OCS endpoint: ``POST /apps/app_api/api/v1/ui/files-actions-menu``
-
+OCS endpoint: ``POST /apps/app_api/api/v2/ui/files-actions-menu``
 
 Params
 ******

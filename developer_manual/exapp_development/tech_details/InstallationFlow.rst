@@ -6,7 +6,7 @@ App Installation Flow
 Image Pulling (Docker)
 ----------------------
 
-AppAPI **2.5.0+** will always first try to pull a docker image with a ``suffix`` equal to value of *computeDevice*.
+AppAPI will first try to pull the Docker image whose ``suffix`` is equal to the value of *computeDevice*.
 
 The following values are available for ``computeDevice``: ``cpu``, ``cuda``, or ``rocm``.
 

@@ -78,12 +78,11 @@ In your API controllers, you can use it as a PHP attribute.
 AppAPI session keys
 ^^^^^^^^^^^^^^^^^^^
 
-After successful authentication AppAPI sets `app_api` session key to ``true``.
+After successful authentication, AppAPI sets `app_api` session key to ``true``.
 
 .. code-block:: php
 
 	$this->session->set('app_api', true);
-	$this->session->set('app_api_system', true); // deprecated since AppAPI 3.0.0
 
 .. note::
 

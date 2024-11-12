@@ -300,7 +300,7 @@ where:
 
 .. note::
 
-	Starting with AppAPI version ``2.5.0``, the optional additional parameter *OVERRIDE_APP_HOST* can be used to
+	The optional additional parameter *OVERRIDE_APP_HOST* can be used to
 	override the host that will be used for ExApp binding.
 
 	It can be ``0.0.0.0`` in some specific configurations, when VPN is used

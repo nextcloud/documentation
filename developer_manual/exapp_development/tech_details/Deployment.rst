@@ -147,10 +147,5 @@ It has the same structure as other Nextcloud appinfo/info.xml files, but with so
 			<image>nextcloud/talk_bot</image>
 			<image-tag>latest</image-tag>
 		</docker-install>
-		<scopes> // deprecated since AppAPI 3.2.0
-			<value>TALK</value>
-			<value>TALK_BOT</value>
-		</scopes>
-		<system>0</system> // deprecated since AppAPI 3.0.0
 	</external-app>
 	...

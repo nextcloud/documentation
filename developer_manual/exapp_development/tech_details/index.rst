@@ -5,7 +5,6 @@ Technical details
    :maxdepth: 2
 
    InstallationFlow
-   ApiScopes
    Deployment
    Authentication
    Translations
