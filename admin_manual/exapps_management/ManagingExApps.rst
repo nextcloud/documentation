@@ -16,7 +16,7 @@ There are several commands to work with ExApps:
 Register
 --------
 
-Command: ``app_api:app:register [--force-scopes] [--info-xml INFO-XML] [--json-info JSON-INFO] [--] <appid> <daemon-config-name>``
+Command: ``app_api:app:register [--info-xml INFO-XML] [--json-info JSON-INFO] [--] <appid> <daemon-config-name>``
 
 The register command is the first ExApp installation step.
 
@@ -29,7 +29,6 @@ Arguments
 Options
 *******
 
-    * ``--force-scopes`` *[optional]* - force scopes approval
     * ``--json-info JSON-INFO`` *[optional]* - ExApp deploy JSON info (json string)
     * ``--info-xml INFO-XML`` *[optional]* - path to info.xml file (url or local absolute path)
 
@@ -57,7 +56,7 @@ Options
 Update
 ------
 
-Command: ``app_api:app:update [--info-xml INFO-XML] [--force-update] [--force-scopes] [-e|--enabled] [--] <appid>``
+Command: ``app_api:app:update [--info-xml INFO-XML] [--force-update] [-e|--enabled] [--] <appid>``
 
 ExApp will be updated if there is a new version available.
 
@@ -71,7 +70,6 @@ Options
 
     * ``--info-xml INFO-XML`` *[optional]* - path to info.xml file (url or local absolute path)
     * ``--force-update`` *[optional]* - force ExApp update (do not prompt for confirmation)
-    * ``--force-scopes`` *[optional]* - force scopes approval (accept all scopes)
     * ``-e|--enabled`` *[optional]* - enable ExApp after update
 
 Enable
