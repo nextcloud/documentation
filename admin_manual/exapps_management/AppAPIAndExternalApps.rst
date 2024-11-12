@@ -20,7 +20,7 @@ If AppAPI is not installed, you can still install it by simply navigating to the
 Setup deploy daemon
 -------------------
 
-A Deploy Daemon is a way for Nextcloud to install and communicate with and control ExApps.
+A Deploy Daemon is a way for Nextcloud to install, communicate with, and control ExApps.
 
 .. note::
 	If you are using Nextcloud AIO with the "Docker Socket Proxy" container enabled, a Deploy Daemon will be automatically created and configured to work out-of-the-box.
@@ -32,7 +32,7 @@ A Deploy Daemon is a way for Nextcloud to install and communicate with and contr
 4. Fill in the required fields:
 	- ``Name``: unique name of the Deploy daemon
 	- ``Display name``: the name that will be displayed in the UI
-	- ``Deployment method``: by default you will need to choose ``docker_install``, ``manual_install`` is for development or custom use case of manual ExApp installation
+	- ``Deployment method``: by default, you will need to choose ``docker_install`` (``manual_install`` is for development or custom use case of manual ExApp installation)
 	- ``Daemon Host``: hostname/IP address + port of the Deploy daemon
 	- ``Nextcloud URL``: autofilled with current domain, you might need to change the protocol to http/https depending on your setup
 	- ``Set as default daemon``: check if you want set new Deploy daemon as default
@@ -44,6 +44,11 @@ A Deploy Daemon is a way for Nextcloud to install and communicate with and contr
 		- ``Add additional option`` (see :ref:`additional_options_list`): setup additional KEY + VALUE deploy config options
 5. Click "Check connection" to verify that the configuration is correct.
 6. Click "Register" to save the Deploy Daemon configuration.
+
+.. note::
+	For remote DSP setup, it should expose the ports on the host.
+
+.. image:: ./img/app_api_3.png
 
 Deployment configuration examples can be found :ref:`here <deploy-configs>`.
 

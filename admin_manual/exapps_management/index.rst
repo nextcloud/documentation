@@ -7,6 +7,6 @@ ExApps management
 
    AppAPIAndExternalApps
    DeployConfigurations
-   CreationOfDeployDaemon
+   ManagingDeployDaemons
    TestDeploy
    ManagingExApps

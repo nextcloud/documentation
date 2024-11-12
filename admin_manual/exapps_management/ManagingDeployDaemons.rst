@@ -1,50 +1,12 @@
- .. _create-deploy-daemon:
+ .. _managing-deploy-daemons:
 
-Creation of Deploy Daemon
-=========================
-
-The Deploy Daemon (DaemonConfig) is used to orchestrate the deployment of ExApps.
-
-.. note::
-
-	Currently only ``docker-install`` and ``manual-install`` deployment methods are supported.
-
-The recommended daemon configuration is using `AppAPI Docker Socket Proxy <https://github.com/nextcloud/docker-socket-proxy>`_.
-
-.. image:: ./img/app_api_3.png
-
-
-You can choose one of the basic configuration templates and adjust to your needs.
-
-.. note:: We highly recommend to use UI to create Deploy Daemons.
-
-Register Deploy daemon form
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-1. ``Name``: unique name of the Deploy daemon
-2. ``Display name``: the name that will be displayed in the UI
-3. ``Deployment method``: by default you will need to choose ``docker_install``, ``manual_install`` is for development or custom use case of manual ExApp installation
-4. ``Daemon Host``: hostname/IP address + port of the Deploy daemon
-5. ``Nextcloud URL``: autofilled with current domain, you might need to change the protocol to http/https depending on your setup
-6. ``Set as default daemon``: check if you want set new Deploy daemon as default
-7. ``Enable https``: check if your Deploy daemon (Docker Socket Proxy) is configured with TLS
-8. Deploy Config:
-	9. ``Network``: Docker network name, depends on your networking setup, enforces to "host" if "Enable https" is checked
-	10. ``HaProxy password``: password for Docker Socket Proxy, if it is configured with TLS
-	11. ``Compute Device``: CPU, CUDA or ROCm, depending on your hardware config on Deploy daemon host machine
-	12. ``Add additional option`` (see :ref:`additional_options_list`): setup additional KEY + VALUE deploy config options
-
-.. note::
-
-	For remote DSP setup, it should expose the ports on the host.
-
-
-.. _create-deploy-daemon-cli:
+Managing Deploy Daemons
+=======================
 
 OCC CLI
 ^^^^^^^
 
-There are a few commands to manage Deploy Daemons:
+There are a few OCC CLI commands to manage Deploy Daemons:
 
 1. Register ``occ app_api:daemon:register``
 2. Unregister ``occ app_api:daemon:unregister``
