@@ -15,6 +15,12 @@ The main tasks of the AppAPI ecosystem are:
 	* Ensuring a reliable implementation of all the necessary missing APIs for applications
 	* Supplying clear, understandable documentation and support on how to implement libraries in other programming languages for writing next-gen applications for Nextcloud
 
+The system should support the expansion and integration of new deployment methods, avoiding any tight coupling with a specific deployment type.
+Applications should be capable of indicating the deployment methods they can accommodate.
+
+Given the evolving landscape of new technologies and the potential emergence of more intricate or simplified deployment options,
+the system is architected to seamlessly embrace the integration of novel deployment modes.
+
 If you have any questions or corrections regarding the documentation,
 we would be glad to address them in discussions, incorporate corrections through pull requests,
 and handle complex problems through issues.
@@ -31,15 +37,3 @@ AppAPI brings out the following terms frequently used in the code:
 * ``ExAppPreferences`` - similar to Nextcloud `app_preferences`, user-specific settings for ExApps
 * ``AppAPIAuth`` - AppAPI authentication
 * ``FileActionsMenu`` - entry in files actions menu (context menu)
-
-Concepts
---------
-
-Extensible Deployment
-^^^^^^^^^^^^^^^^^^^^^
-
-The system should support the expansion and integration of new deployment methods, avoiding any tight coupling with a specific deployment type.
-Applications should be capable of indicating the deployment methods they can accommodate.
-
-Given the evolving landscape of new technologies and the potential emergence of more intricate or simplified deployment options,
-the system is architected to seamlessly embrace the integration of novel deployment modes.
