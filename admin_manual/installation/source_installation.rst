@@ -122,6 +122,14 @@ Additional Apache configurations
 
     a2enmod setenvif
 
+  and apply the following modifications the configuration::
+
+    ProxyFCGIBackendType FPM
+    
+    <FilesMatch remote.php>
+      SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+    </FilesMatch>
+
 * You must disable any server-configured authentication for Nextcloud, as it
   uses Basic authentication internally for DAV services. If you have turned on
   authentication on a parent folder (via e.g. an ``AuthType Basic``
