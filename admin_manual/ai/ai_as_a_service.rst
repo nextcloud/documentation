@@ -29,4 +29,4 @@ Do note however, that we test the Assistant tasks that this app implements only 
 Improve performance
 -------------------
 
-Prompts from integration_openai and integration_replicate can have a delay of 5 minutes. This can be optimized and more information can be found in `the relevant section in AI Overview <ai-overview_improve-ai-task-pickup-speed>`_. 
+Prompts from integration_openai and integration_replicate can have a delay of 5 minutes. This can be optimized and more information can be found in :ref:`the relevant section in AI Overview <ai-overview_improve-ai-task-pickup-speed>`.
