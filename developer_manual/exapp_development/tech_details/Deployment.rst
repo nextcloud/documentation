@@ -68,7 +68,7 @@ This can be done by the ``occ`` **app_api:app:register** command:
 
 .. code-block:: bash
 
-	app_api:app:register <appid> <daemon-config-name> [--force-scopes] [--]
+	app_api:app:register <appid> <daemon-config-name> [--]
 
 Arguments
 *********
@@ -79,7 +79,6 @@ Arguments
 Options
 *******
 
-	* ``--force-scopes`` **[optional]** - force scopes approval
 	* ``--info-xml INFO-XML`` **[optional]** - path to info.xml file with ExApp description (url or local absolute path)
 	* ``--json-info JSON-INFO`` **[optional]** - JSON with ExApp description
 
@@ -98,8 +97,7 @@ For all examples and applications we release, we usually add the ``manual_instal
 .. code-block::
 
 	php occ app_api:app:register nc_py_api manual_install --json-info \
-            "{\"id\":\"nc_py_api\",\"name\":\"nc_py_api\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"port\":$APP_PORT,\"scopes\":[\"SYSTEM\", \"FILES\", \"FILES_SHARING\", \"USER_INFO\", \"USER_STATUS\", \"NOTIFICATIONS\", \"WEATHER_STATUS\", \"TALK\"],\"system\":1}" \
-            --force-scopes
+            "{\"id\":\"nc_py_api\",\"name\":\"nc_py_api\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"port\":$APP_PORT}" \
 
 .. note::
 	App deployment/startup should be done by the developer when ``manual-install`` DeployConfig type is used.

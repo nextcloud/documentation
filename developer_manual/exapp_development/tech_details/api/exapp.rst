@@ -30,7 +30,6 @@ The response data is a JSON array of ExApp objects with the following attributes
 		"version": "version of the ExApp",
 		"enabled": "true/false flag",
 		"last_check_time": "timestamp of last successful Nextcloud->ExApp connection check",
-		"system": "true/false flag indicating system ExApp",
 	}
 
 Set ExApp init progress

@@ -12,7 +12,7 @@ When running the command:
 
 .. code-block:: bash
 
-   php occ app_api:app:register --force-scopes test-deploy docker_socket_proxy --info-xml https://raw.githubusercontent.com/nextcloud/test-deploy/main/appinfo/info.xml --test-deploy-mode --no-ansi --no-warnings
+   php occ app_api:app:register test-deploy docker_socket_proxy --info-xml https://raw.githubusercontent.com/nextcloud/test-deploy/main/appinfo/info.xml --test-deploy-mode --no-ansi --no-warnings
 
 You may receive an error similar to:
 
@@ -134,7 +134,7 @@ Method 2: Set System-Wide Environment Variables
 
    .. code-block:: bash
 
-	  php occ app_api:app:register --force-scopes test-deploy docker_socket_proxy --info-xml https://raw.githubusercontent.com/nextcloud/test-deploy/main/appinfo/info.xml --test-deploy-mode --no-ansi --no-warnings
+	  php occ app_api:app:register test-deploy docker_socket_proxy --info-xml https://raw.githubusercontent.com/nextcloud/test-deploy/main/appinfo/info.xml --test-deploy-mode --no-ansi --no-warnings
 
    It should now work without connectivity issues.
 
