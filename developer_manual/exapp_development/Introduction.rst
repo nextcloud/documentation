@@ -30,20 +30,10 @@ AppAPI brings out the following terms frequently used in the code:
 * ``ExAppConfig`` - similar to Nextcloud `app_config`, but for ExApps configuration
 * ``ExAppPreferences`` - similar to Nextcloud `app_preferences`, user-specific settings for ExApps
 * ``AppAPIAuth`` - AppAPI authentication
-* ``ExAppScope`` - granted to ExApp scope group of access to API routes
-* ``ExAppApiScope`` - pre-defined scope group of access to list of API routes
 * ``FileActionsMenu`` - entry in files actions menu (context menu)
 
 Concepts
 --------
-
-API Access Control Mechanism
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Each application defines list of API groups it intends to access.
-
-This system easily allows you to increase the level of trust in applications.
-Even prior to installation, it's possible to ascertain the API groups to which an application will gain access.
 
 Extensible Deployment
 ^^^^^^^^^^^^^^^^^^^^^

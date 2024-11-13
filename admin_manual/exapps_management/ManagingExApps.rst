@@ -69,7 +69,6 @@ Options
 *******
 
     * ``--info-xml INFO-XML`` *[optional]* - path to info.xml file (url or local absolute path)
-    * ``--force-update`` *[optional]* - force ExApp update (do not prompt for confirmation)
     * ``-e|--enabled`` *[optional]* - enable ExApp after update
 
 Enable
