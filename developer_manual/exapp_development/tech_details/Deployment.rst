@@ -28,7 +28,7 @@ This can be done by the ``occ`` **app_api:daemon:register** command:
 
 .. code-block:: bash
 
-	app_api:daemon:register <name> <display-name> <accepts-deploy-id> <protocol> <host> <nextcloud_url> [--net NET] [--haproxy_password PASSWORD] [--]
+	app_api:daemon:register <name> <display-name> <accepts-deploy-id> <protocol> <host> <nextcloud_url> [--net NET] [--haproxy_password PASSWORD] [--compute_device DEVICE] [--set-default] [--]
 
 Arguments
 *********
@@ -44,8 +44,9 @@ Options
 *******
 
 	* ``--net [network-name]``  - ``[required]`` network name to bind docker container to (default: ``host``)
-	* ``--haproxy_password PASSWORD`` - ``[optional]`` password if ``AppAPI Docker Socket Proxy`` is used
-	* ``--gpu`` - ``[optional]`` GPU device to expose to the daemon (e.g. ``/dev/dri``)
+	* ``--haproxy_password PASSWORD`` - ``[optional]`` password for HAProxy Basic auth if ``AppAPI Docker Socket Proxy`` is used
+	* ``--compute_device DEVICE`` - ``[optional]`` GPU device to expose to the daemon (defaults to ``cpu``, but ``cuda`` and ``rocm`` are also supported)
+	* ``--set-default`` - ``[optional]`` sets the newly created daemon as the default
 
 .. note::
 	Common configurations are tested by the CI in our repository, see `workflows on GitHub <https://github.com/nextcloud/app_api/blob/main/.github/workflows/tests-deploy.yml>`_.
