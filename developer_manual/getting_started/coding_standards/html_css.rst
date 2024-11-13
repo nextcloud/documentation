@@ -8,7 +8,7 @@ HTML
 - HTML should be HTML5 compliant
 - Avoid more than one tag per line
 - Always indent blocks
-- Try to avoid IDs inst
+- Try to avoid IDs instead prefer classes.
 
 **DO**
 
@@ -28,8 +28,8 @@ HTML
 CSS
 ---
 
-- Do not bind your CSS to much to your HTML structure.
-- Try to avoid IDs for query selectors but use classes.
+- Do not bind your CSS too much to your HTML structure.
+- Try to avoid using IDs and tags for query selectors, but use classes.
 - Try to make your CSS reusable by grouping common attributes into classes.
 - Take a look at the `Writing Tactical CSS & HTML <https://www.youtube.com/watch?v=hou2wJCh3XE&feature=plcp>`_ video on YouTube.
 

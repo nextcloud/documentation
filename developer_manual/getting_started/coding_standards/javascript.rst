@@ -8,7 +8,7 @@ JavaScript and Typescript
 General rules and advices
 -------------------------
 
-- Nextcloud uses Vue.js for its interface, for a consistent user interface we recommend apps to also use Vue with the nextcloud provided components.
+- Nextcloud uses Vue.js for its interface, for a consistent user interface we recommend apps to also use Vue with :ref:`provided components <js-library_nextcloud-vue>`.
   Yet also vanilla JavaScript and HTML can be used.
 - We recommend using Typescript for its type checking and improved static code analysis features.
 - Do not create global variables, instead if needed use global namespace objects like ``OCA.YourApp.…``
@@ -127,10 +127,10 @@ Naming and casing
 			interface I_request { /* ... */ }
 			type arguments = string[]
 
-Indention
-"""""""""
+Indentation
+"""""""""""
 
-- Use tabs instead of spaces for indention - tab width is 4 spaces.
+- Use tabs instead of spaces for indenting - tab width is 4 spaces.
 
 	- You can align e.g. comments using spaces if needed.
 
@@ -607,7 +607,7 @@ Objects
 			const obj = {
 				first: 1,
 			-	second: 2
-			-	second: 2,
+			+	second: 2,
 			+	third: 3
 			}
 
