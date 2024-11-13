@@ -6,7 +6,7 @@ Files and notifications
 -----------------------
 
 1. Install the Nextcloud Android client `from Google Play Store <https://play.google.com/store/apps/details?id=com.nextcloud.client>`__ or 
-   `from F-Droid <https://f-droid.org/packages/com.nextcloud.client/>`__.
+   `from F-Droid <https://f-droid.org/packages/com.nextcloud.client/>`__. 
 2. Start the app. There are two ways of setting it up:
 
    *Either*: enter
@@ -18,6 +18,11 @@ Files and notifications
    **Security**. Generate an App password, click "Generate QR code" and
    tap the QR scanner icon in the Nextcloud app, point your phone's
    camera towards the screen.
+3. Once you are signed in you can view and edit files from within the app similar to how you would view and edit the files from within a browser. 
+4. You can sync files for offline access by clicking on the three dots to the right of the file name and choosing "download" or "sync".   
+   As it stands Syncing is only partially automated, so if you want your files to remain in sync you will need to click the sync button when
+   changes are made locally or on the nextcloud server. Clicking "sync" on a foulder will download and sync all files in that foulder, but 
+   note that this will not automatically upload files to the server if they have been created locally. 
 
 Contacts and Calendar
 ---------------------
@@ -28,7 +33,7 @@ With the Nextcloud mobile app
 1. Install `DAVx⁵ (formerly known as DAVDroid) <https://www.davx5.com/download/>`_ on your Android device, 
    `from Google Play Store <https://play.google.com/store/apps/details?id=at.bitfire.davdroid>`__ or 
    `from F-Droid <https://f-droid.org/packages/at.bitfire.davdroid/>`__.
-2. In the Nextcloud mobile, go
+2. In the Nextcloud mobile App, go
    to **Settings**/**More**, tap on "**Sync calendars & contacts**".
 3. Now, DAVx⁵ will open Nextcloud's Webflow login window, where you
    will have to enter your credentials and grant access.
