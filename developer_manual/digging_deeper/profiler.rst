@@ -11,6 +11,15 @@ The profiler application is available on `GitHub <https://github.com/nextcloud/p
 you need to clone the stableX branch if you are using Nextcloud X or master if you are
 using the latest development version of Nextcloud.
 
+.. code-block:: bash
+
+   cd apps/
+   git clone https://github.com/nextcloud/profiler.git
+   cd profiler
+   git checkout stableX # adapt X to your version: php occ version |& grep -oP 'Nextcloud \K\d+'
+   cd ../..
+
+
 Enable the app
 --------------
 
@@ -23,11 +32,6 @@ To enable the app, you can run the following commands:
 
 .. code-block:: bash
 
-   cd apps/
-   git clone https://github.com/nextcloud/profiler.git
-   cd profiler
-   git checkout stable30 # adapt to your version: php occ version |& grep -oP 'Nextcloud \K\d+'
-   cd ../..
    npm ci && npm run build
    occ app:enable profiler
    occ profiler:enable # This will also enable the debug mode if not already enabled
