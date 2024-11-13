@@ -68,7 +68,7 @@ This can be done by the ``occ`` **app_api:app:register** command:
 
 .. code-block:: bash
 
-	app_api:app:register <appid> <daemon-config-name> [--]
+	app_api:app:register [--info-xml INFO-XML] [--json-info JSON-INFO] [--] <appid> <daemon-config-name>
 
 Arguments
 *********
@@ -79,8 +79,8 @@ Arguments
 Options
 *******
 
-	* ``--info-xml INFO-XML`` **[optional]** - path to info.xml file with ExApp description (url or local absolute path)
-	* ``--json-info JSON-INFO`` **[optional]** - JSON with ExApp description
+	* ``--info-xml INFO-XML`` *[optional]* - path to info.xml file (url or local absolute path)
+	* ``--json-info JSON-INFO`` *[optional]* - ExApp deploy JSON info (json string)
 
 .. warning::
 	After successful deployment (pull, create, and start container), there is a heartbeat check with a 90 second timeout (will be configurable).
