@@ -3308,26 +3308,6 @@ no limit.
 
 Defaults to ``10`` megabytes
 
-filelocking.enabled
-^^^^^^^^^^^^^^^^^^^
-
-
-::
-
-	'filelocking.enabled' => true,
-
-Enables transactional file locking.
-
-This is enabled by default.
-
-Prevents concurrent processes from accessing the same files
-at the same time. Can help prevent side effects that would
-be caused by concurrent operations. Mainly relevant for
-very large installations with many users working with
-shared files.
-
-Defaults to ``true``
-
 filelocking.ttl
 ^^^^^^^^^^^^^^^
 
