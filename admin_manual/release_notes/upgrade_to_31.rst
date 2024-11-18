@@ -6,6 +6,7 @@ System requirements
 -------------------
 
 * PHP 8.1 is now deprecated but still supported.
+* PHP 8.4 is now supported, but 8.3 is recommended.
 
 PHP configuration
 -----------------
