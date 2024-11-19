@@ -6,7 +6,12 @@ SELinux configuration
 
 When you have SELinux enabled on your Linux distribution, you may run into
 permissions problems after a new Nextcloud installation, and see ``permission
-denied`` errors in your Nextcloud logs.
+denied`` errors in your Nextcloud logs. 
+
+
+.. tip:: 
+    Permission problems may be caused by SELinux *even if the denial is not indicated in the audit logs.* This is
+    because SELinux does not log all system calls used for verifying access. See `Possible Causes of Silent Denials <https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/selinux_users_and_administrators_guide/sect-security-enhanced_linux-troubleshooting-fixing_problems#sect-Security-Enhanced_Linux-Fixing_Problems-Possible_Causes_of_Silent_Denials>`_ to solve.
 
 The following settings should work for most SELinux systems that use the
 default distro profiles. Run these commands as root, and remember to adjust the filepaths
