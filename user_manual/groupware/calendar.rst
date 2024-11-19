@@ -54,6 +54,8 @@ instance, importing is the best way to do so.
 3. The upload can take some time and depends on how big the calendar you import
    is.
 
+4. A blue progress bar will appear below "Calendar Settings".
+
 .. note:: The Nextcloud Calendar application only supports iCalendar-compatible
           ``.ics``-files, defined in RFC 5545.
 
