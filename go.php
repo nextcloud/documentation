@@ -10,6 +10,7 @@ $mapping = array(
     'admin-background-jobs'   => '/admin_manual/configuration_server/background_jobs_configuration.html',
     'admin-backup'            => '/admin_manual/maintenance/backup.html',
     'admin-bigint-conversion' => '/admin_manual/configuration_database/bigint_identifiers.html',
+    'admin-big-file-upload'   => '/admin_manual/configuration_files/big_file_upload_configuration.html',
     'admin-code-integrity'    => '/admin_manual/issues/code_signing.html',
     'admin-cache'             => '/admin_manual/configuration_server/caching_configuration.html',
     'admin-config'            => '/admin_manual/configuration_server/config_sample_php_parameters.html',
