@@ -831,7 +831,7 @@ mail_smtpmode
 
 	'mail_smtpmode' => 'smtp',
 
-Which mode to use for sending mail: ``sendmail``, ``smtp`` or ``qmail``.
+Which mode to use for sending mail: ``sendmail``, ``smtp``, ``qmail`` or ``null``.
 
 If you are using local or remote SMTP, set this to ``smtp``.
 
@@ -840,6 +840,9 @@ the server, with ``/usr/sbin/sendmail`` installed on your Unix system.
 
 For ``qmail`` the binary is /var/qmail/bin/sendmail, and it must be installed
 on your Unix system.
+
+Use the string ``null`` to send no mails (disable mail delivery). This can be
+useful if mails should be sent via APIs and rendering messages is not necessary.
 
 Defaults to ``smtp``
 
