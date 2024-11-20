@@ -759,18 +759,23 @@ to synchronize federated servers::
 File operations
 ---------------
 
-``occ`` has three commands for managing files in Nextcloud::
+Available ``occ`` commands for the ``files`` namespace::
 
- files
-  files:cleanup              Cleanup filecache
-  files:repair-tree          Try and repair malformed filesystem tree structures
-  files:scan                 Rescan filesystem
-  files:scan-app-data        Rescan the AppData folder
-  files:transfer-ownership   All files' and folders' ownerships are moved to another
-                             user. Outgoing shares are moved as well.
-                             Incoming shares are not moved by default because the
-                             sharing user holds the ownership of the respective files.
-                             There is however an option to enable moving incoming shares.
+  files:cleanup                    cleanup filecache
+  files:copy                       Copy a file or folder
+  files:delete                     Delete a file or folder
+  files:get                        Get the contents of a file
+  files:move                       Move a file or folder
+  files:object:delete              Delete an object from the object store
+  files:object:get                 Get the contents of an object
+  files:object:put                 Write a file to the object store
+  files:put                        Write contents of a file
+  files:recommendations:recommend  
+  files:reminders                  List file reminders
+  files:repair-tree                Try and repair malformed filesystem tree structures
+  files:scan                       rescan filesystem
+  files:scan-app-data              rescan the AppData folder
+  files:transfer-ownership         All files and folders are moved to another user - outgoing shares and incoming user file shares (optionally) are moved as well.
 
 .. _occ_files_scan_label:
 
@@ -911,6 +916,8 @@ In this case no sub-directory is created and all files will appear directly in t
 It is also possible to transfer only one directory along with its contents. This can be useful to restructure your organization or quotas. The ``--path`` argument is given as the path to the directory as seen from the source user::
 
  sudo -u www-data php occ files:transfer-ownership --path="path_to_dir" <source-user> <destination-user>
+                             
+Incoming shares are not moved by default because the sharing user holds the ownership of the respective files. There is however an option to enable moving incoming shares.
 
 In case the incoming shares must be transferred as well, use the argument ``--transfer-incoming-shares`` with ``0`` or ``1`` as parameters ::
 
