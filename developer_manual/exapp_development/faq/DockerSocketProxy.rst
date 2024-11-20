@@ -28,7 +28,7 @@ Nextcloud AIO implements `Docker Socket Proxy container <https://github.com/next
 you just need to tick the checkbox in AIO configuration interface to enable it.
 AppAPI automatically creates the default Deploy daemon configuration in Nextcloud AIO.
 
-See `Nextcloud in Docker AIO (all-in-one) <https://nextcloud.github.io/app_api/DeployConfigurations.html#nextcloud-in-docker-aio-all-in-one>`_ for more details.
+See `Nextcloud in Docker AIO (all-in-one) <https://docs.nextcloud.com/server/latest/admin_manual/exapps_management/DeployConfigurations.html#nextcloud-in-docker-aio-all-in-one>`_ for more details.
 
 .. note::
 
