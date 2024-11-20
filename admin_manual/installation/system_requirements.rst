@@ -123,7 +123,7 @@ Talk App
 ^^^^^^^^
 
 - **iOS** 15.0+
-- **Android** 7.0+
+- **Android** 8.0+
 - **Nextcloud Server** 14.0+
 - **Nextcloud Talk** 4.0+
 
