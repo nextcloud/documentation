@@ -24,7 +24,4 @@ AppAPI Nextcloud APIs
 	events_listener
 	occ_command
 	talkbots
-	speechtotext
-	textprocessing
-	machinetranslation
 	other_ocs
