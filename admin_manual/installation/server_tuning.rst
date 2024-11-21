@@ -146,7 +146,7 @@ However, the revalidation frequency can be adjusted and may *potentially* enhanc
 
 .. danger::
     Lengthening the time between revalidation (or disabling it completely) means that manual changes to scripts, including ``config.php``, will take longer before they become active (or will never do so, if
-    revalidation is disabled completely). Lengthening also increases the likelihood of transient Server and application upgrade problems. It also prevents the proper toggling of maintenance mode.
+    revalidation is disabled completely). Lengthening also increases the likelihood of transient server and application upgrade problems. It also prevents the proper toggling of maintenance mode.
     
 .. warning::
     If you adjust these parameters, you are more likely to need to restart/reload your web server (mod_php) or fpm after making configuration changes or performing upgrades. If you forget to do so, you 
@@ -189,12 +189,17 @@ Nextcloud strictly requires code comments to be preserved in opcode, which is th
 JIT
 ^^^
 
-PHP 8.0 and above ship with a JIT compiler that can be enabled to benefit any CPU intensive apps you might be running. To enable a tracing JIT with all optimizations:
+PHP 8.0 and above ship with a JIT compiler that can be enabled on x86 platforms to benefit any CPU intensive apps you might be running. To enable a tracing JIT with all optimizations:
 
 .. code:: ini
 
   opcache.jit = 1255
-  opcache.jit_buffer_size = 128M
+  opcache.jit_buffer_size = 8M
+
+.. note::
+
+    Single Nextcloud instances have shown to use less than 2 MiB of the configured JIT buffer size, so that 8 MiB is sufficient by a large margin. The overall OPcache usage however raises by a larger amount, so that ``opcache.memory_consumption`` might need to be raised in some cases. The Nextcloud admin panel will then show a related warning.
+    JIT buffer usage can be monitored with `opcache-gui <https://github.com/amnuts/opcache-gui>`_ as well.
 
 Previews
 --------
