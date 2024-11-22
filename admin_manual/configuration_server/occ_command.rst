@@ -951,13 +951,18 @@ Commands for handling shares::
 Files external
 --------------
 
+These commands are used for managing Nextcloud's *External Storage* feature. In 
+addition to replicating the configuration capabilities in the Web UI, additional 
+capabilities include exporting / importing configurations, scanning *External 
+Storage* mounts that require login credentials, and configuring update notifications 
+(if supported by the storage type).
+
 .. note::
   These commands are only available when the "External storage support" app
   (``files_external``) is enabled.
 
-Commands for managing external storage::
+Available commands for the "files_external" namespace::
 
- files_external
   files_external:applicable  Manage applicable users and groups for a mount
   files_external:backends    Show available authentication and storage backends
   files_external:config      Manage backend configuration for a mount
@@ -965,13 +970,13 @@ Commands for managing external storage::
   files_external:delete      Delete an external mount
   files_external:export      Export mount configurations
   files_external:import      Import mount configurations
-  files_external:list        List configured mounts
-  files_external:option      Manage mount options for a mount
-  files_external:verify      Verify mount configuration
+  files_external:list        List configured admin or personal mounts
   files_external:notify      Listen for active update notifications for a configured external mount
+  files_external:option      Manage mount options for a mount
+  files_external:scan        Scan an external storage for changed files
+  files_external:verify      Verify mount configuration
 
-These commands replicate the functionality in the Nextcloud Web GUI, plus two new
-features:  ``files_external:export`` and ``files_external:import``.
+``files_external:scan`` provides the ability to provide a username and/or password for cases where login credentials are used.
 
 Use ``files_external:export`` to export all admin mounts to stdout, and
 ``files_external:export [user_id]`` to export the mounts of the specified
