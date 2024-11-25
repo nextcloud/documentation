@@ -105,6 +105,7 @@ Added APIs
   See the relevant :ref:`endpoint documentation<webdav-download-folders>`.
 - ``OCP\SetupCheck\CheckServerResponseTrait`` was added to ease implementing custom :ref:`setup checks<setup-checks>`
   which need to check HTTP calls to the the server itself.
+- Any implementation of ``OCP\Files\Mount\IMountPoint`` can additionally implement ``OCP\Files\Mount\IShareOwnerlessMount`` which allows everyone with share permission to edit and delete any share on the files and directories below the mountpoint.
 
 Changed APIs
 ^^^^^^^^^^^^
