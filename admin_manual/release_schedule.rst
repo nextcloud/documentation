@@ -2,8 +2,210 @@
 Maintenance and release schedule
 ================================
 
-Overview
---------
+Summary
+-------
+
+Policy:
+
+* The ``stable`` release channel hosts all of the major branches of Nextcloud Server that are actively supported.
+* Every Nextcloud Server installation, by default, utilizes the ``stable`` release channel. 
+* The ``stable`` release channel covers Nextcloud Server and all embedded ("shipped") apps.
+* There are 2-3 actively supported branches available within the ``stable`` channel to choose from at any given point in time.
+* All new stable branches are supported for at least 12 months via bugfix-only minor/point/maintenance releases (which are published every 3-5 weeks or as needed).
+* Each supported stable branch receives the same critical bugfixes.
+
+Plan, as part of standard system administration responsibilities, to:
+
+- Deploy critical bugfixes-only updates (maintenance releases) to your Nextcloud Server environment approximately once every 2-4 weeks.
+- Perform a major upgrade of your Nextcloud Server environment at least once a year to stay on a supported major branch (or more frequently if you prefer the latest functionality/features).
+
+For new deployments, if you would like...
+
+- ...the latest features and optimizations: deploy the highest numbered major branch in the ``stable`` channel.
+- ...the most "field-tested" versions: deploy the lowest numbered major branch in the ``stable`` channel.
+
+Development Approach
+--------------------
+
+Context
+~~~~~~~
+
+Nextcloud is an open source project developed primarily under the GNU Affero General Public License (AGPL).
+Nextcloud's development is driven by the needs, goals, wants, and preferences of:
+
+- projects contributors (developers, designers, etc.)
+- the customers of Nextcloud GmbH (which employs many of the core developers and maintainers as well as underwrites the direct monetary expenses of the project)
+- users and consumers of platforms and services that utilize Nextcloud software
+- the Nextcloud community at large (consisting of professional users and technologists, power users and hobbyists, home or personal users, and application developers)
+
+Changes
+~~~~~~~
+
+Changes (in the form of "commits") are made to the code base nearly every day. 
+Changes may be proposed by anyone.
+These proposed changes are reviewed, tested, adjusted, experimented with, discussed, and collaborated, commented, and voted on by project maintainers, members, and anyone that jumps in alongside them.
+
+These individuals - collectively - serve as curators of the code base and shape the evolution of Nextcloud. The changes may:
+
+- target known or potential bugs
+- optimize performance
+- expand functionality
+- improve the user experience and user interface
+- add new features
+- streamline future development
+- improve software quality
+- and so on.
+
+Some proposed changes are accepted quickly while others take time or may be blocked for a variety of reasons.
+When a change is accepted, it is is merged into the master development branch.
+
+Coordination
+~~~~~~~~~~~~
+
+All of this development activity requires significant coordination in order to ensure the end result is usable and to minimize disruption to installers, administators, end-users, and app developers (while maximizing the availability of improvements).
+
+The continuous (incremental) improvement of Nextcloud Server is beneficial to all stakeholders, but this does not mean they do not have competing priorities at times.
+
+This is where the Nextcloud Server release approach comes into play:
+
+- Developers and designers need to be able to make improvements and get feedback from stakeholders.
+- Administrators, end-users, and application developers must be able to evaluate and prepare for changes that impact their Nextcloud related endeavors.
+
+An effective development velocity facilitates **both**.
+
+This is where Nextcloud's approach to maintaining a diverse ``stable`` release channel, publishing a schedule of the lifecycle for all major releases, and creating frequent bugfix-only (maintenance) releases come into play.
+
+Release Channels, Major Release Schedule, and Maintenance Releases
+------------------------------------------------------------------
+
+Stable release channel
+~~~~~~~~~~~~~~~~~~~~~~
+
+The ``stable`` release channel hosts all of the major *branches* of Nextcloud Server that are actively supported. 
+Every Nextcloud Server installation, by default, utilizes the ``stable`` release channel. 
+The ``stable`` release channel covers Nextcloud Server and all embedded ("shipped") apps.
+There are other release channels, but they are not covered here since they are for special uses case and/or not formally supported.
+
+Stable major branches
+~~~~~~~~~~~~~~~~~~~~~
+
+Each new major branch is created from a point-in-time snapshot of the master development branch. 
+Once a new major stable branch is established, it receives all (and only) critical bugfixes until it reaches end-of-life.
+A major branch will receive all relevant critical bugfixes until it reaches its end-of-life.
+Every still supported major branch receives the same critical bugfixes.
+
+There are always 2-3 actively supported major branches available to choose from (at installation time or for upgrades).
+This helps Nextcloud administators establish and maintain a stable environment for their endeavors.
+
+Bugfixes
+~~~~~~~~
+
+Critical bugfixes for stable branches are published via the stable channel as maintenance (also known as "point" or "minor") releases.
+These maintenance releases (which contain only critical bugfixes) are published every 3-5 weeks - or as required - for all supported major branches.
+
+New stable releases
+~~~~~~~~~~~~~~~~~~~
+
+New major stable branches ("snapshots") of Nextcloud Server are established every 3-5 months.
+All new major branches are supported for at least 12 months (through the periodically published maintenance releases).
+
+.. note:: Support for major releases can be extended via `enterprise offerings <https://nextcloud.com/enterprise/>`_ provided by core Nextcloud developers through `Nextcloud GmbH <https://nextcloud.com>`_. This also includes additional support and planning assistance directly from Nextcloud engineers, advanced security updates, additional influence on the development roadmap, branding and customization options, enterprise-specific documentation, engaging with Nextcloud partners, and learning from other Nextcloud customers (IT professionals, project managers, and decision-makers).
+
+Upgrading and end-of-life
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Of course, eventually all environments must upgrade to a new major branch in order to:
+
+- Take advantage of new features and optimizations
+- Maintain compatibility with their favorite apps
+- Continue to receive critical bugfixes.
+
+Benefits
+~~~~~~~~
+
+Supporting multiple major branches requires additional development resources, but it also: 
+
+- Gives administrators flexibility when planning deployments, upgrades, and maintenance activities.
+- Helps application developers (and consumers) manage app compatibility and API transitions through planned deprecations.
+- Enables users to not be bombarded with continuous changes in the user interface, functionality, and workflows.
+
+It also helps with the ongoing improvement of Nextcloud Server itself because it permits a relatively high velocity development cadence by:
+
+- Introducing newer functionality, on an opt-in basis, to early adopters.
+- Enabling the continuous refinement of the code base in ways that may incroduce incompatible changes in behavior (i.e. the removal of deprecated code, introduction of new APIs, and material changes in behavior)
+
+...all without severely and immediately impacting administrators, users, and application developers every time a material change is made.
+
+Summary
+-------
+
+- The ``stable`` release channel is the default for all Nextcloud installations.
+- The ``stable`` release channel hosts all actively supported major branches of Nextcloud Server.
+- All new major branches are supported for at least 12 months.
+- Each still supported major branch receives the same critical bugfixes (via periodic maintenance-only minor/point releases).
+- Plan to make periodic critical bugfixes-only updates to your Nextcloud Server deployment at least once a month as part of standard system administration responsibilities.
+- Plan to make a major upgrade to your Nextcloud Server deployment at least once annually to stay on a supported major branch (more frequently if you would like access to the latest functionality/features).
+
+.. note:: Support for major releases can be extended through `enterprise offerings <https://nextcloud.com/enterprise/>`_ provided by core Nextcloud developers through `Nextcloud GmbH <https://nextcloud.com>`_. This also includes additional support and planning assistance directly from Nextcloud engineers, advanced security updates, additional influence on the development roadmap, branding and customization options, enterprise-specific documentation, engaging with Nextcloud partners, and learning from other Nextcloud customers (IT professionals, project managers, and decision-makers).
+
+.. tip:: The above policy does not cover apps installed from the App Store (at least not directly). These apps have independent release policies.
+
+---
+
+
+This approach:
+
+- Gives administrators flexibility about about when to deploy major upgrades.
+- Helps application developers (and consumers) manage app compatibility and API transitions.
+- Protects end-users from continuous changes in the UI and functionality.
+- Permits a relatively high velocity development cadence without requiring everyone upgrade to the next major release branch at the very same time.
+- Introduces newer functionality, on an opt-in basis, to early adopters.
+- Enables the continuous refinement of the code base in ways that be worthwhile but are considered "breaking changes"
+
+
+
+- To manage the competing priorities of different stakeholders the project:
+    - Maintains a diverse ``stable`` release channel.
+    - Schedules of the lifecycle for all major releases.
+    - Publishes frequent bugfix-only (maintenance) releases.
+
+
+Feature development, optimizations, and the removal of deprecated code all require changes to be tested and released as well as unavoidable remedidations to take place as needed.
+
+
+Major branches help Nextclouod:
+  Administrators
+  End-users
+  Application developers 
+
+...by helping them maintain a stable environment for their endeavors.
+
+
+The availability of *multiple* major branches helps Nextcloud administrators (and end-users) by:
+
+  Ensuring a fair degree of predictability via:
+    A pre-scheduled major release cadence.
+    Pre-planned incremental retirement of major branches.
+    Facilitating incremental and pre-planned rollouts of new major branches.
+
+
+Stable branches are point-in-time snapshots of the master code branch, which receive only 
+
+
+Actively supported major releases release regular bugfixes and non-breaking changes.
+
+
+Each snapshot is published as a new major version.
+
+
+Stable release branches consist of an initial point-in-time snapshot of the then current master code branch, which is then maintained with bugfixes via maintenance (also known as "point"
+
+These Stable
+
+This channel delivers the latest features that are ready for most users at minimal risk. 
+
+
+(and the various applications available throughout the Nextcloud ecosystem) are actively dev
 
 Nextcloud releases multiple major versions *throughout* the year, but maintains support for *each* major version for one full year each through "lighter" maintenance updates (and regularly `backporting <https://en.wikipedia.org/wiki/Backporting>`_ applicable security and bug fixes). This permits a high velocity development cadence, while still giving administrators flexibility when planning deployments, upgrades, and maintenance activities.
 
