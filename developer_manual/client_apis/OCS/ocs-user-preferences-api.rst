@@ -4,7 +4,7 @@ OCS user preferences API
 
 The OCS user preferences API allows you to set and delete preferences from outside over pre-defined OCS calls.
 
-The base URL for all calls to the share API is: *<nextcloud_base_url>/ocs/v2.php/apps/provisioning_api/api/v1/config/users/*
+The base URL for all calls to the share API is: ``<nextcloud_base_url>/ocs/v2.php/apps/provisioning_api/api/v1/config/users/``
 
 All calls to OCS endpoints require the ``OCS-APIRequest`` header to be set to ``true``.
 
