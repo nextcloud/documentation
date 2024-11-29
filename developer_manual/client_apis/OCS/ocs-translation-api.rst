@@ -8,7 +8,7 @@ OCS Translation API
 
 The OCS Translation API allows you to translate strings from a language to another.
 
-The base URL for all calls to the share API is: *<nextcloud_base_url>/ocs/v2.php/translation/*
+The base URL for all calls to the share API is: ``<nextcloud_base_url>/ocs/v2.php/translation/``
 
 All calls to OCS endpoints require the ``OCS-APIRequest`` header to be set to ``true``.
 
