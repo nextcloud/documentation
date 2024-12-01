@@ -110,6 +110,14 @@ click on the contacts picture for the following options to appear:
 
 .. figure:: ../images/contact_picture_options.png
 
+Adding Contact Groups
+---------------------
+
+The Contacts app enables you to group contacts.
+
+To create a new contact group, click on the plus sign next to "Contact groups" in the left sidebar.
+
+.. note:: Contact groups need to have at least one member to be saved.
 
 Adding and Managing Address Books
 ---------------------------------
