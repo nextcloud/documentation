@@ -4,7 +4,7 @@ OCS Status API
 
 The OCS Status API allows you to access and modify status API from outside over pre-defined OCS calls.
 
-The base URL for all calls to the share API is: *<nextcloud_base_url>/ocs/v2.php/apps/user_status/api/v1/user_status*
+The base URL for all calls to the share API is: ``<nextcloud_base_url>/ocs/v2.php/apps/user_status/api/v1/user_status``
 
 All calls to OCS endpoints require the ``OCS-APIRequest`` header to be set to ``true``.
 
