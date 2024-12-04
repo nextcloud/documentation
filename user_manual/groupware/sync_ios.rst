@@ -13,12 +13,17 @@ Calendar
 #. Select Add CalDAV account.
 #. For server, type the domain name of your server i.e. ``example.com``.
 #. Open Advanced Settings
-#. For server, type the domain name of your server and username i.e. ``example.com/remote.php/dav/principals/users/username/``
+#. For server, type the domain name of your server and username, i.e., ``example.com/remote.php/dav/principals/users/username/``.
 #. Close Advanced Settings
 #. Enter your user name and password.
 #. Select Next.
 
 Your calendar will now be visible in the Calendar application.
+
+.. note:: It is important **not** to type the protocol (``https://``) as prefix of the URL.
+   The application automatically uses TLS, which you can confirm in “Advanced Settings” of the account after saving.
+   If you explicitly add the protocol, you need to also explicitly specify the port,
+   i.e., ``https://example.com:443/remote.php/dav/principals/users/username/``
 
 .. note:: Beginning with iOS 12 an SSL encryption is necessary. Therefore do **not** disable **SSL**
   (For this reason a certificate is required at your domain, https://letsencrypt.org/ will do).
