@@ -13,5 +13,4 @@ Artificial Intelligence
     app_recognize
     app_context_chat
     app_summary_bot
-    app_api_and_external_apps
     ai_as_a_service
