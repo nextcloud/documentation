@@ -105,6 +105,7 @@ of our clients.
 
 * **Windows** 10+
 * **macOS** Lion (10.14)+ (64-bits only)
+  * Please note that your server may need to be Apple App Transport Security compliant in order for the desktop client to connect successfully. This may involve using a digital certificate that is adequately signed to the standards established by Apple. More information is provided by Apple in their developer documentation: https://developer.apple.com/documentation/security/preventing-insecure-network-connections
 * **Linux** (64-bits only) Should run on any distribution newer than Ubuntu 18.04 with our official AppImage package
 
 Mobile apps
