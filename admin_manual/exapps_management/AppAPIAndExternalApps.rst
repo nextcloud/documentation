@@ -8,13 +8,13 @@ Previously, Nextcloud only supported applications written in the PHP programming
 In order to support a wider range of use cases,
 an ecosystem for **ExApps** (short for "External Apps") was introduced, allowing for the installation of apps as Docker containers.
 
-Most of our :doc:`../ai/index` (AI) apps are developed as ExApps and thus may require some preparation of your Nextcloud instance before you can install them.
+Most of our :doc:`Artificial Intelligence <../ai/index>` (AI) apps are developed as ExApps and thus may require some preparation of your Nextcloud instance before you can install them.
 
 Installing AppAPI
 -----------------
 
 All ExApps require the `AppAPI <https://apps.nextcloud.com/apps/app_api>`_ Nextcloud app as a dependency.
-As of Nextcloud 30, AppAPI is automatically installed by default.
+As of Nextcloud version 30.0.1, AppAPI is automatically installed by default.
 If AppAPI is not installed, you can still install it by simply navigating to the Apps management page in your Nextcloud instance and search for AppAPI from the Tools category.
 
 Setup deploy daemon
@@ -50,7 +50,7 @@ A Deploy Daemon is a way for Nextcloud to install, communicate with, and control
 
 .. image:: ./img/app_api_3.png
 
-Deployment configuration examples can be found :ref:`here <deploy-configs>`.
+Deployment configuration examples can be found :doc:`here <./DeployConfigurations>`.
 
 Installing ExApps
 -----------------

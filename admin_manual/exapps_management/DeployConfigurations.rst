@@ -163,7 +163,7 @@ Suggested config values(template *Docker Socket Proxy*):
 NC & ExApps in the same Docker
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Applications are deployed in the same docker where Nextcloud resides.
+Applications are deployed in the same Docker where Nextcloud resides.
 
 Suggested way to communicate with Docker: via ``docker-socket-proxy``.
 
@@ -211,7 +211,7 @@ Suggested config values(template *Docker Socket Proxy*):
 Nextcloud in Docker AIO (all-in-one)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In case of AppAPI is in Docker AIO setup (installed in Nextcloud container).
+In the case of AppAPI in Docker AIO setup (installed in Nextcloud container).
 
 .. note::
 
@@ -249,7 +249,7 @@ In case of AppAPI is in Docker AIO setup (installed in Nextcloud container).
 		class ExApp2 python
 		class ExApp3 python
 
-AppAPI will automatically create default default DaemonConfig to use AIO Docker Socket Proxy as orchestrator to create ExApp containers.
+AppAPI will automatically create the default DaemonConfig for AIO Docker Socket Proxy in order to use it as an orchestrator to create ExApp containers.
 
 .. note::
 
@@ -282,7 +282,7 @@ NC to ExApp Communication
 
 Each type of DeployDaemon necessarily implements the ``resolveExAppUrl`` function.
 
-It has such prototype:
+It has the prototype:
 
 .. code-block:: php
 
@@ -309,7 +309,7 @@ where:
 	Also you can specify something like ``10.10.2.5`` and in this case ``ExApp`` will try to bind to that address and
 	AppAPI will try to send request s directly to this address assuming that ExApp itself bound on it.
 
-The simplest implementation is in **Manual-Install** deploy type:
+The simplest implementation is in the **Manual-Install** deploy type:
 
 .. code-block:: php
 
@@ -328,9 +328,9 @@ The simplest implementation is in **Manual-Install** deploy type:
 		return sprintf('%s://%s:%s', $protocol, $host, $port);
 	}
 
-Here we see that AppAPI send requests to **host**:**port** specified during daemon creation.
+Here we see that AppAPI sends requests to the **host**:**port** specified during daemon creation.
 
-Now let's take a look at the Docker Daemon implementation of ``resolveExAppUrl``:
+Now, let's take a look at the Docker Daemon implementation of ``resolveExAppUrl``:
 
 .. code-block:: php
 
@@ -364,21 +364,21 @@ Now let's take a look at the Docker Daemon implementation of ``resolveExAppUrl``
 
 Here we have much more complex algorithm of detecting to where requests should be send.
 
-First of all if protocol is set to ``https`` AppAPI always send requests to daemon host,
-and this is in case of ``https`` it is a HaProxy that will forward requests to ExApps that will be listen on ``localhost``
+First of all, if the protocol is set to ``https``, AppAPI always sends requests to the daemon host,
+and in this case, it is a HaProxy that will forward requests to ExApps that will be listening on ``localhost``.
 
-Briefly it will look like this(*haproxy_host==daemon host value*):
+Briefly, it will look like this (*haproxy_host==daemon host value*):
 
 NC --> *https* --> ``haproxy_host:ex_app_port`` --> *http* --> ``localhost:ex_app_port``
 
-When protocol is not ``https`` but ``http``, then what will be the endpoint where to send requests is determined by ``$deployConfig['net']`` value.
+When the protocol is not ``https`` but ``http``, then what will be the endpoint where to send requests is determined by ``$deployConfig['net']`` value.
 
-If ``net`` is defined and equal to ``host`` then AppAPI assumes that ExApp is installed somewhere in the current host network and will be available on ``localhost`` loop-back adapter.
+If ``net`` is defined and equal to ``host``, then AppAPI assumes that ExApp is installed somewhere in the current host network and will be available on ``localhost`` loop-back adapter.
 
 NC --> *http* --> ``localhost:ex_app_port``
 
-In all other cases ExApp should be available by it's name: e.g. when using docker **custom bridge** network all containers available by DNS.
+In all other cases, the ExApp should be available by it's name: e.g. when using docker **custom bridge** network all containers available by DNS.
 
 NC --> *http* --> ``app_container_name:ex_app_port``
 
-This three different types of communication covers all most popular configurations.
+These three different types of communication cover most popular configurations.

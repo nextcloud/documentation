@@ -80,8 +80,8 @@ Command: ``app_api:daemon:list``
 Nextcloud AIO
 ^^^^^^^^^^^^^
 
-In case of AppAPI installed in AIO, default Deploy Daemon is registered automatically.
-It is possible to register additional Deploy Daemons with the same ways as described above.
+In the case of AppAPI installed in AIO, a default Deploy Daemon is registered automatically.
+It is possible to register additional Deploy Daemons using the same methods as described above.
 
 
 .. _additional_options_list:
