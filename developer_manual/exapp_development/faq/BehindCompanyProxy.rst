@@ -1,7 +1,7 @@
 Corporate Proxy - Permanent Settings for PHP CLI
 ================================================
 
-If you're using our application within a corporate network that requires proxy settings, you might encounter issues when running PHP CLI commands that attempt to access the internet.
+If you're using our application within a corporate network that requires proxy settings, you might encounter issues when running PHP CLI commands that attempt to access the Internet.
 
 To resolve this, you need to configure permanent proxy settings for the PHP CLI environment.
 
@@ -28,12 +28,12 @@ This issue occurs because the PHP CLI environment does not have the proxy settin
 Permanent Solution
 ------------------
 
-To permanently configure proxy settings for PHP CLI, you can either modify the PHP CLI `php.ini` file or set environment variables system-wide.
+To permanently configure proxy settings for PHP CLI, you can either modify the PHP CLI ``php.ini`` file or set environment variables system-wide.
 
-Method 1: Edit PHP CLI `php.ini` File
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Method 1: Edit PHP CLI php.ini File
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. **Locate the PHP CLI `php.ini` File**
+1. **Locate the PHP CLI php.ini File**
 
    Run the following command to find the loaded configuration file for PHP CLI:
 
@@ -47,9 +47,9 @@ Method 1: Edit PHP CLI `php.ini` File
 
       Loaded Configuration File: /path/to/php.ini
 
-2. **Edit the `php.ini` File**
+2. **Edit the php.ini File**
 
-   Open the `php.ini` file in a text editor with appropriate permissions:
+   Open the ``php.ini`` file in a text editor with the appropriate permissions:
 
    .. code-block:: bash
 
@@ -94,16 +94,18 @@ Method 1: Edit PHP CLI `php.ini` File
 
       php occ app_api:app:register
 
-   It should now be able to access the internet through the proxy.
+   It should now be able to access the Internet through the proxy.
 
-**Note:** Not all PHP functions respect the proxy settings in `php.ini`. If issues persist, consider using system-wide environment variables.
+.. note::
+   Not all PHP functions respect the proxy settings in ``php.ini``.
+   If issues persist, consider using system-wide environment variables.
 
 Method 2: Set System-Wide Environment Variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. **Edit Shell Profile**
 
-   For a permanent solution, add the proxy settings to the system-wide environment variables. Open the `/etc/environment` file:
+   For a permanent solution, add the proxy settings to the system-wide environment variables. Open the ``/etc/environment`` file:
 
    .. code-block:: bash
 
@@ -138,7 +140,8 @@ Method 2: Set System-Wide Environment Variables
 
    It should now work without connectivity issues.
 
-**Note:** This method sets the proxy settings for all users and applications on the system.
+.. note::
+   This method sets the proxy settings for all users and applications on the system.
 
 Troubleshooting
 ---------------
@@ -153,7 +156,7 @@ Troubleshooting
 
 - **Firewall Restrictions**
 
-  Verify with your network administrator that your system is allowed to access the internet through the proxy.
+  Verify with your network administrator that your system is allowed to access the Internet through the proxy.
 
 Contact Support
 ---------------

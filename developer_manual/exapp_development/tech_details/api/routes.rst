@@ -37,8 +37,8 @@ where the fields are:
 - ``url``: the route to be registered on the ExApp side, can be a regex
 - ``verb``: the HTTP verb that the route will accept, can be a comma separated list of verbs
 - ``access_level``: the name of the access level required to access the route, PUBLIC - public access without auth, USER - Nextcloud user auth required, ADMIN - admin user required
-- ``headers_to_exclude``: a json encoded string of an array of strings, the headers that the ExApp wants to be excluded from the request to it
-- ``bruteforce_protection``: a json encoded string of an array of numbers, the HTTP status codes that must trigger the bruteforce protection
+- ``headers_to_exclude``: a JSON-encoded string of an array of strings, the headers that the ExApp wants to be excluded from the request to it
+- ``bruteforce_protection``: a JSON-encoded string of an array of numbers, the HTTP status codes that must trigger the bruteforce protection
 
 
 Unregister

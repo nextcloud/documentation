@@ -3,8 +3,8 @@ Notifications
 =============
 
 AppAPI allows ExApps to send limited notifications to users.
-ExApp can send simple notification using available `rich object strings <https://github.com/nextcloud/server/blob/master/lib/public/RichObjectStrings/Definitions.php#L42>`_.
-More info about rich objects string can be found `here <https://github.com/nextcloud/server/issues/1706>`_.
+The ExApp can send simple notifications using available `rich object strings <https://github.com/nextcloud/server/blob/master/lib/public/RichObjectStrings/Definitions.php#L42>`_.
+More info about rich object strings can be found `here <https://github.com/nextcloud/server/issues/1706>`_.
 
 Send notification (OCS)
 ^^^^^^^^^^^^^^^^^^^^^^^

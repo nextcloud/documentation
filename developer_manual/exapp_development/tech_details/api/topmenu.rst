@@ -5,11 +5,11 @@ Top Menu Entry
 ==============
 
 TopMenu is an API for registering entry in the Nextcloud Top Menu for ExApps.
-AppAPI takes responsibility to register TopMenu and proxy all requests to ExApp.
+AppAPI takes responsibility to register TopMenu and proxy all requests to the ExApp.
 
 .. note::
 
-	TopMenu rendered only for enabled ExApps.
+	The TopMenu is rendered only for enabled ExApps.
 
 Register Menu Entry
 ^^^^^^^^^^^^^^^^^^^
@@ -30,14 +30,14 @@ Complete list of params (including optional):
 		"adminRequired": "0 or 1",
 	}
 
-.. note:: ``icon`` are relative to the ExApp root, starting slash is not required.
+.. note:: ``icon`` is relative to the ExApp root, starting slash is not required.
 
 
 Optional params
 ***************
 
 	* `icon` - Url to icon, default: **null**
-	* `adminRequired` - Value indicating should be Entry visible to all or only to admins.
+	* `adminRequired` - Value indicating whether the entry should be visible to all or only to admins
 
 Unregister Menu Entry
 ^^^^^^^^^^^^^^^^^^^^^
@@ -47,7 +47,7 @@ OCS endpoint: ``DELETE /apps/app_api/api/v1/ui/top-menu``
 Params
 ******
 
-To unregister TopMenu, you just need to provide name of registered TopMenu:
+To unregister TopMenu, just provide the name of registered TopMenu:
 
 .. code-block:: json
 

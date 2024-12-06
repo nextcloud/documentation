@@ -6,8 +6,8 @@ There is a logging API that can be used to log messages from ExApps in Nextcloud
 
 .. note::
 
-	You can retrieve Nextcloud `loglevel` for internal ExApp usage
-	from private `app_api` (after authentication) capabilities
+	You can retrieve the Nextcloud `loglevel` for internal ExApp usage
+	from private `app_api` (after authentication) capabilities.
 
 Send log message (OCS)
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -25,11 +25,11 @@ Request data
 	}
 
 
-The possible value of ``log_lvl`` is described here: `Nextcloud Log level <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/logging_configuration.html#log-level>`_
+The possible values of ``log_lvl`` are described here: `Nextcloud Log level <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/logging_configuration.html#log-level>`_
 
 Response data
 *************
 
-If no error occurs, empty response with result code 200 is returned.
-If ExApp is not found or disable, or the loglevel is invalid - OCS Bad Request is returned.
+If no error occurs, an empty response with status code 200 is returned.
+If the ExApp is not found or disabled, or the `loglevel` is invalid, an OCS Bad Request is returned.
 

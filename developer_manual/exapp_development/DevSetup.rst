@@ -5,7 +5,7 @@ Setting up dev environment
 
 AppAPI development requires a Nextcloud development environment setup.
 We highly recommend using `Julius Knorr's Docker setup <https://github.com/juliusknorr/nextcloud-docker-dev>`_ for this.
-For an alternate environment without using Docker, please refer to the `Nextcloud development environment docs <https://docs.nextcloud.com/server/latest/developer_manual/getting_started/devenv.html>`_.
+For an alternate environment without using Docker, please refer to the setup instructions in :doc:`Getting started <../getting_started/devenv>`.
 
 Suggested IDE: **PhpStorm**, though you can certainly use any IDE of your preference such as **VS Code** or **Vim**.
 
@@ -50,14 +50,18 @@ Deploy daemons types
 There are two types of Deploy daemons that can be used for development and testing of ExApps:
 
 1. ``manual_install``: This type of Deploy daemon is running manually in the host machine.
-   You can create it in AppAPI admin settings using template.
-   This is useful for development of ExApp, when you run your ExApp manually in the host.
+   This is useful for ExApp development as you can run your ExApp directly on the host.
 2. ``docker_install``: This type of Deploy daemon is running in a Docker container.
+
+You can register (create) these daemons in the AppAPI admin settings.
+For the equivalent ``occ`` command or an explanation of the Deploy daemon parameters,
+see :ref:`occ_daemon_config_registration`.
 
 Docker Socket Proxy
 *******************
 
-For development and testing locally, the simplest is to use the `Nextcloud AppAPI DSP HTTP <https://github.com/nextcloud/docker-socket-proxy?tab=readme-ov-file#httplocal>`_.
+For development and testing locally,
+the simplest way is to use the `Nextcloud AppAPI DSP HTTP <https://github.com/nextcloud/docker-socket-proxy?tab=readme-ov-file#httplocal>`_.
 
 In Place of a Conclusion
 """"""""""""""""""""""""

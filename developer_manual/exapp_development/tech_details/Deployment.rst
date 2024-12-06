@@ -16,9 +16,9 @@ The ExApp deployment process consists of 2 steps:
 DaemonConfig registration
 -------------------------
 
-The first step is to register DaemonConfig, where your ExApps will be deployed.
-Before that, you will need to configure your Docker socket to be accessible by Nextcloud instance and webserver user.
-If you use the remote Docker Engine API, you will need to expose it so it is accessible by Nextcloud instance and import certificates.
+The first step is to register the DaemonConfig, where your ExApps will be deployed.
+Before that, you will need to configure your Docker socket to be accessible by the Nextcloud instance and webserver user.
+If you use the remote Docker Engine API, you will need to expose it so that it is accessible by the Nextcloud instance and import certificates.
 
 .. note::
 	For now, only the Docker daemon ``accepts-deploy-id: docker-install`` is supported.
@@ -91,7 +91,7 @@ Manual install for development
 
 For development purposes, you can install the ExApp manually.
 There is a ``manual-install`` DeployConfig type, which can be used in case of development.
-To register an ExApp with it, you need to provide the app info as a JSON string or a path to the app's XML file.
+To register an ExApp with it, you need to provide the app info as a JSON string or a path to the app's info.xml file.
 
 For all examples and applications we release, we usually add the ``manual_install`` command in it's Makefile for easier development.
 
@@ -105,15 +105,15 @@ For all examples and applications we release, we usually add the ``manual_instal
 
 .. _ex_app_env_vars:
 
-Deploy env variables
-********************
+Deploy environment variables
+****************************
 
-Deploy env variables are used to configure the ExApp container.
-The following env variables are required and built automatically:
+Deploy environment variables are used to configure the ExApp container.
+The following variables are required and built automatically:
 
 	* ``AA_VERSION`` - AppAPI version
 	* ``APP_SECRET`` - generated shared secret used for AppAPI authentication
-	* ``APP_ID`` - ExApp appid
+	* ``APP_ID`` - ExApp app ID
 	* ``APP_DISPLAY_NAME`` - ExApp display name
 	* ``APP_VERSION`` - ExApp version
 	* ``APP_HOST`` - host ExApp is listening on
@@ -124,11 +124,11 @@ The following env variables are required and built automatically:
 Application installation scheme
 -------------------------------
 
-1. AppAPI deploys the application and launches it.
-2. AppAPI for `N` seconds (default ``90``) checks the ``/heartbeat`` endpoint with a ``GET`` request.
-3. AppAPI sends a ``POST`` request to the ``/init`` endpoint. If the ExApp does not implement the ``/init`` endpoint and AppAPI receives a 501 or 404 status code, AppAPI enables the application and goes straight to step 5.
-4. The ExApp sends an integer from ``0`` to ``100`` to the OCS endpoint ``apps/app_api/apps/status`` indicating the initialization progress. After sending ``100``, the application is considered initialized.
-5. AppAPI sends a ``PUT`` request to the ``/enabled`` endpoint.
+	1. AppAPI deploys the application and launches it.
+	2. For `N` seconds (default ``90``), AppAPI checks the ``/heartbeat`` endpoint with a ``GET`` request.
+	3. AppAPI sends a ``POST`` request to the ``/init`` endpoint. If the ExApp does not implement the ``/init`` endpoint and AppAPI receives a 501 or 404 status code, AppAPI enables the application and goes straight to step 5.
+	4. The ExApp sends an integer from ``0`` to ``100`` to the OCS endpoint ``apps/app_api/apps/status`` indicating the initialization progress. After sending ``100``, the application is considered initialized.
+	5. AppAPI sends a ``PUT`` request to the ``/enabled`` endpoint.
 
 ExApp info.xml schema
 ---------------------

@@ -56,12 +56,12 @@ Request data
 Response data
 *************
 
-Returns HTTP 200 on success, HTTP 404 - on error.
+Returns HTTP 200 on success, HTTP 404 on error.
 
 Get Nextcloud URL
 ^^^^^^^^^^^^^^^^^
 
-It might be necessary for ExApp to know (or update) the Nextcloud URL.
+It might be necessary for the ExApp to know (or update) the Nextcloud URL.
 
 OCS endpoint: ``GET /apps/app_api/api/v1/info/nextcloud_url``
 
@@ -130,7 +130,7 @@ OCS endpoint: ``GET /apps/app_api/api/v1/ex-app/state``
 .. note::
 
 	This endpoint can be called by ExApp even if it is disabled on the Nextcloud side,
-	and requires :ref:`AppAPIAuth <app_api_auth>`.
+	and requires :doc:`AppAPIAuth <../Authentication>`.
 
 Response data
 *************

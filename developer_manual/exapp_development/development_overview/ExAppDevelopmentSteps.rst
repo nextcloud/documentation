@@ -3,35 +3,35 @@
 ExApp development
 =================
 
-ExApp development process is similar to the development of the regular Nextcloud PHP app,
-and should follow the same guidelines in terms of security, design and coding style (`ref <https://docs.nextcloud.com/server/latest/developer_manual/getting_started/development_process.html>`_)
+The ExApp development process is similar to that of a regular Nextcloud (PHP) app,
+and should follow the same guidelines in terms of security, design and coding style (see :doc:`../../getting_started/development_process` for details)
 based on your programming language standards.
 
 Despite the fact, that ExApp can be developed in any language, it's still recommended to have the understanding
-of the Nextcloud `PHP request life cycle <https://docs.nextcloud.com/server/latest/developer_manual/basics/request_lifecycle.html>`_ and other basic concepts,
+of the Nextcloud :doc:`PHP request lifecycle <../../basics/request_lifecycle>` and other basic concepts,
 as they are usually similar to the ExApp backend to which Nextcloud communicates.
 
-You can think about ExApp like a microservice (Docker container)
+You can think of each ExApp as a microservice (Docker container)
 that runs separately from Nextcloud on the Deploy daemon, which can be remote or local.
-The communication between Nextcloud and ExApp is done via network secured with AppAPI authentication (:ref:`app_api_auth`).
+The communication between Nextcloud and ExApp is done via network secured with :doc:`AppAPIAuth <../tech_details/Authentication>`.
 
-Lets go through the ExApp development steps briefly.
+Let's go through the ExApp development steps briefly.
 
 0. Setting up the development environment
 -----------------------------------------
 
-First of all, you need to have a Nextcloud dev setup, refer to :ref:`dev-setup` for more details.
+First, you need to have a Nextcloud dev setup, refer to :doc:`../DevSetup` for more details.
 
 1. Starting from template
 -------------------------
 
-Next step, is to setup the ExApp skeleton.
+Next is to setup the ExApp skeleton.
 There are several ExApp examples available so you can have a look at them and start from.
 The ExApp template and examples:
 
 	- ``[Python]`` `App Skeleton <https://github.com/nextcloud/app-skeleton-python>`_
 	- ``[Python]`` `UI Example Skeleton <https://github.com/nextcloud/ui_example>`_
-	- ``[Python]`` `More complex ExApp UI example with 3rdparty service <https://github.com/cloud-py-api/visionatrix>`_
+	- ``[Python]`` `More complex ExApp UI example with 3rd-party service <https://github.com/cloud-py-api/visionatrix>`_
 	- ``[GoLang]`` `Go Lang ExApp example <https://github.com/nextcloud/file_to_text_example>`_
 	- etc.
 
@@ -49,20 +49,20 @@ More details are available in the :ref:`ExAppOverview` section.
 3. Development
 --------------
 
-The development process basically contains from the following steps:
+The basic development process contains from the following steps:
 
 - Implement the ExApp <-> Nextcloud :ref:`lifecycle methods <ex_app_lifecycle_methods>`:
-	#. ``/heartbeat``: ExApp heartbeat method.
-	#. ``/init``: ExApp initialization method.
-	#. ``/enabled``: ExApp enable/disable method.
-- Implement the ExApp backend API and logic.
-- Implement the ExApp frontend (Nextcloud Vue.js app) [optional].
+	#. ``/heartbeat``: ExApp heartbeat method
+	#. ``/init``: ExApp initialization method
+	#. ``/enabled``: ExApp enable/disable method
+- Implement the ExApp backend API and logic
+- Implement the ExApp frontend (Nextcloud Vue.js app) [optional]
 
 
 4. Packaging
 ------------
 
-The ExApp packaging can be done manually, or via GitHub actions.
+The ExApp packaging can be done manually or via GitHub actions.
 It is recommended to use GitHub actions for packaging,
 as it will automate the process of building the Docker image and pushing it to the Docker registry.
 The GitHub action workflow for building Docker images can be found in the `3rdparty service example <https://github.com/cloud-py-api/visionatrix>`_.
@@ -88,7 +88,7 @@ Dockerfile
 **********
 
 The Dockerfile is required to build the Docker image for the ExApp.
-The guideline for writing the Dockerfile can be found in the `Dockerfile best practices <https://docs.docker.com/develop/develop-images/dockerfile_best-practices/>`_.
+The guidelines for writing the Dockerfile can be found in the `Dockerfile best practices <https://docs.docker.com/develop/develop-images/dockerfile_best-practices/>`_.
 
 Short recommendations:
 
@@ -100,10 +100,10 @@ Short recommendations:
 Logging
 *******
 
-The logs in Docker container are shown from the standard output and error streams.
-To be able admin to see the important logs from ExApp container,
+The Docker container logs are shown in the standard output and error streams.
+For the admin to be able to see the important logs from the ExApp container,
 you should consider redirecting the logs to the standard output and standard error streams.
-More info in `official docs for logging <https://docs.docker.com/config/containers/logging/>`_.
+For more info, see `the official docs for logging <https://docs.docker.com/config/containers/logging/>`_.
 
 
 5. AppStore publishing
@@ -118,7 +118,6 @@ It's the same as for the regular Nextcloud app, but with the requirement of :ref
 ----------
 
 It is important to ensure that your ExApp works as expected.
-We recommend to have different types of dev setup configuration to test all of them.
+We recommend having different types of dev setup configurations to test all of them.
 While the main development is done locally via ``manual_install``, you must also ensure that
-the ExApp works correctly in Docker container with http and https Docker Socket proxy.
-
+the ExApp works correctly in a Docker container with Docker Socket Proxy (HTTP and HTTPS).

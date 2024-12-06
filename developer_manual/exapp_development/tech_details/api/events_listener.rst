@@ -4,16 +4,16 @@
 Events Listener
 ===============
 
-This API allows you to listen to `Nextcloud events <https://docs.nextcloud.com/server/latest/developer_manual/basics/events.html#events>`_
+This API allows you to listen to :doc:`Nextcloud events <../../../basics/events>`.
 
-Currently only **limited** numbers of events are supported.
+Currently only a **limited** number of events are supported.
 
 Please let us know if there are any specific event we should add support to.
 
 .. note::
 
-	Unlike PHP events, all information from events comes to ExApp **asynchronously**, more like a notification system
-	to no slow down the server.
+	Unlike PHP events, all information from events comes to the ExApp **asynchronously**, more like a notification system
+	in order to not slow down the server.
 
 Register
 ^^^^^^^^
@@ -43,7 +43,7 @@ OCS endpoint: ``DELETE /apps/app_api/api/v1/events_listener``
 Params
 ******
 
-To unregister EventsListener, you just need to provide an `eventType` of the registered EventsListener:
+To unregister EventsListener, you just need to provide an `eventType` for the registered EventsListener:
 
 .. code-block:: json
 
@@ -78,6 +78,6 @@ Supported event sub-types:
 	* ``NodeRenamedEvent``
 	* ``NodeCopiedEvent``
 
-For all Node events ``event_data`` contain key **target** which has the same format like in :ref:`FileActionsMenu payload <node_info>`
+For all Node events, ``event_data`` contains a ``target`` key which has the same format as in :ref:`FileActionsMenu payload <node_info>`.
 
-For ``NodeCopiedEvent`` and ``NodeRenamedEvent`` there is also a ``source`` key in the same format.
+For ``NodeCopiedEvent`` and ``NodeRenamedEvent``, there is also a ``source`` key in the same format.

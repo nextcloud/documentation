@@ -4,19 +4,19 @@
 Declarative Settings
 ====================
 
-Starting from Nextcloud **29**, AppAPI provides the ability to display ex-application settings.
-When admin or user changes some ex-app settings
-they will be stored in the database and can be received using :doc:`preferences` or :doc:`appconfig` API.
+Starting from Nextcloud **29**, AppAPI provides the ability to display ExApp settings.
+When an admin or user changes some ExApp settings,
+they will be stored in the database and can be retrieved using :doc:`preferences` or :doc:`appconfig` API.
 
 .. note::
 
-	Settings rendered only for enabled ExApps.
+	These settings are rendered only for enabled ExApps.
 
 .. warning::
 
 	``section_id`` from **scheme** should be already registered by any PHP application.
 
-	**AppAPI** provides two sections for that: ``ai_integration_team`` and ``declarative_settings``, you can use them.
+	**AppAPI** provides two sections which you can use for that: ``ai_integration_team`` and ``declarative_settings``.
 
 Register Settings
 ^^^^^^^^^^^^^^^^^
@@ -162,7 +162,7 @@ Example of settings scheme in Python:
 			},
 			{
 				'id': 'test_ex_app_field_5',
-				'title': 'Multiple checkbox toggles, describing one setting, checked options are saved as an JSON object {foo: true, bar: false}',
+				'title': 'Multiple checkbox toggles, describing one setting, checked options are saved as a JSON object {foo: true, bar: false}',
 				'description': 'Select checkbox option setting',
 				'type': 'multi-checkbox',
 				'default': {'foo': True, 'bar': True},

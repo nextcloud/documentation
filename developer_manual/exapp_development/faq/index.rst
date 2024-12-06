@@ -3,7 +3,7 @@ Frequently Asked Questions
 
 This section contains the most common or problematic questions
 that users or developers may encounter when working with AppAPI.
-It can be used as pointer to another parts of the documentation, as it usually refers to,
+It can be used as pointer to other parts of the documentation, as it usually refers to,
 or provide a brief answer.
 
 .. note::

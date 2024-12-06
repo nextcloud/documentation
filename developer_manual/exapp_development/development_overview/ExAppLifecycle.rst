@@ -3,7 +3,7 @@
 ExApp lifecycle
 ===============
 
-The ExApp lifecycle is a set of communication rules (or protocol) between Nextcloud and ExApp.
+The ExApp lifecycle is a set of communication rules (or protocols) between Nextcloud and the ExApp.
 They are required as for the microservice architecture of ExApp.
 This section is an overview, more details on that here: :ref:`app_installation_flow`, :ref:`app_deployment`.
 
@@ -14,31 +14,31 @@ This section is an overview, more details on that here: :ref:`app_installation_f
 ExApp lifecycle methods
 -----------------------
 
-When ExApp is being installed in Nextcloud, there are several lifecycle steps happening.
-The ExApp lifecycle requires the following API endpoint handlers (order is preserved):
+When the ExApp is being installed in Nextcloud, there are several lifecycle steps happening.
+The ExApp lifecycle requires the following API endpoint handlers (in order):
 
-	- 0. ``healthcheck``: Docker container healthcheck.
-	- 1. ``/heartbeat``: **[required]** ExApp heartbeat handler.
-	- 2. ``/init``: **[optional]** ExApp initialization handler.
-	- 3. ``/enabled``: **[required]** ExApp enable/disable handler.
+	0. ``healthcheck``: Docker container healthcheck
+	1. ``/heartbeat``: **[required]** ExApp heartbeat handler
+	2. ``/init``: **[optional]** ExApp initialization handler
+	3. ``/enabled``: **[required]** ExApp enable/disable handler
 
 
 Healthcheck
 ***********
 
 Docker allows you to define a custom healthcheck script for your container (specified in the Dockerfile).
-You can define here if needed custom container startup logic.
+You can define any custom container startup logic here if needed.
 
 .. note::
 
-	AppAPI healthcheck timeout is 15 minutes.
+	The AppAPI healthcheck timeout is 15 minutes.
 
 
 Heartbeat
 *********
 
 The ``GET /heartbeat`` method is called periodically by Nextcloud to check the ExApp health status,
-if its webserver is running and receiving requests.
+i.e. if its webserver is running and receiving requests.
 
 URL: ``GET http://localhost:2345/heartbeat``
 
@@ -48,7 +48,7 @@ This step fails if the ExApp does not respond within 10 minutes.
 .. note::
 
 	This endpoint should be available **without AppAPIAuth authentication**.
-	There is a 10 minutes timeout for the ExApp to startup and respond to the ``/heartbeat`` request.
+	There is a 10 minute timeout for the ExApp to startup and respond to the ``/heartbeat`` request.
 
 
 .. _ex_app_lifecycle_init:
@@ -58,12 +58,12 @@ Init
 ****
 
 The ``POST /init`` endpoint is called after the ExApp is enabled in Nextcloud.
-This is a trigger for ExApp to start its initialization process, e.g. downloading models, starter data, etc.
+This is a trigger for the ExApp to start its initialization process, e.g. downloading models, starter data, etc.
 
 .. note::
 
-	Default init timeout (``init_timeout``) is 40 minutes. It can be changed by admin in AppAPI settings
-	or via CLI command ``occ config:app:set app_api init_timeout --value 40 --type mixed``.
+	The default init timeout (``init_timeout``) is 40 minutes. It can be changed in the AppAPI admin settings
+	or via the command ``occ config:app:set app_api init_timeout --value 40 --type mixed``.
 
 URL: ``POST http://localhost:2345/init``
 
@@ -71,11 +71,11 @@ AppAPI expects a response with HTTP status 200.
 
 .. note::
 
-	If ExApp doesn't not implement ``/init`` endpoint and AppAPI receives ``HTTP 501 NOT IMPLEMENTED`` or ``HTTP 404 NOT FOUND`` response,
-	AppAPI enables the ExApp.
+	Even if the ExApp does not not implement ``/init`` endpoint and AppAPI receives a ``HTTP 501 NOT IMPLEMENTED`` or ``HTTP 404 NOT FOUND`` response,
+	AppAPI can still enable the ExApp.
 
-The ExApp should update the init progress via the ``PUT /ocs/v2.php/apps/app_api/ex-app/status`` API request,
-with ``{ "progress": <number> }`` payload.
+The ExApp should update the init progress via the ``PUT /ocs/v2.php/apps/app_api/ex-app/status`` API request
+containing a ``{ "progress": <number> }`` payload.
 
 
 Enabled
@@ -92,7 +92,7 @@ AppAPI expects a response with HTTP status 200. Any other status code will be co
 
 .. note::
 
-	AppAPI timeout for the ``enabled`` handler is 30 seconds.
+	The AppAPI timeout for the ``enabled`` handler is 30 seconds.
 
 
 ExApp lifecycle scheme
@@ -132,19 +132,19 @@ You can find available AppAPI Nextcloud OCS APIs :ref:`here <app_api_nextcloud_a
 
 .. note::
 
-	ExApp should register all needed APIs during the ``enabled`` method call.
-	E.g. UI (:ref:`top-menu <top_menu_section>`, :ref:`filesactionmenu <file_actions_menu_section>`), :ref:`occ commands <occ_command>`, etc.
+	The ExApp should register all needed APIs during the ``enabled`` method call,
+	such as the UI (:ref:`top-menu <top_menu_section>`, :ref:`filesactionmenu <file_actions_menu_section>`), :ref:`occ commands <occ_command>`, etc.
 
 
 AppAPI Authentication
 ---------------------
 
-Nextcloud requests to the ExApp are secured with :ref:`AppAPIAuth <app_api_auth>`.
+Nextcloud requests to the ExApp are secured with :doc:`AppAPIAuth <../tech_details/Authentication>`.
 The ExApp should validate the authentication using the same algorithm as AppAPI does.
 
 .. note::
 
-	Is it up to the developer to apply the rate limits, bruteforce protection, and other security measures
+	Is it up to the developer to apply rate limits, bruteforce protection, and other security measures
 	to the ExApp API endpoints.
 
 

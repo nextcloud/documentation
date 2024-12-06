@@ -4,9 +4,9 @@
 OCC Command
 ===========
 
-This API allows you to register the occ (CLI) commands.
-The principal is similar to the regular Nextcloud OCC command for PHP apps, that are working in context of the Nextcloud instance,
-but for ExApps it is a trigger via Nextcloud OCC interface to perform some action on the External App side.
+This API allows you to register OCC CLI commands.
+The principle is similar to the regular occ command for PHP apps that are working within the context of the Nextcloud instance,
+but for ExApps, it is a trigger via the Nextcloud OCC interface to perform some action on the ExApp side.
 
 
 .. note::
@@ -59,7 +59,7 @@ see the original docs for the Symfony console input parameters, which are actual
 Example
 *******
 
-Lets assume we have a command `ping` that takes an argument `test_arg` and has an option `test-option`:
+Let's assume we have a command `ping` that takes an argument `test_arg` and has an option `test-option`:
 
 .. code-block:: json
 
@@ -99,7 +99,7 @@ OCS endpoint: ``DELETE /apps/app_api/api/v1/occ_command``
 Params
 ******
 
-To unregister OCC Command, you just need to provide a command `name`:
+To unregister an OCC CLI command, you just need to provide a command `name`:
 
 .. code-block:: json
 

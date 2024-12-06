@@ -2,7 +2,7 @@
 AppConfig
 =========
 
-ExApp AppConfig API is similar to the standard Nextcloud **appconfig** API.
+The ExApp AppConfig API is similar to the standard Nextcloud **appconfig** API.
 
 Set app config value
 ^^^^^^^^^^^^^^^^^^^^
@@ -28,7 +28,7 @@ Response data
 *************
 
 On success, ExAppConfig object is returned.
-On error OCS Bad Request is returned.
+On error, OCS Bad Request is returned.
 
 .. code-block:: json
 

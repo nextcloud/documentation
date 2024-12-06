@@ -12,7 +12,7 @@ ExApp structure
 
 The typical ExApp folder structure is the following:
 
-- **appinfo/**: contains the ExApp metadata, which is based on the regular `Nextcloud PHP appinfo <https://docs.nextcloud.com/server/latest/developer_manual/app_development/info.html>`_,
+- **appinfo/**: contains the ExApp metadata, which is based on the regular :doc:`Nextcloud PHP appinfo <../../app_development/info>`,
   but with additional new fields under the ``external-app`` key.
 - **ex_app/**: the ExApp specific folder, which contains the ExApp frontend and backend parts.
 	- **lib/**: contains the ExApp backend part, which can be written in any language.
@@ -58,7 +58,7 @@ The only requirement here is to follow the microservice architecture and ExApp <
 
 	There is a limitation of AppAPI ExApp proxy - the websocket connections are not supported.
 
-Each ExApp container has the environment variables set by AppAPI; you can find out more about them :ref:`here <ex_app_env_vars>`.
+Each ExApp container has environment variables set by AppAPI; you can find out more about them :ref:`here <ex_app_env_vars>`.
 
 Persistent storage
 ******************
@@ -133,7 +133,7 @@ The same applies to the frontend API requests to the ExApp backend API:
 L10n translations
 -----------------
 
-Currently, only `manual translations <https://docs.nextcloud.com/server/latest/developer_manual/basics/front-end/l10n.html#manual-translation>`_ are supported.
+Currently, only :ref:`manual translations <manual-translation>` are supported.
 To add support of your programming language from translations string extraction using Nextcloud translation tool,
 you just need to add your file extensions to it `in createPotFile <https://github.com/nextcloud/docker-ci/blob/master/translations/translationtool/src/translationtool.php#L69>`_
 and down below adjust the ``--language`` and ``keyword`` parameters.
@@ -238,7 +238,7 @@ It is recommended to use the following default set of commands:
 - ``build-push-cpu``: builds the Docker image for CPU and uploads it to the Docker registry.
 - ``build-push-cuda``: builds the Docker image for CUDA and uploads it to the Docker registry.
 - ``build-push-rocm``: builds the Docker image for ROCm and uploads it to the Docker registry.
-- ``run``: installs the ExApp for Nextcloud latest via the ``occ app_api:app:register`` command, like from UI.
+- ``run``: installs the ExApp for Nextcloud latest via the ``occ app_api:app:register`` command, like from the UI.
 - ``register``: performs registration of running manually ExApp using the ``manual_install`` Deploy daemon.
 - ``translation_templates``: execute translationtool.phar to extract translation strings from sources (frontend and backend).
 - ``convert_translations_nc``: converts translations to Nextcloud format files (json, js).
@@ -247,5 +247,5 @@ It is recommended to use the following default set of commands:
 .. note::
 	These Makefiles are typically written to work in the `nextcloud-docker-dev <https://github.com/juliusknorr/nextcloud-docker-dev>`_ development environment.
 
-For a complete example, you can take a look at our `Makefile for the Visionatrix app <https://github.com/cloud-py-api/visionatrix/blob/main/Makefile>`_.
+For a complete example, you can take a look at our `Makefile for the 3rd-party service example <https://github.com/cloud-py-api/visionatrix/blob/main/Makefile>`_.
 This example also requires the ``xmlstarlet`` program to be installed so that the Makefile can automatically detect the ExApp version from the info.xml file.
