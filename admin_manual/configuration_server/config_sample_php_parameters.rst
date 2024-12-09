@@ -2,38 +2,215 @@
 Configuration Parameters
 ========================
 
-Nextcloud uses the ``config/config.php`` file to control server operations.
-``config/config.sample.php`` lists all the configurable parameters within
-Nextcloud, along with example or default values. This document provides a more
-detailed reference. Most options are configurable on your Admin page, so it
-is usually not necessary to edit ``config/config.php``.
+Introduction
+------------
 
-.. note:: The installer creates a configuration containing the essential parameters.
-   Only manually add configuration parameters to ``config/config.php`` if you need to
-   use a special value for a parameter. **Do not copy everything from**
-   ``config/config.sample.php`` **. Only enter the parameters you wish to modify!**
+Nextcloud uses ``config/config.php`` as its main configuration file. This file controls 
+various fundamental aspects of server operations. It is typically modified as part of initial 
+deployment, when troubleshooting, and when making adjustments to surrounding infrastructure.
 
-Multiple config.php file
-------------------------
+This is a required file for all Nextcloud deployments and thus it is critical for Nextcloud 
+administrators to be familiar with managing it.
 
-Nextcloud supports loading configuration parameters from multiple files.
-You can add arbitrary files ending with :file:`.config.php` in the :file:`config/`
-directory, for example you could place your email server configuration
-in :file:`email.config.php`. This allows you to easily create and manage
-custom configurations, or to divide a large complex configuration file
-into a set of smaller files. These custom files are not overwritten by
-Nextcloud, and the values in these files take precedence over :file:`config.php`.
+This section of the *Administration Manual* documents how to adjust this essential file, 
+certain special characteristics of the ``config/`` directory, and all of the supported 
+parameters that can be specified in a ``config/config.php`` file.
+
+.. note:: While ``config/config.php`` is a required file, many Nextcloud or Nextcloud app
+   settings are managed elsewhere and thus not included in it. These settings are typically
+   managed via individual apps.
+
+Loading
+-------
+
+Configuration files located in ``config/`` are parsed automatically when Nextcloud 
+starts up. They are also checked for changes periodically (approximately every two seconds 
+in a standard PHP environment running with default *OPcache* settings; approximately every 
+sixty seconds in many pre-packaged Nextcloud installation methods).
+
+The ``config/config.php`` file may be supplemented by additional ``*.config.php`` files 
+placed in the ``config/`` directory (if appropriately named and formatted).
+
+.. danger:: Be cautious when naming or creating backup copies of your active 
+   ``config/config.php``. If a backup is located within ``config/`` and is named
+   ``(ANYTHING).config.php``, it will be loaded as part of your live configuration
+   and override your ``config/config.php`` values!
+
+.. tip:: If your configuration changes don't seem to be taking effect, check: (a) your PHP opcache 
+   configuration; (b) for additional ``*.config.php`` files located in ``config/``; (c) the documentation
+   for your Nextcloud installation method/package; (d) the output of ``occ config:list system``.
+
+Format
+------
+
+The short answer is that``config/`` files are plain text files with some special formatting 
+requirements for different types of parameters and values. This makes it extensible and easy for
+Nextcloud to interact with. It also makes it easy for administartors to view with any text viewer 
+and from the command-line.
+
+Technically these configuration files are PHP files containing a special (to Nextcloud) PHP array 
+called ``$CONFIG``. This array consists of various Nextcloud specific "key-value" pairs (in some cases 
+arrays themselves). Each pair has the form ``key => value`` and is comma-separated.
+
+Types of Values
+^^^^^^^^^^^^^^^
+
+Strings: 
+
+* ``"thisIsAnImportantValue"``
+* Note: These must be either single or double quoted - i.e. ``"string"`` or ``'string'``.
+* Note: IP addresses are considered strings.
+* Examples:
+   - ``'logo_url' => 'https://example.org',``
+   - ``'versions_retention_obligation' => 'auto, D',``
+   - ``'logtimezone' => 'Europe/Berlin',``
+
+Boolean: 
+
+* ``true`` or ``false``
+* Note: These should **not** be surrounded by quote marks within the configuration file itself.
+* Examples:
+   - ``'session_keepalive' => true,``
+   - ``'hide_login_form' => false,``
+
+Numerical:
+
+* ``12``
+* This includes both integers and floating point numbers.
+* Note: These should **not** be surrounded by quote marks within the configuration file itself.
+* Examples:
+   - ``'loglevel' => 2,``
+   - ``'session_lifetime' => 60 * 60 * 24,``
+
+Arrays of any of the above types:
+
+* ``[ 'value1', 'value2' ]``
+* All value types (including other arrays) can be included in arrays.
+* Note: Only some parameters support array style values.
+* Examples:
+   - ``'connectivity_check_domains' => [ 'www.nextcloud.com', 'www.eff.org', ],``
+   - ``'enabledPreviewProviders' => [ 'OC\Preview\BMP', 'OC\Preview\GIF', 'OC\Preview\JPEG', ],``
+
+.. tip:: Nextcloud attempts to remedy some value type/formatting mistakes, but this is not foolproof. 
+   Use the correct formatting (for the type of value in question) to avoid unexpected results arising 
+   from values being cast in unexpected ways.
+
+Modifying
+---------
+
+Parameters may be modified in a standard text editor (i.e. via the command-line or from a PC 
+then re-uploaded). They may also, in most cases, be modified using the commands in
+the ``occ config:system:*`` namespace.
+
+.. tip:: Incorrectly formatted ``key => value`` entries (or incorrectly specified values) may
+   not generate immediate errors or problems (such as parsing / syntax errors), but may still 
+   lead to unexpected and undesirable results. Review your fully parsed (by PHP) configuration
+   by using the command ``occ config:list system`` and/or ``occ config:list system --private``
+   to identify anything unexpected.
+
+Defaults
+--------
+
+Nextcloud creates a base ``config/config.php`` file at installation time containing the most 
+essential parameters for operations. These values are a mixture of auto-generated and drawn from
+information provided by the administrator at installation time.
+
+The file ``config/config.sample.php`` lists all the parameters within Nextcloud that can be 
+specified in ``config/`` files, along with example and default values for each. The content of 
+that sample configuration file is included here for ease of reference and alongside additional 
+context.
+
+.. tip:: Only add parameters to ``config/config.php`` that you wish to modify. 
+
+.. danger:: **Do not copy everything from ``config/config.sample.php`` into your own 
+   ``config/config.php``!** Besides being unnecessary, it will break things and possibly even
+   require re-installation.
+
+Multiple/Merged Configuration Files
+-----------------------------------
+
+Nextcloud supports loading configuration parameters from multiple files. You can add arbitrary 
+files ending with ``.config.php*`` (i.e. ``*.config.php``) in the ``config/`` directory. The values 
+in these files take precedence over ``config/config.php``. This allows you to easily create and 
+manage custom configurations, or to divide a large complex configuration file into a set of smaller files. 
+These custom files are not overwritten by Nextcloud.
+
+For example, you could place your email server configuration in ``config/email.config.php`` and 
+whatever parameters you specify in it will be merged with your ``config/config.php``.
+
+.. note:: The values in these additional configuration files **always** take precedence over 
+   ``config/config.php``.
+
+.. tip:: To view your fully merged configuration (i.e. incorporating all config files), use 
+   ``occ config:list system`` and/or ``occ config:list system --private``.
+
+.. danger:: Be cautious when naming or creating backup copies of your active 
+   ``config/config.php``. If a backup config file is located within ``config/`` and happens to be 
+   named ``(ANYTHING).config.php``, it will be loaded as part of your live configuration and override 
+   your ``config/config.php`` values!
+
+Examples
+--------
+
+These are some examples of the content of typical ``config/config.php`` files immediately after
+a basic installation of Nextcloud.
+
+When you use SQLite as your Nextcloud database, your ``config.php`` looks like
+this after installation. The SQLite database is stored in your Nextcloud
+``data/`` directory::
+
+  <?php
+  $CONFIG = array (
+    'instanceid' => 'occ6f7365735',
+    'passwordsalt' => '2c5778476346786306303',
+    'trusted_domains' =>
+    array (
+      0 => 'localhost',
+      1 => 'studio',
+    ),
+    'datadirectory' => '/var/www/nextcloud/data',
+    'dbtype' => 'sqlite3',
+    'version' => '7.0.2.1',
+    'installed' => true,
+  );
+
+.. note:: SQLite is a simple, lightweight embedded database that is fine for testing 
+   and simple installations, but production environments you should use MySQL/MariaDB, 
+   Oracle, or PosgreSQL.
+
+This example is from a new Nextcloud installation using MariaDB::
+
+  <?php
+  $CONFIG = array (
+    'instanceid' => 'oc8c0fd71e03',
+    'passwordsalt' => '515a13302a6b3950a9d0fdb970191a',
+    'trusted_domains' =>
+    array (
+      0 => 'localhost',
+      1 => 'studio',
+      2 => '192.168.10.155'
+    ),
+    'datadirectory' => '/var/www/nextcloud/data',
+    'dbtype' => 'mysql',
+     'version' => '7.0.2.1',
+    'dbname' => 'nextcloud',
+    'dbhost' => 'localhost',
+    'dbtableprefix' => 'oc_',
+    'dbuser' => 'oc_carla',
+    'dbpassword' => '67336bcdf7630dd80b2b81a413d07',
+    'installed' => true,
+  );
+
 
 .. The following section is auto-generated from
 .. https://github.com/nextcloud/server/blob/master/config/config.sample.php
 .. Do not edit this file; edit the source file in core
 .. DEFAULT_SECTION_START
 
+Auto-generated Parameters
+-------------------------
 
-Default Parameters
-------------------
-
-These parameters are configured by the Nextcloud installer, and are required
+These parameters are generated by the Nextcloud installer, and are required
 for your Nextcloud server to operate.
 
 
@@ -260,55 +437,6 @@ Defaults to ``false``
 
 .. DEFAULT_SECTION_END
 .. Generated content above. Don't change this.
-
-Default config.php Examples
----------------------------
-When you use SQLite as your Nextcloud database, your ``config.php`` looks like
-this after installation. The SQLite database is stored in your Nextcloud
-``data/`` directory. SQLite is a simple, lightweight embedded database that
-is good for testing and for simple installations, but for production Nextcloud
-systems you should use MySQL, MariaDB, or PosgreSQL.
-
-::
-
-  <?php
-  $CONFIG = array (
-    'instanceid' => 'occ6f7365735',
-    'passwordsalt' => '2c5778476346786306303',
-    'trusted_domains' =>
-    array (
-      0 => 'localhost',
-      1 => 'studio',
-    ),
-    'datadirectory' => '/var/www/nextcloud/data',
-    'dbtype' => 'sqlite3',
-    'version' => '7.0.2.1',
-    'installed' => true,
-  );
-
-This example is from a new Nextcloud installation using MariaDB::
-
-
-  <?php
-  $CONFIG = array (
-    'instanceid' => 'oc8c0fd71e03',
-    'passwordsalt' => '515a13302a6b3950a9d0fdb970191a',
-    'trusted_domains' =>
-    array (
-      0 => 'localhost',
-      1 => 'studio',
-      2 => '192.168.10.155'
-    ),
-    'datadirectory' => '/var/www/nextcloud/data',
-    'dbtype' => 'mysql',
-     'version' => '7.0.2.1',
-    'dbname' => 'nextcloud',
-    'dbhost' => 'localhost',
-    'dbtableprefix' => 'oc_',
-    'dbuser' => 'oc_carla',
-    'dbpassword' => '67336bcdf7630dd80b2b81a413d07',
-    'installed' => true,
-  );
 
 .. Generated content below. Don't change this.
 .. ALL_OTHER_SECTIONS_START
