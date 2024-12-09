@@ -14,7 +14,7 @@ Consuming the Task Processing API
 To consume the  Task Processing API, you will need to :ref:`inject<dependency-injection>` ``\OCP\TaskProcessing\IManager``. This manager offers the following methods:
 
  * ``hasProviders()`` This method returns a boolean which indicates if any providers have been registered. If this is false you cannot use the TextProcessing feature.
- * ``getAvailableTaskTypes()`` This method returns an array of task types indexed by their ID with their names and additional metadata.
+ * ``getAvailableTaskTypes(bool $showDisabled = false)`` This method returns an array of enabled task types indexed by their ID with their names and additional metadata. If you set ``$showdisabled`` to ``true``, it will include disabled task types.
  * ``scheduleTask(Task $task)`` This method provides the actual scheduling functionality. The task is defined using the Task class. This method runs the task asynchronously in a background job.
  * ``getTask(int $id)`` This method fetches a task specified by its id.
  * ``deleteTask(Task $task)`` This method deletes a task
@@ -110,6 +110,9 @@ The following built-in task types are available:
          * ``tone``: ``Enum``
       * Output shape:
          * ``output``: ``Text``
+
+
+Task types can be disabled in the AI admin settings so they are not available for the Assistant or other apps even if they are implemented. All implemented Task types are enabled by default.
 
 LLM Prompts and multilingual I/O
 ################################
