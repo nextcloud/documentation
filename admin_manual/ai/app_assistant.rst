@@ -139,6 +139,41 @@ To enable/disable the text-to-image smart picker for all the users.
 
 To enable/disable the speech-to-text smart picker for all the users.
 
+Task processing
+~~~~~~~~~~~~~~~
+
+1. List Tasks
+
+.. code-block::
+
+   occ taskprocessing:task:list 
+
+lists all task processing tasks.
+
+2. Get Task 
+
+.. code-block::
+
+   occ taskprocessing:task:get $TASK_ID 
+
+shows all information for a specific task.
+
+3. Enable or disable a Task type 
+
+.. code-block::
+
+   occ taskprocessing:task:enabled $TASK_TYPE_ID 1
+
+Set 1 to enable and 0 to disable an implemented task type.
+
+4. Get Task statistics
+
+.. code-block::
+
+   occ taskprocessing:task:stats
+
+shows statistics for all task processing Tasks.
+
 Image storage
 ~~~~~~~~~~~~~
 
