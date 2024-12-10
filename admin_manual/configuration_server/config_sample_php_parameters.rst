@@ -43,7 +43,7 @@ placed in the ``config/`` directory (if appropriately named and formatted).
 Format
 ------
 
-The short answer is that``config/`` files are plain text files with some special formatting 
+The short answer is that ``config/`` files are plain text files with some special formatting 
 requirements for different types of parameters and values. This makes it extensible and easy for
 Nextcloud to interact with. It also makes it easy for administartors to view with any text viewer 
 and from the command-line.
@@ -98,7 +98,7 @@ Arrays of any of the above types:
 Modifying
 ---------
 
-Parameters may be modified in a standard text editor (i.e. via the command-line or from a PC 
+Parameters may be modified in a standard text editor (i.e. via the command-line or externally 
 then re-uploaded). They may also, in most cases, be modified using the commands in
 the ``occ config:system:*`` namespace.
 
