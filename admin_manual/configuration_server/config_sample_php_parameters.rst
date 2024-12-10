@@ -117,8 +117,8 @@ information provided by the administrator at installation time.
 
 The file ``config/config.sample.php`` lists all the parameters within Nextcloud that can be 
 specified in ``config/`` files, along with example and default values for each. The content of 
-that sample configuration file is included here for ease of reference and alongside additional 
-context.
+that sample configuration file is included :ref:`below<config-php-sample>` for ease of reference 
+and alongside additional context.
 
 .. tip:: Only add parameters to ``config/config.php`` that you wish to modify. 
 
@@ -437,6 +437,8 @@ Defaults to ``false``
 
 .. DEFAULT_SECTION_END
 .. Generated content above. Don't change this.
+
+.. _config-php-sample:
 
 .. Generated content below. Don't change this.
 .. ALL_OTHER_SECTIONS_START
