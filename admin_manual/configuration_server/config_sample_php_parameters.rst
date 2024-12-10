@@ -122,8 +122,8 @@ context.
 
 .. tip:: Only add parameters to ``config/config.php`` that you wish to modify. 
 
-.. danger:: **Do not copy everything from ``config/config.sample.php`` into your own 
-   ``config/config.php``!** Besides being unnecessary, it will break things and possibly even
+.. danger:: Do not copy everything from ``config/config.sample.php`` into your own 
+   ``config/config.php``! Besides being unnecessary, it will break things and possibly even
    require re-installation.
 
 Multiple/Merged Configuration Files
