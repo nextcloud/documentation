@@ -13,6 +13,7 @@ Table of contents
     files/index
     groupware/index
     talk/index 
+    desktop/index
     userpreferences
     universal_access
     user_2fa
