@@ -14,7 +14,7 @@ Consuming the Task Processing API
 To consume the  Task Processing API, you will need to :ref:`inject<dependency-injection>` ``\OCP\TaskProcessing\IManager``. This manager offers the following methods:
 
  * ``hasProviders()`` This method returns a boolean which indicates if any providers have been registered. If this is false you cannot use the TextProcessing feature.
- * ``getAvailableTaskTypes(bool $showDisabled = false)`` This method returns an array of enabled task types indexed by their ID with their names and additional metadata. If you set ``$showdisabled`` to ``true``, it will include disabled task types.
+ * ``getAvailableTaskTypes(bool $showDisabled = false)`` This method returns an array of enabled task types indexed by their ID with their names and additional metadata. If you set ``$showdisabled`` to ``true`` (available since NC31), it will include disabled task types.
  * ``scheduleTask(Task $task)`` This method provides the actual scheduling functionality. The task is defined using the Task class. This method runs the task asynchronously in a background job.
  * ``getTask(int $id)`` This method fetches a task specified by its id.
  * ``deleteTask(Task $task)`` This method deletes a task
