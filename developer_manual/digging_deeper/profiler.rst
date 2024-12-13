@@ -13,9 +13,9 @@ using the latest development version of Nextcloud.
 
 .. code-block:: bash
 
+   major_version=$(php occ version 2>&1 | awk -F'[. ]' '{print $2;exit}')
    cd apps/
-   git clone --branch stableX https://github.com/nextcloud/profiler.git
-   # adapt X to your Nextcloud version: php occ version | grep -oP 'Nextcloud \K\d+'
+   git clone --branch stable$major_version https://github.com/nextcloud/profiler.git
    cd profiler
    cd ../..
 
