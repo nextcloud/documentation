@@ -33,6 +33,17 @@ Sendmail when your mail server is on the same machine as Nextcloud.
 
 .. _email-smtp-config:
 
+Mail Providers
+--------------
+
+.. versionadded:: 30
+
+A mail provider is an app that provides outbound mail service to Nextcloud and allows the sending of system emails
+directly through a user's configured personal email account instead of the system email account.
+At present, this functionality is limited to calendar invitations.
+This feature automatically matches a users email address to a configured mail provider account, when a system message is sent.
+The only app that supports this functionality at present is Nextcloud Mail 4.1 or higher, a configured email account is required.
+
 Configuring an SMTP server
 --------------------------
 
@@ -43,6 +54,7 @@ connect Nextcloud to a remote SMTP server:
     
     * STARTTLS cannot be enforced. It will be used automatically if the mail server supports it. The encryption type should be set to 'None/STARTTLS' in this case. See :ref:`here<TLSPeerVerification>` for an example on how to configure self signed certificates.
     * NTLM authentication for Microsoft Exchange is not supported by the new mailer library. Try using `basic authentication <https://learn.microsoft.com/en-us/exchange/client-developer/exchange-web-services/authentication-and-ews-in-exchange#basic-authentication>`_ instead.
+    * Outlook and Microsoft Exchange have discontinued support for Basic authentication. It is no longer possible to use their services as your default email handler.
 
 * Encryption type: None/STARTTLS or SSL
 

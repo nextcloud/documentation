@@ -13,7 +13,7 @@ Together they provide the ContextChat text processing tasks accessible via the :
 
 The *context_chat* and *context_chat_backend* apps will use the Free text to text task processing providers like OpenAI integration, LLM2, etc. and such a provider is required on a fresh install, or it can be configured to run open source models entirely on-premises. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
 
-This app supports input and output mainly in English, other languages may work if the language model supports the language, but are currently not guaranteed to produce good results.
+This app supports input and output in the same languages that the currently configured Free text to text task processing provider supports.
 
 Requirements
 ------------

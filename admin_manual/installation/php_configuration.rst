@@ -98,7 +98,6 @@ ini values
 
 The following ini settings should be adapted if needed for Nextcloud:
 
-* ``apc.enable_cli``: see :doc:`../configuration_server/caching_configuration`
 * ``disable_functions``: avoid disabling functions unless you know exactly what you are doing
 * ``max_execution_time``: see :doc:`../configuration_files/big_file_upload_configuration`
 * ``memory_limit``: should be at least 512MB. See also :doc:`../configuration_files/big_file_upload_configuration`
@@ -129,4 +128,4 @@ You can search for a parameter with the following command: ``grep -r date.timezo
     /etc/php/8.3/cli/php.ini
 
 .. note:: Path names have to be set in respect of the installed PHP
-          (8.1, 8.2 or 8.3) as applicable.
+          (8.1, 8.2, 8.3 or 8.4) as applicable.

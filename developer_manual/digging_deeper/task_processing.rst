@@ -38,6 +38,24 @@ The following built-in task types are available:
        * ``history``: ``ListOfTexts``
     * Output shape:
        * ``output``: ``Text``
+ * ``'core:text2text:chatwithtools'``: This task allows chatting with the language model with tools calling support. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToTextChatWithTools``
+    * Input shape:
+       * ``system_prompt``: ``Text``
+       * ``input``: ``Text``
+       * ``history``: ``ListOfTexts``
+       * ``tools``: ``Text`` The tools parameter should be a JSON object formatted according to the OpenAI API specifications: https://platform.openai.com/docs/api-reference/chat/create#chat-create-tools
+    * Output shape:
+       * ``output``: ``Text``
+       * ``tool_calls``: ``Text``
+ * ``'core:contextagent:interaction'``: This task allows chatting with an agent. It is implemented by ``\OCP\TaskProcessing\TaskTypes\ContextAgentInteraction``
+    * Input shape:
+       * ``input``: ``Text``
+       * ``confirmation``: ``Number`` Boolean integer indicating whether to confirm previously requested actions: 0 to reject or 1 to confirm.
+       * ``conversation_token``: ``Text`` Token representing the conversation
+    * Output shape:
+       * ``output``: ``Text``
+       * ``conversation_token``: ``Text``
+       * ``actions``: ``Text``
  * ``'core:text2text:formalization'``: This task will reformulate the passed input text to be more formal in tone. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToTextFormalization``
      * Input shape:
         * ``input``: ``Text``
@@ -86,6 +104,12 @@ The following built-in task types are available:
          * ``numberOfImages``: ``Number``
       * Output shape:
          * ``output``: ``ListOfImages``
+ * ``'core:text2text:changetone'``: This task type is for reformulating a text, changing its tone. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToTextChangeTone``
+      * Input shape:
+         * ``input``: ``Text``
+         * ``tone``: ``Enum``
+      * Output shape:
+         * ``output``: ``Text``
 
 LLM Prompts and multilingual I/O
 ################################

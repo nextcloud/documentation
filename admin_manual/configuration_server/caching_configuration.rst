@@ -116,11 +116,6 @@ After restarting your Web server, add this line to your ``config.php`` file::
  
 Refresh your Nextcloud admin page, and the cache warning should disappear.  
 
-.. warning:: APCu is disabled by default on CLI which could cause issues with nextcloud's
-   cron jobs. Please make sure you set the ``apc.enable_cli`` to ``1`` on your ``php.ini``
-   config file or append ``--define apc.enable_cli=1`` to the cron job call.
-
-
 Depending on your installation size and the number of users and interactions
 with the system you may want to adapt the ``apc.shm_size`` setting in your
 ``php.ini``. The default value is 32M which is usually too low for Nextcloud. A
@@ -129,7 +124,7 @@ installed you may want to increase this value further. Keep in mind that this
 memory needs to be available in your system's memory and kept in mind when
 sizing the amount of workers on your server.
 
-A frequenly resetting cache can lead to unexpected slow downs when the cache is
+A frequently resetting cache can lead to unexpected slow downs when the cache is
 being cleared and refilled.
 
 There is an admin check trying to detect too low memory sizing, but make sure to

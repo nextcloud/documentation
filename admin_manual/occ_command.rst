@@ -268,6 +268,13 @@ Enable an app for specific groups of users::
  sudo -u www-data php occ app:enable --groups admin --groups sales files_external
  files_external enabled for groups: admin, sales
 
+Enable multiple apps simultaneously::
+
+ sudo -u www-data php occ app:enable app1 app2 app3
+ app1 enabled
+ app2 enabled
+ app3 enabled
+
 Disable an app::
 
  sudo -u www-data php occ app:disable files_external
@@ -766,18 +773,23 @@ to synchronize federated servers::
 File operations
 ---------------
 
-``occ`` has three commands for managing files in Nextcloud::
+Available ``occ`` commands for the ``files`` namespace::
 
- files
-  files:cleanup              Cleanup filecache
-  files:repair-tree          Try and repair malformed filesystem tree structures
-  files:scan                 Rescan filesystem
-  files:scan-app-data        Rescan the AppData folder
-  files:transfer-ownership   All files' and folders' ownerships are moved to another
-                             user. Outgoing shares are moved as well.
-                             Incoming shares are not moved by default because the
-                             sharing user holds the ownership of the respective files.
-                             There is however an option to enable moving incoming shares.
+  files:cleanup                    cleanup filecache
+  files:copy                       Copy a file or folder
+  files:delete                     Delete a file or folder
+  files:get                        Get the contents of a file
+  files:move                       Move a file or folder
+  files:object:delete              Delete an object from the object store
+  files:object:get                 Get the contents of an object
+  files:object:put                 Write a file to the object store
+  files:put                        Write contents of a file
+  files:recommendations:recommend  
+  files:reminders                  List file reminders
+  files:repair-tree                Try and repair malformed filesystem tree structures
+  files:scan                       rescan filesystem
+  files:scan-app-data              rescan the AppData folder
+  files:transfer-ownership         All files and folders are moved to another user - outgoing shares and incoming user file shares (optionally) are moved as well.
 
 .. _occ_files_scan_label:
 
@@ -918,6 +930,8 @@ In this case no sub-directory is created and all files will appear directly in t
 It is also possible to transfer only one directory along with its contents. This can be useful to restructure your organization or quotas. The ``--path`` argument is given as the path to the directory as seen from the source user::
 
  sudo -u www-data php occ files:transfer-ownership --path="path_to_dir" <source-user> <destination-user>
+                             
+Incoming shares are not moved by default because the sharing user holds the ownership of the respective files. There is however an option to enable moving incoming shares.
 
 In case the incoming shares must be transferred as well, use the argument ``--transfer-incoming-shares`` with ``0`` or ``1`` as parameters ::
 
@@ -951,13 +965,18 @@ Commands for handling shares::
 Files external
 --------------
 
+These commands are used for managing Nextcloud's *External Storage* feature. In 
+addition to replicating the configuration capabilities in the Web UI, additional 
+capabilities include exporting / importing configurations, scanning *External 
+Storage* mounts that require login credentials, and configuring update notifications 
+(if supported by the storage type).
+
 .. note::
   These commands are only available when the "External storage support" app
   (``files_external``) is enabled.
 
-Commands for managing external storage::
+Available commands for the "files_external" namespace::
 
- files_external
   files_external:applicable  Manage applicable users and groups for a mount
   files_external:backends    Show available authentication and storage backends
   files_external:config      Manage backend configuration for a mount
@@ -965,13 +984,13 @@ Commands for managing external storage::
   files_external:delete      Delete an external mount
   files_external:export      Export mount configurations
   files_external:import      Import mount configurations
-  files_external:list        List configured mounts
-  files_external:option      Manage mount options for a mount
-  files_external:verify      Verify mount configuration
+  files_external:list        List configured admin or personal mounts
   files_external:notify      Listen for active update notifications for a configured external mount
+  files_external:option      Manage mount options for a mount
+  files_external:scan        Scan an external storage for changed files
+  files_external:verify      Verify mount configuration
 
-These commands replicate the functionality in the Nextcloud Web GUI, plus two new
-features:  ``files_external:export`` and ``files_external:import``.
+``files_external:scan`` provides the ability to provide a username and/or password for cases where login credentials are used.
 
 Use ``files_external:export`` to export all admin mounts to stdout, and
 ``files_external:export [user_id]`` to export the mounts of the specified
@@ -1296,14 +1315,16 @@ units.
 Trashbin
 --------
 
-::
+These commands allow for manually managing various aspects of the trash bin (deleted files)::
 
  trashbin
-  trashbin:cleanup  [--all-users] [--] [<user_id>...]  Permanently remove deleted files
-  trashbin:restore  [--all-users] [--scope[=SCOPE]] [--since[=SINCE]] [--until[=UNTIL]] [--dry-run] [--] [<user_id>...]  Restore deleted files according to the given filters
+  trashbin:cleanup      Permanently remove deleted files
+  trashbin:expire       Expires the users trashbin
+  trashbin:size         Configure the target trashbin size
+  trashbin:restore      Restore all deleted files according to the given filters
 
 .. note::
-  This command is only available when the "Deleted files" app
+  These commands are only available when the "Deleted files" app
   (``files_trashbin``) is enabled.
 
 The ``trashbin:cleanup  [--all-users] [--] [<user_id>...]`` command removes the deleted files of the specified
@@ -1362,16 +1383,21 @@ The ``--dry-run`` option can be used to simulate the restore without actually re
 User commands
 -------------
 
-The ``user`` commands create and remove users, reset passwords, display a simple
+The ``user`` commands create and remove users, reset passwords, manage authentication tokens / sessions, display a simple
 report showing how many users you have, and when a user was last logged in::
 
  user
   user:add                            adds a user
-  user:add-app-password               adds a app password named "cli"
+  user:add-app-password               adds a app password named "cli" (deprecated: alias for user:auth-tokens:add)
+  user:auth-tokens:add                Add app password for the named account
+  user:auth-tokens:delete             Deletes an authentication token
+  user:auth-tokens:list               List authentication tokens of an user
+  user:clear-avatar-cache             clear avatar cache
   user:delete                         deletes the specified user
   user:disable                        disables the specified user
   user:enable                         enables the specified user
   user:info                           shows information about the specific user
+  user:keys:verify                    Verify if the stored public key matches the stored private key
   user:lastseen                       shows when the user was logged in last time
   user:list                           shows list of all registered users
   user:report                         shows how many users have access
@@ -1597,14 +1623,15 @@ removes the existing group "beer"::
 
 List configured groups via the ``group:list`` command. The syntax is::
 
- group:list [-l|--limit] [-o|--offset] [--output="..."]
+ group:list [-l|--limit [LIMIT]] [-o|--offset [OFFSET]] [-i|--info] [--output [OUTPUT]]
 
-``limit`` allows you to specify the number of groups to retrieve.
+``limit`` allows you to specify the number of groups to retrieve (default: ``500``).
 
 ``offset`` is an offset for retrieving groups.
 
-``output`` specifies the output format (plain, json or json_pretty). Default is
-plain.
+``info`` Show additional info (backend).
+
+``output`` Output format: ``plain``, ``json`` or ``json_pretty`` (default: ``plain``).
 
 .. _versions_label:
 

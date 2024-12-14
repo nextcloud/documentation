@@ -118,10 +118,15 @@ This package provides helpers to generate URLs, e.g. to access assets and REST A
 This package provides helpers interact with the Files sharing app, e.g. to detect if the current page is a public share and retrieving the sharing token.
 Documentation: https://nextcloud-libraries.github.io/nextcloud-sharing/
 
+.. _js-library_nextcloud-vue:
+
 ``@nextcloud/vue``
 ^^^^^^^^^^^^^^^^^^
 
-This package provides lots of nextcloud components allowing you to quickly build UIs. Documentation: https://nextcloud-vue-components.netlify.com/
+This package provides lots of Vue components allowing you to quickly build UIs in Nextcloud design.
+
+- Documentation: https://nextcloud-vue-components.netlify.app/
+- Source code: https://github.com/nextcloud-libraries/nextcloud-vue
 
 Events
 ------

@@ -297,6 +297,26 @@ Setup fail2ban
 Exposing your server to the internet will inevitably lead to the exposure of the 
 services running on the internet-exposed ports to brute force login attempts.
 
+This guide will enable blocking of the originating IP addresses at an operating
+system level, so the webserver, PHP and the database do not need to handle this
+unnecessary traffic at all.
+
+Nextcloud prerequisites
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Nextcloud logs failed login attempts in ``nextcloud.log`` with log level ``2``,
+so you need to define a ``loglevel`` of ``2`` or less in ``config.php``.
+
+Make sure your ``nextcloud.log`` is writeable by your webserver user, possibly by
+defining a correct ``logfilemode`` in ``config.php``.
+
+Perform a bad login attempt and check whether it does get logged to ``nextcloud.log``.
+
+Note that ``audit.log`` (if enabled) currently only logs successful logins and cannot be used.
+
+Fail2ban introduction
+^^^^^^^^^^^^^^^^^^^^^
+
 Fail2ban is a service that uses iptables to automatically drop connections for a
 pre-defined amount of time from IPs that continuously failed to authenticate to 
 the configured services.
@@ -351,5 +371,14 @@ Restart the fail2ban service. You can check the status of your Nextcloud jail by
 running::
 
   fail2ban-client status nextcloud
+
+If you need to unban certain IP addresses (``1.2.3.4`` in this example),
+you may do so by issuing::
+
+  fail2ban-client unban 1.2.3.4
+
+There may be scenarios where you want to more permantently ban certain IP
+addresses that repeatedly generate bad login attempts (or other attacks) by
+using fail2ban's ``recidive`` feature.
 
 .. _fail2ban download page: https://www.fail2ban.org/wiki/index.php/Downloads

@@ -18,7 +18,7 @@ code reviews shall take place on GitHub as well.
 Precondition
 ------------
 
-From now on no direct commits/pushes to master or any of the stable branches are
+From now on no direct commits/pushes to the main or any of the stable branches are
 allowed in general.  **Every code** change - **even one liners** - have to be
 reviewed!
 
@@ -37,15 +37,15 @@ How will it work?
 #. In case the reviewer is okay with the changes and thinks all their comments and
    suggestions have been taken into account a :+1 on the comment will signal a positive
    review.
-#. Before a pull request will be merged into master or the corresponding
-   branch at least 2 reviewers need to give :+1 score.
+#. Before a pull request will be merged into the main corresponding stable branch
+   at least 2 reviewers need to give :+1 score.
 #. Our continuous integration server will give an additional indicator for
    the quality of the pull request (the results can be accessed from the GitHub
    interface for that pull request).
 
 Examples
 --------
-Read our documentation about :doc:`../../getting_started/codingguidelines` for information
+Read our documentation about :doc:`../../getting_started/coding_standards/index` for information
 on what a good pull request and good Nextcloud code looks like.
 
 These are two examples that are considered to be good examples of how pull
