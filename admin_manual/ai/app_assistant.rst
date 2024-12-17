@@ -162,7 +162,7 @@ shows all information for a specific task.
 
 .. code-block::
 
-   occ taskprocessing:task:enabled $TASK_TYPE_ID 1
+   occ taskprocessing:task-type:set-enabled $TASK_TYPE_ID 1
 
 Set 1 to enable and 0 to disable an implemented task type.
 
