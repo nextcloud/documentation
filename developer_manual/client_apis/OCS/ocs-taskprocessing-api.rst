@@ -177,7 +177,7 @@ Get task file contents
 .. versionadded:: 30.0.0
 
 * Method: ``GET``
-* Endpoint: ``/task/{id}/file/{fileId}``
+* Endpoint: ``/tasks/{id}/file/{fileId}``
 
 * Response:
     - Status code:
@@ -186,71 +186,4 @@ Get task file contents
 
     - Data:
         + If ``200 OK`` this endpoint returns the raw data of the file
-        + ``message`` - Only provided when not ``200 OK``, an error message in the user's language, ready to be displayed
-
-Set task progress
------------------
-
-.. versionadded:: 30.0.0
-
-* Method: ``GET``
-* Endpoint: ``/task/{id}/progress``
-* Data:
-
-+-----------------+-------------+--------------------------------------------------------------------------------+
-| field           | type        | Description                                                                    |
-+-----------------+-------------+--------------------------------------------------------------------------------+
-|``progress``     | float       | A number between 0-1 indicating the task progress                              |
-+-----------------+-------------+--------------------------------------------------------------------------------+
-
-
-* Response:
-    - Status code:
-        + ``200 OK``
-        + ``404 Not Found`` - When the task could not be found
-
-    - Data:
-    - Data:
-        + ``input`` - Only provided in case of ``200 OK``, the task input, array
-        + ``type`` - Only provided in case of ``200 OK``, the task type, string
-        + ``id`` - Only provided in case of ``200 OK``, the assigned task id, int
-        + ``status`` - Only provided in case of ``200 OK``, the current task status, int, see backend API
-        + ``userId`` - Only provided in case of ``200 OK``, the originating userId of the task, string
-        + ``appId`` - Only provided in case of ``200 OK``, the originating appId of the task, string
-        + ``customId`` - Only provided in case of ``200 OK``, the custom id of the task, string
-        + ``output`` - Only provided in case of ``200 OK``, the output from the model, array or null
-        + ``message`` - Only provided when not ``200 OK``, an error message in the user's language, ready to be displayed
-
-Set task result
----------------
-
-.. versionadded:: 30.0.0
-
-* Method: ``POST``
-* Endpoint: ``/task/{id}/result``
-* Data:
-
-+-----------------+-------------+--------------------------------------------------------------------------------+
-| field           | type        | Description                                                                    |
-+-----------------+-------------+--------------------------------------------------------------------------------+
-|``output``       | array       | The task output if the task was successful (optional)                          |
-+-----------------+-------------+--------------------------------------------------------------------------------+
-|``errorMessage`` | string      | The error message if the task failed (optional)                                |
-+-----------------+-------------+--------------------------------------------------------------------------------+
-
-* Response:
-    - Status code:
-        + ``200 OK``
-        + ``404 Not Found`` - When the task could not be found
-
-    - Data:
-    - Data:
-        + ``input`` - Only provided in case of ``200 OK``, the task input, array
-        + ``type`` - Only provided in case of ``200 OK``, the task type, string
-        + ``id`` - Only provided in case of ``200 OK``, the assigned task id, int
-        + ``status`` - Only provided in case of ``200 OK``, the current task status, int, see backend API
-        + ``userId`` - Only provided in case of ``200 OK``, the originating userId of the task, string
-        + ``appId`` - Only provided in case of ``200 OK``, the originating appId of the task, string
-        + ``customId`` - Only provided in case of ``200 OK``, the custom id of the task, string
-        + ``output`` - Only provided in case of ``200 OK``, the output from the model, array or null
         + ``message`` - Only provided when not ``200 OK``, an error message in the user's language, ready to be displayed
