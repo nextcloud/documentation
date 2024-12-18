@@ -106,6 +106,7 @@ Added APIs
 - ``OCP\SetupCheck\CheckServerResponseTrait`` was added to ease implementing custom :ref:`setup checks<setup-checks>`
   which need to check HTTP calls to the the server itself.
 - Any implementation of ``OCP\Files\Mount\IMountPoint`` can additionally implement ``OCP\Files\Mount\IShareOwnerlessMount`` which allows everyone with share permission to edit and delete any share on the files and directories below the mountpoint.
+- ``OCP\Navigation\Events\LoadAdditionalEntriesEvent`` is dispatched when the navigation manager needs to know about its entries, apart of standard app entries that are loaded automatically. This is only relevant for apps that provide extraneous entries.
 
 Changed APIs
 ^^^^^^^^^^^^
