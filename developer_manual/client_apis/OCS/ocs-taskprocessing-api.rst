@@ -108,7 +108,7 @@ Fetch a task by ID
 
 .. note:: The endpoint is rate limited as it can be quite resource intensive. Users can make 20 requests in 2 minutes, guests only 5
 
-* Method: ``POST``
+* Method: ``GET``
 * Endpoint: ``/task/{id}``
 
 * Response:
