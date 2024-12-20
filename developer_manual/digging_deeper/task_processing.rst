@@ -110,6 +110,11 @@ The following built-in task types are available:
          * ``tone``: ``Enum``
       * Output shape:
          * ``output``: ``Text``
+ * ``'core:text2text:proofread'``: This task type is for proofreading a text, checking it for grammar and spelling mistakes. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToTextProofread``
+      * Input shape:
+         * ``input``: ``Text``
+      * Output shape:
+         * ``output``: ``Text``
 
 
 Task types can be disabled in the AI admin settings so they are not available for the Assistant or other apps even if they are implemented. All implemented Task types are enabled by default.
