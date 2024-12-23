@@ -162,6 +162,8 @@ Events can be created by clicking in the area when the event is scheduled.
 In the day- and week-view of the calendar you just click, pull and release your
 cursor over the area when the event is taking place.
 
+Clicking on the globe button brings up the timezone selector. You are able to choose different timezones for the start and end of your event. This is useful when travelling.
+
 .. figure:: images/calendar_new-event_week.png
 
 The month-view only requires a single click into the area of the target day.
