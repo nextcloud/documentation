@@ -246,6 +246,10 @@ Nextcloud to use Imaginary by editing your `config.php`:
 
     For large instance, you should follow `Imaginary's scalability recommendation <https://github.com/h2non/imaginary#scalability>`.
 
+.. note::
+
+    To make sure that Imaginary is reachable by your Nextcloud instance, add `-p 9000:9000` to your `docker run` command, e.g. ``docker run -d -p 9000:000 --name nextcloud_imaginary --restart always nextcloud/aio-imaginary:latest``.
+
 Settings
 ^^^^^^^^
 
