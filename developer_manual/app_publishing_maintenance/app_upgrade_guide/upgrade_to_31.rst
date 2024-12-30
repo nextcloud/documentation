@@ -60,7 +60,15 @@ Removed APIs
 ^^^^^^^^^^^^
 
 - ``OCA.FilesSharingDrop`` removed as part of the Vue migration. Use the Files app API provided by the :ref:`package<js-library_nextcloud-files>` .
+- ``$.Event('OCA.Notification.Action')`` jQuery event removed from Notifications app as part of the Vue migration. Use ``@nextcloud/event-bus`` :ref:`package<js-library_nextcloud-event-bus>` instead.
 
+.. code-block:: JavaScript
+
+    import { subscribe, unsubscribe } from '@nextcloud/event-bus'
+
+    subscribe('notifications:action:execute', (event) => {
+		console.info('Notification action has been executed:', event.notification, event.action)
+    })
 
 Back-end changes
 ----------------

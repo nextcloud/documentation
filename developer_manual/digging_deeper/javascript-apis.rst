@@ -55,6 +55,8 @@ This package provides information about the current user and session. Documentat
 
 This package provides an `Axios <https://www.npmjs.com/package/axios>`_ HTTP client instance, ready to send request to the Nextcloud server. If you use this instance you do not have to care about authentication and special headers. Documentation: https://nextcloud-libraries.github.io/nextcloud-axios/
 
+.. _js-library_nextcloud-event-bus:
+
 ``@nextcloud/event-bus``
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
