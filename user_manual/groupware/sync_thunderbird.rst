@@ -22,6 +22,8 @@ Contacts
 
 If you later want to add a new address book, you can redo all of those steps and only the books not already synchronized will be suggested.
 
+.. note:: If your account uses two-factor authentication, you need a :ref:`dedicated app password <managing_devices>` for login rather than your
+   regular password.
 
 Calendars
 ~~~~~~~~~
