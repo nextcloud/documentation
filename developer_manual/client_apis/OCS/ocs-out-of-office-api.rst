@@ -86,7 +86,7 @@ Modify out-of-office data
 It is only possible to modify out-of-office data of the currently logged in user.
 
 * Method: ``POST``
-* Endpoint: ``/``
+* Endpoint: ``/{userId}``
 * Data:
 
 +---------------------------------+-------------+---------------------------------------------------------------------+
@@ -139,7 +139,7 @@ Clear data and disable out-of-office
 It is only possible to clear out-of-office data of the currently logged in user.
 
 * Method: ``DELETE``
-* Endpoint: ``/``
+* Endpoint: ``/{userId}``
 * Response:
     - Status code:
         + ``200 OK`` Out-of-office data was cleared
