@@ -218,7 +218,7 @@ external microservice: `Imaginary <https://github.com/h2non/imaginary>`_.
    See https://github.com/nextcloud/server/issues/35643
 
 We strongly recommend running our custom docker image that is more up to date than the official image.
-You can find the image at `docker.io/nextcloud/aio-imaginary:latest`.
+You can find the image at `docker.io/nextcloud/aio-imaginary:latest`. When running it, a port must be mapped by adding `-p <port>:9000` to the `docker run` command, e.g. ``docker run -d -p 9000:9000 --name nextcloud_imaginary --restart always nextcloud/aio-imaginary:latest``.
 
 To do so, you will need to deploy the service and make sure that it is
 not accessible from outside of your servers. Then you can configure
@@ -235,7 +235,7 @@ Nextcloud to use Imaginary by editing your `config.php`:
         'OC\Preview\Krita',
         'OC\Preview\Imaginary',
     ],
-    'preview_imaginary_url' => 'http://<url of imaginary>',
+    'preview_imaginary_url' => 'http://<url of imaginary>:<port>',
 
 .. warning::
 
