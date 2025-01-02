@@ -63,7 +63,9 @@ Possible errors:
 
 - ExApp failed to start a web server, e.g., if the port is already in use (this should be visible in the container logs)
 - ExApp heartbeat_count keeps increasing, this may indicate that the ExApp couldn't start properly
-- Nextcloud can not reach the ExApp container, e.g., due to a network issue or a firewall
+- Nextcloud can not reach the ExApp container, e.g.,
+    * due to a network issue or a firewall (this should be visible in the server logs or the firewall logs)
+    * due to a "http" protocol deploy daemon. In this case, the ExApp's container listens on localhost (127.0.0.1 or ::1) which might not be reachable from the Nextcloud server and you might want to listen on a different IP address. See ``OVERRIDE_APP_HOST`` in :ref:`Additional options <additional_options_list>` in the Deploy Daemon form. This issue can be identified using this command: ``lsof -i -P -n | grep LISTEN``
 
 Init
 ****
