@@ -125,10 +125,8 @@ Talk App
 
 - **iOS** 15.0+
 - **Android** 8.0+
-- **Nextcloud Server** 14.0+
-- **Nextcloud Talk** 4.0+
-
-.. note:: When using Nextcloud Talk 12.0+ please update the Android Talk App to the newest version (or at least to v12.1).
+- **Nextcloud Server** 19.0+
+- **Nextcloud Talk** 9.0+
 
 Web browser
 -----------
