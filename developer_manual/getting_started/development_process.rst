@@ -60,6 +60,7 @@ Showstoppers (never backport things that cause these):
 
 When assessing whether a bug is critical enough to backport, here are some possible questions to ask yourself:
 
+- Is this really a bug fix? Or is it more an enhancement or a general improvement?
 - Is it even applicable to a previously published major release train?
 - Is that major release train still supported?
 - Is it a security vulnerability? [Yes, backport it without question.]
