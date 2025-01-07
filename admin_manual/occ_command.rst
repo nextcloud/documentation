@@ -872,6 +872,18 @@ with the files on the actual storage.::
   Arguments:
     folder                 The appdata subfolder to scan [default: ""]
 
+.. _occ_cleanup_previews:
+
+Cleanup previews
+^^^^^^^^^^^^^^^^
+
+``preview:cleanup`` removes all of the server's preview files. This is useful
+when changing the previews configuration (sizes, quality or file), and especially
+on systems using Object Storage as Primary Storage where the ``appdata_xxx/preview``
+folder can't simply be deleted.
+
+See :doc:`configuration_files/previews_configuration`.
+
 
 Cleanup
 ^^^^^^^
