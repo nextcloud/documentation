@@ -217,6 +217,8 @@ Systemd service
    [Service]
    ExecStart=/opt/nextcloud-ai-worker/taskprocessing.sh %i
    Restart=always
+   StartLimitInterval=60
+   StartLimitBurst=10
 
    [Install]
    WantedBy=multi-user.target
