@@ -24,17 +24,19 @@ Requirements
 * CUDA >= v12.2 on your host system
 * GPU Setup Sizing
 
-   * A NVIDIA GPU with at least 8GB VRAM (2 GB if the Free text-to-text provider is not on the same machine)
-   * At least 12GB of system RAM
-      * 2 GB + additional 500MB for each request made to the backend if the Free text-to-text provider is not on the same machine
-      * 8 GB is recommended in the above case for the default settings
+   * A NVIDIA GPU with at least 2GB VRAM
+      * The requirements for the Free text-to-text providers should be checked separately
+      * llm2's requirements can be found :ref:`here <ai-app-llm2>`
+      * integration_openai does not have any additional GPU requirements
+   * At least 8GB of system RAM
+      * 2 GB + additional 500MB for each concurrent request made to the backend if configuration parameters are changed
 
 * CPU Setup Sizing
 
    * At least 12GB of system RAM
       * 2 GB + additional 500MB for each request made to the backend if the Free text-to-text provider is not on the same machine
       * 8 GB is recommended in the above case for the default settings
-   * This app makes use of the configured free text-to-text task processing provider instead of running its own language model by default, you will thus need 4+ cores for the embedding model only (backed configuration needs changes to make use of the extra cores, refer to :ref:`Configuration (Backend) <ai-app-context_chat-configuration-options-backend>`)
+   * This app makes use of the configured free text-to-text task processing provider instead of running its own language model by default, you will thus need 4+ cores for the embedding model only (backed configuration needs changes to make use of the extra cores, refer to `Configuration Options (Backend)`_)
 
 * A dedicated machine is recommended
 
@@ -47,8 +49,8 @@ Installation
 ------------
 
 1. Make sure the :ref:`Nextcloud Assistant app<ai-app-assistant>` is installed
-2. :ref:`Setup a Deploy Demon<ai-app_api> in AppAPI Admin settings`
-3. Install the *context_chat_backend* ExApp via the "External Apps" admin page in Nextcloud, or by executing (checkout the readme at https://github.com/nextcloud/context_chat_backend for manual install steps)
+2. Setup a :ref:`Deploy Demon <ai-app_api>` in AppAPI Admin settings
+3. Install the *context_chat_backend* ExApp via the "Apps" page in Nextcloud, or by executing (checkout the readme at https://github.com/nextcloud/context_chat_backend for manual install steps)
 
 .. code-block::
 
@@ -60,34 +62,24 @@ Installation
 
    occ app:enable context_chat
 
-5. Install a text generation backend like *llm2* (via the "External Apps" page in Nextcloud) or *integration_openai* (via the "Apps" page in Nextcloud), or by executing
-
-.. code-block::
-
-   occ app_api:app:register llm2
-
-or
-
-.. code-block::
-
-   occ app:enable integration_openai
-
+5. Install a text generation backend like :ref:`llm2 <ai-app-llm2>` or `integration_openai <https://github.com/nextcloud/integration_openai>`_ via the "Apps" page in Nextcloud
 
 6. Optionally but recommended, setup background workers for faster pickup of tasks. See :ref:`the relevant section in AI Overview<ai-overview_improve-ai-task-pickup-speed>` for more information.
 
 **Note**: Both apps need to be installed and both major version and minor version of the two apps must match for the functionality to work (ie. "v1.3.4" and "v1.3.1"; but not "v1.3.4" and "v2.1.6"; and not "v1.3.4" and "v1.4.5"). Keep this in mind when updating.
 
+
 Initial loading of data
 -----------------------
 
 Context chat will automatically load user data into the Vector DB using background jobs. To speed this up, you can run the following command to index all documents for a user synchronously:
+Note: This does not interact with the auto-indexing feature and that list would remain unchanged. However, the indexed files would be skipped when the auto indexer runs.
 
 .. code-block::
 
-   sudo -u www-data occ context_chat:scan <user_id>
+   occ context_chat:scan <user_id>
 
-To speed up the asynchronous indexing, these config options can be used:
-
+To speed up the asynchronous indexing, see the `Configuration Options (OCC)`_.
 
 See :ref:`the task speedup section in AI Overview<ai-overview_improve-ai-task-pickup-speed>` to know better ways to run these jobs.
 
