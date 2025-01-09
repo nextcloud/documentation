@@ -42,6 +42,8 @@ The AI admin settings will show all types of Assistant Tasks that are implemente
 
 **Note**: When using our on-premise AI apps, make sure you have a GPU with enough VRAM that fits all the features you need. For each app documented here you will find its hardware requirements.
 
+.. _machine_translation:
+
 Machine translation
 ~~~~~~~~~~~~~~~~~~~
 
@@ -146,19 +148,19 @@ Task processing
 
 .. code-block::
 
-   occ taskprocessing:task:list 
+   occ taskprocessing:task:list
 
 lists all task processing tasks.
 
-2. Get Task 
+2. Get Task
 
 .. code-block::
 
-   occ taskprocessing:task:get $TASK_ID 
+   occ taskprocessing:task:get $TASK_ID
 
 shows all information for a specific task.
 
-3. Enable or disable a Task type 
+3. Enable or disable a Task type
 
 .. code-block::
 
