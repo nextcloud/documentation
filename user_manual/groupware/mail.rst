@@ -288,6 +288,15 @@ You now have the ability to delete tags that you have previously created. To acc
 
 .. note:: Please note that default tags such as Work, To do, Personal, and Later cannot be deleted, they can only be renamed.
 
+AI summary
+~~~~~~~~~~
+
+.. versionadded:: 4.2
+
+When looking through your mailbox you will see a short AI generated summary of your emails as a preview.
+
+.. note:: Please note that the feature has to be enabled by the administrator
+
 Message actions
 ---------------
 
