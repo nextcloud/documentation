@@ -3865,7 +3865,7 @@ enable_non-accessible_features
 
 	'enable_non-accessible_features' => true,
 
-Enable features that are do respect accessibility standards yet.
+Enable features that don't respect accessibility standards yet.
 
 Defaults to ``true``
 
