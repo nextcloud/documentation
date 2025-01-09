@@ -159,6 +159,12 @@ Configuration Options (Backend)
 Refer to `the Configuration head <https://github.com/nextcloud/context_chat_backend?tab=readme-ov-file#configuration>`_ in the backend's readme.
 
 
+Possibility of Data Leak
+------------------------
+
+It is possible that some users who have been denied access to certain files/folders still have access to the content of those files/folders through the Context Chat app. We're working on a solution for this.
+The users who never had access to a particular file/folder will NOT be able to see those contents in any way.
+
 Known Limitations
 -----------------
 
