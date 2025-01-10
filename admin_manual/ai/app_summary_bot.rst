@@ -48,7 +48,7 @@ Installation
 Setup (via App Store)
 ~~~~~~~~~~~~~~~~~~~~~
 
-1. Install the *Summary Bot* app via the "External Apps" page in Nextcloud
+1. Install the *Summary Bot* app via the "Apps" page in Nextcloud
 
 2. Enable the *Summary Bot* Bot for the selected Chatroom via the three dots menu of the Chatroom (The Bots settings are located inside the *Bots* section)
 
