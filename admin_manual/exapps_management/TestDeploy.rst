@@ -17,7 +17,7 @@ for each compute device, there is a separate Docker image.
 
 .. note::
     The Test Deploy ExApp container is not removed after the test as it's needed for logs and status checks.
-    You can remove it after testing from the External Apps page.
+    You can remove it after testing from the Apps page.
     The Docker images are also not removed from the Daemon; you can clean up unused images with the ``docker image prune`` command.
 
 .. image:: ./img/test_deploy_modal_4.png
