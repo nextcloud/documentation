@@ -212,11 +212,6 @@ external microservice: `Imaginary <https://github.com/h2non/imaginary>`_.
    Imaginary is currently incompatible with server-side-encryption. 
    See https://github.com/nextcloud/server/issues/34262
 
-.. warning::
-
-   Imaginary is currently known to have issues with HEIC images.
-   See https://github.com/nextcloud/server/issues/35643
-
 We strongly recommend running our custom docker image that is more up to date than the official image.
 You can find the image at `docker.io/nextcloud/aio-imaginary:latest`.
 
