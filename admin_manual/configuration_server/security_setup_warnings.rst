@@ -77,6 +77,9 @@ For enhanced security we recommend enabling HSTS as described in our security ti
 The HSTS header needs to be configured within your Web server by following the
 :ref:`enable-hsts-label` documentation
 
+You can see if the header is appearing in requests by using your browser inspector
+or using a tool such as cURL: ``curl --head https://cloud.domain.tld``.
+
 /dev/urandom is not readable by PHP
 -----------------------------------
 
