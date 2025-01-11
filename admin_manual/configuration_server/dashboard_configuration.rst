@@ -30,7 +30,7 @@ The default layout of the dashboard for all users can be set with the following 
 Changing the default layout will not affect existing users that already have a custom layout stored.
 
 
-It's possible to replace the default dashboard with a custom app with the following command::
+It is possible to replace the default app, which is the dashboard app, with a custom app with the following command:
 
   occ config:app:set core defaultpage --value "/apps/files/extstoragemounts"
 
