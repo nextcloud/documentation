@@ -1,0 +1,351 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logging &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="OAuth2" href="oauth2.html" />
+    <link rel="prev" title="Language &amp; Locale" href="language_configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Nextcloud configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="security_setup_warnings.html">Warnings on admin page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html">Configuration Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activity_configuration.html">Activity app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin_delegation_configuration.html">Administration privileges (Delegation)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antivirus_configuration.html">Antivirus scanner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="automatic_configuration.html">Automatic setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background_jobs_configuration.html">Background jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bruteforce_configuration.html">Brute force protection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching_configuration.html">Memory caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard_configuration.html">Dashboard app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain_change.html">Domain Change</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email_configuration.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_sites.html">Linking external sites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language_configuration.html">Language &amp; Locale</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#log-level">Log level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#log-type">Log type</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#errorlog">errorlog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#file">file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#syslog">syslog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#systemd">systemd</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#log-fields-explained">Log fields explained</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-log-entries">Example log entries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#log-field-breakdown">Log field breakdown</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#admin-audit-log-optional">Admin audit log (Optional)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#log-level-interaction">Log level interaction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#integrating-into-the-web-interface">Integrating into the Web Interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuring-through-admin-audit-app-settings">Configuring through admin_audit app settings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#workflow-log">Workflow log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#temporary-overrides">Temporary overrides</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2.html">OAuth2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse_proxy_configuration.html">Reverse proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_configuration.html">Text app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming.html">Theming</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Nextcloud configuration</a></li>
+      <li class="breadcrumb-item active">Logging</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_server/logging_configuration.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="logging">
+<h1>Logging<a class="headerlink" href="#logging" title="Link to this heading"></a></h1>
+<p>Use your Nextcloud log to review system status, or to help debug problems. You may adjust logging levels, and choose how and where log data is stored. If additional event logging is required, you can optionally activate the <strong>admin_audit</strong> app.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">file</span></code> based logging is utilized, both the Nextcloud log and, optionally, the <strong>admit_audit</strong> app log can be viewed within the Nextcloud interface under <em>Administration settings -&gt; Logging</em> (this functionality is provided by the <strong>logreader</strong> app).</p>
+<p>Further configuration and usage details for both the standard Nextcloud log and the optional <strong>admin_audit</strong> app log can be found below.</p>
+<section id="log-level">
+<span id="log-levels"></span><h2>Log level<a class="headerlink" href="#log-level" title="Link to this heading"></a></h2>
+<p>Logging levels range from <strong>DEBUG</strong>, which logs all activity, to <strong>FATAL</strong>, which logs only fatal errors.</p>
+<ul class="simple">
+<li><p><strong>0</strong>: DEBUG: All activity; the most detailed logging.</p></li>
+<li><p><strong>1</strong>: INFO:  Activity such as user logins and file activities, plus warnings, errors, and fatal errors.</p></li>
+<li><p><strong>2</strong>: WARN:  Operations succeed, but with warnings of potential problems, plus errors and fatal errors.</p></li>
+<li><p><strong>3</strong>: ERROR: An operation fails, but other services and operations continue, plus fatal errors.</p></li>
+<li><p><strong>4</strong>: FATAL: The server stops.</p></li>
+</ul>
+<p>By default the log level is set to <strong>2</strong> (WARN). Use <strong>DEBUG</strong> when you have a problem to diagnose, and then reset your log level to a less-verbose level as <strong>DEBUG</strong> outputs a lot of information, and can affect your server performance.</p>
+<p>Logging level parameters are set in the <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code> file.</p>
+</section>
+<section id="log-type">
+<h2>Log type<a class="headerlink" href="#log-type" title="Link to this heading"></a></h2>
+<section id="errorlog">
+<h3>errorlog<a class="headerlink" href="#errorlog" title="Link to this heading"></a></h3>
+<p>All log information will be sent to PHP <code class="docutils literal notranslate"><span class="pre">error_log()</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;log_type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;errorlog&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Until version Nextcloud 25 log entries were prefixed with <code class="docutils literal notranslate"><span class="pre">[owncloud]</span></code>. From 26 onwards messages start with <code class="docutils literal notranslate"><span class="pre">[nextcloud]</span></code>.</p>
+</div>
+</section>
+<section id="file">
+<h3>file<a class="headerlink" href="#file" title="Link to this heading"></a></h3>
+<p>All log information will be written to a separate log file which can be
+viewed using the log viewer on your Admin page. By default, a log
+file named <strong>nextcloud.log</strong> will be created in the directory which has
+been configured by the <strong>datadirectory</strong> parameter in <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code>.</p>
+<p>The desired date format can optionally be defined using the <strong>logdateformat</strong> parameter in <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code>.
+By default the <a class="reference external" href="http://www.php.net/manual/en/function.date.php">PHP date function</a> parameter <code class="docutils literal notranslate"><span class="pre">c</span></code> is used, and therefore the
+date/time is written in the format <code class="docutils literal notranslate"><span class="pre">2013-01-10T15:20:25+02:00</span></code>. By using the
+date format in the example below, the date/time format will be written in the format
+<code class="docutils literal notranslate"><span class="pre">January</span> <span class="pre">10,</span> <span class="pre">2013</span> <span class="pre">15:20:25</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;log_type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;file&quot;</span><span class="p">,</span>
+<span class="s2">&quot;logfile&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;nextcloud.log&quot;</span><span class="p">,</span>
+<span class="s2">&quot;loglevel&quot;</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span>
+<span class="s2">&quot;logdateformat&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;F d, Y H:i:s&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+</section>
+<section id="syslog">
+<h3>syslog<a class="headerlink" href="#syslog" title="Link to this heading"></a></h3>
+<p>All log information will be sent to your default syslog daemon.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;log_type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;syslog&quot;</span><span class="p">,</span>
+<span class="s2">&quot;syslog_tag&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Nextcloud&quot;</span><span class="p">,</span>
+<span class="s2">&quot;logfile&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;loglevel&quot;</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span>
+</pre></div>
+</div>
+</section>
+<section id="systemd">
+<h3>systemd<a class="headerlink" href="#systemd" title="Link to this heading"></a></h3>
+<p>All log information will be sent to Systemd journal. Requires <a class="reference external" href="https://github.com/systemd/php-systemd">php-systemd</a> extension.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;log_type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;systemd&quot;</span><span class="p">,</span>
+<span class="s2">&quot;syslog_tag&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Nextcloud&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="log-fields-explained">
+<h2>Log fields explained<a class="headerlink" href="#log-fields-explained" title="Link to this heading"></a></h2>
+<section id="example-log-entries">
+<h3>Example log entries<a class="headerlink" href="#example-log-entries" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;reqId&quot;</span><span class="p">:</span><span class="s2">&quot;TBsuA2uE86DiOD0S8f9j&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;time&quot;</span><span class="p">:</span><span class="s2">&quot;April 13, 2021 16:55:37&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;remoteAddr&quot;</span><span class="p">:</span><span class="s2">&quot;192.168.56.1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;app&quot;</span><span class="p">:</span><span class="s2">&quot;admin_audit&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;/ocs/v1.php/cloud/users?disabled&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;Login successful: </span><span class="se">\&quot;</span><span class="s2">admin</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;userAgent&quot;</span><span class="p">:</span><span class="s2">&quot;curl/7.68.0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;version&quot;</span><span class="p">:</span><span class="s2">&quot;21.0.1.1&quot;</span>
+<span class="p">}</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;reqId&quot;</span><span class="p">:</span><span class="s2">&quot;ByeDVLuwkXKMfLpBgvxC&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;level&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;time&quot;</span><span class="p">:</span><span class="s2">&quot;April 14, 2021 09:03:29&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;remoteAddr&quot;</span><span class="p">:</span><span class="s2">&quot;192.168.56.1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;app&quot;</span><span class="p">:</span><span class="s2">&quot;no app in context&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;/login&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;Login failed: asdf (Remote IP: 192.168.56.1)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;userAgent&quot;</span><span class="p">:</span><span class="s2">&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;version&quot;</span><span class="p">:</span><span class="s2">&quot;21.0.1.1&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="log-field-breakdown">
+<h3>Log field breakdown<a class="headerlink" href="#log-field-breakdown" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>reqId</strong> (request id): any log lines related to a single request have the same value</p></li>
+<li><p><strong>level</strong>: logged incident’s level, always 1 in audit.log</p></li>
+<li><p><strong>time</strong>: date and time (format and timezone can be configured in config.php)</p></li>
+<li><p><strong>remoteAddr</strong>: the IP address of the user (if applicable  – empty for occ commands)</p></li>
+<li><p><strong>user</strong>: acting user’s id (if applicable)</p></li>
+<li><p><strong>app</strong>: affected app (always admin_audit in audit.log)</p></li>
+<li><p><strong>method</strong>: HTTP method, for example GET, POST, PROPFIND, etc.  – empty on occ calls</p></li>
+<li><p><strong>url</strong>: request path (if applicable – empty on occ calls)</p></li>
+<li><p><strong>message</strong>: event information message</p></li>
+<li><p><strong>userAgent</strong>: user agent (if applicable – empty on occ calls)</p></li>
+<li><p><strong>exception</strong>: Full exception with trace (if applicable)</p></li>
+<li><p><strong>data</strong> additional structured data (if applicable)</p></li>
+<li><p><strong>version</strong>: Nextcloud version at the time of request</p></li>
+</ul>
+<p>Empty value are written as two dashes: <code class="docutils literal notranslate"><span class="pre">--</span></code>.</p>
+</section>
+</section>
+<section id="admin-audit-log-optional">
+<h2>Admin audit log (Optional)<a class="headerlink" href="#admin-audit-log-optional" title="Link to this heading"></a></h2>
+<p>By enabling the <strong>admin_audit</strong> app, additional information about various events can be logged. Similar to the normal logging, the audit log can be provided to any of the existing logging mechanisms in <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code>. The default behavior, if no parameters are specified after the app is enabled, is <code class="docutils literal notranslate"><span class="pre">file</span></code> based logging to a file called <code class="docutils literal notranslate"><span class="pre">audit.log</span></code> stored in the <code class="docutils literal notranslate"><span class="pre">datadirectory</span></code>.</p>
+<p>If you wish to override this and log to syslog instead the following would be one approach:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;log_type_audit&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;syslog&quot;</span><span class="p">,</span>
+<span class="s2">&quot;syslog_tag_audit&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Nextcloud&quot;</span><span class="p">,</span>
+<span class="s2">&quot;logfile_audit&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+<section id="log-level-interaction">
+<h3>Log level interaction<a class="headerlink" href="#log-level-interaction" title="Link to this heading"></a></h3>
+<p>If system <code class="docutils literal notranslate"><span class="pre">loglevel</span></code> in <code class="docutils literal notranslate"><span class="pre">config.php</span></code> is set to <code class="docutils literal notranslate"><span class="pre">2</span></code> or higher, audit logging needs to be triggered explicitly by adding the following setting to <code class="docutils literal notranslate"><span class="pre">config.php</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;log.condition&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s2">&quot;apps&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;admin_audit&quot;</span><span class="p">],</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+<p>Find detailed documentation on auditable events for enterprises in our <a class="reference external" href="https://portal.nextcloud.com/article/using-the-audit-log-44.html">customer portal</a>.</p>
+</section>
+<section id="integrating-into-the-web-interface">
+<h3>Integrating into the Web Interface<a class="headerlink" href="#integrating-into-the-web-interface" title="Link to this heading"></a></h3>
+<p>The built-in NC <code class="docutils literal notranslate"><span class="pre">logreader</span></code> app (which is what provides the <em>Administration settings-&gt;Logging</em> interface) only accesses the file-based <code class="docutils literal notranslate"><span class="pre">nextcloud.log</span></code>. The <strong>admin_audit</strong> app log output, however, can be integrated into the web interface by configuring it to <em>also</em> log to the <code class="docutils literal notranslate"><span class="pre">nextcloud.log</span></code>.</p>
+<p>Add the following to your <code class="docutils literal notranslate"><span class="pre">config.php</span></code> (adjusting the path to your own <code class="docutils literal notranslate"><span class="pre">nextcloud.log</span></code> path):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;log.condition&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;apps&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s1">&#39;admin_audit&#39;</span><span class="p">],</span>
+<span class="p">],</span>
+<span class="s1">&#39;logfile_audit&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/var/www/html/data/nextcloud.log&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+</section>
+<section id="configuring-through-admin-audit-app-settings">
+<h3>Configuring through admin_audit app settings<a class="headerlink" href="#configuring-through-admin-audit-app-settings" title="Link to this heading"></a></h3>
+<p>Previously the audit logfile was defined in the app config. This config is still used when the system config is not provided, but is considered a legacy parameter.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">admin_audit</span> <span class="n">logfile</span> <span class="o">--</span><span class="n">value</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">audit</span><span class="o">.</span><span class="n">log</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="workflow-log">
+<h2>Workflow log<a class="headerlink" href="#workflow-log" title="Link to this heading"></a></h2>
+<p>By default, the workflow log is stored to <cite>flow.log</cite> in the data folder.</p>
+<p>The path of the workflow log can be set as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">workflowengine</span> <span class="n">logfile</span> <span class="o">--</span><span class="n">value</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">flow</span><span class="o">.</span><span class="n">log</span>
+</pre></div>
+</div>
+<p>Set the value to <cite>/dev/null</cite> to avoid storing the log.</p>
+</section>
+<section id="temporary-overrides">
+<h2>Temporary overrides<a class="headerlink" href="#temporary-overrides" title="Link to this heading"></a></h2>
+<p>You can run override the config.php log level of <code class="docutils literal notranslate"><span class="pre">occ</span></code> commands with as <a class="reference internal" href="../occ_command.html#occ-debugging"><span class="std std-ref">documented here</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="language_configuration.html" class="btn btn-neutral float-left" title="Language &amp; Locale" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="oauth2.html" class="btn btn-neutral float-right" title="OAuth2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

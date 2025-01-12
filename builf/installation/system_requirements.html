@@ -1,0 +1,329 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System requirements &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Deployment recommendations" href="deployment_recommendations.html" />
+    <link rel="prev" title="Installation and server configuration" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation and server configuration</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">System requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#server">Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cpu-architecture-and-os">CPU Architecture and OS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#memory">Memory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database-requirements-for-mysql-mariadb">Database requirements for MySQL / MariaDB</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#why-we-drop-old-php-versions">Why we drop old PHP versions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#desktop-client">Desktop client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mobile-apps">Mobile apps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#files-app">Files App</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#talk-app">Talk App</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#web-browser">Web browser</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment_recommendations.html">Deployment recommendations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="php_configuration.html">PHP Modules &amp; Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source_installation.html">Installation on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_wizard.html">Installation wizard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Installing from command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">NGINX configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harden_server.html">Hardening and security guidance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server_tuning.html">Server tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_ubuntu.html">Example installation on Ubuntu 22.04 LTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_centos.html">Example installation on CentOS 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_openbsd.html">Example installation on OpenBSD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="initial_setup.html">Initial setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Installation and server configuration</a></li>
+      <li class="breadcrumb-item active">System requirements</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/installation/system_requirements.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="system-requirements">
+<h1>System requirements<a class="headerlink" href="#system-requirements" title="Link to this heading"></a></h1>
+<section id="server">
+<h2>Server<a class="headerlink" href="#server" title="Link to this heading"></a></h2>
+<p>For best performance, stability and functionality we have documented some recommendations for running a Nextcloud server.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you plan a setup for your organization and you rely on professional deployment consulting (e.g. efficient and
+reliable scaling) and support, we strongly recommend you to check out our <a class="reference external" href="https://nextcloud.com/enterprise/">enterprise support</a>.</p>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Platform</p></th>
+<th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Operating System
+(64-bit)</p></td>
+<td><ul class="simple">
+<li><p>Ubuntu 24.04 LTS</p></li>
+<li><p><strong>Ubuntu 22.04 LTS</strong> (recommended)</p></li>
+<li><p><strong>Red Hat Enterprise Linux 9</strong> (recommended)</p></li>
+<li><p>Red Hat Enterprise Linux 8</p></li>
+<li><p>Debian 12 (Bookworm)</p></li>
+<li><p>SUSE Linux Enterprise Server 15</p></li>
+<li><p>openSUSE Leap 15.5</p></li>
+<li><p>CentOS Stream</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Database</p></td>
+<td><ul class="simple">
+<li><p>MySQL 8.0 / <strong>8.4</strong> or MariaDB 10.6/ <strong>10.11</strong> (recommended) / 11.4</p></li>
+<li><p>Oracle Database 11g, 18, 21, 23
+(<em>only as part of an enterprise subscription</em>)</p></li>
+<li><p>PostgreSQL 13/14/15/16/17</p></li>
+<li><p>SQLite 3.16+ (<em>only recommended for testing and minimal-instances</em>)</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Webserver</p></td>
+<td><ul class="simple">
+<li><p><strong>Apache 2.4 with</strong> <code class="docutils literal notranslate"><span class="pre">mod_php</span></code> <strong>or</strong> <code class="docutils literal notranslate"><span class="pre">php-fpm</span></code> (recommended)</p></li>
+<li><p>nginx with <code class="docutils literal notranslate"><span class="pre">php-fpm</span></code></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>PHP Runtime</p></td>
+<td><ul class="simple">
+<li><p>8.1 (<em>deprecated</em>)</p></li>
+<li><p>8.2</p></li>
+<li><p><strong>8.3</strong> (<em>recommended</em>)</p></li>
+<li><p>8.4</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>See <a class="reference internal" href="source_installation.html"><span class="doc">Installation on Linux</span></a> for minimum PHP-modules and additional software for installing Nextcloud.</p>
+<section id="cpu-architecture-and-os">
+<h3>CPU Architecture and OS<a class="headerlink" href="#cpu-architecture-and-os" title="Link to this heading"></a></h3>
+<p>A 64-bit CPU, OS and PHP is required for Nextcloud to run well.</p>
+<p>32-bit systems are supported, with the following known limitations:</p>
+<ul class="simple">
+<li><p>Dates before Unix Epoch (1970-01-01) are not supported</p></li>
+<li><p>Dates after 2038 are not supported</p></li>
+</ul>
+</section>
+<section id="memory">
+<h3>Memory<a class="headerlink" href="#memory" title="Link to this heading"></a></h3>
+<p>Memory requirements for running a Nextcloud server are greatly variable,
+depending on the numbers of users, apps, files and volume of server activity.</p>
+<p>Nextcloud needs a minimum of <strong>128MB</strong> RAM per process, and we recommend a minimum of <strong>512MB</strong> RAM per process.</p>
+<p>In low memory environments, some features or apps may require adjustments to their default
+settings in order to function (or, in some cases, may need to be disabled outright).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>To use the built-in Updater, at least 256MB is required.</p>
+</div>
+</section>
+<section id="database-requirements-for-mysql-mariadb">
+<h3>Database requirements for MySQL / MariaDB<a class="headerlink" href="#database-requirements-for-mysql-mariadb" title="Link to this heading"></a></h3>
+<p>The following is currently required if you’re running Nextcloud together with a MySQL / MariaDB database:</p>
+<ul class="simple">
+<li><p>InnoDB storage engine (MyISAM is not supported)</p></li>
+<li><p>“READ COMMITTED” transaction isolation level (See: <a class="reference internal" href="../configuration_database/linux_database_configuration.html#db-transaction-label"><span class="std std-ref">Database “READ COMMITTED” transaction isolation level</span></a>)</p></li>
+<li><p>Disabled or BINLOG_FORMAT = ROW configured Binary Logging (See: <a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/binary-log-formats.html">https://dev.mysql.com/doc/refman/5.7/en/binary-log-formats.html</a>)</p></li>
+<li><p>For <strong>Emoji (UTF8 4-byte) support</strong> see <a class="reference internal" href="../configuration_database/mysql_4byte_support.html"><span class="doc">Enabling MySQL 4-byte support</span></a></p></li>
+</ul>
+</section>
+<section id="why-we-drop-old-php-versions">
+<h3>Why we drop old PHP versions<a class="headerlink" href="#why-we-drop-old-php-versions" title="Link to this heading"></a></h3>
+<p>Every year, a new PHP version is added and old PHP versions are deprecated. This also affects our documented recommended PHP version.</p>
+<p>We try to support old PHP versions for as long as reasonably possible. However the list of security, performance, and bug fixes will only increase, some of those fixes might be considered critical and thus at some point the deprecation will be inevitable.</p>
+<p>Thus it is recommended to keep your PHP version up to date.</p>
+<section id="advantages-of-upgrading-php">
+<h4>Advantages of upgrading PHP<a class="headerlink" href="#advantages-of-upgrading-php" title="Link to this heading"></a></h4>
+<ul>
+<li><p><strong>Security</strong></p>
+<p>PHP deprecates security fixes of old versions. Nextcloud cannot implement security fixes that come with new PHP versions as long as we support deprecated PHP versions, since the syntax that we are allowed to use must be the lowest one of the supported versions, thus the upstream packages of third parties break because they dropped this support.</p>
+</li>
+<li><p><strong>Performance</strong></p>
+<p>The language continuously improves over time which makes it possible to do more requests in significantly less time.</p>
+</li>
+</ul>
+</section>
+<section id="long-term-support">
+<h4>Long term support<a class="headerlink" href="#long-term-support" title="Link to this heading"></a></h4>
+<p>If you are running Nextcloud for an organisation-critical use case, you could consider upgrading your subscription to a premium subscription which comes with 5 years of long term support. This means you continue to receive maintenance releases for high and critical security issues, data loss fixes, and regressions within version over this extended period of time.</p>
+</section>
+</section>
+</section>
+<section id="desktop-client">
+<h2>Desktop client<a class="headerlink" href="#desktop-client" title="Link to this heading"></a></h2>
+<p>We strongly recommend using the latest version of your operating system to get the full and most stable experience out
+of our clients.</p>
+<ul class="simple">
+<li><p><strong>Windows</strong> 10+</p></li>
+<li><p><strong>macOS</strong> Lion (10.14)+ (64-bits only)
+* Please note that your server may need to be Apple App Transport Security compliant in order for the desktop client to connect successfully. This may involve using a digital certificate that is adequately signed to the standards established by Apple. More information is provided by Apple in their developer documentation: <a class="reference external" href="https://developer.apple.com/documentation/security/preventing-insecure-network-connections">https://developer.apple.com/documentation/security/preventing-insecure-network-connections</a></p></li>
+<li><p><strong>Linux</strong> (64-bits only) Should run on any distribution newer than Ubuntu 18.04 with our official AppImage package</p></li>
+</ul>
+</section>
+<section id="mobile-apps">
+<h2>Mobile apps<a class="headerlink" href="#mobile-apps" title="Link to this heading"></a></h2>
+<p>We strongly recommend using the latest version of your mobile operating system to get the full and most stable experience out
+of our mobile apps.</p>
+<section id="files-app">
+<h3>Files App<a class="headerlink" href="#files-app" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>iOS</strong> 15.0+</p></li>
+<li><p><strong>Android</strong> 7.0+</p></li>
+</ul>
+</section>
+<section id="talk-app">
+<h3>Talk App<a class="headerlink" href="#talk-app" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>iOS</strong> 15.0+</p></li>
+<li><p><strong>Android</strong> 8.0+</p></li>
+<li><p><strong>Nextcloud Server</strong> 19.0+</p></li>
+<li><p><strong>Nextcloud Talk</strong> 9.0+</p></li>
+</ul>
+</section>
+</section>
+<section id="web-browser">
+<h2>Web browser<a class="headerlink" href="#web-browser" title="Link to this heading"></a></h2>
+<p>For the best experience with the Nextcloud web interface, we recommend that you use the latest and supported version
+of a browser from this list, or one based on those:</p>
+<ul class="simple">
+<li><p>Microsoft <strong>Edge</strong></p></li>
+<li><p>Mozilla <strong>Firefox</strong></p></li>
+<li><p>Google <strong>Chrome</strong>/Chromium</p></li>
+<li><p>Apple <strong>Safari</strong></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to use Nextcloud Talk you should use Mozilla <strong>Firefox</strong> 52+ or Google <strong>Chrome</strong>/Chromium 49+ to have
+the full experience with video calls and screensharing. Google Chrome/Chromium requires an additional plugin for
+screensharing.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Installation and server configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="deployment_recommendations.html" class="btn btn-neutral float-right" title="Deployment recommendations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

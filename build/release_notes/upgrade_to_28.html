@@ -1,0 +1,216 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upgrade to Nextcloud 28 &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Upgrade to Nextcloud 27" href="upgrade_to_27.html" />
+    <link rel="prev" title="Upgrade to Nextcloud 30" href="upgrade_to_30.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Release notes</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#critical-changes">Critical changes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_31.html">Upgrade to Nextcloud 31</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_30.html">Upgrade to Nextcloud 30</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Upgrade to Nextcloud 28</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#system-requirements">System requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#web-server-configuration">Web server configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setup-checks">Setup Checks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#monitoring">Monitoring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#previews-for-office-files-using-libreoffice">Previews for Office files using LibreOffice</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_27.html">Upgrade to Nextcloud 27</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_26.html">Upgrade to Nextcloud 26</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#changelog">Changelog</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Release notes</a></li>
+      <li class="breadcrumb-item active">Upgrade to Nextcloud 28</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/release_notes/upgrade_to_28.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="upgrade-to-nextcloud-28">
+<h1>Upgrade to Nextcloud 28<a class="headerlink" href="#upgrade-to-nextcloud-28" title="Link to this heading"></a></h1>
+<section id="system-requirements">
+<h2>System requirements<a class="headerlink" href="#system-requirements" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>PHP 8.3 is now supported, but 8.2 is recommended.</p></li>
+</ul>
+</section>
+<section id="web-server-configuration">
+<h2>Web server configuration<a class="headerlink" href="#web-server-configuration" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>The recommended <a class="reference internal" href="../installation/nginx.html#nginx-config"><span class="std std-ref">nginx configuration</span></a> changed as Nextcloud Talk now serves audio files with <code class="docutils literal notranslate"><span class="pre">.ogg</span></code> / <code class="docutils literal notranslate"><span class="pre">.flac</span></code> extension, make sure to add these extensions to the list of static files.</p></li>
+<li><p>As some core app now make use of JavaScript modules, make sure your web server is not rewriting requests to <code class="docutils literal notranslate"><span class="pre">.mjs</span></code> files, but serves them with <code class="docutils literal notranslate"><span class="pre">text/javascript</span></code> MIME type and proper <code class="docutils literal notranslate"><span class="pre">Cache-Control</span></code> header, like <code class="docutils literal notranslate"><span class="pre">.js</span></code> and other static file extensions.</p>
+<ul>
+<li><p>When using Apache with <code class="docutils literal notranslate"><span class="pre">.htaccess</span></code> configuration, this will be done automatically.</p></li>
+<li><p>For Nginx, please refer to our recommended <a class="reference internal" href="../installation/nginx.html#nginx-config"><span class="std std-ref">Nginx configuration</span></a>.</p></li>
+<li><p>For other setups, make sure to add <code class="docutils literal notranslate"><span class="pre">.mjs</span></code> to the list of static file extensions in web server configs and in case define its MIME type in <code class="docutils literal notranslate"><span class="pre">/etc/mime.types</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="setup-checks">
+<h2>Setup Checks<a class="headerlink" href="#setup-checks" title="Link to this heading"></a></h2>
+<p>The setup checks (the ones visible under <em>Administration settings-&gt;Overview</em>) that previously ran from the web browser now run server-side rather than from the browser.</p>
+<p>This means that some false positives may be triggered in existing installations after upgrading. This does not mean the checks are invalid or broken. It does mean that local configuration matters that may not have had obvious side effects previously may now prevent the tests from getting accurate results.</p>
+<p>In nearly all cases the resolution is one or more of the following:</p>
+<ul class="simple">
+<li><p>verifying all entries in <code class="docutils literal notranslate"><span class="pre">trusted_domains</span></code> and the value of <code class="docutils literal notranslate"><span class="pre">overwrite.cli.url</span></code> are valid, resolvable in DNS, and reachable <em>from the Nextcloud Server itself</em></p></li>
+<li><p>verifying that the Server can reach its own URL(s)</p></li>
+<li><p>verifying all <code class="docutils literal notranslate"><span class="pre">overwrite*</span></code> config values are reasonable</p></li>
+</ul>
+<p>In diagnosing the above, many admins have found it useful to review not only their <cite>config.php</cite> (for cleanup) but also:</p>
+<ul class="simple">
+<li><p>their local DNS resolvers and <code class="docutils literal notranslate"><span class="pre">/etc/hosts</span></code> files for reasonableness</p></li>
+<li><p>their firewall configurations</p></li>
+<li><p>their container network configuration if using Docker/etc (especially for outbound connectivity)</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Testing of connectivity and reachability of specific URLs can usually be tested from servers or containers via <code class="docutils literal notranslate"><span class="pre">curl</span></code> or <code class="docutils literal notranslate"><span class="pre">wget</span></code>.</p>
+</div>
+</section>
+<section id="monitoring">
+<h2>Monitoring<a class="headerlink" href="#monitoring" title="Link to this heading"></a></h2>
+<p>Beginning with Nextcloud 28, the monitoring endpoint no longer provides information about available app updates, as gathering the data always involves at least one external request to apps.nextcloud.com.</p>
+<p>You can still ask the monitoring endpoint to show new app updates by using the URL parameter skipApps=false. However, please do not check this endpoint too often.</p>
+<p><a class="reference external" href="https://github.com/nextcloud/serverinfo#api">https://github.com/nextcloud/serverinfo#api</a></p>
+</section>
+<section id="previews-for-office-files-using-libreoffice">
+<h2>Previews for Office files using LibreOffice<a class="headerlink" href="#previews-for-office-files-using-libreoffice" title="Link to this heading"></a></h2>
+<p>Nextcloud can generate previews for Office files using LibreOffice.</p>
+<p>Since Nextcloud 28, you can also create previews for EMF files.
+To enable it, add <code class="docutils literal notranslate"><span class="pre">'OC\Preview\EMF'</span></code> to <code class="docutils literal notranslate"><span class="pre">enabledPreviewProviders</span></code>.</p>
+<p>Until Nextcloud 28, the same LibreOffice user profile was used to generate the previews. LibreOffice can only be invoked once per user profile, so the generation of a preview for an office file would fail if another one were created right now.</p>
+<p>Beginning with Nextcloud 28, a different LibreOffice user profile is used for each file. Downside: If you upload 100 emf files, you may end up with 100 LibreOffice
+invocations. Though, you can use <code class="docutils literal notranslate"><span class="pre">preview_concurrency_new</span></code> and <code class="docutils literal notranslate"><span class="pre">preview_concurrency_all</span></code> to limit the number of previews that can be generated concurrently when php-sysvsem is available.</p>
+<p>The configuration option <code class="docutils literal notranslate"><span class="pre">preview_office_cl_parameters</span></code> was removed with Nextcloud 28.
+We expect LibreOffice to be started with the given parameters, so it’s unfavorable to have a configuration option to change the parameters.
+Please reach out to us via <a class="reference external" href="https://github.com/nextcloud/server/pull/41395">https://github.com/nextcloud/server/pull/41395</a> if that’s causing any trouble for you.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Previews for EMF files can be enabled without a local LibreOffice installation if you are already using Nextcloud Office / Collabora. Make sure you have Nextcloud Office 8.3.0 installed and add <code class="docutils literal notranslate"><span class="pre">'OCA\Richdocuments\Preview\EMF'</span></code> to <code class="docutils literal notranslate"><span class="pre">enabledPreviewProviders</span></code>.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="upgrade_to_30.html" class="btn btn-neutral float-left" title="Upgrade to Nextcloud 30" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="upgrade_to_27.html" class="btn btn-neutral float-right" title="Upgrade to Nextcloud 27" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,219 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LDAP user cleanup &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The LDAP configuration API" href="user_auth_ldap_api.html" />
+    <link rel="prev" title="User authentication with LDAP" href="user_auth_ldap.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="user_configuration.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reset_admin_password.html">Resetting a lost admin password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reset_user_password.html">Resetting a user password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_password_policy.html">User password policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two_factor-auth.html">Two-factor authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap.html">User authentication with LDAP</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">LDAP user cleanup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#deleting-local-nextcloud-users">Deleting local Nextcloud users</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_api.html">The LDAP configuration API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_provisioning_api.html">User provisioning API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile_configuration.html">Profile configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">User management</a></li>
+      <li class="breadcrumb-item active">LDAP user cleanup</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_user/user_auth_ldap_cleanup.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ldap-user-cleanup">
+<h1>LDAP user cleanup<a class="headerlink" href="#ldap-user-cleanup" title="Link to this heading"></a></h1>
+<p>LDAP User Cleanup is a new feature in the <code class="docutils literal notranslate"><span class="pre">LDAP</span> <span class="pre">user</span> <span class="pre">and</span> <span class="pre">group</span> <span class="pre">backend</span></code>
+application. LDAP User Cleanup is a background process that automatically
+searches the Nextcloud LDAP mappings table, and verifies if the LDAP users are
+still available. Any users that are not available are marked as <code class="docutils literal notranslate"><span class="pre">deleted</span></code> in
+the <code class="docutils literal notranslate"><span class="pre">oc_preferences</span></code> database table. Then you can run a command to display
+this table, displaying only the users marked as <code class="docutils literal notranslate"><span class="pre">deleted</span></code>, and then you have
+the option of removing their data from your Nextcloud data directory.</p>
+<p>These items are removed upon cleanup:</p>
+<ul class="simple">
+<li><p>Local Nextcloud group assignments</p></li>
+<li><p>User preferences (DB table <code class="docutils literal notranslate"><span class="pre">oc_preferences</span></code>)</p></li>
+<li><p>User’s Nextcloud home folder</p></li>
+<li><p>User’s corresponding entry in <code class="docutils literal notranslate"><span class="pre">oc_storages</span></code></p></li>
+</ul>
+<p>There are two prerequisites for LDAP User Cleanup to operate:</p>
+<ol class="arabic simple">
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">ldapUserCleanupInterval</span></code> in <code class="docutils literal notranslate"><span class="pre">config.php</span></code> to your desired check
+interval in minutes. The default is 51 minutes.</p></li>
+<li><p>All configured LDAP connections are enabled and operating correctly. As users
+can exist on multiple LDAP servers, you want to be sure that all of your
+LDAP servers are available so that a user on a temporarily disconnected LDAP
+server is not marked as <code class="docutils literal notranslate"><span class="pre">deleted</span></code>.</p></li>
+</ol>
+<p>The background process examines 50 users at a time, and runs at the interval you
+configured with <code class="docutils literal notranslate"><span class="pre">ldapUserCleanupInterval</span></code>. For example, if you have 200 LDAP
+users and your <code class="docutils literal notranslate"><span class="pre">ldapUserCleanupInterval</span></code> is 20 minutes, the process will
+examine the first 50 users, then 20 minutes later the next 50 users, and 20
+minutes later the next 50, and so on.</p>
+<p>The amount of users to check can be set to a custom value via occ command. The
+following example sets it to 300:</p>
+<p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">occ</span> <span class="pre">config:app:set</span> <span class="pre">--value=300</span> <span class="pre">user_ldap</span> <span class="pre">cleanUpJobChunkSize</span></code></p>
+<p>There are two <code class="docutils literal notranslate"><span class="pre">occ</span></code> commands to use for examining a table of users marked as
+deleted, and then manually deleting them.  The <code class="docutils literal notranslate"><span class="pre">occ</span></code> command is in your
+Nextcloud directory, for example <code class="docutils literal notranslate"><span class="pre">/var/www/nextcloud/occ</span></code>, and it must be run as
+your HTTP user. To learn more about <code class="docutils literal notranslate"><span class="pre">occ</span></code>, see
+<a class="reference internal" href="../occ_command.html"><span class="doc">Using the occ command</span></a>.</p>
+<p>These examples are for Ubuntu Linux:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">occ</span> <span class="pre">ldap:show-remnants</span></code> displays a table with all
+users that have been marked as deleted, and their LDAP data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">occ</span> <span class="pre">user:delete</span> <span class="pre">[user]</span></code> removes the user’s data from the
+Nextcloud data directory.</p></li>
+</ol>
+<p>This example shows what the table of users marked as <code class="docutils literal notranslate"><span class="pre">deleted</span></code> looks like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo -u www-data php occ ldap:show-remnants
++-----------------+-----------------+------------------+--------------------------------------+
+| Nextcloud name  | Display Name    | LDAP UID         | LDAP DN                              |
++-----------------+-----------------+------------------+--------------------------------------+
+| aaliyah_brown   | aaliyah brown   | aaliyah_brown    | uid=aaliyah_brown,ou=people,dc=com   |
+| aaliyah_hammes  | aaliyah hammes  | aaliyah_hammes   | uid=aaliyah_hammes,ou=people,dc=com  |
+| aaliyah_johnston| aaliyah johnston| aaliyah_johnston | uid=aaliyah_johnston,ou=people,dc=com|
+| aaliyah_kunze   | aaliyah kunze   | aaliyah_kunze    | uid=aaliyah_kunze,ou=people,dc=com   |
++-----------------+-----------------+------------------+--------------------------------------+
+</pre></div>
+</div>
+<p>Following flags can be specified additionally:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--short-date</span></code>: formats the dates for <code class="docutils literal notranslate"><span class="pre">Last</span> <span class="pre">login</span></code> and <code class="docutils literal notranslate"><span class="pre">Detected</span> <span class="pre">on</span></code> in a short Y-m-d format (e.g. 2019-01-14)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--json</span></code>: instead of a table, the output is json-encoded. This makes it easy to process the data programmatically.</p></li>
+</ul>
+<p>Then you can run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">occ</span> <span class="pre">user:delete</span> <span class="pre">aaliyah_brown</span></code> to delete
+user aaliyah_brown. You must use the user’s Nextcloud name.</p>
+<section id="deleting-local-nextcloud-users">
+<h2>Deleting local Nextcloud users<a class="headerlink" href="#deleting-local-nextcloud-users" title="Link to this heading"></a></h2>
+<p>You may also use <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">user:delete</span> <span class="pre">[user]</span></code> to remove a local Nextcloud user;
+this removes their user account and their data.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="user_auth_ldap.html" class="btn btn-neutral float-left" title="User authentication with LDAP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="user_auth_ldap_api.html" class="btn btn-neutral float-right" title="The LDAP configuration API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

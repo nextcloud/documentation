@@ -1,0 +1,394 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upgrade via built-in updater &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Upgrade manually" href="manual_upgrade.html" />
+    <link rel="prev" title="How to upgrade" href="upgrade.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Maintenance</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="backup.html">Backup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restore.html">Restoring backup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade.html">How to upgrade</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Upgrade via built-in updater</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-does-the-updater-do">What does the updater do?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-web-based-updater">Using the web based updater</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-command-line-based-updater">Using the command line based updater</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#batch-mode-for-command-line-based-updater">Batch mode for command line based updater</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manual_upgrade.html">Upgrade manually</a></li>
+<li class="toctree-l2"><a class="reference internal" href="package_upgrade.html">Upgrade via packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating.html">Migrating to a different server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating_owncloud.html">Migrating from ownCloud</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Maintenance</a></li>
+      <li class="breadcrumb-item active">Upgrade via built-in updater</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/maintenance/update.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="upgrade-via-built-in-updater">
+<h1>Upgrade via built-in updater<a class="headerlink" href="#upgrade-via-built-in-updater" title="Link to this heading"></a></h1>
+<p>The built-in updater automates many of the steps of upgrading a Nextcloud
+installation. It is useful for installations that do not have root access,
+such as shared hosting, for installations with a smaller number of users
+and data, and it automates updating
+<a class="reference internal" href="../installation/source_installation.html"><span class="doc">manual installations</span></a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Downgrading</strong> is not supported and risks corrupting your data! If you want
+to revert to an older Nextcloud version, install it from scratch and then
+restore your data from backup. Before doing this, file a support ticket if
+you have paid support or ask for help in the Nextcloud forums to see if your
+issue can be resolved without downgrading.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>You should maintain regular backups (see <a class="reference internal" href="backup.html"><span class="doc">Backup</span></a>), and make a backup
+before every update. The built-in updater does not backup your database or data
+directory.</p>
+</div>
+<section id="what-does-the-updater-do">
+<h2>What does the updater do?<a class="headerlink" href="#what-does-the-updater-do" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The built-in updater itself only replaces the existing files with the ones from the
+version it updates to. The migration phase, which upgrades your database and apps,
+needs to be executed afterwards. In command line mode, the updater offers to trigger this
+for you right after the code was successfully replaced by running <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code> for you.
+In web mode, the updater finishes and then offers to send you back to your instance’s main
+URL to trigger the migration phase’s web UI.</p>
+</div>
+<p>The built-in updater performs these operations:</p>
+<ul class="simple">
+<li><p><strong>Check for expected files:</strong> checks if only the expected files of a
+Nextcloud installation are present, because it turned out that some files
+that were left in the Nextcloud directory caused side effects that risked
+the update procedure.</p></li>
+<li><p><strong>Check for write permissions:</strong> checks if all files that need to be
+writable during the update procedure are actually writable.</p></li>
+<li><p><strong>Enable maintenance mode:</strong> enables the maintenance mode so that no other
+actions are executed while running the update of the code.</p></li>
+<li><p><strong>Create backup:</strong> creates a backup of the existing code base in
+<code class="docutils literal notranslate"><span class="pre">/updater-INSTANCEID/backups/nextcloud-CURRENTVERSION/</span></code> inside of the
+data directory (this does not contain the <code class="docutils literal notranslate"><span class="pre">/data</span></code> directory nor the
+database).</p></li>
+<li><p><strong>Downloading:</strong> downloads the code in the version it should update to. This
+is also shown in the web UI before the update is started. This archive is
+downloaded to <code class="docutils literal notranslate"><span class="pre">/updater-INSTANCEID/downloads/</span></code>.</p></li>
+<li><p><strong>Extracting:</strong> extracts the archive to the same folder.</p></li>
+<li><p><strong>Replace entry points:</strong> replaces all Nextcloud entry points with dummy
+files so that when those files are replaced all clients still get the proper
+maintenance mode response. Examples for those endpoints are <code class="docutils literal notranslate"><span class="pre">index.php</span></code>,
+<code class="docutils literal notranslate"><span class="pre">remote.php</span></code> or <code class="docutils literal notranslate"><span class="pre">ocs/v1.php</span></code>.</p></li>
+<li><p><strong>Delete old files:</strong> deletes all files except the above mentioned entry
+points, the data and config dir as well as non-shipped apps and themes. (And
+the updater itself of course)</p></li>
+<li><p><strong>Move new files in place:</strong> moves the files from the extracted archive in
+place.</p></li>
+<li><p><strong>Keep maintenance mode active?:</strong> asks you if the maintenance mode should
+be kept active. This allows the admin to use the web based updater but run
+the actual migration steps (<code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code>) on the command line. If the
+maintenance mode is kept active command line access is required. To use the
+web based upgrade page disable the maintenance mode and click the link to
+get to the upgrade page. (This step is only available in the web based
+updater.)</p></li>
+<li><p><strong>Done</strong> the update of the code is done and you either need to go to the
+linked page or to the command line to finish the upgrade by executing the
+migration steps.</p></li>
+</ul>
+</section>
+<section id="using-the-web-based-updater">
+<h2>Using the web based updater<a class="headerlink" href="#using-the-web-based-updater" title="Link to this heading"></a></h2>
+<p>Using the built-in updater to update your Nextcloud installation is just a few
+steps:</p>
+<ol class="arabic simple">
+<li><p>You should see a notification at the top of any Nextcloud page when there is
+a new update available. Go to the admin settings page and scroll to the
+section “Version”. This section has a button to open the updater. This
+section as well as the update notification is only available if the update
+notification app is enabled in the apps management.</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../_images/updater-1-update-available.png" src="../_images/updater-1-update-available.png" />
+</figure>
+<ol class="arabic simple" start="2">
+<li><p>Click the button “Open updater”.</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../_images/updater-2-open-updater.png" src="../_images/updater-2-open-updater.png" />
+</figure>
+<ol class="arabic simple" start="3">
+<li><p>Verify the information that is shown and click the button “Start update”
+to start the update.</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../_images/updater-3-running-step.png" src="../_images/updater-3-running-step.png" />
+</figure>
+<ol class="arabic simple" start="4">
+<li><p>In case an error happens or the check failed the updater stops processing
+and gives feedback. You can now try to solve the problem and click the
+“Retry update” button. This will continue the update and re-run the failed
+step. It will not re-run the previous succeeded steps.</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../_images/updater-4-failed-step.png" src="../_images/updater-4-failed-step.png" />
+</figure>
+<ol class="arabic simple" start="5">
+<li><p>In case you close the updater, before it finished you can just open the
+updater page again and proceed at the last succeeded step. Closing the web
+page will still execute the running step but will not continue with the next
+one, because this is triggered by the open updater page.</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../_images/updater-5-continue-update.png" src="../_images/updater-5-continue-update.png" />
+</figure>
+<ol class="arabic simple" start="6">
+<li><p>Once all steps are executed the updater will ask you a final question:
+“Keep maintenance mode active?”. This allows you to use either the web based
+upgrade page or the command line based upgrade procedure (<code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code>).
+Command line access is required if the maintenance mode is kept active.</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../_images/updater-6-maintenance-mode.png" src="../_images/updater-6-maintenance-mode.png" />
+</figure>
+<ol class="arabic simple" start="7">
+<li><p>Done. You now can continue either to the web based upgrade page or run
+<code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code>. The two examples “Web based upgrade” and “Command line
+based upgrade” shows how the screens then look like.</p></li>
+</ol>
+<p><strong>Web based upgrade</strong></p>
+<p>This is how the web based update would continue:</p>
+<img alt="../_images/updater-7-disable-maintenance.png" src="../_images/updater-7-disable-maintenance.png" />
+<img alt="../_images/updater-9-upgrade-page.png" src="../_images/updater-9-upgrade-page.png" />
+<p><strong>Command line based upgrade</strong></p>
+<p>This is how the command line based update would continue:</p>
+<img alt="../_images/updater-8-keep-maintenance.png" src="../_images/updater-8-keep-maintenance.png" />
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo -u www-data php ./occ upgrade
+Nextcloud or one of the apps require upgrade - only a limited number of commands are available
+You may use your browser or the occ upgrade command to do the upgrade
+Set log level to debug
+Updating database schema
+Updated database
+Updating &lt;files_pdfviewer&gt; ...
+Updated &lt;files_pdfviewer&gt; to 1.1.1
+Updating &lt;gallery&gt; ...
+Updated &lt;gallery&gt; to 17.0.0
+Updating &lt;activity&gt; ...
+Updated &lt;activity&gt; to 2.5.2
+Updating &lt;comments&gt; ...
+Updated &lt;comments&gt; to 1.2.0
+Updating &lt;theming&gt; ...
+Updated &lt;theming&gt; to 1.3.0
+Starting code integrity check...
+Finished code integrity check
+Update successful
+Maintenance mode is kept active
+Reset log level
+</pre></div>
+</div>
+</section>
+<section id="using-the-command-line-based-updater">
+<h2>Using the command line based updater<a class="headerlink" href="#using-the-command-line-based-updater" title="Link to this heading"></a></h2>
+<p>The command line based updater works in the exact same way the web based
+updater works. The steps and checks are the very same.</p>
+<p>The steps are basically the same as for the web based updater:</p>
+<ol class="arabic simple">
+<li><p>You should see a notification at the top of any Nextcloud page when there is
+a new update available. Go to the admin settings page and scroll to the
+section “Version”. This section has a button to open the updater. This
+section as well as the update notification is only available if the update
+notification app is enabled in the apps management.</p></li>
+</ol>
+<img alt="../_images/updater-1-update-available.png" src="../_images/updater-1-update-available.png" />
+<ol class="arabic simple" start="2">
+<li><p>Instead of clicking that button you can now invoke the command line based
+updater by going into the <cite>updater/</cite> directory in the Nextcloud directory
+and executing the <cite>updater.phar</cite> as the web server user. (i.e.
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">/var/www/nextcloud/updater/updater.phar</span></code>)</p></li>
+</ol>
+<img alt="../_images/updater-cli-2-start-updater.png" class="terminal-image" src="../_images/updater-cli-2-start-updater.png" />
+<ol class="arabic simple" start="3">
+<li><p>Verify the information that is shown and enter “Y” to start the update.</p></li>
+</ol>
+<img alt="../_images/updater-cli-3-running-step.png" class="terminal-image" src="../_images/updater-cli-3-running-step.png" />
+<img alt="../_images/updater-cli-4-failed-step.png" class="terminal-image" src="../_images/updater-cli-4-failed-step.png" />
+<ol class="arabic simple" start="4">
+<li><p>In case an error happens or the check failed the updater stops processing
+and gives feedback. You can now try to solve the problem and re-run the
+updater command. This will continue the update and re-run the failed step.
+It will not re-run the previous succeeded steps.</p></li>
+</ol>
+<img alt="../_images/updater-cli-5-continue-update.png" class="terminal-image" src="../_images/updater-cli-5-continue-update.png" />
+<ol class="arabic simple" start="6">
+<li><p>Once all steps are executed the updater will ask you a final question:
+“Should the “occ upgrade” command be executed?”. This allows you to directly
+execute the command line based upgrade procedure (<code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code>). If you
+select “No” then it will finish with
+<cite>Please now execute “./occ upgrade” to finish the upgrade.</cite>.</p></li>
+</ol>
+<img alt="../_images/updater-cli-6-run-command.png" class="terminal-image" src="../_images/updater-cli-6-run-command.png" />
+<ol class="arabic simple" start="7">
+<li><p>Once the <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code> is done you get asked if the maintenance mode
+should be kept active.</p></li>
+</ol>
+<img alt="../_images/updater-cli-7-maintenance.png" class="terminal-image" src="../_images/updater-cli-7-maintenance.png" />
+</section>
+<section id="batch-mode-for-command-line-based-updater">
+<h2>Batch mode for command line based updater<a class="headerlink" href="#batch-mode-for-command-line-based-updater" title="Link to this heading"></a></h2>
+<p>It is possible to run the command line based updater in a non-interactive mode.
+The updater then doesn’t ask any interactive questions. It is assumed that if
+an update is available it should be installed and the <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code> command
+is executed as well. After finishing the maintenance mode will be turned off
+except an error occurred during the <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code> or the replacement of the
+code.</p>
+<p>To execute this, run the command with the <code class="docutils literal notranslate"><span class="pre">--no-interaction</span></code> option. (i.e.
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">/var/www/nextcloud/updater/updater.phar</span> <span class="pre">--no-interaction</span></code>)</p>
+<img alt="../_images/updater-cli-8-no-interaction.png" class="terminal-image" src="../_images/updater-cli-8-no-interaction.png" />
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>The built-in updater logs all of its actions to a dedicated log file called
+<code class="docutils literal notranslate"><span class="pre">updater.log</span></code> located in your configured <code class="docutils literal notranslate"><span class="pre">datadirectory</span></code>
+(e.g. <code class="docutils literal notranslate"><span class="pre">/var/www/html/data/updater.log</span></code>). This file can be helpful in isolating
+where things are failing. It will also be needed if you reach out for assistance
+on the community help forum (<a class="reference external" href="https://help.nextcloud.com">https://help.nextcloud.com</a>).</p></li>
+<li><p>If you are having problems using the Updater in web-mode, you should try using
+command-line mode (if it’s an option in your environment). Command-line avoids
+issues with web server timeouts, which can be problematic since sometimes the
+Updater can take a long time to complete certain steps.</p></li>
+<li><p>If the problem seems to be during the backup step, you can try disabling the
+backups the updater automatically creates of the installation files. Keep in
+mind these backups do <strong>not</strong> include your data (which you are already hopefully
+doing). The backup step can only be disabled while in command-line mode. Append
+the option <code class="docutils literal notranslate"><span class="pre">--no-backup</span></code> to the <code class="docutils literal notranslate"><span class="pre">updater.phar</span></code> command.</p></li>
+<li><p>If you accidentally say no when the command-line mode of the updater asks if you’d
+like to run <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code>, you can safely execute <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code> manually or
+simply visit the URL of your instance to complete the database migrations and app
+upgrade phase.</p></li>
+<li><p>Reach out to the community help forum for assistance (<a class="reference external" href="https://help.nextcloud.com">https://help.nextcloud.com</a>)</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="upgrade.html" class="btn btn-neutral float-left" title="How to upgrade" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="manual_upgrade.html" class="btn btn-neutral float-right" title="Upgrade manually" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

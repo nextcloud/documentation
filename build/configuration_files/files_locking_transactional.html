@@ -1,0 +1,211 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transactional file locking &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Previews configuration" href="previews_configuration.html" />
+    <link rel="prev" title="Encryption migration" href="encryption_migration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">File sharing and management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="file_sharing_configuration.html">File Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing_configuration.html">Configuring Federation Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="big_file_upload_configuration.html">Uploading big files &gt; 512MB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="default_files_configuration.html">Providing default files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="primary_storage.html">Configuring Object Storage as Primary Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_storage_configuration_gui.html">Configuring External Storage (GUI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_storage/auth_mechanisms.html">External Storage authentication mechanisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encryption_configuration.html">Encryption configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encryption_details.html">Encryption details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encryption_migration.html">Encryption migration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Transactional file locking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="previews_configuration.html">Previews configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_versioning.html">Controlling file versions and aging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trashbin_configuration.html">Deleted Items (trash bin)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">File sharing and management</a></li>
+      <li class="breadcrumb-item active">Transactional file locking</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_files/files_locking_transactional.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="transactional-file-locking">
+<h1>Transactional file locking<a class="headerlink" href="#transactional-file-locking" title="Link to this heading"></a></h1>
+<p>Nextcloud’s Transactional File Locking mechanism locks files to avoid
+file corruption during normal operation. It performs these functions:</p>
+<ul class="simple">
+<li><p>Operates at a higher level than the filesystem, so you don’t need to use a
+filesystem that supports locking</p></li>
+<li><p>Locks parent directories so they cannot be renamed during any activity on
+files inside the directories</p></li>
+<li><p>Releases locks after file transactions are interrupted, for
+example when a sync client loses the connection during an upload</p></li>
+<li><p>Manages locking and releasing locks correctly on shared files during changes
+from multiple users</p></li>
+<li><p>Manages locks correctly on external storage mounts</p></li>
+<li><p>Manages encrypted files correctly</p></li>
+</ul>
+<p>What Transactional File locking is not for: it will not prevent multiple users
+from editing the same document, or give notice that other users are working on
+the same document. Multiple users can open and edit a file at the same time and
+Transactional File locking does not prevent this. Rather, it prevents
+simultaneous file saving.</p>
+<p>Transactional File locking will use the database locking backend by default. This
+places a significant load on your database. Setting <code class="docutils literal notranslate"><span class="pre">memcache.locking</span></code> relieves
+the database load and improves performance. Admins of Nextcloud servers with
+heavy workloads should install a memcache. (See
+<a class="reference internal" href="../configuration_server/caching_configuration.html"><span class="doc">Memory caching</span></a>.)</p>
+<p>To use a memcache with Transactional File Locking, you must install the Redis
+server and corresponding PHP module. After installing Redis you must enter a
+configuration in your <code class="docutils literal notranslate"><span class="pre">config.php</span></code> file like this example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
+<span class="s1">&#39;redis&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
+     <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
+     <span class="s1">&#39;timeout&#39;</span> <span class="o">=&gt;</span> <span class="mf">0.0</span><span class="p">,</span>
+     <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">//</span> <span class="n">Optional</span><span class="p">,</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">defined</span> <span class="n">no</span> <span class="n">password</span> <span class="n">will</span> <span class="n">be</span> <span class="n">used</span><span class="o">.</span>
+      <span class="p">),</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For enhanced security it is recommended to configure Redis to require
+a password. See <a class="reference external" href="http://redis.io/topics/security">http://redis.io/topics/security</a> for more information.</p>
+</div>
+<p>If you want to configure Redis to listen on an Unix socket (which is
+recommended if Redis is running on the same system as Nextcloud) use this example
+<code class="docutils literal notranslate"><span class="pre">config.php</span></code> configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
+<span class="s1">&#39;redis&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
+     <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/run/redis/redis-server.sock&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+     <span class="s1">&#39;timeout&#39;</span> <span class="o">=&gt;</span> <span class="mf">0.0</span><span class="p">,</span>
+      <span class="p">),</span>
+</pre></div>
+</div>
+<p>See <code class="docutils literal notranslate"><span class="pre">config.sample.php</span></code> to see configuration examples for Redis, and for all
+supported memcaches.</p>
+<p>Learn more about Redis at <a class="reference external" href="http://redis.io/">Redis</a>. Memcached, the popular
+distributed memory caching system, is not suitable for the new file locking
+because it is not designed to store locks, and data can disappear from the cache
+at any time. Redis is a key-value store, and it guarantees that cached objects
+are available for as long as they are needed.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="encryption_migration.html" class="btn btn-neutral float-left" title="Encryption migration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="previews_configuration.html" class="btn btn-neutral float-right" title="Previews configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

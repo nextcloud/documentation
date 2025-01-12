@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reverse proxy &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Text app" href="text_configuration.html" />
+    <link rel="prev" title="OAuth2" href="oauth2.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Nextcloud configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="security_setup_warnings.html">Warnings on admin page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html">Configuration Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activity_configuration.html">Activity app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin_delegation_configuration.html">Administration privileges (Delegation)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antivirus_configuration.html">Antivirus scanner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="automatic_configuration.html">Automatic setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background_jobs_configuration.html">Background jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bruteforce_configuration.html">Brute force protection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching_configuration.html">Memory caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard_configuration.html">Dashboard app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain_change.html">Domain Change</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email_configuration.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_sites.html">Linking external sites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language_configuration.html">Language &amp; Locale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging_configuration.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2.html">OAuth2</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Reverse proxy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#defining-trusted-proxies">Defining trusted proxies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overwrite-parameters">Overwrite parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#service-discovery">Service Discovery</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#apache2">Apache2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#traefik-1">Traefik 1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#traefik-2">Traefik 2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#haproxy">HAProxy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nginx">NGINX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#caddy">Caddy</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#multiple-domains-reverse-ssl-proxy">Multiple domains reverse SSL proxy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="text_configuration.html">Text app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming.html">Theming</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Nextcloud configuration</a></li>
+      <li class="breadcrumb-item active">Reverse proxy</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_server/reverse_proxy_configuration.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="reverse-proxy">
+<span id="serverconf-reverseproxy"></span><h1>Reverse proxy<a class="headerlink" href="#reverse-proxy" title="Link to this heading"></a></h1>
+<p>Nextcloud can be run through a reverse proxy, which can cache static assets such
+as images, CSS or JS files, move the load of handling HTTPS to a different
+server or load balance between multiple servers.</p>
+<section id="defining-trusted-proxies">
+<h2>Defining trusted proxies<a class="headerlink" href="#defining-trusted-proxies" title="Link to this heading"></a></h2>
+<p>For security, you must explicitly define the proxy servers that Nextcloud is to
+trust. Connections from trusted proxies will be specially treated to get the
+real client information, for use in access control and logging. Parameters are
+configured in <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code></p>
+<p>Set the <code class="file docutils literal notranslate"><span class="pre">trusted_proxies</span></code> parameter as an array of:</p>
+<ul class="simple">
+<li><p>IPv4 addresses</p></li>
+<li><p>IPv4 ranges in CIDR notation</p></li>
+<li><p>IPv6 addresses</p></li>
+<li><p>IPv6 ranges in CIDR notation</p></li>
+</ul>
+<p>to define the servers Nextcloud should trust as proxies. This parameter
+provides protection against client spoofing, and you should secure those
+servers as you would your Nextcloud server.</p>
+<p>A reverse proxy can define HTTP headers with the original client IP address,
+and Nextcloud can use those headers to retrieve that IP address. Nextcloud uses
+the de-facto standard header ‘X-Forwarded-For’ by default, but this can be
+configured with the <strong>forwarded_for_headers</strong> parameter. This parameter is an
+array of PHP lookup strings, for example ‘X-Forwarded-For’ becomes
+‘HTTP_X_FORWARDED_FOR’. Incorrectly setting this parameter may allow clients
+to spoof their IP address as visible to Nextcloud, even when going through the
+trusted proxy! The correct value for this parameter is dependent on your
+proxy software.</p>
+</section>
+<section id="overwrite-parameters">
+<h2>Overwrite parameters<a class="headerlink" href="#overwrite-parameters" title="Link to this heading"></a></h2>
+<p>The automatic hostname, protocol or webroot detection of Nextcloud can fail in
+certain reverse proxy situations. This configuration allows the automatic detection
+to be manually overridden. If Nextcloud fails to automatically detect the hostname, protocol
+or webroot you can use the <strong>overwrite</strong> parameters inside the <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code>.</p>
+<ul class="simple">
+<li><p><code class="file docutils literal notranslate"><span class="pre">overwritehost</span></code> set the hostname of the proxy. You can also specify a port.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">overwriteprotocol</span></code> set the protocol of the proxy. You can choose between the two options <strong>http</strong> and <strong>https</strong>.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">overwritewebroot</span></code> set the absolute web path of the proxy to the Nextcloud folder.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">overwritecondaddr</span></code> overwrite the values dependent on the remote address. The value must be a <strong>regular expression</strong> of the IP addresses of the proxy. This is useful when you use a reverse SSL proxy only for https access and you want to use the automatic detection for http access.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">overwrite.cli.url</span></code> the base URL for any URLs which are generated within Nextcloud using any kind of command line tools. For example, the value set here will be used by the notifications area.</p></li>
+</ul>
+<p>Leave the value empty or omit the parameter to keep the automatic detection.</p>
+</section>
+<section id="service-discovery">
+<h2>Service Discovery<a class="headerlink" href="#service-discovery" title="Link to this heading"></a></h2>
+<p>The redirects for CalDAV or CardDAV does not work if Nextcloud is running behind a
+reverse proxy. The recommended solution is that your reverse proxy does the redirects.</p>
+<section id="apache2">
+<h3>Apache2<a class="headerlink" href="#apache2" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RewriteEngine</span> <span class="n">On</span>
+<span class="n">RewriteRule</span> <span class="o">^/</span>\<span class="o">.</span><span class="n">well</span><span class="o">-</span><span class="n">known</span><span class="o">/</span><span class="n">carddav</span> <span class="n">https</span><span class="p">:</span><span class="o">//%</span><span class="p">{</span><span class="n">SERVER_NAME</span><span class="p">}</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span> <span class="p">[</span><span class="n">R</span><span class="o">=</span><span class="mi">301</span><span class="p">,</span><span class="n">L</span><span class="p">]</span>
+<span class="n">RewriteRule</span> <span class="o">^/</span>\<span class="o">.</span><span class="n">well</span><span class="o">-</span><span class="n">known</span><span class="o">/</span><span class="n">caldav</span> <span class="n">https</span><span class="p">:</span><span class="o">//%</span><span class="p">{</span><span class="n">SERVER_NAME</span><span class="p">}</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span> <span class="p">[</span><span class="n">R</span><span class="o">=</span><span class="mi">301</span><span class="p">,</span><span class="n">L</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Thanks to <a class="reference external" href="https://github.com/ffried">&#64;ffried</a> for apache2 example.</p>
+</section>
+<section id="traefik-1">
+<h3>Traefik 1<a class="headerlink" href="#traefik-1" title="Link to this heading"></a></h3>
+<p>Using Docker labels:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">traefik</span><span class="o">.</span><span class="n">frontend</span><span class="o">.</span><span class="n">redirect</span><span class="o">.</span><span class="n">permanent</span><span class="p">:</span> <span class="s1">&#39;true&#39;</span>
+<span class="n">traefik</span><span class="o">.</span><span class="n">frontend</span><span class="o">.</span><span class="n">redirect</span><span class="o">.</span><span class="n">regex</span><span class="p">:</span> <span class="s1">&#39;https://(.*)/.well-known/(?:card|cal)dav&#39;</span>
+<span class="n">traefik</span><span class="o">.</span><span class="n">frontend</span><span class="o">.</span><span class="n">redirect</span><span class="o">.</span><span class="n">replacement</span><span class="p">:</span> <span class="s1">&#39;https://$$1/remote.php/dav&#39;</span>
+</pre></div>
+</div>
+<p>Using traefik.toml:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">frontends</span><span class="o">.</span><span class="n">frontend1</span><span class="o">.</span><span class="n">redirect</span><span class="p">]</span>
+  <span class="n">regex</span> <span class="o">=</span> <span class="s2">&quot;https://(.*)/.well-known/(?:card|cal)dav&quot;</span>
+  <span class="n">replacement</span> <span class="o">=</span> <span class="s2">&quot;https://$1/remote.php/dav</span>
+  <span class="n">permanent</span> <span class="o">=</span> <span class="n">true</span>
+</pre></div>
+</div>
+<p>Thanks to <a class="reference external" href="https://github.com/pauvos">&#64;pauvos</a> and <a class="reference external" href="https://github.com/mrtumnus">&#64;mrtumnus</a> for traefik examples.</p>
+</section>
+<section id="traefik-2">
+<h3>Traefik 2<a class="headerlink" href="#traefik-2" title="Link to this heading"></a></h3>
+<p>Using Docker labels:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="s2">&quot;traefik.http.routers.nextcloud.middlewares=nextcloud_redirectregex@docker&quot;</span>
+<span class="o">-</span> <span class="s2">&quot;traefik.http.middlewares.nextcloud_redirectregex.redirectregex.permanent=true&quot;</span>
+<span class="o">-</span> <span class="s2">&quot;traefik.http.middlewares.nextcloud_redirectregex.redirectregex.regex=https://(.*)/.well-known/(?:card|cal)dav&quot;</span>
+<span class="o">-</span> <span class="s2">&quot;traefik.http.middlewares.nextcloud_redirectregex.redirectregex.replacement=https://$$</span><span class="si">{1}</span><span class="s2">/remote.php/dav&quot;</span>
+</pre></div>
+</div>
+<p>Using a TOML file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">http</span><span class="o">.</span><span class="n">middlewares</span><span class="p">]</span>
+  <span class="p">[</span><span class="n">http</span><span class="o">.</span><span class="n">middlewares</span><span class="o">.</span><span class="n">nextcloud</span><span class="o">-</span><span class="n">redirectregex</span><span class="o">.</span><span class="n">redirectRegex</span><span class="p">]</span>
+    <span class="n">permanent</span> <span class="o">=</span> <span class="n">true</span>
+    <span class="n">regex</span> <span class="o">=</span> <span class="s2">&quot;https://(.*)/.well-known/(?:card|cal)dav&quot;</span>
+    <span class="n">replacement</span> <span class="o">=</span> <span class="s2">&quot;https://$</span><span class="si">{1}</span><span class="s2">/remote.php/dav&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="haproxy">
+<h3>HAProxy<a class="headerlink" href="#haproxy" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">acl</span> <span class="n">url_discovery</span> <span class="n">path</span> <span class="o">/.</span><span class="n">well</span><span class="o">-</span><span class="n">known</span><span class="o">/</span><span class="n">caldav</span> <span class="o">/.</span><span class="n">well</span><span class="o">-</span><span class="n">known</span><span class="o">/</span><span class="n">carddav</span>
+<span class="n">http</span><span class="o">-</span><span class="n">request</span> <span class="n">redirect</span> <span class="n">location</span> <span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span> <span class="n">code</span> <span class="mi">301</span> <span class="k">if</span> <span class="n">url_discovery</span>
+</pre></div>
+</div>
+</section>
+<section id="nginx">
+<h3>NGINX<a class="headerlink" href="#nginx" title="Link to this heading"></a></h3>
+<p>If using nginx as Nextcloud’s webserver from behind another nginx reverse proxy, put this only in the reverse proxy’s configuration.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>location /.well-known/carddav {
+    return 301 $scheme://$host/remote.php/dav;
+}
+
+location /.well-known/caldav {
+    return 301 $scheme://$host/remote.php/dav;
+}
+
+location ^~ /.well-known {
+    return 301 $scheme://$host/index.php$uri;
+}
+</pre></div>
+</div>
+<p>When using NGINX Proxy Manager, the entry <code class="docutils literal notranslate"><span class="pre">proxy_hide_header</span> <span class="pre">Upgrade;</span></code> must be added in the <em>“Advanced Settings”</em>
+of the proxy host under <em>“Custom Nginx Configuration”</em>, otherwise mobile devices (iPad, iPhone etc.) will simply receive the Error Message “Connection Closed”.</p>
+</section>
+<section id="caddy">
+<h3>Caddy<a class="headerlink" href="#caddy" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>subdomain.example.com {
+    redir /.well-known/carddav /remote.php/dav/ 301
+    redir /.well-known/caldav /remote.php/dav/ 301
+
+    reverse_proxy {$NEXTCLOUD_HOST:localhost}
+}
+</pre></div>
+</div>
+</section>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<section id="multiple-domains-reverse-ssl-proxy">
+<h3>Multiple domains reverse SSL proxy<a class="headerlink" href="#multiple-domains-reverse-ssl-proxy" title="Link to this heading"></a></h3>
+<p>If you want to access your Nextcloud installation <strong>http://domain.tld/nextcloud</strong>
+via a multiple domains reverse SSL proxy
+<strong>https://ssl-proxy.tld/domain.tld/nextcloud</strong> with the IP address <strong>10.0.0.1</strong>
+you can set the following parameters inside the <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
+$CONFIG = array (
+  &#39;trusted_proxies&#39;   =&gt; [&#39;10.0.0.1&#39;],
+  &#39;overwritehost&#39;     =&gt; &#39;ssl-proxy.tld&#39;,
+  &#39;overwriteprotocol&#39; =&gt; &#39;https&#39;,
+  &#39;overwritewebroot&#39;  =&gt; &#39;/domain.tld/nextcloud&#39;,
+  &#39;overwritecondaddr&#39; =&gt; &#39;^10\.0\.0\.1$&#39;,
+  &#39;overwrite.cli.url&#39; =&gt; &#39;https://domain.tld/,
+);
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to use the SSL proxy during installation you have to
+create the <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code> otherwise you have to extend the existing
+<strong>$CONFIG</strong> array.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="oauth2.html" class="btn btn-neutral float-left" title="OAuth2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="text_configuration.html" class="btn btn-neutral float-right" title="Text app" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

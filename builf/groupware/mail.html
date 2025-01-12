@@ -1,0 +1,286 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mail &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Out-of-office feature" href="out_of_office.html" />
+    <link rel="prev" title="Contacts / CardDAV" href="contacts.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Calendar / CalDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Contacts / CardDAV</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Mail</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#account-delegation">Account delegation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#snooze-and-scheduled-sending">Snooze and scheduled sending</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#xoauth2-authentication-with-microsoft-azure-ad">XOAUTH2 Authentication with Microsoft Azure AD</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#step-1-open-the-azure-ad-dashboard">Step 1: Open the Azure AD Dashboard</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-2-create-a-new-app-registration">Step 2: Create a new app registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-3-copy-the-client-id">Step 3: Copy the client ID</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-4-create-a-new-client-secret">Step 4: Create a new client secret</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-5-copy-the-client-secret">Step 5: Copy the client secret</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-6-configure-nextcloud">Step 6: Configure Nextcloud</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-7-connect-microsoft-outlook-accounts">Step 7: Connect Microsoft Outlook accounts</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mailbox-share">Mailbox Share</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#llm-processing">LLM Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#thread-summary">Thread Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#follow-up-reminders">Follow-up reminders</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="out_of_office.html">Out-of-office feature</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Groupware</a></li>
+      <li class="breadcrumb-item active">Mail</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/groupware/mail.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mail">
+<h1>Mail<a class="headerlink" href="#mail" title="Link to this heading"></a></h1>
+<section id="account-delegation">
+<h2>Account delegation<a class="headerlink" href="#account-delegation" title="Link to this heading"></a></h2>
+<p>The Mail app supports account delegation if the delegation is handled by the mail server. That means the mail server has to accept emails sent from an alias address.</p>
+<p>In mailcow, for example, the setting is called <em>Also allowed to send as user</em>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Unless paired with shared <em>Sent</em> mailboxes or handled otherwise by the mail server, sent messages will be stored in the sender’s personal <em>Sent</em> mailbox.</p>
+</div>
+</section>
+<section id="snooze-and-scheduled-sending">
+<h2>Snooze and scheduled sending<a class="headerlink" href="#snooze-and-scheduled-sending" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If AJAX is selected for cron job execution in the admin settings, the snooze feature and scheduled sending are deactivated because of unreliable execution.</p>
+</div>
+</section>
+<section id="xoauth2-authentication-with-microsoft-azure-ad">
+<h2>XOAUTH2 Authentication with Microsoft Azure AD<a class="headerlink" href="#xoauth2-authentication-with-microsoft-azure-ad" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.0.0.</span></p>
+</div>
+<p>The Mail app supports XOAUTH2 authentication with hosted Microsoft Outlook accounts. An app has to be registered in the Microsoft Azure web interface and its credentials have to be supplied to the Nextcloud instance. You can find relevant settings in the Groupware section of the admin settings.</p>
+<section id="step-1-open-the-azure-ad-dashboard">
+<h3>Step 1: Open the Azure AD Dashboard<a class="headerlink" href="#step-1-open-the-azure-ad-dashboard" title="Link to this heading"></a></h3>
+<p>Visit the <a class="reference external" href="https://portal.azure.com">Azure portal</a> and navigate to the Azure AD dashboard.</p>
+<figure class="align-default">
+<img alt="../_images/1.png" src="../_images/1.png" />
+</figure>
+</section>
+<section id="step-2-create-a-new-app-registration">
+<h3>Step 2: Create a new app registration<a class="headerlink" href="#step-2-create-a-new-app-registration" title="Link to this heading"></a></h3>
+<figure class="align-default">
+<img alt="../_images/2.png" src="../_images/2.png" />
+</figure>
+<p>Chose a name, allow organizational and personal Microsoft accounts. Configure a web app and copy the redirect URI from the groupware settings of your Nextcloud instance. Have a look at step 8 on where to find the redirect URI. Finally, click on register to proceed.</p>
+<figure class="align-default">
+<img alt="../_images/3.png" src="../_images/3.png" />
+</figure>
+</section>
+<section id="step-3-copy-the-client-id">
+<h3>Step 3: Copy the client ID<a class="headerlink" href="#step-3-copy-the-client-id" title="Link to this heading"></a></h3>
+<p>This ID will be needed later for the Nextcloud settings.</p>
+<figure class="align-default">
+<img alt="../_images/4.png" src="../_images/4.png" />
+</figure>
+</section>
+<section id="step-4-create-a-new-client-secret">
+<h3>Step 4: Create a new client secret<a class="headerlink" href="#step-4-create-a-new-client-secret" title="Link to this heading"></a></h3>
+<figure class="align-default">
+<img alt="../_images/5.png" src="../_images/5.png" />
+</figure>
+<p>Chose a descriptive name for the secret and set the an appropriate expiration date. Click on add to create the secret.</p>
+<figure class="align-default">
+<img alt="../_images/6.png" src="../_images/6.png" />
+</figure>
+</section>
+<section id="step-5-copy-the-client-secret">
+<h3>Step 5: Copy the client secret<a class="headerlink" href="#step-5-copy-the-client-secret" title="Link to this heading"></a></h3>
+<p>Copy the client secret manually or by clicking on the copy button. You can find it in the value column. The secret will also be needed later for the Nextcloud settings.</p>
+<figure class="align-default">
+<img alt="../_images/7.png" src="../_images/7.png" />
+</figure>
+</section>
+<section id="step-6-configure-nextcloud">
+<h3>Step 6: Configure Nextcloud<a class="headerlink" href="#step-6-configure-nextcloud" title="Link to this heading"></a></h3>
+<p>Open the groupware settings in the Nextcloud admin settings and fill in the client ID and client secret. Leave the tenant ID as is (common). You can also find the redirect URI here. Click on save to proceed.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Using a custom tenant ID is not covered by this guide. Only configure it if you are an expert and changed the supported account types in step 2.</p>
+</div>
+<figure class="align-default">
+<img alt="../_images/8.png" src="../_images/8.png" />
+</figure>
+</section>
+<section id="step-7-connect-microsoft-outlook-accounts">
+<h3>Step 7: Connect Microsoft Outlook accounts<a class="headerlink" href="#step-7-connect-microsoft-outlook-accounts" title="Link to this heading"></a></h3>
+<p>Congratulations! You are now able to use hosted Microsoft Outlook accounts in the Mail app. Use your Microsoft account email and any password when adding your account. The password will be discarded and you will be prompted with a Microsoft consent popup to log in to your account.</p>
+<figure class="align-default">
+<img alt="../_images/9.png" src="../_images/9.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/10.png" src="../_images/10.png" />
+</figure>
+</section>
+</section>
+<section id="mailbox-share">
+<h2>Mailbox Share<a class="headerlink" href="#mailbox-share" title="Link to this heading"></a></h2>
+<p>Users can share mailboxes with each other. So far, there is no UI for users to change the ACL in the Mail app, but if you want to use it, you need to enable it on the IMAP sever and configure the shares there.</p>
+</section>
+<section id="llm-processing">
+<span id="mail-llm-processing"></span><h2>LLM Processing<a class="headerlink" href="#llm-processing" title="Link to this heading"></a></h2>
+<p>The Mail app can optionally use large language models to process emails and offer assistance features like thread summaries, smart replies, event agendas and follow-up reminders.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The supported languages depend on the used large language model.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A fast text processing integration like <a class="reference external" href="https://apps.nextcloud.com/apps/integration_openai">https://apps.nextcloud.com/apps/integration_openai</a> is required for best results.</p>
+</div>
+<p>The feature can be enabled in the Mail administration settings.</p>
+<p>Administration settings &gt; Groupware &gt; Mail app &gt; Enable text processing through LLMs</p>
+</section>
+<section id="thread-summary">
+<span id="mail-thread-summary"></span><h2>Thread Summary<a class="headerlink" href="#thread-summary" title="Link to this heading"></a></h2>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 3.6.0: </span>This configuration option was merged into <a class="reference internal" href="#mail-llm-processing"><span class="std std-ref">LLM Processing</span></a></p>
+</div>
+<p>The mail app supports summarizing message threads that contain 3 or more messages.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><a class="reference external" href="https://apps.nextcloud.com/apps/integration_openai">A text generation AI integration</a> should be already in place to enable this feature.</p>
+</div>
+<p>The feature is opt-in, it is disabled by default and can be enabled in mail administration settings.</p>
+<p>Administration settings &gt; Groupware &gt; Mail app &gt; Enable thread summary</p>
+</section>
+<section id="follow-up-reminders">
+<h2>Follow-up reminders<a class="headerlink" href="#follow-up-reminders" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.0.</span></p>
+</div>
+<p>The Mail app will automatically remind users when their outgoing emails remain unanswered for
+multiple days.
+Each sent email will be analyzed by an AI to check whether a reply is expected.</p>
+<p>The feature can be enabled through the global <a class="reference internal" href="#mail-llm-processing"><span class="std std-ref">LLM Processing</span></a> setting.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="contacts.html" class="btn btn-neutral float-left" title="Contacts / CardDAV" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="out_of_office.html" class="btn btn-neutral float-right" title="Out-of-office feature" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

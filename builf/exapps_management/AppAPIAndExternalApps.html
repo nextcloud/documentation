@@ -1,0 +1,250 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AppAPI and External Apps &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Deployment configurations" href="DeployConfigurations.html" />
+    <link rel="prev" title="ExApps management" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">ExApps management</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">AppAPI and External Apps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-appapi">Installing AppAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setup-deploy-daemon">Setup deploy daemon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-exapps">Installing ExApps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#faq">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="DeployConfigurations.html">Deployment configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ManagingDeployDaemons.html">Managing Deploy Daemons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TestDeploy.html">Test Deploy Daemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ManagingExApps.html">Managing ExApps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">ExApps management</a></li>
+      <li class="breadcrumb-item active">AppAPI and External Apps</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/exapps_management/AppAPIAndExternalApps.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="appapi-and-external-apps">
+<h1>AppAPI and External Apps<a class="headerlink" href="#appapi-and-external-apps" title="Link to this heading"></a></h1>
+<p id="ai-app-api">Previously, Nextcloud only supported applications written in the PHP programming language.
+In order to support a wider range of use cases,
+an ecosystem for <strong>ExApps</strong> (short for “External Apps”) was introduced, allowing for the installation of apps as Docker containers.</p>
+<p>Most of our <a class="reference internal" href="../ai/index.html"><span class="doc">Artificial Intelligence</span></a> (AI) apps are developed as ExApps and thus may require some preparation of your Nextcloud instance before you can install them.</p>
+<section id="installing-appapi">
+<h2>Installing AppAPI<a class="headerlink" href="#installing-appapi" title="Link to this heading"></a></h2>
+<p>All ExApps require the <a class="reference external" href="https://apps.nextcloud.com/apps/app_api">AppAPI</a> Nextcloud app as a dependency.
+As of Nextcloud version 30.0.1, AppAPI is automatically installed by default.
+If AppAPI is not installed, you can still install it by simply navigating to the Apps management page in your Nextcloud instance and search for AppAPI from the Tools category.</p>
+</section>
+<section id="setup-deploy-daemon">
+<h2>Setup deploy daemon<a class="headerlink" href="#setup-deploy-daemon" title="Link to this heading"></a></h2>
+<p>A Deploy Daemon is a way for Nextcloud to install, communicate with, and control ExApps.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are using Nextcloud AIO with the “Docker Socket Proxy” container enabled, a Deploy Daemon will be automatically created and configured to work out-of-the-box.
+Otherwise, follow the steps below to set up a Deploy Daemon from the AppAPI admin settings.</p>
+</div>
+<ol class="arabic simple">
+<li><p>Setup a Docker container called <a class="reference external" href="https://github.com/nextcloud/docker-socket-proxy#readme">docker-socket-proxy</a> that proxies access to Docker for your Nextcloud instance.</p></li>
+<li><p>Go to the AppAPI admin settings.</p></li>
+<li><p>Click on the “Register Daemon” button.</p></li>
+<li><dl class="simple">
+<dt>Fill in the required fields:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Name</span></code>: unique name of the Deploy daemon</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Display</span> <span class="pre">name</span></code>: the name that will be displayed in the UI</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Deployment</span> <span class="pre">method</span></code>: by default, you will need to choose <code class="docutils literal notranslate"><span class="pre">docker_install</span></code> (<code class="docutils literal notranslate"><span class="pre">manual_install</span></code> is for development or custom use case of manual ExApp installation)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Daemon</span> <span class="pre">Host</span></code>: hostname/IP address + port of the Deploy daemon</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Nextcloud</span> <span class="pre">URL</span></code>: autofilled with current domain, you might need to change the protocol to http/https depending on your setup</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">as</span> <span class="pre">default</span> <span class="pre">daemon</span></code>: check if you want set new Deploy daemon as default</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">https</span></code>: check if your Deploy daemon (Docker Socket Proxy) is configured with TLS</p></li>
+<li><dl class="simple">
+<dt>Deploy Config:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Network</span></code>: Docker network name, depends on your networking setup, enforces to “host” if “Enable https” is checked</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HaProxy</span> <span class="pre">password</span></code>: password for Docker Socket Proxy, if it is configured with TLS</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Compute</span> <span class="pre">Device</span></code>: CPU, CUDA or ROCm, depending on your hardware config on Deploy daemon host machine</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">additional</span> <span class="pre">option</span></code> (see <a class="reference internal" href="ManagingDeployDaemons.html#additional-options-list"><span class="std std-ref">Additional options</span></a>): setup additional KEY + VALUE deploy config options</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Click “Check connection” to verify that the configuration is correct.</p></li>
+<li><p>Click “Register” to save the Deploy Daemon configuration.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For remote DSP setup, it should expose the ports on the host.</p>
+</div>
+<img alt="../_images/app_api_3.png" src="../_images/app_api_3.png" />
+<p>Deployment configuration examples can be found <a class="reference internal" href="DeployConfigurations.html"><span class="doc">here</span></a>.</p>
+</section>
+<section id="installing-exapps">
+<h2>Installing ExApps<a class="headerlink" href="#installing-exapps" title="Link to this heading"></a></h2>
+<p>You can now install ExApps from the Nextcloud App Store by clicking “Install” on the respective app in the Apps page.
+If successful, the ExApp will be displayed under the “Your apps” list.</p>
+<img alt="../_images/exapp_list_example.png" src="../_images/exapp_list_example.png" />
+</section>
+<section id="faq">
+<h2>FAQ<a class="headerlink" href="#faq" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>I have two graphics cards XXX with 6/8/Y GB of ram each. How can I run something which does not fit into one graphics card?</dt><dd><ul>
+<li><p>Distributing models across multiple GPUs is currently not supported. You will need a GPU that fits all of the model you are trying to use.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>I have YYY graphics card that does not supports CUDA - can I use it and how?</dt><dd><ul>
+<li><p>No, our AI apps require GPUs with CUDA support to function at this time.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>What is the minimum VRAM size requirement for the GPU if I want to install multiple apps?</dt><dd><ul>
+<li><p>When running multiple ExApps on the same GPU, the GPU must hold the largest model amongst the apps you install.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Is it possible to add more graphics cards for my instance to enable parallel requests or to speed up one request?</dt><dd><ul>
+<li><p>Parallel processing of AI workloads for the same app with multiple GPUs is currently not supported.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Can I use the CPU and GPU in parallel for AI processing?</dt><dd><ul>
+<li><p>No, you can only process AI workloads on either the CPU or GPU for one app. For different apps, you can decide whether to run them on CPU or GPU.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="ExApps management" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="DeployConfigurations.html" class="btn btn-neutral float-right" title="Deployment configurations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

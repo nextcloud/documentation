@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Files access control &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Automated tagging of files" href="automated_tagging.html" />
+    <link rel="prev" title="Flow configuration" href="configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Flow</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Flow configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Files access control</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#denied-access">Denied access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#denying-access-to-folders">Denying access to folders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prevent-uploading-of-specific-files">Prevent uploading of specific files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-misconfigurations">Common misconfigurations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#blocking-user-groups">Blocking user groups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#external-storage">External storage</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#available-rules">Available rules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="automated_tagging.html">Automated tagging of files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="retention.html">Retention of files</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Flow</a></li>
+      <li class="breadcrumb-item active">Files access control</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/file_workflows/access_control.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="files-access-control">
+<h1>Files access control<a class="headerlink" href="#files-access-control" title="Link to this heading"></a></h1>
+<p>Nextcloud’s File Access Control app enables administrators to create and
+manage a set of rule groups. Each of the rule groups consists of one or more
+rules. If all rules of a group hold true, the group matches the request and
+access is being denied. The rules criteria range from IP address, to user
+groups, collaborative tags and <a class="reference internal" href="#available-rules-label"><span class="std std-ref">some more</span></a>.</p>
+<section id="denied-access">
+<h2>Denied access<a class="headerlink" href="#denied-access" title="Link to this heading"></a></h2>
+<p>If access to a file has been denied for a user, the user can not:</p>
+<ul class="simple">
+<li><p>Create/upload the file</p></li>
+<li><p>Modify the files</p></li>
+<li><p>Delete the file</p></li>
+<li><p>Download the file</p></li>
+<li><p>Synchronize the file with clients, such as the Nextcloud desktop and mobile clients</p></li>
+</ul>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<p>After installing the File Access Control app as described in <a class="reference internal" href="../apps_management.html"><span class="doc">Apps management</span></a>
+navigate to the configuration and locate the settings for the Flow application.</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="Sample rules to block on user group, time and IP base." src="../_images/files_access_control_sample_rules.png" />
+</figure>
+</div></blockquote>
+<p>The first rule group <code class="docutils literal notranslate"><span class="pre">Support</span> <span class="pre">only</span> <span class="pre">9-5</span></code> denies any access to files for users
+of the Support user group, between 5pm and 9am.</p>
+<p>The second rule group <code class="docutils literal notranslate"><span class="pre">Internal</span> <span class="pre">testing</span></code> prevents users of the Internal
+testers group to access files from outside of the local network.</p>
+</section>
+<section id="denying-access-to-folders">
+<h2>Denying access to folders<a class="headerlink" href="#denying-access-to-folders" title="Link to this heading"></a></h2>
+<p>The easiest way to block access to a folder, is to use a collaborative tag. As
+mentioned in the <a class="reference internal" href="#available-rules-label"><span class="std std-ref">Available rules</span></a> section below,
+either the file itself or one of the parents needs to have the given tag
+assigned.</p>
+<p>So you just need to assign the tag to the folder or file, and then block the
+tag with a rule group. The check is independent of the user’s permissions for
+the tag. Therefore restricted and invisible tags are recommended, otherwise a
+user could remove and reassign the tag.</p>
+<p>This example blocks access to any folder with the tag <code class="docutils literal notranslate"><span class="pre">Confidential</span></code>.</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="Deny access based on collaborative tag" src="../_images/files_access_control_collaborative_tags.png" />
+</figure>
+</div></blockquote>
+</section>
+<section id="prevent-uploading-of-specific-files">
+<h2>Prevent uploading of specific files<a class="headerlink" href="#prevent-uploading-of-specific-files" title="Link to this heading"></a></h2>
+<p>It’s possible to prevent specific files from being uploaded to Nextcloud. You
+simply need to define a rule based on the mimetype and our powerful access control
+engine will block any attempt to upload the file. The safest way to define the rule
+is to use a regular expression, as it will help you cover all the known media types
+used for the type of file you’re trying to block.</p>
+<p>The following example prevents zip files from being uploaded by using the regular
+expression: <code class="docutils literal notranslate"><span class="pre">/^application\/(zip|x-zip-compressed)$/i</span></code></p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="Prevent upload based on mimetype" src="../_images/files_access_control_block_mimetype.png" />
+</figure>
+</div></blockquote>
+</section>
+<section id="common-misconfigurations">
+<h2>Common misconfigurations<a class="headerlink" href="#common-misconfigurations" title="Link to this heading"></a></h2>
+<section id="blocking-user-groups">
+<h3>Blocking user groups<a class="headerlink" href="#blocking-user-groups" title="Link to this heading"></a></h3>
+<p>When trying to deny access to a group of users, make sure that sharing does not
+allow them to create a way back in. When users are able to create a public link,
+the users can log themselves out and visit their own public link to access the
+files. Since at this point they are no user and therefore no member of the
+blocked group, they will be able to read and change the file.</p>
+<p>The recommended work around is to create the same rule again, and deny access
+for all users that are <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">member</span> <span class="pre">of</span></code> a group, that contains all users of
+your installation.</p>
+</section>
+<section id="external-storage">
+<h3>External storage<a class="headerlink" href="#external-storage" title="Link to this heading"></a></h3>
+<p>While access to files in external storages is not possible via Nextcloud, users
+that have direct access to the external storage, can of course change files
+there directly. Therefore it is recommended to disable the <code class="docutils literal notranslate"><span class="pre">Allow</span> <span class="pre">users</span> <span class="pre">to</span> <span class="pre">mount</span>
+<span class="pre">external</span> <span class="pre">storage</span></code> option, when trying to to completely lock out users.</p>
+</section>
+</section>
+<section id="available-rules">
+<span id="available-rules-label"></span><h2>Available rules<a class="headerlink" href="#available-rules" title="Link to this heading"></a></h2>
+<p>All rules can also be inverted (from <code class="docutils literal notranslate"><span class="pre">is</span></code> to <code class="docutils literal notranslate"><span class="pre">is</span> <span class="pre">not</span></code>) using the operator
+option.</p>
+<ul>
+<li><p><strong>File collaborative tag:</strong> Either the file itself, or any of the file
+owner’s parent folders needs to be tagged with the tag.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Tags used in access control rules should be restricted tags,
+otherwise any user can remove the tag to access the file again.
+The best way to do this is with the <a class="reference internal" href="automated_tagging.html"><span class="doc">Automated tagging of files</span></a>.</p>
+</div>
+</li>
+<li><p><strong>File MIME type:</strong> The MIME type of the file, e.g. <code class="docutils literal notranslate"><span class="pre">text/plain</span></code> for a text file or <code class="docutils literal notranslate"><span class="pre">httpd/unix-directory</span></code> for a folder.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>see <a class="reference external" href="https://github.com/nextcloud/server/blob/master/resources/config/mimetypealiases.dist.json">mimetypealiases.dist.json</a> for a full list of possible MIME types.</p>
+</div>
+</li>
+<li><p><strong>File name:</strong> The name of the file (<code class="docutils literal notranslate"><span class="pre">is</span></code> and <code class="docutils literal notranslate"><span class="pre">is</span> <span class="pre">not</span></code> are case-insensitive)</p></li>
+<li><p><strong>File size:</strong> The size of the file (<em>Only available on upload</em>)</p></li>
+<li><p><strong>Request remote address:</strong> An IP range (either v4 or v6) for the accessing user</p></li>
+<li><p><strong>Request time:</strong> Time span and timezone when the request happens</p></li>
+<li><p><strong>Request URL:</strong> The URL which requests the file. (<em>This is the URL the file
+is served from, not the URL the user is currently looking at.</em>)</p></li>
+<li><p><strong>Request user agent:</strong> The user agent of the users browser or client.
+Nextcloud desktop, Android and iOS clients are available as preconfigured
+options.</p></li>
+<li><p><strong>User group membership:</strong> Whether the user is a member of the given group.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="configuration.html" class="btn btn-neutral float-left" title="Flow configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="automated_tagging.html" class="btn btn-neutral float-right" title="Automated tagging of files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

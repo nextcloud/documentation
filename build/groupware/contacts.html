@@ -1,0 +1,212 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacts / CardDAV &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mail" href="mail.html" />
+    <link rel="prev" title="Calendar / CalDAV" href="calendar.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Calendar / CalDAV</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Contacts / CardDAV</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#system-address-book">System Address Book</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#privacy-and-user-property-scopes">Privacy and User Property Scopes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#address-book-sync">Address Book Sync</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#shared-items">Shared items</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rate-limits">Rate limits</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mail.html">Mail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="out_of_office.html">Out-of-office feature</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Groupware</a></li>
+      <li class="breadcrumb-item active">Contacts / CardDAV</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/groupware/contacts.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="contacts-carddav">
+<h1>Contacts / CardDAV<a class="headerlink" href="#contacts-carddav" title="Link to this heading"></a></h1>
+<p>Nextcloud ships a CardDAV backend for users to store and share their address books and contacts.</p>
+<section id="system-address-book">
+<span id="id1"></span><h2>System Address Book<a class="headerlink" href="#system-address-book" title="Link to this heading"></a></h2>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 27: </span>The system address book is now accessible to all Nextcloud users</p>
+</div>
+<p>Nextcloud maintains a read-only address book containing contact information of all users of the instance.</p>
+<p>Disabled users are removed from this address book.</p>
+<p>You can disable access to the system address book by using the app config value <code class="docutils literal notranslate"><span class="pre">system_addressbook_exposed</span></code>.</p>
+<p>Run <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">config:app:set</span> <span class="pre">dav</span> <span class="pre">system_addressbook_exposed</span> <span class="pre">--value=&quot;no&quot;</span></code> to disable access to the system address book for all users. Please note that this does not influence <a class="reference internal" href="../configuration_files/federated_cloud_sharing_configuration.html#label-direct-share-link"><span class="std std-ref">Federated sharing</span></a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If clients have already connected to the CalDAV endpoint, the clients might experience sync issues after system address book access was disabled. This can often be remedied by choosing a different default address book on the client and forcing a resync.</p>
+</div>
+<section id="privacy-and-user-property-scopes">
+<h3>Privacy and User Property Scopes<a class="headerlink" href="#privacy-and-user-property-scopes" title="Link to this heading"></a></h3>
+<p>Contact information in the system address book is taken from users’ <a class="reference internal" href="../configuration_user/profile_configuration.html#profile"><span class="std std-ref">profile information</span></a>. Profile properties are only written to the system contact if the <a class="reference internal" href="../configuration_user/profile_configuration.html#profile-property-scopes"><span class="std std-ref">scope</span></a> is set to <em>Local</em> or higher.</p>
+<p>Users who set all their property scopes to <em>Private</em> are removed from the system address book and therefore not seen by other users.</p>
+<p><a class="reference internal" href="../configuration_files/file_sharing_configuration.html#file-sharing-configuration"><span class="std std-ref">File sharing settings</span></a> controls the enumeration of other users.</p>
+<ul class="simple">
+<li><p>If username autocompletion is not allowed, the system address book will only show user’s own system contact but no other contacts.</p></li>
+<li><p>If username autocompletion is allowed, users will see contact cards for all other users.</p>
+<ul>
+<li><p>If autocompletion is limited to users within the same groups, users will see contact cards for other users in shared groups.</p></li>
+<li><p>If autocompletion is limited to matching phone numbers, the system address book will only show user’s own system contact but no other contacts.</p></li>
+<li><p>If autocompletion is limited to users within the same groups <strong>and</strong> matching phone numbers, users will see contact cards for other users in shared groups.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="address-book-sync">
+<h3>Address Book Sync<a class="headerlink" href="#address-book-sync" title="Link to this heading"></a></h3>
+<p>The address book is updated automatically with every added, modified, disabled or removed user. Admins can also trigger a full rewrite of the address book <a class="reference internal" href="../occ_command.html#occ-dav-sync-system-address-book"><span class="std std-ref">with occ</span></a>.</p>
+</section>
+</section>
+<section id="shared-items">
+<h2>Shared items<a class="headerlink" href="#shared-items" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.5.0.</span></p>
+</div>
+<p>For this feature, the shipped <a class="reference external" href="https://apps.nextcloud.com/apps/related_resources">related resources app</a> needs to be enabled.</p>
+</section>
+<section id="rate-limits">
+<h2>Rate limits<a class="headerlink" href="#rate-limits" title="Link to this heading"></a></h2>
+<p>Nextcloud rate limits the creation of address books and how many can be created in a short period of time. The default is 10 address books per hour. This can be customized as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set limit to 15 items per 30 minutes</span>
+<span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">dav</span> <span class="n">rateLimitAddressBookCreation</span> <span class="o">--</span><span class="nb">type</span><span class="o">=</span><span class="n">integer</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="mi">15</span>
+<span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">dav</span> <span class="n">rateLimitPeriodAddressBookCreation</span> <span class="o">--</span><span class="nb">type</span><span class="o">=</span><span class="n">integer</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="mi">1800</span>
+</pre></div>
+</div>
+<p>Additionally, the maximum number of address books a user may create is limited to 10 items. This can be customized too:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Allow users to create 50 addressbooks</span>
+<span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">dav</span> <span class="n">maximumAdressbooks</span> <span class="o">--</span><span class="nb">type</span><span class="o">=</span><span class="n">integer</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="mi">50</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Allow users to create address books without restriction</span>
+<span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">dav</span> <span class="n">maximumAdressbooks</span> <span class="o">--</span><span class="nb">type</span><span class="o">=</span><span class="n">integer</span> <span class="o">--</span><span class="n">value</span><span class="o">=-</span><span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="calendar.html" class="btn btn-neutral float-left" title="Calendar / CalDAV" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mail.html" class="btn btn-neutral float-right" title="Mail" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

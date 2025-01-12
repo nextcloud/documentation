@@ -1,0 +1,229 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Initial setup &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Uninstallation" href="uninstallation.html" />
+    <link rel="prev" title="Example installation on OpenBSD" href="example_openbsd.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation and server configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="system_requirements.html">System requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment_recommendations.html">Deployment recommendations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="php_configuration.html">PHP Modules &amp; Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source_installation.html">Installation on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_wizard.html">Installation wizard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Installing from command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">NGINX configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harden_server.html">Hardening and security guidance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server_tuning.html">Server tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_ubuntu.html">Example installation on Ubuntu 22.04 LTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_centos.html">Example installation on CentOS 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_openbsd.html">Example installation on OpenBSD</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Initial setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#user-management">User management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-and-storage-management">Data and storage management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logging">Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-and-optimization">Configuration and optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrade-and-versioning">Upgrade and versioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#email-setup-and-backup">Email setup and backup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hardening-and-security">Hardening and security</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customization-and-extensibility">Customization and extensibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Installation and server configuration</a></li>
+      <li class="breadcrumb-item active">Initial setup</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/installation/initial_setup.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="initial-setup">
+<h1>Initial setup<a class="headerlink" href="#initial-setup" title="Link to this heading"></a></h1>
+<section id="user-management">
+<h2>User management<a class="headerlink" href="#user-management" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../configuration_user/user_configuration.html"><span class="doc">Create and manage user accounts</span></a>:
+Use the <strong>Admin Panel</strong> or the <code class="docutils literal notranslate"><span class="pre">occ</span></code> command tool to create user accounts, manage groups, and assign administrative roles.</p>
+<p><a class="reference internal" href="../configuration_user/two_factor-auth.html"><span class="doc">Two-factor authentication</span></a>:
+Configure and manage multi-factor authentication (2FA) settings, including enabling, enforcing, and configuring 2FA providers through the <strong>Admin Settings</strong> or command-line interface.</p>
+<p><a class="reference internal" href="../configuration_user/user_auth_ldap.html"><span class="doc">LDAP integration</span></a>:
+Set up Nextcloud to integrate with an LDAP server for centralized user authentication management.</p>
+<p><a class="reference internal" href="../configuration_user/user_provisioning_api.html"><span class="doc">Provisioning API</span></a>:
+Automate user provisioning with the Provisioning API for bulk account creation and management.</p>
+</section>
+<section id="data-and-storage-management">
+<h2>Data and storage management<a class="headerlink" href="#data-and-storage-management" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../configuration_files/file_sharing_configuration.html"><span class="doc">File Sharing configuration</span></a>:
+Configure file-sharing policies through the <strong>Admin interface</strong> or adjust defaults by modifying the <code class="docutils literal notranslate"><span class="pre">config.php</span></code> file.</p>
+<p><a class="reference internal" href="../configuration_files/primary_storage.html"><span class="doc">Object storage as primary storage</span></a>:
+Configure supported object storage backends by modifying the <code class="docutils literal notranslate"><span class="pre">objectstore</span></code> section in the <code class="docutils literal notranslate"><span class="pre">config.php</span></code> file.</p>
+<p><a class="reference internal" href="../configuration_files/external_storage_configuration_gui.html"><span class="doc">External storage management</span></a>: Manage external storage connections, including configuration, setup, and maintenance.</p>
+<p><a class="reference internal" href="../configuration_files/encryption_configuration.html"><span class="doc">Encryption configuration</span></a>:
+Manage server-side encryption settings to secure your data through the <strong>Admin interface</strong> or using <code class="docutils literal notranslate"><span class="pre">occ</span></code> commands.</p>
+<p><a class="reference internal" href="../maintenance/backup.html"><span class="doc">Backup &amp; restore automation</span></a>:
+Use <code class="docutils literal notranslate"><span class="pre">cron</span></code> jobs and third-party backup tools to automate regular backups of the Nextcloud instance, ensuring backup integrity and disaster recovery readiness through routine verification and testing.</p>
+</section>
+<section id="logging">
+<h2>Logging<a class="headerlink" href="#logging" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../issues/general_troubleshooting.html#log-files-label"><span class="std std-ref">Accessing logs</span></a>:
+View logs to monitor Nextcloud activity.</p>
+<p><a class="reference internal" href="../configuration_server/logging_configuration.html#log-levels"><span class="std std-ref">Adjusting log levels</span></a>:
+Modify logging verbosity by changing log level.</p>
+<p><a class="reference internal" href="../issues/general_troubleshooting.html#log-problems"><span class="std std-ref">Troubleshooting</span></a>:
+Check log files for errors and issues.</p>
+</section>
+<section id="configuration-and-optimization">
+<h2>Configuration and optimization<a class="headerlink" href="#configuration-and-optimization" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../configuration_server/config_sample_php_parameters.html"><span class="doc">Configuration parameters</span></a>: Define and modify Nextcloud configuration parameters to customize and control the system’s behavior and functionality.</p>
+<p><a class="reference internal" href="../configuration_database/linux_database_configuration.html"><span class="doc">Database optimization</span></a>:
+Optimize MySQL, PostgreSQL, or Oracle performance through custom server settings.</p>
+</section>
+<section id="upgrade-and-versioning">
+<h2>Upgrade and versioning<a class="headerlink" href="#upgrade-and-versioning" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../maintenance/upgrade.html"><span class="doc">Upgrade Process</span></a>:
+Upgrade Nextcloud via the <strong>Built-in Updater</strong> (web or CLI) or manually using a downloaded archive file.</p>
+<p><a class="reference internal" href="../release_notes/index.html"><span class="doc">Release notes</span></a>:
+Prior to upgrading, review the release notes and changelogs available on the Nextcloud GitHub repository or official documentation.</p>
+</section>
+<section id="email-setup-and-backup">
+<h2>Email setup and backup<a class="headerlink" href="#email-setup-and-backup" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../configuration_server/email_configuration.html"><span class="doc">Email configuration</span></a>:
+Configure email account settings and server integrations for Nextcloud.</p>
+</section>
+<section id="hardening-and-security">
+<h2>Hardening and security<a class="headerlink" href="#hardening-and-security" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="harden_server.html"><span class="doc">Hardening and security guidance</span></a>: Enhance the security and integrity of your Nextcloud instance by implementing measures like HTTPS via SSL/TLS, strong passwords, and regular updates.</p>
+</section>
+<section id="customization-and-extensibility">
+<h2>Customization and extensibility<a class="headerlink" href="#customization-and-extensibility" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../configuration_server/theming.html"><span class="doc">Theming and branding</span></a>:
+Customize the look and feel of Nextcloud through theme modification, custom CSS, and custom theme development.</p>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../configuration_server/security_setup_warnings.html"><span class="doc">Admin page warnings</span></a>: Review and address system warnings in the <strong>Admin Panel</strong> related to server configuration issues.</p>
+<p><a class="reference internal" href="../issues/general_troubleshooting.html"><span class="doc">General troubleshooting</span></a>:
+Troubleshoot Nextcloud issues using forums, bug tracking, and official documentation.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="example_openbsd.html" class="btn btn-neutral float-left" title="Example installation on OpenBSD" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="uninstallation.html" class="btn btn-neutral float-right" title="Uninstallation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

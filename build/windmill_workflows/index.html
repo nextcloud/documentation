@@ -1,0 +1,241 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Windmill Workflows &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Database configuration" href="../configuration_database/index.html" />
+    <link rel="prev" title="Webhook Listeners" href="../webhook_listeners/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Windmill Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#selecting-the-right-workspace">Selecting the right Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-a-workflow">Building a workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-magic-listener-script">The magic listener script</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#nextcloud-scripts">Nextcloud Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#authentication">Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#passing-values-between-blocks">Passing values between blocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#approval-suspend-steps">Approval/Suspend steps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Windmill Workflows</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/windmill_workflows/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="windmill-workflows">
+<h1>Windmill Workflows<a class="headerlink" href="#windmill-workflows" title="Link to this heading"></a></h1>
+<p>Nextcloud integrates the Windmill workflow engine (<a class="reference external" href="https://www.windmill.dev/">https://www.windmill.dev/</a>) to allow advanced custom workflows interacting with your Nextcloud instance.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Install Windmill</p>
+<ul>
+<li><p>Either as a standalone install or via the External App “Flow” in Nextcloud (see <a class="reference internal" href="../exapps_management/AppAPIAndExternalApps.html#ai-app-api"><span class="std std-ref">External Apps</span></a>)</p></li>
+</ul>
+</li>
+<li><p>Enable the <code class="docutils literal notranslate"><span class="pre">webhook_listeners</span></code> app that comes with Nextcloud</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>occ<span class="w"> </span>app:enable<span class="w"> </span>webhook_listeners
+</pre></div>
+</div>
+</section>
+<section id="selecting-the-right-workspace">
+<h2>Selecting the right Workspace<a class="headerlink" href="#selecting-the-right-workspace" title="Link to this heading"></a></h2>
+<p>With Windmill installed as an ExApp, the first time one visits Windmill’s web interface,
+make sure to select the right workspace on the first run:
+Only the pre-existing “nextcloud” workspace is hooked up to nextcloud’s internal event system,
+all other workspaces will need manual webhook setups for each workflow.
+If the wrong workspace is selected on the first run, it is always possible to switch workspace later in the left sidebar.</p>
+<img alt="Screenshot of the workspace selector screen when opening Windmill for the first time" src="../_images/windmill_initial_workspace_selection.png" />
+<p>If you wish to change to a different workspace at a later time, you can do so via the workspace selector in the left sidebar of Windmill.</p>
+<img alt="Screenshot of the workspace selector when a workspace is already opened" src="../_images/windmill_later_workspace_selection.png" />
+</section>
+<section id="building-a-workflow">
+<h2>Building a workflow<a class="headerlink" href="#building-a-workflow" title="Link to this heading"></a></h2>
+<p>Each workflow in Windmill is a listener to a Nextcloud Webhook Event.
+If you are using the ExApp-packaged Windmill, it will automatically register webhooks for the workflows you build using the following mechanism.
+If you are not using the ExApp-packaged windmill install then you will have to register
+webhooks for your workflows manually via the webhook_listeners API:
+see <a class="reference external" href="https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index">https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index</a></p>
+<section id="the-magic-listener-script">
+<h3>The magic listener script<a class="headerlink" href="#the-magic-listener-script" title="Link to this heading"></a></h3>
+<p>The first script (after the “Input” block) in any workflow you build that should listen to a Nextcloud webhook must be <code class="docutils literal notranslate"><span class="pre">CORE:LISTEN_TO_EVENT</span></code>. It must be an empty script with two parameters that you should fill statically: <code class="docutils literal notranslate"><span class="pre">events</span></code>, which is a list of event IDs to listen to and <code class="docutils literal notranslate"><span class="pre">filters</span></code> a filter condition that allows more fine grained filtering for which events should be used. The filter condition as well as the available events with their payloads is documented in <a class="reference internal" href="../webhook_listeners/index.html#id1"><span class="std std-ref">the webhook_listeners documentation</span></a>.</p>
+<p>You can copy the following Deno script for this:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">main</span><span class="p">(</span><span class="nx">events</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[],</span><span class="w"> </span><span class="nx">filters</span><span class="o">:</span><span class="w"> </span><span class="kt">object</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="nextcloud-scripts">
+<h2>Nextcloud Scripts<a class="headerlink" href="#nextcloud-scripts" title="Link to this heading"></a></h2>
+<p>Nextcloud makes available a variety of scripts to be used in Windmill for interfacing with Nextcloud apps. You can find them
+at <a class="reference external" href="https://hub.windmill.dev/integrations/nextcloud">https://hub.windmill.dev/integrations/nextcloud</a> and <a class="reference external" href="https://hub.windmill.dev/integrations/nextcloud/approvals">https://hub.windmill.dev/integrations/nextcloud/approvals</a>
+or in your windmill instance when selecting existing scripts for creating a new workflow.</p>
+<p>To synchronize the scripts with the ones provided by the Windmill hub,
+you can run a flow named “Synchronize Hub Resource types with instance” in the Windmill admin workspace.</p>
+<p>You can create your own Nextcloud-related scripts by taking one of the existing ones as example.
+In a script, when sending a request to Nextcloud, make sure that the <code class="docutils literal notranslate"><span class="pre">EX-APP-ID</span></code> header is set to <code class="docutils literal notranslate"><span class="pre">flow</span></code>.</p>
+<p>All the scripts we provide have a set of common input parameters:</p>
+<ul class="simple">
+<li><p>nextcloudResource: This should be set to the path of the Windmill resource that was automatically created and contains what is necessary to authenticate against Nextcloud with the AppAPI authentication method. For example “u/wapp_user/appapi_nextcloud”. You can find this path by looking at the resource list in Windmill.</p></li>
+<li><p>userId: This is the ID of the user you want the request to be authenticated as.</p></li>
+<li><p>useAppApiAuth: This is a boolean to choose between using the AppAPI authentication or basic auth. More details in the next section.</p></li>
+</ul>
+<section id="authentication">
+<h3>Authentication<a class="headerlink" href="#authentication" title="Link to this heading"></a></h3>
+<p>All bricks have the option to use “AppAPI Authentication” or normal authentication using a Nextcloud resource in Windmill.
+When using normal authentication you will need to provide the correct password or app password of the user
+on behalf of whom you want to execute the script. When using “AppAPI Authentication” you can impersonate any Nextcloud user.
+This will only work when using the ExApp-packaged version of windmill.</p>
+</section>
+<section id="passing-values-between-blocks">
+<h3>Passing values between blocks<a class="headerlink" href="#passing-values-between-blocks" title="Link to this heading"></a></h3>
+<p>When specifying script inputs you can either fill the parameters with static values or make references to the workflow input and the previous workflow steps.</p>
+<p>In order to reference the workflow input, use the <code class="docutils literal notranslate"><span class="pre">flow_input</span></code> variable.
+For example, <code class="docutils literal notranslate"><span class="pre">flow_input.event.form.hash</span></code> will reference the hash of a form from a nextcloud Forms event.</p>
+<p>Each step in a workflow is automatically assigned a letter identifier.
+In order to reference results from previous steps in your parameters, use the <code class="docutils literal notranslate"><span class="pre">results</span></code> variable with the id of the step
+to reference as a sub property. For example, use <code class="docutils literal notranslate"><span class="pre">results.e.submission.answers</span></code> to use the answers of of a form submission
+retrieved via the “Get form submission from Nextcloud Forms” script identified with the letter “e”.</p>
+</section>
+<section id="approval-suspend-steps">
+<h3>Approval/Suspend steps<a class="headerlink" href="#approval-suspend-steps" title="Link to this heading"></a></h3>
+<p>Windmill allows using so-called approval steps, which are essentially asynchronous scripts that wait for the call to an additional webhook URL.
+The most prominent use case for this are approval workflows where you get automated input from somewhere which needs to be approved by a human.
+Once the human approves or disapproves by triggering the webhook URL the workflow will resume.</p>
+<p>In order to turn a newly added step into an approval step, the workflow edit screen,
+select the script and in the bottom right pan, go in the “Advanced” tab, “Suspend” sub tab and check “Suspend/Approval/Prompt”.</p>
+<img alt="Screenshot of the workspace edit screen to turn a normal step into an Approval step" src="../_images/windmill_approval_step_config.png" />
+<p>Using the scripts provided for Nextcloud, you can send approval links to the humans in charge of approving
+via Nextcloud Talk or a simple notification in Nextcloud.
+Of course, you may also use any of the other scripts for sending messages available in the Windmill hub.</p>
+<p>Windmill has a default approval user interface at a specific URL, but it looks very technical.
+We recommend using the <a class="reference external" href="https://apps.nextcloud.com/apps/approve_links">approve_links</a> app
+which allows creating a beautiful temporary approval page with a custom message and approve and disapprove buttons.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../webhook_listeners/index.html" class="btn btn-neutral float-left" title="Webhook Listeners" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../configuration_database/index.html" class="btn btn-neutral float-right" title="Database configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

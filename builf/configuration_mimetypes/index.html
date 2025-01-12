@@ -1,0 +1,200 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mimetypes management &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Maintenance" href="../maintenance/index.html" />
+    <link rel="prev" title="Splitting databases" href="../configuration_database/splitting.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Mimetypes management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#mimetype-aliases">Mimetype aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mimetype-mapping">Mimetype mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#icon-retrieval">Icon retrieval</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Mimetypes management</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_mimetypes/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mimetypes-management">
+<h1>Mimetypes management<a class="headerlink" href="#mimetypes-management" title="Link to this heading"></a></h1>
+<section id="mimetype-aliases">
+<h2>Mimetype aliases<a class="headerlink" href="#mimetype-aliases" title="Link to this heading"></a></h2>
+<p>Nextcloud allows you to create aliases for mimetypes, so that you can display
+custom icons for files. For example, you might want a nice audio icon for audio
+files instead of the default file icon.</p>
+<p>By default Nextcloud is distributed with
+<code class="docutils literal notranslate"><span class="pre">nextcloud/resources/config/mimetypealiases.dist.json</span></code>.
+Do not modify this file, as it will be replaced when Nextcloud is updated.
+Instead, create your own <code class="docutils literal notranslate"><span class="pre">nextcloud/config/mimetypealiases.json</span></code>
+file with your custom aliases. Use the same syntax as in
+<code class="docutils literal notranslate"><span class="pre">nextcloud/resources/config/mimetypealiases.dist.json</span></code>.</p>
+<p>Once you have made changes to your <code class="docutils literal notranslate"><span class="pre">mimetypealiases.json</span></code>, use the <code class="docutils literal notranslate"><span class="pre">occ</span></code>
+command to propagate the changes through the system. This example is for
+Ubuntu Linux:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo -u www-data php occ maintenance:mimetype:update-js
+
+# you may also need to update the mimetype for existing files, see nextcloud/server#30566
+$ sudo -u www-data php occ maintenance:mimetype:update-db --repair-filecache
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../occ_command.html"><span class="doc">Using the occ command</span></a> to learn more about <code class="docutils literal notranslate"><span class="pre">occ</span></code>.</p>
+<p>Some common mimetypes that may be useful in creating aliases are:</p>
+<dl class="simple">
+<dt>image</dt><dd><p>Generic image</p>
+</dd>
+<dt>image/vector</dt><dd><p>Vector image</p>
+</dd>
+<dt>audio</dt><dd><p>Generic audio file</p>
+</dd>
+<dt>x-office/document</dt><dd><p>Word processed document</p>
+</dd>
+<dt>x-office/spreadsheet</dt><dd><p>Spreadsheet</p>
+</dd>
+<dt>x-office/presentation</dt><dd><p>Presentation</p>
+</dd>
+<dt>text</dt><dd><p>Generic text document</p>
+</dd>
+<dt>text/code</dt><dd><p>Source code</p>
+</dd>
+</dl>
+</section>
+<section id="mimetype-mapping">
+<h2>Mimetype mapping<a class="headerlink" href="#mimetype-mapping" title="Link to this heading"></a></h2>
+<p>Nextcloud allows administrators to specify the mapping of a file extension to a
+mimetype. For example files ending in <code class="docutils literal notranslate"><span class="pre">mp3</span></code> map to <code class="docutils literal notranslate"><span class="pre">audio/mpeg</span></code>. Which
+then in turn allows Nextcloud to show the audio icon.</p>
+<p>By default Nextcloud comes with <code class="docutils literal notranslate"><span class="pre">mimetypemapping.dist.json</span></code>. This is a
+simple json array.
+Administrators should not update this file as it will get replaced on upgrades
+of Nextcloud. Instead the file <code class="docutils literal notranslate"><span class="pre">mimetypemapping.json</span></code> should be created and
+modified, this file has precedence over the shipped file.</p>
+</section>
+<section id="icon-retrieval">
+<h2>Icon retrieval<a class="headerlink" href="#icon-retrieval" title="Link to this heading"></a></h2>
+<p>When an icon is retrieved for a mimetype, if the full mimetype cannot be found,
+the search will fallback to looking for the part before the slash. Given a file
+with the mimetype ‘image/my-custom-image’, if no icon exists for the full
+mimetype, the icon for ‘image’ will be used instead. This allows specialised
+mimetypes to fallback to generic icons when the relevant icons are unavailable.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../configuration_database/splitting.html" class="btn btn-neutral float-left" title="Splitting databases" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../maintenance/index.html" class="btn btn-neutral float-right" title="Maintenance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

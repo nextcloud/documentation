@@ -1,0 +1,282 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PHP Modules &amp; Configuration &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Installation on Linux" href="source_installation.html" />
+    <link rel="prev" title="Deployment recommendations" href="deployment_recommendations.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation and server configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="system_requirements.html">System requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment_recommendations.html">Deployment recommendations</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PHP Modules &amp; Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#php-modules">PHP Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ini-values">ini values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#php-ini-configuration-notes">php.ini configuration notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="source_installation.html">Installation on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_wizard.html">Installation wizard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Installing from command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">NGINX configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harden_server.html">Hardening and security guidance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server_tuning.html">Server tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_ubuntu.html">Example installation on Ubuntu 22.04 LTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_centos.html">Example installation on CentOS 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_openbsd.html">Example installation on OpenBSD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="initial_setup.html">Initial setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Installation and server configuration</a></li>
+      <li class="breadcrumb-item active">PHP Modules &amp; Configuration</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/installation/php_configuration.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="php-modules-configuration">
+<h1>PHP Modules &amp; Configuration<a class="headerlink" href="#php-modules-configuration" title="Link to this heading"></a></h1>
+<section id="php-modules">
+<h2>PHP Modules<a class="headerlink" href="#php-modules" title="Link to this heading"></a></h2>
+<p>This
+section lists all required and optional PHP modules.  Consult the <a class="reference external" href="https://php.net/manual/en/extensions.php">PHP manual</a> for more information on modules.
+You can
+check the presence of a module by typing <code class="docutils literal notranslate"><span class="pre">php</span> <span class="pre">-m</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-i</span> <span class="pre">&lt;module_name&gt;</span></code>.
+If you get a result, the module is present.</p>
+<p>Required:</p>
+<ul class="simple">
+<li><p>PHP (see <a class="reference internal" href="system_requirements.html"><span class="doc">System requirements</span></a> for a list of supported versions)</p></li>
+<li><p>PHP module ctype</p></li>
+<li><p>PHP module curl</p></li>
+<li><p>PHP module dom</p></li>
+<li><p>PHP module fileinfo (included with PHP)</p></li>
+<li><p>PHP module filter (only on Mageia and FreeBSD)</p></li>
+<li><p>PHP module GD</p></li>
+<li><p>PHP module hash (only on FreeBSD)</p></li>
+<li><p>PHP module JSON (included with PHP &gt;= 8.0)</p></li>
+<li><p>PHP module libxml (Linux package libxml2 must be &gt;=2.7.0)</p></li>
+<li><p>PHP module mbstring</p></li>
+<li><p>PHP module openssl (included with PHP &gt;= 8.0)</p></li>
+<li><p>PHP module posix</p></li>
+<li><p>PHP module session</p></li>
+<li><p>PHP module SimpleXML</p></li>
+<li><p>PHP module XMLReader</p></li>
+<li><p>PHP module XMLWriter</p></li>
+<li><p>PHP module zip</p></li>
+<li><p>PHP module zlib</p></li>
+</ul>
+<p>Database connectors (pick the one for your database):</p>
+<ul class="simple">
+<li><p>PHP module pdo_sqlite (&gt;= 3, usually not recommended for performance reasons)</p></li>
+<li><p>PHP module pdo_mysql (MySQL/MariaDB)</p></li>
+<li><p>PHP module pdo_pgsql (PostgreSQL)</p></li>
+</ul>
+<p><em>Recommended</em> packages:</p>
+<ul class="simple">
+<li><p>PHP module intl (increases language translation performance and fixes sorting
+of non-ASCII characters)</p></li>
+<li><p>PHP module sodium (for Argon2 for password hashing. bcrypt is used as fallback, but if passwords were hashed with Argon2 already and the module is missing, your users can’t log in. Included with PHP &gt;= 7.2)</p></li>
+</ul>
+<p>Required for specific apps:</p>
+<ul class="simple">
+<li><p>PHP module ldap (for LDAP integration)</p></li>
+<li><p>PHP module smbclient  (SMB/CIFS integration, see
+<a class="reference internal" href="../configuration_files/external_storage/smb.html"><span class="doc">SMB/CIFS</span></a>)</p></li>
+<li><p>PHP module ftp (for FTP storage / external user authentication)</p></li>
+<li><p>PHP module imap (for external user authentication)</p></li>
+<li><p>PHP module bcmath (for passwordless login)</p></li>
+<li><p>PHP module gmp (for passwordless login)</p></li>
+</ul>
+<p>Recommended for specific apps (<em>optional</em>):</p>
+<ul class="simple">
+<li><p>PHP module gmp (for SFTP storage)</p></li>
+<li><p>PHP module exif (for image rotation in pictures app)</p></li>
+</ul>
+<p>For enhanced server performance (<em>optional</em>) select one or more of the following
+caches:</p>
+<ul class="simple">
+<li><p>PHP module apcu (&gt;= 4.0.6)</p></li>
+<li><p>PHP module memcached</p></li>
+<li><p>PHP module redis (&gt;= 2.2.6, required for Transactional File Locking)</p></li>
+</ul>
+<p>See <a class="reference internal" href="../configuration_server/caching_configuration.html"><span class="doc">Memory caching</span></a> to learn how to select
+and configure a cache.</p>
+<p>For preview generation (<em>optional</em>):</p>
+<ul class="simple">
+<li><p>PHP module imagick</p></li>
+<li><p>avconv or ffmpeg</p></li>
+<li><p>OpenOffice or LibreOffice</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the preview generation of PDF files fails with a “not authorized” error message, you must adjust the imagick policy file.
+See <a class="reference external" href="https://cromwell-intl.com/open-source/pdf-not-authorized.html">https://cromwell-intl.com/open-source/pdf-not-authorized.html</a></p>
+</div>
+<p>For command line processing (<em>optional</em>):</p>
+<ul class="simple">
+<li><p>PHP module pcntl (enables command interruption by pressing <code class="docutils literal notranslate"><span class="pre">ctrl-c</span></code>)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You also need to ensure that <code class="docutils literal notranslate"><span class="pre">pcntl_signal</span></code> and <code class="docutils literal notranslate"><span class="pre">pcntl_signal_dispatch</span></code> are not disabled
+in your php.ini by the <code class="docutils literal notranslate"><span class="pre">disable_functions</span></code> option.</p>
+</div>
+<p>For command line updater (<em>optional</em>):</p>
+<ul class="simple">
+<li><p>PHP module phar (upgrades Nextcloud by running <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">/var/www/nextcloud/updater/updater.phar</span></code>)</p></li>
+</ul>
+</section>
+<section id="ini-values">
+<h2>ini values<a class="headerlink" href="#ini-values" title="Link to this heading"></a></h2>
+<p>The following ini settings should be adapted if needed for Nextcloud:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">disable_functions</span></code>: avoid disabling functions unless you know exactly what you are doing</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_execution_time</span></code>: see <a class="reference internal" href="../configuration_files/big_file_upload_configuration.html"><span class="doc">Uploading big files &gt; 512MB</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">memory_limit</span></code>: should be at least 512MB. See also <a class="reference internal" href="../configuration_files/big_file_upload_configuration.html"><span class="doc">Uploading big files &gt; 512MB</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">opcache.enable</span></code> and friends: See <a class="reference internal" href="../configuration_server/caching_configuration.html"><span class="doc">Memory caching</span></a> and <a class="reference internal" href="server_tuning.html"><span class="doc">Server tuning</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">open_basedir</span></code>: see <a class="reference internal" href="harden_server.html"><span class="doc">Hardening and security guidance</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">upload_tmp_dir</span></code>: see <a class="reference internal" href="../configuration_files/big_file_upload_configuration.html"><span class="doc">Uploading big files &gt; 512MB</span></a></p></li>
+</ul>
+</section>
+<section id="php-ini-configuration-notes">
+<span id="php-ini-tips-label"></span><h2>php.ini configuration notes<a class="headerlink" href="#php-ini-configuration-notes" title="Link to this heading"></a></h2>
+<p>Keep in mind that changes to <code class="docutils literal notranslate"><span class="pre">php.ini</span></code> may have to be configured on more than one
+ini file. This can be the case, for example, for the <code class="docutils literal notranslate"><span class="pre">date.timezone</span></code> setting.
+You can search for a parameter with the following command: <code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">-r</span> <span class="pre">date.timezone</span> <span class="pre">/etc/php</span></code>.</p>
+<p><strong>php.ini - used by the Web server:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">php</span><span class="o">/</span><span class="mf">8.3</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">php</span><span class="o">.</span><span class="n">ini</span>
+<span class="ow">or</span>
+  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">php</span><span class="o">/</span><span class="mf">8.3</span><span class="o">/</span><span class="n">fpm</span><span class="o">/</span><span class="n">php</span><span class="o">.</span><span class="n">ini</span>
+<span class="ow">or</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p><strong>php.ini - used by the php-cli and so by Nextcloud CRON jobs:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">php</span><span class="o">/</span><span class="mf">8.3</span><span class="o">/</span><span class="n">cli</span><span class="o">/</span><span class="n">php</span><span class="o">.</span><span class="n">ini</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Path names have to be set in respect of the installed PHP
+(8.1, 8.2, 8.3 or 8.4) as applicable.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="deployment_recommendations.html" class="btn btn-neutral float-left" title="Deployment recommendations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="source_installation.html" class="btn btn-neutral float-right" title="Installation on Linux" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

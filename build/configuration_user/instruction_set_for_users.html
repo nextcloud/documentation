@@ -1,0 +1,813 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instruction set for users &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Instruction set for groups" href="instruction_set_for_groups.html" />
+    <link rel="prev" title="User provisioning API" href="user_provisioning_api.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="user_configuration.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reset_admin_password.html">Resetting a lost admin password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reset_user_password.html">Resetting a user password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_password_policy.html">User password policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two_factor-auth.html">Two-factor authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap.html">User authentication with LDAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_cleanup.html">LDAP user cleanup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_api.html">The LDAP configuration API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="user_provisioning_api.html">User provisioning API</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Instruction set for users</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-new-user">Add a new user</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search-get-users">Search/get users</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-data-of-a-single-user">Get data of a single user</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-data-of-a-single-user">Edit data of a single user</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#list-of-editable-data-fields">List of editable data fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#disable-a-user">Disable a user</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enable-a-user">Enable a user</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete-a-user">Delete a user</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-user-s-groups">Get user’s groups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-user-to-group">Add user to group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#remove-user-from-group">Remove user from group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#promote-user-to-subadmin">Promote user to subadmin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#demote-user-from-subadmin">Demote user from subadmin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-user-s-subadmin-groups">Get user’s subadmin groups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resend-the-welcome-email">Resend the welcome email</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="instruction_set_for_groups.html">Instruction set for groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="instruction_set_for_apps.html">Instruction set for apps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="profile_configuration.html">Profile configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">User management</a></li>
+          <li class="breadcrumb-item"><a href="user_provisioning_api.html">User provisioning API</a></li>
+      <li class="breadcrumb-item active">Instruction set for users</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_user/instruction_set_for_users.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="instruction-set-for-users">
+<h1>Instruction set for users<a class="headerlink" href="#instruction-set-for-users" title="Link to this heading"></a></h1>
+<section id="add-a-new-user">
+<h2>Add a new user<a class="headerlink" href="#add-a-new-user" title="Link to this heading"></a></h2>
+<p>Create a new user on the Nextcloud server. Authentication is done by sending a
+basic HTTP authentication header.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/users</strong></p>
+<ul class="simple">
+<li><p>HTTP method: POST</p></li>
+<li><p>POST argument: userid - string, the required username for the new user</p></li>
+<li><p>POST argument: password - string, the password for the new user, leave empty to send welcome mail</p></li>
+<li><p>POST argument: displayName - string, the display name for the new user</p></li>
+<li><p>POST argument: email - string, the email for the new user, required if password empty</p></li>
+<li><p>POST argument: groups - array, the groups for the new user</p></li>
+<li><p>POST argument: subadmin - array, the groups in which the new user is subadmin</p></li>
+<li><p>POST argument: quota - string, quota for the new user</p></li>
+<li><p>POST argument: language - string, language for the new user</p></li>
+</ul>
+<p>Status codes:</p>
+<ul class="simple">
+<li><p>101 - invalid argument</p></li>
+<li><p>102 - user already exists</p></li>
+<li><p>103 - cannot create sub-admins for admin group</p></li>
+<li><p>104 - group does not exist</p></li>
+<li><p>105 - insufficient privileges for group</p></li>
+<li><p>106 - no group specified (required for sub-admins)</p></li>
+<li><p>107 - hint exceptions</p></li>
+<li><p>108 - an email address is required, to send a password link to the user.</p></li>
+<li><p>109 - sub-admin group does not exist</p></li>
+<li><p>110 - required email address was not provided</p></li>
+<li><p>111 - could not create non-existing user ID</p></li>
+</ul>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/users -d userid=&quot;Frank&quot; -d password=&quot;frankspassword&quot; -H &quot;OCS-APIRequest: true&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Creates the user <code class="docutils literal notranslate"><span class="pre">Frank</span></code> with password <code class="docutils literal notranslate"><span class="pre">frankspassword</span></code></p></li>
+<li><p>optionally groups can be specified by one or more <code class="docutils literal notranslate"><span class="pre">groups[]</span></code> query parameters:
+<code class="docutils literal notranslate"><span class="pre">URL</span> <span class="pre">-d</span> <span class="pre">groups[]=&quot;admin&quot;</span> <span class="pre">-D</span> <span class="pre">groups[]=&quot;Team1&quot;</span></code></p></li>
+</ul>
+</section>
+<section id="xml-output">
+<h3>XML output<a class="headerlink" href="#xml-output" title="Link to this heading"></a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w"> </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">  </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">  </span><span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">  </span><span class="nt">&lt;message/&gt;</span>
+<span class="w"> </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w"> </span><span class="nt">&lt;data/&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="search-get-users">
+<h2>Search/get users<a class="headerlink" href="#search-get-users" title="Link to this heading"></a></h2>
+<p>Retrieves a list of users from the Nextcloud server. Authentication is done by
+sending a Basic HTTP Authorization header.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/users</strong></p>
+<ul class="simple">
+<li><p>HTTP method: GET</p></li>
+<li><p>url arguments: search - string, optional search string</p></li>
+<li><p>url arguments: limit - int, optional limit value</p></li>
+<li><p>url arguments: offset - int, optional offset value</p></li>
+</ul>
+<p>Status codes:</p>
+<ul class="simple">
+<li><p>100 - successful</p></li>
+</ul>
+<section id="id1">
+<h3>Example<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/users?search=Frank -H &quot;OCS-APIRequest: true&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Returns list of users matching the search string.</p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>XML output<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w">  </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">    </span><span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">    </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w">  </span><span class="nt">&lt;data&gt;</span>
+<span class="w">    </span><span class="nt">&lt;users&gt;</span>
+<span class="w">      </span><span class="nt">&lt;element&gt;</span>Frank<span class="nt">&lt;/element&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/users&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/data&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="get-data-of-a-single-user">
+<h2>Get data of a single user<a class="headerlink" href="#get-data-of-a-single-user" title="Link to this heading"></a></h2>
+<p>Retrieves information about a single user. Authentication is done by sending a
+Basic HTTP Authorization header.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/users/{userid}</strong></p>
+<ul class="simple">
+<li><p>HTTP method: GET</p></li>
+</ul>
+<p>Status codes:</p>
+<ul class="simple">
+<li><p>100 - successful</p></li>
+</ul>
+<section id="id3">
+<h3>Example<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -H &quot;OCS-APIRequest: true&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Returns information on the user <code class="docutils literal notranslate"><span class="pre">Frank</span></code></p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>XML output<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w">  </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">    </span><span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">    </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w">  </span><span class="nt">&lt;data&gt;</span>
+<span class="w">    </span><span class="nt">&lt;enabled&gt;</span>true<span class="nt">&lt;/enabled&gt;</span>
+<span class="w">    </span><span class="nt">&lt;id&gt;</span>Frank<span class="nt">&lt;/id&gt;</span>
+<span class="w">    </span><span class="nt">&lt;quota&gt;</span>0<span class="nt">&lt;/quota&gt;</span>
+<span class="w">    </span><span class="nt">&lt;email&gt;</span>frank@example.org<span class="nt">&lt;/email&gt;</span>
+<span class="w">    </span><span class="nt">&lt;displayname&gt;</span>Frank<span class="w"> </span>K.<span class="nt">&lt;/displayname&gt;</span>
+<span class="w">    </span><span class="nt">&lt;display-name&gt;</span>Frank<span class="w"> </span>K.<span class="nt">&lt;/display-name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;phone&gt;</span>0123<span class="w"> </span>/<span class="w"> </span>456<span class="w"> </span>789<span class="nt">&lt;/phone&gt;</span>
+<span class="w">    </span><span class="nt">&lt;address&gt;</span>Foobar<span class="w"> </span>12,<span class="w"> </span>12345<span class="w"> </span>Town<span class="nt">&lt;/address&gt;</span>
+<span class="w">    </span><span class="nt">&lt;website&gt;</span>https://nextcloud.com<span class="nt">&lt;/website&gt;</span>
+<span class="w">    </span><span class="nt">&lt;twitter&gt;</span>Nextcloud<span class="nt">&lt;/twitter&gt;</span>
+<span class="w">    </span><span class="nt">&lt;groups&gt;</span>
+<span class="w">     </span><span class="nt">&lt;element&gt;</span>group1<span class="nt">&lt;/element&gt;</span>
+<span class="w">     </span><span class="nt">&lt;element&gt;</span>group2<span class="nt">&lt;/element&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/groups&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/data&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="edit-data-of-a-single-user">
+<h2>Edit data of a single user<a class="headerlink" href="#edit-data-of-a-single-user" title="Link to this heading"></a></h2>
+<p>Edits attributes related to a user. Users are able to edit email, displayname
+and password; admins can also edit the quota value. Further restrictions may apply,
+check the <a class="reference internal" href="#list-of-editable-data-fields">List of editable data fields</a> endpoint. Authentication
+is done by sending a Basic HTTP Authorization header.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/users/{userid}</strong></p>
+<ul class="simple">
+<li><p>HTTP method: PUT</p></li>
+<li><p>PUT argument: key, the field to edit:</p>
+<ul>
+<li><p>email</p></li>
+<li><p>quota</p></li>
+<li><p>displayname</p></li>
+<li><p>display (<strong>deprecated</strong> use <cite>displayname</cite> instead)</p></li>
+<li><p>phone</p></li>
+<li><p>address</p></li>
+<li><p>website</p></li>
+<li><p>twitter</p></li>
+<li><p>password</p></li>
+</ul>
+</li>
+<li><p>PUT argument: value, the new value for the field</p></li>
+</ul>
+<p>Status codes:</p>
+<ul class="simple">
+<li><p>101 - invalid argument</p></li>
+<li><p>107 - password policy (hint exception)</p></li>
+<li><p>112 - Setting the password is not supported by the users backend</p></li>
+<li><p>113 - editing field not allowed / field doesn’t exist</p></li>
+</ul>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d key=&quot;email&quot; -d value=&quot;franksnewemail@example.org&quot; -H &quot;OCS-APIRequest: true&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Updates the email address for the user <code class="docutils literal notranslate"><span class="pre">Frank</span></code></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d key=&quot;quota&quot; -d value=&quot;100MB&quot; -H &quot;OCS-APIRequest: true&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Updates the quota for the user <code class="docutils literal notranslate"><span class="pre">Frank</span></code></p></li>
+</ul>
+</section>
+<section id="id5">
+<h3>XML output<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w">  </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">    </span><span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">    </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w">  </span><span class="nt">&lt;data/&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="list-of-editable-data-fields">
+<span id="editable-field-list"></span><h2>List of editable data fields<a class="headerlink" href="#list-of-editable-data-fields" title="Link to this heading"></a></h2>
+<p>Edits attributes related to a user. Users are able to edit email, displayname
+and password; admins can also edit the quota value. Authentication is done by
+sending a Basic HTTP Authorization header.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/user/fields</strong></p>
+<ul class="simple">
+<li><p>HTTP method: GET</p></li>
+</ul>
+<p>Status codes:</p>
+<ul class="simple">
+<li><p>100 - successful</p></li>
+</ul>
+<section id="id6">
+<h3>Examples<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/user/fields -H &quot;OCS-APIRequest: true&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Gets the list of fields</p></li>
+</ul>
+</section>
+<section id="id7">
+<h3>XML output<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w"> </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">  </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">  </span><span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">  </span><span class="nt">&lt;message&gt;</span>OK<span class="nt">&lt;/message&gt;</span>
+<span class="w"> </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w"> </span><span class="nt">&lt;data&gt;</span>
+<span class="w">  </span><span class="nt">&lt;element&gt;</span>displayname<span class="nt">&lt;/element&gt;</span>
+<span class="w">  </span><span class="nt">&lt;element&gt;</span>email<span class="nt">&lt;/element&gt;</span>
+<span class="w">  </span><span class="nt">&lt;element&gt;</span>phone<span class="nt">&lt;/element&gt;</span>
+<span class="w">  </span><span class="nt">&lt;element&gt;</span>address<span class="nt">&lt;/element&gt;</span>
+<span class="w">  </span><span class="nt">&lt;element&gt;</span>website<span class="nt">&lt;/element&gt;</span>
+<span class="w">  </span><span class="nt">&lt;element&gt;</span>twitter<span class="nt">&lt;/element&gt;</span>
+<span class="w"> </span><span class="nt">&lt;/data&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="disable-a-user">
+<h2>Disable a user<a class="headerlink" href="#disable-a-user" title="Link to this heading"></a></h2>
+<p>Disables a user on the Nextcloud server so that the user cannot login anymore.
+Authentication is done by sending a Basic HTTP Authorization header.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/users/{userid}/disable</strong></p>
+<ul class="simple">
+<li><p>HTTP method: PUT</p></li>
+</ul>
+<p>Statuscodes:</p>
+<ul class="simple">
+<li><p>100 - successful</p></li>
+<li><p>101 - failure</p></li>
+</ul>
+<section id="id8">
+<h3>Example<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/disable -H &quot;OCS-APIRequest: true&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Disables the user <code class="docutils literal notranslate"><span class="pre">Frank</span></code></p></li>
+</ul>
+</section>
+<section id="id9">
+<h3>XML output<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w">  </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">    </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">    </span><span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">    </span><span class="nt">&lt;message/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w">  </span><span class="nt">&lt;data/&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="enable-a-user">
+<h2>Enable a user<a class="headerlink" href="#enable-a-user" title="Link to this heading"></a></h2>
+<p>Enables a user on the Nextcloud server so that the user can login again.
+Authentication is done by sending a Basic HTTP Authorization header.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/users/{userid}/enable</strong></p>
+<ul class="simple">
+<li><p>HTTP method: PUT</p></li>
+</ul>
+<p>Statuscodes:</p>
+<ul class="simple">
+<li><p>100 - successful</p></li>
+<li><p>101 - failure</p></li>
+</ul>
+<section id="id10">
+<h3>Example<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/enable -H &quot;OCS-APIRequest: true&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Enables the user <code class="docutils literal notranslate"><span class="pre">Frank</span></code></p></li>
+</ul>
+</section>
+<section id="id11">
+<h3>XML output<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w">  </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">    </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">    </span><span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">    </span><span class="nt">&lt;message/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w">  </span><span class="nt">&lt;data/&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="delete-a-user">
+<h2>Delete a user<a class="headerlink" href="#delete-a-user" title="Link to this heading"></a></h2>
+<p>Deletes a user from the Nextcloud server. Authentication is done by sending a
+Basic HTTP Authorization header.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/users/{userid}</strong></p>
+<ul class="simple">
+<li><p>HTTP method: DELETE</p></li>
+</ul>
+<p>Statuscodes:</p>
+<ul class="simple">
+<li><p>100 - successful</p></li>
+<li><p>101 - failure</p></li>
+</ul>
+<section id="id12">
+<h3>Example<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -H &quot;OCS-APIRequest: true&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Deletes the user <code class="docutils literal notranslate"><span class="pre">Frank</span></code></p></li>
+</ul>
+</section>
+<section id="id13">
+<h3>XML output<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w">  </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">    </span><span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">    </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w">  </span><span class="nt">&lt;data/&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="get-user-s-groups">
+<h2>Get user’s groups<a class="headerlink" href="#get-user-s-groups" title="Link to this heading"></a></h2>
+<p>Retrieves a list of groups the specified user is a member of. Authentication is
+done by sending a Basic HTTP Authorization header.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/users/{userid}/groups</strong></p>
+<ul class="simple">
+<li><p>HTTP method: GET</p></li>
+</ul>
+<p>Status codes:</p>
+<ul class="simple">
+<li><p>100 - successful</p></li>
+</ul>
+<section id="id14">
+<h3>Example<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups -H &quot;OCS-APIRequest: true&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Retrieves a list of groups of which <code class="docutils literal notranslate"><span class="pre">Frank</span></code> is a member</p></li>
+</ul>
+</section>
+<section id="id15">
+<h3>XML output<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w">  </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">    </span><span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">    </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w">  </span><span class="nt">&lt;data&gt;</span>
+<span class="w">    </span><span class="nt">&lt;groups&gt;</span>
+<span class="w">      </span><span class="nt">&lt;element&gt;</span>admin<span class="nt">&lt;/element&gt;</span>
+<span class="w">      </span><span class="nt">&lt;element&gt;</span>group1<span class="nt">&lt;/element&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/groups&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/data&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="add-user-to-group">
+<h2>Add user to group<a class="headerlink" href="#add-user-to-group" title="Link to this heading"></a></h2>
+<p>Adds the specified user to the specified group. Authentication is done by
+sending a Basic HTTP Authorization header.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/users/{userid}/groups</strong></p>
+<ul class="simple">
+<li><p>HTTP method: POST</p></li>
+<li><p>POST argument: groupid, string - the group to add the user to</p></li>
+</ul>
+<p>Status codes:</p>
+<ul class="simple">
+<li><p>100 - successful</p></li>
+<li><p>101 - no group specified</p></li>
+<li><p>102 - group does not exist</p></li>
+<li><p>103 - user does not exist</p></li>
+<li><p>104 - insufficient privileges</p></li>
+<li><p>105 - failed to add user to group</p></li>
+</ul>
+<section id="id16">
+<h3>Example<a class="headerlink" href="#id16" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups -d groupid=&quot;newgroup&quot; -H &quot;OCS-APIRequest: true&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Adds the user <code class="docutils literal notranslate"><span class="pre">Frank</span></code> to the group <code class="docutils literal notranslate"><span class="pre">newgroup</span></code></p></li>
+</ul>
+</section>
+<section id="id17">
+<h3>XML output<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w">  </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">    </span><span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">    </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w">  </span><span class="nt">&lt;data/&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="remove-user-from-group">
+<h2>Remove user from group<a class="headerlink" href="#remove-user-from-group" title="Link to this heading"></a></h2>
+<p>Removes the specified user from the specified group. Authentication is done by
+sending a Basic HTTP Authorization header.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/users/{userid}/groups</strong></p>
+<ul class="simple">
+<li><p>HTTP method: DELETE</p></li>
+<li><p>DELETE argument: groupid, string - the group to remove the user from</p></li>
+</ul>
+<p>Status codes:</p>
+<ul class="simple">
+<li><p>100 - successful</p></li>
+<li><p>101 - no group specified</p></li>
+<li><p>102 - group does not exist</p></li>
+<li><p>103 - user does not exist</p></li>
+<li><p>104 - insufficient privileges</p></li>
+<li><p>105 - failed to remove user from group</p></li>
+</ul>
+<section id="id18">
+<h3>Example<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups -d groupid=&quot;newgroup&quot; -H &quot;OCS-APIRequest: true&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Removes the user <code class="docutils literal notranslate"><span class="pre">Frank</span></code> from the group <code class="docutils literal notranslate"><span class="pre">newgroup</span></code></p></li>
+</ul>
+</section>
+<section id="id19">
+<h3>XML output<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w">  </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">    </span><span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">    </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w">  </span><span class="nt">&lt;data/&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="promote-user-to-subadmin">
+<h2>Promote user to subadmin<a class="headerlink" href="#promote-user-to-subadmin" title="Link to this heading"></a></h2>
+<p>Makes a user the subadmin of a group. Authentication is done by sending a Basic
+HTTP Authorization header.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/users/{userid}/subadmins</strong></p>
+<ul class="simple">
+<li><p>HTTP method: POST</p></li>
+<li><p>POST argument: groupid, string - the group of which to make the user a
+subadmin</p></li>
+</ul>
+<p>Status codes:</p>
+<ul class="simple">
+<li><p>100 - successful</p></li>
+<li><p>101 - user does not exist</p></li>
+<li><p>102 - group does not exist</p></li>
+<li><p>103 - unknown failure</p></li>
+</ul>
+<section id="id20">
+<h3>Example<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X POST https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins -d groupid=&quot;group&quot; -H &quot;OCS-APIRequest: true&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Makes the user <code class="docutils literal notranslate"><span class="pre">Frank</span></code> a subadmin of the <code class="docutils literal notranslate"><span class="pre">group</span></code> group</p></li>
+</ul>
+</section>
+<section id="id21">
+<h3>XML output<a class="headerlink" href="#id21" title="Link to this heading"></a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w">  </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">    </span><span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">    </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w">  </span><span class="nt">&lt;data/&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="demote-user-from-subadmin">
+<h2>Demote user from subadmin<a class="headerlink" href="#demote-user-from-subadmin" title="Link to this heading"></a></h2>
+<p>Removes the subadmin rights for the user specified from the group specified.
+Authentication is done by sending a Basic HTTP Authorization header.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/users/{userid}/subadmins</strong></p>
+<ul class="simple">
+<li><p>HTTP method: DELETE</p></li>
+<li><p>DELETE argument: groupid, string - the group from which to remove the user’s
+subadmin rights</p></li>
+</ul>
+<p>Status codes:</p>
+<ul class="simple">
+<li><p>100 - successful</p></li>
+<li><p>101 - user does not exist</p></li>
+<li><p>102 - user is not a subadmin of the group / group does not exist</p></li>
+<li><p>103 - unknown failure</p></li>
+</ul>
+<section id="id22">
+<h3>Example<a class="headerlink" href="#id22" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X DELETE https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins -d groupid=&quot;oldgroup&quot; -H &quot;OCS-APIRequest: true&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Removes <code class="docutils literal notranslate"><span class="pre">Frank's</span></code> subadmin rights from the <code class="docutils literal notranslate"><span class="pre">oldgroup</span></code> group</p></li>
+</ul>
+</section>
+<section id="id23">
+<h3>XML output<a class="headerlink" href="#id23" title="Link to this heading"></a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w">  </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">    </span><span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">    </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w">  </span><span class="nt">&lt;data/&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="get-user-s-subadmin-groups">
+<h2>Get user’s subadmin groups<a class="headerlink" href="#get-user-s-subadmin-groups" title="Link to this heading"></a></h2>
+<p>Returns the groups in which the user is a subadmin. Authentication is done by
+sending a Basic HTTP Authorization header.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/users/{userid}/subadmins</strong></p>
+<ul class="simple">
+<li><p>HTTP method: GET</p></li>
+</ul>
+<p>Status codes:</p>
+<ul class="simple">
+<li><p>100 - successful</p></li>
+<li><p>101 - user does not exist</p></li>
+<li><p>102 - unknown failure</p></li>
+</ul>
+<section id="id24">
+<h3>Example<a class="headerlink" href="#id24" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X GET https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins -H &quot;OCS-APIRequest: true&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Returns the groups of which <code class="docutils literal notranslate"><span class="pre">Frank</span></code> is a subadmin</p></li>
+</ul>
+</section>
+<section id="id25">
+<h3>XML output<a class="headerlink" href="#id25" title="Link to this heading"></a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w">  </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">      </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">      </span><span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">    </span><span class="nt">&lt;message/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w">  </span><span class="nt">&lt;data&gt;</span>
+<span class="w">    </span><span class="nt">&lt;element&gt;</span>testgroup<span class="nt">&lt;/element&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/data&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="resend-the-welcome-email">
+<h2>Resend the welcome email<a class="headerlink" href="#resend-the-welcome-email" title="Link to this heading"></a></h2>
+<p>The request to this endpoint triggers the welcome email for this user again.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/users/{userid}/welcome</strong></p>
+<ul class="simple">
+<li><p>HTTP method: POST</p></li>
+</ul>
+<p>Status codes:</p>
+<ul class="simple">
+<li><p>100 - successful</p></li>
+<li><p>101 - email address not available</p></li>
+<li><p>102 - sending email failed</p></li>
+</ul>
+<section id="id26">
+<h3>Example<a class="headerlink" href="#id26" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X POST https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/welcome -H &quot;OCS-APIRequest: true&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Sends the welcome email to <code class="docutils literal notranslate"><span class="pre">Frank</span></code></p></li>
+</ul>
+</section>
+<section id="id27">
+<h3>XML output<a class="headerlink" href="#id27" title="Link to this heading"></a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w">  </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">      </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">      </span><span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">    </span><span class="nt">&lt;message/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w">  </span><span class="nt">&lt;data/&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="user_provisioning_api.html" class="btn btn-neutral float-left" title="User provisioning API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="instruction_set_for_groups.html" class="btn btn-neutral float-right" title="Instruction set for groups" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

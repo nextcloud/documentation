@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Configuring External Storage (GUI) &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Amazon S3" href="external_storage/amazons3.html" />
+    <link rel="prev" title="Configuring Object Storage as Primary Storage" href="primary_storage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">File sharing and management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="file_sharing_configuration.html">File Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing_configuration.html">Configuring Federation Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="big_file_upload_configuration.html">Uploading big files &gt; 512MB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="default_files_configuration.html">Providing default files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="primary_storage.html">Configuring Object Storage as Primary Storage</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuring External Storage (GUI)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#enabling-external-storage-support">Enabling External Storage Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storage-configuration">Storage configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage-of-variables-for-mount-paths">Usage of variables for mount paths</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-and-group-permissions">User and group permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mount-options">Mount options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-self-signed-certificates">Using self-signed certificates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#available-storage-backends">Available storage backends</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="external_storage/amazons3.html">Amazon S3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="external_storage/ftp.html">FTP/FTPS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="external_storage/local.html">Local</a></li>
+<li class="toctree-l4"><a class="reference internal" href="external_storage/nextcloud.html">Nextcloud</a></li>
+<li class="toctree-l4"><a class="reference internal" href="external_storage/openstack.html">OpenStack Object Storage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="external_storage/sftp.html">SFTP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="external_storage/smb.html">SMB/CIFS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="external_storage/webdav.html">WebDAV</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#allow-users-to-mount-external-storage">Allow users to mount external Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-files-to-external-storages">Adding files to external storages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="external_storage/auth_mechanisms.html">External Storage authentication mechanisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encryption_configuration.html">Encryption configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encryption_details.html">Encryption details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encryption_migration.html">Encryption migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files_locking_transactional.html">Transactional file locking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="previews_configuration.html">Previews configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_versioning.html">Controlling file versions and aging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trashbin_configuration.html">Deleted Items (trash bin)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">File sharing and management</a></li>
+      <li class="breadcrumb-item active">Configuring External Storage (GUI)</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_files/external_storage_configuration_gui.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="configuring-external-storage-gui">
+<h1>Configuring External Storage (GUI)<a class="headerlink" href="#configuring-external-storage-gui" title="Link to this heading"></a></h1>
+<p>The External Storage Support application enables you to mount external storage
+services and devices as secondary Nextcloud storage devices. You may also allow
+users to mount their own external storage services.</p>
+<p>For configuration of external storages via occ command, see <a class="reference internal" href="../occ_command.html#files-external-label"><span class="std std-ref">occ documentation</span></a>.</p>
+<section id="enabling-external-storage-support">
+<h2>Enabling External Storage Support<a class="headerlink" href="#enabling-external-storage-support" title="Link to this heading"></a></h2>
+<p>The External storage support application is enabled on your Apps page.</p>
+<figure class="align-default">
+<img alt="Enable external storage on your Apps page." src="../_images/enable-app.png" />
+</figure>
+</section>
+<section id="storage-configuration">
+<h2>Storage configuration<a class="headerlink" href="#storage-configuration" title="Link to this heading"></a></h2>
+<p>To access the settings for configuring external storage mounts, click on your Profile icon
+in the top right and select settings from the dropdown.  On the left side under Administration
+select External Storage.</p>
+<p>To create a new external storage mount, select an available backend from the
+dropdown <strong>Add storage</strong>. Each backend has different required options, which
+are configured in the configuration fields.</p>
+<figure class="align-default">
+<img alt="../_images/add_storage.png" src="../_images/add_storage.png" />
+</figure>
+<p>Each backend may also accept multiple authentication methods. These are selected
+with the dropdown under <strong>Authentication</strong>. Different backends support different
+authentication mechanisms; some specific to the backend, others are more
+generic. See <a class="reference internal" href="external_storage/auth_mechanisms.html"><span class="doc">External Storage authentication mechanisms</span></a> for more detailed
+information.</p>
+<p>When you select an authentication mechanism, the configuration fields change as
+appropriate for the mechanism. The SFTP backend, for one example, supports
+<strong>username and password</strong>, <strong>Log-in credentials, save in session</strong>, and <strong>RSA
+public key</strong>.</p>
+<figure class="align-default">
+<img alt="An SFTP configuration example." src="../_images/auth_mechanism.png" />
+</figure>
+<p>Required fields are marked with a red border. When all required fields are
+filled, the storage is automatically saved. A green dot next to the storage row
+indicates the storage is ready for use. A red or yellow icon indicates
+that Nextcloud could not connect to the external storage, so you need to
+re-check your configuration and network availability.</p>
+<p>If there is an error on the storage, it will be marked as unavailable for ten
+minutes. To re-check it, click the colored icon or reload your Admin page.</p>
+</section>
+<section id="usage-of-variables-for-mount-paths">
+<h2>Usage of variables for mount paths<a class="headerlink" href="#usage-of-variables-for-mount-paths" title="Link to this heading"></a></h2>
+<p>The external storage mounting mechanism accepts variables in the mount path.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">$user</span></code> for automatic substitution with the logged in user’s username.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">$home</span></code> for automatic substitution with a configurable home directory variable
+(requires LDAP, see <a class="reference internal" href="../configuration_user/user_auth_ldap.html#ldap-special-attributes"><span class="std std-ref">Special attributes</span></a> in the LDAP configuration documentation for details)</p>
+<p>In the following example, the mount point for a logged in user “alice” would substitute
+to <code class="docutils literal notranslate"><span class="pre">/opt/userDirectories/alice/myPictures</span></code>.</p>
+<figure class="align-default">
+<img alt="External storage user variable substitution" src="../_images/externalStorages_variables.png" />
+</figure>
+</section>
+<section id="user-and-group-permissions">
+<h2>User and group permissions<a class="headerlink" href="#user-and-group-permissions" title="Link to this heading"></a></h2>
+<p>A storage configured in a user’s Personal settings is available only to the user
+that created it. A storage configured in the Admin settings is available to
+all users by default, and it can be restricted to specific users and groups in
+the <strong>Available for</strong> field.</p>
+<figure class="align-default">
+<img alt="User and groups selector" src="../_images/applicable.png" />
+</figure>
+</section>
+<section id="mount-options">
+<span id="external-storage-mount-options-label"></span><h2>Mount options<a class="headerlink" href="#mount-options" title="Link to this heading"></a></h2>
+<p>The Overflow menu (three dots) exposes the settings and trashcan. Click the trashcan to delete the
+mountpoint. The settings button allows you to configure each storage mount
+individually with the following options:</p>
+<ul class="simple">
+<li><p>Encryption</p></li>
+<li><p>Previews</p></li>
+<li><p>Enable Sharing</p></li>
+<li><p>Filesystem check frequency (Never, Once per direct access)</p></li>
+<li><p>Mac NFD Compatibility</p></li>
+<li><p>Read Only</p></li>
+</ul>
+<p>The <strong>Encryption</strong> checkbox is visible only when the Encryption app is enabled. Note that server-side
+encryption is not available for other Nextcloud servers used as external storage.</p>
+<p><strong>Enable Sharing</strong> allows the Nextcloud admin to enable or disable sharing on individual mountpoints.
+When sharing is disabled the shares are retained internally, so that you can re-enable sharing
+and the previous shares become available again. Sharing is disabled by default.</p>
+<figure class="align-default">
+<img alt="Additional mount options exposed on mouseover." src="../_images/mount_options.png" />
+</figure>
+</section>
+<section id="using-self-signed-certificates">
+<h2>Using self-signed certificates<a class="headerlink" href="#using-self-signed-certificates" title="Link to this heading"></a></h2>
+<p>When using self-signed certificates for external storage mounts the certificate
+must be imported into the personal settings of the user. Please refer to
+<a class="reference external" href="https://ownclouden.blogspot.de/2014/11/owncloud-https-external-mount.html">Nextcloud HTTPS External Mount</a>
+for more information.</p>
+</section>
+<section id="available-storage-backends">
+<h2>Available storage backends<a class="headerlink" href="#available-storage-backends" title="Link to this heading"></a></h2>
+<p>The following backends are provided by the external storages app.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/amazons3.html">Amazon S3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/ftp.html">FTP/FTPS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/local.html">Local</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/nextcloud.html">Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/openstack.html">OpenStack Object Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/sftp.html">SFTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/smb.html">SMB/CIFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/webdav.html">WebDAV</a></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A non-blocking or correctly configured SELinux setup is needed
+for these backends to work. Please refer to the <a class="reference internal" href="../installation/selinux_configuration.html#selinux-config-label"><span class="std std-ref">SELinux configuration</span></a>.</p>
+</div>
+</section>
+<section id="allow-users-to-mount-external-storage">
+<h2>Allow users to mount external Storage<a class="headerlink" href="#allow-users-to-mount-external-storage" title="Link to this heading"></a></h2>
+<p>Check <strong>Enable User External Storage</strong> to allow your users to mount their own
+external storage services, and check the backends you want to allow. Beware, as
+this allows a user to make potentially arbitrary connections to other services
+on your network!</p>
+<figure class="align-default">
+<img alt="Checkboxes to allow users to mount external storage services." src="../_images/user_mounts.png" />
+</figure>
+</section>
+<section id="adding-files-to-external-storages">
+<h2>Adding files to external storages<a class="headerlink" href="#adding-files-to-external-storages" title="Link to this heading"></a></h2>
+<p>We recommend configuring the background job <strong>Webcron</strong> or
+<strong>Cron</strong> (see <a class="reference internal" href="../configuration_server/background_jobs_configuration.html"><span class="doc">Background jobs</span></a>)
+to enable Nextcloud to automatically detect files added to your external
+storages.</p>
+<p>Nextcloud may not always be able to find out what has been
+changed remotely (files changed without going through Nextcloud), especially
+when it’s very deep in the folder hierarchy of the external storage.</p>
+<p>You might need to setup a cron job that runs <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">occ</span> <span class="pre">files:scan</span> <span class="pre">--all</span></code>
+(or replace <code class="docutils literal notranslate"><span class="pre">--all</span></code> with the user name, see also <a class="reference internal" href="../occ_command.html"><span class="doc">Using the occ command</span></a>)
+to trigger a rescan of the user’s files periodically (for example every 15 minutes), which includes
+the mounted external storage.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="primary_storage.html" class="btn btn-neutral float-left" title="Configuring Object Storage as Primary Storage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="external_storage/amazons3.html" class="btn btn-neutral float-right" title="Amazon S3" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,267 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Managing ExApps &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="User management" href="../configuration_user/index.html" />
+    <link rel="prev" title="Test Deploy Daemon" href="TestDeploy.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">ExApps management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="AppAPIAndExternalApps.html">AppAPI and External Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DeployConfigurations.html">Deployment configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ManagingDeployDaemons.html">Managing Deploy Daemons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TestDeploy.html">Test Deploy Daemon</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Managing ExApps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#register">Register</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#arguments">Arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#options">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#unregister">Unregister</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#update">Update</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#enable">Enable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disable">Disable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#list-exapps">List ExApps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">ExApps management</a></li>
+      <li class="breadcrumb-item active">Managing ExApps</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/exapps_management/ManagingExApps.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="managing-exapps">
+<h1>Managing ExApps<a class="headerlink" href="#managing-exapps" title="Link to this heading"></a></h1>
+<p>Managing ExApps can be done from App Management UI as with other Nextcloud Apps,
+but you can also use the AppAPI commands in the OCC CLI tool.</p>
+<p>There are several commands to work with ExApps:</p>
+<ol class="arabic simple">
+<li><p>Register</p></li>
+<li><p>Unregister</p></li>
+<li><p>Update</p></li>
+<li><p>Enable</p></li>
+<li><p>Disable</p></li>
+<li><p>List ExApps</p></li>
+</ol>
+<section id="register">
+<h2>Register<a class="headerlink" href="#register" title="Link to this heading"></a></h2>
+<p>Command: <code class="docutils literal notranslate"><span class="pre">app_api:app:register</span> <span class="pre">[--info-xml</span> <span class="pre">INFO-XML]</span> <span class="pre">[--json-info</span> <span class="pre">JSON-INFO]</span> <span class="pre">[--]</span> <span class="pre">&lt;appid&gt;</span> <span class="pre">&lt;daemon-config-name&gt;</span></code></p>
+<p>The register command is the first ExApp installation step.</p>
+<section id="arguments">
+<h3>Arguments<a class="headerlink" href="#arguments" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">appid</span></code> - unique name of the ExApp (e.g. <code class="docutils literal notranslate"><span class="pre">app_python_skeleton</span></code>, must be the same as in deployed container)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">daemon-config-name</span></code> - unique name of the daemon (e.g. <code class="docutils literal notranslate"><span class="pre">docker_local_sock</span></code>)</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="options">
+<h3>Options<a class="headerlink" href="#options" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--json-info</span> <span class="pre">JSON-INFO</span></code> <em>[optional]</em> - ExApp deploy JSON info (json string)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--info-xml</span> <span class="pre">INFO-XML</span></code> <em>[optional]</em> - path to info.xml file (url or local absolute path)</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+<section id="unregister">
+<h2>Unregister<a class="headerlink" href="#unregister" title="Link to this heading"></a></h2>
+<p>Command: <code class="docutils literal notranslate"><span class="pre">app_api:app:unregister</span> <span class="pre">[--rm-data]</span> <span class="pre">[--force]</span> <span class="pre">[--silent]</span> <span class="pre">[--]</span> <span class="pre">&lt;appid&gt;</span></code></p>
+<p>To remove an ExApp, you can use the unregister command.
+By default, this command does <em>not</em> delete the ExApp’s persistent storage (data volume) to avoid accidental removal of any user data.</p>
+<section id="id1">
+<h3>Arguments<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">appid</span></code> - unique name of the ExApp (e.g. <code class="docutils literal notranslate"><span class="pre">app_python_skeleton</span></code>, must be the same as in deployed container)</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id2">
+<h3>Options<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--rm-data</span></code> <em>[optional]</em> - remove ExApp persistent storage (data volume)</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">--force</span></code> <em>[optional]</em> - continue removal even if some error occurs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--silent</span></code> <em>[optional]</em> - print a minimum of information, display only some errors, if any</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+<section id="update">
+<h2>Update<a class="headerlink" href="#update" title="Link to this heading"></a></h2>
+<p>Command: <code class="docutils literal notranslate"><span class="pre">app_api:app:update</span> <span class="pre">[--info-xml</span> <span class="pre">INFO-XML]</span> <span class="pre">[--force-update]</span> <span class="pre">[-e|--enabled]</span> <span class="pre">[--]</span> <span class="pre">&lt;appid&gt;</span></code></p>
+<p>ExApp will be updated if there is a new version available.</p>
+<section id="id3">
+<h3>Arguments<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">appid</span></code> - unique name of the ExApp (e.g. <code class="docutils literal notranslate"><span class="pre">app_python_skeleton</span></code>, must be the same as in deployed container)</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id4">
+<h3>Options<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--info-xml</span> <span class="pre">INFO-XML</span></code> <em>[optional]</em> - path to info.xml file (url or local absolute path)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-e|--enabled</span></code> <em>[optional]</em> - enable ExApp after update</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+<section id="enable">
+<h2>Enable<a class="headerlink" href="#enable" title="Link to this heading"></a></h2>
+<p>Command: <code class="docutils literal notranslate"><span class="pre">app_api:app:enable</span> <span class="pre">&lt;appid&gt;</span></code></p>
+</section>
+<section id="disable">
+<h2>Disable<a class="headerlink" href="#disable" title="Link to this heading"></a></h2>
+<p>Command: <code class="docutils literal notranslate"><span class="pre">app_api:app:disable</span> <span class="pre">&lt;appid&gt;</span></code></p>
+</section>
+<section id="list-exapps">
+<h2>List ExApps<a class="headerlink" href="#list-exapps" title="Link to this heading"></a></h2>
+<p>Command: <code class="docutils literal notranslate"><span class="pre">app_api:app:list</span></code></p>
+<p>ListExApps command will show all ExApps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ExApps</span><span class="p">:</span>
+<span class="n">appid</span> <span class="p">(</span><span class="n">Display</span> <span class="n">Name</span><span class="p">):</span> <span class="n">version</span> <span class="p">[</span><span class="n">enabled</span><span class="o">/</span><span class="n">disabled</span><span class="p">]</span>
+<span class="n">to_gif_example</span> <span class="p">(</span><span class="n">To</span> <span class="n">Gif</span> <span class="n">Example</span><span class="p">):</span> <span class="mf">1.0.0</span> <span class="p">[</span><span class="n">enabled</span><span class="p">]</span>
+<span class="n">upscaler_example</span> <span class="p">(</span><span class="n">Upscaler</span> <span class="n">Example</span><span class="p">):</span> <span class="mf">1.0.0</span> <span class="p">[</span><span class="n">enabled</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="TestDeploy.html" class="btn btn-neutral float-left" title="Test Deploy Daemon" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../configuration_user/index.html" class="btn btn-neutral float-right" title="User management" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

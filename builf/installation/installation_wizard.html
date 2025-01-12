@@ -1,0 +1,260 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation wizard &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Installing from command line" href="command_line_installation.html" />
+    <link rel="prev" title="Installation on Linux" href="source_installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation and server configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="system_requirements.html">System requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment_recommendations.html">Deployment recommendations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="php_configuration.html">PHP Modules &amp; Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source_installation.html">Installation on Linux</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Installation wizard</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#quick-start">Quick start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-directory-location">Data directory location</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#database-choice">Database choice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trusted-domains">Trusted domains</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Installing from command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">NGINX configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harden_server.html">Hardening and security guidance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server_tuning.html">Server tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_ubuntu.html">Example installation on Ubuntu 22.04 LTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_centos.html">Example installation on CentOS 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_openbsd.html">Example installation on OpenBSD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="initial_setup.html">Initial setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Installation and server configuration</a></li>
+      <li class="breadcrumb-item active">Installation wizard</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/installation/installation_wizard.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation-wizard">
+<h1>Installation wizard<a class="headerlink" href="#installation-wizard" title="Link to this heading"></a></h1>
+<section id="quick-start">
+<h2>Quick start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
+<p>When Nextcloud prerequisites are fulfilled and all Nextcloud files are installed,
+the last step to completing the installation is running the Installation
+Wizard.
+This is just three steps:</p>
+<ol class="arabic simple">
+<li><p>Point your Web browser to <code class="docutils literal notranslate"><span class="pre">http://localhost/nextcloud</span></code></p></li>
+<li><p>Enter your desired administrator’s username and password.</p></li>
+<li><p>Click <strong>Finish Setup</strong>.</p></li>
+</ol>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/install-wizard-a.png"><img alt="screenshot of the installation wizard" src="../_images/install-wizard-a.png" style="width: 240.75px; height: 609.0px;" />
+</a>
+</figure>
+<p>You’re finished and can start using your new Nextcloud server.</p>
+<p>Of course, there is much more that you can do to set up your Nextcloud server for
+best performance and security. In the following sections we will cover important
+installation and post-installation steps.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#data-directory-location-label"><span class="std std-ref">Data Directory Location</span></a></p></li>
+<li><p><a class="reference internal" href="#database-choice-label"><span class="std std-ref">Database Choice</span></a></p></li>
+<li><p><a class="reference internal" href="#trusted-domains-label"><span class="std std-ref">Trusted Domains</span></a></p></li>
+</ul>
+</section>
+<section id="data-directory-location">
+<span id="data-directory-location-label"></span><h2>Data directory location<a class="headerlink" href="#data-directory-location" title="Link to this heading"></a></h2>
+<p>Click <strong>Storage and Database</strong> to expose additional installation configuration
+options for your Nextcloud data directory and database.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/install-wizard-a1.png"><img alt="installation wizard with all options exposed" src="../_images/install-wizard-a1.png" style="width: 216.0px; height: 563.25px;" />
+</a>
+</figure>
+<p>You should locate your Nextcloud data directory outside of your Web root if you
+are using an HTTP server other than Apache, or you may wish to store your
+Nextcloud data in a different location for other reasons (e.g. on a storage
+server). It is best to configure your data directory location at installation,
+as it is difficult to move after installation. You may put it anywhere; in this
+example is it located in <code class="docutils literal notranslate"><span class="pre">/opt/nextcloud/</span></code>. This directory must already exist,
+and must be owned by your HTTP user.</p>
+</section>
+<section id="database-choice">
+<span id="database-choice-label"></span><h2>Database choice<a class="headerlink" href="#database-choice" title="Link to this heading"></a></h2>
+<p>SQLite is the default database for Nextcloud Server and it is good only for
+testing and lightweight single-user setups without client synchronization.
+Supported databases are MySQL, MariaDB, Oracle 11g, and PostgreSQL, and we
+recommend <a class="reference internal" href="system_requirements.html"><span class="doc">MySQL/MariaDB</span></a>. Your database and PHP
+connectors must be installed before you run the Installation Wizard. When
+you install Nextcloud from packages all the necessary dependencies will be
+satisfied (see <a class="reference internal" href="source_installation.html"><span class="doc">Installation on Linux</span></a> for a detailed listing of required
+and optional PHP modules). You will need the root database login, or any
+administrator login , and then enter any name you want for your Nextcloud database.
+Be careful your administrator login needs to have the permissions to create
+and modify databases and they needs to have the permissions to grant permissions
+to other users.</p>
+<p>After you enter your root or administrator login for your database, the
+installer creates a special database user with privileges limited to the
+Nextcloud database. Then Nextcloud needs only the special Nextcloud database
+user, and drops the root dB login. This user is named for your Nextcloud admin
+user, with an <code class="docutils literal notranslate"><span class="pre">oc_</span></code> prefix, and then given a random password. The Nextcloud
+database user and password are written into <code class="docutils literal notranslate"><span class="pre">config.php</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;dbuser&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;oc_molly&#39;</span><span class="p">,</span>
+<span class="s1">&#39;dbpassword&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;pX65Ty5DrHQkYPE5HRsDvyFHlZZHcm&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Click Finish Setup, and start using your new Nextcloud server.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/install-wizard-a2.png"><img alt="Nextcloud welcome screen after a successful installation" src="../_images/install-wizard-a2.png" style="width: 996.75px; height: 573.0px;" />
+</a>
+</figure>
+<p>Now we will look at some important post-installation steps.</p>
+</section>
+<section id="trusted-domains">
+<span id="trusted-domains-label"></span><h2>Trusted domains<a class="headerlink" href="#trusted-domains" title="Link to this heading"></a></h2>
+<p>All URLs used to access your Nextcloud server must be whitelisted in your
+<code class="docutils literal notranslate"><span class="pre">config.php</span></code> file, under the <code class="docutils literal notranslate"><span class="pre">trusted_domains</span></code> setting. Users
+are allowed to log into Nextcloud only when they point their browsers to a
+URL that is listed in the <code class="docutils literal notranslate"><span class="pre">trusted_domains</span></code> setting. This is not a
+list of allowed client-side domains or IP addresses.
+You may use IP addresses and domain names.
+A typical configuration looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;trusted_domains&#39;</span> <span class="o">=&gt;</span>
+  <span class="n">array</span> <span class="p">(</span>
+   <span class="mi">0</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+   <span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">&#39;server1.example.com&#39;</span><span class="p">,</span>
+   <span class="mi">2</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.1.50&#39;</span><span class="p">,</span>
+   <span class="mi">3</span> <span class="o">=&gt;</span> <span class="s1">&#39;[fe80::1:50]&#39;</span><span class="p">,</span>
+<span class="p">),</span>
+</pre></div>
+</div>
+<p>Note:</p>
+<p>The loopback address, <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>, is automatically whitelisted, so as long
+as you have access to the physical server you can always log in. In the event
+that a load balancer is in place there will be no issues as long as it sends
+the correct X-Forwarded-Host header. When a user tries a URL that
+is not whitelisted the following error appears:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/install-wizard-a4.png"><img alt="Error message when URL is not whitelisted" src="../_images/install-wizard-a4.png" style="width: 541.5px; height: 230.25px;" />
+</a>
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="source_installation.html" class="btn btn-neutral float-left" title="Installation on Linux" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="command_line_installation.html" class="btn btn-neutral float-right" title="Installing from command line" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

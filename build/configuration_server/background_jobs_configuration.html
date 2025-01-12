@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Background jobs &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Brute force protection" href="bruteforce_configuration.html" />
+    <link rel="prev" title="Automatic setup" href="automatic_configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Nextcloud configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="security_setup_warnings.html">Warnings on admin page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html">Configuration Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activity_configuration.html">Activity app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin_delegation_configuration.html">Administration privileges (Delegation)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antivirus_configuration.html">Antivirus scanner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="automatic_configuration.html">Automatic setup</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Background jobs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#maintenance-window-start"><code class="docutils literal notranslate"><span class="pre">maintenance_window_start</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cron-jobs">Cron jobs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ajax">AJAX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#webcron">Webcron</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cron">Cron</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#systemd">systemd</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bruteforce_configuration.html">Brute force protection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching_configuration.html">Memory caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard_configuration.html">Dashboard app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain_change.html">Domain Change</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email_configuration.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_sites.html">Linking external sites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language_configuration.html">Language &amp; Locale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging_configuration.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2.html">OAuth2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse_proxy_configuration.html">Reverse proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_configuration.html">Text app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming.html">Theming</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Nextcloud configuration</a></li>
+      <li class="breadcrumb-item active">Background jobs</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_server/background_jobs_configuration.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="background-jobs">
+<h1>Background jobs<a class="headerlink" href="#background-jobs" title="Link to this heading"></a></h1>
+<p>A system like Nextcloud sometimes requires tasks to be done on a regular basis
+without the need for user interaction or hindering Nextcloud performance. For
+that purpose, as a system administrator, you can define background jobs (for
+example, database clean-ups) which are executed without any need for user
+interaction.</p>
+<p>These jobs are typically referred to as <em>cron jobs</em>.  Cron jobs are commands or
+shell-based scripts that are scheduled to run periodically at fixed times,
+dates, or intervals.   <code class="docutils literal notranslate"><span class="pre">cron.php</span></code> is a Nextcloud internal process that runs
+such background jobs on demand.</p>
+<p>Nextcloud apps register actions with <code class="docutils literal notranslate"><span class="pre">cron.php</span></code> automatically
+to take care of typical housekeeping operations, such as garbage collecting of
+temporary files or checking for newly updated files using <code class="docutils literal notranslate"><span class="pre">filescan()</span></code> for
+externally mounted file systems.</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<section id="maintenance-window-start">
+<h3><code class="docutils literal notranslate"><span class="pre">maintenance_window_start</span></code><a class="headerlink" href="#maintenance-window-start" title="Link to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This setting is only taken into account in <code class="docutils literal notranslate"><span class="pre">cron</span></code> mode.</p>
+</div>
+<p>In the <code class="docutils literal notranslate"><span class="pre">config/config.php</span></code> file you can specify this config.
+Some background jobs only run once a day. When an hour is defined (timezone is UTC)
+for this config, the background jobs which advertise themselves as not time-sensitive
+will be delayed during the “working” hours and only run in the 4 hours after the given
+time. This is e.g. used for activity expiration, suspicious login training, and update checks.</p>
+<p>A value of 1 e.g. will only run these background jobs between 01:00am UTC and 05:00am UTC:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;maintenance_window_start&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>If you don’t care when these jobs run, you can set the value to <code class="docutils literal notranslate"><span class="pre">100</span></code>, but beware that
+resource intensive jobs may then run unnecessarily during high usage periods. This may lead to
+slower performance and a lower quality user experience.</p>
+<p>This setting may also be set directly via <code class="docutils literal notranslate"><span class="pre">occ</span></code> just like any other configuration parameter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="nb">set</span> <span class="n">maintenance_window_start</span> <span class="o">--</span><span class="nb">type</span><span class="o">=</span><span class="n">integer</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="cron-jobs">
+<h2>Cron jobs<a class="headerlink" href="#cron-jobs" title="Link to this heading"></a></h2>
+<p>You can schedule cron jobs in three ways – using AJAX, Webcron, or cron. The
+default method is to use AJAX. However, the recommended method is to use cron.
+The following sections describe the differences between each method.</p>
+<section id="ajax">
+<h3>AJAX<a class="headerlink" href="#ajax" title="Link to this heading"></a></h3>
+<p><strong>Use case: Single user instance</strong></p>
+<p>The AJAX scheduling method is the default option. Unfortunately, however, it is
+also the least reliable. Each time a user visits the Nextcloud page, a single
+background job is executed. The advantage of this mechanism is that it does not
+require access to the system nor registration with a third-party service. The
+disadvantage of this mechanism, when compared to the Webcron service, is that it
+requires regular visits to the page for it to be triggered.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Especially when using the Activity app or external storages, where new
+files are added, updated or deleted, or when <strong>multiple users</strong> use the server, it
+is recommended to use <code class="docutils literal notranslate"><span class="pre">cron</span></code>.</p>
+</div>
+</section>
+<section id="webcron">
+<h3>Webcron<a class="headerlink" href="#webcron" title="Link to this heading"></a></h3>
+<p><strong>Use case: Very small instance</strong> (1–5 users depending on the usage)</p>
+<p>By registering your Nextcloud <code class="docutils literal notranslate"><span class="pre">cron.php</span></code> script address at an external webcron
+service (for example, <a class="reference external" href="https://www.easycron.com/">easyCron</a>), you ensure that background jobs are executed
+regularly. To use this type of service with your server, you must be able to
+access your server using the Internet. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="n">to</span> <span class="n">call</span><span class="p">:</span> <span class="n">http</span><span class="p">[</span><span class="n">s</span><span class="p">]:</span><span class="o">//&lt;</span><span class="n">domain</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">your</span><span class="o">-</span><span class="n">server</span><span class="o">&gt;/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">cron</span><span class="o">.</span><span class="n">php</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Since WebCron is still executed via the web, the webserver in most cases limits the
+resources on the execution. To avoid interrupts inside jobs only 1 job is executed
+per call. When webcron is called once every 5 minutes this limits your instance to
+288 background jobs per day, which is only suitable for very small instances.
+For bigger instances, it is recommended to use <code class="docutils literal notranslate"><span class="pre">cron</span></code>.</p>
+</div>
+</section>
+<section id="cron">
+<span id="system-cron-configuration-label"></span><h3>Cron<a class="headerlink" href="#cron" title="Link to this heading"></a></h3>
+<p>Using the operating system cron feature is the preferred method for executing
+regular tasks.  This method enables the execution of scheduled jobs without the
+inherent limitations the Web server might have.</p>
+<p>To run a cron job on a *nix system, every 5 minutes, under the default Web
+server user (often, <code class="docutils literal notranslate"><span class="pre">www-data</span></code> or <code class="docutils literal notranslate"><span class="pre">wwwrun</span></code>), you must set up the following
+cron job to call the <strong>cron.php</strong> script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># crontab -u www-data -e</span>
+</pre></div>
+</div>
+<p>And append this line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*/</span><span class="mi">5</span>  <span class="o">*</span>  <span class="o">*</span>  <span class="o">*</span>  <span class="o">*</span> <span class="n">php</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">cron</span><span class="o">.</span><span class="n">php</span>
+</pre></div>
+</div>
+<p>You can verify if the cron job has been added and scheduled by executing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># crontab -u www-data -l</span>
+</pre></div>
+</div>
+<p>Which returns:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">snip</span><span class="p">]</span>
+<span class="o">*/</span><span class="mi">5</span>  <span class="o">*</span>  <span class="o">*</span>  <span class="o">*</span>  <span class="o">*</span> <span class="n">php</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">cron</span><span class="o">.</span><span class="n">php</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You have to replace the path <code class="docutils literal notranslate"><span class="pre">/var/www/nextcloud/cron.php</span></code> with the
+path to your current Nextcloud installation.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On some systems it might be required to call <strong>php-cli</strong> instead of <strong>php</strong>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please refer to the crontab man page for the exact command syntax.</p>
+</div>
+</section>
+<section id="systemd">
+<h3>systemd<a class="headerlink" href="#systemd" title="Link to this heading"></a></h3>
+<p>If systemd is installed on the system, a systemd timer could be an alternative to a cronjob.</p>
+<p>This approach requires two files: <strong>nextcloudcron.service</strong> and <strong>nextcloudcron.timer</strong>. Create these two files in <code class="docutils literal notranslate"><span class="pre">/etc/systemd/system/</span></code>.</p>
+<p><strong>nextcloudcron.service</strong> should look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Unit</span><span class="p">]</span>
+<span class="n">Description</span><span class="o">=</span><span class="n">Nextcloud</span> <span class="n">cron</span><span class="o">.</span><span class="n">php</span> <span class="n">job</span>
+
+<span class="p">[</span><span class="n">Service</span><span class="p">]</span>
+<span class="n">User</span><span class="o">=</span><span class="n">www</span><span class="o">-</span><span class="n">data</span>
+<span class="n">ExecCondition</span><span class="o">=</span><span class="n">php</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">occ</span> <span class="n">status</span> <span class="o">-</span><span class="n">e</span>
+<span class="n">ExecStart</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">php</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">cron</span><span class="o">.</span><span class="n">php</span>
+<span class="n">KillMode</span><span class="o">=</span><span class="n">process</span>
+</pre></div>
+</div>
+<p>Replace the user <code class="docutils literal notranslate"><span class="pre">www-data</span></code> with the user of your http server and <code class="docutils literal notranslate"><span class="pre">/var/www/nextcloud/cron.php</span></code> with the location of <strong>cron.php</strong> in your nextcloud directory.</p>
+<p>The <cite>ExecCondition</cite> checks that the nextcloud instance is operating normally before running the background job, and skips it if otherwise.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">KillMode=process</span></code> setting is necessary for external programs that are started by the cron job to keep running after the cron job has finished.</p>
+<p>Note that the <strong>.service</strong> unit file does not need an <code class="docutils literal notranslate"><span class="pre">[Install]</span></code> section. Please check your setup because we recommended it in earlier versions of this admin manual.</p>
+<p><strong>nextcloudcron.timer</strong> should look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Unit</span><span class="p">]</span>
+<span class="n">Description</span><span class="o">=</span><span class="n">Run</span> <span class="n">Nextcloud</span> <span class="n">cron</span><span class="o">.</span><span class="n">php</span> <span class="n">every</span> <span class="mi">5</span> <span class="n">minutes</span>
+
+<span class="p">[</span><span class="n">Timer</span><span class="p">]</span>
+<span class="n">OnBootSec</span><span class="o">=</span><span class="mi">5</span><span class="nb">min</span>
+<span class="n">OnUnitActiveSec</span><span class="o">=</span><span class="mi">5</span><span class="nb">min</span>
+<span class="n">Unit</span><span class="o">=</span><span class="n">nextcloudcron</span><span class="o">.</span><span class="n">service</span>
+
+<span class="p">[</span><span class="n">Install</span><span class="p">]</span>
+<span class="n">WantedBy</span><span class="o">=</span><span class="n">timers</span><span class="o">.</span><span class="n">target</span>
+</pre></div>
+</div>
+<p>The important parts in the timer-unit are <code class="docutils literal notranslate"><span class="pre">OnBootSec</span></code> and <code class="docutils literal notranslate"><span class="pre">OnUnitActiveSec</span></code>. <code class="docutils literal notranslate"><span class="pre">OnBootSec</span></code> will start the timer 5 minutes after boot, otherwise, you would have to start it manually after every boot. <code class="docutils literal notranslate"><span class="pre">OnUnitActiveSec</span></code> will set a 5-minute timer after the service-unit was last activated.</p>
+<p>Now all that is left is to start and enable the timer by running this command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">systemctl</span> <span class="n">enable</span> <span class="o">--</span><span class="n">now</span> <span class="n">nextcloudcron</span><span class="o">.</span><span class="n">timer</span>
+</pre></div>
+</div>
+<p>When the option <code class="docutils literal notranslate"><span class="pre">--now</span></code> is used with <code class="docutils literal notranslate"><span class="pre">enable</span></code>, the respective unit will also be started.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Selecting the option <code class="docutils literal notranslate"><span class="pre">Cron</span></code> in the admin menu for background jobs is not mandatory, because once <cite>cron.php</cite> is executed from the command line or cron service it will set it automatically to <code class="docutils literal notranslate"><span class="pre">Cron</span></code>.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="automatic_configuration.html" class="btn btn-neutral float-left" title="Automatic setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bruteforce_configuration.html" class="btn btn-neutral float-right" title="Brute force protection" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

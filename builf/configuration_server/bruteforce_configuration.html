@@ -1,0 +1,326 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brute force protection &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Memory caching" href="caching_configuration.html" />
+    <link rel="prev" title="Background jobs" href="background_jobs_configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Nextcloud configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="security_setup_warnings.html">Warnings on admin page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html">Configuration Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activity_configuration.html">Activity app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin_delegation_configuration.html">Administration privileges (Delegation)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antivirus_configuration.html">Antivirus scanner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="automatic_configuration.html">Automatic setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background_jobs_configuration.html">Background jobs</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Brute force protection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-it-works">How it works</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-the-login-page">Example: The login page</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#activating">Activating</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-brute-force-settings-app">The brute force settings app</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#occ-commands"><code class="docutils literal notranslate"><span class="pre">occ</span></code> commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#brute-force-protection-and-load-balancers-reverse-proxies">Brute force protection and load balancers/reverse proxies</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#excluding-ip-addresses-from-brute-force-protection">Excluding IP addresses from brute force protection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="caching_configuration.html">Memory caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard_configuration.html">Dashboard app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain_change.html">Domain Change</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email_configuration.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_sites.html">Linking external sites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language_configuration.html">Language &amp; Locale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging_configuration.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2.html">OAuth2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse_proxy_configuration.html">Reverse proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_configuration.html">Text app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming.html">Theming</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Nextcloud configuration</a></li>
+      <li class="breadcrumb-item active">Brute force protection</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_server/bruteforce_configuration.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="brute-force-protection">
+<h1>Brute force protection<a class="headerlink" href="#brute-force-protection" title="Link to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>Nextcloud has built-in protection against brute force attempts.</p>
+<p>The brute force protection feature is meant to protect Nextcloud servers from attempts to guess
+passwords and tokens in various ways. Besides the obvious “let’s try a big list of commonly used
+passwords” attack, it also makes it harder to use slightly more sophisticated attacks via the reset
+password page or trying to find app password tokens. It is used throughout the Nextcloud ecosystem,
+including by other apps, if they have sensitive entrypoints (and choose to enable support for it).</p>
+</section>
+<section id="how-it-works">
+<h2>How it works<a class="headerlink" href="#how-it-works" title="Link to this heading"></a></h2>
+<section id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h3>
+<p>If triggered, brute force protection makes requests - coming from an IP address via a brute
+force protected entrypoint - slower for up to a 24 hour period. In extreme circumstances it may prevent
+access outright, for up to 30 minutes, from a problematic IP address.</p>
+<p>This protects your system from attackers trying, for example, a lot of different passwords.</p>
+<p>The primary filter is IP address-based. This means that any account - even one associated with
+a given brute force attempt - is not impacted when it is connecting from a different IP address
+than any brute force attempts. This helps minimize inadvertent denial of service attacks against
+legitimate connections, while maximizing attack resistance from problematic IP sources.</p>
+<p>Nuisance triggers are minimized through reasonable built-in defaults appropriate to each type of action.</p>
+<p>The attempts history is automatically managed by a daily cronjob. Individual entries
+expire after 48 hours (attempts, however, may be still <em>logged</em> indefinitely elsewhere through the usual
+mechanisms within Nextcloud Server and at the discretion of the admin).</p>
+<p>Excluding (whitelisting) select IP addresses from brute force protection to prevent false
+positives is supported, but usually false positives are best handled by fixing the underlying causes
+(e.g. a misconfigured reverse proxy or misbehaving client).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you do notice a problem with the authentication behavior of any the official Nextcloud clients,
+please report it to the appropriate repository so that it can be looked into.</p>
+</div>
+<p>Keeping brute force protection active and operating properly helps protects your Nextcloud Server from
+malicious actors while minimizing potential impact on legitimate usage.</p>
+</section>
+<section id="example-the-login-page">
+<h3>Example: The login page<a class="headerlink" href="#example-the-login-page" title="Link to this heading"></a></h3>
+<p>The brute force protection is easiest to see in action on the login page.
+If you try to log in the first time with an invalid username and/or password you
+will not notice anything. But if you do this a few times you start to notice
+that the verification of the login is taking longer each time. This is the
+brute force protection kicking in.</p>
+<p>The maximum delay is 25 seconds, unless maximum number of attempts (currently 10) was reached within
+the last 30 minutes (in which case a <code class="docutils literal notranslate"><span class="pre">429</span> <span class="pre">Too</span> <span class="pre">Many</span> <span class="pre">Requests</span></code> will be returned until the maximum attempts
+within the recent time has dropped below the threshold).</p>
+<p>After a successful login (from the same source IP address), any prior invalid login attempts will be cleared
+and you will no longer be hit by the delay.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Not all actions are necessarily viewed the same. It is possible for some activities to be more (or less) strict
+than others.</p>
+</div>
+</section>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<section id="activating">
+<h3>Activating<a class="headerlink" href="#activating" title="Link to this heading"></a></h3>
+<p>Brute force protection is enabled by default on Nextcloud. Its behavior can be adjusted through the
+<code class="docutils literal notranslate"><span class="pre">bruteforcesettings</span></code> app (shipped with Server and enabled by default), several <code class="docutils literal notranslate"><span class="pre">occ</span></code> commands, and several
+<code class="docutils literal notranslate"><span class="pre">config.php</span></code> parameters. Its effectiveness is highly dependent on having a properly configured environment,
+particularly when integrating a reverse proxy with Nextcloud (and associated parameters such as <code class="docutils literal notranslate"><span class="pre">trusted_proxies</span></code>).</p>
+</section>
+<section id="the-brute-force-settings-app">
+<h3>The brute force settings app<a class="headerlink" href="#the-brute-force-settings-app" title="Link to this heading"></a></h3>
+<p>This app, which shipped and enabled by default, makes it possible (via the Web UI) to view the status of a
+connection and modify certain parameters of the brute force protection built into Nextcloud Server.</p>
+<p>The user interface added by this app is found under <em>Administration settings -&gt; Security</em> under the <em>Brute-force
+IP whitelist</em> heading.</p>
+<p>Currently an admin can view the status of the IP address they are connecting from as well as specify IPv4 or IPv6
+addresses and ranges to exempt from brute force protection.</p>
+<p>Additional enhancements may be made in the future, within this app and/or in combination with Nextcloud Server for
+additional monitoring or behavior adjustments related to brute force protection.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Disabling the <code class="docutils literal notranslate"><span class="pre">bruteforcesettings</span></code> app does <strong>not</strong> disable brute force protection
+- it merely removes your ability to adjust brute force related settings from the Web interface.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>You would need to adjust the parameter <code class="docutils literal notranslate"><span class="pre">auth.bruteforce.protection.enabled</span></code> in your Nextcloud <code class="docutils literal notranslate"><span class="pre">config.php</span></code> to
+disable brute force protection, which is <strong>heavily discouraged for production servers</strong>, particularly if your
+server is reachable via a public IP address. It allows an attacker to iterate over all users and their passwords
+as well as two-factor verifications afterwards ultimately leading to admin access.</p>
+</div>
+</section>
+<section id="occ-commands">
+<h3><code class="docutils literal notranslate"><span class="pre">occ</span></code> commands<a class="headerlink" href="#occ-commands" title="Link to this heading"></a></h3>
+<p>There are several brute force related <code class="docutils literal notranslate"><span class="pre">occ</span></code> commands under <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">security</span></code>.</p>
+</section>
+<section id="brute-force-protection-and-load-balancers-reverse-proxies">
+<h3>Brute force protection and load balancers/reverse proxies<a class="headerlink" href="#brute-force-protection-and-load-balancers-reverse-proxies" title="Link to this heading"></a></h3>
+<p>If you are behind a reverse proxy or load balancer it is important you make sure it is
+setup properly. Especially the <strong>trusted_proxies</strong> and <strong>forwarded_for_headers</strong>
+<cite>config.php</cite> variables need to be set correctly. Otherwise it can happen
+that Nextcloud actually starts throttling all traffic coming from the reverse
+proxy or load balancer. For more information see <a class="reference internal" href="reverse_proxy_configuration.html"><span class="doc">Reverse proxy</span></a>.</p>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Overview<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>On most setups Nextcloud will work out of the box without any issues. If you run into a situation where
+logging in or connecting is often very slow for multiple users, the first step is to check your Nextcloud
+Server logs to see what IP addresses are being detected (you will need to adjust your <code class="docutils literal notranslate"><span class="pre">loglevel</span></code> to <code class="docutils literal notranslate"><span class="pre">1</span></code>
+temporarily to do so).</p>
+<p>Look for entries that start with any of the following:</p>
+<ul class="simple">
+<li><p><cite>Bruteforce attempt from</cite> […]</p></li>
+<li><p><cite>IP address throttled</cite> […]</p></li>
+<li><p><cite>IP address blocked</cite> […]</p></li>
+</ul>
+<p>If all clients appear to be coming from the same IP address and that IP address happens to be your
+proxy, you need to review your <code class="docutils literal notranslate"><span class="pre">trusted_proxies</span></code> configuration.</p>
+<p>If the IP address is a common connection point, such as a multi-user office location, it can be an option to whitelist it,
+with the draw back that users have to be trust-worthy.</p>
+<p>For testing purposes you want want to whitelist your own IP address to see if the problem disappears.
+If it does - and assuming your proxy configuration is correct - you may have a client/device in your
+network that is misbehaving and generating invalid login attempts from your IP address.</p>
+<p>You can use the <cite>occ security:bruteforce:attempts</cite> command to check the realtime status for a given IP address.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <cite>bruteforce_attempts</cite> database table will be empty if you’re using a distributed memory
+cache since the database backend is no longer used unless it is the only option available.</p>
+</div>
+</section>
+<section id="excluding-ip-addresses-from-brute-force-protection">
+<h3>Excluding IP addresses from brute force protection<a class="headerlink" href="#excluding-ip-addresses-from-brute-force-protection" title="Link to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Most nuisance triggering of brute force protection can be resolved through proper configuration of reverse
+proxies. In other cases, select IP addresses that need to be whitelisted can be configured within this app (while
+leaving brute force protection enabled). This can be useful for testing purposes or when there are a lot of people
+(or devices) connecting from a known, single IP address.</p>
+</div>
+<p>It’s possible to exclude IP addresses from the brute force protection.</p>
+<ul class="simple">
+<li><p>Make sure the <code class="docutils literal notranslate"><span class="pre">bruteforcesettings</span></code> app is enabled (it is by default)</p></li>
+<li><p>Login as admin and go to <strong>Administration settings -&gt; Security</strong></p></li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Any excluded IP address can perform authentication attempts without any throttling.
+It’s best to exclude as few IP addresses as you can, or even none at all.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="background_jobs_configuration.html" class="btn btn-neutral float-left" title="Background jobs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="caching_configuration.html" class="btn btn-neutral float-right" title="Memory caching" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
