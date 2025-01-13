@@ -22,11 +22,8 @@ Contacts
 
 If you later want to add a new address book, you can redo all of those steps and only the books not already synchronized will be suggested.
 
-.. note:: If your account uses two-factor authentication, you need an application password for login rather than your
-   regular password. To configure an application password, log into the Nextcloud Web interface, click on the avatar
-   in the top right and choose *Personal settings*. Then choose *Security* in the left
-   sidebar and scroll to the very bottom. There you can create an app password (which can
-   also be revoked in the future without changing your main user password).
+.. note:: If your account uses two-factor authentication, you need a `dedicated app password <../session_management.html#managing-devices>`_ for login rather than your
+   regular password.
 
 Calendars
 ~~~~~~~~~
