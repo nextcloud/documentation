@@ -34,6 +34,15 @@ If you wish to change to a different workspace at a later time, you can do so vi
 .. image:: images/windmill_later_workspace_selection.png
    :alt: Screenshot of the workspace selector when a workspace is already opened
 
+Setting up the Correct Nextcloud URL
+------------------------------------
+
+During the initial installation, the ExApp Flow will create a **Nextcloud Authentication Resource** for AppAPI.
+
+This resource includes a **baseUrl** field, which specifies the URL that Windmill scripts/apps use to reach the Nextcloud instance. In most cases, this URL will be configured correctly. However, certain configurations and network topologies may result in an incorrect URL, which you will need to adjust manually.
+
+To set the correct URL, navigate to the Windmill interface, go to the **Resources** tab, locate the resource labeled ``u/admin/exapp_resource``, click the three dots on the right, and select the "Edit" button.
+
 Building a workflow
 -------------------
 
