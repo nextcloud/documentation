@@ -83,9 +83,9 @@ $location = "$proto://$name$port$path";
 header('HTTP/1.1 302 Moved Temporarily');
 if (array_key_exists($from, $mapping)) {
     $subPath = $mapping[$from];
-} else if (str_starts_with($from, 'admin-')) {
+} elseif (str_starts_with($from, 'admin-')) {
     $subPath = '/admin_manual';
-} else if (str_starts_with($from, 'developer-')) {
+} elseif (str_starts_with($from, 'developer-')) {
     $subPath = '/developer_manual';
 } else {
     $subPath = '/user_manual';
