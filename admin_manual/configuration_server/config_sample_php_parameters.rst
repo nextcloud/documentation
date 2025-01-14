@@ -3935,6 +3935,20 @@ while the improvements diminish.
 
 Defaults to 5.
 
+files.trash.delete
+^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'files.trash.delete' => true,
+
+Allow users to manually delete files from their trashbin.
+
+Automated deletions are not affected and will continue to work in cases like low remaining quota for example.
+
+Defaults to true.
+
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
 
