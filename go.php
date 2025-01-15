@@ -82,13 +82,48 @@ $location = "$proto://$name$port$path";
 
 header('HTTP/1.1 302 Moved Temporarily');
 if (array_key_exists($from, $mapping)) {
-    header('Location: ' . $location . $mapping[$from]);
+    $subPath = $mapping[$from];
+} elseif (str_starts_with($from, 'admin-')) {
+    $subPath = '/admin_manual';
+} elseif (str_starts_with($from, 'developer-')) {
+    $subPath = '/developer_manual';
 } else {
-    if (strpos($from, 'admin-') === 0) {
-        header('Location: ' . $location . '/admin_manual');
-    } else if (strpos($from, 'developer-') === 0) {
-        header('Location: ' . $location . '/developer_manual');
-    } else {
-        header('Location: ' . $location . '/user_manual');
+    $subPath = '/user_manual';
+}
+
+$subPathParts = explode('/', $subPath);
+$manual = $subPathParts[1] ?? '';
+if ($manual === 'user_manual') {
+    // Sort accepted languages by their weight
+    $acceptLanguages = array_reduce(
+        explode(', ', $_SERVER['HTTP_ACCEPT_LANGUAGE']),
+        static function ($out, $element) {
+            [$language, $q] = array_merge(explode(';q=', $element), [1]);
+
+            $out[$language] = (float)$q;
+
+            return $out;
+        },
+        [],
+    );
+    arsort($acceptLanguages);
+
+    foreach ($acceptLanguages as $language => $weight) {
+        if (!preg_match('/^[a-z-]+$/im', $language)) {
+            // Skip any invalid languages and prevent directory traversals
+            continue;
+        }
+
+        $language = str_replace('-', '_', $language);
+
+        // To test locally add '/_build/html/' to the path.
+        if (file_exists(__DIR__ . '/user_manual/' . $language)) {
+            // Insert the language /user_manual/<language>/...
+            array_splice($subPathParts, 2, 0, [$language]);
+            $subPath = implode('/', $subPathParts);
+            break;
+        }
     }
 }
+
+header('Location: ' . $location . $subPath);

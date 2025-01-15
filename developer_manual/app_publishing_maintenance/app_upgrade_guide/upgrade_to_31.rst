@@ -10,6 +10,17 @@ General
 Front-end changes
 -----------------
 
+User-, guest-, and public-template layout
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The main layout for all apps (the user, guest and public template) has been changed,
+the main content is no longer rendered within a ``<main>`` element with the class ``content`` but in a ``div`` element with the class ``content``.
+The reason for this is to allow writing Vue 3 based apps which would incorrectly render two stacked ``main``-elements otherwise.
+
+For Vue 2 apps this **does not change anything**.
+But if you just use vanilla templates or other frameworks this changes the page layout and might require adjustments.
+We recommend you to wrap your content in a custom ``main``-element if you use non or not Vue as the framework.
+
 Logical position CSS rules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
