@@ -91,7 +91,7 @@ Apache with mod_proxy_fcgi
 nginx
 ^^^^^
 * `client_max_body_size <https://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size>`_
-* `fastcgi_read_timeout <https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_read_timeout>`_
+* `fastcgi_read_timeout <https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_read_timeout>`_ [often the solution to 504 timeouts during ``MOVE`` transactions that occur even when using chunking]
 * `client_body_temp_path <https://nginx.org/en/docs/http/ngx_http_core_module.html#client_body_temp_path>`_
 
 Since nginx 1.7.11 a new config option `fastcgi_request_buffering
