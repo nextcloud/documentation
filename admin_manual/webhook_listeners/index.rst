@@ -53,7 +53,7 @@ For Nextcloud-AIO you should use this command on the host server.
 
 .. code-block::
 
-   set -e; while true; do docker exec -u www-data -it nextcloud-aio-nextcloud php occ background-job:worker -v -t 60 "OCA\WebhookListeners\BackgroundJobs\WebhookCall"; done
+   set -e; while true; do sudo docker exec -u www-data -it nextcloud-aio-nextcloud php occ background-job:worker -v -t 60 "OCA\WebhookListeners\BackgroundJobs\WebhookCall"; done
 
 You may want to adjust the number of workers and the timeout (in seconds) to your needs.
 The logs of the worker can be checked by attaching to the screen or tmux session.
@@ -111,9 +111,9 @@ The complete logs of the workers can be checked with (replace 1 with the worker 
 
 .. code-block::
 
-   journalctl -xeu nextcloud-webhook-worker@1.service -f
+   sudo journalctl -xeu nextcloud-webhook-worker@1.service -f
 
-It is recommended to restart this worker atleast once a day to make sure code changes are effective and avoid memory leaks, in this example the service restarts every 60 seconds.
+It is recommended to restart this worker at least once a day to make sure code changes are effective and avoid memory leaks, in this example the service restarts every 60 seconds.
 
 Nextcloud Webhook Events
 ------------------------
