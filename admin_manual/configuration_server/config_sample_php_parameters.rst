@@ -2240,6 +2240,20 @@ Note: memory equivalent to this size will be used for metadata generation.
 
 Default: 256 megabytes.
 
+max_file_conversion_filesize
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'max_file_conversion_filesize' => 100,
+
+Maximum file size for file conversion.
+
+If a file exceeds this size, the file will not be converted.
+
+Default: 100 MiB
+
 LDAP
 ----
 
