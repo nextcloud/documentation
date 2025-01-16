@@ -126,6 +126,7 @@ Added APIs
   which need to check HTTP calls to the the server itself.
 - Any implementation of ``OCP\Files\Mount\IMountPoint`` can additionally implement ``OCP\Files\Mount\IShareOwnerlessMount`` which allows everyone with share permission to edit and delete any share on the files and directories below the mountpoint.
 - ``OCP\Navigation\Events\LoadAdditionalEntriesEvent`` is dispatched when the navigation manager needs to know about its entries, apart of standard app entries that are loaded automatically. This is only relevant for apps that provide extraneous entries.
+- ``OCP\User\Backend\ILimitAwareCountUsersBackend`` was added as a replacement for ``ICountUsersBackend``. It allows to specify a limit to the user count to avoid counting all users when the caller do not need it. You can safely ignore the limit if it does not make sense for your usecase.
 
 Changed APIs
 ^^^^^^^^^^^^
@@ -159,6 +160,7 @@ Deprecated APIs
   Instead use the Nextcloud provided :ref:`WebDAV endpoint<webdav-download-folders>`.
 - ``OCP\DB\QueryBuilder\IQueryBuilder::PARAM_DATE`` is deprecated in favor of ``PARAM_DATETIME_MUTABLE``
   to make clear that this type also includes the time part of a date time instance.
+- ``OCP\User\Backend\ICountUsersBackend`` was deprecated. Please implement and use ``OCP\User\Backend\ILimitAwareCountUsersBackend`` instead.
 
 Removed APIs
 ^^^^^^^^^^^^
