@@ -72,7 +72,7 @@ hard drive or delete it forever.
 
 .. figure:: images/calendar_dropdown.png
 
-Click on the "pen" icon of the respective calendar. You will see a new popup that will allow you to change 
+Click on the "pen" icon of the respective calendar. You will see a new popup that will allow you to change
 the calendar name and color, and buttons to delete or export the calendar.
 
 .. figure:: images/calendar_settings.png
@@ -81,7 +81,7 @@ Calendar Transparency
 ~~~~~~~~~~~~~~~~~~~~~
 
 You can toggle the checkbox "Never show me as busy (set calendar to transparent)" to influence if this calendars' events
-are taken into account in Free/Busy calculations. If checked, no events in this calendar will be taken into account, your schedule will 
+are taken into account in Free/Busy calculations. If checked, no events in this calendar will be taken into account, your schedule will
 always be free, regardless of an events' settings.
 
 .. figure:: images/calendar_transparency.png
@@ -121,8 +121,8 @@ On the public page, users are able to get the subscription link for the calendar
 Calendar Widget
 ~~~~~~~~~~~~~~~
 
-You can embed your calendars into supported apps like ``Talk``, ``Notes``, etc... 
-by either sharing the public link to make the embed viewable (read-only) to all users 
+You can embed your calendars into supported apps like ``Talk``, ``Notes``, etc...
+by either sharing the public link to make the embed viewable (read-only) to all users
 or by using the internal link to make it private.
 
 Subscribe to a Calendar
@@ -178,6 +178,12 @@ you can specify a location and a description.
 If you want to edit advanced details such as the **Attendees** or **Reminders**, or if you
 want to set the event as a repeating-event, click on the ``More`` button to open the advanced
 sidebar editor.
+
+Add Talk conversation
+~~~~~~~~~~~~~~~~~~~~~
+You can include an existing Talk conversation in your event by clicking "Add Talk conversation". To view the list of existing Talk conversations, ensure the Talk app is enabled. If you'd like to create a new Talk conversation, you can do so directly from the same modal.
+
+.. figure:: images/add-talk-room.png
 
 .. note:: If you always want to open the advanced sidebar editor instead of the
           simple event editor popup, you can set a ``Skip simple event
