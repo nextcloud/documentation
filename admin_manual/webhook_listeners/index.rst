@@ -39,11 +39,81 @@ Speeding up webhook dispatch
 This app uses background jobs to trigger the registered webhooks. Thus, by default, webhooks will be triggered only every 5 minutes, as the default cron interval is 5 minutes.
 To trigger webhooks earlier, you can set up a background job worker. The following command will launch a worker for the webhook call background job:
 
-.. code-block:: bash
+Screen or tmux session
+^^^^^^^^^^^^^^^^^^^^^^
 
-   occ background-job:worker "OCA\\WebhookListeners\\BackgroundJobs\\WebhookCall"
+Run the following occ command inside a screen or a tmux session, preferably 4 or more times for parallel processing of multiple requests by different or the same user.
+It would be best to run one command per screen session or per tmux window/pane to keep the logs visible and the worker easily restartable.
 
-It is recommended to restart this worker once a day to make sure code changes are effective and avoid memory leaks, for example by registering it as a systemd service with a daily timer.
+.. code-block::
+
+   set -e; while true; do sudo -u www-data occ background-job:worker -v -t 60 "OCA\WebhookListeners\BackgroundJobs\WebhookCall"; done
+
+For Nextcloud-AIO you should use this command on the host server.
+
+.. code-block::
+
+   set -e; while true; do sudo docker exec -u www-data -it nextcloud-aio-nextcloud php occ background-job:worker -v -t 60 "OCA\WebhookListeners\BackgroundJobs\WebhookCall"; done
+
+You may want to adjust the number of workers and the timeout (in seconds) to your needs.
+The logs of the worker can be checked by attaching to the screen or tmux session.
+
+Systemd service
+^^^^^^^^^^^^^^^
+
+1. Create a systemd service file in ``/etc/systemd/system/nextcloud-webhook-worker@.service`` with the following content:
+
+.. code-block::
+
+   [Unit]
+   Description=Nextcloud Webhook worker %i
+   After=network.target
+
+   [Service]
+   ExecStart=/opt/nextcloud-webhook-worker/taskprocessing.sh %i
+   Restart=always
+   StartLimitInterval=60
+   StartLimitBurst=10
+
+   [Install]
+   WantedBy=multi-user.target
+
+2. Create a shell script in ``/opt/nextcloud-webhook-worker/taskprocessing.sh`` with the following content and make sure to make it executable:
+
+.. code-block::
+
+   #!/bin/sh
+   echo "Starting Nextcloud Webhook Worker $1"
+   cd /path/to/nextcloud
+   sudo -u www-data php occ background-job:worker -t 60 'OCA\WebhookListeners\BackgroundJobs\WebhookCall'
+
+You may want to adjust the timeout to your needs (in seconds).
+
+3. Enable and start the service 4 or more times:
+
+.. code-block::
+
+   for i in {1..4}; do systemctl enable --now nextcloud-webhook-worker@$i.service; done
+
+The status of the workers can be checked with (replace 1 with the worker number):
+
+.. code-block::
+
+   systemctl status nextcloud-webhook-worker@1.service
+
+The list of workers can be checked with:
+
+.. code-block::
+
+   systemctl list-units --type=service | grep nextcloud-webhook-worker
+
+The complete logs of the workers can be checked with (replace 1 with the worker number):
+
+.. code-block::
+
+   sudo journalctl -xeu nextcloud-webhook-worker@1.service -f
+
+It is recommended to restart this worker at least once a day to make sure code changes are effective and avoid memory leaks, in this example the service restarts every 60 seconds.
 
 Nextcloud Webhook Events
 ------------------------
