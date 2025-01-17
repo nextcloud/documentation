@@ -152,17 +152,18 @@ low. This setting needs to be configured to at least the time (in seconds) that
 the longest upload will take. If unsure remove this completely from your
 configuration to reset it to the default shown in the ``config.sample.php``.
 
+.. _files_configure_max_chunk_size:
 
 Adjust chunk size on Nextcloud side
 -----------------------------------
 
 For upload performance improvements in environments with high upload bandwidth, the server's upload chunk size may be adjusted::
 
- sudo -u www-data php occ config:app:set files max_chunk_size --value 20971520
+ sudo -u www-data php occ config:system:set --type int --value 20971520 files.chunked_upload.max_size
 
 Put in a value in bytes (in this example, 20MB). Set ``--value 0`` for no chunking at all.
 
-Default is 10485760 (10 MiB).
+Default is ``104857600`` (100 MiB).
 
 .. note:: Changing ``max_chunk_size`` will not have any performance impact on files uploaded through File Drop shares as unauthenticated file uploads are not chunked.
 
