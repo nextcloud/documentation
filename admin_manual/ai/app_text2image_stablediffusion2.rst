@@ -4,7 +4,7 @@ App: Local Image Generation (text2image_stablediffusion2)
 
 .. _ai-app-text2image_stablediffusion2:
 
-The *text2image_stablediffusion2* app is one of the apps that provide image generation functionality in Nextcloud and act as an image generation backend for the :ref:`Nextcloud Assistant app<ai-app-assistant>` and :ref:`other apps making use of the image generation functionality. The *text2image_stablediffusion2* app specifically runs only open source models and does so entirely on-premises. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
+The *text2image_stablediffusion2* app is one of the apps that provide image generation functionality in Nextcloud and act as an image generation backend for the :ref:`Nextcloud Assistant app<ai-app-assistant>` and other apps making use of the image generation functionality. The *text2image_stablediffusion2* app specifically runs only open source models and does so entirely on-premises. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
 
 Requirements
 ------------
