@@ -21,7 +21,7 @@ You can then add your API token and rate limits in the administration settings a
 OpenAI integration
 ------------------
 
-With this application, you can also connect to a self-hosted LocalAI or Ollama instance or to any service that implements an API similar enough to the OpenAI API, for example Plusserver or MistralAI.
+With this application, you can also connect to a self-hosted LocalAI or Ollama instance or to any service that implements an API similar enough to the OpenAI API, for example Plusserver, `IONOS AI Model Hub <https://docs.ionos.com/cloud/ai/ai-model-hub>`_ or MistralAI.
 
 Do note however, that we test the Assistant tasks that this app implements only with OpenAI models and only against the OpenAI API, we thus cannot guarantee other models and APIs will work.
 
