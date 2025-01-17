@@ -4,14 +4,14 @@ App: Context Agent (context_agent)
 
 .. _ai-app-context_agent:
 
-The *context_agent* app is the apps that provide AI agent functionality in Nextcloud and acts as a backend for the :ref:`Nextcloud Assistant app<ai-app-assistant>`. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
+The *context_agent* app is the app that provides AI agent functionality in Nextcloud and acts as a backend for the :ref:`Nextcloud Assistant app<ai-app-assistant>`. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
 
 Requirements
 ------------
 
 * This app is built as an External App and thus depends on AppAPI v3.1.0 or higher
 * Nextcloud AIO is supported
-* No GPU is necessary
+* No GPU is necessary for Context Agent but one might be useful if you use it with a self-hosted provider like llm2
 
 * CPU Sizing
 

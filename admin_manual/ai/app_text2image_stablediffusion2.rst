@@ -26,9 +26,9 @@ Requirements
 Installation
 ------------
 
-0. Make sure the :ref:`Nextcloud Assistant app<ai-app-assistant>` is installed
-1. :ref:`Install AppAPI and setup a Deploy Demon<ai-app_api>`
-2. Install the "Local large language model" ExApp via the "Apps" page in the Nextcloud web admin user interface
+* Make sure the :ref:`Nextcloud Assistant app<ai-app-assistant>` is installed
+* :ref:`Install AppAPI and setup a Deploy Demon<ai-app_api>`
+* Install the "Local large language model" ExApp via the "Apps" page in the Nextcloud web admin user interface
 
 
 Scaling
