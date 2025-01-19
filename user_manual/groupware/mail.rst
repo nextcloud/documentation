@@ -309,6 +309,15 @@ When you open a message in the Mail app, it proposes AI-generated replies. By si
 
 .. note:: Supported languages depend on the used large language model
 
+Mail translation
+~~~~~~~~~~~~~~~~
+
+.. versionadded:: 4.2
+
+You are able to translate messages to your configured languages similarly to Talk.
+
+.. note:: Please note that translation features have to be enabled on the server
+
 Thread summary
 --------------
 
