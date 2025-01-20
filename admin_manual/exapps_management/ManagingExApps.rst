@@ -16,7 +16,7 @@ There are several commands to work with ExApps:
 Register
 --------
 
-Command: ``app_api:app:register [--info-xml INFO-XML] [--json-info JSON-INFO] [--] <appid> <daemon-config-name>``
+Command: ``app_api:app:register [--force-scopes] [--info-xml INFO-XML] [--json-info JSON-INFO] [--wait-finish] [--silent] [--test-deploy-mode] [--env [ENV]] [--mount [MOUNT]] [--] <appid> [<daemon-config-name>]``
 
 The register command is the first ExApp installation step.
 
@@ -31,6 +31,17 @@ Options
 
     * ``--json-info JSON-INFO`` *[optional]* - ExApp deploy JSON info (json string)
     * ``--info-xml INFO-XML`` *[optional]* - path to info.xml file (url or local absolute path)
+    * ``--wait-finish`` *[optional]* - wait until initialization finished
+    * ``--silent`` *[optional]* - do not print to console
+    * ``--test-deploy-mode`` *[optional]* - test deploy mode with additional status checks and slightly different logic
+
+ .. _advanced_deploy_options_cli:
+
+Advanced Deploy Options
+***********************
+
+    * ``--env`` *[optional]* - environment (ENV_NAME=ENV_VALUE), passed to ExApp container as environment variables (multiple values allowed)
+    * ``--mount`` *[optional]* - mount options (SRC_PATH=DST_PATH), passed to ExApp container as volume mounts (multiple values allowed)
 
 
 Unregister

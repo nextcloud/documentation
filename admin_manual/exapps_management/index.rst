@@ -10,3 +10,4 @@ ExApps management
    ManagingDeployDaemons
    TestDeploy
    ManagingExApps
+   AdvancedDeployOptions
