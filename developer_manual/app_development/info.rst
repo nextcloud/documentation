@@ -176,7 +176,7 @@ version
 licence
     * required
     * can occur multiple times with different licenses
-    * must contain one of the following licenses (see the `SPDX License List <https://spdx.org/licenses/>`_ for details):
+    * must contain one of the following licenses (for apps targeting v31 or higher, see the `SPDX License List <https://spdx.org/licenses/>`_ for details):
 
         * **AGPL-3.0-only**
         * **AGPL-3.0-or-later**
@@ -186,7 +186,7 @@ licence
         * **MIT**
         * **MPL-2.0**
 
-    * (deprecated) the following shorthand aliases are also used:
+    * (deprecated, for apps targeting v30 or lower) the following shorthand aliases are also used:
 
         * **agpl** (AGPL-3.0)
         * **apache** (Apache-2.0)
