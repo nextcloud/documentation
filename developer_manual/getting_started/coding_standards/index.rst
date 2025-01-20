@@ -95,8 +95,8 @@ The most part of Nextcloud is written in PHP, Typescript / JavaScript, so we hav
 License headers
 ---------------
 
-Nextcloud is licensed under the `GNU AGPLv3 <https://www.gnu.org/licenses/agpl>`_.
-From June, 16 2016 on we switched to "GNU AGPLv3 or any later version" for better long-term maintainability.
+Nextcloud is licensed under the `GNU Affero General Public License v3.0 <https://www.gnu.org/licenses/agpl>`_.
+From 16 June 2016, we switched to "GNU Affero General Public License v3.0 or later" for better long-term maintainability.
 
 If you create a new file please use this header:
 

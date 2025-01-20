@@ -31,7 +31,7 @@ These are the app guidelines an app has to comply with to have a chance to be ap
 Legal and security
 ^^^^^^^^^^^^^^^^^^
 
-* Apps must be licensed under AGPLv3+ or any compatible license.
+* Apps must be licensed under AGPL-3.0-or-later or any compatible license.
 * Apps must not use 'Nextcloud' in their name.
 * Irregular and unannounced security audits of all apps can and will take place.
 * If any indication of malicious intent or bad faith is found the developer(s) in question can count on a minimum 2 year ban from any Nextcloud infrastructure.
