@@ -218,7 +218,7 @@ Always store user data or configuration files in safe locations, e.g. **nextclou
 Cross site request forgery
 --------------------------
 
-Using `CSRF <https://en.wikipedia.org/wiki/Cross-site_request_forgery>`_ one can trick a user into executing a request that they did not want to make. Thus every POST and GET request needs to be protected against it. The only places where no CSRF checks are needed are in the main template, which is rendering the application, or in externally callable interfaces.
+Using `CSRF <https://en.wikipedia.org/wiki/Cross-site_request_forgery>`_ (see also on `MDN <https://developer.mozilla.org/en-US/docs/Glossary/CSRF>`_) one can trick a user into executing a request that they did not want to make. Thus every POST and GET request needs to be protected against it. The only places where no CSRF checks are needed are in the main template, which is rendering the application, or in externally callable interfaces.
 
 .. note:: Submitting a form is also a POST/GET request!
 
@@ -260,7 +260,7 @@ Always validate the URL before redirecting if the requested URL is on the same d
 CORS
 ----
 
-`Cross-origin resource sharing (CORS) <https://en.wikipedia.org/wiki/Cross-origin_resource_sharing>`_ is a method impleneted by browser to access resources from different domains at the same time.
+`Cross-origin resource sharing (CORS) <https://en.wikipedia.org/wiki/Cross-origin_resource_sharing>`_ (see also on `MDN <https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS>`_) is a method impleneted by browser to access resources from different domains at the same time.
 Assume, there is a website published on host A.
 The URL would for example be https://A/path/to/index.html.
 If there is a _different_ host B that serves a resource (e.g. an image file) as https://B/assets/image.jpg, the index file on host A could simply link to the image on B.
