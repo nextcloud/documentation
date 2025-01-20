@@ -20,6 +20,7 @@ In order to use these providers you will need to install the respective app from
 
 You can then add your API token and rate limits in the administration settings and set the providers live in the "Artificial intelligence" section of the admins settings.
 
+Optionally but recommended, setup background workers for faster pickup of tasks. See :ref:`the relevant section in AI Overview<ai-overview_improve-ai-task-pickup-speed>` for more information.
 
 OpenAI integration
 ------------------
