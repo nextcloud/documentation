@@ -260,7 +260,7 @@ Always validate the URL before redirecting if the requested URL is on the same d
 CORS
 ----
 
-`Cross-origin resource sharing (CORS) <https://en.wikipedia.org/wiki/Cross-origin_resource_sharing>`_ (see also on `MDN <https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS>`__) is a method impleneted by browser to access resources from different domains at the same time.
+`Cross-origin resource sharing (CORS) <https://en.wikipedia.org/wiki/Cross-origin_resource_sharing>`_ (see also on `MDN <https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS>`__) is a method implemented by browser to access resources from different domains at the same time.
 Assume, there is a website published on host A.
 The URL would for example be https://A/path/to/index.html.
 If there is a _different_ host B that serves a resource (e.g. an image file) as https://B/assets/image.jpg, the index file on host A could simply link to the image on B.
