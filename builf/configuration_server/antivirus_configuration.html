@@ -1,0 +1,388 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Antivirus scanner &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Automatic setup" href="automatic_configuration.html" />
+    <link rel="prev" title="Administration privileges (Delegation)" href="admin_delegation_configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Nextcloud configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="security_setup_warnings.html">Warnings on admin page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html">Configuration Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activity_configuration.html">Activity app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin_delegation_configuration.html">Administration privileges (Delegation)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Antivirus scanner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-clamav">Installing ClamAV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enabling-the-antivirus-app-for-files">Enabling the antivirus app for files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-clamav-on-nextcloud">Configuring ClamAV on Nextcloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#confirm-everything-is-working">Confirm everything is working</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#manage-the-background-scanner">Manage the background scanner</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#get-info-about-files-in-the-scan-queue">Get info about files in the scan queue</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#manually-trigger-the-background-scan">Manually trigger the background scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#manually-scan-a-single-file">Manually scan a single file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mark-a-file-as-scanned-or-unscanned">Mark a file as scanned or unscanned</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-icap-on-nextcloud">Configuring ICAP on Nextcloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disabling-background-scan-task">Disabling background scan task</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="automatic_configuration.html">Automatic setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background_jobs_configuration.html">Background jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bruteforce_configuration.html">Brute force protection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching_configuration.html">Memory caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard_configuration.html">Dashboard app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain_change.html">Domain Change</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email_configuration.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_sites.html">Linking external sites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language_configuration.html">Language &amp; Locale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging_configuration.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2.html">OAuth2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse_proxy_configuration.html">Reverse proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_configuration.html">Text app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming.html">Theming</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Nextcloud configuration</a></li>
+      <li class="breadcrumb-item active">Antivirus scanner</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_server/antivirus_configuration.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="antivirus-scanner">
+<h1>Antivirus scanner<a class="headerlink" href="#antivirus-scanner" title="Link to this heading"></a></h1>
+<p>You can configure your Nextcloud server to automatically run a virus scan on
+newly-uploaded files with the Antivirus app for Files. The Antivirus app for
+Files integrates the open source anti-virus engine <a class="reference external" href="https://www.clamav.net/index.html">ClamAV</a>  with Nextcloud. ClamAV detects all forms
+of malware including Trojan horses, viruses, and worms, and it operates on all
+major file types including Windows, Linux, and Mac files, compressed files,
+executables, image files, Flash, PDF, and many others. ClamAV’s Freshclam
+daemon automatically updates its malware signature database at scheduled
+intervals.</p>
+<p>ClamAV runs on Linux and any Unix-type operating system, and Microsoft Windows.
+However, it has only been tested with Nextcloud on Linux, so these instructions
+are for Linux systems. You must first install ClamAV, and then install and
+configure the Antivirus app for Files on Nextcloud.</p>
+<section id="installing-clamav">
+<h2>Installing ClamAV<a class="headerlink" href="#installing-clamav" title="Link to this heading"></a></h2>
+<p>As always, the various Linux distributions manage installing and configuring
+ClamAV in different ways.</p>
+<dl>
+<dt>Debian, Ubuntu, Linux Mint</dt><dd><p>On Debian and Ubuntu systems, and their many variants, install ClamAV with
+these commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">clamav</span> <span class="n">clamav</span><span class="o">-</span><span class="n">daemon</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>The installer automatically creates default configuration files and launches the
+<code class="docutils literal notranslate"><span class="pre">clamd</span></code> and <code class="docutils literal notranslate"><span class="pre">freshclam</span></code> daemons. You don’t have to do anything more, though
+it’s a good idea to review the ClamAV documentation and your settings in
+<code class="docutils literal notranslate"><span class="pre">/etc/clamav/</span></code>. Enable verbose logging in both <code class="docutils literal notranslate"><span class="pre">clamd.conf</span></code> and
+<code class="docutils literal notranslate"><span class="pre">freshclam.conf</span></code> until you get any kinks worked out.</p>
+<dl>
+<dt>RedHat Enterprise Linux 7, CentOS 7</dt><dd><p>On RedHat Enterprise Linux 7 and related systems you must install the Extra Packages for
+Enterprise Linux (EPEL) repository, and then install ClamAV:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">epel</span><span class="o">-</span><span class="n">release</span>
+<span class="n">yum</span> <span class="n">install</span> <span class="n">clamav</span> <span class="n">clamav</span><span class="o">-</span><span class="n">scanner</span> <span class="n">clamav</span><span class="o">-</span><span class="n">scanner</span><span class="o">-</span><span class="n">systemd</span> <span class="n">clamav</span><span class="o">-</span><span class="n">server</span>
+<span class="n">clamav</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">systemd</span> <span class="n">clamav</span><span class="o">-</span><span class="n">update</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>This installs two configuration files: <code class="docutils literal notranslate"><span class="pre">/etc/freshclam.conf</span></code> and
+<code class="docutils literal notranslate"><span class="pre">/etc/clamd.d/scan.conf</span></code>. You must edit both of these before you can run
+ClamAV. Both files are well-commented, and <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">clamd.conf</span></code> and <code class="docutils literal notranslate"><span class="pre">man</span>
+<span class="pre">freshclam.conf</span></code> explain all the options.  Refer to <code class="docutils literal notranslate"><span class="pre">/etc/passwd</span></code> and
+<code class="docutils literal notranslate"><span class="pre">/etc/group</span></code> when you need to verify the ClamAV user and group.</p>
+<p>First edit <code class="docutils literal notranslate"><span class="pre">/etc/freshclam.conf</span></code> and configure your options.
+<code class="docutils literal notranslate"><span class="pre">freshclam</span></code> updates your malware database, so you want it to run frequently to
+get updated malware signatures. Run it manually post-installation to download
+your first set of malware signatures:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">freshclam</span>
+</pre></div>
+</div>
+<p>The EPEL packages do not include an init file for <code class="docutils literal notranslate"><span class="pre">freshclam</span></code>, so the quick
+and easy way to set it up for regular checks is with a cron job. This example
+runs it every hour at 47 minutes past the hour:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># m   h  dom mon dow  command</span>
+  <span class="mi">47</span>  <span class="o">*</span>  <span class="o">*</span>   <span class="o">*</span>    <span class="o">*</span>  <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">freshclam</span> <span class="o">--</span><span class="n">quiet</span>
+</pre></div>
+</div>
+<p>Please avoid any multiples of 10, because those are when the ClamAV servers are
+hit the hardest for updates.</p>
+<p>Next, edit <code class="docutils literal notranslate"><span class="pre">/etc/clamd.d/scan.conf</span></code>. When you’re finished you must enable
+the <code class="docutils literal notranslate"><span class="pre">clamd</span></code> service file and start <code class="docutils literal notranslate"><span class="pre">clamd</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">systemctl</span> <span class="n">enable</span> <span class="n">clamd</span><span class="nd">@scan</span><span class="o">.</span><span class="n">service</span>
+<span class="n">systemctl</span> <span class="n">start</span> <span class="n">clamd</span><span class="nd">@scan</span><span class="o">.</span><span class="n">service</span>
+</pre></div>
+</div>
+<p>That should take care of everything. Enable verbose logging in <code class="docutils literal notranslate"><span class="pre">scan.conf</span></code>
+and <code class="docutils literal notranslate"><span class="pre">freshclam.conf</span></code> until it is running the way you want.</p>
+<dl class="simple">
+<dt>Docker, Docker-compose</dt><dd><p>To install ClamAV via docker or docker compose you can take official image of ClamAV, or build one by yourself.
+This example is based on docker image from <a class="reference external" href="https://github.com/Cisco-Talos/clamav">https://github.com/Cisco-Talos/clamav</a>.</p>
+</dd>
+</dl>
+<p>You can mount ClamAV Socket from the Docker Container to the host System as volume. In this case you do not need to expose any port outside of container.</p>
+<p>For a Docker run this command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">name</span> <span class="n">clamav</span> <span class="o">-</span><span class="n">d</span> <span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">clamav</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">clamav</span><span class="o">/</span> <span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span><span class="n">clamav</span><span class="o">/</span><span class="n">virus_db</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">clamav</span><span class="o">/</span> <span class="n">clamav</span><span class="o">/</span><span class="n">clamav</span><span class="p">:</span><span class="n">stable_base</span>
+</pre></div>
+</div>
+<p>For a Docker-compose use following settings:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">version</span><span class="p">:</span> <span class="s2">&quot;3.6&quot;</span>
+<span class="n">services</span><span class="p">:</span>
+  <span class="n">clamav</span><span class="p">:</span>
+    <span class="n">image</span><span class="p">:</span> <span class="s2">&quot;clamav/clamav:stable_base&quot;</span>
+    <span class="n">container_name</span><span class="p">:</span> <span class="s2">&quot;clamav&quot;</span>
+    <span class="n">volumes</span><span class="p">:</span>
+      <span class="c1"># Socket</span>
+      <span class="o">-</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">clamav</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">clamav</span><span class="o">/</span>
+      <span class="c1"># Virus DB</span>
+      <span class="o">-</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span><span class="n">clamav</span><span class="o">/</span><span class="n">virus_db</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">clamav</span><span class="o">/</span>
+    <span class="n">restart</span><span class="p">:</span> <span class="n">unless</span><span class="o">-</span><span class="n">stopped</span>
+</pre></div>
+</div>
+</section>
+<section id="enabling-the-antivirus-app-for-files">
+<h2>Enabling the antivirus app for files<a class="headerlink" href="#enabling-the-antivirus-app-for-files" title="Link to this heading"></a></h2>
+<p>Place the <code class="docutils literal notranslate"><span class="pre">files_antivirus</span></code> app into the <code class="docutils literal notranslate"><span class="pre">apps</span></code> directory of your Nextcloud
+server. Then the app shows up on the Nextcloud Apps page where it simply can be
+enabled.</p>
+<figure class="align-default">
+<img alt="../_images/antivirus-app.png" src="../_images/antivirus-app.png" />
+</figure>
+</section>
+<section id="configuring-clamav-on-nextcloud">
+<h2>Configuring ClamAV on Nextcloud<a class="headerlink" href="#configuring-clamav-on-nextcloud" title="Link to this heading"></a></h2>
+<p>Next, go to your Nextcloud Admin page and set your Nextcloud logging level to
+Everything.</p>
+<figure class="align-default">
+<img alt="../_images/antivirus-logging.png" src="../_images/antivirus-logging.png" />
+</figure>
+<p>Now find your Antivirus Configuration panel on your Admin page.</p>
+<figure class="align-default">
+<img alt="../_images/antivirus-config.png" src="../_images/antivirus-config.png" />
+</figure>
+<p>ClamAV runs in one of three modes:</p>
+<ul class="simple">
+<li><p>Daemon (Socket): ClamAV is running on the same server as Nextcloud. The ClamAV
+daemon, <code class="docutils literal notranslate"><span class="pre">clamd</span></code>, runs in the background. When there is no activity <code class="docutils literal notranslate"><span class="pre">clamd</span></code>
+places a minimal load on your system. If your users upload large volumes of
+files you will see high CPU usage.</p></li>
+<li><p>Daemon: ClamAV is running on a different server. This is a good option
+for Nextcloud servers with high volumes of file uploads.</p></li>
+<li><p>Executable: ClamAV is running on the same server as Nextcloud, and the
+<code class="docutils literal notranslate"><span class="pre">clamscan</span></code> command is started and then stopped with each file upload.
+<code class="docutils literal notranslate"><span class="pre">clamscan</span></code> is slow and not always reliable for on-demand usage; it is
+better to use one of the daemon modes.</p></li>
+</ul>
+<dl>
+<dt>Daemon (Socket)</dt><dd><p>Nextcloud should detect your <code class="docutils literal notranslate"><span class="pre">clamd</span></code> socket and fill in the <code class="docutils literal notranslate"><span class="pre">Socket</span></code>
+field. This is the <code class="docutils literal notranslate"><span class="pre">LocalSocket</span></code> option in <code class="docutils literal notranslate"><span class="pre">clamd.conf</span></code>. You can
+run <code class="docutils literal notranslate"><span class="pre">netstat</span></code> to verify:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">netstat</span> <span class="o">-</span><span class="n">a</span><span class="o">|</span><span class="n">grep</span> <span class="n">clam</span>
+<span class="n">unix</span> <span class="mi">2</span> <span class="p">[</span> <span class="n">ACC</span> <span class="p">]</span> <span class="n">STREAM</span> <span class="n">LISTENING</span> <span class="mi">15857</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">clamav</span><span class="o">/</span><span class="n">clamd</span><span class="o">.</span><span class="n">ctl</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../_images/antivirus-daemon-socket.png" src="../_images/antivirus-daemon-socket.png" />
+</figure>
+<p>The <code class="docutils literal notranslate"><span class="pre">Stream</span> <span class="pre">Length</span></code> value sets the number of bytes read in one pass.
+10485760 bytes, or ten megabytes, is the default. This value should be
+no larger than the PHP <code class="docutils literal notranslate"><span class="pre">memory_limit</span></code> settings, or physical memory if
+<code class="docutils literal notranslate"><span class="pre">memory_limit</span></code> is set to -1 (no limit).</p>
+<p><code class="docutils literal notranslate"><span class="pre">Action</span> <span class="pre">for</span> <span class="pre">infected</span> <span class="pre">files</span> <span class="pre">found</span> <span class="pre">while</span> <span class="pre">scanning</span></code> gives you the choice of
+logging any alerts without deleting the files, or immediately deleting
+infected files.</p>
+</dd>
+<dt>Daemon</dt><dd><p>For the Daemon option you need the hostname or IP address of the remote
+server running ClamAV, and the server’s port number.</p>
+<figure class="align-default">
+<img alt="../_images/antivirus-daemon.png" src="../_images/antivirus-daemon.png" />
+</figure>
+</dd>
+<dt>Executable</dt><dd><p>The Executable option requires the path to <code class="docutils literal notranslate"><span class="pre">clamscan</span></code>, which is the
+interactive ClamAV scanning command. Nextcloud should find it automatically.</p>
+<figure class="align-default">
+<img alt="../_images/antivirus-executable.png" src="../_images/antivirus-executable.png" />
+</figure>
+</dd>
+</dl>
+<p>When you are satisfied with how ClamAV is operating, you might want to go
+back and change all of your logging to less verbose levels.</p>
+</section>
+<section id="confirm-everything-is-working">
+<h2>Confirm everything is working<a class="headerlink" href="#confirm-everything-is-working" title="Link to this heading"></a></h2>
+<p>Every antivirus provider implements a test virus string, that way tests are quite easy. You find the files here:
+<a class="reference external" href="https://www.eicar.org/download-anti-malware-testfile/">https://www.eicar.org/download-anti-malware-testfile/</a></p>
+<dl class="simple">
+<dt>Uploading the file will trigger an error:</dt><dd><p>“Virus Win.Test.EICAR_HDB-1 is detected in the file. Upload cannot be completed.”</p>
+</dd>
+</dl>
+</section>
+<section id="manage-the-background-scanner">
+<h2>Manage the background scanner<a class="headerlink" href="#manage-the-background-scanner" title="Link to this heading"></a></h2>
+<p>The background scanner does not require any manual intervention.
+However at times you might want to inspect it or perform tasks on it.</p>
+<section id="get-info-about-files-in-the-scan-queue">
+<h3>Get info about files in the scan queue<a class="headerlink" href="#get-info-about-files-in-the-scan-queue" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_antivirus</span><span class="p">:</span><span class="n">status</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="manually-trigger-the-background-scan">
+<h3>Manually trigger the background scan<a class="headerlink" href="#manually-trigger-the-background-scan" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_antivirus</span><span class="p">:</span><span class="n">background</span><span class="o">-</span><span class="n">scan</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">m</span> <span class="n">MAX</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="manually-scan-a-single-file">
+<h3>Manually scan a single file<a class="headerlink" href="#manually-scan-a-single-file" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_antivirus</span><span class="p">:</span><span class="n">scan</span> <span class="o">&lt;</span><span class="n">path</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="mark-a-file-as-scanned-or-unscanned">
+<h3>Mark a file as scanned or unscanned<a class="headerlink" href="#mark-a-file-as-scanned-or-unscanned" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_antivirus</span><span class="p">:</span><span class="n">mark</span> <span class="o">&lt;</span><span class="n">path</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">scanned</span><span class="o">|</span><span class="n">unscanned</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Files marked as scanned will not be scanned for the next four weeks.</p>
+</section>
+</section>
+<section id="configuring-icap-on-nextcloud">
+<h2>Configuring ICAP on Nextcloud<a class="headerlink" href="#configuring-icap-on-nextcloud" title="Link to this heading"></a></h2>
+<p>Nextcloud offers the integration of antivirus protection based on the ICAP protocol.
+The settings are outlined here.
+Additional documentation is work in progress.</p>
+<figure class="align-default">
+<img alt="../_images/antivirus-icap.png" src="../_images/antivirus-icap.png" />
+</figure>
+</section>
+<section id="disabling-background-scan-task">
+<h2>Disabling background scan task<a class="headerlink" href="#disabling-background-scan-task" title="Link to this heading"></a></h2>
+<p>You can disable background scan with occ to only scan files during upload:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_antivirus</span> <span class="n">av_background_scan</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;off&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="admin_delegation_configuration.html" class="btn btn-neutral float-left" title="Administration privileges (Delegation)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="automatic_configuration.html" class="btn btn-neutral float-right" title="Automatic setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,264 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation example with Docker &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Reverse proxy" href="proxy.html" />
+    <link rel="prev" title="Installation example on Ubuntu 20.04" href="example-ubuntu.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Office</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="installation.html">Installation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="example-ubuntu.html">Installation example on Ubuntu 20.04</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Installation example with Docker</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#install-the-collabora-online-server">Install the Collabora Online server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-the-apache-reverse-proxy">Install the Apache reverse proxy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-the-app-in-nextcloud">Configure the app in Nextcloud</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#updating">Updating</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="proxy.html">Reverse proxy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration.html">Migration from Collabora Online</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Office</a></li>
+          <li class="breadcrumb-item"><a href="installation.html">Installation</a></li>
+      <li class="breadcrumb-item active">Installation example with Docker</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/office/example-docker.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation-example-with-docker">
+<h1>Installation example with Docker<a class="headerlink" href="#installation-example-with-docker" title="Link to this heading"></a></h1>
+<p>We’ll describe how to get Nextcloud Office running on your server and how to integrate it into your Nextcloud using the docker image Nextcloud and Collabora built.</p>
+<p>To install it the following dependencies are required:</p>
+<ul class="simple">
+<li><p>A host that can run a Docker container</p></li>
+<li><p>A subdomain or a second domain that the Collabora Online server can run on</p></li>
+<li><p>An Apache server with some enabled modules</p></li>
+<li><p>A valid SSL certificate for the domain that Collabora Online should run on</p></li>
+<li><p>A valid SSL certificate for your Nextcloud</p></li>
+</ul>
+<section id="install-the-collabora-online-server">
+<h2>Install the Collabora Online server<a class="headerlink" href="#install-the-collabora-online-server" title="Link to this heading"></a></h2>
+<p>The following steps will download the Collabora Online docker. Make sure to replace “cloud.example.com” with the host that your own Nextcloud runs on. If you want to use the docker container with more than one Nextcloud, you can add another <cite>-e aliasgroup2=https://cloud2.example.com:443</cite>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>collabora/code
+docker<span class="w"> </span>run<span class="w"> </span>-t<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">127</span>.0.0.1:9980:9980<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-e<span class="w"> </span><span class="s1">&#39;aliasgroup1=https://cloud.example.com:443&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--restart<span class="w"> </span>always<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cap-add<span class="w"> </span>MKNOD<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>collabora/code
+</pre></div>
+</div>
+<p>That will be enough. Once you have done that the server will listen on “localhost:9980”. Now we just need to configure the locally installed Apache reverse proxy.</p>
+</section>
+<section id="install-the-apache-reverse-proxy">
+<h2>Install the Apache reverse proxy<a class="headerlink" href="#install-the-apache-reverse-proxy" title="Link to this heading"></a></h2>
+<p>On a recent Ubuntu or Debian this should be possible using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get<span class="w"> </span>install<span class="w"> </span>apache2
+a2enmod<span class="w"> </span>proxy<span class="w"> </span>proxy_wstunnel<span class="w"> </span>proxy_http<span class="w"> </span>ssl
+</pre></div>
+</div>
+<p>Afterward, configure one VirtualHost properly to proxy the traffic. For security reason we recommend to use a subdomain such as office.example.com instead of running on the same domain. An example config can be found below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>########################################
+# Reverse proxy for Collabora Online
+########################################
+
+AllowEncodedSlashes NoDecode
+SSLProxyEngine On
+ProxyPreserveHost On
+
+# cert is issued for collaboraonline.example.com and we proxy to localhost
+SSLProxyVerify None
+SSLProxyCheckPeerCN Off
+SSLProxyCheckPeerName Off
+
+# static html, js, images, etc. served from coolwsd
+# browser is the client part of Collabora Online
+ProxyPass           /browser https://127.0.0.1:9980/browser retry=0
+ProxyPassReverse    /browser https://127.0.0.1:9980/browser
+
+# WOPI discovery URL
+ProxyPass           /hosting/discovery https://127.0.0.1:9980/hosting/discovery retry=0
+ProxyPassReverse    /hosting/discovery https://127.0.0.1:9980/hosting/discovery
+
+# Capabilities
+ProxyPass           /hosting/capabilities https://127.0.0.1:9980/hosting/capabilities retry=0
+ProxyPassReverse    /hosting/capabilities https://127.0.0.1:9980/hosting/capabilities
+
+# Main websocket
+ProxyPassMatch      &quot;/cool/(.*)/ws$&quot;      wss://127.0.0.1:9980/cool/$1/ws nocanon
+
+# Admin Console websocket
+ProxyPass           /cool/adminws wss://127.0.0.1:9980/cool/adminws
+
+# Download as, Fullscreen presentation and Image upload operations
+ProxyPass           /cool https://127.0.0.1:9980/cool
+ProxyPassReverse    /cool https://127.0.0.1:9980/cool
+# Compatibility with integrations that use the /lool/convert-to endpoint
+ProxyPass           /lool https://127.0.0.1:9980/cool
+ProxyPassReverse    /lool https://127.0.0.1:9980/cool
+</pre></div>
+</div>
+<p>After configuring these do restart your apache using <code class="docutils literal notranslate"><span class="pre">systemctl</span> <span class="pre">restart</span> <span class="pre">apache2</span></code>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Full configuration examples for reverse proxy setup can be found in the Collabora Online documentation:
+<a class="reference external" href="https://sdk.collaboraonline.com/docs/installation/Proxy_settings.html">https://sdk.collaboraonline.com/docs/installation/Proxy_settings.html</a></p>
+</div>
+</section>
+<section id="configure-the-app-in-nextcloud">
+<h2>Configure the app in Nextcloud<a class="headerlink" href="#configure-the-app-in-nextcloud" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Go to the Apps section and choose “Office &amp; text”</p></li>
+<li><p>Install the “Nextcloud Office” app</p></li>
+<li><p>Go to Admin -&gt; Office -&gt; Specify the server you have setup before (e.g. “<a class="reference external" href="https://office.example.com">https://office.example.com</a>”)</p></li>
+</ul>
+<p>Congratulations, your Nextcloud has Collabora Online Office integrated!</p>
+</section>
+<section id="updating">
+<h2>Updating<a class="headerlink" href="#updating" title="Link to this heading"></a></h2>
+<p>Occasionally, new versions of this docker image are released with security and feature updates. We will of course let you know when that happens! This is how you upgrade to a new version:</p>
+<dl>
+<dt>Update the docker image:</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>collabora/code
+</pre></div>
+</div>
+</dd>
+<dt>List running docker containers:</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>ps
+</pre></div>
+</div>
+</dd>
+<dt>Stop and remove the Collabora Online container with the container id of the running one:</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>stop<span class="w"> </span>CONTAINER_ID
+docker<span class="w"> </span>rm<span class="w"> </span>CONTAINER_ID
+</pre></div>
+</div>
+</dd>
+<dt>Start the new container:</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-t<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">127</span>.0.0.1:9980:9980<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;domain=cloud\\.example\\.com&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--restart<span class="w"> </span>always<span class="w"> </span>--cap-add<span class="w"> </span>MKNOD<span class="w"> </span>collabora/code
+</pre></div>
+</div>
+</dd>
+</dl>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="example-ubuntu.html" class="btn btn-neutral float-left" title="Installation example on Ubuntu 20.04" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="proxy.html" class="btn btn-neutral float-right" title="Reverse proxy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

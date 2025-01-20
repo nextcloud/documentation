@@ -1,0 +1,402 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instruction set for groups &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Instruction set for apps" href="instruction_set_for_apps.html" />
+    <link rel="prev" title="Instruction set for users" href="instruction_set_for_users.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="user_configuration.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reset_admin_password.html">Resetting a lost admin password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reset_user_password.html">Resetting a user password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_password_policy.html">User password policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two_factor-auth.html">Two-factor authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap.html">User authentication with LDAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_cleanup.html">LDAP user cleanup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_api.html">The LDAP configuration API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="user_provisioning_api.html">User provisioning API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="instruction_set_for_users.html">Instruction set for users</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Instruction set for groups</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#search-get-groups">Search/get groups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-group">Create a group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-members-of-a-group">Get members of a group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-subadmins-of-a-group">Get subadmins of a group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-data-of-a-single-group">Edit data of a single group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete-a-group">Delete a group</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="instruction_set_for_apps.html">Instruction set for apps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="profile_configuration.html">Profile configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">User management</a></li>
+          <li class="breadcrumb-item"><a href="user_provisioning_api.html">User provisioning API</a></li>
+      <li class="breadcrumb-item active">Instruction set for groups</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_user/instruction_set_for_groups.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="instruction-set-for-groups">
+<h1>Instruction set for groups<a class="headerlink" href="#instruction-set-for-groups" title="Link to this heading"></a></h1>
+<section id="search-get-groups">
+<h2>Search/get groups<a class="headerlink" href="#search-get-groups" title="Link to this heading"></a></h2>
+<p>Retrieves a list of groups from the Nextcloud server. Authentication is done by
+sending a Basic HTTP Authorization header.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/groups</strong></p>
+<ul class="simple">
+<li><p>HTTP method: GET</p></li>
+<li><p>url arguments: search - string, optional search string</p></li>
+<li><p>url arguments: limit - int, optional limit value</p></li>
+<li><p>url arguments: offset - int, optional offset value</p></li>
+</ul>
+<p>Status codes:</p>
+<ul class="simple">
+<li><p>100 - successful</p></li>
+</ul>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/groups?search=adm -H &quot;OCS-APIRequest: true&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Returns list of groups matching the search string.</p></li>
+</ul>
+</section>
+<section id="xml-output">
+<h3>XML output<a class="headerlink" href="#xml-output" title="Link to this heading"></a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w">  </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">    </span><span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">    </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w">  </span><span class="nt">&lt;data&gt;</span>
+<span class="w">    </span><span class="nt">&lt;groups&gt;</span>
+<span class="w">      </span><span class="nt">&lt;element&gt;</span>admin<span class="nt">&lt;/element&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/groups&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/data&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="create-a-group">
+<h2>Create a group<a class="headerlink" href="#create-a-group" title="Link to this heading"></a></h2>
+<p>Adds a new group. Authentication is done by
+sending a Basic HTTP Authorization header.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/groups</strong></p>
+<ul class="simple">
+<li><p>HTTP method: POST</p></li>
+<li><p>POST argument: groupid, string - the new groups name</p></li>
+</ul>
+<p>Status codes:</p>
+<ul class="simple">
+<li><p>100 - successful</p></li>
+<li><p>101 - invalid input data</p></li>
+<li><p>102 - group already exists</p></li>
+<li><p>103 - failed to add the group</p></li>
+</ul>
+<section id="id1">
+<h3>Example<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/groups -d groupid=&quot;newgroup&quot; -H &quot;OCS-APIRequest: true&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Adds a new group called <code class="docutils literal notranslate"><span class="pre">newgroup</span></code></p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>XML output<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w">  </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">    </span><span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">    </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w">  </span><span class="nt">&lt;data/&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="get-members-of-a-group">
+<h2>Get members of a group<a class="headerlink" href="#get-members-of-a-group" title="Link to this heading"></a></h2>
+<p>Retrieves a list of group members. Authentication is done by sending a Basic
+HTTP Authorization header.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/groups/{groupid}</strong></p>
+<ul class="simple">
+<li><p>HTTP method: GET</p></li>
+</ul>
+<p>Status codes:</p>
+<ul class="simple">
+<li><p>100 - successful</p></li>
+</ul>
+<section id="id3">
+<h3>Example<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/groups/admin -H &quot;OCS-APIRequest: true&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Returns a list of users in the <code class="docutils literal notranslate"><span class="pre">admin</span></code> group</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>XML output<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w">  </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">    </span><span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">    </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w">  </span><span class="nt">&lt;data&gt;</span>
+<span class="w">    </span><span class="nt">&lt;users&gt;</span>
+<span class="w">      </span><span class="nt">&lt;element&gt;</span>Frank<span class="nt">&lt;/element&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/users&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/data&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="get-subadmins-of-a-group">
+<h2>Get subadmins of a group<a class="headerlink" href="#get-subadmins-of-a-group" title="Link to this heading"></a></h2>
+<p>Returns subadmins of the group. Authentication is done by
+sending a Basic HTTP Authorization header.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/groups/{groupid}/subadmins</strong></p>
+<ul class="simple">
+<li><p>HTTP method: GET</p></li>
+</ul>
+<p>Status codes:</p>
+<ul class="simple">
+<li><p>100 - successful</p></li>
+<li><p>101 - group does not exist</p></li>
+<li><p>102 - unknown failure</p></li>
+</ul>
+<section id="id5">
+<h3>Example<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X GET https://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup/subadmins -H &quot;OCS-APIRequest: true&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Return the subadmins of the group: <code class="docutils literal notranslate"><span class="pre">mygroup</span></code></p></li>
+</ul>
+</section>
+<section id="id6">
+<h3>XML output<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w">  </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">    </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">    </span><span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">    </span><span class="nt">&lt;message/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w">  </span><span class="nt">&lt;data&gt;</span>
+<span class="w">    </span><span class="nt">&lt;element&gt;</span>Tom<span class="nt">&lt;/element&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/data&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="edit-data-of-a-single-group">
+<h2>Edit data of a single group<a class="headerlink" href="#edit-data-of-a-single-group" title="Link to this heading"></a></h2>
+<p>Edits attributes related to a group. Authentication
+is done by sending a Basic HTTP Authorization header.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/groups/{groupid}</strong></p>
+<ul class="simple">
+<li><p>HTTP method: PUT</p></li>
+<li><p>PUT argument: key, string - the field to edit:</p>
+<ul>
+<li><p>displayname</p></li>
+</ul>
+</li>
+<li><p>PUT argument: value, string - the new value for the field</p></li>
+</ul>
+<p>Status codes:</p>
+<ul class="simple">
+<li><p>100 - successful</p></li>
+<li><p>101 - not supported by backend</p></li>
+</ul>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup -d key=&quot;displayname&quot; -d value=&quot;My Group Name&quot; -H &quot;OCS-APIRequest: true&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Updates the display name for the group <code class="docutils literal notranslate"><span class="pre">mygroup</span></code></p></li>
+</ul>
+</section>
+<section id="id7">
+<h3>XML output<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w">  </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">    </span><span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">    </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w">  </span><span class="nt">&lt;data/&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="delete-a-group">
+<h2>Delete a group<a class="headerlink" href="#delete-a-group" title="Link to this heading"></a></h2>
+<p>Removes a group. Authentication is done by
+sending a Basic HTTP Authorization header.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/groups/{groupid}</strong></p>
+<ul class="simple">
+<li><p>HTTP method: DELETE</p></li>
+</ul>
+<p>Status codes:</p>
+<ul class="simple">
+<li><p>100 - successful</p></li>
+<li><p>101 - group does not exist</p></li>
+<li><p>102 - failed to delete group</p></li>
+</ul>
+<section id="id8">
+<h3>Example<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup -H &quot;OCS-APIRequest: true&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Delete the group <code class="docutils literal notranslate"><span class="pre">mygroup</span></code></p></li>
+</ul>
+</section>
+<section id="id9">
+<h3>XML output<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w">  </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">    </span><span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">    </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w">  </span><span class="nt">&lt;data/&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="instruction_set_for_users.html" class="btn btn-neutral float-left" title="Instruction set for users" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="instruction_set_for_apps.html" class="btn btn-neutral float-right" title="Instruction set for apps" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

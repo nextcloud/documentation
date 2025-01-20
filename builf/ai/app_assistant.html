@@ -1,0 +1,351 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nextcloud Assistant &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="App: Local Machine translation 2 (translate2)" href="app_translate2.html" />
+    <link rel="prev" title="Overview" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Artificial Intelligence</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Nextcloud Assistant</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app-store">App store</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#repository">Repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#related-apps">Related apps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#machine-translation">Machine translation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#speech-to-text">Speech-To-Text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#text-processing">Text processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#text-to-image">Text-To-Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#context-chat">Context Chat</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#assistant-configuration">Assistant configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-processing">Task processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image-storage">Image storage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#chat-with-ai">Chat with AI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#improve-ai-task-pickup-speed">Improve AI task pickup speed</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="app_translate2.html">App: Local Machine translation 2 (translate2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_llm2.html">App: Local large language model (llm2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_stt_whisper2.html">App: Local Whisper Speech-To-Text (stt_whisper2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_recognize.html">App: Recognize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_context_chat.html">App: Context Chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_summary_bot.html">App: Summary Bot (Talk chat summarize bot)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai_as_a_service.html">AI as a Service</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Artificial Intelligence</a></li>
+      <li class="breadcrumb-item active">Nextcloud Assistant</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/ai/app_assistant.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="nextcloud-assistant">
+<h1>Nextcloud Assistant<a class="headerlink" href="#nextcloud-assistant" title="Link to this heading"></a></h1>
+<p id="ai-app-assistant">Nextcloud assistant is the primary graphical user interface for interacting with artificial intelligence features in Nextcloud.</p>
+<p>It offers the graphical user interface for the unified AI Task processing API offering features like summarizing text, generating headlines, asking arbitrary questions, transcription of media files, image generation and it integrates with the context_chat app to offer in-context answers about your own data stored in Nextcloud. The assistant app also offers a chat interface to interact with the chosen language model. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.</p>
+<p>Find the user documentation here: <a class="reference external" href="https://github.com/nextcloud/assistant/tree/main/docs/user">https://github.com/nextcloud/assistant/tree/main/docs/user</a></p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p>You can install the <em>assistant</em> app via the “Apps” page in Nextcloud, or by executing</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">php</span> <span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">enable</span> <span class="n">assistant</span>
+</pre></div>
+</div>
+</section>
+<section id="app-store">
+<h2>App store<a class="headerlink" href="#app-store" title="Link to this heading"></a></h2>
+<p>You can also find the app in our app store, where you can write a review: <a class="reference external" href="https://apps.nextcloud.com/apps/assistant">https://apps.nextcloud.com/apps/assistant</a></p>
+</section>
+<section id="repository">
+<h2>Repository<a class="headerlink" href="#repository" title="Link to this heading"></a></h2>
+<p>You can find the app’s code repository on GitHub where you can report bugs and contribute fixes and features: <a class="reference external" href="https://github.com/nextcloud/assistant">https://github.com/nextcloud/assistant</a></p>
+<p>Nextcloud customers should file bugs directly with our Customer Support.</p>
+</section>
+<section id="related-apps">
+<h2>Related apps<a class="headerlink" href="#related-apps" title="Link to this heading"></a></h2>
+<p>Artificial intelligence at Nextcloud is built in a modular way, allowing you to choose from a variety of solutions for your needs. In order to make use of the various features of the Assistant you will need additional apps that act as backends to provide the actual implementation of the AI functionality. In the Nextcloud administration settings under “Artificial intelligence” you can select which AI backend app to use for which tasks. Note that some of the backend apps are only community maintained, while others are available for Customer support upon request.</p>
+<p>The AI admin settings will show all types of Assistant Tasks that are implemented by all your installed apps. Task types can be disabled in the AI admin settings so they are not available for the Assistant or other apps even if they are implemented. All implemented Task types are enabled by default.</p>
+<p><strong>Note</strong>: At Nextcloud we focus on creating on-premise AI apps that run fully self-hosted on your own servers in order to preserve your privacy and data sovereignty. However, you can also offload these resource-heavy tasks to an <a class="reference internal" href="ai_as_a_service.html#ai-ai-as-a-service"><span class="std std-ref">“AI as a Service” provider</span></a>.</p>
+<p><strong>Note</strong>: When using our on-premise AI apps, make sure you have a GPU with enough VRAM that fits all the features you need. For each app documented here you will find its hardware requirements.</p>
+<section id="machine-translation">
+<h3>Machine translation<a class="headerlink" href="#machine-translation" title="Link to this heading"></a></h3>
+<p>In order to make use of machine translation features in the assistant, you will need an app that provides a translation backend:
+* <a class="reference internal" href="app_translate2.html#ai-app-translate2"><span class="std std-ref">translate2 (ExApp)</span></a> - Runs open source AI translation models locally on your own server hardware (Customer support available upon request)
+* <em>integration_deepl</em> - Integrates with the deepl API to provide translation functionality from Deepl.com servers (Only community supported)</p>
+</section>
+<section id="speech-to-text">
+<h3>Speech-To-Text<a class="headerlink" href="#speech-to-text" title="Link to this heading"></a></h3>
+<p>In order to make use of Speech-to-Text, you will need an app that provides a Speech-To-Text backend:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="app_stt_whisper2.html#ai-app-stt-whisper2"><span class="std std-ref">stt_whisper2</span></a> - Runs open source AI Speech-To-Text models on your own server hardware  (Customer support available upon request)</p></li>
+<li><p><em>integration_openai</em> - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see <a class="reference internal" href="ai_as_a_service.html#ai-ai-as-a-service"><span class="std std-ref">AI as a Service</span></a>)</p></li>
+</ul>
+</section>
+<section id="text-processing">
+<h3>Text processing<a class="headerlink" href="#text-processing" title="Link to this heading"></a></h3>
+<p>In order to make use of text processing features in the assistant, you will need an app that provides a Text processing backend:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="app_llm2.html#ai-app-llm2"><span class="std std-ref">llm2</span></a> - Runs open source AI language models locally on your own server hardware (Customer support available upon request)</p></li>
+<li><p><em>integration_openai</em> - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see <a class="reference internal" href="ai_as_a_service.html#ai-ai-as-a-service"><span class="std std-ref">AI as a Service</span></a>)</p></li>
+</ul>
+<p>These apps currently implement the following Assistant Tasks:</p>
+<ul class="simple">
+<li><p><em>Generate text</em> (Tested with OpenAI GPT-3.5 and Llama 3.1 8B)</p></li>
+<li><p><em>Summarize</em> (Tested with OpenAI GPT-3.5 and Llama 3.1 8B)</p></li>
+<li><p><em>Generate headline</em> (Tested with OpenAI GPT-3.5 and Llama 3.1 8B)</p></li>
+<li><p><em>Extract topics</em> (Tested with OpenAI GPT-3.5 and Llama 3.1 8B)</p></li>
+</ul>
+<p>Additionally, <em>integration_openai</em> also implements the following Assistant Tasks:</p>
+<ul class="simple">
+<li><p><em>Context write</em> (Tested with OpenAI GPT-3.5)</p></li>
+<li><p><em>Reformulate text</em> (Tested with OpenAI GPT-3.5)</p></li>
+</ul>
+<p>These tasks may work with other models, but we can give no guarantees.</p>
+</section>
+<section id="text-to-image">
+<h3>Text-To-Image<a class="headerlink" href="#text-to-image" title="Link to this heading"></a></h3>
+<p>In order to make use of Text-To-Image features, you will need an app that provides an image generation backend:</p>
+<ul class="simple">
+<li><p>text2image_stablediffusion (Customer support available upon request)</p></li>
+<li><p><em>integration_openai</em> - Integrates with the OpenAI API to provide AI functionality from OpenAI servers (Customer support available upon request; see <a class="reference internal" href="ai_as_a_service.html#ai-ai-as-a-service"><span class="std std-ref">AI as a Service</span></a>)</p></li>
+<li><p><em>integration_replicate</em> - Integrates with the replicate API to provide AI functionality from replicate servers (see <a class="reference internal" href="ai_as_a_service.html#ai-ai-as-a-service"><span class="std std-ref">AI as a Service</span></a>)</p></li>
+</ul>
+</section>
+<section id="context-chat">
+<h3>Context Chat<a class="headerlink" href="#context-chat" title="Link to this heading"></a></h3>
+<p>In order to make use of our special Context Chat feature, offering in-context insights about your own data stored in Nextcloud, you will need the following apps:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="app_context_chat.html#ai-app-context-chat"><span class="std std-ref">context_chat + context_chat_backend</span></a> -  (Customer support available upon request)</p></li>
+</ul>
+<p>You will also need a text processing provider as specified above (ie. llm2 or integration_openai).</p>
+</section>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>The Assistant admin settings can be found under the “Artificial intelligence” section.
+You can disable the assistant top menu entry there. You can also disable the AI-related smart pickers.
+The occ commands to change the options are listed below.</p>
+<section id="assistant-configuration">
+<h3>Assistant configuration<a class="headerlink" href="#assistant-configuration" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Top-right Assistant</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">assistant</span> <span class="n">assistant_enabled</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span> <span class="o">--</span><span class="nb">type</span><span class="o">=</span><span class="n">integer</span>
+</pre></div>
+</div>
+<p>To enable/disable the assistant button from the top-right corner for all the users.</p>
+<ol class="arabic simple" start="2">
+<li><p>AI text generation smart picker</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">assistant</span> <span class="n">free_prompt_picker_enabled</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span> <span class="o">--</span><span class="nb">type</span><span class="o">=</span><span class="n">integer</span>
+</pre></div>
+</div>
+<p>To enable/disable the AI text generation smart picker for all the users.</p>
+<ol class="arabic simple" start="3">
+<li><p>Text-to-image smart picker</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">assistant</span> <span class="n">text_to_image_picker_enabled</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span> <span class="o">--</span><span class="nb">type</span><span class="o">=</span><span class="n">integer</span>
+</pre></div>
+</div>
+<p>To enable/disable the text-to-image smart picker for all the users.</p>
+<ol class="arabic simple" start="4">
+<li><p>Speech-to-text smart picker</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">assistant</span> <span class="n">speech_to_text_picker_enabled</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span> <span class="o">--</span><span class="nb">type</span><span class="o">=</span><span class="n">integer</span>
+</pre></div>
+</div>
+<p>To enable/disable the speech-to-text smart picker for all the users.</p>
+</section>
+<section id="task-processing">
+<h3>Task processing<a class="headerlink" href="#task-processing" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>List Tasks</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">taskprocessing</span><span class="p">:</span><span class="n">task</span><span class="p">:</span><span class="nb">list</span>
+</pre></div>
+</div>
+<p>lists all task processing tasks.</p>
+<ol class="arabic simple" start="2">
+<li><p>Get Task</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>occ taskprocessing:task:get $TASK_ID
+</pre></div>
+</div>
+<p>shows all information for a specific task.</p>
+<ol class="arabic simple" start="3">
+<li><p>Enable or disable a Task type</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>occ taskprocessing:task-type:set-enabled $TASK_TYPE_ID 1
+</pre></div>
+</div>
+<p>Set 1 to enable and 0 to disable an implemented task type.</p>
+<ol class="arabic simple" start="4">
+<li><p>Get Task statistics</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">taskprocessing</span><span class="p">:</span><span class="n">task</span><span class="p">:</span><span class="n">stats</span>
+</pre></div>
+</div>
+<p>shows statistics for all task processing Tasks.</p>
+</section>
+<section id="image-storage">
+<h3>Image storage<a class="headerlink" href="#image-storage" title="Link to this heading"></a></h3>
+<p>Days until generated images are deleted if they are not viewed.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">assistant</span> <span class="n">max_image_generation_idle_time</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="mi">90</span> <span class="o">--</span><span class="nb">type</span><span class="o">=</span><span class="n">integer</span>
+</pre></div>
+</div>
+</section>
+<section id="chat-with-ai">
+<h3>Chat with AI<a class="headerlink" href="#chat-with-ai" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Chat User Instructions for Chat Completions</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">assistant</span> <span class="n">chat_user_instructions</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;hello world&quot;</span>
+</pre></div>
+</div>
+<p>The user instructions that are prepended before the chat messages for the AI model to understand the context of the block of text. This is a good place not only to instruct the AI model to be polite and kind but also to for example answer all the queries in a particular language or better yet, follow the user’s language. The sky is the limit.</p>
+<p><strong>Note</strong>: The default instructions are optimized to work well across a variety of language models, but may not be optimal for the specific model you choose. Specifically, the model may be tempted to mention the user’s name a bit too often and may mention the user’s language in an unusual manner.</p>
+<ol class="arabic simple" start="2">
+<li><p>Chat User Instructions for Title Generation</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">assistant</span> <span class="n">chat_user_instructions_title</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;hello title&quot;</span>
+</pre></div>
+</div>
+<p>This field is appended to the block of chat messages, i.e. attached after the messages. It is done this way to allow it to be used even with text completion models which could have the instructions as “The title for the above conversation could be &quot;”.</p>
+<ol class="arabic simple" start="3">
+<li><p>Last N messages to consider for chat completions</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">assistant</span> <span class="n">chat_last_n_messages</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="mi">10</span>
+</pre></div>
+</div>
+<p>The number of latest messages to consider for generating the next message. This does not include the user instructions, which is always considered in addition to this. This value should be adjusted in case you are hitting the token limit in your conversations too often.
+The AI text generation provider should ideally handle the max token limit case.</p>
+</section>
+<section id="improve-ai-task-pickup-speed">
+<h3>Improve AI task pickup speed<a class="headerlink" href="#improve-ai-task-pickup-speed" title="Link to this heading"></a></h3>
+<p>See <a class="reference internal" href="overview.html#ai-overview-improve-ai-task-pickup-speed"><span class="std std-ref">the relevant section in AI Overview</span></a> for more information.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="app_translate2.html" class="btn btn-neutral float-right" title="App: Local Machine translation 2 (translate2)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

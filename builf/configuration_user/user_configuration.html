@@ -1,0 +1,369 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User management &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Resetting a lost admin password" href="reset_admin_password.html" />
+    <link rel="prev" title="User management" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User management</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">User management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-new-user">Creating a new user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reset-a-user-s-password">Reset a user’s password</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#renaming-a-user">Renaming a user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#granting-administrator-privileges-to-a-user">Granting administrator privileges to a user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-groups">Managing groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-storage-quotas">Setting Storage quotas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disable-and-enable-users">Disable and enable users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deleting-users">Deleting users</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reset_admin_password.html">Resetting a lost admin password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reset_user_password.html">Resetting a user password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_password_policy.html">User password policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two_factor-auth.html">Two-factor authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap.html">User authentication with LDAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_cleanup.html">LDAP user cleanup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_api.html">The LDAP configuration API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_provisioning_api.html">User provisioning API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile_configuration.html">Profile configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">User management</a></li>
+      <li class="breadcrumb-item active">User management</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_user/user_configuration.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="user-management">
+<h1>User management<a class="headerlink" href="#user-management" title="Link to this heading"></a></h1>
+<p>On the User management page of your Nextcloud Web UI you can:</p>
+<ul class="simple">
+<li><p>Create new users</p></li>
+<li><p>View all of your users in a single scrolling window</p></li>
+<li><p>Filter users by group</p></li>
+<li><p>See what groups they belong to</p></li>
+<li><p>Edit their full names and passwords</p></li>
+<li><p>See their data storage locations</p></li>
+<li><p>View and set quotas</p></li>
+<li><p>Create and edit their email addresses</p></li>
+<li><p>Send an automatic email notification to new users</p></li>
+<li><p>Disable and Enable users</p></li>
+<li><p>Delete them with a single click</p></li>
+</ul>
+<p>The default view displays basic information about your users.</p>
+<figure class="align-default">
+<img alt="../_images/user-config.png" src="../_images/user-config.png" />
+</figure>
+<p>The Group filters on the left sidebar lets you quickly filter users by their
+group memberships, and create new groups.</p>
+<figure class="align-default">
+<img alt="../_images/user-config-groups.png" src="../_images/user-config-groups.png" />
+</figure>
+<p>Click the gear icon on the lower left sidebar to set a default storage quota,
+and to display additional fields: <strong>Show storage location, Show last log in,
+Show user backend, Send email to new users,</strong> and <strong>Show email address</strong>.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/user-config-settings.png"><img alt="../_images/user-config-settings.png" src="../_images/user-config-settings.png" style="width: 444.0px; height: 622.5px;" />
+</a>
+</figure>
+<p>User accounts have the following properties:</p>
+<dl class="simple">
+<dt><em>Login Name (Username)</em></dt><dd><p>The unique ID of a Nextcloud user, and it cannot be changed.</p>
+</dd>
+<dt><em>Full Name</em></dt><dd><p>The user’s display name that appears on file shares, the Nextcloud Web
+interface, and emails. Admins and users may change the Full Name anytime. If
+the Full Name is not set it defaults to the login name.</p>
+</dd>
+<dt><em>Password</em></dt><dd><p>The admin sets the new user’s first password. Both the user and the admin can
+change the user’s password at anytime.</p>
+</dd>
+<dt><em>Email address</em></dt><dd><p>You can set an email address for a user.
+This address can be used when you first set-up an account
+so the user receive a mail asking them to create a password if none is provided.
+This address can be used for password reset request.</p>
+</dd>
+<dt><em>Groups</em></dt><dd><p>You may create groups, and assign group memberships to users. By default new
+users are not assigned to any groups.</p>
+</dd>
+<dt><em>Group Admin</em></dt><dd><p>Group admins are granted administrative privileges on specific groups, and
+can add and remove users from their groups. This means they can modify the
+username, password, email, quota, etc. of members of the group.</p>
+</dd>
+<dt><em>Quota</em></dt><dd><p>The maximum disk space assigned to each user. Any user that exceeds the quota
+cannot upload or sync data. You have the the option to include external
+storage in user quotas.</p>
+</dd>
+<dt><em>Manager</em></dt><dd><p>Every user can have one organizational manager. The manager property goes into
+the system address book card of the user and is used for the Contacts app’s
+organization chart, for example. Setting a manager does <strong>not</strong> change any
+authorization level of the user or their manager.</p>
+</dd>
+</dl>
+<section id="creating-a-new-user">
+<h2>Creating a new user<a class="headerlink" href="#creating-a-new-user" title="Link to this heading"></a></h2>
+<p>To create a user account:</p>
+<ul class="simple">
+<li><p>Enter the new user’s <strong>Login Name</strong> and their initial <strong>Password</strong></p></li>
+<li><p>Optionally, assign <strong>Groups</strong> memberships</p></li>
+<li><p>Click the <strong>Create</strong> button</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/user-config-new-user.png" src="../_images/user-config-new-user.png" />
+</figure>
+<p>Login names may contain letters (a-z, A-Z), numbers (0-9), dashes (-),
+underscores (_), periods (.), spaces ( ) and at signs (&#64;). After creating the user, you
+may fill in their <strong>Full Name</strong> if it is different than the login name, or
+leave it for the user to complete.</p>
+<p>If you have checked <strong>Send email to new user</strong> in the control panel on the
+lower left sidebar, you may also enter the new user’s email address, and
+Nextcloud will automatically send them a notification with their new login
+information. You may edit this email using the email template editor on your
+Admin page (see <a class="reference internal" href="../configuration_server/email_configuration.html"><span class="doc">Email</span></a>).</p>
+<p>Set the <strong>Send email to new user</strong>-checkbox allows you to leave the <strong>Password</strong>
+field empty. The user will get an activation-email to set their own password.</p>
+</section>
+<section id="reset-a-user-s-password">
+<h2>Reset a user’s password<a class="headerlink" href="#reset-a-user-s-password" title="Link to this heading"></a></h2>
+<p>You cannot recover a user’s password, but you can set a new one:</p>
+<ul class="simple">
+<li><p>Hover your cursor over the user’s <strong>Password</strong> field</p></li>
+<li><p>Click on the <strong>pencil icon</strong></p></li>
+<li><p>Enter the user’s new password in the password field, and remember to provide
+the user with their password</p></li>
+</ul>
+<p>If you have encryption enabled, there are special considerations for user
+password resets. Please see
+<a class="reference internal" href="../configuration_files/encryption_configuration.html"><span class="doc">Encryption configuration</span></a>.</p>
+</section>
+<section id="renaming-a-user">
+<h2>Renaming a user<a class="headerlink" href="#renaming-a-user" title="Link to this heading"></a></h2>
+<p>Each Nextcloud user has two names: a unique <strong>Login Name</strong> used for
+authentication, and a <strong>Full Name</strong>, which is their display name. You can edit
+the display name of a user, but you cannot change the login name of any user.</p>
+<p>To set or change a user’s display name:</p>
+<ul class="simple">
+<li><p>Hover your cursor over the user’s <strong>Full Name</strong> field</p></li>
+<li><p>Click on the <strong>Pencil icon</strong></p></li>
+<li><p>Enter the user’s new display name</p></li>
+</ul>
+</section>
+<section id="granting-administrator-privileges-to-a-user">
+<h2>Granting administrator privileges to a user<a class="headerlink" href="#granting-administrator-privileges-to-a-user" title="Link to this heading"></a></h2>
+<p>Nextcloud has two types of administrators: <strong>Super Administrators</strong> and <strong>Group
+Administrators</strong>. Group administrators have the rights to create, edit and
+delete users in their assigned groups. Group administrators cannot access
+system settings, or add or modify users in the groups that they are not <strong>Group
+Administrators</strong> for. Use the dropdown menus in the <strong>Group Admin</strong> column to
+assign group admin privileges.</p>
+<figure class="align-default">
+<img alt="../_images/user-config-group-admin.png" src="../_images/user-config-group-admin.png" />
+</figure>
+<p><strong>Super Administrators</strong> have full rights on your Nextcloud server, and can
+access and modify all settings. To assign the <strong>Super Administrators</strong> role to
+a user, simply add them to the <code class="docutils literal notranslate"><span class="pre">admin</span></code> group.</p>
+</section>
+<section id="managing-groups">
+<h2>Managing groups<a class="headerlink" href="#managing-groups" title="Link to this heading"></a></h2>
+<p>You can assign new users to groups when you create them, and create new groups
+when you create new users. You may also use the <strong>Add Group</strong> button at the top
+of the left pane to create new groups. New group members will immediately
+have access to file shares that belong to their new groups.</p>
+</section>
+<section id="setting-storage-quotas">
+<h2>Setting Storage quotas<a class="headerlink" href="#setting-storage-quotas" title="Link to this heading"></a></h2>
+<p>Click the gear on the lower left pane to set a default storage quota. This is
+automatically applied to new users. You may assign a different quota to any user
+by selecting from the <strong>Quota</strong> dropdown, selecting either a preset value or
+entering a custom value. When you create custom quotas, use the normal
+abbreviations for your storage values such as 500 MB, 5 GB, 5 TB, and so on.</p>
+<p>You now have a configurable option in <code class="docutils literal notranslate"><span class="pre">config.php</span></code> that controls whether
+external storage is counted against user’s quotas. This is still
+experimental, and may not work as expected. The default is to not count
+external storage as part of user storage quotas. If you prefer to include it,
+then change the default <code class="docutils literal notranslate"><span class="pre">false</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;quota_include_external_storage&#39;</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If an external storage is defined as root, the quota will not
+be calculable and will be <strong>ignored</strong>.</p>
+</div>
+<p>Metadata (such as thumbnails, temporary files, and encryption keys) takes up
+about 10% of disk space, but is not counted against user quotas. Users can check
+their used and available space on their Personal pages. Only files that
+originate with users count against their quotas, and not files shared with them
+that originate from other users. For example, if you upload files to a
+different user’s share, those files count against your quota. If you re-share a
+file that another user shared with you, that file does not count against your
+quota, but the originating user’s.</p>
+<p>Encrypted files are a little larger than unencrypted files; the unencrypted size
+is calculated against the user’s quota.</p>
+<p>Deleted files that are still in the trash bin do not count against quotas. The
+trash bin is set at 50% of quota. Deleted file aging is set at 30 days. When
+deleted files exceed 50% of quota then the oldest files are removed until the
+total is below 50%.</p>
+<p>When version control is enabled, the older file versions are not counted
+against quotas.</p>
+<p>When a user creates a public share via URL, and allows uploads, any uploaded
+files count against that user’s quota.</p>
+</section>
+<section id="disable-and-enable-users">
+<h2>Disable and enable users<a class="headerlink" href="#disable-and-enable-users" title="Link to this heading"></a></h2>
+<figure class="align-default">
+<img alt="../_images/user-config-actions.png" src="../_images/user-config-actions.png" />
+</figure>
+<p>Sometimes you may want to disable a user without permanently deleting their
+settings and files. The user can be activated any time again, without data-loss.</p>
+<p>Hover your cursor over their name on the <strong>Users</strong> page until the “…”-menu icon
+appears at the far right. After clicking on it, you will see the <strong>Disable</strong> option.</p>
+<p>The user will not longer be able to access their Nextcloud until you enable them again.
+Also all external shares, via public link or email, will not be accessible.
+Internal shares will still be working, so that other users on Nextcloud can continue working.</p>
+<p>If you wish for internal shares to be disabled as well when a user is disabled,
+activate the configuration option files_sharing:hide_disabled_user_shares:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_sharing</span> <span class="n">hide_disabled_user_shares</span> <span class="o">--</span><span class="n">value</span> <span class="n">yes</span>
+</pre></div>
+</div>
+<p>You will find all disabled users in the <strong>disabled</strong>-section on the left pane.
+Enabling users is as easy as disabling them. Just click on the “…”-menu, and
+select <strong>Enable</strong>.</p>
+</section>
+<section id="deleting-users">
+<h2>Deleting users<a class="headerlink" href="#deleting-users" title="Link to this heading"></a></h2>
+<figure class="align-default">
+<img alt="../_images/user-config-actions.png" src="../_images/user-config-actions.png" />
+</figure>
+<p>Deleting a user is easy: hover your cursor over their name on the <strong>Users</strong> page
+until the “…”-menu icon appears at the far right. After clicking on it, you will
+see the <strong>Delete</strong> option. Clicking on it, deletes a user with all their data immediately.</p>
+<p>You’ll see an undo button at the top of the page, which remains for some seconds.
+When the undo button is gone you cannot recover the deleted user.</p>
+<p>All of the files owned by the user are deleted as well, including all files they
+have shared. If you need to preserve the user’s files and shares, you must first
+download them from your Nextcloud Files page, which compresses them into a zip
+file, or use a sync client to copy them to your local computer. See
+<a class="reference internal" href="../configuration_files/file_sharing_configuration.html"><span class="doc">File Sharing</span></a> to learn how to create
+persistent file shares that survive user deletions.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="User management" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="reset_admin_password.html" class="btn btn-neutral float-right" title="Resetting a lost admin password" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

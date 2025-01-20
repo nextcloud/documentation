@@ -1,0 +1,246 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upgrade via packages &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Migrating to a different server" href="migrating.html" />
+    <link rel="prev" title="Upgrade manually" href="manual_upgrade.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Maintenance</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="backup.html">Backup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restore.html">Restoring backup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade.html">How to upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update.html">Upgrade via built-in updater</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual_upgrade.html">Upgrade manually</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Upgrade via packages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#upgrade-quickstart">Upgrade quickstart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#st-login">1st login</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrade-tips">Upgrade tips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrading-across-skipped-releases">Upgrading across skipped releases</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="migrating.html">Migrating to a different server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating_owncloud.html">Migrating from ownCloud</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Maintenance</a></li>
+      <li class="breadcrumb-item active">Upgrade via packages</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/maintenance/package_upgrade.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="upgrade-via-packages">
+<h1>Upgrade via packages<a class="headerlink" href="#upgrade-via-packages" title="Link to this heading"></a></h1>
+<section id="upgrade-quickstart">
+<h2>Upgrade quickstart<a class="headerlink" href="#upgrade-quickstart" title="Link to this heading"></a></h2>
+<p>One effective, if unofficial method for keeping Nextcloud current on Linux servers is by configuring
+your system to use Nextcloud via a self-contained “Snap” package: a technology allowing users to
+always have the latest version of an “app”.</p>
+<p>That version from Canonical is quite restrictive. It is not aimed at developers or advanced users
+who would want to tune their configuration by installing extra features. It is aimed at end-users
+who want a no-brainer solution. Install it, use it. No need to worry about updating Nextcloud any
+more.</p>
+<p>It will work for as long as Canonical pushes releases, just like with any other Linux package
+maintained independently of Nextcloud.</p>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p><strong>Ubuntu</strong></p>
+<p>$ sudo snap install nextcloud</p>
+<p><strong>All other distros</strong></p>
+<p>(<a class="reference external" href="https://github.com/nextcloud-snap/nextcloud-snap/wiki/Why-Ubuntu-is-the-only-supported-distro/">be warned</a>)</p>
+<ul class="simple">
+<li><p>Go to <a class="reference external" href="https://docs.snapcraft.io/installing-snapd/6735">https://docs.snapcraft.io/installing-snapd/6735</a></p></li>
+<li><p>Type the command to install snapd</p></li>
+<li><p>Install Nextcloud ($ sudo snap install nextcloud)</p></li>
+</ul>
+</section>
+<section id="st-login">
+<h2>1st login<a class="headerlink" href="#st-login" title="Link to this heading"></a></h2>
+<p>After a successful install, assuming you and the device on which it was installed are on the
+same network, you should be able to reach the Nextcloud installation by visiting .local in
+your browser. If your hostname is localhost or localhost.localdomain, like on an Ubuntu Base
+device (IoT), nextcloud.local will be used instead.</p>
+<p>You will be asked to create a password for “admin” and your favourite cloud will be ready</p>
+<p><strong>Note</strong></p>
+<p>Do not use on IoT devices yet. You probably don’t need these instructions anyway if you’re
+using Snappy Base 16.04 as it’s currently unreleased.</p>
+<ul class="simple">
+<li><p>Make a <a class="reference internal" href="backup.html"><span class="doc">fresh backup</span></a>.</p></li>
+<li><p>Upgrade your Nextcloud snap: sudo snap refresh nextcloud</p></li>
+<li><p>Run <a class="reference internal" href="../occ_command.html#command-line-upgrade-label"><span class="std std-ref">occ upgrade</span></a>.</p></li>
+<li><p>Take your Nextcloud server out of <a class="reference internal" href="../occ_command.html#maintenance-commands-label"><span class="std std-ref">maintenance mode</span></a>.</p></li>
+<li><p>Re-enable third-party apps.</p></li>
+</ul>
+</section>
+<section id="upgrade-tips">
+<h2>Upgrade tips<a class="headerlink" href="#upgrade-tips" title="Link to this heading"></a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>If you upgrade from a previous major version please see <a class="reference internal" href="../release_notes/index.html#critical-changes"><span class="std std-ref">critical changes</span></a> first.</p>
+</div>
+<p>Upgrading Nextcloud from a Snap is just like upgrading any snap package.
+For example:</p>
+<blockquote>
+<div><p>sudo snap refresh nextcloud</p>
+</div></blockquote>
+<p>Your Snap package manager only upgrades the current Nextcloud Snap. Then
+your Nextcloud server is immediately put into maintenance mode. You may not see
+this until you refresh your Nextcloud page.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/upgrade-1.png"><img alt="Nextcloud status screen informing users that it is in maintenance mode." src="../_images/upgrade-1.png" style="width: 727.5px; height: 454.5px;" />
+</a>
+</figure>
+<p>Then use <code class="docutils literal notranslate"><span class="pre">occ</span></code> to complete the upgrade. You must run <code class="docutils literal notranslate"><span class="pre">occ</span></code> as your HTTP
+user. This example is for Debian/Ubuntu:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">upgrade</span>
+</pre></div>
+</div>
+<p>This example is for CentOS/RHEL/Fedora:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">apache</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">upgrade</span>
+</pre></div>
+</div>
+</section>
+<section id="upgrading-across-skipped-releases">
+<span id="skipped-release-upgrade-label"></span><h2>Upgrading across skipped releases<a class="headerlink" href="#upgrading-across-skipped-releases" title="Link to this heading"></a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>If you upgrade from a previous major version please see <a class="reference internal" href="../release_notes/index.html#critical-changes"><span class="std std-ref">critical changes</span></a> first.</p>
+</div>
+<p>It is best to update your Nextcloud installation with every new point release,
+and to never skip any major releases. While this requirement is being worked on,
+for the moment If you have skipped any major releases you can bring your
+Nextcloud current with these steps:</p>
+<p>If you are using a Snap package:
+sudo snap refresh nextcloud</p>
+<p>If you did <strong>not</strong> install via a Snap package:</p>
+<ol class="arabic simple">
+<li><p>Upgrade your current version to the latest point release</p></li>
+<li><p>Upgrade your current version to the next major release</p></li>
+<li><p>Run upgrade routine</p></li>
+<li><p>Repeat from step 2 until you reach the last available major release</p></li>
+</ol>
+<p>You’ll find previous Nextcloud releases in the <a class="reference external" href="https://nextcloud.com/changelog/">Nextcloud Server Changelog</a>.</p>
+<p>If upgrading via your Snap package manager fails, then you must perform a
+<a class="reference internal" href="manual_upgrade.html"><span class="doc">Upgrade manually</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="manual_upgrade.html" class="btn btn-neutral float-left" title="Upgrade manually" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="migrating.html" class="btn btn-neutral float-right" title="Migrating to a different server" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,297 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to upgrade &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Upgrade via built-in updater" href="update.html" />
+    <link rel="prev" title="Restoring backup" href="restore.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Maintenance</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="backup.html">Backup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restore.html">Restoring backup</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">How to upgrade</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#approaching-upgrades">Approaching Upgrades</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#update-notifications">Update notifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#maintenance-mode">Maintenance mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#manual-steps-during-upgrade">Manual steps during upgrade</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#long-running-migration-steps">Long running migration steps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="update.html">Upgrade via built-in updater</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual_upgrade.html">Upgrade manually</a></li>
+<li class="toctree-l2"><a class="reference internal" href="package_upgrade.html">Upgrade via packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating.html">Migrating to a different server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating_owncloud.html">Migrating from ownCloud</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Maintenance</a></li>
+      <li class="breadcrumb-item active">How to upgrade</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/maintenance/upgrade.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="how-to-upgrade">
+<h1>How to upgrade<a class="headerlink" href="#how-to-upgrade" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The approach used to upgrade your Nextcloud Server depends on your installation type. This
+manual mainly focuses on the methods that apply to an Archive based installation. If you installed
+using Snap, Docker, a pre-built VM, or a package management tool then refer to the installation
+and update instructions for that installation method for the most accurate upgrading inststructions
+(generally located at the distribution point for the install method you chose).</p>
+<p>There are two ways to upgrade an Archive based Nextcloud Server deployment:</p>
+<ul class="simple">
+<li><p>With the <a class="reference internal" href="update.html"><span class="doc">Built-in Updater</span></a> (via the web or command-line interfaces).</p></li>
+<li><p><a class="reference internal" href="manual_upgrade.html"><span class="doc">Manually upgrading</span></a> (using a downloaded Archive file)</p></li>
+</ul>
+<p>The Built-in Updater, in either Web or command-line mode, is the easiest choice for most environments.
+However some environments require the manual approach. Both approaches are covered fully here.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Before upgrading, especially between major versions (e.g. v27.y.z -&gt; v28.y.z) please review
+<a class="reference internal" href="../release_notes/index.html#critical-changes"><span class="std std-ref">critical changes</span></a> first. These are highlights of changes that may be required
+in your environment to accommodate changes in Nextcloud Server. These notes are periodically revised as
+needed so it is also a good idea to revisit them periodically, such as when proceeding with maintenance
+upgrades.</p>
+</div>
+<p>When an update is available for your Nextcloud server, by default you will receive
+a notification. You can also check for available updates by visiting the Update section under
+<strong>Administration settings-&gt;Overview</strong> in the Web UI.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is best to keep your Nextcloud server upgraded regularly. This means installing all maintenance/point releases
+and upgrading to new major releases before your current one reaches <a class="reference internal" href="../release_schedule.html"><span class="doc">end-of-life</span></a> status.
+Examples of major releases are 27, 28, or 29. Maintenance releases are intermediate releases for each
+major release that address critical functionality or security bugs. For example 28.0.4 and 29.0.2 are maintenance
+releases.</p>
+</div>
+</section>
+<section id="approaching-upgrades">
+<h2>Approaching Upgrades<a class="headerlink" href="#approaching-upgrades" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>Nextcloud must be upgraded step by step:</dt><dd><ul class="simple">
+<li><p>Before you can upgrade to the next major release, you need to upgrade to the latest point release of your current major version.</p></li>
+<li><p>Then run the upgrade again to upgrade to the next major release’s latest point release.</p></li>
+<li><p><strong>You cannot skip major releases.</strong> Please re-run the upgrade until you have reached the highest available (or applicable) release.</p></li>
+<li><p>Example: 18.0.5 -&gt; 18.0.11 -&gt; 19.0.5 -&gt; 20.0.2</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Wait for background migrations to finish after major upgrades</strong>. After upgrading to a new major version, some migrations are scheduled to run
+as a background job. If you plan to upgrade directly to another major version (e.g. 24 -&gt; 25 -&gt; 26) you need to make sure these
+migrations were executed before starting the next upgrade. To do so you should run the <code class="docutils literal notranslate"><span class="pre">cron.php</span></code> file 2-3 times, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo -u www-data php -f /var/www/nextcloud/cron.php
+</pre></div>
+</div>
+<p>For more information about background jobs see <a class="reference internal" href="../configuration_server/background_jobs_configuration.html"><span class="doc">Background jobs</span></a>.</p>
+<p><strong>Upgrading is disruptive</strong>. Your Nextcloud server will be put into maintenance
+mode, so your users will be locked out until the upgrade is completed. Large
+installations may take several hours to complete the upgrade. Nevertheless usual
+upgrade times even for bigger installations are in the range of a few minutes.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Downgrading is not supported</strong> and risks corrupting your data! If
+you want to revert to an older Nextcloud version, make a new, fresh
+installation and then restore your data from backup. Before doing this,
+file a support ticket (if you have paid support) or ask for help in the
+Nextcloud forums to see if your issue can be resolved without downgrading.</p>
+</div>
+</section>
+<section id="update-notifications">
+<h2>Update notifications<a class="headerlink" href="#update-notifications" title="Link to this heading"></a></h2>
+<p>Nextcloud has an update notification app, that informs the administrator about
+the availability of an update. Then you decide which update method to use.</p>
+<figure class="align-default" id="id1">
+<img alt="Both update notifications displayed on Admin page." src="../_images/2-updates.png" />
+<figcaption>
+<p><span class="caption-text"><em>Figure 1: The top banner is the update notification that is shown on every
+page, and the Updates section can be found in the admin page</em></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>From there the web based updater can be used to fetch this new code. There is
+also an CLI based updater available, that does exactly the same as the web
+based updater but on the command line.</p>
+</section>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>If you upgrade from a previous major version please see <a class="reference internal" href="../release_notes/index.html#critical-changes"><span class="std std-ref">critical changes</span></a> first.</p>
+</div>
+<p>You should always maintain <a class="reference internal" href="backup.html"><span class="doc">regular backups</span></a> and make a fresh
+backup before every upgrade.</p>
+<p>Then review third-party apps, if you have any, for compatibility with the new
+Nextcloud release. Any apps that are not developed by Nextcloud show a 3rd party
+designation. <strong>Install unsupported apps at your own risk</strong>. Then, before the
+upgrade, all 3rd party apps must be disabled. After the upgrade is complete you
+may re-enable them.</p>
+</section>
+<section id="maintenance-mode">
+<h2>Maintenance mode<a class="headerlink" href="#maintenance-mode" title="Link to this heading"></a></h2>
+<p>You can put your Nextcloud server into maintenance mode before performing
+upgrades, or for performing troubleshooting or maintenance. Please see
+<a class="reference internal" href="../occ_command.html"><span class="doc">Using the occ command</span></a> to learn how to put your server into
+the maintenance mode (<code class="docutils literal notranslate"><span class="pre">maintenance:mode</span></code>) or execute repair commands
+(<code class="docutils literal notranslate"><span class="pre">maintenance:repair</span></code>) with the <code class="docutils literal notranslate"><span class="pre">occ</span></code> command.</p>
+<p>The <a class="reference internal" href="update.html"><span class="doc">built-in Updater</span></a> does this for you before replacing the
+existing Nextcloud code with the code of the new Nextcloud version.</p>
+<p><code class="docutils literal notranslate"><span class="pre">maintenance:mode</span></code> locks the sessions of logged-in users and prevents new
+logins. This is the mode to use for upgrades. You must run <code class="docutils literal notranslate"><span class="pre">occ</span></code> as the HTTP
+user, like this example on Ubuntu Linux:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo -u www-data php occ maintenance:mode --on
+</pre></div>
+</div>
+<p>You may also put your server into this mode by editing <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code>.
+Change <code class="docutils literal notranslate"><span class="pre">&quot;maintenance&quot;</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;maintenance&quot;</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
+
+ &quot;maintenance&quot; =&gt; true,
+</pre></div>
+</div>
+<p>Then change it back to <code class="docutils literal notranslate"><span class="pre">false</span></code> when you are finished.</p>
+</section>
+<section id="manual-steps-during-upgrade">
+<h2>Manual steps during upgrade<a class="headerlink" href="#manual-steps-during-upgrade" title="Link to this heading"></a></h2>
+<p>Some operation can be quite time consuming. Therefore we decided not to add them
+to the normal upgrade process. We recommend to run them manually after the upgrade
+was completed. Below you find a list of this commands.</p>
+<section id="long-running-migration-steps">
+<h3>Long running migration steps<a class="headerlink" href="#long-running-migration-steps" title="Link to this heading"></a></h3>
+<p>From time to time we do some changes to the database layout that take a lot of time,
+but can be executed while Nextcloud stays online. Thus we moved them into a separate
+command that an administrator can execute on the CLI without the need to lock the
+instance into maintenance mode (at least for some of them). The instance will also
+work without those changes applied, but performance is improved significantly by them.
+There is also always an hint in the setup checks of the admin settings web interface.</p>
+<p>Those include for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo -u www-data php occ db:add-missing-columns
+$ sudo -u www-data php occ db:add-missing-indices
+$ sudo -u www-data php occ db:add-missing-primary-keys
+</pre></div>
+</div>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> option to output the SQL queries instead of executing them.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="restore.html" class="btn btn-neutral float-left" title="Restoring backup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="update.html" class="btn btn-neutral float-right" title="Upgrade via built-in updater" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

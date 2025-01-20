@@ -1,0 +1,285 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>App: Summary Bot (Talk chat summarize bot) &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AI as a Service" href="ai_as_a_service.html" />
+    <link rel="prev" title="App: Context Chat" href="app_context_chat.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Artificial Intelligence</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_assistant.html">Nextcloud Assistant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_translate2.html">App: Local Machine translation 2 (translate2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_llm2.html">App: Local large language model (llm2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_stt_whisper2.html">App: Local Whisper Speech-To-Text (stt_whisper2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_recognize.html">App: Recognize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_context_chat.html">App: Context Chat</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">App: Summary Bot (Talk chat summarize bot)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#space-usage">Space usage</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#setup-via-app-store">Setup (via App Store)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setup-manual">Setup (Manual)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app-store">App store</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#repository">Repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ethical-ai-rating">Ethical AI Rating</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-limitations">Known Limitations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai_as_a_service.html">AI as a Service</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Artificial Intelligence</a></li>
+      <li class="breadcrumb-item active">App: Summary Bot (Talk chat summarize bot)</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/ai/app_summary_bot.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="app-summary-bot-talk-chat-summarize-bot">
+<h1>App: Summary Bot (Talk chat summarize bot)<a class="headerlink" href="#app-summary-bot-talk-chat-summarize-bot" title="Link to this heading"></a></h1>
+<p id="ai-app-summary-bot">The <em>Summary Bot</em> app utilizes Large Language Model (LLM) providers in Nextcloud and can be added to a conversation in <cite>Nextcloud Talk</cite> to generate summaries from the chat messages of that room either on-demand or following a schedule.
+It can run on only open source or proprietary models either on-premises or in the cloud leveraging apps like <a class="reference external" href="https://apps.nextcloud.com/apps/llm2">Local large language model app</a> or <a class="reference external" href="https://apps.nextcloud.com/apps/integration_openai">OpenAI and LocalAI integration app</a>.</p>
+<p>Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.</p>
+<p>The app currently supports the following languages:</p>
+<ul class="simple">
+<li><p>English (en)</p></li>
+</ul>
+<p>The quality of summaries depends directly on the quality of the underlying model. It is recommended to test the model for the desired use-case before applying it.</p>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Minimal Nextcloud version: 30</p></li>
+<li><p>Docker</p></li>
+<li><p>AppAPI &gt;= 3.0.0</p></li>
+<li><p>Talk</p></li>
+<li><p>Task Processing Provider like Local large language model app (llm2) or OpenAI and LocalAI integration app (integration_openai)</p></li>
+</ul>
+<section id="space-usage">
+<h3>Space usage<a class="headerlink" href="#space-usage" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>~100MB</p></li>
+</ul>
+</section>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<ol class="arabic simple" start="0">
+<li><p>Make sure the following apps are installed:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://apps.nextcloud.com/apps/app_api">Nextcloud AppAPI app</a></p></li>
+<li><p><a class="reference external" href="https://apps.nextcloud.com/apps/spreed">Nextcloud Talk app (Spreed)</a></p></li>
+<li><p>One of the following AI model providers:</p>
+<ul>
+<li><p><a class="reference external" href="https://apps.nextcloud.com/apps/llm2">Nextcloud Local large language model app</a></p></li>
+<li><p><a class="reference external" href="https://apps.nextcloud.com/apps/integration_openai">Nextcloud OpenAI and LocalAI integration app</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<section id="setup-via-app-store">
+<h3>Setup (via App Store)<a class="headerlink" href="#setup-via-app-store" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Install the <em>Summary Bot</em> app via the “Apps” page in Nextcloud</p></li>
+<li><p>Enable the <em>Summary Bot</em> Bot for the selected Chatroom via the three dots menu of the Chatroom (The Bots settings are located inside the <em>Bots</em> section)</p></li>
+</ol>
+</section>
+<section id="setup-manual">
+<h3>Setup (Manual)<a class="headerlink" href="#setup-manual" title="Link to this heading"></a></h3>
+<p>After cloning this app <em>manually</em> (cloned via git to your apps directory) you will need to execute the following steps:</p>
+<p>1. Change to the folder you have cloned the source to:
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span>  <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">webroot</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">summary_bot</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>2. Build the docker image:
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">build</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cache</span> <span class="o">-</span><span class="n">f</span> <span class="n">Dockerfile</span> <span class="o">-</span><span class="n">t</span> <span class="n">local_summary_bot</span> <span class="o">.</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Run the docker image:</p></li>
+</ol>
+<p><em>Info:</em></p>
+<ul class="simple">
+<li><p>APP_VERSION environment variable should be equal to the version of the <em>Summary Bot</em> you are using</p></li>
+<li><p>NEXTCLOUD_URL environment variable must be set to your Nextcloud instance’s URL, ensuring it’s reachable by the docker image.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">ti</span> <span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">localtime</span><span class="p">:</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">localtime</span><span class="p">:</span><span class="n">ro</span> <span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">timezone</span><span class="p">:</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">timezone</span><span class="p">:</span><span class="n">ro</span> <span class="o">-</span><span class="n">e</span> <span class="n">APP_ID</span><span class="o">=</span><span class="n">summary_bot</span> <span class="o">-</span><span class="n">e</span> <span class="n">APP_DISPLAY_NAME</span><span class="o">=</span><span class="s2">&quot;Summary Bot&quot;</span> <span class="o">-</span><span class="n">e</span> <span class="n">APP_HOST</span><span class="o">=</span><span class="mf">0.0.0.0</span> <span class="o">-</span><span class="n">e</span> <span class="n">APP_PORT</span><span class="o">=</span><span class="mi">9031</span> <span class="o">-</span><span class="n">e</span> <span class="n">APP_SECRET</span><span class="o">=</span><span class="mi">12345</span> <span class="o">-</span><span class="n">e</span> <span class="n">APP_VERSION</span><span class="o">=</span><span class="mf">1.0.0</span> <span class="o">-</span><span class="n">e</span> <span class="n">NEXTCLOUD_URL</span><span class="o">=</span><span class="s1">&#39;&lt;YOUR_NEXTCLOUD_URL_REACHABLE_FROM_INSIDE_DOCKER&gt;&#39;</span> <span class="o">-</span><span class="n">p</span> <span class="mi">9031</span><span class="p">:</span><span class="mi">9031</span> <span class="n">local_summary_bot</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Un-register the Summary Bot if its already installed</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="o">&lt;</span><span class="n">the_user_the_webserver_is_running_as</span><span class="o">&gt;</span> <span class="n">php</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">webroot</span><span class="o">/</span><span class="n">occ</span> <span class="n">app_api</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="n">unregister</span> <span class="n">summary_bot</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Register the Summary Bot so that your Nextcloud instance is aware of it</p></li>
+</ol>
+<p><em>Info:</em> Adjust the host value in the following example to the IP address of the docker container (for added security)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="o">&lt;</span><span class="n">the_user_the_webserver_is_running_as</span><span class="o">&gt;</span> <span class="n">php</span> <span class="o">./</span><span class="n">occ</span> <span class="n">app_api</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="n">register</span> <span class="n">summary_bot</span> <span class="n">manual_install</span> <span class="o">--</span><span class="n">json</span><span class="o">-</span><span class="n">info</span> <span class="s1">&#39;{ &quot;id&quot;: &quot;summary_bot&quot;, &quot;name&quot;: &quot;Summary Bot&quot;, &quot;daemon_config_name&quot;: &quot;manual_install&quot;, &quot;version&quot;: &quot;1.0.0&quot;, &quot;secret&quot;: &quot;12345&quot;, &quot;host&quot;: &quot;0.0.0.0&quot;, &quot;port&quot;: 9031, &quot;scopes&quot;: [&quot;AI_PROVIDERS&quot;, &quot;TALK&quot;, &quot;TALK_BOT&quot;], &quot;protocol&quot;: &quot;http&quot;}&#39;</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="n">scopes</span> <span class="o">--</span><span class="n">wait</span><span class="o">-</span><span class="n">finish</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Enable the <em>Summary Bot</em> for the selected Chatroom via the three dots menu of the Chatroom (The Bots settings are located inside the <em>Bots</em> section)</p></li>
+</ol>
+</section>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<p>After enabling the <em>Summary Bot</em> in a Chatroom, you can test its functionality by simply sending the message below:</p>
+<blockquote>
+<div><p>“&#64;summary” or “&#64;summary help”</p>
+</div></blockquote>
+</section>
+<section id="app-store">
+<h2>App store<a class="headerlink" href="#app-store" title="Link to this heading"></a></h2>
+<p>You can also find the app in our app store, where you can write a review: <a class="reference external" href="https://apps.nextcloud.com/apps/summary_bot">https://apps.nextcloud.com/apps/summary_bot</a></p>
+</section>
+<section id="repository">
+<h2>Repository<a class="headerlink" href="#repository" title="Link to this heading"></a></h2>
+<p>You can find the app’s code repository on GitHub where you can report bugs and contribute fixes and features: <a class="reference external" href="https://github.com/nextcloud/summary_bot">https://github.com/nextcloud/summary_bot</a></p>
+<p>Nextcloud customers should file bugs directly with our Customer Support.</p>
+</section>
+<section id="ethical-ai-rating">
+<h2>Ethical AI Rating<a class="headerlink" href="#ethical-ai-rating" title="Link to this heading"></a></h2>
+<p>The ethical rating of the <em>Summary Bot</em>, which utilizes a model for text processing through the Nextcloud Assistant app, is significantly influenced by the choice and implementation of the underlying model.</p>
+<p>Learn more about the Nextcloud Ethical AI Rating <cite>in our blog&lt;https://nextcloud.com/blog/nextcloud-ethical-ai-rating/&gt;</cite>.</p>
+</section>
+<section id="known-limitations">
+<h2>Known Limitations<a class="headerlink" href="#known-limitations" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>The Summary Bot cannot access previous conversations, it only recognizes messages from the moment it was enabled in the chatroom.</p></li>
+<li><p>Summary of maximum 40000 characters is supported. This assumes the underlying model can handle this amount of text (which should be close to 16000 context length).</p></li>
+<li><p>Languages other than English are not supported. The underlying model may still be able to understand other languages.</p></li>
+<li><p>AI models may occasionally produce inaccurate information. Therefore, they should be employed with caution in non-critical scenarios. It’s essential to verify the accuracy of the bot’s output before application.</p></li>
+<li><p>Be aware that AI models can consume a significant amount of energy. It’s advisable to consider this factor in the planning and operation of AI systems if hosted on-premises or sustainability is a concern.</p></li>
+<li><p>AI models can exhibit extended processing times when run on CPUs. For enhanced efficiency, utilizing GPU support is recommended to expedite request handling.</p></li>
+<li><p>Customer support is available upon request, however we can’t solve false or problematic output (hallucinations), most performance issues, or other problems caused by the underlying models. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI)</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="app_context_chat.html" class="btn btn-neutral float-left" title="App: Context Chat" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ai_as_a_service.html" class="btn btn-neutral float-right" title="AI as a Service" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,303 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apps management &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f4332903"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script src="_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ExApps management" href="exapps_management/index.html" />
+    <link rel="prev" title="Using the occ command" href="occ_command.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="contents.html">
+            
+              <img src="_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Apps management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#apps">Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#managing-apps">Managing apps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#update-notifications">Update notifications</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#enabling-apps-via-occ-command">Enabling apps via occ command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-private-api">Using private API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-custom-app-directories">Using custom app directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-a-self-hosted-apps-store">Using a self hosted apps store</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="contents.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Apps management</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/apps_management.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="apps-management">
+<h1>Apps management<a class="headerlink" href="#apps-management" title="Link to this heading"></a></h1>
+<p>Nextcloud apps can enhance, customize or even restrict the features and experience
+you and your users has with the Nextcloud server. Next to default enabled functions
+like Files, Activity and Photos there are other apps like Calendar, Contacts,
+Talk and more which are enhancing the features of your Nextcloud server.</p>
+<p>After installing the Nextcloud server, you might want to consider about enabling,
+disabling or even restricting some apps to groups depending on your and your users’
+needs.</p>
+<section id="apps">
+<h2>Apps<a class="headerlink" href="#apps" title="Link to this heading"></a></h2>
+<figure class="align-default">
+<img alt="Apps page for enabling and disabling apps." src="_images/apps_overview.png" />
+</figure>
+<p>During the Nextcloud server installation, some apps are enabled by default.
+To see which apps are enabled go to your Apps page.</p>
+<p>Those apps are supported and developed by Nextcloud GmbH directly and
+have an <strong>Featured</strong>-tag.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Your Nextcloud server needs to be able to communicate with
+<code class="docutils literal notranslate"><span class="pre">https://apps.nextcloud.com</span></code> to list and download apps. Please make sure to whitelist this target in your firewall or proxy if necessary.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To get access to work-arounds, long-term-support, priority bug fixing
+and custom consulting for supported apps, contact our <a class="reference external" href="https://nextcloud.com/enterprise/">sales team</a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you would like to develop your own Nextcloud app, you can find out
+more information in our <a class="reference external" href="https://docs.nextcloud.com/server/latest/go.php?to=developer-manual">developer manual</a>.</p>
+</div>
+<p>All apps must be licensed under AGPLv3+ or any compatible license.</p>
+</section>
+<section id="managing-apps">
+<h2>Managing apps<a class="headerlink" href="#managing-apps" title="Link to this heading"></a></h2>
+<figure class="align-default">
+<img alt="App store page for installing, enabling and disabling apps." src="_images/apps_store.png" />
+</figure>
+<p>You will see which apps are enabled, disabled and available. You’ll also
+see additional app bundles and filters, such as Customization, Security and
+Monitoring for finding more apps quickly.</p>
+<p>In the Apps page you can enable or disable applications. Some apps have
+configurable options on the Apps page, such as <strong>Enable only for specific
+groups</strong>, but mainly they are enabled or disabled here, and are configured in
+your Nextcloud settings (admin and/or user-settings) or in the <code class="docutils literal notranslate"><span class="pre">config.php</span></code>.</p>
+<p>Click the app name to view a description of the app and any of the app settings
+in the Application View field. Clicking the <strong>Enable</strong> button will enable the app.
+If the app is not part of the Nextcloud installation, it will be downloaded from
+the app store, installed and enabled.</p>
+<p>App updates will also be offered to you on this page. Simply click on the <strong>Update</strong>
+button to update a specific app or use the <strong>Update all</strong> button on top of the page to
+update all apps.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Beta releases</strong>: You can also install beta releases of apps directly from here by
+switching your Nextcloud to the beta channel in the admin overview.</p>
+</div>
+<section id="update-notifications">
+<h3>Update notifications<a class="headerlink" href="#update-notifications" title="Link to this heading"></a></h3>
+<p>The always installed <code class="docutils literal notranslate"><span class="pre">updatenotification</span></code> app allows administrators to be notified on available app and Nextcloud updates.
+Moreover, since Nextcloud 29, this app also allows to notify users about updated apps and the changes that are included in the update.
+This notification is enabled by default if the app provides a changelog.</p>
+<p>To disable user notifications use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="o">--</span><span class="nb">type</span> <span class="n">boolean</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;false&quot;</span> <span class="n">updatenotification</span> <span class="n">app_updated</span><span class="o">.</span><span class="n">enabled</span>
+</pre></div>
+</div>
+<p>By default guest users, when using the guests app, are not notified, to enable notifications also for them use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="o">--</span><span class="nb">type</span> <span class="n">boolean</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="n">updatenotification</span> <span class="n">app_updated</span><span class="o">.</span><span class="n">notify_guests</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="enabling-apps-via-occ-command">
+<h2>Enabling apps via occ command<a class="headerlink" href="#enabling-apps-via-occ-command" title="Link to this heading"></a></h2>
+<p>In addition to managing apps via the web interface, administrators can also enable or disable apps using the <cite>occ</cite> command.</p>
+<p>To enable an app, use the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">enable</span> <span class="o">&lt;</span><span class="n">app</span><span class="o">-</span><span class="nb">id</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>For example, to enable the “files” app, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">enable</span> <span class="n">files</span>
+</pre></div>
+</div>
+<p>To enable the app for specific groups, use the <cite>–groups</cite> option:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">enable</span> <span class="n">files</span> <span class="o">--</span><span class="n">groups</span><span class="o">=</span><span class="n">admin</span>
+</pre></div>
+</div>
+<p>This command enables the “files” app only for the “admin” group.</p>
+<p>To disable an app, use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">disable</span> <span class="o">&lt;</span><span class="n">app</span><span class="o">-</span><span class="nb">id</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="using-private-api">
+<h2>Using private API<a class="headerlink" href="#using-private-api" title="Link to this heading"></a></h2>
+<p>If private API, rather than the public APIs are used in a third-party app, the
+installation fails, if <code class="docutils literal notranslate"><span class="pre">'appcodechecker'</span> <span class="pre">=&gt;</span> <span class="pre">true,</span></code> is set in <code class="docutils literal notranslate"><span class="pre">config.php</span></code>.</p>
+</section>
+<section id="using-custom-app-directories">
+<h2>Using custom app directories<a class="headerlink" href="#using-custom-app-directories" title="Link to this heading"></a></h2>
+<p>Use the <strong>apps_paths</strong> array in <code class="docutils literal notranslate"><span class="pre">config.php</span></code> to set any custom apps directory
+locations. The key <strong>path</strong> defines the absolute file system path to the app
+folder. The key <strong>url</strong> defines the HTTP web path to that folder, starting at
+the Nextcloud web root. The key <strong>writable</strong> indicates if a user can install apps
+in that folder.</p>
+<p>Example: To ensure that the default <code class="docutils literal notranslate"><span class="pre">/apps/</span></code> folder only contains apps shipped
+with Nextcloud, follow this example to setup an <code class="docutils literal notranslate"><span class="pre">/extra-apps/</span></code> folder
+which will be used to store any additional apps you install:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&quot;apps_paths&quot; =&gt; [
+    [
+            &quot;path&quot;     =&gt; OC::$SERVERROOT . &quot;/apps&quot;,
+            &quot;url&quot;      =&gt; &quot;/apps&quot;,
+            &quot;writable&quot; =&gt; false,
+    ],
+    [
+            &quot;path&quot;     =&gt; OC::$SERVERROOT . &quot;/extra-apps&quot;,
+            &quot;url&quot;      =&gt; &quot;/extra-apps&quot;,
+            &quot;writable&quot; =&gt; true,
+    ],
+],
+</pre></div>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Make sure that the values you choose for <code class="docutils literal notranslate"><span class="pre">path</span></code> and <code class="docutils literal notranslate"><span class="pre">url</span></code> for any custom
+apps directories do not conflict with directories which already exist in your Nextcloud
+Server root (installation directory).</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Apps paths can be located outside the server root.  However, for any
+<strong>path</strong> outside the server root, you need to create a symbolic link in the server
+root that points <strong>url</strong> to <strong>path</strong>. For instance, if <strong>path</strong> is
+<code class="docutils literal notranslate"><span class="pre">/var/local/lib/nextcloud/extra-apps</span></code>, and <strong>url</strong> is <code class="docutils literal notranslate"><span class="pre">/extra-apps</span></code>, then
+you would use the command <code class="docutils literal notranslate"><span class="pre">ln</span></code> to create the symbolic link like this:
+<code class="docutils literal notranslate"><span class="pre">ln</span> <span class="pre">-sf</span> <span class="pre">/var/local/lib/nextcloud/extra-apps</span> <span class="pre">./extra-apps</span></code></p>
+</div>
+</section>
+<section id="using-a-self-hosted-apps-store">
+<h2>Using a self hosted apps store<a class="headerlink" href="#using-a-self-hosted-apps-store" title="Link to this heading"></a></h2>
+<p>Enables the installation of apps from a self hosted apps store. Requires that at least one of the configured apps directories is writeable.</p>
+<p>To enable a self hosted apps store:</p>
+<ol class="arabic">
+<li><p>Set the <strong>appstoreenabled</strong> parameter to “true”.</p>
+<p>This parameter is used to enable the apps store in Nextcloud.</p>
+</li>
+<li><p>Set the <strong>appstoreurl</strong> to the URL of your Nextcloud apps store.</p>
+<p>This parameter is used to set the http path to your self hosted Nextcloud apps store.</p>
+</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;appstoreenabled&quot;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+<span class="s2">&quot;appstoreurl&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;https://my.appstore.instance/v1&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>By default the apps store is enabled and configured to use <code class="docutils literal notranslate"><span class="pre">https://apps.nextcloud.com/api/v1</span></code> as apps store url. Nextcloud will fetch <code class="docutils literal notranslate"><span class="pre">apps.json</span></code> and <code class="docutils literal notranslate"><span class="pre">categories.json</span></code> from there. To use the defaults again remove <strong>appstoreenabled</strong> and <strong>appstoreurl</strong> from the configuration.</p>
+<p>Example: If <code class="docutils literal notranslate"><span class="pre">categories.json</span></code> is available at <code class="docutils literal notranslate"><span class="pre">https://apps.nextcloud.com/api/v1/categories.json</span></code> the apps store url is <code class="docutils literal notranslate"><span class="pre">https://apps.nextcloud.com/api/v1</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="occ_command.html" class="btn btn-neutral float-left" title="Using the occ command" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="exapps_management/index.html" class="btn btn-neutral float-right" title="ExApps management" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
