@@ -213,6 +213,8 @@ Sensitive data exposure
 
 Always store user data or configuration files in safe locations, e.g. **nextcloud/data/** and not in the webroot where they can be accessed by anyone using a web browser.
 
+.. _csrf_introduction:
+
 Cross site request forgery
 --------------------------
 
@@ -249,6 +251,28 @@ Always validate the URL before redirecting if the requested URL is on the same d
 
   <?php
   header('Location: https://example.com'. $_GET['redirectURL']);
+
+
+CORS
+----
+
+`Cross-origin resource sharing (CORS) <https://en.wikipedia.org/wiki/Cross-origin_resource_sharing>`_ is a method impleneted by browser to access resources from different domains at the same time.
+Assume, there is a website published on host A.
+The URL would for example be https://A/path/to/index.html.
+If there is a _different_ host B that serves a resource (e.g. an image file) as https://B/assets/image.jpg, the index file on host A could simply link to the image on B.
+However, to protect B and its property (the image), the browsers do not silently embed the image of B into the page of A.
+Instead, B is kindly asked by the browser if embedding is allowed (the so-called `preflight <https://developer.mozilla.org/en-US/docs/Glossary/Preflight_request>`_).
+
+To do so, there is a first request made to the resource on B with the ``OPTIONS`` HTTP command/verb.
+The server only answers with the headers as specified and adds ``Access-Control-*`` headers.
+These define, what the browser is to be allowed to do.
+Only if the destination server B confirms cross site resource sharing is allowed, the browser access the resource.
+
+Basically, accessing foreign resources is not limited to embedding images.
+Using JavaScript, arbitrary XHR/Ajax requests can be directed at arbitrary other hosts.
+There are some safety measurements in place (especially about cookie handling), but one has still to be careful not to leak information unwillingly.
+Especially, if the destination server B allows to sent credentials using ``Access-Control-Allow-Credentials: true``, cross site scripting is very critical.
+You need :ref:`CSRF protection <csrf_introduction>` in place or your users are at relatively high risk.
 
 Getting help
 ------------
