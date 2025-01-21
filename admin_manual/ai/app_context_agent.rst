@@ -6,7 +6,7 @@ App: Context Agent (context_agent)
 
 The *context_agent* app is the app that provides AI agent functionality in Nextcloud and acts as a backend for the :ref:`Nextcloud Assistant app<ai-app-assistant>`. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
 
-When Context Agent is installed the AI Chat in Nextcloud Assistant will be able to interact with your Nextcloud app via virtual integrations that are called "tools".
+When the Context Agent app is installed the AI Chat in Nextcloud Assistant will be able to interact with your Nextcloud apps via virtual integrations that are called "tools".
 
 Currently implemented tools:
 
