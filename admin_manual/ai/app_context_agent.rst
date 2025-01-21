@@ -6,6 +6,61 @@ App: Context Agent (context_agent)
 
 The *context_agent* app is the app that provides AI agent functionality in Nextcloud and acts as a backend for the :ref:`Nextcloud Assistant app<ai-app-assistant>`. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
 
+When the Context Agent app is installed the AI Chat in Nextcloud Assistant will be able to interact with your Nextcloud apps via virtual integrations that are called "tools".
+
+Currently implemented tools:
+
+* List the user's calendars
+
+  * Example prompt: *"List my calendars"*
+
+* List the user's talk conversations
+
+  * Example prompt: *"List my talk conversations"*
+
+* List messages in a talk conversation
+
+  * Example prompt: *"List the latest messages in my conversation with Andrew"*
+
+* Find a person in the user's contacts
+
+  * Example prompt: *"What is Andrew's Email address?"*
+
+* Ask a question to context chat
+
+  * Example prompt: *"What is the company's sick leave process?"*
+
+* Get coordinates for an Address from Open Street Maps Nomatim
+
+  * Example prompt: *"List my calendars"*
+
+* Get the current weather at a location
+
+  * Example prompt: *"How is the weather in Berlin?"*
+
+* Schedule an event in the user's calendar
+
+  * Example prompt: *"Make schedule an event with Andrew tomorrow at noon."*
+
+* Send a message to a talk conversation
+
+  * Example prompt: *"Can you send a joke to Andrew in talk?"*
+
+* Send an email via Nextcloud Mail
+
+  * Example prompt *"Send a test email from carry@company.com to Andrew@company.com from my account with id 12"*
+  * (The account ID will soon be irrelevant)
+
+These tools can also be combined by the agent to fulfil tasks like the following:
+
+ * *"How is the weather where Andrew lives?"*
+
+  * Uses contacts to look up Andrew's address and then checks the weather
+
+ * *"Send an email from carry@company.com to Andrew"*
+
+  * Uses contacts to look up Andrew's email and then sends an email
+
 Requirements
 ------------
 
@@ -31,7 +86,7 @@ Model requirements
 
 This app requires underlying Large language models to support tool calling. The default model in *llm2* does *not* support tool calling. Instead we recommend:
 
-* Qwen 2.5 8B or higher
+* Qwen 2.5 8B or higher (May not work well with languages other than English)
 * Watt Tool 8B or higher
 
 See :ref:`llm2 documentation <ai-app-llm2>` on how to configure alternate models.
