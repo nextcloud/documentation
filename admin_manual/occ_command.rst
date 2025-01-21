@@ -308,6 +308,10 @@ To show available update(s) without updating::
 
     sudo -u www-data php occ app:update --showonly
 
+To update an app to an unstable release, for instance News::
+
+    sudo -u www-data php occ app:update --allow-unstable news
+
 .. _background_jobs_selector_label:
 
 Background jobs selector
