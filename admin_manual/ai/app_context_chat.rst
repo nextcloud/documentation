@@ -161,7 +161,7 @@ Configuration Options (OCC)
    occ config:app:set context_chat indexing_max_jobs_count --value=3 --type=integer
 
 * ``request_timeout`` integer (default: 3000)
-   Request timeout in seconds for all requests made to the backend.
+   Request timeout in seconds for all requests made to the Context chat backend (the external app in AppAPI).
    ``TIMEOUT_SERVER`` in the docker socket proxy should be set to a value higher than this.
 
 .. code-block::
