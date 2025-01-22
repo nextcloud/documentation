@@ -162,7 +162,7 @@ Configuration Options (OCC)
 
 * ``request_timeout`` integer (default: 3000)
    Request timeout in seconds for all requests made to the Context chat backend (the external app in AppAPI).
-   ``TIMEOUT_SERVER`` in the docker socket proxy should be set to a value higher than this.
+   If a docker socket proxy is used, the ``TIMEOUT_SERVER`` environment variable should be set to a value higher than ``request_timeout``.
 
 .. code-block::
 
