@@ -187,7 +187,7 @@ Logs for the ``context_chat`` PHP app can be found in the Nextcloud log file, wh
 Possibility of Data Leak
 ------------------------
 
-| It is possible that some users who have been denied access to certain files/folders still have access to the content of those files/folders through the Context Chat app. We're working on a solution for this.
+| It is possible that some users who had access to certain files/folders (and have later have been denied this access) still have access to the content of those files/folders through the Context Chat app. We're working on a solution for this.
 | The users who never had access to a particular file/folder will NOT be able to see those contents in any way.
 
 Known Limitations
