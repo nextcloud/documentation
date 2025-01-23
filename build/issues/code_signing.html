@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code signing &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="GDPR-compliance" href="../gdpr/index.html" />
+    <link rel="prev" title="Patching Nextcloud" href="applying_patch.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Issues and troubleshooting</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="general_troubleshooting.html">General troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="applying_patch.html">Patching Nextcloud</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Code signing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#faq">FAQ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#why-did-nextcloud-add-code-signing">Why did Nextcloud add code signing?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#do-we-lock-down-nextcloud">Do we lock down Nextcloud?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#not-open-source-anymore">Not open source anymore?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-code-signing-mandatory-for-apps">Is code signing mandatory for apps?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#fixing-invalid-code-integrity-messages">Fixing invalid code integrity messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rescans">Rescans</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#errors">Errors</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Issues and troubleshooting</a></li>
+      <li class="breadcrumb-item active">Code signing</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/issues/code_signing.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="code-signing">
+<h1>Code signing<a class="headerlink" href="#code-signing" title="Link to this heading"></a></h1>
+<p id="code-signing-label">Nextcloud supports code signing for the core releases, and for Nextcloud
+applications. Code signing gives our users an additional layer of security by
+ensuring that nobody other than authorized persons can push updates.</p>
+<p>It also ensures that all upgrades have been executed properly, so that no files
+are left behind, and all old files are properly replaced. In the past, invalid
+updates were a significant source of errors when updating Nextcloud.</p>
+<section id="faq">
+<h2>FAQ<a class="headerlink" href="#faq" title="Link to this heading"></a></h2>
+<section id="why-did-nextcloud-add-code-signing">
+<h3>Why did Nextcloud add code signing?<a class="headerlink" href="#why-did-nextcloud-add-code-signing" title="Link to this heading"></a></h3>
+<p>By supporting Code Signing we add another layer of security by ensuring that
+nobody other than authorized persons can push updates for applications, and
+ensuring proper upgrades.</p>
+</section>
+<section id="do-we-lock-down-nextcloud">
+<h3>Do we lock down Nextcloud?<a class="headerlink" href="#do-we-lock-down-nextcloud" title="Link to this heading"></a></h3>
+<p>The Nextcloud project is open source and always will be. We do not want to
+make it more difficult for our users to run Nextcloud. Any code signing errors on
+upgrades will not prevent Nextcloud from running, but will display a warning on
+the Admin page. For applications that are not tagged “Official” the code signing
+process is optional.</p>
+</section>
+<section id="not-open-source-anymore">
+<h3>Not open source anymore?<a class="headerlink" href="#not-open-source-anymore" title="Link to this heading"></a></h3>
+<p>The Nextcloud project is open source and always will be. The code signing
+process is optional, though highly recommended. The code check for the
+core parts of Nextcloud is enabled when the Nextcloud release version branch has
+been set to stable.</p>
+<p>For custom distributions of Nextcloud it is recommended to change the release
+version branch in version.php to something else than “stable”.</p>
+</section>
+<section id="is-code-signing-mandatory-for-apps">
+<h3>Is code signing mandatory for apps?<a class="headerlink" href="#is-code-signing-mandatory-for-apps" title="Link to this heading"></a></h3>
+<p>Code signing is required for all applications on apps.nextcloud.com.</p>
+</section>
+</section>
+<section id="fixing-invalid-code-integrity-messages">
+<span id="code-signing-fix-warning-label"></span><h2>Fixing invalid code integrity messages<a class="headerlink" href="#fixing-invalid-code-integrity-messages" title="Link to this heading"></a></h2>
+<p>A code integrity error message (“Some files have not passed the integrity check…”) appears on your Nextcloud admin page under “Overview”, which provides
+the following options:</p>
+<ol class="arabic simple">
+<li><p>Link to this documentation entry.</p></li>
+<li><p>Show a list of invalid files.</p></li>
+<li><p>Trigger a rescan.</p></li>
+</ol>
+<img alt="Links for resolving code integrity warnings." src="../_images/code-integrity-admin.png" />
+<p>To debug issues caused by the code integrity check click on “List of invalid
+files…”, and you will be shown a text document listing the different issues. The
+content of the file will look similar to the following example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Technical</span> <span class="n">information</span>
+<span class="o">=====================</span>
+<span class="n">The</span> <span class="n">following</span> <span class="nb">list</span> <span class="n">covers</span> <span class="n">which</span> <span class="n">files</span> <span class="n">have</span> <span class="n">failed</span> <span class="n">the</span> <span class="n">integrity</span> <span class="n">check</span><span class="o">.</span> <span class="n">Please</span> <span class="n">read</span>
+<span class="n">the</span> <span class="n">previous</span> <span class="n">linked</span> <span class="n">documentation</span> <span class="n">to</span> <span class="n">learn</span> <span class="n">more</span> <span class="n">about</span> <span class="n">the</span> <span class="n">errors</span> <span class="ow">and</span> <span class="n">how</span> <span class="n">to</span> <span class="n">fix</span>
+<span class="n">them</span><span class="o">.</span>
+
+<span class="n">Results</span>
+<span class="o">=======</span>
+<span class="o">-</span> <span class="n">core</span>
+      <span class="o">-</span> <span class="n">INVALID_HASH</span>
+              <span class="o">-</span> <span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">php</span>
+              <span class="o">-</span> <span class="o">/</span><span class="n">version</span><span class="o">.</span><span class="n">php</span>
+      <span class="o">-</span> <span class="n">EXTRA_FILE</span>
+              <span class="o">-</span> <span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">php</span>
+<span class="o">-</span> <span class="n">calendar</span>
+      <span class="o">-</span> <span class="n">EXCEPTION</span>
+              <span class="o">-</span> <span class="n">OC</span>\<span class="n">IntegrityCheck</span>\<span class="n">Exceptions</span>\<span class="n">InvalidSignatureException</span>
+              <span class="o">-</span> <span class="n">Signature</span> <span class="n">data</span> <span class="ow">not</span> <span class="n">found</span><span class="o">.</span>
+
+<span class="n">Raw</span> <span class="n">output</span>
+<span class="o">==========</span>
+<span class="n">Array</span>
+<span class="p">(</span>
+    <span class="p">[</span><span class="n">core</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">Array</span>
+        <span class="p">(</span>
+            <span class="p">[</span><span class="n">INVALID_HASH</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">Array</span>
+                <span class="p">(</span>
+                    <span class="p">[</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">php</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">Array</span>
+                        <span class="p">(</span>
+                            <span class="p">[</span><span class="n">expected</span><span class="p">]</span> <span class="o">=&gt;</span>
+                            <span class="n">f1c5e2630d784bc9cb02d5a28f55d6f24d06dae2a0fee685f3</span>
+                            <span class="n">c2521b050955d9d452769f61454c9ddfa9c308146ade10546c</span>
+                            <span class="n">fa829794448eaffbc9a04a29d216</span>
+                            <span class="p">[</span><span class="n">current</span><span class="p">]</span> <span class="o">=&gt;</span>
+                            <span class="n">ce08bf30bcbb879a18b49239a9bec6b8702f52452f88a9d321</span>
+                            <span class="mi">42</span><span class="n">cad8d2494d5735e6bfa0d8642b2762c62ca5be49f9bf4ec2</span>
+                            <span class="mi">31</span><span class="n">d4a230559d4f3e2c471d3ea094</span>
+                        <span class="p">)</span>
+
+                    <span class="p">[</span><span class="o">/</span><span class="n">version</span><span class="o">.</span><span class="n">php</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">Array</span>
+                        <span class="p">(</span>
+                            <span class="p">[</span><span class="n">expected</span><span class="p">]</span> <span class="o">=&gt;</span>
+                            <span class="n">c5a03bacae8dedf8b239997901ba1fffd2fe51271d13a00cc4</span>
+                            <span class="n">b34b09cca5176397a89fc27381cbb1f72855fa18b69b6f87d7</span>
+                            <span class="n">d5685c3b45aee373b09be54742ea</span>
+                            <span class="p">[</span><span class="n">current</span><span class="p">]</span> <span class="o">=&gt;</span>
+                            <span class="mi">88</span><span class="n">a3a92c11db91dec1ac3be0e1c87f862c95ba6ffaaaa3f2c3</span>
+                            <span class="n">b8f682187c66f07af3a3b557a868342ef4a271218fe1c1e300</span>
+                            <span class="n">c478e6c156c5955ed53c40d06585</span>
+                        <span class="p">)</span>
+
+                <span class="p">)</span>
+
+            <span class="p">[</span><span class="n">EXTRA_FILE</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">Array</span>
+                <span class="p">(</span>
+                    <span class="p">[</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">php</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">Array</span>
+                        <span class="p">(</span>
+                            <span class="p">[</span><span class="n">expected</span><span class="p">]</span> <span class="o">=&gt;</span>
+                            <span class="p">[</span><span class="n">current</span><span class="p">]</span> <span class="o">=&gt;</span>
+                            <span class="mi">09563164</span><span class="n">f9904a837f9ca0b5f626db56c838e5098e0ccc1d8b</span>
+                            <span class="mi">935</span><span class="n">f68fa03a25c5ec6f6b2d9e44a868e8b85764dafd1605522</span>
+                            <span class="n">b4af8db0ae269d73432e9a01e63a</span>
+                        <span class="p">)</span>
+
+                <span class="p">)</span>
+
+        <span class="p">)</span>
+
+    <span class="p">[</span><span class="n">calendar</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">Array</span>
+        <span class="p">(</span>
+            <span class="p">[</span><span class="n">EXCEPTION</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">Array</span>
+                <span class="p">(</span>
+                    <span class="p">[</span><span class="n">class</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">OC</span>\<span class="n">IntegrityCheck</span>\<span class="n">Exceptions</span>\<span class="n">InvalidSignature</span>
+                    <span class="ne">Exception</span>
+                    <span class="p">[</span><span class="n">message</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">Signature</span> <span class="n">data</span> <span class="ow">not</span> <span class="n">found</span><span class="o">.</span>
+                <span class="p">)</span>
+
+        <span class="p">)</span>
+
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>In above error output it can be seen that:</p>
+<ol class="arabic simple">
+<li><p>In the Nextcloud core (that is, the Nextcloud server itself) the files
+“index.php” and “version.php” do have the wrong version.</p></li>
+<li><p>In the Nextcloud core the unrequired extra file “/test.php” has been found.</p></li>
+<li><p>It was not possible to verify the signature of the calendar application.</p></li>
+</ol>
+<p>The solution is to upload the correct “index.php” and “version.php” files, and
+delete the “test.php” file. For the calendar exception contact the developer of
+the application. For other means on how to receive support please take a look at
+<a class="reference external" href="https://nextcloud.com/support/">https://nextcloud.com/support/</a>. After fixing these problems verify by clicking
+“Rescan…”.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using a FTP client to upload those files make sure it is using the
+<code class="docutils literal notranslate"><span class="pre">Binary</span></code> transfer mode instead of the <code class="docutils literal notranslate"><span class="pre">ASCII</span></code> transfer mode.</p>
+</div>
+</section>
+<section id="rescans">
+<span id="rescans-label"></span><h2>Rescans<a class="headerlink" href="#rescans" title="Link to this heading"></a></h2>
+<p>Rescans are triggered at installation, and by updates. You may run scans manually with the <code class="docutils literal notranslate"><span class="pre">occ</span></code> command. The first command scans the Nextcloud server files, and the second command scans the named app. There is not yet a command to manually scan all apps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>occ integrity:check-core
+occ integrity:check-app $appid
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../occ_command.html"><span class="doc">Using the occ command</span></a> to learn more about using <code class="docutils literal notranslate"><span class="pre">occ</span></code>.</p>
+</section>
+<section id="errors">
+<h2>Errors<a class="headerlink" href="#errors" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please don’t modify the mentioned <code class="docutils literal notranslate"><span class="pre">signature.json</span></code> itself.</p>
+</div>
+<p>The following errors can be encountered when trying to verify a code signature.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">INVALID_HASH</span></code></p>
+<ul>
+<li><p>The file has a different hash than specified within <code class="docutils literal notranslate"><span class="pre">signature.json</span></code>. This
+usually happens when the file has been modified after writing the signature
+data.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MISSING_FILE</span></code></p>
+<ul>
+<li><p>The file cannot be found but has been specified within <code class="docutils literal notranslate"><span class="pre">signature.json</span></code>.
+Either a required file has been left out, or <code class="docutils literal notranslate"><span class="pre">signature.json</span></code> needs to be
+edited.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EXTRA_FILE</span></code></p>
+<ul>
+<li><p>The file does not exist in <code class="docutils literal notranslate"><span class="pre">signature.json</span></code>. This usually happens when a
+file has been removed and <code class="docutils literal notranslate"><span class="pre">signature.json</span></code> has not been updated. It also
+happens if you have placed additional files in your Nextcloud installation
+folder.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EXCEPTION</span></code></p>
+<ul>
+<li><p>Another exception has prevented the code verification. There are currently
+these following exceptions:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Signature</span> <span class="pre">data</span> <span class="pre">not</span> <span class="pre">found.</span></code></p>
+<ul>
+<li><p>The app has mandatory code signing enforced but no <code class="docutils literal notranslate"><span class="pre">signature.json</span></code>
+file has been found in its <code class="docutils literal notranslate"><span class="pre">appinfo</span></code> folder.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Certificate</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">valid.</span></code></p>
+<ul>
+<li><p>The certificate has not been issued by the official Nextcloud Code
+Signing Root Authority.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Certificate</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">valid</span> <span class="pre">for</span> <span class="pre">required</span> <span class="pre">scope.</span> <span class="pre">(Requested:</span> <span class="pre">%s,</span> <span class="pre">current:</span> <span class="pre">%s)</span></code></p>
+<ul>
+<li><p>The certificate is not valid for the defined application. Certificates
+are only valid for the defined app identifier and cannot be used for
+others.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Signature</span> <span class="pre">could</span> <span class="pre">not</span> <span class="pre">get</span> <span class="pre">verified.</span></code></p>
+<ul>
+<li><p>There was a problem with verifying the signature of <code class="docutils literal notranslate"><span class="pre">signature.json</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="applying_patch.html" class="btn btn-neutral float-left" title="Patching Nextcloud" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../gdpr/index.html" class="btn btn-neutral float-right" title="GDPR-compliance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,1081 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User authentication with LDAP &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="LDAP user cleanup" href="user_auth_ldap_cleanup.html" />
+    <link rel="prev" title="Two-factor authentication" href="two_factor-auth.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="user_configuration.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reset_admin_password.html">Resetting a lost admin password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reset_user_password.html">Resetting a user password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_password_policy.html">User password policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two_factor-auth.html">Two-factor authentication</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">User authentication with LDAP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#server-tab">Server tab</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#users-tab">Users tab</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#login-attributes-tab">Login attributes tab</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#groups-tab">Groups tab</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-settings">Advanced settings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#connection-settings">Connection settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#directory-settings">Directory settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#special-attributes">Special attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user-profile-attributes">User Profile attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#expert-settings">Expert settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-the-configuration">Testing the configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-configuration-options-via-occ">Additional configuration options via occ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#attribute-update-interval">Attribute update interval</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#administrative-group-mapping">Administrative Group mapping</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#nextcloud-avatar-integration">Nextcloud avatar integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#use-a-specific-attribute-or-turn-off-loading-of-images">Use a specific attribute or turn off loading of images</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-tips-and-tricks">Troubleshooting, tips and tricks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#logging">Logging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ssl-certificate-verification-ldaps-tls">SSL certificate verification (LDAPS, TLS)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#microsoft-active-directory">Microsoft Active Directory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#memberof-read-memberof-permissions">memberOf / read memberof permissions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user-listing-and-login-per-nested-groups">User listing and login per nested groups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#duplicating-server-configurations">Duplicating server configurations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#nextcloud-ldap-internals">Nextcloud LDAP internals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#user-and-group-mapping">User and group mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#caching">Caching</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#handling-with-backup-server">Handling with backup server</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#note">Note</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_cleanup.html">LDAP user cleanup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_api.html">The LDAP configuration API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_provisioning_api.html">User provisioning API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile_configuration.html">Profile configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">User management</a></li>
+      <li class="breadcrumb-item active">User authentication with LDAP</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_user/user_auth_ldap.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="user-authentication-with-ldap">
+<h1>User authentication with LDAP<a class="headerlink" href="#user-authentication-with-ldap" title="Link to this heading"></a></h1>
+<p>Nextcloud ships with an LDAP application to allow LDAP users (including Active
+Directory) to appear in your Nextcloud user listings. These users will
+authenticate to Nextcloud with their LDAP credentials, so you don’t have to
+create separate Nextcloud user accounts for them. You will manage their Nextcloud
+group memberships, quotas, and sharing permissions just like any other Nextcloud
+user.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The PHP LDAP module is required; this is supplied by <code class="docutils literal notranslate"><span class="pre">php-ldap</span></code> on
+most distributions.</p>
+</div>
+<p>The LDAP application supports:</p>
+<ul class="simple">
+<li><p>LDAP group support</p></li>
+<li><p>File sharing with Nextcloud users and groups</p></li>
+<li><p>Access via WebDAV and Nextcloud Desktop Client</p></li>
+<li><p>Versioning, external Storage and all other Nextcloud features</p></li>
+<li><p>Seamless connectivity to Active Directory, with no extra configuration
+required</p></li>
+<li><p>Support for primary groups in Active Directory</p></li>
+<li><p>Auto-detection of LDAP attributes such as base DN, email, and the LDAP server
+port number</p></li>
+<li><p>Only read access to your LDAP (edit or delete of users on your LDAP is not
+supported)</p></li>
+<li><p>Optional: Allow users to change their LDAP password from Nextcloud</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A non-blocking or correctly configured SELinux setup is needed
+for the LDAP backend to work. Please refer to the <a class="reference internal" href="../installation/selinux_configuration.html#selinux-config-label"><span class="std std-ref">SELinux configuration</span></a>.</p>
+</div>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>First enable the <code class="docutils literal notranslate"><span class="pre">LDAP</span> <span class="pre">user</span> <span class="pre">and</span> <span class="pre">group</span> <span class="pre">backend</span></code> app on the Apps page in
+Nextcloud. Then go to your Admin page to configure it.</p>
+<p>The LDAP configuration panel has four tabs. A correctly completed first tab
+(“Server”) is mandatory to access the other tabs. A green indicator lights when
+the configuration is correct. Hover your cursor over the fields to see some
+pop-up tooltips.</p>
+<section id="server-tab">
+<h3>Server tab<a class="headerlink" href="#server-tab" title="Link to this heading"></a></h3>
+<p>Start with the Server tab. You may configure multiple servers if you have them.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not configure any failover LDAP hosts here. See <a class="reference internal" href="#advanced-settings-label"><span class="std std-ref">Advanced settings</span></a> for instructions instead.</p>
+</div>
+<p>At a minimum you must supply the LDAP server’s hostname. If your server requires
+authentication, enter your credentials on this tab. Nextcloud will then attempt
+to auto-detect the server’s port and base DN. The base DN and port are
+mandatory, so if Nextcloud cannot detect them you must enter them manually.</p>
+<figure class="align-default">
+<img alt="LDAP wizard, server tab" src="../_images/ldap-wizard-1-server.png" />
+</figure>
+<dl>
+<dt>Server configuration:</dt><dd><p>Configure one or more LDAP servers. Click the <strong>Delete Configuration</strong>
+button to remove the active configuration.</p>
+</dd>
+<dt>Host:</dt><dd><p>The host name or IP address of the LDAP server. It can also be a <strong>ldaps://</strong>
+URI. If you enter the port number, it speeds up server detection.</p>
+<p>Examples:</p>
+<ul class="simple">
+<li><p><em>directory.my-company.com</em></p></li>
+<li><p><em>ldaps://directory.my-company.com</em></p></li>
+<li><p><em>directory.my-company.com:9876</em></p></li>
+</ul>
+</dd>
+<dt>Port:</dt><dd><p>The port on which to connect to the LDAP server. The field is disabled in the
+beginning of a new configuration. If the LDAP server is running on a standard
+port, the port will be detected automatically. If you are using a
+non-standard port, Nextcloud will attempt to detect it. If this fails you must
+enter the port number manually.</p>
+<p>Example:</p>
+<ul class="simple">
+<li><p><em>389</em></p></li>
+</ul>
+</dd>
+<dt>User DN:</dt><dd><p>The name as DN of a user who has permissions to do searches in the LDAP
+directory. Leave it empty for anonymous access. We recommend that you have a
+special LDAP system user for this.</p>
+<p>Example:</p>
+<ul class="simple">
+<li><p><em>uid=nextcloudsystemuser,cn=sysusers,dc=my-company,dc=com</em></p></li>
+</ul>
+</dd>
+<dt>Password:</dt><dd><p>The password for the user given above. Empty for anonymous access.</p>
+</dd>
+<dt>Base DN:</dt><dd><p>The base DN of LDAP, from where all users and groups can be reached. You may
+enter multiple base DNs, one per line. (Base DNs for users and groups can be
+set in the Advanced tab.) This field is mandatory. Nextcloud attempts to
+determine the Base DN according to the provided User DN or the provided
+Host, and you must enter it manually if Nextcloud does not detect it.</p>
+<p>Example:</p>
+<ul class="simple">
+<li><p><em>dc=my-company,dc=com</em></p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="users-tab">
+<h3>Users tab<a class="headerlink" href="#users-tab" title="Link to this heading"></a></h3>
+<p>Use this to control which LDAP users are listed as Nextcloud users on your
+Nextcloud server. In order to control which LDAP users can login to your Nextcloud
+server use the <strong>Login Attributes</strong> tab. Those LDAP users who have access but are not listed
+as users (if there are any) will be hidden users. You may bypass the form fields
+and enter a raw LDAP filter if you prefer.</p>
+<figure class="align-default">
+<img alt="User filter" src="../_images/ldap-wizard-2-user.png" />
+</figure>
+<dl>
+<dt>Only those object classes:</dt><dd><p>Nextcloud will determine the object classes that are typically available for
+user objects in your LDAP. Nextcloud will automatically select the object
+class that returns the highest amount of users. You may select multiple
+object classes.</p>
+</dd>
+<dt>Only from those groups:</dt><dd><p>If your LDAP server supports the <code class="docutils literal notranslate"><span class="pre">member-of-overlay</span></code> in LDAP filters, you
+can define that only users from one or more certain groups are allowed to
+appear in user listings in Nextcloud. By default, no value will be selected.
+You may select multiple groups.</p>
+<p>If your LDAP server does not support the <code class="docutils literal notranslate"><span class="pre">member-of-overlay</span></code> in LDAP filters,
+the input field is disabled. Please contact your LDAP administrator.</p>
+</dd>
+<dt>Edit LDAP Query:</dt><dd><p>Clicking on this text toggles the filter mode and you can enter the raw LDAP
+filter directly. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">objectClass</span><span class="o">=</span><span class="n">inetOrgPerson</span><span class="p">)(</span><span class="n">memberOf</span><span class="o">=</span><span class="n">cn</span><span class="o">=</span><span class="n">nextcloudusers</span><span class="p">,</span><span class="n">ou</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span>
+<span class="n">dc</span><span class="o">=</span><span class="n">example</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">com</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd>
+<dt>x users found:</dt><dd><p>This is an indicator that tells you approximately how many users will be
+listed in Nextcloud. The number updates automatically after any changes.</p>
+</dd>
+</dl>
+</section>
+<section id="login-attributes-tab">
+<h3>Login attributes tab<a class="headerlink" href="#login-attributes-tab" title="Link to this heading"></a></h3>
+<p>The settings in the Login Attributes tab determine which LDAP users can log in to
+your Nextcloud system and which attribute or attributes the provided login name
+is matched against (e.g. LDAP/AD username, email address). You may select
+multiple user details. (You may bypass the form fields and enter a raw LDAP
+filter if you prefer.)</p>
+<p>You may override your User Filter settings on the Users tab by using a raw
+LDAP filter.</p>
+<figure class="align-default">
+<img alt="Login filter" src="../_images/ldap-wizard-3-login.png" />
+</figure>
+<dl>
+<dt>LDAP Username:</dt><dd><p>If this value is checked, the login value will be compared to the username in
+the LDAP directory. The corresponding attribute, usually <em>uid</em> or
+<em>samaccountname</em> will be detected automatically by Nextcloud.</p>
+</dd>
+<dt>LDAP Email Address:</dt><dd><p>If this value is checked, the login value will be compared to an email address
+in the LDAP directory; specifically, the <em>mailPrimaryAddress</em> and <em>mail</em>
+attributes.</p>
+</dd>
+<dt>Other Attributes:</dt><dd><p>This multi-select box allows you to select other attributes for the
+comparison. The list is generated automatically from the user object
+attributes in your LDAP server.</p>
+</dd>
+<dt>Edit LDAP Query:</dt><dd><p>Clicking on this text toggles the filter mode and you can enter the raw LDAP
+filter directly.</p>
+<p>The <strong>%uid</strong> placeholder is replaced with the login name entered by the
+user upon login.</p>
+<p>Examples:</p>
+<ul>
+<li><p>only username:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">objectClass</span><span class="o">=</span><span class="n">inetOrgPerson</span><span class="p">)(</span><span class="n">memberOf</span><span class="o">=</span><span class="n">cn</span><span class="o">=</span><span class="n">nextcloudusers</span><span class="p">,</span><span class="n">ou</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span>
+<span class="n">dc</span><span class="o">=</span><span class="n">example</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">com</span><span class="p">)(</span><span class="n">uid</span><span class="o">=%</span><span class="n">uid</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>username or email address:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">((</span><span class="o">&amp;</span><span class="p">(</span><span class="n">objectClass</span><span class="o">=</span><span class="n">inetOrgPerson</span><span class="p">)(</span><span class="n">memberOf</span><span class="o">=</span><span class="n">cn</span><span class="o">=</span><span class="n">nextcloudusers</span><span class="p">,</span><span class="n">ou</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span>
+<span class="n">dc</span><span class="o">=</span><span class="n">example</span><span class="p">,</span><span class="n">dc</span><span class="o">=</span><span class="n">com</span><span class="p">)(</span><span class="o">|</span><span class="p">(</span><span class="n">uid</span><span class="o">=%</span><span class="n">uid</span><span class="p">)(</span><span class="n">mail</span><span class="o">=%</span><span class="n">uid</span><span class="p">)))</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="groups-tab">
+<h3>Groups tab<a class="headerlink" href="#groups-tab" title="Link to this heading"></a></h3>
+<p>By default, no LDAP groups will be available in Nextcloud. The settings in the
+Groups tab determine which groups will be available in Nextcloud. You may
+also elect to enter a raw LDAP filter instead.</p>
+<figure class="align-default">
+<img alt="Group filter" src="../_images/ldap-wizard-4-group.png" />
+</figure>
+<dl>
+<dt>Only these object classes:</dt><dd><p>Nextcloud will determine the object classes that are typically available for
+group objects in your LDAP server. Nextcloud will only list object
+classes that return at least one group object. You can select multiple
+object classes. A typical object class is “group”, or “posixGroup”.</p>
+</dd>
+<dt>Only from these groups:</dt><dd><p>Nextcloud will generate a list of available groups found in your LDAP server.
+Then you select the group or groups that get access to your Nextcloud
+server.</p>
+</dd>
+<dt>Edit LDAP Query:</dt><dd><p>Clicking on this text toggles the filter mode and you can enter the raw LDAP
+filter directly.</p>
+<p>Example:</p>
+<ul class="simple">
+<li><p><em>objectClass=group</em></p></li>
+<li><p><em>objectClass=posixGroup</em></p></li>
+</ul>
+</dd>
+<dt>y groups found:</dt><dd><p>This tells you approximately how many groups will be available in Nextcloud.
+The number updates automatically after any change.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="advanced-settings">
+<span id="advanced-settings-label"></span><h2>Advanced settings<a class="headerlink" href="#advanced-settings" title="Link to this heading"></a></h2>
+<p>The LDAP Advanced Setting section contains options that are not needed for a
+working connection. This provides controls to disable the current
+configuration,
+configure replica hosts, and various performance-enhancing options.</p>
+<p>The Advanced Settings are structured into four parts:</p>
+<ul class="simple">
+<li><p>Connection Settings</p></li>
+<li><p>Directory Settings</p></li>
+<li><p>Special Attributes</p></li>
+<li><p>User Profile Attributes</p></li>
+</ul>
+<section id="connection-settings">
+<h3>Connection settings<a class="headerlink" href="#connection-settings" title="Link to this heading"></a></h3>
+<figure class="align-default">
+<img alt="Advanced settings" src="../_images/ldap-advanced-1-connection.png" />
+</figure>
+<dl>
+<dt>Configuration Active:</dt><dd><p>Enables or Disables the current configuration. By default, it is turned off.
+When Nextcloud makes a successful test connection it is automatically turned
+on.</p>
+</dd>
+<dt>Backup (Replica) Host:</dt><dd><p>If you have a backup LDAP server, enter the connection settings here.
+Nextcloud will then automatically connect to the backup when the main server
+cannot be reached. The backup server must be a replica of the main server so
+that the object UUIDs match.</p>
+<p>Example:</p>
+<ul class="simple">
+<li><p><em>directory2.my-company.com</em></p></li>
+</ul>
+</dd>
+<dt>Backup (Replica) Port:</dt><dd><p>The connection port of the backup LDAP server. If no port is given,
+but only a host, then the main port (as specified above) will be used.</p>
+<p>Example:</p>
+<ul class="simple">
+<li><p><em>389</em></p></li>
+</ul>
+</dd>
+<dt>Disable Main Server:</dt><dd><p>You can manually override the main server and make Nextcloud only connect to
+the backup server. This is useful for planned downtimes.</p>
+</dd>
+<dt>Turn off SSL certificate validation:</dt><dd><p>Turns off SSL certificate checking. Use it for testing only!
+<em>Note</em>: The effect of this setting depends on the PHP system configuration.
+It does for example not work with the
+[official Nextcloud container image](<a class="reference external" href="https://github.com/nextcloud/docker">https://github.com/nextcloud/docker</a>).
+To disable certificate verification for a particular use, append the following
+configuration line to your <cite>/etc/ldap/ldap.conf</cite>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">TLS_REQCERT</span> <span class="pre">ALLOW</span>
+<span class="pre">`</span></code></p>
+</dd>
+<dt>Cache Time-To-Live:</dt><dd><p>A cache is introduced to avoid unnecessary LDAP traffic, for example caching
+usernames so they don’t have to be looked up for every page, and speeding up
+loading of the Users page. Saving the configuration empties the cache. The
+time is given in seconds.</p>
+<p>Note that almost every PHP request requires a new connection to the LDAP
+server. If you require fresh PHP requests we recommend defining a minimum
+lifetime of 15s or so, rather than completely eliminating the cache.</p>
+<p>Examples:</p>
+<ul class="simple">
+<li><p>ten minutes: <em>600</em></p></li>
+<li><p>one hour: <em>3600</em></p></li>
+</ul>
+</dd>
+</dl>
+<p>See the Caching section below for detailed information on how the cache
+operates.</p>
+</section>
+<section id="directory-settings">
+<span id="ldap-directory-settings"></span><h3>Directory settings<a class="headerlink" href="#directory-settings" title="Link to this heading"></a></h3>
+<figure class="align-default">
+<img alt="Directory settings." src="../_images/ldap-advanced-2-directory.png" />
+</figure>
+<dl>
+<dt>User Display Name Field:</dt><dd><p>The attribute that should be used as display name in Nextcloud.</p>
+<ul class="simple">
+<li><p>Example: <em>displayName</em></p></li>
+</ul>
+</dd>
+<dt>2nd User Display Name Field:</dt><dd><p>An optional second attribute displayed in brackets after the display name,
+for example using the <code class="docutils literal notranslate"><span class="pre">mail</span></code> attribute displays as <code class="docutils literal notranslate"><span class="pre">Molly</span> <span class="pre">Foo</span>
+<span class="pre">(molly&#64;example.com)</span></code>.</p>
+</dd>
+<dt>Base User Tree:</dt><dd><p>The base DN of LDAP, from where all users can be reached. This must be a
+complete DN, regardless of what you have entered for your Base DN in the
+Basic setting. You can specify multiple base trees, one on each line.</p>
+<ul>
+<li><p>Example:</p>
+<div class="line-block">
+<div class="line"><em>cn=programmers,dc=my-company,dc=com</em></div>
+<div class="line"><em>cn=designers,dc=my-company,dc=com</em></div>
+</div>
+</li>
+</ul>
+</dd>
+<dt>User Search Attributes:</dt><dd><p>These attributes are used when searches for users are performed, for example
+in the share dialogue. The user display name attribute is the
+default. You may list multiple attributes, one per line.</p>
+<p>If an attribute is not available on a user object, the user will not be
+listed, and will be unable to login. This also affects the display name
+attribute. If you override the default you must specify the display name
+attribute here.</p>
+<ul>
+<li><p>Example:</p>
+<div class="line-block">
+<div class="line"><em>displayName</em></div>
+<div class="line"><em>mail</em></div>
+</div>
+</li>
+</ul>
+</dd>
+<dt>Disable users missing from LDAP</dt><dd><p>If this is enabled, users which are missing from LDAP, also known as remnants,
+will behave as if disabled in Nextcloud. This means for instance that public
+shares by these users will not work anymore. see also <a class="reference internal" href="user_auth_ldap_cleanup.html"><span class="doc">LDAP user cleanup</span></a>.</p>
+</dd>
+<dt>Group Display Name Field:</dt><dd><p>The attribute that should be used as Nextcloud group name. Nextcloud allows a
+limited set of characters (a-zA-Z0-9.-_&#64;). Once a group name is assigned it
+cannot be changed.</p>
+<ul class="simple">
+<li><p>Example: <em>cn</em></p></li>
+</ul>
+</dd>
+<dt>Base Group Tree:</dt><dd><p>The base DN of LDAP, from where all groups can be reached. This must be a
+complete DN, regardless of what you have entered for your Base DN in the
+Basic setting. You can specify multiple base trees, one in each line.</p>
+<ul>
+<li><p>Example:</p>
+<div class="line-block">
+<div class="line"><em>cn=barcelona,dc=my-company,dc=com</em></div>
+<div class="line"><em>cn=madrid,dc=my-company,dc=com</em></div>
+</div>
+</li>
+</ul>
+</dd>
+<dt>Group Search Attributes:</dt><dd><p>These attributes are used when a search for groups is done, for example in
+the share dialogue. By default the group display name attribute as specified
+above is used. Multiple attributes can be given, one in each line.</p>
+<p>If you override the default, the group display name attribute will not be
+taken into account, unless you specify it as well.</p>
+<ul>
+<li><p>Example:</p>
+<div class="line-block">
+<div class="line"><em>cn</em></div>
+<div class="line"><em>description</em></div>
+</div>
+</li>
+</ul>
+</dd>
+<dt>Group Member association:</dt><dd><p>The attribute that is used to indicate group memberships, i.e. the attribute
+used by LDAP groups to refer to their users.</p>
+<p>Nextcloud detects the value automatically. You should only change it if you
+have a very valid reason and know what you are doing.</p>
+<ul class="simple">
+<li><p>Example: <em>uniquemember</em></p></li>
+</ul>
+</dd>
+<dt>Nested groups:</dt><dd><p>Enable group member retrieval from sub groups.</p>
+<p>To allow user listing and login from nested groups, please see <strong>User listing
+and login per nested groups</strong> in the section <strong>Troubleshooting, Tips and
+Tricks</strong>.</p>
+</dd>
+<dt>Enable LDAP password changes per user:</dt><dd><p>Allow LDAP users to change their password and allow Super Administrators and Group Administrators to change the password of their LDAP users.</p>
+<p>To enable this feature, the following requirements have to be met:</p>
+<ul class="simple">
+<li><p>General requirements:</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Access control policies must be configured on the LDAP server to grant permissions for password changes. The User DN as configured in <em>Server Settings</em> needs to have write permissions in order to update the userPassword attribute.</p></li>
+<li><p>Passwords are sent in plaintext to the LDAP server. Therefore, transport encryption must be used for the communication between Nextcloud and the LDAP server, e.g. employ LDAPS.</p></li>
+<li><p>Enabling password hashing on the LDAP server is highly recommended. While Active Directory stores passwords in a one-way format by default, OpenLDAP users could configure the <code class="docutils literal notranslate"><span class="pre">ppolicy_hash_cleartext</span></code> directive of the ppolicy overlay that ships with OpenLDAP.</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>Additional requirements for Active Directory:</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>At least a 128-bit transport encryption must be used for the communication between Nextcloud and the LDAP server.</p></li>
+<li><p>Make sure that the <code class="docutils literal notranslate"><span class="pre">fUserPwdSupport</span></code> char of the dSHeuristics is configured to employ the <code class="docutils literal notranslate"><span class="pre">userPassword</span></code> attribute as <code class="docutils literal notranslate"><span class="pre">unicodePwd</span></code> alias. While this is set accordingly on AD LDS by default, this is not the case on AD DS.</p></li>
+</ul>
+</div></blockquote>
+</dd>
+<dt>Default password policy DN:</dt><dd><p>This feature requires OpenLDAP with ppolicy. The DN of a default password policy will be used for password expiry handling in the absence of any user specific password policy. Password expiry handling features the following:</p>
+<ul class="simple">
+<li><p>When a LDAP password is about to expire, display a warning message to the user showing the number of days left before it expires. Password expiry warnings are displayed through the notifications app for Nextcloud.</p></li>
+<li><p>Prompt LDAP users with expired passwords to reset their password during login, provided that an adequate number of grace logins is still available.</p></li>
+</ul>
+<p>Leave the setting empty to keep password expiry handling disabled.</p>
+<p>For the password expiry handling feature to work, LDAP password changes per user must be enabled and the LDAP server must be running OpenLDAP with its ppolicy module configured accordingly.</p>
+<ul>
+<li><p>Example:</p>
+<div class="line-block">
+<div class="line"><em>cn=default,ou=policies,dc=my-company,dc=com</em></div>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="special-attributes">
+<span id="ldap-special-attributes"></span><h3>Special attributes<a class="headerlink" href="#special-attributes" title="Link to this heading"></a></h3>
+<figure class="align-default">
+<img alt="Special Attributes." src="../_images/ldap-advanced-3-attributes.png" />
+</figure>
+<dl class="simple">
+<dt>Quota Field:</dt><dd><p>Nextcloud can read an LDAP attribute and set the user quota according to its
+value. Specify the attribute here, and it will return human-readable values,
+e.g. “2 GB”.</p>
+<ul class="simple">
+<li><p>Example: <em>NextcloudQuota</em></p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>LDAP quota parameters override quota parameters set in the Nextcloud user management page.</p>
+</div>
+<dl class="simple">
+<dt>Quota Default:</dt><dd><p>Specifies a default quota for LDAP users who do not have a quota set in
+the above Quota Field.</p>
+<ul class="simple">
+<li><p>Example: <em>15 GB</em></p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>LDAP quota parameters override quota parameters set in the Nextcloud user management page.</p>
+</div>
+<dl class="simple">
+<dt>Email Field:</dt><dd><p>Set the user’s email from their LDAP attribute. Leave it empty for default
+behavior.</p>
+<ul class="simple">
+<li><p>Example: <em>mail</em></p></li>
+</ul>
+</dd>
+<dt>User Home Folder Naming Rule:</dt><dd><p>By default, the Nextcloud server creates the user directory in your Nextcloud
+data directory and gives it the Nextcloud username, .e.g <code class="docutils literal notranslate"><span class="pre">/var/www/nextcloud/data/alice</span></code>. You may want to override this setting and name it after an LDAP
+attribute value. The attribute can also return an absolute path, e.g.
+<code class="docutils literal notranslate"><span class="pre">/mnt/storage43/alice</span></code>. Leave it empty for default behavior.</p>
+<ul class="simple">
+<li><p>Example: <em>cn</em></p></li>
+</ul>
+</dd>
+</dl>
+<p>In new Nextcloud installations the home folder rule is enforced. This means that once you set a home folder naming rule (get a home folder from an LDAP attribute), it must be available for all users. If it isn’t available for a user, then that user will not be able to login. Also, the filesystem will not be set up for that user, so their file shares will not be available to other users.</p>
+<p>In migrated Nextcloud installations the old behavior still applies, which is using the Nextcloud username as the home folder when an LDAP attribute is not set. You may change this enforcing the home folder rule with the <code class="docutils literal notranslate"><span class="pre">occ</span></code> command in Nextcloud, like this example on Ubuntu:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">user_ldap</span> <span class="n">enforce_home_folder_naming_rule</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+<section id="user-profile-attributes">
+<span id="ldap-user-profile-attributes"></span><h3>User Profile attributes<a class="headerlink" href="#user-profile-attributes" title="Link to this heading"></a></h3>
+<figure class="align-default">
+<img alt="User Profile Attributes." src="../_images/ldap-advanced-4-attributes.png" />
+</figure>
+<p>After configuring those attributes, the User Profile data will be overwritten with the according data from LDAP.  The checksum of data from LDAP will be stored in user settings <code class="docutils literal notranslate"><span class="pre">user_ldap</span></code>, <code class="docutils literal notranslate"><span class="pre">lastProfileChecksum</span></code> and profile update is skipped as long as data from LDAP doesn’t change.  If <code class="docutils literal notranslate"><span class="pre">memcache.distributed</span></code> is enabled in <code class="docutils literal notranslate"><span class="pre">config.php</span></code> the checksum will be cached and the checking will be skipped, as long as the cached value exists (expires after <code class="docutils literal notranslate"><span class="pre">ldapCacheTTL</span></code> seconds).</p>
+<dl class="simple">
+<dt>Please be aware:</dt><dd><ul class="simple">
+<li><p>The user can change the data in profile, but it will get overwritten if changed in LDAP</p></li>
+<li><p>The user can change the visibility scope in profile</p></li>
+<li><p>The default visibility can be adjusted with setting the <code class="docutils literal notranslate"><span class="pre">account_manager.default_property_scope</span></code> array in <code class="docutils literal notranslate"><span class="pre">config.php</span></code></p></li>
+<li><p>If multiple attribute values are present, only the first distributed value is used</p></li>
+<li><p>All user profile properties are limited to 2048 character</p></li>
+<li><p>Having misformatted data in LDAP will most probably leave you with empty user profile fields</p></li>
+<li><p>Setting the global <code class="docutils literal notranslate"><span class="pre">profile.enabled</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code> on <code class="docutils literal notranslate"><span class="pre">config.php</span></code> skips the code</p></li>
+</ul>
+</dd>
+</dl>
+<p>By calling <code class="docutils literal notranslate"><span class="pre">php</span> <span class="pre">occ</span> <span class="pre">ldap:check-user</span> <span class="pre">--update</span> <span class="pre">&lt;uid&gt;</span></code> the users data from LDAP will be displayed and the profile gets updated. To get the correct <code class="docutils literal notranslate"><span class="pre">&lt;uid&gt;</span></code> value for any user you can use <code class="docutils literal notranslate"><span class="pre">php</span> <span class="pre">occ</span> <span class="pre">user:list</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After unsetting an attribute name here, the data won’t be deleted from user profile. Setting an nonexisting attribute will empty the corresponding profile field.</p>
+</div>
+<dl class="simple">
+<dt>Phone Field:</dt><dd><p>The LDAP Attribute holding the phone number, to copy to the Profile Phone field.
+The phone number has to be formatted in international syntax without delimiters (E.164).
+Be sure to format phone numbers like <code class="docutils literal notranslate"><span class="pre">+4966612345678</span></code>.</p>
+<ul class="simple">
+<li><p>Example: <em>telephoneNumber</em></p></li>
+<li><p>Example: <em>mobile</em></p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You should set your <code class="docutils literal notranslate"><span class="pre">default_phone_region</span></code> in <code class="docutils literal notranslate"><span class="pre">config.php</span></code>.</p>
+</div>
+<dl class="simple">
+<dt>Website Field:</dt><dd><p>The LDAP attribute holding the website URI.
+The URI must start with <code class="docutils literal notranslate"><span class="pre">https://</span></code> or <code class="docutils literal notranslate"><span class="pre">http://</span></code> others are currently not allowed in Nextcloud user profile.
+If using <code class="docutils literal notranslate"><span class="pre">labeledURI</span></code> attributes the label (everything after first SPACE) gets removed.</p>
+<ul class="simple">
+<li><p>Example: <em>wWWHomePage</em></p></li>
+<li><p>Example: <em>labeledURI</em></p></li>
+</ul>
+</dd>
+<dt>Address Field:</dt><dd><p>The LDAP attribute holding the users address. Named Location on user profile page.
+Nextcloud wants a single line value like <code class="docutils literal notranslate"><span class="pre">city,</span> <span class="pre">country</span></code> or <code class="docutils literal notranslate"><span class="pre">somewhere</span> <span class="pre">under</span> <span class="pre">the</span> <span class="pre">loving</span> <span class="pre">sun</span></code>.
+Multi line postalAddress format will get reformatted, DOLLAR sign delimiter gets replaced with COMMA+SPACE.</p>
+<ul class="simple">
+<li><p>Example: <em>postalAddress</em></p></li>
+<li><p>Example: <em>localityName</em></p></li>
+</ul>
+</dd>
+<dt>Twitter Field:</dt><dd><p>The LDAP attribute holding the Twitter account name.</p>
+</dd>
+<dt>Fediverse Field:</dt><dd><p>The LDAP attribute holding the users Fediverse address.</p>
+</dd>
+<dt>Organisation Field:</dt><dd><p>The LDAP attribute holding the Organisation name.</p>
+<ul class="simple">
+<li><p>Example: <em>company</em></p></li>
+<li><p>Example: <em>o</em> or <em>organizationName</em></p></li>
+</ul>
+</dd>
+<dt>Role Field:</dt><dd><p>The LDAP attribute holding the organizational role, within the organisation or job title.</p>
+<ul class="simple">
+<li><p>Example: <em>title</em></p></li>
+</ul>
+</dd>
+<dt>Headline Field:</dt><dd><p>The LDAP attribute holding the users headline.</p>
+</dd>
+<dt>Biography Field:</dt><dd><p>The LDAP attribute holding the users about i.e. short biography.
+Multi line value with unix LF line ending.
+Windows CRLF and Macintosh CR line endings will be replaced with unix LF line ending.</p>
+</dd>
+<dt>Birthdate Field:</dt><dd><p>The LDAP attribute holding the user’s date of birth.
+Allowed formats:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ldapwiki.com/wiki/Wiki.jsp?page=GeneralizedTime">LDAP GeneralizedTime</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">YYYY-MM-DD</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">YYYYMMDD</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</section>
+<section id="expert-settings">
+<h2>Expert settings<a class="headerlink" href="#expert-settings" title="Link to this heading"></a></h2>
+<figure class="align-default">
+<img alt="Expert settings." src="../_images/ldap-expert.png" />
+</figure>
+<p>In the Expert Settings fundamental behavior can be adjusted to your needs. The
+configuration should be well-tested before starting production use.</p>
+<dl>
+<dt>Internal Username:</dt><dd><p>The internal username is the identifier in Nextcloud for LDAP users. By default
+it will be created from the UUID attribute. The UUID attribute ensures that
+the username is unique, and that characters do not need to be converted. Only
+these characters are allowed: [a-zA-Z0-9_.&#64;-]. Other characters are
+replaced with their ASCII equivalents, or are simply omitted.</p>
+<p>The LDAP backend ensures that there are no duplicate internal usernames in
+Nextcloud, i.e. that it is checking all other activated user backends
+(including local Nextcloud users). On collisions a random number (between 1000
+and 9999) will be attached to the retrieved value. For example, if “alice”
+exists, the next username may be “alice_1337”.</p>
+<p>The internal username is the default name for the user home folder in
+Nextcloud. It is also a part of remote URLs, for instance for all *DAV
+services.</p>
+<p>You can override all of this with the Internal Username setting. Leave it
+empty for default behavior. Changes will affect only newly mapped LDAP users.</p>
+<p>When configuring this, be aware that the username in Nextcloud is considered
+immutable and cannot be changed afterwards. This can cause issues when using
+an attribute that might change, e.g. the email address of a user that will
+get changed during name change.</p>
+<ul class="simple">
+<li><p>Example: <em>uid</em></p></li>
+</ul>
+</dd>
+<dt>Override UUID detection</dt><dd><p>By default, Nextcloud auto-detects the UUID attribute. The UUID attribute is
+used to uniquely identify LDAP users and groups. The internal username will
+be created based on the UUID, if not specified otherwise.</p>
+<p>You can override the setting and pass an attribute of your choice. You must
+make sure that the attribute of your choice can be fetched for both users and
+groups and it is unique. Leave it empty for default behavior. Changes will
+have effect only on newly mapped LDAP users and groups. It also will
+have effect when a user’s or group’s DN changes and an old UUID was cached,
+which will result in a new user. Because of this, the setting should be
+applied before putting Nextcloud in production use and clearing the bindings
+(see the <code class="docutils literal notranslate"><span class="pre">User</span> <span class="pre">and</span> <span class="pre">Group</span> <span class="pre">Mapping</span></code> section below).</p>
+<ul class="simple">
+<li><p>Example: <em>cn</em></p></li>
+</ul>
+</dd>
+<dt>Username-LDAP User Mapping</dt><dd><p>Nextcloud uses usernames as keys to store and assign data. In order to
+precisely identify and recognize users, each LDAP user will have a internal
+username in Nextcloud. This requires a mapping from Nextcloud username to LDAP
+user. The created username is mapped to the UUID of the LDAP user.
+Additionally the DN is cached as well to reduce LDAP interaction, but it is
+not used for identification. If the DN changes, the change will be detected by
+Nextcloud by checking the UUID value.</p>
+<p>The same is valid for groups.</p>
+<p>The internal Nextcloud name is used all over in Nextcloud. Clearing the Mappings
+will have leftovers everywhere. Never clear the mappings in a production
+environment, but only in a testing or experimental server.</p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Clearing the Mappings is not configuration sensitive, it affects all LDAP
+configurations!</p>
+</div>
+</section>
+<section id="testing-the-configuration">
+<h2>Testing the configuration<a class="headerlink" href="#testing-the-configuration" title="Link to this heading"></a></h2>
+<p>The <strong>Test Configuration</strong> button checks the values as currently given in the
+input fields. You do not need to save before testing. By clicking on the
+button, Nextcloud will try to bind to the Nextcloud server using the
+settings currently given in the input fields. If the binding fails you’ll see a
+yellow banner with the error message “The configuration is invalid. Please have
+a look at the logs for further details.”</p>
+<p>When the configuration test reports success, save your settings and check if the
+users and groups are fetched correctly on the Users page.</p>
+</section>
+<section id="additional-configuration-options-via-occ">
+<h2>Additional configuration options via occ<a class="headerlink" href="#additional-configuration-options-via-occ" title="Link to this heading"></a></h2>
+<p>Few configuration settings can only be set on command line via <code class="docutils literal notranslate"><span class="pre">occ</span></code>.</p>
+<section id="attribute-update-interval">
+<h3>Attribute update interval<a class="headerlink" href="#attribute-update-interval" title="Link to this heading"></a></h3>
+<p>The LDAP backend will update user information that is used within Nextcloud
+with the values provided by the LDAP server. For instance these are email,
+quota or the avatar. This happens on every login, the first detection of a user
+from LDAP and regularly by a background job.</p>
+<p>The interval value determines the time between updates of the values and is
+used to avoid frequent overhead, including time-expensive write actions to
+the database.</p>
+<p>The interval is described in seconds and it defaults to 86400 equalling a day.
+It is not a per-configuration option.</p>
+<p>The value can be modified by:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">user_ldap</span> <span class="n">updateAttributesInterval</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="mi">86400</span>
+</pre></div>
+</div>
+<p>A value of 0 will update it on every of the named occasions.</p>
+</section>
+<section id="administrative-group-mapping">
+<h3>Administrative Group mapping<a class="headerlink" href="#administrative-group-mapping" title="Link to this heading"></a></h3>
+<p>It is possible to promote <strong>one</strong> LDAP per connection as an admin group, so
+that all its members also have administrative privileges in Nextcloud.</p>
+<p>A group can either be promoted via a dedicated <code class="docutils literal notranslate"><span class="pre">occ</span></code> call providing a group
+parameter that can be either a nextcloud group ID or a group name that will be
+search against. When a search is executed an exact match is required.</p>
+<p>Example usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ php occ ldap:promote-group --help
+Description:
+  declares the specified group as admin group (only one is possible per LDAP configuration)
+
+Usage:
+  ldap:promote-group [options] [--] &lt;group&gt;
+
+Arguments:
+  group                 the group ID in Nextcloud or a group name
+
+Options:
+  -y, --yes             do not ask for confirmation
+…
+
+# Example
+$ php occ ldap:promote-group  &quot;Nextcloud Admins&quot;
+Promote Nextcloud Admins to the admin group (y|N)? y
+Group Nextcloud Admins was promoted
+
+$ php occ ldap:promote-group  &quot;Paramount Court&quot;
+Promote Nextcloud Admins to the admin group and demote Nextcloud Admins (Group ID: nextcloud_admins) (y|N)? y
+Group Paramount Court was promoted
+
+$ php occ ldap:promote-group  &quot;Paramount Court&quot;
+The specified group is already promoted
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note the group ID will only be displayed when it differs from the
+group’s display name.</p>
+</div>
+<p>It is also possible to set the admin group mapping using
+<code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">ldap:set-config</span> <span class="pre">$configId</span> <span class="pre">ldapAdminGroup</span> <span class="pre">$groupId</span></code>, but as the Nextcloud
+group ID might not be known (yet) it is recommended (especially for automated
+setups) to use the <cite>promote-group</cite> command, that would also pull in the group
+and determine the group ID.</p>
+<p>In order to demote or reset a promotion, an empty string should be set against
+to the targeted config’s ldapAdminGroup:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Reset an admin group mapping via set-config
+occ ldap:set-config $configId ldapAdminGroup &quot;&quot;
+# Example
+occ ldap:set-config s01 ldapAdminGroup &quot;&quot;
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To have more than one administrative groups in a connection, create a
+holding group in your LDAP directory that contains the single groups as
+nested members, and promote this one.</p>
+</div>
+</section>
+</section>
+<section id="nextcloud-avatar-integration">
+<h2>Nextcloud avatar integration<a class="headerlink" href="#nextcloud-avatar-integration" title="Link to this heading"></a></h2>
+<p>Nextcloud supports user profile pictures, which are also called avatars. If a user
+has a photo stored in the <em>jpegPhoto</em> or <em>thumbnailPhoto</em> attribute on your LDAP
+server, it will be used as their avatar. In this case the user cannot alter their
+avatar (on their Personal page) as it must be changed in LDAP. <em>jpegPhoto</em> is
+preferred over <em>thumbnailPhoto</em>.</p>
+<figure class="align-default">
+<img alt="Profile picture fetched from LDAP." src="../_images/ldap-fetched-avatar.png" />
+</figure>
+<p>If the <em>jpegPhoto</em> or <em>thumbnailPhoto</em> attribute is not set or empty, then
+users can upload and manage their avatars on their Nextcloud Personal pages.
+Avatars managed in Nextcloud are not stored in LDAP.</p>
+<p>The <em>jpegPhoto</em> or <em>thumbnailPhoto</em> attribute is fetched once a day to make
+sure the current photo from LDAP is used in Nextcloud. LDAP avatars override
+Nextcloud avatars, and when an LDAP avatar is deleted then the most recent
+Nextcloud avatar replaces it.</p>
+<p>Photos served from LDAP are automatically cropped and resized in Nextcloud. This
+affects only the presentation, and the original image is not changed.</p>
+<section id="use-a-specific-attribute-or-turn-off-loading-of-images">
+<h3>Use a specific attribute or turn off loading of images<a class="headerlink" href="#use-a-specific-attribute-or-turn-off-loading-of-images" title="Link to this heading"></a></h3>
+<p>It is possible to turn off the avatar integration or specify a single,
+different attribute to read the image from. It is expected to contain image
+data just like <em>jpegPhoto</em> or <em>thumbnailPhoto</em> do.</p>
+<p>The behaviour can be changed using the occ command line tool only. Essentially
+those options are available:</p>
+<ul>
+<li><p>The default behaviour as described above should be used</p>
+<p><code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">ldap:set-config</span> <span class="pre">&quot;s01&quot;</span> <span class="pre">&quot;ldapUserAvatarRule&quot;</span> <span class="pre">&quot;default&quot;</span></code></p>
+</li>
+<li><p>User images shall not be fetched from LDAP</p>
+<p><code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">ldap:set-config</span> <span class="pre">&quot;s01&quot;</span> <span class="pre">&quot;ldapUserAvatarRule&quot;</span> <span class="pre">&quot;none&quot;</span></code></p>
+</li>
+<li><p>The image should be read from the attribute “selfiePhoto”</p>
+<p><code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">ldap:set-config</span> <span class="pre">&quot;s01&quot;</span> <span class="pre">&quot;ldapUserAvatarRule&quot;</span> <span class="pre">&quot;data:selfiePhoto&quot;</span></code></p>
+</li>
+</ul>
+<p>The “s01” refers to the configuration ID as can be retrieved per
+<code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">ldap:show-config</span></code>.</p>
+</section>
+</section>
+<section id="troubleshooting-tips-and-tricks">
+<h2>Troubleshooting, tips and tricks<a class="headerlink" href="#troubleshooting-tips-and-tricks" title="Link to this heading"></a></h2>
+<section id="logging">
+<h3>Logging<a class="headerlink" href="#logging" title="Link to this heading"></a></h3>
+<p>Nextcloud’s LDAP implementation is capable of logging lots of additional details about
+its activities. When diagnosing problems, it can be useful to temporarily adjust your
+<code class="docutils literal notranslate"><span class="pre">loglevel</span></code> to INFO (<code class="docutils literal notranslate"><span class="pre">1</span></code>) or DEBUG (<code class="docutils literal notranslate"><span class="pre">0</span></code>).</p>
+</section>
+<section id="ssl-certificate-verification-ldaps-tls">
+<h3>SSL certificate verification (LDAPS, TLS)<a class="headerlink" href="#ssl-certificate-verification-ldaps-tls" title="Link to this heading"></a></h3>
+<p>A common mistake with SSL certificates is that they may not be known to PHP.
+If you have trouble with certificate validation make sure that</p>
+<ul class="simple">
+<li><p>You have the certificate of the server installed on the Nextcloud server</p></li>
+<li><p>The certificate is announced in the system’s LDAP configuration file (usually
+<em>/etc/ldap/ldap.conf</em>)</p></li>
+<li><p>Using LDAPS, also make sure that the port is correctly configured (by default
+636)</p></li>
+</ul>
+</section>
+<section id="microsoft-active-directory">
+<h3>Microsoft Active Directory<a class="headerlink" href="#microsoft-active-directory" title="Link to this heading"></a></h3>
+<p>Compared to earlier Nextcloud versions, no further tweaks need to be done to
+make Nextcloud work with Active Directory. Nextcloud will automatically find the
+correct configuration in the set-up process.</p>
+</section>
+<section id="memberof-read-memberof-permissions">
+<h3>memberOf / read memberof permissions<a class="headerlink" href="#memberof-read-memberof-permissions" title="Link to this heading"></a></h3>
+<p>If you want to use <code class="docutils literal notranslate"><span class="pre">memberOf</span></code> within your filter you might need to give your
+querying user the permissions to use it. For Microsoft Active Directory this
+is described <a class="reference external" href="https://serverfault.com/questions/167371/what-permissions-are-required-for-enumerating-users-groups-in-active-directory/167401#167401">here</a>.</p>
+</section>
+<section id="user-listing-and-login-per-nested-groups">
+<h3>User listing and login per nested groups<a class="headerlink" href="#user-listing-and-login-per-nested-groups" title="Link to this heading"></a></h3>
+<p>When it is intended to allow user listing and login based on a specific group
+having subgroups (“nested groups”), checking <strong>Nested groups</strong> on <strong>Directory
+Settings</strong> is not enough. Also the User (and Login) filter need to be changed,
+by specifying the <code class="docutils literal notranslate"><span class="pre">LDAP_MATCHING_RULE_IN_CHAIN</span></code> matching rule. Change the
+filter parts containing the <em>memberof</em> condition according to this example:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>(memberof=cn=Nextcloud Users Group,ou=Groups,…)</p></li>
+</ul>
+</div></blockquote>
+<p>to</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>(memberof:1.2.840.113556.1.4.1941:=cn=Nextcloud Users Group,ou=Groups,…)</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="duplicating-server-configurations">
+<h3>Duplicating server configurations<a class="headerlink" href="#duplicating-server-configurations" title="Link to this heading"></a></h3>
+<p>In case you have a working configuration and want to create a similar one or
+“snapshot” configurations before modifying them you can do the following:</p>
+<ol class="arabic simple">
+<li><p>Go to the <strong>Server</strong> tab</p></li>
+<li><p>On <strong>Server Configuration</strong> choose <em>Add Server Configuration</em></p></li>
+<li><p>Answer the question <em>Take over settings from recent server configuration?</em>
+with <em>yes</em>.</p></li>
+<li><p>(optional) Switch to <strong>Advanced</strong> tab and uncheck <strong>Configuration Active</strong>
+in the <em>Connection Settings</em>, so the new configuration is not used on Save</p></li>
+<li><p>Click on <strong>Save</strong></p></li>
+</ol>
+<p>Now you can modify and enable the configuration.</p>
+</section>
+</section>
+<section id="nextcloud-ldap-internals">
+<h2>Nextcloud LDAP internals<a class="headerlink" href="#nextcloud-ldap-internals" title="Link to this heading"></a></h2>
+<p>Some parts of how the LDAP backend works are described here.</p>
+<section id="user-and-group-mapping">
+<h3>User and group mapping<a class="headerlink" href="#user-and-group-mapping" title="Link to this heading"></a></h3>
+<p>In Nextcloud the user or group name is used to have all relevant information in
+the database assigned. To work reliably a permanent internal user name and
+group name is created and mapped to the LDAP DN and UUID. If the DN changes in
+LDAP it will be detected, and there will be no conflicts.</p>
+<p>Those mappings are done in the database table <code class="docutils literal notranslate"><span class="pre">ldap_user_mapping</span></code> and
+<code class="docutils literal notranslate"><span class="pre">ldap_group_mapping</span></code>. The user name is also used for the user’s folder (except
+if something else is specified in <em>User Home Folder Naming Rule</em>), which
+contains files and meta data.</p>
+<p>The internal user name and a visible display name are separated.
+This is not the case for group names, yet, i.e. a group name cannot be altered.</p>
+<p>That means that your LDAP configuration should be good and ready before putting
+it into production. The mapping tables are filled early, but as long as you are
+testing, you can empty the tables any time. Do not do this in production.</p>
+<p>The attributes of users are fetched on demand (i.e. for sharing autocompletion
+or in the user management) and then stored inside the Nextcloud database to
+allow a better performance on our side. They are typically checked twice a day
+in batches from all users again. Beside that they are also refreshed during a
+login for this user or can be fetched manually via the occ command
+<code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">ldap:check-user</span> <span class="pre">--update</span> <span class="pre">USERID</span></code> where <code class="docutils literal notranslate"><span class="pre">USERID</span></code> is Nextcloud’s user id.</p>
+<p>For groups, a cache of memberships is stored in the database to be able to trigger
+events when a membership is added or removed. This cache is updated by a background
+job, and can be force updated using <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">ldap:check-group</span> <span class="pre">--update</span> <span class="pre">GROUPID</span></code>.</p>
+</section>
+<section id="caching">
+<h3>Caching<a class="headerlink" href="#caching" title="Link to this heading"></a></h3>
+<p>The LDAP information is cached in Nextcloud memory cache, and you must install
+and configure the memory cache (see
+<a class="reference internal" href="../configuration_server/caching_configuration.html"><span class="doc">Memory caching</span></a>). The Nextcloud  <strong>Cache</strong>
+helps to speed up user interactions and sharing. It is populated on demand,
+and remains populated until the <strong>Cache Time-To-Live</strong> for each unique request
+expires. User logins are not cached, so if you need to improve login times set
+up a slave LDAP server to share the load.</p>
+<p>You can adjust the <strong>Cache Time-To-Live</strong> value to balance performance and
+freshness of LDAP data. All LDAP requests will be cached for 10 minutes by
+default, and you can alter this with the <strong>Cache Time-To-Live</strong> setting. The
+cache answers each request that is identical to a previous request, within the
+time-to-live of the original request, rather than hitting the LDAP server.</p>
+<p>The <strong>Cache Time-To-Live</strong> is related to each single request. After a cache
+entry expires there is no automatic trigger for re-populating the information,
+as the cache is populated only by new requests, for example by opening the
+User administration page, or searching in a sharing dialog.</p>
+<p>There is one trigger which is automatically triggered by a certain background
+job which keeps the <code class="docutils literal notranslate"><span class="pre">user-group-mappings</span></code> up-to-date, and always in cache.</p>
+<p>Under normal circumstances, all users are never loaded at the same time.
+Typically the loading of users happens while page results are generated, in
+steps of 30 until the limit is reached or no results are left. For this to
+work on a Nextcloud-Server and LDAP-Server, <strong>Paged Results</strong> must be supported.</p>
+<p>Nextcloud remembers which user belongs to which LDAP-configuration. That means
+each request will always be directed to the right server unless a user is
+defunct, for example due to a server migration or unreachable server. In this
+case the other servers will also receive the request.</p>
+</section>
+<section id="handling-with-backup-server">
+<h3>Handling with backup server<a class="headerlink" href="#handling-with-backup-server" title="Link to this heading"></a></h3>
+<p>When Nextcloud is not able to contact the main LDAP server, Nextcloud assumes it
+is offline and will not try to connect again for the time specified in <strong>Cache
+Time-To-Live</strong>. If you have a backup server configured Nextcloud will connect to
+it instead. When you have scheduled downtime, check <strong>Disable Main Server</strong>  to
+avoid unnecessary connection attempts.</p>
+</section>
+</section>
+<section id="note">
+<h2>Note<a class="headerlink" href="#note" title="Link to this heading"></a></h2>
+<p>When a LDAP object’s name or surname, that is display name attribute, by default
+“displayname”, is left empty, Nextcloud will treat it as an empty object, therefore
+no results from this user or AD-Object will be shown to avoid gathering of
+technical accounts.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="two_factor-auth.html" class="btn btn-neutral float-left" title="Two-factor authentication" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="user_auth_ldap_cleanup.html" class="btn btn-neutral float-right" title="LDAP user cleanup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

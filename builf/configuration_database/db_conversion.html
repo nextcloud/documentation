@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Converting database type &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Database configuration" href="linux_database_configuration.html" />
+    <link rel="prev" title="Database configuration" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Database configuration</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Converting database type</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-conversion">Run the conversion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#establishing-the-target-database">Establishing the target database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#triggering-the-conversion">Triggering the conversion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#inconvertible-tables">Inconvertible tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="linux_database_configuration.html">Database configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mysql_4byte_support.html">Enabling MySQL 4-byte support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bigint_identifiers.html">BigInt (64bit) identifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="replication.html">Replication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="splitting.html">Splitting databases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Database configuration</a></li>
+      <li class="breadcrumb-item active">Converting database type</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_database/db_conversion.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="converting-database-type">
+<h1>Converting database type<a class="headerlink" href="#converting-database-type" title="Link to this heading"></a></h1>
+<p>You can convert a SQLite database to a better performing MySQL, MariaDB or
+PostgreSQL database with the Nextcloud command line tool. SQLite is good for
+testing and simple single-user Nextcloud servers, but it does not scale for
+multiple-user production servers.</p>
+<section id="run-the-conversion">
+<h2>Run the conversion<a class="headerlink" href="#run-the-conversion" title="Link to this heading"></a></h2>
+<p>Conversion consists of two steps:</p>
+<ol class="arabic simple">
+<li><p>Establishing the target database (including its credentials)</p></li>
+<li><p>Triggering the conversion tool which migrates the contents of the existing database to the target database</p></li>
+</ol>
+<section id="establishing-the-target-database">
+<h3>Establishing the target database<a class="headerlink" href="#establishing-the-target-database" title="Link to this heading"></a></h3>
+<p>First create up the target (new) database (along with its associated username and password) by following the manual database configuration instructions for your chosen target database type:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="linux_database_configuration.html#db-config-mysql-label"><span class="std std-ref">Configuring a MySQL or MariaDB database</span></a></p></li>
+<li><p><a class="reference internal" href="linux_database_configuration.html#db-config-postgresql-label"><span class="std std-ref">PostgreSQL database</span></a></p></li>
+</ul>
+<p>Since the above db instructions uses the database name <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code> for the newly created database we will do so here for consistency, but you are free to use whatever database name you prefer. Use
+the database name, database username, and database password you specified when creating the new database.</p>
+</section>
+<section id="triggering-the-conversion">
+<h3>Triggering the conversion<a class="headerlink" href="#triggering-the-conversion" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">db:convert-type</span></code> command handles all the tasks of the conversion. The following are the parameters available:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">php</span> <span class="n">occ</span> <span class="n">db</span><span class="p">:</span><span class="n">convert</span><span class="o">-</span><span class="nb">type</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="nb">type</span> <span class="n">username</span> <span class="n">hostname</span> <span class="n">database</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">type</span></code> should be the target database type. The same values are available here as for the <code class="docutils literal notranslate"><span class="pre">config.php</span></code> <code class="docutils literal notranslate"><span class="pre">dbtype</span></code> parameter. It should be one of: <code class="docutils literal notranslate"><span class="pre">mysql</span></code> for MariaDB/MySQL,
+<code class="docutils literal notranslate"><span class="pre">pgsql</span></code> for PostgreSQL, or <code class="docutils literal notranslate"><span class="pre">oci</span></code> for Oracle.</p>
+<p>The options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--port=&quot;3306&quot;</span></code>                       the database port (optional) [defaults to “3306”]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--password=&quot;mysql_user_password&quot;</span></code>    password for the new database. If omitted the tool will ask you (optional)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--clear-schema</span></code>                      clear schema (optional)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--all-apps</span></code>                          by default, tables for enabled apps are converted, use to convert also tables of deactivated apps (optional)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-n,</span> <span class="pre">--no-interaction</span></code>                do not ask any interactive question</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The conversion tool searches for apps in your configured app folders and uses
+the schema (table) definitions in the apps to create the new tables. Any tables that still exist for removed
+apps will not be converted (even with option <code class="docutils literal notranslate"><span class="pre">--all-apps</span></code>).</p>
+</div>
+<p>Let’s convert our existing (functioning) sqlite3 installation to be MariaDB/MySQL based:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">php</span> <span class="n">occ</span> <span class="n">db</span><span class="p">:</span><span class="n">convert</span><span class="o">-</span><span class="nb">type</span> <span class="o">--</span><span class="n">password</span><span class="o">=</span><span class="s2">&quot;&lt;password&gt;&quot;</span> <span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="s2">&quot;3306&quot;</span> <span class="o">--</span><span class="nb">all</span><span class="o">-</span><span class="n">apps</span> <span class="n">mysql</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">hostname</span><span class="o">&gt;</span> <span class="n">nextcloud</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It was unnecessary to specify the port in this example because <code class="docutils literal notranslate"><span class="pre">3306</span></code> is already the default. We did so
+merely for demonstration purposes and completeness in case the reader is using a non-standard port on their target
+database server.</p>
+</div>
+<p>On success the converter will automatically configure the new database in your
+Nextcloud config <code class="docutils literal notranslate"><span class="pre">config.php</span></code>.</p>
+<p>If you are converting to a MySQL/MariaDB database, you will also want to set <code class="docutils literal notranslate"><span class="pre">mysql.utf8mb4</span></code> parameter to true in your <code class="docutils literal notranslate"><span class="pre">config.php</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="nb">set</span> <span class="n">mysql</span><span class="o">.</span><span class="n">utf8mb4</span> <span class="o">--</span><span class="nb">type</span> <span class="n">boolean</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>
+</pre></div>
+</div>
+<p>If you like, you can view the changes that were made by looking for the <code class="docutils literal notranslate"><span class="pre">db*</span></code> parameters in your <code class="docutils literal notranslate"><span class="pre">config.php</span></code> (you could also use this command before
+doing the conversion to compare your configuration before/after):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="n">db</span> <span class="n">config</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">php</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="inconvertible-tables">
+<h2>Inconvertible tables<a class="headerlink" href="#inconvertible-tables" title="Link to this heading"></a></h2>
+<p>If you updated your Nextcloud instance, there might be remnants of old tables
+which are not used any more. The updater will tell you which ones these are.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">following</span> <span class="n">tables</span> <span class="n">will</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">converted</span><span class="p">:</span>
+<span class="n">oc_permissions</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>You can ignore these tables.
+Here is a list of known old tables:</p>
+<ul class="simple">
+<li><p>oc_calendar_calendars</p></li>
+<li><p>oc_calendar_objects</p></li>
+<li><p>oc_calendar_share_calendar</p></li>
+<li><p>oc_calendar_share_event</p></li>
+<li><p>oc_fscache</p></li>
+<li><p>oc_log</p></li>
+<li><p>oc_media_albums</p></li>
+<li><p>oc_media_artists</p></li>
+<li><p>oc_media_sessions</p></li>
+<li><p>oc_media_songs</p></li>
+<li><p>oc_media_users</p></li>
+<li><p>oc_permissions</p></li>
+<li><p>oc_privatedata - this table was later added again by the app <cite>privatedata</cite> (<a class="reference external" href="https://apps.nextcloud.com/apps/privatedata">https://apps.nextcloud.com/apps/privatedata</a>) and is safe to be removed if that app is not enabled</p></li>
+<li><p>oc_queuedtasks</p></li>
+<li><p>oc_sharing</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Database configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="linux_database_configuration.html" class="btn btn-neutral float-right" title="Database configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

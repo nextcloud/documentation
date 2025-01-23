@@ -1,0 +1,521 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Webhook Listeners &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Windmill Workflows" href="../windmill_workflows/index.html" />
+    <link rel="prev" title="AI as a Service" href="../ai/ai_as_a_service.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Webhook Listeners</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#listening-to-events">Listening to events</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#filters">Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#speeding-up-webhook-dispatch">Speeding up webhook dispatch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#nextcloud-webhook-events">Nextcloud Webhook Events</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Webhook Listeners</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/webhook_listeners/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="webhook-listeners">
+<h1>Webhook Listeners<a class="headerlink" href="#webhook-listeners" title="Link to this heading"></a></h1>
+<p id="id1">Nextcloud supports listening to internal events via webhooks.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Enable the <code class="docutils literal notranslate"><span class="pre">webhook_listeners</span></code> app that comes bundled with Nextcloud</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>occ<span class="w"> </span>app:enable<span class="w"> </span>webhook_listeners
+</pre></div>
+</div>
+</section>
+<section id="listening-to-events">
+<h2>Listening to events<a class="headerlink" href="#listening-to-events" title="Link to this heading"></a></h2>
+<p>You can use the OCS API to add webhooks for specific events: <a class="reference external" href="https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index">https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index</a></p>
+<p>Note: When authenticating with the OCS API to register webhooks the account you authenticate as must have administrator rights or delegated administrator rights.</p>
+<section id="filters">
+<h3>Filters<a class="headerlink" href="#filters" title="Link to this heading"></a></h3>
+<p>When registering a webhook listener, you can specify a filter parameter. The value of this parameter must be a JSON object whose properties represent filter conditions. The <code class="docutils literal notranslate"><span class="pre">{}</span></code> is an empty query, meaning no specific criteria, so all events are matched.</p>
+<p>If you would like to match events fired by a specific user, you can pass <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;user.uid&quot;:</span> <span class="pre">&quot;bob&quot;</span> <span class="pre">}</span></code> to match all events fired in the context of user <code class="docutils literal notranslate"><span class="pre">&quot;bob&quot;</span></code>.</p>
+<p>If you would like to enforce multiple criteria, you can simply pass multiple properties <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;event.tableId&quot;:</span> <span class="pre">42,</span> <span class="pre">&quot;event.rowId&quot;:</span> <span class="pre">3</span> <span class="pre">}</span></code></p>
+<p>You can also use additional comparison operators (<code class="docutils literal notranslate"><span class="pre">$eq,</span> <span class="pre">$ne,</span> <span class="pre">$gt,</span> <span class="pre">$gte,</span> <span class="pre">$lt,</span> <span class="pre">$lte,</span> <span class="pre">$in,</span> <span class="pre">$nin</span></code>) as well as logical operators (<code class="docutils literal notranslate"><span class="pre">$and,</span> <span class="pre">$or,</span> <span class="pre">$not,</span> <span class="pre">$nor</span></code>). For example use <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;time&quot;</span> <span class="pre">:</span> <span class="pre">{</span> <span class="pre">&quot;$lt&quot;:</span> <span class="pre">1711971024</span> <span class="pre">}</span> <span class="pre">}</span></code> to accept only events prior to April 1st 2024 and <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;time&quot;</span> <span class="pre">:</span> <span class="pre">{</span> <span class="pre">&quot;$not&quot;:</span> <span class="pre">{</span> <span class="pre">&quot;$lt&quot;:</span> <span class="pre">1711971024</span> <span class="pre">}</span> <span class="pre">}</span> <span class="pre">}</span></code> to accept events after April 1st 2024.</p>
+</section>
+<section id="speeding-up-webhook-dispatch">
+<h3>Speeding up webhook dispatch<a class="headerlink" href="#speeding-up-webhook-dispatch" title="Link to this heading"></a></h3>
+<p>This app uses background jobs to trigger the registered webhooks. Thus, by default, webhooks will be triggered only every 5 minutes, as the default cron interval is 5 minutes.
+To trigger webhooks earlier, you can set up a background job worker. The following command will launch a worker for the webhook call background job:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>occ<span class="w"> </span>background-job:worker<span class="w"> </span><span class="s2">&quot;OCA\\WebhookListeners\\BackgroundJobs\\WebhookCall&quot;</span>
+</pre></div>
+</div>
+<p>It is recommended to restart this worker once a day to make sure code changes are effective and avoid memory leaks, for example by registering it as a systemd service with a daily timer.</p>
+</section>
+</section>
+<section id="nextcloud-webhook-events">
+<h2>Nextcloud Webhook Events<a class="headerlink" href="#nextcloud-webhook-events" title="Link to this heading"></a></h2>
+<p>This is an exhaustive list of available events. It features the event ID and the available variables for filtering.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>OCA\Forms\Events\FormSubmittedEvent</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>array{
+  &quot;user&quot;: array {&quot;uid&quot;: string, &quot;displayName&quot;: string},
+  &quot;time&quot;: int,
+  &quot;event&quot;: array{
+    &quot;class&quot;: string,
+    &quot;form&quot;: array{
+     &quot;id&quot;: int,
+     &quot;hash&quot;: string,
+     &quot;title&quot;: string,
+     &quot;description&quot;: string,
+     &quot;ownerId&quot;: string,
+     &quot;fileId&quot;: string|null,
+     &quot;fileFormat&quot;: string|null,
+     &quot;created&quot;: int,
+     &quot;access&quot;: int,
+     &quot;expires&quot;: int,
+     &quot;isAnonymous&quot;: bool,
+     &quot;submitMultiple&quot;: bool,
+     &quot;showExpiration&quot;: bool,
+     &quot;lastUpdated&quot;: int,
+     &quot;submissionMessage&quot;: string|null,
+     &quot;state&quot;: int,
+    },
+    &quot;submission&quot;: array{
+      &quot;id&quot;: int,
+      &quot;formId&quot;: int,
+      &quot;userId&quot;: string,
+      &quot;timestamp&quot;: int,
+    },
+  }
+}
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p>OCA\Tables\Event\RowAddedEvent</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>array{
+  &quot;user&quot;: array {&quot;uid&quot;: string, &quot;displayName&quot;: string},
+  &quot;time&quot;: int,
+  &quot;event&quot;: array{
+    &quot;class&quot;: string,
+    &quot;tableId&quot;: int,
+    &quot;rowId&quot;: int,
+    &quot;previousValues&quot;: null|array&lt;int, mixed&gt;,
+    &quot;values&quot;: null|array&lt;int, mixed&gt;
+  }
+}
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p>OCA\Tables\Event\RowDeletedEvent</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>array{
+  &quot;user&quot;: array {&quot;uid&quot;: string, &quot;displayName&quot;: string},
+  &quot;time&quot;: int,
+  &quot;event&quot;: array{
+    &quot;class&quot;: string,
+    &quot;tableId&quot;: int,
+    &quot;rowId&quot;: int,
+    &quot;previousValues&quot;: null|array&lt;int, mixed&gt;,
+    &quot;values&quot;: null|array&lt;int, mixed&gt;
+  }
+}
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p>OCA\Tables\Event\RowUpdatedEvent</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>array{
+  &quot;user&quot;: array {&quot;uid&quot;: string, &quot;displayName&quot;: string},
+  &quot;time&quot;: int,
+  &quot;event&quot;: array{
+    &quot;class&quot;: string,
+    &quot;tableId&quot;: int,
+    &quot;rowId&quot;: int,
+    &quot;previousValues&quot;: null|array&lt;int, mixed&gt;,
+    &quot;values&quot;: null|array&lt;int, mixed&gt;
+  }
+}
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p>OCP\Files\Events\Node\BeforeNodeCreatedEvent</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>array{
+  &quot;user&quot;: array {&quot;uid&quot;: string, &quot;displayName&quot;: string},
+  &quot;time&quot;: int,
+  &quot;event&quot;: array{
+    &quot;class&quot;: string,
+    &quot;node&quot;: array{&quot;id&quot;: string, &quot;path&quot;: string}
+  }
+}
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p>OCP\Files\Events\Node\BeforeNodeTouchedEvent</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>array{
+  &quot;user&quot;: array {&quot;uid&quot;: string, &quot;displayName&quot;: string},
+  &quot;time&quot;: int,
+  &quot;event&quot;: array{
+    &quot;class&quot;: string,
+    &quot;node&quot;: array{&quot;id&quot;: string, &quot;path&quot;: string}
+  }
+}
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p>OCP\Files\Events\Node\BeforeNodeWrittenEvent</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>array{
+  &quot;user&quot;: array {&quot;uid&quot;: string, &quot;displayName&quot;: string},
+  &quot;time&quot;: int,
+  &quot;event&quot;: array{
+    &quot;class&quot;: string,
+    &quot;node&quot;: array{&quot;id&quot;: string, &quot;path&quot;: string}
+  }
+}
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p>OCP\Files\Events\Node\BeforeNodeReadEvent</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>array{
+  &quot;user&quot;: array {&quot;uid&quot;: string, &quot;displayName&quot;: string},
+  &quot;time&quot;: int,
+  &quot;event&quot;: array{
+    &quot;class&quot;: string,
+    &quot;node&quot;: array{&quot;id&quot;: string, &quot;path&quot;: string}
+  }
+}
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p>OCP\Files\Events\Node\BeforeNodeDeletedEvent</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>array{
+  &quot;user&quot;: array {&quot;uid&quot;: string, &quot;displayName&quot;: string},
+  &quot;time&quot;: int,
+  &quot;event&quot;: array{
+    &quot;class&quot;: string,
+    &quot;node&quot;: array{&quot;id&quot;: string, &quot;path&quot;: string}
+  }
+}
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p>OCP\Files\Events\Node\NodeCreatedEvent</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>array{
+  &quot;user&quot;: array {&quot;uid&quot;: string, &quot;displayName&quot;: string},
+  &quot;time&quot;: int,
+  &quot;event&quot;: array{
+    &quot;class&quot;: string,
+    &quot;node&quot;: array{&quot;id&quot;: string, &quot;path&quot;: string}
+  }
+}
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p>OCP\Files\Events\Node\NodeTouchedEvent</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>array{
+  &quot;user&quot;: array {&quot;uid&quot;: string, &quot;displayName&quot;: string},
+  &quot;time&quot;: int,
+  &quot;event&quot;: array{
+    &quot;class&quot;: string,
+    &quot;node&quot;: array{&quot;id&quot;: string, &quot;path&quot;: string}
+  }
+}
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p>OCP\Files\Events\Node\NodeWrittenEvent</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>array{
+  &quot;user&quot;: array {&quot;uid&quot;: string, &quot;displayName&quot;: string},
+  &quot;time&quot;: int,
+  &quot;event&quot;: array{
+    &quot;class&quot;: string,
+    &quot;node&quot;: array{&quot;id&quot;: string, &quot;path&quot;: string}
+  }
+}
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p>OCP\Files\Events\Node\NodeReadEvent</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>array{
+  &quot;user&quot;: array {&quot;uid&quot;: string, &quot;displayName&quot;: string},
+  &quot;time&quot;: int,
+  &quot;event&quot;: array{
+    &quot;class&quot;: string,
+    &quot;node&quot;: array{&quot;id&quot;: string, &quot;path&quot;: string}
+  }
+}
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p>OCP\Files\Events\Node\NodeDeletedEvent</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>array{
+  &quot;user&quot;: array {&quot;uid&quot;: string, &quot;displayName&quot;: string},
+  &quot;time&quot;: int,
+  &quot;event&quot;: array{
+    &quot;class&quot;: string,
+    &quot;node&quot;: array{&quot;id&quot;: string, &quot;path&quot;: string}
+  }
+}
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p>OCP\Files\Events\Node\NodeCopiedEvent</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>array{
+  &quot;user&quot;: array {&quot;uid&quot;: string, &quot;displayName&quot;: string},
+  &quot;time&quot;: int,
+  &quot;event&quot;: array{
+    &quot;class&quot;: string,
+    &quot;source&quot;: array{&quot;id&quot;: string, &quot;path&quot;: string}
+    &quot;target&quot;: array{&quot;id&quot;: string, &quot;path&quot;: string}
+  }
+}
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p>OCP\Files\Events\Node\NodeRestoredEvent</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>array{
+  &quot;user&quot;: array {&quot;uid&quot;: string, &quot;displayName&quot;: string},
+  &quot;time&quot;: int,
+  &quot;event&quot;: array{
+    &quot;class&quot;: string,
+    &quot;source&quot;: array{&quot;id&quot;: string, &quot;path&quot;: string}
+    &quot;target&quot;: array{&quot;id&quot;: string, &quot;path&quot;: string}
+  }
+}
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p>OCP\Files\Events\Node\NodeRenamedEvent</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>array{
+  &quot;user&quot;: array {&quot;uid&quot;: string, &quot;displayName&quot;: string},
+  &quot;time&quot;: int,
+  &quot;event&quot;: array{
+    &quot;class&quot;: string,
+    &quot;source&quot;: array{&quot;id&quot;: string, &quot;path&quot;: string}
+    &quot;target&quot;: array{&quot;id&quot;: string, &quot;path&quot;: string}
+  }
+}
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p>OCP\Files\Events\Node\BeforeNodeCopiedEvent</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>array{
+  &quot;user&quot;: array {&quot;uid&quot;: string, &quot;displayName&quot;: string},
+  &quot;time&quot;: int,
+  &quot;event&quot;: array{
+    &quot;class&quot;: string,
+    &quot;source&quot;: array{&quot;id&quot;: string, &quot;path&quot;: string}
+    &quot;target&quot;: array{&quot;id&quot;: string, &quot;path&quot;: string}
+  }
+}
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p>OCP\Files\Events\Node\BeforeNodeRestoredEvent</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>array{
+  &quot;user&quot;: array {&quot;uid&quot;: string, &quot;displayName&quot;: string},
+  &quot;time&quot;: int,
+  &quot;event&quot;: array{
+    &quot;class&quot;: string,
+    &quot;source&quot;: array{&quot;id&quot;: string, &quot;path&quot;: string}
+    &quot;target&quot;: array{&quot;id&quot;: string, &quot;path&quot;: string}
+  }
+}
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p>OCP\Files\Events\Node\BeforeNodeRenamedEvent</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>array{
+  &quot;user&quot;: array {&quot;uid&quot;: string, &quot;displayName&quot;: string},
+  &quot;time&quot;: int,
+  &quot;event&quot;: array{
+    &quot;class&quot;: string,
+    &quot;source&quot;: array{&quot;id&quot;: string, &quot;path&quot;: string}
+    &quot;target&quot;: array{&quot;id&quot;: string, &quot;path&quot;: string}
+  }
+}
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../ai/ai_as_a_service.html" class="btn btn-neutral float-left" title="AI as a Service" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../windmill_workflows/index.html" class="btn btn-neutral float-right" title="Windmill Workflows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

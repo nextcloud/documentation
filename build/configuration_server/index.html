@@ -1,0 +1,317 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nextcloud configuration &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Warnings on admin page" href="security_setup_warnings.html" />
+    <link rel="prev" title="Uninstallation" href="../installation/uninstallation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Nextcloud configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="security_setup_warnings.html">Warnings on admin page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html">Configuration Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activity_configuration.html">Activity app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin_delegation_configuration.html">Administration privileges (Delegation)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antivirus_configuration.html">Antivirus scanner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="automatic_configuration.html">Automatic setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background_jobs_configuration.html">Background jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bruteforce_configuration.html">Brute force protection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching_configuration.html">Memory caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard_configuration.html">Dashboard app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domain_change.html">Domain Change</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email_configuration.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_sites.html">Linking external sites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language_configuration.html">Language &amp; Locale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging_configuration.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2.html">OAuth2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse_proxy_configuration.html">Reverse proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_configuration.html">Text app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming.html">Theming</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Nextcloud configuration</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_server/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="nextcloud-configuration">
+<h1>Nextcloud configuration<a class="headerlink" href="#nextcloud-configuration" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="security_setup_warnings.html">Warnings on admin page</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="security_setup_warnings.html#cache-warnings">Cache warnings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_setup_warnings.html#transactional-file-locking-is-disabled">Transactional file locking is disabled</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_setup_warnings.html#you-are-accessing-this-site-via-http">You are accessing this site via HTTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_setup_warnings.html#the-test-with-getenv-path-only-returns-an-empty-response">The test with getenv(&quot;PATH&quot;) only returns an empty response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_setup_warnings.html#the-strict-transport-security-http-header-is-not-configured">The “Strict-Transport-Security” HTTP header is not configured</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_setup_warnings.html#dev-urandom-is-not-readable-by-php">/dev/urandom is not readable by PHP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_setup_warnings.html#your-web-server-is-not-yet-set-up-properly-to-allow-file-synchronization">Your Web server is not yet set up properly to allow file synchronization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_setup_warnings.html#outdated-nss-openssl-version">Outdated NSS / OpenSSL version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_setup_warnings.html#your-web-server-is-not-set-up-properly-to-resolve-well-known-caldav-or-well-known-carddav">Your Web server is not set up properly to resolve /.well-known/caldav/ or /.well-known/carddav/</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_setup_warnings.html#some-files-have-not-passed-the-integrity-check">Some files have not passed the integrity check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_setup_warnings.html#your-database-does-not-run-with-read-committed-transaction-isolation-level">Your database does not run with “READ COMMITTED” transaction isolation level</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="config_sample_php_parameters.html">Configuration Parameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#loading">Loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#format">Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#modifying">Modifying</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#defaults">Defaults</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#multiple-merged-configuration-files">Multiple/Merged Configuration Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#default-parameters">Default Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#user-experience">User Experience</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#user-session">User session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#mail-parameters">Mail Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#proxy-configurations">Proxy Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#deleted-items-trash-bin">Deleted Items (trash bin)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#file-versions">File versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#nextcloud-verifications">Nextcloud Verifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#logging">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#alternate-code-locations">Alternate Code Locations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#apps">Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#previews">Previews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#ldap">LDAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#comments">Comments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#maintenance">Maintenance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#ssl">SSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#memory-caching-backend-configuration">Memory caching backend configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#using-object-store-with-nextcloud">Using Object Store with Nextcloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#sharing">Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#federated-cloud-sharing">Federated Cloud Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#hashing">Hashing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#all-other-configuration-options">All other configuration options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html#app-config-options">App config options</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="activity_configuration.html">Activity app</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="activity_configuration.html#enabling-the-activity-app">Enabling the activity app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activity_configuration.html#configuring-your-nextcloud-for-the-activity-app">Configuring your Nextcloud for the activity app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activity_configuration.html#activities-in-groupfolders-or-external-storages">Activities in groupfolders or external storages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activity_configuration.html#better-scheduling-of-activity-emails">Better scheduling of activity emails</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="admin_delegation_configuration.html">Administration privileges (Delegation)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="admin_delegation_configuration.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin_delegation_configuration.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="antivirus_configuration.html">Antivirus scanner</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="antivirus_configuration.html#installing-clamav">Installing ClamAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antivirus_configuration.html#enabling-the-antivirus-app-for-files">Enabling the antivirus app for files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antivirus_configuration.html#configuring-clamav-on-nextcloud">Configuring ClamAV on Nextcloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antivirus_configuration.html#confirm-everything-is-working">Confirm everything is working</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antivirus_configuration.html#manage-the-background-scanner">Manage the background scanner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antivirus_configuration.html#configuring-icap-on-nextcloud">Configuring ICAP on Nextcloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antivirus_configuration.html#disabling-background-scan-task">Disabling background scan task</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="automatic_configuration.html">Automatic setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="automatic_configuration.html#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="automatic_configuration.html#automatic-configurations-examples">Automatic configurations examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="background_jobs_configuration.html">Background jobs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="background_jobs_configuration.html#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background_jobs_configuration.html#cron-jobs">Cron jobs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bruteforce_configuration.html">Brute force protection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bruteforce_configuration.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bruteforce_configuration.html#how-it-works">How it works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bruteforce_configuration.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bruteforce_configuration.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="caching_configuration.html">Memory caching</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="caching_configuration.html#recommendations-based-on-type-of-deployment">Recommendations based on type of deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching_configuration.html#id1">APCu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching_configuration.html#id2">Redis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching_configuration.html#install-redis-label">Memcached</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching_configuration.html#cache-directory-location">Cache Directory location</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dashboard_configuration.html">Dashboard app</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dashboard_configuration.html#enabling-the-dashboard-app">Enabling the dashboard app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard_configuration.html#configuring-your-nextcloud-for-the-activity-app">Configuring your Nextcloud for the activity app</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="domain_change.html">Domain Change</a></li>
+<li class="toctree-l1"><a class="reference internal" href="email_configuration.html">Email</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="email_configuration.html#mail-providers">Mail Providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email_configuration.html#configuring-an-smtp-server">Configuring an SMTP server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email_configuration.html#configuring-sendmail-qmail">Configuring Sendmail/qmail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email_configuration.html#using-email-templates">Using email templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email_configuration.html#setting-mail-server-parameters-in-config-php">Setting mail server parameters in config.php</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email_configuration.html#send-a-test-email">Send a test email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email_configuration.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="external_sites.html">Linking external sites</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="external_sites.html#configurations-preventing-embedding">Configurations preventing embedding</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="language_configuration.html">Language &amp; Locale</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="language_configuration.html#default-language">Default language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language_configuration.html#force-language">Force language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language_configuration.html#default-locale">Default locale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language_configuration.html#force-locale">Force locale</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="logging_configuration.html">Logging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="logging_configuration.html#log-level">Log level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging_configuration.html#log-type">Log type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging_configuration.html#log-fields-explained">Log fields explained</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging_configuration.html#admin-audit-log-optional">Admin audit log (Optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging_configuration.html#workflow-log">Workflow log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging_configuration.html#temporary-overrides">Temporary overrides</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="oauth2.html">OAuth2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="oauth2.html#add-an-oauth2-application">Add an OAuth2 Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2.html#the-access-token">The access token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2.html#security-considerations">Security considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reverse_proxy_configuration.html">Reverse proxy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reverse_proxy_configuration.html#defining-trusted-proxies">Defining trusted proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse_proxy_configuration.html#overwrite-parameters">Overwrite parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse_proxy_configuration.html#service-discovery">Service Discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse_proxy_configuration.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="text_configuration.html">Text app</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="text_configuration.html#disable-rich-workspaces-globally">Disable rich workspaces globally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_configuration.html#default-file-extension">Default file extension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_configuration.html#disable-rich-text-editing">Disable rich text editing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_configuration.html#file-encodings">File encodings</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="theming.html">Theming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theming.html#modify-the-appearance-of-nextcloud">Modify the appearance of Nextcloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming.html#configure-theming-through-cli">Configure theming through CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming.html#theming-of-icons">Theming of icons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming.html#branded-clients">Branded clients</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../installation/uninstallation.html" class="btn btn-neutral float-left" title="Uninstallation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="security_setup_warnings.html" class="btn btn-neutral float-right" title="Warnings on admin page" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

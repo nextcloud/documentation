@@ -1,0 +1,428 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Configuring Object Storage as Primary Storage &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Configuring External Storage (GUI)" href="external_storage_configuration_gui.html" />
+    <link rel="prev" title="Providing default files" href="default_files_configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">File sharing and management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="file_sharing_configuration.html">File Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing_configuration.html">Configuring Federation Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="big_file_upload_configuration.html">Uploading big files &gt; 512MB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="default_files_configuration.html">Providing default files</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuring Object Storage as Primary Storage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#differences-from-external-storage">Differences from External Storage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#performance-implications">Performance Implications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-backup-and-recovery-implications">Data Backup and Recovery Implications</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#openstack-swift">OpenStack Swift</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#simple-storage-service-s3">Simple Storage Service (S3)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#microsoft-azure-blob-storage">Microsoft Azure Blob Storage</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#multibucket-object-store">Multibucket Object Store</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#s3-sse-c-encryption-support">S3 SSE-C encryption support</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="external_storage_configuration_gui.html">Configuring External Storage (GUI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_storage/auth_mechanisms.html">External Storage authentication mechanisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encryption_configuration.html">Encryption configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encryption_details.html">Encryption details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encryption_migration.html">Encryption migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files_locking_transactional.html">Transactional file locking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="previews_configuration.html">Previews configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_versioning.html">Controlling file versions and aging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trashbin_configuration.html">Deleted Items (trash bin)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">File sharing and management</a></li>
+      <li class="breadcrumb-item active">Configuring Object Storage as Primary Storage</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_files/primary_storage.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="configuring-object-storage-as-primary-storage">
+<h1>Configuring Object Storage as Primary Storage<a class="headerlink" href="#configuring-object-storage-as-primary-storage" title="Link to this heading"></a></h1>
+<p>Nextcloud allows to configure object storages like OpenStack Swift or
+Amazon Simple Storage Service (S3) or any compatible S3-implementation
+(e.g. Minio or Ceph Object Gateway) as primary storage replacing the default
+storage of files.</p>
+<p>By default, files are stored in <code class="code docutils literal notranslate"><span class="pre">nextcloud/data</span></code> or another directory configured
+in the <code class="code docutils literal notranslate"><span class="pre">config.php</span></code> of your Nextcloud instance. This data directory might
+still be used for compatibility reasons)</p>
+<section id="differences-from-external-storage">
+<h2>Differences from External Storage<a class="headerlink" href="#differences-from-external-storage" title="Link to this heading"></a></h2>
+<p>When  an object store is used as Primary Storage, Nextcloud requires exclusive access
+over the bucket being used. All metadata (filenames, directory structures, etc)
+is stored in Nextcloud and not in the object store. The metadata is only stored in the database and the
+object store only holds the file content by unique identifier.</p>
+<section id="performance-implications">
+<h3>Performance Implications<a class="headerlink" href="#performance-implications" title="Link to this heading"></a></h3>
+<p>Because of this, object stores configured as Primary Storage usually perform better than
+when using the same object store via the External Storage support application, but the downside
+is being unable to access the files from outside of Nextcloud. This makes using an object store
+as Primary Storage distinct from using an object store via External Storage.</p>
+</section>
+<section id="data-backup-and-recovery-implications">
+<h3>Data Backup and Recovery Implications<a class="headerlink" href="#data-backup-and-recovery-implications" title="Link to this heading"></a></h3>
+<p>One impact of using an object store as Primary Storage is that your data backup strategy
+needs to incorporate this. <strong>Your data is longer stored on your Nextcloud server, but your
+files are also no longer accessible by simply bypassing your Nextcloud server and accessing
+your object store directly.</strong></p>
+</section>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>Primary object stores need to be configured in <code class="code docutils literal notranslate"><span class="pre">config.php</span></code> by specifying
+the objectstore backend and any backend specific configuration.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Configuring a primary object store on an existing Nextcloud instance will
+make all existing files on the instance inaccessible.</p>
+</div>
+<p>The configuration has the following structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;objectstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Object</span><span class="se">\\</span><span class="s1">Storage</span><span class="se">\\</span><span class="s1">Backend</span><span class="se">\\</span><span class="s1">Class&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="o">...</span>
+        <span class="p">],</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+<section id="openstack-swift">
+<h3>OpenStack Swift<a class="headerlink" href="#openstack-swift" title="Link to this heading"></a></h3>
+<p>The OpenStack Swift backend mounts a container on an OpenStack Object Storage
+server into the virtual filesystem.</p>
+<p>The class to be used is <code class="code docutils literal notranslate"><span class="pre">\OC\Files\ObjectStore\Swift</span></code></p>
+<p>Both openstack v2 and v3 authentication are supported,</p>
+<p>V2 Authentication:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;objectstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">OC</span><span class="se">\\</span><span class="s1">Files</span><span class="se">\\</span><span class="s1">ObjectStore</span><span class="se">\\</span><span class="s1">Swift&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;username&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Secr3tPaSSWoRdt7&#39;</span><span class="p">,</span>
+                <span class="o">//</span> <span class="n">the</span> <span class="n">container</span> <span class="n">to</span> <span class="n">store</span> <span class="n">the</span> <span class="n">data</span> <span class="ow">in</span>
+                <span class="s1">&#39;bucket&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;autocreate&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+                <span class="s1">&#39;region&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;RegionOne&#39;</span><span class="p">,</span>
+                <span class="o">//</span> <span class="n">The</span> <span class="n">Identity</span> <span class="o">/</span> <span class="n">Keystone</span> <span class="n">endpoint</span>
+                <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;http://example.com/v2.0&#39;</span><span class="p">,</span>
+                <span class="o">//</span> <span class="n">optional</span> <span class="n">on</span> <span class="n">some</span> <span class="n">swift</span> <span class="n">implementations</span>
+                <span class="s1">&#39;tenantName&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;username&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;serviceName&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;swift&#39;</span><span class="p">,</span>
+                <span class="o">//</span> <span class="n">The</span> <span class="n">Interface</span> <span class="o">/</span> <span class="n">url</span> <span class="n">Type</span><span class="p">,</span> <span class="n">optional</span>
+                <span class="s1">&#39;urlType&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;internal&#39;</span>
+        <span class="p">],</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+<p>V3 Authentication:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;objectstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;OC</span><span class="se">\\</span><span class="s1">Files</span><span class="se">\\</span><span class="s1">ObjectStore</span><span class="se">\\</span><span class="s1">Swift&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s1">&#39;autocreate&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+                <span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;UserName&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Secr3tPaSSWoRdt7&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;domain&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                                <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Default&#39;</span><span class="p">,</span>
+                        <span class="p">],</span>
+                <span class="p">],</span>
+                <span class="s1">&#39;scope&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                        <span class="s1">&#39;project&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                                <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;TenantName&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;domain&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                                        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Default&#39;</span><span class="p">,</span>
+                                <span class="p">],</span>
+                        <span class="p">],</span>
+                <span class="p">],</span>
+                <span class="s1">&#39;serviceName&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;swift&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;region&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;regionOne&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;http://example.com/v3&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;bucket&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+</section>
+<section id="simple-storage-service-s3">
+<h3>Simple Storage Service (S3)<a class="headerlink" href="#simple-storage-service-s3" title="Link to this heading"></a></h3>
+<p>The Simple Storage Service (S3) backend mounts a bucket on an Amazon S3 object
+storage or compatible implementation (e.g. Minio or Ceph Object Gateway) into the
+virtual filesystem.</p>
+<p>The class to be used is <code class="code docutils literal notranslate"><span class="pre">\OC\Files\ObjectStore\S3</span></code></p>
+<p>Amazon-hosted S3:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;objectstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">OC</span><span class="se">\\</span><span class="s1">Files</span><span class="se">\\</span><span class="s1">ObjectStore</span><span class="se">\\</span><span class="s1">S3&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s1">&#39;bucket&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my-nextcloud-store&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;region&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;us-east-1&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;EJ39ITYZEUH5BGWDRUFY&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;secret&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;M5MrXTRjkyMaxXPe2FRXMTfTfbKEnZCu+7uRTVSj&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+<p>Non-Amazon hosted S3:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;objectstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">OC</span><span class="se">\\</span><span class="s1">Files</span><span class="se">\\</span><span class="s1">ObjectStore</span><span class="se">\\</span><span class="s1">S3&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s1">&#39;bucket&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my-nextcloud-store&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;hostname&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;s3.example.com&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;EJ39ITYZEUH5BGWDRUFY&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;secret&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;M5MrXTRjkyMaxXPe2FRXMTfTfbKEnZCu+7uRTVSj&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">8443</span><span class="p">,</span>
+                <span class="o">//</span> <span class="n">required</span> <span class="k">for</span> <span class="n">some</span> <span class="n">non</span><span class="o">-</span><span class="n">Amazon</span> <span class="n">S3</span> <span class="n">implementations</span>
+                <span class="s1">&#39;use_path_style&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+        <span class="p">],</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+<p>Minimum required parameters are:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">bucket</span></code> [Note: Even if non-Amazon hosted, bucket names must meet AWS S3 naming requirements regardless of what your S3 provider/platform considers acceptable - i.e. no underscores]</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">key</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">secret</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You will <em>probably</em> need to specify additional parameters beyond these, unless the default
+values (see below) exactly match your situation. In particular, your <code class="code docutils literal notranslate"><span class="pre">region</span></code> (if Amazon
+hosted) or <code class="code docutils literal notranslate"><span class="pre">hostname</span></code> (if non-Amazon hosted).</p>
+</div>
+<p>Optional parameters most commonly needing adjustment (and their defaults values if left
+unconfigured):</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">region</span></code> defaults to <code class="code docutils literal notranslate"><span class="pre">eu-west-1</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">storageClass</span></code> defaults to <code class="code docutils literal notranslate"><span class="pre">STANDARD</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">hostname</span></code> defaults to <code class="code docutils literal notranslate"><span class="pre">s3.REGION.amazonaws.com</span></code> [Note: If using this parameter (non-Amazon), specify the generic S3 endpoint hostname, <strong>not</strong> the hostname that contains your bucket name]</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">use_ssl</span></code> defaults to <code class="code docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+<p>Optional parameters sometimes needing adjustment:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">use_path_style</span></code> defaults to <code class="code docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">port</span></code> defaults to <code class="code docutils literal notranslate"><span class="pre">443</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">sse_c_key</span></code> has no default</p></li>
+</ul>
+<p>Optional parameters less commonly needing adjustment:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">concurrency</span></code> defaults to <code class="code docutils literal notranslate"><span class="pre">5</span></code> [Note: This defines the maximum number of concurrent multipart uploads]</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">proxy</span></code> defaults to <code class="code docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">timeout</span></code> defaults to <code class="code docutils literal notranslate"><span class="pre">15</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">uploadPartSize</span></code> defaults to <code class="code docutils literal notranslate"><span class="pre">524288000</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">putSizeLimit</span></code> defaults to <code class="code docutils literal notranslate"><span class="pre">104857600</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">useMultipartCopy</span></code> defaults to <code class="code docutils literal notranslate"><span class="pre">true</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">copySizeLimit</span></code> defaults to <code class="code docutils literal notranslate"><span class="pre">5242880000</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">legacy_auth</span></code> has no default</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">version</span></code> defaults to <code class="code docutils literal notranslate"><span class="pre">latest</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">verify_bucket_exists</span></code> defaults to <code class="code docutils literal notranslate"><span class="pre">true</span></code> [Note: Setting this to <code class="code docutils literal notranslate"><span class="pre">false</span></code> <em>after</em> confirming the bucket has been created may provide a performance benefit, but may not be possible in multibucket scenarios.]</p></li>
+</ul>
+<p><strong>If you are using Amazon S3:</strong> the <code class="code docutils literal notranslate"><span class="pre">region</span></code> parameter is required unless you’re happy with
+the default of <code class="code docutils literal notranslate"><span class="pre">eu-west-1</span></code>. There is no need to override the <code class="code docutils literal notranslate"><span class="pre">hostname</span></code> or <code class="code docutils literal notranslate"><span class="pre">port</span></code>.
+And <code class="code docutils literal notranslate"><span class="pre">storageClass</span></code> only needs to be modified if you’re using a different configuration at AWS.
+Lastly, <code class="code docutils literal notranslate"><span class="pre">use_path_style</span></code> is rarely required with Amazon, but some legacy Amazon datacenters
+may require it.</p>
+<p><strong>If you using a non-Amazon hosted S3 store:</strong> you will need to set the <code class="code docutils literal notranslate"><span class="pre">hostname</span></code>
+parameter (and can ignore the <code class="code docutils literal notranslate"><span class="pre">region</span></code> parameter). You may need to use <code class="code docutils literal notranslate"><span class="pre">use_path_style</span></code>
+if your non-Amazon S3 store does <em>not</em> support requests like <code class="code docutils literal notranslate"><span class="pre">https://bucket.hostname.domain/</span></code>.
+Setting <code class="code docutils literal notranslate"><span class="pre">use_path_style</span></code> to true configures the S3 client to make requests like
+<code class="code docutils literal notranslate"><span class="pre">https://hostname.domain/bucket</span></code> instead.</p>
+</section>
+<section id="microsoft-azure-blob-storage">
+<h3>Microsoft Azure Blob Storage<a class="headerlink" href="#microsoft-azure-blob-storage" title="Link to this heading"></a></h3>
+<p>The Azure Blob Storage backend mounts a container on Microsoft’s Azure Blob Storage into the
+virtual filesystem.</p>
+<p>The class to be used is <code class="code docutils literal notranslate"><span class="pre">\OC\Files\ObjectStore\Azure</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;objectstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">OC</span><span class="se">\\</span><span class="s1">Files</span><span class="se">\\</span><span class="s1">ObjectStore</span><span class="se">\\</span><span class="s1">Azure&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s1">&#39;container&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;autocreate&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+                <span class="s1">&#39;account_name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;account_name&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;account_key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;xxxxxxxxxx&#39;</span>
+        <span class="p">],</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="multibucket-object-store">
+<h2>Multibucket Object Store<a class="headerlink" href="#multibucket-object-store" title="Link to this heading"></a></h2>
+<p>It’s possible to configure Nextcloud to distribute the data over multiple buckets
+for scalability purposes.</p>
+<p>To setup multiple buckets, use <code class="code docutils literal notranslate"><span class="pre">'objectstore_multibucket'</span></code> storage backend
+in <code class="code docutils literal notranslate"><span class="pre">config.php</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;objectstore_multibucket&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Object</span><span class="se">\\</span><span class="s1">Storage</span><span class="se">\\</span><span class="s1">Backend</span><span class="se">\\</span><span class="s1">Class&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="o">//</span> <span class="n">optional</span><span class="p">,</span> <span class="n">defaults</span> <span class="n">to</span> <span class="mi">64</span>
+                <span class="s1">&#39;num_buckets&#39;</span> <span class="o">=&gt;</span> <span class="mi">64</span><span class="p">,</span>
+                <span class="o">//</span> <span class="n">will</span> <span class="n">be</span> <span class="n">postfixed</span> <span class="n">by</span> <span class="n">an</span> <span class="n">integer</span> <span class="ow">in</span> <span class="n">the</span> <span class="nb">range</span> <span class="kn">from</span><span class="w"> </span><span class="mi">0</span> <span class="n">to</span> <span class="p">(</span><span class="n">num_nuckets</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+                <span class="s1">&#39;bucket&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud_&#39;</span><span class="p">,</span>
+                <span class="o">...</span>
+        <span class="p">],</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+<p>Multibucket object store backend maps every user to a range of buckets and saves
+all files for that user in their corresponding bucket.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While it is possible to change the number of buckets used by an existing Nextcloud
+instance, the user-to-buckets mapping is only created once, so only newly created
+users will be mapped to the updated range of buckets.</p>
+</div>
+<p>You can find out more information about upscaling with object storage and Nextcloud in the
+<a class="reference external" href="https://portal.nextcloud.com/article/object-store-as-primary-storage-16.html">Nextcloud customer portal</a>.</p>
+</section>
+<section id="s3-sse-c-encryption-support">
+<h2>S3 SSE-C encryption support<a class="headerlink" href="#s3-sse-c-encryption-support" title="Link to this heading"></a></h2>
+<p>Nextcloud supports server side encryption, also known as <a class="reference external" href="http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html">SSE-C</a>, with compatible S3 bucket provider. The encryption and decryption happens on the S3 bucket side with a key provided by the Nextcloud server.</p>
+<p>The key can be specified with the <code class="code docutils literal notranslate"><span class="pre">sse_c_key</span></code> parameter which needs to be provided as a base64 encoded string with a maximum length of 32 bytes. A random key could be generated using the the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">openssl</span> <span class="n">rand</span> <span class="mi">32</span> <span class="o">|</span> <span class="n">base64</span>
+</pre></div>
+</div>
+<p>The following example shows how to configure the S3 object store with SSE-C encryption support in the objectstore section of the Nextcloud config.php file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;objectstore&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="n">array</span> <span class="p">(</span>
+                <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;OC</span><span class="se">\\</span><span class="s1">Files</span><span class="se">\\</span><span class="s1">ObjectStore</span><span class="se">\\</span><span class="s1">S3&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span>
+                <span class="n">array</span> <span class="p">(</span>
+                        <span class="s1">&#39;bucket&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;secret&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;hostname&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;s3&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;443&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;use_ssl&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+                        <span class="s1">&#39;use_path_style&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+                        <span class="s1">&#39;autocreate&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+                        <span class="s1">&#39;verify_bucket_exists&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+                        <span class="s1">&#39;sse_c_key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;o9d3Q9tHcPMv6TIpH53MSXaUmY91YheZRwuIhwCFRSs=&#39;</span><span class="p">,</span>
+                <span class="p">),</span>
+        <span class="p">);</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="default_files_configuration.html" class="btn btn-neutral float-left" title="Providing default files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="external_storage_configuration_gui.html" class="btn btn-neutral float-right" title="Configuring External Storage (GUI)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
