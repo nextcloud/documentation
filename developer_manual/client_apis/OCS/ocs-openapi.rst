@@ -606,7 +606,7 @@ You are required to add a description for every status code returned by the meth
 How to add response definitions to share type definitions
 ---------------------------------------------------------
 
-In the previous steps we have been re-using the same data structure multiple times, but it was copied every time.
+In the previous steps we have been reusing the same data structure multiple times, but it was copied every time.
 This is tedious and error prone, therefore we want to create some shared type definitions.
 Create a new file called ``ResponseDefinitions.php`` in the ``lib`` folder of your app.
 It will only work with that file name at that location.
