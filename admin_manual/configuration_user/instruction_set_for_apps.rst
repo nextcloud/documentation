@@ -90,7 +90,7 @@ XML output
       <id>files</id>
       <name>Files</name>
       <description>File Management</description>
-      <licence>AGPL</licence>
+      <licence>AGPL-3.0-or-later</licence>
       <author>Robin Appelman</author>
       <require>4.9</require>
       <shipped>true</shipped>

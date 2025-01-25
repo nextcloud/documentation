@@ -17,6 +17,7 @@ $mapping = array(
     'admin-db-conversion'     => '/admin_manual/configuration_database/db_conversion.html',
     'admin-db-transaction'    => '/admin_manual/configuration_database/linux_database_configuration.html#database-read-committed-transaction-isolation-level',
     'admin-delegation'        => '/admin_manual/configuration_server/admin_delegation_configuration.html',
+    'admin-deploy-options'    => '/admin_manual/exapps_management/AdvancedDeployOptions.html',
     'admin-email'             => '/admin_manual/configuration_server/email_configuration.html',
     'admin-encryption'        => '/admin_manual/configuration_files/encryption_configuration.html',
     'admin-external-storage'  => '/admin_manual/configuration_files/external_storage_configuration_gui.html',

@@ -42,11 +42,12 @@ The following built-in task types are available:
     * Input shape:
        * ``system_prompt``: ``Text``
        * ``input``: ``Text``
-       * ``history``: ``ListOfTexts``
-       * ``tools``: ``Text`` The tools parameter should be a JSON object formatted according to the OpenAI API specifications: https://platform.openai.com/docs/api-reference/chat/create#chat-create-tools
+       * ``tool_message``: ``Text`` A string containing a JSON array of ``{"name": string, "content": string, "tool_call_id": string}``
+       * ``history``: ``ListOfTexts`` Each list item is a JSON string with ``{"role": "human", "content": string}`` or ``{"role": "assistant", "content": string, (optional: "tool_calls": array<{"name": string, "type": "tool_call", "id": string, "args": object}>)}`` or ``{"role": "tool", "content": string, "name": string, "tool_call_id": string}``
+       * ``tools``: ``Text`` The tools parameter should be a JSON array formatted according to the OpenAI API specifications: https://platform.openai.com/docs/api-reference/chat/create#chat-create-tools
     * Output shape:
        * ``output``: ``Text``
-       * ``tool_calls``: ``Text``
+       * ``tool_calls``: ``Text`` A string containing a JSON array with ``{"name": string, "type": "tool_call", "id": string, "args": object}``
  * ``'core:contextagent:interaction'``: This task allows chatting with an agent. It is implemented by ``\OCP\TaskProcessing\TaskTypes\ContextAgentInteraction``
     * Input shape:
        * ``input``: ``Text``

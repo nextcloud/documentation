@@ -42,6 +42,8 @@ The AI admin settings will show all types of Assistant Tasks that are implemente
 
 **Note**: When using our on-premise AI apps, make sure you have a GPU with enough VRAM that fits all the features you need. For each app documented here you will find its hardware requirements.
 
+.. _machine_translation:
+
 Machine translation
 ~~~~~~~~~~~~~~~~~~~
 
@@ -84,7 +86,7 @@ Text-To-Image
 
 In order to make use of Text-To-Image features, you will need an app that provides an image generation backend:
 
-* text2image_stablediffusion (Customer support available upon request)
+* :ref:`tex2image_stablediffusion2<ai-app-text2image_stablediffusion2>` (Customer support available upon request)
 * *integration_openai* - Integrates with the OpenAI API to provide AI functionality from OpenAI servers (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 * *integration_replicate* - Integrates with the replicate API to provide AI functionality from replicate servers (see :ref:`AI as a Service<ai-ai_as_a_service>`)
 
@@ -96,6 +98,17 @@ In order to make use of our special Context Chat feature, offering in-context in
 * :ref:`context_chat + context_chat_backend<ai-app-context_chat>` -  (Customer support available upon request)
 
 You will also need a text processing provider as specified above (ie. llm2 or integration_openai).
+
+Context Agent
+~~~~~~~~~~~~~
+
+In order to make use of our AI agent feature, offering the execution of actions on behalf of the user based on the AI chat, you will need the following apps:
+
+
+* :ref:`context_agent<ai-app-context_agent>` -  (Customer support available upon request)
+
+
+You will also need a text processing provider as specified above (ie. *llm2* or *integration_openai*).
 
 Configuration
 -------------
@@ -146,19 +159,19 @@ Task processing
 
 .. code-block::
 
-   occ taskprocessing:task:list 
+   occ taskprocessing:task:list
 
 lists all task processing tasks.
 
-2. Get Task 
+2. Get Task
 
 .. code-block::
 
-   occ taskprocessing:task:get $TASK_ID 
+   occ taskprocessing:task:get $TASK_ID
 
 shows all information for a specific task.
 
-3. Enable or disable a Task type 
+3. Enable or disable a Task type
 
 .. code-block::
 

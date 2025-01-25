@@ -5,8 +5,8 @@ JavaScript and Typescript
 .. contents::
 	 :local:
 
-General rules and advices
--------------------------
+General rules and advice
+------------------------
 
 - Nextcloud uses Vue.js for its interface, for a consistent user interface we recommend apps to also use Vue with :ref:`provided components <js-library_nextcloud-vue>`.
   Yet also vanilla JavaScript and HTML can be used.
