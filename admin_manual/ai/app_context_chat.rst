@@ -72,16 +72,16 @@ Installation
 Initial loading of data
 -----------------------
 
-Context chat will automatically load user data into the Vector DB using background jobs. To speed this up, you can run the following command to index all documents for a user synchronously:
-Note: This does not interact with the auto-indexing feature and that list would remain unchanged. However, the indexed files would be skipped when the auto indexer runs.
+| Context chat will automatically load user data into the Vector DB using background jobs.
+| The initial loading of data can take a long time depending on the number of files and their size.
+| To speed up the asynchronous indexing or to stop it altogether, see the `Configuration Options (OCC)`_.
+
+| To index all the files synchronously, use the following command:
+| Note: This does not interact with the auto-indexing feature and that list would remain unchanged. However, the indexed files would be skipped when the auto indexer runs.
 
 .. code-block::
 
    occ context_chat:scan <user_id>
-
-To speed up the asynchronous indexing, see the `Configuration Options (OCC)`_.
-
-See :ref:`the task speedup section in AI Overview<ai-overview_improve-ai-task-pickup-speed>` to know better ways to run these jobs.
 
 Scaling
 -------
@@ -138,6 +138,13 @@ Configuration Options (OCC)
 
    occ config:app:set context_chat indexing_batch_size --value=100 --type=integer
 
+* ``indexing_job_interval`` integer (default: 600)
+   The interval at which the indexer jobs run in seconds
+
+.. code-block::
+
+   occ config:app:set context_chat indexing_job_interval --value=600 --type=integer
+
 * ``indexing_max_time`` integer (default: 1800)
    The number of seconds to index files for per run, regardless of batch size
 
@@ -152,6 +159,14 @@ Configuration Options (OCC)
 
    occ config:app:set context_chat indexing_max_jobs_count --value=3 --type=integer
 
+* ``request_timeout`` integer (default: 3000)
+   Request timeout in seconds for all requests made to the Context chat backend (the external app in AppAPI).
+   If a docker socket proxy is used, the ``TIMEOUT_SERVER`` environment variable should be set to a value higher than ``request_timeout``.
+
+.. code-block::
+
+   occ config:app:set context_chat request_timeout --value=3 --type=integer
+
 
 Configuration Options (Backend)
 -------------------------------
@@ -159,11 +174,20 @@ Configuration Options (Backend)
 Refer to `the Configuration head <https://github.com/nextcloud/context_chat_backend?tab=readme-ov-file#configuration>`_ in the backend's readme.
 
 
+Logs
+----
+
+Logs for the ``context_chat`` PHP app can be found in the Nextcloud log file, which is usually located in the Nextcloud data directory. The log file is named ``nextcloud.log``.
+
+| For the backend, warning and error logs can be found in the docker container logs, and the complete logs can be found in ``logs/`` directory in the persistent storage of the docker container.
+| That will be ``/nc_app_context_chat_backend/logs/`` in the docker container.
+| See `the Logs head <https://github.com/nextcloud/context_chat_backend?tab=readme-ov-file#logs>`_ in the backend's readme for more information.
+
 Possibility of Data Leak
 ------------------------
 
-It is possible that some users who have been denied access to certain files/folders still have access to the content of those files/folders through the Context Chat app. We're working on a solution for this.
-The users who never had access to a particular file/folder will NOT be able to see those contents in any way.
+| It is possible that some users who had access to certain files/folders (and have later have been denied this access) still have access to the content of those files/folders through the Context Chat app. We're working on a solution for this.
+| The users who never had access to a particular file/folder will NOT be able to see those contents in any way.
 
 Known Limitations
 -----------------
