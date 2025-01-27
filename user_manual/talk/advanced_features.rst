@@ -92,6 +92,8 @@ Breakout rooms
 Breakout rooms allow you to divide a Nextcloud Talk call into smaller groups for more focused discussions. The moderator
 of the call can create multiple breakout rooms and assign participants to each room.
 
+.. note:: Breakout rooms are currently not available in conversations that are joinable by guests (public conversations).
+
 Configure breakout rooms
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
