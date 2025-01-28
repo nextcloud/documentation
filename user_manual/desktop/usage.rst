@@ -194,9 +194,6 @@ depending on the used file manager. Available are e.g. ``nautilus-nextcloud``
 ``caja-nextcloud``. You can create  share links, and share with internal 
 Nextcloud users the same way as in your Nextcloud Web interface.
 
-.. figure:: images/mac-share.png
-   :alt: Sync client integration in Windows Explorer.
-
 In you file explorer, click on a file and in the context menu go to
 **Nextcloud** and then lick on **Share options** to bring up the Share
 dialog.
