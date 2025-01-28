@@ -283,5 +283,3 @@ this list:
 - Files are removed that cause individual errors three times during a
   synchronization. However, the client provides the option of retrying a
   synchronization three additional times on files that produce errors.
-
-For more detailed information see :ref:`ignored-files-label`.
