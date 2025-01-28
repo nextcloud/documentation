@@ -20,4 +20,11 @@ You can find the old documentation here:
 .. toctree::
    :maxdepth: 1
 
-
+   options
+   massdeployment
+   configfile
+   envvars
+   commandline
+   accountcommand
+   troubleshooting
+  
