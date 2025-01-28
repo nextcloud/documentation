@@ -130,3 +130,26 @@ Known Limitations
 * Make sure to test the language model you are using it for whether it meets the use-case's quality requirements
 * Language models notoriously have a high energy consumption, if you want to reduce load on your server you can choose smaller models or quantized models in exchange for lower accuracy
 * Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI)
+
+Addendum: Running with a fully open model
+-----------------------------------------
+
+If you would like to use a fully open model that scores a green score on our Ethical AI rating, we recommend the following model:
+
+* OLMo 2 (either in 7B or 14B): `<https://huggingface.co/allenai/OLMo-2-1124-7B-Instruct-GGUF>`_
+
+What makes OLMo a fully open model?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* The code for training, fine-tuning and inference of the model is publicly available nad fully open source
+* The training data with which the model is pretrained is publicly available
+* The model itself is publicly available and fully open source
+* The instruction tuning data is publicly available
+* The Reinforcement learning model is publicly available and fully open source
+
+Limitations
+~~~~~~~~~~~
+
+* OLMo currently only works well with English language input
+* In our tests it sometimes produced hallucinated or garbled output; make sure to thoroughly test the model for your use case
+* It cannot use tools, so cannot be used in conjunction with :ref:`Context Agent <ai-app-context_agent>`
