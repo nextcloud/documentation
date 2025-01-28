@@ -45,7 +45,7 @@ Some interesting values that can be set on the configuration file are:
 | ``chunkSize``                    | ``10000000`` (10 MB)     | Specifies the chunk size of uploaded files in bytes.                                                   |
 |                                  |                          | The client will dynamically adjust this size within the maximum and minimum bounds (see below).        |
 +----------------------------------+--------------------------+--------------------------------------------------------------------------------------------------------+
-| ``forceLoginV2``                 | ``false``                | If the client should force the new login flow, eventhough some circumstances might need the old flow.  |
+| ``forceLoginV2``                 | ``false``                | If the client should force the new login flow, even though some circumstances might need the old flow.  |
 +----------------------------------+--------------------------+--------------------------------------------------------------------------------------------------------+
 | ``minChunkSize``                 | ``5000000`` (5 MB)       | Specifies the minimum chunk size of uploaded files in bytes.                                           |
 +----------------------------------+--------------------------+--------------------------------------------------------------------------------------------------------+
