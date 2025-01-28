@@ -19,6 +19,7 @@ You can find the old documentation here:
 
 .. toctree::
    :maxdepth: 1
+
    installation
    usage
    macosvfs
