@@ -13,3 +13,12 @@ The environment variables are:
 - `OWNCLOUD_MAX_PARALLEL` (default: 6) - Maximum number of parallel jobs. 
 - `OWNCLOUD_BLACKLIST_TIME_MIN` (default: 25 s) - Minimum timeout for blacklisted files.
 - `OWNCLOUD_BLACKLIST_TIME_MAX` (default: 24\*60\*60 s; one day) - Maximum timeout for blacklisted files.
+
+Low Disk Space
+^^^^^^^^^^^^^^
+
+When disk space is low the Nextcloud Client will be unable to synchronize all files. This section describes its behavior in a low disk space situation as well as the options that influence it.
+
+1. Synchronization of a folder aborts entirely if the remaining disk space falls below 50 MB. This threshold can be adjusted with the ``OWNCLOUD_CRITICAL_FREE_SPACE_BYTES`` environment variable.
+
+2. Downloads that would reduce the free disk space below 250 MB will be skipped or aborted. The download will be retried regularly and other synchronization is unaffected. This threshold can be adjusted with the ``OWNCLOUD_FREE_SPACE_BYTES`` environment variable.
