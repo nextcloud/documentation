@@ -1,6 +1,6 @@
-============
+===============
 Desktop Clients
-============
+===============
 
 Available for Windows, macOS, and various Linux distributions, the Nextcloud
 Desktop Sync client enables you to:
