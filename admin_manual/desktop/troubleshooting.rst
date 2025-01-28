@@ -127,8 +127,7 @@ Other issues can affect synchronization of your Nextcloud files:
   synchronization protocol might be having an effect. Some files are
   automatically ignored because they are system files, other files might be
   ignored because their filename contains characters that are not supported on
-  certain file systems. For more information about ignored files, see
-  :ref:`ignored-files-label`.
+  certain file systems. For more information about ignored files, see `ignored-files`.
 
 - If you are operating your own server, and use the local storage backend (the
   default), make sure that Nextcloud has exclusive access to the directory.
