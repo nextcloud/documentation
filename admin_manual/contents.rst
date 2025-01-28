@@ -22,6 +22,7 @@ Table of contents
     ai/index
     webhook_listeners/index
     windmill_workflows/index
+    desktop/index
     configuration_database/index
     configuration_mimetypes/index
     maintenance/index

@@ -8,7 +8,6 @@ Table of contents
     :maxdepth: 2
 
     index
-    whats_new
     webinterface
     files/index
     groupware/index
