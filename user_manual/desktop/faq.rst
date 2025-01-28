@@ -29,12 +29,14 @@ The MSI installer will alter your system registry to register the mime to handle
 Alternatively, you can manually register the mime to handle the nc:// scheme:
 
 1. Save the following content to a .reg file:
-```
-Windows Registry Editor Version 5.00
 
-[HKEY_CLASSES_ROOT\nc\shell\open\command]
-@="\"C:\\Program Files\\Nextcloud\\nextcloud.exe\" \"%1\""
-```
+.. code-block:: none
+
+   Windows Registry Editor Version 5.00
+   
+   [HKEY_CLASSES_ROOT\nc\shell\open\command]
+   @="\"C:\\Program Files\\Nextcloud\\nextcloud.exe\" \"%1\""
+
 2. Double click on the .reg file to import it into the registry.
 
 See https://nextcloud.com/blog/nextcloud-office-release-solves-document-compatibility-overhauls-knowledge-management/ for more information.
