@@ -173,15 +173,17 @@ Another way to obtain the client log file:
 
 2. Press F12 or Ctrl-L on your keyboard.
 
-  The Log Output window opens.
+The Log Output window opens.
 
-  .. image:: /images/log_output_window.png
+.. figure:: images/log_output_window.png
+   :alt: Log output
 
 3. Click the 'Save' button.
 
-  The Save Log File window opens.
+The Save Log File window opens.
 
-  .. image:: /images/save_log_file.png
+.. figure:: images/save_log_file.png
+   :alt: Save logfile
 
 4. Migrate to a location on your system where you want to save your log file.
 
