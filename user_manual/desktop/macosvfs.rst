@@ -38,7 +38,7 @@ Supported features
    poll the server for changes.
 
 Installation and initial setup
-==============================
+------------------------------
 
 The virtual files client is distributed as an installer package that
 resembles the macOS classic sync client. The desktop client can be
@@ -73,7 +73,7 @@ synchronisation may take some time depending on the quantity of files
 hosted on the server.
 
 Finder integration
-==================
+------------------
 
 The virtual files client has distinct Finder integrations that allow it
 to more deeply and more natively integrate with the macOS file browser
@@ -112,7 +112,7 @@ of the features supported by Nextcloud. These include:
    :alt: File sharing UI for macOS virtual files
 
 Configuration
-=============
+-------------
 
 Virtual files-related settings can be adjusted on a per-account basis
 via the Nextcloud desktop client’s settings window.
