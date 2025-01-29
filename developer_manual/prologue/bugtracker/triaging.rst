@@ -2,6 +2,13 @@
 Nextcloud bug triaging
 ======================
 
+TODO: document new process?
+
+Background:
+
+- So my ultimate goal is to add to all bug reports a label like "25-feedback". Then as soon as in this case 25 goes EOL, we can go through them again and ask people to check if the issue still applies. By doing so we make sure that issues dont go stale anymore. However since there are currently so many issues that dont have such a label, I cannot possibly test all of them on my own. That is why I am asking the people to help me, namely the one that created the issue to verify if the issue still applies. So that is also what I would recommend to you: only check the ones that you opened and unsubscribe from the other ones. I hope this makes senese!
+- However I actually try to get more people into the boat helping to triage, namely the community and the ones that created the issue so that the load is shared accross shoulders. Also once the new system is in place, I hope that people will be more active and maybe join this process because they will see that it is not a countless list of things anymore but a manageable list suddenly. Also I hope that going through the tickets regularly will bring up some more PRs from the community because they see that we care.
+
 .. toctree::
    :maxdepth: 2
    :hidden:
