@@ -101,7 +101,7 @@ If you for instance want to install everything but the ``DesktopShortcut`` and t
     You cannot use these to change the installed features, if you want to do that, see the next section.
 
 Changing Installed Features
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can change the installed features later by using `REMOVE` and `ADDDEFAULT` properties.
 
