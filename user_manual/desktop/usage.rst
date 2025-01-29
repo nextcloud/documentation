@@ -70,9 +70,7 @@ The main dialogs show recent activities, errors and server notifications.
 When clicking on the main dialog and then clicking on the avatar of the user, the Settings can be opened.
 
 Configuring Nextcloud Account Settings
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. index:: account settings, user, password, Server URL
+--------------------------------------
 
 .. figure:: images/settingsdialog.png
    :alt: Main dialog
@@ -114,7 +112,7 @@ Folder Sync Connection**.
    <https://github.com/owncloud/core/issues/7009>`_ for discussion of this.
 
 Adding New Accounts
-^^^^^^^^^^^^^^^^^^^
+-------------------
 
 You may configure multiple Nextcloud accounts in your desktop sync client. Simply
 click the **Account** > **Add New** button on any account tab to add a new
