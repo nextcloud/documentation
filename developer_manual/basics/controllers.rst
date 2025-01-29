@@ -339,7 +339,71 @@ Cookies can be set or modified directly on the response class:
 Responses
 ---------
 
-Similar to how every controller receives a request object, every controller method has to return a Response. This can be in the form of a Response subclass or in the form of a value that can be handled by a registered responder.
+Similar to how every controller receives a request object, every controller method has to return a Response.
+This can be in the form of a Response subclass or in the form of a value that can be handled by a registered responder.
+
+.. _controller_html_responses:
+
+HTML-based Responses
+--------------------
+
+Templates
+^^^^^^^^^
+
+Public page templates
+^^^^^^^^^^^^^^^^^^^^^
+
+
+Data-based responses
+--------------------
+
+OCS
+^^^
+
+JSON
+^^^^
+
+Handling errors
+^^^^^^^^^^^^^^^
+
+Responders
+^^^^^^^^^^
+
+Miscellaneous responses
+-----------------------
+
+Redirects
+^^^^^^^^^
+
+Downloads
+^^^^^^^^^
+
+Creating custom responses
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Streamed and lazily rendered responses
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Security considerations
+-----------------------
+
+Authentication
+^^^^^^^^^^^^^^
+
+Loosening the default restrictions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Rate limiting
+^^^^^^^^^^^^^
+
+Brute-force protection
+^^^^^^^^^^^^^^^^^^^^^^
+
+Modifying the content security policy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+---
 
 JSON
 ^^^^
