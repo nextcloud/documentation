@@ -20,3 +20,11 @@ Your files are always automatically synchronized between your Nextcloud server, 
    autoupdate
    conflicts
    faq
+
+You can find additional information here:
+
+* `Admin manual`_
+* `Developer manual`_
+
+.. _`Admin manual`: https://docs.nextcloud.com/server/latest/admin_manual/desktop/index.html
+.. _`Developer manual`: https://docs.nextcloud.com/server/latest/developer_manual/desktop/index.html
