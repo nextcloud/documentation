@@ -9,22 +9,17 @@ Desktop Sync client enables you to:
   to the Nextcloud server.
 - Always have the latest files synchronized, wherever they are located.
 
-Your files are always automatically synchronized between your Nextcloud server, computer and mobile device.
+This documentation is targeted for developers to build the client on their own.
 
 .. toctree::
    :maxdepth: 1
 
-   installation
-   usage
-   macosvfs
-   autoupdate
-   conflicts
-   faq
+   building
 
 You can find additional information here:
 
+* `User manual`_
 * `Admin manual`_
-* `Developer manual`_
 
+.. _`User manual`: https://docs.nextcloud.com/server/latest/user_manual/en/desktop/index.html
 .. _`Admin manual`: https://docs.nextcloud.com/server/latest/admin_manual/desktop/index.html
-.. _`Developer manual`: https://docs.nextcloud.com/server/latest/developer_manual/desktop/index.html
