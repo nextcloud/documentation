@@ -291,7 +291,7 @@ Compiling
 7. Now you can use `Qt Creator <https://doc.qt.io/qtcreator>`_ to import the build folder with its configurations to be able to work with the code.
 
 Windows Installer (i.e. Deployment) Build (Cross-Compile)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Due to the large number of dependencies, building the client installer for Windows
 is **currently only officially supported on openSUSE**, by using the MinGW cross compiler.
