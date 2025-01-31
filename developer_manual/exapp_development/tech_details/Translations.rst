@@ -30,6 +30,8 @@ For the ``manual-install`` type, an administrator will have to manually extract 
 (e.g. ``/path/to/apps-writable/<appid>/l10n/*.(js|json)``).
 This will allow the server to access the ExApp's strings with translations.
 
+.. TODO ON RELEASE: Update version number above on release
+
 .. note::
 
 	Only the ``l10n`` folder must be present on the server side; ``appinfo/info.xml`` could lead to misdetection by the server as a PHP app folder.

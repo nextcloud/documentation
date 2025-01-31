@@ -28,3 +28,5 @@ You can find additional information here:
 
 .. _`Admin manual`: https://docs.nextcloud.com/server/latest/admin_manual/desktop/index.html
 .. _`Developer manual`: https://docs.nextcloud.com/server/latest/developer_manual/desktop/index.html
+
+.. TODO ON RELEASE: Update version number above on release
