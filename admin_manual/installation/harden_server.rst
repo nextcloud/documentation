@@ -287,8 +287,10 @@ Depending on your server setup, these are the possible connections:
 	- submitted data: statistical data. see here for the `detailed field list`_
 - Any remote Nextcloud server that is connected with federated sharing
 
-.. _optional (config): https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#has-internet-connection
+.. _optional (config): https://docs.nextcloud.com/server/31/admin_manual/configuration_server/config_sample_php_parameters.html#has-internet-connection
 .. _detailed field list : https://github.com/nextcloud/survey_client
+
+.. TODO ON RELEASE: Update version number above on release
 
 
 Setup fail2ban

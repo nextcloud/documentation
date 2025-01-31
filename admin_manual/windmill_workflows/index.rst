@@ -50,7 +50,9 @@ Each workflow in Windmill is a listener to a Nextcloud Webhook Event.
 If you are using the ExApp-packaged Windmill, it will automatically register webhooks for the workflows you build using the following mechanism.
 If you are not using the ExApp-packaged windmill install then you will have to register
 webhooks for your workflows manually via the webhook_listeners API:
-see https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index
+see https://docs.nextcloud.com/server/31/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index
+
+.. TODO ON RELEASE: Update version number above on release
 
 The magic listener script
 ~~~~~~~~~~~~~~~~~~~~~~~~~

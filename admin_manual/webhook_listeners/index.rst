@@ -18,7 +18,9 @@ Installation
 Listening to events
 -------------------
 
-You can use the OCS API to add webhooks for specific events: https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index
+You can use the OCS API to add webhooks for specific events: https://docs.nextcloud.com/31/latest/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index
+
+.. TODO ON RELEASE: Update version number above on release
 
 Note: When authenticating with the OCS API to register webhooks the account you authenticate as must have administrator rights or delegated administrator rights.
 

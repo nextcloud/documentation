@@ -45,7 +45,7 @@ relevant php.ini files) ::
 
 The ``upload_max_filesize`` and ``post_max_size`` settings may not apply to file uploads
 through WebDAV single file PUT requests or `Chunked file uploads
-<https://docs.nextcloud.com/server/latest/developer_manual/client_apis/WebDAV/chunking.html>`_
+<https://docs.nextcloud.com/server/31/developer_manual/client_apis/WebDAV/chunking.html>`_
 For those, PHP and webserver timeouts are the limiting factor on the upload size.
 
 .. TODO ON RELEASE: Update version number above on release
@@ -170,19 +170,21 @@ Default is ``104857600`` (100 MiB).
 Large file upload on object storage
 -----------------------------------
 
-`Chunked file uploads <https://docs.nextcloud.com/server/latest/developer_manual/client_apis/WebDAV/chunking.html>`_
+`Chunked file uploads <https://docs.nextcloud.com/server/31/developer_manual/client_apis/WebDAV/chunking.html>`_
 do have a larger space consumption on the temporary folder when processing those uploads
 on object storage as the individual chunks get downloaded from the storage and will be assembled
 to the actual file on the Nextcloud servers temporary directory. It is recommended to increase
 the size of your temp directory accordingly and also ensure that request timeouts are high
 enough for PHP, webservers or any load balancers involved.
 
+.. TODO ON RELEASE: Update version number above on release
+
 .. tip:: In more recent versions of Nextcloud Server, when uploading to S3 in *Primary Storage* mode, we use S3 `MultipartUpload`. This allows chunked upload streaming of the chunks directly to S3 so that the final MOVE request no longer needs to assemble the final file on the Nextcloud server. This requires your ``memcache.distributed`` to be set to use Redis (or Memcached), otherwise we fall back on the prior behavior which consumes space on the Nextcloud Server for file assembly (as described above).
 
 Federated Cloud Sharing
 -----------------------
 
-If you are using `Federated Cloud Sharing <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/federated_cloud_sharing_configuration.html>`_ and want to share large files, you can increase the timeout values for requests to the federated servers.
+If you are using `Federated Cloud Sharing <https://docs.nextcloud.com/server/31/admin_manual/configuration_files/federated_cloud_sharing_configuration.html>`_ and want to share large files, you can increase the timeout values for requests to the federated servers.
 Therefore, you can set ``davstorage.request_timeout`` in your ``config.php``. The default value is 30 seconds.
 
 .. TODO ON RELEASE: Update version number above on release
