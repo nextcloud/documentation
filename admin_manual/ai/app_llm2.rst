@@ -136,7 +136,7 @@ Addendum: Running with a fully open model
 
 If you would like to use a fully open model that scores a green score on our Ethical AI rating, we recommend the following model:
 
-* OLMo 2 (either in 7B or 14B): `<https://huggingface.co/allenai/OLMo-2-1124-7B-Instruct-GGUF>`_
+* OLMo 2 (either in 7B or 13B): `<https://huggingface.co/allenai/OLMo-2-1124-7B-Instruct-GGUF>`_
 
 What makes OLMo a fully open model?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
