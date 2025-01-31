@@ -141,7 +141,7 @@ If you would like to use a fully open model that scores a green score on our Eth
 What makes OLMo a fully open model?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* The code for training, fine-tuning and inference of the model is publicly available nad fully open source
+* The code for training, fine-tuning and inference of the model is publicly available and fully open source
 * The training data with which the model is pretrained is publicly available
 * The model itself is publicly available and fully open source
 * The instruction tuning data is publicly available
