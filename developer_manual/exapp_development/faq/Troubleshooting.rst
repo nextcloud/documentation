@@ -30,6 +30,8 @@ ExApp deployment issues
 The deployment issues questions are covered in the `Test Deploy <https://docs.nextcloud.com/server/latest/admin_manual/exapps_management/TestDeploy.html>`_ section of the administration guide.
 Generally speaking, there are three steps to find the proper error message to understand the problem:
 
+.. TODO ON RELEASE: Update version number above on release
+
 1. Check Nextcloud logs
 2. Check ExApp container logs (available only if ExApp container is created and/or running)
 3. Check Deploy daemon host logs (``journalctl -u docker.service``)

@@ -369,6 +369,7 @@ While setting a configuration value, multiple options are available:
 
 .. _Appconfig Concepts: https://docs.nextcloud.com/server/latest/developer_manual/digging_deeper/config/appconfig.html#concept-overview
 
+.. TODO ON RELEASE: Update version number above on release
 
 You can list all configuration values with one command::
 
