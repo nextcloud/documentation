@@ -25,3 +25,4 @@ Table of contents
     design/index
     html_css_design/index
     client_apis/index
+    desktop/index

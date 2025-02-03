@@ -290,6 +290,8 @@ Depending on your server setup, these are the possible connections:
 .. _optional (config): https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#has-internet-connection
 .. _detailed field list : https://github.com/nextcloud/survey_client
 
+.. TODO ON RELEASE: Update version number above on release
+
 
 Setup fail2ban
 --------------

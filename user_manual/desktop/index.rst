@@ -2,12 +2,31 @@
 Desktop Clients
 ===============
 
-You can share one or more files and folders on your computer, and synchronize
-them with your Nextcloud server. Place files in your local shared directories,
-and those files are immediately synchronized to the server and to other devices
-using the Nextcloud Desktop Sync Client, Android app, or iOS app. To
-learn more about the Nextcloud desktop client, please refer to:
+Available for Windows, macOS, and various Linux distributions, the Nextcloud
+Desktop Sync client enables you to:
 
-* `Nextcloud Desktop Client`_
+- Specify one or more directories on your computer that you want to synchronize
+  to the Nextcloud server.
+- Always have the latest files synchronized, wherever they are located.
 
-.. _`Nextcloud Desktop Client`: https://docs.nextcloud.com/desktop/latest/
+Your files are always automatically synchronized between your Nextcloud server, computer and mobile device.
+
+.. toctree::
+   :maxdepth: 1
+
+   installation
+   usage
+   macosvfs
+   autoupdate
+   conflicts
+   faq
+
+You can find additional information here:
+
+* `Admin manual`_
+* `Developer manual`_
+
+.. _`Admin manual`: https://docs.nextcloud.com/server/latest/admin_manual/desktop/index.html
+.. _`Developer manual`: https://docs.nextcloud.com/server/latest/developer_manual/desktop/index.html
+
+.. TODO ON RELEASE: Update version number above on release

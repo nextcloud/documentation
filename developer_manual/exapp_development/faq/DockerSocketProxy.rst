@@ -30,6 +30,8 @@ AppAPI automatically creates the default Deploy daemon configuration for Nextclo
 
 See `Nextcloud in Docker AIO (all-in-one) <https://docs.nextcloud.com/server/latest/admin_manual/exapps_management/DeployConfigurations.html#nextcloud-in-docker-aio-all-in-one>`_ for more details.
 
+.. TODO ON RELEASE: Update version number above on release
+
 .. note::
 
 	Nextcloud AIO is not limited to its default Deploy daemon.

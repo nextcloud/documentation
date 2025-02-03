@@ -52,6 +52,8 @@ If you are not using the ExApp-packaged windmill install then you will have to r
 webhooks for your workflows manually via the webhook_listeners API:
 see https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index
 
+.. TODO ON RELEASE: Update version number above on release
+
 The magic listener script
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
