@@ -180,9 +180,9 @@ You may change your Recovery Key password.
 
 .. figure:: images/encryption12.png
 
-.. _occ_encryption_label:
-
 Please check the various key types in detail `here <encryption_details.html>`_
+
+.. _occ_encryption_label:
 
 occ encryption commands
 -----------------------
