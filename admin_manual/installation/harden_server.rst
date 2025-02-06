@@ -140,7 +140,7 @@ VirtualHost file::
  <VirtualHost *:443>
    ServerName cloud.nextcloud.com
      <IfModule mod_headers.c>
-       Header always set Strict-Transport-Security "max-age=15552000; includeSubDomains"
+       Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
      </IfModule>
   </VirtualHost>
 
