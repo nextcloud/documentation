@@ -22,3 +22,4 @@ The old documentation is still kept as it provides some additional documentation
    ocs-text2image-api
    ocs-taskprocessing-api
    ocs-out-of-office-api
+   ocs-fulltextsearch-api
