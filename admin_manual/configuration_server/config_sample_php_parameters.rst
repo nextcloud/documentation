@@ -3207,6 +3207,18 @@ This must be a valid ITheme ID.
 
 E.g. dark, dark-highcontrast, default, light, light-highcontrast, opendyslexic
 
+theming.standalone_window.enabled
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'theming.standalone_window.enabled' => true,
+
+This setting allows to disable the PWA functionality that allows browsers to open web applications in dedicated windows.
+
+Defaults to ``true``
+
 cipher
 ^^^^^^
 
