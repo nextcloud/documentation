@@ -22,6 +22,7 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - SUSE Linux Enterprise Server 15                                     |
 |                  | - openSUSE Leap 15.5                                                  |
 |                  | - CentOS Stream                                                       |
+|                  | - Alpine Linux                                                        |
 +------------------+-----------------------------------------------------------------------+
 | Database         | - MySQL 8.0 / **8.4** or MariaDB 10.6/ **10.11** (recommended) / 11.4 |
 |                  | - Oracle Database 11g, 18, 21, 23                                     |
