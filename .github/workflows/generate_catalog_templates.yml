@@ -12,30 +12,33 @@ jobs:
   user_manual:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
 
-      - uses: ammaraskar/sphinx-action@master
+      - uses: ammaraskar/sphinx-action@df895b1e03f7f920991e8bd910e4b1f566cd1863 # v8.1.3
         with:
           docs-folder: "user_manual/"
-          pre-build-command: pip install -r requirements.txt
-          build-command: make gettext
+          pre-build-command: "pip install -r requirements.txt"
+          build-command: "make gettext"
 
-      - uses: peter-evans/create-pull-request@v7
+      - uses: peter-evans/create-pull-request@67ccf781d68cd99b580ae25a5c18a1cc84ffff1f # v7.0.6
         id: cpr
         with:
           token: ${{ secrets.COMMAND_BOT_PAT }}
-          commit-message: "chore(l10n): Updates catalog templates (POT files fetched automatically by transifex)"
+          commit-message: 'chore(l10n): Updates catalog templates (POT files fetched automatically by transifex)'
           title: Updates catalog templates
           branch: update-l10n
           signoff: true
 
-      - uses: hmarr/auto-approve-action@v4.0.0
+      - uses: hmarr/auto-approve-action@f0939ea97e9205ef24d872e76833fa908a770363 # v4.0.0
         if: steps.cpr.outputs.pull-request-operation == 'created'
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
           pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
 
-      - uses: pascalgn/automerge-action@v0.16.4
+      - uses: pascalgn/automerge-action@7961b8b5eec56cc088c140b56d864285eabd3f67 # v0.16.4
         if: steps.cpr.outputs.pull-request-operation == 'created'
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
