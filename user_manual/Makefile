@@ -171,6 +171,7 @@ gettext:
 	@echo "Build finished. The message catalogs are in ./locale/source."
 	find locale/source -type d -exec chmod 775 {} \;
 	find locale/source -type f -exec chmod 664 {} \;
+	ls -la locale/source
 	@echo
 	@echo "Build finished. The message catalogs are in ./locale/source."
 
