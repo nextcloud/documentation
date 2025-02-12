@@ -27,6 +27,9 @@ jobs:
           pre-build-command: "pip install -r requirements.txt"
           build-command: "make gettext"
 
+      - name: Change file owner to correct user
+        run: chown -R 1001:1001 user_manual/locale/source
+
       - uses: peter-evans/create-pull-request@67ccf781d68cd99b580ae25a5c18a1cc84ffff1f # v7.0.6
         id: cpr
         with:
