@@ -8,7 +8,7 @@ OCS Out-of-office API
 
 The OCS Out-of-office API allows you to access and modify out-of-office data of users.
 
-The base URL for all calls to the share API is: ``<nextcloud_base_url>/ocs/v2.php/apps/dav/api/v1/outOfOffice``
+The base URL for all calls to the Out-of-Office API is: ``<nextcloud_base_url>/ocs/v2.php/apps/dav/api/v1/outOfOffice``
 
 All calls to OCS endpoints require the ``OCS-APIRequest`` header to be set to ``true``.
 
