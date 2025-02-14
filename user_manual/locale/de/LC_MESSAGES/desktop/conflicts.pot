@@ -1,0 +1,168 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025 Nextcloud GmbH
+# This file is distributed under the same license as the Nextcloud latest User Manual package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Joachim Sokolowski, 2025
+# Mario Siegmann <mario_siegmann@web.de>, 2025
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Nextcloud latest User Manual latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-12 13:02+0000\n"
+"PO-Revision-Date: 2025-02-12 13:33+0000\n"
+"Last-Translator: Mario Siegmann <mario_siegmann@web.de>, 2025\n"
+"Language-Team: German (https://app.transifex.com/nextcloud/teams/64236/de/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../desktop/conflicts.rst:3
+msgid "Conflicts"
+msgstr "Konflikte"
+
+#: ../../desktop/conflicts.rst:6
+msgid "Overview"
+msgstr "Übersicht"
+
+#: ../../desktop/conflicts.rst:8
+msgid ""
+"The Nextcloud desktop client uploads local changes and downloads remote "
+"changes. When a file has changed on the local side and on the remote between"
+" synchronization runs the client will be unable to resolve the situation on "
+"its own. It will create a conflict file with the local version, download the"
+" remote version and notify the user that a conflict occurred which needs "
+"attention."
+msgstr ""
+"Der Nextcloud-Desktop-Client lädt lokale Änderungen hoch und Remote-"
+"Änderungen herunter. Wenn sich eine Datei zwischen den "
+"Synchronisierungsläufen sowohl auf der lokalen als auch auf der Remote-Seite"
+" geändert hat, kann der Client die Situation nicht selbst lösen. Er erstellt"
+" eine Konfliktdatei mit der lokalen Version, lädt die Remote-Version "
+"herunter und benachrichtigt den Benutzer, dass ein Konflikt aufgetreten ist,"
+" der behoben werden muss."
+
+#: ../../desktop/conflicts.rst:15
+msgid "Example"
+msgstr "Beispiel"
+
+#: ../../desktop/conflicts.rst:17
+msgid ""
+"Imagine there is a file called ``mydata.txt`` your synchronized folder. It "
+"has not changed for a while and contains the text \"contents\" locally and "
+"remotely. Now, nearly at the same time you update it locally to say \"local "
+"contents\" while the file on the server gets updated to contain \"remote "
+"contents\" by someone else."
+msgstr ""
+"Stellen Sie sich vor, in Ihrem synchronisierten Ordner gibt es eine Datei "
+"namens „mydata.txt“. Sie wurde eine Zeit lang nicht geändert und enthält den"
+" Text „Inhalt“ lokal und remote. Jetzt aktualisieren Sie sie fast "
+"gleichzeitig lokal, sodass sie „lokaler Inhalt“ lautet, während die Datei "
+"auf dem Server von jemand anderem aktualisiert wird und „remote Inhalt“ "
+"enthält."
+
+#: ../../desktop/conflicts.rst:22
+msgid ""
+"When attempting to upload your local changes the desktop client will notice "
+"that the server version has also changed. It creates a conflict and you will"
+" now have two files on your local machine:"
+msgstr ""
+"Beim Versuch, Ihre lokalen Änderungen hochzuladen, wird der Desktop-Client "
+"feststellen, dass sich auch die Serverversion geändert hat. Dies führt zu "
+"einem Konflikt und Sie haben nun zwei Dateien auf Ihrem lokalen Computer:"
+
+#: ../../desktop/conflicts.rst:26
+msgid "``mydata.txt`` containing \"remote contents\""
+msgstr "``mydata.txt`` enthält \"Remote-Inhalte\""
+
+#: ../../desktop/conflicts.rst:27
+msgid ""
+"``mydata (conflicted copy 2018-04-10 093612).txt`` containing \"local "
+"contents\""
+msgstr ""
+"``mydata (Konfliktkopie 2018-04-10 093612).txt`` enthält \"lokale Inhalte\""
+
+#: ../../desktop/conflicts.rst:29
+msgid ""
+"In this situation the file ``mydata.txt`` has the remote changes (and will "
+"continue to be updated with further remote changes when they happen), but "
+"your local adjustments have not been sent to the server (unless the server "
+"enables conflict uploading, see below)."
+msgstr ""
+"In dieser Situation enthält die Datei „mydata.txt“ die Remote-Änderungen "
+"(und wird weiterhin mit weiteren Remote-Änderungen aktualisiert, wenn diese "
+"auftreten), aber Ihre lokalen Anpassungen wurden nicht an den Server "
+"gesendet (es sei denn, der Server aktiviert das Hochladen bei Konflikten, "
+"siehe unten)."
+
+#: ../../desktop/conflicts.rst:34
+msgid ""
+"The desktop client notifies you of this situation via system notifications, "
+"the system tray icon and a yellow \"unresolved conflicts\" badge in the "
+"account settings window. Clicking this badge shows a list that includes the "
+"unresolved conflicts and clicking one of them opens an explorer window "
+"pointing at the relevant file."
+msgstr ""
+"Der Desktop-Client benachrichtigt Sie über diese Situation durch "
+"Systembenachrichtigungen, das Taskleistensymbol und ein gelbes \"ungelöste "
+"Konflikte\"-Symbol im Fenster mit den Kontoeinstellungen. Wenn Sie auf "
+"dieses Symbol klicken, wird eine Liste mit den ungelösten Konflikten "
+"angezeigt. Wenn Sie auf einen dieser Konflikte klicken, wird ein Explorer-"
+"Fenster geöffnet, das auf die entsprechende Datei verweist."
+
+#: ../../desktop/conflicts.rst:39
+msgid ""
+"To resolve this conflict, open both files, compare the differences and copy "
+"your local changes from the \"conflicted copy\" file into the base file "
+"where applicable. In this example you might change ``mydata.txt`` to say "
+"\"local and remote contents\" and delete the file with \"conflicted copy\" "
+"in its name. With that, the conflict is resolved."
+msgstr ""
+"Um diesen Konflikt zu lösen, öffnen Sie beide Dateien, vergleichen Sie die "
+"Unterschiede und kopieren Sie gegebenenfalls Ihre lokalen Änderungen aus der"
+" Datei \"konfliktbehaftete Kopie\" in die Basisdatei. In diesem Beispiel "
+"könnten Sie \"mydata.txt\" in \"lokale und Remote-Inhalte\" ändern und die "
+"Datei mit \"Konfliktkopie\" im Namen löschen. Damit ist der Konflikt gelöst."
+
+#: ../../desktop/conflicts.rst:46
+msgid "Uploading conflicts (experimental)"
+msgstr "Konflikte beim Hochladen (experimentell)"
+
+#: ../../desktop/conflicts.rst:48
+msgid ""
+"By default the conflict file (the file with \"conflicted copy\" in its name "
+"that contains your local conflicting changes) is not uploaded to the server."
+" The idea is that you, the author of the changes, are the best person for "
+"resolving the conflict and showing the conflict to other users might create "
+"confusion."
+msgstr ""
+"Standardmäßig wird die Konfliktdatei (die Datei mit \"konfliktbehaftete "
+"Kopie\" im Namen, die Ihre lokalen, widersprüchlichen Änderungen enthält) "
+"nicht auf den Server hochgeladen. Der Grundgedanke ist, dass Sie als Autor "
+"der Änderungen den Konflikt am besten lösen können und dass es zu Verwirrung"
+" führen könnte, wenn Sie den Konflikt anderen Benutzern zeigen."
+
+#: ../../desktop/conflicts.rst:53
+msgid ""
+"However, in some scenarios it makes a lot of sense to upload these "
+"conflicting changes such that local work can become visible even if the "
+"conflict won't be resolved immediately."
+msgstr ""
+"In einigen Szenarien ist es jedoch sehr sinnvoll, diese widersprüchlichen "
+"Änderungen hochzuladen, sodass die lokale Arbeit sichtbar wird, auch wenn "
+"der Konflikt nicht sofort gelöst wird."
+
+#: ../../desktop/conflicts.rst:57
+msgid ""
+"In the future there might be a server-wide switch for this behavior. For now"
+" it can already be tested by setting the environment variable "
+"``OWNCLOUD_UPLOAD_CONFLICT_FILES=1``."
+msgstr ""
+"In Zukunft könnte es einen serverweiten Schalter für dieses Verhalten geben."
+" Im Moment kann es bereits getestet werden, indem die Umgebungsvariable "
+"``OWNCLOUD_UPLOAD_CONFLICT_FILES=1`` gesetzt wird."
