@@ -13,7 +13,7 @@ Federation sharing is enabled on new or upgraded Nextcloud installations
 by default. Follow these steps to create a new share with other Nextcloud or ownCloud 9+ servers:
 
 Go to your ``Files`` page and click the **Share** icon on the file or directory
- you want to share. In the sidebar enter the username and URL of the remote user
+you want to share. In the sidebar enter the username and URL of the remote user
 in this form: ``<username>@<oc-server-url>``. The form automatically confirms the address
 that you type and labels it as "remote". Click on the label.
 
