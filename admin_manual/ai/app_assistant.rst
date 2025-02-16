@@ -109,7 +109,7 @@ Assistant configuration
 
 .. code-block::
 
-   occ config:app:set assistant assistant_enabled --value=1 --type=integer
+   occ config:app:set assistant assistant_enabled --value=1 --type=string
 
 To enable/disable the assistant button from the top-right corner for all the users.
 
@@ -117,7 +117,7 @@ To enable/disable the assistant button from the top-right corner for all the use
 
 .. code-block::
 
-   occ config:app:set assistant free_prompt_picker_enabled --value=1 --type=integer
+   occ config:app:set assistant free_prompt_picker_enabled --value=1 --type=string
 
 To enable/disable the AI text generation smart picker for all the users.
 
@@ -125,7 +125,7 @@ To enable/disable the AI text generation smart picker for all the users.
 
 .. code-block::
 
-   occ config:app:set assistant text_to_image_picker_enabled --value=1 --type=integer
+   occ config:app:set assistant text_to_image_picker_enabled --value=1 --type=string
 
 To enable/disable the text-to-image smart picker for all the users.
 
@@ -133,7 +133,7 @@ To enable/disable the text-to-image smart picker for all the users.
 
 .. code-block::
 
-   occ config:app:set assistant speech_to_text_picker_enabled --value=1 --type=integer
+   occ config:app:set assistant speech_to_text_picker_enabled --value=1 --type=string
 
 To enable/disable the speech-to-text smart picker for all the users.
 
