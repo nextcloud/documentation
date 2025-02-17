@@ -98,7 +98,7 @@ At the top of the envelope list in any mail layout, there is a search field shor
 
 
 Advanced search in mailbox
-~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. versionadded:: 3.4
 
