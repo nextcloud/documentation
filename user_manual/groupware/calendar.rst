@@ -110,7 +110,7 @@ Multiple calendars can be shared together by adding their unique tokens to the e
 ``https://cloud.example.com/index.php/apps/calendar/embed/<token1>-<token2>-<token3>``
 
 To change the default view or date of an embedded calendar, you need to provide a URL that looks like ``https://cloud.example.com/index.php/apps/calendar/embed/<token>/<view>/<date>``.
-In this url you need to replace the following variables:
+In this URL you need to replace the following variables:
 
 - ``<token>`` with the calendar's token,
 - ``<view>`` with one of ``dayGridMonth``, ``timeGridWeek``, ``timeGridDay``, ``listMonth``, ``listWeek``, ``listDay``. The default view is ``dayGridMonth`` and the normally used list is ``listMonth``,
