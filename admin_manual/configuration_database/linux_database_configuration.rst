@@ -26,15 +26,6 @@ Requirements
 
 .. _db-transaction-label:
 
-Database "READ COMMITTED" transaction isolation level
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-As discussed above Nextcloud is using the ``TRANSACTION_READ_COMMITTED`` transaction isolation
-level. Some database configurations are enforcing other transaction isolation levels. To avoid
-data loss under high load scenarios (e.g. by using the sync client with many clients/users and
-many parallel operations) you need to configure the transaction isolation level accordingly.
-Please refer to the `MySQL manual <https://dev.mysql.com/doc/refman/8.0/en/set-transaction.html>`_
-for detailed information.
 
 Parameters
 ----------
