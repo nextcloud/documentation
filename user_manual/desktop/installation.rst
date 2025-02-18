@@ -12,7 +12,7 @@ stable server major versions.
 See https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule for
 supported major versions.
   
-Installation on Mac OS X and Windows is the same as for any software
+Installation on macOS and Windows is the same as for any software
 application: download the program and then double-click it to launch the
 installation, and then follow the installation wizard. After it is installed and
 configured the sync client will automatically keep itself updated; see
