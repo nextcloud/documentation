@@ -24,8 +24,6 @@ Requirements
   scope of this document.  Please refer to the documentation for your specific
   database choice for instructions.
 
-.. _db-transaction-label:
-
 
 Parameters
 ----------
