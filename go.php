@@ -26,6 +26,7 @@ $mapping = array(
     'admin-files-retention'   => '/admin_manual/file_workflows/retention.html',
     'admin-install'           => '/admin_manual/installation/index.html',
     'admin-ldap'              => '/admin_manual/configuration_user/user_auth_ldap.html',
+    'admin-logging'           => '/admin_manual/configuration_server/logging_configuration.html',
     'admin-long-running-migration-steps' => '/admin_manual/maintenance/upgrade.html#long-running-migration-steps',
     'admin-mysql-utf8mb4'     => '/admin_manual/configuration_database/mysql_4byte_support.html',
     'admin-nginx'             => '/admin_manual/installation/nginx.html',
