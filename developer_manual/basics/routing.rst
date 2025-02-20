@@ -17,15 +17,13 @@ Routes map a URL and a method to a controller method. Routes are defined inside 
 
 .. versionadded:: 29
 
-You can also use attributes on the Controller method to define routes.
-They support all the same parameters (except for ``name`` which is not needed).
-``FrontpageRoute`` has to be used for routes that were in the ``routes`` section and ``ApiRoute`` has to be used for routes that were in the ``ocs`` section.
+    You can also use attributes on the Controller method to define routes.
+    They support all the same parameters (except for ``name`` which is not needed).
+    ``FrontpageRoute`` has to be used for routes that were in the ``routes`` section and ``ApiRoute`` has to be used for routes that were in the ``ocs`` section.
 
 .. code-block:: php
 
     #[FrontpageRoute(verb: 'GET', url: '/')]
-
-    #[ApiRoute(verb: 'GET', url: '/')]
 
 The route array contains the following parts:
 
@@ -35,6 +33,45 @@ The route array contains the following parts:
 * **requirements** (Optional): lets you match and extract URLs that have slashes in them (see :ref:`matching-suburls`)
 * **postfix** (Optional): lets you define a route id postfix. Since each route name will be transformed to a route id (**page#method** -> **myapp.page.method**) and the route id can only exist once you can use the postfix option to alter the route id creation by adding a string to the route id, e.g., **'name' => 'page#method', 'postfix' => 'test'** will yield the route id **myapp.page.methodtest**. This makes it possible to add more than one route/URL for a controller method
 * **defaults** (Optional): If this setting is given, a default value will be assumed for each URL parameter which is not present. The default values are passed in as a key => value pair array
+
+.. _routes_ocs:
+
+OCS routes
+----------
+
+Registering of OCS routes requires to use a :ref:`corresponding controller<ocscontroller>`.
+Additionally, the route must be configured to be an OCS route in the router.
+To do so, you use the ``ocs`` key in the ``routes.php`` file instead of the key ``routes``.
+The rest of the structure is the same.
+
+You can of course combine non-OCS with OCS routes.
+
+.. code-block:: php
+
+    <?php
+    return [
+        'routes' => [
+            ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
+        ],
+        'ocs' => [
+            ['name' => 'api#data', 'url' => '/v1/data', 'verb' => 'GET'],
+        ],
+    ];
+
+The prefix for OCS routes is ``/ocs/v2.php/apps/<APPNAME>/``.
+So, the configured URL for the OCS endpoint in the example would be ``<server>/ocs/v2.php/apps/<APPNAME>/v1/data``.
+
+.. versionadded:: 29
+    Similar to ``FrontpageRoute``, you can use ``ApiRoute`` as attribute to mark a route in the controller directly.
+
+    This is equivalent to the configuration in the ``routes.php`` above.
+
+    .. code-block:: php
+
+        // In class ApiController that is a OCSController
+        #[ApiRoute(verb: 'GET', url: '/v1/data')]
+        function data() { /* ... */ }
+
 
 Extracting values from the URL
 ------------------------------
