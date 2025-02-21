@@ -97,8 +97,8 @@ Search in mailbox
 At the top of the envelope list in any mail layout, there is a search field shortcut for searching email subjects. Starting from ``version 3.7``, this shortcut allows you to search by subject, recipient (to), or sender (from) by default.
 
 
-Advance search in mailbox
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Advanced search in mailbox
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. versionadded:: 3.4
 
@@ -452,6 +452,6 @@ To add an internal address:
 
 1. Open the mail settings
 2. Navigate to Privacy and security section
-3. Enable the internal addresses by ckicjin on the checkbox
+3. Enable the internal addresses by clicking on the checkbox
 4. Click the Add internal address button
 5. Enter the address or domain and click Add
