@@ -38,6 +38,7 @@ Requirements
 * This app is built as an External App and thus depends on AppAPI v3.1.0 or higher
 * Nextcloud AIO is supported
 * We currently support NVIDIA GPUs and x86_64 CPUs
+* CPU that supports AVX and AVX2 instruction
 * CUDA >= v12.2 on your host system
 * GPU Sizing
 
