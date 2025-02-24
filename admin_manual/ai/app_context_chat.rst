@@ -21,6 +21,7 @@ Requirements
 * Minimal Nextcloud version: 30
 * Nextcloud AIO is supported
 * We currently support NVIDIA GPUs and x86_64 CPUs
+* CPU that supports AVX and AVX2 instruction
 * CUDA >= v12.2 on your host system
 * GPU Setup Sizing
 
