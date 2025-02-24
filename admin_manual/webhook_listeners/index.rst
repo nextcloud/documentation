@@ -420,3 +420,19 @@ This is an exhaustive list of available events. It features the event ID and the
         "target": array{"id": string, "path": string}
       }
     }
+
+* OCP\\SystemTag\\MapperEvent
+
+  .. code-block:: text
+
+    array {
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "class": string,
+        'eventType' => 'OCP\SystemTag\ISystemTagObjectMapper::assignTags' | 'OCP\SystemTag\ISystemTagObjectMapper::unassignTags',
+		'objectType' => string (e.g. 'files'),
+        'objectId' => string,
+        'tagIds' => int[],
+      }
+    }
