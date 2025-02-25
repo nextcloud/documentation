@@ -67,6 +67,8 @@ you can run a flow named "Synchronize Hub Resource types with instance" in the W
 
 You can create your own Nextcloud-related scripts by taking one of the existing ones as example.
 In a script, when sending a request to Nextcloud, make sure that the ``EX-APP-ID`` header is set to ``flow``.
+Your custom scripts can make requests to any endpoint of the
+`Nextcloud OCS API <https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html>`_ .
 
 All the scripts we provide have a set of common input parameters:
 
@@ -115,3 +117,15 @@ Of course, you may also use any of the other scripts for sending messages availa
 Windmill has a default approval user interface at a specific URL, but it looks very technical.
 We recommend using the `approve_links <https://apps.nextcloud.com/apps/approve_links>`_ app
 which allows creating a beautiful temporary approval page with a custom message and approve and disapprove buttons.
+
+FAQ
+---
+
+Can I create a script?
+~~~~~~~~~~~~~~~~~~~~~~
+
+If the Windmill Hub does not contain any script to perform the action you have in mind,
+you can take an existing Nextcloud script as example and create your own.
+Your custom scripts can make requests to any endpoint of the
+`Nextcloud OCS API <https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html>`_ .
+
