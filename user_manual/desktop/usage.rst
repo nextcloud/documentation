@@ -236,7 +236,7 @@ Using the Ignored Files Editor
 
 You might have some local files or directories that you do not want to backup
 and store on the server. To identify and exclude these files or directories, you
-can use the *Ignored Files Editor* (General tab.)
+can use the *Ignored Files Editor* (General tab).
 
 .. figure:: images/ignored_files_editor.png
 
