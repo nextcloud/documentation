@@ -6,7 +6,7 @@ App: Context Agent (context_agent)
 
 The *context_agent* app is the app that provides AI agent functionality in Nextcloud and acts as a backend for the :ref:`Nextcloud Assistant app<ai-app-assistant>`. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
 
-When the Context Agent app is installed the AI Chat in Nextcloud Assistant will be able to interact with your Nextcloud apps via virtual integrations that are called "tools".
+When the Context Agent app is installed the AI Chat in Nextcloud Assistant will be able to interact with your Nextcloud apps via virtual integrations that are called "tools". They allow the Assistant to perform actions in your Nextcloud upon sending instructions in a chat message.
 
 Currently implemented tools:
 
@@ -25,6 +25,10 @@ Currently implemented tools:
 * Find a person in the user's contacts
 
   * Example prompt: *"What is Andrew's Email address?"*
+
+* Find the current user's details
+
+  * Example prompt: *"Where do I live?"*
 
 * Ask a question to context chat
 
@@ -46,6 +50,22 @@ Currently implemented tools:
 
   * Example prompt: *"Can you send a joke to Andrew in talk?"*
 
+* Create a deck card
+
+  * Example prompt: *"Create a deck card for 'Buy Groceries' in my Personal board."*
+
+* Access information in deck boards
+
+  * Example prompt: *"Which deck cards are currently in the To do list in my Personal board?"*
+
+* Create a task
+
+  * Example prompt: *"Create a task for 'Renovate flat' in my Personal calendar. The task should be due Monday next week."*
+
+* Search for youtube videos
+
+  * Example prompt: *"Show me the youtube video of the Nextcloud hub 10 launch."*
+
 * Send an email via Nextcloud Mail
 
   * Example prompt *"Send a test email from carry@company.com to Andrew@company.com from my account with id 12"*
@@ -56,6 +76,10 @@ These tools can also be combined by the agent to fulfil tasks like the following
  * *"How is the weather where Andrew lives?"*
 
   * Uses contacts to look up Andrew's address and then checks the weather
+
+ * *"How is the weather where I live?"*
+
+  * Look up the current user's address and then checks the weather
 
  * *"Send an email from carry@company.com to Andrew"*
 
