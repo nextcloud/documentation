@@ -94,8 +94,8 @@ Step-by-Step Manual Upgrade
 13. Adjust file ownership and permissions::
 
      chown -R www-data:www-data nextcloud
-     find nextcloud/ -type d -exec chmod 750 {} \;
-     find nextcloud/ -type f -exec chmod 640 {} \;
+     find nextcloud/ -type d -exec chmod 750 {} +
+     find nextcloud/ -type f -exec chmod 640 {} +
 
 14. Restart your Web server.
 
