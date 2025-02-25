@@ -12,7 +12,8 @@ Managing your mail account
 
 Switch layout
 ~~~~~~~~~~~~~
- .. versionadded:: 3.6
+
+.. versionadded:: 3.6
 
 1. Visit mail settings
 2. Choose between *List*, *Vertical split* and *Horizontal split*
@@ -31,7 +32,7 @@ Add a new mail account
 Change sort order
 ~~~~~~~~~~~~~~~~~
 
- .. versionadded:: 3.5
+.. versionadded:: 3.5
 
 1. Visit mail settings
 2. Go to *Sorting*
@@ -78,7 +79,7 @@ Can be found in the action menu of a mail account. There you can edit, add or re
 Move messages to Junk folder
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   .. versionadded:: 3.4
+.. versionadded:: 3.4
 
 Mail can move a message to a different folder when it is marked as junk.
 
@@ -88,10 +89,11 @@ Mail can move a message to a different folder when it is marked as junk.
 4) Go to Junk settings
 5) Click Move messages to Junk folder
 
-   .. figure:: images/mail_move-message-to-junk-folder.png
+.. figure:: images/mail_move-message-to-junk-folder.png
 
 Search in mailbox
 ~~~~~~~~~~~~~~~~~
+
 .. versionadded:: 2.1
 
 At the top of the envelope list in any mail layout, there is a search field shortcut for searching email subjects. Starting from ``version 3.7``, this shortcut allows you to search by subject, recipient (to), or sender (from) by default.
@@ -106,7 +108,8 @@ You can access our advanced search feature through a modal located at the end of
 
 Enable mail body search
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-   .. versionadded:: 3.5
+
+.. versionadded:: 3.5
 
 Mail bodies can now be searched, this feature is opt-in because of potential performance issues.
 
@@ -179,15 +182,15 @@ By doing so the contact will be automatically added as a recipient.
 Minimize the composer modal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   .. versionadded:: 3.2
+.. versionadded:: 3.2
 
 The composer modal can be minimized while writing a new message, editing an existing draft or editing a message from the outbox. Simply click the minimize button on the top right of the modal or click anywhere outside the modal.
 
-   .. figure:: images/mail-minimize-composer.png
+.. figure:: images/mail-minimize-composer.png
 
 You can resume your minimized message by clicking anywhere on the indicator on the bottom right of your screen.
 
-   .. figure:: images/mail-composer-indicator.png
+.. figure:: images/mail-composer-indicator.png
 
 Press the close button on the modal or the indicator in the bottom right corner to stop editing a message. A draft will be saved automatically into your draft mailbox.
 
