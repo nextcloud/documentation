@@ -128,7 +128,7 @@ To create a mapper, inherit from the mapper base class and call the parent const
 * **Optional**: Entity class name, defaults to \\OCA\\MyApp\\Db\\Author in the example below
 
 .. code-block:: php
-    :caption: lib/Db/AthorMapper.php
+    :caption: lib/Db/AuthorMapper.php
 
     <?php
 
