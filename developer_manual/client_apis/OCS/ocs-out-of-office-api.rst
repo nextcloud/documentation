@@ -8,8 +8,7 @@ OCS Out-of-office API
 
 The OCS Out-of-office API allows you to access and modify out-of-office data of users.
 
-The base URL for all calls to the share API is:
-*<nextcloud_base_url>/ocs/v2.php/apps/dav/api/v1/outOfOffice*
+The base URL for all calls to the share API is: ``<nextcloud_base_url>/ocs/v2.php/apps/dav/api/v1/outOfOffice``
 
 All calls to OCS endpoints require the ``OCS-APIRequest`` header to be set to ``true``.
 
@@ -20,7 +19,7 @@ Fetch ongoing data
 Fetch data of the ongoing out-of-office period of a user.
 
 * Method: ``GET``
-* Endpoint: ``/{userId}``
+* Endpoint: ``/{userId}/now``
 * Response:
     - Status code:
         + ``200 OK`` Out-of-office data
@@ -30,15 +29,15 @@ Fetch data of the ongoing out-of-office period of a user.
 +---------------------------------+-------------+---------------------------------------------------------------------+
 | field                           | type        | Description                                                         |
 +---------------------------------+-------------+---------------------------------------------------------------------+
-| ``id``                          | int         | Database ID of the absence data entity                              |
+| ``id``                          | string      | Database ID of the absence data entity                              |
 +---------------------------------+-------------+---------------------------------------------------------------------+
 | ``userId``                      | string      | ID of the user which the data belongs to                            |
 +---------------------------------+-------------+---------------------------------------------------------------------+
-| ``firstDay``                    | string      | First day of the absence in format ``YYYY-MM-DD``                   |
+| ``startDate``                   | int         | Timestamp of the start date (respecting the userId's timezone)      |
 +---------------------------------+-------------+---------------------------------------------------------------------+
-| ``lastDay``                     | string      | Last day of the absence in format ``YYYY-MM-DD``                    |
+| ``endDate``                     | int         | Timestamp of the end date (respecting the userId's timezone)        |
 +---------------------------------+-------------+---------------------------------------------------------------------+
-| ``status``                      | string      | Short text that is set as user status during the absence            |
+| ``shortMessage``                | string      | Short text that is set as user status during the absence            |
 +---------------------------------+-------------+---------------------------------------------------------------------+
 | ``message``                     | string      | Longer multiline message that is shown to others during the absence |
 +---------------------------------+-------------+---------------------------------------------------------------------+
