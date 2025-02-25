@@ -20,3 +20,4 @@ File sharing and management
     previews_configuration
     file_versioning
     trashbin_configuration
+    file_conversion
