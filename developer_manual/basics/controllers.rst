@@ -856,75 +856,6 @@ A controller method that would allow five requests for logged-in users and one r
 Brute-force protection
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Modifying the content security policy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-By default Nextcloud disables all resources which are not served on the same domain, forbids cross domain requests and disables inline CSS and JavaScript by setting a `Content Security Policy <https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy>`_.
-However if an app relies on third-party media or other features which are forbidden by the current policy the policy can be relaxed.
-
-.. note:: Double check your content and edge cases before you relax the policy! Also read the `documentation provided by MDN <https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy>`_
-
-To relax the policy pass an instance of the ContentSecurityPolicy class to your response. The methods on the class can be chained.
-
-The following methods turn off security features by passing in **true** as the **$isAllowed** parameter
-
-* **allowInlineScript** (bool $isAllowed)
-* **allowInlineStyle** (bool $isAllowed)
-* **allowEvalScript** (bool $isAllowed)
-* **useStrictDynamic** (bool $isAllowed)
-
-  Trust all scripts that are loaded by a trusted script, see 'script-src' and 'strict-dynamic'
-
-* **useStrictDynamicOnScripts** (bool $isAllowed)
-
-  Trust all scripts that are loaded by a trusted script which was loaded using a ``<script>`` tag, see 'script-src-elem' **(enabled by default)**
-
-.. note:: ``useStrictDynamicOnScripts`` is enabled by default to allow module javascript to load its dependencies using ``import`` since Nextcloud 28. You can disable this by passing **false** as the parameter.
-
-The following methods whitelist domains by passing in a domain or \* for any domain:
-
-* **addAllowedScriptDomain** (string $domain)
-* **addAllowedStyleDomain** (string $domain)
-* **addAllowedFontDomain** (string $domain)
-* **addAllowedImageDomain** (string $domain)
-* **addAllowedConnectDomain** (string $domain)
-* **addAllowedMediaDomain** (string $domain)
-* **addAllowedObjectDomain** (string $domain)
-* **addAllowedFrameDomain** (string $domain)
-* **addAllowedChildSrcDomain** (string $domain)
-
-The following policy for instance allows images, audio and videos from other domains:
-
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\Controller;
-
-    use OCP\AppFramework\Controller;
-    use OCP\AppFramework\Http\TemplateResponse;
-    use OCP\AppFramework\Http\ContentSecurityPolicy;
-
-    class PageController extends Controller {
-
-        public function index() {
-            $response = new TemplateResponse('myapp', 'main');
-            $csp = new ContentSecurityPolicy();
-            $csp->addAllowedImageDomain('*');
-                ->addAllowedMediaDomain('*');
-            $response->setContentSecurityPolicy($csp);
-        }
-
-    }
-
-
----
-
-
-
-Brute-force protection
-----------------------
-
 Nextcloud supports brute-force protection on an action basis. By default controller methods are not protected. Brute-force protection should be used on security sensitive functions (e.g. login attempts) to increase the overall security of your application.
 
 The native brute-force protection will slow down requests if too many violations have been found. This slow down will be applied to all requests against a brute-force protected controller with the same action from the affected IP.
@@ -996,3 +927,68 @@ A controller can also have multiple factors to brute force against. In this case
             return $templateResponse;
         }
     }
+
+Modifying the content security policy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+By default Nextcloud disables all resources which are not served on the same domain, forbids cross domain requests and disables inline CSS and JavaScript by setting a `Content Security Policy <https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy>`_.
+However if an app relies on third-party media or other features which are forbidden by the current policy the policy can be relaxed.
+
+.. note:: Double check your content and edge cases before you relax the policy! Also read the `documentation provided by MDN <https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy>`_
+
+To relax the policy pass an instance of the ContentSecurityPolicy class to your response. The methods on the class can be chained.
+
+The following methods turn off security features by passing in **true** as the **$isAllowed** parameter
+
+* **allowInlineScript** (bool $isAllowed)
+* **allowInlineStyle** (bool $isAllowed)
+* **allowEvalScript** (bool $isAllowed)
+* **useStrictDynamic** (bool $isAllowed)
+
+  Trust all scripts that are loaded by a trusted script, see 'script-src' and 'strict-dynamic'
+
+* **useStrictDynamicOnScripts** (bool $isAllowed)
+
+  Trust all scripts that are loaded by a trusted script which was loaded using a ``<script>`` tag, see 'script-src-elem' **(enabled by default)**
+
+.. note:: ``useStrictDynamicOnScripts`` is enabled by default to allow module javascript to load its dependencies using ``import`` since Nextcloud 28. You can disable this by passing **false** as the parameter.
+
+The following methods whitelist domains by passing in a domain or \* for any domain:
+
+* **addAllowedScriptDomain** (string $domain)
+* **addAllowedStyleDomain** (string $domain)
+* **addAllowedFontDomain** (string $domain)
+* **addAllowedImageDomain** (string $domain)
+* **addAllowedConnectDomain** (string $domain)
+* **addAllowedMediaDomain** (string $domain)
+* **addAllowedObjectDomain** (string $domain)
+* **addAllowedFrameDomain** (string $domain)
+* **addAllowedChildSrcDomain** (string $domain)
+
+The following policy for instance allows images, audio and videos from other domains:
+
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\TemplateResponse;
+    use OCP\AppFramework\Http\ContentSecurityPolicy;
+
+    class PageController extends Controller {
+
+        public function index() {
+            $response = new TemplateResponse('myapp', 'main');
+            $csp = new ContentSecurityPolicy();
+            $csp->addAllowedImageDomain('*');
+                ->addAllowedMediaDomain('*');
+            $response->setContentSecurityPolicy($csp);
+        }
+
+    }
+
+
+---
+
