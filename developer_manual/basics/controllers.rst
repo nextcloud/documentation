@@ -335,7 +335,6 @@ Cookies can be set or modified directly on the response class:
         }
    }
 
-
 Responses
 ---------
 
@@ -1093,9 +1092,6 @@ The following policy for instance allows images, audio and videos from other dom
         }
 
     }
-
-
----
 
 .. [1] Even though the header name ``OCS-APIRequest`` hints purely at OCS controllers, with NC 30 classic controller methods respect this header as well.
        Until NC 30, classical controller methods did not respect the header.
