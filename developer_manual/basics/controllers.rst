@@ -799,7 +799,10 @@ By default every controller method enforces the maximum security, which is:
 * Ensure that the user is admin
 * Ensure that the user is logged in
 * Ensure that the user has passed the two-factor challenge, if applicable
-* Check the CSRF token
+* Ensure the request is no CSRF attack, that is at least one of the following:
+
+  - Ensure the CSRF token is present and valid
+  - Ensure the ``OCS-APIRequest`` header is present and set to ``true`` [1]_
 
 Loosening the default restrictions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1023,3 +1026,5 @@ The following policy for instance allows images, audio and videos from other dom
 
 ---
 
+.. [1] Even though the header name ``OCS-APIRequest`` hints purely at OCS controllers, with NC 30 classic controller methods respect this header as well.
+       Until NC 30, classical controller methods did not respect the header.
