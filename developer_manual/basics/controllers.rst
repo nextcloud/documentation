@@ -452,8 +452,8 @@ OCS
 .. note::
     This is purely for compatibility reasons. If you are planning to offer an external API, go for a :ref:`REST APIs <rest-apis>` instead.
 
-In order to ease migration from OCS API routes to the App Framework, an additional controller and response have been added.
-To migrate your API you can use the **OCP\\AppFramework\\OCSController** base class and return your data in the form of a DataResponse in the following way:
+In order to simplify exchange of data between the Nextcloud backend and any client (be it the web frontend or whatever else), the OCS API has been introduced.
+To use OCS in your API you can use the **OCP\\AppFramework\\OCSController** base class and return your data in the form of a **DataResponse** in the following way:
 
 .. code-block:: php
 
@@ -475,9 +475,14 @@ To migrate your API you can use the **OCP\\AppFramework\\OCSController** base cl
 
     }
 
-The format parameter works out of the box, no intervention is required.
+For ``OCSController`` classes and their methods, :ref:`responders <controller-responders>` can be registered as with any other ``Controller`` method.
+The ``OCSController`` class have however automatically two responders pre-installed:
+Both JSON (``application/json``) and XML (``text/xml``) are generated on-the-fly depending on the request by the browser/user.
+To select the output format, the ``?format=`` query parameter or the ``Accept`` header of the request work out of the box, no intervention is required.
+It is advised to prefer the header generally, as this is the more programmatic way.
 
-In order to make routing work for OCS routes you need to add a separate ‘ocs’ entry to the routing table of your app. Inside these are normal routes.
+In order to make routing work for OCS routes you need to add :ref:`a separate 'ocs' entry<routes_ocs>` to the routing table in ``appinfo/routes.php`` of your app.
+Inside these, there are the same information as there are for normal routes.
 
 .. code-block:: php
 
@@ -494,6 +499,10 @@ In order to make routing work for OCS routes you need to add a separate ‘ocs�
    ];
 
 Now your method will be reachable via ``<server>/ocs/v2.php/apps/<APPNAME>/api/v1/shares``
+
+.. versionadded:: 29
+    You can use the attribute ``ApiRoute`` as described in :doc:`Routing <routing>` instead of the entry in ``appinfo/routes.php`` as an alternative.
+
 
 JSON
 ^^^^
