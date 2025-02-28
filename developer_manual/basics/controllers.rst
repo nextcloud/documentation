@@ -641,6 +641,24 @@ Miscellaneous responses
 Redirects
 ^^^^^^^^^
 
+A redirect can be achieved by returning a RedirectResponse:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\RedirectResponse;
+
+    class PageController extends Controller {
+
+        public function toGoogle(): RedirectResponse {
+            return new RedirectResponse('https://google.com');
+        }
+
+    }
+
 Downloads
 ^^^^^^^^^
 
@@ -776,27 +794,6 @@ The following policy for instance allows images, audio and videos from other dom
 
 
 ---
-
-Redirects
-^^^^^^^^^
-
-A redirect can be achieved by returning a RedirectResponse:
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\Controller;
-
-    use OCP\AppFramework\Controller;
-    use OCP\AppFramework\Http\RedirectResponse;
-
-    class PageController extends Controller {
-
-        public function toGoogle(): RedirectResponse {
-            return new RedirectResponse('https://google.com');
-        }
-
-    }
 
 Downloads
 ^^^^^^^^^
