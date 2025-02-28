@@ -347,8 +347,42 @@ This can be in the form of a Response subclass or in the form of a value that ca
 HTML-based Responses
 --------------------
 
+.. _controller_template:
+
 Templates
 ^^^^^^^^^
+
+A :doc:`template <front-end/templates>` can be rendered by returning a TemplateResponse. A TemplateResponse takes the following parameters:
+
+* **appName**: tells the template engine in which app the template should be located
+* **templateName**: the name of the template inside the templates/ folder without the .php extension
+* **parameters**: optional array parameters that are available in the template through $_, e.g.::
+
+    array('key' => 'something')
+
+  can be accessed through::
+
+    $_['key']
+
+* **renderAs**: defaults to *user*, tells Nextcloud if it should include it in the web interface, or in case *blank* is passed solely render the template
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\TemplateResponse;
+
+    class PageController extends Controller {
+
+        public function index(): TemplateResponse {
+            $templateName = 'main';  // will use templates/main.php
+            $parameters = array('key' => 'hi');
+            return new TemplateResponse($this->appName, $templateName, $parameters);
+        }
+
+    }
 
 Public page templates
 ^^^^^^^^^^^^^^^^^^^^^
@@ -531,41 +565,6 @@ Because returning values works fine in case of a success but not in case of fail
 
     }
 
-
-Templates
-^^^^^^^^^
-
-A :doc:`template <front-end/templates>` can be rendered by returning a TemplateResponse. A TemplateResponse takes the following parameters:
-
-* **appName**: tells the template engine in which app the template should be located
-* **templateName**: the name of the template inside the templates/ folder without the .php extension
-* **parameters**: optional array parameters that are available in the template through $_, e.g.::
-
-    array('key' => 'something')
-
-  can be accessed through::
-
-    $_['key']
-
-* **renderAs**: defaults to *user*, tells Nextcloud if it should include it in the web interface, or in case *blank* is passed solely render the template
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\Controller;
-
-    use OCP\AppFramework\Controller;
-    use OCP\AppFramework\Http\TemplateResponse;
-
-    class PageController extends Controller {
-
-        public function index(): TemplateResponse {
-            $templateName = 'main';  // will use templates/main.php
-            $parameters = array('key' => 'hi');
-            return new TemplateResponse($this->appName, $templateName, $parameters);
-        }
-
-    }
 
 Public page templates
 ^^^^^^^^^^^^^^^^^^^^^
