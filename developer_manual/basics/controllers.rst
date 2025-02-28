@@ -523,6 +523,31 @@ Why does this work? Because the dispatcher sees that the controller did not retu
 Handling errors
 ^^^^^^^^^^^^^^^
 
+Sometimes a request should fail, for instance if an author with id 1 is requested but does not exist. In that case use an appropriate `HTTP error code <https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error>`_ to signal the client that an error occurred.
+
+Each response subclass has access to the **setStatus** method which lets you set an HTTP status code. To return a JSONResponse signaling that the author with id 1 has not been found, use the following code:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http;
+    use OCP\AppFramework\Http\JSONResponse;
+
+    class AuthorController extends Controller {
+
+        public function show($id) {
+            try {
+                // try to get author with $id
+
+            } catch (NotFoundException $ex) {
+                return new JSONResponse(array(), Http::STATUS_NOT_FOUND);
+            }
+        }
+    }
+
 .. _controller-responders:
 
 Responders
@@ -828,33 +853,7 @@ The following policy for instance allows images, audio and videos from other dom
     }
 
 
-Handling errors
-^^^^^^^^^^^^^^^
 
-Sometimes a request should fail, for instance if an author with id 1 is requested but does not exist. In that case use an appropriate `HTTP error code <https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error>`_ to signal the client that an error occurred.
-
-Each response subclass has access to the **setStatus** method which lets you set an HTTP status code. To return a JSONResponse signaling that the author with id 1 has not been found, use the following code:
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\Controller;
-
-    use OCP\AppFramework\Controller;
-    use OCP\AppFramework\Http;
-    use OCP\AppFramework\Http\JSONResponse;
-
-    class AuthorController extends Controller {
-
-        public function show($id) {
-            try {
-                // try to get author with $id
-
-            } catch (NotFoundException $ex) {
-                return new JSONResponse(array(), Http::STATUS_NOT_FOUND);
-            }
-        }
-    }
 
 Authentication
 --------------
