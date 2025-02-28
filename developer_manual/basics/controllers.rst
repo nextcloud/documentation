@@ -717,6 +717,44 @@ Creating a custom XMLResponse class could look like this:
 Streamed and lazily rendered responses
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+By default all responses are rendered at once and sent as a string through middleware. In certain cases this is not a desirable behavior, for instance if you want to stream a file in order to save memory. To do that use the now available **OCP\\AppFramework\\Http\\StreamResponse** class:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\StreamResponse;
+
+    class PageController extends Controller {
+
+        public function downloadXMLFile() {
+            return new StreamResponse('/some/path/to/file.xml');
+        }
+
+    }
+
+If you want to use a custom, lazily rendered response simply implement the interface **OCP\\AppFramework\\Http\\ICallbackResponse** for your response:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Http;
+
+    use OCP\AppFramework\Http\Response;
+    use OCP\AppFramework\Http\ICallbackResponse;
+
+    class LazyResponse extends Response implements ICallbackResponse {
+
+        public function callback(IOutput $output) {
+            // custom code in here
+        }
+
+    }
+
+.. note:: Because this code is rendered after several usually built in helpers, you need to take care of errors and proper HTTP caching by yourself.
+
 Security considerations
 -----------------------
 
@@ -844,49 +882,6 @@ The following policy for instance allows images, audio and videos from other dom
 
 ---
 
-Streamed and lazily rendered responses
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-By default all responses are rendered at once and sent as a string through middleware. In certain cases this is not a desirable behavior, for instance if you want to stream a file in order to save memory. To do that use the now available **OCP\\AppFramework\\Http\\StreamResponse** class:
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\Controller;
-
-    use OCP\AppFramework\Controller;
-    use OCP\AppFramework\Http\StreamResponse;
-
-    class PageController extends Controller {
-
-        public function downloadXMLFile() {
-            return new StreamResponse('/some/path/to/file.xml');
-        }
-
-    }
-
-
-
-
-If you want to use a custom, lazily rendered response simply implement the interface **OCP\\AppFramework\\Http\\ICallbackResponse** for your response:
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\Http;
-
-    use OCP\AppFramework\Http\Response;
-    use OCP\AppFramework\Http\ICallbackResponse;
-
-    class LazyResponse extends Response implements ICallbackResponse {
-
-        public function callback(IOutput $output) {
-            // custom code in here
-        }
-
-    }
-
-.. note:: Because this code is rendered after several usually built in helpers, you need to take care of errors and proper HTTP caching by yourself.
 
 Rate limiting
 -------------
