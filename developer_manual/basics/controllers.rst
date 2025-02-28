@@ -342,10 +342,20 @@ Responses
 Similar to how every controller receives a request object, every controller method has to return a Response.
 This can be in the form of a Response subclass or in the form of a value that can be handled by a registered responder.
 
+There are different kinds of responses available, like HTML-based responses, data responses, or other.
+The app decides of which kind the response is, by returning an appropriate ``Response`` object in the corresponding controller method.
+The following sections give an overview over the various kinds and how to implement them.
+
 .. _controller_html_responses:
 
 HTML-based Responses
 --------------------
+
+HTML pages are typically served using template responses.
+This is typically used as a starting point to load the website.
+This code linked by the template is by default encapsulated by the server to provide some common styling (e.g. the header row).
+The code then uses JavaScript to load further components (see :ref:`Frontend building in Vue<ApplicationJs>`) and the actual data.
+This section only focuses on the actual HTML content, not the data to fill into the dynamic pages.
 
 .. _controller_template:
 
@@ -427,6 +437,12 @@ class implementing the ``OCP\\AppFramework\\Http\\Template\\IMenuAction`` interf
 
 Data-based responses
 --------------------
+
+In contrast to the HTML template responses, the data responses return some user-data in packed form.
+There are different encodings thinkable like JSON, XML, or other formats.
+The main point is that the data is requested by the browser using JavaScript on behalf of the shown website.
+The user only indirectly requested the data by user interaction with the frontend.
+
 
 .. _ocscontroller:
 
@@ -638,6 +654,9 @@ Because returning values works fine in case of a success but not in case of fail
 Miscellaneous responses
 -----------------------
 
+Some special responses are available as well.
+These are discussed here.
+
 Redirects
 ^^^^^^^^^
 
@@ -757,6 +776,9 @@ If you want to use a custom, lazily rendered response simply implement the inter
 
 Security considerations
 -----------------------
+
+Depending on your use-case, you can tighten or loosen the security measurements installed by default on the routes.
+This section gives you a quick overview over the options.
 
 .. _controller_authentication:
 
