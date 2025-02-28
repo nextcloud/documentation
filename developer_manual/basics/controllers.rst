@@ -686,6 +686,34 @@ A file download can be triggered by returning a DownloadResponse:
 Creating custom responses
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
+If no premade Response fits the needed use case, it is possible to extend the Response base class and custom Response. The only thing that needs to be implemented is the **render** method which returns the result as string.
+
+Creating a custom XMLResponse class could look like this:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Http;
+
+    use OCP\AppFramework\Http\Response;
+
+    class XMLResponse extends Response {
+
+        private array $xml;
+
+        public function __construct(array $xml) {
+            $this->addHeader('Content-Type', 'application/xml');
+            $this->xml = $xml;
+        }
+
+        public function render(): string {
+            $root = new SimpleXMLElement('<root/>');
+            array_walk_recursive($this->xml, array ($root, 'addChild'));
+            return $xml->asXML();
+        }
+
+    }
+
 Streamed and lazily rendered responses
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -815,37 +843,6 @@ The following policy for instance allows images, audio and videos from other dom
 
 
 ---
-
-Creating custom responses
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If no premade Response fits the needed use case, it is possible to extend the Response base class and custom Response. The only thing that needs to be implemented is the **render** method which returns the result as string.
-
-Creating a custom XMLResponse class could look like this:
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\Http;
-
-    use OCP\AppFramework\Http\Response;
-
-    class XMLResponse extends Response {
-
-        private array $xml;
-
-        public function __construct(array $xml) {
-            $this->addHeader('Content-Type', 'application/xml');
-            $this->xml = $xml;
-        }
-
-        public function render(): string {
-            $root = new SimpleXMLElement('<root/>');
-            array_walk_recursive($this->xml, array ($root, 'addChild'));
-            return $xml->asXML();
-        }
-
-    }
 
 Streamed and lazily rendered responses
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
