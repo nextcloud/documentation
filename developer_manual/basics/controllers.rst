@@ -653,11 +653,59 @@ Streamed and lazily rendered responses
 Security considerations
 -----------------------
 
+.. _controller_authentication:
+
 Authentication
 ^^^^^^^^^^^^^^
 
+By default every controller method enforces the maximum security, which is:
+
+* Ensure that the user is admin
+* Ensure that the user is logged in
+* Ensure that the user has passed the two-factor challenge, if applicable
+* Check the CSRF token
+
 Loosening the default restrictions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Most of the time though it makes sense to also allow normal users to access the page and the ``PageController->index()`` method should not check the CSRF token because it has not yet been sent to the client and because of that can't work.
+
+To turn off checks the following *Attributes* can be added before the controller:
+
+* ``#[NoAdminRequired]``: Also users that are not admins can access the page
+* ``#[PublicPage]``: Everyone can access the page without having to log in
+* ``#[NoTwoFactorRequired]``: A user can access the page before the two-factor challenge has been passed (use this wisely and only in two-factor auth apps, e.g. to allow setup during login)
+* ``#[NoCSRFRequired]``: Don't check the CSRF token (use this wisely since you might create a security hole; to understand what it does see `CSRF in the security section <../prologue/security.html#cross-site-request-forgery>`__)
+
+.. note::
+
+    The attributes are only available in Nextcloud 27 or later. In older versions annotations with the same names exist:
+
+    * ``@NoAdminRequired`` instead of ``#[NoAdminRequired]``
+    * ``@PublicPage``` instead of ``#[PublicPage]``
+    * ``@NoTwoFactorRequired``` instead of ``#[NoTwoFactorRequired]``
+    * ``@NoCSRFRequired``` instead of ``#[NoCSRFRequired]``
+
+A controller method that turns off all checks would look like this:
+
+.. code-block:: php
+    :emphasize-lines: 6-7,10-11
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\IRequest;
+    use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
+    use OCP\AppFramework\Http\Attribute\PublicPage;
+
+    class PageController extends Controller {
+        #[NoCSRFRequired]
+        #[PublicPage]
+        public function freeForAll() {
+
+        }
+    }
 
 Rate limiting
 ^^^^^^^^^^^^^
@@ -850,58 +898,6 @@ The following policy for instance allows images, audio and videos from other dom
             $response->setContentSecurityPolicy($csp);
         }
 
-    }
-
-
-
-
-Authentication
---------------
-
-By default every controller method enforces the maximum security, which is:
-
-* Ensure that the user is admin
-* Ensure that the user is logged in
-* Ensure that the user has passed the two-factor challenge, if applicable
-* Check the CSRF token
-
-Most of the time though it makes sense to also allow normal users to access the page and the PageController->index() method should not check the CSRF token because it has not yet been sent to the client and because of that can't work.
-
-To turn off checks the following *Attributes* can be added before the controller:
-
-* ``#[NoAdminRequired]``: Also users that are not admins can access the page
-* ``#[PublicPage]``: Everyone can access the page without having to log in
-* ``#[NoTwoFactorRequired]``: A user can access the page before the two-factor challenge has been passed (use this wisely and only in two-factor auth apps, e.g. to allow setup during login)
-* ``#[NoCSRFRequired]``: Don't check the CSRF token (use this wisely since you might create a security hole; to understand what it does see `CSRF in the security section <../prologue/security.html#cross-site-request-forgery>`__)
-
-.. note::
-
-    The attributes are only available in Nextcloud 27 or later. In older versions annotations with the same names exist:
-
-    * ``@NoAdminRequired`` instead of ``#[NoAdminRequired]``
-    * ``@PublicPage``` instead of ``#[PublicPage]``
-    * ``@NoTwoFactorRequired``` instead of ``#[NoTwoFactorRequired]``
-    * ``@NoCSRFRequired``` instead of ``#[NoCSRFRequired]``
-
-A controller method that turns off all checks would look like this:
-
-.. code-block:: php
-    :emphasize-lines: 6-7,10-11
-
-    <?php
-    namespace OCA\MyApp\Controller;
-
-    use OCP\IRequest;
-    use OCP\AppFramework\Controller;
-    use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
-    use OCP\AppFramework\Http\Attribute\PublicPage;
-
-    class PageController extends Controller {
-        #[NoCSRFRequired]
-        #[PublicPage]
-        public function freeForAll() {
-
-        }
     }
 
 Rate limiting
