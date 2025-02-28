@@ -209,6 +209,45 @@ This is an exhaustive list of available events. It features the event ID and the
       }
     }
 
+ * OCP\\Calendar\\Events\\CalendarObjectCreatedEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "calendarId": int,
+        "calendarData": array{
+          "id": int,
+          "uri": string,
+          "{http://calendarserver.org/ns/}getctag": string,
+          "{http://sabredav.org/ns}sync-token": int,
+          "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": 'Sabre\CalDAV\Xml\Property\SupportedCalendarComponentSet',
+          "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": 'Sabre\CalDAV\Xml\Property\ScheduleCalendarTransp'
+          "{urn:ietf:params:xml:ns:caldav}calendar-timezone": string|null
+        },
+        "shares": list<array{
+          "href": string,
+          "commonName": string,
+          "status": int,
+          "readOnly": bool,
+          "{http://owncloud.org/ns}principal": string,
+          "{http://owncloud.org/ns}group-share": bool
+        }>,
+        "objectData": array{
+          "id": int,
+          "uri": string,
+          "lastmodified": int,
+          "etag": string,
+          "calendarid": int,
+          "size": int,
+          "component": string|null,
+          "classification": int
+        }
+      }
+    }
+
  * OCP\\Files\\Events\\Node\\BeforeNodeCreatedEvent
 
   .. code-block:: text
