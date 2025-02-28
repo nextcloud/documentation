@@ -478,7 +478,7 @@ For ``OCSController`` classes and their methods, :ref:`responders <controller-re
 The ``OCSController`` class have however automatically two responders pre-installed:
 Both JSON (``application/json``) and XML (``text/xml``) are generated on-the-fly depending on the request by the browser/user.
 To select the output format, the ``?format=`` query parameter or the ``Accept`` header of the request work out of the box, no intervention is required.
-It is advised to prefer the header generally, as this is the more programmatic way.
+It is advised to prefer the header generally, as this is the more standardized way.
 
 In order to make routing work for OCS routes you need to add :ref:`a separate 'ocs' entry<routes_ocs>` to the routing table in ``appinfo/routes.php`` of your app.
 Inside these, there are the same information as there are for normal routes.
@@ -883,7 +883,7 @@ Here is the example from :ref:`OCS controllers <ocscontroller>`:
 
     }
 
-The ``#[NoAdminRequired]`` is needed here as normal users should be able to access the data in fact.
+The ``#[NoAdminRequired]`` is needed here as normal users should be able to access the data.
 It can be left out in case only the admin user should be able to access the data.
 The CSRF check is still active.
 Thus, the client must obey the corresponding requirements.

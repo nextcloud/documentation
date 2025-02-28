@@ -44,7 +44,7 @@ Additionally, the route must be configured to be an OCS route in the router.
 To do so, you use the ``ocs`` key in the ``routes.php`` file instead of the key ``routes``.
 The rest of the structure is the same.
 
-You can of course combine non-OCS with OCS routes.
+You can of course have both index.php and OCS routes.
 
 .. code-block:: php
 
