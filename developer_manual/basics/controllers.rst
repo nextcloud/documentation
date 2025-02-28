@@ -825,6 +825,77 @@ To turn off checks the following *Attributes* can be added before the controller
     * ``@NoTwoFactorRequired``` instead of ``#[NoTwoFactorRequired]``
     * ``@NoCSRFRequired``` instead of ``#[NoCSRFRequired]``
 
+In the following some examples of configurations are given.
+
+Showing an HTML page by the user
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A typical app needs an ``index.html`` page to show all content within.
+This page should be visible by all users in the instance.
+Therefore, you need to loosen the restriction from admins only (``#[NoAdminRequired]``).
+Additionally, as the user might not have a CSRF checker cookie set yet, the CSRF checks should be disabled (which is fine as this is a template response).
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\TemplateResponse;
+    use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
+    use OCP\AppFramework\Http\Attribute\PublicPage;
+
+    class PageController extends Controller {
+
+        #[NoCSRFRequired]
+        #[NoAdminRequired]
+        public function index(): TemplateResponse {
+            return new TemplateResponse($this->appName, 'main');
+        }
+
+    }
+
+If the page should only be visible to the admin, you can keep the restrictive default by omitting the attribute ``#[NoAdminRequired]``.
+
+Getting data from the backend using AJAX requests
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Data for the frontend needs to be made available from the backend.
+Here, OCS is the suggested way to go.
+Here is the example from :ref:`OCS controllers <ocscontroller>`:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\AppFramework\Http\DataResponse;
+    use OCP\AppFramework\Http\Attribute\NoAdminRequired;
+    use OCP\AppFramework\OCSController;
+
+    class ShareController extends OCSController {
+
+        #[NoAdminRequired]
+        public function getShares(): DataResponse {
+            return new DataResponse([
+                // Your data here
+            ]);
+        }
+
+    }
+
+The ``#[NoAdminRequired]`` is needed here as normal users should be able to access the data in fact.
+It can be left out in case only the admin user should be able to access the data.
+The CSRF check is still active.
+Thus, the client must obey the corresponding requirements.
+
+Completely disabled authentication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. warning::
+    This is a security issue if the side-effects are not carefully considered.
+    You should only use this for public pages that anyone is allowed to access.
+
 A controller method that turns off all checks would look like this:
 
 .. code-block:: php
