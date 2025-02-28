@@ -480,7 +480,10 @@ Both JSON (``application/json``) and XML (``text/xml``) are generated on-the-fly
 To select the output format, the ``?format=`` query parameter or the ``Accept`` header of the request work out of the box, no intervention is required.
 It is advised to prefer the header generally, as this is the more standardized way.
 
-In order to make routing work for OCS routes you need to add :ref:`a separate 'ocs' entry<routes_ocs>` to the routing table in ``appinfo/routes.php`` of your app.
+To make routing work for OCS, the route must be registered in the core.
+This can be done in two ways:
+You can add an attribute `#[ApiRoute]` to the controller method.
+Alternatively, you can add :ref:`a separate 'ocs' entry<routes_ocs>` to the routing table in ``appinfo/routes.php`` of your app.
 Inside these, there are the same information as there are for normal routes.
 
 .. code-block:: php
