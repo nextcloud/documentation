@@ -662,6 +662,27 @@ A redirect can be achieved by returning a RedirectResponse:
 Downloads
 ^^^^^^^^^
 
+A file download can be triggered by returning a DownloadResponse:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\DownloadResponse;
+
+    class PageController extends Controller {
+
+        public function downloadXMLFile(): DownloadResponse {
+            $path = '/some/path/to/file.xml';
+            $contentType = 'application/xml';
+
+            return new DownloadResponse($path, $contentType);
+        }
+
+    }
+
 Creating custom responses
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -794,30 +815,6 @@ The following policy for instance allows images, audio and videos from other dom
 
 
 ---
-
-Downloads
-^^^^^^^^^
-
-A file download can be triggered by returning a DownloadResponse:
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\Controller;
-
-    use OCP\AppFramework\Controller;
-    use OCP\AppFramework\Http\DownloadResponse;
-
-    class PageController extends Controller {
-
-        public function downloadXMLFile(): DownloadResponse {
-            $path = '/some/path/to/file.xml';
-            $contentType = 'application/xml';
-
-            return new DownloadResponse($path, $contentType);
-        }
-
-    }
 
 Creating custom responses
 ^^^^^^^^^^^^^^^^^^^^^^^^^
