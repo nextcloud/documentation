@@ -428,8 +428,56 @@ class implementing the ``OCP\\AppFramework\\Http\\Template\\IMenuAction`` interf
 Data-based responses
 --------------------
 
+.. _ocscontroller:
+
 OCS
 ^^^
+
+.. note::
+    This is purely for compatibility reasons. If you are planning to offer an external API, go for a :ref:`REST APIs <rest-apis>` instead.
+
+In order to ease migration from OCS API routes to the App Framework, an additional controller and response have been added.
+To migrate your API you can use the **OCP\\AppFramework\\OCSController** base class and return your data in the form of a DataResponse in the following way:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\AppFramework\Http\DataResponse;
+    use OCP\AppFramework\Http\Attribute\NoAdminRequired;
+    use OCP\AppFramework\OCSController;
+
+    class ShareController extends OCSController {
+
+        #[NoAdminRequired]
+        public function getShares(): DataResponse {
+            return new DataResponse([
+                //Your data here
+            ]);
+        }
+
+    }
+
+The format parameter works out of the box, no intervention is required.
+
+In order to make routing work for OCS routes you need to add a separate ‘ocs’ entry to the routing table of your app. Inside these are normal routes.
+
+.. code-block:: php
+
+   <?php
+
+   return [
+        'ocs' => [
+            [
+                'name' => 'Share#getShares',
+                'url' => '/api/v1/shares',
+                'verb' => 'GET',
+            ],
+        ],
+   ];
+
+Now your method will be reachable via ``<server>/ocs/v2.php/apps/<APPNAME>/api/v1/shares``
 
 JSON
 ^^^^
@@ -785,56 +833,6 @@ The following policy for instance allows images, audio and videos from other dom
 
     }
 
-.. _ocscontroller:
-
-OCS
-^^^
-
-.. note:: This is purely for compatibility reasons. If you are planning to offer an external API, go for a :doc:`../digging_deeper/rest_apis` instead.
-
-In order to ease migration from OCS API routes to the App Framework, an additional controller and response have been added. To migrate your API you can use the **OCP\\AppFramework\\OCSController** base class and return your data in the form of a DataResponse in the following way:
-
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\Controller;
-
-    use OCP\AppFramework\Http\DataResponse;
-    use OCP\AppFramework\Http\Attribute\NoAdminRequired;
-    use OCP\AppFramework\OCSController;
-
-    class ShareController extends OCSController {
-
-        #[NoAdminRequired]
-        public function getShares(): DataResponse {
-            return new DataResponse([
-                //Your data here
-            ]);
-        }
-
-    }
-
-The format parameter works out of the box, no intervention is required.
-
-In order to make routing work for OCS routes you need to add a separate 'ocs' entry to the routing table of your app.
-Inside these are normal routes.
-
-.. code-block:: php
-
-   <?php
-
-   return [
-        'ocs' => [
-            [
-                'name' => 'Share#getShares',
-                'url' => '/api/v1/shares',
-                'verb' => 'GET',
-            ],
-        ],
-   ];
-
-Now your method will be reachable via ``<server>/ocs/v2.php/apps/<APPNAME>/api/v1/shares``
 
 Handling errors
 ^^^^^^^^^^^^^^^
