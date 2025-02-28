@@ -482,6 +482,44 @@ Now your method will be reachable via ``<server>/ocs/v2.php/apps/<APPNAME>/api/v
 JSON
 ^^^^
 
+Returning JSON is simple, just pass an array to a JSONResponse:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\JSONResponse;
+
+    class PageController extends Controller {
+
+        public function returnJSON(): JSONResponse {
+            $params = array('test' => 'hi');
+            return new JSONResponse($params);
+        }
+
+    }
+
+Because returning JSON is such a common task, there's even a shorter way to do this:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\AppFramework\Controller;
+
+    class PageController extends Controller {
+
+        public function returnJSON(): array {
+            return array('test' => 'hi');
+        }
+
+    }
+
+Why does this work? Because the dispatcher sees that the controller did not return a subclass of a Response and asks the controller to turn the value into a Response. That's where responders come in.
+
 Handling errors
 ^^^^^^^^^^^^^^^
 
@@ -523,47 +561,6 @@ Modifying the content security policy
 
 
 ---
-
-JSON
-^^^^
-
-Returning JSON is simple, just pass an array to a JSONResponse:
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\Controller;
-
-    use OCP\AppFramework\Controller;
-    use OCP\AppFramework\Http\JSONResponse;
-
-    class PageController extends Controller {
-
-        public function returnJSON(): JSONResponse {
-            $params = array('test' => 'hi');
-            return new JSONResponse($params);
-        }
-
-    }
-
-Because returning JSON is such a common task, there's even a shorter way to do this:
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\Controller;
-
-    use OCP\AppFramework\Controller;
-
-    class PageController extends Controller {
-
-        public function returnJSON(): array {
-            return array('test' => 'hi');
-        }
-
-    }
-
-Why does this work? Because the dispatcher sees that the controller did not return a subclass of a Response and asks the controller to turn the value into a Response. That's where responders come in.
 
 Responders
 ^^^^^^^^^^
