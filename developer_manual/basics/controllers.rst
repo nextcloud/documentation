@@ -523,44 +523,7 @@ Why does this work? Because the dispatcher sees that the controller did not retu
 Handling errors
 ^^^^^^^^^^^^^^^
 
-Responders
-^^^^^^^^^^
-
-Miscellaneous responses
------------------------
-
-Redirects
-^^^^^^^^^
-
-Downloads
-^^^^^^^^^
-
-Creating custom responses
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Streamed and lazily rendered responses
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Security considerations
------------------------
-
-Authentication
-^^^^^^^^^^^^^^
-
-Loosening the default restrictions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Rate limiting
-^^^^^^^^^^^^^
-
-Brute-force protection
-^^^^^^^^^^^^^^^^^^^^^^
-
-Modifying the content security policy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
----
+.. _controller-responders:
 
 Responders
 ^^^^^^^^^^
@@ -647,7 +610,41 @@ Because returning values works fine in case of a success but not in case of fail
 
     }
 
+Miscellaneous responses
+-----------------------
 
+Redirects
+^^^^^^^^^
+
+Downloads
+^^^^^^^^^
+
+Creating custom responses
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Streamed and lazily rendered responses
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Security considerations
+-----------------------
+
+Authentication
+^^^^^^^^^^^^^^
+
+Loosening the default restrictions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Rate limiting
+^^^^^^^^^^^^^
+
+Brute-force protection
+^^^^^^^^^^^^^^^^^^^^^^
+
+Modifying the content security policy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+---
 
 Redirects
 ^^^^^^^^^
