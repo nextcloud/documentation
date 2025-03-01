@@ -105,34 +105,15 @@ share::
 Accessing files with KDE and Dolphin file manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To access your Nextcloud files using the Dolphin file manager in KDE, use
-the ``webdav://`` protocol::
-
-    webdav://example.com/nextcloud/remote.php/dav/files/USERNAME/
-
-.. image:: ../images/webdav_dolphin.png
-   :alt: Screenshot of configuring Dolphin file manager to use WebDAV
-
-You can create a permanent link to your Nextcloud server:
-
-#. Open Dolphin and click "Network" in the left-hand "Places" column.
-#. Click on the icon labeled **Add a Network Folder**.
-   The resulting dialog should appear with WebDAV already selected.
-#. If WebDAV is not selected, select it.
-#. Click **Next**.
-#. Enter the following settings:
-
-   * Name: the name you want to see in the **Places** bookmark, for example, Nextcloud.
-
-   * User: the Nextcloud username you used to log in, for example, admin.
-
-   * Server: the Nextcloud domain name, for example, **example.com** (without
-     **http://** before or directories afterwards).
-   * Folder -- Enter the path ``nextcloud/remote.php/dav/files/USERNAME/``.
-#. (Optional) Check the "Create icon" checkbox for a bookmark to appear in the
-   Places column.
-#. (Optional) Provide any special settings or an SSL certificate in the "Port &
-   Encrypted" checkbox.
+#. Navigate to System Settings -> Networking -> Online Accounts
+#. Click "Add Account..."
+#. Click Nextcloud
+#. Enter your server address
+#. Follow the on-screen instructions to log in
+#. After logging in, ensure you enable "Storage" in the "Use This Account For" section
+#. You can now access your files in Dolphin under "Network" in the sidebar
+#. (Optional) To add this as a shortcut in the sidebar, right click "Nextcloud Storage" then "Add to Places"
+#. (Optional) To customise the shortcut, right click the shortcut in the sidebar then "Edit..." and customise the icon and label as you please
 
 
 Creating WebDAV mounts on the Linux command line
