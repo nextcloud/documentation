@@ -86,16 +86,16 @@ You can also choose to only install the client itself by using the following com
 
 If you for instance want to install everything but the ``DesktopShortcut`` and the ``ShellExtensions`` feature, you have two possibilities:
 
-1. You explicitly name all the features you actually want to install (whitelist) where `Client` is always installed anyway::
+1. You explicitly name all the features you actually want to install (whitelist) where ``Client`` is always installed anyway::
 
     msiexec /passive /i Nextcloud-x.y.z-x64.msi ADDDEFAULT=StartMenuShortcuts
 
-2. You pass the `NO_DESKTOP_SHORTCUT` and `NO_SHELL_EXTENSIONS` properties::
+2. You pass the ``NO_DESKTOP_SHORTCUT`` and ``NO_SHELL_EXTENSIONS`` properties::
 
     msiexec /passive /i Nextcloud-x.y.z-x64.msi NO_DESKTOP_SHORTCUT="1" NO_SHELL_EXTENSIONS="1"
 
 .. NOTE::
-    The Nextcloud `.msi` remembers these properties, so you don't need to specify them on upgrades.
+    The Nextcloud ``.msi`` remembers these properties, so you don't need to specify them on upgrades.
 
 .. NOTE::
     You cannot use these to change the installed features, if you want to do that, see the next section.
@@ -103,7 +103,7 @@ If you for instance want to install everything but the ``DesktopShortcut`` and t
 Changing Installed Features
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can change the installed features later by using `REMOVE` and `ADDDEFAULT` properties.
+You can change the installed features later by using ``REMOVE`` and ``ADDDEFAULT`` properties.
 
 1. If you want to add the the desktop shortcut later, run the following command::
 
@@ -113,38 +113,38 @@ You can change the installed features later by using `REMOVE` and `ADDDEFAULT` p
 
     msiexec /passive /i Nextcloud-x.y.z-x64.msi REMOVE="DesktopShortcut"
 
-Windows keeps track of the installed features and using `REMOVE` or `ADDDEFAULT` will only affect the mentioned features.
+Windows keeps track of the installed features and using ``REMOVE`` or ``ADDDEFAULT`` will only affect the mentioned features.
 
 Compare `REMOVE <https://msdn.microsoft.com/en-us/library/windows/desktop/aa371194(v=vs.85).aspx>`_
 and `ADDDEFAULT <https://msdn.microsoft.com/en-us/library/windows/desktop/aa367518(v=vs.85).aspx>`_
 on the Windows Installer Guide.
 
 .. NOTE::
-    You cannot specify `REMOVE` on initial installation as it will disable all features.
+    You cannot specify ``REMOVE`` on initial installation as it will disable all features.
 
 Installation Folder
 ^^^^^^^^^^^^^^^^^^^
 
-You can adjust the installation folder by specifying the `INSTALLDIR`
+You can adjust the installation folder by specifying the ``INSTALLDIR``
 property like this::
 
   msiexec /passive /i Nextcloud-x.y.z-x64.msi INSTALLDIR="C:\Program Files\Non Standard Nextcloud Client Folder"
 
-Be careful when using PowerShell instead of `cmd.exe`, it can be tricky to get
+Be careful when using PowerShell instead of ``cmd.exe``, it can be tricky to get
 the whitespace escaping right there.
-Specifying the `INSTALLDIR` like this only works on first installation, you cannot simply re-invoke the `.msi` with a different path. If you still need to change it, uninstall it first and reinstall it with the new path.
+Specifying the ``INSTALLDIR`` like this only works on first installation, you cannot simply re-invoke the ``.msi`` with a different path. If you still need to change it, uninstall it first and reinstall it with the new path.
 
 Disabling Automatic Updates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To disable automatic updates, you can pass the `SKIPAUTOUPDATE` property.::
+To disable automatic updates, you can pass the ``SKIPAUTOUPDATE`` property.::
 
     msiexec /passive /i Nextcloud-x.y.z-x64.msi SKIPAUTOUPDATE="1"
 
 Launch After Installation
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To launch the client automatically after installation, you can pass the `LAUNCH` property.::
+To launch the client automatically after installation, you can pass the ``LAUNCH`` property.::
 
     msiexec /i Nextcloud-x.y.z-x64.msi LAUNCH="1"
 
@@ -158,12 +158,12 @@ No Reboot After Installation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Nextcloud Client schedules a reboot after installation to make sure the Explorer extension is correctly (un)loaded.
-If you're taking care of the reboot yourself, you can set the `REBOOT` property::
+If you're taking care of the reboot yourself, you can set the ``REBOOT`` property::
 
     msiexec /i Nextcloud-x.y.z-x64.msi REBOOT=ReallySuppress
 
-This will make `msiexec` exit with error `ERROR_SUCCESS_REBOOT_REQUIRED` (3010).
-If your deployment tooling interprets this as an actual error and you want to avoid that, you may want to set the `DO_NOT_SCHEDULE_REBOOT` instead::
+This will make ``msiexec`` exit with error ``ERROR_SUCCESS_REBOOT_REQUIRED`` (3010).
+If your deployment tooling interprets this as an actual error and you want to avoid that, you may want to set the ``DO_NOT_SCHEDULE_REBOOT`` instead::
 
     msiexec /i Nextcloud-x.y.z-x64.msi DO_NOT_SCHEDULE_REBOOT="1"
 
