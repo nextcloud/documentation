@@ -7,8 +7,8 @@ Translation
 Nextcloud provides mechanisms for internationalization (make an application translatable) and localization (add translations for specific languages). This section provides detailed instructions for both aspects.
 In order to make your app translatable (internationalization), you should use Nextcloud's methods for translating strings. They are available for both the server-side (PHP, Templates) as well as for the client-side (JavaScript).
 
-PHP
----
+PHP Backend
+-----------
 
 If localized strings are used in the backend code, simply inject the ``\OCP\IL10N`` class into your service via type hinting it in the constructor. You will automatically get the language object containing the translations of your app:
 
@@ -16,18 +16,10 @@ If localized strings are used in the backend code, simply inject the ``\OCP\IL10
 .. code-block:: php
 
     <?php
-    namespace OCA\MyApp\Service;
-
-    use OCP\IL10N;
-
-
     class AuthorService {
-
-        /** @var IL10N */
-        private $l;
-
-        public function __construct(IL10N $l) {
-            $this->l = $l;
+        public function __construct(
+            private \OCP\IL10N $l,
+        ) {
         }
 
         …
@@ -38,13 +30,12 @@ Strings can then be translated in the following way:
 .. code-block:: php
 
     <?php
-    …
-
     class AuthorService {
 
         …
 
         public function getLanguageCode() {
+            // Get the language code of the current language
             return $this->l->getLanguageCode();
         }
 
@@ -61,13 +52,16 @@ Strings can then be translated in the following way:
         public function getAuthors($count, $city) {
             // Translation with plural
             return $this->l->n(
-                '%n author is currently in the city %1$s',  // singular string
-                '%n authors are currently in the city %1$s',  // plural string
+                '%n author is currently in the city %1$s', // singular string
+                '%n authors are currently in the city %1$s', // plural string
                 $count, // number to decide which plural to use
                 [$city] // further parameters are possible
             );
         }
     }
+
+FIXME
+-----
 
 Correct plurals
 ^^^^^^^^^^^^^^^
@@ -97,15 +91,10 @@ the ``force_language`` and ``default_language`` configuration options to conside
 .. code-block:: php
 
     <?php
-
-    use OCP\L10N\IFactory;
     class SendEmail {
-
-        /** @var IFactory */
-        private $l10nFactory;
-
-        public function __construct(IFactory $l10nFactory) {
-            $this->l10nFactory = $l10nFactory;
+        public function __construct(
+            private \OCP\L10N\IFactory $l10nFactory,
+         ) {
         }
 
         public function send(IUser $user): void {
@@ -116,25 +105,28 @@ the ``force_language`` and ``default_language`` configuration options to conside
         }
 
 
-Templates
----------
+PHP Templates
+-------------
 
-In every template the global variable **$l** can be used to translate the strings using its methods **t()** and **n()**:
+In every template the global variable ``$l`` can be used to translate the strings using its methods ``t()`` and ``n()``:
 
 .. code-block:: php
 
-    <div><?php p($l->t('Showing %$1s files', $_['count'])); ?></div>
-
+    // Simple text string
     <button><?php p($l->t('Hide')); ?></button>
 
-For the right date format use ``<?php p($l->l('date', time()));?>``.
+    // Text with a placeholder
+    <div><?php p($l->t('Show files of %1$s', [$user])); ?></div>
 
+    // Date string
+    <em><?php p($l->l('date', time())); ?></em>
 
+JavaScript / Typescript / Vue
+-----------------------------
 
-JavaScript
-----------
-
-There are global functions **t()** and **n()** available for translating strings in javascript code. They differ a bit in terms of usage compared to php:
+There are global functions ``t()`` and ``n()`` available for translating strings in javascript code.
+If your app is build, you can import the translation functions from the `@nextcloud/l10n package <https://github.com/nextcloud-libraries/nextcloud-l10n>`_.
+They differ a bit in terms of usage compared to php:
 
 * First argument is the appId e.g. ``'myapp'``
 * Placeholders (apart from the count in plurals) use single-mustache brackets with meaning-full descriptors.
@@ -147,11 +139,57 @@ There are global functions **t()** and **n()** available for translating strings
     n('myapp', 'Import %n calendar into {collection}', 'Import %n calendars into {collection}', selectionLength, {collection: 'Nextcloud'});
 
 
+Guidelines
+----------
 
-Important notes
----------------
+Please also look through the following hints to improve your strings and make them better translatable by the community
+and therefore improving the experience for non-english users.
 
-Please also look through the following steps to improve your strings and make them better translatable by others
+.. list-table::
+   :header-rows: 1
+
+   * - Bad
+     - Good
+     - Description
+   * - ``´`` or ``’``
+     - ``'``
+     - Use ascii single quote
+   * - ``Loading...``
+     - ``Loading …``
+     - | Use unicode triple-dot character.
+       | Add a space before the triple-dot when trimming a sentence instead of a word.
+   * - Don't
+     - Do not
+     - Using the spelled out version is easier to understand and makes translating easier.
+   * - Won't
+     - Will not
+     - Using the spelled out version is easier to understand and makes translating easier.
+   * - Can not
+     - Cannot
+     - Using the combined version is easier to understand and makes translating easier.
+   * - id
+     - ID
+     - Full uppercase for shortcutting "identifier"
+   * - Users
+     - Accounts / People
+     - Use **accounts** when you refer to a profile/entity. Use **people** when referring to humans.
+   * - Admin / Administrator
+     - Administration
+     - | Refer to administration as a non-human organizational entity
+       | instead of a single or multiple persons.
+   * - Headline
+     - Headline:
+     - Include colons ``:`` in the translations as some languages add a space before the colon.
+   * - | " Leading space"
+       | "Trailing space "
+     - | "No leading space"
+       | "No trailing space"
+     - | Leading or trailing spaces mostly indicate that strings are concatenated.
+       | For translators it is often helpful to have all the content in a single translation,
+       | as order and references between words and sentences might get lost otherwise.
+   * - "Error:" $error
+     - "Error: %s"
+     - Instead of concatenating errors or part messages, make them a proper placeholder
 
 Improving your translations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -166,10 +204,10 @@ Bad example:
 
 Translators will translate:
 
-* Select file from
-* local filesystem
-* ' or '
-* cloud
+* ``Select file from``
+* ``local filesystem``
+* ``or`` (with leading and trailing whitespace)
+* ``cloud``
 
 Translating these individual strings results in  ``local filesystem`` and ``cloud`` losing case. The two white spaces surrounding ``or`` will get lost while translating as well. For languages that have a different grammatical order it prevents the translators from reordering the sentence components.
 
@@ -196,7 +234,7 @@ This allows translators to have the cloudlink before the browselink in case the 
 .. _Hints:
 
 Provide context hints for translators
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------------
 
 In case some translation strings may be translated wrongly because they have multiple meanings, you can add hints which will be shown in the Transifex web-interface:
 
@@ -213,7 +251,7 @@ In case some translation strings may be translated wrongly because they have mul
         </li>
     </ul>
 
-**Javascript**
+**Javascript / Typescript**
 
 .. code-block:: javascript
 
@@ -261,8 +299,8 @@ Nextcloud's translation system is powered by `Transifex <https://explore.transif
 Translation tool
 ^^^^^^^^^^^^^^^^
 
-The translation tool scrapes the source code for method calls to  **t()**
-or **n()** to extract the strings that should be translated. If you check
+The translation tool scrapes the source code for method calls to  ``t()``
+or ``n()`` to extract the strings that should be translated. If you check
 in minified JS code for example then those method names are also quite
 common and could cause wrong extractions. For this reason we allow to
 specify a list of files that the translation tool will not scrape for
@@ -278,7 +316,7 @@ Setup of the transifex sync
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To setup the transifex sync within the Nextcloud community you need to add first the
-transifex config to your app folder at :file:`.tx/config` (please replace **MYAPP** with your apps id):
+transifex config to your app folder at :file:`.tx/config` (please replace ``MYAPP`` with your apps id):
 
 .. code-block:: ini
 
@@ -349,7 +387,7 @@ in the app folder::
     cd /srv/http/nextcloud/apps/myapp
     translationtool.phar create-pot-files
 
-The translation tool requires **gettext**, installable via::
+The translation tool requires ``gettext``, installable via::
 
     apt-get install gettext
 
