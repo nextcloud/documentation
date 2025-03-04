@@ -40,6 +40,8 @@ Artificial intelligence at Nextcloud is built in a modular way, allowing you to 
 
 **Note**: When using our on-premise AI apps, make sure you have a GPU with enough VRAM that fits all the features you need. For each app documented here you will find its hardware requirements.
 
+.. _machine_translation:
+
 Machine translation
 ~~~~~~~~~~~~~~~~~~~
 
