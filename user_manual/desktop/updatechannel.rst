@@ -11,7 +11,7 @@ The desktop client has 4 update channels: *Enterprise*, *Stable*, *Beta* and *Da
 +----------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Channels                                                                                                                                                 |
 +=================================+========================================================================================================================+
-| Enterprise                      | Special enterprise version for customers for the best possible experience                                              |
+| Enterprise                      | Special version for enterprise customers for the best possible experience.                                             |
 +---------------------------------+------------------------------------------------------------------------------------------------------------------------+
 | Stable                          | Latest feature releases ready for most users at minimal risk.                                                          |
 +---------------------------------+------------------------------------------------------------------------------------------------------------------------+
@@ -23,6 +23,6 @@ The desktop client has 4 update channels: *Enterprise*, *Stable*, *Beta* and *Da
 References:
 
 * `Enterprise deployment options <https://nextcloud.com/blog/branded-nextcloud-clients/>`_
-* `Latest stable release <https://nextcloud.com/install/#install-clients>`_
-* `Latest pre-release <https://download.nextcloud.com/desktop/prereleases/>`_
+* `Latest stable release <https://github.com/nextcloud-releases/desktop/releases/latest/>`_
+* `Pre-releases <https://github.com/nextcloud-releases/desktop/releases/>`_
 * `Daily builds <https://download.nextcloud.com/desktop/daily/>`_
