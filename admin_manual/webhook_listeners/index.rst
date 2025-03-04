@@ -209,6 +209,258 @@ This is an exhaustive list of available events. It features the event ID and the
       }
     }
 
+ * OCP\\Calendar\\Events\\CalendarObjectCreatedEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "calendarId": int,
+        "calendarData": array{
+          "id": int,
+          "uri": string,
+          "{http://calendarserver.org/ns/}getctag": string,
+          "{http://sabredav.org/ns}sync-token": int,
+          "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": 'Sabre\CalDAV\Xml\Property\SupportedCalendarComponentSet',
+          "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": 'Sabre\CalDAV\Xml\Property\ScheduleCalendarTransp'
+          "{urn:ietf:params:xml:ns:caldav}calendar-timezone": string|null
+        },
+        "shares": list<array{
+          "href": string,
+          "commonName": string,
+          "status": int,
+          "readOnly": bool,
+          "{http://owncloud.org/ns}principal": string,
+          "{http://owncloud.org/ns}group-share": bool
+        }>,
+        "objectData": array{
+          "id": int,
+          "uri": string,
+          "lastmodified": int,
+          "etag": string,
+          "calendarid": int,
+          "size": int,
+          "component": string|null,
+          "classification": int
+        }
+      }
+    }
+
+ * OCP\\Calendar\\Events\\CalendarObjectDeletedEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "calendarId": int,
+        "calendarData": array{
+          "id": int,
+          "uri": string,
+          "{http://calendarserver.org/ns/}getctag": string,
+          "{http://sabredav.org/ns}sync-token": int,
+          "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": 'Sabre\CalDAV\Xml\Property\SupportedCalendarComponentSet',
+          "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": 'Sabre\CalDAV\Xml\Property\ScheduleCalendarTransp'
+          "{urn:ietf:params:xml:ns:caldav}calendar-timezone": string|null
+        },
+        "shares": list<array{
+          "href": string,
+          "commonName": string,
+          "status": int,
+          "readOnly": bool,
+          "{http://owncloud.org/ns}principal": string,
+          "{http://owncloud.org/ns}group-share": bool
+        }>,
+        "objectData": array{
+          "id": int,
+          "uri": string,
+          "lastmodified": int,
+          "etag": string,
+          "calendarid": int,
+          "size": int,
+          "component": string|null,
+          "classification": int
+        }
+      }
+    }
+
+ * OCP\\Calendar\\Events\\CalendarObjectMovedEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "sourceCalendarId": int,
+        "sourceCalendarData": array{
+          "id": int,
+          "uri": string,
+          "{http://calendarserver.org/ns/}getctag": string,
+          "{http://sabredav.org/ns}sync-token": int,
+          "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": 'Sabre\CalDAV\Xml\Property\SupportedCalendarComponentSet',
+          "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": 'Sabre\CalDAV\Xml\Property\ScheduleCalendarTransp'
+          "{urn:ietf:params:xml:ns:caldav}calendar-timezone": string|null
+        },
+        "targetCalendarId": int,
+        "targetCalendarData": array{
+          "id": int,
+          "uri": string,
+          "{http://calendarserver.org/ns/}getctag": string,
+          "{http://sabredav.org/ns}sync-token": int,
+          "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": 'Sabre\CalDAV\Xml\Property\SupportedCalendarComponentSet',
+          "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": 'Sabre\CalDAV\Xml\Property\ScheduleCalendarTransp'
+          "{urn:ietf:params:xml:ns:caldav}calendar-timezone": string|null
+        },
+        "sourceShares": list<array{
+          "href": string,
+          "commonName": string,
+          "status": int,
+          "readOnly": bool,
+          "{http://owncloud.org/ns}principal": string,
+          "{http://owncloud.org/ns}group-share": bool
+        }>,
+        "targetShares": list<array{
+          "href": string,
+          "commonName": string,
+          "status": int,
+          "readOnly": bool,
+          "{http://owncloud.org/ns}principal": string,
+          "{http://owncloud.org/ns}group-share": bool
+        }>,
+        "objectData": array{
+          "id": int,
+          "uri": string,
+          "lastmodified": int,
+          "etag": string,
+          "calendarid": int,
+          "size": int,
+          "component": string|null,
+          "classification": int
+        }
+      }
+    }
+
+ * OCP\\Calendar\\Events\\CalendarObjectMovedToTrashEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "calendarId": int,
+        "calendarData": array{
+          "id": int,
+          "uri": string,
+          "{http://calendarserver.org/ns/}getctag": string,
+          "{http://sabredav.org/ns}sync-token": int,
+          "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": 'Sabre\CalDAV\Xml\Property\SupportedCalendarComponentSet',
+          "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": 'Sabre\CalDAV\Xml\Property\ScheduleCalendarTransp'
+          "{urn:ietf:params:xml:ns:caldav}calendar-timezone": string|null
+        },
+        "shares": list<array{
+          "href": string,
+          "commonName": string,
+          "status": int,
+          "readOnly": bool,
+          "{http://owncloud.org/ns}principal": string,
+          "{http://owncloud.org/ns}group-share": bool
+        }>,
+        "objectData": array{
+          "id": int,
+          "uri": string,
+          "lastmodified": int,
+          "etag": string,
+          "calendarid": int,
+          "size": int,
+          "component": string|null,
+          "classification": int
+        }
+      }
+    }
+
+ * OCP\\Calendar\\Events\\CalendarObjectRestoredEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "calendarId": int,
+        "calendarData": array{
+          "id": int,
+          "uri": string,
+          "{http://calendarserver.org/ns/}getctag": string,
+          "{http://sabredav.org/ns}sync-token": int,
+          "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": 'Sabre\CalDAV\Xml\Property\SupportedCalendarComponentSet',
+          "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": 'Sabre\CalDAV\Xml\Property\ScheduleCalendarTransp'
+          "{urn:ietf:params:xml:ns:caldav}calendar-timezone": string|null
+        },
+        "shares": list<array{
+          "href": string,
+          "commonName": string,
+          "status": int,
+          "readOnly": bool,
+          "{http://owncloud.org/ns}principal": string,
+          "{http://owncloud.org/ns}group-share": bool
+        }>,
+        "objectData": array{
+          "id": int,
+          "uri": string,
+          "lastmodified": int,
+          "etag": string,
+          "calendarid": int,
+          "size": int,
+          "component": string|null,
+          "classification": int
+        }
+      }
+    }
+
+ * OCP\\Calendar\\Events\\CalendarObjectUpdatedEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "calendarId": int,
+        "calendarData": array{
+          "id": int,
+          "uri": string,
+          "{http://calendarserver.org/ns/}getctag": string,
+          "{http://sabredav.org/ns}sync-token": int,
+          "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": 'Sabre\CalDAV\Xml\Property\SupportedCalendarComponentSet',
+          "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": 'Sabre\CalDAV\Xml\Property\ScheduleCalendarTransp'
+          "{urn:ietf:params:xml:ns:caldav}calendar-timezone": string|null
+        },
+        "shares": list<array{
+          "href": string,
+          "commonName": string,
+          "status": int,
+          "readOnly": bool,
+          "{http://owncloud.org/ns}principal": string,
+          "{http://owncloud.org/ns}group-share": bool
+        }>,
+        "objectData": array{
+          "id": int,
+          "uri": string,
+          "lastmodified": int,
+          "etag": string,
+          "calendarid": int,
+          "size": int,
+          "component": string|null,
+          "classification": int
+        }
+      }
+    }
+
  * OCP\\Files\\Events\\Node\\BeforeNodeCreatedEvent
 
   .. code-block:: text
