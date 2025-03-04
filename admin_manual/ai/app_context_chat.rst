@@ -73,9 +73,24 @@ Installation
 Initial loading of data
 -----------------------
 
-| Context chat will automatically load user data into the Vector DB using background jobs.
+Auto-indexing
+~~~~~~~~~~~~~
+
+| Context chat will automatically load user data into the Vector DB using asynchronous background jobs.
 | The initial loading of data can take a long time depending on the number of files and their size.
-| To speed up the asynchronous indexing or to stop it altogether, see the `Configuration Options (OCC)`_.
+
+The indexing jobs are set up to run during the Nextcloud instance's maintenance window (typically during the night) only. If you have not set a maintenance window, indexing will run 24/7.
+
+You can set up a background job worker explicitly for Context Chat to avoid slowing down normal background job operation on larger instances.
+
+.. code-block::
+
+   php cron.php "OCA\\ContextChat\\BackgroundJobs\\IndexerJob" "OCA\\ContextChat\\BackgroundJobs\\ActionJob" "OCA\\ContextChat\\BackgroundJobs\\SubmitContentJob" "OCA\\ContextChat\\BackgroundJobs\\StorageCrawlJob" "OCA\\ContextChat\\BackgroundJobs\\InitialContentImportJob"
+
+You can set this command to run every 15 minutes on weekends using cron for example.
+
+Synchronous indexing
+~~~~~~~~~~~~~~~~~~~~
 
 | To index all the files synchronously, use the following command:
 | Note: This does not interact with the auto-indexing feature and that list would remain unchanged. However, the indexed files would be skipped when the auto indexer runs.
@@ -83,6 +98,8 @@ Initial loading of data
 .. code-block::
 
    occ context_chat:scan <user_id>
+
+**Note**: The synchronous command could take several days to complete. On larger systems we thus recommend to use auto-indexing.
 
 Scaling
 -------
@@ -132,19 +149,19 @@ Configuration Options (OCC)
 
    occ config:app:set context_chat auto_indexing --value=true --type=boolean
 
-* ``indexing_batch_size`` integer (default: 100)
-   The number of files to index per run of the indexer background job
+* ``indexing_batch_size`` integer (default: 5000)
+   The number of files to index per run of the indexer background job (this is limited by `indexing_max_time`)
 
 .. code-block::
 
    occ config:app:set context_chat indexing_batch_size --value=100 --type=integer
 
-* ``indexing_job_interval`` integer (default: 600)
+* ``indexing_job_interval`` integer (default: 1800)
    The interval at which the indexer jobs run in seconds
 
 .. code-block::
 
-   occ config:app:set context_chat indexing_job_interval --value=600 --type=integer
+   occ config:app:set context_chat indexing_job_interval --value=1800 --type=integer
 
 * ``indexing_max_time`` integer (default: 1800)
    The number of seconds to index files for per run, regardless of batch size
@@ -152,13 +169,6 @@ Configuration Options (OCC)
 .. code-block::
 
    occ config:app:set context_chat indexing_max_time --value=1800 --type=integer
-
-* ``indexing_max_jobs_count`` integer (default: 3)
-   The maximum number of Indexer jobs allowed to run at the same time
-
-.. code-block::
-
-   occ config:app:set context_chat indexing_max_jobs_count --value=3 --type=integer
 
 * ``request_timeout`` integer (default: 3000)
    Request timeout in seconds for all requests made to the Context chat backend (the external app in AppAPI).
