@@ -132,8 +132,8 @@ Configuration Options (OCC)
 
    occ config:app:set context_chat auto_indexing --value=true --type=boolean
 
-* ``indexing_batch_size`` integer (default: 100)
-   The number of files to index per run of the indexer background job
+* ``indexing_batch_size`` integer (default: 5000)
+   The number of files to index per run of the indexer background job (this is limited by `indexing_max_time`)
 
 .. code-block::
 
