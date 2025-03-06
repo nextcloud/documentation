@@ -3280,7 +3280,7 @@ The maximum Nextcloud desktop client version that will be allowed to sync with
 this server instance. All connections made from later clients will be denied
 by the server.
 
-Defaults to 99.99.99
+Defaults to ``99.99.99``
 
 localstorage.allowsymlinks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^

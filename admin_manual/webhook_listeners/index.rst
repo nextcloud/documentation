@@ -33,7 +33,10 @@ If you would like to match events fired by a specific user, you can pass ``{ "us
 
 If you would like to enforce multiple criteria, you can simply pass multiple properties ``{ "event.tableId": 42, "event.rowId": 3 }``
 
+If you would like to match values partially, you can use regular expressions: ``{ "user.uid": "/admin_.*/"}`` will match any user whose user ID starts with ``admin_``. This can be especially useful for filesystem events for filtering by path: ``{ "event.node.path": "/^\\/.*\\/files\\/Special folder\\//"}`` will match files inside the ``Special folder`` of any user (Note especially, that the slashes in the path need to be escaped with two back-slashes, once because we're inside a json string and once because we're inside a regular expression).
+
 You can also use additional comparison operators (``$eq, $ne, $gt, $gte, $lt, $lte, $in, $nin``) as well as logical operators (``$and, $or, $not, $nor``). For example use ``{ "time" : { "$lt": 1711971024 } }`` to accept only events prior to April 1st 2024 and ``{ "time" : { "$not": { "$lt": 1711971024 } } }`` to accept events after April 1st 2024.
+
 
 Speeding up webhook dispatch
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -417,5 +420,21 @@ This is an exhaustive list of available events. It features the event ID and the
         "class": string,
         "source": array{"id": string, "path": string}
         "target": array{"id": string, "path": string}
+      }
+    }
+
+* OCP\\SystemTag\\MapperEvent
+
+  .. code-block:: text
+
+    array {
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "class": string,
+        'eventType' => 'OCP\SystemTag\ISystemTagObjectMapper::assignTags' | 'OCP\SystemTag\ISystemTagObjectMapper::unassignTags',
+		'objectType' => string (e.g. 'files'),
+        'objectId' => string,
+        'tagIds' => int[],
       }
     }

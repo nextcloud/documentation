@@ -18,6 +18,7 @@ Your files are always automatically synchronized between your Nextcloud server, 
    usage
    macosvfs
    autoupdate
+   updatechannel
    conflicts
    faq
 

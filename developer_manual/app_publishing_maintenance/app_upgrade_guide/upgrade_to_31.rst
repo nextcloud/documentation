@@ -55,7 +55,8 @@ to check whether the current Files app instance is a public share or not, and if
 Added APIs
 ^^^^^^^^^^
 
-- TBD
+- If an app supports file conversion, it may now register an ``\OCP\Files\Conversion\ConversionProvider`` which will
+  be called automatically based on the supported MIME types. An app may register as many of these as needed.
 
 Changed APIs
 ^^^^^^^^^^^^

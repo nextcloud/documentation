@@ -192,7 +192,7 @@ depending on the used file manager. Available are e.g. ``nautilus-nextcloud``
 ``caja-nextcloud``. You can create  share links, and share with internal 
 Nextcloud users the same way as in your Nextcloud Web interface.
 
-In you file explorer, click on a file and in the context menu go to
+In your file explorer, click on a file and in the context menu go to
 **Nextcloud** and then lick on **Share options** to bring up the Share
 dialog.
 
@@ -236,7 +236,7 @@ Using the Ignored Files Editor
 
 You might have some local files or directories that you do not want to backup
 and store on the server. To identify and exclude these files or directories, you
-can use the *Ignored Files Editor* (General tab.)
+can use the *Ignored Files Editor* (General tab).
 
 .. figure:: images/ignored_files_editor.png
 
