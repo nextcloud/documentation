@@ -8,7 +8,7 @@ easily and securely link file shares between Nextcloud servers, in effect
 creating a cloud of Nextclouds.
  
 
-.. _label-direct-share-link:   
+.. _label-direct-share-linklabel-direct-share-link:   
    
 Creating a new Federation Share
 -------------------------------
