@@ -27,9 +27,10 @@ OpenAI integration
 
 With this application, you can also connect to a self-hosted LocalAI or Ollama instance or to any service that implements an API similar enough to the OpenAI API,
 for example `IONOS AI Model Hub <https://docs.ionos.com/cloud/ai/ai-model-hub>`_,
-`Plusserver <https://www.plusserver.com/en/ai-platform/>`_, `Groqcloud <https://console.groq.com>`_ or `MistralAI <https://mistral.ai>`_ .
+`Plusserver <https://www.plusserver.com/en/ai-platform/>`_, `Groqcloud <https://console.groq.com>`_, `MistralAI <https://mistral.ai>`_ or `Together AI <https://together.ai>`_.
 
 Do note however, that we test the Assistant tasks that this app implements only with OpenAI models and only against the OpenAI API, we thus cannot guarantee other models and APIs will work.
+Some APIs claiming to be compatible with OpenAI might not be fully compatible so we cannot guarantee that they will work with this app.
 
 
 Improve performance
