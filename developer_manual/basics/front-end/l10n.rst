@@ -145,10 +145,51 @@ Guidelines
 Please also look through the following hints to improve your strings and make them better translatable by the community
 and therefore improving the experience for non-english users.
 
-.. csv-table::
-   :header: "Bad","Good","Description"
+.. list-table::
+   :header-rows: 1
 
-   "Don't","Do not","Using the spelled out version is easier to understand and makes translating easier"
+   * - Bad
+     - Good
+     - Description
+   * - ``´`` or ``’``
+     - ``'``
+     - Use ascii single quote
+   * - ``Loading...``
+     - ``Loading …``
+     - | Use unicode triple-dot character.
+       | Add a space before the triple-dot when trimming a sentence instead of a word.
+   * - Don't
+     - Do not
+     - Using the spelled out version is easier to understand and makes translating easier.
+   * - Won't
+     - Will not
+     - Using the spelled out version is easier to understand and makes translating easier.
+   * - Can not
+     - Cannot
+     - Using the combined version is easier to understand and makes translating easier.
+   * - id
+     - ID
+     - Full uppercase for shortcutting "identifier"
+   * - Users
+     - Accounts / People
+     - Use **accounts** when you refer to a profile/entity. Use **people** when referring to humans.
+   * - Admin / Administrator
+     - Administration
+     - | Refer to administration as a non-human organizational entity
+       | instead of a single or multiple persons.
+   * - Headline
+     - Headline:
+     - Include colons ``:`` in the translations as some languages add a space before the colon.
+   * - | " Leading space"
+       | "Trailing space "
+     - | "No leading space"
+       | "No trailing space"
+     - | Leading or trailing spaces mostly indicate that strings are concatenated.
+       | For translators it is often helpful to have all the content in a single translation,
+       | as order and references between words and sentences might get lost otherwise.
+   * - "Error:" $error
+     - "Error: %s"
+     - Instead of concatenating errors or part messages, make them a proper placeholder
 
 Improving your translations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
