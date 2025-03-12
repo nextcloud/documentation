@@ -7,8 +7,8 @@ Translation
 Nextcloud provides mechanisms for internationalization (make an application translatable) and localization (add translations for specific languages). This section provides detailed instructions for both aspects.
 In order to make your app translatable (internationalization), you should use Nextcloud's methods for translating strings. They are available for both the server-side (PHP, Templates) as well as for the client-side (JavaScript).
 
-PHP
----
+PHP Backend
+-----------
 
 If localized strings are used in the backend code, simply inject the ``\OCP\IL10N`` class into your service via type hinting it in the constructor. You will automatically get the language object containing the translations of your app:
 
@@ -105,8 +105,8 @@ the ``force_language`` and ``default_language`` configuration options to conside
         }
 
 
-Templates
----------
+PHP Templates
+-------------
 
 In every template the global variable ``$l`` can be used to translate the strings using its methods ``t()`` and ``n()``:
 
@@ -121,8 +121,8 @@ In every template the global variable ``$l`` can be used to translate the string
     // Date string
     <em><?php p($l->l('date', time())); ?></em>
 
-JavaScript
-----------
+JavaScript / Typescript / Vue
+-----------------------------
 
 There are global functions ``t()`` and ``n()`` available for translating strings in javascript code.
 If your app is build, you can import the translation functions from the `@nextcloud/l10n package <https://github.com/nextcloud-libraries/nextcloud-l10n>`_.
@@ -234,7 +234,7 @@ This allows translators to have the cloudlink before the browselink in case the 
 .. _Hints:
 
 Provide context hints for translators
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------------
 
 In case some translation strings may be translated wrongly because they have multiple meanings, you can add hints which will be shown in the Transifex web-interface:
 
@@ -251,7 +251,7 @@ In case some translation strings may be translated wrongly because they have mul
         </li>
     </ul>
 
-**Javascript**
+**Javascript / Typescript**
 
 .. code-block:: javascript
 
