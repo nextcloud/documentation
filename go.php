@@ -15,6 +15,7 @@ $mapping = array(
     'admin-cache'             => '/admin_manual/configuration_server/caching_configuration.html',
     'admin-config'            => '/admin_manual/configuration_server/config_sample_php_parameters.html',
     'admin-db-conversion'     => '/admin_manual/configuration_database/db_conversion.html',
+    'admin-db-configuration'  => '/admin_manual/configuration_database/linux_database_configuration.html',
     'admin-db-transaction'    => '/admin_manual/configuration_database/linux_database_configuration.html#database-read-committed-transaction-isolation-level',
     'admin-delegation'        => '/admin_manual/configuration_server/admin_delegation_configuration.html',
     'admin-deploy-options'    => '/admin_manual/exapps_management/AdvancedDeployOptions.html',
