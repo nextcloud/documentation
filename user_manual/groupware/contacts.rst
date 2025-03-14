@@ -124,6 +124,8 @@ to create new address books, simply by specifying an address books name:
 
 The Contacts settings is also where you can share, export and delete addressbooks. You will find the CardDAV URLs there.
 
+.. note:: Contacts in disabled address books are not shown in the Contacts app and the Contact menu. 
+
 See :doc:`index` for more details about syncing your address books
 with iOS, macOS, Thunderbird and other CardDAV clients.
 
