@@ -44,6 +44,7 @@ Database connectors (pick the one for your database):
 
 * PHP module intl (increases language translation performance and fixes sorting
   of non-ASCII characters)
+* PHP module gmp (to improve performance of passwordless login (WebAuthn))
 * PHP module sodium (for Argon2 for password hashing. bcrypt is used as fallback, but if passwords were hashed with Argon2 already and the module is missing, your users can't log in. Included with PHP >= 7.2)
 
 Required for specific apps:
@@ -53,8 +54,6 @@ Required for specific apps:
   :doc:`../configuration_files/external_storage/smb`)
 * PHP module ftp (for FTP storage / external user authentication)
 * PHP module imap (for external user authentication)
-* PHP module bcmath (for passwordless login)
-* PHP module gmp (for passwordless login)
 
 Recommended for specific apps (*optional*):
 
