@@ -4,7 +4,7 @@ Installation
 
 You can download the latest version of the Nextcloud Desktop Synchronization
 Client from the `Nextcloud download page`_.
-There are clients for Linux, macOs, and Microsoft Windows.
+There are clients for Linux, macOS, and Microsoft Windows.
 
 The currently supported server releases are the latest three stable versions
 at time of publication. It means that the |version| release series is supporting
