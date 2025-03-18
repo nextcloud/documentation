@@ -13,15 +13,20 @@ disable profile globally to remove all profile functionality.
 
 Profile properties are also written into the :ref:`system address book<system-address-book>`.
 
+.. note:: If not disabled, the profile is publicly visible.
+  The visibility of the individual profile attributes can be either controlled
+  by the assigned visibility scopes (e.g. "Private" will disable public access),
+  or by the user defined profile visibility.
+
+Configuration
+-------------
+
 To enable or disable profile by default for new users switch the toggle in
 Basic settings under the Administration settings section.
 
 .. figure:: ../images/profile_default_setting.png
 
-.. note:: If you are upgrading from Nextcloud 22 to 23 and want profile to
-  be disabled by default for all users, you may run the ``occ`` command below
-  before upgrading or upgrade first then switch the toggle in Basic settings
-  before letting any users log in.
+You may also run the ``occ`` command below instead to change the default to ``false``:
 
 ::
 
