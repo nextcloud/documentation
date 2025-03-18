@@ -31,11 +31,12 @@ get-server-sources:
 
 openapi-spec: get-server-sources
 	git submodule update --init
-	cd build/openapi-extractor && composer install
-	cd build && ./openapi-extractor/merge-specs \
-		--core server/core/openapi.json \
-		--merged ../developer_manual/_static/openapi.json \
-		$$(ls server/apps/*/openapi.json)
+	cd build/server && \
+	composer install && \
+	composer exec merge-specs -- \
+		--core core/openapi.json \
+		--merged ../../developer_manual/_static/openapi.json \
+		$$(ls apps/*/openapi.json)
 	cd developer_manual/_static && \
 		wget https://unpkg.com/@stoplight/elements@8.1.0/web-components.min.js -O stoplight-elements.js && \
 		wget https://unpkg.com/@stoplight/elements@8.1.0/styles.min.css -O stoplight-elements.css
