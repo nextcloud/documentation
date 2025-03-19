@@ -116,3 +116,13 @@ is not whitelisted the following error appears:
 .. figure:: images/install-wizard-a4.png
    :scale: 75%
    :alt: Error message when URL is not whitelisted
+
+Solving problems
+~~~~~~~~~~~~~~~~
+If you have a complicated network configuration, such as reverse proxy, the best way to resolve the problem is to turn on `debugging <https://docs.nextcloud.com/server/latest/developer_manual/getting_started/debugging.html>`_ and update the `logging configuration <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/logging_configuration.html>`_ to show more information.
+
+When using a reverse proxy, ensure that you forward all the necessary HTTP headers information. You can find all types of headers information in the `.htaccess <https://github.com/nextcloud/server/blob/master/.htaccess>`_. file.
+
+
+
+
