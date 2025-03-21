@@ -57,7 +57,7 @@ see https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.ht
 The magic listener script
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The first script (after the "Input" block) in any workflow you build that should listen to a Nextcloud webhook must be ``CORE:LISTEN_TO_EVENT``. It must be an empty script with two parameters that you should fill statically: ``events``, which is a list of event IDs to listen to and ``filters`` a filter condition that allows more fine grained filtering for which events should be used. The filter condition as well as the available events with their payloads is documented in :ref:`the webhook_listeners documentation<webhook_listeners>`.
+The first script (after the "Input" block) in any workflow you build that should listen to a Nextcloud webhook must have "Summary" set to the exact, literal string ``CORE:LISTEN_TO_EVENT``. It must be an empty script with two parameters that you should fill statically: ``events``, which is a list of event IDs to listen to and ``filters`` a filter condition that allows more fine grained filtering for which events should be used. The filter condition as well as the available events with their payloads is documented in :ref:`the webhook_listeners documentation<webhook_listeners>`.
 
 You can copy the following Deno script for this:
 
@@ -65,6 +65,7 @@ You can copy the following Deno script for this:
 
    export async function main(events: string[], filters: object) { }
 
+The webhook data will be made available on the flow "Input" block, **not** the ``CORE:LISTEN_TO_EVENT`` block. Updates to the webhook configuration take effect only when the flow is deployed. Consider disabling any schedule for the flow, since it will be started when a webhook is received.
 
 Nextcloud Scripts
 -----------------
