@@ -254,7 +254,7 @@ Connections to remote servers
 -----------------------------
 
 Some functionalities require the Nextcloud server to be able to connect remote systems via https/443.
-This pragraph also includes the data which is being transmitted to the Nextcloud GmbH.
+This paragraph also includes the data which is being transmitted to the Nextcloud GmbH.
 Depending on your server setup, these are the possible connections:
 
 - nextcloud.com, startpage.com, eff.org, edri.org
