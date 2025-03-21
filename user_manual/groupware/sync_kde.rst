@@ -38,7 +38,7 @@ In KOrganizer and Kalendar:
 
 .. image:: ../images/KOrganizer_groupware_server.png
 
-5. Enter your Nextcloud server URL and, if needed, installation path (anything that comes after the first /, for example ``mynextcloud`` in ``https://exampe.com/mynextcloud``). Then click next:
+5. Enter your Nextcloud server URL and, if needed, installation path (anything that comes after the first /, for example ``mynextcloud`` in ``https://example.com/mynextcloud``). Then click next:
 
 .. image:: ../images/KOrganizer_server_address.png
 

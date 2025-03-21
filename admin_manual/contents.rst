@@ -10,7 +10,9 @@ Table of contents
     release_schedule
     installation/index
     configuration_server/index
+    occ_command
     apps_management
+    exapps_management/index
     configuration_user/index
     configuration_files/index
     file_workflows/index
@@ -18,6 +20,9 @@ Table of contents
     office/index
     reference/index
     ai/index
+    webhook_listeners/index
+    windmill_workflows/index
+    desktop/index
     configuration_database/index
     configuration_mimetypes/index
     maintenance/index

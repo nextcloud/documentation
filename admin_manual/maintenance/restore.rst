@@ -82,7 +82,7 @@ PostgreSQL
 Synchronising with clients after data recovery
 ----------------------------------------------
 
-By default the Nextcloud server is considered the authorative source for the data.
+By default the Nextcloud server is considered the authoritative source for the data.
 If the data on the server and the client differs
 clients will default to fetching the data from the server.
 
@@ -96,9 +96,15 @@ to try an recover as much data as possible.
 Files missing on the server are therefore recovered from the clients
 and in case of different content the users will be asked.
 
+This can also help in rare scenarios when the database is newer than the data directory.
+The server will restore the data from the clients and preserve the shares.
+Until then the files would be visible but not accessible.
+A :ref:`files:scan <occ_files_scan_label>` is required afterwards to update the database.
+
 .. note:: The usage of `maintenance:data-fingerprint` can cause conflict dialogues
    and difficulties deleting files on the client.
    Therefore it's only recommended to prevent dataloss if the backup was outdated.
+   This command does not require the server to be in maintenance mode.
 
 If you are running multiple application servers you will need to make sure
 the config files are synced between them so that the updated `data-fingerprint`

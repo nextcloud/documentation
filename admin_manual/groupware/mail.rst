@@ -91,7 +91,7 @@ Users can share mailboxes with each other. So far, there is no UI for users to c
 LLM Processing
 --------------
 
-The Mail app can optionally use large language models to process emails and offer assistance features like thread summaries, smart replies and event agendas.
+The Mail app can optionally use large language models to process emails and offer assistance features like thread summaries, smart replies, event agendas and follow-up reminders.
 
 .. note:: The supported languages depend on the used large language model.
 
@@ -117,3 +117,20 @@ The feature is opt-in, it is disabled by default and can be enabled in mail admi
 
 Administration settings > Groupware > Mail app > Enable thread summary
 
+Follow-up reminders
+-------------------
+
+.. versionadded:: 4.0
+
+The Mail app will automatically remind users when their outgoing emails remain unanswered for
+multiple days.
+Each sent email will be analyzed by an AI to check whether a reply is expected.
+
+The feature can be enabled through the global :ref:`mail_llm_processing` setting.
+
+Translation
+-----------
+
+.. versionadded:: 4.2
+
+The mail app can optionally provide translations for messages if the :ref:`translation API <machine_translation>` is enabled.

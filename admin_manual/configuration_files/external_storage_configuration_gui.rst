@@ -93,7 +93,7 @@ individually with the following options:
 * Previews
 * Enable Sharing
 * Filesystem check frequency (Never, Once per direct access)
-* Mac NFD Compatability
+* Mac NFD Compatibility
 * Read Only
 
 The **Encryption** checkbox is visible only when the Encryption app is enabled. Note that server-side
@@ -159,6 +159,6 @@ changed remotely (files changed without going through Nextcloud), especially
 when it's very deep in the folder hierarchy of the external storage.
 
 You might need to setup a cron job that runs ``sudo -u www-data php occ files:scan --all``
-(or replace ``--all`` with the user name, see also :doc:`../configuration_server/occ_command`)
+(or replace ``--all`` with the user name, see also :doc:`../occ_command`)
 to trigger a rescan of the user's files periodically (for example every 15 minutes), which includes
 the mounted external storage.

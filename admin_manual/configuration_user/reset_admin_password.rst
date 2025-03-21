@@ -12,7 +12,7 @@ The normal ways to recover a lost password are:
 2. Ask another Nextcloud server admin to reset it for you.
 
 If neither of these is an option, then you have a third option, and that is 
-using the ``occ`` command. See :doc:`../configuration_server/occ_command` to
+using the ``occ`` command. See :doc:`../occ_command` to
 learn more about using the ``occ`` command.
 
 ::

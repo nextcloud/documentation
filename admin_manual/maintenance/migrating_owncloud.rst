@@ -12,13 +12,11 @@ So it is quite easy, to migrate from one ownCloud version to at least one Nextcl
 However this does only work with versions that are close enough database and code-wise.
 See the table below for a version map, where migrating is easily possible:
 
-+-------------------+------------------------------+
-| ownCloud          | Nextcloud                    |
-+===================+==============================+
-| 10.13.x           | 25.0.x (but at least 25.0.2) |
-+-------------------+------------------------------+
-| 10.5.x            | 20.0.x (but at least 20.0.5) |
-+-------------------+------------------------------+
++-------------------+-------------------------------+
+| ownCloud          | Nextcloud                     |
++===================+===============================+
+| 10.13.x           | 25.0.x (but at least 25.0.13) |
++-------------------+-------------------------------+
 
 .. note:: Since ownCloud does not and will not support PHP 8.0 or higher, you
           need to migrate from ownCloud 10.13.x to Nextcloud 25 and then

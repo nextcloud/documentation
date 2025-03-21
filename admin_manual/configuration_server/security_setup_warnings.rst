@@ -77,6 +77,9 @@ For enhanced security we recommend enabling HSTS as described in our security ti
 The HSTS header needs to be configured within your Web server by following the
 :ref:`enable-hsts-label` documentation
 
+You can see if the header is appearing in requests by using your browser inspector
+or using a tool such as cURL: ``curl --head https://cloud.domain.tld``.
+
 /dev/urandom is not readable by PHP
 -----------------------------------
 
@@ -123,10 +126,10 @@ Some files have not passed the integrity check
 
 Please refer to the :ref:`code_signing_fix_warning_label` documentation how to debug this issue.
 
-Your database does not run with "READ COMMITED" transaction isolation level
----------------------------------------------------------------------------
+Your database does not run with "READ COMMITTED" transaction isolation level
+----------------------------------------------------------------------------
 
-"Your database does not run with "READ COMMITED" transaction isolation level.
+"Your database does not run with "READ COMMITTED" transaction isolation level.
 This can cause problems when multiple actions are executed in parallel."
 
 Please refer to :ref:`db-transaction-label` how to configure your database for this requirement.

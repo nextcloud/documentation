@@ -25,7 +25,7 @@ Ubuntu Linux::
   # you may also need to update the mimetype for existing files, see nextcloud/server#30566
   $ sudo -u www-data php occ maintenance:mimetype:update-db --repair-filecache
   
-See :doc:`../configuration_server/occ_command` to learn more about ``occ``.
+See :doc:`../occ_command` to learn more about ``occ``.
 
 Some common mimetypes that may be useful in creating aliases are:
 

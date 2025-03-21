@@ -6,14 +6,18 @@ Calendar
 --------
 
 #. Open the settings application.
+#. Select Apps.
 #. Select Calendar.
-#. Select Accounts.
+#. Select Calendar Accounts.
 #. Select Add Account.
 #. Select Other as account type.
 #. Select Add CalDAV account.
 #. For server, type the domain name of your server i.e. ``example.com``.
 #. Enter your user name and password.
 #. Select Next.
+#. Open Advanced Settings
+#. For server, type the domain name of your server and username i.e. ``example.com/remote.php/dav/principals/users/username/``
+#. Close Advanced Settings
 
 Your calendar will now be visible in the Calendar application.
 
@@ -25,8 +29,9 @@ Contacts
 --------
 
 #. Open the settings application.
+#. Select Apps.
 #. Select Contacts.
-#. Select Accounts.
+#. Select Contacts Accounts.
 #. Select Add Account.
 #. Select Other as account type.
 #. Select Add CardDAV account.

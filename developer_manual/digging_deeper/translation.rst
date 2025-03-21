@@ -6,6 +6,9 @@ Machine Translation
 
 .. versionadded:: 26
 
+.. deprecated:: 30
+    Use the TaskProcessing API instead
+
 Nextcloud offers a **Translation** API. The overall idea is that there is a central OCP API that apps can use to request machine translations of text. To be technology agnostic any app can provide this Translation functionality by registering a Translation provider.
 
 Consuming the Translation API
@@ -14,7 +17,7 @@ Consuming the Translation API
 To consume the Translation API, you will need to :ref:`inject<dependency-injection>` ``\OCP\Translation\ITranslationManager``. This manager offers the following methods:
 
  * ``hasProviders()`` This method returns a boolean which indicates if any providers have been registered. If this is false you cannot use the Translation feature.
- * ``getLanguages()`` This method returns a list of ``OCP\Translation\LanguageTuple`` Objects which indicate which langauge pairs are currently supported for translation.
+ * ``getLanguages()`` This method returns a list of ``OCP\Translation\LanguageTuple`` Objects which indicate which language pairs are currently supported for translation.
  * ``translate(string $text, ?string $fromLanguage, string $toLanguage)`` This method provides the actual translation functionality. Note that, depending on the length of the text you want to translate, this may take longer than the HTTP request timeout or the PHP execution time limit.
  * ``canDetectLanguage()`` This method returns a boolean indicating whether language auto-detection is possible. If this is true, you can pass ``null`` as a ``$fromLanguage`` parameter to ``translate`` and it will automatically figure out the source language.
 

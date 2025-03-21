@@ -18,18 +18,19 @@ On the User management page of your Nextcloud Web UI you can:
 
 The default view displays basic information about your users.
 
-.. figure:: ../images/users-config.png
+.. figure:: ../images/user-config.png
 
 The Group filters on the left sidebar lets you quickly filter users by their
 group memberships, and create new groups.
 
-.. figure:: ../images/users-config-1.png
+.. figure:: ../images/user-config-groups.png
 
 Click the gear icon on the lower left sidebar to set a default storage quota,
 and to display additional fields: **Show storage location, Show last log in,
 Show user backend, Send email to new users,** and **Show email address**.
 
-.. figure:: ../images/users-config-2.png
+.. figure:: ../images/user-config-settings.png
+  :scale: 75 %
 
 User accounts have the following properties:
 
@@ -45,13 +46,20 @@ User accounts have the following properties:
   The admin sets the new user's first password. Both the user and the admin can
   change the user's password at anytime.
 
+*Email address*
+  You can set an email address for a user.
+  This address can be used when you first set-up an account
+  so the user receive a mail asking them to create a password if none is provided.
+  This address can be used for password reset request.
+
 *Groups*
   You may create groups, and assign group memberships to users. By default new
   users are not assigned to any groups.
 
 *Group Admin*
   Group admins are granted administrative privileges on specific groups, and
-  can add and remove users from their groups.
+  can add and remove users from their groups. This means they can modify the
+  username, password, email, quota, etc. of members of the group.
 
 *Quota*
   The maximum disk space assigned to each user. Any user that exceeds the quota
@@ -73,7 +81,7 @@ To create a user account:
 * Optionally, assign **Groups** memberships
 * Click the **Create** button
 
-.. figure:: ../images/users-create.png
+.. figure:: ../images/user-config-new-user.png
 
 Login names may contain letters (a-z, A-Z), numbers (0-9), dashes (-),
 underscores (_), periods (.), spaces ( ) and at signs (@). After creating the user, you
@@ -127,7 +135,7 @@ system settings, or add or modify users in the groups that they are not **Group
 Administrators** for. Use the dropdown menus in the **Group Admin** column to
 assign group admin privileges.
 
-.. figure:: ../images/users-groups.png
+.. figure:: ../images/user-config-group-admin.png
 
 **Super Administrators** have full rights on your Nextcloud server, and can
 access and modify all settings. To assign the **Super Administrators** role to
@@ -190,7 +198,7 @@ files count against that user's quota.
 Disable and enable users
 ------------------------
 
-.. figure:: ../images/users-actions.png
+.. figure:: ../images/user-config-actions.png
 
 Sometimes you may want to disable a user without permanently deleting their
 settings and files. The user can be activated any time again, without data-loss.
@@ -214,7 +222,7 @@ select **Enable**.
 Deleting users
 --------------
 
-.. figure:: ../images/users-actions.png
+.. figure:: ../images/user-config-actions.png
 
 Deleting a user is easy: hover your cursor over their name on the **Users** page
 until the "..."-menu icon appears at the far right. After clicking on it, you will

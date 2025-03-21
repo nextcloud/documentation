@@ -22,12 +22,17 @@ PSR-3: Logger Interface
 
 .. versionadded:: 19
 
-The dependency injection container can inject an instance of a ``\Psr\Log\LoggerInterface``. This is merely a wrapper of the existing (and strongly typed) ``\OCP\ILogger``. Apps may still use the Nextcloud logger, but the `PSR-3`_ implementation shall easy the integration of 3rd party libraries that require the `PSR-3`_ logger.
+The dependency injection container can inject an instance of a ``\Psr\Log\LoggerInterface``.
+The `PSR-3`_ implementation shall easy the integration of 3rd party libraries that require the `PSR-3`_ logger.
 
 .. versionchanged:: 21
     Nextcloud ships version 1.1.3
 .. versionchanged:: 23
     Nextcloud ships version 1.1.4
+.. versionchanged:: 30
+    Nextcloud ships version 2.0.0
+.. versionchanged:: 31
+    The ``\Psr\Log\LoggerInterface`` fully replaced the Nextcloud internal logging methods.
 
 .. _psr4:
 

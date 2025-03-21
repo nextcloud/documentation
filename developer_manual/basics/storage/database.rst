@@ -128,7 +128,7 @@ To create a mapper, inherit from the mapper base class and call the parent const
 * **Optional**: Entity class name, defaults to \\OCA\\MyApp\\Db\\Author in the example below
 
 .. code-block:: php
-    :caption: lib/Db/AthorMapper.php
+    :caption: lib/Db/AuthorMapper.php
 
     <?php
 
@@ -207,7 +207,9 @@ or::
 Entities
 --------
 
-Entities are data objects that carry all the table's information for one row. Every Entity has an **id** field by default that is set to the integer type. Table rows are mapped from lower case and underscore separated names to *lowerCamelCase* attributes:
+Entities are data objects that carry all the table's information for one row.
+Every Entity has an **id** field by default that is set to the integer type.
+Table rows are mapped from lower case and underscore separated names to *lowerCamelCase* attributes:
 
 * **Table column name**: phone_number
 * **Property name**: phoneNumber
@@ -220,6 +222,7 @@ Entities are data objects that carry all the table's information for one row. Ev
     namespace OCA\MyApp\Db;
 
     use OCP\AppFramework\Db\Entity;
+    use OCP\DB\Types;
 
     class Author extends Entity {
 
@@ -229,24 +232,35 @@ Entities are data objects that carry all the table's information for one row. Ev
 
         public function __construct() {
             // add types in constructor
-            $this->addType('stars', 'integer');
+            $this->addType('stars', Types::INTEGER);
+            // other fields are implicitly `Types::STRING`
         }
     }
 
 Types
 ^^^^^
 
-The following properties should be annotated by types, to not only assure that the types are converted correctly for storing them in the database (e.g. PHP casts false to the empty string which fails on PostgreSQL) but also for casting them when they are retrieved from the database.
+The following properties should be annotated by types, to not only assure that the types are converted correctly for storing them in the database
+(e.g. PHP casts false to the empty string which fails on PostgreSQL) but also for casting them when they are retrieved from the database.
 
-The following types can be added for a field:
+The following types (as part of ``OCP\DB\Types``) can be added for a field:
 
-* ``integer``
-* ``float``
-* ``boolean``
-* ``string`` - For text and string columns
-* ``blob`` - For binary data or strings longer than
-* ``json`` - JSON data is automatically decoded on reading
-* ``datetime`` - Providing ``\DateTime()`` objects
+* ``Types::INTEGER``
+* ``Types::FLOAT``
+* ``Types::BOOLEAN``
+* ``Types::STRING`` - For text and string columns
+* ``Types::BLOB`` - For binary data
+* ``Types::JSON`` - JSON data is automatically decoded on reading
+* For time and/or dates, provided as ``\DateTimeImmutable`` objects, the following types can be used:
+
+  * ``Types::DATE_IMMUTABLE`` - only the date is stored (without timezone)
+  * ``Types::TIME_IMMUTABLE`` - only the time is stored (without timezone)
+  * ``Types::DATETIME_IMMUTABLE`` - date and time are stored, but without timezone
+  * ``Types::DATETIME_TZ_IMMUTABLE`` - date and time are stored with timezone information
+  
+* ``Types::DATE``, ``Types::TIME``, ``Types::DATETIME``, ``Types::DATETIME_TZ`` - similar as the immutable variants, but these will be provided as ``\DateTime`` objects.
+  It is recommended to use the immutable variants as the internal state tracking of the ``Entity`` class only work with re-assignments,
+  so any changes on this mutable types will not be tracked and the update method will not write back the changes to the database.
 
 .. _database-entity-attribute-access:
 
@@ -346,14 +360,16 @@ You can add attributes to an entity class that do not map to a database column. 
         }
     }
 
-It is important to define getters and setters for any transient attributes. Do not use the :ref:`magic getters and setters<database-entity-attribute-access>` of attributes that map to database columns.
+It is important to define getters and setters for any transient attributes.
+Do not use the :ref:`magic getters and setters<database-entity-attribute-access>` of attributes that map to database columns.
 
 Slugs
 ^^^^^
 
 .. deprecated:: 24
 
-Slugs are used to identify resources in the URL by a string rather than integer id. Since the URL allows only certain values, the entity base class provides a slugify method for it:
+Slugs are used to identify resources in the URL by a string rather than integer id.
+Since the URL allows only certain values, the entity base class provides a slugify method for it:
 
 .. code-block:: php
 
@@ -401,7 +417,7 @@ It makes sense to apply some general tips from the beginning, so you don't have 
 Querying the database provider
 ------------------------------
 
-If you would like to find out which database your app is runnning on, use the ``IDBConnection::getDatabaseProvider`` method.
+If you would like to find out which database your app is running on, use the ``IDBConnection::getDatabaseProvider`` method.
 This can be helpful in cases where specific databases have their own
 requirements, such as Oracle limiting ``IN``- queries to 1000 expressions.
 
@@ -431,7 +447,7 @@ When Oracle (``oci``) is supported (also when you don't list any databases), Nex
 * String columns can not have a length longer than 4.000 characters, use text instead
 * Boolean columns can not be NotNull
 
-Additionally we assume that Oracle support means you are interested in scaling and therefor check additional restrictions of other databases in clustered setups:
+Additionally we assume that Oracle support means you are interested in scaling and therefore check additional restrictions of other databases in clustered setups:
 
 * Galera Cluster: All tables must have a primary key
 

@@ -39,7 +39,7 @@ in the appropriate controller. There is two methods to inject your JavaScript fi
    you will have to register a Listener in your app ``Appinfo/Application.php``.
 
 Here is an example for the Files app (which emits the ``LoadAdditionalScriptsEvent``).
-For more informations about app bootstrapping, see the :ref:`application-php` section.
+For more information about app bootstrapping, see the :ref:`application-php` section.
 
 .. code-block:: php
 

@@ -87,7 +87,7 @@ For details take a look at :ref:`OCS <ocscontroller>`.
 
             public function someControllerMethod(): DataResponse {
                 ...
-                return DataResponse(...);
+                return new DataResponse(...);
             }
         }
 
@@ -143,7 +143,7 @@ For those endpoints returning ``[]`` in PHP is a problem because the consumer wi
 If you are not able to use ``null`` for whatever reason, use ``new \stdClass()`` instead.
 It will get correctly converted into ``{}`` in the JSON response on Nextcloud 28 and later.
 
-If you are working with an existing API where you can not break compatibility, you can also type the result as ``array<empty>``.
+If you are working with an existing API where you can not break compatibility, you can also type the result as ``list<empty>``.
 
 .. collapse:: Examples
 
@@ -155,7 +155,7 @@ If you are working with an existing API where you can not break compatibility, y
          */
         public function someControllerMethod() {
             ...
-            return DataResponse([]);
+            return new DataResponse([]);
         }
 
     .. code-block:: php
@@ -166,7 +166,7 @@ If you are working with an existing API where you can not break compatibility, y
          */
         public function someControllerMethod() {
             ...
-            return DataResponse(null);
+            return new DataResponse(null);
         }
 
         /**
@@ -174,15 +174,15 @@ If you are working with an existing API where you can not break compatibility, y
          */
         public function someControllerMethod() {
             ...
-            return DataResponse(new \stdClass());
+            return new DataResponse(new \stdClass());
         }
 
         /**
-         * @return DataResponse<Http::STATUS_OK, array<empty>, array{}>
+         * @return DataResponse<Http::STATUS_OK, list<empty>, array{}>
          */
         public function someControllerMethod() {
             ...
-            return DataResponse([]);
+            return new DataResponse([]);
         }
 
 DO NOT throw non-OCS*Exceptions
@@ -232,9 +232,9 @@ All 2xx responses should return the same data structure and all 4xx should also 
         public function someControllerMethod() {
             ...
             if (...) {
-                return DataResponse(["name" => name], Http::STATUS_OK);
+                return new DataResponse(["name" => name], Http::STATUS_OK);
             } else {
-                return DataResponse(["id" => id, "name" => name], Http::STATUS_CREATED);
+                return new DataResponse(["id" => id, "name" => name], Http::STATUS_CREATED);
             }
         }
 
@@ -244,9 +244,9 @@ All 2xx responses should return the same data structure and all 4xx should also 
         public function someControllerMethod() {
             ...
             if (...) {
-                return DataResponse(["error" => "bad request"], Http::STATUS_BAD_REQUEST);
+                return new DataResponse(["error" => "bad request"], Http::STATUS_BAD_REQUEST);
             } else {
-                return DataResponse(["message" => "forbidden"], Http::STATUS_FORBIDDEN);
+                return new DataResponse(["message" => "forbidden"], Http::STATUS_FORBIDDEN);
             }
         }
 
@@ -260,9 +260,9 @@ All 2xx responses should return the same data structure and all 4xx should also 
         public function someControllerMethod() {
             ...
             if (...) {
-                return DataResponse(["id" => id, "name" => name], Http::STATUS_OK);
+                return new DataResponse(["id" => id, "name" => name], Http::STATUS_OK);
             } else {
-                return DataResponse(["id" => id, "name" => name], Http::STATUS_CREATED);
+                return new DataResponse(["id" => id, "name" => name], Http::STATUS_CREATED);
             }
         }
 
@@ -272,9 +272,9 @@ All 2xx responses should return the same data structure and all 4xx should also 
         public function someControllerMethod() {
             ...
             if (...) {
-                return DataResponse(["error" => "bad request"], Http::STATUS_BAD_REQUEST);
+                return new DataResponse(["error" => "bad request"], Http::STATUS_BAD_REQUEST);
             } else {
-                return DataResponse(["error" => "forbidden"], Http::STATUS_FORBIDDEN);
+                return new DataResponse(["error" => "forbidden"], Http::STATUS_FORBIDDEN);
             }
         }
 
@@ -391,7 +391,7 @@ There you can explain what the APIs in the controller do or give examples an how
              */
             public function someControllerMethod(int $id) {
                 ...
-                return DataResponse(["name" => name], Http::STATUS_CREATED);
+                return new DataResponse(["name" => name], Http::STATUS_CREATED);
             }
         }
 
@@ -414,7 +414,7 @@ There you can explain what the APIs in the controller do or give examples an how
              */
             public function someControllerMethod(int $id) {
                 ...
-                return DataResponse(["name" => name], Http::STATUS_CREATED);
+                return new DataResponse(["name" => name], Http::STATUS_CREATED);
             }
         }
 
@@ -606,7 +606,7 @@ You are required to add a description for every status code returned by the meth
 How to add response definitions to share type definitions
 ---------------------------------------------------------
 
-In the previous steps we have been re-using the same data structure multiple times, but it was copied every time.
+In the previous steps we have been reusing the same data structure multiple times, but it was copied every time.
 This is tedious and error prone, therefore we want to create some shared type definitions.
 Create a new file called ``ResponseDefinitions.php`` in the ``lib`` folder of your app.
 It will only work with that file name at that location.
@@ -719,7 +719,7 @@ Now you have to add the correct return type annotation:
 
     class Capabilities implements ICapability {
         /**
-         * @return array{todo: array{supported-operations: string[], emojis-supported: bool}}
+         * @return array{todo: array{supported-operations: list<string>, emojis-supported: bool}}
          */
         public function getCapabilities() {
             return [

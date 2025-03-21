@@ -14,6 +14,8 @@ If you prefer an automated installation, you have the option to:
 
 .. note:: Please note that the community options are not officially supported by Nextcloud GmbH.
 
+.. tip:: For an enterprise-ready and scalable installation based on Helm Charts (also available for Podman), please `contact Nextcloud GmbH <https://nextcloud.com/enterprise/>`_.
+
 In case you prefer installing from the source tarball, you can setup Nextcloud
 from scratch using a classic LAMP stack (Linux, Apache, MySQL/MariaDB, PHP).
 This document provides a complete walk-through for installing Nextcloud on
@@ -119,6 +121,14 @@ Additional Apache configurations
   If you're running ``mod_fcgi`` instead of the standard ``mod_php`` also enable::
 
     a2enmod setenvif
+
+  and apply the following modifications the configuration::
+
+    ProxyFCGIBackendType FPM
+    
+    <FilesMatch remote.php>
+      SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+    </FilesMatch>
 
 * You must disable any server-configured authentication for Nextcloud, as it
   uses Basic authentication internally for DAV services. If you have turned on
@@ -234,16 +244,41 @@ SELinux-enabled distributions such as Fedora and CentOS.
 
 .. _php_fpm_tips_label:
 
-php-fpm configuration notes
----------------------------
+PHP-FPM configuration 
+---------------------
 
-**System environment variables**
+Overview
+^^^^^^^^
+
+`PHP-FPM <https://www.php.net/manual/en/install.fpm.php>`_ is a FastCGI based 
+implementation of PHP containing features useful for busy web sites and large web 
+applications. Using it with Nextcloud is an advanced topic and requires getting
+familiar with how PHP-FPM functions. In most cases the defaults are not ideal for
+use with Nextcloud. Here we'll highlight a few of the most important areas that
+should be adjusted.
+
+Process manager
+^^^^^^^^^^^^^^^
+
+The default value for ``pm.max_children`` in many PHP-FPM installations is
+lower than appropriate. Having a low value may cause client connectivity 
+problems, unexplained errors, and performance problems. It is a common cause
+of *Gateway Timeouts*. Having too high of a value in relation to available
+resources (such as memory), however, will also lead to problems. The default
+value is often ``5``. This greatly limits simultaneously connections to your
+Nextcloud instance and, unless you are severely resource constraints, will 
+underutilize your hardware. Check the :doc:`../installation/server_tuning` 
+chapter for some guidance and resources for coming up with appropriate values,
+as well as other related parameters.
+
+System environment variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When you are using ``php-fpm``, system environment variables like
 PATH, TMP or others are not automatically populated in the same way as
 when using ``php-cli``. A PHP call like ``getenv('PATH');`` can therefore
 return an empty result. So you may need to manually configure environment
-variables in the appropropriate ``php-fpm`` ini/config file.
+variables in the appropriate ``php-fpm`` ini/config file.
 
 Here are some example root paths for these ini/config files:
 
@@ -292,14 +327,16 @@ Please keep in mind that it is possible to create different settings for
 ``php-cli`` and ``php-fpm``, and for different domains and Web sites.
 The best way to check your settings is with :ref:`label-phpinfo`.
 
-**Maximum upload size**
+Maximum upload size
+^^^^^^^^^^^^^^^^^^^
 
 If you want to increase the maximum upload size, you will also have to modify
 your ``php-fpm`` configuration and increase the ``upload_max_filesize`` and
 ``post_max_size`` values. You will need to restart ``php-fpm`` and your HTTP
 server in order for these changes to be applied.
 
-**.htaccess notes for Apache**
+.htaccess
+^^^^^^^^^
 
 Nextcloud comes with its own ``nextcloud/.htaccess`` file. Because ``php-fpm``
 can't read PHP settings in ``.htaccess`` these settings and permissions must
@@ -341,7 +378,7 @@ Download the the Appliance here:
 
 The `Nextcloud VM`_ is maintained by
 `T&M Hansson IT <https://www.hanssonit.se/nextcloud-vm/>`_ and several different versions are
-offered. Collabora, OnlyOffice, Full Text Search and other apps can easily be installed with the included scripts which you can choose to run during the first setup, or download them later and run it afterwards. You can find all the currently available automated app installations `on GitHub <https://github.com/nextcloud/vm/tree/master/apps/>`_.
+offered. Collabora, OnlyOffice, Full Text Search and other apps can easily be installed with the included scripts which you can choose to run during the first setup, or download them later and run it afterwards. You can find all the currently available automated app installations `on GitHub <https://github.com/nextcloud/vm/blob/main/apps/>`_.
 
 The VM comes in different sizes and versions.
 
@@ -406,14 +443,14 @@ Installation via install script
 
 One of the easiest ways of installing is to use the Nextcloud VM or NextcloudPI scripts. It's basically just two steps:
 
-1. Download the latest `VM installation script <https://github.com/nextcloud/vm/blob/master/nextcloud_install_production.sh/>`_.
+1. Download the latest `VM installation script <https://github.com/nextcloud/vm/blob/main/nextcloud_install_production.sh/>`_.
 2. Run the script with::
 
     sudo bash nextcloud_install_production.sh
 
 or
 
-1. Download the latest `PI installation script <https://raw.githubusercontent.com/nextcloud/nextcloudpi/master/install.sh/>`_.
+1. Download the latest `PI installation script <https://raw.githubusercontent.com/nextcloud/nextcloudpi/master/install.sh>`_.
 2. Run the script with::
 
     sudo bash install.sh

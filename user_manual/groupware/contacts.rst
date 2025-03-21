@@ -110,6 +110,14 @@ click on the contacts picture for the following options to appear:
 
 .. figure:: ../images/contact_picture_options.png
 
+Adding Contact Groups
+---------------------
+
+The Contacts app enables you to group contacts.
+
+To create a new contact group, click on the plus sign next to "Contact groups" in the left sidebar.
+
+.. note:: Contact groups need to have at least one member to be saved.
 
 Adding and Managing Address Books
 ---------------------------------
@@ -124,6 +132,8 @@ to create new address books, simply by specifying an address books name:
 
 The Contacts settings is also where you can share, export and delete addressbooks. You will find the CardDAV URLs there.
 
+.. note:: Contacts in disabled address books are not shown in the Contacts app and the Contact menu. 
+
 See :doc:`index` for more details about syncing your address books
 with iOS, macOS, Thunderbird and other CardDAV clients.
 
@@ -131,7 +141,7 @@ with iOS, macOS, Thunderbird and other CardDAV clients.
 Circles
 -------
 
-Informal collaboration takes place within organizations: an event to organize for a few weeks, a short ideation session between members from differents entities, workshops, a place to joke around and support team building, or simply in very organic organizations where formal structure is kept to a minimum.
+Informal collaboration takes place within organizations: an event to organize for a few weeks, a short ideation session between members from different entities, workshops, a place to joke around and support team building, or simply in very organic organizations where formal structure is kept to a minimum.
 
 For all these reasons, Nextcloud supports Circles, a feature embedded in the Contacts app, where every user is able to create its own circle, a user-defined aggregate of accounts. Circles can be used later on to share files and folders, added to Talk conversations, like a regular group.
 

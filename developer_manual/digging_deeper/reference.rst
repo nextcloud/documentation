@@ -126,11 +126,18 @@ Accessing the API directly can be useful if you want to:
 
 Endpoints to resolve links:
 
-* GET /ocs/v2.php/references/resolve
-    * ``reference`` parameter which is the link to resolve
-* GET /ocs/v2.php/references/resolve
-    * ``references`` parameter which is an array of links to resolve
-    * ``limit`` parameter which is the maximum number of links to resolve
+* GET /ocs/v2.php/references/resolve (authenticated)
+    * ``reference`` parameter with the link to resolve
+* GET /ocs/v2.php/references/resolvePublic
+    * ``reference`` parameter with the link to resolve
+    * ``sharingToken`` parameter with the public share token
+* POST /ocs/v2.php/references/resolve
+    * ``references`` parameter with an array of links to resolve
+    * ``limit`` parameter with the maximum number of links to resolve
+* POST /ocs/v2.php/references/resolve
+    * ``references`` parameter with an array of links to resolve
+    * ``sharingToken`` parameter with the public share token
+    * ``limit`` parameter with the maximum number of links to resolve
 
 Request examples
 ^^^^^^^^^^^^^^^^
@@ -462,8 +469,12 @@ A reference provider is a class implementing the ``OCP\Collaboration\Reference\I
 If you just want to resolve links, simply implement the ``IReferenceProvider`` interface.
 This is described in the "Resolving links" section.
 
+To support resolving links from public shares, the ``OCP\Collaboration\Reference\IPublicReferenceProvider`` interface
+needs to be implemented as well.
+
 If you want your reference provider to be used by the Smart Picker, you need to extend the
 ``OCP\Collaboration\Reference\ADiscoverableReferenceProvider`` class to declare all required information.
+
 There are 2 ways to make your provider appear in the smart picker, in other words, 2 types of providers:
 
 * Either your reference provider implements the ``OCP\Collaboration\Reference\ISearchableReferenceProvider`` interface and you declare a list of unified search providers that will be used by the Smart Picker
@@ -478,8 +489,11 @@ Links that are not matched by any reference provider will always be handled by t
 This provider will try to get the information declared in the target page's meta tag. The link preview will be rendered with the
 default widget.
 
-For your provider to properly handle some links,
-you need to implement the ``matchReference`` and ``resolve`` methods of ``IReferenceProvider``.
+For your provider to properly handle some links, you need to implement the ``matchReference`` and ``resolve``
+methods of ``IReferenceProvider``.
+
+In order to resolve links from a public share, ``resolvePublic`` from ``IPublicReferenceProvider`` has to be implemented
+additionally.
 
 Match links
 ~~~~~~~~~~~
@@ -498,6 +512,9 @@ Resolving links
 
 The ``resolve`` method of ``IReferenceProvider`` is used to get information about a link and return it as a
 ``OCP\Collaboration\Reference\Reference`` object.
+
+Respectively the ``resolvePublic`` method of ``IPublicReferenceProvider`` is used to get information about a
+link from a public share (available since Nextcloud 30).
 
 Using the default widget
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -518,6 +535,13 @@ then you just need to provide a title, a description and optionally an image.
             $reference->setDescription($description);
             $reference->setImageUrl($imageUrl);
             return $reference;
+        }
+        return null;
+    }
+
+    public function resolveReferencePublic(string $referenceText, string $shareToken): ?IReference {
+        if ($this->checkShareToken() === $shareToken) {
+            return $this->resolveReference($referenceText);
         }
         return null;
     }
@@ -559,6 +583,13 @@ This way we make sure any generic rendering of link previews still shows some in
             );
 
             return $reference;
+        }
+        return null;
+    }
+
+    public function resolveReferencePublic(string $referenceText, string $shareToken): ?IReference {
+        if ($this->checkShareToken() === $shareToken) {
+            return $this->resolveReference($referenceText);
         }
         return null;
     }
@@ -785,7 +816,7 @@ Extending ``ADiscoverableReferenceProvider`` implies defining those methods:
 
 * ``getId``: returns an ID which will be used by the Smart Picker to identify this provider
 * ``getTitle``: returns a (ideally translated) provider title visible in the Smart Picker provider list
-* ``getOrder``: returns an integer to help sorting the providers. The sort order is later superseeded by last usage timestamp
+* ``getOrder``: returns an integer to help sorting the providers. The sort order is later superseded by last usage timestamp
 * ``getIconUrl``: returns the URL of the provider icon, same as the title, the icon will be visible in the provider list
 
 Declare supported Unified Search providers

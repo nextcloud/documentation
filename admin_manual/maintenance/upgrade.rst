@@ -2,28 +2,46 @@
 How to upgrade
 ==============
 
-There are three ways to upgrade your Nextcloud server:
+Overview
+--------
 
-* With the :doc:`Updater <update>`.
-* :doc:`Manually upgrading <manual_upgrade>` with the Nextcloud ``.tar`` archive
-  from our `Download page <https://nextcloud.com/install/>`_.
-* :doc:`Upgrading <package_upgrade>` via the snap packages.
-* Manually upgrading is also an option for users on shared hosting; download
-  and unpack the Nextcloud tarball to your PC. Delete your existing Nextcloud
-  files, except ``data/`` and ``config/`` files, on your hosting account. Then
-  transfer the new Nextcloud files to your hosting account, again
-  preserving your existing ``data/`` and ``config/`` files.
+The approach used to upgrade your Nextcloud Server depends on your installation type. This
+manual mainly focuses on the methods that apply to an Archive based installation. If you installed
+using Snap, Docker, a pre-built VM, or a package management tool then refer to the installation
+and update instructions for that installation method for the most accurate upgrading inststructions
+(generally located at the distribution point for the install method you chose).
 
-When an update is available for your Nextcloud server, you will see a
-notification at the top of your Nextcloud Web interface. When you click the
-notification it brings you here, to this page.
+There are two ways to upgrade an Archive based Nextcloud Server deployment:
 
-**It is best to keep your Nextcloud server upgraded regularly**, and to install 
-all point releases and major releases. 
-Major releases are 18, 19 or 20. Point releases are intermediate releases for each major release. For example 18.0.4 and 19.0.2 are point releases. 
+* With the :doc:`Built-in Updater <update>` (via the web or command-line interfaces).
+* :doc:`Manually upgrading <manual_upgrade>` (using a downloaded Archive file) 
+
+The Built-in Updater, in either Web or command-line mode, is the easiest choice for most environments. 
+However some environments require the manual approach. Both approaches are covered fully here.
+
+.. important::
+   Before upgrading, especially between major versions (e.g. v27.y.z -> v28.y.z) please review 
+   :ref:`critical changes<critical-changes>` first. These are highlights of changes that may be required
+   in your environment to accommodate changes in Nextcloud Server. These notes are periodically revised as
+   needed so it is also a good idea to revisit them periodically, such as when proceeding with maintenance 
+   upgrades.
+
+When an update is available for your Nextcloud server, by default you will receive
+a notification. You can also check for available updates by visiting the Update section under 
+**Administration settings->Overview** in the Web UI.
+
+.. note:: 
+   It is best to keep your Nextcloud server upgraded regularly. This means installing all maintenance/point releases 
+   and upgrading to new major releases before your current one reaches :doc:`end-of-life</release_schedule>` status.
+   Examples of major releases are 27, 28, or 29. Maintenance releases are intermediate releases for each 
+   major release that address critical functionality or security bugs. For example 28.0.4 and 29.0.2 are maintenance 
+   releases. 
+
+Approaching Upgrades
+--------------------
 
 Nextcloud must be upgraded step by step: 
-  * Before you can upgrade to the next major release, Nextcloud upgrades to the latest point release.
+  * Before you can upgrade to the next major release, you need to upgrade to the latest point release of your current major version.
   * Then run the upgrade again to upgrade to the next major release's latest point release.
   * **You cannot skip major releases.** Please re-run the upgrade until you have reached the highest available (or applicable) release.
   * Example: 18.0.5 -> 18.0.11 -> 19.0.5 -> 20.0.2
@@ -84,11 +102,11 @@ Maintenance mode
 
 You can put your Nextcloud server into maintenance mode before performing
 upgrades, or for performing troubleshooting or maintenance. Please see
-:doc:`../configuration_server/occ_command` to learn how to put your server into
+:doc:`../occ_command` to learn how to put your server into
 the maintenance mode (``maintenance:mode``) or execute repair commands
 (``maintenance:repair``) with the ``occ`` command.
 
-The :doc:`build-in Updater <update>` does this for you before replacing the
+The :doc:`built-in Updater <update>` does this for you before replacing the
 existing Nextcloud code with the code of the new Nextcloud version.
 
 ``maintenance:mode`` locks the sessions of logged-in users and prevents new

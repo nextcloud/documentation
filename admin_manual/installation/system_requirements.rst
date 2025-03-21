@@ -14,19 +14,21 @@ For best performance, stability and functionality we have documented some recomm
 +------------------+-----------------------------------------------------------------------+
 | Platform         | Options                                                               |
 +==================+=======================================================================+
-| Operating System | - **Ubuntu 22.04 LTS** (recommended)                                  |
-| (64-bit)         | - Ubuntu 20.04 LTS                                                    |
+| Operating System | - Ubuntu 24.04 LTS                                                    |
+| (64-bit)         | - **Ubuntu 22.04 LTS** (recommended)                                  |
 |                  | - **Red Hat Enterprise Linux 9** (recommended)                        |
 |                  | - Red Hat Enterprise Linux 8                                          |
 |                  | - Debian 12 (Bookworm)                                                |
 |                  | - SUSE Linux Enterprise Server 15                                     |
 |                  | - openSUSE Leap 15.5                                                  |
 |                  | - CentOS Stream                                                       |
+|                  | - Alpine Linux                                                        |
 +------------------+-----------------------------------------------------------------------+
-| Database         | - **MySQL 8.0+** or MariaDB 10.3/10.5/**10.6** (recommended)/10.11    |
-|                  | - Oracle Database 11g (*only as part of an enterprise subscription*)  |
-|                  | - PostgreSQL 12/13/14/15/16                                           |
-|                  | - SQLite (*only recommended for testing and minimal-instances*)       |
+| Database         | - MySQL 8.0 / **8.4** or MariaDB 10.6/ **10.11** (recommended) / 11.4 |
+|                  | - Oracle Database 11g, 18, 21, 23                                     |
+|                  |   (*only as part of an enterprise subscription*)                      |
+|                  | - PostgreSQL 13/14/15/16/17                                           |
+|                  | - SQLite 3.24+ (*only recommended for testing and minimal-instances*) |
 +------------------+-----------------------------------------------------------------------+
 | Webserver        | - **Apache 2.4 with** ``mod_php`` **or** ``php-fpm`` (recommended)    |
 |                  | - nginx with ``php-fpm``                                              |
@@ -34,6 +36,7 @@ For best performance, stability and functionality we have documented some recomm
 | PHP Runtime      | - 8.1 (*deprecated*)                                                  |
 |                  | - 8.2                                                                 |
 |                  | - **8.3** (*recommended*)                                             |
+|                  | - 8.4                                                                 |
 +------------------+-----------------------------------------------------------------------+
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
@@ -103,6 +106,7 @@ of our clients.
 
 * **Windows** 10+
 * **macOS** Lion (10.14)+ (64-bits only)
+  * Please note that your server may need to be Apple App Transport Security compliant in order for the desktop client to connect successfully. This may involve using a digital certificate that is adequately signed to the standards established by Apple. More information is provided by Apple in their developer documentation: https://developer.apple.com/documentation/security/preventing-insecure-network-connections
 * **Linux** (64-bits only) Should run on any distribution newer than Ubuntu 18.04 with our official AppImage package
 
 Mobile apps
@@ -121,11 +125,9 @@ Talk App
 ^^^^^^^^
 
 - **iOS** 15.0+
-- **Android** 7.0+
-- **Nextcloud Server** 14.0+
-- **Nextcloud Talk** 4.0+
-
-.. note:: When using Nextcloud Talk 12.0+ please update the Android Talk App to the newest version (or at least to v12.1).
+- **Android** 8.0+
+- **Nextcloud Server** 19.0+
+- **Nextcloud Talk** 9.0+
 
 Web browser
 -----------

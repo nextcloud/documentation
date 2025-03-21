@@ -176,7 +176,7 @@ Rescans are triggered at installation, and by updates. You may run scans manuall
   occ integrity:check-core
   occ integrity:check-app $appid
 
-See :doc:`../configuration_server/occ_command` to learn more about using ``occ``.
+See :doc:`../occ_command` to learn more about using ``occ``.
 
 Errors
 ------

@@ -8,11 +8,11 @@ Table of contents
     :maxdepth: 2
 
     index
-    whats_new
     webinterface
     files/index
     groupware/index
     talk/index 
+    desktop/index
     userpreferences
     universal_access
     user_2fa

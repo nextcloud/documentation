@@ -1,3 +1,5 @@
+# Version 2024-07-17
+
 upstream php-handler {
     server 127.0.0.1:9000;
     #server unix:/run/php/php8.2-fpm.sock;
@@ -22,8 +24,12 @@ server {
 }
 
 server {
-    listen 443      ssl http2;
+    listen 443 ssl http2;
     listen [::]:443 ssl http2;
+    # With NGinx >= 1.25.1 you should use this instead:
+    # listen 443      ssl;
+    # listen [::]:443 ssl;
+    # http2 on;
     server_name cloud.example.com;
 
     # Path to the root of your installation
@@ -165,7 +171,7 @@ server {
     }
 
     # Serve static files
-    location ~ \.(?:css|js|mjs|svg|gif|png|jpg|ico|wasm|tflite|map|ogg|flac)$ {
+    location ~ \.(?:css|js|mjs|svg|gif|ico|jpg|png|webp|wasm|tflite|map|ogg|flac)$ {
         try_files $uri /index.php$request_uri;
         # HTTP response headers borrowed from Nextcloud `.htaccess`
         add_header Cache-Control                     "public, max-age=15778463$asset_immutable";
@@ -178,7 +184,7 @@ server {
         access_log off;     # Optional: Don't log access to assets
     }
 
-    location ~ \.woff2?$ {
+    location ~ \.(otf|woff2?)$ {
         try_files $uri /index.php$request_uri;
         expires 7d;         # Cache-Control policy borrowed from `.htaccess`
         access_log off;     # Optional: Don't log access to assets

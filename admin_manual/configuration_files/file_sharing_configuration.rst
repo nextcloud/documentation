@@ -172,7 +172,7 @@ Trashbin contents are not transferred::
 
  occ files:transfer-ownership user1 user2
 
-(See :doc:`../configuration_server/occ_command` for a complete ``occ``
+(See :doc:`../occ_command` for a complete ``occ``
 reference.)
 
 Users may also transfer files or folders selectively by themselves.

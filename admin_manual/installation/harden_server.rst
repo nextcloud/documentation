@@ -177,6 +177,23 @@ information about the TLS settings.
 
 Also ensure that HTTP compression is disabled to mitigate the BREACH attack.
 
+Restrict admin actions to a specific range of IP addresses
+----------------------------------------------------------
+
+Configure ``allowed_admin_ranges`` in ``config.php`` to restrict the admin actions to trusted IP ranges.
+
+This can be achieved with this kind of setting, usually using private IP ranges::
+
+  'allowed_admin_ranges' => [
+    '127.0.0.1/8',
+    '192.168.0.0/16',
+    'fd00::/8',
+  ],
+
+All requests originating from IP addresses outside of these ranges will not be able to execute admin actions.
+
+Administrators connected from untrusted IP addresses will be able to use Nextcloud, but all admin specific actions will be hidden.
+
 Use a dedicated domain for Nextcloud
 ------------------------------------
 
@@ -236,7 +253,7 @@ security headers are shipped.
 Connections to remote servers
 -----------------------------
 
-Some functionalites require the Nextcloud server to be able to connect remote systems via https/443.
+Some functionalities require the Nextcloud server to be able to connect remote systems via https/443.
 This paragraph also includes the data which is being transmitted to the Nextcloud GmbH.
 Depending on your server setup, these are the possible connections:
 
@@ -252,7 +269,7 @@ Depending on your server setup, these are the possible connections:
 - apps.nextcloud.com
 	- to check for available apps and their updates 
 	- submitted data: subscription key
-- github.com
+- github.com, objects.githubusercontent.com
 	- to download Nextcloud standard apps
 - push-notifications.nextcloud.com
 	- sending push notifications to mobile clients
@@ -273,12 +290,34 @@ Depending on your server setup, these are the possible connections:
 .. _optional (config): https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#has-internet-connection
 .. _detailed field list : https://github.com/nextcloud/survey_client
 
+.. TODO ON RELEASE: Update version number above on release
+
 
 Setup fail2ban
 --------------
 
 Exposing your server to the internet will inevitably lead to the exposure of the 
 services running on the internet-exposed ports to brute force login attempts.
+
+This guide will enable blocking of the originating IP addresses at an operating
+system level, so the webserver, PHP and the database do not need to handle this
+unnecessary traffic at all.
+
+Nextcloud prerequisites
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Nextcloud logs failed login attempts in ``nextcloud.log`` with log level ``2``,
+so you need to define a ``loglevel`` of ``2`` or less in ``config.php``.
+
+Make sure your ``nextcloud.log`` is writeable by your webserver user, possibly by
+defining a correct ``logfilemode`` in ``config.php``.
+
+Perform a bad login attempt and check whether it does get logged to ``nextcloud.log``.
+
+Note that ``audit.log`` (if enabled) currently only logs successful logins and cannot be used.
+
+Fail2ban introduction
+^^^^^^^^^^^^^^^^^^^^^
 
 Fail2ban is a service that uses iptables to automatically drop connections for a
 pre-defined amount of time from IPs that continuously failed to authenticate to 
@@ -334,5 +373,14 @@ Restart the fail2ban service. You can check the status of your Nextcloud jail by
 running::
 
   fail2ban-client status nextcloud
+
+If you need to unban certain IP addresses (``1.2.3.4`` in this example),
+you may do so by issuing::
+
+  fail2ban-client unban 1.2.3.4
+
+There may be scenarios where you want to more permantently ban certain IP
+addresses that repeatedly generate bad login attempts (or other attacks) by
+using fail2ban's ``recidive`` feature.
 
 .. _fail2ban download page: https://www.fail2ban.org/wiki/index.php/Downloads

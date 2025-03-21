@@ -39,7 +39,7 @@ Debug Mode
 
 Verify that ``debug`` is ``false`` in your ``config.php``. The default is ``false`` in new 
 installations (or when not specified). While similar to the DEBUG logging level, this option
-also disables various optimizations (to faciliate easier debugging) and generates additional 
+also disables various optimizations (to facilitate easier debugging) and generates additional 
 debug output both at the browser level and server-side. It should not be enabled in production 
 environments outside of isolated troubleshooting situations.
 
@@ -128,13 +128,31 @@ more processes to run in parallel to handle the requests.
 Enable PHP OPcache
 ------------------
 
-The `OPcache <https://php.net/manual/en/intro.opcache.php>`_ improves the performance of PHP applications by caching precompiled bytecode. The default OPcache settings are usually sufficient for Nextcloud code to be fully cached. If any cache size limit is reached by more than 90%, the admin panel will show a related warning. Nextcloud strictly requires code comments to be preserved in opcode, which is the default. But in case PHP settings are changed on your system, you may need set the following:
+The `OPcache <https://php.net/manual/en/intro.opcache.php>`_ improves the performance of PHP applications by caching precompiled bytecode.
 
-.. code:: ini
+Revalidation
+^^^^^^^^^^^^
 
-  opcache.save_comments = 1
+OPcache revalidation in PHP handles changes made to PHP application code stored on disk. Code changes occur whenever:
 
-By default, cached scripts are revalidated on access to ensure that changes on disk take effect after at most ``2`` seconds. Since Nextcloud handles cache revalidation internally when required, the revalidation frequency can be reduced or completely disabled to enhance performance. Note, however, that it affects manual changes to scripts, including ``config.php``. To check for changes at most every ``60`` seconds, use the following setting:
+- Nextcloud or a Nextcloud app is upgraded 
+- a configuration change is made (e.g. ``config.php`` is modified) 
+
+Nextcloud, as much as possible, handles cache revalidation internally when required. However this is not foolproof. In a default PHP environment, revalidation is 
+enabled and cached scripts are revalidated to ensure that changes (on disk) take effect every ``2`` seconds. In many environments, these default 
+values are reasonable (and may never need to be changed). 
+
+However, the revalidation frequency can be adjusted and may *potentially* enhance performance. We make no recommendations here about appropriate values for revalidation (other than the PHP defaults).
+
+.. danger::
+    Lengthening the time between revalidation (or disabling it completely) means that manual changes to scripts, including ``config.php``, will take longer before they become active (or will never do so, if
+    revalidation is disabled completely). Lengthening also increases the likelihood of transient server and application upgrade problems. It also prevents the proper toggling of maintenance mode.
+    
+.. warning::
+    If you adjust these parameters, you are more likely to need to restart/reload your web server (mod_php) or fpm after making configuration changes or performing upgrades. If you forget to do so, you 
+    will likely experience unusual behavior due to a mismatch between what is on disk and is in memory. These may appear to be bugs, but will go away as soon as you restart/reload mod_php/fpm.
+
+To change the default from ``2`` and check for changes on disk at most every ``60`` seconds, use the following setting:
 
 .. code:: ini
 
@@ -146,16 +164,42 @@ To disable the revalidation completely:
 
   opcache.validate_timestamps = 0
 
-Any change to ``config.php`` will then require either restarting PHP, manually clearing the cache, or invalidating this particular script.
+Any Server/app upgrades or changes to ``config.php`` will then require restarting PHP (or otherwise manually clearing the cache or invalidating this particular script).
 
-For more details check out the `official documentation <https://php.net/manual/en/opcache.configuration.php>`_. To monitor OPcache usage, clear individual or all cache entries, `opcache-gui <https://github.com/amnuts/opcache-gui>`_ can be used.
+.. warning::
+   To avoid false reports, if your environment isn't using the PHP default revalidation values, please do not report bugs/odd behavior after upgrading Nextcloud or Nextcloud apps until after you've 
+   restarted mod_php/fpm (to confirm they are not simply caused by local revalidation configuration).
 
-PHP 8.0 and above ship with a JIT compiler that can be enabled to benefit any CPU intensive apps you might be running. To enable a tracing JIT with all optimizations:
+Sizing
+^^^^^^
+
+If any cache size limit is reached by more than 90%, the admin panel will show a related warning and suggested changes.
+
+For more details check out the `official PHP documentation <https://php.net/manual/en/opcache.configuration.php>`_. To monitor OPcache usage, clear individual or all cache entries, `opcache-gui <https://github.com/amnuts/opcache-gui>`_ can be used.
+
+Comments
+^^^^^^^^
+
+Nextcloud strictly requires code comments to be preserved in opcode, which is the default. But in case PHP settings are changed on your system, you may need set the following:
+
+.. code:: ini
+
+  opcache.save_comments = 1
+
+JIT
+^^^
+
+PHP 8.0 and above ship with a JIT compiler that can be enabled on x86 platforms to benefit any CPU intensive apps you might be running. To enable a tracing JIT with all optimizations:
 
 .. code:: ini
 
   opcache.jit = 1255
-  opcache.jit_buffer_size = 128M
+  opcache.jit_buffer_size = 8M
+
+.. note::
+
+    Single Nextcloud instances have shown to use less than 2 MiB of the configured JIT buffer size, so that 8 MiB is sufficient by a large margin. The overall OPcache usage however raises by a larger amount, so that ``opcache.memory_consumption`` might need to be raised in some cases. The Nextcloud admin panel will then show a related warning.
+    JIT buffer usage can be monitored with `opcache-gui <https://github.com/amnuts/opcache-gui>`_ as well.
 
 Previews
 --------
@@ -168,13 +212,8 @@ external microservice: `Imaginary <https://github.com/h2non/imaginary>`_.
    Imaginary is currently incompatible with server-side-encryption. 
    See https://github.com/nextcloud/server/issues/34262
 
-.. warning::
-
-   Imaginary is currently known to have issues with HEIC images.
-   See https://github.com/nextcloud/server/issues/35643
-
 We strongly recommend running our custom docker image that is more up to date than the official image.
-You can find the image at `docker.io/nextcloud/aio-imaginary:latest`.
+You can find the image at `https://hub.docker.com/r/nextcloud/aio-imaginary`.
 
 To do so, you will need to deploy the service and make sure that it is
 not accessible from outside of your servers. Then you can configure
@@ -202,8 +241,8 @@ Nextcloud to use Imaginary by editing your `config.php`:
 
     For large instance, you should follow `Imaginary's scalability recommendation <https://github.com/h2non/imaginary#scalability>`.
 
-Settings:
-^^^^^^^^^
+Settings
+^^^^^^^^
 
 If you want set the preview format for imaginary.  
 You can change between jpeg and webp, the default is jpeg:

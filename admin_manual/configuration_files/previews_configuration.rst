@@ -16,12 +16,13 @@ By default, Nextcloud can generate previews for the following filetypes:
 * Cover of MP3 files
 * Text documents
 
-.. note:: Technically Nextcloud can also generate the previews
-          of other file types such as PDF, SVG or various office documents.
-          Due to security concerns those providers have been disabled by
-          default and are considered unsupported.
-          While those providers are still available, we discourage enabling 
-          them, and they are not documented.
+.. note:: Nextcloud can also generate previews of other file types (such as PDF, SVG,
+   various Office document formats, and various video formats). Due to security and
+   performance concerns those providers are disabled by default. While those providers 
+   are still available, we discourage enabling them and they are considered unsupported. 
+   The full list of the preview providers that are enabled by default (as well as those 
+   disabled by default) can be found under the ``enabledPreviewProviders`` 
+   :doc:`configuration parameter </configuration_server/config_sample_php_parameters>`.
 
 Parameters
 ----------
@@ -31,6 +32,9 @@ defaults, and therefore it is usually unnecessary to adjust those configuration
 values. 
 
 But deemed necessary, following changes have to be made in ``config/config.php`` file. As a best practice, take a backup of this config file before making a lot of changes.
+
+After changing one or more of the following parameters, you might want to run the ``preview:cleanup`` occ command to get rid of the previews with obsolete settings.
+See :ref:`occ_cleanup_previews` to learn more.
 
 Disabling previews:
 ^^^^^^^^^^^^^^^^^^^
@@ -106,3 +110,18 @@ Default JPEG quality setting for preview images is '80'. Change this with:
 :: 
 
   occ config:app:set preview jpeg_quality --value="60"
+
+Maximum memory for image generation:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+By default, Nextcloud generates image previews using the GD Graphics Library.
+This configuration option limits the amount of memory that is allowed for preview generation.
+If creating the preview image would allocate more memory than the limit,
+preview generation will be disabled and the default mimetype icon is shown.
+
+Default limit is 256 MB. Set to ``-1`` for no limit.
+
+::
+
+  <?php
+    'preview_max_memory' => 256,

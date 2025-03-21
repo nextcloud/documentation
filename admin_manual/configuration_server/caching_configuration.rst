@@ -24,7 +24,7 @@ needs. The supported caching backends are:
 
 * `APCu <https://pecl.php.net/package/APCu>`_, APCu 4.0.6 and up required.
    A local cache for systems.
-* `Redis <http://redis.io/>`_, PHP module 2.2.6 and up required.
+* `Redis <http://redis.io/>`_, server 4.0.0 and up required.
    For local and distributed caching, as well as transactional file locking.
 * `Memcached <https://www.memcached.org/>`_
    For distributed caching.
@@ -116,10 +116,23 @@ After restarting your Web server, add this line to your ``config.php`` file::
  
 Refresh your Nextcloud admin page, and the cache warning should disappear.  
 
-.. warning:: APCu is disabled by default on CLI which could cause issues with nextcloud's
-   cron jobs. Please make sure you set the ``apc.enable_cli`` to ``1`` on your ``php.ini``
-   config file or append ``--define apc.enable_cli=1`` to the cron job call.
+Depending on your installation size and the number of users and interactions
+with the system you may want to adapt the ``apc.shm_size`` setting in your
+``php.ini``. The default value is 32M which is usually too low for Nextcloud. A
+good starting point is 128M. If you have a lot of users and/or a lot of apps
+installed you may want to increase this value further. Keep in mind that this
+memory needs to be available in your system's memory and kept in mind when
+sizing the amount of workers on your server.
 
+A frequently resetting cache can lead to unexpected slow downs when the cache is
+being cleared and refilled.
+
+There is an admin check trying to detect too low memory sizing, but make sure to
+monitor the APCu cache status to see if the cache is full and if you need to
+increase the size. `APCu provides a script
+<https://github.com/krakjoe/apcu/blob/master/apc.php>`_ that can help with this,
+otherwise the `serverinfo app <https://github.com/nextcloud/serverinfo>`_ in
+Nextcloud can also show the APCu cache status.
 
 Redis
 -----
@@ -206,7 +219,7 @@ The following options are available to configure when using a redis cluster (all
       'dbindex'         => 0,
    ],
       
-.. note:: The port is required as part of the server URL. However, it is not necesarry to list all servers: for example, if all servers are load balanced via the same DNS name, only that server name is required.
+.. note:: The port is required as part of the server URL. However, it is not necessary to list all servers: for example, if all servers are load balanced via the same DNS name, only that server name is required.
 
 Connecting to single Redis server over TCP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
