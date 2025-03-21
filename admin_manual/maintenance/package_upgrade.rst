@@ -5,9 +5,17 @@ Upgrade via packages
 Upgrade quickstart
 ------------------
 
-Nextcloud snap is designed to be easy to install and simple to maintain. The ideal Nextcloud snap is an "install and forget" Nextcloud instance that works on most architectures and updates itself without needing administrative skills. Combining Nextcloud with snapd makes it a perfect fit for IoT or scalable environments. Snapd is a secure and robust technology which the Nextcloud snap team has embraced.
+Nextcloud snap is designed to be easy to install and simple to maintain. 
+The ideal Nextcloud snap is an "install and forget" Nextcloud instance that works on most 
+architectures and updates itself without needing administrative skills. Combining Nextcloud 
+with snapd makes it a perfect fit for IoT or scalable environments. 
+Snapd is a secure and robust technology which the Nextcloud snap team has embraced.
 
-However, the snap is very opinionated. Don't want to use Apache? Sorry, the snap uses it. Don't want to use MySQL? Sorry, that's what the snap uses. Something other than PHP whatever-we're-using? We picked the version we feel gives the best results. In other words, it's not very tinker-friendly. We don't do this to be mean, we do this so that we can reliably update it without your needing to worry about it.
+However, the snap is opinionated. 
+- Nextcloud snap uses Apache.
+- Nextcloud snap uses MySQL. 
+- Nextcloud snap uses PHP. 
+In other words, it's not very tinker-friendly.
 
 Installation
 ------------
@@ -20,9 +28,15 @@ Installation
 
 (`be warned <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Why-Ubuntu-is-the-only-supported-distro/>`_)
 
-By default the latest stable Nextcloud snap release will be installed and it will automatically update to subsequent stable releases, but there are [other releases available as well](https://github.com/nextcloud/nextcloud-snap/wiki/Release-strategy) and you have full control of [automatic updates](https://github.com/nextcloud-snap/nextcloud-snap/wiki/Managing-automatic-updates).
+By default the latest stable Nextcloud snap release will be installed and it will automatically 
+update to subsequent stable releases, but there are [other releases available as well](https://github.com/nextcloud/nextcloud-snap/wiki/Release-strategy) 
+and you have full control of [automatic updates](https://github.com/nextcloud-snap/nextcloud-snap/wiki/Managing-automatic-updates).
 
-After installation, Nextcloud will start automatically.  Assuming you and the device on which it was installed are on the same network, you will reach the Nextcloud installation by visiting `<hostname>.local` or the IP address of the instance in your browser. If your hostname is `localhost`  or `localhost.localdomain`, like on an Ubuntu Core device, `nextcloud.local` will be used instead. 
+After installation, Nextcloud will start automatically.  
+Assuming you and the device on which it was installed are on the same network, you will reach the Nextcloud 
+installation by visiting `<hostname>.local` or the IP address of the instance in your browser. 
+If your hostname is `localhost`  or `localhost.localdomain`, like on an Ubuntu Core device, 
+`nextcloud.local` will be used instead. 
 
 * Go to https://docs.snapcraft.io/installing-snapd/6735
 * Type the command to install snapd
