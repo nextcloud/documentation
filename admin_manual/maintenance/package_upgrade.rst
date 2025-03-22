@@ -5,28 +5,38 @@ Upgrade via packages
 Upgrade quickstart
 ------------------
 
-One effective, if unofficial method for keeping Nextcloud current on Linux servers is by configuring 
-your system to use Nextcloud via a self-contained "Snap" package: a technology allowing users to 
-always have the latest version of an "app".
+Nextcloud snap is an unofficial Nextcloud designed to be easy to install and simple to maintain. 
+The ideal Nextcloud snap is an "install and forget" Nextcloud instance that works on most 
+architectures and updates itself without needing administrative skills. 
+Combining Nextcloud with snapd makes it a perfect fit for IoT or scalable environments. 
+Snapd is a secure and robust technology which the Nextcloud snap team has embraced.
 
-That version from Canonical is quite restrictive. It is not aimed at developers or advanced users 
-who would want to tune their configuration by installing extra features. It is aimed at end-users 
-who want a no-brainer solution. Install it, use it. No need to worry about updating Nextcloud any 
-more.
-
-It will work for as long as Canonical pushes releases, just like with any other Linux package 
-maintained independently of Nextcloud.
+However, the snap is opinionated. 
+- Nextcloud snap uses Apache.
+- Nextcloud snap uses MySQL. 
+- Nextcloud snap uses PHP. 
+In other words, it's not very tinker-friendly.
 
 Installation
 ------------
 
 **Ubuntu**
 
-$ sudo snap install nextcloud
+ sudo snap install nextcloud
 
 **All other distros**
 
 (`be warned <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Why-Ubuntu-is-the-only-supported-distro/>`_)
+
+By default the latest stable Nextcloud snap release will be installed and it will automatically update to 
+subsequent stable releases, but there are [other releases available as well](https://github.com/nextcloud/nextcloud-snap/wiki/Release-strategy) 
+and you have full control of [automatic updates](https://github.com/nextcloud-snap/nextcloud-snap/wiki/Managing-automatic-updates).
+
+After installation, Nextcloud will start automatically.  
+Assuming you and the device on which it was installed are on the same network, you will reach the Nextcloud 
+installation by visiting `<hostname>.local` or the IP address of the instance in your browser. 
+If your hostname is `localhost`  or `localhost.localdomain`, like on an Ubuntu Core device, 
+`nextcloud.local` will be used instead. 
 
 * Go to https://docs.snapcraft.io/installing-snapd/6735
 * Type the command to install snapd
@@ -42,12 +52,6 @@ device (IoT), nextcloud.local will be used instead.
 
 You will be asked to create a password for "admin" and your favourite cloud will be ready
 
-**Note**
-
-Do not use on IoT devices yet. You probably don't need these instructions anyway if you're 
-using Snappy Base 16.04 as it's currently unreleased.
-
-
 * Make a :doc:`fresh backup <backup>`.
 * Upgrade your Nextcloud snap: sudo snap refresh nextcloud
 * Run :ref:`occ upgrade <command_line_upgrade_label>`.
@@ -57,11 +61,6 @@ using Snappy Base 16.04 as it's currently unreleased.
 
 Upgrade tips
 ------------
-
-.. seealso::
-
-   If you upgrade from a previous major version please see :ref:`critical changes<critical-changes>` first.
-
 Upgrading Nextcloud from a Snap is just like upgrading any snap package.
 For example:
 
@@ -75,15 +74,13 @@ this until you refresh your Nextcloud page.
    :scale: 75%
    :alt: Nextcloud status screen informing users that it is in maintenance mode.
 
-Then use ``occ`` to complete the upgrade. You must run ``occ`` as your HTTP 
-user. This example is for Debian/Ubuntu::
+Then use ``nextcloud.occ`` to complete the upgrade. You must run ``nextcloud.occ`` as root. This example is for Debian/Ubuntu::
 
- sudo -u www-data php occ upgrade
+ sudo nextcloud.occ upgrade
 
 This example is for CentOS/RHEL/Fedora::
 
- sudo -u apache php occ upgrade 
-
+ sudo /snap/bin/nextcloud.occ 
    
 .. _skipped_release_upgrade_label:  
    
@@ -100,7 +97,7 @@ for the moment If you have skipped any major releases you can bring your
 Nextcloud current with these steps:
 
 If you are using a Snap package:
-sudo snap refresh nextcloud
+ sudo snap refresh nextcloud --stable
 
 If you did **not** install via a Snap package:
 
