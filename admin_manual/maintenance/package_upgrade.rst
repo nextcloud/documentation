@@ -5,7 +5,7 @@ Upgrade via packages
 Upgrade quickstart
 ------------------
 
-Nextcloud snap is designed to be easy to install and simple to maintain. 
+Nextcloud snap is an unofficial Nextcloud designed to be easy to install and simple to maintain. 
 The ideal Nextcloud snap is an "install and forget" Nextcloud instance that works on most 
 architectures and updates itself without needing administrative skills. Combining Nextcloud 
 with snapd makes it a perfect fit for IoT or scalable environments. 
