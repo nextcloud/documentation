@@ -7,8 +7,8 @@ Upgrade quickstart
 
 Nextcloud snap is an unofficial Nextcloud designed to be easy to install and simple to maintain. 
 The ideal Nextcloud snap is an "install and forget" Nextcloud instance that works on most 
-architectures and updates itself without needing administrative skills. Combining Nextcloud 
-with snapd makes it a perfect fit for IoT or scalable environments. 
+architectures and updates itself without needing administrative skills. 
+Combining Nextcloud with snapd makes it a perfect fit for IoT or scalable environments. 
 Snapd is a secure and robust technology which the Nextcloud snap team has embraced.
 
 However, the snap is opinionated. 
@@ -28,8 +28,8 @@ Installation
 
 (`be warned <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Why-Ubuntu-is-the-only-supported-distro/>`_)
 
-By default the latest stable Nextcloud snap release will be installed and it will automatically 
-update to subsequent stable releases, but there are [other releases available as well](https://github.com/nextcloud/nextcloud-snap/wiki/Release-strategy) 
+By default the latest stable Nextcloud snap release will be installed and it will automatically update to 
+subsequent stable releases, but there are [other releases available as well](https://github.com/nextcloud/nextcloud-snap/wiki/Release-strategy) 
 and you have full control of [automatic updates](https://github.com/nextcloud-snap/nextcloud-snap/wiki/Managing-automatic-updates).
 
 After installation, Nextcloud will start automatically.  
