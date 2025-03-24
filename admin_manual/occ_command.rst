@@ -1420,6 +1420,7 @@ report showing how many users you have, and when a user was last logged in::
   user:report                         shows how many users have access
   user:resetpassword                  Resets the password of the named user
   user:setting                        Read and modify user settings
+  user:sync-account-data              sync user backend data to accounts table for configured users
 
 
 user:add
@@ -1588,6 +1589,16 @@ user:list
 ^^^^^^^^^
 
 You can use the command ``user:list`` to list users. By default it will limit the output to 500 users but you can override that with options ``--limit`` and ``--offset``. Use ``--disabled`` to only list disabled users.
+
+user:sync-account-data
+^^^^^^^^^^^^^^^^^^^^^^
+
+Usually, the account data in the Nextcloud instance database (``oc_accounts``) is updated once a change on another user backend (for example, SAML) is detected.
+However, in case of an error or bugs in the past, the state between the user backend and the ``oc_accounts`` table might become inconsistent.
+
+You can manually sync user backend data to accounts table with the ``user:sync-account-data`` command::
+
+ user:sync-account-data [-l|--limit=500] [-o|--offset=0]
 
 .. _group_commands_label:
 
