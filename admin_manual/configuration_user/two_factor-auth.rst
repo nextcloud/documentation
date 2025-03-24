@@ -5,7 +5,7 @@ Two-factor authentication
 =========================
 
 Two-factor authentication adds an additional layer of security to user accounts. In order to log
-in on an account when two-factor authentication (2FA) enabled, it is necessary to provide both the
+in on an account when two-factor authentication (2FA) enabled, you must provide both the
 login password and another factor.
 
 To use 2FA two things must happen:
@@ -76,21 +76,29 @@ a user has 2FA enforced:
 Provider removal
 ----------------
 
-Nextcloud keeps records about the enabled two-factor authentication providers of every user. If a provider is simply removed/:ref:`disabled <apps_commands_label>`, Nextcloud will still consider the provider active for the user at login and show a warning like *Could not load at least one of your enabled two-factor auth methods*.
+Nextcloud keeps records about the enabled two-factor authentication providers of every user.
+If a provider is simply removed/:ref:`disabled <apps_commands_label>`,
+Nextcloud will still consider the provider active for the user at login and show a warning like *Could not load at least one of your enabled two-factor auth methods*.
 
 The associations of removed providers can be cleaned up via :ref:`occ <occ>`::
 
- sudo -u www-data php occ twofactorauth:cleanup <provider_id>
+ sudo -E -u www-data php occ twofactorauth:cleanup <provider_id>
 
-.. warning:: This operation is irreversible. Only run it for providers you do not intend to enable again.
+.. warning:: This operation is irreversible. Only run it for providers you do not intend to enable again as then you have to setup the configuration for all users from scratch.
+
 
 Disabling two-factor authentication
 -----------------------------------
 
 Two-factor providers can be disabled via :ref:`occ <occ>`::
 
- sudo -u www-data php occ twofactorauth:disable <uid> <provider_id>
+ sudo -E -u www-data php occ twofactorauth:disable <uid> <provider_id>
 
-User are free to enable this provider again via their personal settings.
+This can be useful if the user forgot or lost their second factor.
+Afterwards users are free to enable this provider again via their personal settings.
 
 .. note:: This operation has to be supported by the provider. If this support is missing, Nextcloud will abort and show an error.
+
+It is also possible to check the current two-factor user status via :ref:`occ <occ>`::
+
+  sudo -E -u www-data php occ twofactorauth:state <uid>
