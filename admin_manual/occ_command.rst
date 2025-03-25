@@ -1595,7 +1595,7 @@ user:sync-account-data
 ^^^^^^^^^^^^^^^^^^^^^^
 
 Usually, the account data in the Nextcloud instance database (``oc_accounts``) is updated once a change on another user backend (for example, SAML) is detected.
-However, in case of an error or bugs in the past, the state between the user backend and the ``oc_accounts`` table might become inconsistent.
+However, in case of an error, the state between the user backend and the ``oc_accounts`` table might become inconsistent.
 
 You can manually sync user backend data to accounts table with the ``user:sync-account-data`` command::
 
