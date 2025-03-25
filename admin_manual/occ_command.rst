@@ -594,7 +594,9 @@ This example will list all addressbooks for user annie::
 to move a calendar named ``name`` from a user ``sourceuid`` to the user
 ``destinationuid``. You can use the force option `-f` to enforce the move if there
 are conflicts with existing shares. The system will also generate a new unique
-calendar name in case there is a conflict over the destination user. Note that this will cause a share link to change.
+calendar name in case there is a conflict over the destination user.
+
+Note that this will change share urls that already exist.
 
 This example will move calendar named personal from user dennis to user sabine::
 
