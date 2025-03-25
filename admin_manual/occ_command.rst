@@ -1421,6 +1421,7 @@ report showing how many users you have, and when a user was last logged in::
   user:resetpassword                  Resets the password of the named user
   user:setting                        Read and modify user settings
   user:sync-account-data              sync user backend data to accounts table for configured users
+  user:welcome                        Sends the welcome email
 
 
 user:add
@@ -1599,6 +1600,21 @@ However, in case of an error or bugs in the past, the state between the user bac
 You can manually sync user backend data to accounts table with the ``user:sync-account-data`` command::
 
  user:sync-account-data [-l|--limit=500] [-o|--offset=0]
+
+user:welcome
+^^^^^^^^^^^^
+
+When you need to manually send the welcome email (for example, if the user was added via LDAP but hasn't logged in yet), you can use the ``user:welcome`` command. The syntax is::
+
+ user:welcome [-r|--reset-password] <user>
+
+For example::
+
+ user:welcome alice@nextcloud.ltd
+
+Or, if it should contain the reset password link::
+
+ user:welcome --reset-password bob@nextcloud.ltd
 
 .. _group_commands_label:
 
