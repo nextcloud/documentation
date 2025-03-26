@@ -1422,8 +1422,8 @@ report showing how many users you have, and when a user was last logged in::
   user:report                         shows how many users have access
   user:resetpassword                  Resets the password of the named user
   user:setting                        Read and modify user settings
-  user:keys:verify                    Verify that the stored public key matches
-                                      the stored private key
+  user:sync-account-data              sync user backend data to accounts table for configured users
+  user:welcome                        Sends the welcome email
 
 
 user:add
@@ -1592,6 +1592,31 @@ user:list
 ^^^^^^^^^
 
 You can use the command ``user:list`` to list users. By default it will limit the output to 500 users but you can override that with options ``--limit`` and ``--offset``. Use ``--disabled`` to only list disabled users.
+
+user:sync-account-data
+^^^^^^^^^^^^^^^^^^^^^^
+
+Usually, the account data in the Nextcloud instance database (``oc_accounts``) is updated once a change on another user backend (for example, SAML) is detected.
+However, in case of an error, the state between the user backend and the ``oc_accounts`` table might become inconsistent.
+
+You can manually sync user backend data to accounts table with the ``user:sync-account-data`` command::
+
+ user:sync-account-data [-l|--limit=500] [-o|--offset=0]
+
+user:welcome
+^^^^^^^^^^^^
+
+When you need to manually send the welcome email (for example, if the user was added via LDAP but hasn't logged in yet), you can use the ``user:welcome`` command. The syntax is::
+
+ user:welcome [-r|--reset-password] <user>
+
+For example::
+
+ user:welcome alice@nextcloud.ltd
+
+Or, if it should contain the reset password link::
+
+ user:welcome --reset-password bob@nextcloud.ltd
 
 .. _group_commands_label:
 
