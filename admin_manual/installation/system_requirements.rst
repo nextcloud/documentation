@@ -27,7 +27,7 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - Oracle Database 11g, 18, 21, 23                                     |
 |                  |   (*only as part of an enterprise subscription*)                      |
 |                  | - PostgreSQL 13/14/15/16/17                                           |
-|                  | - SQLite 3.16+ (*only recommended for testing and minimal-instances*) |
+|                  | - SQLite 3.24+ (*only recommended for testing and minimal-instances*) |
 +------------------+-----------------------------------------------------------------------+
 | Webserver        | - **Apache 2.4 with** ``mod_php`` **or** ``php-fpm`` (recommended)    |
 |                  | - nginx with ``php-fpm``                                              |
