@@ -396,15 +396,34 @@ For complete instructions and downloads see:
 Installing via Snap packages
 ----------------------------
 
-A snap is a zip file containing an application together with its dependencies,
-and a description of how it should safely be run on your system, especially
-the different ways it should talk to other software. Most importantly snaps are
-designed to be secure, sandboxed, containerized applications isolated from the
-underlying system and from other applications.
+Nextcloud snap is a community driven installation method and is designed 
+to be easy to install and simple to maintain. 
+Nextcloud snap is designed to be easy to install and simple to maintain. 
+The ideal Nextcloud snap is an "install and forget" Nextcloud instance 
+that works on most architectures and updates itself without needing administrative 
+skills. Combining Nextcloud with snapd makes it a perfect fit for IoT or 
+scalable environments. `Snapd <https://snapcraft.io/docs>`_ is a secure 
+and robust technology which the Nextcloud snap team has embraced.
 
-To install the Nextcloud Snap Package, run the following command in a terminal::
+Most importantly snaps are designed to be secure, sandboxed, containerized 
+applications isolated from the underlying system and from other applications.
 
-    sudo snap install nextcloud
+Installation
+------------
+
+**On Ubuntu**
+
+* https://snapcraft.io/nextcloud
+* Install Nextcloud ``sudo snap install nextcloud``
+
+**All other distros**
+`be warned <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Why-Ubuntu-is-the-only-supported-distro/>`_
+
+By default the latest stable Nextcloud snap release will be installed and it will automatically update to 
+subsequent stable releases, but there are `other releases available as well <https://github.com/nextcloud/nextcloud-snap/wiki/Release-strategy>`_ 
+and you have full control of `automatic updates <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Managing-automatic-updates>`_.
+
+Further documentation, an `extensive Wiki <https://github.com/nextcloud-snap/nextcloud-snap/wiki>`_ and `FAQ's <https://github.com/nextcloud-snap/nextcloud-snap/wiki/FAQ's>`_  can be found on the `developers GitHub <https://github.com/nextcloud-snap/nextcloud-snap>`_.
 
 .. note:: The `snapd technology <http://snapcraft.io/docs/core/>`_ is the core
    that powers snaps, and it offers a new way to package, distribute, update and
