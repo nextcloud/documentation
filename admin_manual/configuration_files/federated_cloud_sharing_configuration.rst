@@ -62,7 +62,8 @@ connection with user names exchanged.
 The prerequisiste for a green status is that the trusted servers were maintained
 in both interacting Nextcloud servers. 
 Additionally ``occ federation:sync-addressbooks`` must have been executed (part of 
-cron job list).
+cron job list). The delay to execute the cron is based on local configuration of
+the cron frequency.
 
 .. figure:: images/federation-1.png
 
