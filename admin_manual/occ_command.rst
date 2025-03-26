@@ -596,6 +596,8 @@ to move a calendar named ``name`` from a user ``sourceuid`` to the user
 are conflicts with existing shares. The system will also generate a new unique
 calendar name in case there is a conflict over the destination user.
 
+Note that this will change existing share URLs.
+
 This example will move calendar named personal from user dennis to user sabine::
 
  sudo -u www-data php occ dav:move-calendar personal dennis sabine
