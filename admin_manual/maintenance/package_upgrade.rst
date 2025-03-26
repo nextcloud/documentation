@@ -49,7 +49,7 @@ Upgrade tips
 ------------
 
 By default the Nextcloud snap will automatically update to subsequent stable releases. You may however upgrade 
-manuially too by issuing the command:
+manually too by issuing the command:
 
 ``sudo snap refresh nextcloud``
  
