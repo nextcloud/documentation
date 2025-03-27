@@ -1538,6 +1538,34 @@ There might be a discrepancy between the total number of users compared to the n
 Users that have never logged in before are not counted as active or disabled users.
 Some user backends also do not allow a count for the number of users.
 
+user:info
+^^^^^^^^^
+
+With the ``user:info`` command, you can access an account information such as: user id, display name, quota, groups, storage usage... and many more
+
+.. code-block::
+
+  user:info admin
+    - user_id: admin
+    - display_name: admin
+    - email: admin@domain.com
+    - cloud_id: admin@cloud.domain.com
+    - enabled: true
+    - groups:
+      - admin
+      - users
+    - quota: none
+    - storage:
+      - free: 162409623552
+      - used: 1110
+      - total: 162409624662
+      - relative: 0
+      - quota: -3
+    - first_seen: 2025-03-14T08:44:46+00:00
+    - last_seen: 2025-03-25T20:21:13+00:00
+    - user_directory: /var/www/nextcloud/data/admin
+    - backend: Database
+
 .. _group_commands_label:
 
 Group commands
@@ -1552,7 +1580,6 @@ groups, display a list of all users in a group::
   group:adduser                       add a user to a group
   group:removeuser                    remove a user from a group
   group:list                          list configured groups
-
 
 You can create a new group with the ``group:add`` command. The syntax is::
 
