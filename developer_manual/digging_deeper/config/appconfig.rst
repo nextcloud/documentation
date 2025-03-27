@@ -6,6 +6,29 @@ AppConfig
 
 Since v29, Nextcloud includes a new API to manage your app configuration.
 
+AppFramework
+------------
+
+The AppConfig API is also available in the AppFramework, allowing you to use it in your app.
+All of the methods are available in the ``OCP\AppFramework\Services\IAppConfig`` interface.
+Any of the methods below will automatically be scoped to your app, meaning you can omit the app id.
+    
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp;
+
+    use OCP\AppFramework\Services\IAppConfig;
+
+    class MyClass {
+        public function __construct(
+            private IAppConfig $appConfig,
+        ) {}
+
+        public function getSomeConfig(): string {
+            return $this->appConfig->getValueString('mykey', 'default');
+        }
+    }
 
 Concept overview
 ----------------
@@ -22,8 +45,8 @@ To ensure better stability of your code, config values are typed enforced.
 Type is set only once, at creation in database, and cannot be changed.
 
 .. note::
-	- Value stored before Nextcloud 29 are automatically typed as `mixed`. However, it is not possible to manually set a value as `mixed`.
-	- Value not set as `mixed` must be retrieved using the corresponding method.
+    - Value stored before Nextcloud 29 are automatically typed as `mixed`. However, it is not possible to manually set a value as `mixed`.
+    - Value not set as `mixed` must be retrieved using the corresponding method.
 
 Values Sensitivity
 ^^^^^^^^^^^^^^^^^^
@@ -33,15 +56,15 @@ Configuration values set as `sensitive` are hidden from system reports and store
 
 .. code-block:: php
 
-	setValueString(
-		'myapp',
-		'mykey',
-		'myvalue',
-		sensitive: true
-	);
+    setValueString(
+        'myapp',
+        'mykey',
+        'myvalue',
+        sensitive: true
+    );
 
 .. note::
-	Once set as `sensitive`, it can only be reverted using ``updateSensitive()``
+    Once set as `sensitive`, it can only be reverted using ``updateSensitive()``
 
 
 Lazy Loading
@@ -52,33 +75,33 @@ All `lazy` configuration values are loaded from the database once one is read.
 
 .. code-block:: php
 
-	setValueString(
-		'myapp',
-		'mykey',
-		'myvalue',
-		lazy: true
-	);
+    setValueString(
+        'myapp',
+        'mykey',
+        'myvalue',
+        lazy: true
+    );
 
 .. note::
-	- Flag as `lazy` as much 'large block of text' entries (json, key pairs, ...) as possible,
-	- flag as `lazy` entries that are needed on quiet endpoints,
-	- do **not** flag as `lazy` part of code that might be called during the global loading of the instance and its apps.
+    - Flag as `lazy` as much 'large block of text' entries (json, key pairs, ...) as possible,
+    - flag as `lazy` entries that are needed on quiet endpoints,
+    - do **not** flag as `lazy` part of code that might be called during the global loading of the instance and its apps.
 
 
 Retrieving the configuration value will require to specify the fact that it is stored as `lazy`.
 
 .. code-block:: php
 
-	getValueString(
-		'myapp',
-		'mykey',
-		'default',
-		lazy: true
-	);
+    getValueString(
+        'myapp',
+        'mykey',
+        'default',
+        lazy: true
+    );
 
 .. note::
-	- Requesting with ``1azy: false`` will returns the default value if configuration value is stored as `lazy`.
-	- Requesting with ``lazy: true`` will returns the correct value even if configuration value is stored as `non-lazy (as there is a huge probability that the `non-lazy` value are already loaded)
+    - Requesting with ``1azy: false`` will returns the default value if configuration value is stored as `lazy`.
+    - Requesting with ``lazy: true`` will returns the correct value even if configuration value is stored as `non-lazy (as there is a huge probability that the `non-lazy` value are already loaded)
 
 Consuming the AppConfig API
 ---------------------------
@@ -134,7 +157,7 @@ Managing config keys
  * ``deleteApp(string $app)`` delete all config keys from an app (using app id)
 
 .. note::
-	Some method allows ``$lazy`` to be ``null``, meaning that the search will be extended to all configuration values, `lazy` or not.
+    Some method allows ``$lazy`` to be ``null``, meaning that the search will be extended to all configuration values, `lazy` or not.
 
 Miscellaneous
 ^^^^^^^^^^^^^
