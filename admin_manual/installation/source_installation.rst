@@ -422,6 +422,19 @@ By default the latest stable Nextcloud snap release will be installed and it wil
 subsequent stable releases, but there are `other releases available as well <https://github.com/nextcloud/nextcloud-snap/wiki/Release-strategy>`_ 
 and you have full control of `automatic updates <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Managing-automatic-updates>`_.
 
+After installation, Nextcloud will start automatically.  
+Assuming you and the device on which it was installed are on the same network, you will reach the Nextcloud 
+installation by visiting ``<hostname>.local`` or the IP address of the instance in your browser. 
+If your hostname is ``localhost``  or ``localhost.localdomain``, like on an Ubuntu Core device, 
+``nextcloud.local`` will be used instead. 
+
+1st login
+---------
+
+Upon visiting the Nextcloud installation for the first time, you will be prompted to enter an admin username 
+and password before Nextcloud is initialised. This may take a while depending on resources and the device.
+After you provide that information you will be logged in and able to install apps, create users, and upload files.
+
 Further documentation, an `extensive Wiki <https://github.com/nextcloud-snap/nextcloud-snap/wiki>`_ and `FAQ's <https://github.com/nextcloud-snap/nextcloud-snap/wiki/FAQ's>`_  can be found on the `developers GitHub <https://github.com/nextcloud-snap/nextcloud-snap>`_.
 
 .. note:: The `snapd technology <http://snapcraft.io/docs/core/>`_ is the core
