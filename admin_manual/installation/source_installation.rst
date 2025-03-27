@@ -397,10 +397,10 @@ Installing via Snap packages
 ----------------------------
 
 Nextcloud snap is a community driven installation method and is designed 
-to be easy to install and simple to maintain.  
-The ideal Nextcloud snap is an "install and forget" Nextcloud instance 
-that works on most architectures and updates itself without needing administrative 
-skills. Combining Nextcloud with snapd makes it a perfect fit for IoT or 
+to be easy to install and simple to maintain. The ideal Nextcloud snap is
+an "install and forget" Nextcloud instance that works on most architectures
+and updates itself without needing administrative skills. 
+Combining Nextcloud with snapd makes it a perfect fit for IoT or 
 scalable environments. `Snapd <https://snapcraft.io/docs>`_ is a secure 
 and robust technology which the Nextcloud snap team has embraced.
 
