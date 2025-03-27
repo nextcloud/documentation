@@ -26,7 +26,7 @@ Any of the methods below will automatically be scoped to your app, meaning you c
         ) {}
 
         public function getSomeConfig(): string {
-            return $this->appConfig->getValueString('mykey', 'default');
+            return $this->appConfig->getAppValueString('mykey', 'default');
         }
     }
 
