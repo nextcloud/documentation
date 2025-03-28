@@ -110,6 +110,14 @@ click on the contacts picture for the following options to appear:
 
 .. figure:: ../images/contact_picture_options.png
 
+Adding Contact Groups
+---------------------
+
+The Contacts app enables you to group contacts.
+
+To create a new contact group, click on the plus sign next to "Contact groups" in the left sidebar.
+
+.. note:: Contact groups need to have at least one member to be saved.
 
 Adding and Managing Address Books
 ---------------------------------
@@ -123,6 +131,8 @@ to create new address books, simply by specifying an address books name:
 	:alt: Add address book in the contacts settings
 
 The Contacts settings is also where you can share, export and delete addressbooks. You will find the CardDAV URLs there.
+
+.. note:: Contacts in disabled address books are not shown in the Contacts app and the Contact menu. 
 
 See :doc:`index` for more details about syncing your address books
 with iOS, macOS, Thunderbird and other CardDAV clients.

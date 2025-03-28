@@ -21,6 +21,7 @@ Digging deeper
    flow
    npm
    notifications
+   oidc
    out_of_office
    performance
    phonenumberutil
@@ -44,6 +45,6 @@ Digging deeper
    two-factor-provider
    status
    user_migration
-   users    
+   users
    web_host_metadata
    time

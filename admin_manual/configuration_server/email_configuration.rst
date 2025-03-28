@@ -33,6 +33,17 @@ Sendmail when your mail server is on the same machine as Nextcloud.
 
 .. _email-smtp-config:
 
+Mail Providers
+--------------
+
+.. versionadded:: 30
+
+A mail provider is an app that provides outbound mail service to Nextcloud and allows the sending of system emails
+directly through a user's configured personal email account instead of the system email account.
+At present, this functionality is limited to calendar invitations.
+This feature automatically matches a users email address to a configured mail provider account, when a system message is sent.
+The only app that supports this functionality at present is Nextcloud Mail 4.1 or higher, a configured email account is required.
+
 Configuring an SMTP server
 --------------------------
 

@@ -42,6 +42,8 @@ access your S3 mount.
 The ``Enable SSL`` checkbox enables HTTPS connections and generally preferred. It is the default unless 
 you disable it here.
 
+Optionally, a 32-byte base64 encoded SSE-C key can be provided for server side encryption. See :doc:`../primary_storage` and the `SSE-C AWS documentation <https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html>`_ for more information how to generate a key.
+
 .. figure:: images/amazons3.png
    :alt:
 

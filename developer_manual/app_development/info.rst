@@ -23,12 +23,12 @@ A minimum valid **info.xml** would look like this:
         <summary>An RSS/Atom feed reader</summary>
         <description>An RSS/Atom feed reader</description>
         <version>8.8.2</version>
-        <licence>agpl</licence>
+        <licence>AGPL-3.0-or-later</licence>
         <author>Bernhard Posselt</author>
         <category>multimedia</category>
         <bugs>https://github.com/nextcloud/news/issues</bugs>
         <dependencies>
-            <nextcloud min-version="10"/>
+            <nextcloud min-version="31"/>
         </dependencies>
     </info>
 
@@ -47,7 +47,7 @@ A full blown example would look like this (needs to be utf-8 encoded):
         <description lang="en"># Description\nAn RSS/Atom feed reader</description>
         <description lang="de"><![CDATA[# Beschreibung\nEine Nachrichten App, welche mit [RSS/Atom](https://en.wikipedia.org/wiki/RSS) umgehen kann]]></description>
         <version>8.8.2</version>
-        <licence>agpl</licence>
+        <licence>AGPL-3.0-or-later</licence>
         <author mail="mail@provider.com" homepage="http://example.com">Bernhard Posselt</author>
         <author>Alessandro Cosentino</author>
         <author>Jan-Christoph Borchardt</author>
@@ -75,7 +75,7 @@ A full blown example would look like this (needs to be utf-8 encoded):
             <lib>curl</lib>
             <lib>SimpleXML</lib>
             <lib>iconv</lib>
-            <nextcloud min-version="9" max-version="10"/>
+            <nextcloud min-version="31" max-version="32"/>
         </dependencies>
         <background-jobs>
             <job>OCA\DAV\CardDAV\Sync\SyncJob</job>
@@ -175,7 +175,25 @@ version
 
 licence
     * required
-    * must contain **agpl**, **mpl*** and/or **apache** as the only valid values. These refer to the AGPLv3, MPL 2.0 and Apache License 2.0
+    * can occur multiple times with different licenses
+    * must contain one of the following licenses (for apps targeting v31 or higher, see the `SPDX License List <https://spdx.org/licenses/>`_ for details):
+
+        * **AGPL-3.0-only**
+        * **AGPL-3.0-or-later**
+        * **Apache-2.0**
+        * **GPL-3.0-only**
+        * **GPL-3.0-or-later**
+        * **MIT**
+        * **MPL-2.0**
+
+    * (deprecated, for apps targeting v30 or lower) the following shorthand aliases are also used:
+
+        * **agpl** (AGPL-3.0)
+        * **apache** (Apache-2.0)
+        * **gpl3** (GPL-3.0)
+        * **mit** (MIT)
+        * **mpl** (MPL-2.0)
+
 author
     * required
     * can occur multiple times with different authors

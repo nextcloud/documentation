@@ -254,7 +254,7 @@ Connections to remote servers
 -----------------------------
 
 Some functionalities require the Nextcloud server to be able to connect remote systems via https/443.
-This pragraph also includes the data which is being transmitted to the Nextcloud GmbH.
+This paragraph also includes the data which is being transmitted to the Nextcloud GmbH.
 Depending on your server setup, these are the possible connections:
 
 - nextcloud.com, startpage.com, eff.org, edri.org
@@ -289,6 +289,8 @@ Depending on your server setup, these are the possible connections:
 
 .. _optional (config): https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#has-internet-connection
 .. _detailed field list : https://github.com/nextcloud/survey_client
+
+.. TODO ON RELEASE: Update version number above on release
 
 
 Setup fail2ban

@@ -308,6 +308,10 @@ To show available update(s) without updating::
 
     sudo -u www-data php occ app:update --showonly
 
+To update an app to an unstable release, for instance News::
+
+    sudo -u www-data php occ app:update --allow-unstable news
+
 .. _background_jobs_selector_label:
 
 Background jobs selector
@@ -365,6 +369,7 @@ While setting a configuration value, multiple options are available:
 
 .. _Appconfig Concepts: https://docs.nextcloud.com/server/latest/developer_manual/digging_deeper/config/appconfig.html#concept-overview
 
+.. TODO ON RELEASE: Update version number above on release
 
 You can list all configuration values with one command::
 
@@ -591,6 +596,8 @@ to move a calendar named ``name`` from a user ``sourceuid`` to the user
 are conflicts with existing shares. The system will also generate a new unique
 calendar name in case there is a conflict over the destination user.
 
+Note that this will change existing share URLs.
+
 This example will move calendar named personal from user dennis to user sabine::
 
  sudo -u www-data php occ dav:move-calendar personal dennis sabine
@@ -773,18 +780,23 @@ to synchronize federated servers::
 File operations
 ---------------
 
-``occ`` has three commands for managing files in Nextcloud::
+Available ``occ`` commands for the ``files`` namespace::
 
- files
-  files:cleanup              Cleanup filecache
-  files:repair-tree          Try and repair malformed filesystem tree structures
-  files:scan                 Rescan filesystem
-  files:scan-app-data        Rescan the AppData folder
-  files:transfer-ownership   All files' and folders' ownerships are moved to another
-                             user. Outgoing shares are moved as well.
-                             Incoming shares are not moved by default because the
-                             sharing user holds the ownership of the respective files.
-                             There is however an option to enable moving incoming shares.
+  files:cleanup                    cleanup filecache
+  files:copy                       Copy a file or folder
+  files:delete                     Delete a file or folder
+  files:get                        Get the contents of a file
+  files:move                       Move a file or folder
+  files:object:delete              Delete an object from the object store
+  files:object:get                 Get the contents of an object
+  files:object:put                 Write a file to the object store
+  files:put                        Write contents of a file
+  files:recommendations:recommend  
+  files:reminders                  List file reminders
+  files:repair-tree                Try and repair malformed filesystem tree structures
+  files:scan                       rescan filesystem
+  files:scan-app-data              rescan the AppData folder
+  files:transfer-ownership         All files and folders are moved to another user - outgoing shares and incoming user file shares (optionally) are moved as well.
 
 .. _occ_files_scan_label:
 
@@ -867,6 +879,18 @@ with the files on the actual storage.::
   Arguments:
     folder                 The appdata subfolder to scan [default: ""]
 
+.. _occ_cleanup_previews:
+
+Cleanup previews
+^^^^^^^^^^^^^^^^
+
+``preview:cleanup`` removes all of the server's preview files. This is useful
+when changing the previews configuration (sizes, quality or file), and especially
+on systems using Object Storage as Primary Storage where the ``appdata_xxx/preview``
+folder can't simply be deleted.
+
+See :doc:`configuration_files/previews_configuration`.
+
 
 Cleanup
 ^^^^^^^
@@ -925,6 +949,8 @@ In this case no sub-directory is created and all files will appear directly in t
 It is also possible to transfer only one directory along with its contents. This can be useful to restructure your organization or quotas. The ``--path`` argument is given as the path to the directory as seen from the source user::
 
  sudo -u www-data php occ files:transfer-ownership --path="path_to_dir" <source-user> <destination-user>
+                             
+Incoming shares are not moved by default because the sharing user holds the ownership of the respective files. There is however an option to enable moving incoming shares.
 
 In case the incoming shares must be transferred as well, use the argument ``--transfer-incoming-shares`` with ``0`` or ``1`` as parameters ::
 
@@ -958,13 +984,18 @@ Commands for handling shares::
 Files external
 --------------
 
+These commands are used for managing Nextcloud's *External Storage* feature. In 
+addition to replicating the configuration capabilities in the Web UI, additional 
+capabilities include exporting / importing configurations, scanning *External 
+Storage* mounts that require login credentials, and configuring update notifications 
+(if supported by the storage type).
+
 .. note::
   These commands are only available when the "External storage support" app
   (``files_external``) is enabled.
 
-Commands for managing external storage::
+Available commands for the "files_external" namespace::
 
- files_external
   files_external:applicable  Manage applicable users and groups for a mount
   files_external:backends    Show available authentication and storage backends
   files_external:config      Manage backend configuration for a mount
@@ -972,13 +1003,13 @@ Commands for managing external storage::
   files_external:delete      Delete an external mount
   files_external:export      Export mount configurations
   files_external:import      Import mount configurations
-  files_external:list        List configured mounts
-  files_external:option      Manage mount options for a mount
-  files_external:verify      Verify mount configuration
+  files_external:list        List configured admin or personal mounts
   files_external:notify      Listen for active update notifications for a configured external mount
+  files_external:option      Manage mount options for a mount
+  files_external:scan        Scan an external storage for changed files
+  files_external:verify      Verify mount configuration
 
-These commands replicate the functionality in the Nextcloud Web GUI, plus two new
-features:  ``files_external:export`` and ``files_external:import``.
+``files_external:scan`` provides the ability to provide a username and/or password for cases where login credentials are used.
 
 Use ``files_external:export`` to export all admin mounts to stdout, and
 ``files_external:export [user_id]`` to export the mounts of the specified
@@ -1049,8 +1080,13 @@ you can run the following LDAP commands with ``occ``::
                                 LDAP anymore, but have remnants in
                                 Nextcloud.
   ldap:test-config              tests an LDAP configuration
+  ldap:test-user-settings       runs tests and show information about user
+                                related LDAP settings
 
-Search for an LDAP user, using this syntax::
+ldap\:search
+^^^^^^^^^^^^
+
+Search for an LDAP user, using this syntax
 
  sudo -u www-data php occ ldap:search [--group] [--offset="..."]
  [--limit="..."] search
@@ -1076,7 +1112,10 @@ connected to an LDAP server::
 
  sudo -u www-data php occ ldap:check-user robert
 
-``ldap:check-user`` will not run a check when it finds a disabled LDAP
+ldap\:check-user
+^^^^^^^^^^^^^^^^
+
+Will not run a check when it finds a disabled LDAP
 connection. This prevents users that exist on disabled LDAP connections from
 being marked as deleted. If you know for certain that the user you are searching for
 is not in one of the disabled connections, and exists on an active connection,
@@ -1084,13 +1123,19 @@ use the ``--force`` option to force it to check all active LDAP connections::
 
  sudo -u www-data php occ ldap:check-user --force robert
 
-``ldap:check-group`` checks whether a group still exists in the LDAP directory.
+ldap\:check-group
+^^^^^^^^^^^^^^^^^
+
+Checks whether a group still exists in the LDAP directory.
 Use with ``--update`` to update the group membership cache on the Nextcloud side::
 
  sudo -u www-data php occ ldap:check-group --update mygroup
 
-``ldap:create-empty-config`` creates an empty LDAP configuration. The first
-one you create has ``configID`` ``s01``, and all subsequent configurations
+ldap\:create-empty-config
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Creates an empty LDAP configuration. The first one you create
+has ``configID`` ``s01``, and all subsequent configurations
 that you create are automatically assigned IDs::
 
  sudo -u www-data php occ ldap:create-empty-config
@@ -1104,24 +1149,78 @@ And view the configuration for a single configID::
 
  sudo -u www-data php occ ldap:show-config s01
 
-``ldap:delete-config [configID]`` deletes an existing LDAP configuration::
+ldap\:delete-config
+^^^^^^^^^^^^^^^^^^^
+
+Deletes an existing LDAP configuration::
 
  sudo -u www-data php occ ldap:delete  s01
  Deleted configuration with configID 's01'
 
-The ``ldap:set-config`` command is for manipulating configurations, like this
+ldap\:set-config
+^^^^^^^^^^^^^^^^
+
+This command is for manipulating configurations, like this
 example that sets search attributes::
 
  sudo -u www-data php occ ldap:set-config s01 ldapAttributesForUserSearch
  "cn;givenname;sn;displayname;mail"
 
-``ldap:test-config`` tests whether your configuration is correct and can bind to
+ldap\:test-config
+^^^^^^^^^^^^^^^^^
+
+Tests whether your configuration is correct and can bind to
 the server::
 
  sudo -u www-data php occ ldap:test-config s01
  The configuration is valid and the connection could be established!
 
-``ldap:show-remnants`` is for cleaning up the LDAP mappings table, and is
+ldap\:test-user-settings
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Tests user-related LDAP settings::
+
+  sudo -u www-data php occ ldap:test-user-settings "cn=philip j. fry,ou=people,dc=planetexpress,dc=com" --group "Everyone"
+
+  User cn=philip j. fry,ou=people,dc=planetexpress,dc=com is mapped with account name fry.
+  Known UUID is ce6cd914-71d5-103f-95a8-ad2dab17b2f9.
+  Configuration prefix is s01
+
+  Attributes set in configuration:
+  - ldapExpertUsernameAttr: uid
+  - ldapUuidUserAttribute: auto
+  - ldapEmailAttribute: mail
+  - ldapUserDisplayName: cn
+
+  Attributes fetched from LDAP using filter (|(objectclass=inetOrgPerson)):
+  - entryuuid: ["ce6cd914-71d5-103f-95a8-ad2dab17b2f9"]
+  - uid: ["fry"]
+  - mail: ["fry@planetexpress.com"]
+  - cn: ["Philip J. Fry"]
+
+  Detected UUID attribute: entryuuid
+
+  UUID for cn=philip j. fry,ou=people,dc=planetexpress,dc=com: ce6cd914-71d5-103f-95a8-ad2dab17b2f9
+
+  Group information:
+  Configuration:
+  - ldapGroupFilter: (|(objectclass=groupOfNames))
+  - ldapGroupMemberAssocAttr: member
+
+  Primary group:
+  Group from gidNumber:
+  All known groups: ["Ship crew", "Everyone"]
+  MemberOf usage: off (0,1)
+
+  Group Everyone:
+  Group cn=everyone,ou=groups,dc=planetexpress,dc=com is mapped with name Everyone.
+  Known UUID is ce8b61c2-71d5-103f-95af-ad2dab17b2f9.
+  Members: ["bender", "fry", "leela"]
+
+ldap\:show-remnants
+^^^^^^^^^^^^^^^^^^^
+
+Used to cleaning up the LDAP mappings table, and is
 documented in :doc:`../configuration_user/user_auth_ldap_cleanup`.
 
 .. _logging_commands_label:
@@ -1394,7 +1493,6 @@ report showing how many users you have, and when a user was last logged in::
   user:keys:verify                    Verify that the stored public key matches
                                       the stored private key
 
-
 user:add
 ^^^^^^^^
 
@@ -1562,6 +1660,34 @@ user:list
 
 You can use the command ``user:list`` to list users. By default it will limit the output to 500 users but you can override that with options ``--limit`` and ``--offset``. Use ``--disabled`` to only list disabled users.
 
+user:info
+^^^^^^^^^
+
+With the ``user:info`` command, you can access an account information such as: user id, display name, quota, groups, storage usage... and many more
+
+.. code-block::
+
+  user:info admin
+    - user_id: admin
+    - display_name: admin
+    - email: admin@domain.com
+    - cloud_id: admin@cloud.domain.com
+    - enabled: true
+    - groups:
+      - admin
+      - users
+    - quota: none
+    - storage:
+      - free: 162409623552
+      - used: 1110
+      - total: 162409624662
+      - relative: 0
+      - quota: -3
+    - first_seen: 2025-03-14T08:44:46+00:00
+    - last_seen: 2025-03-25T20:21:13+00:00
+    - user_directory: /var/www/nextcloud/data/admin
+    - backend: Database
+
 .. _group_commands_label:
 
 Group commands
@@ -1576,7 +1702,6 @@ groups, display a list of all users in a group::
   group:adduser                       add a user to a group
   group:removeuser                    remove a user from a group
   group:list                          list configured groups
-
 
 You can create a new group with the ``group:add`` command. The syntax is::
 

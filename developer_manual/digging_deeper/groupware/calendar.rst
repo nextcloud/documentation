@@ -104,6 +104,74 @@ The returned objects implement ``\OCP\Calendar\ICalendar``. Study the interface 
 
 .. note:: All calendars are by default only readable, therefore ``ICalendar`` does not offer methods for mutation. Some of the calendars are mutable, however, and they may further extend the interface ``\OCP\Calendar\ICreateFromString``.
 
+Create calendar events
+----------------------
+
+Calendar events can either be imported from raw ICS strings or built programmatically using the ``ICalendarEventBuilder`` interface.
+Please consider the example below to see both methods in action.
+
+.. code-block:: php
+
+    <?php
+
+    use OCP\Calendar\ICalendarEventBuilder;
+    use OCP\Calendar\ICreateFromString;
+    use OCP\Calendar\IManager;
+
+    class MyService {
+
+        /** @var IManager */
+        private $calendarManager;
+
+        public function __construct(IManager $calendarManager) {
+            $this->calendarManager = $calendarManager;
+        }
+
+        public function createEvent(string $uid): void {
+            $principal = 'principals/users/' . $uid;
+
+            // This will find all calendars of the principal
+            $calendars = $this->calendarManager->getCalendarsForPrincipal($principal);
+
+            $writableCalendar = null;
+            foreach ($calendars as $calendar) {
+                if ($calendar instanceof ICreateFromString) {
+                    $writableCalendar = $calendar;
+                    break;
+                }
+            }
+
+            if ($writableCalendar === null) {
+                return;
+            }
+
+            // Build an event
+            $startDate = (new \DateTimeImmutable('now'))
+                ->setTimezone(new \DateTimeZone('Europe/Berlin'));
+            $endDate = $startDate->add(new \DateInterval('PT1H'));
+            $builder = $this->calendarManager->createEventBuilder()
+                ->setStartDate($startDate)
+                ->setEndDate($endDate)
+                ->setSummary('An Event')
+                ->setDescription('With a description')
+                ->setLocation('Some address') // A URL (of a meeting) would also work
+                ->setOrganizer('organizer@domain.com')
+                ->addAttendee('user.1@domain.com')
+                ->addAttendee('user.2@domain.com', 'User Two');
+
+            // Write the calendar to an event
+            $builder->createInCalendar($writableCalendar);
+
+            // Or, serialize it to a string to do something else with it
+            $ics = $builder->toIcs();
+
+            // For example, make use of ICreateFromString
+            // Make sure to generate a unique filename/UUID for each event
+            $writableCalendar->createFromString('edb29d1d-817c-4e43-9d52-cf26dff4be60.ics', $ics);
+        }
+
+    }
+
 Calendar providers
 -------------------
 

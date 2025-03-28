@@ -33,6 +33,9 @@ values.
 
 But deemed necessary, following changes have to be made in ``config/config.php`` file. As a best practice, take a backup of this config file before making a lot of changes.
 
+After changing one or more of the following parameters, you might want to run the ``preview:cleanup`` occ command to get rid of the previews with obsolete settings.
+See :ref:`occ_cleanup_previews` to learn more.
+
 Disabling previews:
 ^^^^^^^^^^^^^^^^^^^
 

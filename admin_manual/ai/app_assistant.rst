@@ -36,9 +36,13 @@ Related apps
 
 Artificial intelligence at Nextcloud is built in a modular way, allowing you to choose from a variety of solutions for your needs. In order to make use of the various features of the Assistant you will need additional apps that act as backends to provide the actual implementation of the AI functionality. In the Nextcloud administration settings under "Artificial intelligence" you can select which AI backend app to use for which tasks. Note that some of the backend apps are only community maintained, while others are available for Customer support upon request.
 
+The AI admin settings will show all types of Assistant Tasks that are implemented by all your installed apps. Task types can be disabled in the AI admin settings so they are not available for the Assistant or other apps even if they are implemented. All implemented Task types are enabled by default.
+
 **Note**: At Nextcloud we focus on creating on-premise AI apps that run fully self-hosted on your own servers in order to preserve your privacy and data sovereignty. However, you can also offload these resource-heavy tasks to an :ref:`"AI as a Service" provider<ai-ai_as_a_service>`.
 
 **Note**: When using our on-premise AI apps, make sure you have a GPU with enough VRAM that fits all the features you need. For each app documented here you will find its hardware requirements.
+
+.. _machine_translation:
 
 Machine translation
 ~~~~~~~~~~~~~~~~~~~
@@ -82,7 +86,7 @@ Text-To-Image
 
 In order to make use of Text-To-Image features, you will need an app that provides an image generation backend:
 
-* text2image_stablediffusion (Customer support available upon request)
+* :ref:`tex2image_stablediffusion2<ai-app-text2image_stablediffusion2>` (Customer support available upon request)
 * *integration_openai* - Integrates with the OpenAI API to provide AI functionality from OpenAI servers (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 * *integration_replicate* - Integrates with the replicate API to provide AI functionality from replicate servers (see :ref:`AI as a Service<ai-ai_as_a_service>`)
 
@@ -94,6 +98,17 @@ In order to make use of our special Context Chat feature, offering in-context in
 * :ref:`context_chat + context_chat_backend<ai-app-context_chat>` -  (Customer support available upon request)
 
 You will also need a text processing provider as specified above (ie. llm2 or integration_openai).
+
+Context Agent
+~~~~~~~~~~~~~
+
+In order to make use of our AI agent feature, offering the execution of actions on behalf of the user based on the AI chat, you will need the following apps:
+
+
+* :ref:`context_agent<ai-app-context_agent>` -  (Customer support available upon request)
+
+
+You will also need a text processing provider as specified above (ie. *llm2* or *integration_openai*).
 
 Configuration
 -------------
@@ -109,7 +124,7 @@ Assistant configuration
 
 .. code-block::
 
-   occ config:app:set assistant assistant_enabled --value=1 --type=integer
+   occ config:app:set assistant assistant_enabled --value=1 --type=string
 
 To enable/disable the assistant button from the top-right corner for all the users.
 
@@ -117,7 +132,7 @@ To enable/disable the assistant button from the top-right corner for all the use
 
 .. code-block::
 
-   occ config:app:set assistant free_prompt_picker_enabled --value=1 --type=integer
+   occ config:app:set assistant free_prompt_picker_enabled --value=1 --type=string
 
 To enable/disable the AI text generation smart picker for all the users.
 
@@ -125,7 +140,7 @@ To enable/disable the AI text generation smart picker for all the users.
 
 .. code-block::
 
-   occ config:app:set assistant text_to_image_picker_enabled --value=1 --type=integer
+   occ config:app:set assistant text_to_image_picker_enabled --value=1 --type=string
 
 To enable/disable the text-to-image smart picker for all the users.
 
@@ -133,9 +148,44 @@ To enable/disable the text-to-image smart picker for all the users.
 
 .. code-block::
 
-   occ config:app:set assistant speech_to_text_picker_enabled --value=1 --type=integer
+   occ config:app:set assistant speech_to_text_picker_enabled --value=1 --type=string
 
 To enable/disable the speech-to-text smart picker for all the users.
+
+Task processing
+~~~~~~~~~~~~~~~
+
+1. List Tasks
+
+.. code-block::
+
+   occ taskprocessing:task:list
+
+lists all task processing tasks.
+
+2. Get Task
+
+.. code-block::
+
+   occ taskprocessing:task:get $TASK_ID
+
+shows all information for a specific task.
+
+3. Enable or disable a Task type
+
+.. code-block::
+
+   occ taskprocessing:task-type:set-enabled $TASK_TYPE_ID 1
+
+Set 1 to enable and 0 to disable an implemented task type.
+
+4. Get Task statistics
+
+.. code-block::
+
+   occ taskprocessing:task:stats
+
+shows statistics for all task processing Tasks.
 
 Image storage
 ~~~~~~~~~~~~~

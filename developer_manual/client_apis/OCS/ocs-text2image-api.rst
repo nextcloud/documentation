@@ -8,7 +8,7 @@ OCS Text-To-Image API
 
 The OCS Text-To-Image API allows you to run image generation tasks implemented by apps using  :ref:`the backend Text-To-Image API<text2image>`.
 
-The base URL for all calls to this API is: *<nextcloud_base_url>/ocs/v2.php/text2image/*
+The base URL for all calls to this API is: ``<nextcloud_base_url>/ocs/v2.php/text2image/``
 
 All calls to OCS endpoints require the ``OCS-APIRequest`` header to be set to ``true``.
 

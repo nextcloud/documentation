@@ -8,7 +8,7 @@ OCS TaskProcessing API
 
 The OCS Task processing API allows you to run task processing tasks, like prompting large language models implemented by apps using  :ref:`the backend Task Processing API<task_processing>`.
 
-The base URL for all calls to this API is: ``<nextcloud_base_url>/ocs/v2.php/taskprocessing/``
+See the relevant `OpenAPI docs <https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html#/operations/core-task_processing_api-schedule>`_.
 
 All calls to OCS endpoints require the ``OCS-APIRequest`` header to be set to ``true``.
 

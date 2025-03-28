@@ -44,7 +44,7 @@ Database connectors (pick the one for your database):
 
 * PHP module intl (increases language translation performance and fixes sorting
   of non-ASCII characters)
-* PHP module sodium (for Argon2 for password hashing. bcrypt is used as fallback, but if passwords were hashed with Argon2 already and the module is missing, your users can't log in. Included with PHP >= 7.2)
+* PHP module sodium (for Argon2 for password hashing when PHP < 8.4 is used and PHP was built without libargon2. bcrypt is used as fallback, but if passwords were hashed with Argon2 already and the module is missing, your users can't log in.)
 
 Required for specific apps:
 
@@ -53,8 +53,6 @@ Required for specific apps:
   :doc:`../configuration_files/external_storage/smb`)
 * PHP module ftp (for FTP storage / external user authentication)
 * PHP module imap (for external user authentication)
-* PHP module bcmath (for passwordless login)
-* PHP module gmp (for passwordless login)
 
 Recommended for specific apps (*optional*):
 
@@ -128,4 +126,4 @@ You can search for a parameter with the following command: ``grep -r date.timezo
     /etc/php/8.3/cli/php.ini
 
 .. note:: Path names have to be set in respect of the installed PHP
-          (8.1, 8.2 or 8.3) as applicable.
+          (8.1, 8.2, 8.3 or 8.4) as applicable.

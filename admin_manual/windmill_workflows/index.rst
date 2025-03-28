@@ -34,6 +34,15 @@ If you wish to change to a different workspace at a later time, you can do so vi
 .. image:: images/windmill_later_workspace_selection.png
    :alt: Screenshot of the workspace selector when a workspace is already opened
 
+Setting up the Correct Nextcloud URL
+------------------------------------
+
+During the initial installation, the ExApp Flow will create a **Nextcloud Authentication Resource** for AppAPI.
+
+This resource includes a **baseUrl** field, which specifies the URL that Windmill scripts/apps use to reach the Nextcloud instance. In most cases, this URL will be configured correctly. However, certain configurations and network topologies may result in an incorrect URL, which you will need to adjust manually.
+
+To set the correct URL, navigate to the Windmill interface, go to the **Resources** tab, locate the resource labeled ``u/admin/exapp_resource``, click the three dots on the right, and select the "Edit" button.
+
 Building a workflow
 -------------------
 
@@ -43,10 +52,12 @@ If you are not using the ExApp-packaged windmill install then you will have to r
 webhooks for your workflows manually via the webhook_listeners API:
 see https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index
 
+.. TODO ON RELEASE: Update version number above on release
+
 The magic listener script
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The first script (after the "Input" block) in any workflow you build that should listen to a Nextcloud webhook must be ``CORE:LISTEN_TO_EVENT``. It must be an empty script with two parameters that you should fill statically: ``events``, which is a list of event IDs to listen to and ``filters`` a filter condition that allows more fine grained filtering for which events should be used. The filter condition as well as the available events with their payloads is documented in :ref:`the webhook_listeners documentation<webhook_listeners>`.
+The first script (after the "Input" block) in any workflow you build that should listen to a Nextcloud webhook must have "Summary" set to the exact, literal string ``CORE:LISTEN_TO_EVENT``. It must be an empty script with two parameters that you should fill statically: ``events``, which is a list of event IDs to listen to and ``filters`` a filter condition that allows more fine grained filtering for which events should be used. The filter condition as well as the available events with their payloads is documented in :ref:`the webhook_listeners documentation<webhook_listeners>`.
 
 You can copy the following Deno script for this:
 
@@ -54,6 +65,7 @@ You can copy the following Deno script for this:
 
    export async function main(events: string[], filters: object) { }
 
+The webhook data will be made available on the flow "Input" block, **not** the ``CORE:LISTEN_TO_EVENT`` block. Updates to the webhook configuration take effect only when the flow is deployed. Consider disabling any schedule for the flow, since it will be started when a webhook is received.
 
 Nextcloud Scripts
 -----------------
@@ -67,6 +79,8 @@ you can run a flow named "Synchronize Hub Resource types with instance" in the W
 
 You can create your own Nextcloud-related scripts by taking one of the existing ones as example.
 In a script, when sending a request to Nextcloud, make sure that the ``EX-APP-ID`` header is set to ``flow``.
+Your custom scripts can make requests to any endpoint of the
+`Nextcloud OCS API <https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html>`_ .
 
 All the scripts we provide have a set of common input parameters:
 
@@ -115,3 +129,15 @@ Of course, you may also use any of the other scripts for sending messages availa
 Windmill has a default approval user interface at a specific URL, but it looks very technical.
 We recommend using the `approve_links <https://apps.nextcloud.com/apps/approve_links>`_ app
 which allows creating a beautiful temporary approval page with a custom message and approve and disapprove buttons.
+
+FAQ
+---
+
+Can I create a script?
+~~~~~~~~~~~~~~~~~~~~~~
+
+If the Windmill Hub does not contain any script to perform the action you have in mind,
+you can take an existing Nextcloud script as example and create your own.
+Your custom scripts can make requests to any endpoint of the
+`Nextcloud OCS API <https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html>`_ .
+

@@ -34,15 +34,15 @@ Installation
 
 0. Make sure the :ref:`Nextcloud Assistant app<ai-app-assistant>` is installed
 1. :ref:`Install AppAPI and setup a Deploy Demon<ai-app_api>`
-2. Install the *stt_whisper2* "Local Speech-To-Text" ExApp via the "External Apps" page in the Nextcloud web admin user interface
+2. Install the *stt_whisper2* "Local Speech-To-Text" ExApp via the "Apps" page in the Nextcloud web admin user interface
 
 Supplying alternate models
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This app allows supplying alternate models in the ``/nc_app_llm2_data`` directory of the docker container. You can use any `*faster-whisper* model by Systran on hugging face <https://huggingface.co/Systran>`_ in the following way:
+This app allows supplying alternate models in the ``/nc_app_stt_whisper2_data`` directory of the docker container. You can use any `*faster-whisper* model by Systran on hugging face <https://huggingface.co/Systran>`_ in the following way:
 
 1. git cloning the respective repository
-2. Copying the folder with the git repository to ``/nc_app_llm2_data`` inside the docker container.
+2. Copying the folder with the git repository to ``/nc_app_stt_whisper2_data`` inside the docker container.
 3. Restarting the Whisper ExApp
 4. Selecting the respective model in the Nextcloud AI admin settings
 

@@ -37,7 +37,14 @@ Installation
 
 0. Make sure the :ref:`Nextcloud Assistant app<ai-app-assistant>` is installed
 1. :ref:`Install AppAPI and setup a Deploy Demon<ai-app_api>`
-2. Install the "Local Machine Translation" (translate2) ExApp via the "External Apps" page in the Nextcloud web admin user interface
+2. Install the "Local Machine Translation" (translate2) ExApp via the "Apps" page in the Nextcloud web admin user interface
+
+Model Switch
+------------
+
+1. Remove ``hf_model_path`` key from ``loader`` object in the ``config.json`` file in the docker container named ``nc_app_translate2``.
+2. Change ``model_name`` to the new model name to ``Nextcloud-AI/madlad400-7b-mt-bt-ct2-int8_float32``.
+3. Restart the docker container ``docker restart nc_app_translate2``
 
 App store
 ---------
@@ -69,6 +76,6 @@ Known Limitations
 
 * AI translations are not a replacement for human professional translations and in many cases post-editing is required. AI translations can be used for understanding the main content of a text but not for translations that require special knowledge (such as technical content or legal content), or translations that require specific writing style to convey style, deeper meaning, or emotions (such as marketing content or translating books).
 * While the quality of the output will be fine for the most common languages (English, French, Spanish) the quality will suffer for languages that have less coverage in the original training set.
-* Make sure to test the translation model you are using it for whether it meets the use-case's quality requirements
-* Language models notoriously have a high energy consumption
-* Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying models. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI)
+* Make sure to test the translation model you are using it for whether it meets the use-case's quality requirements. The default model is the smallest of the batch and might produce duplicate translation outputs. Switch to a larger model if you need better quality and less artifacts, see `Model Switch`_.
+* Language models notoriously have a high energy consumption.
+* Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying models. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI).

@@ -118,13 +118,13 @@ Refresh rate
 
 Calendar subscriptions are cached on server and refreshed periodically.
 If the calendar server provides a `refresh interval <https://icalendar.org/New-Properties-for-iCalendar-RFC-7986/5-7-refresh-interval-property.html>`_, it is respected.
-Otherwise the default refresh rate is one week.
+Otherwise the default refresh rate is one day.
 
-To set up a different default refresh rate for calendars without server side refrsh rates, change the ``calendarSubscriptionRefreshRate`` option::
+To set up a different default refresh rate for calendars without server side refresh rates, change the ``calendarSubscriptionRefreshRate`` option::
 
- php occ config:app:set dav calendarSubscriptionRefreshRate --value "P1D"
+ php occ config:app:set dav calendarSubscriptionRefreshRate --value "PT6H"
 
-Where the value is a `DateInterval <https://www.php.net/manual/dateinterval.construct.php>`_, for instance with the above command all of the Nextcloud instance's calendars would be refreshed every day.
+Where the value is a `DateInterval <https://www.php.net/manual/dateinterval.construct.php>`_, for instance with the above command all of the Nextcloud instance's calendars would be refreshed every 6 hours.
 
 Allow subscriptions on local network
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

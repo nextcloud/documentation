@@ -91,7 +91,7 @@ Apache with mod_proxy_fcgi
 nginx
 ^^^^^
 * `client_max_body_size <https://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size>`_
-* `fastcgi_read_timeout <https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_read_timeout>`_
+* `fastcgi_read_timeout <https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_read_timeout>`_ [often the solution to 504 timeouts during ``MOVE`` transactions that occur even when using chunking]
 * `client_body_temp_path <https://nginx.org/en/docs/http/ngx_http_core_module.html#client_body_temp_path>`_
 
 Since nginx 1.7.11 a new config option `fastcgi_request_buffering
@@ -152,17 +152,18 @@ low. This setting needs to be configured to at least the time (in seconds) that
 the longest upload will take. If unsure remove this completely from your
 configuration to reset it to the default shown in the ``config.sample.php``.
 
+.. _files_configure_max_chunk_size:
 
 Adjust chunk size on Nextcloud side
 -----------------------------------
 
 For upload performance improvements in environments with high upload bandwidth, the server's upload chunk size may be adjusted::
 
- sudo -u www-data php occ config:app:set files max_chunk_size --value 20971520
+ sudo -u www-data php occ config:system:set --type int --value 20971520 files.chunked_upload.max_size
 
 Put in a value in bytes (in this example, 20MB). Set ``--value 0`` for no chunking at all.
 
-Default is 10485760 (10 MiB).
+Default is ``104857600`` (100 MiB).
 
 .. note:: Changing ``max_chunk_size`` will not have any performance impact on files uploaded through File Drop shares as unauthenticated file uploads are not chunked.
 
@@ -175,6 +176,8 @@ on object storage as the individual chunks get downloaded from the storage and w
 to the actual file on the Nextcloud servers temporary directory. It is recommended to increase
 the size of your temp directory accordingly and also ensure that request timeouts are high
 enough for PHP, webservers or any load balancers involved.
+
+.. TODO ON RELEASE: Update version number above on release
 
 .. tip:: In more recent versions of Nextcloud Server, when uploading to S3 in *Primary Storage* mode, we use S3 `MultipartUpload`. This allows chunked upload streaming of the chunks directly to S3 so that the final MOVE request no longer needs to assemble the final file on the Nextcloud server. This requires your ``memcache.distributed`` to be set to use Redis (or Memcached), otherwise we fall back on the prior behavior which consumes space on the Nextcloud Server for file assembly (as described above).
 

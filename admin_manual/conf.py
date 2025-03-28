@@ -32,7 +32,7 @@ from conf import *
 extensions += ['sphinx.ext.todo', 'rst2pdf.pdfbuilder', 'sphinx.ext.intersphinx']
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['../_shared_assets/templates']
+templates_path = ['../_shared_assets/templates', '_templates']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -51,6 +51,8 @@ master_doc = 'contents'
 #version = '12'
 # The full version, including alpha/beta/rc tags.
 #release = '12'
+
+language = 'en'
 
 # General information about the project.
 project = u'Nextcloud %s Administration Manual' % (version)

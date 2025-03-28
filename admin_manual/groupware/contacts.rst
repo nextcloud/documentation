@@ -16,9 +16,20 @@ Nextcloud maintains a read-only address book containing contact information of a
 
 Disabled users are removed from this address book.
 
-You can disable access to the system address book by using the app config value ``system_addressbook_exposed``.
+You can disable or enable access to the system address book by using the administration interface or with a command line command.
 
-Run ``occ config:app:set dav system_addressbook_exposed --value="no"`` to disable access to the system address book for all users. Please note that this does not influence :ref:`Federated sharing<label-direct-share-link>`.
+Please note that this does not influence :ref:`Federated sharing<label-direct-share-link>`.
+
+Command Line
+^^^^^^^^^^^^
+
+Run ``occ config:app:set dav system_addressbook_exposed --value="no"`` to disable access to the system address book for all users.
+
+Administration interface
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Navigate to *Administration Settings* -> *Groupware* -> *System Address Book* section and toggle the *Enable system address book* option.
+
 
 .. warning:: If clients have already connected to the CalDAV endpoint, the clients might experience sync issues after system address book access was disabled. This can often be remedied by choosing a different default address book on the client and forcing a resync.
 
@@ -68,3 +79,25 @@ or::
 
   # Allow users to create address books without restriction
   php occ config:app:set dav maximumAdressbooks --type=integer --value=-1
+
+Example contact
+---------------
+
+.. versionadded:: 32.0.0
+
+The example contact administration setting allows you to enable the creation of a contact in the user's address book when they log in for the first time.
+To enable the example contact feature:
+
+1. Navigate to the Groupware settings in the admin settings.
+2. Scroll down to the "Example content" section.
+3. Enable the "Example contact" setting with the checkbox 
+
+If you want to set a specific contact that should be created.
+
+4. Press the "Import contact" button.
+5. Choose a vCard file (.vcf) that should be imported as an example contact.
+
+Switching back to the default example contact provided by nextcloud is possible by pressing the "Reset to default contact" button.
+
+.. note::
+    Example contacts will only be created for users that log in for the first time after the feature was enabled.
