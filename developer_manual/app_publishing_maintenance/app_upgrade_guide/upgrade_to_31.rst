@@ -154,6 +154,24 @@ Changed APIs
   - ``DATETIME_TZ`` for fields that will (de)serialized as ``\DateTime`` instances with both the time part set and with timezone information.
   - ``DATETIME_TZ_IMMUTABLE`` for fields that will (de)serialized as ``\DateTimeImmutable`` instances with both the time part set and with timezone information.
 
+- It's now possible to paginate DAV requests with new headers. 
+
+  - First request should contains the following headers:
+
+    - ``X-NC-Paginate: true`` enables the functionality
+    - ``X-NC-Paginate-Count: X``  sets the number of results per page (default 100)
+
+  - Server will answer with new headers:
+
+    - ``X-NC-Paginate-Total`` indicates the total number of results.
+    - ``X-NC-Paginate-Token`` gives a token to access other pages of the same result.
+
+  - Issue new requests with token:
+
+    - ``X-NC-Paginate-Token: xxx`` contains the token as sent by the server
+    - ``X-NC-Paginate-Count: X``  sets the number of results per page (default 100)
+    - ``X-NC-Paginate-Offset: Y`` sets the offset (number of ignored results) for the required page (usually "page_number × page_size")
+
 Deprecated APIs
 ^^^^^^^^^^^^^^^
 
