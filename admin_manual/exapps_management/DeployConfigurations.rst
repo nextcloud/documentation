@@ -35,8 +35,8 @@ The simplest configuration is when Nextcloud is installed on the host and Docker
 .. mermaid::
 
 	stateDiagram-v2
-		classDef docker fill: #1f97ee, color: transparent, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/app_api/main/docs/img/docker.png) no-repeat center center / contain
-		classDef nextcloud fill: #006aa3, color: transparent, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/app_api/main/docs/img/nextcloud.svg) no-repeat center center / contain
+		classDef docker fill: #1f97ee, color: transparent, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
+		classDef nextcloud fill: #006aa3, color: transparent, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/nextcloud.svg) no-repeat center center / contain
 		classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
 
 		Host
@@ -73,8 +73,8 @@ Suggested way to communicate with Docker via `Docker Socket Proxy container <htt
 .. mermaid::
 
 	stateDiagram-v2
-		classDef docker fill: #1f97ee, color: transparent, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/app_api/main/docs/img/docker.png) no-repeat center center / contain
-		classDef nextcloud fill: #006aa3, color: transparent, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/app_api/main/docs/img/nextcloud.svg) no-repeat center center / contain
+		classDef docker fill: #1f97ee, color: transparent, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
+		classDef nextcloud fill: #006aa3, color: transparent, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/nextcloud.svg) no-repeat center center / contain
 		classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
 
 		Host
@@ -124,8 +124,8 @@ In this case, the AppAPI uses a Docker Socket Proxy deployed on remote host to a
 .. mermaid::
 
 	stateDiagram-v2
-		classDef docker fill: #1f97ee, color: transparent, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/app_api/main/docs/img/docker.png) no-repeat center center / contain
-		classDef nextcloud fill: #006aa3, color: transparent, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/app_api/main/docs/img/nextcloud.svg) no-repeat center center / contain
+		classDef docker fill: #1f97ee, color: transparent, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
+		classDef nextcloud fill: #006aa3, color: transparent, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/nextcloud.svg) no-repeat center center / contain
 		classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
 
 		Direction LR
@@ -170,8 +170,8 @@ Suggested way to communicate with Docker: via ``docker-socket-proxy``.
 .. mermaid::
 
 	stateDiagram-v2
-		classDef docker fill: #1f97ee, color: transparent, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/app_api/main/docs/img/docker.png) no-repeat center center / contain
-		classDef nextcloud fill: #006aa3, color: transparent, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/app_api/main/docs/img/nextcloud.svg) no-repeat center center / contain
+		classDef docker fill: #1f97ee, color: transparent, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
+		classDef nextcloud fill: #006aa3, color: transparent, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/nextcloud.svg) no-repeat center center / contain
 		classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
 
 		Host
@@ -220,9 +220,9 @@ In the case of AppAPI in Docker AIO setup (installed in Nextcloud container).
 .. mermaid::
 
 	stateDiagram-v2
-		classDef docker fill: #1f97ee, color: transparent, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/app_api/main/docs/img/docker.png) no-repeat center center / contain
-		classDef docker2 fill: #1f97ee, color: transparent, font-size: 20px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/app_api/main/docs/img/docker.png) no-repeat center center / contain
-		classDef nextcloud fill: #006aa3, color: transparent, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/app_api/main/docs/img/nextcloud.svg) no-repeat center center / contain
+		classDef docker fill: #1f97ee, color: transparent, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
+		classDef docker2 fill: #1f97ee, color: transparent, font-size: 20px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
+		classDef nextcloud fill: #006aa3, color: transparent, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/nextcloud.svg) no-repeat center center / contain
 		classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
 
 		Host
