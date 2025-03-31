@@ -178,3 +178,4 @@ Removed APIs
     - ``OCP\IServerContainer::getLogger`` was removed, use dependency injection with ``Psr\Log\LoggerInterface`` instead.
 - The internal class ``OC\AppFramework\Logger`` was removed, it should have been never used by apps.
   All using apps should migrate to ``Psr\Log\LoggerInterface``.
+- Legacy endpoint to test remote share endpoint (``/testremote``) was removed.
