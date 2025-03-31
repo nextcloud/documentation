@@ -280,6 +280,7 @@ Deprecated APIs
 - Using ``OCP\TextProcessing\SummaryTaskType`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextProcessing`` providers will continue to work with the TaskProcessing API until then.
 - Using ``OCP\TextProcessing\Task`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextProcessing`` providers will continue to work with the TaskProcessing API until then.
 - Using ``OCP\TextProcessing\TopicsTaskType`` is deprecated and will be removed in the future. Use ``OCP\TaskProcessing`` instead (see :ref:`Task Processing<task_processing>`). Existing ``TextProcessing`` providers will continue to work with the TaskProcessing API until then.
+- Using ``OCP\Group\Backend\ICreateGroupBackend`` interface is deprecated and will be removed in the future. Use ``OCP\Group\Backend\ICreateNamedGroupBackend`` instead.
 
 Removed APIs
 ^^^^^^^^^^^^
