@@ -407,7 +407,7 @@ and robust technology which the Nextcloud snap team has embraced.
 Most importantly snaps are designed to be secure, sandboxed, containerized 
 applications isolated from the underlying system and from other applications.
 
-However, the snap is opinionated. 
+However, the snap is opinionated and there are `requirements <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Installation-requirements>`_ to be met. 
 
 - Nextcloud snap uses recommended Apache.
 - Nextcloud snap uses recommended MySQL.
@@ -462,10 +462,10 @@ system. Unless you specifically allow the Nextcloud snap to access the ``/media`
 host system, you will not be able to access any other directory outside of the confinement.
 
 Removable media or external storage must be mounted to either ``/media`` or ``/mnt`` as root with root permissions 
-and connected to Snap!
+and connected to Snap! `Managing external media and storage <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Managing-external-media,-shares-and-storage>`_
 
 The interface providing the ability to access removable media is not automatically connected upon install, to use 
-external storage (or otherwise use a device in ``/media`` or ``/mnt`` for data), you need to give the snap permission 
+external storage (or otherwise use a device in ``/media`` or ``/mnt`` for data, you need to give the snap permission 
 to access removable media by connecting that interface:
 
 ``sudo snap connect nextcloud:removable-media`` 
