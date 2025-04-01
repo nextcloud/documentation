@@ -456,7 +456,7 @@ editing configuration files manually or using the management console. `Configuri
 External media
 --------------
 
-Snap confinement is a security feature and determines the amount of access an application has to system resources, 
+`Snap confinement <https://snapcraft.io/docs/snap-confinement>`_ is a security feature and determines the amount of access an application has to system resources, 
 such as files, the network, peripherals and services. Thus your Nextcloud snap is securely confined from the host 
 system. Unless you specifically allow the Nextcloud snap to access the ``/media`` or ``/mnt`` directories on the 
 host system, you will not be able to access any other directory outside of the confinement.
@@ -465,12 +465,12 @@ Removable media or external storage must be mounted to either ``/media`` or ``/m
 and connected to Snap!
 
 The interface providing the ability to access removable media is not automatically connected upon install, to use 
-external storage (or otherwise use a device in ``/media`` or ``/mnt`` for data), you need to give the snap permission 
+external storage (or otherwise use a device in ``/media`` or ``/mnt`` for data, you need to give the snap permission 
 to access removable media by connecting that interface:
 
 ``sudo snap connect nextcloud:removable-media`` 
 
-Further documentation, an `extensive Wiki <https://github.com/nextcloud-snap/nextcloud-snap/wiki>`_ and `FAQ's <https://github.com/nextcloud-snap/nextcloud-snap/wiki/FAQ's>`_  can be found on the `developers GitHub <https://github.com/nextcloud-snap/nextcloud-snap>`_.
+Further documentation, an extensive `Wiki <https://github.com/nextcloud-snap/nextcloud-snap/wiki>`_ and `FAQ's <https://github.com/nextcloud-snap/nextcloud-snap/wiki/FAQ's>`_  can be found on the `developers GitHub <https://github.com/nextcloud-snap/nextcloud-snap>`_.
 
 .. note:: The `snapd technology <http://snapcraft.io/docs/core/>`_ is the core
    that powers snaps, and it offers a new way to package, distribute, update and
