@@ -224,6 +224,7 @@ Nextcloud to use Imaginary by editing your `config.php`:
     <?php
     'enabledPreviewProviders' => [
         'OC\Preview\Imaginary',
+        'OC\Preview\ImaginaryPDF',
     ],
     'preview_imaginary_url' => 'http://<url of imaginary>:9000',
 
