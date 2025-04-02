@@ -522,49 +522,74 @@ before. If you want to be notified in that case, set the
 Dav commands
 ------------
 
-A set of commands to create and manage addressbooks and calendars::
+Manage addressbooks and calendars::
 
  dav
-  dav:create-addressbook                 Create a dav addressbook
-  dav:list-addressbooks                  List all addressbooks of a user
-  dav:create-calendar                    Create a dav calendar
-  dav:create-subscription                Create a dav calendar subscription
-  dav:delete-calendar                    Delete a dav calendar
-  dav:fix-missing-caldav-changes         Insert missing calendarchanges rows for existing events
-  dav:list-calendars                     List all calendars of a user
-  dav:move-calendar                      Move a calendar from an user to another
-  dav:remove-invalid-shares              Remove invalid dav shares
-  dav:send-event-reminders               Sends event reminders
-  dav:sync-birthday-calendar             Synchronizes the birthday calendar
-  dav:sync-system-addressbook            Synchronizes users to the system addressbook
+  dav:create-addressbook          Create a dav addressbook
+  dav:create-calendar             Create a dav calendar
+  dav:create-subscription         Create a dav subscription
+  dav:delete-calendar             Delete a dav calendar
+  dav:delete-subscription         Delete a calendar subscription for a user
+  dav:fix-missing-caldav-changes  Insert missing calendarchanges rows for existing events
+  dav:list-addressbooks           List all addressbooks of a user
+  dav:list-calendars              List all calendars of a user
+  dav:list-subscriptions          List all calendar subscriptions for a user
+  dav:move-calendar               Move a calendar from an user to another
+  dav:remove-invalid-shares       Remove invalid dav shares
+  dav:retention:clean-up          
+  dav:send-event-reminders        Sends event reminders
+  dav:sync-birthday-calendar      Synchronizes the birthday calendar
+  dav:sync-system-addressbook     Synchronizes users to the system addressbook
 
-The syntax for ``dav:create-addressbook`` and  ``dav:create-calendar`` is
-``dav:create-addressbook [user] [name]``. This example creates the addressbook
-``mollybook`` for the user molly::
+
+Manage addressbooks
+^^^^^^^^^^^^^^^^^^^
+
+List all addressbooks of a user
+"""""""""""""""""""""""""""""""
+
+``dav:list-addressbooks <uid>``
+
+This example will list all addressbooks for user annie: ::
+
+ sudo -u www-data php occ dav:list-addressbooks annie
+
+Create a addressbook for a user
+"""""""""""""""""""""""""""""""
+
+``dav:create-addressbook <user> <name>``
+
+This example creates the addressbook ``mollybook`` for the user molly: ::
 
  sudo -u www-data php occ dav:create-addressbook molly mollybook
 
-This example creates a new calendar for molly::
+
+Manage calendars
+^^^^^^^^^^^^^^^^
+
+List all calendars of a user
+""""""""""""""""""""""""""""
+
+``dav:list-calendars <uid>``
+
+This example will list all calendars for user annie: ::
+
+ sudo -u www-data php occ dav:list-calendars annie
+
+Create a calendar for a user
+""""""""""""""""""""""""""""
+
+``dav:create-calendar <user> <name>``
+
+
+This example creates the calendar ``mollycal`` for the user molly: ::
 
  sudo -u www-data php occ dav:create-calendar molly mollycal
 
-Molly will immediately see these in the Calendar and Contacts apps.
+Delete a calendar for a user
+""""""""""""""""""""""""""""
 
-The syntax for ``dav:create-subscription`` is 
-``dav:create-subscription [user] [name] [url] [optional color]``. This example creates the subscription subscription for the lunar
-calendar ``Lunar Calendar`` for the user molly::
-
- sudo -u www-data php occ dav:create-subscription molly "Lunar Calendar" webcal://cantonbecker.com/astronomy-calendar/astrocal.ics
-
-Molly will immediately see this new subscription calendar in the Calendar app.
-
-Optionally, a color for the new subscription calendar can be passed as a HEX color code::
-  
- sudo -u www-data php occ dav:create-subscription molly "Lunar Calendar" calendar webcal://cantonbecker.com/astronomy-calendar/astrocal.ics "#ff5733"
-
-If not set, the theming default color will be used.
-
-``dav:delete-calendar [--birthday] [-f|--force] <uid> [<name>]`` deletes the
+``dav:delete-calendar [--birthday] [-f|--force] [--] <uid> [<name>]`` deletes the
 calendar named ``name`` (or the birthday calendar if ``--birthday`` is
 specified) of the user ``uid``. You can use the force option ``-f`` or
 ``--force`` to delete the calendar instead of moving it to the trashbin.
@@ -577,46 +602,72 @@ This example will delete the birthday calendar of user molly::
 
  sudo -u www-data php occ dav:delete-calendar --birthday molly
 
-``dav:list-calendars [user]`` and ``dav:list-addressbooks [user]`` will display a
-table listing the calendars or addressbooks for a given user.
 
-This example will list all calendars for user annie::
+Move a calendar of a user
+"""""""""""""""""""""""""
 
- sudo -u www-data php occ dav:list-calendars annie
+.. note:: Note that this will change existing share URLs.
 
-This example will list all addressbooks for user annie::
+``dav:move-calendar [-f|--force] [--] <name> <sourceuid> <destinationuid>`` allows the admin to move a calendar named ``name`` from a user ``sourceuid`` to the user ``destinationuid``. You can use the force option `-f` to enforce the move if there are conflicts with existing shares. The system will also generate a new unique calendar name in case there is a conflict over the destination user.
 
- sudo -u www-data php occ dav:list-addressbooks annie
 
-``dav:dav:fix-missing-caldav-changes [user]`` tries to restore calendar sync changes when data in the calendarchanges table has been lost. If the user ID is omitted, the command runs for all users. This can take a while.
-
-``dav::move-calendar [name] [sourceuid] [destinationuid]`` allows the admin
-to move a calendar named ``name`` from a user ``sourceuid`` to the user
-``destinationuid``. You can use the force option `-f` to enforce the move if there
-are conflicts with existing shares. The system will also generate a new unique
-calendar name in case there is a conflict over the destination user.
-
-Note that this will change existing share URLs.
-
-This example will move calendar named personal from user dennis to user sabine::
+This example will move calendar named personal from user dennis to user sabine: ::
 
  sudo -u www-data php occ dav:move-calendar personal dennis sabine
 
-``dav:remove-invalid-shares`` will remove invalid shares created by a bug into the calendar app
+Misc
+""""
+
+``dav:fix-missing-caldav-changes [<user>]`` attempts to restore calendar sync changes when data in the calendarchanges table has been lost. If the user ID is omitted, the command runs for all users, which may take some time to complete.
+
+``dav:retention:clean-up`` deletes elements from the CalDAV trash that are due for removal.
+
+``dav:remove-invalid-shares`` removes invalid shares that were created due to a bug in the calendar app.
 
 ``dav:send-event-reminders`` is a command that should be called regularly through a dedicated
-cron job to send event reminder notifications.
-
-See :doc:`../groupware/calendar` for more information on how to use this command.
-
-``dav:sync-birthday-calendar`` adds all birthdays to your calendar from
-addressbooks shared with you. This example syncs to your calendar from user
-bernie::
-
- sudo -u www-data php occ dav:sync-birthday-calendar bernie
+cron job to send event reminder notifications. See :doc:`../groupware/calendar` for more information on how to use this command.
 
 
-.. _occ-dav-sync-system-address-book:
+Manage calendar subscriptions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+List all calendar subscriptions of a user
+"""""""""""""""""""""""""""""""""""""""""
+
+``dav:list-subscriptions <uid>``
+
+This example will list all calendar subscriptions for user annie: ::
+
+ sudo -u www-data php occ dav:list-subscriptions annie
+
+
+Create a calendar subscription for a user
+"""""""""""""""""""""""""""""""""""""""""
+
+``dav:create-subscription <user> <name> <url> [<color>]``
+
+This example creates the subscription for the lunar calendar ``Lunar Calendar`` for the user molly: ::
+
+ sudo -u www-data php occ dav:create-subscription molly "Lunar Calendar" webcal://cantonbecker.com/astronomy-calendar/astrocal.ics
+
+Optionally, a color for the new subscription calendar can be passed as a HEX color code::
+  
+ sudo -u www-data php occ dav:create-subscription molly "Lunar Calendar" calendar webcal://cantonbecker.com/astronomy-calendar/astrocal.ics "#ff5733"
+
+If not set, the theming default color will be used.
+
+
+Delete a calendar subscription for a user
+"""""""""""""""""""""""""""""""""""""""""
+
+``dav:delete-subscription <uid> <uri>``
+
+This example deletes the subscription for the lunar calendar ``Lunar Calendar`` for the user molly: ::
+
+ sudo -u www-data php occ dav:delete-subscription molly "Lunar Calendar"
+
+
+.. _dav-sync-system-address-book:
 
 Sync system address book
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -625,6 +676,15 @@ Sync system address book
 address book<system-address-book>`::
 
  sudo -u www-data php occ dav:sync-system-addressbook
+ 
+Sync birthday calendar
+^^^^^^^^^^^^^^^^^^^^^^
+
+``dav:sync-birthday-calendar [<user>]`` adds all birthdays to your calendar from
+addressbooks shared with you. This example syncs to your calendar from user bernie: ::
+
+ sudo -u www-data php occ dav:sync-birthday-calendar bernie
+
 
 .. _database_conversion_label:
 

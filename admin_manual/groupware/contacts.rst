@@ -52,7 +52,7 @@ Users who set all their property scopes to *Private* are removed from the system
 Address Book Sync
 ^^^^^^^^^^^^^^^^^
 
-The address book is updated automatically with every added, modified, disabled or removed user. Admins can also trigger a full rewrite of the address book :ref:`with occ<occ-dav-sync-system-address-book>`.
+The address book is updated automatically with every added, modified, disabled or removed user. Admins can also trigger a full rewrite of the address book :ref:`with occ<dav-sync-system-address-book>`.
 
 Shared items
 ------------
