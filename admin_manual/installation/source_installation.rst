@@ -465,7 +465,7 @@ Removable media or external storage must be mounted to either ``/media`` or ``/m
 and connected to Snap!
 
 The interface providing the ability to access removable media is not automatically connected upon install, to use 
-external storage (or otherwise use a device in ``/media`` or ``/mnt`` for data, you need to give the snap permission 
+external storage (or otherwise use a device in ``/media`` or ``/mnt`` for data), you need to give the snap permission 
 to access removable media by connecting that interface:
 
 ``sudo snap connect nextcloud:removable-media`` 
