@@ -83,6 +83,7 @@ Removed APIs
     })
 
 - Legacy class ``OC_API`` was moved to a private namespace. It should not be needed by applications.
+- Deprecated interface ``OCP\Files\Storage`` was removed. Use ``OCP\Files\Storage\IStorage`` instead.
 
 Back-end changes
 ----------------
