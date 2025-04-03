@@ -188,7 +188,6 @@ Added APIs
 - ``OCP\AppFramework\Http\JSONResponse()`` constructor now supports passing additional ``json_encode`` flags, see https://www.php.net/manual/en/function.json-encode.php for details
 - ``OCP\EventDispatcher\IWebhookCompatibleEvent`` is a new interface for events compatible with webhooks (`see webhook_listeners documentation <https://docs.nextcloud.com/server/latest/admin_manual/webhook_listeners/index.html>`_).
 - ``OCP\EventDispatcher\JsonSerializer`` is a new public helper for serializing users and fileinfos to json (ie for webhook events)
-- ``OCP\Files\Events\Node\AbstractNodeEvent`` and ``OCP\Files\Events\Node\AbstractNodesEvent`` now implements ``IWebhookCompatibleEvent`` so that all file/folder related events are available for webhooks.
 
 Changed APIs
 ^^^^^^^^^^^^
@@ -218,6 +217,7 @@ Changed APIs
 - ``OCP\IUserManager::getDisabledUsers`` now has a third parameter for a search string.
 - ``OCP\User\Backend\IProvideEnabledStateBackend::getDisabledUserList`` now has a third parameter for a search string.
 - Legacy class ``OC_EventSource`` was moved to ``OC`` namespace with the ``OC_`` prefix. It should not change anything if you already correctly use the ``OCP\IEventSourceFactory`` to create these objects.
+- ``OCP\Files\Events\Node\AbstractNodeEvent`` and ``OCP\Files\Events\Node\AbstractNodesEvent`` now implements ``OCP\EventDispatcher\IWebhookCompatibleEvent`` so that all file/folder related events are available for webhooks (`see webhook_listeners documentation <https://docs.nextcloud.com/server/latest/admin_manual/webhook_listeners/index.html>`_).
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
