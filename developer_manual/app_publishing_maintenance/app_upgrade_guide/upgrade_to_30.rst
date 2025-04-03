@@ -214,6 +214,7 @@ Changed APIs
 - ``OCP\Share\IShare::getNoExpirationDate()`` retrieves the value of the ``noExpirationDate`` flag.
 - ``OCP\IUserManager::getDisabledUsers`` now has a third parameter for a search string.
 - ``OCP\User\Backend\IProvideEnabledStateBackend::getDisabledUserList`` now has a third parameter for a search string.
+- Legacy class ``OC_EventSource`` was moved to ``OC`` namespace with the ``OC_`` prefix. It should not change anything if you already correctly use the ``OCP\IEventSourceFactory`` to create these objects.
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
