@@ -212,6 +212,8 @@ Changed APIs
 - ``OCP\DB\Exception`` uses the reason code ``REASON_LOCK_WAIT_TIMEOUT`` now, instead of ``REASON_SERVER`` for a LockWaitTimeoutException.
 - ``OCP\Share\IShare::setNoExpirationDate()`` now sets an overwrite flag for falsy expiry date values, this flag is used to determine whether the system should overwrite falsy expiry date values before creating a share.
 - ``OCP\Share\IShare::getNoExpirationDate()`` retrieves the value of the ``noExpirationDate`` flag.
+- ``OCP\IUserManager::getDisabledUsers`` now has a third parameter for a search string.
+- ``OCP\User\Backend\IProvideEnabledStateBackend::getDisabledUserList`` now has a third parameter for a search string.
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
