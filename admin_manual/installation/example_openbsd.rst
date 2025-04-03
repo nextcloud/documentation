@@ -207,7 +207,13 @@ Since in OpenBSD httpd(8) works with a chroot(8) by default, we need to be sure 
 Nextcloud final steps
 ---------------------
 
-Now that we have all in place, you should go to your browser with your URL (I am assuming you have an SSL already installed)::
+The remaining installation step are completed in the web-based installation wizard.
+
+To activate this wizard, create a file named CAN_INSTALL inside the installation's config folder:
+
+  # touch /var/www/nextcloud/config/CAN_INSTALL
+
+Use your browser to navigate to the installation's URL:
 
   https://domain.tld
   
