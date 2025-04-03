@@ -61,7 +61,7 @@ Added APIs
 Changed APIs
 ^^^^^^^^^^^^
 
-- TBD
+- Legacy class ``OC_Image`` was moved to ``OC\Image``. You should never use it directly but use ``new \OCP\Image()`` instead for building the object and the ``OCP\IImage`` interface for calling methods.
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
