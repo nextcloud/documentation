@@ -57,16 +57,19 @@ Added APIs
 
 - If an app supports file conversion, it may now register an ``\OCP\Files\Conversion\ConversionProvider`` which will
   be called automatically based on the supported MIME types. An app may register as many of these as needed.
+- New events ``OCP\User\Events\BeforeUserIdUnassignedEvent``, ``OCP\User\Events\UserIdUnassignedEvent``, and ``OCP\User\Events\UserIdAssignedEvent`` have been added to replace the hooks ``\OC\User::preUnassignedUserId``, ``\OC\User::postUnassignedUserId`` and ``\OC\User::assignedUserId``.
 
 Changed APIs
 ^^^^^^^^^^^^
 
 - Legacy class ``OC_Image`` was moved to ``OC\Image``. You should never use it directly but use ``new \OCP\Image()`` instead for building the object and the ``OCP\IImage`` interface for calling methods.
+- ``OCP\Preview\BeforePreviewFetchedEvent`` constructor has a new parameter ``$mimeType`` which should be a string or null.
+- It has a new method ``getMimeType()`` to get the new property.
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
 
-- TBD
+- Hooks ``\OC\User::preUnassignedUserId``, ``\OC\User::postUnassignedUserId`` and ``\OC\User::assignedUserId`` are deprecated, use the new events in OCP instead.
 
 Removed APIs
 ^^^^^^^^^^^^
