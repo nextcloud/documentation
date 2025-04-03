@@ -82,6 +82,8 @@ Removed APIs
 		console.info('Notification action has been executed:', event.notification, event.action)
     })
 
+- Legacy class ``OC_API`` was moved to a private namespace. It should not be needed by applications.
+
 Back-end changes
 ----------------
 
