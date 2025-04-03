@@ -65,6 +65,7 @@ Changed APIs
 - Legacy class ``OC_Image`` was moved to ``OC\Image``. You should never use it directly but use ``new \OCP\Image()`` instead for building the object and the ``OCP\IImage`` interface for calling methods.
 - ``OCP\Preview\BeforePreviewFetchedEvent`` constructor has a new parameter ``$mimeType`` which should be a string or null.
 - It has a new method ``getMimeType()`` to get the new property.
+- ``OCP\Files\Storage::needsPartFile`` method was moved to interface ``OCP\Files\Storage\IStorage``.
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
@@ -86,6 +87,7 @@ Removed APIs
     })
 
 - Legacy class ``OC_API`` was moved to a private namespace. It should not be needed by applications.
+- Deprecated interface ``OCP\Files\Storage`` was removed. Use ``OCP\Files\Storage\IStorage`` instead.
 
 Back-end changes
 ----------------
