@@ -46,6 +46,7 @@ occ command Directory
 * :ref:`system_tags_commands_label`
 * :ref:`antivirus_commands_label`
 * :ref:`setupchecks_commands_label`
+* :ref:`share_operations_label`
 * `Debugging`_
 
 .. _http_user_label:
@@ -2109,6 +2110,23 @@ Example output::
     ✓ Data directory protected
     ✓ Internet connectivity
     ...
+
+.. _share_operations_label:
+
+Share operations
+----------------
+
+Available ``occ`` commands for the ``share`` namespace::
+
+  share:list                       list shares on the system
+
+.. _occ_share_list_label:
+
+List
+^^^^
+
+The ``share:list`` command lists all shares created on the system, with optional filters for recipient,
+sharee, shared file and more.
 
 .. _occ_debugging:
 
