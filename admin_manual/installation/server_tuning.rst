@@ -213,7 +213,7 @@ external microservice: `Imaginary <https://github.com/h2non/imaginary>`_.
    See https://github.com/nextcloud/server/issues/34262
 
 We strongly recommend running our custom docker image that is more up to date than the official image.
-You can find the image at `https://hub.docker.com/r/nextcloud/aio-imaginary`.
+You can find the image at `https://ghcr.io/nextcloud-releases/aio-imaginary`.
 
 To do so, you will need to deploy the service and make sure that it is
 not accessible from outside of your servers. Then you can configure
