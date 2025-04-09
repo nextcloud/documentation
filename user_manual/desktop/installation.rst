@@ -34,8 +34,8 @@ System Requirements
 ----------------------------------
 
 - Windows 10+ (64-bits only)
-- macOS 11.4+ (64-bits only)
-- Linux (Ubuntu 22.04 or openSUSE 15.5 or ...) (64-bits only)
+- macOS 12.0+ (64-bits only)
+- Linux (Ubuntu 22.04 or openSUSE 15.5 or Alma 8 or ...) (64-bits only)
 
 .. note::
    For Linux distributions, we support, if technically feasible, the current LTS releases.
