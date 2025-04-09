@@ -15,7 +15,9 @@ See the table below for a version map, where migrating is easily possible:
 +-------------------+-------------------------------+
 | ownCloud          | Nextcloud                     |
 +===================+===============================+
-| 10.13.x           | 25.0.x (but at least 25.0.13) |
+| 10.13.x           | 25.0.13                       |
+| 10.14.x           | 25.0.13                       |
+| 10.15.x           | 25.0.13                       |
 +-------------------+-------------------------------+
 
 .. note:: Since ownCloud does not and will not support PHP 8.0 or higher, you
@@ -37,13 +39,23 @@ See the table below for a version map, where migrating is easily possible:
   * ``occ db:add-missing-indices``
   * ``occ db:add-missing-primary-keys``
 
-5. If system cron was used, please verify if crontab entry was using the command ``occ system:cron``. If yes, please adjust it to use the ``php`` command instead according to :ref:`the background jobs configuration documentation<system-cron-configuration-label>`
+5. If system cron was used, please verify if crontab entry was using the command ``occ system:cron``.
+   If yes, please adjust it to use the ``php`` command instead according to :ref:`the background jobs configuration documentation<system-cron-configuration-label>`
 
-6. Use the :doc:`Nextcloud built-in updater<update>` to update your instance to the newest version.
+6. As Nextcloud 25 is the last Nextcloud version supporting PHP 7 you need to upgrade your PHP installation afterwards to continue updating to current Nextcloud release.
+   We recommend to update PHP to version 8.1 before continuing with the updates.
 
-7. Make sure to also verify the "Security & setup warnings" in the "Overview" section on the settings page.
+7. Use the :doc:`Nextcloud built-in updater<update>` to update your instance to the newest version.
+   This must be done for every major version, since updates between multiple major versions are not supported.
+   So the update path would be: 26 → 27.1 → 28 → 29 → 30 → 31.
 
-8. In some cases, apps installed from the ownCloud Market might have been disabled as incompatible
-   (ex: calendar and contacts), so you should reinstall the Nextcloud ones using
-   ``occ app:enable calendar``, ``occ app:enable contacts``, etc
+8. When reaching Nextcloud 30 or 31 we recommend to update PHP again to a current version like PHP 8.3.
+   You can do so also in between, as PHP 8.2 is already supported since Nextcloud 26 and PHP 8.3 since Nextcloud 28,
+   but in most cases it is easier to first complete the Nextcloud version updates.
+
+9. Make sure to also verify the "Security & setup warnings" in the "Overview" section on the settings page.
+
+10. In some cases, apps installed from the ownCloud Market might have been disabled as incompatible
+    (ex: calendar and contacts), so you should reinstall the Nextcloud ones using
+    ``occ app:enable calendar``, ``occ app:enable contacts``, etc
 
