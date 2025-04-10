@@ -25,6 +25,9 @@ group memberships, and create new groups.
 
 .. figure:: ../images/user-config-groups.png
 
+.. note: User counts for certain groups such as "All accounts" may not be
+   visible when using certain backends such as LDAP/AD/SAML.
+
 Click the gear icon on the lower left sidebar to set a default storage quota,
 and to display additional fields: **Show storage location, Show last log in,
 Show user backend, Send email to new users,** and **Show email address**.
