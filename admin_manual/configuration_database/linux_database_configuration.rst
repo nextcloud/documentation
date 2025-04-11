@@ -221,13 +221,13 @@ To start the postgres command line mode use::
 
   sudo -u postgres psql -d template1
 
-Then a **template1=#** prompt will appear. Now enter the following lines and confirm them with the enter key:
+Then a **template1=#** prompt will appear. Now enter the following lines, making sure to replace "www-data" with the name of the user of the PHP process, and confirm them with the enter key:
 
 ::
 
-  CREATE USER username CREATEDB;
-  CREATE DATABASE nextcloud OWNER username TEMPLATE template0 ENCODING 'UTF8';
-  GRANT CREATE ON SCHEMA public TO username;
+  CREATE USER "www-data" CREATEDB;
+  CREATE DATABASE nextcloud OWNER "www-data" TEMPLATE template0 ENCODING 'UTF8';
+  GRANT CREATE ON SCHEMA public TO "www-data";
 
 You can quit the prompt by entering::
 
@@ -245,7 +245,7 @@ this:
 
     "dbtype"        => "pgsql",
     "dbname"        => "nextcloud",
-    "dbuser"        => "username",
+    "dbuser"        => "www-data",
     "dbpassword"    => "",
     "dbhost"        => "/var/run/postgresql",
     "dbtableprefix" => "oc_",
