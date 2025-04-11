@@ -33,6 +33,8 @@ Nextcloud uses modularity to separate raw AI functionality from the Graphical Us
    "","`OpenAI and LocalAI integration (via Plusserver) <https://apps.nextcloud.com/apps/integration_openai>`_","Orange","No","Yes","No","No"
    "","`OpenAI and LocalAI integration (via Groqcloud) <https://apps.nextcloud.com/apps/integration_openai>`_","Orange","No","Yes","No","No"
    "","`OpenAI and LocalAI integration (via MistralAI) <https://apps.nextcloud.com/apps/integration_openai>`_","Orange","No","Yes","No","No"
+   "","`IBM watsonx.ai integration (via IBM watsonx.ai as a Service) <https://apps.nextcloud.com/apps/integration_watsonx>`_","Yellow","No","Yes - e.g. Granite models by IBM","Yes","No"
+   "","`IBM watsonx.ai integration (via IBM watsonx.ai software) <https://apps.nextcloud.com/apps/integration_watsonx>`_","Yellow","No","Yes - e.g. Granite models by IBM", "Yes","Yes"
    "Machine translation","`Local Machine Translation 2 (ExApp) <https://apps.nextcloud.com/apps/translate2>`_","Green","Yes","Yes - MADLAD models by Google","Yes","Yes"
    "","`DeepL integration <https://apps.nextcloud.com/apps/integration_deepl>`_","Red","No","No","No","No"
    "","`OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_","Red","No","No","No","No"
@@ -113,6 +115,7 @@ Backend apps
 
 * :ref:`llm2<ai-app-llm2>` - Runs open source AI LLM models on your own server hardware  (Customer support available upon request)
 * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
+* `IBM watsonx.ai integration (via IBM watsonx.ai as a Service) <https://apps.nextcloud.com/apps/integration_watsonx>`_ - Integrates with the IBM watsonx.ai API to provide AI functionality from IBM Cloud servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 
 
 Machine translation

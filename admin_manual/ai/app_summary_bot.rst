@@ -44,6 +44,8 @@ Installation
 
      - `Nextcloud OpenAI and LocalAI integration app <https://apps.nextcloud.com/apps/integration_openai>`_
 
+     - `Nextcloud IBM watsonx.ai integration app <https://apps.nextcloud.com/apps/integration_watsonx>`_
+
 
 Setup (via App Store)
 ~~~~~~~~~~~~~~~~~~~~~
