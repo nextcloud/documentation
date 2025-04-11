@@ -165,7 +165,7 @@ Put in a value in bytes (in this example, 20MB). Set ``--value 0`` for no chunki
 
 Default is ``104857600`` (100 MiB).
 
-.. note:: Changing ``max_chunk_size`` will not have any performance impact on files uploaded through File Drop shares as unauthenticated file uploads are not chunked.
+.. note:: Changing ``files.chunked_upload.max_size`` will not have any performance impact on files uploaded through File Drop shares as unauthenticated file uploads are not chunked.
 
 Large file upload on object storage
 -----------------------------------
