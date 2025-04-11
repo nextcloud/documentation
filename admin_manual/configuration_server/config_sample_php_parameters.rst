@@ -1384,8 +1384,8 @@ Available values (D1 and D2 are configurable numbers):
     and automatically deletes anytime after that if space is needed (note:
     files may not be deleted if space is not needed).
 * ``D1, auto``
-    keeps files and folders in the trash bin for D1+ days, delete anytime if
-    space needed (note: files may not be deleted if space is not needed)
+    keeps files and folders in the trash bin for D1+ days, then delete files
+    if the user reached its quota.
 * ``auto, D2``
     delete all files in the trash bin that are older than D2 days
     automatically, delete other files anytime if space needed
