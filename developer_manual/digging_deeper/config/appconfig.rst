@@ -38,6 +38,14 @@ On top of storing and accessing your configuration values, ``IAppConfig`` comes 
 
 .. _appconfig_concepts:
 
+
+.. note::
+	See `Lexicon Concepts`_ to learn more about **Lexicon**, a way to fully define your configuration keys and avoid conflict when using it in your code.
+
+.. _Lexicon Concepts: https://docs.nextcloud.com/server/latest/developer_manual/digging_deeper/config/lexicon.html#concept-overview
+
+
+
 Typed Config Values
 ^^^^^^^^^^^^^^^^^^^
 
