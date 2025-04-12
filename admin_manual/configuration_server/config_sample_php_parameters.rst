@@ -3867,11 +3867,11 @@ bulkupload.enabled
 
 ::
 
-	'bulkupload.enabled' => true,
+	'bulkupload.enabled' => false,
 
 Enable the bulk upload feature.
 
-Defaults to ``true``
+Defaults to ``false``
 
 reference_opengraph
 ^^^^^^^^^^^^^^^^^^^
