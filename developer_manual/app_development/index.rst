@@ -11,3 +11,4 @@ App development
    info
    init
    dependency_management
+   translation_setup

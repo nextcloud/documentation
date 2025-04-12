@@ -4,7 +4,7 @@
 Events Listener
 ===============
 
-This API allows you to listen to :doc:`Nextcloud events <../../../basics/events>`.
+This API allows you to listen to :ref:`Nextcloud events <Events>`.
 
 Currently only a **limited** number of events are supported.
 
