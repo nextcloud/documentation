@@ -325,5 +325,7 @@ redirects = {
   "core/static-analysis": "../server/static-analysis.html",
   "core/unit-testing": "../server/unit-testing.html",
   # Removed 2024-09
-  "digging_deeper/changelog": "../app_publishing_maintenance/app_upgrade_guide/index.html"
+  "digging_deeper/changelog": "../app_publishing_maintenance/app_upgrade_guide/index.html",
+  # Removed 2025-04
+  "basics/front-end/l10n": "../translations.html"
 }

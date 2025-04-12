@@ -8,5 +8,4 @@ Front-end
    templates
    js
    css
-   l10n
    theming

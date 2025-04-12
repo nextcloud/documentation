@@ -1,6 +1,8 @@
-===========
-Translation
-===========
+.. _Translations:
+
+============
+Translations
+============
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>, Kristof Hamann
 
@@ -60,27 +62,6 @@ Strings can then be translated in the following way:
         }
     }
 
-FIXME
------
-
-Correct plurals
-^^^^^^^^^^^^^^^
-
-If you use a plural, you **must** also use the ``%n`` placeholder. The placeholder defines the plural and the word without the number preceding is wrong. If you don't know/have a number for your translation, e.g. because you don't know how many items are going to be selected, just use an undefined plural. They exist in every language and have one form. They do not follow the normal plural pattern.
-
-Example:
-
-.. code-block:: php
-
-    <?php
-
-    // BAD: Plural without count
-    $title = $l->n('Import calendar', 'Import calendars', $selectionLength)
-    // BETTER: Plural has count, but disrupting to read and unnecessary information
-    $title = $l->n('Import %n calendar', 'Import %n calendars', $selectionLength)
-    // BEST: Simple string with undefined plural
-    $title = $l->t('Import calendars')
-
 Language of other users
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -121,7 +102,7 @@ In every template the global variable ``$l`` can be used to translate the string
     // Date string
     <em><?php p($l->l('date', time())); ?></em>
 
-JavaScript / Typescript / Vue
+JavaScript / TypeScript / Vue
 -----------------------------
 
 There are global functions ``t()`` and ``n()`` available for translating strings in javascript code.
@@ -138,12 +119,14 @@ They differ a bit in terms of usage compared to php:
     t('myapp', '{name} is available. Get {linkstart}more information{linkend}', {name: 'Nextcloud 16', linkstart: '<a href="...">', linkend: '</a>'});
     n('myapp', 'Import %n calendar into {collection}', 'Import %n calendars into {collection}', selectionLength, {collection: 'Nextcloud'});
 
-
 Guidelines
 ----------
 
 Please also look through the following hints to improve your strings and make them better translatable by the community
 and therefore improving the experience for non-english users.
+
+Dos and Don'ts
+^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -191,16 +174,48 @@ and therefore improving the experience for non-english users.
      - "Error: %s"
      - Instead of concatenating errors or part messages, make them a proper placeholder
 
+Correct plurals
+^^^^^^^^^^^^^^^
+
+If you use a plural, you **must** also use the ``%n`` placeholder. The placeholder defines the plural and the word without the number preceding is wrong. If you don't know/have a number for your translation, e.g. because you don't know how many items are going to be selected, just use an undefined plural. They exist in every language and have one form. They do not follow the normal plural pattern.
+
+PHP Example:
+
+.. code-block:: php
+
+    // BAD: Plural without count
+    $title = $l->n('Import calendar', 'Import calendars', $selectionLength)
+    // BETTER: Plural has count, but disrupting to read and unnecessary information
+    $title = $l->n('Import %n calendar', 'Import %n calendars', $selectionLength)
+    // BEST: Simple string with undefined plural not using any number in the string
+    $title = $l->t('Import calendars')
+
+Opposed to the normal placeholders in javascript, the plural number also uses the ``%n`` syntax:
+
+JS Example:
+
+.. code-block:: js
+
+    /* BAD: Plural without count */
+    n('myapp', 'Import calendar', 'Import calendars', selected.length)
+    /* BETTER: Plural has count, but disrupting to read and unnecessary information */
+    n('myapp', 'Import %n calendar', 'Import %n calendars', selected.length)
+    /* BEST: Simple string with undefined plural not using any number in the string */
+    t('myapp', 'Import calendars')
+
 Improving your translations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You shall **never split** sentences and **never concatenate** two translations (e.g. "Enable" and "dark mode" can not be combined to "Enable dark mode", because languages might have to use different cases)! Translators lose the context and they have no chance to possibly re-arrange words/parts as needed.
-
-Bad example:
+Starting with the following example, improving it step by step:
 
 .. code-block:: php
 
   <?php p($l->t('Select file from')) . ' '; ?><a href='#' id="browselink"><?php p($l->t('local filesystem'));?></a><?php p($l->t(' or ')); ?><a href='#' id="cloudlink"><?php p($l->t('cloud'));?></a>
+
+Step 1: String split
+""""""""""""""""""""
+
+You shall **never split** sentences and **never concatenate** two translations (e.g. "Enable" and "dark mode" can not be combined to "Enable dark mode", because languages might have to use different cases)! Translators lose the context and they have no chance to possibly re-arrange words/parts as needed.
 
 Translators will translate:
 
@@ -217,13 +232,21 @@ So the following code is a bit better, but suffers from another issue:
 
   <?php p($l->t('Select file from <a href="#" id="browselink">local filesystem</a> or <a href="#" id="cloudlink">cloud</a>'));?>
 
+Step 2: HTML Markup
+"""""""""""""""""""
+
 In this case the translators can re-arrange as they like, but have to deal with your markup and can mess it up easily. It is better to **keep the markup out** of your code, so the following translation is even better:
 
 .. code-block:: php
 
   <?php p($l->t('Select file from %slocal filesystem%s or %scloud%s', ['<a href="#" id="browselink">', '</a>', '<a href="#" id="cloudlink">', '</a>']));?>
 
-But there is one last problem with this. In case the language has to turn things around, your code will still insert the parameters in the given order and they can not re-order them. To prevent this last hurdle simply **use positioned placeholders** like ``%1$s``:
+But there is one last problem with this.
+
+Step 3: Placeholders
+""""""""""""""""""""
+
+In case the language has to turn things around, your code will still insert the parameters in the given order and they can not re-order them. To prevent this last hurdle simply **use positioned placeholders** like ``%1$s``:
 
 .. code-block:: php
 
@@ -234,11 +257,15 @@ This allows translators to have the cloudlink before the browselink in case the 
 .. _Hints:
 
 Provide context hints for translators
--------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In case some translation strings may be translated wrongly because they have multiple meanings, you can add hints which will be shown in the Transifex web-interface:
+In case some translation strings may be translated wrongly because they have multiple meanings.
+Especially translations strings that only contain a single word often result in problems.
+The most famous example in the Nextcloud code base is ``Share`` which can which can be the verb and action ``To share something`` or the noun ``A share``.
+The added hints will be shown in the Transifex web-interface:
 
-**PHP**
+PHP
+"""
 
 .. code-block:: php
 
@@ -251,14 +278,16 @@ In case some translation strings may be translated wrongly because they have mul
         </li>
     </ul>
 
-**Javascript / Typescript**
+JavaScript / TypeScript
+"""""""""""""""""""""""
 
 .. code-block:: javascript
 
     // TRANSLATORS name that is appended to copied files with the same name, will be put in parenthesis and appended with a number if it is the second+ copy
     var copyNameLocalized = t('files', 'copy');
 
-**Vue**
+Vue
+"""
 
 This covers vue html templates in vue sfc components.
 For vue js code, see the javascript section.
@@ -270,21 +299,24 @@ For vue js code, see the javascript section.
         {{ t('forms', 'Required') }}
     </NcActionCheckbox>
 
-**C++ (Qt)**
+C++ (Qt) / Desktop client
+"""""""""""""""""""""""""
 
 .. code-block:: c++
 
     //: Example text: "Progress of sync process. Shows the currently synced filename"
     fileProgressString = tr("Syncing %1").arg(allFilenames);
 
-**Android Strings**
+Android
+"""""""
 
 .. code-block:: xml
 
     <!-- TRANSLATORS List of deck boards -->
     <string name="simple_boards">Boards</string>
 
-**iOS**
+iOS
+"""
 
 .. code-block:: swift
 
@@ -294,123 +326,4 @@ For vue js code, see the javascript section.
 Adding translations
 -------------------
 
-Nextcloud's translation system is powered by `Transifex <https://explore.transifex.com/nextcloud/>`_. To start translating sign up and enter a group. If your community app should be translated by the `Nextcloud community on Transifex <https://explore.transifex.com/nextcloud/>`_ just follow the setup section below.
-
-Translation tool
-^^^^^^^^^^^^^^^^
-
-The translation tool scrapes the source code for method calls to  ``t()``
-or ``n()`` to extract the strings that should be translated. If you check
-in minified JS code for example then those method names are also quite
-common and could cause wrong extractions. For this reason we allow to
-specify a list of files that the translation tool will not scrape for
-strings. You simply need to add a file named :file:`.l10nignore` into
-the root folder of your app and specify the files one per line::
-
-    # compiled vue templates
-    js/bruteforcesettings.js
-
-
-
-Setup of the transifex sync
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To setup the transifex sync within the Nextcloud community you need to add first the
-transifex config to your app folder at :file:`.tx/config` (please replace ``MYAPP`` with your apps id):
-
-.. code-block:: ini
-
-    [main]
-    host     = https://www.transifex.com
-    lang_map = th_TH: th, ja_JP: ja, bg_BG: bg, cs_CZ: cs, fi_FI: fi, hu_HU: hu, nb_NO: nb, sk_SK: sk
-
-    [o:nextcloud:p:nextcloud:r:MYAPP]
-    file_filter = translationfiles/<lang>/MYAPP.po
-    source_file = translationfiles/templates/MYAPP.pot
-    source_lang = en
-    type        = PO
-
-Then create a folder :file:`l10n` and a file :file:`l10n/.gitkeep` to create an
-empty folder which later holds the translations.
-
-Add one more file called :file:`.l10nignore` in root of the repository and the files and folders to ignore for translations.
-Mostly used to ignore packed js files.
-
-Now the GitHub account `@nextcloud-bot <https://github.com/nextcloud-bot>`_ needs to get ``write`` access to your repository.
-You can invite it from your repository settings:
-
-    ``https://github.com/<user-name>/<repo-name>/settings/access``
-
-After sending the invitation, please `open a ticket using the "Request translations" template <https://github.com/nextcloud/docker-ci/issues/new/choose>`_.
-
-The bot will run every night and only push commits to the following branches branch once there is an update to the translation:
-
-* main
-* master
-* stableX (X being the recent 3 versions of Nextcloud Server)
-
-You can overwrite this list by creating a file ``.tx/backport`` in your repository with the following content::
-
-    develop stable
-
-That would sync the translations for the branches (``main`` and ``master`` are added automatically):
-
-* main
-* master
-* develop
-* stable
-
-
-.. note::
-
-    In general you should enable the
-    `protected branches feature <https://help.github.com/articles/configuring-protected-branches/>`_
-    for those branches. If you do that, you need to grant the
-    `@nextcloud-bot <https://github.com/nextcloud-bot>`_ ``admin`` permissions,
-    but that is only possible for repositories owned by organizations.
-    You can `create your own organization <https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/creating-a-new-organization-from-scratch>`_
-
-If you need help just `open a ticket with the request <https://github.com/nextcloud/docker-ci/issues/new/choose>`_
-and we can also guide you through the steps.
-
-.. _manual-translation:
-
-Manual translation
-^^^^^^^^^^^^^^^^^^
-
-If Transifex is not the right choice or the app is not accepted for translation,
-generate the gettext strings by yourself by executing our
-`translation tool <https://github.com/nextcloud/docker-ci/tree/master/translations/translationtool>`_
-in the app folder::
-
-
-    cd /srv/http/nextcloud/apps/myapp
-    translationtool.phar create-pot-files
-
-The translation tool requires ``gettext``, installable via::
-
-    apt-get install gettext
-
-The above tool generates a template that can be used to translate all strings
-of an app. This template is located in the folder :file:`translationfiles/template/` with the
-name :file:`myapp.pot`. It can be used by your favored translation tool such
-as `Poedit <https://poedit.net>`_. It then creates a :file:`.po` file. 
-The :file:`.po` file needs to be placed in a folder named like the language code
-with the app name as filename - for example :file:`translationfiles/es/myapp.po`.
-After this step the tool needs to be invoked to transfer the po file into our
-own fileformat that is more easily readable by the server code::
-
-    translationtool.phar convert-po-files
-
-Now the following folder structure is available::
-
-    myapp/l10n
-    |-- es.js
-    |-- es.json
-    myapp/translationfiles
-    |-- es
-    |   |-- myapp.po
-    |-- templates
-        |-- myapp.pot
-
-You then just need the :file:`.json` and :file:`.js` files for a working localized app.
+The steps how to set up translations for an app have been moved to it's own page in the "App development" chapter: :ref:`Translation setup`
