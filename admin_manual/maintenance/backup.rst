@@ -9,6 +9,8 @@ To backup a Nextcloud installation there are four main things you need to retain
 #. The theme folder
 #. The database
 
+In case you have activated 2FA you should consider to copy your apps and/or custom_apps folder as well.
+
 Maintenance mode
 ----------------
 
