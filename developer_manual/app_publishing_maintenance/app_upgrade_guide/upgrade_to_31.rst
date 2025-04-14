@@ -88,6 +88,141 @@ Removed APIs
 
 - Legacy class ``OC_API`` was moved to a private namespace. It should not be needed by applications.
 - Deprecated interface ``OCP\Files\Storage`` was removed. Use ``OCP\Files\Storage\IStorage`` instead.
+- Removed deprecated alias from DI, use the interfaces or class names instead:
+
+.. list-table:: Removed deprecated aliases
+   :header-rows: 1
+
+   * - Removed alias
+     - Replace by
+   * - CalendarManager
+     - ``OCP\Calendar\IManager::class``
+   * - CalendarResourceBackendManager
+     - ``OCP\Calendar\Resource\IManager::class``
+   * - CalendarRoomBackendManager
+     - ``OCP\Calendar\Room\IManager::class``
+   * - ContactsManager
+     - ``OCP\Contacts\IManager::class``
+   * - PreviewManager
+     - ``OCP\IPreview::class``
+   * - EncryptionManager
+     - ``OCP\Encryption\IManager::class``
+   * - EncryptionFileHelper
+     - ``OCP\Encryption\IFile::class``
+   * - EncryptionKeyStorage
+     - ``OCP\Encryption\Keys\IStorage::class``
+   * - TagMapper
+     - ``OC\Tagging\TagMapper::class``
+   * - TagManager
+     - ``OCP\ITagManager::class``
+   * - SystemTagObjectMapper
+     - ``OCP\SystemTag\ISystemTagObjectMapper::class``
+   * - LazyRootFolder
+     - ``OCP\Files\IRootFolder::class``
+   * - UserManager
+     - ``OCP\IUserManager::class``
+   * - GroupManager
+     - ``OCP\IGroupManager::class``
+   * - UserSession
+     - ``OCP\IUserSession::class::class``
+   * - NavigationManager
+     - ``OCP\INavigationManager::class``
+   * - AllConfig
+     - ``OCP\IConfig::class``
+   * - SystemConfig
+     - ``OC\SystemConfig::class``
+   * - AppConfig
+     - ``OCP\IAppConfig::class``
+   * - L10NFactory
+     - ``OCP\L10N\IFactory::class``
+   * - URLGenerator
+     - ``OCP\IURLGenerator::class``
+   * - AppFetcher
+     - ``OC\App\AppStore\Fetcher\AppFetcher::class``
+   * - CategoryFetcher
+     - ``OC\App\AppStore\Fetcher\CategoryFetcher::class``
+   * - UserCache
+     - ``OCP\ICache::class``
+   * - MemCacheFactory
+     - ``OCP\ICacheFactory::class``
+   * - ActivityManager
+     - ``OCP\Activity\IManager::class``
+   * - AvatarManager
+     - ``OCP\IAvatarManager::class``
+   * - Logger
+     - ``OCP\ILogger::class`` (but please use LoggerInterface instead)
+   * - JobList
+     - ``OCP\BackgroundJob\IJobList::class``
+   * - Router
+     - ``OCP\Route\IRouter::class``
+   * - SecureRandom
+     - ``OCP\Security\ISecureRandom::class``
+   * - Crypto
+     - ``OCP\Security\ICrypto::class``
+   * - Hasher
+     - ``OCP\Security\IHasher::class``
+   * - CredentialsManager
+     - ``OCP\Security\ICredentialsManager::class``
+   * - DatabaseConnection
+     - ``OCP\IDBConnection::class``
+   * - EventLogger
+     - ``OCP\Diagnostics\IEventLogger::class``
+   * - QueryLogger
+     - ``OCP\Diagnostics\IQueryLogger::class``
+   * - TempManager
+     - ``OCP\ITempManager::class``
+   * - AppManager
+     - ``OCP\App\IAppManager::class``
+   * - DateTimeZone
+     - ``OCP\IDateTimeZone::class``
+   * - DateTimeFormatter
+     - ``OCP\IDateTimeFormatter::class``
+   * - UserMountCache
+     - ``OCP\Files\Config\IUserMountCache::class``
+   * - MountConfigManager
+     - ``OCP\Files\Config\IMountProviderCollection::class``
+   * - IniWrapper
+     - ``bantu\IniGetWrapper\IniGetWrapper::class``
+   * - AsyncCommandBus
+     - ``OCP\Command\IBus::class``
+   * - TrustedDomainHelper
+     - ``OCP\Security\ITrustedDomainHelper::class``
+   * - Throttler
+     - ``OCP\Security\Bruteforce\IThrottler::class``
+   * - Request
+     - ``OCP\IRequest::class``
+   * - Mailer
+     - ``OCP\Mail\IMailer::class``
+   * - LDAPProvider
+     - ``OCP\LDAP\ILDAPProvider::class``
+   * - LockingProvider
+     - ``OCP\Lock\ILockingProvider::class``
+   * - MountManager
+     - ``OCP\Files\Mount\IMountManager::class``
+   * - MimeTypeDetector
+     - ``IMimeTypeDetector::class``
+   * - MimeTypeLoader
+     - ``OCP\Files\IMimeTypeLoader::class``
+   * - NotificationManager
+     - ``OCP\Notification\IManager::class``
+   * - CapabilitiesManager
+     - ``OC\CapabilitiesManager::class``
+   * - CommentsManager
+     - ``OCP\Comments\ICommentsManager::class``
+   * - CsrfTokenManager
+     - ``OC\Security\CSRF\CsrfTokenManager::class``
+   * - ContentSecurityPolicyManager
+     - ``OCP\Security\IContentSecurityPolicyManager::class``
+   * - ShareManager
+     - ``OCP\Share\IManager::class``
+   * - CollaboratorSearch
+     - ``OCP\Collaboration\Collaborators\ISearch::class``
+   * - ControllerMethodReflector
+     - ``OCP\AppFramework\Utility\IControllerMethodReflector::class``
+   * - TimeFactory
+     - ``OCP\AppFramework\Utility\ITimeFactory::class``
+   * - Defaults
+     - ``OCP\Defaults::class``
 
 Back-end changes
 ----------------
