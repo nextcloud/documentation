@@ -12,6 +12,7 @@ You can find out more about Nextcloud Talk `on our website <https://nextcloud.co
 .. toctree::
    :maxdepth: 1
 
-   talk_basics
-   advanced_features
-   join_a_call_or_chat_as_guest
+   chat_index
+   conversation_index
+   call_index
+   guest
