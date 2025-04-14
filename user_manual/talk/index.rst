@@ -10,7 +10,7 @@ You can find out more about Nextcloud Talk `on our website <https://nextcloud.co
 .. image:: images/talk-grid-view.png
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    chat_index
    conversation_index
