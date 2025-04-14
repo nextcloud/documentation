@@ -310,19 +310,6 @@ This is an exhaustive list of available events. It features the event ID and the
       }
     }
 
- * OCP\\Files\\Events\\Node\\NodeReadEvent
-
-  .. code-block:: text
-
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "class": string,
-        "node": array{"id": string, "path": string}
-      }
-    }
-
  * OCP\\Files\\Events\\Node\\NodeDeletedEvent
 
   .. code-block:: text
