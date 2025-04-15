@@ -229,6 +229,15 @@ Attendees may be other users on your Nextcloud instances, contacts in your addre
 
 .. attention:: The server administration needs to setup the e-mail server in the ``Basic settings`` tab, as this mail will be used to send invitations.
 
+Invitation status legend (as an attendee):
+
+- **Filled in event**: You accepted
+- **Strikethrough**: You declined
+- **Stripes**: Tentative
+- **Empty event**: You haven't responded yet
+
+If you are the organizer and all your attendees declined, the event will be empty with a warning symbol.
+
 Checking attendees' busy times
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
