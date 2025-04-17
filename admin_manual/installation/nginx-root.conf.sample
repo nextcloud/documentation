@@ -44,6 +44,11 @@ server {
     server_tokens off;
 
     # HSTS settings
+    # the following two add_header statements are alternatives
+    # although already present in main configuration file this must be
+    # reproduced here (see
+    # http://nginx.org/en/docs/http/ngx_http_headers_module.html#add_header)
+    add_header Strict-Transport-Security "max-age=15768000" always;
     # WARNING: Only add the preload option once you read about
     # the consequences in https://hstspreload.org/. This option
     # will add the domain to a hardcoded list that is shipped
