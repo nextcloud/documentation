@@ -848,6 +848,21 @@ Disabling this is discouraged for security reasons.
 
 Defaults to ``true``
 
+security.ipv6_normalized_subnet_size
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'security.ipv6_normalized_subnet_size' => 56,
+
+Size of subnet used to normalize IPv6
+
+For Brute Force Protection and Rate Limiting, IPv6 are truncated using subnet size.
+It defaults to /56 but you can set it between /32 and /64
+
+Defaults to ``56``
+
 auth.webauthn.enabled
 ^^^^^^^^^^^^^^^^^^^^^
 
