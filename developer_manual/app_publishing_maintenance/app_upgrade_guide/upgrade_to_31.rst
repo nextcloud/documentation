@@ -123,6 +123,7 @@ Added APIs
 - If an app supports file conversion, it may now register an ``OCP\Files\Conversion\ConversionProvider`` which will
   be called automatically based on the supported MIME types. An app may register as many of these as needed.
 - New events ``OCP\User\Events\BeforeUserIdUnassignedEvent``, ``OCP\User\Events\UserIdUnassignedEvent``, and ``OCP\User\Events\UserIdAssignedEvent`` have been added to replace the hooks ``\OC\User::preUnassignedUserId``, ``\OC\User::postUnassignedUserId`` and ``\OC\User::assignedUserId``.
+- New interface ``OCP\Files\Storage\IConstructableStorage`` for storages that can be built by passing only an array to the constructor.
 
 Changed APIs
 ^^^^^^^^^^^^
@@ -171,6 +172,7 @@ Changed APIs
 - ``OCP\Preview\BeforePreviewFetchedEvent`` constructor has a new parameter ``$mimeType`` which should be a string or null.
 - It has a new method ``getMimeType()`` to get the new property.
 - ``OCP\Files\Storage::needsPartFile`` method was moved to interface ``OCP\Files\Storage\IStorage``.
+- The constructor was removed from interface ``OCP\Files\Storage\IStorage`` so that wrappers can use DI in their constructor. If your storage implementation is supposed to be built by calling the constructor, please implement the new interface ``OCP\Files\Storage\IConstructableStorage``.
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
