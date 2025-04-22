@@ -175,6 +175,7 @@ Changed APIs
 - It has a new method ``getMimeType()`` to get the new property.
 - ``OCP\Files\Storage::needsPartFile`` method was moved to interface ``OCP\Files\Storage\IStorage``.
 - The constructor was removed from interface ``OCP\Files\Storage\IStorage`` so that wrappers can use DI in their constructor. If your storage implementation is supposed to be built by calling the constructor, please implement the new interface ``OCP\Files\Storage\IConstructableStorage``.
+- ``OCP\IUser::getFirstLogin`` method was added to get first known login of a user. It will return a unix timestamp, or 0 if the user never logged in, or -1 if this data is not known (meaning the first login of this user was from before upgrading to 31).
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
