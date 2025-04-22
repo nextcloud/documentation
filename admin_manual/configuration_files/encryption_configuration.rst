@@ -79,6 +79,14 @@ the Nextcloud Web interface. If you lose your encryption keys your files are not
 recoverable. Always have backups of your encryption keys stored in a safe 
 location, and consider enabling all recovery options.
 
+Please be aware that a `master key` is generated during enabling the encryption.
+This ensures that admin(s) can recover passwords and installed Nextcloud apps can
+function properly.
+If you do not want to use a master key setup, but wish to use user key encryption
+instead, please run the following command before enabling the encryption::
+
+ occ encryption:disable-master-key
+
 You have more options via the ``occ`` command (see :ref:`occ_encryption_label`)
 
 .. _enable_encryption_label:
