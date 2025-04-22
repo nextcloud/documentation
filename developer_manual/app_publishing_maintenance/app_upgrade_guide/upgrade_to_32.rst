@@ -52,4 +52,5 @@ Deprecated APIs
 Removed APIs
 ^^^^^^^^^^^^
 
-- TBD
+- The ``scssphp`` package is no longer shipped with Nextcloud. This package was not used and deprecated since Nextcloud 22.
+  If you need the package for your app, then you need to ship it yourself.
