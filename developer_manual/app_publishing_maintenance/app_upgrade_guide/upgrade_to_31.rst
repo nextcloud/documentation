@@ -125,6 +125,7 @@ Added APIs
 - New events ``OCP\User\Events\BeforeUserIdUnassignedEvent``, ``OCP\User\Events\UserIdUnassignedEvent``, and ``OCP\User\Events\UserIdAssignedEvent`` have been added to replace the hooks ``\OC\User::preUnassignedUserId``, ``\OC\User::postUnassignedUserId`` and ``\OC\User::assignedUserId``.
 - New interface ``OCP\Files\Storage\IConstructableStorage`` for storages that can be built by passing only an array to the constructor.
 - New service ``OCP\RichObjectStrings\IRichTextFormatter`` to format rich text into parsed plain text using its ``richToParsed`` method.
+- New magic query parameter ``forceLanguage`` to force a specific language for a web request (API or frontend). See :ref:`Forcing language for a given call<api-force-language>`.
 
 Changed APIs
 ^^^^^^^^^^^^

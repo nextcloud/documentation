@@ -327,3 +327,8 @@ Adding translations
 -------------------
 
 The steps how to set up translations for an app have been moved to it's own page in the "App development" chapter: :ref:`Translation setup`
+
+Testing translations
+--------------------
+
+You can use the query parameter ``forceLanguage`` to force a specific language for a web request (API or frontend). See :ref:`Forcing language for a given call<api-force-language>`.
