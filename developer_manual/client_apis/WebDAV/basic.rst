@@ -176,14 +176,19 @@ Supported properties
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <d:quota-used-bytes />        | Amount of bytes used in the folder.             | ``3950773``                                                                          |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <d:supportedlock />           | | Dummy endpoint for class 2 WebDAV support.    | | ``<d:lockentry>``                                                                  |
-|                               | | Always provide the same lock capabilities.    | |     ``<d:lockscope><d:exclusive /></d:lockscope>``                                 |
-|                               | |                                               | |     ``<d:locktype><d:write /></d:locktype></d:lockentry>``                         |
-|                               | |                                               | | ``</d:lockentry>``                                                                 |
-|                               | |                                               | | ``<d:lockentry>``                                                                  |
-|                               | |                                               | |     ``<d:lockscope><d:shared /></d:lockscope>``                                    |
-|                               | |                                               | |     ``<d:locktype><d:write /></d:locktype>``                                       |
-|                               | |                                               | | ``</d:lockentry>``                                                                 |
+| <d:supportedlock />           | | Dummy endpoint for class 2 WebDAV support.    | .. code-block:: XML                                                                  |
+|                               | | Always provide the same lock capabilities.    |                                                                                      |
+|                               |                                                 |   <d:lockentry>                                                                      |
+|                               |                                                 |     <d:lockscope><d:exclusive /></d:lockscope>                                       |
+|                               |                                                 |     <d:locktype><d:write /></d:locktype></d:lockentry>                               |
+|                               |                                                 |   </d:lockentry>                                                                     |
+|                               |                                                 |                                                                                      |
+|                               |                                                 | .. code-block:: XML                                                                  |
+|                               |                                                 |                                                                                      |
+|                               |                                                 |   <d:lockentry>                                                                      |
+|                               |                                                 |     <d:lockscope><d:shared /></d:lockscope>                                          |
+|                               |                                                 |     <d:locktype><d:write /></d:locktype></d:lockentry>                               |
+|                               |                                                 |   </d:lockentry>                                                                     |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <oc:id />                     | | The fileid namespaced by the instance id.     | ``00000007oc9l3j5ur4db``                                                             |
 |                               | | Globally unique.                              |                                                                                      |
@@ -258,16 +263,18 @@ Supported properties
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:share-attributes />       | User set attributes as a JSON array.            | ``[{ "scope" => <string>, "key" => <string>, "enabled" => <bool> }]``                |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:sharees />                | The list of share recipient.                    | | ``<nc:sharee>``                                                                    |
-|                               |                                                 | |     ``<nc:id>alice</nc:id>``                                                       |
-|                               |                                                 | |     ``<nc:display-name>Alice</nc:display-name>``                                   |
-|                               |                                                 | |     ``<nc:type>0</nc:type>``                                                       |
-|                               |                                                 | | ``</nc:sharee>``                                                                   |
+| <nc:sharees />                | The list of share recipient.                    | .. code-block:: XML                                                                  |
+|                               |                                                 |                                                                                      |
+|                               |                                                 |   <nc:sharee>                                                                        |
+|                               |                                                 |     <nc:id>alice</nc:id>                                                             |
+|                               |                                                 |     <nc:display-name>Alice</nc:display-name>                                         |
+|                               |                                                 |     <nc:type>0</nc:type>                                                             |
+|                               |                                                 |   </nc:sharee>                                                                       |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <oc:checksums />              | An array of checksums stored in the DB by other | ``<oc:checksum>md5:04c36b75222cd9fd47f2607333029106</oc:checksum>``                  |
-|                               | clients.                                        |                                                                                      |
-|                               | Currently used algorithms are ``MD5``, ``SHA1``,|                                                                                      |
-|                               | ``SHA256``, ``SHA3-256``, ``Adler32``.          |                                                                                      |
+| <oc:checksums />              | | An array of checksums stored in the DB by     | ``<oc:checksum>md5:04c36b75222cd9fd47f2607333029106</oc:checksum>``                  |
+|                               | | other clients. Currently used algorithms are: |                                                                                      |
+|                               | | ``MD5``, ``SHA1``, ``SHA256``, ``SHA3-256``,  |                                                                                      |
+|                               | | and ``Adler32``.                              |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:has-preview />            | Whether a preview of the file is available.     | ``true`` or ``false``                                                                |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
@@ -299,13 +306,15 @@ Supported properties
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:acl-can-manage>           | Whether the current user can manager ACL.       | ``1`` or ``0``                                                                       |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:acl-list>                 | Array of ACL rules.                             | | ``<nc:acl>``                                                                       |
-|                               |                                                 | |   ``<nc:acl-mapping-type>group</nc:acl-mapping-type>``                             |
-|                               |                                                 | |   ``<nc:acl-mapping-id>admin</nc:acl-mapping-id>``                                 |
-|                               |                                                 | |   ``<nc:acl-mapping-display-name>admin</nc:acl-mapping-display-name>``             |
-|                               |                                                 | |   ``<nc:acl-mask>20</nc:acl-mask>``                                                |
-|                               |                                                 | |   ``<nc:acl-permissions>15</nc:acl-permissions>``                                  |
-|                               |                                                 | | ``</nc:acl>``                                                                      |
+| <nc:acl-list>                 | Array of ACL rules.                             | .. code-block:: XML                                                                  |
+|                               |                                                 |                                                                                      |
+|                               |                                                 |   <nc:acl>                                                                           |
+|                               |                                                 |     <nc:acl-mapping-type>group</nc:acl-mapping-type>                                 |
+|                               |                                                 |     <nc:acl-mapping-id>admin</nc:acl-mapping-id>                                     |
+|                               |                                                 |     <nc:acl-mapping-display-name>admin</nc:acl-mapping-display-name>                 |
+|                               |                                                 |     <nc:acl-mask>20</nc:acl-mask>                                                    |
+|                               |                                                 |     <nc:acl-permissions>15</nc:acl-permissions>                                      |
+|                               |                                                 |   </nc:acl>                                                                          |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:inherited-acl-list>       | Array of ACL rules from the parents folders     | See <nc:acl-list>                                                                    |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
@@ -313,9 +322,9 @@ Supported properties
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:lock>                     | Whether the file is locked.                     | ``1`` or ``0``                                                                       |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:lock-owner-type>          | Type of the owner of the lock.                  | ``0`` = User                                                                         |
-|                               |                                                 | ``1`` = Office or Text                                                               |
-|                               |                                                 | ``2`` = WebDAV                                                                       |
+| <nc:lock-owner-type>          | Type of the owner of the lock.                  | | ``0`` = User                                                                       |
+|                               |                                                 | | ``1`` = Office or Text                                                             |
+|                               |                                                 | | ``2`` = WebDAV                                                                     |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:lock-owner>               | User id of the owner of the lock.               | ``alice``                                                                            |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
