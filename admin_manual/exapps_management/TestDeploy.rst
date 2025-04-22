@@ -38,7 +38,9 @@ Possible errors:
 - Image not found (e.g. not public, no image found for your hardware architecture)
 - Image pull failed (e.g., due to network issues)
 - Image pull timeout
-- Your Docker Socket Proxy is not configured correctly and blocks access to this Docker Engine API
+- Your Docker Socket Proxy/HaRP is not configured correctly and blocks access to this Docker Engine API
+
+See ``journalctl -f -u docker.service`` for more details in systemd based systems.
 
 Container Started
 *****************
@@ -50,8 +52,9 @@ Possible errors:
 - Container failed to start with GPU support (may be missing or misconfigured)
     - For NVIDIA, refer to the `NVIDIA Docker configuration docs <https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html>`_.
     - For AMD, refer to the `ROCm Docker configuration docs <https://rocm.docs.amd.com/projects/install-on-linux/en/latest/how-to/docker.html>`_.
-- The ExApp issue during startup (e.g. not enough memory)
+- The ExApp issue during startup (e.g. not enough memory). The app would show repeated starting attempts in the logs.
 
+See ``docker logs nc_app_<app_id>`` for more details.
 
 Heartbeat
 *********
@@ -66,6 +69,7 @@ Possible errors:
 - Nextcloud can not reach the ExApp container, e.g.,
     * due to a network issue or a firewall (this should be visible in the server logs or the firewall logs)
     * due to a "http" protocol deploy daemon. In this case, the ExApp's container listens on localhost (127.0.0.1 or ::1) which might not be reachable from the Nextcloud server and you might want to listen on a different IP address. See ``OVERRIDE_APP_HOST`` in :ref:`Additional options <additional_options_list>` in the Deploy Daemon form. This issue can be identified using this command: ``lsof -i -P -n | grep LISTEN``
+- For HaRP, the main Nextcloud proxy might not be configured to redirect requests to the HaRP container correctly. See the `Configuring Your Reverse Proxy <https://github.com/nextcloud/harp?tab=readme-ov-file#configuring-your-reverse-proxy>`_ section in the HaRP readme.
 
 Init
 ****
@@ -76,6 +80,7 @@ During the init step, the ExApp may perform downloads of extra stuff required fo
 Possible errors:
 
 - Initialization failed (e.g., due to network issues or timeout)
+- ExApp not being able to reach the Nextcloud server (e.g., due to a network issue or a firewall)
 
 
 Enabled
