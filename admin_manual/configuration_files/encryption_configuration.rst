@@ -131,61 +131,6 @@ Encryption settings can be configured in the mount options for an external
 storage mount, see :ref:`external_storage_mount_options_label`
 (:doc:`external_storage_configuration_gui`)
 
-Using user keys
----------------
-
-If you disabled master key and are using user keys instead, mind the following information:
-
-Sharing encrypted files
-^^^^^^^^^^^^^^^^^^^^^^^
-
-After encryption is enabled your users must also log out and log back in to
-generate their personal encryption keys. They will see a yellow warning banner
-that says "Encryption App is enabled but your keys are not initialized, please
-log-out and log-in again."
-
-Share owners may need to re-share files after encryption is enabled; users
-trying to access the share will see a message advising them to ask the share
-owner to re-share the file with them. For individual shares, un-share and
-re-share the file. For group shares, share with any individuals who can't access
-the share. This updates the encryption, and then the share owner can remove the
-individual shares.
-
-.. figure:: images/encryption9.png
-
-.. _enable-file-recovery-key:
-
-Enabling users file recovery keys
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you lose your Nextcloud password, then you lose access to your encrypted
-files. If one of your users loses their Nextcloud password their files are
-unrecoverable. You cannot reset their password in the normal way; you'll see a
-yellow banner warning "Please provide an admin recovery password, otherwise all
-user data will be lost".
-
-To avoid all this, create a Recovery Key. Go to the Encryption section of your
-Admin page and set a recovery key password.
-
-.. figure:: images/encryption10.png
-
-Then your users have the option of enabling password recovery on their Personal
-pages. If they do not do this, then the Recovery Key won't work for them.
-
-.. figure:: images/encryption7.png
-
-For users who have enabled password recovery, give them a new password and
-recover access to their encrypted files by supplying the Recovery Key on the
-Users page.
-
-.. figure:: images/encryption8.png
-
-You may change your Recovery Key password.
-
-.. figure:: images/encryption12.png
-
-Please check the various key types in detail `here <encryption_details.html>`_
-
 .. _occ_encryption_label:
 
 occ encryption commands
@@ -320,8 +265,64 @@ filenames or folder structures. These files are never encrypted:
 There may be other files that are not encrypted; only files that are exposed to 
 third-party storage providers are guaranteed to be encrypted.
 
+
+Using user keys
+---------------
+
+If you disabled master key and are using user keys instead, mind the following information:
+
+Sharing encrypted files
+^^^^^^^^^^^^^^^^^^^^^^^
+
+After encryption is enabled your users must also log out and log back in to
+generate their personal encryption keys. They will see a yellow warning banner
+that says "Encryption App is enabled but your keys are not initialized, please
+log-out and log-in again."
+
+Share owners may need to re-share files after encryption is enabled; users
+trying to access the share will see a message advising them to ask the share
+owner to re-share the file with them. For individual shares, un-share and
+re-share the file. For group shares, share with any individuals who can't access
+the share. This updates the encryption, and then the share owner can remove the
+individual shares.
+
+.. figure:: images/encryption9.png
+
+.. _enable-file-recovery-key:
+
+Enabling users file recovery keys
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you lose your Nextcloud password, then you lose access to your encrypted
+files. If one of your users loses their Nextcloud password their files are
+unrecoverable. You cannot reset their password in the normal way; you'll see a
+yellow banner warning "Please provide an admin recovery password, otherwise all
+user data will be lost".
+
+To avoid all this, create a Recovery Key. Go to the Encryption section of your
+Admin page and set a recovery key password.
+
+.. figure:: images/encryption10.png
+
+Then your users have the option of enabling password recovery on their Personal
+pages. If they do not do this, then the Recovery Key won't work for them.
+
+.. figure:: images/encryption7.png
+
+For users who have enabled password recovery, give them a new password and
+recover access to their encrypted files by supplying the Recovery Key on the
+Users page.
+
+.. figure:: images/encryption8.png
+
+You may change your Recovery Key password.
+
+.. figure:: images/encryption12.png
+
+Please check the various key types in detail `here <encryption_details.html>`_
+
 LDAP and other external user back-ends
---------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you use an external user back-end, such as an LDAP or Samba server, and you
 change a user's password on the back-end, the user will be prompted to change
