@@ -1897,6 +1897,104 @@ issues.
 Note that this has a performance impact and shouldn't be enabled
 on production.
 
+profiling.request
+^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'profiling.request' => false,
+
+Enable profiling for individual requests if profiling single requests is enabled or the secret is passed.
+
+This requires the excimer extension to be installed. Be careful with this, as it can generate a lot of data.
+
+The profile data will be stored as a json file in the profiling.path directory that can be analysed with speedscope.
+
+Defaults to ``false``
+
+profiling.request.rate
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'profiling.request.rate' => 0.001,
+
+The rate at which profiling data is collected for individual requests.
+
+A lower value means more data points but higher overhead.
+
+Defaults to ``0.001``
+
+profiling.secret
+^^^^^^^^^^^^^^^^
+
+
+::
+
+	'profiling.secret' => '',
+
+A secret token that can be passed via ?profile_secret=<secret> to enable profiling for a specific request.
+
+This allows profiling specific requests in production without enabling it globally.
+
+No default value.
+
+profiling.sample
+^^^^^^^^^^^^^^^^
+
+
+::
+
+	'profiling.sample' => false,
+
+Enable sampling-based profiling. This collects profiling data periodically rather than per-request.
+
+This requires the excimer extension to be installed. Be careful with this, as it can generate a lot of data.
+
+The profile data will be stored as a plain text file in the profiling.path directory that can be analysed with speedscope.
+
+Defaults to ``false``
+
+profiling.sample.rate
+^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'profiling.sample.rate' => 1,
+
+The rate at which sampling profiling data is collected in seconds.
+
+A lower value means more frequent samples but higher overhead.
+
+Defaults to ``1``
+
+profiling.sample.rotation
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'profiling.sample.rotation' => 60,
+
+How often (in minutes) the sample log files are rotated.
+
+Defaults to ``60``
+
+profiling.path
+^^^^^^^^^^^^^^
+
+
+::
+
+	'profiling.path' => '/tmp',
+
+The directory where profiling data is stored.
+
+Note that this directory must be writable by the web server user and will not be cleaned up automatically.
+
 Alternate Code Locations
 ------------------------
 
