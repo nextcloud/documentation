@@ -157,16 +157,18 @@ A setup with the HaRP container itself on the remote is not supported.
 
    | Make sure to replace the ``your.harp.server.address`` with the actual address of the local host where the HaRP container is running.
    | You might want to open the port ``8782`` on the local host firewall to allow the remote host to connect to it,
-   | or use a reverse proxy to forward the requests to the HaRP container. An example with nginx is given below. Replace ``LISTENING_PORT`` with the port you want to listen on. The FRP client will connect to this port.
+   | or use a reverse proxy to forward the requests to the HaRP container. An example with nginx is given below. Feel free to adjust the port you want to listen on. The FRP client will connect to this port exposed port.
+   | With the reverse proxy config below, the whole setup would only need the main Nextcloud proxy to be exposed and reachable from the outside world, simplifying the network setup.
 
 	.. code-block:: nginx
 
 		stream {
 		    server {
-		        listen LISTENING_PORT;
+		        listen 8782;  # Replace with the port you want to listen on
 		        proxy_pass 127.0.0.1:8782;
 		        proxy_protocol off;
-		        proxy_connect_timeout 60s;
+		        proxy_connect_timeout 10s;
+		        proxy_timeout 300s;
 		    }
 		}
 
