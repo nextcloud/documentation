@@ -31,7 +31,7 @@ A Deploy Daemon is the way for Nextcloud to install, communicate with, and contr
 HaRP
 ~~~~
 
-| This is the newer and the recommended way to install ExApps.
+| This is the newer and the **recommended** way to install ExApps.
 | It requires changes in the proxy of your Nextcloud instance. If you don't have access to the proxy, you can use the usual method :ref:`described below <ai-app_api_dsp>`.
 
 1. Setup a Docker container called `HaRP <https://github.com/nextcloud/HaRP?tab=readme-ov-file#how-to-install-it>`_ that proxies access to Docker and to the Ex-Apps for your Nextcloud instance. Be mindful of changing the values of ``HP_SHARED_KEY`` and ``NC_INSTANCE_URL``.

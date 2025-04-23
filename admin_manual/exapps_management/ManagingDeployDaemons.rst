@@ -154,7 +154,7 @@ Additional options
 ^^^^^^^^^^^^^^^^^^
 
 | There is a possibility to add additional options to the Deploy Daemon configuration, which are key-value pairs.
-| This is not used for HaRP.
+| This should not be used for HaRP.
 
 Currently, the following options are available:
 
