@@ -33,7 +33,7 @@ There are several Docker Daemon Deploy configurations (example schemes):
 Docker Deploy Daemon (HaRP)
 ---------------------------
 
-| With HaRP, the Ex-Apps initiate the connection for tunneling to the Nextcloud instance and the HaRP container so there is no need to expose any ports or open any firewall rules.
+| With HaRP, the ExApps initiate the connection for tunneling to the Nextcloud instance and the HaRP container so there is no need to expose any ports or open any firewall rules.
 | See the diagrams of the respective configurations in the :ref:`Docker Deploy Daemon (Docker Socket Proxy) <ai-app_api_ddd-dsp>` section below.
 
 A little introduction to the default ports of the HaRP container is given below. More about it can be found in the `HaRP's readme <https://github.com/nextcloud/harp?tab=readme-ov-file#environment-variables>`_.
@@ -107,8 +107,8 @@ Finally, test the whole setup with "Test deploy" in the 3-dots menu of the deplo
 Docker on a remote host - with HaRP container on the local host
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This configuration is suited for deployments that want to offload the heavy lifting of the ExApps to a remote host, especially when using GPUs as compute devices. There can be multiple deploy daemons that can be used to deploy Ex-Apps on different remote hosts for different compute capabilities.
-Here the HaRP container is deployed on the local host and the remote host tunnels the remote host's docker socket to the local host over the `FRP <https://github.com/fatedier/frp>`_ secure tunnel. The Ex-Apps are deployed on the remote host.
+This configuration is suited for deployments that want to offload the heavy lifting of the ExApps to a remote host, especially when using GPUs as compute devices. There can be multiple deploy daemons that can be used to deploy ExApps on different remote hosts for different compute capabilities.
+Here the HaRP container is deployed on the local host and the remote host tunnels the remote host's docker socket to the local host over the `FRP <https://github.com/fatedier/frp>`_ secure tunnel. The ExApps are deployed on the remote host.
 A setup with the HaRP container itself on the remote is not supported.
 
 1. Create a HaRP container in the local host following :ref:`the above examples <ai-app_api_nc-harp-baremetal>` but without the docker socket mount.
@@ -181,7 +181,7 @@ A setup with the HaRP container itself on the remote is not supported.
 Nextcloud in AIO and Docker on the same host
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Nextcloud AIO (All-in-One) comes with a built-in HaRP container that can be used to deploy Ex-Apps on the same host.
+Nextcloud AIO (All-in-One) comes with a built-in HaRP container that can be used to deploy ExApps on the same host.
 Enabling the "HaRP" container should automatically create a Deploy Daemon and configure it to work out-of-the-box.
 
 Just go to AppAPI admin settings and register a ``HaRP All-in-One`` daemon.

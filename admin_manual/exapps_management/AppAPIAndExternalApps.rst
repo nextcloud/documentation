@@ -34,7 +34,7 @@ HaRP
 | This is the newer and the **recommended** way to install ExApps.
 | It requires changes in the proxy of your Nextcloud instance. If you don't have access to the proxy, you can use the usual method :ref:`described below <ai-app_api_dsp>`.
 
-1. Setup a Docker container called `HaRP <https://github.com/nextcloud/HaRP?tab=readme-ov-file#how-to-install-it>`_ that proxies access to Docker and to the Ex-Apps for your Nextcloud instance. Be mindful of changing the values of ``HP_SHARED_KEY`` and ``NC_INSTANCE_URL``.
+1. Setup a Docker container called `HaRP <https://github.com/nextcloud/HaRP?tab=readme-ov-file#how-to-install-it>`_ that proxies access to Docker and to the ExApps for your Nextcloud instance. Be mindful of changing the values of ``HP_SHARED_KEY`` and ``NC_INSTANCE_URL``.
 2. Go to AppAPI admin settings.
 3. Click on the "Register Daemon" button.
 4. | A filled form should appear. This default configuration ``HaRP Proxy (Host)`` should work for most setups. For Nextcloud AIO, use ``HaRP All-in-One``.
@@ -46,12 +46,12 @@ HaRP
 8. Set up a location redirect in your Nextcloud's main proxy configuration to redirect requests to the HaRP container. Some examples for popular reverse proxies can be found in `Configuring Your Reverse Proxy <https://github.com/nextcloud/harp?tab=readme-ov-file#configuring-your-reverse-proxy>`_ in the HaRP readme.
 9. Test the whole setup with "Test deploy" in the 3-dots menu of the Deploy Daemon.
 
-This is suitable for local setups where the Nextcloud server and the Ex-Apps are on the same machine or in the same docker network.
-The Ex-Apps in this configuration or the Ex-App server need not expose any Ex-App related port (23000-23999) necessarily to the host, nor do they need to be reachable from the host. They should be able to reach the HaRP container at the FRP port and the Nextcloud instance.
+This is suitable for local setups where the Nextcloud server and the ExApps are on the same machine or in the same docker network.
+The ExApps in this configuration or the ExApp server need not expose any ExApp related port (23000-23999) necessarily to the host, nor do they need to be reachable from the host. They should be able to reach the HaRP container at the FRP port and the Nextcloud instance.
 For different/remote setups, see deployment configuration examples :doc:`here <./DeployConfigurations>`.
 
 .. note::
-	The existing Ex-Apps can be migrated to use the new HaRP proxy following `this guide <https://github.com/nextcloud/harp?tab=readme-ov-file#nextcloud-32-migrating-existing-exapps-from-dsp-to-harp>`_.
+	The existing ExApps can be migrated to use the new HaRP proxy following `this guide <https://github.com/nextcloud/harp?tab=readme-ov-file#nextcloud-32-migrating-existing-exapps-from-dsp-to-harp>`_.
 
 .. _ai-app_api_dsp:
 
@@ -130,12 +130,12 @@ Frontend requests in case of Docker Socket Proxy:
 
 		subgraph Services behind the proxy
 			C[Dcker Socket Proxy]
-			D[Ex-App]
+			D[ExApp]
 			E[Nextcloud Server / AppAPI]
 		end
 
 		A --> B
-		B -->|Request to an Ex-App| E --Converted to ex-app auth--> D
+		B -->|Request to an ExApp| E --Converted to ExApp auth--> D
 		B -->|All other usual requests| E
 
 
@@ -152,11 +152,11 @@ Frontend requests in case of HaRP:
 
 		subgraph Services behind the proxy
 			C[HaRP]
-			D[Ex-App]
+			D[ExApp]
 			E[Nextcloud Server / AppAPI]
 		end
 
 		B --All other usual requests--> E
 		A --> B
-		B --Direct request to an Ex-App--> C --Converted to ex-app auth--> D
+		B --Direct request to an ExApp--> C --Converted to ExApp auth--> D
 		C --User auth validation--> E
