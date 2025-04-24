@@ -1,7 +1,7 @@
 Translations
 ============
 
-ExApps translations work in the :doc:`same way as for PHP apps <../../basics/front-end/l10n>` with a few adjustments and differences.
+ExApps translations work in the :ref:`same way as for PHP apps<Translations>` with a few adjustments and differences.
 
 In short, you just have to provide the ``l10n/<lang>.js`` (for front-end) and ``l10n/<lang>.json`` (for back-end) files for your app.
 
