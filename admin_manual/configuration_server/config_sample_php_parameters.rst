@@ -3799,6 +3799,26 @@ specifications. For those, have an opt-out.
 
 WARNING: only use this if you know what you are doing
 
+core.login_flow_v2.allowed_user_agents
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'core.login_flow_v2.allowed_user_agents' => [],
+
+This option allows you to specify a list of allowed user agents for the Login Flow V2.
+
+If a user agent is not in this list, it will not be allowed to use the Login Flow V2.
+The user agents are defined using regular expressions.
+
+WARNING: only use this if you know what you are doing
+
+Example: Allow only the Nextcloud Android app to use the Login Flow V2
+'core.login_flow_v2.allowed_user_agents' => ['/Nextcloud-android/i'],
+
+Defaults to an empty array.
+
 simpleSignUpLink.shown
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -3885,6 +3905,43 @@ Log all queries into a file
 Warning: This heavily decreases the performance of the server and is only
 meant to debug/profile the query interaction manually.
 Also, it might log sensitive data into a plain text file.
+
+query_log_file_requestid
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'query_log_file_requestid' => '',
+
+Prefix all queries with the requestid when set to `yes`
+
+Requires `query_log_file` to be set.
+
+query_log_file_parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'query_log_file_parameters' => '',
+
+Add all query parameters to the query log entry when set to `yes`
+
+Requires `query_log_file` to be set.
+Warning: This will log sensitive data into a plain text file.
+
+query_log_file_backtrace
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'query_log_file_backtrace' => '',
+
+Add a backtrace to the query log entry when set to `yes`
+
+Requires `query_log_file` to be set.
 
 redis_log_file
 ^^^^^^^^^^^^^^
