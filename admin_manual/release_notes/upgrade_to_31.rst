@@ -8,6 +8,14 @@ System requirements
 * PHP 8.1 is now deprecated but still supported.
 * PHP 8.4 is now supported, but 8.3 is recommended.
 
+Database configuration
+----------------------
+
+We have a new setup warning for MySQL and MariaDB databases if any tables are using a row format other than Dynamic.
+This is likely true for older installations.
+To resolve the warning, issue the proper ``ALTER TABLE`` DDL commands to change the row format during a maintenance window.
+If you're not sure how to do this, you can `find some tips and tricks from the community <https://help.nextcloud.com/t/upgrade-to-nextcloud-hub-10-31-0-0-incorrect-row-format-found-in-your-database/218366/>`_.
+
 PHP configuration
 -----------------
 
