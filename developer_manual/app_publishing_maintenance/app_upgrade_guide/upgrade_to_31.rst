@@ -2,11 +2,6 @@
 Upgrade to Nextcloud 31
 =======================
 
-General
--------
-
-- TBD
-
 Front-end changes
 -----------------
 
@@ -50,15 +45,6 @@ to check whether the current Files app instance is a public share or not, and if
     if (isPublicShare()) {
         console.info('This is a public share with the sharing token: ', getSharingToken())
     }
-
-Added APIs
-^^^^^^^^^^
-
-Changed APIs
-^^^^^^^^^^^^
-
-Deprecated APIs
-^^^^^^^^^^^^^^^
 
 Removed APIs
 ^^^^^^^^^^^^
@@ -126,6 +112,7 @@ Added APIs
 - New interface ``OCP\Files\Storage\IConstructableStorage`` for storages that can be built by passing only an array to the constructor.
 - New service ``OCP\RichObjectStrings\IRichTextFormatter`` to format rich text into parsed plain text using its ``richToParsed`` method.
 - New magic query parameter ``forceLanguage`` to force a specific language for a web request (API or frontend). See :ref:`Forcing language for a given call<api-force-language>`.
+- The new WebDAV property ``nc:hide-download`` was added to indicate if download actions should be hidden for a shared file or folder.
 
 Changed APIs
 ^^^^^^^^^^^^
