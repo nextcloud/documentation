@@ -26,6 +26,11 @@ A Deploy Daemon is the way for Nextcloud to install, communicate with, and contr
 	If you are using Nextcloud AIO with the "HaRP" or "Docker Socket Proxy" container enabled, a Deploy Daemon will be automatically created and configured to work out-of-the-box.
 	Otherwise, follow the steps below to set up a Deploy Daemon from the AppAPI admin settings.
 
+.. tip::
+    After registering a Deploy Daemon, use the **Test Deploy** action to verify it is reachable and working.
+    In the list of Deploy Daemons, click the `...` (three‑dots) menu beside the daemon you want to verify and choose Test Deploy.
+    For details on what this check does and how to interpret the results, see :ref:`Test Deploy <test_deploy>`.
+
 .. _ai-app_api_harp:
 
 HaRP
