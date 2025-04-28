@@ -11,9 +11,11 @@ System requirements
 Database configuration
 ----------------------
 
-We have a new setup warning for MySQL and MariaDB databases if any tables are using a row format other than Dynamic.
-This is likely true for older installations.
-To resolve the warning, issue the proper ``ALTER TABLE`` DDL commands to change the row format during a maintenance window.
+Other row formats than ``DYNAMIC`` for MySQL and MariaDB databases will issue a warning since Nextcloud 24,
+as they often cause performance issues.
+With Nextcloud 31 a more prominent new setup warning for this was added.
+To resolve the warning, in most cases running ``occ db:convert-mysql-charset`` will resolve the issue.
+If some tables are not covered by the ``occ`` command, issuing the proper ``ALTER TABLE`` DDL commands to change the row format during a maintenance window is needed.
 If you're not sure how to do this, you can `find some tips and tricks from the community <https://help.nextcloud.com/t/upgrade-to-nextcloud-hub-10-31-0-0-incorrect-row-format-found-in-your-database/218366/>`_.
 
 PHP configuration
