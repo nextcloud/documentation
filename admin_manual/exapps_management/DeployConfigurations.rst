@@ -49,8 +49,6 @@ In any of the cases, the following connections should succeed:
 * ExApp -> HaRP container (on port 8782)
 * ExApp -> Nextcloud (through proxy or directly as the ``Nextcloud URL`` in the daemon config dictates)
 
-TODO: open the website session, cert for https
-
 .. _ai-app_api_nc-harp-baremetal:
 
 Nextcloud and Docker on the same host - with Nextcloud bare metal
