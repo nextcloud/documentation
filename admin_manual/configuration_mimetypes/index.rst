@@ -20,10 +20,10 @@ Once you have made changes to your ``mimetypealiases.json``, use the ``occ``
 command to propagate the changes through the system. This example is for 
 Ubuntu Linux::
 
-  $ sudo -u www-data php occ maintenance:mimetype:update-js
+  $ sudo -E -u www-data php occ maintenance:mimetype:update-js
 
   # you may also need to update the mimetype for existing files, see nextcloud/server#30566
-  $ sudo -u www-data php occ maintenance:mimetype:update-db --repair-filecache
+  $ sudo -E -u www-data php occ maintenance:mimetype:update-db --repair-filecache
   
 See :doc:`../occ_command` to learn more about ``occ``.
 

@@ -14,7 +14,7 @@ Maintenance mode
 
 ``maintenance:mode`` locks the sessions of logged-in users and prevents new logins in order to prevent inconsistencies of your data. You must run ``occ`` as the HTTP user, like this example on Ubuntu Linux::
 
- $ sudo -u www-data php occ maintenance:mode --on
+ $ sudo -E -u www-data php occ maintenance:mode --on
 
 You may also put your server into this mode by editing :file:`config/config.php`.
 Change ``"maintenance" => false`` to ``"maintenance" => true``:

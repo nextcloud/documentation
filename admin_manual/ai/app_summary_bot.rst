@@ -87,7 +87,7 @@ After cloning this app *manually* (cloned via git to your apps directory) you wi
 
 .. code-block::
 
-   sudo -u <the_user_the_webserver_is_running_as> php /path/to/your/nextcloud/webroot/occ app_api:app:unregister summary_bot
+   sudo -E -u www-data php occ app_api:app:unregister summary_bot
    
 
 5. Register the Summary Bot so that your Nextcloud instance is aware of it
@@ -96,7 +96,7 @@ After cloning this app *manually* (cloned via git to your apps directory) you wi
 
 .. code-block::
 
-   sudo -u <the_user_the_webserver_is_running_as> php ./occ app_api:app:register summary_bot manual_install --json-info '{ "id": "summary_bot", "name": "Summary Bot", "daemon_config_name": "manual_install", "version": "1.0.0", "secret": "12345", "host": "0.0.0.0", "port": 9031, "scopes": ["AI_PROVIDERS", "TALK", "TALK_BOT"], "protocol": "http"}' --force-scopes --wait-finish
+   sudo -E -u www-data php occ app_api:app:register summary_bot manual_install --json-info '{ "id": "summary_bot", "name": "Summary Bot", "daemon_config_name": "manual_install", "version": "1.0.0", "secret": "12345", "host": "0.0.0.0", "port": 9031, "scopes": ["AI_PROVIDERS", "TALK", "TALK_BOT"], "protocol": "http"}' --force-scopes --wait-finish
 
 
 6. Enable the *Summary Bot* for the selected Chatroom via the three dots menu of the Chatroom (The Bots settings are located inside the *Bots* section)

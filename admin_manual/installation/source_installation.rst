@@ -175,7 +175,7 @@ if your setup is available on ``https://example.org/nextcloud`` or::
 if it isn't installed in a subfolder. Finally run this occ-command to update
 your .htaccess file::
 
-    sudo -u www-data php /var/www/nextcloud/occ maintenance:update:htaccess
+    sudo -E -u www-data php /var/www/nextcloud/occ maintenance:update:htaccess
 
 After each update, these changes are automatically applied to the ``.htaccess``-file.
 

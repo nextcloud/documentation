@@ -22,7 +22,7 @@ Nextcloud will delete unused passwords. Passwords set for *remote wipe* are dele
 
 The time spans can be overwritten with configuration::
 
-  php occ config:system:set token_auth_wipe_token_retention --type=int --value 2592000 # 60*60*24*30 - 30 days
-  php occ config:system:set token_auth_token_retention --type=int --value 63072000     # 60*60*24*365*2 - 2 years
+  sudo -E -u www-data php occ config:system:set token_auth_wipe_token_retention --type=int --value 2592000 # 60*60*24*30 - 30 days
+  sudo -E -u www-data php occ config:system:set token_auth_token_retention --type=int --value 63072000     # 60*60*24*365*2 - 2 years
 
 Values are set in **seconds**.

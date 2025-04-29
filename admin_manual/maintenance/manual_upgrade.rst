@@ -102,7 +102,7 @@ Step-by-Step Manual Upgrade
 15. Now launch the upgrade from the command line using ``occ``, like this 
     example on Ubuntu Linux::
     
-     sudo -u www-data php occ upgrade
+     sudo -E -u www-data php occ upgrade
      
     (!) this MUST be executed from within your nextcloud installation directory
      
@@ -133,7 +133,7 @@ Troubleshooting
 Occasionally, *files do not show up after a upgrade*. A rescan of the files can 
 help::
 
- sudo -u www-data php console.php files:scan --all
+ sudo -E -u www-data php console.php files:scan --all
 
 See `the nextcloud.com support page <https://nextcloud.com/support/>`_ for further
 resources.
@@ -142,15 +142,15 @@ Sometimes, Nextcloud can get *stuck in a upgrade* if the web based upgrade
 process is used. This is usually due to the process taking too long and
 encountering a PHP time-out. Stop the upgrade process this way::
 
- sudo -u www-data php occ maintenance:mode --off
+ sudo -E -u www-data php occ maintenance:mode --off
   
 Then start the manual process::
   
- sudo -u www-data php occ upgrade
+ sudo -E -u www-data php occ upgrade
 
 If this does not work properly, try the repair function::
 
- sudo -u www-data php occ maintenance:repair
+ sudo -E -u www-data php occ maintenance:repair
 
 
 .. _nextcloud.com/install/:

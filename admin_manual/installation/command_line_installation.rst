@@ -19,7 +19,7 @@ this example for Debian/Ubuntu. You must run ``occ`` as your HTTP user; see
 of running the graphical Installation Wizard::
 
  $ cd /var/www/nextcloud/
- $ sudo -u www-data php occ  maintenance:install \
+ $ sudo -E -u www-data php occ  maintenance:install \
  --database='mysql' --database-name='nextcloud' \
  --database-user='root' --database-pass='password' \
  --admin-user='admin' --admin-pass='password'

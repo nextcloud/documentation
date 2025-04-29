@@ -218,13 +218,13 @@ It would be best to run one command per screen session or per tmux window/pane t
 
 .. code-block::
 
-   set -e; while true; do sudo -u www-data occ background-job:worker -v -t 60 "OC\TaskProcessing\SynchronousBackgroundJob"; done
+   set -e; while true; do sudo -E -u www-data php occ background-job:worker -v -t 60 "OC\TaskProcessing\SynchronousBackgroundJob"; done
 
 For Nextcloud-AIO you should use this command on the host server.
 
 .. code-block::
 
-   set -e; while true; do docker exec -u www-data -it nextcloud-aio-nextcloud php occ background-job:worker -v -t 60 "OC\TaskProcessing\SynchronousBackgroundJob"; done
+   set -e; while true; do docker exec -it nextcloud-aio-nextcloud sudo -E -u www-data php occ background-job:worker -v -t 60 "OC\TaskProcessing\SynchronousBackgroundJob"; done
 
 You may want to adjust the number of workers and the timeout (in seconds) to your needs.
 The logs of the worker can be checked by attaching to the screen or tmux session.
@@ -256,7 +256,7 @@ Systemd service
    #!/bin/sh
    echo "Starting Nextcloud AI Worker $1"
    cd /path/to/nextcloud
-   sudo -u www-data php occ background-job:worker -t 60 'OC\TaskProcessing\SynchronousBackgroundJob'
+   sudo -E -u www-data php occ background-job:worker -t 60 'OC\TaskProcessing\SynchronousBackgroundJob'
 
 You may want to adjust the timeout to your needs (in seconds).
 

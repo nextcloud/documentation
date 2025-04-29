@@ -353,7 +353,7 @@ appear in the file listing, or they will appear and not be accessible.
 
 When this happens, please run the :ref:`files scanner<occ_files_scan_label>`, for example with::
 
-  sudo -u www-data php occ files:scan --all
+  sudo -E -u www-data php occ files:scan --all
 
 If the scanner tells about an encoding issue on the affected file, please enable Mac encoding compatibility in the :ref:`mount options<external_storage_mount_options_label>`
 and then :ref:`rescan the external storage<occ_files_scan_label>`.
@@ -437,7 +437,7 @@ does not match the actual data stored in the user's ``data/$userId/files`` direc
 
 Running the following command can help fix the sizes and quota for a given user::
 
- sudo -u www-data php occ files:scan -vvv <user-id>
+ sudo -E -u www-data php occ files:scan -vvv <user-id>
 
 If **encryption was enabled earlier on the instance and disabled later on**, it is likely that some
 size values in the database did not correctly get reset upon decrypting.
@@ -488,7 +488,7 @@ Encryption key cannot be found with external storage or group folders
 
 To resolve this issue, please run the following command::
 
-    sudo -u www-data php occ encryption:fix-key-location <user-id>
+    sudo -E -u www-data php occ encryption:fix-key-location <user-id>
 
 This will attempt to recover keys that were not moved properly.
 
