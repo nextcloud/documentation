@@ -223,18 +223,28 @@ Nextcloud to use Imaginary by editing your `config.php`:
 
     <?php
     'enabledPreviewProviders' => [
-        'OC\Preview\MP3',
-        'OC\Preview\TXT',
-        'OC\Preview\MarkDown',
-        'OC\Preview\OpenDocument',
-        'OC\Preview\Krita',
         'OC\Preview\Imaginary',
+        'OC\Preview\ImaginaryPDF',
     ],
-    'preview_imaginary_url' => 'http://<url of imaginary>',
+    'preview_imaginary_url' => 'http://<url of imaginary>:9000',
+
+Adding OC\Preview\Imaginary will enable previews for these types:
+image/bmp
+image/x-bitmap
+image/png
+image/jpeg
+image/gif
+image/heic
+image/heif
+image/svg+xml
+image/tiff
+image/webp
+application/illustrator
+application/pdf
 
 .. warning::
 
-   Make sure to start Imaginary with the `-return-size` command line parameter. Otherwise, there will be a minor performance impact. The flag requires a recent version of Imaginary (newer than v1.2.4) and is by default added to the `aio-imaginary` container.
+   If you are not using your custom docker image, make sure to start Imaginary with the `-return-size` command line parameter. Otherwise, there will be a minor performance impact. The flag requires a recent version of Imaginary (newer than v1.2.4).
    Also make sure to add the capability `SYS_NICE` via `--cap-add=sys_nice` or `cap_add: - SYS_NICE` as it is required by imaginary to generate HEIC previews.
 
 .. note::
