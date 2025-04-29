@@ -2256,6 +2256,20 @@ custom path for ffmpeg binary
 Defaults to ``null`` and falls back to searching ``avconv`` and ``ffmpeg``
 in the configured ``PATH`` environment
 
+preview_ffprobe_path
+^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'preview_ffprobe_path' => '/usr/bin/ffprobe',
+
+custom path for ffprobe binary
+
+Defaults to ``null`` and falls back to using the same path as ffmpeg.
+ffprobe is typically packaged with ffmpeg and is required for
+enhanced preview generation for HDR videos.
+
 preview_imaginary_url
 ^^^^^^^^^^^^^^^^^^^^^
 
