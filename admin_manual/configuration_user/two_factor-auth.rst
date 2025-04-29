@@ -82,7 +82,7 @@ Nextcloud will still consider the provider active for the user at login and show
 
 The associations of removed providers can be cleaned up via :ref:`occ <occ>`::
 
- sudo -u www-data php occ twofactorauth:cleanup <provider_id>
+ sudo -E -u www-data php occ twofactorauth:cleanup <provider_id>
 
 .. warning:: This operation is irreversible. Only run it for providers you do not intend to enable again as then you have to setup the configuration for all users from scratch.
 
@@ -92,7 +92,7 @@ Disabling two-factor authentication
 
 Two-factor providers can be disabled via :ref:`occ <occ>`::
 
- sudo -u www-data php occ twofactorauth:disable <uid> <provider_id>
+ sudo -E -u www-data php occ twofactorauth:disable <uid> <provider_id>
 
 This can be useful if the user forgot or lost their second factor.
 Afterwards users are free to enable this provider again via their personal settings.
@@ -101,4 +101,4 @@ Afterwards users are free to enable this provider again via their personal setti
 
 It is also possible to check the current two-factor user status via :ref:`occ <occ>`::
 
-  sudo -u www-data php occ twofactorauth:state <uid>
+  sudo -E -u www-data php occ twofactorauth:state <uid>

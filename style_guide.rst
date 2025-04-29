@@ -94,12 +94,12 @@ This is how they render:
    
 Use double-backticks for inline code and command examples::
   
-  ``sudo -u www-data php occ files:scan --help``
+  ``sudo -E -u www-data php occ files:scan --help``
   ``maintenance:install``
   
 This is how they render:
 
-``sudo -u www-data php occ files:scan --help``
+``sudo -E -u www-data php occ files:scan --help``
 
 ``maintenance:install``
 

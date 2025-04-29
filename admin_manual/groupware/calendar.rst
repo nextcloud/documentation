@@ -30,7 +30,7 @@ Hide export buttons
 
 By default users can export their calendar data from the editor and the sidebar. Admins can disable this feature::
 
- php occ config:app:set calendar hideEventExport --value=yes
+ sudo -E -u www-data php occ config:app:set calendar hideEventExport --value=yes
 
 Invitations
 -----------
@@ -71,7 +71,7 @@ See :doc:`../occ_command` section Dav commands.
 
 You'll also need to change the sending mode from ``background-job`` to ``occ``::
 
- php occ config:app:set dav sendEventRemindersMode --value occ
+ sudo -E -u www-data php occ config:app:set dav sendEventRemindersMode --value occ
 
 If you don't use this dedicated command, the reminders will just be sent as soon as possible when the background jobs run.
 
@@ -92,7 +92,7 @@ FreeBusy
 When logged-in, Nextcloud can return FreeBusy information for all users of the instance, to know when they are available so that you can schedule an event at the right time.
 If you don't wish for users to have this capability, you can disable FreeBusy for the whole instance with the following setting::
 
- php occ config:app:set dav disableFreeBusy --value yes
+ sudo -E -u www-data php occ config:app:set dav disableFreeBusy --value yes
 
 Subscriptions
 -------------
@@ -103,7 +103,7 @@ Custom public calendars
 In addition to the public holiday calendars, it is possible to define your own calendar.
 They act in the same way as the holiday calendars and can be configured with the following command::
 
- php occ config:app:set calendar publicCalendars --value '[{"name":"My custom calendar","source":"http://example.com/example.ics"}]'
+ sudo -E -u www-data php occ config:app:set calendar publicCalendars --value '[{"name":"My custom calendar","source":"http://example.com/example.ics"}]'
 
 The setting is specified as a JSON array of objects with the following options:
 
@@ -122,7 +122,7 @@ Otherwise the default refresh rate is one day.
 
 To set up a different default refresh rate for calendars without server side refresh rates, change the ``calendarSubscriptionRefreshRate`` option::
 
- php occ config:app:set dav calendarSubscriptionRefreshRate --value "PT6H"
+ sudo -E -u www-data php occ config:app:set dav calendarSubscriptionRefreshRate --value "PT6H"
 
 Where the value is a `DateInterval <https://www.php.net/manual/dateinterval.construct.php>`_, for instance with the above command all of the Nextcloud instance's calendars would be refreshed every 6 hours.
 
@@ -132,7 +132,7 @@ Allow subscriptions on local network
 Because of security issues, Nextcloud forbids subscriptions from local network hosts.
 If you need to allow this, change the following parameter to::
 
- php occ config:app:set dav webcalAllowLocalAccess --value yes
+ sudo -E -u www-data php occ config:app:set dav webcalAllowLocalAccess --value yes
 
 Trash bin
 ---------
@@ -143,7 +143,7 @@ The default delay before objects are purged from the trash bin is 30 days. A bac
 
 To set up a different retention period, change the ``calendarRetentionObligation`` option::
 
- php occ config:app:set dav calendarRetentionObligation --value=2592000
+ sudo -E -u www-data php occ config:app:set dav calendarRetentionObligation --value=2592000
 
 Where the value is the number of seconds for the period. Setting the value to ``0`` disables the trash bin.
 
@@ -167,15 +167,15 @@ Rate limits
 Nextcloud rate limits the creation of calendars and subscriptions if too many items are created within a short time frame. The default is 10 calendars or subscriptions per hour. This can be customized as follows::
 
   # Set limit to 15 items per 30 minutes
-  php occ config:app:set dav rateLimitCalendarCreation --type=integer --value=15
-  php occ config:app:set dav rateLimitPeriodCalendarCreation --type=integer --value=1800
+  sudo -E -u www-data php occ config:app:set dav rateLimitCalendarCreation --type=integer --value=15
+  sudo -E -u www-data php occ config:app:set dav rateLimitPeriodCalendarCreation --type=integer --value=1800
 
 Additionally, the maximum number of calendars and subscriptions a user may create is limited to 30 items. This can be customized too::
 
   # Allow users to create 50 calendars/subscriptions
-  php occ config:app:set dav maximumCalendarsSubscriptions --type=integer --value=50
+  sudo -E -u www-data php occ config:app:set dav maximumCalendarsSubscriptions --type=integer --value=50
 
 or::
 
   # Allow users to create calendars/subscriptions without restriction
-  php occ config:app:set dav maximumCalendarsSubscriptions --type=integer --value=-1
+  sudo -E -u www-data php occ config:app:set dav maximumCalendarsSubscriptions --type=integer --value=-1

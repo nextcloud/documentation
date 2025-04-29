@@ -58,7 +58,7 @@ Example of ``occ`` **app_api:daemon:register** command:
 
 .. code-block:: bash
 
-	sudo -u www-data php occ app_api:daemon:register docker_local_sock "My Local Docker" docker-install http /var/run/docker.sock "https://nextcloud.local" --net nextcloud
+	sudo -E -u www-data php occ app_api:daemon:register docker_local_sock "My Local Docker" docker-install http /var/run/docker.sock "https://nextcloud.local" --net nextcloud
 
 
 ExApp registration
@@ -97,7 +97,7 @@ For all examples and applications we release, we usually add the ``manual_instal
 
 .. code-block::
 
-	php occ app_api:app:register nc_py_api manual_install --json-info \
+	sudo -E -u www-data php occ app_api:app:register nc_py_api manual_install --json-info \
             "{\"id\":\"nc_py_api\",\"name\":\"nc_py_api\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"port\":$APP_PORT}" \
 
 .. note::

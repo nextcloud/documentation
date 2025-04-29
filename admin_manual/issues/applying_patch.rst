@@ -20,7 +20,7 @@ Patching server
 Patching apps
 ^^^^^^^^^^^^^
 
-1. Navigate to the root of this app (mostly ``apps/[APPID]/``), if you can not find the app there use the ``sudo -u www-data php occ app:getpath APPID`` command to find the path.
+1. Navigate to the root of this app (mostly ``apps/[APPID]/``), if you can not find the app there use the ``sudo -E -u www-data php occ app:getpath APPID`` command to find the path.
 2. Now apply the patch with the same command as in `Patching server`_
 
 Reverting a patch

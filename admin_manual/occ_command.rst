@@ -75,7 +75,7 @@ example, in CentOS 6.5 with SCL-PHP70 installed, the command looks like this::
 Running ``occ`` with no options lists all commands and options, like this
 example on Ubuntu::
 
- sudo -u www-data php occ
+ sudo -E -u www-data php occ
  Nextcloud version 19.0.0
 
  Usage:
@@ -102,20 +102,20 @@ example on Ubuntu::
                         a new release. The release has to be
                         installed before.
 
-This is the same as ``sudo -u www-data php occ list``.
+This is the same as ``sudo -E -u www-data php occ list``.
 
 Run it with the ``-h`` option for syntax help::
 
- sudo -u www-data php occ -h
+ sudo -E -u www-data php occ -h
 
 Display your Nextcloud version::
 
- sudo -u www-data php occ -V
+ sudo -E -u www-data php occ -V
    Nextcloud version 19.0.0
 
 Query your Nextcloud server status::
 
- sudo -u www-data php occ status
+ sudo -E -u www-data php occ status
    - installed: true
    - version: 19.0.0.12
    - versionstring: 19.0.0
@@ -129,7 +129,7 @@ optional, while commands are required. The syntax is::
 Get detailed information on individual commands with the ``help`` command, like
 this example for the ``maintenance:mode`` command::
 
- sudo -u www-data php occ help maintenance:mode
+ sudo -E -u www-data php occ help maintenance:mode
  Usage:
   maintenance:mode [options]
 
@@ -149,12 +149,12 @@ this example for the ``maintenance:mode`` command::
 The ``status`` command from above has an option to define the output format.
 The default is plain text, but it can also be ``json``::
 
- sudo -u www-data php occ status --output=json
+ sudo -E -u www-data php occ status --output=json
  {"installed":true,"version":"19.0.0.9","versionstring":"19.0.0","edition":""}
 
 or ``json_pretty``::
 
- sudo -u www-data php occ status --output=json_pretty
+ sudo -E -u www-data php occ status --output=json_pretty
  {
     "installed": true,
     "version": "19.0.0.12",
@@ -171,7 +171,7 @@ Environment variables
 
 ``sudo`` does not forward environment variables by default. Put the variables before the ``php`` command::
 
-  sudo -u www-data NC_debug=true php occ status
+  NC_debug=true sudo -E -u www-data php occ status
 
 Alternatively, you can ``export`` the variable or use the ``-E`` switch for ``sudo``::
 
@@ -235,83 +235,83 @@ The ``app`` commands list, enable, and disable apps::
 
 Download and install an app::
 
- sudo -u www-data php occ app:install twofactor_totp
+ sudo -E -u www-data php occ app:install twofactor_totp
 
 Install but don't enable::
 
- sudo -u www-data php occ app:install --keep-disabled twofactor_totp
+ sudo -E -u www-data php occ app:install --keep-disabled twofactor_totp
 
 Install regardless of the Nextcloud version requirement::
 
- sudo -u www-data php occ app:install --force twofactor_totp
+ sudo -E -u www-data php occ app:install --force twofactor_totp
 
 List all of your installed apps, and show whether they are
 enabled or disabled::
 
- sudo -u www-data php occ app:list
+ sudo -E -u www-data php occ app:list
 
 List non-shipped installed apps only::
 
- sudo -u www-data php occ app:list --shipped false
+ sudo -E -u www-data php occ app:list --shipped false
 
 Enable an app, for example the External Storage Support app::
 
- sudo -u www-data php occ app:enable files_external
+ sudo -E -u www-data php occ app:enable files_external
  files_external enabled
 
 Enable an app regardless of the Nextcloud version requirement::
 
- sudo -u www-data php occ app:enable --force files_external
+ sudo -E -u www-data php occ app:enable --force files_external
  files_external enabled
 
 Enable an app for specific groups of users::
 
- sudo -u www-data php occ app:enable --groups admin --groups sales files_external
+ sudo -E -u www-data php occ app:enable --groups admin --groups sales files_external
  files_external enabled for groups: admin, sales
 
 Enable multiple apps simultaneously::
 
- sudo -u www-data php occ app:enable app1 app2 app3
+ sudo -E -u www-data php occ app:enable app1 app2 app3
  app1 enabled
  app2 enabled
  app3 enabled
 
 Disable an app::
 
- sudo -u www-data php occ app:disable files_external
+ sudo -E -u www-data php occ app:disable files_external
  files_external disabled
 
 Disable and remove an app::
 
- sudo -u www-data php occ app:remove files_external
+ sudo -E -u www-data php occ app:remove files_external
  files_external disabled
  files_external 1.21.0 removed
 
 Remove an app, but keep the app data::
 
- sudo -u www-data php occ app:remove --keep-data files_external
+ sudo -E -u www-data php occ app:remove --keep-data files_external
  files_external 1.21.0 removed
 
 You can get the full filepath to an app::
 
-    sudo -u www-data php occ app:getpath notifications
+    sudo -E -u www-data php occ app:getpath notifications
     /var/www/nextcloud/apps/notifications
 
 To update an app, for instance Contacts::
 
-    sudo -u www-data php occ app:update contacts
+    sudo -E -u www-data php occ app:update contacts
 
 To update all apps::
 
-    sudo -u www-data php occ app:update --all
+    sudo -E -u www-data php occ app:update --all
 
 To show available update(s) without updating::
 
-    sudo -u www-data php occ app:update --showonly
+    sudo -E -u www-data php occ app:update --showonly
 
 To update an app to an unstable release, for instance News::
 
-    sudo -u www-data php occ app:update --allow-unstable news
+    sudo -E -u www-data php occ app:update --allow-unstable news
 
 .. _background_jobs_selector_label:
 
@@ -329,7 +329,7 @@ the **Cron** section on your Nextcloud Admin page::
 
 This example selects Ajax::
 
- sudo -u www-data php occ background:ajax
+ sudo -E -u www-data php occ background:ajax
    Set mode for background jobs to 'ajax'
 
 The other two commands are:
@@ -374,25 +374,25 @@ While setting a configuration value, multiple options are available:
 
 You can list all configuration values with one command::
 
- sudo -u www-data php occ config:list
+ sudo -E -u www-data php occ config:list
 
 By default, passwords and other sensitive data are omitted from the report, so
 the output can be posted publicly (e.g. as part of a bug report). In order to
 generate a full backport of all configuration values the ``--private`` flag
 needs to be set::
 
- sudo -u www-data php occ config:list --private
+ sudo -E -u www-data php occ config:list --private
 
 The exported content can also be imported again to allow the fast setup of
 similar instances. The import command will only add or update values. Values
 that exist in the current configuration, but not in the one that is being
 imported are left untouched::
 
- sudo -u www-data php occ config:import filename.json
+ sudo -E -u www-data php occ config:import filename.json
 
 It is also possible to import remote files, by piping the input::
 
- sudo -u www-data php occ config:import < local-backup.json
+ sudo -E -u www-data php occ config:import < local-backup.json
 
 .. note::
 
@@ -406,10 +406,10 @@ Getting a single configuration value
 
 These commands get the value of a single app or system configuration::
 
-  sudo -u www-data php occ config:system:get version
+  sudo -E -u www-data php occ config:system:get version
   19.0.0.12
 
-  sudo -u www-data php occ config:app:get activity installed_version
+  sudo -E -u www-data php occ config:app:get activity installed_version
   2.2.1
 
 Setting a single configuration value
@@ -417,18 +417,18 @@ Setting a single configuration value
 
 These commands set the value of a single app or system configuration::
 
-  sudo -u www-data php occ config:system:set logtimezone
+  sudo -E -u www-data php occ config:system:set logtimezone
   --value="Europe/Berlin"
   System config value logtimezone set to Europe/Berlin
 
-  sudo -u www-data php occ config:app:set files_sharing
+  sudo -E -u www-data php occ config:app:set files_sharing
   incoming_server2server_share_enabled --value="yes"
   Config value incoming_server2server_share_enabled for app files_sharing set to yes
 
 The ``config:system:set`` command creates the value, if it does not already
 exist. To update an existing value,  set ``--update-only``::
 
-  sudo -u www-data php occ config:system:set doesnotexist --value="true"
+  sudo -E -u www-data php occ config:system:set doesnotexist --value="true"
   --type=boolean --update-only
   Value not updated, as it has not been set before.
 
@@ -444,7 +444,7 @@ known:
 
 When you want to e.g. disable the maintenance mode run the following command::
 
-  sudo -u www-data php occ config:system:set maintenance --value=false
+  sudo -E -u www-data php occ config:system:set maintenance --value=false
   --type=boolean
   Nextcloud is in maintenance mode - no app have been loaded
   System config value maintenance set to boolean false
@@ -455,7 +455,7 @@ Setting an array configuration value
 Some configurations (e.g. the trusted domain setting) are an array of data.
 In this case, ``config:system:get`` for this key will return multiple values::
 
-  sudo -u www-data php occ config:system:get trusted_domains
+  sudo -E -u www-data php occ config:system:get trusted_domains
   localhost
   nextcloud.local
   sample.tld
@@ -465,11 +465,11 @@ second ``name`` in the ``config:system:set`` command, separated by a
 space. For example, to replace ``sample.tld`` with ``example.com``,
 ``trusted_domains => 2`` needs to be set::
 
-  sudo -u www-data php occ config:system:set trusted_domains 2
+  sudo -E -u www-data php occ config:system:set trusted_domains 2
   --value=example.com
   System config value trusted_domains => 2 set to string example.com
 
-  sudo -u www-data php occ config:system:get trusted_domains
+  sudo -E -u www-data php occ config:system:get trusted_domains
   localhost
   nextcloud.local
   example.com
@@ -491,29 +491,29 @@ for the Redis cache would look like this in the ``config.php`` file::
 Setting such hierarchical values works similarly to setting an array
 value above. For this Redis example, use the following commands::
 
-  sudo -u www-data php occ config:system:set redis host \
+  sudo -E -u www-data php occ config:system:set redis host \
   --value=/var/run/redis/redis.sock
-  sudo -u www-data php occ config:system:set redis port --value=0
-  sudo -u www-data php occ config:system:set redis dbindex --value=0
-  sudo -u www-data php occ config:system:set redis password --value=secret
-  sudo -u www-data php occ config:system:set redis timeout --value=1.5
+  sudo -E -u www-data php occ config:system:set redis port --value=0
+  sudo -E -u www-data php occ config:system:set redis dbindex --value=0
+  sudo -E -u www-data php occ config:system:set redis password --value=secret
+  sudo -E -u www-data php occ config:system:set redis timeout --value=1.5
 
 Deleting a single configuration value
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 These commands delete the configuration of an app or system configuration::
 
-  sudo -u www-data php occ config:system:delete maintenance:mode
+  sudo -E -u www-data php occ config:system:delete maintenance:mode
   System config value maintenance:mode deleted
 
-  sudo -u www-data php occ config:app:delete appname provisioning_api
+  sudo -E -u www-data php occ config:app:delete appname provisioning_api
   Config value provisioning_api of app appname deleted
 
 The delete command will by default not complain if the configuration was not set
 before. If you want to be notified in that case, set the
 ``--error-if-not-exists`` flag::
 
-  sudo -u www-data php occ config:system:delete doesnotexist
+  sudo -E -u www-data php occ config:system:delete doesnotexist
   --error-if-not-exists
   Config provisioning_api of app appname could not be deleted because it did not
   exist
@@ -553,7 +553,7 @@ List all addressbooks of a user
 
 This example will list all addressbooks for user annie: ::
 
- sudo -u www-data php occ dav:list-addressbooks annie
+ sudo -E -u www-data php occ dav:list-addressbooks annie
 
 Create a addressbook for a user
 """""""""""""""""""""""""""""""
@@ -562,7 +562,7 @@ Create a addressbook for a user
 
 This example creates the addressbook ``mollybook`` for the user molly: ::
 
- sudo -u www-data php occ dav:create-addressbook molly mollybook
+ sudo -E -u www-data php occ dav:create-addressbook molly mollybook
 
 
 Manage calendars
@@ -575,7 +575,7 @@ List all calendars of a user
 
 This example will list all calendars for user annie: ::
 
- sudo -u www-data php occ dav:list-calendars annie
+ sudo -E -u www-data php occ dav:list-calendars annie
 
 Create a calendar for a user
 """"""""""""""""""""""""""""
@@ -585,7 +585,7 @@ Create a calendar for a user
 
 This example creates the calendar ``mollycal`` for the user molly: ::
 
- sudo -u www-data php occ dav:create-calendar molly mollycal
+ sudo -E -u www-data php occ dav:create-calendar molly mollycal
 
 Delete a calendar for a user
 """"""""""""""""""""""""""""
@@ -597,11 +597,11 @@ specified) of the user ``uid``. You can use the force option ``-f`` or
 
 This example will delete the calendar mollycal of user molly::
 
- sudo -u www-data php occ dav:delete-calendar molly mollycal
+ sudo -E -u www-data php occ dav:delete-calendar molly mollycal
 
 This example will delete the birthday calendar of user molly::
 
- sudo -u www-data php occ dav:delete-calendar --birthday molly
+ sudo -E -u www-data php occ dav:delete-calendar --birthday molly
 
 
 Move a calendar of a user
@@ -614,7 +614,7 @@ Move a calendar of a user
 
 This example will move calendar named personal from user dennis to user sabine: ::
 
- sudo -u www-data php occ dav:move-calendar personal dennis sabine
+ sudo -E -u www-data php occ dav:move-calendar personal dennis sabine
 
 Misc
 """"
@@ -639,7 +639,7 @@ List all calendar subscriptions of a user
 
 This example will list all calendar subscriptions for user annie: ::
 
- sudo -u www-data php occ dav:list-subscriptions annie
+ sudo -E -u www-data php occ dav:list-subscriptions annie
 
 
 Create a calendar subscription for a user
@@ -649,11 +649,11 @@ Create a calendar subscription for a user
 
 This example creates the subscription for the lunar calendar ``Lunar Calendar`` for the user molly: ::
 
- sudo -u www-data php occ dav:create-subscription molly "Lunar Calendar" webcal://cantonbecker.com/astronomy-calendar/astrocal.ics
+ sudo -E -u www-data php occ dav:create-subscription molly "Lunar Calendar" webcal://cantonbecker.com/astronomy-calendar/astrocal.ics
 
 Optionally, a color for the new subscription calendar can be passed as a HEX color code::
   
- sudo -u www-data php occ dav:create-subscription molly "Lunar Calendar" calendar webcal://cantonbecker.com/astronomy-calendar/astrocal.ics "#ff5733"
+ sudo -E -u www-data php occ dav:create-subscription molly "Lunar Calendar" calendar webcal://cantonbecker.com/astronomy-calendar/astrocal.ics "#ff5733"
 
 If not set, the theming default color will be used.
 
@@ -665,7 +665,7 @@ Delete a calendar subscription for a user
 
 This example deletes the subscription for the lunar calendar ``Lunar Calendar`` for the user molly: ::
 
- sudo -u www-data php occ dav:delete-subscription molly "Lunar Calendar"
+ sudo -E -u www-data php occ dav:delete-subscription molly "Lunar Calendar"
 
 
 .. _dav-sync-system-address-book:
@@ -676,7 +676,7 @@ Sync system address book
 ``dav:sync-system-addressbook`` synchronizes all users to the :ref:`system
 address book<system-address-book>`::
 
- sudo -u www-data php occ dav:sync-system-addressbook
+ sudo -E -u www-data php occ dav:sync-system-addressbook
  
 Sync birthday calendar
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -684,7 +684,7 @@ Sync birthday calendar
 ``dav:sync-birthday-calendar [<user>]`` adds all birthdays to your calendar from
 addressbooks shared with you. This example syncs to your calendar from user bernie: ::
 
- sudo -u www-data php occ dav:sync-birthday-calendar bernie
+ sudo -E -u www-data php occ dav:sync-birthday-calendar bernie
 
 
 .. _database_conversion_label:
@@ -713,7 +713,7 @@ You need:
 
 This is example converts SQLite to MySQL/MariaDB::
 
- sudo -u www-data php occ db:convert-type mysql oc_dbuser 127.0.0.1
+ sudo -E -u www-data php occ db:convert-type mysql oc_dbuser 127.0.0.1
  oc_database
 
 For a more detailed explanation see
@@ -728,7 +728,7 @@ It might happen that we add from time to time new indices to already existing da
 for example to improve performance. In order to check your database for missing indices run
 following command::
 
- sudo -u www-data php occ db:add-missing-indices
+ sudo -E -u www-data php occ db:add-missing-indices
 
 Use option ``--dry-run`` to output the SQL queries without running them.
 
@@ -760,9 +760,9 @@ Encryption
 encryption module. To enable encryption you must first enable the Encryption
 app, and then run ``encryption:enable``::
 
- sudo -u www-data php occ app:enable encryption
- sudo -u www-data php occ encryption:enable
- sudo -u www-data php occ encryption:status
+ sudo -E -u www-data php occ app:enable encryption
+ sudo -E -u www-data php occ encryption:enable
+ sudo -E -u www-data php occ encryption:status
   - enabled: true
   - defaultModule: OC_DEFAULT_MODULE
 
@@ -770,11 +770,11 @@ app, and then run ``encryption:enable``::
 different folder. It takes one argument, ``newRoot``, which defines your new
 root folder::
 
- sudo -u www-data php occ encryption:change-key-storage-root /etc/oc-keys
+ sudo -E -u www-data php occ encryption:change-key-storage-root /etc/oc-keys
 
 You can see the current location of your keys folder::
 
- sudo -u www-data php occ encryption:show-key-storage-root
+ sudo -E -u www-data php occ encryption:show-key-storage-root
  Current key storage root:  default storage location (data/)
 
 ``encryption:list-modules`` displays your available encryption modules. You will
@@ -789,7 +789,7 @@ is completed.
 ``encryption:decrypt-all`` decrypts all user data files, or optionally a single
 user::
 
- sudo -u www-data php occ encryption:decrypt freda
+ sudo -E -u www-data php occ encryption:decrypt freda
 
 Users must have enabled recovery keys on their Personal pages.
 
@@ -834,7 +834,7 @@ In Nextcloud, servers connected with federation shares can share user
 address books, and auto-complete usernames in share dialogs. Use this command
 to synchronize federated servers::
 
-  sudo -u www-data php occ federation:sync-addressbooks
+  sudo -E -u www-data php occ federation:sync-addressbooks
 
 .. _file_operations_label:
 
@@ -869,7 +869,7 @@ may rescan all files, per-user, a space-delimited list of users, and limit the
 search path. If not using ``--quiet``, statistics will be shown at the end of
 the scan::
 
- sudo -u www-data php occ files:scan --help
+ sudo -E -u www-data php occ files:scan --help
  Description:
    rescan filesystem
 
@@ -994,7 +994,7 @@ The command ``occ files:transfer-ownership`` can be used to transfer files from 
 You may transfer all files and shares from one user to another. This is useful
 before removing a user::
 
- sudo -u www-data php occ files:transfer-ownership <source-user> <destination-user>
+ sudo -E -u www-data php occ files:transfer-ownership <source-user> <destination-user>
 
 The transferred files will appear inside a new sub-directory in the destination user's home.
 
@@ -1003,25 +1003,25 @@ The transferred files will appear inside a new sub-directory in the destination 
 
 If the destination user has no files at all (empty home), it is possible to also transfer all the source user's files by passing ``--move``::
 
- sudo -u www-data php occ files:transfer-ownership --move <source-user> <destination-user>
+ sudo -E -u www-data php occ files:transfer-ownership --move <source-user> <destination-user>
 
 In this case no sub-directory is created and all files will appear directly in the root of the user's home.
 
 It is also possible to transfer only one directory along with its contents. This can be useful to restructure your organization or quotas. The ``--path`` argument is given as the path to the directory as seen from the source user::
 
- sudo -u www-data php occ files:transfer-ownership --path="path_to_dir" <source-user> <destination-user>
+ sudo -E -u www-data php occ files:transfer-ownership --path="path_to_dir" <source-user> <destination-user>
                              
 Incoming shares are not moved by default because the sharing user holds the ownership of the respective files. There is however an option to enable moving incoming shares.
 
 In case the incoming shares must be transferred as well, use the argument ``--transfer-incoming-shares`` with ``0`` or ``1`` as parameters ::
 
- sudo -u www-data php occ files:transfer-ownership --transfer-incoming-shares=1 --path="path_to_dir" <source-user> <destination-user>
+ sudo -E -u www-data php occ files:transfer-ownership --transfer-incoming-shares=1 --path="path_to_dir" <source-user> <destination-user>
 
 As an alternative, the system configuration option ``transferIncomingShares`` in config.php can be set to ``true`` to always transfer incoming shares.
 
 The command line option ``--transfer-incoming-shares`` overwrites the config.php option ``transferIncomingShares``. For example, ``'transferIncomingShares => true`` can be overwritten by: ::
 
- sudo -u www-data php occ files:transfer-ownership --transfer-incoming-shares=0 <source-user> <destination-user>
+ sudo -E -u www-data php occ files:transfer-ownership --transfer-incoming-shares=0 <source-user> <destination-user>
 
 Users may also transfer files or folders selectively by themselves.
 See `user documentation <https://docs.nextcloud.com/server/latest/user_manual/en/files/transfer_ownership.html>`_ for details.
@@ -1094,11 +1094,11 @@ Apps which have a ``Featured`` tag MUST be code signed with Nextcloud. Unsigned 
 
 After creating your signing key, sign your app like this example::
 
- sudo -u www-data php occ integrity:sign-app --privateKey=/Users/lukasreschke/contacts.key --certificate=/Users/lukasreschke/CA/contacts.crt --path=/Users/lukasreschke/Programming/contacts
+ sudo -E -u www-data php occ integrity:sign-app --privateKey=/Users/lukasreschke/contacts.key --certificate=/Users/lukasreschke/CA/contacts.crt --path=/Users/lukasreschke/Programming/contacts
 
 Verify your app::
 
-  sudo -u www-data php occ integrity:check-app --path=/pathto/app appname
+  sudo -E -u www-data php occ integrity:check-app --path=/pathto/app appname
 
 When it returns nothing, your app is signed correctly. When it returns a message then there is an error. See `Code Signing
 <https://docs.nextcloud.com/server/latest/developer_manual/app_publishing_maintenance/code_signing.html#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
@@ -1149,18 +1149,18 @@ ldap\:search
 
 Search for an LDAP user, using this syntax
 
- sudo -u www-data php occ ldap:search [--group] [--offset="..."]
+ sudo -E -u www-data php occ ldap:search [--group] [--offset="..."]
  [--limit="..."] search
 
 Searches will match at the beginning of the attribute value only. This example
 searches for givenNames that start with "rob"::
 
- sudo -u www-data php occ ldap:search "rob"
+ sudo -E -u www-data php occ ldap:search "rob"
 
 This will find robbie, roberta, and robin. Broaden the search to find, for
 example, ``jeroboam`` with the asterisk wildcard::
 
- sudo -u www-data php occ ldap:search "*rob"
+ sudo -E -u www-data php occ ldap:search "*rob"
 
 User search attributes are set with ``ldap:set-config``
 (below). For example, if your search attributes are
@@ -1171,7 +1171,7 @@ Trailing whitespaces are ignored.
 Check if an LDAP user exists. This works only if the Nextcloud server is
 connected to an LDAP server::
 
- sudo -u www-data php occ ldap:check-user robert
+ sudo -E -u www-data php occ ldap:check-user robert
 
 ldap\:check-user
 ^^^^^^^^^^^^^^^^
@@ -1182,7 +1182,7 @@ being marked as deleted. If you know for certain that the user you are searching
 is not in one of the disabled connections, and exists on an active connection,
 use the ``--force`` option to force it to check all active LDAP connections::
 
- sudo -u www-data php occ ldap:check-user --force robert
+ sudo -E -u www-data php occ ldap:check-user --force robert
 
 ldap\:check-group
 ^^^^^^^^^^^^^^^^^
@@ -1190,7 +1190,7 @@ ldap\:check-group
 Checks whether a group still exists in the LDAP directory.
 Use with ``--update`` to update the group membership cache on the Nextcloud side::
 
- sudo -u www-data php occ ldap:check-group --update mygroup
+ sudo -E -u www-data php occ ldap:check-group --update mygroup
 
 ldap\:create-empty-config
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1199,23 +1199,23 @@ Creates an empty LDAP configuration. The first one you create
 has ``configID`` ``s01``, and all subsequent configurations
 that you create are automatically assigned IDs::
 
- sudo -u www-data php occ ldap:create-empty-config
+ sudo -E -u www-data php occ ldap:create-empty-config
     Created new configuration with configID 's01'
 
 Then you can list and view your configurations::
 
- sudo -u www-data php occ ldap:show-config
+ sudo -E -u www-data php occ ldap:show-config
 
 And view the configuration for a single configID::
 
- sudo -u www-data php occ ldap:show-config s01
+ sudo -E -u www-data php occ ldap:show-config s01
 
 ldap\:delete-config
 ^^^^^^^^^^^^^^^^^^^
 
 Deletes an existing LDAP configuration::
 
- sudo -u www-data php occ ldap:delete  s01
+ sudo -E -u www-data php occ ldap:delete  s01
  Deleted configuration with configID 's01'
 
 ldap\:set-config
@@ -1224,7 +1224,7 @@ ldap\:set-config
 This command is for manipulating configurations, like this
 example that sets search attributes::
 
- sudo -u www-data php occ ldap:set-config s01 ldapAttributesForUserSearch
+ sudo -E -u www-data php occ ldap:set-config s01 ldapAttributesForUserSearch
  "cn;givenname;sn;displayname;mail"
 
 ldap\:test-config
@@ -1233,7 +1233,7 @@ ldap\:test-config
 Tests whether your configuration is correct and can bind to
 the server::
 
- sudo -u www-data php occ ldap:test-config s01
+ sudo -E -u www-data php occ ldap:test-config s01
  The configuration is valid and the connection could be established!
 
 ldap\:test-user-settings
@@ -1241,7 +1241,7 @@ ldap\:test-user-settings
 
 Tests user-related LDAP settings::
 
-  sudo -u www-data php occ ldap:test-user-settings "cn=philip j. fry,ou=people,dc=planetexpress,dc=com" --group "Everyone"
+  sudo -E -u www-data php occ ldap:test-user-settings "cn=philip j. fry,ou=people,dc=planetexpress,dc=com" --group "Everyone"
 
   User cn=philip j. fry,ou=people,dc=planetexpress,dc=com is mapped with account name fry.
   Known UUID is ce6cd914-71d5-103f-95a8-ad2dab17b2f9.
@@ -1299,7 +1299,7 @@ These commands view and configure your Nextcloud logging preferences::
 
 Run ``log:file [--] [--enable] [--file] [--rotate-size]`` to see your current logging status::
 
- sudo -u www-data php occ log:file
+ sudo -E -u www-data php occ log:file
  Log backend Nextcloud: enabled
  Log file: /opt/nextcloud/data/nextcloud.log
  Rotate at: disabled
@@ -1339,8 +1339,8 @@ maintenance mode. Users who are not already logged in cannot log in until
 maintenance mode is turned off. When you take the server out of maintenance mode
 logged-in users must refresh their Web browsers to continue working::
 
- sudo -u www-data php occ maintenance:mode --on
- sudo -u www-data php occ maintenance:mode --off
+ sudo -E -u www-data php occ maintenance:mode --on
+ sudo -E -u www-data php occ maintenance:mode --off
 
 After restoring a backup of your data directory or the database, you should always
 call ``maintenance:data-fingerprint`` once. This changes the ETag for all files
@@ -1350,7 +1350,7 @@ The ``maintenance:repair`` command runs automatically during upgrades to clean
 up the database, so while you can run it manually there usually isn't a need
 to::
 
- sudo -u www-data php occ maintenance:repair
+ sudo -E -u www-data php occ maintenance:repair
 
 ``maintenance:mimetype:update-db`` updates the Nextcloud database and file cache
 with changed mimetypes found in ``config/mimetypemapping.json``. Run this
@@ -1379,27 +1379,27 @@ creating federation connections with other Nextcloud servers that use self-signe
 
 Reset an IP::
 
- sudo -u www-data php occ security:bruteforce:reset [IP address]
+ sudo -E -u www-data php occ security:bruteforce:reset [IP address]
 
 
 This example lists your installed certificates::
 
- sudo -u www-data php occ security:certificates
+ sudo -E -u www-data php occ security:certificates
 
 Import a new certificate::
 
- sudo -u www-data php occ security:certificates:import /path/to/certificate
+ sudo -E -u www-data php occ security:certificates:import /path/to/certificate
 
 Remove a certificate::
 
- sudo -u www-data php occ security:certificates:remove [certificate name]
+ sudo -E -u www-data php occ security:certificates:remove [certificate name]
 
 Status
 ------
 
 Use the status command to retrieve information about the current installation::
 
- $ sudo -u www-data php occ status
+ $ sudo -E -u www-data php occ status
    - installed: true
    - version: 25.0.2.3
    - versionstring: 25.0.2
@@ -1411,7 +1411,7 @@ Use the status command to retrieve information about the current installation::
 
 This information can also be formatted via JSON instead of plain text::
 
- $ php occ status --output=json_pretty
+ $ sudo -E -u www-data php occ status --output=json_pretty
  {
      "installed": true,
      "version": "25.0.2.3",
@@ -1429,17 +1429,17 @@ Status return code
 And finally, the ``-e`` (for exit code) parameter can be used to check
 the state of the nextcloud installation via return code::
 
- $ php occ status -e
+ $ sudo -E -u www-data php occ status -e
  $ echo $?
  0
- $ php occ maintenance:mode --on
+ $ sudo -E -u www-data php occ maintenance:mode --on
  Maintenance mode enabled
- $ php occ status -e
+ $ sudo -E -u www-data php occ status -e
  $ echo $?
  1
- $ php occ maintenance:mode --off
+ $ sudo -E -u www-data php occ maintenance:mode --off
  Maintenance mode disabled
- $ php occ status -e
+ $ sudo -E -u www-data php occ status -e
  $ echo $?
  0
 
@@ -1455,7 +1455,7 @@ units.
 | 1           | maintenance mode is enabled; the instance is currently |
 |             | unavailable to users.                                  |
 +-------------+--------------------------------------------------------+
-| 2           | ``php occ upgrade`` is required                        |
+| 2           | ``sudo -E -u www-data php occ upgrade`` is required    |
 +-------------+--------------------------------------------------------+
 
 .. _trashbin_label:
@@ -1480,7 +1480,7 @@ users in a space-delimited list, or all users if --all-users is specified.
 
 This example permanently removes the deleted files of all users::
 
-  sudo -u www-data php occ trashbin:cleanup --all-users
+  sudo -E -u www-data php occ trashbin:cleanup --all-users
   Remove all deleted files for all users
   Remove deleted files for users on backend Database
    freda
@@ -1491,7 +1491,7 @@ This example permanently removes the deleted files of all users::
 
 This example permanently removes the deleted files of users molly and freda::
 
- sudo -u www-data php occ trashbin:cleanup molly freda
+ sudo -E -u www-data php occ trashbin:cleanup molly freda
  Remove deleted files of   molly
  Remove deleted files of   freda
 
@@ -1500,25 +1500,25 @@ users in a space-delimited list, or all users if --all-users is specified.
 
 This example restores the deleted user-files of all users::
 
- sudo -u www-data php occ trashbin:restore --all-users
+ sudo -E -u www-data php occ trashbin:restore --all-users
 
 This example restores the deleted user-files of users molly and freda::
 
- sudo -u www-data php occ trashbin:restore molly freda
+ sudo -E -u www-data php occ trashbin:restore molly freda
 
 The ``--scope`` option can be used to limit the restore to a specific scope.
 Possible values are "user", "groupfolders" or "all" [default: "user"].
 
 This example restores the deleted files of all groupfolders which are visible to the user freda::
 
-  sudo -u www-data php occ trashbin:restore --scope groupfolders freda
+  sudo -E -u www-data php occ trashbin:restore --scope groupfolders freda
 
 The ``--since`` and ``--until`` options can be used to limit the restore to files deleted inside of the given time period.
 
 This example restores the locally deleted files and files of any groupfolders which are visible to the user
 freda. Additionally the files have to be deleted between ``01.08.2023 11:55:22`` and ``02.08.2023 01:33``::
 
-  sudo -u www-data php occ trashbin:restore --scope all --since "01.08.2023 11:55:22" --until "02.08.2023 01:33" freda
+  sudo -E -u www-data php occ trashbin:restore --scope all --since "01.08.2023 11:55:22" --until "02.08.2023 01:33" freda
 
 The ``--dry-run`` option can be used to simulate the restore without actually restoring the files.
 
@@ -1568,7 +1568,7 @@ Nextcloud Web UI, and the ``uid`` is their **Username**, which is their
 login name. This example adds new user Layla Smith, and adds them to the
 **users** and **db-admins** groups. Any groups that do not exist are created::
 
- sudo -u www-data php occ user:add --display-name="Layla Smith"
+ sudo -E -u www-data php occ user:add --display-name="Layla Smith"
    --group="users" --group="db-admins" layla
    Enter password:
    Confirm password:
@@ -1590,8 +1590,7 @@ because ``sudo`` strips environment variables. This example adds new user Fred
 Jones::
 
  export OC_PASS=newpassword
- su -s /bin/sh www-data -c 'php occ user:add --password-from-env
-   --display-name="Fred Jones" --group="users" fred'
+ sudo -E -u www-data php occ user:add --password-from-env --display-name="Fred Jones" --group="users" fred
  The user "fred" was created successfully
  Display name set to "Fred Jones"
  User "fred" added to group "users"
@@ -1602,7 +1601,7 @@ passwords. This can be used in conjunction with the ``email`` option to create
 users with a temporary password and send a welcome email to the user's email
 address without user interaction::
 
- sudo -u www-data php occ user:add layla --generate-password --email layla@example.tld
+ sudo -E -u www-data php occ user:add layla --generate-password --email layla@example.tld
    The account "layla" was created successfully
    Welcome email sent to layla@example.tld
 
@@ -1610,7 +1609,7 @@ The ``email`` option allows you to set the user's email address when creating
 the user. A welcome email will be sent to the user's email address if
 ``newUser.sendEmail`` is set to ``yes`` in ``core``'s app config or not set at all::
 
- sudo -u www-data php occ user:add layla --email layla@example.tld
+ sudo -E -u www-data php occ user:add layla --email layla@example.tld
    Enter password:
    Confirm password:
    The account "layla" was created successfully
@@ -1622,7 +1621,7 @@ user:resetpassword
 You can reset any user's password, including administrators (see
 :doc:`../configuration_user/reset_admin_password`)::
 
- sudo -u www-data php occ user:resetpassword layla
+ sudo -E -u www-data php occ user:resetpassword layla
    Enter a new password:
    Confirm the new password:
    Successfully reset password for layla
@@ -1630,8 +1629,7 @@ You can reset any user's password, including administrators (see
 You may also use ``password-from-env`` to reset passwords::
 
  export OC_PASS=newpassword
- su -s /bin/sh www-data -c 'php occ user:resetpassword --password-from-env
-   layla'
+ sudo -E -u www-data php occ user:resetpassword --password-from-env layla
    Successfully reset password for layla
 
 user:delete
@@ -1639,19 +1637,19 @@ user:delete
 
 You can delete users::
 
- sudo -u www-data php occ user:delete fred
+ sudo -E -u www-data php occ user:delete fred
 
 user:lastseen
 ^^^^^^^^^^^^^
 
 View a specific user's most recent login::
 
- sudo -u www-data php occ user:lastseen layla
+ sudo -E -u www-data php occ user:lastseen layla
    layla's last login: 2024-03-20 17:18
 
 View a list of all users' most recent login::
 
- sudo -u www-data php occ user:lastseen --all
+ sudo -E -u www-data php occ user:lastseen --all
    albert's last login: 2024-03-18 10:30
    bob has never logged in.
    layla's last login: 2024-03-20 17:18
@@ -1662,7 +1660,7 @@ user:setting
 
 Read user settings::
 
- sudo -u www-data php occ user:setting layla
+ sudo -E -u www-data php occ user:setting layla
    - core:
      - lang: en
    - login:
@@ -1672,22 +1670,22 @@ Read user settings::
 
 Filter by app::
 
- sudo -u www-data php occ user:setting layla core
+ sudo -E -u www-data php occ user:setting layla core
    - core:
      - lang: en
 
 Get a single setting::
 
- sudo -u www-data php occ user:setting layla core lang
+ sudo -E -u www-data php occ user:setting layla core lang
  en
 
 Set a setting::
 
- sudo -u www-data php occ user:setting layla settings email "new-layla@example.tld"
+ sudo -E -u www-data php occ user:setting layla settings email "new-layla@example.tld"
 
 Delete a setting::
 
- sudo -u www-data php occ user:setting layla settings email --delete
+ sudo -E -u www-data php occ user:setting layla settings email --delete
 
 user:report
 ^^^^^^^^^^^
@@ -1695,7 +1693,7 @@ user:report
 Generate a simple report that counts all users, including users on external user
 authentication servers such as LDAP::
 
- sudo -u www-data php occ user:report
+ sudo -E -u www-data php occ user:report
  +------------------+----+
  | User Report      |    |
  +------------------+----+
@@ -1772,7 +1770,7 @@ The ``gid`` corresponds to the group name you entering after clicking
 "Add group" on the Users page in your Nextcloud Web UI. This example adds new
 group "beer"::
 
- sudo -u www-data php occ group:add beer
+ sudo -E -u www-data php occ group:add beer
 
 Add an existing user to the specified group with the ``group:adduser``
 command. The syntax is::
@@ -1781,19 +1779,19 @@ command. The syntax is::
 
 This example adds the user "denis" to the existing group "beer"::
 
- sudo -u www-data php occ group:adduser beer denis
+ sudo -E -u www-data php occ group:adduser beer denis
 
 You can remove user from the group with the ``group:removeuser`` command.
 This example removes the existing user "denis" from the existing
 group "beer"::
 
- sudo -u www-data php occ group:removeuser beer denis
+ sudo -E -u www-data php occ group:removeuser beer denis
 
 Remove a group with the ``group:delete`` command. Removing a group doesn't
 remove users in a group. You cannot remove the "admin" group. This example
 removes the existing group "beer"::
 
- sudo -u www-data php occ group:delete beer
+ sudo -E -u www-data php occ group:delete beer
 
 List configured groups via the ``group:list`` command. The syntax is::
 
@@ -1825,7 +1823,7 @@ when none are specified::
 
 This example deletes all versions for all users::
 
- sudo -u www-data php occ versions:cleanup
+ sudo -E -u www-data php occ versions:cleanup
  Delete all versions
  Delete versions for users on backend Database
    freda
@@ -1836,7 +1834,7 @@ This example deletes all versions for all users::
 
 You can delete versions for specific users in a space-delimited list::
 
- sudo -u www-data php occ versions:cleanup freda molly
+ sudo -E -u www-data php occ versions:cleanup freda molly
  Delete versions of   freda
  Delete versions of   molly
 
@@ -1854,7 +1852,7 @@ commands in place of running the graphical Installation Wizard.
 
 Then choose your ``occ`` options. This lists your available options::
 
- sudo -u www-data php /var/www/nextcloud/occ
+ sudo -E -u www-data php /var/www/nextcloud/occ
  Nextcloud is not installed - only a limited number of commands are available
  Nextcloud version 19.0.0
 
@@ -1884,7 +1882,7 @@ Then choose your ``occ`` options. This lists your available options::
 
 Display your ``maintenance:install`` options::
 
- sudo -u www-data php occ help maintenance:install
+ sudo -E -u www-data php occ help maintenance:install
  Nextcloud is not installed - only a limited number of commands are available
  Usage:
   maintenance:install [--database="..."] [--database-name="..."]
@@ -1914,7 +1912,7 @@ Display your ``maintenance:install`` options::
 This example completes the installation::
 
  cd /var/www/nextcloud/
- sudo -u www-data php occ maintenance:install --database
+ sudo -E -u www-data php occ maintenance:install --database
  "mysql" --database-name "nextcloud"  --database-user "root" --database-pass
  "password" --admin-user "admin" --admin-pass "password"
  Nextcloud is not installed - only a limited number of commands are available
@@ -1935,9 +1933,9 @@ Command line upgrade
 These commands are available only after you have downloaded upgraded packages or
 tar archives, and before you complete the upgrade.
 
-List all options, like this example on CentOS Linux::
+List all options::
 
- sudo -u apache php occ upgrade -h
+ sudo -E -u www-data php occ upgrade -h
  Usage:
  upgrade [--quiet]
 
@@ -1960,7 +1958,7 @@ state. After performing all the preliminary steps (see
 :doc:`../maintenance/upgrade`) use this command to upgrade your databases,
 like this example on CentOS Linux. Note how it details the steps::
 
- sudo -u www-data php occ upgrade
+ sudo -E -u www-data php occ upgrade
  Nextcloud or one of the apps require upgrade - only a limited number of
  commands are available
  Turned on maintenance mode
@@ -1976,7 +1974,7 @@ like this example on CentOS Linux. Note how it details the steps::
 
 Enabling verbosity displays timestamps::
 
- sudo -u www-data php occ upgrade -v
+ sudo -E -u www-data php occ upgrade -v
  Nextcloud or one of the apps require upgrade - only a limited number of commands are available
  2015-06-23T09:06:15+0000 Turned on maintenance mode
  2015-06-23T09:06:15+0000 Checked database schema update
@@ -2010,13 +2008,13 @@ In the case of a user losing access to the second factor (e.g. lost phone with
 two-factor SMS verification), the admin can try to disable the two-factor
 check for that user via the occ command::
 
- sudo -u www-data php occ twofactorauth:disable <uid> <provider_id>
+ sudo -E -u www-data php occ twofactorauth:disable <uid> <provider_id>
 
 .. note:: This is not supported by all providers.
 
 To re-enable two-factor auth again use the following command::
 
- sudo -u www-data php occ twofactorauth:enable <uid> <provider_id>
+ sudo -E -u www-data php occ twofactorauth:enable <uid> <provider_id>
 
 .. note:: This is not supported by all providers.
 
@@ -2026,11 +2024,11 @@ Disable users
 -------------
 Admins can disable users via the occ command too::
 
- sudo -u www-data php occ user:disable <username>
+ sudo -E -u www-data php occ user:disable <username>
 
 Use the following command to enable the user again::
 
- sudo -u www-data php occ user:enable <username>
+ sudo -E -u www-data php occ user:enable <username>
 
 Note that once users are disabled, their connected browsers will be disconnected.
 
@@ -2042,21 +2040,21 @@ System Tags
 
 List tags::
 
-  sudo -u www-data php occ tag:list
+  sudo -E -u www-data php occ tag:list
 
 Add a tag::
 
-  sudo -u www-data php occ tag:add <name> <access>
+  sudo -E -u www-data php occ tag:add <name> <access>
 
 Edit a tag::
 
-  sudo -u www-data php occ tag:edit --name <name> --access <access> <id>
+  sudo -E -u www-data php occ tag:edit --name <name> --access <access> <id>
 
 `--name` and `--access` are optional.
 
 Delete a tag::
 
-  sudo -u www-data php occ tag:delete <id>
+  sudo -E -u www-data php occ tag:delete <id>
 
 Access level
 
@@ -2078,19 +2076,19 @@ Antivirus
 
 Get info about files in the scan queue::
 
-  sudo -u www php occ files_antivirus:status [-v]
+  sudo -E -u www-data php occ files_antivirus:status [-v]
 
 Manually trigger the background scan::
 
-  sudo -u www php occ files_antivirus:background-scan [-v] [-m MAX]
+  sudo -E -u www-data php occ files_antivirus:background-scan [-v] [-m MAX]
 
 Manually scan a single file::
 
-  sudo -u www php occ files_antivirus:scan <path>
+  sudo -E -u www-data php occ files_antivirus:scan <path>
 
 Mark a file as scanned or unscanned::
 
-  sudo -u www php occ files_antivirus:mark <path> <scanned|unscanned>
+  sudo -E -u www-data php occ files_antivirus:mark <path> <scanned|unscanned>
 
 .. _setupchecks_commands_label:
 
@@ -2099,7 +2097,7 @@ Setupchecks
 
 Run the setupchecks via occ::
 
-  sudo -u www php occ setupchecks
+  sudo -E -u www-data php occ setupchecks
 
 Example output::
 
@@ -2135,4 +2133,4 @@ Debugging
 
 In certain situations it's necessary to generate debugging information, e.g. before submitting a bug report. You can run ``occ`` with debug logging::
 
- sudo -u www-data NC_loglevel=0 php occ -h
+ NC_loglevel=0 sudo -E -u www-data php occ -h

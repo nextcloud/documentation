@@ -12,7 +12,7 @@ When running the command:
 
 .. code-block:: bash
 
-   php occ app_api:app:register test-deploy docker_socket_proxy --info-xml https://raw.githubusercontent.com/nextcloud/test-deploy/main/appinfo/info.xml --test-deploy-mode --no-ansi --no-warnings
+   sudo -E -u www-data php occ app_api:app:register test-deploy docker_socket_proxy --info-xml https://raw.githubusercontent.com/nextcloud/test-deploy/main/appinfo/info.xml --test-deploy-mode --no-ansi --no-warnings
 
 You may receive an error similar to:
 
@@ -92,7 +92,7 @@ Method 1: Edit PHP CLI php.ini File
 
    .. code-block:: bash
 
-      php occ app_api:app:register
+      sudo -E -u www-data php occ app_api:app:register
 
    It should now be able to access the Internet through the proxy.
 
@@ -136,7 +136,7 @@ Method 2: Set System-Wide Environment Variables
 
    .. code-block:: bash
 
-	  php occ app_api:app:register test-deploy docker_socket_proxy --info-xml https://raw.githubusercontent.com/nextcloud/test-deploy/main/appinfo/info.xml --test-deploy-mode --no-ansi --no-warnings
+	  sudo -E -u www-data test-deploy docker_socket_proxy --info-xml https://raw.githubusercontent.com/nextcloud/test-deploy/main/appinfo/info.xml --test-deploy-mode --no-ansi --no-warnings
 
    It should now work without connectivity issues.
 

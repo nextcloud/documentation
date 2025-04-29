@@ -473,7 +473,7 @@ In new Nextcloud installations the home folder rule is enforced. This means that
 
 In migrated Nextcloud installations the old behavior still applies, which is using the Nextcloud username as the home folder when an LDAP attribute is not set. You may change this enforcing the home folder rule with the ``occ`` command in Nextcloud, like this example on Ubuntu::
 
-  sudo -u www-data php occ config:app:set user_ldap enforce_home_folder_naming_rule --value=1
+  sudo -E -u www-data php occ config:app:set user_ldap enforce_home_folder_naming_rule --value=1
 
 .. _LDAP_User_Profile_Attributes:
 
@@ -494,7 +494,7 @@ Please be aware:
   - Having misformatted data in LDAP will most probably leave you with empty user profile fields
   - Setting the global ``profile.enabled => false`` on ``config.php`` skips the code
 
-By calling ``php occ ldap:check-user --update <uid>`` the users data from LDAP will be displayed and the profile gets updated. To get the correct ``<uid>`` value for any user you can use ``php occ user:list``.
+By calling ``sudo -E -u www-data php occ ldap:check-user --update <uid>`` the users data from LDAP will be displayed and the profile gets updated. To get the correct ``<uid>`` value for any user you can use ``php occ user:list``.
 
 .. note:: After unsetting an attribute name here, the data won't be deleted from user profile. Setting an nonexisting attribute will empty the corresponding profile field.
 
@@ -662,7 +662,7 @@ It is not a per-configuration option.
 
 The value can be modified by::
 
-  sudo -u www-data php occ config:app:set user_ldap updateAttributesInterval --value=86400
+  sudo -E -u www-data php occ config:app:set user_ldap updateAttributesInterval --value=86400
 
 A value of 0 will update it on every of the named occasions.
 
@@ -678,7 +678,7 @@ search against. When a search is executed an exact match is required.
 
 Example usage::
 
-  $ php occ ldap:promote-group --help
+  $ sudo -E -u www-data php occ ldap:promote-group --help
   Description:
     declares the specified group as admin group (only one is possible per LDAP configuration)
 
@@ -693,15 +693,15 @@ Example usage::
   …
 
   # Example
-  $ php occ ldap:promote-group  "Nextcloud Admins"
+  $ sudo -E -u www-data php occ ldap:promote-group  "Nextcloud Admins"
   Promote Nextcloud Admins to the admin group (y|N)? y
   Group Nextcloud Admins was promoted
 
-  $ php occ ldap:promote-group  "Paramount Court"
+  $ sudo -E -u www-data php occ ldap:promote-group  "Paramount Court"
   Promote Nextcloud Admins to the admin group and demote Nextcloud Admins (Group ID: nextcloud_admins) (y|N)? y
   Group Paramount Court was promoted
 
-  $ php occ ldap:promote-group  "Paramount Court"
+  $ sudo -E -u www-data php occ ldap:promote-group  "Paramount Court"
   The specified group is already promoted
 
 .. note:: Note the group ID will only be displayed when it differs from the

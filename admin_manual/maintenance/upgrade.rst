@@ -50,7 +50,7 @@ Nextcloud must be upgraded step by step:
 as a background job. If you plan to upgrade directly to another major version (e.g. 24 -> 25 -> 26) you need to make sure these
 migrations were executed before starting the next upgrade. To do so you should run the ``cron.php`` file 2-3 times, for example::
 
- $ sudo -u www-data php -f /var/www/nextcloud/cron.php
+ $ sudo -E -u www-data php -f /var/www/nextcloud/cron.php
 
 For more information about background jobs see :doc:`../configuration_server/background_jobs_configuration`.
 
@@ -113,7 +113,7 @@ existing Nextcloud code with the code of the new Nextcloud version.
 logins. This is the mode to use for upgrades. You must run ``occ`` as the HTTP
 user, like this example on Ubuntu Linux::
 
- $ sudo -u www-data php occ maintenance:mode --on
+ $ sudo -E -u www-data php occ maintenance:mode --on
 
 You may also put your server into this mode by editing :file:`config/config.php`.
 Change ``"maintenance" => false`` to ``"maintenance" => true``:
@@ -145,8 +145,8 @@ There is also always an hint in the setup checks of the admin settings web inter
 
 Those include for example::
 
- $ sudo -u www-data php occ db:add-missing-columns
- $ sudo -u www-data php occ db:add-missing-indices
- $ sudo -u www-data php occ db:add-missing-primary-keys
+ $ sudo -E -u www-data php occ db:add-missing-columns
+ $ sudo -E -u www-data php occ db:add-missing-indices
+ $ sudo -E -u www-data php occ db:add-missing-primary-keys
 
 You can use the ``--dry-run`` option to output the SQL queries instead of executing them.

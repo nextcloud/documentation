@@ -15,7 +15,7 @@ using the latest development version of Nextcloud.
 
    cd apps/
    git clone --branch stableX https://github.com/nextcloud/profiler.git
-   # adapt X to your Nextcloud version: php occ version | grep -oP 'Nextcloud \K\d+'
+   # adapt X to your Nextcloud version: sudo -E -u www-data php occ version | grep -oP 'Nextcloud \K\d+'
    cd profiler
    cd ../..
 

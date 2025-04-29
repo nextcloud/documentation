@@ -135,7 +135,7 @@ This is how the command line based update would continue:
 
 .. code::
 
-    $ sudo -u www-data php ./occ upgrade
+    $ sudo -E -u www-data php ./occ upgrade
     Nextcloud or one of the apps require upgrade - only a limited number of commands are available
     You may use your browser or the occ upgrade command to do the upgrade
     Set log level to debug
@@ -176,7 +176,7 @@ The steps are basically the same as for the web based updater:
 2. Instead of clicking that button you can now invoke the command line based
    updater by going into the `updater/` directory in the Nextcloud directory
    and executing the `updater.phar` as the web server user. (i.e.
-   ``sudo -u www-data php /var/www/nextcloud/updater/updater.phar``)
+   ``sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar``)
 
 .. image:: images/updater-cli-2-start-updater.png
    :class: terminal-image
@@ -223,7 +223,7 @@ except an error occurred during the ``occ upgrade`` or the replacement of the
 code.
 
 To execute this, run the command with the ``--no-interaction`` option. (i.e.
-``sudo -u www-data php /var/www/nextcloud/updater/updater.phar --no-interaction``)
+``sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar --no-interaction``)
 
 .. image:: images/updater-cli-8-no-interaction.png
    :class: terminal-image

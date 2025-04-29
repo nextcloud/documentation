@@ -89,7 +89,7 @@ For command line processing (*optional*):
 
 For command line updater (*optional*):
 
-* PHP module phar (upgrades Nextcloud by running ``sudo -u www-data php /var/www/nextcloud/updater/updater.phar``)
+* PHP module phar (upgrades Nextcloud by running ``sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar``)
 
 ini values
 ----------
