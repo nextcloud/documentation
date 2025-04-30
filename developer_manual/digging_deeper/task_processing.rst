@@ -116,7 +116,7 @@ The following built-in task types are available:
          * ``input``: ``Text``
       * Output shape:
          * ``output``: ``Text``
- * ``'core:text2speech'``: This task type is for generating images from text prompts. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToSpeech``
+ * ``'core:text2speech'``: This task type is for generating speech from text prompts. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToSpeech``
       * Input shape:
          * ``input``: ``Text``
       * Output shape:
