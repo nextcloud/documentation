@@ -66,6 +66,7 @@ Nextcloud uses modularity to separate raw AI functionality from the Graphical Us
    "Context Chat","`Nextcloud Assistant Context Chat <https://apps.nextcloud.com/apps/context_chat>`_","Yellow","Yes","Yes","No","Yes"
    "","`Nextcloud Assistant Context Chat (Backend) <https://apps.nextcloud.com/apps/context_chat_backend>`_","Yellow","Yes","Yes","No","Yes"
    "Context Agent","`Nextcloud Context Agent <https://apps.nextcloud.com/apps/context_agent>`_","Green","Yes","Yes","Yes","Yes"
+   "Text To Speech","`Open AI Text To Speech <https://apps.nextcloud.com/apps/integration_openai>`_","Red","No","No","No","No"
 
 
 Ethical AI Rating

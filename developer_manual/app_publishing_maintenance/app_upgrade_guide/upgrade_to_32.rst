@@ -36,7 +36,7 @@ Back-end changes
 Added APIs
 ^^^^^^^^^^
 
-- TBD
+- New service ``OCP\TaskProcessing\TextToSpeech`` to convert text to speech.
 
 Changed APIs
 ^^^^^^^^^^^^
