@@ -111,6 +111,13 @@ In order to make use of our AI agent feature, offering the execution of actions 
 
 You will also need a text processing provider as specified above (ie. *llm2* or *integration_openai*).
 
+Text-To-Speech
+~~~~~~~~~~~~~~
+
+In order to make use of Text-To-Speech, you will need an app that provides a Text-To-Speech backend:
+
+* *integration_openai* - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
+
 Configuration
 -------------
 

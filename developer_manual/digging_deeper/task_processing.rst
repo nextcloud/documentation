@@ -116,6 +116,11 @@ The following built-in task types are available:
          * ``input``: ``Text``
       * Output shape:
          * ``output``: ``Text``
+ * ``'core:text2speech'``: This task type is for generating speech from text prompts. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToSpeech``
+      * Input shape:
+         * ``input``: ``Text``
+      * Output shape:
+         * ``speech``: ``Audio``
 
 
 Task types can be disabled in the AI admin settings so they are not available for the Assistant or other apps even if they are implemented. All implemented Task types are enabled by default.

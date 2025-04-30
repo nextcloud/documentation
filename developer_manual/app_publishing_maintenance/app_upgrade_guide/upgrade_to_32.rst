@@ -36,7 +36,7 @@ Back-end changes
 Added APIs
 ^^^^^^^^^^
 
-- TBD
+- New task processing task type ``OCP\TaskProcessing\TextToSpeech`` to convert text to speech.
 
 Changed APIs
 ^^^^^^^^^^^^
