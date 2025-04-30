@@ -28,6 +28,9 @@ or filenames like ``AUX.txt`` (on Windows ``AUX`` is a reserved name and cannot 
 Enabling Windows compatible filenames
 -------------------------------------
 
+This feature can be enabled either by using the web interface
+or by using an ``occ`` command.
+
 .. note::
 
 	This feature works by setting a predefined set of system configuration settings.
@@ -43,6 +46,15 @@ Within the **Files compatibility** section the Windows compatibility can be enab
 .. figure:: images/files-windows-compatibility.png
    :alt: Enforce windows compatibility checkbox on the Administration - Basic settings - Files compatibility page.
 
+Using the occ command
+^^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+
+    This command was introduced in Nextcloud 32.
+
+To quickly enable or disable the feature an :ref:`occ command <occ_files_windows_filenames>` is provided.
+
 Consequences
 ------------
 
@@ -54,3 +66,10 @@ This works by setting a pre-defined set of configuration settings:
 - ``forbidden_filename_basenames`` will be set to names reserved on Windows.
 - ``forbidden_filename_characters`` will be set to characters not valid for filenames on Windows.
 - ``forbidden_filename_extensions`` will be set to strings not allowed as trailing parts, like a trailing dot or spaces.
+
+Sanitizing invalid filenames
+----------------------------
+
+After enabling the feature the users have to manually adjust all invalid filenames
+to be able to keep working with them.
+As an alternative Nextcloud provides the :ref:`occ files:sanitize-filenames <occ_files_sanitize_filenames>` command to automatically rename all invalid files.

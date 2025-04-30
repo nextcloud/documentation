@@ -974,6 +974,36 @@ This command attempts to repair such entries by querying for entries where the p
 doesn't match the expected path based on it's parent path and filename and resets it's
 path to the expected one.
 
+.. _occ_files_sanitize_filenames:
+
+Sanitize filenames
+^^^^^^^^^^^^^^^^^^
+
+This command allows to automatically rename files not matching the current file naming constraints,
+for example after enabling the :ref:`Windows compatible filenames <windows_compatible_filenames>`::
+
+ Usage:
+   files:sanitize-filenames [options] [--] [<user_id>...]
+
+ Arguments:
+   user_id                                 Limit filename sanitizing to files given user(s) have access to
+
+ Options:
+      --dry-run                            Do not actually rename any files but just check filenames.
+  -c, --char-replacement=CHAR-REPLACEMENT  Replacement for invalid character (by default space, underscore or dash is used)
+
+When running this command without parameters it will scan all files of all users
+for filenames not comply with the current filename constraints and try to automatically
+rename those files.
+Invalid characters will be replaced by default with either a space, underscore, or dash
+depending on which characters are allowed.
+If your constraints forbid all of them, then you have to provide an character replacement
+yourself by specifying the ``--char-replacement`` option.
+
+The ``--dry-run`` option allows to perform the sanitizing without the actual renaming,
+this is useful for estimating the execution time and to get an overview on what renaming
+actions will be performed.
+
 Transfer
 ^^^^^^^^
 
@@ -1027,6 +1057,21 @@ Users may also transfer files or folders selectively by themselves.
 See `user documentation <https://docs.nextcloud.com/server/latest/user_manual/en/files/transfer_ownership.html>`_ for details.
 
 .. TODO ON RELEASE: Update version number above on release
+
+.. _occ_files_windows_filenames:
+
+Toggle Windows compatibility
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The command ``occ files:windows-compatible-filenames`` can be used to toggle
+enforcing :ref:`Windows compatible filenames <windows_compatible_filenames>`::
+
+ Usage:
+   files:windows-compatible-filenames [options]
+
+ Options:
+       --enable                  enable enforcing windows compatible filenames
+       --disable                 disable enforcing windows compatible filenames
 
 .. _occ_sharing_label:
 
