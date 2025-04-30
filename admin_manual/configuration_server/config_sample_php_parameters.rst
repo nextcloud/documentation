@@ -3497,7 +3497,7 @@ Allows to create external storages of type "Local" in the web interface and APIs
 When disabled, it is still possible to create local storages with occ using
 the following command:
 
-% php occ files_external:create /mountpoint local null::null -c datadir=/path/to/data
+  php occ files_external:create /mountpoint local null::null -c datadir=/path/to/data
 
 Defaults to ``true``
 
