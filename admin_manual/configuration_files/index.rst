@@ -21,3 +21,4 @@ File sharing and management
     file_versioning
     trashbin_configuration
     file_conversion
+    windows_compatible_filenames
