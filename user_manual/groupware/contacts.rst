@@ -57,7 +57,7 @@ After the import is complete, you will see your new contact in your address book
 
 
 Adding Contacts Manually
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you can't import virtual contacts, the Contacts app enables you to **add contacts** manually.
 
@@ -139,7 +139,7 @@ with iOS, macOS, Thunderbird and other CardDAV clients.
 
 
 Teams
--------
+-----
 
 Informal collaboration takes place within organizations: an event to organize for a few weeks, a short ideation session between members from different entities, workshops, a place to joke around and support team building, or simply in very organic organizations where formal structure is kept to a minimum.
 
@@ -149,7 +149,7 @@ For all these reasons, Nextcloud supports Teams, a feature embedded in the Conta
 	:alt: Teams in the Contacts app left menu
 
 Create a team
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
 
 In the left menu, click on the + next to Teams.
 Set a team name
@@ -158,7 +158,7 @@ Landing on the team configuration screen, you can:
 - clicking on the three dot menu next to a user allow you to modify its role within the team.
 
 Team roles
-~~~~~~~~~~~~
+~~~~~~~~~~
 
 Teams support 4 types of roles:
 
@@ -184,13 +184,13 @@ In addition to moderator permissions, an admin can configure team options.
 In addition to admin permissions, an owner can transfer the team ownership to another member of the team. There can be only one single owner per team.
 
 Add members to a team
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 
 Local accounts, groups, email addresses or other teams can be added as members to a team.
 For a group or a team, the role applies to all members of the group or team.
 
 Team options
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~
 
 Various self-explanatory options are available to configure a team, to manage invites and membership, visibility of the team, allowance of other team membership and password protection.
 
