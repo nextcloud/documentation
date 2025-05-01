@@ -1420,7 +1420,7 @@ report showing how many users you have, and when a user was last logged in::
   user:report                         shows how many users have access
   user:resetpassword                  Resets the password of the named user
   user:setting                        Read and modify user settings
-  user:sync-account-data              sync user backend data to accounts table for configured users
+  user:sync-account-data              Sync user backend data to accounts table for configured users
   user:welcome                        Sends the welcome email
 
 
