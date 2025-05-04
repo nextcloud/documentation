@@ -13,7 +13,7 @@ using the latest development version of Nextcloud.
 
 .. code-block:: bash
 
-   major_version=$(php occ version 2>&1 | awk -F'[. ]' '{print $2;exit}')
+   major_version=$(sudo -E -u www-data php occ version 2>&1 | awk -F'[. ]' '{print $2;exit}')
    cd apps/
    git clone --branch stable$major_version https://github.com/nextcloud/profiler.git
    cd profiler
