@@ -26,7 +26,7 @@ Front-end changes
 Changed APIs
 ^^^^^^^^^^^^
 
-* `IAppConfig` has been fully reworked, most of previous methods are now deprecated. The new version of the API implements multiple settings for app config values to define their laziness and sensitivity. See also the :ref:`AppConfig<app config>` section.
+* `IAppConfig` has been fully reworked, most of previous methods are now deprecated. The new version of the API implements multiple settings for app config values to define their laziness and sensitivity. See also the :ref:`app config` section.
 
 Removed globals
 ^^^^^^^^^^^^^^^
