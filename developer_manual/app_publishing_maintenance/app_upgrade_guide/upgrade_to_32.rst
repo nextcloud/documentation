@@ -37,6 +37,7 @@ Added APIs
 ^^^^^^^^^^
 
 - New task processing task type ``OCP\TaskProcessing\TextToSpeech`` to convert text to speech.
+- New method ``\OCP\IUser::canChangeEmail`` allowing to check if the user backend allows the user to change their email address.
 
 Changed APIs
 ^^^^^^^^^^^^
