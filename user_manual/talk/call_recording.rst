@@ -1,3 +1,5 @@
+.. _call-recording:
+==============
 Call recording
 ==============
 
