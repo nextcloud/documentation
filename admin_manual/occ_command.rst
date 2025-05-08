@@ -537,7 +537,7 @@ Manage addressbooks and calendars::
   dav:list-subscriptions          List all calendar subscriptions for a user
   dav:move-calendar               Move a calendar from an user to another
   dav:remove-invalid-shares       Remove invalid dav shares
-  dav:retention:clean-up          
+  dav:retention:clean-up
   dav:send-event-reminders        Sends event reminders
   dav:sync-birthday-calendar      Synchronizes the birthday calendar
   dav:sync-system-addressbook     Synchronizes users to the system addressbook
@@ -652,7 +652,7 @@ This example creates the subscription for the lunar calendar ``Lunar Calendar`` 
  sudo -E -u www-data php occ dav:create-subscription molly "Lunar Calendar" webcal://cantonbecker.com/astronomy-calendar/astrocal.ics
 
 Optionally, a color for the new subscription calendar can be passed as a HEX color code::
-  
+
  sudo -E -u www-data php occ dav:create-subscription molly "Lunar Calendar" calendar webcal://cantonbecker.com/astronomy-calendar/astrocal.ics "#ff5733"
 
 If not set, the theming default color will be used.
@@ -677,7 +677,7 @@ Sync system address book
 address book<system-address-book>`::
 
  sudo -E -u www-data php occ dav:sync-system-addressbook
- 
+
 Sync birthday calendar
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -852,7 +852,7 @@ Available ``occ`` commands for the ``files`` namespace::
   files:object:get                 Get the contents of an object
   files:object:put                 Write a file to the object store
   files:put                        Write contents of a file
-  files:recommendations:recommend  
+  files:recommendations:recommend
   files:reminders                  List file reminders
   files:repair-tree                Try and repair malformed filesystem tree structures
   files:scan                       rescan filesystem
@@ -1040,7 +1040,7 @@ In this case no sub-directory is created and all files will appear directly in t
 It is also possible to transfer only one directory along with its contents. This can be useful to restructure your organization or quotas. The ``--path`` argument is given as the path to the directory as seen from the source user::
 
  sudo -E -u www-data php occ files:transfer-ownership --path="path_to_dir" <source-user> <destination-user>
-                             
+
 Incoming shares are not moved by default because the sharing user holds the ownership of the respective files. There is however an option to enable moving incoming shares.
 
 In case the incoming shares must be transferred as well, use the argument ``--transfer-incoming-shares`` with ``0`` or ``1`` as parameters ::
@@ -1090,10 +1090,10 @@ Commands for handling shares::
 Files external
 --------------
 
-These commands are used for managing Nextcloud's *External Storage* feature. In 
-addition to replicating the configuration capabilities in the Web UI, additional 
-capabilities include exporting / importing configurations, scanning *External 
-Storage* mounts that require login credentials, and configuring update notifications 
+These commands are used for managing Nextcloud's *External Storage* feature. In
+addition to replicating the configuration capabilities in the Web UI, additional
+capabilities include exporting / importing configurations, scanning *External
+Storage* mounts that require login credentials, and configuring update notifications
 (if supported by the storage type).
 
 .. note::
@@ -1102,18 +1102,19 @@ Storage* mounts that require login credentials, and configuring update notificat
 
 Available commands for the "files_external" namespace::
 
-  files_external:applicable  Manage applicable users and groups for a mount
-  files_external:backends    Show available authentication and storage backends
-  files_external:config      Manage backend configuration for a mount
-  files_external:create      Create a new mount configuration
-  files_external:delete      Delete an external mount
-  files_external:export      Export mount configurations
-  files_external:import      Import mount configurations
-  files_external:list        List configured admin or personal mounts
-  files_external:notify      Listen for active update notifications for a configured external mount
-  files_external:option      Manage mount options for a mount
-  files_external:scan        Scan an external storage for changed files
-  files_external:verify      Verify mount configuration
+  files_external:applicable   Manage applicable users and groups for a mount
+  files_external:backends     Show available authentication and storage backends
+  files_external:config       Manage backend configuration for a mount
+  files_external:create       Create a new mount configuration
+  files_external:delete       Delete an external mount
+  files_external:export       Export mount configurations
+  files_external:import       Import mount configurations
+  files_external:list         List configured admin or personal mounts
+  files_external:notify       Listen for active update notifications for a configured external mount
+  files_external:option       Manage mount options for a mount
+  files_external:scan         Scan an external storage for changed files
+  files_external:verify       Verify mount configuration
+  files_external:dependencies Check for any missing dependencies needed for mounting external storages
 
 ``files_external:scan`` provides the ability to provide a username and/or password for cases where login credentials are used.
 
