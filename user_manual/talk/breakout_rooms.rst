@@ -1,3 +1,5 @@
+.. _breakout-rooms:
+==============
 Breakout rooms
 ==============
 
