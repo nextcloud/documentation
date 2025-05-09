@@ -108,8 +108,10 @@ Installation
 Model requirements
 ~~~~~~~~~~~~~~~~~~
 
-This app requires underlying Large language models to support tool calling. The default model in *llm2* does *not* support tool calling. Instead we recommend:
+This app requires underlying Large language models to support tool calling. The default model in *llm2* does support tool calling since version 2.4.0.
+Other models that may give good results are:
 
+* Google Gemma 3 12B or higher
 * Mistral 3 small 24B
 * Qwen 2.5 8B or higher (May not work well with languages other than English)
 * Watt Tool 8B or higher
