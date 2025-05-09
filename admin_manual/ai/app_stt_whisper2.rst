@@ -21,7 +21,11 @@ Requirements
 * Minimal Nextcloud version: 28
 * This app is built as an External App and thus depends on AppAPI v2.3.0
 * Nextcloud AIO is supported
-* Using GPU is currently not supported
+* We currently support NVIDIA GPUs and x86_64 CPUs
+* CUDA >= v12.2 on your host system
+* GPU Sizing
+
+   * A NVIDIA GPU with at least 4GB VRAM
 
 * CPU Sizing
 
