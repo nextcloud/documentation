@@ -1116,18 +1116,19 @@ Storage* mounts that require login credentials, and configuring update notificat
 
 Available commands for the "files_external" namespace::
 
-  files_external:applicable  Manage applicable users and groups for a mount
-  files_external:backends    Show available authentication and storage backends
-  files_external:config      Manage backend configuration for a mount
-  files_external:create      Create a new mount configuration
-  files_external:delete      Delete an external mount
-  files_external:export      Export mount configurations
-  files_external:import      Import mount configurations
-  files_external:list        List configured admin or personal mounts
-  files_external:notify      Listen for active update notifications for a configured external mount
-  files_external:option      Manage mount options for a mount
-  files_external:scan        Scan an external storage for changed files
-  files_external:verify      Verify mount configuration
+  files_external:applicable   Manage applicable users and groups for a mount
+  files_external:backends     Show available authentication and storage backends
+  files_external:config       Manage backend configuration for a mount
+  files_external:create       Create a new mount configuration
+  files_external:delete       Delete an external mount
+  files_external:export       Export mount configurations
+  files_external:import       Import mount configurations
+  files_external:list         List configured admin or personal mounts
+  files_external:notify       Listen for active update notifications for a configured external mount
+  files_external:option       Manage mount options for a mount
+  files_external:scan         Scan an external storage for changed files
+  files_external:verify       Verify mount configuration
+  files_external:dependencies Check for any missing dependencies needed for mounting external storages
 
 ``files_external:scan`` provides the ability to provide a username and/or password for cases where login credentials are used.
 
