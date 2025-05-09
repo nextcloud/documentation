@@ -438,16 +438,15 @@ applies only to the ``config:system:set`` command. The following values are
 known:
 
 * ``boolean``
-* ``integer``
 * ``float``
-* ``string`` (default)
-* ``null``
+* ``integer``
 * ``json``
+* ``null``
+* ``string`` (default)
 
 When you want to e.g. disable the maintenance mode run the following command::
 
-  sudo -E -u www-data php occ config:system:set maintenance --value=false
-  --type=boolean
+  sudo -E -u www-data php occ config:system:set maintenance --value=false --type=boolean
   Nextcloud is in maintenance mode - no app have been loaded
   System config value maintenance set to boolean false
 
@@ -467,8 +466,7 @@ second ``name`` in the ``config:system:set`` command, separated by a
 space. For example, to replace ``sample.tld`` with ``example.com``,
 ``trusted_domains => 2`` needs to be set::
 
-  sudo -E -u www-data php occ config:system:set trusted_domains 2
-  --value=example.com
+  sudo -E -u www-data php occ config:system:set trusted_domains 2 --value=example.com
   System config value trusted_domains => 2 set to string example.com
 
   sudo -E -u www-data php occ config:system:get trusted_domains
