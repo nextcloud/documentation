@@ -37,8 +37,9 @@ Added APIs
 ^^^^^^^^^^
 
 - New task processing task type ``OCP\TaskProcessing\TextToSpeech`` to convert text to speech.
-- New method ``\OCP\IUser::canChangeEmail`` allowing to check if the user backend allows the user to change their email address.
 - New interface ``\OCP\Share\IShareProviderSupportsAllSharesInFolder`` extending ``\OCP\Share\IShareProvider`` to add the method ``\OCP\Share\IShareProviderSupportsAllSharesInFolder::getAllSharesInFolder`` used for querying all shares in a folder without filtering by user.
+- New method ``\OCP\IUser::canChangeEmail`` allowing to check if the user backend allows the user to change their email address.
+- New method ``\OCP\Files\IFilenameValidator::sanitizeFilename`` allowing to sanitize a given filename to comply with configured constraints.
 
 Changed APIs
 ^^^^^^^^^^^^
