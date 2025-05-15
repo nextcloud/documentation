@@ -51,6 +51,7 @@ Deprecated APIs
 
 - The files API endpoint ``/apps/files/api/v1/thumbnail/`` for generating previews is deprecated.
   Instead use the preview endpoint provided by Nextcloud core (``/core/preview``).
+- The legacy method ``\OC_Helper::canExecute`` is deprecated, please use the ``OCP\IBinaryFinder`` instead.
 
 Removed APIs
 ^^^^^^^^^^^^
