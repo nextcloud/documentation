@@ -651,7 +651,10 @@ that it is not possible to use the `disallowXYZ` functions.
 
 .. versionadded:: 18
 
-Event to request a secure password to be generated
+Event to request a secure password to be generated.
+
+Since Nextcloud 31 this event also provides a ``getContext`` method
+allowing to apply different rules for different password context like account passwords or share passwords.
 
 ``OCP\Security\Events\ValidatePasswordPolicyEvent``
 ***************************************************
@@ -661,6 +664,9 @@ Event to request a secure password to be generated
 This event can be emitted to request a validation of a password.
 If a password policy app is installed and the password
 is invalid, an `\OCP\HintException` will be thrown.
+
+Since Nextcloud 31 this event also provides a ``getContext`` method
+allowing to apply different rules for different password context like account passwords or share passwords.
 
 ``OCP\Security\FeaturePolicy\AddFeaturePolicyEvent``
 ****************************************************
