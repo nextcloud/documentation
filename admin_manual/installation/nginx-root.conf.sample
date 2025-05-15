@@ -119,22 +119,32 @@ server {
         access_log off;
     }
 
-    # Make a regex exception for `/.well-known` so that clients can still
-    # access it despite the existence of the regex rule
-    # `location ~ /(\.|autotest|...)` which would otherwise handle requests
-    # for `/.well-known`.
-    location ^~ /.well-known {
+    # Service Discovery for well-known services
+    # (Do not allow the browse the directory).
+    location =  /.well-known  { return 403; }
+    location =  /.well-known/ { return 403; }
+    location ^~ /.well-known/ {
+        # Using the special prefix syntax (`location ^~ /.well-known/` rather than `location /.well-known/` prevent
+        # the regex evaluation of other location entries (e.g. `location ~ /(\.|autotest|...)`), which would take
+        # precedence over this prefix. See https://nginx.org/en/docs/http/ngx_http_core_module.html#location
+
         # The rules in this block are an adaptation of the rules
         # in `.htaccess` that concern `/.well-known`.
 
         location = /.well-known/carddav { return 301 /remote.php/dav/; }
         location = /.well-known/caldav  { return 301 /remote.php/dav/; }
 
-        location /.well-known/acme-challenge    { try_files $uri $uri/ =404; }
-        location /.well-known/pki-validation    { try_files $uri $uri/ =404; }
+        location = /.well-known/acme-challenge   { return 404; }
+        location   /.well-known/acme-challenge/  { try_files $uri =404; }
+        location = /.well-known/pki-validation   { return 404; }
+        location   /.well-known/pki-validation/  { try_files $uri =404; }
+
+        # Add other exceptions/redirects here if you have other applications that provide a well known service
 
         # Let Nextcloud's API for `/.well-known` URIs handle all other
         # requests by passing them to the front-end controller.
+        # (use permanent redirect as it can be assumed that no new well-known service is provided
+        #  by another application, given that Nextcloud is installed in the webroot.)
         return 301 /index.php$request_uri;
     }
 
