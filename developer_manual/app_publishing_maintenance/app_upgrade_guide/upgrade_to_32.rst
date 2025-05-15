@@ -61,3 +61,6 @@ Removed APIs
 - ``\OCP\Files::getStorage`` and the legacy ``OC_App_::getStorage`` methods were deprecated since Nextcloud 14, respective Nextcloud 5, and were now removed.
   Instead use ``\OCP\Files\IAppData``.
 - ``\OCP\AppFramework\App::registerRoutes`` (deprecated in Nextcloud 20) was removed. Instead return the routes as an array from your routes.php or use route attributes.
+- The legacy visibility constants of ``OCP\Accounts\IAccountManager``,
+  ``VISIBILITY_PRIVATE``, ``VISIBILITY_CONTACTS_ONLY``, ``VISIBILITY_PUBLIC``, were deprecated since Nextcloud 21 and are now removed.
+  Instead only the v2 visibility constants can be used.
