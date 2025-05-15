@@ -59,3 +59,4 @@ Removed APIs
   If you need the package for your app, then you need to ship it yourself.
 - ``\OCP\Files::getStorage`` and the legacy ``OC_App_::getStorage`` methods were deprecated since Nextcloud 14, respective Nextcloud 5, and were now removed.
   Instead use ``\OCP\Files\IAppData``.
+- ``\OCP\AppFramework\App::registerRoutes`` (deprecated in Nextcloud 20) was removed. Instead return the routes as an array from your routes.php or use route attributes.
