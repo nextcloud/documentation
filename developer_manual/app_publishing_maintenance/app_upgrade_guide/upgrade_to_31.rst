@@ -113,6 +113,8 @@ Added APIs
 - New service ``OCP\RichObjectStrings\IRichTextFormatter`` to format rich text into parsed plain text using its ``richToParsed`` method.
 - New magic query parameter ``forceLanguage`` to force a specific language for a web request (API or frontend). See :ref:`Forcing language for a given call<api-force-language>`.
 - The new WebDAV property ``nc:hide-download`` was added to indicate if download actions should be hidden for a shared file or folder.
+- ``OCP\Security\PasswordContext`` was added, this allows defining a context for which a password should be used.
+  It is used by the ``GenerateSecurePasswordEvent`` and ``ValidatePasswordPolicyEvent`` allowing to apply different rules for different contexts.
 
 Changed APIs
 ^^^^^^^^^^^^
@@ -163,6 +165,8 @@ Changed APIs
 - ``OCP\Files\Storage::needsPartFile`` method was moved to interface ``OCP\Files\Storage\IStorage``.
 - The constructor was removed from interface ``OCP\Files\Storage\IStorage`` so that wrappers can use DI in their constructor. If your storage implementation is supposed to be built by calling the constructor, please implement the new interface ``OCP\Files\Storage\IConstructableStorage``.
 - ``OCP\IUser::getFirstLogin`` method was added to get first known login of a user. It will return a unix timestamp, or 0 if the user never logged in, or -1 if this data is not known (meaning the first login of this user was from before upgrading to 31).
+- ``OCP\Security\GenerateSecurePasswordEvent`` and ``OCP\Security\ValidatePasswordPolicyEvent`` now have a ``getContext`` method returning the password context,
+  this allows to apply different rules for different contexts.
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
