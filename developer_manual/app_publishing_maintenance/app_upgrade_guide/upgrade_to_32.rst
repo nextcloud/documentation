@@ -57,3 +57,5 @@ Removed APIs
 
 - The ``scssphp`` package is no longer shipped with Nextcloud. This package was not used and deprecated since Nextcloud 22.
   If you need the package for your app, then you need to ship it yourself.
+- ``\OCP\Files::getStorage`` and the legacy ``OC_App_::getStorage`` methods were deprecated since Nextcloud 14, respective Nextcloud 5, and were now removed.
+  Instead use ``\OCP\Files\IAppData``.
