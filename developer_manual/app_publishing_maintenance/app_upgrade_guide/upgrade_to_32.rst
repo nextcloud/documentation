@@ -64,3 +64,13 @@ Removed APIs
 - The legacy visibility constants of ``OCP\Accounts\IAccountManager``,
   ``VISIBILITY_PRIVATE``, ``VISIBILITY_CONTACTS_ONLY``, ``VISIBILITY_PUBLIC``, were deprecated since Nextcloud 21 and are now removed.
   Instead only the v2 visibility constants can be used.
+- Removed deprecated methods of legacy ``\OC_Helper`` class:
+
+  - ``humanFileSize`` was deprecated since version 4.0.0 and replaced with ``\OCP\Util::humanFileSize``
+  - ``computerFileSize`` was deprecated since version 4.0.0 and replaced with ``\OCP\Util::computerFileSize``
+  - ``mb_array_change_key_case`` was deprecated since version 4.5.0 and replaced with ``\OCP\Util::mb_array_change_key_case``
+  - ``recursiveArraySearch`` was deprecated since version 4.5.0 and replaced with ``\OCP\Util::recursiveArraySearch``
+  - ``rmdirr`` was deprecated since version 5.0.0 and replaced with ``\OCP\Files::rmdirr``
+  - ``maxUploadFilesize`` was deprecated since version 5.0.0 and replaced with ``\OCP\Util::maxUploadFilesize``
+  - ``freeSpace`` was deprecated since version 7.0.0 and replaced with ``\OCP\Util::freeSpace``
+  - ``uploadLimit`` was deprecated since version 7.0.0 and replaced with ``\OCP\Util::uploadLimit``
