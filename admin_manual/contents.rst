@@ -18,6 +18,7 @@ Table of contents
     file_workflows/index
     groupware/index
     office/index
+	teams/index
     reference/index
     ai/index
     webhook_listeners/index
