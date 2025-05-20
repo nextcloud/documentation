@@ -58,6 +58,8 @@ Deprecated APIs
   Instead use the preview endpoint provided by Nextcloud core (``/core/preview``).
 - The legacy method ``\OC_Helper::canExecute`` is deprecated, please use the ``OCP\IBinaryFinder`` instead.
 - ``\OC_Template`` and ``\OCP\Template`` classes are deprecated, please use the new ``\OCP\Template\ITemplateManager`` instead.
+- ``\OC_User::useBackend`` is deprecated, please use ``\OCP\IUserManager::registerBackend`` available since 8.0.0
+- ``\OC_User::clearBackends`` is deprecated, please use ``\OCP\IUserManager::clearBackends`` available since 8.0.0
 
 Removed APIs
 ^^^^^^^^^^^^
