@@ -271,6 +271,7 @@ Depending on your server setup, these are the possible connections:
 	- submitted data: subscription key
 - github.com, objects.githubusercontent.com
 	- to download Nextcloud standard apps
+	- to download Nextcloud server releases
 - push-notifications.nextcloud.com
 	- sending push notifications to mobile clients
 	- submitted data: unique device identifier, public key, push token
