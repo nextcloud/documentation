@@ -45,11 +45,15 @@ Added APIs
 - New event ``\OCP\Files\Config\Event\UserMountRemovedEvent`` which is emitted when an existing mount is removed from the ``oc_mounts`` table.
 - New event ``\OCP\Files\Config\Event\UserMountUpdatedEvent`` which is emitted when an existing mount is updated in the ``oc_mounts`` table.
 - New attribute ``\OCP\AppFramework\Http\Attribute\RequestHeader`` used for documenting request headers for OpenAPI specifications generated using openapi-extractor.
+- New method ``\OCP\Files\Template\ITemplateManager::listTemplateFields`` to allow listing the fields of a template.
+- New method ``\OCA\Files\Controller\TemplateController::listTemplateFields`` to list the fields of a template, accessible at ``/ocs/v2.php/apps/files/api/v1/templates/fields/{fileId}``.
+- New method ``\OCP\Files\Template\BeforeGetTemplatesEvent::shouldGetFields`` to get the event's ``withFields`` property, which should determine whether or not to perform template field extraction on the returned templates.
 
 Changed APIs
 ^^^^^^^^^^^^
 
 - ``\OCP\Authentication\TwoFactorAuth\ILoginSetupProvider::getBody``, ``\OCP\Authentication\TwoFactorAuth\IPersonalProviderSettings::getBody`` and ``\OCP\Authentication\TwoFactorAuth\IProvider::getBody`` return type was broaden from ``\OCP\Template`` class to ``\OCP\Template\ITemplate`` interface. Should not change anything for applications.
+- ``\OCP\Files\Template\BeforeGetTemplatesEvent`` now takes an optional boolean constructor value, ``withFields``, that allows you to explicitly control whether template fields should be extracted. The default value is ``false``.
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
