@@ -76,3 +76,11 @@ Removed APIs
   - ``maxUploadFilesize`` was deprecated since version 5.0.0 and replaced with ``\OCP\Util::maxUploadFilesize``
   - ``freeSpace`` was deprecated since version 7.0.0 and replaced with ``\OCP\Util::freeSpace``
   - ``uploadLimit`` was deprecated since version 7.0.0 and replaced with ``\OCP\Util::uploadLimit``
+
+- Removed deprecated methods of legacy ``\OC_Util`` class:
+
+  - ``addScript`` was replaced by ``\OCP\Util::addScript`` in 24
+  - ``addVendorScript`` was unused and removed
+  - ``addTranslations`` was replace by ``\OCP\Util::addTranslations`` in 24
+
+- Template function ``vendor_script`` was unused and removed
