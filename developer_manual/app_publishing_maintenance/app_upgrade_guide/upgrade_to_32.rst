@@ -44,6 +44,7 @@ Added APIs
 - New event ``\OCP\Files\Config\Event\UserMountAddedEvent`` which is emitted when new mount is added to the ``oc_mounts`` table.
 - New event ``\OCP\Files\Config\Event\UserMountRemovedEvent`` which is emitted when an existing mount is removed from the ``oc_mounts`` table.
 - New event ``\OCP\Files\Config\Event\UserMountUpdatedEvent`` which is emitted when an existing mount is updated in the ``oc_mounts`` table.
+- New attribute ``\OCP\AppFramework\Http\Attribute\RequestHeader`` used for documenting request headers for OpenAPI specifications generated using openapi-extractor.
 
 Changed APIs
 ^^^^^^^^^^^^
