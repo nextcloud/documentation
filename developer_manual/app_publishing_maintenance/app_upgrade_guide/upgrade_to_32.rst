@@ -41,6 +41,9 @@ Added APIs
 - New method ``\OCP\IUser::canChangeEmail`` allowing to check if the user backend allows the user to change their email address.
 - New method ``\OCP\Files\IFilenameValidator::sanitizeFilename`` allowing to sanitize a given filename to comply with configured constraints.
 - New service ``\OCP\Template\ITemplateManager`` to access template related functions, and get instances of new interface  ``\OCP\Template\ITemplate`` instead of building manually ``\OCP\Template``.
+- New event ``\OCP\Files\Config\Event\UserMountAddedEvent`` which is emitted when new mount is added to the ``oc_mounts`` table.
+- New event ``\OCP\Files\Config\Event\UserMountRemovedEvent`` which is emitted when an existing mount is removed from the ``oc_mounts`` table.
+- New event ``\OCP\Files\Config\Event\UserMountUpdatedEvent`` which is emitted when an existing mount is updated in the ``oc_mounts`` table.
 
 Changed APIs
 ^^^^^^^^^^^^
