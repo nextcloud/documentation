@@ -372,6 +372,9 @@ and then :ref:`rescan the external storage<occ_files_scan_label>`.
 Troubleshooting contacts & calendar
 -----------------------------------
 
+.. tip::
+  Please also refer to the troubleshooting article in the groupware section: :ref:`troubleshooting_groupware`.
+
 Unable to update contacts or events
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
