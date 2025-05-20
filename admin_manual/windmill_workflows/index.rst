@@ -43,6 +43,16 @@ This resource includes a **baseUrl** field, which specifies the URL that Windmil
 
 To set the correct URL, navigate to the Windmill interface, go to the **Resources** tab, locate the resource labeled ``u/admin/exapp_resource``, click the three dots on the right, and select the "Edit" button.
 
+Next, navigate to **Settings->Instance->Core** in Windmill and check if the **Base url** for the Windmill instance is correct.
+
+If you are using DockerSocketProxy, the Base URL should be:
+
+    `https://<your-nextcloud-base-url>/index.php/apps/app_api/proxy/flow`
+
+If you are using HaRP (as introduced in Nextcloud 32), the Base URL should be:
+
+    `https://<your-nextcloud-base-url>/exapps/flow`
+
 Building a workflow
 -------------------
 
