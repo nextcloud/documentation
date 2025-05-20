@@ -40,11 +40,12 @@ Added APIs
 - New interface ``\OCP\Share\IShareProviderSupportsAllSharesInFolder`` extending ``\OCP\Share\IShareProvider`` to add the method ``\OCP\Share\IShareProviderSupportsAllSharesInFolder::getAllSharesInFolder`` used for querying all shares in a folder without filtering by user.
 - New method ``\OCP\IUser::canChangeEmail`` allowing to check if the user backend allows the user to change their email address.
 - New method ``\OCP\Files\IFilenameValidator::sanitizeFilename`` allowing to sanitize a given filename to comply with configured constraints.
+- New service ``\OCP\Template\ITemplateManager`` to access template related functions, and get instances of new interface  ``\OCP\Template\ITemplate`` instead of building manually ``\OCP\Template``.
 
 Changed APIs
 ^^^^^^^^^^^^
 
-- TBD
+- ``\OCP\Authentication\TwoFactorAuth\ILoginSetupProvider::getBody``, ``\OCP\Authentication\TwoFactorAuth\IPersonalProviderSettings::getBody`` and ``\OCP\Authentication\TwoFactorAuth\IProvider::getBody`` return type was broaden from ``\OCP\Template`` class to ``\OCP\Template\ITemplate`` interface. Should not change anything for applications.
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
@@ -52,6 +53,7 @@ Deprecated APIs
 - The files API endpoint ``/apps/files/api/v1/thumbnail/`` for generating previews is deprecated.
   Instead use the preview endpoint provided by Nextcloud core (``/core/preview``).
 - The legacy method ``\OC_Helper::canExecute`` is deprecated, please use the ``OCP\IBinaryFinder`` instead.
+- ``\OC_Template`` and ``\OCP\Template`` classes are deprecated, please use the new ``\OCP\Template\ITemplateManager`` instead.
 
 Removed APIs
 ^^^^^^^^^^^^
