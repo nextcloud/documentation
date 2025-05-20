@@ -22,7 +22,7 @@ In the beginning, all requests are sent to Nextcloud's :file:`index.php` which i
 * Filesystem
 * Logging
 
-The type of the app is determined by inspecting the app's :doc:`configuration file <../app_development/info>` (:file:`appinfo/info.xml`). Loading apps means that the :doc:`main file <../app_development/init>` (:file:`appinfo/app.php`) of each installed app is being loaded and executed. That means that if you want to execute code before a specific app is being run, you can place code in your app's :doc:`../app_development/init` file.
+The type of the app is determined by inspecting the app's :doc:`configuration file <../app_development/info>` (:file:`appinfo/info.xml`). Each installed app is being loaded and executed (see :doc:`Bootstrap <../app_development/bootstrap>`). That means that if you want to execute code before a specific app is being run, you can place code in your app's :doc:`../app_development/init` file.
 
 Afterwards the following steps are performed:
 

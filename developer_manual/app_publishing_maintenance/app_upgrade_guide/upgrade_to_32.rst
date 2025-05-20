@@ -90,3 +90,4 @@ Removed APIs
   - ``addTranslations`` was replace by ``\OCP\Util::addTranslations`` in 24
 
 - Template function ``vendor_script`` was unused and removed
+- The support for ``app.php`` files, deprecated since Nextcloud 19, was removed. Existence of the file is still checked to show an error if present, but that will be removed in a later version. Please move to ``OCP\AppFramework\Bootstrap\IBoostrap`` instead.
