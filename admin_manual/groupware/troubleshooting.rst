@@ -26,12 +26,15 @@ Missing Shared Calendars
     It's possible for a user to hide a calendar. Please check in Nextcloud Calendar if the missing calendar is listed in the "hidden" section. If the missing calendar is listed there, check the box in front of the calendar to enable it again.
 
 2. **List Calendar Shares:**
-    Run the command ``occ dav:list-calendar-shares <uid>`` to list all shares for a user. Look for lines with the Calendar URI/Calendar Name of the missing calendar and Permissions = Unshare. If there's such a line, but the user should have access, you have two options:
+    Run the command ``occ dav:list-calendar-shares <uid>`` to list all shares for a user. Look for lines with the Calendar URI/Calendar Name of the missing calendar and Permissions = Unshare. If there's such a line, but the user should have access, you have three options:
 
-A. **Remove All Calendar Unshares for a User:**
+A. **Create a User Share and Remove It Again:**
+    In most cases, sharing the calendar with the user again (as an individual/user share) will correct the state in the database.
+
+B. **Remove All Calendar Unshares for a User:**
     ``occ dav:clear-calendar-unshares <uid>``.
 
-B. **Delete Specific Unshares:**
+C. **Delete Specific Unshares:**
     Some users may have many calendar unshares, so it might be easier to delete only the unwanted unshare. The ``Share Id`` references the id of a row in the ``oc_dav_shares`` database table. Delete the row with the matching id to remove the unshare.
 
 **Why Isn't there an Automated Migration to Correct the Problem?**
