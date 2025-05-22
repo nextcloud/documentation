@@ -5,7 +5,7 @@ Upgrade to Nextcloud 32
 General
 -------
 
-- A new ``tests/autoload.php`` file was added to server repository, that you can include in your app ``bootstrap.php`` file for tests, to be able to load the core ``\Test\TestCase`` class. You should remove any call to ``\OC::$loader `` in your code as this legacy loader is being removed. This new file is backported to branches stable31, stable30 and stable29, so if your application supports multiple Nextcloud major it should still work.
+- A new ``tests/autoload.php`` file was added to server repository, that you can include in your app ``bootstrap.php`` file for tests, to be able to load the core ``\Test\TestCase`` class. You should remove any call to ``\OC::$loader`` in your code as this legacy loader is being removed. This new file is backported to branches stable31, stable30 and stable29, so if your application supports multiple Nextcloud major versions it should still work.
 
 Front-end changes
 -----------------
