@@ -179,6 +179,10 @@ your .htaccess file::
 
 After each update, these changes are automatically applied to the ``.htaccess``-file.
 
+.. note:: In case the automatically added ``.htaccess`` configuration `SetEnv front_controller_active true` does not work for your environment:
+   Edit ``config/config.php`` and add ``'htaccess.IgnoreFrontController' => true``.
+   See :doc:`../configuration_server/config_sample_php_parameters` for a detailed description.
+
 .. _enabling_ssl_label:
 
 Enabling SSL
