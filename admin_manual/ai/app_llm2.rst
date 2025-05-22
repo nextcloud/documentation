@@ -39,7 +39,7 @@ Requirements
 * Nextcloud AIO is supported
 * We currently support NVIDIA GPUs and x86_64 CPUs
 * CPU that supports AVX and AVX2 instruction
-* CUDA >= v12.8 on your host system
+* CUDA >= v12.4 on your host system
 * GPU Sizing
 
    * A NVIDIA GPU with at least 8GB VRAM
