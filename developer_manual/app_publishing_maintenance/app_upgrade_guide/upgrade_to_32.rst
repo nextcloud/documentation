@@ -64,6 +64,7 @@ Deprecated APIs
 - ``\OC_Template`` and ``\OCP\Template`` classes are deprecated, please use the new ``\OCP\Template\ITemplateManager`` instead.
 - ``\OC_User::useBackend`` is deprecated, please use ``\OCP\IUserManager::registerBackend`` available since 8.0.0
 - ``\OC_User::clearBackends`` is deprecated, please use ``\OCP\IUserManager::clearBackends`` available since 8.0.0
+- ``\OC_Helper::isReadOnlyConfigEnabled`` is deprecated, please use the ``config_is_read_only`` system config directly.
 
 Removed APIs
 ^^^^^^^^^^^^
