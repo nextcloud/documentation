@@ -113,8 +113,7 @@ The overall process is as follows:
    process lifetime, no other apps nor all of the server components are ready. Therefore the app **must not** try to use
    anything except the API provided by the context. That shall ensure that all apps can safely run their registration logic
    before any services are queried (instantiated) from the DI container or related code is run.
-2) Nextcloud will load groups of certain apps early, e.g. filesystem or session apps, and other later. For that purpose, their optional
-   :ref:`app-php` will be included. As ``app.php`` is deprecated, apps should try not to rely on this step.
+2) Nextcloud will load groups of certain apps early, e.g. filesystem or session apps, and other later.
 3) Nextcloud will query the app's ``Application`` class (again), no matter whether it implements ``IBootstrap`` or not.
 4) Nextcloud will invoke the :ref:`boot <app-bootstrap-boot>` method of every ``Application`` instance that implements ``IBootstrap``. At this stage
    you may assume that all registrations via ``IBootstrap::register`` have completed.
@@ -190,7 +189,7 @@ With the help of ``Closure::fromCallable`` you can also delegate to other method
         public function register(IRegistrationContext $context): void {}
 
         public function boot(IBootContext $context): void {
-            $context->injectFn(Closure::fromCallable([$this, 'registerFoo']));
+            $context->injectFn($this->registerFoo(...));
         }
 
         protected function registerFoo(IFooManager $manager): void {
@@ -198,34 +197,3 @@ With the help of ``Closure::fromCallable`` you can also delegate to other method
         }
 
     }
-
-Nextcloud 19 and older
-**********************
-
-Nextcloud will load groups of certain apps early, like filesystem or session apps, and other later. For this their optional
-:ref:`app-php` will be included. The ``Application`` class is only queried for some requests, so there is no guarantee that
-it's constructor will be invoked.
-
-
-.. _app-php:
-
-app.php (deprecated)
---------------------
-
-Nextcloud will ``require_once`` every installed and enabled app's ``appinfo/app.php`` file if it exists. The app can use
-this file to run registrations of autoloaders, services, event listeners and similar.
-
-To leverage the advantages of object-oriented programming, it's recommended to put the logic into an :ref:`Application<application-php>`
-class and query an instance like
-
-.. code-block:: php
-    :caption: appinfo/app.php
-
-    <?php
-
-    declare(strict_types=1);
-
-    // Register the composer autoloader for packages shipped by this app, if applicable
-    include_once __DIR__ . '/../vendor/autoload.php';
-
-    $app = \OC::$server->query(\OCA\MyApp\AppInfo\Application::class);

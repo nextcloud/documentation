@@ -401,71 +401,7 @@ Hooks
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-Hooks are used to execute code before or after an event has occurred. This is for instance useful to run cleanup code after users, groups or files have been deleted. Hooks should be registered in the :doc:`app.php <../app_development/init>`:
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\AppInfo;
-
-    $app = new Application();
-    $app->getContainer()->query('UserHooks')->register();
-
-The hook logic should be in a separate class that is being registered in the `App constructor <dependency_injection.html#using-a-container>`__:
-
-.. code-block:: php
-
-    <?php
-
-    namespace OCA\MyApp\AppInfo;
-
-    use \OCP\AppFramework\App;
-
-    use \OCA\MyApp\Hooks\UserHooks;
-
-
-    class Application extends App {
-
-        public function __construct(array $urlParams=array()){
-            parent::__construct('myapp', $urlParams);
-
-            $container = $this->getContainer();
-
-            /**
-             * Controllers
-             */
-            $container->registerService('UserHooks', function($c) {
-                return new UserHooks(
-                    $c->get(\OCP\IUserManager::class)
-                );
-            });
-        }
-    }
-
-.. code-block:: php
-
-    <?php
-
-    namespace OCA\MyApp\Hooks;
-
-    use OCP\IUserManager;
-
-    class UserHooks {
-
-        private $userManager;
-
-        public function __construct(IUserManager $userManager){
-            $this->userManager = $userManager;
-        }
-
-        public function register() {
-            $callback = function($user) {
-                // your code that executes before $user is deleted
-            };
-            $this->userManager->listen('\OC\User', 'preDelete', $callback);
-        }
-
-    }
+Hooks are used to execute code before or after an event has occurred. This is for instance useful to run cleanup code after users, groups or files have been deleted. Hooks should be registered in the :doc:`Bootstrapping process <../app_development/bootstrap>`.
 
 Available hooks
 ```````````````
