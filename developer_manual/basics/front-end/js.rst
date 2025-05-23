@@ -7,7 +7,7 @@ JavaScript
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
 The JavaScript files reside in the **js/** folder and should be included
-in the appropriate controller. There is two methods to inject your JavaScript files.
+in the appropriate controller. There are two methods to inject your JavaScript files.
 
   1. ``Util::addScript``
   2. ``Util::addInitScript``
