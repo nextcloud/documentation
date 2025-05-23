@@ -200,11 +200,20 @@ Possibility of Data Leak
 | It is possible that some users who had access to certain files/folders (and have later have been denied this access) still have access to the content of those files/folders through the Context Chat app. We're working on a solution for this.
 | The users who never had access to a particular file/folder will NOT be able to see those contents in any way.
 
+File access control rules not supported
+---------------------------------------
+
+In Nextcloud you can set up file access control rules using the files_accesscontrol app to restrict access to certain files.
+
+| Context Chat does **not** follow these rules
+
+It is thus possible for users who have been denied access to a document via the files_accesscontrol app to still gain access via Context Chat
+if the document is visible in the files app for the user in question.
+
 Known Limitations
 -----------------
 
 * Language models are likely to generate false information and should thus only be used in situations that are not critical. It's recommended to only use AI at the beginning of a creation process and not at the end, so that outputs of AI serve as a draft for example and not as final product. Always check the output of language models before using it and make sure whether it meets your use-case's quality requirements.
-* Context Chat is not integrated into the Chat UI of assistant app, at the moment, but has it's own interface in the assistant modal
 * Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI).
 * Large files are not supported in "Selective context" in the Assistant UI if they have not been indexed before. Use ``occ context_chat:scan <user_id> -d <directory_path>`` to index the desired directory synchronously and then use the Selective context option. "Large files" could mean differently for different users. It depends on the amount of text inside the documents in question and the hardware on which the indexer is running. Generally 20 MB should be large for a CPU-backed setup and 100 MB for a GPU-backed system.
 * Password protected PDFs or any other files are not supported. There will be error logs mentioning cryptography and AES in the docker container when such files are encountered but it is nothing to worry about, they will be simply ignored and the system will continue to function normally.
