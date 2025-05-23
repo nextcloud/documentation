@@ -203,7 +203,7 @@ Possibility of Data Leak
 File access control rules not supported
 ---------------------------------------
 
-In Nextcloud you can set up file access control rules using the files_accesscontrol app to restrict access to certain files.
+In Nextcloud you can set up file access control rules using the [files_accesscontrol](https://apps.nextcloud.com/apps/files_accesscontrol) app to restrict access to certain files.
 
 | Context Chat does **not** follow these rules
 
