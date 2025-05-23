@@ -127,6 +127,7 @@ Known Limitations
 
 * We currently only support languages that the underlying model supports; correctness of language use in languages other than English may be poor depending on the language's coverage in the model's training data (We recommended model Llama 3 or other models explicitly trained on multiple languages)
 * Language models can be bad at reasoning tasks
+* Language models can be bad at math
 * Language models are likely to generate false information and should thus only be used in situations that are not critical. It's recommended to only use AI at the beginning of a creation process and not at the end, so that outputs of AI serve as a draft for example and not as final product. Always check the output of language models before using it.
 * Make sure to test the language model you are using it for whether it meets the use-case's quality requirements
 * Language models notoriously have a high energy consumption, if you want to reduce load on your server you can choose smaller models or quantized models in exchange for lower accuracy
