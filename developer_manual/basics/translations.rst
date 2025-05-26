@@ -119,6 +119,18 @@ They differ a bit in terms of usage compared to php:
     t('myapp', '{name} is available. Get {linkstart}more information{linkend}', {name: 'Nextcloud 16', linkstart: '<a href="...">', linkend: '</a>'});
     n('myapp', 'Import %n calendar into {collection}', 'Import %n calendars into {collection}', selectionLength, {collection: 'Nextcloud'});
 
+
+ExApps (Python)
+---------------
+
+For ExApps, Python is currently only supported for automated Transifex translations.
+
+Alongside the usual ``l10n/*.json`` and ``l10n/*.js`` files, translation source files located in ``translationfiles/<lang>/*.po`` are also included in the Transifex sync.
+These ``.po`` files can be compiled into ``.mo`` files, which are typically used by the ExApp backend for runtime translations.
+
+For more details, see :ref:`ex_app_translations`.
+
+
 Guidelines
 ----------
 

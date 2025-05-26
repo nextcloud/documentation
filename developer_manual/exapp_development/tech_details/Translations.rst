@@ -1,3 +1,5 @@
+.. _ex_app_translations:
+
 Translations
 ============
 
@@ -19,8 +21,17 @@ For the front-end part, AppAPI will inject the current user's locale ``l10n/<lan
 Back-end
 ********
 
-For the back-end part of ExApp, which can be written in different programming languages, it is **up to the developer to decide** how to handle and translations files.
+For the back-end part of ExApp, which can be written in different programming languages, it is **up to the developer to decide** how to handle translations files.
 There is an example repository with translations: `UI example with translations <https://github.com/nextcloud/ui_example>`_.
+
+There are two Python functions used by `translationtool <https://github.com/nextcloud/docker-ci/tree/master/translations/translationtool>`_ to extract translation string: ``_('singular string')`` and ``_n('singular string', 'plural string', count)``.
+
+
+Transifex sync
+--------------
+
+For automated Transifex sync there are only ``.po`` files included.
+You can then compile them to ``.mo`` files using `ui_example's <https://github.com/nextcloud/ui_example/tree/main/scripts/compile_po_to_mo.sh>`_ ``scripts/compile_po_to_mo.sh`` script.
 
 
 Manual install
