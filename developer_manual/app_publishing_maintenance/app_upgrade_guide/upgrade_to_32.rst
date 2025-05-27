@@ -96,3 +96,36 @@ Removed APIs
 
 - Template function ``vendor_script`` was unused and removed
 - The support for ``app.php`` files, deprecated since Nextcloud 19, was removed. Existence of the file is still checked to show an error if present, but that will be removed in a later version. Please move to ``OCP\AppFramework\Bootstrap\IBoostrap`` instead.
+- The following getters, deprecated since 20, were removed. Please use Dependency Injection or ``\OCP\Server::get`` instead:
+- ``IServerContainer::getAppConfig()``
+- ``IServerContainer::getAvatarManager()``
+- ``IServerContainer::getCalendarManager()``
+- ``IServerContainer::getCalendarResourceBackendManager()``
+- ``IServerContainer::getCalendarRoomBackendManager()``
+- ``IServerContainer::getCloudFederationFactory()``
+- ``IServerContainer::getCloudFederationProviderManager()``
+- ``IServerContainer::getCommandBus()``
+- ``IServerContainer::getCommentsManager()``
+- ``IServerContainer::getContentSecurityPolicyManager()``
+- ``IServerContainer::getCredentialsManager()``
+- ``IServerContainer::getDateTimeFormatter()``
+- ``IServerContainer::getDateTimeZone()``
+- ``IServerContainer::getEncryptionKeyStorage()``
+- ``IServerContainer::getEventLogger()``
+- ``IServerContainer::getGlobalScaleConfig()``
+- ``IServerContainer::getHTTPClientService()``
+- ``IServerContainer::getIniWrapper()``
+- ``IServerContainer::getLogFactory()``
+- ``IServerContainer::getMountManager()``
+- ``IServerContainer::getMountProviderCollection()``
+- ``IServerContainer::getNavigationManager()``
+- ``IServerContainer::getPreviewManager()``
+- ``IServerContainer::getQueryLogger()``
+- ``IServerContainer::getRemoteApiFactory()``
+- ``IServerContainer::getRemoteInstanceFactory()``
+- ``IServerContainer::getRouter()``
+- ``IServerContainer::getShareManager()``
+- ``IServerContainer::getStorageFactory()``
+- ``IServerContainer::getSystemTagManager()``
+- ``IServerContainer::getSystemTagObjectMapper()``
+- ``IServerContainer::getTagManager()``
