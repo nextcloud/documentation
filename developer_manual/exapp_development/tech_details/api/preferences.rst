@@ -5,6 +5,9 @@ Preferences
 The ExApp preferences API is similar to the standard preferences API.
 It is a user specific setting.
 
+.. note::
+	Since Nextcloud 32, sensitive config values are encrypted in the database.
+
 
 Set user config value
 ^^^^^^^^^^^^^^^^^^^^^
