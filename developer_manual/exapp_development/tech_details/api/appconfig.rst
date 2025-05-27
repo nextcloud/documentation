@@ -4,6 +4,10 @@ AppConfig
 
 The ExApp AppConfig API is similar to the standard Nextcloud **appconfig** API.
 
+.. note::
+	Since Nextcloud 32, sensitive config values are encrypted in the database.
+
+
 Set app config value
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -23,6 +27,7 @@ Request data
 		"configValue": "value"
 		"sensitive": "sensitive flag affecting the visibility of the value (0/1, default: 0)"
 	}
+
 
 Response data
 *************
