@@ -247,7 +247,7 @@ this:
     "dbname"        => "nextcloud",
     "dbuser"        => "username",
     "dbpassword"    => "",
-    "dbhost"        => "/var/run/postgresql",
+    "dbhost"        => "localhost:/var/run/postgresql",
     "dbtableprefix" => "oc_",
 
 .. note:: The host actually points to the socket that is used to connect to the database. Using localhost here will not work if postgreSQL is configured to use peer authentication. Also note that no password is specified, because this authentication method doesn't use a password.
