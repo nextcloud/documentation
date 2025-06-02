@@ -8,6 +8,11 @@ rules. If all rules of a group hold true, the group matches the request and
 access is being denied. The rules criteria range from IP address, to user
 groups, collaborative tags and :ref:`some more <available-rules-label>`.
 
+.. note:: In case you are using the :ref:`Context Chat App <ai-app-context_chat>`,
+    please keep in mind, that it is not affected by the File Access Control rules
+    and will respond with indexed information, even when the file is not accessible
+    by the user due to access control rules.
+
 Denied access
 -------------
 
