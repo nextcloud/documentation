@@ -116,7 +116,7 @@ Statuscodes:
 Update Share
 ~~~~~~~~~~~~
 
-Update a given share. Only one value can be updated per request.
+Update a given share.
 
 * Syntax: /shares/*<share_id>*
 * Method: PUT
@@ -132,8 +132,6 @@ Update a given share. Only one value can be updated per request.
 * PUT Arguments: note - (string) Adds a note for the share recipient.
 * PUT Arguments: attributes - (string) serialized JSON string for :ref:`share attributes<Share attributes>`
 * PUT Arguments: sendMail - (string) send an email to the recipient. This will not send an email on its own. You will have to use the :ref:`send-email<Send email>` endpoint to send the email. (true/false)
-
-.. note:: Only one of the update parameters can be specified at once.
 
 Statuscodes:
 
