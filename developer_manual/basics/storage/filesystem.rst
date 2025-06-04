@@ -81,13 +81,12 @@ All methods return a Folder object on which files and folders can be accessed, o
             try {
                 try {
                     $file = $userFolder->get('myfile.txt');
-                } catch(\OCP\Files\NotFoundException $e) {
-                    $userFolder->touch('myfile.txt');
-                    $file = $userFolder->get('myfile.txt');
-                }
 
-                // the id can be accessed by $file->getId();
-                $file->putContent($content);
+                    // the id can be accessed by $file->getId();
+                    $file->putContent($content);
+                } catch(\OCP\Files\NotFoundException $e) {
+                    $userFolder->newFile('myfile.txt', $content);
+                }
 
             } catch(\OCP\Files\NotPermittedException $e) {
                 // you have to create this exception by yourself ;)
