@@ -179,6 +179,15 @@ By doing so the contact will be automatically added as a recipient.
 
 .. note::  Only contacts with a valid email address will be suggested.
 
+Email snippets
+--------------
+
+.. versionadded:: 5.0
+
+Email snippets are predefined text blocks that can be inserted into your email. They can be created and managed in the Admin settings.
+They can be inserted into the composer by typing ``!`` and then selecting the snippet from the list.
+snippets can be shared with users and user groups.
+
 Minimize the composer modal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
