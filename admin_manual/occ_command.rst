@@ -252,7 +252,7 @@ enabled or disabled::
 
 List all of your installed and enabled (flag -enabled) or disabled (flag -disabled) apps::
 
- sudo -E -u www-data php occ app:list -enabled
+ sudo -E -u www-data php occ app:list --enabled
 
 List non-shipped installed apps only::
 
