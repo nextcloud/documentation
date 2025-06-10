@@ -128,7 +128,7 @@ For ExApps, Python is currently only supported for automated Transifex translati
 Alongside the usual ``l10n/*.json`` and ``l10n/*.js`` files, translation source files located in ``translationfiles/<lang>/*.po`` are also included in the Transifex sync.
 These ``.po`` files can be compiled into ``.mo`` files, which are typically used by the ExApp backend for runtime translations.
 
-For more details, see :ref:`ex_app_translations`.
+For more details, see :ref:`ex_app_translations_page`.
 
 
 Guidelines

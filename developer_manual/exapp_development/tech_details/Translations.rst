@@ -1,4 +1,4 @@
-.. _ex_app_translations:
+.. _ex_app_translations_page:
 
 Translations
 ============
@@ -25,6 +25,12 @@ For the back-end part of ExApp, which can be written in different programming la
 There is an example repository with translations: `UI example with translations <https://github.com/nextcloud/ui_example>`_.
 
 There are two Python functions used by `translationtool <https://github.com/nextcloud/docker-ci/tree/master/translations/translationtool>`_ to extract translation string: ``_('singular string')`` and ``_n('singular string', 'plural string', count)``.
+
+
+Manual translations
+*******************
+
+Manual translations instructions can be found :ref:`here <ex_app_translations>`.
 
 
 Transifex sync
