@@ -4160,6 +4160,20 @@ Automated deletions are not affected and will continue to work in cases like low
 
 Defaults to true.
 
+enable_lazy_objects
+^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'enable_lazy_objects' => true,
+
+Enable lazy objects feature from PHP 8.4 to be used in the Dependency Injection.
+
+Should improve performances by avoiding buiding unused objects.
+
+Defaults to true.
+
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
 
