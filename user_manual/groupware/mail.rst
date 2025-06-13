@@ -348,6 +348,62 @@ Autoresponders
 
 The autoresponder is off by default. It can be set manually, or follow the system settings. Following system settings means that the long absence message entered on the :ref:`Absence settings section <groupware-absence>` is applied automatically.
 
+Filter
+~~~~~~
+
+.. versionadded:: 4.1
+
+Mail 4.1 includes a simple editor to configure filter rules.
+
+
+.. note:: Importing existing filters is not supported. However, all existing filters will remain active and unchanged.  We recommend backing up your current script through the Sieve script editor as a precaution.
+
+How to Add a New Filter
+^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Open your account settings.
+2. Verify that Sieve is enabled for your account (see Sieve server settings).
+3. Click on Filters.
+4. Select New Filter to create a new rule.
+
+How to Delete a Filter
+^^^^^^^^^^^^^^^^^^^^^^
+
+1. Open your account settings.
+2. Ensure that Sieve is enabled for your account (see Sieve server settings).
+3. Click on Filters.
+4. Hover over the filter you wish to delete, then click the trash icon.
+
+
+Conditions
+^^^^^^^^^^
+
+Conditions are applied to incoming emails on your mail server, targeting fields such as Subject, Sender, and Recipient. You can use the following operators to define conditions for these fields:
+
+- **is exactly**: An exact match. The field must be identical to the provided value.
+- **contains**: A substring match. The field matches if the provided value is contained within it. For example, "report" would match "port".
+- **matches**: A pattern match using wildcards. The "*" symbol represents any number of characters (including none), while "?" represents exactly one character. For example, "*report*" would match "Business report 2024".
+
+Actions
+^^^^^^^
+
+Actions are triggered when the specified tests are true. The following actions are available:
+
+- **fileinto**: Moves the message into a specified folder.
+- **addflag**: Adds a flag to the message.
+- **stop**: Halts the execution of the filter script. No further filters with will be processed after this action.
+
+Create a filter from a message
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 5.2
+
+To create a filter from a given message, open the message and then open the menu by clicking on the three dots. Next, click on "More actions" followed by "Create mail filter."
+
+In the dialog, please select the conditions to match incoming messages and continue by clicking on "Create mail filter."
+
+.. figure:: images/mail_create_filter_from_message.png
+
 Follow-up reminders
 -------------------
 
