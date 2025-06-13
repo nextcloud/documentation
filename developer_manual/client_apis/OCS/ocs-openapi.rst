@@ -2,11 +2,11 @@
 OCS OpenAPI tutorial
 ====================
 
-This page explains you how you can add OpenAPI support to your app such that you can automatically generated an OpenAPI specification from your server code.
+This page explains you how you can add OpenAPI support to your app so that you can automatically generate an OpenAPI specification from your server code.
 
 Please read the whole tutorial before starting to adapt your app.
 
-Do not be afraid that you do not know everything from the start.
+Don't be afraid that you do not know everything from the start.
 The openapi-extractor tool gives you many warnings and fails if there is something utterly broken that would not work.
 Let the tool run and it will tell you if there is something wrong.
 Psalm will also help you validate your changes to ensure that nothing is broken.
@@ -544,10 +544,26 @@ It is best to start with helper methods that are used multiple times like the ``
         ...
     }
 
+The return type for [`DataResponse`](https://github.com/nextcloud/server/blob/master/lib/public/AppFramework/Http/DataResponse.php) and other inheritors of [`Response`](https://github.com/nextcloud/server/blob/master/lib/public/AppFramework/Http/Response.php) expect different arguments. See their class annotations in the code. The following table lists some common ones:
+
++--------------------------+----------------------------+
+| Response inheritor class | Expected arguments         |
++--------------------------+----------------------------+
+| `DataResponse`           | status code, data, headers |
++--------------------------+----------------------------+
+| `RedirectResponse`       | status code, headers       |
++--------------------------+----------------------------+
+| `StreamResponse`         | status code, headers       |
++--------------------------+----------------------------+
+| `TemplateResponse`       | status code, headers       |
++--------------------------+----------------------------+
+
 Afterwards you can add the return types to all the other methods.
 If two different status codes return the same data structure and headers, you can use the union operator to indicate it: ``Http::STATUS_BAD_REQUEST|Http::STATUS_NOT_FOUND``.
 
-You are required to add a description for every status code returned by the method.
+If you wonder about the return type syntax, the psalm documentation on [typing in Psalm](https://psalm.dev/docs/annotating_code/typing_in_psalm/) might be helpful.
+
+You have to add a description for every status code returned by the method.
 
 .. code-block:: php
 
