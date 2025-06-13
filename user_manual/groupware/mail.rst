@@ -19,6 +19,22 @@ Switch layout
 
 .. figure:: images/mail_layout.png
 
+Message Display / Operation Mode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 5.2
+
+Mail has the ability to switch between two different message view and operation modes: *Threaded* and *Singleton*.
+
+In *Threaded* mode, messages are grouped by conversation. In the mailbox message list, related messages are stacked so only the most recent message is shown, and all relates messages are shown in message display panel after the stacked message is selected. This is useful for following discussions and understanding the context of replies. In this mode, message operation like move and delete apply to the entire thread, meaning that when you move or delete a thread, all messages within that thread are affected.
+
+In *Singleton* mode, messages are displayed individually, in both the mailbox message list and message display panel and operation like move and delete apply to only the selected message. This mode is useful when you want to manage messages separately without affecting the entire conversation.
+
+1. Visit mail settings
+2. Choose between *Threaded*, *Singleton*
+
+.. figure:: images/mail_display-mode.png
+
 Add a new mail account
 ~~~~~~~~~~~~~~~~~~~~~~~
 
