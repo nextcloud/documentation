@@ -4,7 +4,7 @@ Logging
 
 Use your Nextcloud log to review system status, or to help debug problems. You may adjust logging levels, and choose how and where log data is stored. If additional event logging is required, you can optionally activate the **admin_audit** app. 
 
-When ``file`` based logging is utilized, both the Nextcloud log and, optionally, the **admit_audit** app log can be viewed within the Nextcloud interface under *Administration settings -> Logging* (this functionality is provided by the **logreader** app).
+When ``file`` based logging is utilized, both the Nextcloud log and, optionally, the **admin_audit** app log can be viewed within the Nextcloud interface under *Administration settings -> Logging* (this functionality is provided by the **logreader** app).
 
 Further configuration and usage details for both the standard Nextcloud log and the optional **admin_audit** app log can be found below. 
 
