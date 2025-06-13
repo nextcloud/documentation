@@ -391,12 +391,12 @@ How to Delete a Filter
 4. Hover over the filter you wish to delete, then click the trash icon.
 
 
-Tests
-^^^^^
+Conditions
+^^^^^^^^^^
 
-Tests are applied to incoming emails on your mail server, targeting fields such as subject (the email\'s subject line), from (the sender), and to (the recipient). You can use the following operators to define conditions for these fields:
+Conditions are applied to incoming emails on your mail server, targeting fields such as Subject, Sender, and Recipient. You can use the following operators to define conditions for these fields:
 
-- **is**: An exact match. The field must be identical to the provided value.
+- **is exactly**: An exact match. The field must be identical to the provided value.
 - **contains**: A substring match. The field matches if the provided value is contained within it. For example, "report" would match "port".
 - **matches**: A pattern match using wildcards. The "*" symbol represents any number of characters (including none), while "?" represents exactly one character. For example, "*report*" would match "Business report 2024".
 
@@ -408,6 +408,17 @@ Actions are triggered when the specified tests are true. The following actions a
 - **fileinto**: Moves the message into a specified folder.
 - **addflag**: Adds a flag to the message.
 - **stop**: Halts the execution of the filter script. No further filters with will be processed after this action.
+
+Create a filter from a message
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 5.2
+
+To create a filter from a given message, open the message and then open the menu by clicking on the three dots. Next, click on "More actions" followed by "Create mail filter."
+
+In the dialog, please select the conditions to match incoming messages and continue by clicking on "Create mail filter."
+
+.. figure:: images/mail_create_filter_from_message.png
 
 
 Follow-up reminders
