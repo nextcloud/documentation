@@ -1,6 +1,6 @@
-==================
+==========================
 Android Deep Link Handling
-==================
+==========================
 
 Deep linking in Android allows your application to be launched directly from a URL, 
 making it easier for users to navigate to specific content within your app. 
@@ -9,12 +9,12 @@ using an ``assetlinks.json`` file to ensure the app and the host domain are prop
 associated.
 
 Android 11 and Below
-------------------------------------
+--------------------
 For Android 11 and below, deep linking is straightforward and does not require additional 
 configuration beyond the usual manifest settings.
 
 Android 12 and Above
-------------------------------------
+--------------------
 For Android 12 and above, an additional configuration step is required to verify the 
 relationship between your app and the host domain using the ``assetlinks.json`` file.
 
