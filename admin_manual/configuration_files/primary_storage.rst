@@ -192,6 +192,9 @@ Optional parameters less commonly needing adjustment:
 
 * :code:`concurrency` defaults to :code:`5` [Note: This defines the maximum number of concurrent multipart uploads]
 * :code:`proxy` defaults to :code:`false`
+* :code:`connect_timeout` defaults to :code:`5` [Note: the connection timeout is
+  set in seconds, but decimal precision can be used for subsecond accuracy (for
+  example, 4.2 for 4200 milliseconds)]
 * :code:`timeout` defaults to :code:`15`
 * :code:`uploadPartSize` defaults to :code:`524288000`
 * :code:`putSizeLimit` defaults to :code:`104857600`
