@@ -16,3 +16,4 @@ User management
     user_auth_ldap_api
     user_provisioning_api
     profile_configuration
+    user_auth_oidc

@@ -6,9 +6,9 @@ Nextcloud fully supports the WebDAV protocol, and you can connect and synchroniz
 with Nextcloud Files over WebDAV. In this chapter, you will learn how to
 connect Linux, macOS, Windows, and mobile devices to your Nextcloud server.
 
-WebDAV stands for Distributed Authoring and Versioning. It is an HTTP extension 
-that makes it easy to create, read, and edit files hosted on remote Web servers. With 
-a WebDAV client, you can access your Nextcloud Files (including shares) on Linux, 
+WebDAV stands for Distributed Authoring and Versioning. It is an HTTP extension
+that makes it easy to create, read, and edit files hosted on remote Web servers. With
+a WebDAV client, you can access your Nextcloud Files (including shares) on Linux,
 macOS and Windows in a similar way as any remote network share, and stay synchronized.
 
 Before we get into configuring WebDAV, let's take a quick look at the
@@ -18,14 +18,14 @@ Official Nextcloud desktop and mobile clients
 ---------------------------------------------
 
 The recommended way to synchronize a computer with a Nextcloud server is by
-using the `official Nextcloud sync clients <https://nextcloud.com/install/#install-clients>`_. 
+using the `official Nextcloud sync clients <https://nextcloud.com/install/#install-clients>`_.
 You can configure the client to save files in any local directory and you can choose which
 directories on the Nextcloud server to sync with. The client displays the
 current connection status and logs all activity, so you always know which
 remote files have been downloaded to your PC and you can verify that files
 created and updated on your local PC are properly synchronized with the server.
 
-The recommended way to synchronize Android and Apple iOS devices is by using 
+The recommended way to synchronize Android and Apple iOS devices is by using
 the `official Nextcloud mobile apps <https://nextcloud.com/install/>`_.
 
 To connect the official Nextcloud apps to a Nextcloud server use the
@@ -39,10 +39,10 @@ Third-party WebDAV clients
 --------------------------
 
 If you prefer, you may also connect your computer to your Nextcloud server by
-using any third-party client that supports the WebDAV protocol (including what may be 
+using any third-party client that supports the WebDAV protocol (including what may be
 built into your operating system).
 
-You can also use third-party WebDAV capable apps to connect your mobile 
+You can also use third-party WebDAV capable apps to connect your mobile
 device to Nextcloud.
 
 When using third-party clients, keep in mind that they may not be optimized for use with
@@ -56,16 +56,16 @@ Mobile clients that Nextcloud community members have reported using include:
 The URL to use when configuring third-party apps to connect to Nextcloud is a bit lengthier than the one for official clients::
 
     https://cloud.example.com/remote.php/dav/files/USERNAME/
-    
+
     https://example.com/nextcloud/remote.php/dav/files/USERNAME/ (if Nextcloud is installed in a subdirectory called "nextcloud")
 
-.. note:: When using a third-party WebDAV client (including your operating system's 
-   built-in client), you should use an application password for login rather than your 
-   regular password. In addition improved security, this `increases performance significantly 
-   <https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151>`_. To 
-   configure an application password, log into the Nextcloud Web interface, click on the avatar 
-   in the top right and choose *Personal settings*. Then choose *Security* in the left 
-   sidebar and scroll to the very bottom. There you can create an app password (which can 
+.. note:: When using a third-party WebDAV client (including your operating system's
+   built-in client), you should use an application password for login rather than your
+   regular password. In addition improved security, this `increases performance significantly
+   <https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151>`_. To
+   configure an application password, log into the Nextcloud Web interface, click on the avatar
+   in the top right and choose *Personal settings*. Then choose *Security* in the left
+   sidebar and scroll to the very bottom. There you can create an app password (which can
    also be revoked in the future without changing your main user password).
 
 .. note:: In the following examples, you should replace **example.com/nextcloud** with the
@@ -105,34 +105,15 @@ share::
 Accessing files with KDE and Dolphin file manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To access your Nextcloud files using the Dolphin file manager in KDE, use
-the ``webdav://`` protocol::
-
-    webdav://example.com/nextcloud/remote.php/dav/files/USERNAME/
-
-.. image:: ../images/webdav_dolphin.png
-   :alt: Screenshot of configuring Dolphin file manager to use WebDAV
-
-You can create a permanent link to your Nextcloud server:
-
-#. Open Dolphin and click "Network" in the left-hand "Places" column.
-#. Click on the icon labeled **Add a Network Folder**.
-   The resulting dialog should appear with WebDAV already selected.
-#. If WebDAV is not selected, select it.
-#. Click **Next**.
-#. Enter the following settings:
-
-   * Name: the name you want to see in the **Places** bookmark, for example, Nextcloud.
-
-   * User: the Nextcloud username you used to log in, for example, admin.
-
-   * Server: the Nextcloud domain name, for example, **example.com** (without
-     **http://** before or directories afterwards).
-   * Folder -- Enter the path ``nextcloud/remote.php/dav/files/USERNAME/``.
-#. (Optional) Check the "Create icon" checkbox for a bookmark to appear in the
-   Places column.
-#. (Optional) Provide any special settings or an SSL certificate in the "Port &
-   Encrypted" checkbox.
+#. Navigate to System Settings -> Networking -> Online Accounts
+#. Click "Add Account..."
+#. Click Nextcloud
+#. Enter your server address
+#. Follow the on-screen instructions to log in
+#. After logging in, ensure you enable "Storage" in the "Use This Account For" section
+#. You can now access your files in Dolphin under "Network" in the sidebar
+#. (Optional) To add this as a shortcut in the sidebar, right click "Nextcloud Storage" then "Add to Places"
+#. (Optional) To customise the shortcut, right click the shortcut in the sidebar then "Edit..." and customise the icon and label as you please
 
 
 Creating WebDAV mounts on the Linux command line
@@ -265,7 +246,7 @@ files offline, use the Desktop Client to sync all files on your
 Nextcloud to one or more directories of your local hard drive.
 
 .. note:: Windows 10 now defaults to allow Basic Authentication if HTTPS is enabled before mapping your drive.
-    
+
     On older versions of Windows, you must permit the use of Basic Authentication in the Windows Registry:
 
     * launch ``regedit`` and navigate to ``HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters``.
@@ -292,13 +273,13 @@ the drive:
 
    The computer maps the files of your Nextcloud account to the drive letter Z.
 
-.. note:: If you get the following error
+.. error:: If you get the following error
      ``System error 67 has occurred. The network name cannot be found.``,
-     open the **Services** app and make sure that the ``WebClient`` 
-     service is running and started automatically at startup.
-     
+     or frequent disconnections, open the **Services** app and make sure
+     that the ``WebClient`` service is running and started automatically at startup.
+
 .. note:: Though not recommended, you can also mount the Nextcloud server using HTTP, leaving the connection unencrypted.
-     
+
      If you plan to use HTTP connections on devices while in a public place, we strongly recommend using a VPN tunnel to provide the necessary security.
 
    An alternative command syntax is::
@@ -359,7 +340,7 @@ To use Cyberduck:
 
 3. Use the 'More Options' drop-down menu to add the rest of your WebDAV URL into
    the 'Path' field.
-   
+
    For example: ``remote.php/dav/files/USERNAME/``
 
 Now Cyberduck enables file access to the Nextcloud server.
@@ -414,12 +395,12 @@ Solution
 ^^^^^^^^
 
 Windows limits the maximum size a file transferred from or to a WebDAV share
-may have. You can increase the value **FileSizeLimitInBytes** in
-**HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters**
+may have. You can increase the value ``FileSizeLimitInBytes`` in
+``HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters``
 by clicking on **Modify**.
 
 To increase the limit to the maximum value of 4GB, select **Decimal**, enter a
-value of **4294967295**, and reboot Windows or restart the **WebClient**
+value of ``4294967295``, and reboot Windows or restart the **WebClient**
 service.
 
 Problem
@@ -431,7 +412,7 @@ of in Nextcloud available space and instead shows the size of the C: drive with 
 Answer
 ^^^^^^
 
-Unfortunately is this a limitation of WebDAV itself, because it does not provide a way for the client 
+Unfortunately is this a limitation of WebDAV itself, because it does not provide a way for the client
 to get the available free space from the server. Windows automatically falls back to show the size of
 the C: drive with its available space instead. So unfortunately there is no real solution to this problem.
 

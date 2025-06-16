@@ -86,6 +86,18 @@ Mailbox Share
 -------------
 Users can share mailboxes with each other. So far, there is no UI for users to change the ACL in the Mail app, but if you want to use it, you need to enable it on the IMAP sever and configure the shares there.
 
+.. _mail_ui_defaults:
+
+User Interface Preference Defaults
+----------------------------------
+
+.. versionadded:: 5.2
+
+The Mail app allows administrators to set default user interface preferences for all users, these preferences can be changed by the user afterwards. This can be useful to ensure a consistent experience across the application.
+
+.. figure:: images/settings_mail-ui-defaults.png
+   :alt: User Interface Preference Defaults
+
 .. _mail_llm_processing:
 
 LLM Processing
@@ -127,3 +139,10 @@ multiple days.
 Each sent email will be analyzed by an AI to check whether a reply is expected.
 
 The feature can be enabled through the global :ref:`mail_llm_processing` setting.
+
+Translation
+-----------
+
+.. versionadded:: 4.2
+
+The mail app can optionally provide translations for messages if the :ref:`translation API <machine_translation>` is enabled.

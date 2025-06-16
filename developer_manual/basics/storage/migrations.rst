@@ -100,12 +100,9 @@ instance into your migration class like this:
 .. code-block:: php
 
    class Version2404Date20220903071748 extends SimpleMigrationStep {
-
-      /** @var IDBConnection */
-      private $db;
-
-      public function __construct(IDBConnection $db) {
-         $this->db = $db;
+      public function __construct(
+         private IDBConnection $db
+      ) {
       }
 
       public function postSchemaChange(IOutput $output, \Closure $schemaClosure, array $options) {
@@ -113,6 +110,41 @@ instance into your migration class like this:
          // execute some SQL ...
       }
    }
+
+Migrations and Metadata
+-----------------------
+
+Since 30, details about migrations are available to administrator as metadata can be attached to your migration class by adding specific PHP Attributes:
+
+.. code-block:: php
+    :emphasize-lines: 5-10
+
+    use OCP\Migration\Attributes\CreateTable;
+    use OCP\Migration\Attributes\ColumnType;
+    use OCP\Migration\Attributes\ModifyColumn;
+
+    #[CreateTable(
+        table: 'new_table',
+        description: 'Table is used to store things, but also to get more things',
+        notes: ['this is a notice', 'and another one, if really needed']
+    )]
+    #[ModifyColumn(table: 'other_table', name: 'this_field', type: ColumnType::BIGINT)]
+    class Version30000Date20240729185117 extends SimpleMigrationStep {
+        public function changeSchema(IOutput $output, Closure $schemaClosure, array $options) {
+	[...]
+        }
+    }
+
+
+List of available Migration Attributes:
+
+* ``\OCP\Migration\Attributes\AddColumn`` if your migration implies the creation of a new column
+* ``\OCP\Migration\Attributes\AddIndex`` if your migration adds a new index
+* ``\OCP\Migration\Attributes\CreateTable`` if your migration creates a new table
+* ``\OCP\Migration\Attributes\DropColumn`` if your migration drops a column
+* ``\OCP\Migration\Attributes\DropIndex`` if your migration drops an index
+* ``\OCP\Migration\Attributes\DropTable`` if your migration drops a table
+* ``\OCP\Migration\Attributes\ModifyColumn`` if your migration modifies a column
 
 .. _migration_console_command:
 
@@ -165,6 +197,8 @@ Replacing indices
 .. versionadded:: 29.0.0
 
 Similar to adding an index to an existing table, it could be necessary to replace one or more indices with a new one. To avoid a gap between dropping the old indices in a migration and adding the new one through ``AddMissingIndicesEvent``, it is possible to do both at once in ``AddMissingIndicesEvent``.
+
+If none of the previous indices are found, e.g. because they were optional and not created yet, the replacement index will be treated as *missing index*.
 
 .. note:: Make sure to not use the same index name for the new index as for old indices.
 

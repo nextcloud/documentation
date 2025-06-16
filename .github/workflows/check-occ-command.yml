@@ -1,0 +1,28 @@
+name: Check occ command syntax
+
+on:
+  pull_request:
+    paths:
+      - '**.rst'
+
+jobs:
+  check-occ-command:
+    name: Check occ command syntax
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run script
+        run: |
+          RST_FILE="$(find ./ -name '*.rst')"
+          mapfile -t RST_FILE <<< "$RST_FILE"
+          for file in "${RST_FILE[@]}"; do
+            if [ "$(grep "php occ" "$file" | grep -v "sudo -E -u www-data php occ" | wc -l)" -gt 0 ]; then
+              printf "%b%s%b\n" "\e[0;31m" "$file does not use the 'sudo -E -u www-data php occ' syntax in some places which is required." "\e[0m"
+              echo "See $(grep "php occ" "$file" | grep -v "sudo -E -u www-data php occ")"
+              FAIL=1
+            fi
+          done
+          if [ -n "$FAIL" ]; then
+            exit 1
+          fi

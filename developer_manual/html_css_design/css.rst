@@ -186,9 +186,9 @@ Element structure variables
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
 | ``--default-grid-baseline``                  | ``4px``                                        | Foundation of all spacing sizes used on Nextcloud which are multiples of the baseline size                |
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
-| ``--border-width-element``                   | ``1px``                                        | Border width for interactive elements such as text fields and selects                                     |
+| ``--border-width-input``                     | ``1px``                                        | Border width for interactive elements such as text fields and selects                                     |
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
-| ``--border-width-element-focused``           | ``2px``                                        | Border width for interactive elements when focussed (adjusted for accessibility)                          |
+| ``--border-width-input-focused``             | ``2px``                                        | Border width for interactive elements when focussed (adjusted for accessibility)                          |
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
 | ``--border-radius-small``                    | ``4px``                                        | Border radius used for smaller elements                                                                   |
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+

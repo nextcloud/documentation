@@ -54,6 +54,8 @@ instance, importing is the best way to do so.
 3. The upload can take some time and depends on how big the calendar you import
    is.
 
+4. A blue progress bar will appear below "Calendar Settings".
+
 .. note:: The Nextcloud Calendar application only supports iCalendar-compatible
           ``.ics``-files, defined in RFC 5545.
 
@@ -70,7 +72,7 @@ hard drive or delete it forever.
 
 .. figure:: images/calendar_dropdown.png
 
-Click on the "pen" icon of the respective calendar. You will see a new popup that will allow you to change 
+Click on the "pen" icon of the respective calendar. You will see a new popup that will allow you to change
 the calendar name and color, and buttons to delete or export the calendar.
 
 .. figure:: images/calendar_settings.png
@@ -79,7 +81,7 @@ Calendar Transparency
 ~~~~~~~~~~~~~~~~~~~~~
 
 You can toggle the checkbox "Never show me as busy (set calendar to transparent)" to influence if this calendars' events
-are taken into account in Free/Busy calculations. If checked, no events in this calendar will be taken into account, your schedule will 
+are taken into account in Free/Busy calculations. If checked, no events in this calendar will be taken into account, your schedule will
 always be free, regardless of an events' settings.
 
 .. figure:: images/calendar_transparency.png
@@ -108,7 +110,7 @@ Multiple calendars can be shared together by adding their unique tokens to the e
 ``https://cloud.example.com/index.php/apps/calendar/embed/<token1>-<token2>-<token3>``
 
 To change the default view or date of an embedded calendar, you need to provide a URL that looks like ``https://cloud.example.com/index.php/apps/calendar/embed/<token>/<view>/<date>``.
-In this url you need to replace the following variables:
+In this URL you need to replace the following variables:
 
 - ``<token>`` with the calendar's token,
 - ``<view>`` with one of ``dayGridMonth``, ``timeGridWeek``, ``timeGridDay``, ``listMonth``, ``listWeek``, ``listDay``. The default view is ``dayGridMonth`` and the normally used list is ``listMonth``,
@@ -119,8 +121,8 @@ On the public page, users are able to get the subscription link for the calendar
 Calendar Widget
 ~~~~~~~~~~~~~~~
 
-You can embed your calendars into supported apps like ``Talk``, ``Notes``, etc... 
-by either sharing the public link to make the embed viewable (read-only) to all users 
+You can embed your calendars into supported apps like ``Talk``, ``Notes``, etc...
+by either sharing the public link to make the embed viewable (read-only) to all users
 or by using the internal link to make it private.
 
 Subscribe to a Calendar
@@ -160,6 +162,8 @@ Events can be created by clicking in the area when the event is scheduled.
 In the day- and week-view of the calendar you just click, pull and release your
 cursor over the area when the event is taking place.
 
+Clicking on the globe button brings up the timezone selector. You are able to choose different timezones for the start and end of your event. This is useful when travelling.
+
 .. figure:: images/calendar_new-event_week.png
 
 The month-view only requires a single click into the area of the target day.
@@ -174,6 +178,12 @@ you can specify a location and a description.
 If you want to edit advanced details such as the **Attendees** or **Reminders**, or if you
 want to set the event as a repeating-event, click on the ``More`` button to open the advanced
 sidebar editor.
+
+Add Talk conversation
+~~~~~~~~~~~~~~~~~~~~~
+You can include an existing Talk conversation in your event by clicking "Add Talk conversation". To view the list of existing Talk conversations, ensure the Talk app is enabled. If you'd like to create a new Talk conversation, you can do so directly from the same modal.
+
+.. figure:: images/add-talk-room.png
 
 .. note:: If you always want to open the advanced sidebar editor instead of the
           simple event editor popup, you can set a ``Skip simple event
@@ -218,6 +228,15 @@ Attendees may be other users on your Nextcloud instances, contacts in your addre
 .. tip:: When adding other Nextcloud users as attendees to an event, you may access their free-busy information if available, helping you determine when the best time slot for your event is. Set your :ref:`working hours<calendar-working-hours>` to let others know when you are available. Free-busy information is only available for other users on the same Nextcloud instance.
 
 .. attention:: The server administration needs to setup the e-mail server in the ``Basic settings`` tab, as this mail will be used to send invitations.
+
+Invitation status legend (as an attendee):
+
+- **Filled in event**: You accepted
+- **Strikethrough**: You declined
+- **Stripes**: Tentative
+- **Empty event**: You haven't responded yet
+
+If you are the organizer and all your attendees declined, the event will be empty with a warning symbol.
 
 Checking attendees' busy times
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

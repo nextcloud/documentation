@@ -122,6 +122,14 @@ Additional Apache configurations
 
     a2enmod setenvif
 
+  and apply the following modifications the configuration::
+
+    ProxyFCGIBackendType FPM
+    
+    <FilesMatch remote.php>
+      SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+    </FilesMatch>
+
 * You must disable any server-configured authentication for Nextcloud, as it
   uses Basic authentication internally for DAV services. If you have turned on
   authentication on a parent folder (via e.g. an ``AuthType Basic``
@@ -167,9 +175,13 @@ if your setup is available on ``https://example.org/nextcloud`` or::
 if it isn't installed in a subfolder. Finally run this occ-command to update
 your .htaccess file::
 
-    sudo -u www-data php /var/www/nextcloud/occ maintenance:update:htaccess
+    sudo -E -u www-data php /var/www/nextcloud/occ maintenance:update:htaccess
 
 After each update, these changes are automatically applied to the ``.htaccess``-file.
+
+.. note:: In case the automatically added ``.htaccess`` configuration `SetEnv front_controller_active true` does not work for your environment:
+   Edit ``config/config.php`` and add ``'htaccess.IgnoreFrontController' => true``.
+   See :doc:`../configuration_server/config_sample_php_parameters` for a detailed description.
 
 .. _enabling_ssl_label:
 
@@ -388,15 +400,81 @@ For complete instructions and downloads see:
 Installing via Snap packages
 ----------------------------
 
-A snap is a zip file containing an application together with its dependencies,
-and a description of how it should safely be run on your system, especially
-the different ways it should talk to other software. Most importantly snaps are
-designed to be secure, sandboxed, containerized applications isolated from the
-underlying system and from other applications.
+Nextcloud snap is a community driven installation method and is designed 
+to be easy to install and simple to maintain. The ideal Nextcloud snap is
+an "install and forget" Nextcloud instance that works on most architectures
+and updates itself without needing administrative skills. 
+Combining Nextcloud with snapd makes it a perfect fit for IoT or 
+scalable environments. `Snapd <https://snapcraft.io/docs>`_ is a secure 
+and robust technology which the Nextcloud snap team has embraced.
 
-To install the Nextcloud Snap Package, run the following command in a terminal::
+Most importantly snaps are designed to be secure, sandboxed, containerized 
+applications isolated from the underlying system and from other applications.
 
-    sudo snap install nextcloud
+However, the snap is opinionated and there are `requirements <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Installation-requirements>`_ to be met. 
+
+- Nextcloud snap uses recommended Apache.
+- Nextcloud snap uses recommended MySQL.
+- Nextcloud snap uses recommended PHP.
+
+Installation
+------------
+
+**On Ubuntu**
+
+* https://snapcraft.io/nextcloud
+* Install Nextcloud ``sudo snap install nextcloud``
+
+**All other distros**
+`be warned <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Why-Ubuntu-is-the-only-supported-distro/>`_
+
+By default the latest stable Nextcloud snap release will be installed and it will automatically update to 
+subsequent stable releases, but there are `other releases available as well <https://github.com/nextcloud/nextcloud-snap/wiki/Release-strategy>`_ 
+and you have full control of `automatic updates <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Managing-automatic-updates>`_.
+
+After installation, Nextcloud will start automatically.  
+Assuming you and the device on which it was installed are on the same network, you will reach the Nextcloud 
+installation by visiting ``<hostname>.local`` or the IP address of the instance in your browser. 
+If your hostname is ``localhost``  or ``localhost.localdomain``, like on an Ubuntu Core device, 
+``nextcloud.local`` will be used instead. 
+
+1st login
+---------
+
+Upon visiting the Nextcloud installation for the first time, you will be prompted to enter an admin username 
+and password before Nextcloud is initialised. This may take a while depending on resources and the device.
+After you provide that information you will be logged in and able to install apps, create users, and upload files.
+
+HTTPS encryption
+----------------
+
+Nextcloud snap includes a service for automated HTTPS encryption and automated renewal using Lets Encrypt, 
+or self-signed certificates. Run ``nextcloud.enable-https -h`` for more information. `Managing encryption <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Managing-HTTP-encryption-(HTTPS)>`_.
+
+Configuration
+-------------
+
+While the default Nextcloud configurations are mostly fine, it may be necessary to fine tune Nextcloud snap by
+editing configuration files manually or using the management console. `Configuring Nextcloud snap <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Configure-Nextcloud-snap>`_.
+
+External media
+--------------
+
+`Snap confinement <https://snapcraft.io/docs/snap-confinement>`_ is a security feature and determines the amount of access an application has to system resources, 
+such as files, the network, peripherals and services. Thus your Nextcloud snap is securely confined from the host 
+system. Unless you specifically allow the Nextcloud snap to access the ``/media`` or ``/mnt`` directories on the 
+host system, you will not be able to access any other directory outside of the confinement.
+
+Removable media or external storage must be mounted to either ``/media`` or ``/mnt`` as root with root permissions 
+and connected to Snap! `Managing external media and storage <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Managing-external-media,-shares-and-storage>`_
+
+The interface providing the ability to access removable media is not automatically connected upon install, to use 
+external storage (or otherwise use a device in ``/media`` or ``/mnt`` for data), you need to give the snap permission 
+to access removable media by connecting that interface:
+
+``sudo snap connect nextcloud:removable-media`` 
+
+Further documentation, an extensive `Wiki <https://github.com/nextcloud-snap/nextcloud-snap/wiki>`_ and `FAQ's <https://github.com/nextcloud-snap/nextcloud-snap/wiki/FAQ's>`_  can be found on the `developers GitHub <https://github.com/nextcloud-snap/nextcloud-snap>`_.
 
 .. note:: The `snapd technology <http://snapcraft.io/docs/core/>`_ is the core
    that powers snaps, and it offers a new way to package, distribute, update and

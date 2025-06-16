@@ -79,7 +79,14 @@ the Nextcloud Web interface. If you lose your encryption keys your files are not
 recoverable. Always have backups of your encryption keys stored in a safe 
 location, and consider enabling all recovery options.
 
-You have more options via the ``occ`` command (see :ref:`occ_encryption_label`)
+There are two encryption mode, `master key` and `user keys`. By default, `master key` is used.
+
+If you do not want to use a master key setup, but wish to use user key encryption
+instead, please run the following command before enabling the encryption::
+
+ occ encryption:disable-master-key
+
+You have more options via the ``occ`` command (see :ref:`occ_encryption_label`).
 
 .. _enable_encryption_label:
 
@@ -114,78 +121,30 @@ storage.
 
 .. figure:: images/encryption15.png
 
-Sharing encrypted files
------------------------
-
-After encryption is enabled your users must also log out and log back in to 
-generate their personal encryption keys. They will see a yellow warning banner 
-that says "Encryption App is enabled but your keys are not initialized, please 
-log-out and log-in again." 
-
-Share owners may need to re-share files after encryption is enabled; users 
-trying to access the share will see a message advising them to ask the share 
-owner to re-share the file with them. For individual shares, un-share and 
-re-share the file. For group shares, share with any individuals who can't access 
-the share. This updates the encryption, and then the share owner can remove the 
-individual shares.
-
-.. figure:: images/encryption9.png
-
 Encrypting external mountpoints
 -------------------------------
 
-You and your users can encrypt individual external mountpoints. You must have 
+You and your users can encrypt individual external mountpoints. You must have
 external storage enabled on your Admin page, and enabled for your users.
 
 Encryption settings can be configured in the mount options for an external
 storage mount, see :ref:`external_storage_mount_options_label`
 (:doc:`external_storage_configuration_gui`)
 
-.. _enable-file-recovery-key:
-
-Enabling users file recovery keys
----------------------------------
-
-If you lose your Nextcloud password, then you lose access to your encrypted 
-files. If one of your users loses their Nextcloud password their files are 
-unrecoverable. You cannot reset their password in the normal way; you'll see a 
-yellow banner warning "Please provide an admin recovery password, otherwise all 
-user data will be lost".
-
-To avoid all this, create a Recovery Key. Go to the Encryption section of your 
-Admin page and set a recovery key password.
-
-.. figure:: images/encryption10.png
-
-Then your users have the option of enabling password recovery on their Personal 
-pages. If they do not do this, then the Recovery Key won't work for them.
-
-.. figure:: images/encryption7.png
-
-For users who have enabled password recovery, give them a new password and 
-recover access to their encrypted files by supplying the Recovery Key on the 
-Users page.
-
-.. figure:: images/encryption8.png
-
-You may change your Recovery Key password.
-
-.. figure:: images/encryption12.png
-
 .. _occ_encryption_label:
 
 occ encryption commands
 -----------------------
 
-If you have shell access you may use the ``occ`` command to perform encryption 
-operations, and you have additional options such as decryption and creating a 
-single master encryption key. See :ref:`encryption_label`  for detailed 
+If you have shell access you may use the ``occ`` command to perform encryption
+operations, and you have additional options such as decryption and creating a
+single master encryption key. See :ref:`encryption_label`  for detailed
 instructions on using ``occ``.
 
 Get the current status of encryption and the loaded encryption module::
 
  occ encryption:status
-  - enabled: false                 
+  - enabled: false
   - defaultModule: OC_DEFAULT_MODULE
 
 This is equivalent to checking **Enable server-side encryption** on your Admin
@@ -195,50 +154,50 @@ page::
  Encryption enabled
 
  Default module: OC_DEFAULT_MODULE
- 
+
 List the available encryption modules::
 
  occ encryption:list-modules
   - OC_DEFAULT_MODULE: Default encryption module [default*]
 
-Select a different default Encryption module (currently the only available 
+Select a different default Encryption module (currently the only available
 module is OC_DEFAULT_MODULE)::
 
- occ encryption:set-default-module [Module ID]. 
- 
+ occ encryption:set-default-module [Module ID].
+
 The [module ID] is taken from the ``encryption:list-modules`` command.
 
-Encrypt all data files for all users. For performance reasons, when you enable 
-encryption on a Nextcloud server only new and changed files are encrypted. This 
-command gives you the option to encrypt all files. 
+Encrypt all data files for all users. For performance reasons, when you enable
+encryption on a Nextcloud server only new and changed files are encrypted. This
+command gives you the option to encrypt all files.
 
 Run ``occ``::
 
  occ encryption:encrypt-all
- 
+
  You are about to start to encrypt all files stored in your Nextcloud.
  It will depend on the encryption module you use which files get encrypted.
  Depending on the number and size of your files this can take some time.
  Please make sure that no users access their files during this process!
 
- Do you really want to continue? (y/n) 
- 
-When you type ``y`` it creates a key pair for each of your users, and then 
-encrypts their files, displaying progress until all user files are encrypted. 
+ Do you really want to continue? (y/n)
+
+When you type ``y`` it creates a key pair for each of your users, and then
+encrypts their files, displaying progress until all user files are encrypted.
 
 Decrypt all user data files, or optionally a single user::
- 
+
  occ encryption:decrypt-all [username]
- 
+
 View current location of keys::
 
  occ encryption:show-key-storage-root
- Current key storage root:  default storage location (data/) 
+ Current key storage root:  default storage location (data/)
 
-Move keys to a different folder, either locally or on a different server. 
-The folder must already exist, be owned by root and your HTTP group, and be 
+Move keys to a different folder, either locally or on a different server.
+The folder must already exist, be owned by root and your HTTP group, and be
 restricted to root and your HTTP group. Further the folder needs to be located
-somewhere in your Nextcloud data folder, either physically, or as a mount. 
+somewhere in your Nextcloud data folder, either physically, or as a mount.
 This example is for Ubuntu Linux. Note that the new folder is relative to your ``occ`` directory::
 
  cd /your/nextcloud/data
@@ -249,10 +208,10 @@ This example is for Ubuntu Linux. Note that the new folder is relative to your `
  Start to move keys:
     4 [============================]
  Key storage root successfully changed to keys
- 
-Create a new master key. Use this when you have a single-sign on 
-infrastructure.  Use this only on fresh installations with no existing data, or 
-on systems where encryption has not already been enabled. It is not possible to 
+
+Create a new master key. Use this when you have a single-sign on
+infrastructure.  Use this only on fresh installations with no existing data, or
+on systems where encryption has not already been enabled. It is not possible to
 disable it::
 
  occ encryption:enable-master-key
@@ -266,7 +225,7 @@ Fix Bad signature errors::
 Fix key not found errors::
 
  occ encryption:fix-key-location <userid>
- 
+
 .. _occ_disable_encryption_label:
 
 Disabling encryption
@@ -306,15 +265,71 @@ filenames or folder structures. These files are never encrypted:
 There may be other files that are not encrypted; only files that are exposed to 
 third-party storage providers are guaranteed to be encrypted.
 
-LDAP and other external user back-ends
---------------------------------------
 
-If you use an external user back-end, such as an LDAP or Samba server, and you 
-change a user's password on the back-end, the user will be prompted to change 
-their Nextcloud login to match on their next Nextcloud login. The user will need 
-both their old and new passwords to do this. If you have enabled the Recovery 
-Key then you can change a user's password in the Nextcloud Users panel to match 
-their back-end password, and then, of course, notify the user and give them 
+Using user keys
+---------------
+
+If you disabled master key and are using user keys instead, mind the following information:
+
+Sharing encrypted files
+^^^^^^^^^^^^^^^^^^^^^^^
+
+After encryption is enabled your users must also log out and log back in to
+generate their personal encryption keys. They will see a yellow warning banner
+that says "Encryption App is enabled but your keys are not initialized, please
+log-out and log-in again."
+
+Share owners may need to re-share files after encryption is enabled; users
+trying to access the share will see a message advising them to ask the share
+owner to re-share the file with them. For individual shares, un-share and
+re-share the file. For group shares, share with any individuals who can't access
+the share. This updates the encryption, and then the share owner can remove the
+individual shares.
+
+.. figure:: images/encryption9.png
+
+.. _enable-file-recovery-key:
+
+Enabling users file recovery keys
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you lose your Nextcloud password, then you lose access to your encrypted
+files. If one of your users loses their Nextcloud password their files are
+unrecoverable. You cannot reset their password in the normal way; you'll see a
+yellow banner warning "Please provide an admin recovery password, otherwise all
+user data will be lost".
+
+To avoid all this, create a Recovery Key. Go to the Encryption section of your
+Admin page and set a recovery key password.
+
+.. figure:: images/encryption10.png
+
+Then your users have the option of enabling password recovery on their Personal
+pages. If they do not do this, then the Recovery Key won't work for them.
+
+.. figure:: images/encryption7.png
+
+For users who have enabled password recovery, give them a new password and
+recover access to their encrypted files by supplying the Recovery Key on the
+Users page.
+
+.. figure:: images/encryption8.png
+
+You may change your Recovery Key password.
+
+.. figure:: images/encryption12.png
+
+Please check the various key types in detail `here <encryption_details.html>`_
+
+LDAP and other external user back-ends
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you use an external user back-end, such as an LDAP or Samba server, and you
+change a user's password on the back-end, the user will be prompted to change
+their Nextcloud login to match on their next Nextcloud login. The user will need
+both their old and new passwords to do this. If you have enabled the Recovery
+Key then you can change a user's password in the Nextcloud Users panel to match
+their back-end password, and then, of course, notify the user and give them
 their new password.
 
 Troubleshooting

@@ -33,6 +33,9 @@ values.
 
 But deemed necessary, following changes have to be made in ``config/config.php`` file. As a best practice, take a backup of this config file before making a lot of changes.
 
+After changing one or more of the following parameters, you might want to run the ``preview:cleanup`` occ command to get rid of the previews with obsolete settings.
+See :ref:`occ_cleanup_previews` to learn more.
+
 Disabling previews:
 ^^^^^^^^^^^^^^^^^^^
 
@@ -107,3 +110,18 @@ Default JPEG quality setting for preview images is '80'. Change this with:
 :: 
 
   occ config:app:set preview jpeg_quality --value="60"
+
+Maximum memory for image generation:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+By default, Nextcloud generates image previews using the GD Graphics Library.
+This configuration option limits the amount of memory that is allowed for preview generation.
+If creating the preview image would allocate more memory than the limit,
+preview generation will be disabled and the default mimetype icon is shown.
+
+Default limit is 256 MB. Set to ``-1`` for no limit.
+
+::
+
+  <?php
+    'preview_max_memory' => 256,

@@ -255,3 +255,14 @@ In case needed, you can also further filter the auto-complete results on the PHP
 ``OCP\Collaboration\AutoComplete\AutoCompleteEvent`` event. The event gives you access to the current
 result set, the item and share types and some more information that you can use to e.g. limit the autocomplete
 results to users that are actually in the current chat conversation.
+
+.. _api-force-language:
+
+Force language for a given call
+-------------------------------
+
+All Nextcloud API calls support forcing the language using the query parameter ``forceLanguage``. It will override any user setting for the given call.
+
+.. code-block:: bash
+
+    curl -u username:password -X GET 'https://cloud.example.com/ocs/v1.php/...?forceLanguage=en' -H "OCS-APIRequest: true"

@@ -335,11 +335,176 @@ Cookies can be set or modified directly on the response class:
         }
    }
 
-
 Responses
 ---------
 
-Similar to how every controller receives a request object, every controller method has to return a Response. This can be in the form of a Response subclass or in the form of a value that can be handled by a registered responder.
+Similar to how every controller receives a request object, every controller method has to return a Response.
+This can be in the form of a Response subclass or in the form of a value that can be handled by a registered responder.
+
+There are different kinds of responses available, like HTML-based responses, data responses, or other.
+The app decides of which kind the response is, by returning an appropriate ``Response`` object in the corresponding controller method.
+The following sections give an overview over the various kinds and how to implement them.
+
+.. _controller_html_responses:
+
+HTML-based Responses
+--------------------
+
+HTML pages are typically served using template responses.
+This is typically used as a starting point to load the website.
+This code linked by the template is by default encapsulated by the server to provide some common styling (e.g. the header row).
+The code then uses JavaScript to load further components (see :ref:`Frontend building in Vue<ApplicationJs>`) and the actual data.
+This section only focuses on the actual HTML content, not the data to fill into the dynamic pages.
+
+.. _controller_template:
+
+Templates
+^^^^^^^^^
+
+A :doc:`template <front-end/templates>` can be rendered by returning a TemplateResponse. A TemplateResponse takes the following parameters:
+
+* **appName**: tells the template engine in which app the template should be located
+* **templateName**: the name of the template inside the templates/ folder without the .php extension
+* **parameters**: optional array parameters that are available in the template through $_, e.g.::
+
+    array('key' => 'something')
+
+  can be accessed through::
+
+    $_['key']
+
+* **renderAs**: defaults to *user*, tells Nextcloud if it should include it in the web interface, or in case *blank* is passed solely render the template
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\TemplateResponse;
+
+    class PageController extends Controller {
+
+        public function index(): TemplateResponse {
+            $templateName = 'main';  // will use templates/main.php
+            $parameters = array('key' => 'hi');
+            return new TemplateResponse($this->appName, $templateName, $parameters);
+        }
+
+    }
+
+Public page templates
+^^^^^^^^^^^^^^^^^^^^^
+
+For public pages, that are rendered to users who are not logged in to the
+Nextcloud instance, a ``OCP\\AppFramework\\Http\\Template\\PublicTemplateResponse`` should be used, to load the
+correct base template. It also allows adding an optional set of actions that
+will be shown in the top right corner of the public page.
+
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\Template\SimpleMenuAction;
+    use OCP\AppFramework\Http\Template\PublicTemplateResponse;
+
+    class PageController extends Controller {
+
+        public function index(): PublicTemplateResponse {
+            $template = new PublicTemplateResponse($this->appName, 'main', []);
+            $template->setHeaderTitle('Public page');
+            $template->setHeaderDetails('some details');
+            $template->setHeaderActions([
+                new SimpleMenuAction('download', 'Label 1', 'icon-css-class1', 'link-url', 0),
+                new SimpleMenuAction('share', 'Label 2', 'icon-css-class2', 'link-url', 10),
+            ]);
+            return $template;
+        }
+
+    }
+
+The header title and subtitle will be rendered in the header, next to the logo.
+The action with the highest priority (lowest number) will be used as the
+primary action, others will shown in the popover menu on demand.
+
+A ``OCP\\AppFramework\\Http\\Template\\SimpleMenuAction`` will be a link with an icon added to the menu. App
+developers can implement their own types of menu renderings by adding a custom
+class implementing the ``OCP\\AppFramework\\Http\\Template\\IMenuAction`` interface.
+
+Data-based responses
+--------------------
+
+In contrast to the HTML template responses, the data responses return some user-data in packed form.
+There are different encodings thinkable like JSON, XML, or other formats.
+The main point is that the data is requested by the browser using JavaScript on behalf of the shown website.
+The user only indirectly requested the data by user interaction with the frontend.
+
+
+.. _ocscontroller:
+
+OCS
+^^^
+
+.. note::
+    This is purely for compatibility reasons. If you are planning to offer an external API, go for a :ref:`REST APIs <rest-apis>` instead.
+
+In order to simplify exchange of data between the Nextcloud backend and any client (be it the web frontend or whatever else), the OCS API has been introduced.
+To use OCS in your API you can use the **OCP\\AppFramework\\OCSController** base class and return your data in the form of a **DataResponse** in the following way:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\AppFramework\Http\DataResponse;
+    use OCP\AppFramework\Http\Attribute\NoAdminRequired;
+    use OCP\AppFramework\OCSController;
+
+    class ShareController extends OCSController {
+
+        #[NoAdminRequired]
+        public function getShares(): DataResponse {
+            return new DataResponse([
+                //Your data here
+            ]);
+        }
+
+    }
+
+For ``OCSController`` classes and their methods, :ref:`responders <controller-responders>` can be registered as with any other ``Controller`` method.
+The ``OCSController`` class have however automatically two responders pre-installed:
+Both JSON (``application/json``) and XML (``text/xml``) are generated on-the-fly depending on the request by the browser/user.
+To select the output format, the ``?format=`` query parameter or the ``Accept`` header of the request work out of the box, no intervention is required.
+It is advised to prefer the header generally, as this is the more standardized way.
+
+To make routing work for OCS, the route must be registered in the core.
+This can be done in two ways:
+You can add an attribute `#[ApiRoute]` to the controller method.
+Alternatively, you can add :ref:`a separate 'ocs' entry<routes_ocs>` to the routing table in ``appinfo/routes.php`` of your app.
+Inside these, there are the same information as there are for normal routes.
+
+.. code-block:: php
+
+   <?php
+
+   return [
+        'ocs' => [
+            [
+                'name' => 'Share#getShares',
+                'url' => '/api/v1/shares',
+                'verb' => 'GET',
+            ],
+        ],
+   ];
+
+Now your method will be reachable via ``<server>/ocs/v2.php/apps/<APPNAME>/api/v1/shares``
+
+.. versionadded:: 29
+    You can use the attribute ``ApiRoute`` as described in :doc:`Routing <routing>` instead of the entry in ``appinfo/routes.php`` as an alternative.
+
 
 JSON
 ^^^^
@@ -381,6 +546,36 @@ Because returning JSON is such a common task, there's even a shorter way to do t
     }
 
 Why does this work? Because the dispatcher sees that the controller did not return a subclass of a Response and asks the controller to turn the value into a Response. That's where responders come in.
+
+Handling errors
+^^^^^^^^^^^^^^^
+
+Sometimes a request should fail, for instance if an author with id 1 is requested but does not exist. In that case use an appropriate `HTTP error code <https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error>`_ to signal the client that an error occurred.
+
+Each response subclass has access to the **setStatus** method which lets you set an HTTP status code. To return a JSONResponse signaling that the author with id 1 has not been found, use the following code:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http;
+    use OCP\AppFramework\Http\JSONResponse;
+
+    class AuthorController extends Controller {
+
+        public function show($id) {
+            try {
+                // try to get author with $id
+
+            } catch (NotFoundException $ex) {
+                return new JSONResponse(array(), Http::STATUS_NOT_FOUND);
+            }
+        }
+    }
+
+.. _controller-responders:
 
 Responders
 ^^^^^^^^^^
@@ -467,84 +662,11 @@ Because returning values works fine in case of a success but not in case of fail
 
     }
 
+Miscellaneous responses
+-----------------------
 
-Templates
-^^^^^^^^^
-
-A :doc:`template <front-end/templates>` can be rendered by returning a TemplateResponse. A TemplateResponse takes the following parameters:
-
-* **appName**: tells the template engine in which app the template should be located
-* **templateName**: the name of the template inside the templates/ folder without the .php extension
-* **parameters**: optional array parameters that are available in the template through $_, e.g.::
-
-    array('key' => 'something')
-
-  can be accessed through::
-
-    $_['key']
-
-* **renderAs**: defaults to *user*, tells Nextcloud if it should include it in the web interface, or in case *blank* is passed solely render the template
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\Controller;
-
-    use OCP\AppFramework\Controller;
-    use OCP\AppFramework\Http\TemplateResponse;
-
-    class PageController extends Controller {
-
-        public function index(): TemplateResponse {
-            $templateName = 'main';  // will use templates/main.php
-            $parameters = array('key' => 'hi');
-            return new TemplateResponse($this->appName, $templateName, $parameters);
-        }
-
-    }
-
-Public page templates
-^^^^^^^^^^^^^^^^^^^^^
-
-For public pages, that are rendered to users who are not logged in to the
-Nextcloud instance, a ``OCP\\AppFramework\\Http\\Template\\PublicTemplateResponse`` should be used, to load the
-correct base template. It also allows adding an optional set of actions that
-will be shown in the top right corner of the public page.
-
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\Controller;
-
-    use OCP\AppFramework\Controller;
-    use OCP\AppFramework\Http\Template\SimpleMenuAction;
-    use OCP\AppFramework\Http\Template\PublicTemplateResponse;
-
-    class PageController extends Controller {
-
-        public function index(): PublicTemplateResponse {
-            $template = new PublicTemplateResponse($this->appName, 'main', []);
-            $template->setHeaderTitle('Public page');
-            $template->setHeaderDetails('some details');
-            $template->setHeaderActions([
-                new SimpleMenuAction('download', 'Label 1', 'icon-css-class1', 'link-url', 0),
-                new SimpleMenuAction('share', 'Label 2', 'icon-css-class2', 'link-url', 10),
-            ]);
-            return $template;
-        }
-
-    }
-
-The header title and subtitle will be rendered in the header, next to the logo.
-The action with the highest priority (lowest number) will be used as the
-primary action, others will shown in the popover menu on demand.
-
-A ``OCP\\AppFramework\\Http\\Template\\SimpleMenuAction`` will be a link with an icon added to the menu. App
-developers can implement their own types of menu renderings by adding a custom
-class implementing the ``OCP\\AppFramework\\Http\\Template\\IMenuAction`` interface.
-
-
+Some special responses are available as well.
+These are discussed here.
 
 Redirects
 ^^^^^^^^^
@@ -643,9 +765,6 @@ By default all responses are rendered at once and sent as a string through middl
 
     }
 
-
-
-
 If you want to use a custom, lazily rendered response simply implement the interface **OCP\\AppFramework\\Http\\ICallbackResponse** for your response:
 
 .. code-block:: php
@@ -666,157 +785,31 @@ If you want to use a custom, lazily rendered response simply implement the inter
 
 .. note:: Because this code is rendered after several usually built in helpers, you need to take care of errors and proper HTTP caching by yourself.
 
-Modifying the content security policy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Security considerations
+-----------------------
 
-By default Nextcloud disables all resources which are not served on the same domain, forbids cross domain requests and disables inline CSS and JavaScript by setting a `Content Security Policy <https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy>`_.
-However if an app relies on third-party media or other features which are forbidden by the current policy the policy can be relaxed.
+Depending on your use-case, you can tighten or loosen the security measurements installed by default on the routes.
+This section gives you a quick overview over the options.
 
-.. note:: Double check your content and edge cases before you relax the policy! Also read the `documentation provided by MDN <https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy>`_
-
-To relax the policy pass an instance of the ContentSecurityPolicy class to your response. The methods on the class can be chained.
-
-The following methods turn off security features by passing in **true** as the **$isAllowed** parameter
-
-* **allowInlineScript** (bool $isAllowed)
-* **allowInlineStyle** (bool $isAllowed)
-* **allowEvalScript** (bool $isAllowed)
-* **useStrictDynamic** (bool $isAllowed)
-
-  Trust all scripts that are loaded by a trusted script, see 'script-src' and 'strict-dynamic'
-
-* **useStrictDynamicOnScripts** (bool $isAllowed)
-
-  Trust all scripts that are loaded by a trusted script which was loaded using a ``<script>`` tag, see 'script-src-elem' **(enabled by default)**
-
-.. note:: ``useStrictDynamicOnScripts`` is enabled by default to allow module javascript to load its dependencies using ``import`` since Nextcloud 28. You can disable this by passing **false** as the parameter.
-
-The following methods whitelist domains by passing in a domain or \* for any domain:
-
-* **addAllowedScriptDomain** (string $domain)
-* **addAllowedStyleDomain** (string $domain)
-* **addAllowedFontDomain** (string $domain)
-* **addAllowedImageDomain** (string $domain)
-* **addAllowedConnectDomain** (string $domain)
-* **addAllowedMediaDomain** (string $domain)
-* **addAllowedObjectDomain** (string $domain)
-* **addAllowedFrameDomain** (string $domain)
-* **addAllowedChildSrcDomain** (string $domain)
-
-The following policy for instance allows images, audio and videos from other domains:
-
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\Controller;
-
-    use OCP\AppFramework\Controller;
-    use OCP\AppFramework\Http\TemplateResponse;
-    use OCP\AppFramework\Http\ContentSecurityPolicy;
-
-    class PageController extends Controller {
-
-        public function index() {
-            $response = new TemplateResponse('myapp', 'main');
-            $csp = new ContentSecurityPolicy();
-            $csp->addAllowedImageDomain('*');
-                ->addAllowedMediaDomain('*');
-            $response->setContentSecurityPolicy($csp);
-        }
-
-    }
-
-.. _ocscontroller:
-
-OCS
-^^^
-
-.. note:: This is purely for compatibility reasons. If you are planning to offer an external API, go for a :doc:`../digging_deeper/rest_apis` instead.
-
-In order to ease migration from OCS API routes to the App Framework, an additional controller and response have been added. To migrate your API you can use the **OCP\\AppFramework\\OCSController** base class and return your data in the form of a DataResponse in the following way:
-
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\Controller;
-
-    use OCP\AppFramework\Http\DataResponse;
-    use OCP\AppFramework\Http\Attribute\NoAdminRequired;
-    use OCP\AppFramework\OCSController;
-
-    class ShareController extends OCSController {
-
-        #[NoAdminRequired]
-        public function getShares(): DataResponse {
-            return new DataResponse([
-                //Your data here
-            ]);
-        }
-
-    }
-
-The format parameter works out of the box, no intervention is required.
-
-In order to make routing work for OCS routes you need to add a separate 'ocs' entry to the routing table of your app.
-Inside these are normal routes.
-
-.. code-block:: php
-
-   <?php
-
-   return [
-        'ocs' => [
-            [
-                'name' => 'Share#getShares',
-                'url' => '/api/v1/shares',
-                'verb' => 'GET',
-            ],
-        ],
-   ];
-
-Now your method will be reachable via ``<server>/ocs/v2.php/apps/<APPNAME>/api/v1/shares``
-
-Handling errors
-^^^^^^^^^^^^^^^
-
-Sometimes a request should fail, for instance if an author with id 1 is requested but does not exist. In that case use an appropriate `HTTP error code <https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error>`_ to signal the client that an error occurred.
-
-Each response subclass has access to the **setStatus** method which lets you set an HTTP status code. To return a JSONResponse signaling that the author with id 1 has not been found, use the following code:
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\Controller;
-
-    use OCP\AppFramework\Controller;
-    use OCP\AppFramework\Http;
-    use OCP\AppFramework\Http\JSONResponse;
-
-    class AuthorController extends Controller {
-
-        public function show($id) {
-            try {
-                // try to get author with $id
-
-            } catch (NotFoundException $ex) {
-                return new JSONResponse(array(), Http::STATUS_NOT_FOUND);
-            }
-        }
-    }
+.. _controller_authentication:
 
 Authentication
---------------
+^^^^^^^^^^^^^^
 
 By default every controller method enforces the maximum security, which is:
 
 * Ensure that the user is admin
 * Ensure that the user is logged in
 * Ensure that the user has passed the two-factor challenge, if applicable
-* Check the CSRF token
+* Ensure the request is no CSRF attack, that is at least one of the following:
 
-Most of the time though it makes sense to also allow normal users to access the page and the PageController->index() method should not check the CSRF token because it has not yet been sent to the client and because of that can't work.
+  - Ensure the CSRF token is present and valid
+  - Ensure the ``OCS-APIRequest`` header is present and set to ``true`` [1]_
+
+Loosening the default restrictions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Most of the time though it makes sense to also allow normal users to access the page and the ``PageController->index()`` method should not check the CSRF token because it has not yet been sent to the client and because of that can't work.
 
 To turn off checks the following *Attributes* can be added before the controller:
 
@@ -833,6 +826,77 @@ To turn off checks the following *Attributes* can be added before the controller
     * ``@PublicPage``` instead of ``#[PublicPage]``
     * ``@NoTwoFactorRequired``` instead of ``#[NoTwoFactorRequired]``
     * ``@NoCSRFRequired``` instead of ``#[NoCSRFRequired]``
+
+In the following some examples of configurations are given.
+
+Showing an HTML page by the user
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A typical app needs an ``index.html`` page to show all content within.
+This page should be visible by all users in the instance.
+Therefore, you need to loosen the restriction from admins only (``#[NoAdminRequired]``).
+Additionally, as the user might not have a CSRF checker cookie set yet, the CSRF checks should be disabled (which is fine as this is a template response).
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\TemplateResponse;
+    use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
+    use OCP\AppFramework\Http\Attribute\PublicPage;
+
+    class PageController extends Controller {
+
+        #[NoCSRFRequired]
+        #[NoAdminRequired]
+        public function index(): TemplateResponse {
+            return new TemplateResponse($this->appName, 'main');
+        }
+
+    }
+
+If the page should only be visible to the admin, you can keep the restrictive default by omitting the attribute ``#[NoAdminRequired]``.
+
+Getting data from the backend using AJAX requests
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Data for the frontend needs to be made available from the backend.
+Here, OCS is the suggested way to go.
+Here is the example from :ref:`OCS controllers <ocscontroller>`:
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\AppFramework\Http\DataResponse;
+    use OCP\AppFramework\Http\Attribute\NoAdminRequired;
+    use OCP\AppFramework\OCSController;
+
+    class ShareController extends OCSController {
+
+        #[NoAdminRequired]
+        public function getShares(): DataResponse {
+            return new DataResponse([
+                // Your data here
+            ]);
+        }
+
+    }
+
+The ``#[NoAdminRequired]`` is needed here as normal users should be able to access the data.
+It can be left out in case only the admin user should be able to access the data.
+The CSRF check is still active.
+Thus, the client must obey the corresponding requirements.
+
+Completely disabled authentication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. warning::
+    This is a security issue if the side-effects are not carefully considered.
+    You should only use this for public pages that anyone is allowed to access.
 
 A controller method that turns off all checks would look like this:
 
@@ -856,7 +920,7 @@ A controller method that turns off all checks would look like this:
     }
 
 Rate limiting
--------------
+^^^^^^^^^^^^^
 
 Nextcloud supports rate limiting on a controller method basis and in a :ref:`programmatic way<programmatic-rate-limiting>`. By default controller methods are not rate limited. Rate limiting should be used on expensive or security sensitive functions (e.g. password resets) to increase the overall security of your application.
 
@@ -897,7 +961,7 @@ A controller method that would allow five requests for logged-in users and one r
     }
 
 Brute-force protection
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 
 Nextcloud supports brute-force protection on an action basis. By default controller methods are not protected. Brute-force protection should be used on security sensitive functions (e.g. login attempts) to increase the overall security of your application.
 
@@ -970,3 +1034,67 @@ A controller can also have multiple factors to brute force against. In this case
             return $templateResponse;
         }
     }
+
+Modifying the content security policy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+By default Nextcloud disables all resources which are not served on the same domain, forbids cross domain requests and disables inline CSS and JavaScript by setting a `Content Security Policy <https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy>`_.
+However if an app relies on third-party media or other features which are forbidden by the current policy the policy can be relaxed.
+
+.. note:: Double check your content and edge cases before you relax the policy! Also read the `documentation provided by MDN <https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy>`_
+
+To relax the policy pass an instance of the ContentSecurityPolicy class to your response. The methods on the class can be chained.
+
+The following methods turn off security features by passing in **true** as the **$isAllowed** parameter
+
+* **allowInlineScript** (bool $isAllowed)
+* **allowInlineStyle** (bool $isAllowed)
+* **allowEvalScript** (bool $isAllowed)
+* **useStrictDynamic** (bool $isAllowed)
+
+  Trust all scripts that are loaded by a trusted script, see 'script-src' and 'strict-dynamic'
+
+* **useStrictDynamicOnScripts** (bool $isAllowed)
+
+  Trust all scripts that are loaded by a trusted script which was loaded using a ``<script>`` tag, see 'script-src-elem' **(enabled by default)**
+
+.. note:: ``useStrictDynamicOnScripts`` is enabled by default to allow module javascript to load its dependencies using ``import`` since Nextcloud 28. You can disable this by passing **false** as the parameter.
+
+The following methods whitelist domains by passing in a domain or \* for any domain:
+
+* **addAllowedScriptDomain** (string $domain)
+* **addAllowedStyleDomain** (string $domain)
+* **addAllowedFontDomain** (string $domain)
+* **addAllowedImageDomain** (string $domain)
+* **addAllowedConnectDomain** (string $domain)
+* **addAllowedMediaDomain** (string $domain)
+* **addAllowedObjectDomain** (string $domain)
+* **addAllowedFrameDomain** (string $domain)
+* **addAllowedChildSrcDomain** (string $domain)
+
+The following policy for instance allows images, audio and videos from other domains:
+
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp\Controller;
+
+    use OCP\AppFramework\Controller;
+    use OCP\AppFramework\Http\TemplateResponse;
+    use OCP\AppFramework\Http\ContentSecurityPolicy;
+
+    class PageController extends Controller {
+
+        public function index() {
+            $response = new TemplateResponse('myapp', 'main');
+            $csp = new ContentSecurityPolicy();
+            $csp->addAllowedImageDomain('*');
+                ->addAllowedMediaDomain('*');
+            $response->setContentSecurityPolicy($csp);
+        }
+
+    }
+
+.. [1] Even though the header name ``OCS-APIRequest`` hints purely at OCS controllers, with NC 30 classic controller methods respect this header as well.
+       Until NC 30, classical controller methods did not respect the header.

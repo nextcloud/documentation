@@ -146,7 +146,7 @@ However, the revalidation frequency can be adjusted and may *potentially* enhanc
 
 .. danger::
     Lengthening the time between revalidation (or disabling it completely) means that manual changes to scripts, including ``config.php``, will take longer before they become active (or will never do so, if
-    revalidation is disabled completely). Lengthening also increases the likelihood of transient Server and application upgrade problems. It also prevents the proper toggling of maintenance mode.
+    revalidation is disabled completely). Lengthening also increases the likelihood of transient server and application upgrade problems. It also prevents the proper toggling of maintenance mode.
     
 .. warning::
     If you adjust these parameters, you are more likely to need to restart/reload your web server (mod_php) or fpm after making configuration changes or performing upgrades. If you forget to do so, you 
@@ -189,12 +189,17 @@ Nextcloud strictly requires code comments to be preserved in opcode, which is th
 JIT
 ^^^
 
-PHP 8.0 and above ship with a JIT compiler that can be enabled to benefit any CPU intensive apps you might be running. To enable a tracing JIT with all optimizations:
+PHP 8.0 and above ship with a JIT compiler that can be enabled on x86 platforms to benefit any CPU intensive apps you might be running. To enable a tracing JIT with all optimizations:
 
 .. code:: ini
 
   opcache.jit = 1255
-  opcache.jit_buffer_size = 128M
+  opcache.jit_buffer_size = 8M
+
+.. note::
+
+    Single Nextcloud instances have shown to use less than 2 MiB of the configured JIT buffer size, so that 8 MiB is sufficient by a large margin. The overall OPcache usage however raises by a larger amount, so that ``opcache.memory_consumption`` might need to be raised in some cases. The Nextcloud admin panel will then show a related warning.
+    JIT buffer usage can be monitored with `opcache-gui <https://github.com/amnuts/opcache-gui>`_ as well.
 
 Previews
 --------
@@ -207,13 +212,8 @@ external microservice: `Imaginary <https://github.com/h2non/imaginary>`_.
    Imaginary is currently incompatible with server-side-encryption. 
    See https://github.com/nextcloud/server/issues/34262
 
-.. warning::
-
-   Imaginary is currently known to have issues with HEIC images.
-   See https://github.com/nextcloud/server/issues/35643
-
 We strongly recommend running our custom docker image that is more up to date than the official image.
-You can find the image at `docker.io/nextcloud/aio-imaginary:latest`.
+You can find the image at `https://ghcr.io/nextcloud-releases/aio-imaginary`. When running it, a port must be mapped by adding `-p <port>:9000` to the `docker run` command, e.g. ``docker run -d -p 9000:9000 --name nextcloud_imaginary --restart always ghcr.io/nextcloud-releases/aio-imaginary:latest``.
 
 To do so, you will need to deploy the service and make sure that it is
 not accessible from outside of your servers. Then you can configure
@@ -230,7 +230,7 @@ Nextcloud to use Imaginary by editing your `config.php`:
         'OC\Preview\Krita',
         'OC\Preview\Imaginary',
     ],
-    'preview_imaginary_url' => 'http://<url of imaginary>',
+    'preview_imaginary_url' => 'http://<url of imaginary>:<port>',
 
 .. warning::
 

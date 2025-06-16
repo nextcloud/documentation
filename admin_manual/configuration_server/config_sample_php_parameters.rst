@@ -2,27 +2,205 @@
 Configuration Parameters
 ========================
 
-Nextcloud uses the ``config/config.php`` file to control server operations.
-``config/config.sample.php`` lists all the configurable parameters within
-Nextcloud, along with example or default values. This document provides a more
-detailed reference. Most options are configurable on your Admin page, so it
-is usually not necessary to edit ``config/config.php``.
+Introduction
+------------
 
-.. note:: The installer creates a configuration containing the essential parameters.
-   Only manually add configuration parameters to ``config/config.php`` if you need to
-   use a special value for a parameter. **Do not copy everything from**
-   ``config/config.sample.php`` **. Only enter the parameters you wish to modify!**
+Nextcloud uses ``config/config.php`` as its main configuration file. This file controls 
+various fundamental aspects of server operations. It is typically modified as part of initial 
+deployment, when troubleshooting, and when making adjustments to surrounding infrastructure.
 
-Multiple config.php file
-------------------------
+This is a required file for all Nextcloud deployments and thus it is critical for Nextcloud 
+administrators to be familiar with managing it.
 
-Nextcloud supports loading configuration parameters from multiple files.
-You can add arbitrary files ending with :file:`.config.php` in the :file:`config/`
-directory, for example you could place your email server configuration
-in :file:`email.config.php`. This allows you to easily create and manage
-custom configurations, or to divide a large complex configuration file
-into a set of smaller files. These custom files are not overwritten by
-Nextcloud, and the values in these files take precedence over :file:`config.php`.
+This section of the *Administration Manual* documents how to adjust this essential file, 
+certain special characteristics of the ``config/`` directory, and all of the supported 
+parameters that can be specified in a ``config/config.php`` file.
+
+.. note:: While ``config/config.php`` is a required file, many Nextcloud or Nextcloud app
+   settings are managed elsewhere and thus not included in it. These settings are typically
+   managed via individual apps.
+
+Loading
+-------
+
+Configuration files located in ``config/`` are parsed automatically when Nextcloud 
+starts up. They are also checked for changes periodically (approximately every two seconds 
+in a standard PHP environment running with default *OPcache* settings; approximately every 
+sixty seconds in many pre-packaged Nextcloud installation methods).
+
+The ``config/config.php`` file may be supplemented by additional ``*.config.php`` files 
+placed in the ``config/`` directory (if appropriately named and formatted).
+
+.. danger:: Be cautious when naming or creating backup copies of your active 
+   ``config/config.php``. If a backup is located within ``config/`` and is named
+   ``(ANYTHING).config.php``, it will be loaded as part of your live configuration
+   and override your ``config/config.php`` values!
+
+.. tip:: If your configuration changes don't seem to be taking effect, check: (a) your PHP opcache 
+   configuration; (b) for additional ``*.config.php`` files located in ``config/``; (c) the documentation
+   for your Nextcloud installation method/package; (d) the output of ``occ config:list system``.
+
+Format
+------
+
+The short answer is that ``config/`` files are plain text files with some special formatting 
+requirements for different types of parameters and values. This makes it extensible and easy for
+Nextcloud to interact with. It also makes it easy for administartors to view with any text viewer 
+and from the command-line.
+
+Technically these configuration files are PHP files containing a special (to Nextcloud) PHP array 
+called ``$CONFIG``. This array consists of various Nextcloud specific "key-value" pairs (in some cases 
+arrays themselves). Each pair has the form ``key => value`` and is comma-separated.
+
+Types of Values
+^^^^^^^^^^^^^^^
+
+Strings: 
+
+* ``"thisIsAnImportantValue"``
+* Note: These must be either single or double quoted - i.e. ``"string"`` or ``'string'``.
+* Note: IP addresses are considered strings.
+* Examples:
+   - ``'logo_url' => 'https://example.org',``
+   - ``'versions_retention_obligation' => 'auto, D',``
+   - ``'logtimezone' => 'Europe/Berlin',``
+
+Boolean: 
+
+* ``true`` or ``false``
+* Note: These should **not** be surrounded by quote marks within the configuration file itself.
+* Examples:
+   - ``'session_keepalive' => true,``
+   - ``'hide_login_form' => false,``
+
+Numerical:
+
+* ``12``
+* This includes both integers and floating point numbers.
+* Note: These should **not** be surrounded by quote marks within the configuration file itself.
+* Examples:
+   - ``'loglevel' => 2,``
+   - ``'session_lifetime' => 60 * 60 * 24,``
+
+Arrays of any of the above types:
+
+* ``[ 'value1', 'value2' ]``
+* All value types (including other arrays) can be included in arrays.
+* Note: Only some parameters support array style values.
+* Examples:
+   - ``'connectivity_check_domains' => [ 'www.nextcloud.com', 'www.eff.org', ],``
+   - ``'enabledPreviewProviders' => [ 'OC\Preview\BMP', 'OC\Preview\GIF', 'OC\Preview\JPEG', ],``
+
+.. tip:: Nextcloud attempts to remedy some value type/formatting mistakes, but this is not foolproof. 
+   Use the correct formatting (for the type of value in question) to avoid unexpected results arising 
+   from values being cast in unexpected ways.
+
+Modifying
+---------
+
+Parameters may be modified in a standard text editor (i.e. via the command-line or externally 
+then re-uploaded). They may also, in most cases, be modified using the commands in
+the ``occ config:system:*`` namespace.
+
+.. tip:: Incorrectly formatted ``key => value`` entries (or incorrectly specified values) may
+   not generate immediate errors or problems (such as parsing / syntax errors), but may still 
+   lead to unexpected and undesirable results. Review your fully parsed (by PHP) configuration
+   by using the command ``occ config:list system`` and/or ``occ config:list system --private``
+   to identify anything unexpected.
+
+Defaults
+--------
+
+Nextcloud creates a base ``config/config.php`` file at installation time containing the most 
+essential parameters for operations. These values are a mixture of auto-generated and drawn from
+information provided by the administrator at installation time.
+
+The file ``config/config.sample.php`` lists all the parameters within Nextcloud that can be 
+specified in ``config/`` files, along with example and default values for each. The content of 
+that sample configuration file is included :ref:`below<config-php-sample>` for ease of reference 
+and alongside additional context.
+
+.. tip:: Only add parameters to ``config/config.php`` that you wish to modify. 
+
+.. danger:: Do not copy everything from ``config/config.sample.php`` into your own 
+   ``config/config.php``! Besides being unnecessary, it will break things and possibly even
+   require re-installation.
+
+Multiple/Merged Configuration Files
+-----------------------------------
+
+Nextcloud supports loading configuration parameters from multiple files. You can add arbitrary 
+files ending with ``.config.php*`` (i.e. ``*.config.php``) in the ``config/`` directory. The values 
+in these files take precedence over ``config/config.php``. This allows you to easily create and 
+manage custom configurations, or to divide a large complex configuration file into a set of smaller files. 
+These custom files are not overwritten by Nextcloud.
+
+For example, you could place your email server configuration in ``config/email.config.php`` and 
+whatever parameters you specify in it will be merged with your ``config/config.php``.
+
+.. note:: The values in these additional configuration files **always** take precedence over 
+   ``config/config.php``.
+
+.. tip:: To view your fully merged configuration (i.e. incorporating all config files), use 
+   ``occ config:list system`` and/or ``occ config:list system --private``.
+
+.. danger:: Be cautious when naming or creating backup copies of your active 
+   ``config/config.php``. If a backup config file is located within ``config/`` and happens to be 
+   named ``(ANYTHING).config.php``, it will be loaded as part of your live configuration and override 
+   your ``config/config.php`` values!
+
+Examples
+--------
+
+These are some examples of the content of typical ``config/config.php`` files immediately after
+a basic installation of Nextcloud.
+
+When you use SQLite as your Nextcloud database, your ``config.php`` looks like
+this after installation. The SQLite database is stored in your Nextcloud
+``data/`` directory::
+
+  <?php
+  $CONFIG = array (
+    'instanceid' => 'occ6f7365735',
+    'passwordsalt' => '2c5778476346786306303',
+    'trusted_domains' =>
+    array (
+      0 => 'localhost',
+      1 => 'studio',
+    ),
+    'datadirectory' => '/var/www/nextcloud/data',
+    'dbtype' => 'sqlite3',
+    'version' => '7.0.2.1',
+    'installed' => true,
+  );
+
+.. note:: SQLite is a simple, lightweight embedded database that is fine for testing 
+   and simple installations, but production environments you should use MySQL/MariaDB, 
+   Oracle, or PosgreSQL.
+
+This example is from a new Nextcloud installation using MariaDB::
+
+  <?php
+  $CONFIG = array (
+    'instanceid' => 'oc8c0fd71e03',
+    'passwordsalt' => '515a13302a6b3950a9d0fdb970191a',
+    'trusted_domains' =>
+    array (
+      0 => 'localhost',
+      1 => 'studio',
+      2 => '192.168.10.155'
+    ),
+    'datadirectory' => '/var/www/nextcloud/data',
+    'dbtype' => 'mysql',
+     'version' => '7.0.2.1',
+    'dbname' => 'nextcloud',
+    'dbhost' => 'localhost',
+    'dbtableprefix' => 'oc_',
+    'dbuser' => 'oc_carla',
+    'dbpassword' => '67336bcdf7630dd80b2b81a413d07',
+    'installed' => true,
+  );
+
 
 .. The following section is auto-generated from
 .. https://github.com/nextcloud/server/blob/master/config/config.sample.php
@@ -158,7 +336,8 @@ Your host server name, for example ``localhost``, ``hostname``,
 ``hostname.example.com``, or the IP address.
 
 To specify a port use ``hostname:####``, for IPv6 addresses use the URI notation ``[ip]:port``.
-To specify a Unix socket use ``/path/to/directory/containing/socket``, e.g. ``/run/postgresql/``.
+To specify a Unix socket use ``localhost:/path/to/directory/containing/socket`` or
+``:/path/to/directory/containing/socket``, e.g. ``localhost:/run/postgresql/``.
 
 dbname
 ^^^^^^
@@ -261,54 +440,7 @@ Defaults to ``false``
 .. DEFAULT_SECTION_END
 .. Generated content above. Don't change this.
 
-Default config.php Examples
----------------------------
-When you use SQLite as your Nextcloud database, your ``config.php`` looks like
-this after installation. The SQLite database is stored in your Nextcloud
-``data/`` directory. SQLite is a simple, lightweight embedded database that
-is good for testing and for simple installations, but for production Nextcloud
-systems you should use MySQL, MariaDB, or PosgreSQL.
-
-::
-
-  <?php
-  $CONFIG = array (
-    'instanceid' => 'occ6f7365735',
-    'passwordsalt' => '2c5778476346786306303',
-    'trusted_domains' =>
-    array (
-      0 => 'localhost',
-      1 => 'studio',
-    ),
-    'datadirectory' => '/var/www/nextcloud/data',
-    'dbtype' => 'sqlite3',
-    'version' => '7.0.2.1',
-    'installed' => true,
-  );
-
-This example is from a new Nextcloud installation using MariaDB::
-
-
-  <?php
-  $CONFIG = array (
-    'instanceid' => 'oc8c0fd71e03',
-    'passwordsalt' => '515a13302a6b3950a9d0fdb970191a',
-    'trusted_domains' =>
-    array (
-      0 => 'localhost',
-      1 => 'studio',
-      2 => '192.168.10.155'
-    ),
-    'datadirectory' => '/var/www/nextcloud/data',
-    'dbtype' => 'mysql',
-     'version' => '7.0.2.1',
-    'dbname' => 'nextcloud',
-    'dbhost' => 'localhost',
-    'dbtableprefix' => 'oc_',
-    'dbuser' => 'oc_carla',
-    'dbpassword' => '67336bcdf7630dd80b2b81a413d07',
-    'installed' => true,
-  );
+.. _config-php-sample:
 
 .. Generated content below. Don't change this.
 .. ALL_OTHER_SECTIONS_START
@@ -478,8 +610,9 @@ skeletondirectory
 	'skeletondirectory' => '/path/to/nextcloud/core/skeleton',
 
 The directory where the skeleton files are located. These files will be
-copied to the data directory of new users. Leave empty to not copy any
-skeleton files.
+copied to the data directory of new users. Set empty string to not copy any
+skeleton files. If unset and templatedirectory is empty string, shipped
+templates will be used to create a template directory for the user.
 
 ``{lang}`` can be used as a placeholder for the language of the user.
 If the directory does not exist, it falls back to non dialect (from ``de_DE``
@@ -496,16 +629,15 @@ templatedirectory
 	'templatedirectory' => '/path/to/nextcloud/templates',
 
 The directory where the template files are located. These files will be
-copied to the template directory of new users. Leave empty to not copy any
+copied to the template directory of new users. Set empty string to not copy any
 template files.
 
 ``{lang}`` can be used as a placeholder for the language of the user.
 If the directory does not exist, it falls back to non dialect (from ``de_DE``
 to ``de``). If that does not exist either, it falls back to ``default``
 
-If this is not set creating a template directory will only happen if no custom
-``skeletondirectory`` is defined, otherwise the shipped templates will be used
-to create a template directory for the user.
+To disable creating a template directory, set both skeletondirectory and
+templatedirectory to empty strings.
 
 User session
 ------------
@@ -549,6 +681,18 @@ davstorage.request_timeout
 
 The timeout in seconds for requests to servers made by the DAV component (e.g., needed for federated shares).
 
+carddav_sync_request_timeout
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'carddav_sync_request_timeout' => 30,
+
+The timeout in seconds for synchronizing address books, e.g. federated system address books (as run by `occ federation:sync-addressbooks`).
+
+Defaults to ``30`` seconds
+
 session_relaxed_expiry
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -588,8 +732,10 @@ auto_logout
 	'auto_logout' => false,
 
 Enable or disable the automatic logout after session_lifetime, even if session
-keepalive is enabled. This will make sure that an inactive browser will be logged out
-even if requests to the server might extend the session lifetime.
+keepalive is enabled. This will make sure that an inactive browser will log itself out
+even if requests to the server might extend the session lifetime. Note: the logout is
+handled on the client side. This is not a way to limit the duration of potentially
+compromised sessions.
 
 Defaults to ``false``
 
@@ -639,6 +785,22 @@ Disabling this is discouraged for security reasons.
 
 Defaults to ``true``
 
+auth.bruteforce.protection.force.database
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'auth.bruteforce.protection.force.database' => false,
+
+Whether the brute force protection should write into the database even when a memory cache is available
+
+Using the database is most likely worse for performance, but makes investigating
+issues a lot easier as it's possible to look directly at the table to see all
+logged remote addresses and actions.
+
+Defaults to ``false``
+
 auth.bruteforce.protection.testing
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -657,6 +819,22 @@ and should only be done for debugging and on CI when running tests.
 
 Defaults to ``false``
 
+auth.bruteforce.max-attempts
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'auth.bruteforce.max-attempts' => 10,
+
+Brute force protection: maximum number of attempts before blocking
+
+When more than max-attempts login requests are sent to Nextcloud, requests
+will abort with "429 Too Many Requests".
+For security reasons, change it only if you know what you are doing.
+
+Defaults to ``10``
+
 ratelimit.protection.enabled
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -670,6 +848,21 @@ Whether the rate limit protection shipped with Nextcloud should be enabled or no
 Disabling this is discouraged for security reasons.
 
 Defaults to ``true``
+
+security.ipv6_normalized_subnet_size
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'security.ipv6_normalized_subnet_size' => 56,
+
+Size of subnet used to normalize IPv6
+
+For Brute Force Protection and Rate Limiting, IPv6 are truncated using subnet size.
+It defaults to /56 but you can set it between /32 and /64
+
+Defaults to ``56``
 
 auth.webauthn.enabled
 ^^^^^^^^^^^^^^^^^^^^^
@@ -801,7 +994,7 @@ mail_smtpmode
 
 	'mail_smtpmode' => 'smtp',
 
-Which mode to use for sending mail: ``sendmail``, ``smtp`` or ``qmail``.
+Which mode to use for sending mail: ``sendmail``, ``smtp``, ``qmail`` or ``null``.
 
 If you are using local or remote SMTP, set this to ``smtp``.
 
@@ -810,6 +1003,9 @@ the server, with ``/usr/sbin/sendmail`` installed on your Unix system.
 
 For ``qmail`` the binary is /var/qmail/bin/sendmail, and it must be installed
 on your Unix system.
+
+Use the string ``null`` to send no mails (disable mail delivery). This can be
+useful if mails should be sent via APIs and rendering messages is not necessary.
 
 Defaults to ``smtp``
 
@@ -1037,6 +1233,9 @@ Use this configuration parameter to specify the base URL for any URLs which
 are generated within Nextcloud using any kind of command line tools (cron or
 occ). The value should contain the full base URL:
 ``https://www.example.com/nextcloud``
+Please make sure to set the value to the URL that your users mainly use to access this Nextcloud.
+
+Otherwise there might be problems with the URL generation via cron.
 
 Defaults to ``''`` (empty string)
 
@@ -1343,10 +1542,10 @@ connectivity_check_domains
 ::
 
 	'connectivity_check_domains' => [
-		'www.nextcloud.com',
-		'www.startpage.com',
-		'www.eff.org',
-		'www.edri.org'
+		'https://www.nextcloud.com',
+		'https://www.startpage.com',
+		'https://www.eff.org',
+		'https://www.edri.org'
 	],
 
 Which domains to request to determine the availability of an Internet
@@ -1361,10 +1560,10 @@ If a protocol is provided, only this one will be tested.
 
 Defaults to the following domains:
 
- - www.nextcloud.com
- - www.startpage.com
- - www.eff.org
- - www.edri.org
+ - https://www.nextcloud.com
+ - https://www.startpage.com
+ - https://www.eff.org
+ - https://www.edri.org
 
 check_for_working_wellknown_setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1699,6 +1898,104 @@ issues.
 Note that this has a performance impact and shouldn't be enabled
 on production.
 
+profiling.request
+^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'profiling.request' => false,
+
+Enable profiling for individual requests if profiling single requests is enabled or the secret is passed.
+
+This requires the excimer extension to be installed. Be careful with this, as it can generate a lot of data.
+
+The profile data will be stored as a json file in the profiling.path directory that can be analysed with speedscope.
+
+Defaults to ``false``
+
+profiling.request.rate
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'profiling.request.rate' => 0.001,
+
+The rate at which profiling data is collected for individual requests.
+
+A lower value means more data points but higher overhead.
+
+Defaults to ``0.001``
+
+profiling.secret
+^^^^^^^^^^^^^^^^
+
+
+::
+
+	'profiling.secret' => '',
+
+A secret token that can be passed via ?profile_secret=<secret> to enable profiling for a specific request.
+
+This allows profiling specific requests in production without enabling it globally.
+
+No default value.
+
+profiling.sample
+^^^^^^^^^^^^^^^^
+
+
+::
+
+	'profiling.sample' => false,
+
+Enable sampling-based profiling. This collects profiling data periodically rather than per-request.
+
+This requires the excimer extension to be installed. Be careful with this, as it can generate a lot of data.
+
+The profile data will be stored as a plain text file in the profiling.path directory that can be analysed with speedscope.
+
+Defaults to ``false``
+
+profiling.sample.rate
+^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'profiling.sample.rate' => 1,
+
+The rate at which sampling profiling data is collected in seconds.
+
+A lower value means more frequent samples but higher overhead.
+
+Defaults to ``1``
+
+profiling.sample.rotation
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'profiling.sample.rotation' => 60,
+
+How often (in minutes) the sample log files are rotated.
+
+Defaults to ``60``
+
+profiling.path
+^^^^^^^^^^^^^^
+
+
+::
+
+	'profiling.path' => '/tmp',
+
+The directory where profiling data is stored.
+
+Note that this directory must be writable by the web server user and will not be cleaned up automatically.
+
 Alternate Code Locations
 ------------------------
 
@@ -1960,6 +2257,20 @@ custom path for ffmpeg binary
 Defaults to ``null`` and falls back to searching ``avconv`` and ``ffmpeg``
 in the configured ``PATH`` environment
 
+preview_ffprobe_path
+^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'preview_ffprobe_path' => '/usr/bin/ffprobe',
+
+custom path for ffprobe binary
+
+Defaults to ``null`` and falls back to using the same path as ffmpeg.
+ffprobe is typically packaged with ffmpeg and is required for
+enhanced preview generation for HDR videos.
+
 preview_imaginary_url
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -2056,6 +2367,20 @@ If a file exceeds this size, metadata generation will be skipped.
 Note: memory equivalent to this size will be used for metadata generation.
 
 Default: 256 megabytes.
+
+max_file_conversion_filesize
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'max_file_conversion_filesize' => 100,
+
+Maximum file size for file conversion.
+
+If a file exceeds this size, the file will not be converted.
+
+Default: 100 MiB
 
 LDAP
 ----
@@ -2664,6 +2989,20 @@ when running "occ files:transfer-ownership".
 Defaults to false, so incoming shares are not transferred if not specifically requested
 by a command line argument.
 
+Federated Cloud Sharing
+-----------------------
+
+
+sharing.federation.allowSelfSignedCertificates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'sharing.federation.allowSelfSignedCertificates' => false,
+
+Allow self-signed certificates for federated shares
+
 Hashing
 -------
 
@@ -2996,6 +3335,18 @@ This must be a valid ITheme ID.
 
 E.g. dark, dark-highcontrast, default, light, light-highcontrast, opendyslexic
 
+theming.standalone_window.enabled
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'theming.standalone_window.enabled' => true,
+
+This setting allows to disable the PWA functionality that allows browsers to open web applications in dedicated windows.
+
+Defaults to ``true``
+
 cipher
 ^^^^^^
 
@@ -3032,7 +3383,7 @@ minimum.supported.desktop.version
 
 ::
 
-	'minimum.supported.desktop.version' => '2.3.0',
+	'minimum.supported.desktop.version' => '2.7.0',
 
 The minimum Nextcloud desktop client version that will be allowed to sync with
 this server instance. All connections made from earlier clients will be denied
@@ -3043,7 +3394,21 @@ When changing this, note that older unsupported versions of the Nextcloud deskto
 client may not function as expected, and could lead to permanent data loss for
 clients or other unexpected results.
 
-Defaults to ``2.3.0``
+Defaults to ``2.7.0``
+
+maximum.supported.desktop.version
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'maximum.supported.desktop.version' => '99.99.99',
+
+The maximum Nextcloud desktop client version that will be allowed to sync with
+this server instance. All connections made from later clients will be denied
+by the server.
+
+Defaults to ``99.99.99``
 
 localstorage.allowsymlinks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3133,7 +3498,7 @@ Allows to create external storages of type "Local" in the web interface and APIs
 When disabled, it is still possible to create local storages with occ using
 the following command:
 
-% php occ files_external:create /mountpoint local null::null -c datadir=/path/to/data
+occ files_external:create /mountpoint local null::null -c datadir=/path/to/data
 
 Defaults to ``true``
 
@@ -3274,26 +3639,6 @@ Value represents the maximum filesize in megabytes. Set to ``-1`` for
 no limit.
 
 Defaults to ``10`` megabytes
-
-filelocking.enabled
-^^^^^^^^^^^^^^^^^^^
-
-
-::
-
-	'filelocking.enabled' => true,
-
-Enables transactional file locking.
-
-This is enabled by default.
-
-Prevents concurrent processes from accessing the same files
-at the same time. Can help prevent side effects that would
-be caused by concurrent operations. Mainly relevant for
-very large installations with many users working with
-shared files.
-
-Defaults to ``true``
 
 filelocking.ttl
 ^^^^^^^^^^^^^^^
@@ -3469,6 +3814,26 @@ specifications. For those, have an opt-out.
 
 WARNING: only use this if you know what you are doing
 
+core.login_flow_v2.allowed_user_agents
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'core.login_flow_v2.allowed_user_agents' => [],
+
+This option allows you to specify a list of allowed user agents for the Login Flow V2.
+
+If a user agent is not in this list, it will not be allowed to use the Login Flow V2.
+The user agents are defined using regular expressions.
+
+WARNING: only use this if you know what you are doing
+
+Example: Allow only the Nextcloud Android app to use the Login Flow V2
+'core.login_flow_v2.allowed_user_agents' => ['/Nextcloud-android/i'],
+
+Defaults to an empty array.
+
 simpleSignUpLink.shown
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -3555,6 +3920,43 @@ Log all queries into a file
 Warning: This heavily decreases the performance of the server and is only
 meant to debug/profile the query interaction manually.
 Also, it might log sensitive data into a plain text file.
+
+query_log_file_requestid
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'query_log_file_requestid' => '',
+
+Prefix all queries with the requestid when set to `yes`
+
+Requires `query_log_file` to be set.
+
+query_log_file_parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'query_log_file_parameters' => '',
+
+Add all query parameters to the query log entry when set to `yes`
+
+Requires `query_log_file` to be set.
+Warning: This will log sensitive data into a plain text file.
+
+query_log_file_backtrace
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'query_log_file_backtrace' => '',
+
+Add a backtrace to the query log entry when set to `yes`
+
+Requires `query_log_file` to be set.
 
 redis_log_file
 ^^^^^^^^^^^^^^
@@ -3688,7 +4090,7 @@ enable_non-accessible_features
 
 	'enable_non-accessible_features' => true,
 
-Enable features that are do respect accessibility standards yet.
+Enable features that don't respect accessibility standards yet.
 
 Defaults to ``true``
 
@@ -3713,6 +4115,64 @@ Directories where nextcloud looks for binaries.
 This is used to find external binaries like libreoffice, sendmail, ffmpeg and more.
 
 Defaults to ``['/usr/local/sbin','/usr/local/bin','/usr/sbin','/usr/bin','/sbin','/bin','/opt/bin']``
+
+files.chunked_upload.max_size
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'files.chunked_upload.max_size' => 100 * 1024 * 1024,
+
+The maximum chunk size to use for chunked uploads.
+
+A bigger chunk size results in higher throughput, but above 100 MiB there are only diminishing returns,
+while services like Cloudflare already limit to 100 MiB.
+
+Defaults to 100 MiB.
+
+files.chunked_upload.max_parallel_count
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'files.chunked_upload.max_parallel_count' => 5,
+
+The maximum number of chunks uploaded in parallel during chunked uploads.
+
+A bigger count results in higher throughput, but will also consume more server workers,
+while the improvements diminish.
+
+Defaults to 5.
+
+files.trash.delete
+^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'files.trash.delete' => true,
+
+Allow users to manually delete files from their trashbin.
+
+Automated deletions are not affected and will continue to work in cases like low remaining quota for example.
+
+Defaults to true.
+
+enable_lazy_objects
+^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'enable_lazy_objects' => true,
+
+Enable lazy objects feature from PHP 8.4 to be used in the Dependency Injection.
+
+Should improve performances by avoiding buiding unused objects.
+
+Defaults to true.
 
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.

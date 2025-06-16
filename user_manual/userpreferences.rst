@@ -69,3 +69,25 @@ If you set your data to **Federated**, the trusted server(s) which are added by 
 If you set your data to **Global**, anyone can see your data. For some use cases this is wanted. 
 Someone with a public facing role such as marketing or sales might want to share their contact with a wide variety of connections which might not be using Nextcloud.
 
+
+Restrict who can see your profile data
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If the profile is enabled by your administrator, then your profile data can be read by other users and guest.
+To control who can see which information you can adjust the scopes already mentioned:
+
+* **Private** will only allow you and users you have added to your phone book to see the data
+* **Local** and above will also allow guests to see your data
+
+To restrict the visibility even more you can disable guest from seeing your profile data by changing the profile visibility to logged-in users.
+On the personal settings you can find the button for profile visibility:
+
+   .. figure:: images/userdata-visibility-toggle.png
+      :figwidth: 50 %
+      :alt: screenshot of the profile visibility button in personal settings
+
+
+Which allows to configure the visibility for each profile attribute:
+
+   .. figure:: images/userdata-visibility.png
+      :alt: screenshot of scope dropdown on personal information form field

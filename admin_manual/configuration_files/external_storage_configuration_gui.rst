@@ -158,7 +158,7 @@ Nextcloud may not always be able to find out what has been
 changed remotely (files changed without going through Nextcloud), especially
 when it's very deep in the folder hierarchy of the external storage.
 
-You might need to setup a cron job that runs ``sudo -u www-data php occ files:scan --all``
+You might need to setup a cron job that runs ``sudo -E -u www-data php occ files:scan --all``
 (or replace ``--all`` with the user name, see also :doc:`../occ_command`)
 to trigger a rescan of the user's files periodically (for example every 15 minutes), which includes
 the mounted external storage.

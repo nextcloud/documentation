@@ -118,6 +118,7 @@ HAProxy
 
 NGINX
 ^^^^^
+If using nginx as Nextcloud's webserver from behind another nginx reverse proxy, put this only in the reverse proxy's configuration.
 ::
 
     location /.well-known/carddav {
@@ -127,13 +128,13 @@ NGINX
     location /.well-known/caldav {
         return 301 $scheme://$host/remote.php/dav;
     }
+    
+    location ^~ /.well-known {
+        return 301 $scheme://$host/index.php$uri;  
+    }
 
-or
-
-::
-
-  rewrite ^/\.well-known/carddav https://$server_name/remote.php/dav/ redirect;
-  rewrite ^/\.well-known/caldav https://$server_name/remote.php/dav/ redirect;
+When using NGINX Proxy Manager, the entry ``proxy_hide_header Upgrade;`` must be added in the *"Advanced Settings"*
+of the proxy host under *"Custom Nginx Configuration"*, otherwise mobile devices (iPad, iPhone etc.) will simply receive the Error Message "Connection Closed".
 
 Caddy
 ^^^^^

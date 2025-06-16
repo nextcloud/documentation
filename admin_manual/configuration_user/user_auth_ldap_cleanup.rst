@@ -36,7 +36,7 @@ minutes later the next 50, and so on.
 The amount of users to check can be set to a custom value via occ command. The
 following example sets it to 300:
 
-``sudo -u www-data php occ config:app:set --value=300 user_ldap cleanUpJobChunkSize``
+``sudo -E -u www-data php occ config:app:set --value=300 user_ldap cleanUpJobChunkSize``
 
 There are two ``occ`` commands to use for examining a table of users marked as
 deleted, and then manually deleting them.  The ``occ`` command is in your 
@@ -46,15 +46,15 @@ your HTTP user. To learn more about ``occ``, see
 
 These examples are for Ubuntu Linux:
 
-1. ``sudo -u www-data php occ ldap:show-remnants`` displays a table with all 
+1. ``sudo -E -u www-data php occ ldap:show-remnants`` displays a table with all 
    users that have been marked as deleted, and their LDAP data.
 
-2. ``sudo -u www-data php occ user:delete [user]`` removes the user's data from the 
+2. ``sudo -E -u www-data php occ user:delete [user]`` removes the user's data from the 
    Nextcloud data directory.
 
 This example shows what the table of users marked as ``deleted`` looks like::
 
- $ sudo -u www-data php occ ldap:show-remnants
+ $ sudo -E -u www-data php occ ldap:show-remnants
  +-----------------+-----------------+------------------+--------------------------------------+
  | Nextcloud name  | Display Name    | LDAP UID         | LDAP DN                              |
  +-----------------+-----------------+------------------+--------------------------------------+
@@ -70,7 +70,7 @@ Following flags can be specified additionally:
 * ``--json``: instead of a table, the output is json-encoded. This makes it easy to process the data programmatically.
 
 
-Then you can run ``sudo -u www-data php occ user:delete aaliyah_brown`` to delete 
+Then you can run ``sudo -E -u www-data php occ user:delete aaliyah_brown`` to delete 
 user aaliyah_brown. You must use the user's Nextcloud name.
 
 Deleting local Nextcloud users

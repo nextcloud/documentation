@@ -57,7 +57,7 @@ After the import is complete, you will see your new contact in your address book
 
 
 Adding Contacts Manually
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you can't import virtual contacts, the Contacts app enables you to **add contacts** manually.
 
@@ -110,6 +110,14 @@ click on the contacts picture for the following options to appear:
 
 .. figure:: ../images/contact_picture_options.png
 
+Adding Contact Groups
+---------------------
+
+The Contacts app enables you to group contacts.
+
+To create a new contact group, click on the plus sign next to "Contact groups" in the left sidebar.
+
+.. note:: Contact groups need to have at least one member to be saved.
 
 Adding and Managing Address Books
 ---------------------------------
@@ -124,65 +132,67 @@ to create new address books, simply by specifying an address books name:
 
 The Contacts settings is also where you can share, export and delete addressbooks. You will find the CardDAV URLs there.
 
+.. note:: Contacts in disabled address books are not shown in the Contacts app and the Contact menu. 
+
 See :doc:`index` for more details about syncing your address books
 with iOS, macOS, Thunderbird and other CardDAV clients.
 
 
-Circles
--------
+Teams
+-----
 
 Informal collaboration takes place within organizations: an event to organize for a few weeks, a short ideation session between members from different entities, workshops, a place to joke around and support team building, or simply in very organic organizations where formal structure is kept to a minimum.
 
-For all these reasons, Nextcloud supports Circles, a feature embedded in the Contacts app, where every user is able to create its own circle, a user-defined aggregate of accounts. Circles can be used later on to share files and folders, added to Talk conversations, like a regular group.
+For all these reasons, Nextcloud supports Teams, a feature embedded in the Contacts app, where every user is able to create its own team, a user-defined aggregate of accounts. Teams can be used later on to share files and folders, added to Talk conversations, like a regular group.
 
 .. figure:: ./images/circle.png
-	:alt: Circle in the Contacts app left menu
+	:alt: Teams in the Contacts app left menu
 
-Create a circle
-~~~~~~~~~~~~~~~
+Create a team
+~~~~~~~~~~~~~
 
-In the left menu, click on the + next to Circles.
-Set a circle name
-Landing on the circle configuration screen, you can:
-- add members to your circle
-- clicking on the three dot menu next to a user allow you to modify its role within the circle.
+In the left menu, click on the + next to Teams.
+Set a team name
+Landing on the team configuration screen, you can:
+- add members to your team
+- clicking on the three dot menu next to a user allow you to modify its role within the team.
 
-Circle roles
-~~~~~~~~~~~~
+Team roles
+~~~~~~~~~~
 
-Circles support 4 types of roles:
+Teams support 4 types of roles:
 
 - Member
 - Moderator
-- Admin can configure circle options (+moderator permissions)
+- Admin can configure team options (+moderator permissions)
 - Owner
 
 **Member**
 
-Member is the role with the lowest permissions. A member can only access the resources shared with the circle, and view the members of the circle.
+Member is the role with the lowest permissions. A member can only access the resources shared with the team, and view the members of the team.
 
 **Moderator**
 
-In addition to member permissions, a moderator can invite, confirm invitations and manage members of the circle.
+In addition to member permissions, a moderator can invite, confirm invitations and manage members of the team.
 
 **Admin**
 
-In addition to moderator permissions, an admin can configure circle options.
+In addition to moderator permissions, an admin can configure team options.
 
 **Owner**
 
-In addition to admin permissions, an owner can transfer the circle ownership to another member of the circle. There can be only one single owner per circle.
+In addition to admin permissions, an owner can transfer the team ownership to another member of the team. There can be only one single owner per team.
 
-Add members to a circle
-~~~~~~~~~~~~~~~~~~~~~~~
+Add members to a team
+~~~~~~~~~~~~~~~~~~~~~
 
-Local accounts, groups, email addresses or other circles can be added as members to a circle.
-For a group or a circle, the role applies to all members of the group or circle.
+Local accounts, groups, email addresses or other teams can be added as members to a team.
+For a group or a team, the role applies to all members of the group or team.
 
-Circle options
-~~~~~~~~~~~~~~
+Team options
+~~~~~~~~~~~~
 
-Various self-explanatory options are available to configure a circle, to manage invites and membership, visibility of the circle, allowance of other circle membership and password protection.
+Various self-explanatory options are available to configure a team, to manage invites and membership, visibility of the team, allowance of other team membership and password protection.
 
 Shared items
 ~~~~~~~~~~~~

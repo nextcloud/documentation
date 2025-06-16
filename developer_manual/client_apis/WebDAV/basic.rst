@@ -10,11 +10,23 @@ for each operation, further information for each operation can be found in the c
 WebDAV basics
 -------------
 
-The base url for all WebDAV operations for a Nextcloud instance is :code:`/remote.php/dav`.
+The base url for all (authenticated) WebDAV operations for a Nextcloud instance is :code:`/remote.php/dav`.
 
 All requests need to provide authentication information, either as a basic auth header or by passing a set of valid session cookies.
 
-If your Nextcloud installation uses an external auth provider (such as an OIDC server) you may have to create an app password. To do that, go to your personal security settings and create one. It will provide a username and password which you can use within the Basic Auth header.
+If your Nextcloud installation uses an external auth provider (such as an OIDC server) you may have to create an app password.
+To do that, go to your personal security settings and create one. It will provide a username and password which you can use within the Basic Auth header.
+
+Public shares
+^^^^^^^^^^^^^
+
+The :code:`/remote.php/dav` endpoint only allows authenticated access to WebDAV resources,
+for files shared using public link shares a different endpoint is provided which does not require authentication.
+
+The base URL for public link shares is :code:`/public.php/dav`, particularly for files: :code:`/public.php/dav/files/{share_token}`.
+If a password is set for the share then a basic auth header must be sent with ``anonymous`` as the username and the share password as the password.
+
+.. note:: This endpoint for public shares is available since Nextcloud 29.
 
 Testing requests
 ----------------
@@ -164,14 +176,19 @@ Supported properties
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <d:quota-used-bytes />        | Amount of bytes used in the folder.             | ``3950773``                                                                          |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <d:supportedlock />           | | Dummy endpoint for class 2 WebDAV support.    | | ``<d:lockentry>``                                                                  |
-|                               | | Always provide the same lock capabilities.    | |     ``<d:lockscope><d:exclusive /></d:lockscope>``                                 |
-|                               | |                                               | |     ``<d:locktype><d:write /></d:locktype></d:lockentry>``                         |
-|                               | |                                               | | ``</d:lockentry>``                                                                 |
-|                               | |                                               | | ``<d:lockentry>``                                                                  |
-|                               | |                                               | |     ``<d:lockscope><d:shared /></d:lockscope>``                                    |
-|                               | |                                               | |     ``<d:locktype><d:write /></d:locktype>``                                       |
-|                               | |                                               | | ``</d:lockentry>``                                                                 |
+| <d:supportedlock />           | | Dummy endpoint for class 2 WebDAV support.    | .. code-block:: XML                                                                  |
+|                               | | Always provide the same lock capabilities.    |                                                                                      |
+|                               |                                                 |   <d:lockentry>                                                                      |
+|                               |                                                 |     <d:lockscope><d:exclusive /></d:lockscope>                                       |
+|                               |                                                 |     <d:locktype><d:write /></d:locktype></d:lockentry>                               |
+|                               |                                                 |   </d:lockentry>                                                                     |
+|                               |                                                 |                                                                                      |
+|                               |                                                 | .. code-block:: XML                                                                  |
+|                               |                                                 |                                                                                      |
+|                               |                                                 |   <d:lockentry>                                                                      |
+|                               |                                                 |     <d:lockscope><d:shared /></d:lockscope>                                          |
+|                               |                                                 |     <d:locktype><d:write /></d:locktype></d:lockentry>                               |
+|                               |                                                 |   </d:lockentry>                                                                     |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <oc:id />                     | | The fileid namespaced by the instance id.     | ``00000007oc9l3j5ur4db``                                                             |
 |                               | | Globally unique.                              |                                                                                      |
@@ -197,6 +214,9 @@ Supported properties
 |                               |                                                 | | ``'group'`` = group folder                                                         |
 |                               |                                                 | | ``'external'`` = external storage                                                  |
 |                               |                                                 | | ``'external-session'`` = external storage                                          |
++-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
+| <nc:hide-download />          | For shares this indicate if any download action | ``true`` or ``false``                                                                |
+|                               | should be hidden from the user or not.          |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:is-encrypted />           | Whether the folder is end-to-end encrypted.     | | ``0`` for ``false``                                                                |
 |                               |                                                 | | ``1`` for ``true``                                                                 |
@@ -246,16 +266,18 @@ Supported properties
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:share-attributes />       | User set attributes as a JSON array.            | ``[{ "scope" => <string>, "key" => <string>, "enabled" => <bool> }]``                |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:sharees />                | The list of share recipient.                    | | ``<nc:sharee>``                                                                    |
-|                               |                                                 | |     ``<nc:id>alice</nc:id>``                                                       |
-|                               |                                                 | |     ``<nc:display-name>Alice</nc:display-name>``                                   |
-|                               |                                                 | |     ``<nc:type>0</nc:type>``                                                       |
-|                               |                                                 | | ``</nc:sharee>``                                                                   |
+| <nc:sharees />                | The list of share recipient.                    | .. code-block:: XML                                                                  |
+|                               |                                                 |                                                                                      |
+|                               |                                                 |   <nc:sharee>                                                                        |
+|                               |                                                 |     <nc:id>alice</nc:id>                                                             |
+|                               |                                                 |     <nc:display-name>Alice</nc:display-name>                                         |
+|                               |                                                 |     <nc:type>0</nc:type>                                                             |
+|                               |                                                 |   </nc:sharee>                                                                       |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <oc:checksums />              | An array of checksums stored in the DB by other | ``<oc:checksum>md5:04c36b75222cd9fd47f2607333029106</oc:checksum>``                  |
-|                               | clients.                                        |                                                                                      |
-|                               | Currently used algorithms are ``MD5``, ``SHA1``,|                                                                                      |
-|                               | ``SHA256``, ``SHA3-256``, ``Adler32``.          |                                                                                      |
+| <oc:checksums />              | | An array of checksums stored in the DB by     | ``<oc:checksum>md5:04c36b75222cd9fd47f2607333029106</oc:checksum>``                  |
+|                               | | other clients. Currently used algorithms are: |                                                                                      |
+|                               | | ``MD5``, ``SHA1``, ``SHA256``, ``SHA3-256``,  |                                                                                      |
+|                               | | and ``Adler32``.                              |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:has-preview />            | Whether a preview of the file is available.     | ``true`` or ``false``                                                                |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
@@ -287,13 +309,15 @@ Supported properties
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:acl-can-manage>           | Whether the current user can manager ACL.       | ``1`` or ``0``                                                                       |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:acl-list>                 | Array of ACL rules.                             | | ``<nc:acl>``                                                                       |
-|                               |                                                 | |   ``<nc:acl-mapping-type>group</nc:acl-mapping-type>``                             |
-|                               |                                                 | |   ``<nc:acl-mapping-id>admin</nc:acl-mapping-id>``                                 |
-|                               |                                                 | |   ``<nc:acl-mapping-display-name>admin</nc:acl-mapping-display-name>``             |
-|                               |                                                 | |   ``<nc:acl-mask>20</nc:acl-mask>``                                                |
-|                               |                                                 | |   ``<nc:acl-permissions>15</nc:acl-permissions>``                                  |
-|                               |                                                 | | ``</nc:acl>``                                                                      |
+| <nc:acl-list>                 | Array of ACL rules.                             | .. code-block:: XML                                                                  |
+|                               |                                                 |                                                                                      |
+|                               |                                                 |   <nc:acl>                                                                           |
+|                               |                                                 |     <nc:acl-mapping-type>group</nc:acl-mapping-type>                                 |
+|                               |                                                 |     <nc:acl-mapping-id>admin</nc:acl-mapping-id>                                     |
+|                               |                                                 |     <nc:acl-mapping-display-name>admin</nc:acl-mapping-display-name>                 |
+|                               |                                                 |     <nc:acl-mask>20</nc:acl-mask>                                                    |
+|                               |                                                 |     <nc:acl-permissions>15</nc:acl-permissions>                                      |
+|                               |                                                 |   </nc:acl>                                                                          |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:inherited-acl-list>       | Array of ACL rules from the parents folders     | See <nc:acl-list>                                                                    |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
@@ -301,9 +325,9 @@ Supported properties
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:lock>                     | Whether the file is locked.                     | ``1`` or ``0``                                                                       |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:lock-owner-type>          | Type of the owner of the lock.                  | ``0`` = User                                                                         |
-|                               |                                                 | ``1`` = Office or Text                                                               |
-|                               |                                                 | ``2`` = WebDAV                                                                       |
+| <nc:lock-owner-type>          | Type of the owner of the lock.                  | | ``0`` = User                                                                       |
+|                               |                                                 | | ``1`` = Office or Text                                                             |
+|                               |                                                 | | ``2`` = WebDAV                                                                     |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:lock-owner>               | User id of the owner of the lock.               | ``alice``                                                                            |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
@@ -343,11 +367,46 @@ You can request properties of a folder without also getting the folder contents 
 Downloading files
 -----------------
 
+.. note:: For shared files this only works if the download permission was not denied by the sharer.
+
 A file can be downloaded by sending a :code:`GET` request to the WebDAV url of the file.
 
 .. code::
 
 	GET remote.php/dav/files/user/path/to/file
+
+.. _webdav-download-folders:
+
+Downloading folders
+-------------------
+
+.. note:: The :code:`GET` method is not defined by the WebDAV standard, this is a Nextcloud specific WebDAV extension.
+.. note:: For shared folders this only works if the download permission was not denied by the sharer.
+
+A folder can be downloaded as an archive by sending a :code:`GET` request to the WebDAV URL of the folder.
+The :code:`Accept` header must be set and contain the MIME type for ZIP archives (:code:`application/zip`) or tarballs (:code:`application/x-tar`).
+
+.. code::
+
+	GET remote.php/dav/files/user/path/to/folder
+	Accept: application/zip
+
+Optionally it is possible to only include some files from the folder in the archive by providing the files using the custom :code:`X-NC-Files` header:
+
+.. code::
+
+	GET remote.php/dav/files/user/path/to/folder
+	Accept: application/zip
+	X-NC-Files: document.txt
+	X-NC-Files: image.png
+
+As setting headers is not possible with HTML links it is also possible to provide this both options as query parameters.
+In this case the :code:`Accept` header value must be passed as the :code:`accept` query parameter.
+The optional files list can be provided as a JSON encoded array through the :code:`files` query parameter.
+
+.. code::
+
+	GET remote.php/dav/files/user/path/to/folder?accept=zip&files=["image.png","document.txt"]
 
 Uploading files
 ---------------

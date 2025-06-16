@@ -15,7 +15,7 @@ From a base installed OpenBSD system you can just do::
     
 The extra packages::
 
-    # pkg_add postgresql-server redis pecl74-redis php-pdo_pgsql 
+    # pkg_add postgresql-server redis pecl82-redis php-pdo_pgsql 
 
 
 This will take care of your dependencies and give you the options to choose which PHP version do you want.
@@ -27,7 +27,11 @@ Create a virtualhost in ``/etc/httpd.conf`` and add the following content to it:
 
     server "domain.tld" {
         listen on egress tls port 443
-        hsts max-age 15768000
+        hsts {
+	  max-age 15768000
+	  preload
+	  subdomains
+	}
 
 	  tls {
 		    certificate "/etc/ssl/domain.tld_fullchain.pem"
@@ -40,59 +44,44 @@ Create a virtualhost in ``/etc/httpd.conf`` and add the following content to it:
 	  connection request timeout 3600
 	  connection timeout 3600
 
-	  block drop
+	  root "/nextcloud"
+	  directory index "index.php"
 
 	  # Ensure that no '*.php*' files can be fetched from these directories
-	  location "/nextcloud/config/*" {
+	  location "/config/*" {
 		  block drop
 	  }
 
-	  location "/nextcloud/data/*" {
+	  location "/data/*" {
 		  block drop
 	  }
 
 	  # Note that this matches "*.php*" anywhere in the request path.
 	  location "/nextcloud/*.php*" {
-		  root "/nextcloud"
-		  request strip 1
 		  fastcgi socket "/run/php-fpm.sock"
+	  }
+
+	  location "/apps/*" {
 		  pass
 	  }
 
-	  location "/nextcloud/apps/*" {
-		  root "/nextcloud"
-		  request strip 1
+	  location "/core/*" {
 		  pass
-	  }
-
-	  location "/nextcloud/core/*" {
-		  root "/nextcloud"
-		  request strip 1
-		  pass
-	  }
-
-	  location "/nextcloud" {
-		  block return 301 "$DOCUMENT_URI/index.php"
-	  }
-
-	  location "/nextcloud/" {
-		  block return 301 "$DOCUMENT_URI/index.php"
 	  }
 
 	  location "/.well-known/carddav" {
-		  block return 301 "https://$SERVER_NAME/nextcloud/remote.php/dav"
+		  block return 301 "https://$SERVER_NAME/remote.php/dav"
 	  }
 
 	  location "/.well-known/caldav" {
-		  block return 301 "https://$SERVER_NAME/nextcloud/remote.php/dav"
+		  block return 301 "https://$SERVER_NAME/remote.php/dav"
 	  }
 
 	  location "/.well-known/webfinger" {
-		  block return 301 "https://$SERVER_NAME/nextcloud/public.php?service=webfinger"
+		  block return 301 "https://$SERVER_NAME/public.php?service=webfinger"
 	  }
 
-	  location match "/nextcloud/ocs-provider/*" {
-		  directory index index.php
+	  location match "/ocs-provider/*" {
 		  pass
 	  }
   }
@@ -106,7 +95,7 @@ Make sure that httpd(8) is enabled and started::
 PHP
 ---
 
-Assuming that you are on OpenBSD -current (or >= 6.8-stable) you could use PHP 7.4 so I will keep this version, but the concept is the same for other version.
+Assuming that you are on OpenBSD -current (or >= 6.8-stable) you could use PHP 8.2 so I will keep this version, but the concept is the same for other version.
 
 The PHP packages will be available since you installed Nextcloud with pkg_add, so you just need to adjust a bit your php.ini.
 
@@ -114,7 +103,6 @@ It is recommended to add opcache to it::
 
   [opcache]
   opcache.enable=1
-  opcache.enable_cli=1
   opcache.memory_consumption=512
   opcache.interned_strings_buffer=8
   opcache.max_accelerated_files=10000
@@ -130,13 +118,13 @@ And increase some limits::
    
 We can enable the PHP modules with::
 
-    # cd /etc/php-7.4.sample
-    # for i in *; do ln -sf ../php-7.4.sample/$i ../php-7.4/; done
+    # cd /etc/php-8.2.sample
+    # for i in *; do ln -sf ../php-8.2.sample/$i ../php-8.2/; done
     
 And then we just enable and start PHP::
 
-    # rcctl enable php74_fpm
-    # rcctl start php74_fpm
+    # rcctl enable php82_fpm
+    # rcctl start php82_fpm
 
 
 Database
@@ -208,7 +196,13 @@ Since in OpenBSD httpd(8) works with a chroot(8) by default, we need to be sure 
 Nextcloud final steps
 ---------------------
 
-Now that we have all in place, you should go to your browser with your URL (I am assuming you have an SSL already installed)::
+The remaining installation step are completed in the web-based installation wizard.
+
+To activate this wizard, create a file named CAN_INSTALL inside the installation's config folder:
+
+  # touch /var/www/nextcloud/config/CAN_INSTALL
+
+Use your browser to navigate to the installation's URL:
 
   https://domain.tld
   

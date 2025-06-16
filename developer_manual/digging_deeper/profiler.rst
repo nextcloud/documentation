@@ -11,6 +11,15 @@ The profiler application is available on `GitHub <https://github.com/nextcloud/p
 you need to clone the stableX branch if you are using Nextcloud X or master if you are
 using the latest development version of Nextcloud.
 
+.. code-block:: bash
+
+   major_version=$(sudo -E -u www-data php occ version 2>&1 | awk -F'[. ]' '{print $2;exit}')
+   cd apps/
+   git clone --branch stable$major_version https://github.com/nextcloud/profiler.git
+   cd profiler
+   cd ../..
+
+
 Enable the app
 --------------
 

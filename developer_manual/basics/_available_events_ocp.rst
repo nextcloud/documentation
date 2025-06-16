@@ -127,6 +127,42 @@ Emitted when the authentication fails, but only if the login name can be associa
 Dispatched before Sabre is loaded when accessing public webdav endpoints
 This can be used to inject a Sabre plugin for example
 
+``OCP\Calendar\Events\CalendarObjectCreatedEvent``
+**************************************************
+
+.. versionadded:: 32
+
+
+``OCP\Calendar\Events\CalendarObjectDeletedEvent``
+**************************************************
+
+.. versionadded:: 32
+
+
+``OCP\Calendar\Events\CalendarObjectMovedEvent``
+************************************************
+
+.. versionadded:: 32
+
+
+``OCP\Calendar\Events\CalendarObjectMovedToTrashEvent``
+*******************************************************
+
+.. versionadded:: 32
+
+
+``OCP\Calendar\Events\CalendarObjectRestoredEvent``
+***************************************************
+
+.. versionadded:: 32
+
+
+``OCP\Calendar\Events\CalendarObjectUpdatedEvent``
+**************************************************
+
+.. versionadded:: 32
+
+
 ``OCP\Collaboration\AutoComplete\AutoCompleteEvent``
 ****************************************************
 
@@ -244,7 +280,7 @@ Event to allow to register the direct editor.
 .. versionadded:: 18
 
 Class GenericEvent
-convenience reimplementation of \Symfony\Component\GenericEvent against
+convenience re-implementation of \Symfony\Component\GenericEvent against
 \OCP\EventDispatcher\Event
 
 ``OCP\Federation\Events\TrustedServerRemovedEvent``
@@ -294,6 +330,27 @@ Event for when a new entry gets added to the cache
 
 Event for when an existing entry in the cache gets updated
 
+``OCP\Files\Config\Event\UserMountAddedEvent``
+**********************************************
+
+.. versionadded:: 31
+
+Event emitted when a user mount was added.
+
+``OCP\Files\Config\Event\UserMountRemovedEvent``
+************************************************
+
+.. versionadded:: 31
+
+Event emitted when a user mount was removed.
+
+``OCP\Files\Config\Event\UserMountUpdatedEvent``
+************************************************
+
+.. versionadded:: 31
+
+Event emitted when a user mount was moved.
+
 ``OCP\Files\Events\BeforeDirectFileDownloadEvent``
 **************************************************
 
@@ -308,6 +365,13 @@ directly.
 .. versionadded:: 18
 
 
+``OCP\Files\Events\BeforeFileSystemSetupEvent``
+***********************************************
+
+.. versionadded:: 31
+
+Event triggered before the file system is setup
+
 ``OCP\Files\Events\BeforeFolderScannedEvent``
 *********************************************
 
@@ -319,6 +383,9 @@ directly.
 
 .. versionadded:: 25
 
+This event is triggered before a archive is created when a user requested
+downloading a folder or multiple files.
+By setting `successful` to false the tar creation can be aborted and the download denied.
 
 ``OCP\Files\Events\FileCacheUpdated``
 *************************************
@@ -599,6 +666,12 @@ Even for when a log item is being logged
 
 Emitted before a system mail is sent. It can be used to alter the message.
 
+``OCP\Navigation\Events\LoadAdditionalEntriesEvent``
+****************************************************
+
+.. versionadded:: 31
+
+
 ``OCP\OCM\Events\ResourceTypeRegisterEvent``
 ********************************************
 
@@ -614,6 +687,9 @@ them in the OCM provider list and capability
 
 .. versionchanged:: 28.0.0
    the constructor arguments ``$width``, ``$height``, ``$crop`` and ``$mode`` are no longer nullable.
+
+.. versionchanged:: 31.0.0
+   the constructor arguments ``$mimeType`` was added
 
 Emitted before a file preview is being fetched.
 It can be used to block preview rendering by throwing a ``OCP\Files\NotFoundException``
@@ -651,7 +727,10 @@ that it is not possible to use the `disallowXYZ` functions.
 
 .. versionadded:: 18
 
-Event to request a secure password to be generated
+Event to request a secure password to be generated.
+
+Since Nextcloud 31 this event also provides a ``getContext`` method
+allowing to apply different rules for different password context like account passwords or share passwords.
 
 ``OCP\Security\Events\ValidatePasswordPolicyEvent``
 ***************************************************
@@ -661,6 +740,9 @@ Event to request a secure password to be generated
 This event can be emitted to request a validation of a password.
 If a password policy app is installed and the password
 is invalid, an `\OCP\HintException` will be thrown.
+
+Since Nextcloud 31 this event also provides a ``getContext`` method
+allowing to apply different rules for different password context like account passwords or share passwords.
 
 ``OCP\Security\FeaturePolicy\AddFeaturePolicyEvent``
 ****************************************************
@@ -767,6 +849,16 @@ Class MapperEvent
 
 Class SystemTagsEntityEvent
 
+``OCP\TaskProcessing\Events\GetTaskProcessingProvidersEvent``
+*************************************************************
+
+.. versionadded:: 32
+
+Event dispatched by the server to collect Task Processing Providers
+and custom Task Types from listeners (like AppAPI).
+Listeners should add their providers and task types using the
+addProvider() and addTaskType() methods.
+
 ``OCP\TaskProcessing\Events\TaskFailedEvent``
 *********************************************
 
@@ -822,6 +914,13 @@ Emitted before a new user is created on the back-end.
 
 .. versionadded:: 18
 
+
+``OCP\User\Events\BeforeUserIdUnassignedEvent``
+***********************************************
+
+.. versionadded:: 31
+
+Emitted before removing the mapping between an external user and an internal userid
 
 ``OCP\User\Events\BeforeUserLoggedInEvent``
 *******************************************
@@ -915,6 +1014,20 @@ Emitted when a new user has been created on the back-end.
 
 .. versionadded:: 28
 
+
+``OCP\User\Events\UserIdAssignedEvent``
+***************************************
+
+.. versionadded:: 31
+
+Emitted by backends (like user_ldap) when a user created externally is mapped for the first time and assigned a userid
+
+``OCP\User\Events\UserIdUnassignedEvent``
+*****************************************
+
+.. versionadded:: 31
+
+Emitted after removing the mapping between an external user and an internal userid
 
 ``OCP\User\Events\UserLiveStatusEvent``
 ***************************************

@@ -72,3 +72,19 @@ To implement the samples mentioned above, the following three entries are necess
 
 If you want to manually send out all activity emails which are queued, you can run
 ``occ activity:send-mails`` without any argument.
+
+Excluding users from the activity expiration
+--------------------------------------------
+
+For certain users, it might make sense to never expire their activity data, for example 
+administrators.
+You can set the config value `activity_expire_exclude_users` in your Nextcloud config to 
+exclude these users from expiration::
+
+  'activity_expire_exclude_users' => [
+    'admin',
+    'group_admin',
+    'second_admin'
+  ]
+
+For these users, their activity records will never deleted from the database.

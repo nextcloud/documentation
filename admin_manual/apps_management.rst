@@ -81,6 +81,38 @@ By default guest users, when using the guests app, are not notified, to enable n
 
   occ config:app:set --type boolean --value="true" updatenotification app_updated.notify_guests
 
+Enabling apps via occ command
+-----------------------------
+
+In addition to managing apps via the web interface, administrators can also enable or disable apps using the `occ` command.
+
+To enable an app, use the following command:
+
+::
+
+  occ app:enable <app-id>
+
+For example, to enable the "files" app, run:
+
+::
+
+  occ app:enable files
+
+To enable the app for specific groups, use the `--groups` option:
+
+::
+  
+  occ app:enable files --groups=admin
+
+
+This command enables the "files" app only for the "admin" group.
+
+To disable an app, use:
+
+::
+
+  occ app:disable <app-id>
+
 Using private API
 -----------------
 

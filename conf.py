@@ -8,7 +8,9 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 sys.path.insert(0, os.path.abspath(dir_path + '/_ext'))
 now = datetime.datetime.now()
 
-extensions = ['sphinx_rtd_theme', 'sphinx_rtd_dark_mode', 'sphinx_copybutton']
+os.environ["READTHEDOCS"] = "True"
+
+extensions = ['sphinx_rtd_theme', 'sphinx_rtd_dark_mode', 'sphinx_copybutton', 'sphinxcontrib.mermaid']
 
 # General information about the project.
 copyright = str(now.year) + ' Nextcloud GmbH'
@@ -24,9 +26,10 @@ release = version
 
 # RTD theme options
 html_theme_options = {
-    'logo_only': True,
-    'style_external_links': True,
-    'display_version': False,
+	'logo_only': True,
+	'navigation_with_keys': True,
+	'style_external_links': True,
+	'version_selector': False,
 }
 
 # relative path to subdirectories
@@ -36,8 +39,10 @@ html_logo = "../_shared_assets/static/logo-white.png"
 rst_epilog =  '.. |version| replace:: %s' % version
 
 # building the versions list
-version_start = 28		# THIS IS THE SUPPORTED VERSION NUMBER
-version_stable = 29		# INCREASE THIS NUMBER TO THE LATEST STABLE VERSION NUMBER
+version_start = 29		# THIS IS THE OLDEST SUPPORTED VERSION NUMBER
+
+						# THIS IS THE VERSION THAT IS MAPPED TO https://docs.nextcloud.com/server/stable/
+version_stable = 31		# CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
 
 # Also search for "TODO ON RELEASE" in the rst files
 
@@ -58,7 +63,6 @@ else:
 html_context = {
 	'current_version': version,
 	'READTHEDOCS': True,
-	'extra_css_files': ['_static/custom.css'],
 
 	# force github plugin
 	'display_github': True,
@@ -67,6 +71,12 @@ html_context = {
 	# If current version is an int, use the stablexxx branches, otherwise, edit on master
 	'theme_vcs_pageview_mode': 'edit/%s/' % github_branch, # to be completed by each individual conf.py
 }
+
+html_static_path = ['_static']
+# Extra CSS relative to html_static_path
+html_css_files = [
+	'custom.css'
+]
 
 edit_on_github_project = 'nextcloud/documentation'
 edit_on_github_branch = 'master'

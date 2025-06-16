@@ -32,7 +32,7 @@ from conf import *
 extensions += ['sphinx.ext.todo', 'rst2pdf.pdfbuilder', 'sphinx.ext.intersphinx', 'sphinxcontrib.phpdomain', 'sphinx_toolbox.collapse', 'sphinx_reredirects']
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['../_shared_assets/templates']
+templates_path = ['../_shared_assets/templates', '_templates']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -171,7 +171,6 @@ html_show_sphinx = False
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'NextcloudDeveloperManual'
-
 
 # -- Options for LaTeX output --------------------------------------------------
 
@@ -326,5 +325,7 @@ redirects = {
   "core/static-analysis": "../server/static-analysis.html",
   "core/unit-testing": "../server/unit-testing.html",
   # Removed 2024-09
-  "digging_deeper/changelog": "../app_publishing_maintenance/app_upgrade_guide/index.html"
+  "digging_deeper/changelog": "../app_publishing_maintenance/app_upgrade_guide/index.html",
+  # Removed 2025-04
+  "basics/front-end/l10n": "../translations.html"
 }

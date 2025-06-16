@@ -143,7 +143,7 @@ For those endpoints returning ``[]`` in PHP is a problem because the consumer wi
 If you are not able to use ``null`` for whatever reason, use ``new \stdClass()`` instead.
 It will get correctly converted into ``{}`` in the JSON response on Nextcloud 28 and later.
 
-If you are working with an existing API where you can not break compatibility, you can also type the result as ``array<empty>``.
+If you are working with an existing API where you can not break compatibility, you can also type the result as ``list<empty>``.
 
 .. collapse:: Examples
 
@@ -178,7 +178,7 @@ If you are working with an existing API where you can not break compatibility, y
         }
 
         /**
-         * @return DataResponse<Http::STATUS_OK, array<empty>, array{}>
+         * @return DataResponse<Http::STATUS_OK, list<empty>, array{}>
          */
         public function someControllerMethod() {
             ...
@@ -606,7 +606,7 @@ You are required to add a description for every status code returned by the meth
 How to add response definitions to share type definitions
 ---------------------------------------------------------
 
-In the previous steps we have been re-using the same data structure multiple times, but it was copied every time.
+In the previous steps we have been reusing the same data structure multiple times, but it was copied every time.
 This is tedious and error prone, therefore we want to create some shared type definitions.
 Create a new file called ``ResponseDefinitions.php`` in the ``lib`` folder of your app.
 It will only work with that file name at that location.
@@ -719,7 +719,7 @@ Now you have to add the correct return type annotation:
 
     class Capabilities implements ICapability {
         /**
-         * @return array{todo: array{supported-operations: string[], emojis-supported: bool}}
+         * @return array{todo: array{supported-operations: list<string>, emojis-supported: bool}}
          */
         public function getCapabilities() {
             return [

@@ -192,9 +192,14 @@ Optional parameters less commonly needing adjustment:
 
 * :code:`concurrency` defaults to :code:`5` [Note: This defines the maximum number of concurrent multipart uploads]
 * :code:`proxy` defaults to :code:`false`
+* :code:`connect_timeout` defaults to :code:`5` [Note: the connection timeout is
+  set in seconds, but decimal precision can be used for subsecond accuracy (for
+  example, 4.2 for 4200 milliseconds)]
 * :code:`timeout` defaults to :code:`15`
 * :code:`uploadPartSize` defaults to :code:`524288000`
 * :code:`putSizeLimit` defaults to :code:`104857600`
+* :code:`useMultipartCopy` defaults to :code:`true`
+* :code:`copySizeLimit` defaults to :code:`5242880000`
 * :code:`legacy_auth` has no default
 * :code:`version` defaults to :code:`latest`
 * :code:`verify_bucket_exists` defaults to :code:`true` [Note: Setting this to :code:`false` *after* confirming the bucket has been created may provide a performance benefit, but may not be possible in multibucket scenarios.]

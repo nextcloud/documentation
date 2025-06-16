@@ -17,7 +17,7 @@ learn more about using the ``occ`` command.
 
 ::
 
- $ sudo -u www-data php /var/www/nextcloud/occ user:resetpassword admin
+ $ sudo -E -u www-data php /var/www/nextcloud/occ user:resetpassword admin
  Enter a new password: 
  Confirm the new password: 
  Successfully reset password for admin

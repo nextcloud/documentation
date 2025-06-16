@@ -7,43 +7,44 @@ Digging deeper
 
    api
    config/index
-   debugging
    classloader
    continuous_integration
+   dashboard
+   deadlock
+   debugging
    email
    files-metadata
-   flow
+   groupware/index
    http_client
    javascript-apis
+   translation
+   flow
    npm
    notifications
+   oidc
+   out_of_office
    performance
+   phonenumberutil
    psr
+   profile
+   profiler
+   projects
    publicpage
+   reference
    repair
    rest_apis
    search
+   security
    settings
+   setup_checks
    speech-to-text
    talk
-   translation
-   text_processing
    task_processing
+   text_processing
    text2image
    two-factor-provider
-   users
-   dashboard
-   reference
-   projects
-   groupware/index
-   web_host_metadata
    status
-   security
-   setup_checks
-   profile
    user_migration
-   profiler
-   deadlock
-   phonenumberutil
-   out_of_office
+   users
+   web_host_metadata
    time

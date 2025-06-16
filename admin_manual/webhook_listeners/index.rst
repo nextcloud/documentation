@@ -20,6 +20,8 @@ Listening to events
 
 You can use the OCS API to add webhooks for specific events: https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index
 
+.. TODO ON RELEASE: Update version number above on release
+
 Note: When authenticating with the OCS API to register webhooks the account you authenticate as must have administrator rights or delegated administrator rights.
 
 Filters
@@ -31,7 +33,10 @@ If you would like to match events fired by a specific user, you can pass ``{ "us
 
 If you would like to enforce multiple criteria, you can simply pass multiple properties ``{ "event.tableId": 42, "event.rowId": 3 }``
 
+If you would like to match values partially, you can use regular expressions: ``{ "user.uid": "/admin_.*/"}`` will match any user whose user ID starts with ``admin_``. This can be especially useful for filesystem events for filtering by path: ``{ "event.node.path": "/^\\/.*\\/files\\/Special folder\\//"}`` will match files inside the ``Special folder`` of any user (Note especially, that the slashes in the path need to be escaped with two back-slashes, once because we're inside a json string and once because we're inside a regular expression).
+
 You can also use additional comparison operators (``$e, $ne, $gt, $gte, $lt, $lte, $in, $nin``) as well as logical operators (``$and, $or, $not, $nor``). For example use ``{ "time" : { "$lt": 1711971024 } }`` to accept only events prior to April 1st 2024 and ``{ "time" : { "$not": { "$lt": 1711971024 } } }`` to accept events after April 1st 2024.
+
 
 Speeding up webhook dispatch
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -39,11 +44,81 @@ Speeding up webhook dispatch
 This app uses background jobs to trigger the registered webhooks. Thus, by default, webhooks will be triggered only every 5 minutes, as the default cron interval is 5 minutes.
 To trigger webhooks earlier, you can set up a background job worker. The following command will launch a worker for the webhook call background job:
 
-.. code-block:: bash
+Screen or tmux session
+^^^^^^^^^^^^^^^^^^^^^^
 
-   occ background-job:worker "OCA\\WebhookListeners\\BackgroundJobs\\WebhookCall"
+Run the following occ command inside a screen or a tmux session, preferably 4 or more times for parallel processing of multiple requests by different or the same user.
+It would be best to run one command per screen session or per tmux window/pane to keep the logs visible and the worker easily restartable.
 
-It is recommended to restart this worker once a day to make sure code changes are effective and avoid memory leaks, for example by registering it as a systemd service with a daily timer.
+.. code-block::
+
+   set -e; while true; do sudo -E -u www-data php occ background-job:worker -v -t 60 "OCA\WebhookListeners\BackgroundJobs\WebhookCall"; done
+
+For Nextcloud-AIO you should use this command on the host server.
+
+.. code-block::
+
+   set -e; while true; do sudo docker exec -it nextcloud-aio-nextcloud docker exec -it nextcloud-aio-nextcloud sudo -E -u www-data php occ background-job:worker -v -t 60 "OCA\WebhookListeners\BackgroundJobs\WebhookCall"; done
+
+You may want to adjust the number of workers and the timeout (in seconds) to your needs.
+The logs of the worker can be checked by attaching to the screen or tmux session.
+
+Systemd service
+^^^^^^^^^^^^^^^
+
+1. Create a systemd service file in ``/etc/systemd/system/nextcloud-webhook-worker@.service`` with the following content:
+
+.. code-block::
+
+   [Unit]
+   Description=Nextcloud Webhook worker %i
+   After=network.target
+
+   [Service]
+   ExecStart=/opt/nextcloud-webhook-worker/taskprocessing.sh %i
+   Restart=always
+   StartLimitInterval=60
+   StartLimitBurst=10
+
+   [Install]
+   WantedBy=multi-user.target
+
+2. Create a shell script in ``/opt/nextcloud-webhook-worker/taskprocessing.sh`` with the following content and make sure to make it executable:
+
+.. code-block::
+
+   #!/bin/sh
+   echo "Starting Nextcloud Webhook Worker $1"
+   cd /path/to/nextcloud
+   sudo -E -u www-data php occ background-job:worker -t 60 'OCA\WebhookListeners\BackgroundJobs\WebhookCall'
+
+You may want to adjust the timeout to your needs (in seconds).
+
+3. Enable and start the service 4 or more times:
+
+.. code-block::
+
+   for i in {1..4}; do systemctl enable --now nextcloud-webhook-worker@$i.service; done
+
+The status of the workers can be checked with (replace 1 with the worker number):
+
+.. code-block::
+
+   systemctl status nextcloud-webhook-worker@1.service
+
+The list of workers can be checked with:
+
+.. code-block::
+
+   systemctl list-units --type=service | grep nextcloud-webhook-worker
+
+The complete logs of the workers can be checked with (replace 1 with the worker number):
+
+.. code-block::
+
+   sudo journalctl -xeu nextcloud-webhook-worker@1.service -f
+
+It is recommended to restart this worker at least once a day to make sure code changes are effective and avoid memory leaks, in this example the service restarts every 60 seconds.
 
 Nextcloud Webhook Events
 ------------------------
@@ -131,6 +206,258 @@ This is an exhaustive list of available events. It features the event ID and the
         "rowId": int,
         "previousValues": null|array<int, mixed>,
         "values": null|array<int, mixed>
+      }
+    }
+
+ * OCP\\Calendar\\Events\\CalendarObjectCreatedEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "calendarId": int,
+        "calendarData": array{
+          "id": int,
+          "uri": string,
+          "{http://calendarserver.org/ns/}getctag": string,
+          "{http://sabredav.org/ns}sync-token": int,
+          "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": 'Sabre\CalDAV\Xml\Property\SupportedCalendarComponentSet',
+          "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": 'Sabre\CalDAV\Xml\Property\ScheduleCalendarTransp'
+          "{urn:ietf:params:xml:ns:caldav}calendar-timezone": string|null
+        },
+        "shares": list<array{
+          "href": string,
+          "commonName": string,
+          "status": int,
+          "readOnly": bool,
+          "{http://owncloud.org/ns}principal": string,
+          "{http://owncloud.org/ns}group-share": bool
+        }>,
+        "objectData": array{
+          "id": int,
+          "uri": string,
+          "lastmodified": int,
+          "etag": string,
+          "calendarid": int,
+          "size": int,
+          "component": string|null,
+          "classification": int
+        }
+      }
+    }
+
+ * OCP\\Calendar\\Events\\CalendarObjectDeletedEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "calendarId": int,
+        "calendarData": array{
+          "id": int,
+          "uri": string,
+          "{http://calendarserver.org/ns/}getctag": string,
+          "{http://sabredav.org/ns}sync-token": int,
+          "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": 'Sabre\CalDAV\Xml\Property\SupportedCalendarComponentSet',
+          "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": 'Sabre\CalDAV\Xml\Property\ScheduleCalendarTransp'
+          "{urn:ietf:params:xml:ns:caldav}calendar-timezone": string|null
+        },
+        "shares": list<array{
+          "href": string,
+          "commonName": string,
+          "status": int,
+          "readOnly": bool,
+          "{http://owncloud.org/ns}principal": string,
+          "{http://owncloud.org/ns}group-share": bool
+        }>,
+        "objectData": array{
+          "id": int,
+          "uri": string,
+          "lastmodified": int,
+          "etag": string,
+          "calendarid": int,
+          "size": int,
+          "component": string|null,
+          "classification": int
+        }
+      }
+    }
+
+ * OCP\\Calendar\\Events\\CalendarObjectMovedEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "sourceCalendarId": int,
+        "sourceCalendarData": array{
+          "id": int,
+          "uri": string,
+          "{http://calendarserver.org/ns/}getctag": string,
+          "{http://sabredav.org/ns}sync-token": int,
+          "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": 'Sabre\CalDAV\Xml\Property\SupportedCalendarComponentSet',
+          "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": 'Sabre\CalDAV\Xml\Property\ScheduleCalendarTransp'
+          "{urn:ietf:params:xml:ns:caldav}calendar-timezone": string|null
+        },
+        "targetCalendarId": int,
+        "targetCalendarData": array{
+          "id": int,
+          "uri": string,
+          "{http://calendarserver.org/ns/}getctag": string,
+          "{http://sabredav.org/ns}sync-token": int,
+          "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": 'Sabre\CalDAV\Xml\Property\SupportedCalendarComponentSet',
+          "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": 'Sabre\CalDAV\Xml\Property\ScheduleCalendarTransp'
+          "{urn:ietf:params:xml:ns:caldav}calendar-timezone": string|null
+        },
+        "sourceShares": list<array{
+          "href": string,
+          "commonName": string,
+          "status": int,
+          "readOnly": bool,
+          "{http://owncloud.org/ns}principal": string,
+          "{http://owncloud.org/ns}group-share": bool
+        }>,
+        "targetShares": list<array{
+          "href": string,
+          "commonName": string,
+          "status": int,
+          "readOnly": bool,
+          "{http://owncloud.org/ns}principal": string,
+          "{http://owncloud.org/ns}group-share": bool
+        }>,
+        "objectData": array{
+          "id": int,
+          "uri": string,
+          "lastmodified": int,
+          "etag": string,
+          "calendarid": int,
+          "size": int,
+          "component": string|null,
+          "classification": int
+        }
+      }
+    }
+
+ * OCP\\Calendar\\Events\\CalendarObjectMovedToTrashEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "calendarId": int,
+        "calendarData": array{
+          "id": int,
+          "uri": string,
+          "{http://calendarserver.org/ns/}getctag": string,
+          "{http://sabredav.org/ns}sync-token": int,
+          "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": 'Sabre\CalDAV\Xml\Property\SupportedCalendarComponentSet',
+          "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": 'Sabre\CalDAV\Xml\Property\ScheduleCalendarTransp'
+          "{urn:ietf:params:xml:ns:caldav}calendar-timezone": string|null
+        },
+        "shares": list<array{
+          "href": string,
+          "commonName": string,
+          "status": int,
+          "readOnly": bool,
+          "{http://owncloud.org/ns}principal": string,
+          "{http://owncloud.org/ns}group-share": bool
+        }>,
+        "objectData": array{
+          "id": int,
+          "uri": string,
+          "lastmodified": int,
+          "etag": string,
+          "calendarid": int,
+          "size": int,
+          "component": string|null,
+          "classification": int
+        }
+      }
+    }
+
+ * OCP\\Calendar\\Events\\CalendarObjectRestoredEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "calendarId": int,
+        "calendarData": array{
+          "id": int,
+          "uri": string,
+          "{http://calendarserver.org/ns/}getctag": string,
+          "{http://sabredav.org/ns}sync-token": int,
+          "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": 'Sabre\CalDAV\Xml\Property\SupportedCalendarComponentSet',
+          "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": 'Sabre\CalDAV\Xml\Property\ScheduleCalendarTransp'
+          "{urn:ietf:params:xml:ns:caldav}calendar-timezone": string|null
+        },
+        "shares": list<array{
+          "href": string,
+          "commonName": string,
+          "status": int,
+          "readOnly": bool,
+          "{http://owncloud.org/ns}principal": string,
+          "{http://owncloud.org/ns}group-share": bool
+        }>,
+        "objectData": array{
+          "id": int,
+          "uri": string,
+          "lastmodified": int,
+          "etag": string,
+          "calendarid": int,
+          "size": int,
+          "component": string|null,
+          "classification": int
+        }
+      }
+    }
+
+ * OCP\\Calendar\\Events\\CalendarObjectUpdatedEvent
+
+  .. code-block:: text
+
+    array{
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "calendarId": int,
+        "calendarData": array{
+          "id": int,
+          "uri": string,
+          "{http://calendarserver.org/ns/}getctag": string,
+          "{http://sabredav.org/ns}sync-token": int,
+          "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": 'Sabre\CalDAV\Xml\Property\SupportedCalendarComponentSet',
+          "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": 'Sabre\CalDAV\Xml\Property\ScheduleCalendarTransp'
+          "{urn:ietf:params:xml:ns:caldav}calendar-timezone": string|null
+        },
+        "shares": list<array{
+          "href": string,
+          "commonName": string,
+          "status": int,
+          "readOnly": bool,
+          "{http://owncloud.org/ns}principal": string,
+          "{http://owncloud.org/ns}group-share": bool
+        }>,
+        "objectData": array{
+          "id": int,
+          "uri": string,
+          "lastmodified": int,
+          "etag": string,
+          "calendarid": int,
+          "size": int,
+          "component": string|null,
+          "classification": int
+        }
       }
     }
 
@@ -238,19 +565,6 @@ This is an exhaustive list of available events. It features the event ID and the
       }
     }
 
- * OCP\\Files\\Events\\Node\\NodeReadEvent
-
-  .. code-block:: text
-
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "class": string,
-        "node": array{"id": string, "path": string}
-      }
-    }
-
  * OCP\\Files\\Events\\Node\\NodeDeletedEvent
 
   .. code-block:: text
@@ -345,5 +659,21 @@ This is an exhaustive list of available events. It features the event ID and the
         "class": string,
         "source": array{"id": string, "path": string}
         "target": array{"id": string, "path": string}
+      }
+    }
+
+* OCP\\SystemTag\\MapperEvent
+
+  .. code-block:: text
+
+    array {
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "class": string,
+        'eventType' => 'OCP\SystemTag\ISystemTagObjectMapper::assignTags' | 'OCP\SystemTag\ISystemTagObjectMapper::unassignTags',
+		'objectType' => string (e.g. 'files'),
+        'objectId' => string,
+        'tagIds' => int[],
       }
     }

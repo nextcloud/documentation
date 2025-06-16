@@ -19,3 +19,5 @@ Installation and server configuration
    example_ubuntu
    example_centos
    example_openbsd
+
+   uninstallation

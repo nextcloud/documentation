@@ -14,7 +14,7 @@ Consuming the Task Processing API
 To consume the  Task Processing API, you will need to :ref:`inject<dependency-injection>` ``\OCP\TaskProcessing\IManager``. This manager offers the following methods:
 
  * ``hasProviders()`` This method returns a boolean which indicates if any providers have been registered. If this is false you cannot use the TextProcessing feature.
- * ``getAvailableTaskTypes()`` This method returns an array of task types indexed by their ID with their names and additional metadata.
+ * ``getAvailableTaskTypes(bool $showDisabled = false)`` This method returns an array of enabled task types indexed by their ID with their names and additional metadata. If you set ``$showdisabled`` to ``true`` (available since NC31), it will include disabled task types.
  * ``scheduleTask(Task $task)`` This method provides the actual scheduling functionality. The task is defined using the Task class. This method runs the task asynchronously in a background job.
  * ``getTask(int $id)`` This method fetches a task specified by its id.
  * ``deleteTask(Task $task)`` This method deletes a task
@@ -38,6 +38,25 @@ The following built-in task types are available:
        * ``history``: ``ListOfTexts``
     * Output shape:
        * ``output``: ``Text``
+ * ``'core:text2text:chatwithtools'``: This task allows chatting with the language model with tools calling support. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToTextChatWithTools``
+    * Input shape:
+       * ``system_prompt``: ``Text``
+       * ``input``: ``Text``
+       * ``tool_message``: ``Text`` A string containing a JSON array of ``{"name": string, "content": string, "tool_call_id": string}``
+       * ``history``: ``ListOfTexts`` Each list item is a JSON string with ``{"role": "human", "content": string}`` or ``{"role": "assistant", "content": string, (optional: "tool_calls": array<{"name": string, "type": "tool_call", "id": string, "args": object}>)}`` or ``{"role": "tool", "content": string, "name": string, "tool_call_id": string}``
+       * ``tools``: ``Text`` The tools parameter should be a JSON array formatted according to the OpenAI API specifications: https://platform.openai.com/docs/api-reference/chat/create#chat-create-tools
+    * Output shape:
+       * ``output``: ``Text``
+       * ``tool_calls``: ``Text`` A string containing a JSON array with ``{"name": string, "type": "tool_call", "id": string, "args": object}``
+ * ``'core:contextagent:interaction'``: This task allows chatting with an agent. It is implemented by ``\OCP\TaskProcessing\TaskTypes\ContextAgentInteraction``
+    * Input shape:
+       * ``input``: ``Text``
+       * ``confirmation``: ``Number`` Boolean integer indicating whether to confirm previously requested actions: 0 to reject or 1 to confirm.
+       * ``conversation_token``: ``Text`` Token representing the conversation
+    * Output shape:
+       * ``output``: ``Text``
+       * ``conversation_token``: ``Text``
+       * ``actions``: ``Text``
  * ``'core:text2text:formalization'``: This task will reformulate the passed input text to be more formal in tone. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToTextFormalization``
      * Input shape:
         * ``input``: ``Text``
@@ -86,6 +105,40 @@ The following built-in task types are available:
          * ``numberOfImages``: ``Number``
       * Output shape:
          * ``output``: ``ListOfImages``
+ * ``'core:text2text:changetone'``: This task type is for reformulating a text, changing its tone. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToTextChangeTone``
+      * Input shape:
+         * ``input``: ``Text``
+         * ``tone``: ``Enum``
+      * Output shape:
+         * ``output``: ``Text``
+ * ``'core:text2text:proofread'``: This task type is for proofreading a text, checking it for grammar and spelling mistakes. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToTextProofread``
+      * Input shape:
+         * ``input``: ``Text``
+      * Output shape:
+         * ``output``: ``Text``
+ * ``'core:text2speech'``: This task type is for generating speech from text prompts. It is implemented by ``\OCP\TaskProcessing\TaskTypes\TextToSpeech``
+      * Input shape:
+         * ``input``: ``Text``
+      * Output shape:
+         * ``speech``: ``Audio``
+
+
+Task types can be disabled in the AI admin settings so they are not available for the Assistant or other apps even if they are implemented. All implemented Task types are enabled by default.
+
+LLM Prompts and multilingual I/O
+################################
+
+When writing prompts for the TextToText task type in your apps, we recommend testing it with at least
+
+* OpenAI GPT-3.5
+* Llama 3.1
+
+Also, make sure that you instruct the model to use the correct language in its output. By default most models will answer in English if the main prompt is in English, even though the source data is in another language.
+A tweak to make sure of this is to instruct the model as follows:
+
+.. code-block:: php
+
+   "Detect the language used in the text and make sure to answer in the same language without mentioning the language explicitly."
 
 Input and output shapes
 ~~~~~~~~~~~~~~~~~~~~~~~
