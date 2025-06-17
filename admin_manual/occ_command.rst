@@ -1719,6 +1719,31 @@ View a list of all users' most recent login::
    layla's last login: 2024-03-20 17:18
    stephanie's last login: 2024-01-11 13:26
 
+user:profile
+^^^^^^^^^^^^
+
+Read user profile properties::
+
+  sudo -E -u www-data php occ user:profile admin
+    - displayname: admin
+    - address: Berlin
+    - email: admin@example.net
+    - profile_enabled: 1
+    - pronouns: they/them
+
+Get a single profile property for a user::
+
+    sudo -E -u www-data php occ user:profile address
+      Berlin
+
+Set a profile property::
+
+    sudo -E -u www-data php occ user:profile address Stuttgart
+
+Delete a profile property::
+
+    sudo -E -u www-data php occ user:profile address --delete
+
 user:setting
 ^^^^^^^^^^^^
 

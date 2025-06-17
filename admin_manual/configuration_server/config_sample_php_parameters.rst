@@ -4002,9 +4002,12 @@ defined in ``OCP\Accounts\IAccountManager``. Values are merged with defaults
 from ``OC\Accounts\AccountManager``.
 
 Example: Set phone property to private scope:
-[
-  \OCP\Accounts\IAccountManager::PROPERTY_PHONE => \OCP\Accounts\IAccountManager::SCOPE_PRIVATE
-]
+
+::
+
+	'account_manager.default_property_scope' => [
+		\OCP\Accounts\IAccountManager::PROPERTY_PHONE => \OCP\Accounts\IAccountManager::SCOPE_PRIVATE
+	]
 
 projects.enabled
 ^^^^^^^^^^^^^^^^
