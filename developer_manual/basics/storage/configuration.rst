@@ -78,7 +78,7 @@ Naming conventions
 
 For consistency there are conventions for config keys:
 
-* System config keys should only contain lower case letters, numbers, `_` and `-`. This ensures that they can be used as environment variables.
+* System config keys should only contain lower case letters, numbers and `_`. This ensures that they can be used as environment variables.
 * Keys can be scoped to subsystems like ``<subsystem>_<key>``. This makes it easier to group related configuration.
 
 Here are some examples:
