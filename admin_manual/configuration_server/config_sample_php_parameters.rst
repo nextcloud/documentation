@@ -281,6 +281,20 @@ You can specify:
 - The IP address with or without permitted port, e.g., [2001:db8::1]:8080
   Using TLS certificates where commonName=<IP address> is deprecated
 
+cookie_domain
+^^^^^^^^^^^^^
+
+
+::
+
+	'cookie_domain' => '',
+
+The validity domain for cookies, for example '' (cookies will be sent only
+the domain that defined it, e.g. 'demo.example.org'), 'demo.example.org'
+(cookies will be valid for the domain and all subdomains), ...
+
+Defaults to '' (safe option)
+
 datadirectory
 ^^^^^^^^^^^^^
 
@@ -4002,12 +4016,9 @@ defined in ``OCP\Accounts\IAccountManager``. Values are merged with defaults
 from ``OC\Accounts\AccountManager``.
 
 Example: Set phone property to private scope:
-
-::
-
-	'account_manager.default_property_scope' => [
-		\OCP\Accounts\IAccountManager::PROPERTY_PHONE => \OCP\Accounts\IAccountManager::SCOPE_PRIVATE
-	]
+[
+  \OCP\Accounts\IAccountManager::PROPERTY_PHONE => \OCP\Accounts\IAccountManager::SCOPE_PRIVATE
+]
 
 projects.enabled
 ^^^^^^^^^^^^^^^^
