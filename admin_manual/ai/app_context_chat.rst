@@ -123,11 +123,11 @@ Commands (OCC)
 
 The options for each command can be found like this, using scan as example: ``context_chat:scan --help``
 
-* ``context_chat:diagnostics``
-   Check currently running ContextChat background processes.
-
 * ``context_chat:prompt``
    Ask a question about your data, with options for selective context.
+
+* ``context_chat:search``
+   Perform a semantic (vector DB based) search on your indexed documents, with options for selective context.
 
 * ``context_chat:scan``
    Scan and index the user's documents based on the user ID provided, synchronously.
@@ -189,10 +189,31 @@ Logs
 ----
 
 Logs for the ``context_chat`` PHP app can be found in the Nextcloud log file, which is usually located in the Nextcloud data directory. The log file is named ``nextcloud.log``.
+Diagnostic logs can be found in the Nextcloud data directory in ``context_chat.log`` file.
 
-| For the backend, warning and error logs can be found in the docker container logs, and the complete logs can be found in ``logs/`` directory in the persistent storage of the docker container.
+| For the backend, warning and error logs can be found in the docker container logs ``docker logs -f -n 200 nc_app_context_chat_backend``, and the complete logs can be found in ``logs/`` directory in the persistent storage of the docker container.
 | That will be ``/nc_app_context_chat_backend/logs/`` in the docker container.
-| See `the Logs head <https://github.com/nextcloud/context_chat_backend?tab=readme-ov-file#logs>`_ in the backend's readme for more information.
+
+This command can be used to view the detailed logs in real-time:
+
+.. code-block::
+
+   docker exec nc_app_context_chat_backend tail -f /nc_app_context_chat_backend/logs/ccb.log
+
+Same for the embedding server:
+
+.. code-block::
+
+   docker exec nc_app_context_chat_backend tail -f /nc_app_context_chat_backend/logs/embedding_server_*.log``
+
+See `the Logs head <https://github.com/nextcloud/context_chat_backend?tab=readme-ov-file#logs>`_ in the backend's readme for more information.
+
+Troubleshooting
+---------------
+
+1. If the docker container seems to suddenly restart during indexing or querying, it could be related to RAM/storage filling up, or AVX being unavailable on the system. AVX can be checked using ``grep -i avx /proc/cpuinfo`` command on the host system. If AVX is not available, the app will not work.
+2. Look for issues in the diagnostic logs, the server logs and the docker container ``nc_app_context_chat_container`` logs. If unsure, open an issue in either of the repositories.
+3. Check "Admin settings -> Context Chat" for statistics and information about the indexing process.
 
 Possibility of Data Leak
 ------------------------
