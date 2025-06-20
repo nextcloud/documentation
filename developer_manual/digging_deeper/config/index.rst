@@ -7,3 +7,4 @@ Config & Preferences
 
    appconfig
    userconfig
+   lexicon
