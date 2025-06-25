@@ -209,7 +209,7 @@ General Window
 --------------
 
 The General window has configuration options such as **Launch on System
-Startup**, **Use Monochrome Icons**, and **Show Desktop Notifications**. This
+Startup**, **Use Monochrome Icons**, and **Show Server Notifications**. This
 is where you will find the **Edit Ignored Files** button, to launch the ignored
 files editor, and **Ask confirmation before downloading
 folders larger than [folder size]**.
