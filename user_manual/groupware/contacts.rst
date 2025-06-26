@@ -57,7 +57,7 @@ After the import is complete, you will see your new contact in your address book
 
 
 Adding Contacts Manually
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you can't import virtual contacts, the Contacts app enables you to **add contacts** manually.
 
@@ -110,6 +110,14 @@ click on the contacts picture for the following options to appear:
 
 .. figure:: ../images/contact_picture_options.png
 
+Organize your Contacts with Contact Groups
+------------------------------------------
+
+Contact Groups help you to organize your contacts into groups.
+
+To create a new contact group, click on the plus sign next to "Contact groups" in the left sidebar.
+
+.. note:: Contact groups need to have at least one member to be saved. Please note that you can only add contacts from writable address books to contact groups. Contacts from read-only address books, such as the system address book, cannot be added.
 
 Adding and Managing Address Books
 ---------------------------------
@@ -124,7 +132,7 @@ to create new address books, simply by specifying an address books name:
 
 The Contacts settings is also where you can share, export and delete addressbooks. You will find the CardDAV URLs there.
 
-.. note:: Contacts in disabled address books are not shown in the Contacts app and the Contact menu. 
+.. note:: Contacts in disabled address books are not shown in the Contacts app and the Contact menu.
 
 See :doc:`index` for more details about syncing your address books
 with iOS, macOS, Thunderbird and other CardDAV clients.
