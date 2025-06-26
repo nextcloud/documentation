@@ -56,7 +56,7 @@ operations.
 This menu provides the following options:
 
 * Open main dialog
-* Paus sync/Resume sync
+* Pause sync/Resume sync
 * Settings
 * Exit Nextcloud, logging out and closing the client
 
