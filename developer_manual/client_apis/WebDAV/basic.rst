@@ -512,35 +512,38 @@ Request Headers
 
 You can set some special headers that Nextcloud will interpret.
 
-+-----------------+-----------------------------------------------------------------+------------------------------------------+
-|     Header      |                           Description                           |                 Example                  |
-+=================+=================================================================+==========================================+
-| X-OC-MTime      | | Allow to specify a modification time.                         | ``1675789581``                           |
-|                 | | The response will contain the header ``X-OC-MTime: accepted`` |                                          |
-|                 | | if the mtime was accepted.                                    |                                          |
-+-----------------+-----------------------------------------------------------------+------------------------------------------+
-| X-OC-CTime      | | Allow to specify a creation time.                             | ``1675789581``                           |
-|                 | | The response will contain the header ``X-OC-CTime: accepted`` |                                          |
-|                 | | if the mtime was accepted.                                    |                                          |
-+-----------------+-----------------------------------------------------------------+------------------------------------------+
-| OC-Checksum     | | A checksum that will be stored in the DB.                     | ``md5:04c36b75222cd9fd47f2607333029106`` |
-|                 | | The server will not do any sort of  validation.               |                                          |
-|                 | | Currently used algorithms are ``MD5``, ``SHA1``, ``SHA256``,  |                                          |
-|                 | | ``SHA3-256``, ``Adler32``.                                    |                                          |
-+-----------------+-----------------------------------------------------------------+------------------------------------------+
-| X-Hash          | | Allow to request the file's hash from the server.             | ``md5``, ``sha1``, or ``sha256``         |
-|                 | | The server will return the hash in a header named either:     |                                          |
-|                 | | ``X-Hash-MD5``, ``X-Hash-SHA1``, or ``X-Hash-SHA256``.        |                                          |
-+-----------------+-----------------------------------------------------------------+------------------------------------------+
-| OC-Total-Length | | Contains the total size of the file during a chunk upload.    | ``4052412``                              |
-|                 | | This allow the server to abort faster if the remaining        |                                          |
-|                 | | user's quota is not enough.                                   |                                          |
-+-----------------+-----------------------------------------------------------------+------------------------------------------+
-| OC-Chunked      | | Used for legacy chunk upload to differentiate a regular       | Deprecated ⚠️                            |
-|                 | | upload from a chunked upload. It allowed checking for quota   |                                          |
-| (deprecated)    | | and various other things. Nowadays, you need to provide the   | You do not have to provide this anymore  |
-|                 | | ``OC-Total-Length`` header on the ``PUT`` requests instead.   |                                          |
-+-----------------+-----------------------------------------------------------------+------------------------------------------+
++-----------------------+-----------------------------------------------------------------+------------------------------------------+
+|        Header         |                           Description                           |                 Example                  |
++=======================+=================================================================+==========================================+
+| X-OC-MTime            | | Allow to specify a modification time.                         | ``1675789581``                           |
+|                       | | The response will contain the header ``X-OC-MTime: accepted`` |                                          |
+|                       | | if the mtime was accepted.                                    |                                          |
++-----------------------+-----------------------------------------------------------------+------------------------------------------+
+| X-OC-CTime            | | Allow to specify a creation time.                             | ``1675789581``                           |
+|                       | | The response will contain the header ``X-OC-CTime: accepted`` |                                          |
+|                       | | if the mtime was accepted.                                    |                                          |
++-----------------------+-----------------------------------------------------------------+------------------------------------------+
+| OC-Checksum           | | A checksum that will be stored in the DB.                     | ``md5:04c36b75222cd9fd47f2607333029106`` |
+|                       | | The server will not do any sort of  validation.               |                                          |
+|                       | | Currently used algorithms are ``MD5``, ``SHA1``, ``SHA256``,  |                                          |
+|                       | | ``SHA3-256``, ``Adler32``.                                    |                                          |
++-----------------------+-----------------------------------------------------------------+------------------------------------------+
+| X-Hash                | | Allow to request the file's hash from the server.             | ``md5``, ``sha1``, or ``sha256``         |
+|                       | | The server will return the hash in a header named either:     |                                          |
+|                       | | ``X-Hash-MD5``, ``X-Hash-SHA1``, or ``X-Hash-SHA256``.        |                                          |
++-----------------------+-----------------------------------------------------------------+------------------------------------------+
+| OC-Total-Length       | | Contains the total size of the file during a chunk upload.    | ``4052412``                              |
+|                       | | This allow the server to abort faster if the remaining        |                                          |
+|                       | | user's quota is not enough.                                   |                                          |
++-----------------------+-----------------------------------------------------------------+------------------------------------------+
+| X-NC-WebDAV-AutoMkcol | | When set to ``1``, instructs the server to automatically      |                                          |
+|                       | | create any missing parent directories when uploading a file.  |                                          |
++-----------------------+-----------------------------------------------------------------+------------------------------------------+
+| OC-Chunked            | | Used for legacy chunk upload to differentiate a regular       | Deprecated ⚠️                            |
+|                       | | upload from a chunked upload. It allowed checking for quota   |                                          |
+| (deprecated)          | | and various other things. Nowadays, you need to provide the   | You do not have to provide this anymore  |
+|                       | | ``OC-Total-Length`` header on the ``PUT`` requests instead.   |                                          |
++-----------------------+-----------------------------------------------------------------+------------------------------------------+
 
 Response Headers
 ----------------
