@@ -90,3 +90,9 @@ Hidden files upload failure or not shown
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 If you have the configuration ``hide dot files = Yes``, you will not be able to upload a hidden file (dot file) nor will you be able to show hidden files on your filelist (even if the 'show hidden file' option is checked on the nextcloud settings.
 Make sure you have the following option in your configuration: ``hide dot files = No``
+
+Using ACL support
+^^^^^^^^^^^^^^^^^
+When enabling ACL support for external SMB/CIFS storage, Nextcloud can respect filesystem-level access controls. 
+.. warning:: However, please be aware that ACL evaluation currently only works reliably for user-based permissions. Group-based ACLs are not supported, and users do not inherit access rights granted through group memberships. For consistent access behavior, ensure that permissions are assigned directly to individual users.
+
