@@ -264,7 +264,7 @@ Supported properties
 | <ocm:share-permissions />     | | The permissions that the user has             | ``["share", "read", "write"]``                                                       |
 |                               | | over the share as a JSON array.               |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:share-attributes />       | User set attributes as a JSON array.            | ``[{ "scope" => <string>, "key" => <string>, "enabled" => <bool> }]``                |
+| <nc:share-attributes />       | User set attributes as a JSON array.            | ``[{ "scope" => <string>, "key" => <string>, "value" => <bool> }]``                  |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:sharees />                | The list of share recipient.                    | .. code-block:: XML                                                                  |
 |                               |                                                 |                                                                                      |
