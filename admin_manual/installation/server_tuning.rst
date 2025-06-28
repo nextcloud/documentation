@@ -248,8 +248,6 @@ You can change between jpeg and webp, the default is jpeg:
 
 ::
 
-  <?php
-  $CONFIG = array (
     'preview_format' => 'webp',
 
 If you want set a api key for imaginary':
