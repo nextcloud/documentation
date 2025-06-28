@@ -254,8 +254,6 @@ If you want set a api key for imaginary':
 
 ::
 
-  <?php
-  $CONFIG = array (
     'preview_imaginary_key' => 'secret',
 
 Default WebP quality setting for preview images is '80'. Change this with:
