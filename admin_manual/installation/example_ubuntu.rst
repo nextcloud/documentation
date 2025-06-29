@@ -45,29 +45,28 @@ Now download the archive of the latest Nextcloud version:
 
 * Go to the `Nextcloud Install Page <https://nextcloud.com/install>`_.
 * Go to **Download Server > Community Projects** and download either the tar.bz2 or .zip archive.
-* This downloads a file named nextcloud-x.y.z.tar.bz2 or nextcloud-x.y.z.zip
-  (where x.y.z is the version number).
-* Download its corresponding checksum file, e.g. nextcloud-x.y.z.tar.bz2.md5,
-  or nextcloud-x.y.z.tar.bz2.sha256.
+* This downloads a file named latest.tar.bz2 or latest.zip.
+* Download its corresponding checksum file, e.g. latest.tar.bz2.md5,
+  or latest.tar.bz2.sha256.
 * Verify the MD5 or SHA256 sum::
 
-    md5sum -c nextcloud-x.y.z.tar.bz2.md5 < nextcloud-x.y.z.tar.bz2
-    sha256sum -c nextcloud-x.y.z.tar.bz2.sha256 < nextcloud-x.y.z.tar.bz2
-    md5sum  -c nextcloud-x.y.z.zip.md5 < nextcloud-x.y.z.zip
-    sha256sum  -c nextcloud-x.y.z.zip.sha256 < nextcloud-x.y.z.zip
+    md5sum -c latest.tar.bz2.md5 < latest.tar.bz2
+    sha256sum -c latest.tar.bz2.sha256 < latest.tar.bz2
+    md5sum  -c latest.zip.md5 < latest.zip
+    sha256sum  -c latest.zip.sha256 < latest.zip
 
 * You may also verify the PGP signature::
 
-    wget https://download.nextcloud.com/server/releases/nextcloud-x.y.z.tar.bz2.asc
+    wget https://download.nextcloud.com/server/releases/latest.tar.bz2.asc
     wget https://nextcloud.com/nextcloud.asc
     gpg --import nextcloud.asc
-    gpg --verify nextcloud-x.y.z.tar.bz2.asc nextcloud-x.y.z.tar.bz2
+    gpg --verify latest.tar.bz2.asc latest.tar.bz2
 
 * Now you can extract the archive contents. Run the appropriate unpacking
   command for your archive type::
 
-    tar -xjvf nextcloud-x.y.z.tar.bz2
-    unzip nextcloud-x.y.z.zip
+    tar -xjvf latest.tar.bz2
+    unzip latest.zip
 
 * This unpacks to a single ``nextcloud`` directory. Copy the Nextcloud directory
   to its final destination. When you are running the Apache HTTP server you may
