@@ -60,7 +60,7 @@ instance, importing is the best way to do so.
           ``.ics``-files, defined in RFC 5545.
 
 Import an Event/Add .ics Event
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In many places, you can download event details as an .ics file, or via a button saying "ical", "Apple Calendar" or "Outlook".
 
