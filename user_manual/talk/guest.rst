@@ -6,6 +6,8 @@ a web interface as well as mobile apps.
 
 You can find out more about Nextcloud Talk `on our website <https://nextcloud.com/talk/>`_.
 
+.. FIXME Link to dedicated pages and keep this one as a "quick intro"
+
 Joining a chat
 --------------
 
