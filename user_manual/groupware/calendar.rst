@@ -46,15 +46,34 @@ instance, importing is the best way to do so.
 .. figure:: images/calendar_settings_sidebar.png
             :scale: 80%
 
-1. Click on the settings-icon labeled with ``Settings & Import`` at the left-bottom.
+1. Click on the settings-icon labeled with ``Calendar settings`` at the bottom-left.
 
-2. After clicking on ``+ Import Calendar`` you can select one or more calendar files
+2. After clicking on ``Import Calendar`` you can select one or more calendar files
    from your local device to upload.
 
-3. The upload can take some time and depends on how big the calendar you import
-   is.
+3. Select a ``Calendar to import into``.
 
-4. A blue progress bar will appear below "Calendar Settings".
+4. The upload can take some time and depends on how big the calendar you import
+   is. A blue progress bar will appear below "Calendar Settings". 
+
+.. note:: The Nextcloud Calendar application only supports iCalendar-compatible
+          ``.ics``-files, defined in RFC 5545.
+
+Import an Event/Add .ics Event
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In many places, you can download event details as an .ics file, or via a button saying "ical", "Apple Calendar" or "Outlook".
+
+
+1. Click on the settings-icon labeled with ``Calendar settings`` at the bottom-left.
+
+2. After clicking on ``Import calendar`` you can select one or more calendar files
+   from your local device to upload.
+
+3. Select a ``Calendar to import into``.
+
+4. The upload can take some time and depends on how big the calendar/event you import
+   is. A blue progress bar will appear below "Calendar Settings".
 
 .. note:: The Nextcloud Calendar application only supports iCalendar-compatible
           ``.ics``-files, defined in RFC 5545.
