@@ -221,8 +221,6 @@ These include:
 
 - ``X-Content-Type-Options: nosniff``
 	- Instructs some browsers to not sniff the mimetype of files. This is used for example to prevent browsers from interpreting text files as JavaScript.
-- ``X-XSS-Protection: 1; mode=block``
-	- Instructs browsers to enable their browser side Cross-Site-Scripting filter.
 - ``X-Robots-Tag: noindex, nofollow``
 	- Instructs search machines to not index these pages and not follow any links there.
 - ``X-Frame-Options: SAMEORIGIN``
