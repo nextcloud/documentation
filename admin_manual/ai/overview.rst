@@ -11,7 +11,7 @@ Overview of AI features
 
 Nextcloud uses modularity to separate raw AI functionality from the Graphical User interfaces and apps that make use of said functionality. Each instance can thus make use of various backends that provide the functionality for the same frontends and the same functionality can be implemented by multiple apps using on-premises processing or third-party AI service providers.
 
-.. figure:: images/ai_overview.svg
+.. figure:: images/ai_overview.png
   :scale: 80%
 
 .. csv-table::
