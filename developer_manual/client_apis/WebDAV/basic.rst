@@ -199,13 +199,15 @@ Supported properties
 |                               | | storage. No storage implements that yet.      |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <oc:permissions />            | | The permissions that the user has over the    | | ``S``: Shared                                                                      |
-|                               | | file. The value is a string containing        | | ``R``: Shareable                                                                   |
-|                               | | letters for all available permissions.        | | ``M``: Mounted                                                                     |
-|                               |                                                 | | ``G``: Readable                                                                    |
+|                               | | file or folder. The value is a string         | | ``R``: Shareable                                                                   |
+|                               | | containingletters for all available           | | ``M``: Mounted                                                                     |
+|                               | | permissions.                                  | | ``G``: Readable                                                                    |
 |                               |                                                 | | ``D``: Deletable                                                                   |
-|                               |                                                 | | ``NV``: Updateable, Renameable, Moveable                                           |
-|                               |                                                 | | ``W``: Updateable (file)                                                           |
-|                               |                                                 | | ``CK``: Creatable                                                                  |
+|                               |                                                 | | ``N``: Renameable                                                                  |
+|                               |                                                 | | ``V``: Moveable                                                                    |
+|                               |                                                 | | ``W``: Writable (file)                                                             |
+|                               |                                                 | | ``C``: Creatable (creating a new file inside the folder)                           |
+|                               |                                                 | | ``K``: Creatable (creating a new folder inside the folder)                         |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:creation_time />          | Same as ``creationdate``, but as a timestamp.   | ``1675789581``                                                                       |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
