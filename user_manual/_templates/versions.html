@@ -1,22 +1,203 @@
 {% if READTHEDOCS %}
 {# Add rst-badge after rst-versions for small badge style. #}
+  <!-- Here go the languages -->
+  {% set available_languages = available_languages|sort %}
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Read the Docs</span>
-      v: {{ current_version }}
+      🌐
+      {% set language_code = language %}
+      {% if language_code == 'cs' %}
+      Czech
+      {% elif language_code == 'da' %}
+      Danish
+      {% elif language_code == 'de' %}
+      German
+      {% elif language_code == 'el' %}
+      Greek
+      {% elif language_code == 'es' %}
+      Spanish
+      {% elif language_code == 'en' %}
+      English
+      {% elif language_code == 'fi_FI' %}
+      Finnish
+      {% elif language_code == 'fr' %}
+      French
+      {% elif language_code == 'hr' %}
+      Croatian
+      {% elif language_code == 'hu_HU' %}
+      Hungarian
+      {% elif language_code == 'id' %}
+      Indonesian
+      {% elif language_code == 'it' %}
+      Italian
+      {% elif language_code == 'ja_JP' %}
+      Japanese
+      {% elif language_code == 'ko' %}
+      Korean
+      {% elif language_code == 'mn' %}
+      Mongolian
+      {% elif language_code == 'nb_NO' %}
+      Norwegian
+      {% elif language_code == 'nl' %}
+      Dutch
+      {% elif language_code == 'pl' %}
+      Polish
+      {% elif language_code == 'pt_PT' %}
+      Portuguese
+      {% elif language_code == 'pt_BR' %}
+      Portuguese (BR)
+      {% elif language_code == 'ro' %}
+      Romanian
+      {% elif language_code == 'ru' %}
+      Russian
+      {% elif language_code == 'sk_SK' %}
+      Slovakian
+      {% elif language_code == 'sq' %}
+      Albanian
+      {% elif language_code == 'sr' %}
+      Slovenian
+      {% elif language_code == 'sv' %}
+      Swedish
+      {% elif language_code == 'tr' %}
+      Turkish
+      {% elif language_code == 'uk' %}
+      Ukrainian
+      {% elif language_code == 'uz' %}
+      Uzbek
+      {% elif language_code == 'vi' %}
+      Vietnamese
+      {% elif language_code == 'zh_CN' %}
+      Chinese
+      {% elif language_code == 'zh_HK' %}
+      Chinese (HK)
+      {% elif language_code == 'zh_TW' %}
+      Chinese (TW)
+      {% else %}
+      {{ language_code }}
+      {% endif %}
+      <span class="fa fa-caret-down"></span>
+
+       ☁️ {{ current_version }}
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
       <dl>
-        <dt>Languages</dt>
-          <!--Here goes the Langs-->
+        <dt>🌐 {{ _('Languages') }}</dt>
+          {% for language_code in available_languages %}
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/{{ language_code }}/"
+                 {% if language_code == language %}
+                 style="color: var(--dark-link-color);"
+                 {% endif %}
+              >
+                {% if language_code == 'af' %}
+                Afrikaans
+                {% elif language_code == 'ar' %}
+                Arabic
+                {% elif language_code == 'br' %}
+                Breton
+                {% elif language_code == 'ca' %}
+                Catalan
+                {% elif language_code == 'cs' %}
+                Czech
+                {% elif language_code == 'da' %}
+                Danish
+                {% elif language_code == 'de' %}
+                German
+                {% elif language_code == 'el' %}
+                Greek
+                {% elif language_code == 'eo' %}
+                Esperanto
+                {% elif language_code == 'es' %}
+                Spanish
+                {% elif language_code == 'en' %}
+                English
+                {% elif language_code == 'fi_FI' %}
+                Finnish
+                {% elif language_code == 'fr' %}
+                French
+                {% elif language_code == 'hr' %}
+                Croatian
+                {% elif language_code == 'hu_HU' %}
+                Hungarian
+                {% elif language_code == 'ga' %}
+                Irish
+                {% elif language_code == 'gl' %}
+                Glacian
+                {% elif language_code == 'id' %}
+                Indonesian
+                {% elif language_code == 'it' %}
+                Italian
+                {% elif language_code == 'ja_JP' %}
+                Japanese
+                {% elif language_code == 'ko' %}
+                Korean
+                {% elif language_code == 'mn' %}
+                Mongolian
+                {% elif language_code == 'nb_NO' %}
+                Norwegian (NB)
+                {% elif language_code == 'nl' %}
+                Dutch
+                {% elif language_code == 'nn' %}
+                Norwegian (NN)
+                {% elif language_code == 'pl' %}
+                Polish
+                {% elif language_code == 'pt_PT' %}
+                Portuguese
+                {% elif language_code == 'pt_BR' %}
+                Portuguese (BR)
+                {% elif language_code == 'ro' %}
+                Romanian
+                {% elif language_code == 'ru' %}
+                Russian
+                {% elif language_code == 'si' %}
+                Sinhala
+                {% elif language_code == 'sk_SK' %}
+                Slovakian
+                {% elif language_code == 'sq' %}
+                Albanian
+                {% elif language_code == 'sr' %}
+                Slovenian
+                {% elif language_code == 'sv' %}
+                Swedish
+                {% elif language_code == 'ta' %}
+                Tamil
+                {% elif language_code == 'tr' %}
+                Turkish
+                {% elif language_code == 'uk' %}
+                Ukrainian
+                {% elif language_code == 'uz' %}
+                Uzbek
+                {% elif language_code == 'vi' %}
+                Vietnamese
+                {% elif language_code == 'zh_CN' %}
+                Chinese
+                {% elif language_code == 'zh_HK' %}
+                Chinese (HK)
+                {% elif language_code == 'zh_TW' %}
+                Chinese (TW)
+                {% else %}
+                {{ language_code }}
+                {% endif %}
+              </a>
+            </dd>
+          {% endfor %}
       </dl>
     </div>
     <div class="rst-other-versions">
       <dl>
-        <dt>{{ _('Versions') }}</dt>
-        {% for slug, url in versions %}
-          <dd><a href="{{ url }}">{{ slug }}</a></dd>
+        <dt>☁️ {{ _('Versions') }}</dt>
+        {% for slug, url in versions|reverse %}
+          <dd style="width: 32%">
+            <a href="{{ url }}"
+               {% if current_version == slug %}
+               style="color: var(--dark-link-color);"
+               {% endif %}
+            >
+              {{ slug }}
+            </a>
+          </dd>
         {% endfor %}
       </dl>
       <dl>
