@@ -49,6 +49,7 @@ Added APIs
 - New method ``\OCA\Files\Controller\TemplateController::listTemplateFields`` to list the fields of a template, accessible at ``/ocs/v2.php/apps/files/api/v1/templates/fields/{fileId}``.
 - New method ``\OCP\Files\Template\BeforeGetTemplatesEvent::shouldGetFields`` to get the event's ``withFields`` property, which should determine whether or not to perform template field extraction on the returned templates.
 - New interface ``\OCP\OCM\ICapabilityAwareOCMProvider`` to extend the OCM provider with 1.1 and 1.2 extensions of the Open Cloud Mesh Discovery API
+- New method ``\OCA\Files_Versions\Versions\IVersionBackend::getRevision`` to get the version revision from a node.
 
 Changed APIs
 ^^^^^^^^^^^^
