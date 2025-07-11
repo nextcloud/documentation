@@ -116,7 +116,10 @@ if you want to trigger an initial import of content items.
 Submitting ContentItem data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To submit content, wrap it in an ``\OCP\ContextChat\ContentItem`` object:
+Before submitting, you should check that the Context Chat app is enabled first
+by calling the ``isContextChatAvailable()`` method.
+
+Then, to submit content, wrap it in a list of ``\OCP\ContextChat\ContentItem`` objects:
 
 .. code-block:: php
 
