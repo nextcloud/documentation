@@ -71,6 +71,7 @@ To add content and register your provider implementation you will need to use th
 
 The ``IContentManager`` class has the following methods:
 
+ * ``isContextChatAvailable()``: Returns ``true`` if the Context Chat app is enabled, ``false`` otherwise.
  * ``registerContentProvider(string $providerClass)``
  * ``submitContent(string $appId, array $items)``: Providers can use this to submit content for indexing in Context Chat.
  * ``updateAccess(string $appId, string $providerId, string $itemId, string $op, array $userIds)``: Update the access rights for a content item. Use ``\OCP\ContextChat\Type\UpdateAccessOp`` constants for the ``$op`` value.
