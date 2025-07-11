@@ -71,7 +71,8 @@ To add content and register your provider implementation you will need to use th
 
 The ``IContentManager`` class has the following methods:
 
- * ``registerContentProvider(string $providerClass)``
+ * ``isContextChatAvailable()``: Returns ``true`` if the Context Chat app is enabled, ``false`` otherwise.
+ * ``registerContentProvider(string $providerClass)``: Register a new content provider.
  * ``submitContent(string $appId, array $items)``: Providers can use this to submit content for indexing in Context Chat.
  * ``updateAccess(string $appId, string $providerId, string $itemId, string $op, array $userIds)``: Update the access rights for a content item. Use ``\OCP\ContextChat\Type\UpdateAccessOp`` constants for the ``$op`` value.
  * ``updateAccessProvider(string $appId, string $providerId, string $op, array $userIds)``: Update the access rights for all content items from a provider. Use ``\OCP\ContextChat\Type\UpdateAccessOp`` constants for the ``$op`` value.
@@ -115,7 +116,10 @@ if you want to trigger an initial import of content items.
 Submitting ContentItem data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To submit content, wrap it in an ``\OCP\ContextChat\ContentItem`` object:
+Before submitting, you should check that the Context Chat app is enabled first
+by calling the ``isContextChatAvailable()`` method.
+
+Then, to submit content, wrap it in a list of ``\OCP\ContextChat\ContentItem`` objects:
 
 .. code-block:: php
 

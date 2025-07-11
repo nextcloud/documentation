@@ -36,6 +36,7 @@ Back-end changes
 Added APIs
 ^^^^^^^^^^
 
+- New ``OCP\ContextChat`` API. See :ref:`context_chat` for details.
 - New task processing task type ``OCP\TaskProcessing\TextToSpeech`` to convert text to speech.
 - New interface ``\OCP\Share\IShareProviderSupportsAllSharesInFolder`` extending ``\OCP\Share\IShareProvider`` to add the method ``\OCP\Share\IShareProviderSupportsAllSharesInFolder::getAllSharesInFolder`` used for querying all shares in a folder without filtering by user.
 - New method ``\OCP\IUser::canChangeEmail`` allowing to check if the user backend allows the user to change their email address.
