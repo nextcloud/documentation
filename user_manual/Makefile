@@ -53,7 +53,7 @@ html:
 versions-template-all: $(foreach lang, $(LANGS), add-lang-to-versions-template-$(lang))
 
 add-lang-to-versions-template-%:
-	sed -i '/Here goes the Langs/i <dd><a href="/server/latest/user_manual/$*/">$*</a></dd>' ./_templates/versions.html
+	sed -i '/Here go the languages/i {% set available_languages = available_languages + ["$*"] %}' ./_templates/versions.html
 
 html-all: $(foreach lang, $(LANGS), html-allow-warnings-lang-$(lang))
 
