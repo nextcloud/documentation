@@ -308,6 +308,9 @@ current_docs = 'user_manual'
 html_context['versions'] = generateVersionsDocs(current_docs)
 html_context['theme_vcs_pageview_mode'] += current_docs
 
+html_context['available_languages'] = [
+]
+
 # translation
 locale_dirs = ['locale/']   # path is example but recommended.
 gettext_compact = False     # optional.
