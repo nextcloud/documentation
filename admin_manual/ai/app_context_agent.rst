@@ -22,6 +22,14 @@ Currently implemented tools:
 
   * Example prompt: *"List the latest messages in my conversation with Andrew"*
 
+* Send a message to a talk conversation
+
+  * Example prompt: *"Can you send a joke to Andrew in talk?"*
+
+* Create a public talk conversation
+
+  * Example prompt: *"Can you create a new public talk conversation titled 'Press conference'?"*
+
 * Find a person in the user's contacts
 
   * Example prompt: *"What is Andrew's Email address?"*
@@ -34,9 +42,27 @@ Currently implemented tools:
 
   * Example prompt: *"What is the company's sick leave process?"*
 
+* Transcribe a media file
+
+  * Example prompt: *"Can you transcribe the following file? https://mycloud.com/f/9825679"* (Can be selected via smart picker.)
+
+* Generate documents
+
+  * Example prompt: *"Can you generate me a slide deck for my presentation about cats?"*
+  * Example prompt: *"Can you generate me a spreadsheet with some plausible numbers for countries and their population count?"*
+  * Example prompt: *"Can you generate me a pdf with an outline about what to see in Berlin?"*
+
+* Generate images
+
+  * Example prompt: *"Can you generate me an image of a cartoon drawing of a roman soldier typing something on a laptop?"*
+
 * Get coordinates for an Address from Open Street Maps Nomatim
 
-  * Example prompt: *"List my calendars"*
+  * Example prompt: *"What are the coordinates for Berlin, Germany?"*
+
+* Get the URL for a map of a location using Open Street Maps
+
+  * Example prompt: *"Can you show me a map of New York, please"*
 
 * Get the current weather at a location
 
@@ -44,11 +70,11 @@ Currently implemented tools:
 
 * Schedule an event in the user's calendar
 
-  * Example prompt: *"Make schedule an event with Andrew tomorrow at noon."*
+  * Example prompt: *"Schedule an event with Andrew tomorrow at noon."*
 
-* Send a message to a talk conversation
+* Find free times in users' calendar
 
-  * Example prompt: *"Can you send a joke to Andrew in talk?"*
+  * Example prompt: *"Find a free 1-hour slot for a meeting with me and Marco next week."*
 
 * Create a deck card
 
@@ -66,10 +92,42 @@ Currently implemented tools:
 
   * Example prompt: *"Show me the youtube video of the Nextcloud hub 10 launch."*
 
+* Search Duckduckgo
+
+  * Example prompt: *"Show me search results for quick pasta recipes, please."*
+
 * Send an email via Nextcloud Mail
 
-  * Example prompt *"Send a test email from carry@company.com to Andrew@company.com from my account with id 12"*
-  * (The account ID will soon be irrelevant)
+  * Example prompt: *"Send a test email from my carry@company.com account to Andrew@company.com"*
+
+* Get contents of a file
+
+  * Example prompt: *"Can you summarize the following file in my documents? Design/Planning.md"*
+
+* Generate a public share link for a file
+
+  * Example prompt: *"Can create a share link for the following file in my documents? Design/Planning.md"*
+
+* Get the folder tree of the user's files
+
+  * Example prompt: *"Can you show me the folder tree of my files?"*
+
+* Determine public transport routes
+
+  * Example prompt: *"How can I get from Würzburg Hauptbahnhof to Berlin Hauptbahnhof?"*
+
+* List all projects in OpenProject
+
+  * Example prompt: *"List all my projects in OpenProject, please"*
+
+* List all available assignees of a project in OpenProject
+
+  * Example prompt: *"List all available assignees for the 'Product launch' project in OpenProject"*
+
+* Create a new work package in a given project in OpenProject
+
+  * Example prompt: *"Create a work package called 'Publish release video' in the 'Product launch' project in OpenProject"*
+
 
 These tools can also be combined by the agent to fulfil tasks like the following:
 

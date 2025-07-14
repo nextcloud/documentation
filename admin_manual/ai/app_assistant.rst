@@ -74,11 +74,8 @@ These apps currently implement the following Assistant Tasks:
 * *Summarize* (Tested with OpenAI GPT-3.5 and Llama 3.1 8B)
 * *Generate headline* (Tested with OpenAI GPT-3.5 and Llama 3.1 8B)
 * *Extract topics* (Tested with OpenAI GPT-3.5 and Llama 3.1 8B)
-
-Additionally, *integration_openai* also implements the following Assistant Tasks:
-
-* *Context write* (Tested with OpenAI GPT-3.5)
-* *Reformulate text* (Tested with OpenAI GPT-3.5)
+* *Context write* (Tested with OpenAI GPT-3.5 and Llama 3.1 8B)
+* *Reformulate text* (Tested with OpenAI GPT-3.5 and Llama 3.1 8B)
 
 These tasks may work with other models, but we can give no guarantees.
 
@@ -98,7 +95,7 @@ In order to make use of our special Context Chat feature, offering in-context in
 
 * :ref:`context_chat + context_chat_backend<ai-app-context_chat>` -  (Customer support available upon request)
 
-You will also need a text processing provider as specified above (ie. llm2 or integration_openai).
+You will also need a text processing provider as specified above (ie. llm2, integration_openai or integration_watsonx).
 
 Context Agent
 ~~~~~~~~~~~~~
@@ -117,6 +114,7 @@ Text-To-Speech
 In order to make use of Text-To-Speech, you will need an app that provides a Text-To-Speech backend:
 
 * *integration_openai* - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
+* *text2speech_kokoro* - Runs a local model
 
 Configuration
 -------------
