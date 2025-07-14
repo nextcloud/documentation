@@ -121,6 +121,13 @@ The following built-in task types are available:
          * ``input``: ``Text``
       * Output shape:
          * ``speech``: ``Audio``
+ * ``'core:analyze-images'``: This task type is for analyzing images. It is implemented by ``\OCP\TaskProcessing\TaskTypes\AnalyzeImages``
+      * Input shape:
+         * ``input``: ``Text``
+         * ``images``: ``ListOfImages``
+      * Output shape:
+         * ``output``: ``Text``
+
 
 
 Task types can be disabled in the AI admin settings so they are not available for the Assistant or other apps even if they are implemented. All implemented Task types are enabled by default.
