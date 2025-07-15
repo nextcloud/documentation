@@ -137,8 +137,19 @@ latexpdf:
 	buf_size=10000000 $(MAKE) -C $(BUILDDIR)/latex all-pdf
 	@echo "pdflatex finished; the PDF files are in $(BUILDDIR)/latex."
 
+latexpdf-lang-%:
+	$(SPHINXBUILD) -b latex -D language=$* $(ALLSPHINXOPTS) $(BUILDDIR)/latex
+	@echo "Running LaTeX files through pdflatex..."
+	buf_size=10000000 $(MAKE) -C $(BUILDDIR)/latex all-pdf
+	@echo "pdflatex finished; the PDF files are in $(BUILDDIR)/latex."
+
 pdf:
 	$(SPHINXBUILD) -b pdf $(ALLSPHINXOPTS) $(BUILDDIR)/pdf
+	@echo
+	@echo "build finished. the text files are in $(BUILDDIR)/pdf."
+
+pdf-lang-%:
+	$(SPHINXBUILD) -b pdf -D language=$* $(ALLSPHINXOPTS) $(BUILDDIR)/pdf
 	@echo
 	@echo "build finished. the text files are in $(BUILDDIR)/pdf."
 
