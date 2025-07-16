@@ -200,7 +200,7 @@ Supported properties
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <oc:permissions />            | | The permissions that the user has over the    | | ``S``: Shared                                                                      |
 |                               | | file or folder. The value is a string         | | ``R``: Shareable                                                                   |
-|                               | | containingletters for all available           | | ``M``: Mounted                                                                     |
+|                               | | containing letters for all available          | | ``M``: Mounted                                                                     |
 |                               | | permissions.                                  | | ``G``: Readable                                                                    |
 |                               |                                                 | | ``D``: Deletable                                                                   |
 |                               |                                                 | | ``N``: Renameable                                                                  |
