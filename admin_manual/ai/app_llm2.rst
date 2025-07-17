@@ -109,7 +109,7 @@ Scaling
 -------
 
 It is currently not possible to scale this app, we are working on this. Based on our calculations an instance has a rough capacity of 1000 user requests per hour. However, this number is based on theory and we do appreciate real-world feedback on this.
-If you would like to scale up your language model usage, we recommend using an :ref:`AI as a Service provider<ai-ai_as_a_service>` or hosting a service compatible with the OpenAI API yourself that can be scaled up and connecting nextcloud to it via *integration_openai*.
+If you would like to scale up your language model usage, we recommend using an :ref:`AI as a Service provider<ai-ai_as_a_service>` or hosting a service compatible with the OpenAI API yourself that can be scaled up and connecting nextcloud to it via the `integration_openai app <https://apps.nextcloud.com/apps/integration_openai>`_.
 
 App store
 ---------
