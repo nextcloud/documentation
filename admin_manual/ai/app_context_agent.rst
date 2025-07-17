@@ -47,7 +47,7 @@ Currently implemented tools:
 
   * Example prompt: *"Can you transcribe the following file? https://mycloud.com/f/9825679"* (Can be selected via smart picker.)
 
-* Generate documents (requires `Office <https://apps.nextcloud.com/apps/richdocuments>`_)
+* Generate documents (requires `Nextcloud Office <https://apps.nextcloud.com/apps/richdocuments>`_)
 
   * Example prompt: *"Can you generate me a slide deck for my presentation about cats?"*
   * Example prompt: *"Can you generate me a spreadsheet with some plausible numbers for countries and their population count?"*
