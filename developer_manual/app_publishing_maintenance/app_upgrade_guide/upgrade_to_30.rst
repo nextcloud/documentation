@@ -36,7 +36,7 @@ as a part of this some CSS variables were added and other deprecated with Nextcl
 
 Clickable area
 ^^^^^^^^^^^^^^
-The size of the CSS variable ``--clickable-area`` variable has shrunk from ``44px`` to ``34px``.
+The size of the CSS variable ``--default-clickable-area`` variable has shrunk from ``44px`` to ``34px``.
 This will result in several regressions and paper-cuts in your app that will need to be manually fixed.
 It's recommended to:
 
@@ -46,6 +46,11 @@ It's recommended to:
 4) Report the regression of your app in this issue (you can create a heading with the name of your own app);
 5) Also report ``@nextlcoud/vue`` library regressions if they're not reported already in their list;
 6) Fix regression in your app (only the ones that are unrelated to the ``@nextcloud/vue`` components);
+
+Moreover for different use cases also two new variables were added:
+
+- ``--clickable-area-large`` for main UI elements.
+- ``--clickable-area-small`` representing the smallest possible size of interactive elements, used by tertiary actions like filter chips.
 
 Line height
 ^^^^^^^^^^^
