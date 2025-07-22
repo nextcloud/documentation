@@ -38,3 +38,8 @@ Previously it was set to 10MiB, it is now increased to 100MiB.
 Also the configuration was moved from an app configuration to the system configuration (``config.php``).
 If you set up a custom value previously the value will be automatically migrated to the system configuration during the update.
 But if you need to set a new custom value you need now to use the system configuration, see also :ref:`files_configure_max_chunk_size`.
+
+Monitoring: Counting of active users
+------------------------------------
+
+Starting with Nextcloud 31.0.6 the monitoring app was adjusted to count the active users in the same way as occ user:report and the support app.
