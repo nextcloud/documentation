@@ -564,7 +564,7 @@ Why does this work? Because the dispatcher sees that the controller did not retu
 
 .. deprecated:: 30
 
-    Usage of classical controllers for data transmission should be avoided. Use OCS instead.
+    Usage of "index.php"-controllers for data transmission should be avoided. Use OCS instead.
 
 
 Handling errors

@@ -7,7 +7,7 @@ REST APIs
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
 Offering a RESTful API is not different from creating a :doc:`route <../basics/routing>` and :doc:`controllers <../basics/controllers>` for the web interface.
-It is recommended though to inherit from ApiController and add **@CORS** annotations to the methods so that `web applications will also be able to access the API <https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS>`_.
+It is recommended though to inherit from ApiController and add ``#[CORS]`` attribute to the methods so that `web applications will also be able to access the API <https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS>`_.
 
 .. code-block:: php
 
@@ -103,22 +103,21 @@ The following combinations of attributes might be relevant for various scenarios
 .. warning::
   Adding the ``#[NoCRSFRequired]`` attribute imposes a security risk.
   You should not add this to your controller methods unless you understand the implications and be sure that you absolutely need the attribute.
-  Typically, you can instead use the ``OCS-APIRequest`` header for data requests, instead.
+  Typically, you can use the ``OCS-APIRequest`` header for data requests instead, in order to satisfy the CSRF checks in your API requests.
 
 .. warning::
   Adding the attribute ``#[CORS]`` alone is not sufficient to allow access using CORS with plain frontend routes.
   Without further measures, the CSRF checker would fail.
   So, enabling CORS for plain controllers is generally and highly discouraged.
 
-  You would have to disable the CSRF checker (one more security risk) or use the ``OCP-APIRequest`` header to successfully pass the checker.
+  You would have to disable the CSRF checks (one more security risk) or use the ``OCP-APIRequest`` header or send a CSRF token to successfully pass the checks.
   The latter requires dedicated JS code on the importing page.
 
 There are different ways a clients might interact with your APIs.
 These ways depend on your API configuration (what you allow) and on which route the request is finally made.
 
-- *Access from web frontend* means the user is browses the Nextcloud web frontend with a browser.
-- *Access from non-browser* is if the user accesses the resource or page not using the default browser.
-  Thus can be e.g. a script using CURL or an Android app.
+- *Access from web frontend* means the user is accessing the Nextcloud web frontend with a web browser.
+- *Access from non-browser* is if the user accesses the resource or page using something that is not a web browser, like an Android app or a curl command.```
 - *Access from external website* means that the user browses some third party web site and data from your Nextcloud server appears.
   The other website has to embed/load/use images, JSON data, or other resources from a URL pointing to the Nextcloud server, to be able to do this.
 
@@ -147,8 +146,8 @@ These ways depend on your API configuration (what you allow) and on which route 
       - yes
       - yes
     * - Access from external website
-      - ---
-      - ---
+      - no
+      - no
       - yes
     * - Encapsulated data
       - no
@@ -157,12 +156,12 @@ These ways depend on your API configuration (what you allow) and on which route 
 
 .. [#] The external app has to satisfy the CSRF checks.
        That is, you need to have the ``OCS-APIRequest`` HTTP request header set to ``true``.
-       This is only possible for NC 30 onwards, older versions do not respect the header.
+       This is only possible for Nextcloud 30 onwards, older versions do not respect the header.
 
 Methods from ``Controller`` classes can return ``DataResponse`` objects similar to ``OCSController`` class methods.
 For methods of a ``Controller`` class, the data of this response is sent e.g. as JSON as you provide it.
 Basically, the output is very similar to what ``json_encode`` would do.
-In contrast, the OCS controller will encapsulate the data in an outer shell that provides some more (meta) information.
+In contrast, the ``OCSController`` will encapsulate the data in an outer shell that provides some more (meta) information.
 For example a status code (similar to the HTTP status code) is transmitted at top level.
 The actual data is transmitted in the ``data`` property.
 
@@ -177,7 +176,7 @@ Historical options
 .. deprecated:: 30
   The information in this section are mainly for reference purposes. Do not use the approaches in new code.
 
-Before NC server 30 the plain ``Controller`` classes' methods did not respect the ``OCS-APIRequest`` header.
+Before Nextcloud 30 the plain ``Controller`` classes' methods did not respect the ``OCS-APIRequest`` header.
 Thus, to provide access to this type of controller methods for external apps, it was necessary to use the ``#[NoCSRFRequired]`` attribute (or the corresponding ``@NoCSRFRequired`` annotation).
 
 The following combinations of attributes were relevant for various scenarios:
@@ -214,12 +213,12 @@ The following combinations of attributes were relevant for various scenarios:
       - yes (CSRF risk)
       - yes (CSRF risk)
     * - Access from non-browser
-      - ---
+      - no
       - yes
       - yes
     * - Access from external website
-      - ---
-      - ---
+      - no
+      - no
       - yes
     * - Encapsulated data
       - no

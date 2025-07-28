@@ -262,8 +262,8 @@ CORS
 
 `Cross-origin resource sharing (CORS) <https://en.wikipedia.org/wiki/Cross-origin_resource_sharing>`_ (see also on `MDN <https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS>`__) is a method implemented by browser to access resources from different domains at the same time.
 Assume, there is a website published on host A.
-The URL would for example be https://A/path/to/index.html.
-If there is a _different_ host B that serves a resource (e.g. an image file) as https://B/assets/image.jpg, the index file on host A could simply link to the image on B.
+The URL would for example be ``https://A/path/to/index.html``.
+If there is a _different_ host B that serves a resource (e.g. an image file) as ``https://B/assets/image.jpg``, the index file on host A could simply link to the image on B.
 However, to protect B and its property (the image), the browsers do not silently embed the image of B into the page of A.
 Instead, B is kindly asked by the browser if embedding is allowed (the so-called `preflight <https://developer.mozilla.org/en-US/docs/Glossary/Preflight_request>`_).
 
@@ -273,7 +273,7 @@ These define, what the browser is to be allowed to do.
 Only if the destination server B confirms cross site resource sharing is allowed, the browser access the resource.
 
 Basically, accessing foreign resources is not limited to embedding images.
-Using JavaScript, arbitrary XHR/Ajax requests can be directed at arbitrary other hosts.
+Using JavaScript, arbitrary XHR/Ajax requests can be directed at arbitrary other hosts, which might be used to call APIs that leak your data.
 There are some safety measurements in place (especially about cookie handling), but one has still to be careful not to leak information unwillingly.
 Especially, if the destination server B allows to sent credentials using ``Access-Control-Allow-Credentials: true``, cross site scripting is very critical.
 You need :ref:`CSRF protection <csrf_introduction>` in place or your users are at relatively high risk.
