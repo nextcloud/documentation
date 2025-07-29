@@ -227,9 +227,11 @@ Checking attendees' busy times
 After adding attendees to an event you can click on ``Find a time`` to bring up the "Free / Busy" modal. It allows you to see when each attendee has other events, and can help you decide on a time when everyone is free.
 
 .. figure:: images/calendar_free_busy_modal.png
-   :scale: 70%
+   :scale: 40%
 
-By pressing the ``?`` icon you can see the legend for the colors in the timeline, and by clicking and dragging you can modify the start and end times of your event. By pressing ``Suggest automatic slot`` you can also get suggestions on slots when everyone invited is free and available.
+Your own busy blocks will be shown in the same color as your personal calendar, your out of office times will be shown in gray, and other attendees' busy times will have the same color as their avatar shown in the sidebar.
+
+You can select a time slot for the event directly on the calendar.
 
 Assign rooms and resources to an event
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
