@@ -56,6 +56,12 @@ server {
     client_body_timeout 300s;
     fastcgi_buffers 64 4K;
 
+    # Other timeouts
+    proxy_connect_timeout 60s;
+    proxy_send_timeout 60s;
+    proxy_read_timeout 60s;
+    send_timeout 60s;
+
     # Enable gzip but do not remove ETag headers
     gzip on;
     gzip_vary on;
