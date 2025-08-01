@@ -152,7 +152,7 @@ Create a team
 ~~~~~~~~~~~~~
 
 In the left menu, click on the + next to Teams.
-Set a team name
+Set a team name.
 Landing on the team configuration screen, you can:
 
 - add members to your team

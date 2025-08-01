@@ -9,7 +9,7 @@ Context Chat is an :ref:`assistant<ai-app-assistant>` feature that is implemente
  * the *context_chat* app, written purely in PHP
  * the *context_chat_backend* ExternalApp written in Python
 
-Together they provide the ContextChat text processing tasks accessible via the :ref:`Nextcloud Assistant app<ai-app-assistant>`.
+Together they provide the ContextChat *text processing* and *search* tasks accessible via the :ref:`Nextcloud Assistant app<ai-app-assistant>`.
 
 The *context_chat* and *context_chat_backend* apps will use the Free text-to-text task processing providers like OpenAI integration, LLM2, etc. and such a provider is required on a fresh install, or it can be configured to run open source models entirely on-premises. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
 
@@ -37,7 +37,7 @@ Requirements
    * At least 12GB of system RAM
       * 2 GB + additional 500MB for each request made to the backend if the Free text-to-text provider is not on the same machine
       * 8 GB is recommended in the above case for the default settings
-   * This app makes use of the configured free text-to-text task processing provider instead of running its own language model by default, you will thus need 4+ cores for the embedding model only (backed configuration needs changes to make use of the extra cores, refer to `Configuration Options (Backend)`_)
+   * This app makes use of the configured free text-to-text task processing provider instead of running its own language model by default, you will thus need 4+ cores for the embedding model only
 
 * A dedicated machine is recommended
 
@@ -139,8 +139,8 @@ The options for each command can be found like this, using scan as example: ``co
    | These file and ownership changes are synced with the backed through this actions queue.
 
 
-Configuration Options (OCC)
----------------------------
+Configuration Options
+---------------------
 
 * ``auto_indexing`` boolean (default: true)
    To allow/disallow the IndexerJob from running in the background
@@ -149,64 +149,11 @@ Configuration Options (OCC)
 
    occ config:app:set context_chat auto_indexing --value=true --type=boolean
 
-* ``indexing_batch_size`` integer (default: 5000)
-   The number of files to index per run of the indexer background job (this is limited by `indexing_max_time`)
-
-.. code-block::
-
-   occ config:app:set context_chat indexing_batch_size --value=100 --type=integer
-
-* ``indexing_job_interval`` integer (default: 1800)
-   The interval at which the indexer jobs run in seconds
-
-.. code-block::
-
-   occ config:app:set context_chat indexing_job_interval --value=1800 --type=integer
-
-* ``indexing_max_time`` integer (default: 1800)
-   The number of seconds to index files for per run, regardless of batch size
-
-.. code-block::
-
-   occ config:app:set context_chat indexing_max_time --value=1800 --type=integer
-
-* ``request_timeout`` integer (default: 3000)
-   Request timeout in seconds for all requests made to the Context chat backend (the external app in AppAPI).
-   If a docker socket proxy is used, the ``TIMEOUT_SERVER`` environment variable should be set to a value higher than ``request_timeout``.
-
-.. code-block::
-
-   occ config:app:set context_chat request_timeout --value=3 --type=integer
-
-
-Configuration Options (Backend)
--------------------------------
-
-Refer to `the Configuration head <https://github.com/nextcloud/context_chat_backend?tab=readme-ov-file#configuration>`_ in the backend's readme.
-
 
 Logs
 ----
 
-Logs for the ``context_chat`` PHP app can be found in the Nextcloud log file, which is usually located in the Nextcloud data directory. The log file is named ``nextcloud.log``.
-Diagnostic logs can be found in the Nextcloud data directory in ``context_chat.log`` file.
-
-| For the backend, warning and error logs can be found in the docker container logs ``docker logs -f -n 200 nc_app_context_chat_backend``, and the complete logs can be found in ``logs/`` directory in the persistent storage of the docker container.
-| That will be ``/nc_app_context_chat_backend/logs/`` in the docker container.
-
-This command can be used to view the detailed logs in real-time:
-
-.. code-block::
-
-   docker exec nc_app_context_chat_backend tail -f /nc_app_context_chat_backend/logs/ccb.log
-
-Same for the embedding server:
-
-.. code-block::
-
-   docker exec nc_app_context_chat_backend tail -f /nc_app_context_chat_backend/logs/embedding_server_*.log``
-
-See `the Logs head <https://github.com/nextcloud/context_chat_backend?tab=readme-ov-file#logs>`_ in the backend's readme for more information.
+Logs for both the ``context_chat`` PHP app and the ``context_chat_backend`` ExApp can be found in the admin settings of your Nextcloud GUI as well as in the Context Chat log file, which is usually located in the Nextcloud data directory. The log file is named ``context_chat.log``.
 
 Troubleshooting
 ---------------
@@ -214,12 +161,6 @@ Troubleshooting
 1. If the docker container seems to suddenly restart during indexing or querying, it could be related to RAM/storage filling up, or AVX being unavailable on the system. AVX can be checked using ``grep -i avx /proc/cpuinfo`` command on the host system. If AVX is not available, the app will not work.
 2. Look for issues in the diagnostic logs, the server logs and the docker container ``nc_app_context_chat_container`` logs. If unsure, open an issue in either of the repositories.
 3. Check "Admin settings -> Context Chat" for statistics and information about the indexing process.
-
-Possibility of Data Leak
-------------------------
-
-| It is possible that some users who had access to certain files/folders (and have later have been denied this access) still have access to the content of those files/folders through the Context Chat app. We're working on a solution for this.
-| The users who never had access to a particular file/folder will NOT be able to see those contents in any way.
 
 File access control rules not supported
 ---------------------------------------
@@ -236,5 +177,5 @@ Known Limitations
 
 * Language models are likely to generate false information and should thus only be used in situations that are not critical. It's recommended to only use AI at the beginning of a creation process and not at the end, so that outputs of AI serve as a draft for example and not as final product. Always check the output of language models before using it and make sure whether it meets your use-case's quality requirements.
 * Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI).
-* Large files are not supported in "Selective context" in the Assistant UI if they have not been indexed before. Use ``occ context_chat:scan <user_id> -d <directory_path>`` to index the desired directory synchronously and then use the Selective context option. "Large files" could mean differently for different users. It depends on the amount of text inside the documents in question and the hardware on which the indexer is running. Generally 20 MB should be large for a CPU-backed setup and 100 MB for a GPU-backed system.
+* Files larger than 100MB are not supported
 * Password protected PDFs or any other files are not supported. There will be error logs mentioning cryptography and AES in the docker container when such files are encountered but it is nothing to worry about, they will be simply ignored and the system will continue to function normally.
