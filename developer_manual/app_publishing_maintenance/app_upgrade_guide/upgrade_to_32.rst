@@ -52,6 +52,7 @@ Added APIs
 - New interface ``\OCP\OCM\ICapabilityAwareOCMProvider`` to extend the OCM provider with 1.1 and 1.2 extensions of the Open Cloud Mesh Discovery API
 - New task processing task type ``OCP\TaskProcessing\AnalyzeImages`` to ask questions about images.
 - New interface ``\OCP\Search\IExternalProvider`` allows extending the search provider with an explicit flag to indicate that the search is performed on external (3rd-party) resources. This is used in Unified Search to disable searches through these by default (via a toggle switch).
+- New method ``\OCA\Files_Versions\Versions\IVersionBackend::getRevision`` to get the version revision from a node.
 
 Changed APIs
 ^^^^^^^^^^^^
