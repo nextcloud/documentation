@@ -33,6 +33,24 @@ Removed APIs
 Back-end changes
 ----------------
 
+- OCP API split into consumable and implementable:
+  For a more informed background see `RFC: Split OCP into Consumable and Implementable <https://github.com/nextcloud/standards/issues/15>`_ for more information.
+  Short summary:
+
+  - **Consumable:** Interfaces, Enums and classes that have the ``OCP\AppFramework\Attribute\Consumable`` attribute, must only be consumed by apps and can not be implemented by apps themselves.
+    This means the server side can extend the interface with new methods or reduce returned types of existing methods without it being consider an API break.
+    However argument types of existing methods can **not** be reduced.
+    Same rules apply to ``OCP\EventsDispatcher\Event`` that have the ``OCP\AppFramework\Attribute\Listenable`` attribute and ``Exception`` with the ``OCP\AppFramework\Attribute\Catchable`` attribute.
+  - **Implementable:** Interfaces, Enums and classes that have the ``OCP\AppFramework\Attribute\Implementable`` attribute, can be implemented by apps.
+    This means the server side can **not** extend the interface with new methods or reduce returned types of existing methods without it being consider an API break.
+    However argument types of existing methods can be reduced.
+    Same rules apply to ``OCP\EventsDispatcher\Event`` that have the ``OCP\AppFramework\Attribute\Dispatchable`` attribute and ``Exception`` with the ``OCP\AppFramework\Attribute\Throwable`` attribute.
+  - **ExceptionalImplementable:** Despite not being implementable for all apps, some interfaces can have the ``OCP\AppFramework\Attribute\ExceptionalImplementable`` attribute indicating that they are implementable by a single app (or multiple).
+    In those cases the general ``OCP\AppFramework\Attribute\Consumable`` rules apply, but the app maintainers or repository of named exceptions have to be informed during the PR process leaving them enough time to align with the upcoming change.
+
+- These new attributes will be applied on a "defacto standard" basis to the best of our knowledge.
+  In case an API was flagged unexpectingly, leave a comment on the respective PullRequest in the server repository asking for clarification.
+
 Added APIs
 ^^^^^^^^^^
 
