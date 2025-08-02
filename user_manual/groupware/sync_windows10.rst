@@ -5,7 +5,7 @@ Synchronizing with Windows 10
 Calendar
 --------
 
-1. In your browser, navigate to the Nextcloud Calendar app. Under "Settings & import", copy the address using "Copy iOS/macOS CalDAV address" into your clipboard.
+1. In your browser, navigate to the Nextcloud Calendar app. Under "Calendar settings", copy the address using "Copy iOS/macOS CalDAV address" into your clipboard.
 
 2. Launch the Windows 10 Calendar app. Then, click the settings icon (gear icon) and select "Manage accounts".
 
@@ -46,7 +46,6 @@ https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird
 8. Click "Done". Enter your Nextcloud username and password in the appropriate fields, and change the account name to whatever you prefer (e. g. "Nextcloud Contacts"). Click "Save".
 
 
-
 Troubleshooting
 ---------------
 
@@ -57,9 +56,6 @@ After following all these steps, your Nextcloud calendar should synchronize. If 
 1. Log into Nextcloud. Click on your user icon, then click on "Settings".
 
 2. Click on "Security", then locate a button labeled "Create new app password". Next to this button, enter "Windows 10 Calendar app". Then, click the button, copy and paste the password. Use this password instead of your Nextcloud password for Step 8.
-
-Special thanks to this Reddit user for their post:
-https://www.reddit.com/r/Nextcloud/comments/5rcypb/using_the_windows_10_calendar_application_with/
 
 
 Contacts

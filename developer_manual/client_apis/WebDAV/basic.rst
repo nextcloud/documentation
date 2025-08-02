@@ -199,13 +199,15 @@ Supported properties
 |                               | | storage. No storage implements that yet.      |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <oc:permissions />            | | The permissions that the user has over the    | | ``S``: Shared                                                                      |
-|                               | | file. The value is a string containing        | | ``R``: Shareable                                                                   |
-|                               | | letters for all available permissions.        | | ``M``: Mounted                                                                     |
-|                               |                                                 | | ``G``: Readable                                                                    |
+|                               | | file or folder. The value is a string         | | ``R``: Shareable                                                                   |
+|                               | | containing letters for all available          | | ``M``: Mounted                                                                     |
+|                               | | permissions.                                  | | ``G``: Readable                                                                    |
 |                               |                                                 | | ``D``: Deletable                                                                   |
-|                               |                                                 | | ``NV``: Updateable, Renameable, Moveable                                           |
-|                               |                                                 | | ``W``: Updateable (file)                                                           |
-|                               |                                                 | | ``CK``: Creatable                                                                  |
+|                               |                                                 | | ``N``: Renameable                                                                  |
+|                               |                                                 | | ``V``: Moveable                                                                    |
+|                               |                                                 | | ``W``: Writable (file)                                                             |
+|                               |                                                 | | ``C``: Creatable (creating a new file inside the folder)                           |
+|                               |                                                 | | ``K``: Creatable (creating a new folder inside the folder)                         |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:creation_time />          | Same as ``creationdate``, but as a timestamp.   | ``1675789581``                                                                       |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
@@ -264,7 +266,7 @@ Supported properties
 | <ocm:share-permissions />     | | The permissions that the user has             | ``["share", "read", "write"]``                                                       |
 |                               | | over the share as a JSON array.               |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:share-attributes />       | User set attributes as a JSON array.            | ``[{ "scope" => <string>, "key" => <string>, "enabled" => <bool> }]``                |
+| <nc:share-attributes />       | User set attributes as a JSON array.            | ``[{ "scope" => <string>, "key" => <string>, "value" => <bool> }]``                  |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:sharees />                | The list of share recipient.                    | .. code-block:: XML                                                                  |
 |                               |                                                 |                                                                                      |
@@ -512,35 +514,38 @@ Request Headers
 
 You can set some special headers that Nextcloud will interpret.
 
-+-----------------+-----------------------------------------------------------------+------------------------------------------+
-|     Header      |                           Description                           |                 Example                  |
-+=================+=================================================================+==========================================+
-| X-OC-MTime      | | Allow to specify a modification time.                         | ``1675789581``                           |
-|                 | | The response will contain the header ``X-OC-MTime: accepted`` |                                          |
-|                 | | if the mtime was accepted.                                    |                                          |
-+-----------------+-----------------------------------------------------------------+------------------------------------------+
-| X-OC-CTime      | | Allow to specify a creation time.                             | ``1675789581``                           |
-|                 | | The response will contain the header ``X-OC-CTime: accepted`` |                                          |
-|                 | | if the mtime was accepted.                                    |                                          |
-+-----------------+-----------------------------------------------------------------+------------------------------------------+
-| OC-Checksum     | | A checksum that will be stored in the DB.                     | ``md5:04c36b75222cd9fd47f2607333029106`` |
-|                 | | The server will not do any sort of  validation.               |                                          |
-|                 | | Currently used algorithms are ``MD5``, ``SHA1``, ``SHA256``,  |                                          |
-|                 | | ``SHA3-256``, ``Adler32``.                                    |                                          |
-+-----------------+-----------------------------------------------------------------+------------------------------------------+
-| X-Hash          | | Allow to request the file's hash from the server.             | ``md5``, ``sha1``, or ``sha256``         |
-|                 | | The server will return the hash in a header named either:     |                                          |
-|                 | | ``X-Hash-MD5``, ``X-Hash-SHA1``, or ``X-Hash-SHA256``.        |                                          |
-+-----------------+-----------------------------------------------------------------+------------------------------------------+
-| OC-Total-Length | | Contains the total size of the file during a chunk upload.    | ``4052412``                              |
-|                 | | This allow the server to abort faster if the remaining        |                                          |
-|                 | | user's quota is not enough.                                   |                                          |
-+-----------------+-----------------------------------------------------------------+------------------------------------------+
-| OC-Chunked      | | Used for legacy chunk upload to differentiate a regular       | Deprecated ⚠️                            |
-|                 | | upload from a chunked upload. It allowed checking for quota   |                                          |
-| (deprecated)    | | and various other things. Nowadays, you need to provide the   | You do not have to provide this anymore  |
-|                 | | ``OC-Total-Length`` header on the ``PUT`` requests instead.   |                                          |
-+-----------------+-----------------------------------------------------------------+------------------------------------------+
++-----------------------+-----------------------------------------------------------------+------------------------------------------+
+|        Header         |                           Description                           |                 Example                  |
++=======================+=================================================================+==========================================+
+| X-OC-MTime            | | Allow to specify a modification time.                         | ``1675789581``                           |
+|                       | | The response will contain the header ``X-OC-MTime: accepted`` |                                          |
+|                       | | if the mtime was accepted.                                    |                                          |
++-----------------------+-----------------------------------------------------------------+------------------------------------------+
+| X-OC-CTime            | | Allow to specify a creation time.                             | ``1675789581``                           |
+|                       | | The response will contain the header ``X-OC-CTime: accepted`` |                                          |
+|                       | | if the mtime was accepted.                                    |                                          |
++-----------------------+-----------------------------------------------------------------+------------------------------------------+
+| OC-Checksum           | | A checksum that will be stored in the DB.                     | ``md5:04c36b75222cd9fd47f2607333029106`` |
+|                       | | The server will not do any sort of  validation.               |                                          |
+|                       | | Currently used algorithms are ``MD5``, ``SHA1``, ``SHA256``,  |                                          |
+|                       | | ``SHA3-256``, ``Adler32``.                                    |                                          |
++-----------------------+-----------------------------------------------------------------+------------------------------------------+
+| X-Hash                | | Allow to request the file's hash from the server.             | ``md5``, ``sha1``, or ``sha256``         |
+|                       | | The server will return the hash in a header named either:     |                                          |
+|                       | | ``X-Hash-MD5``, ``X-Hash-SHA1``, or ``X-Hash-SHA256``.        |                                          |
++-----------------------+-----------------------------------------------------------------+------------------------------------------+
+| OC-Total-Length       | | Contains the total size of the file during a chunk upload.    | ``4052412``                              |
+|                       | | This allow the server to abort faster if the remaining        |                                          |
+|                       | | user's quota is not enough.                                   |                                          |
++-----------------------+-----------------------------------------------------------------+------------------------------------------+
+| X-NC-WebDAV-AutoMkcol | | When set to ``1``, instructs the server to automatically      |                                          |
+|                       | | create any missing parent directories when uploading a file.  |                                          |
++-----------------------+-----------------------------------------------------------------+------------------------------------------+
+| OC-Chunked            | | Used for legacy chunk upload to differentiate a regular       | Deprecated ⚠️                            |
+|                       | | upload from a chunked upload. It allowed checking for quota   |                                          |
+| (deprecated)          | | and various other things. Nowadays, you need to provide the   | You do not have to provide this anymore  |
+|                       | | ``OC-Total-Length`` header on the ``PUT`` requests instead.   |                                          |
++-----------------------+-----------------------------------------------------------------+------------------------------------------+
 
 Response Headers
 ----------------

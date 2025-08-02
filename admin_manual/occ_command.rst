@@ -250,6 +250,10 @@ enabled or disabled::
 
  sudo -E -u www-data php occ app:list
 
+List all of your installed and enabled (flag `--enabled`) or disabled (flag `--disabled`) apps::
+
+ sudo -E -u www-data php occ app:list --enabled
+
 List non-shipped installed apps only::
 
  sudo -E -u www-data php occ app:list --shipped false
@@ -1714,6 +1718,31 @@ View a list of all users' most recent login::
    bob has never logged in.
    layla's last login: 2024-03-20 17:18
    stephanie's last login: 2024-01-11 13:26
+
+user:profile
+^^^^^^^^^^^^
+
+Read user profile properties::
+
+  sudo -E -u www-data php occ user:profile admin
+    - displayname: admin
+    - address: Berlin
+    - email: admin@example.net
+    - profile_enabled: 1
+    - pronouns: they/them
+
+Get a single profile property for a user::
+
+    sudo -E -u www-data php occ user:profile address
+      Berlin
+
+Set a profile property::
+
+    sudo -E -u www-data php occ user:profile address Stuttgart
+
+Delete a profile property::
+
+    sudo -E -u www-data php occ user:profile address --delete
 
 user:setting
 ^^^^^^^^^^^^

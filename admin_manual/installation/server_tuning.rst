@@ -221,7 +221,6 @@ Nextcloud to use Imaginary by editing your `config.php`:
 
 .. code:: php
 
-    <?php
     'enabledPreviewProviders' => [
         'OC\Preview\MP3',
         'OC\Preview\TXT',
@@ -249,14 +248,12 @@ You can change between jpeg and webp, the default is jpeg:
 
 ::
 
-  <?php
     'preview_format' => 'webp',
 
 If you want set a api key for imaginary':
 
 ::
 
-  <?php
     'preview_imaginary_key' => 'secret',
 
 Default WebP quality setting for preview images is '80'. Change this with:

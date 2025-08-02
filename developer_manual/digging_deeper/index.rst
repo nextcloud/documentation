@@ -8,6 +8,7 @@ Digging deeper
    api
    config/index
    classloader
+   context_chat
    continuous_integration
    dashboard
    deadlock

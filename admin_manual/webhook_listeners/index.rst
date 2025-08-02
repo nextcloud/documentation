@@ -35,7 +35,7 @@ If you would like to enforce multiple criteria, you can simply pass multiple pro
 
 If you would like to match values partially, you can use regular expressions: ``{ "user.uid": "/admin_.*/"}`` will match any user whose user ID starts with ``admin_``. This can be especially useful for filesystem events for filtering by path: ``{ "event.node.path": "/^\\/.*\\/files\\/Special folder\\//"}`` will match files inside the ``Special folder`` of any user (Note especially, that the slashes in the path need to be escaped with two back-slashes, once because we're inside a json string and once because we're inside a regular expression).
 
-You can also use additional comparison operators (``$eq, $ne, $gt, $gte, $lt, $lte, $in, $nin``) as well as logical operators (``$and, $or, $not, $nor``). For example use ``{ "time" : { "$lt": 1711971024 } }`` to accept only events prior to April 1st 2024 and ``{ "time" : { "$not": { "$lt": 1711971024 } } }`` to accept events after April 1st 2024.
+You can also use additional comparison operators (``$e, $ne, $gt, $gte, $lt, $lte, $in, $nin``) as well as logical operators (``$and, $or, $not, $nor``). For example use ``{ "time" : { "$lt": 1711971024 } }`` to accept only events prior to April 1st 2024 and ``{ "time" : { "$not": { "$lt": 1711971024 } } }`` to accept events after April 1st 2024.
 
 
 Speeding up webhook dispatch

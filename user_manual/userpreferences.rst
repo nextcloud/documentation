@@ -66,7 +66,7 @@ If you set your data to **Local**, all logged in users within your Nextcloud ins
 
 If you set your data to **Federated**, the trusted server(s) which are added by your administrator will be able to see this data, in addition to all logged in users.
 
-If you set your data to **Global**, anyone can see your data. For some use cases this is wanted. 
+If you set your data to **Published**, anyone can see your data. For some use cases this is wanted. 
 Someone with a public facing role such as marketing or sales might want to share their contact with a wide variety of connections which might not be using Nextcloud.
 
 

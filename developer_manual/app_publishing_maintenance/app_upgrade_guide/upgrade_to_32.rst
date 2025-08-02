@@ -36,6 +36,7 @@ Back-end changes
 Added APIs
 ^^^^^^^^^^
 
+- New ``OCP\ContextChat`` API. See :ref:`context_chat` for details.
 - New task processing task type ``OCP\TaskProcessing\TextToSpeech`` to convert text to speech.
 - New interface ``\OCP\Share\IShareProviderSupportsAllSharesInFolder`` extending ``\OCP\Share\IShareProvider`` to add the method ``\OCP\Share\IShareProviderSupportsAllSharesInFolder::getAllSharesInFolder`` used for querying all shares in a folder without filtering by user.
 - New method ``\OCP\IUser::canChangeEmail`` allowing to check if the user backend allows the user to change their email address.
@@ -48,6 +49,9 @@ Added APIs
 - New method ``\OCP\Files\Template\ITemplateManager::listTemplateFields`` to allow listing the fields of a template.
 - New method ``\OCA\Files\Controller\TemplateController::listTemplateFields`` to list the fields of a template, accessible at ``/ocs/v2.php/apps/files/api/v1/templates/fields/{fileId}``.
 - New method ``\OCP\Files\Template\BeforeGetTemplatesEvent::shouldGetFields`` to get the event's ``withFields`` property, which should determine whether or not to perform template field extraction on the returned templates.
+- New interface ``\OCP\OCM\ICapabilityAwareOCMProvider`` to extend the OCM provider with 1.1 and 1.2 extensions of the Open Cloud Mesh Discovery API
+- New task processing task type ``OCP\TaskProcessing\AnalyzeImages`` to ask questions about images.
+- New interface ``\OCP\Search\IExternalProvider`` allows extending the search provider with an explicit flag to indicate that the search is performed on external (3rd-party) resources. This is used in Unified Search to disable searches through these by default (via a toggle switch).
 
 Changed APIs
 ^^^^^^^^^^^^
@@ -65,6 +69,7 @@ Deprecated APIs
 - ``\OC_User::useBackend`` is deprecated, please use ``\OCP\IUserManager::registerBackend`` available since 8.0.0
 - ``\OC_User::clearBackends`` is deprecated, please use ``\OCP\IUserManager::clearBackends`` available since 8.0.0
 - ``\OC_Helper::isReadOnlyConfigEnabled`` is deprecated, please use the ``config_is_read_only`` system config directly.
+- ``\OCP\OCM\IOCMProvider`` is deprecated, please use ``\OCP\OCM\ICapabilityAwareOCMProvider`` available since 32.0.0
 
 Removed APIs
 ^^^^^^^^^^^^

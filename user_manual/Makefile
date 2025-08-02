@@ -53,7 +53,7 @@ html:
 versions-template-all: $(foreach lang, $(LANGS), add-lang-to-versions-template-$(lang))
 
 add-lang-to-versions-template-%:
-	sed -i '/Here goes the Langs/i <dd><a href="/server/latest/user_manual/$*/">$*</a></dd>' ./_templates/versions.html
+	sed -i '/Here go the languages/i {% set available_languages = available_languages + ["$*"] %}' ./_templates/versions.html
 
 html-all: $(foreach lang, $(LANGS), html-allow-warnings-lang-$(lang))
 
@@ -137,8 +137,19 @@ latexpdf:
 	buf_size=10000000 $(MAKE) -C $(BUILDDIR)/latex all-pdf
 	@echo "pdflatex finished; the PDF files are in $(BUILDDIR)/latex."
 
+latexpdf-lang-%:
+	$(SPHINXBUILD) -b latex -D language=$* $(ALLSPHINXOPTS) $(BUILDDIR)/latex
+	@echo "Running LaTeX files through pdflatex..."
+	buf_size=10000000 $(MAKE) -C $(BUILDDIR)/latex all-pdf
+	@echo "pdflatex finished; the PDF files are in $(BUILDDIR)/latex."
+
 pdf:
 	$(SPHINXBUILD) -b pdf $(ALLSPHINXOPTS) $(BUILDDIR)/pdf
+	@echo
+	@echo "build finished. the text files are in $(BUILDDIR)/pdf."
+
+pdf-lang-%:
+	$(SPHINXBUILD) -b pdf -D language=$* $(ALLSPHINXOPTS) $(BUILDDIR)/pdf
 	@echo
 	@echo "build finished. the text files are in $(BUILDDIR)/pdf."
 
