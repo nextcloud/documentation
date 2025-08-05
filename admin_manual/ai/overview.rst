@@ -244,6 +244,21 @@ Provider apps
 
 See *Context Chat* section above.
 
+Document generation
+^^^^^^^^^^^^^^^^^^^
+Since Hub 11 you can let Nextcloud automatically generate Office documents with content.
+This functionality is available in the assistant app and made possible by the Nextcloud Office app.
+
+Frontend apps
+~~~~~~~~~~~~~
+
+* `Assistant <https://apps.nextcloud.com/apps/assistant>`_ for offering a graphical UI for the context chat search tasks
+
+Backend apps
+~~~~~~~~~~~~
+
+* `Nextcloud Office <https://apps.nextcloud.com/apps/richdocuments>`_
+
 
 .. _ai-overview_improve-ai-task-pickup-speed:
 
