@@ -485,3 +485,15 @@ To add an internal address:
 3. Enable the internal addresses by clicking on the checkbox
 4. Click the Add internal address button
 5. Enter the address or domain and click Add
+
+Dashboard integration
+---------------------
+
+.. versionadded:: 1.8
+
+The mail app offers two widgets designed for integration with Nextcloud's dashboard:
+
+* Unread mails: This widget displays unread emails.
+* Important mails: This widget shows emails that have been flagged as important.
+
+These widgets utilize the emails from the email accounts that are set up for your account.
