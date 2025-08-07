@@ -706,6 +706,16 @@ The timeout in seconds for synchronizing address books, e.g., federated system a
 
 Defaults to ``30`` seconds
 
+carddav_sync_request_truncation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'carddav_sync_request_truncation' => 2500,
+
+The limit applied to the synchronization report request, e.g. federated system address books (as run by `occ federation:sync-addressbooks`).
+
 session_relaxed_expiry
 ^^^^^^^^^^^^^^^^^^^^^^
 
