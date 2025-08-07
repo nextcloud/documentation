@@ -143,6 +143,20 @@ These tools can also be combined by the agent to fulfil tasks like the following
 
   * Uses contacts to look up Andrew's email and then sends an email
 
+Custom Tools using MCP
+-----------------------
+
+The admin can add custom tools in the admin settings under MCP Config. Here the admin can input a json config in the following format:
+
+.. code-block:: json
+
+  {
+    "service-name": {
+      "url": "https://service-url.com/endpoint",
+      "transport": "streamable_http"
+    }
+  }
+
 Requirements
 ------------
 
@@ -176,6 +190,13 @@ Other models that may give good results are:
 
 See :ref:`llm2 documentation <ai-app-llm2>` on how to configure alternate models.
 
+Using Nextcloud MCP Server
+--------------------------
+
+Context Agent exposes an MCP server that can be used by other applications to access the tools provided by Context Agent.
+The server will be available at `https://your-nextcloud-domain.com/index.php/apps/app_api/proxy/context_agent/mcp/`, and
+it requires authentication via an app password passed in the `Authorization` header. Ex: `Authorization: Bearer <app-password>`.
+
 Scaling
 -------
 
@@ -199,3 +220,6 @@ Known Limitations
 * Most models have difficulties with languages other than English. Some sometimes answer in another language than used by the user. 
 * Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. 
   Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI). We still try to optimize this as far as possible, so if you encounter any false or problematic output, you can report it `in a dedicated Github issue <https://github.com/nextcloud/context_agent/issues/51>`_ to help us improve this app. 
+* When multiple MCP services are configured that have tools with the same name undefined behavior will occur.
+* Only remote MCP services are supported (streamable_http transport).
+* MCP services that require different access tokens for each user are not currently supported.
