@@ -357,6 +357,8 @@ You are able to translate messages to your configured languages similarly to Tal
 
 .. note:: Please note that translation features have to be enabled on the server
 
+.. note:: Since version 5.3, if LLM is enabled by admin, translations will be suggested
+
 Thread summary
 --------------
 
