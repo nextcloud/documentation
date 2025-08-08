@@ -131,6 +131,19 @@ Encryption settings can be configured in the mount options for an external
 storage mount, see :ref:`external_storage_mount_options_label`
 (:doc:`external_storage_configuration_gui`)
 
+
+Encrypting team folders
+-----------------------
+
+By default team folder are not encrypted. If you want to encrypt your team folders
+as well you need to run following occ command:
+
+ occ config:app:set groupfolders enable_encryption --value=true
+
+Like for all other files and server-side-encryption in general, this will not encrypt
+already existing files in team folders but only new or updated files after
+the occ command was executed.
+
 .. _occ_encryption_label:
 
 occ encryption commands
