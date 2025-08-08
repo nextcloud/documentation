@@ -228,6 +228,13 @@ This interface allows to supports other filtering types.
 
 ``getCustomFilters`` allows to declare specific filters. In current state, the specific filters will only be available in the API.
 
+External search provider
+------------------------
+
+Since Nextcloud 32, to improve privacy, you can extend your provider with the ``\OCP\Search\IExternalProvider`` interface and implement the ``isExternalProvider()`` method to indicate that the search is performed on external (3rd-party) resources.
+In the Unified Search UI, searching through these providers is disabled by default (via toggle switch).
+
+
 Provider registration
 ---------------------
 

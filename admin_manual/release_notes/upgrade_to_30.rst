@@ -36,3 +36,8 @@ Automated clean-up of app password
 ----------------------------------
 
 Nextcloud 30 will :ref:`clean-up unused app passwords<authentication-app-password-clean-up>`.
+
+Monitoring: Counting of active users
+------------------------------------
+
+Starting with Nextcloud 30.0.12 the monitoring app was adjusted to count the active users in the same way as occ user:report and the support app.

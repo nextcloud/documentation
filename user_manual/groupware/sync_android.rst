@@ -38,10 +38,7 @@ With the Nextcloud mobile app
 5. After this, DAVx⁵ will close and the Nextcloud app reappears. In
    order to finish setup, you have to manually launch DAVx⁵ again.
 6. Tap on the icon for the account DAVx⁵ has just created, when requested grant DAVx⁵ access
-   to your calendars and contacts. Optionally install OpenTasks 
-   (`Google Play Store <https://play.google.com/store/apps/details?id=org.dmfs.tasks>`__ or
-   `F-Droid <https://f-droid.org/packages/org.dmfs.tasks/>`__)
-   and grant DAVx⁵ access to your tasks, too.
+   to your calendars and contacts.
 7. When you tap the icon for the account DAVx⁵ has set up, it will
    discover the available address books and calendars. Choose which
    ones you want to synchronize and finish.

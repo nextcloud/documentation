@@ -55,6 +55,7 @@ $mapping = array(
     'admin-warnings'          => '/admin_manual/configuration_server/security_setup_warnings.html',
     'admin-windows-compatible-filenames' => '/admin_manual/configuration_files/windows_compatible_filenames.html',
     'admin-workflowengine'    => '/admin_manual/file_workflows/index.html',
+    'admin-android-deep-link-handling'    => 'admin_manual/configuration_server/android_deep_link_handling.html',
 
     'developer-manual'        => '/developer_manual',
     'developer-backports'     => '/developer_manual/getting_started/development_process.html#bugfixes',

@@ -33,9 +33,28 @@ Removed APIs
 Back-end changes
 ----------------
 
+- OCP API split into consumable and implementable:
+  For a more informed background see `RFC: Split OCP into Consumable and Implementable <https://github.com/nextcloud/standards/issues/15>`_ for more information.
+  Short summary:
+
+  - **Consumable:** Interfaces, Enums and classes that have the ``OCP\AppFramework\Attribute\Consumable`` attribute, must only be consumed by apps and can not be implemented by apps themselves.
+    This means the server side can extend the interface with new methods or reduce returned types of existing methods without it being consider an API break.
+    However argument types of existing methods can **not** be reduced.
+    Same rules apply to ``OCP\EventsDispatcher\Event`` that have the ``OCP\AppFramework\Attribute\Listenable`` attribute and ``Exception`` with the ``OCP\AppFramework\Attribute\Catchable`` attribute.
+  - **Implementable:** Interfaces, Enums and classes that have the ``OCP\AppFramework\Attribute\Implementable`` attribute, can be implemented by apps.
+    This means the server side can **not** extend the interface with new methods or reduce returned types of existing methods without it being consider an API break.
+    However argument types of existing methods can be reduced.
+    Same rules apply to ``OCP\EventsDispatcher\Event`` that have the ``OCP\AppFramework\Attribute\Dispatchable`` attribute and ``Exception`` with the ``OCP\AppFramework\Attribute\Throwable`` attribute.
+  - **ExceptionalImplementable:** Despite not being implementable for all apps, some interfaces can have the ``OCP\AppFramework\Attribute\ExceptionalImplementable`` attribute indicating that they are implementable by a single app (or multiple).
+    In those cases the general ``OCP\AppFramework\Attribute\Consumable`` rules apply, but the app maintainers or repository of named exceptions have to be informed during the process of a pull request, leaving them enough time to align with the upcoming change.
+
+- These new attributes will be applied on a "defacto standard" basis to the best of our knowledge.
+  In case an API was flagged unexpectedly, leave a comment on the respective pull request in the server repository asking for clarification.
+
 Added APIs
 ^^^^^^^^^^
 
+- New ``OCP\ContextChat`` API. See :ref:`context_chat` for details.
 - New task processing task type ``OCP\TaskProcessing\TextToSpeech`` to convert text to speech.
 - New interface ``\OCP\Share\IShareProviderSupportsAllSharesInFolder`` extending ``\OCP\Share\IShareProvider`` to add the method ``\OCP\Share\IShareProviderSupportsAllSharesInFolder::getAllSharesInFolder`` used for querying all shares in a folder without filtering by user.
 - New method ``\OCP\IUser::canChangeEmail`` allowing to check if the user backend allows the user to change their email address.
@@ -48,6 +67,10 @@ Added APIs
 - New method ``\OCP\Files\Template\ITemplateManager::listTemplateFields`` to allow listing the fields of a template.
 - New method ``\OCA\Files\Controller\TemplateController::listTemplateFields`` to list the fields of a template, accessible at ``/ocs/v2.php/apps/files/api/v1/templates/fields/{fileId}``.
 - New method ``\OCP\Files\Template\BeforeGetTemplatesEvent::shouldGetFields`` to get the event's ``withFields`` property, which should determine whether or not to perform template field extraction on the returned templates.
+- New interface ``\OCP\OCM\ICapabilityAwareOCMProvider`` to extend the OCM provider with 1.1 and 1.2 extensions of the Open Cloud Mesh Discovery API
+- New task processing task type ``OCP\TaskProcessing\AnalyzeImages`` to ask questions about images.
+- New interface ``\OCP\Search\IExternalProvider`` allows extending the search provider with an explicit flag to indicate that the search is performed on external (3rd-party) resources. This is used in Unified Search to disable searches through these by default (via a toggle switch).
+- New interface ``\OCP\Notification\IPreloadableNotifier`` to allow notifier implementations to preload and cache data for many notifications at once to improve performance by, for example, bundling SQL queries.
 
 Changed APIs
 ^^^^^^^^^^^^
@@ -65,6 +88,7 @@ Deprecated APIs
 - ``\OC_User::useBackend`` is deprecated, please use ``\OCP\IUserManager::registerBackend`` available since 8.0.0
 - ``\OC_User::clearBackends`` is deprecated, please use ``\OCP\IUserManager::clearBackends`` available since 8.0.0
 - ``\OC_Helper::isReadOnlyConfigEnabled`` is deprecated, please use the ``config_is_read_only`` system config directly.
+- ``\OCP\OCM\IOCMProvider`` is deprecated, please use ``\OCP\OCM\ICapabilityAwareOCMProvider`` available since 32.0.0
 
 Removed APIs
 ^^^^^^^^^^^^
