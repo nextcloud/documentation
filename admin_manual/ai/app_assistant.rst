@@ -193,6 +193,14 @@ Set 1 to enable and 0 to disable an implemented task type.
 
 shows statistics for all task processing Tasks.
 
+5. Clean-up old tasks
+
+.. code-block::
+
+   occ taskprocessing:task:cleanup
+
+delete tasks that are older than this number of seconds, defaults to 4 months.
+
 Image storage
 ~~~~~~~~~~~~~
 
