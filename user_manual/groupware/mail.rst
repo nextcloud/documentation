@@ -174,6 +174,21 @@ Compose messages
 1. Click new message on the top left of your screen
 2. Start writing your message
 
+Minimize the composer modal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 3.2
+
+The composer modal can be minimized while writing a new message, editing an existing draft or a message from the outbox. Simply click the minimize button on the top right of the modal or click anywhere outside the modal.
+
+.. figure:: images/mail-minimize-composer.png
+
+You can resume your minimized message by clicking anywhere on the indicator on the bottom right of your screen.
+
+.. figure:: images/mail-composer-indicator.png
+
+Press close button on the modal or the indicator in the bottom right corner to stop editing a message. A draft will be saved automatically into your draft mailbox.
+
 
 Recipient info on composer
 --------------------------
@@ -195,20 +210,14 @@ By doing so the contact will be automatically added as a recipient.
 
 .. note::  Only contacts with a valid email address will be suggested.
 
-Minimize the composer modal
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Text blocks
+-----------
 
-.. versionadded:: 3.2
+.. versionadded:: 5.2
 
-The composer modal can be minimized while writing a new message, editing an existing draft or editing a message from the outbox. Simply click the minimize button on the top right of the modal or click anywhere outside the modal.
-
-.. figure:: images/mail-minimize-composer.png
-
-You can resume your minimized message by clicking anywhere on the indicator on the bottom right of your screen.
-
-.. figure:: images/mail-composer-indicator.png
-
-Press the close button on the modal or the indicator in the bottom right corner to stop editing a message. A draft will be saved automatically into your draft mailbox.
+Text blocks are predefined snippets of text that can be inserted into your email. They can be created and managed in the mail settings.
+They can be inserted into the composer by typing ``!`` and then selecting the block from the list or from the composer actions.
+Text blocks can be shared with users and user groups.
 
 Outbox
 ------
