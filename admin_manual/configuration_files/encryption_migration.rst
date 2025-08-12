@@ -1,6 +1,6 @@
-====================
-Encryption migration
-====================
+================================
+Server-Side Encryption migration
+================================
 
 Encryption format
 -----------------
