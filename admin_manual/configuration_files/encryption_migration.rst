@@ -1,5 +1,5 @@
 ================================
-Server-Side Encryption migration
+Server-side encryption migration
 ================================
 
 Encryption format
