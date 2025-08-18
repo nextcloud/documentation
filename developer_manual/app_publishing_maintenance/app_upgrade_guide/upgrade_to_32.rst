@@ -5,7 +5,9 @@ Upgrade to Nextcloud 32
 General
 -------
 
-- A new ``tests/autoload.php`` file was added to server repository, that you can include in your app ``bootstrap.php`` file for tests, to be able to load the core ``\Test\TestCase`` class. You should remove any call to ``\OC::$loader`` in your code as this legacy loader is being removed. This new file is backported to branches stable31, stable30 and stable29, so if your application supports multiple Nextcloud major versions it should still work.
+- A new ``tests/autoload.php`` file was added to server repository, that you can include in your app ``bootstrap.php`` file for tests, to be able to load the core ``\Test\TestCase`` class.
+  You should remove any call to ``\OC::$loader`` in your code as this legacy loader is being removed.
+  This new file is backported to branches stable31, stable30 and stable29, so if your application supports multiple Nextcloud major versions it should still work.
 
 Front-end changes
 -----------------
@@ -55,28 +57,39 @@ Added APIs
 ^^^^^^^^^^
 
 - New ``OCP\ContextChat`` API. See :ref:`context_chat` for details.
-- New task processing task type ``OCP\TaskProcessing\TextToSpeech`` to convert text to speech.
-- New interface ``\OCP\Share\IShareProviderSupportsAllSharesInFolder`` extending ``\OCP\Share\IShareProvider`` to add the method ``\OCP\Share\IShareProviderSupportsAllSharesInFolder::getAllSharesInFolder`` used for querying all shares in a folder without filtering by user.
-- New method ``\OCP\IUser::canChangeEmail`` allowing to check if the user backend allows the user to change their email address.
-- New method ``\OCP\Files\IFilenameValidator::sanitizeFilename`` allowing to sanitize a given filename to comply with configured constraints.
-- New service ``\OCP\Template\ITemplateManager`` to access template related functions, and get instances of new interface  ``\OCP\Template\ITemplate`` instead of building manually ``\OCP\Template``.
+- New interface ``\OCP\OCM\ICapabilityAwareOCMProvider`` to extend the OCM provider with 1.1 and 1.2 extensions of the Open Cloud Mesh Discovery API
+- New interface ``\OCP\Search\IExternalProvider`` allows extending the search provider with an explicit flag
+  to indicate that the search is performed on external (3rd-party) resources.
+  This is used in Unified Search to disable searches through these by default (via a toggle switch).
+- New interface ``\OCP\Share\IShareProviderSupportsAllSharesInFolder`` extending ``\OCP\Share\IShareProvider``
+  to add the method ``\OCP\Share\IShareProviderSupportsAllSharesInFolder::getAllSharesInFolder`` used for querying all shares in a folder without filtering by user.
+- New interface ``\OCP\Notification\IPreloadableNotifier`` to allow notifier implementations to preload
+  and cache data for many notifications at once to improve performance by, for example, bundling SQL queries.
+- New interface ``\OCP\Template\ITemplateManager`` to access template related functions,
+  and get instances of new interface  ``\OCP\Template\ITemplate`` instead of building manually ``\OCP\Template``.
+- New attribute ``\OCP\AppFramework\Http\Attribute\RequestHeader`` used for documenting request headers for OpenAPI specifications generated using openapi-extractor.
 - New event ``\OCP\Files\Config\Event\UserMountAddedEvent`` which is emitted when new mount is added to the ``oc_mounts`` table.
 - New event ``\OCP\Files\Config\Event\UserMountRemovedEvent`` which is emitted when an existing mount is removed from the ``oc_mounts`` table.
 - New event ``\OCP\Files\Config\Event\UserMountUpdatedEvent`` which is emitted when an existing mount is updated in the ``oc_mounts`` table.
-- New attribute ``\OCP\AppFramework\Http\Attribute\RequestHeader`` used for documenting request headers for OpenAPI specifications generated using openapi-extractor.
+- New method ``\OCA\Files\Controller\TemplateController::listTemplateFields`` to list the fields of a template,
+  accessible at ``/ocs/v2.php/apps/files/api/v1/templates/fields/{fileId}``.
+- New method ``\OCP\Files\IFilenameValidator::sanitizeFilename`` allowing to sanitize a given filename to comply with configured constraints.
 - New method ``\OCP\Files\Template\ITemplateManager::listTemplateFields`` to allow listing the fields of a template.
-- New method ``\OCA\Files\Controller\TemplateController::listTemplateFields`` to list the fields of a template, accessible at ``/ocs/v2.php/apps/files/api/v1/templates/fields/{fileId}``.
 - New method ``\OCP\Files\Template\BeforeGetTemplatesEvent::shouldGetFields`` to get the event's ``withFields`` property, which should determine whether or not to perform template field extraction on the returned templates.
-- New interface ``\OCP\OCM\ICapabilityAwareOCMProvider`` to extend the OCM provider with 1.1 and 1.2 extensions of the Open Cloud Mesh Discovery API
-- New task processing task type ``OCP\TaskProcessing\AnalyzeImages`` to ask questions about images.
-- New interface ``\OCP\Search\IExternalProvider`` allows extending the search provider with an explicit flag to indicate that the search is performed on external (3rd-party) resources. This is used in Unified Search to disable searches through these by default (via a toggle switch).
-- New interface ``\OCP\Notification\IPreloadableNotifier`` to allow notifier implementations to preload and cache data for many notifications at once to improve performance by, for example, bundling SQL queries.
+- New method ``\OCP\IUser::canChangeEmail`` allowing to check if the user backend allows the user to change their email address.
+- New method ``\OCP\IDateTimeZone::getDefaultTimezone`` allowing to get the default timezone configured for Nextcloud.
+- Task processing API:
+
+  - New task processing task type ``OCP\TaskProcessing\TextToSpeech`` to convert text to speech.
+  - New task processing task type ``OCP\TaskProcessing\AnalyzeImages`` to ask questions about images.
+
 
 Changed APIs
 ^^^^^^^^^^^^
 
 - ``\OCP\Authentication\TwoFactorAuth\ILoginSetupProvider::getBody``, ``\OCP\Authentication\TwoFactorAuth\IPersonalProviderSettings::getBody`` and ``\OCP\Authentication\TwoFactorAuth\IProvider::getBody`` return type was broaden from ``\OCP\Template`` class to ``\OCP\Template\ITemplate`` interface. Should not change anything for applications.
 - ``\OCP\Files\Template\BeforeGetTemplatesEvent`` now takes an optional boolean constructor value, ``withFields``, that allows you to explicitly control whether template fields should be extracted. The default value is ``false``.
+- ``\OCP\IDateTimeZone::getTimezone`` now has a new optional string parameter ``userId`` allowing to request the timezone of another user than the current.
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
@@ -121,35 +134,36 @@ Removed APIs
 - Template function ``vendor_script`` was unused and removed
 - The support for ``app.php`` files, deprecated since Nextcloud 19, was removed. Existence of the file is still checked to show an error if present, but that will be removed in a later version. Please move to ``OCP\AppFramework\Bootstrap\IBoostrap`` instead.
 - The following getters, deprecated since 20, were removed. Please use Dependency Injection or ``\OCP\Server::get`` instead:
-- ``IServerContainer::getAppConfig()``
-- ``IServerContainer::getAvatarManager()``
-- ``IServerContainer::getCalendarManager()``
-- ``IServerContainer::getCalendarResourceBackendManager()``
-- ``IServerContainer::getCalendarRoomBackendManager()``
-- ``IServerContainer::getCloudFederationFactory()``
-- ``IServerContainer::getCloudFederationProviderManager()``
-- ``IServerContainer::getCommandBus()``
-- ``IServerContainer::getCommentsManager()``
-- ``IServerContainer::getContentSecurityPolicyManager()``
-- ``IServerContainer::getCredentialsManager()``
-- ``IServerContainer::getDateTimeFormatter()``
-- ``IServerContainer::getDateTimeZone()``
-- ``IServerContainer::getEncryptionKeyStorage()``
-- ``IServerContainer::getEventLogger()``
-- ``IServerContainer::getGlobalScaleConfig()``
-- ``IServerContainer::getHTTPClientService()``
-- ``IServerContainer::getIniWrapper()``
-- ``IServerContainer::getLogFactory()``
-- ``IServerContainer::getMountManager()``
-- ``IServerContainer::getMountProviderCollection()``
-- ``IServerContainer::getNavigationManager()``
-- ``IServerContainer::getPreviewManager()``
-- ``IServerContainer::getQueryLogger()``
-- ``IServerContainer::getRemoteApiFactory()``
-- ``IServerContainer::getRemoteInstanceFactory()``
-- ``IServerContainer::getRouter()``
-- ``IServerContainer::getShareManager()``
-- ``IServerContainer::getStorageFactory()``
-- ``IServerContainer::getSystemTagManager()``
-- ``IServerContainer::getSystemTagObjectMapper()``
-- ``IServerContainer::getTagManager()``
+
+  - ``IServerContainer::getAppConfig()``
+  - ``IServerContainer::getAvatarManager()``
+  - ``IServerContainer::getCalendarManager()``
+  - ``IServerContainer::getCalendarResourceBackendManager()``
+  - ``IServerContainer::getCalendarRoomBackendManager()``
+  - ``IServerContainer::getCloudFederationFactory()``
+  - ``IServerContainer::getCloudFederationProviderManager()``
+  - ``IServerContainer::getCommandBus()``
+  - ``IServerContainer::getCommentsManager()``
+  - ``IServerContainer::getContentSecurityPolicyManager()``
+  - ``IServerContainer::getCredentialsManager()``
+  - ``IServerContainer::getDateTimeFormatter()``
+  - ``IServerContainer::getDateTimeZone()``
+  - ``IServerContainer::getEncryptionKeyStorage()``
+  - ``IServerContainer::getEventLogger()``
+  - ``IServerContainer::getGlobalScaleConfig()``
+  - ``IServerContainer::getHTTPClientService()``
+  - ``IServerContainer::getIniWrapper()``
+  - ``IServerContainer::getLogFactory()``
+  - ``IServerContainer::getMountManager()``
+  - ``IServerContainer::getMountProviderCollection()``
+  - ``IServerContainer::getNavigationManager()``
+  - ``IServerContainer::getPreviewManager()``
+  - ``IServerContainer::getQueryLogger()``
+  - ``IServerContainer::getRemoteApiFactory()``
+  - ``IServerContainer::getRemoteInstanceFactory()``
+  - ``IServerContainer::getRouter()``
+  - ``IServerContainer::getShareManager()``
+  - ``IServerContainer::getStorageFactory()``
+  - ``IServerContainer::getSystemTagManager()``
+  - ``IServerContainer::getSystemTagObjectMapper()``
+  - ``IServerContainer::getTagManager()``
