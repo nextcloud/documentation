@@ -12,6 +12,27 @@ General
 Front-end changes
 -----------------
 
+Status colors are now based on secondary styling
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The status colors like ``error``, ``success`` or ``warning`` are now based on the secondary style rather than the primary style.
+This means they are now much lighter and thus cannot be used for usage such as text or border colors.
+To mitigate this following new CSS variables are introduced:
+
+- ``--color-text-error`` for text that needs error highlight on **normal** background colors.
+- ``--color-text-success`` for text that needs success highlight on **normal** background colors.
+- ``--color-border-error`` to be used as border color for elements having an error state such as input elements with failing validity.
+- ``--color-border-success`` to be used as border color for elements having a success state such as an input was saved or similar.
+
+Please note that there are no text and border variants for ``warning`` and ``info`` as we design wise discourage them on text and elements.
+
+This existing variables have changed to a secondary style:
+
+- ``--color-error`` to be used as the background color of error style elements (like error state button or note-card).
+- ``--color-error-text`` to be used as the background color of such elements on hover.
+- ``--color-error-text`` to be used as the foreground color of such elements.
+- Same applies to ``--color-info``, ``--color-success``, ``--color-warning`` and their variants.
+
 Added APIs
 ^^^^^^^^^^
 
@@ -25,7 +46,8 @@ Changed APIs
 Deprecated APIs
 ^^^^^^^^^^^^^^^
 
-- TBD
+- ``--color-error-rgb``, ``--color-info-rgb``, ``--color-success-rgb``, ``--color-warning-rgb`` are deprecated.
+  Instead use the native CSS color utils with the the existing variables like ``--color-error`` and similar.
 
 Removed APIs
 ^^^^^^^^^^^^
