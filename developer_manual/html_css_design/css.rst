@@ -129,39 +129,47 @@ State colors variables
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
 | Variable                                     | Example         | Usage                                                                                     |
 +==============================================+=================+===========================================================================================+
+| ``--color-text-error``                       | ``#c90000``     | For text on **normal** background that should have an error state                         |
++----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
+| ``--color-text-success``                     | ``#099f05``     | For text on **normal** background that should have an success state                       |
++----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
+| ``--color-border-error``                     | ``#c90000``     | Border color for elements which have an error state like inputs with failing validity     |
++----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
+| ``--color-border-success``                   | ``#099f05``     | Border color for elements which have a success state like inputs which have been saved    |
++----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
 | ``--color-favorite``                         | ``#a37200``     | Color to mark favorites, can be used to color e.g. a star icon for favorites              |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-error``                            | ``#db0606``     | Element color to show error state, this should not be used for text                       |
+| ``--color-error``                            | ``#FFE7E7``     | Color to show error state, this should not be used for text but for element backgrounds   |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-error-rgb``                        | ``219,6,6``     | RGB variant of ``--color-error``                                                          |
+| ``--color-error-hover``                      | ``#ffc3c3``     | Background color for hover effects of ``--color-error``                                   |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-error-hover``                      | ``#df2525``     | Element color for hover effects of ``--color-error``                                      |
+| ``--color-error-text``                       | ``#8A0000``     | Text color on elements using ``--color-error`` as background                              |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-error-text``                       | ``#c20505``     | Text color to show error state                                                            |
+| ``--color-warning``                          | ``#FFEEC5``     | Color to show warning state, this should not be used for text but for element backgrounds |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-warning``                          | ``#a37200``     | Element color to show warning state, this should not be used for text                     |
+| ``--color-warning-hover``                    | ``#ffe4a1``     | Background color for hover effects of ``--color-warning``                                 |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-warning-rgb``                      | ``163,114,0``   | RGB variant of ``--color-warning``                                                        |
+| ``--color-warning-text``                     | ``#664700``     | Text color on elements using ``--color-warning`` as background                            |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-warning-hover``                    | ``#8a6000``     | Element color for hover effects of ``--color-warning``                                    |
+| ``--color-success``                          | ``#D8F3DA``     | Color to show success state, this should not be used for text but for element backgrounds |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-warning-text``                     | ``#7f5900``     | Text color to show warning state                                                          |
+| ``--color-success-hover``                    | ``#bdebc0``     | Background color for hover effects of ``--color-success``                                 |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-success``                          | ``#2d7b41``     | Element color to show success state, this should not be used for text                     |
+| ``--color-success-text``                     | ``#005416``     | Text color on elements using ``--color-success`` as background                            |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-success-rgb``                      | ``45,123,65``   | RGB variant of ``--color-success``                                                        |
+| ``--color-info``                             | ``#D5F1FA``     | Color to show info state, this should not be used for text but for element backgrounds    |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-success-hover``                    | ``#428854``     | Element color for hover effects of ``--color-success``                                    |
+| ``--color-info-hover``                       | ``#b5e6f6``     | Background color for hover effects of ``--color-info``                                    |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-success-text``                     | ``#286c39``     | Text color to show success state                                                          |
+| ``--color-info-text``                        | ``#0066AC``     | Text color on elements using ``--color-info`` as background                               |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-info``                             | ``#0071ad``     | Element color to show info state, this should not be used for text                        |
+| ``--color-error-rgb``                        | ``219,6,6``     | (⚠️ deprecated since 32.0.0) RGB variant of ``--color-error``                             |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-info-rgb``                         | ``0,113,173``   | RGB variant of ``--color-info``                                                           |
+| ``--color-info-rgb``                         | ``0,113,173``   | (⚠️ deprecated since 32.0.0) RGB variant of ``--color-info``                              |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-info-hover``                       | ``#197fb5``     | Element color for hover effects of ``--color-info``                                       |
+| ``--color-success-rgb``                      | ``45,123,65``   | (⚠️ deprecated since 32.0.0) RGB variant of ``--color-success``                           |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
-| ``--color-info-text``                        | ``#006499``     | Text color to show info state                                                             |
+| ``--color-warning-rgb``                      | ``163,114,0``   | (⚠️ deprecated since 32.0.0) RGB variant of ``--color-warning``                           |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
 
 Element structure variables
