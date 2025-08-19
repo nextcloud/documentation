@@ -2572,7 +2572,7 @@ memcache.local
 
 ::
 
-	'memcache.local' => '\OC\Memcache\APCu',
+	'memcache.local' => '\\OC\\Memcache\\APCu',
 
 Memory caching backend for locally stored data
 
@@ -2586,7 +2586,7 @@ memcache.distributed
 
 ::
 
-	'memcache.distributed' => '\OC\Memcache\Memcached',
+	'memcache.distributed' => '\\OC\\Memcache\\Memcached',
 
 Memory caching backend for distributed data
 
@@ -2748,6 +2748,21 @@ issues uploading very large files via the Nextcloud Client as upload isn't
 completed within one day.
 
 Defaults to ``60*60*24`` (1 day)
+
+cache_app_config
+^^^^^^^^^^^^^^^^
+
+
+::
+
+	'cache_app_config' => true,
+
+Enable caching of the app config values.
+
+If enabled the app config will be cached locally for a short TTL,
+reducing database load significatly on larger setups.
+
+Defaults to ``true``
 
 Using Object Store with Nextcloud
 ---------------------------------
