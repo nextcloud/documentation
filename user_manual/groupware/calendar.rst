@@ -72,7 +72,7 @@ hard drive or delete it forever.
 
 .. figure:: images/calendar_dropdown.png
 
-Click on the "pen" icon of the respective calendar. You will see a new popup that will allow you to change 
+Click on the "pen" icon of the respective calendar. You will see a new popup that will allow you to change
 the calendar name and color, and buttons to delete or export the calendar.
 
 .. figure:: images/calendar_settings.png
@@ -81,7 +81,7 @@ Calendar Transparency
 ~~~~~~~~~~~~~~~~~~~~~
 
 You can toggle the checkbox "Never show me as busy (set calendar to transparent)" to influence if this calendars' events
-are taken into account in Free/Busy calculations. If checked, no events in this calendar will be taken into account, your schedule will 
+are taken into account in Free/Busy calculations. If checked, no events in this calendar will be taken into account, your schedule will
 always be free, regardless of an events' settings.
 
 .. figure:: images/calendar_transparency.png
@@ -121,8 +121,8 @@ On the public page, users are able to get the subscription link for the calendar
 Calendar Widget
 ~~~~~~~~~~~~~~~
 
-You can embed your calendars into supported apps like ``Talk``, ``Notes``, etc... 
-by either sharing the public link to make the embed viewable (read-only) to all users 
+You can embed your calendars into supported apps like ``Talk``, ``Notes``, etc...
+by either sharing the public link to make the embed viewable (read-only) to all users
 or by using the internal link to make it private.
 
 Subscribe to a Calendar
@@ -174,10 +174,9 @@ check and concretize the time span or set the event as an all-day event. Optiona
 you can specify a location and a description.
 
 If you want to edit advanced details such as the **Attendees** or **Reminders**, or if you
-want to set the event as a repeating-event, click on the ``More`` button to open the advanced
-sidebar editor.
+want to set the event as a repeating-event, click on the ``More`` button to open the advanced editor.
 
-.. note:: If you always want to open the advanced sidebar editor instead of the
+.. note:: If you always want to open the advanced editor instead of the
           simple event editor popup, you can set a ``Skip simple event
           editor`` checkmark in the ``Settings & Import`` section of the app.
 
@@ -189,11 +188,11 @@ Edit, duplicate or delete an event
 If you want to edit, duplicate or delete a specific event, you first need to click on the event.
 
 After that you will be able to re-set all event details and open the
-advanced sidebar-editor by clicking on ``More``.
+advanced editor by clicking on ``More``.
 
-Clicking on the ``Update`` button will update the event. To cancel your changes, click on the close icon on top right of the popup or sidebar editor.
+Clicking on the ``Update`` button will update the event. To cancel your changes, click on the close icon on top right of the popup or advanced editor.
 
-If you open the sidebar view and click the three dot menu next to the event name, you have an option to export the event as an ``.ics`` file or remove the event from your calendar.
+If you open the advanced view and click the three dot menu next to the event name, you have an option to export the event as an ``.ics`` file or remove the event from your calendar.
 
 .. figure:: images/calendar_event_menu.png
 
@@ -321,9 +320,9 @@ You can directly respond to invitations inside the app. Click on the event and s
 .. figure:: images/calendar_accept_simple_editor.png
    :scale: 80%
 
-You can respond to an invitation from the sidebar too.
+You can respond to an invitation from the advanced editor too.
 
-.. figure:: images/calendar_accept_sidebar_editor.png
+.. figure:: images/calendar_accept_advanced_editor.png
    :scale: 80%
 
 Availability (Working Hours)
