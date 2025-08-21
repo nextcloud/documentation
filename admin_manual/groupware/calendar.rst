@@ -179,3 +179,30 @@ or::
 
   # Allow users to create calendars/subscriptions without restriction
   sudo -E -u www-data php occ config:app:set dav maximumCalendarsSubscriptions --type=integer --value=-1
+
+Example event
+-------------
+
+.. versionadded:: 32.0.0
+
+When a user logs in for the first time an example event is created in their personal calendar.
+As an admin, you can disable the creation of the example event.
+It is also possible to replace the default event with a custom one.
+
+To disable the creation of the example event for new users:
+
+1. Navigate to the Groupware settings in the admin settings.
+2. Scroll down to the "Example content" section.
+3. Disable the "Add example event ..." setting with the checkbox
+
+To replace the built-in default event with a custom one:
+
+1. Navigate to the Groupware settings in the admin settings.
+2. Press the "Import calendar event" button.
+3. Choose an ICS file to be imported.
+
+.. note:: The start and end date will be overwritten with dates in the future when a custom event
+   is supplied to ensure that the user sees the event.
+
+It is also possible to revert to the default built-in event by pressing the "Reset to default"
+button next to the import button.
