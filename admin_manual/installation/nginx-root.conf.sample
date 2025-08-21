@@ -173,7 +173,8 @@ server {
         fastcgi_intercept_errors on;
         fastcgi_request_buffering off;
 
-        # Uncomment the following lines to avoid 504 errors for large files (PHP-FPM).
+		# PHP-FPM 504 response timeouts
+		# Uncomment an increase these if facing timeout errors during large file uploads (PHP-FPM)
         #fastcgi_read_timeout 60s;
         #fastcgi_send_timeout 60s;
         #fastcgi_connect_timeout 60s;
