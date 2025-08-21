@@ -85,19 +85,18 @@ Example contact
 
 .. versionadded:: 32.0.0
 
-The example contact administration setting allows you to enable the creation of a contact in the user's address book when they log in for the first time.
-To enable the example contact feature:
+When a user logs in for the first time an example contact is created in the user's address book.
+
+To disable the example contact feature:
 
 1. Navigate to the Groupware settings in the admin settings.
 2. Scroll down to the "Example content" section.
-3. Enable the "Example contact" setting with the checkbox 
+3. Disable the "Add example contact ..." setting with the checkbox
 
 If you want to set a specific contact that should be created.
 
 4. Press the "Import contact" button.
 5. Choose a vCard file (.vcf) that should be imported as an example contact.
 
-Switching back to the default example contact provided by nextcloud is possible by pressing the "Reset to default contact" button.
-
-.. note::
-    Example contacts will only be created for users that log in for the first time after the feature was enabled.
+Switching back to the default example contact provided by nextcloud is possible by pressing the
+"Reset to default" button next to the import button.
