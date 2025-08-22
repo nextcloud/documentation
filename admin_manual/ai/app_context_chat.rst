@@ -74,7 +74,19 @@ Initial loading of data
 
 | Context chat will automatically load user data into the Vector DB using background jobs.
 | The initial loading of data can take a long time depending on the number of files and their size.
-| To speed up the asynchronous indexing or to stop it altogether, see the `Configuration Options (OCC)`_.
+
+The indexing jobs are set up to run during the Nextcloud instance's maintenance window (typically during the night) only. If you have not set a maintenance window, indexing will run 24/7.
+
+| You can set up a separate cron job to run every 30 minutes for Context Chat to avoid slowing down normal background job operation on larger instances.
+| The following command can bypass the maintenance window so it can either be set to run during the day even with a maintenance window set, or it can be set to run during the weekends 24/7 to speed up the indexing process.
+
+.. code-block::
+
+   php cron.php "OCA\\ContextChat\\BackgroundJobs\\IndexerJob" "OCA\\ContextChat\\BackgroundJobs\\ActionJob" "OCA\\ContextChat\\BackgroundJobs\\SubmitContentJob" "OCA\\ContextChat\\BackgroundJobs\\StorageCrawlJob" "OCA\\ContextChat\\BackgroundJobs\\InitialContentImportJob"
+
+
+Synchronous indexing
+~~~~~~~~~~~~~~~~~~~~
 
 | To index all the files synchronously, use the following command:
 | Note: This does not interact with the auto-indexing feature and that list would remain unchanged. However, the indexed files would be skipped when the auto indexer runs.
