@@ -72,22 +72,48 @@ epub_copyright = u'2012-2025, The Nextcloud developers'
 # -- Options for LaTeX output ------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-latex-output
 
-latex_elements = {'preamble': '\\usepackage{morefloats}', 'figure_align': 'H',}
-latex_documents = [('contents', 'Nextcloud_Server_Administration_Manual.tex', u'Nextcloud Server Administration Manual', 
-u'The Nextcloud developers', 'manual'),]
+latex_elements = {
+    'preamble': '\\usepackage{morefloats}',
+    'figure_align': 'H',
+}
+latex_documents = [
+    (
+        'contents',
+         'Nextcloud_Server_Administration_Manual.tex',
+         u'Nextcloud Server Administration Manual',
+         u'The Nextcloud developers',
+         'manual',
+    ),
+]
 latex_logo = '../_shared_assets/static/logo-blue.pdf'
 
 # -- Options for manual page output ------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-manual-page-output
 
-man_pages = [ ('contents', 'nextcloudserveradminmanual', u'Nextcloud Server Administration Manual', [u'The Nextcloud deve
-lopers'], 1) ]
+man_pages = [
+    (
+        'contents',
+         'nextcloudserveradminmanual',
+         u'Nextcloud Server Administration Manual',
+         [u'The Nextcloud developers'],
+         1,
+    ),
+]
 
 # -- Options for Texinfo output ----------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-texinfo-output
 
-texinfo_documents = [ ('contents', 'Nextcloud Server Admin Manual', u'Nextcloud Server Administration Manual', u'The Next
-cloud developers', 'Nextcloud', 'The Nextcloud Server Administration Manual.', 'Miscellaneous'), ]
+texinfo_documents = [
+    (
+        'contents',
+        'Nextcloud Server Admin Manual',
+         u'Nextcloud Server Administration Manual',
+        u'The Nextcloud developers',
+        'Nextcloud',
+        'The Nextcloud Server Administration Manual.',
+        'Miscellaneous',
+    ), 
+]
 
 # -- Options for todo extension ----------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/extensions/todo.html#configuration
@@ -97,8 +123,14 @@ todo_include_todos = True
 # -- Options for PDF page output ---------------------------------------------
 # https://rst2pdf.org/manual.html#sphinx
 
-pdf_documents = [('contents', u'Nextcloud Server Administration Manual', u'Nextcloud Server Administration Manual', u'The
- Nextcloud developers'),]
+pdf_documents = [
+    (
+        'contents',
+         u'Nextcloud Server Administration Manual',
+         u'Nextcloud Server Administration Manual',
+         u'The Nextcloud developers',
+    ),
+]
 
 # Generate the versions list for inclusion into all HTML pages
 current_docs = 'admin_manual'
