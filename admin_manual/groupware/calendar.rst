@@ -27,7 +27,7 @@ You can customize the events user interface.
 Hide export buttons
 ~~~~~~~~~~~~~~~~~~~
 
-By default users can export their calendar data from the editor and the sidebar. Admins can disable this feature::
+By default users can export their calendar data from the event editor. Admins can disable this feature::
 
  php occ config:app:set calendar hideEventExport --value=yes
 
