@@ -81,13 +81,13 @@ Auto-indexing
 
 The indexing jobs are set up to run during the Nextcloud instance's maintenance window (typically during the night) only. If you have not set a maintenance window, indexing will run 24/7.
 
-You can set up a background job worker explicitly for Context Chat to avoid slowing down normal background job operation on larger instances.
+| You can set up a separate cron job to run every 30 minutes for Context Chat to avoid slowing down normal background job operation on larger instances.
+| The following command can bypass the maintenance window so it can either be set to run during the day even with a maintenance window set, or it can be set to run during the weekends 24/7 to speed up the indexing process.
 
 .. code-block::
 
    php cron.php "OCA\\ContextChat\\BackgroundJobs\\IndexerJob" "OCA\\ContextChat\\BackgroundJobs\\ActionJob" "OCA\\ContextChat\\BackgroundJobs\\SubmitContentJob" "OCA\\ContextChat\\BackgroundJobs\\StorageCrawlJob" "OCA\\ContextChat\\BackgroundJobs\\InitialContentImportJob"
 
-You can set this command to run every 15 minutes on weekends using cron for example.
 
 Synchronous indexing
 ~~~~~~~~~~~~~~~~~~~~
