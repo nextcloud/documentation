@@ -3723,6 +3723,19 @@ upgrade.cli-upgrade-link
 
 Customize the CLI upgrade documentation link.
 
+user_ini_additional_lines
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'user_ini_additional_lines' => '',
+
+Additional line(s) (string or array of strings)
+that will be added to .user.ini on each update by the updater.
+
+Defaults to ``''`` (empty string)
+
 documentation_url.server_logs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
