@@ -262,7 +262,7 @@ Checking attendees' busy times
 After adding attendees to an event you can click on ``Find a time`` to bring up the "Free / Busy" modal. It allows you to see when each attendee has other events, and can help you decide on a time when everyone is free.
 
 .. figure:: images/calendar_free_busy_modal.png
-   :scale: 40%
+   :scale: 60%
 
 Your own busy blocks will be shown in the same color as your personal calendar, your out of office times will be shown in gray, and other attendees' busy times will have the same color as their avatar shown in the advanced editor.
 
