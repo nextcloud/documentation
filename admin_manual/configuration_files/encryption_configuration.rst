@@ -1,6 +1,6 @@
-========================
-Encryption configuration
-========================
+====================================
+Server-side encryption configuration
+====================================
 
 The primary purpose of the Nextcloud server-side encryption is to protect users' 
 files on remote storage, such as Dropbox and Google Drive, and to do it easily 
