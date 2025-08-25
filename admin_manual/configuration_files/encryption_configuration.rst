@@ -1,5 +1,5 @@
 ====================================
-Server-Side Encryption configuration
+Server-side encryption configuration
 ====================================
 
 The primary purpose of the Nextcloud server-side encryption is to protect users' 
