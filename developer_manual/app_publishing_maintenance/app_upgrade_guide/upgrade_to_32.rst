@@ -112,6 +112,7 @@ Changed APIs
 - ``\OCP\Authentication\TwoFactorAuth\ILoginSetupProvider::getBody``, ``\OCP\Authentication\TwoFactorAuth\IPersonalProviderSettings::getBody`` and ``\OCP\Authentication\TwoFactorAuth\IProvider::getBody`` return type was broaden from ``\OCP\Template`` class to ``\OCP\Template\ITemplate`` interface. Should not change anything for applications.
 - ``\OCP\Files\Template\BeforeGetTemplatesEvent`` now takes an optional boolean constructor value, ``withFields``, that allows you to explicitly control whether template fields should be extracted. The default value is ``false``.
 - ``\OCP\IDateTimeZone::getTimezone`` now has a new optional string parameter ``userId`` allowing to request the timezone of another user than the current.
+- ``\OCP\IDBConnection::getDatabaseProvider`` now has a new optional boolean parameter ``strict``. When specified the output will differentiate between MySQL and MariaDB. Otherwise MariaDB will be returned as MySQL
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^

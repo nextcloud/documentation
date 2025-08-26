@@ -357,7 +357,7 @@ Nextcloud provides the possibility to access public shares anonymously over WebD
 
 To access the public share, open::
 
-  https://example.com/nextcloud/public.php/webdav
+  https://example.com/nextcloud/public.php/dav/files/USERNAME
 
 in a WebDAV client, use the share token as username and the (optional) share password as the password. For example, with a share link https://example.com/s/kFy9Lek5sm928xP, ``kFy9Lek5sm928xP`` will be the username.
 
