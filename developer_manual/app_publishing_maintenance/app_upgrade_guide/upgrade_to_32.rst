@@ -24,12 +24,19 @@ To mitigate this following new CSS variables are introduced:
 - ``--color-border-error`` to be used as border color for elements having an error state such as input elements with failing validity.
 - ``--color-border-success`` to be used as border color for elements having a success state such as an input was saved or similar.
 
-Please note that there are no text and border variants for ``warning`` and ``info`` as we design wise discourage them on text and elements.
+Please note that there are no text and border variants for ``warning`` and ``info`` as we design wise discourage them on text and borders.
+
+Additionally as sometimes elements need a status color with proper contrast we now provide following variables for status elements like icons:
+
+- ``--color-element-error``
+- ``--color-element-info``
+- ``--color-element-success``
+- ``--color-element-warning``
 
 This existing variables have changed to a secondary style:
 
 - ``--color-error`` to be used as the background color of error style elements (like error state button or note-card).
-- ``--color-error-text`` to be used as the background color of such elements on hover.
+- ``--color-error-hover`` to be used as the background color of such elements on hover.
 - ``--color-error-text`` to be used as the foreground color of such elements.
 - Same applies to ``--color-info``, ``--color-success``, ``--color-warning`` and their variants.
 
