@@ -173,6 +173,12 @@ server {
         fastcgi_intercept_errors on;
         fastcgi_request_buffering off;
 
+        # PHP-FPM 504 response timeouts
+        # Uncomment and increase these if facing timeout errors during large file uploads
+        #fastcgi_read_timeout 60s;
+        #fastcgi_send_timeout 60s;
+        #fastcgi_connect_timeout 60s;
+
         fastcgi_max_temp_file_size 0;
     }
 
