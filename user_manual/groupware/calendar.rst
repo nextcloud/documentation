@@ -177,8 +177,8 @@ If you want to edit advanced details such as the **Attendees** or **Reminders**,
 want to set the event as a repeating-event, click on the ``More`` button to open the advanced editor.
 
 .. note:: If you always want to open the advanced editor instead of the
-          simple event editor popup, you can set a ``Skip simple event
-          editor`` checkmark in the ``Settings & Import`` section of the app.
+          simple event editor popup, you uncheck the option
+          ``Enable simplified editor`` in the ``Settings`` section of the app.
 
 Clicking on the blue ``Create`` button will finally create the event.
 
