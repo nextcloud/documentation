@@ -30,6 +30,7 @@ extensions += [
     'sphinx.ext.todo',
     'rst2pdf.pdfbuilder',
     'sphinx.ext.intersphinx',
+    'sphinx_toolbox.sidebar_links',
 ]
 
 templates_path = [
