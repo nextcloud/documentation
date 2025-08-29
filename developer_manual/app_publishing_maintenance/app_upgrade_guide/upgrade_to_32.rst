@@ -82,6 +82,11 @@ Back-end changes
 - These new attributes will be applied on a "defacto standard" basis to the best of our knowledge.
   In case an API was flagged unexpectedly, leave a comment on the respective pull request in the server repository asking for clarification.
 
+Added Events
+^^^^^^^^^^^^
+
+- New ``preloadCollection`` event emitted by the DAV server during PROPFIND requests. See :ref:`collection_preload` for details.
+
 Added APIs
 ^^^^^^^^^^
 
