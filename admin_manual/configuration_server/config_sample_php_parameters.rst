@@ -2277,7 +2277,7 @@ preview_ffmpeg_path
 
 Custom path for ffmpeg binary
 
-Defaults to ``null`` and falls back to searching ``avconv`` and ``ffmpeg``
+Defaults to ``null`` and falls back to searching ``ffmpeg``
 in the configured ``PATH`` environment
 
 preview_ffprobe_path
