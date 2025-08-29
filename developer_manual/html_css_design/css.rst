@@ -133,6 +133,14 @@ State colors variables
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
 | ``--color-text-success``                     | ``#099f05``     | For text on **normal** background that should have an success state                       |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
+| ``--color-element-error``                    | ``#c90000``     | Color with proper contrast for elements which have an error state for example icons       |
++----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
+| ``--color-element-info``                     | ``#0077C7``     | Color with proper contrast for elements which have an info state for example icons        |
++----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
+| ``--color-element-success``                  | ``#099f05``     | Color with proper contrast for elements which have an success state for example icons     |
++----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
+| ``--color-element-warning``                  | ``#BF7900``     | Color with proper contrast for elements which have an warning state for example icons     |
++----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
 | ``--color-border-error``                     | ``#c90000``     | Border color for elements which have an error state like inputs with failing validity     |
 +----------------------------------------------+-----------------+-------------------------------------------------------------------------------------------+
 | ``--color-border-success``                   | ``#099f05``     | Border color for elements which have a success state like inputs which have been saved    |
