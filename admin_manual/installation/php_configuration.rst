@@ -1,129 +1,244 @@
-===========================
-PHP Modules & Configuration
-===========================
+=============
+Preparing PHP
+=============
 
-PHP Modules
------------
-
-This
-section lists all required and optional PHP modules.  Consult the `PHP manual
-<https://php.net/manual/en/extensions.php>`_ for more information on modules.
-You can
-check the presence of a module by typing ``php -m | grep -i <module_name>``.
-If you get a result, the module is present.
-
-Required:
-
-* PHP (see :doc:`./system_requirements` for a list of supported versions)
-* PHP module ctype
-* PHP module curl
-* PHP module dom
-* PHP module fileinfo (included with PHP)
-* PHP module filter (only on Mageia and FreeBSD)
-* PHP module GD
-* PHP module hash (only on FreeBSD)
-* PHP module JSON (included with PHP >= 8.0)
-* PHP module libxml (Linux package libxml2 must be >=2.7.0)
-* PHP module mbstring
-* PHP module openssl (included with PHP >= 8.0)
-* PHP module posix
-* PHP module session
-* PHP module SimpleXML
-* PHP module XMLReader
-* PHP module XMLWriter
-* PHP module zip
-* PHP module zlib
-
-Database connectors (pick the one for your database):
-
-* PHP module pdo_sqlite (>= 3, usually not recommended for performance reasons)
-* PHP module pdo_mysql (MySQL/MariaDB)
-* PHP module pdo_pgsql (PostgreSQL)
-
-*Recommended* packages:
-
-* PHP module intl (increases language translation performance and fixes sorting
-  of non-ASCII characters)
-* PHP module sodium (for Argon2 for password hashing when PHP < 8.4 is used and PHP was built without libargon2. bcrypt is used as fallback, but if passwords were hashed with Argon2 already and the module is missing, your users can't log in.)
-
-Required for specific apps:
-
-* PHP module ldap (for LDAP integration)
-* PHP module smbclient  (SMB/CIFS integration, see
-  :doc:`../configuration_files/external_storage/smb`)
-* PHP module ftp (for FTP storage / external user authentication)
-* PHP module imap (for external user authentication)
-
-Recommended for specific apps (*optional*):
-
-* PHP module gmp (for SFTP storage)
-* PHP module exif (for image rotation in pictures app)
-
-For enhanced server performance (*optional*) select one or more of the following
-caches:
-
-* PHP module apcu (>= 4.0.6)
-* PHP module memcached
-* PHP module redis (>= 2.2.6, required for Transactional File Locking)
-
-See :doc:`../configuration_server/caching_configuration` to learn how to select
-and configure a cache.
-
-For preview generation (*optional*):
-
-* PHP module imagick
-* avconv or ffmpeg
-* OpenOffice or LibreOffice
+Before installing Nextcloud Server, ensure your PHP environment is properly configured. This includes installing 
+the correct PHP version, enabling required PHP modules, and adjusting important `php.ini` settings. This guide 
+explains which PHP modules are necessary, which are recommended for optimal performance and compatibility, and 
+how to configure your PHP environment for both web server and command-line usage.
 
 .. note::
-   If the preview generation of PDF files fails with a "not authorized" error message, you must adjust the imagick policy file.
-   See https://cromwell-intl.com/open-source/pdf-not-authorized.html
+   You can safely ignore this chapter if you plan to use a turnkey Nextcloud Server installation method (such as
+   AIO, Snap, NCP, or Community Docker). Those installation methods provide PHP environments that are already 
+   pre-configured for use with Nextcloud Server. For guidance regarding customizing PHP in those environments,
+   refer to the documentation provided specifically for or by those install methods. 
 
-For command line processing (*optional*):
+.. contents::
+   :local:
+   :depth: 2
 
-* PHP module pcntl (enables command interruption by pressing ``ctrl-c``)
+----------------
+PHP Installation
+----------------
+
+Refer to your OS distribution's documentation for instructions for establishing a base PHP installation. It may
+be possible to choose among several versions of PHP. Refer to :doc:`./system_requirements` to see which versions 
+of PHP are supported supported by this release of Nextcloud Server. After completing a base PHP installation, 
+follow the below guidance to configure your new PHP installation for your new Nextcloud Server deployment. 
+
+--------------------
+Required PHP Modules
+--------------------
+
+The following PHP modules **must** be installed and enabled for Nextcloud Server to function:
+
+- `ctype` (included with PHP)
+- `curl`
+- `DOM`
+- `fileinfo` (included with PHP)
+- `filter` (only on Mageia and FreeBSD)
+- `GD`
+- `hash` (only on FreeBSD)
+- `JSON` (included with PHP)
+- `libxml` (requires Linux package `libxml2` version >= 2.7.0)
+- `mbstring`
+- `OpenSSL` (included with PHP)
+- `posix`
+- `session` (included with PHP)
+- `SimpleXML`
+- `XMLReader`
+- `XMLWriter`
+- `zip`
+- `zlib`
+
+The `ctype`, `fileinfo`, `JSON` and `OpenSSL` modules are generally included and enabled in PHP by default. Often 
+some of the other required modules are automatically installed by OS distribution package managers. 
+
+**How to check if a module is enabled:**  
+
+- Run ``php -m | grep -i <module_name>``. If you see output, the module is active.
 
 .. note::
-   You also need to ensure that ``pcntl_signal`` and ``pcntl_signal_dispatch`` are not disabled
-   in your php.ini by the ``disable_functions`` option.
+    The `filter` and `hash` modules are required only on Mageia and FreeBSD.  
 
-For command line updater (*optional*):
+--------------------------------
+Required PHP Database Connectors
+--------------------------------
 
-* PHP module phar (upgrades Nextcloud by running ``sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar``)
+Install the PHP connector module for the database you plan to use (choose one):
 
-ini values
-----------
+- `pdo_sqlite` (>= 3, usually not recommended for performance reasons)
+- `pdo_mysql` (MySQL/MariaDB)
+- `pdo_pgsql` (PostgreSQL)
 
-The following ini settings should be adapted if needed for Nextcloud:
+-------------------------------
+Recommended General PHP Modules
+-------------------------------
 
-* ``disable_functions``: avoid disabling functions unless you know exactly what you are doing
-* ``max_execution_time``: see :doc:`../configuration_files/big_file_upload_configuration`
-* ``memory_limit``: should be at least 512MB. See also :doc:`../configuration_files/big_file_upload_configuration`
-* ``opcache.enable`` and friends: See :doc:`../configuration_server/caching_configuration` and :doc:`server_tuning`
-* ``open_basedir``: see :doc:`harden_server`
-* ``upload_tmp_dir``: see :doc:`../configuration_files/big_file_upload_configuration`
+These modules are not required, but are highly recommended to improve functionality or security:
 
-.. _php_ini_tips_label:
+- `intl`: Fixes sorting of non-ASCII characters and improves language translation performance.
+- `sodium`: Provides Argon2 password hashing (needed if using PHP < 8.4 and PHP was built without `libargon2`). 
 
-php.ini configuration notes
+    bcrypt will be used if Argon2 is unavailable, but if passwords were previously hashed with Argon2 
+    (such as when migrating an existing Nextcloud Server installation to a new server environment) and this 
+    module is missing, accounts will not be able to log-in).
+
+-------------------------------
+Recommended PHP Caching Modules
+-------------------------------
+
+Memory caching is not required so these modules are not required, but are highly recommended for optimal 
+performance and reliability. Choose and install your preferred combination of memmory caching modules:
+
+- `APCu` (>= 4.0.6)
+- `redis` / `phpredis` (>= 2.2.6, required for Transactional File Locking)
+- `memcached` (an older alternative to `redis` that is not recommended for new installations)
+
+.. note:: 
+   Memory caching is highly recommended for optimal performance. In most cases, a combination of `APCu` and 
+   `redis` are the best choice for new installations.
+
+See :doc:`../configuration_server/caching_configuration` for configuration details.
+
+---------------------------
+Recommended PHP CLI Modules
 ---------------------------
 
-Keep in mind that changes to ``php.ini`` may have to be configured on more than one
-ini file. This can be the case, for example, for the ``date.timezone`` setting.
-You can search for a parameter with the following command: ``grep -r date.timezone /etc/php``.
+**For command-line processing** (optional):
 
-**php.ini - used by the Web server:**
-::
+- `pcntl`: Allows command interruption (e.g., via ``ctrl-c``).  
 
-    /etc/php/8.3/apache2/php.ini
-  or
-    /etc/php/8.3/fpm/php.ini
-  or ...
+    Ensure ``pcntl_signal`` and ``pcntl_signal_dispatch`` are *not* disabled in your `php.ini` by the 
+    ``disable_functions`` option.
 
-**php.ini - used by the php-cli and so by Nextcloud CRON jobs:**
-::
+**For command-line updater** (optional):
 
-    /etc/php/8.3/cli/php.ini
+- `phar`: Required to run the updater with:
 
-.. note:: Path names have to be set in respect of the installed PHP
-          (8.1, 8.2, 8.3 or 8.4) as applicable.
+    ``sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar``
+
+--------------------------------
+PHP Modules for Media Management
+--------------------------------
+
+**Image meta data and orientation** (optional):
+
+- `exif`: Image meta data loading and rotation
+
+**Preview Generation** (optional):
+
+- `imagick` (for image previews)
+- `avconv` or `ffmpeg` (for video previews)
+- OpenOffice or LibreOffice (for document previews)
+
+.. note::
+   If previewing PDF files fails with a "not authorized" error, you may need to adjust the `imagick` policy file. See https://cromwell-intl.com/open-source/pdf-not-authorized.html
+
+See :doc:`../configuration_files/previews_configuration` for additional preview generation context.
+
+-------------------------------------
+PHP Modules for Specific Applications
+-------------------------------------
+
+Some optional Nextcloud apps/functionality require additional modules. Install as needed:
+
+- `ldap`: LDAP integration
+- `smbclient`: SMB/CIFS integration (see :doc:`../configuration_files/external_storage/smb`)
+- `ftp`: FTP storage or external user authentication
+- `imap`: External user authentication
+
+**Recommended/Optional:**
+
+- `gmp`: SFTP storage
+
+------------------
+PHP `ini` Settings
+------------------
+
+Adjust the following settings in your `php.ini` as needed for Nextcloud:
+
+- ``disable_functions``: Avoid disabling functions unless necessary.
+- ``max_execution_time``: See :doc:`../configuration_files/big_file_upload_configuration`
+- ``memory_limit``: Should be at least 512MB. See also :doc:`../configuration_files/big_file_upload_configuration`
+- ``opcache.enable`` and related settings: See :doc:`../configuration_server/caching_configuration` and :doc:`server_tuning`
+- ``open_basedir``: See :doc:`harden_server`
+- ``upload_tmp_dir``: See :doc:`../configuration_files/big_file_upload_configuration`
+
+--------------------------------
+Notes on PHP `ini` Configuration
+--------------------------------
+
+- **Multiple php.ini files:**
+
+    - You may need to configure settings in more than one `php.ini` file (e.g., for web server and CLI).
+
+        - Web server:
+            `/etc/php/<version>/apache2/php.ini` or `/etc/php/<version>/fpm/php.ini`
+
+        - CLI (used by Nextcloud CRON jobs):  
+            `/etc/php/<version>/cli/php.ini`
+
+- **Find which php.ini is active for each SAPI:**
+
+    - Use ``php --ini`` for CLI, or check ``phpinfo()`` in a web page.
+
+- **Search for a parameter:**
+
+    - Run ``grep -r <parameter_name> /etc/php`` (e.g., ``grep -r date.timezone /etc/php``)
+
+- **Replace `<version>` with your actual PHP version (e.g., 8.1, 8.2, etc.).**
+
+--------------------------------
+PHP Module Quick Reference Table
+--------------------------------
+
++------------------+----------+-------------+------------------+-----------------------------------------------+
+| Module           | Required | Recommended | For Specific App | Description                                   |
++==================+==========+=============+==================+===============================================+
+| ctype            | ✓        |             |                  | Core functionality                            |
++------------------+----------+-------------+------------------+-----------------------------------------------+
+| curl             | ✓        |             |                  | HTTP requests                                 |
++------------------+----------+-------------+------------------+-----------------------------------------------+
+| intl             |          | ✓           |                  | Improves translations and sorting             |
++------------------+----------+-------------+------------------+-----------------------------------------------+
+| sodium           |          | ✓           |                  | Argon2 password hashing                       |
++------------------+----------+-------------+------------------+-----------------------------------------------+
+| ldap             |          |             | ✓                | LDAP integration                              |
++------------------+----------+-------------+------------------+-----------------------------------------------+
+| smbclient        |          |             | ✓                | SMB/CIFS integration                          |
++------------------+----------+-------------+------------------+-----------------------------------------------+
+| ftp              |          |             | ✓                | FTP storage/authentication                    |
++------------------+----------+-------------+------------------+-----------------------------------------------+
+| imap             |          |             | ✓                | External user authentication                  |
++------------------+----------+-------------+------------------+-----------------------------------------------+
+| gmp              |          |             | ✓ (optional)     | SFTP storage                                  |
++------------------+----------+-------------+------------------+-----------------------------------------------+
+| exif             |          |             | ✓ (optional)     | Image rotation in Pictures app                |
++------------------+----------+-------------+------------------+-----------------------------------------------+
+| apcu             |          | ✓           |                  | Performance caching                           |
++------------------+----------+-------------+------------------+-----------------------------------------------+
+| memcached        |          | ✓           |                  | Performance caching                           |
++------------------+----------+-------------+------------------+-----------------------------------------------+
+| redis            |          | ✓           |                  | Transactional File Locking                    |
++------------------+----------+-------------+------------------+-----------------------------------------------+
+| imagick          |          |             | ✓ (optional)     | Image previews                                |
++------------------+----------+-------------+------------------+-----------------------------------------------+
+| avconv/ffmpeg    |          |             | ✓ (optional)     | Video previews                                |
++------------------+----------+-------------+------------------+-----------------------------------------------+
+| Open/LibreOffice |          |             | ✓ (optional)     | Document previews                             |
++------------------+----------+-------------+------------------+-----------------------------------------------+
+| pcntl            |          |             | ✓ (optional)     | Command interruption in CLI                   |
++------------------+----------+-------------+------------------+-----------------------------------------------+
+| phar             |          |             | ✓ (optional)     | Needed for command-line updater               |
++------------------+----------+-------------+------------------+-----------------------------------------------+
+
+-----------------
+Further Resources
+-----------------
+
+- For more details on each module, consult the 
+  `official PHP documentation <https://php.net/manual/en/extensions.php>`_.
+- Refer to your OS distribution's documentation for the specifics of installing PHP modules in your environment.
+- The words *extension* and *module* are interchangable within PHP. We refer to them as *modules* in our documentation.
+- Always restart your web server and PHP-FPM after making changes to an `php.ini` file or installed modules.
