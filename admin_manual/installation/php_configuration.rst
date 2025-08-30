@@ -89,7 +89,7 @@ Recommended PHP Caching Modules
 -------------------------------
 
 Memory caching is not required so these modules are not required, but are highly recommended for optimal 
-performance and reliability. Choose and install your preferred combination of memmory caching modules:
+performance and reliability. Choose and install your preferred combination of memory caching modules:
 
 - `APCu` (>= 4.0.6)
 - `redis` / `phpredis` (>= 2.2.6, required for Transactional File Locking)
@@ -240,5 +240,5 @@ Further Resources
 - For more details on each module, consult the 
   `official PHP documentation <https://php.net/manual/en/extensions.php>`_.
 - Refer to your OS distribution's documentation for the specifics of installing PHP modules in your environment.
-- The words *extension* and *module* are interchangable within PHP. We refer to them as *modules* in our documentation.
+- The words *extension* and *module* are interchangeable within PHP. We use the word *modules* in our documentation.
 - Always restart your web server and PHP-FPM after making changes to an `php.ini` file or installed modules.
