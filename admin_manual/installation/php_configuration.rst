@@ -23,7 +23,7 @@ PHP Installation
 
 Refer to your OS distribution's documentation for instructions for establishing a base PHP installation. It may
 be possible to choose among several versions of PHP. Refer to :doc:`./system_requirements` to see which versions 
-of PHP are supported supported by this release of Nextcloud Server. After completing a base PHP installation, 
+of PHP are supported by this release of Nextcloud Server. After completing a base PHP installation, 
 follow the below guidance to configure your new PHP installation for your new Nextcloud Server deployment. 
 
 --------------------
