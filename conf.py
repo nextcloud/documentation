@@ -10,7 +10,13 @@ now = datetime.datetime.now()
 
 os.environ["READTHEDOCS"] = "True"
 
-extensions = ['sphinx_rtd_theme', 'sphinx_rtd_dark_mode', 'sphinx_copybutton', 'sphinxcontrib.mermaid']
+extensions = [
+    'sphinx_rtd_theme',
+    'sphinx_rtd_dark_mode',
+    'sphinx_copybutton',
+    'sphinxcontrib.mermaid',
+    'notfound.extension',
+]
 
 # General information about the project.
 copyright = str(now.year) + ' Nextcloud GmbH'
@@ -85,3 +91,25 @@ edit_on_github_branch = 'master'
 default_dark_mode = False
 
 latex_engine = "xelatex"
+
+# -- Options for sphinx-notfound-page extension -----------------------------------
+# https://github.com/readthedocs/sphinx-notfound-page
+
+# content context passed to the 404 template
+notfound_context = {
+    "title": "404 Page Not Found",
+    "body": """
+<h1>Page Not Found</h1>
+<h2>Sorry, we can't seem to find the page you're looking for.</h2>
+<h6>Error code: 404</h6>
+
+<h3>Here are some alternatives:</h3>
+<ol>
+  <li>Try using the search box.</li>
+  <li>Check the content menu on the side of this page.</li>
+  <li>Regroup at our <a href="/">documentation homepage.</a></p></li>
+</ol>
+""",
+}
+
+notfound_urls_prefix = None
