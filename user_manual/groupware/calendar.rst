@@ -195,7 +195,7 @@ check and concretize the time span or set the event as an all-day event. Optiona
 you can specify a location and a description.
 
 If you want to edit advanced details such as the **Attendees** or **Reminders**, or if you
-want to set the event as a repeating-event, click on the ``More`` button to open the advanced editor.
+want to set the event as a repeating event, click on the ``More`` button to open the advanced editor.
 
 Add Talk conversation
 ~~~~~~~~~~~~~~~~~~~~~
