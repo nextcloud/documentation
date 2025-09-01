@@ -16,6 +16,7 @@ extensions = [
     'sphinx_copybutton',
     'sphinxcontrib.mermaid',
     'notfound.extension',
+    'sphinx_last_updated_by_git',
 ]
 
 # General information about the project.
@@ -40,6 +41,8 @@ html_theme_options = {
 
 # relative path to subdirectories
 html_logo = "../_shared_assets/static/logo-white.png"
+
+html_last_updated_fmt = '%c'
 
 # substitutions go here
 rst_epilog =  '.. |version| replace:: %s' % version
