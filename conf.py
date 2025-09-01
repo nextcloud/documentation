@@ -13,7 +13,7 @@ os.environ["READTHEDOCS"] = "True"
 extensions = ['sphinx_rtd_theme', 'sphinx_rtd_dark_mode', 'sphinx_copybutton', 'sphinxcontrib.mermaid']
 
 # General information about the project.
-copyright = str(now.year) + ' Nextcloud GmbH'
+copyright = '2016-' + str(now.year) + ' Nextcloud GmbH and Nextcloud contibutors'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
