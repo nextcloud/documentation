@@ -268,7 +268,7 @@ Enable an app regardless of the Nextcloud version requirement::
  sudo -E -u www-data php occ app:enable --force files_external
  files_external enabled
 
-Enable an app for specific groups of users::
+Enable an app for specific groups of users (i.e. restrict an app so only specific groups can see and use them)::
 
  sudo -E -u www-data php occ app:enable --groups admin --groups sales files_external
  files_external enabled for groups: admin, sales
