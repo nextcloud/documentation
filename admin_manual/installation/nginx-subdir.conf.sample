@@ -170,7 +170,7 @@ server {
             fastcgi_pass php-handler;
 
             fastcgi_intercept_errors on;
-            fastcgi_request_buffering off;
+            fastcgi_request_buffering on;                   # Required as PHP-FPM does not support chunked transfer encoding and requires a valid ContentLength header.
 
             # PHP-FPM 504 response timeouts
             # Uncomment and increase these if facing timeout errors during large file uploads
