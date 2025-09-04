@@ -94,12 +94,6 @@ nginx
 * `fastcgi_read_timeout <https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_read_timeout>`_ [often the solution to 504 timeouts during ``MOVE`` transactions that occur even when using chunking]
 * `client_body_temp_path <https://nginx.org/en/docs/http/ngx_http_core_module.html#client_body_temp_path>`_
 
-Since nginx 1.7.11 a new config option `fastcgi_request_buffering
-<https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_request_buffering>`_
-is available. Setting this option to ``fastcgi_request_buffering off;`` in your nginx config
-might help with timeouts during the upload. Furthermore it helps if you're running out of
-disc space on the tmp partition of your system.
-
 .. note:: Make sure that ``client_body_temp_path`` points to a partition with
    adequate space for your upload file size, and on the same partition as
    the ``upload_tmp_dir`` or ``tempdirectory`` (see below). For optimal
