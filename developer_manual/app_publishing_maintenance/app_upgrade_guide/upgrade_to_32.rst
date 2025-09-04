@@ -91,6 +91,8 @@ Added Events
 ^^^^^^^^^^^^
 
 - New ``preloadCollection`` event emitted by the DAV server during PROPFIND requests. See :ref:`collection_preload` for details.
+- New ``OCP\SystemTag\TagAssignedEvent`` emitted by the system tag object mapper
+- New ``OCP\SystemTag\TagUnassignedEvent`` emitted by the system tag object mapper
 
 Added APIs
 ^^^^^^^^^^
@@ -117,6 +119,8 @@ Added APIs
 - New method ``\OCP\Files\Template\BeforeGetTemplatesEvent::shouldGetFields`` to get the event's ``withFields`` property, which should determine whether or not to perform template field extraction on the returned templates.
 - New method ``\OCP\IUser::canChangeEmail`` allowing to check if the user backend allows the user to change their email address.
 - New method ``\OCP\IDateTimeZone::getDefaultTimezone`` allowing to get the default timezone configured for Nextcloud.
+- New ``OCP\SystemTag\TagAssignedEvent`` emitted by the system tag object mapper
+- New ``OCP\SystemTag\TagUnassignedEvent`` emitted by the system tag object mapper
 - Task processing API:
 
   - New task processing task type ``OCP\TaskProcessing\TextToSpeech`` to convert text to speech.
