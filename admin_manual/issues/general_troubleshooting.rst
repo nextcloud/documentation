@@ -215,9 +215,7 @@ these modules:
 * mod_security
 * mod_reqtimeout
 * mod_deflate
-* libapache2-mod-php*filter (use libapache2-mod-php8.3 instead)
-* mod_spdy together with libapache2-mod-php5 / mod_php (use fcgi or php-fpm
-  instead)
+* mod_spdy
 * mod_dav
 * mod_xsendfile / X-Sendfile (causing broken downloads if not configured
   correctly)
