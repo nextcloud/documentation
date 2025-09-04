@@ -125,7 +125,7 @@ Added APIs
 
   - New task processing task type ``OCP\TaskProcessing\TextToSpeech`` to convert text to speech.
   - New task processing task type ``OCP\TaskProcessing\AnalyzeImages`` to ask questions about images.
-
+  - New method ``OCP\TaskProcessing\Manager::getAvailableTaskTypeIds`` to list only task type IDs without meta-data (faster than ``OCP\TaskProcessing\Manager::getAvailableTaskTypes``)
 
 Changed APIs
 ^^^^^^^^^^^^
