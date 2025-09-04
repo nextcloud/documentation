@@ -158,7 +158,7 @@ server {
             fastcgi_pass php-handler;
 
             fastcgi_intercept_errors on;
-            fastcgi_request_buffering off;
+            fastcgi_request_buffering on;                   # Required as PHP-FPM does not support chunked transfer encoding and requires a valid ContentLength header.
 
             fastcgi_max_temp_file_size 0;
         }
