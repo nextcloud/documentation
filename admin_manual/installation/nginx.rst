@@ -4,9 +4,6 @@
 NGINX configuration
 ===================
 
-.. warning::
-    Please note that web servers other than Apache 2.x are not officially supported.
-
 .. note::
     This page covers example NGINX configurations to run a Nextcloud server.
     These configurations examples were originally provided by `@josh4trunks <https://github.com/josh4trunks>`_
