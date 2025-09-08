@@ -49,11 +49,6 @@ The `christophwurst/nextcloud <https://packagist.org/packages/christophwurst/nex
 with a now Nextcloud owned `nextcloud/ocp <https://packagist.org/packages/nextcloud/ocp>`_ package. The content is the
 same and all older versions were generated, so you can transition right away no matter which versions you support.
 
-Changed APIs
-^^^^^^^^^^^^
-
-tbd
-
 Removed APIs
 ^^^^^^^^^^^^
 

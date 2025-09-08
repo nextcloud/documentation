@@ -45,26 +45,11 @@ Icons should be outlined
 
 When using Material Icons, use the outlined variant where possible. Exceptions to this are app icons themselves, file type icons, as well as icons that were already a single line, such as the plus or checkmark icons. Reasoning and more details are in `the issue <https://github.com/nextcloud/server/issues/53701>`_.
 
-Added APIs
-^^^^^^^^^^
-
-- TBD
-
-Changed APIs
-^^^^^^^^^^^^
-
-- TBD
-
 Deprecated APIs
 ^^^^^^^^^^^^^^^
 
 - ``--color-error-rgb``, ``--color-info-rgb``, ``--color-success-rgb``, ``--color-warning-rgb`` are deprecated.
   Instead use the native CSS color utils with the the existing variables like ``--color-error`` and similar.
-
-Removed APIs
-^^^^^^^^^^^^
-
-- TBD
 
 Back-end changes
 ----------------
