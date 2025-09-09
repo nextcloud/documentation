@@ -41,11 +41,6 @@ Added APIs
   * ``files:node:moved``: the node has been moved (and its data is already updated)
   * ``files:node:updated``: the node data has been updated
 
-Changed APIs
-^^^^^^^^^^^^
-
-* tbd
-
 Deprecated APIs
 ^^^^^^^^^^^^^^^
 
