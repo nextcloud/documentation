@@ -52,4 +52,5 @@ Deprecated APIs
 Removed APIs
 ^^^^^^^^^^^^
 
-- TBD
+- The ``\OCP\BackgroundJob\IJob::execute`` method was deprecated since Nextcloud 25 and was now removed.
+  Instead use the ``IJob::start`` method, available since Nextcloud 25.
