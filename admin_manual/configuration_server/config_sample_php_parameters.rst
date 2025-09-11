@@ -478,8 +478,9 @@ skeletondirectory
 	'skeletondirectory' => '/path/to/nextcloud/core/skeleton',
 
 The directory where the skeleton files are located. These files will be
-copied to the data directory of new users. Leave empty to not copy any
-skeleton files.
+copied to the data directory of new users. Set empty string to not copy any
+skeleton files. If unset and templatedirectory is empty string, shipped
+templates will be used to create a template directory for the user.
 
 ``{lang}`` can be used as a placeholder for the language of the user.
 If the directory does not exist, it falls back to non dialect (from ``de_DE``
@@ -496,16 +497,15 @@ templatedirectory
 	'templatedirectory' => '/path/to/nextcloud/templates',
 
 The directory where the template files are located. These files will be
-copied to the template directory of new users. Leave empty to not copy any
+copied to the template directory of new users. Set empty string to not copy any
 template files.
 
 ``{lang}`` can be used as a placeholder for the language of the user.
 If the directory does not exist, it falls back to non dialect (from ``de_DE``
 to ``de``). If that does not exist either, it falls back to ``default``
 
-If this is not set creating a template directory will only happen if no custom
-``skeletondirectory`` is defined, otherwise the shipped templates will be used
-to create a template directory for the user.
+To disable creating a template directory, set both skeletondirectory and
+templatedirectory to empty strings.
 
 User session
 ------------
@@ -670,6 +670,21 @@ Whether the rate limit protection shipped with Nextcloud should be enabled or no
 Disabling this is discouraged for security reasons.
 
 Defaults to ``true``
+
+security.ipv6_normalized_subnet_size
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'security.ipv6_normalized_subnet_size' => 56,
+
+Size of subnet used to normalize IPv6
+
+For Brute Force Protection and Rate Limiting, IPv6 are truncated using subnet size.
+It defaults to /56 but you can set it between /32 and /64
+
+Defaults to ``56``
 
 auth.webauthn.enabled
 ^^^^^^^^^^^^^^^^^^^^^
@@ -1037,6 +1052,9 @@ Use this configuration parameter to specify the base URL for any URLs which
 are generated within Nextcloud using any kind of command line tools (cron or
 occ). The value should contain the full base URL:
 ``https://www.example.com/nextcloud``
+Please make sure to set the value to the URL that your users mainly use to access this Nextcloud.
+
+Otherwise there might be problems with the URL generation via cron.
 
 Defaults to ``''`` (empty string)
 
@@ -1165,6 +1183,10 @@ trashbin_retention_obligation
 
 If the trash bin app is enabled (default), this setting defines the policy
 for when files and folders in the trash bin will be permanently deleted.
+
+If the user quota limit is exceeded due to deleted files in the trash bin,
+retention settings will be ignored and files will be cleaned up until
+the quota requirements are met.
 
 The app allows for two settings, a minimum time for trash bin retention,
 and a maximum time for trash bin retention.
@@ -2219,7 +2241,7 @@ memcache.local
 
 ::
 
-	'memcache.local' => '\OC\Memcache\APCu',
+	'memcache.local' => '\\OC\\Memcache\\APCu',
 
 Memory caching backend for locally stored data
 
@@ -2233,7 +2255,7 @@ memcache.distributed
 
 ::
 
-	'memcache.distributed' => '\OC\Memcache\Memcached',
+	'memcache.distributed' => '\\OC\\Memcache\\Memcached',
 
 Memory caching backend for distributed data
 
@@ -2898,8 +2920,10 @@ forbidden_filenames
 
 	'forbidden_filenames' => ['.htaccess'],
 
-Block a specific file or files and disallow the upload of files
-with this name. ``.htaccess`` is blocked by default.
+Block a specific file or files and disallow the upload of files with this name.
+
+This blocks any access to those files (read and write).
+``.htaccess`` is blocked by default.
 
 WARNING: USE THIS ONLY IF YOU KNOW WHAT YOU ARE DOING.
 
@@ -2916,6 +2940,8 @@ forbidden_filename_basenames
 	'forbidden_filename_basenames' => [],
 
 Disallow the upload of files with specific basenames.
+
+Matching existing files can no longer be updated and in matching folders no files can be created anymore.
 
 The basename is the name of the file without the extension,
 e.g. for "archive.tar.gz" the basename would be "archive".
@@ -2935,6 +2961,8 @@ forbidden_filename_characters
 Block characters from being used in filenames. This is useful if you
 have a filesystem or OS which does not support certain characters like windows.
 
+Matching existing files can no longer be updated and in matching folders no files can be created anymore.
+
 The '/' and '\' characters are always forbidden, as well as all characters in the ASCII range [0-31].
 
 Example for windows systems: ``array('?', '<', '>', ':', '*', '|', '"')``
@@ -2951,6 +2979,8 @@ forbidden_filename_extensions
 	'forbidden_filename_extensions' => ['.part', '.filepart'],
 
 Deny extensions from being used for filenames.
+
+Matching existing files can no longer be updated and in matching folders no files can be created anymore.
 
 The '.part' extension is always forbidden, as this is used internally by Nextcloud.
 
@@ -2982,6 +3012,18 @@ Enforce the user theme. This will disable the user theming settings
 This must be a valid ITheme ID.
 
 E.g. dark, dark-highcontrast, default, light, light-highcontrast, opendyslexic
+
+theming.standalone_window.enabled
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'theming.standalone_window.enabled' => true,
+
+This setting allows to disable the PWA functionality that allows browsers to open web applications in dedicated windows.
+
+Defaults to ``true``
 
 cipher
 ^^^^^^
