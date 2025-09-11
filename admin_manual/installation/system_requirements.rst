@@ -118,7 +118,7 @@ Files App
 ^^^^^^^^^
 
 - **iOS** 15.0+
-- **Android** 8.0+
+- **Android** 8.1+
 
 Talk App
 ^^^^^^^^
