@@ -105,7 +105,7 @@ which if you have privacy enabled will be github.username@users.noreply.github.c
 Translations
 ------------
 
-`Help translate the documentation <https://www.transifex.com/nextcloud/nextcloud-user-documentation/dashboard/>`_.
+`Help translate the documentation <https://explore.transifex.com/nextcloud/nextcloud-user-documentation/>`_.
 
 For developers that want to ease the translation process, please read `this documentation <https://docs.transifex.com/integrations/sphinx-doc>`_.
 
