@@ -45,7 +45,7 @@ Format
 
 The short answer is that ``config/`` files are plain text files with some special formatting 
 requirements for different types of parameters and values. This makes it extensible and easy for
-Nextcloud to interact with. It also makes it easy for administartors to view with any text viewer 
+Nextcloud to interact with. It also makes it easy for administrators to view with any text viewer 
 and from the command-line.
 
 Technically these configuration files are PHP files containing a special (to Nextcloud) PHP array 
