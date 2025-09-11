@@ -19,7 +19,7 @@ extensions = [
 ]
 
 # General information about the project.
-copyright = '2016-' + str(now.year) + ' Nextcloud GmbH and Nextcloud contibutors'
+copyright = '2016-' + str(now.year) + ' Nextcloud GmbH and Nextcloud contributors'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
