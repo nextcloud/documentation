@@ -92,11 +92,11 @@ if (version.isdigit() and version < version_start):
     rst_prolog = """.. danger::
         **OUTDATED DOCUMENTATION**
     
-            *You are viewing documentation for a retired version of Nextcloud software.
+            *You are viewing documentation for a retired version of Nextcloud.
             Do not follow these instructions for current releases.*
 
         **To ensure you have the most reliable and up-to-date guidance,
-        please visit the** `official Nextcloud Documentation library
+        please visit the** `Nextcloud Documentation homepage
         <https://docs.nextcloud.com/>`_.
     """
 
