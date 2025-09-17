@@ -609,8 +609,9 @@ skeletondirectory
 	'skeletondirectory' => '/path/to/nextcloud/core/skeleton',
 
 The directory where the skeleton files are located. These files will be
-copied to the data directory of new users. Leave empty to not copy any
-skeleton files.
+copied to the data directory of new users. Set empty string to not copy any
+skeleton files. If unset and templatedirectory is empty string, shipped
+templates will be used to create a template directory for the user.
 
 ``{lang}`` can be used as a placeholder for the language of the user.
 If the directory does not exist, it falls back to non dialect (from ``de_DE``
@@ -627,16 +628,15 @@ templatedirectory
 	'templatedirectory' => '/path/to/nextcloud/templates',
 
 The directory where the template files are located. These files will be
-copied to the template directory of new users. Leave empty to not copy any
+copied to the template directory of new users. Set empty string to not copy any
 template files.
 
 ``{lang}`` can be used as a placeholder for the language of the user.
 If the directory does not exist, it falls back to non dialect (from ``de_DE``
 to ``de``). If that does not exist either, it falls back to ``default``
 
-If this is not set creating a template directory will only happen if no custom
-``skeletondirectory`` is defined, otherwise the shipped templates will be used
-to create a template directory for the user.
+To disable creating a template directory, set both skeletondirectory and
+templatedirectory to empty strings.
 
 User session
 ------------
@@ -691,6 +691,16 @@ carddav_sync_request_timeout
 The timeout in seconds for synchronizing address books, e.g. federated system address books (as run by `occ federation:sync-addressbooks`).
 
 Defaults to ``30`` seconds
+
+carddav_sync_request_truncation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'carddav_sync_request_truncation' => 2500,
+
+The limit applied to the synchronization report request, e.g. federated system address books (as run by `occ federation:sync-addressbooks`).
 
 session_relaxed_expiry
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -847,6 +857,21 @@ Whether the rate limit protection shipped with Nextcloud should be enabled or no
 Disabling this is discouraged for security reasons.
 
 Defaults to ``true``
+
+security.ipv6_normalized_subnet_size
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'security.ipv6_normalized_subnet_size' => 56,
+
+Size of subnet used to normalize IPv6
+
+For Brute Force Protection and Rate Limiting, IPv6 are truncated using subnet size.
+It defaults to /56 but you can set it between /32 and /64
+
+Defaults to ``56``
 
 auth.webauthn.enabled
 ^^^^^^^^^^^^^^^^^^^^^
@@ -2421,7 +2446,7 @@ memcache.local
 
 ::
 
-	'memcache.local' => '\OC\Memcache\APCu',
+	'memcache.local' => '\\OC\\Memcache\\APCu',
 
 Memory caching backend for locally stored data
 
@@ -2435,7 +2460,7 @@ memcache.distributed
 
 ::
 
-	'memcache.distributed' => '\OC\Memcache\Memcached',
+	'memcache.distributed' => '\\OC\\Memcache\\Memcached',
 
 Memory caching backend for distributed data
 
@@ -3206,6 +3231,18 @@ Enforce the user theme. This will disable the user theming settings
 This must be a valid ITheme ID.
 
 E.g. dark, dark-highcontrast, default, light, light-highcontrast, opendyslexic
+
+theming.standalone_window.enabled
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'theming.standalone_window.enabled' => true,
+
+This setting allows to disable the PWA functionality that allows browsers to open web applications in dedicated windows.
+
+Defaults to ``true``
 
 cipher
 ^^^^^^
