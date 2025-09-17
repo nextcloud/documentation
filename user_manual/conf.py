@@ -74,9 +74,6 @@ html_show_sphinx = False
 # but this is likely good enough and the most conservative for now.
 html_baseurl = "https://docs.nextcloud.com/server/stable/user_manual/"
 
-# disable including the reST sources in the HTML build as _sources/name (default is True)
-html_copy_source = False 
-
 # -- Options for HTML help output --------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-help-output
 
