@@ -73,6 +73,19 @@ html_context = {
 edit_on_github_project = 'nextcloud/documentation'
 edit_on_github_branch = 'master'
 
+# Automatically add EoL warning banner to docs for unsupported releases
+if (version.isdigit() and version < version_start):
+    rst_prolog = """.. danger::
+        **OUTDATED DOCUMENTATION**
+    
+        *You are viewing documentation for a retired version of Nextcloud.
+        Do not follow these instructions for current releases.*
+
+        **To ensure you have the most reliable and up-to-date guidance,
+        please visit the** `Nextcloud Documentation homepage
+        <https://docs.nextcloud.com/>`_.
+    """
+
 # user starts in light mode
 default_dark_mode = False
 
