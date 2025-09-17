@@ -110,6 +110,26 @@ click on the contacts picture for the following options to appear:
 
 .. figure:: ../images/contact_picture_options.png
 
+If the administrator allows updates from social media in the admin groupware settings,
+users can also retrieve contact pictures directly from social networks.
+In that case the contact needs to have stored a user name in the social media section.
+Each entry of a supported social network adds a download entry for the respective
+network. Currently, the following social networks are supported:
+
+- Instagram
+- Mastodon
+- Tumblr
+- Diaspora
+- Xing
+- Telegram
+- Gravatar
+
+Social avatars are only retrieved if publicly available without login to the
+respective social network. In the contact user settings on the contacts page,
+you can activate auto-updates from social media. This will update avatars
+with social profile data on a weekly basis. Social networks are checked in the
+order listed above.
+
 Managing multiple Contacts at a time
 ------------------------------------
 
