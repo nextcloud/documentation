@@ -41,6 +41,9 @@ html_theme_options = {
 # relative path to subdirectories
 html_logo = "../_shared_assets/static/logo-white.png"
 
+# disable including the reST sources in HTML builds (in _sources/) (default is True)
+html_copy_source = False
+
 # substitutions go here
 rst_epilog =  '.. |version| replace:: %s' % version
 
