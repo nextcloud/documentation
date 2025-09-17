@@ -2,11 +2,11 @@
 Introduction
 ============
 
-Welcome to the Nextcloud Server Administration Guide.
+**Welcome to the Nextcloud Server Administration Guide.**
 
-This guide explains how to perform administration tasks for Nextcloud, a flexible, open-source platform for file synchronization and content collaboration.
+This guide explains how to perform administrative tasks in Nextcloud, a highly versatile and scalable open-source platform for file synchronization and content collaboration. With over 400,000 deployments, Nextcloud can run on a simple two-user Raspberry Pi or scale to support global, distributed installations serving tens of millions of users. 
 
-Nextcloud is highly scalable. It runs on anything from a Raspberry Pi with two users to distributed global installations serving tens of millions. You can deploy Nextcloud on-premises, in private or public clouds, or in hybrid environments. With over 400,000 deployments, Nextcloud is a leading on-premises content collaboration platform. It is supported by a large, growing community and is available in over 60 languages.
+It can be deployed on-premises, in private or public clouds, or in hybrid environments. Supported by a large and growing community, Nextcloud is available in more than 60 languages.
 
 The latest editions of the Nextcloud manuals are always available online at
 `docs.nextcloud.com <https://docs.nextcloud.com/>`_.
