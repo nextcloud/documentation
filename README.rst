@@ -171,6 +171,64 @@ When editing the documentation installing ``sphinx-autobuild`` though pip can be
 4. Watch for file changes ``make SPHINXBUILD=sphinx-autobuild html``
 5. Open http://127.0.0.1:8000 in the browser and start editing
 
+Setting up the Project (For Beginners)
+======================================
+
+If you are new to development, here are steps to get started with Node.js and npm 
+so you can run this project.
+
+1. Install Node.js
+   ----------------
+
+   We recommend using **nvm (Node Version Manager)** to manage Node versions easily.
+
+   Check Node version required:
+   - Look in ``package.json`` under ``"engines"``
+   - Example recommended version: 14.17.0
+
+   Install nvm:
+
+   .. code-block:: bash
+
+      curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+
+   Install Node via nvm:
+
+   .. code-block:: bash
+
+      nvm install 14.17.0
+      nvm use 14.17.0
+
+2. Install npm
+   --------------
+
+   Recommended npm version (example): 7.20.6
+
+   .. code-block:: bash
+
+      npm i -g npm@7.20.6
+
+3. Install project dependencies
+   -----------------------------
+
+   .. code-block:: bash
+
+      npm install
+
+4. Run the project
+   ----------------
+
+   .. code-block:: bash
+
+      npm start
+
+.. note::
+
+   Versions may change in the future. Always check ``package.json`` for the recommended 
+   Node and npm versions.
+
+This guide lowers the entry barrier for beginners who want to compile and run the project.
+
 Building PDF
 ============
 
