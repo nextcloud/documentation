@@ -217,7 +217,7 @@ PHP ships with a JIT compiler that can be enabled on x86 platforms to benefit an
 .. note::
 
     Most Nextcloud instances use less than 2 MiB of the configured JIT buffer size, so 8 MiB is generally sufficient. 
-    The overall OPcache usage, however, increases by a larger margin. The PHP paramater ``opcache.memory_consumption``
+    The overall OPcache usage, however, increases by a larger margin. The PHP parameter ``opcache.memory_consumption``
     might need to be raised in some cases. JIT buffer usage can be monitored with 
     `opcache-gui <https://github.com/amnuts/opcache-gui>`_ as well.
 
