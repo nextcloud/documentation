@@ -38,8 +38,6 @@ The following PHP modules **must** be installed and enabled for Nextcloud Server
 - `fileinfo` (included with PHP)
 - `filter` (only on Mageia and FreeBSD)
 - `GD`
-- `hash` (only on FreeBSD)
-- `JSON` (included with PHP)
 - `libxml` (requires Linux package `libxml2` version >= 2.7.0)
 - `mbstring`
 - `OpenSSL` (included with PHP)
@@ -51,7 +49,7 @@ The following PHP modules **must** be installed and enabled for Nextcloud Server
 - `zip`
 - `zlib`
 
-The `ctype`, `fileinfo`, `JSON` and `OpenSSL` modules are generally included and enabled in PHP by default. Often 
+The `ctype`, `fileinfo`, and `OpenSSL` modules are generally included and enabled in PHP by default. Often 
 some of the other required modules are automatically installed by OS distribution package managers. 
 
 **How to check if a module is enabled:**  
@@ -59,7 +57,7 @@ some of the other required modules are automatically installed by OS distributio
 - Run ``php -m | grep -i <module_name>``. If you see output, the module is active.
 
 .. note::
-    The `filter` and `hash` modules are required only on Mageia and FreeBSD.  
+    The `filter` module is required only on Mageia and FreeBSD.  
 
 --------------------------------
 Required PHP Database Connectors
