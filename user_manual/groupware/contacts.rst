@@ -112,7 +112,7 @@ click on the contacts picture for the following options to appear:
 
 If the administrator allows updates from social media in the admin groupware settings,
 users can also retrieve contact pictures directly from social networks.
-Therefore the contact needs to have stored a user name in the social media section.
+In that case the contact needs to have stored a user name in the social media section.
 Each entry of a supported social network adds a download entry for the respective
 network. Currently, the following social networks are supported:
 
