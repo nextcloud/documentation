@@ -168,7 +168,7 @@ you can set the following parameters inside the :file:`config/config.php`.
     'overwriteprotocol' => 'https',
     'overwritewebroot'  => '/domain.tld/nextcloud',
     'overwritecondaddr' => '^10\.0\.0\.1$',
-    'overwrite.cli.url' => 'https://domain.tld/,
+    'overwrite.cli.url' => 'https://domain.tld/',
   );
 
 .. note:: If you want to use the SSL proxy during installation you have to
