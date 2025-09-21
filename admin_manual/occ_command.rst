@@ -559,6 +559,9 @@ Manage addressbooks and calendars::
   dav:send-event-reminders        Sends event reminders
   dav:sync-birthday-calendar      Synchronizes the birthday calendar
   dav:sync-system-addressbook     Synchronizes users to the system addressbook
+ calendar
+  calendar:export                 Export a calendar of a user
+  calendar:import                 Import a calendar to a user
 
 
 Manage addressbooks
@@ -633,6 +636,71 @@ Move a calendar of a user
 This example will move calendar named personal from user dennis to user sabine: ::
 
  sudo -E -u www-data php occ dav:move-calendar personal dennis sabine
+
+
+Export a calendar of a user
+"""""""""""""""""""""""""""
+
+``calendar:export [--format FORMAT] [--location LOCATION] [--] <uid> <uri>`` exports the calendar entries from a calendar with the given ``uri`` of user ``uid``.
+
+**Arguments:**
+
+* ``uid`` (mandatory): User ID whose calendar will be exported.
+* ``cid`` (mandatory): Calendar URI to export.
+* ``--format FORMAT`` (optional, defaults to ``ical``): Output format. One of ``ical``, ``xcal``, or ``jcal``.
+* ``--location <file path>`` (optional, defaults to stdout): Path to the file to export to. If omitted, output is written to standard output.
+
+The output format can be specified with the ``--format`` option. Valid formats are ``ical`` standard format (RFC 5545), ``xcal`` XML iCalendar (RFC 6321), and ``jcal`` JSON iCalendar (RFC 7265).
+
+This example will export the calendar named personal of user dennis to a file named personal.ics in standard format: ::
+
+ sudo -E -u www-data php occ calendar:export dennis personal --location /tmp/personal.ics
+
+This example will export the calendar in XML iCalendar format: ::
+
+ sudo -E -u www-data php occ calendar:export dennis personal --format xcal --location /tmp/personal.xcal
+
+This example will export the calendar in JSON iCalendar format to standard output: ::
+
+ sudo -E -u www-data php occ calendar:export dennis personal --format jcal
+
+
+Import a calendar to a user
+"""""""""""""""""""""""""""
+
+``calendar:import [--format FORMAT] [--errors ERRORS] [--validation VALIDATION] [--supersede] [--show-created] [--show-updated] [--show-skipped] [--show-errors] [--] <uid> <uri> [<location>]`` imports a calendar entries to the calendar with the given ``uri`` of user ``uid``.
+
+**Arguments:**
+
+* ``uid`` (mandatory): User ID to import the calendar for.
+* ``uri`` (mandatory): Calendar URI to import into.
+* ``location`` (optional, defaults to stdin): Path to the file to import. If omitted, reads from standard input.
+* ``--format FORMAT`` (optional, defaults to ``ical``): Input format. One of ``ical``, ``xcal``, or ``jcal``.
+* ``--supersede`` (optional): Force override of existing objects with the same UID.
+* ``--show-created`` (optional): Show UID of created objects after import.
+* ``--show-updated`` (optional): Show UID of updated objects after import.
+* ``--show-skipped`` (optional): Show UID of skipped objects (e.g., duplicates or invalid entries).
+* ``--show-errors`` (optional): Show UID of objects with errors during import.
+* ``--errors ERRORS`` (optional): How to handle errors. ``0`` = continue on error, ``1`` = fail on error.
+* ``--validation VALIDATION`` (optional): How to handle object validation. ``0`` = no validation, ``1`` = validate and skip on issue, ``2`` = validate and fail on issue.
+
+The input format can be specified with the ``--format`` option, valid formats are ``ical`` standard format (RFC 5545), ``xcal`` XML iCalendar (RFC 6321) and ``jcal`` JSON iCalendar (RFC 7265), the default is ``ical``.
+
+This example will import from a file named personal.ics in standard format to the calendar named personal of user dennis: ::
+
+  sudo -E -u www-data php occ calendar:import dennis personal /tmp/personal.ics
+
+This example will import from a file named personal.xcal in XML iCalendar format to the calendar named personal of user dennis: ::
+
+  sudo -E -u www-data php occ calendar:import --format xcal dennis personal /tmp/personal.xcal
+
+This example will import from a file named personal.jcal in JSON iCalendar format to the calendar named personal of user dennis: ::
+  
+  sudo -E -u www-data php occ calendar:import --format jcal dennis personal /tmp/personal.jcal
+
+This example will import from standard input to the calendar named personal of user dennis: ::
+  
+  cat /tmp/personal.ics | sudo -E -u www-data php occ calendar:import dennis personal
 
 Misc
 """"
