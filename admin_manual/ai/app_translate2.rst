@@ -39,6 +39,14 @@ Installation
 1. :ref:`Install AppAPI and setup a Deploy Demon<ai-app_api>`
 2. Install the "Local Machine Translation" (translate2) ExApp via the "Apps" page in the Nextcloud web admin user interface
 
+Configuration
+-------------
+
+Configuration changes can be made persistent by making a copy of the ``config.json`` file from the container to the persistent volume mounted at ``/nc_app_translate2_data/``. The file can be edited there and the container restarted to apply the changes.
+
+The max input and output tokens can be changed in the ``config.json`` file. The default is 8192 tokens for input and 10000 tokens for output, which are about 6000-7000 words in English. It varies from language to language.
+This can be increased this if larger text needs to be translated, but keep in mind that this will increase the memory usage of the app.
+
 Model Switch
 ------------
 
