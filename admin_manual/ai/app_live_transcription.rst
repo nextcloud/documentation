@@ -52,3 +52,10 @@ You can find the app's code repository on GitHub where you can report bugs and c
 
 Nextcloud customers should file bugs directly with our Customer Support.
 
+Limitations
+-----------
+
+* The generated transcripts may not be perfect and may contain errors. It can also depend on the audio quality and the speaker's accent.
+* The app currently supports only a limited number of languages. More languages may be added in the future.
+* The languages other than English may have lower accuracy mainly due to the shipped models being smaller.
+* The app currently does not support punctuation in the transcription.
