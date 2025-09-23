@@ -71,6 +71,13 @@ the new location. It is also assumed that the authentication method
     sure to also run the ``maintenance:data-fingerprint`` command on the **NEW**
     system, similarly to how it is required when performing a backup restoration (See :doc:`restore` for details).
 
+#.  Delete the line 
+   'instanceid' => 'xxxxxxxxx',
+   from the nextcloud/config/config.php. It would be a duplicate of the 
+   original instance on the origin server and may make your server fail miserably.
+   It is recreated on-the-fly when you log in on your new machine, but it is 
+   appended at the end of the file.
+
 
 #.  While still having Nextcloud in maintenance mode (confirm!) and **BEFORE**
     changing the ``CNAME`` record in the DNS start up the database, Web server /
