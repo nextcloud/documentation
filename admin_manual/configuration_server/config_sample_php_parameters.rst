@@ -2853,6 +2853,22 @@ This setting has no effect on setup or creating tables. In those cases
 always utf8[mb4]_bin is being used. This setting is only taken into
 consideration in SQL queries that utilize LIKE comparison operators.
 
+pgsql_ssl
+^^^^^^^^^
+
+
+::
+
+	'pgsql_ssl' => [
+		'mode' => '',
+		'cert' => '',
+		'rootcert' => '',
+		'key' => '',
+		'crl' => '',
+	],
+
+PostgreSQL SSL connection
+
 supportedDatabases
 ^^^^^^^^^^^^^^^^^^
 
