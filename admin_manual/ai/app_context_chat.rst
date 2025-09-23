@@ -179,3 +179,5 @@ Known Limitations
 * Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI).
 * Files larger than 100MB are not supported
 * Password protected PDFs or any other files are not supported. There will be error logs mentioning cryptography and AES in the docker container when such files are encountered but it is nothing to worry about, they will be simply ignored and the system will continue to function normally.
+* Podman and Kubernetes are currently not supported for the Context Chat Backend ExApp.
+* External storages (through ``files_external``) may not work as well as the local storage.
