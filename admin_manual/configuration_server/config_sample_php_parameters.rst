@@ -3212,6 +3212,22 @@ This option allows overriding the automatic collation choice. Example:
 This setting does not affect table creation or setup, where utf8[mb4]_bin is
 always used. It applies only to SQL queries using LIKE comparison operators.
 
+pgsql_ssl
+^^^^^^^^^
+
+
+::
+
+	'pgsql_ssl' => [
+			'mode' => '',
+			'cert' => '',
+			'rootcert' => '',
+			'key' => '',
+			'crl' => '',
+		],
+
+PostgreSQL SSL connection
+
 supportedDatabases
 ^^^^^^^^^^^^^^^^^^
 
