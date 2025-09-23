@@ -20,7 +20,7 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - Red Hat Enterprise Linux 8                                          |
 |                  | - Debian 12 (Bookworm)                                                |
 |                  | - SUSE Linux Enterprise Server 15                                     |
-|                  | - openSUSE Leap 15.5                                                  |
+|                  | - openSUSE Leap 15.6                                                  |
 |                  | - CentOS Stream                                                       |
 |                  | - Alpine Linux                                                        |
 +------------------+-----------------------------------------------------------------------+
