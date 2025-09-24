@@ -206,3 +206,24 @@ To replace the built-in default event with a custom one:
 
 It is also possible to revert to the default built-in event by pressing the "Reset to default"
 button next to the import button.
+
+.. _caldav-data-retention:
+
+Data retention
+--------------
+
+.. versionadded:: 26.0.0
+
+You can configure how long Nextcloud keeps some of the calendar sync tokens.
+
+Sync tokens
+~~~~~~~~~~~
+
+The CalDAV backend keeps track of any modifications of calendars. That is anything added, modified or removed. The data is used for differential synchronization of offline clients like Thunderbird. At a certain point in time, the data can be considered outdated assuming there will be no more client needing it. This can help keep the database table `calendarchanges` small::
+
+  sudo -E -u www-data php occ config:app:set totalNumberOfSyncTokensToKeep --value=30000
+
+The default is keeping 10,000 entries. This option should be set adequate to the number of users. E.g. on an installation with 5000 active synced calendars the system would only keep an average of 10 changes per calendar. This will lead to premature data deletion and synchronization problems.
+
+
+.. warning:: This setting will also influence :ref:`CardDAV data retention<carddav-data-retention>`.
