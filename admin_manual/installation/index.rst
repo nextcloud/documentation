@@ -13,6 +13,7 @@ Installation and server configuration
    command_line_installation
    selinux_configuration
    nginx
+   caddy
    harden_server
    server_tuning
 
