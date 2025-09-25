@@ -255,7 +255,7 @@ Some functionalities require the Nextcloud server to be able to connect remote s
 This paragraph also includes the data which is being transmitted to the Nextcloud GmbH.
 Depending on your server setup, these are the possible connections:
 
-- nextcloud.com, startpage.com, eff.org, edri.org
+- www.nextcloud.com, www.startpage.com, www.eff.org, www.edri.org, nextcloud.com, startpage.com, eff.org, edri.org
 	- `optional (config)`_
 	- for checking the internet connection
 - cloud.nextcloud.com
