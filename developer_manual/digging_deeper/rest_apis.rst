@@ -117,7 +117,7 @@ There are different ways a clients might interact with your APIs.
 These ways depend on your API configuration (what you allow) and on which route the request is finally made.
 
 - *Access from web frontend* means the user is accessing the Nextcloud web frontend with a web browser.
-- *Access from non-browser* is if the user accesses the resource or page using something that is not a web browser, like an Android app or a curl command.```
+- *Access from non-browser* is if the user accesses the resource or page using something that is not a web browser, like an Android app or a curl command.
 - *Access from external website* means that the user browses some third party web site and data from your Nextcloud server appears.
   The other website has to embed/load/use images, JSON data, or other resources from a URL pointing to the Nextcloud server, to be able to do this.
 

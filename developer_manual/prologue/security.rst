@@ -233,7 +233,7 @@ If you are using the App Framework, every controller method is automatically che
 
 Additionally, it is advised to carefully select the HTTP method used for requests.
 Requests of type ``GET`` should not alter data but just read existing data.
-As long as no other attack is involved, any non-``GET`` request requires at least user interaction (transmitting a form).
+This way, at least no typed (or copied) URL might alter data (e.g. clicking a link from a spam mail message by accident).
 
 Unvalidated redirects
 ---------------------
