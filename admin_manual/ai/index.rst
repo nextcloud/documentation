@@ -15,4 +15,6 @@ Artificial Intelligence
     app_context_chat
     app_context_agent
     app_summary_bot
+    app_text2speech_kokoro
+    app_live_transcription
     ai_as_a_service

@@ -20,12 +20,12 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - Red Hat Enterprise Linux 8                                          |
 |                  | - Debian 12 (Bookworm)                                                |
 |                  | - SUSE Linux Enterprise Server 15                                     |
-|                  | - openSUSE Leap 15.5                                                  |
+|                  | - openSUSE Leap 15.6                                                  |
 |                  | - CentOS Stream                                                       |
 |                  | - Alpine Linux                                                        |
 +------------------+-----------------------------------------------------------------------+
 | Database         | - MySQL 8.0 / **8.4** or MariaDB 10.6/ **10.11** (recommended) / 11.4 |
-|                  | - Oracle Database 11g, 18, 21, 23                                     |
+|                  | - Oracle Database 11g, 19c, 21c, 23ai                                 |
 |                  |   (*only as part of an enterprise subscription*)                      |
 |                  | - PostgreSQL 13/14/15/16/17                                           |
 |                  | - SQLite 3.24+ (*only recommended for testing and minimal-instances*) |
@@ -119,7 +119,7 @@ Files App
 ^^^^^^^^^
 
 - **iOS** 15.0+
-- **Android** 7.0+
+- **Android** 8.1+
 
 Talk App
 ^^^^^^^^

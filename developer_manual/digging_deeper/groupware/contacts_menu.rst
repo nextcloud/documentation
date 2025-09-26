@@ -107,3 +107,8 @@ Providers can add actions to contact entries. Right now email and link actions a
             $entry->addAction($linkAction);
         }
     }
+
+User status
+^^^^^^^^^^^
+
+Providers can set a user status via ``IEntry::setStatus``. This mechanism is reserved for Nextcloud's user status. Don't use it.

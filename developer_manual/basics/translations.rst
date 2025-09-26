@@ -150,9 +150,14 @@ Dos and Don'ts
      - ``'``
      - Use ascii single quote
    * - ``Loading...``
-     - ``Loading …``
-     - | Use unicode triple-dot character.
-       | Add a space before the triple-dot when trimming a sentence instead of a word.
+     - ``Loading …``
+     - | Use **Unicode triple-dot** character.
+       | Add a **non-breaking space** before the triple-dot when trimming a sentence instead of a word.
+   * - | ``Loading …``
+       | (a general space ``U+0020``)
+     - | ``Loading …``
+       | (a non-breaking space ``U+00A0``)
+     - | Only use a **non-breaking space** before the triple-dot (``U+00A0``).
    * - Don't
      - Do not
      - Using the spelled out version is easier to understand and makes translating easier.

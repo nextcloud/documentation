@@ -4,9 +4,6 @@
 NGINX configuration
 ===================
 
-.. warning::
-    Please note that web servers other than Apache 2.x are not officially supported.
-
 .. note::
     This page covers example NGINX configurations to run a Nextcloud server.
     These configurations examples were originally provided by `@josh4trunks <https://github.com/josh4trunks>`_
@@ -20,6 +17,8 @@ NGINX configuration
 - Adjust the :code:`ssl_certificate` and :code:`ssl_certificate_key` directives to the real paths for your signed 
   certificate and private key. Make sure your SSL certificates are readable by the nginx server process (see `nginx HTTPS SSL 
   Module documentation <https://wiki.nginx.org/HttpSslModule>`_).
+- If using Let's Encrypt as TLS certificate and nginx as webserver, set `ssl_stapling` and `ssl_stapling_verify` to `off`
+  in main nginx config (see [Let's Encrypt blog post](https://letsencrypt.org/2024/12/05/ending-ocsp)).
 - Be careful about line breaks if you copy the examples, as long lines may be
   broken for page display and result in an invalid configuration files.
 - Some environments might need a ``cgi.fix_pathinfo`` set to ``1`` in their

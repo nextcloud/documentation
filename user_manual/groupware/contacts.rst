@@ -110,14 +110,39 @@ click on the contacts picture for the following options to appear:
 
 .. figure:: ../images/contact_picture_options.png
 
-Adding Contact Groups
----------------------
+Managing multiple Contacts at a time
+------------------------------------
 
-The Contacts app enables you to group contacts.
+The Contacts app enables you to select multiple contacts and to perform batch actions on them. To select multiple contacts, either click on each contacts profile picture individually, or click on the profile picture on the first contact then while holding the shift key click on another contact in the list to select all contacts in between the first and second one.
+
+This will bring up a menu at the top of the contacts list with various actions you can perform on the selected contacts:
+
+.. figure:: images/contact_multiselect.png
+    :alt: Contact multiselect actions
+
+In batch mode, the cross icon button will unselect all selected contacts, while the trash bin icon button will delete all selected contacts.
+
+.. note:: You might not be able to modify or delete certain contacts, for example if they are in a read-only address book. In that case, relevant actions will be disabled.
+
+Merging duplicate Contacts
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To merge contacts, select two contacts then click the "Merge contacts" icon button at the top of the contacts list, this will open a dialog that helps you merge duplicate contacts. The merging dialog will show the details of both contacts side by side, and you can choose which details to keep in the merged contact.
+
+Any properties with a Radio (circular) button can only have one value, so one of the two values must be selected (like the name of the contact, which can only have one value), meanwhile checkboxes (square buttons) allow you to keep both values if desired (like phone numbers or email addresses, which can have multiple values).
+
+If either of the contacts are part of a group(s), by default the merged contact will be part of all groups that the two contacts were part of. You can uncheck any groups while merging if you don't want the merged contact to be part of them.
+
+.. note:: Currently you are only able to merge two contacts at a time, and you are naturally only able to merge contacts that can be modified by you. If the merging action is disabled, check that you selected contacts that match those conditions.
+
+Organize your Contacts with Contact Groups
+------------------------------------------
+
+Contact Groups help you to organize your contacts into groups.
 
 To create a new contact group, click on the plus sign next to "Contact groups" in the left sidebar.
 
-.. note:: Contact groups need to have at least one member to be saved.
+.. note:: Contact groups need to have at least one member to be saved. Please note that you can only add contacts from writable address books to contact groups. Contacts from read-only address books, such as the system address book, cannot be added.
 
 Adding and Managing Address Books
 ---------------------------------
@@ -132,7 +157,7 @@ to create new address books, simply by specifying an address books name:
 
 The Contacts settings is also where you can share, export and delete addressbooks. You will find the CardDAV URLs there.
 
-.. note:: Contacts in disabled address books are not shown in the Contacts app and the Contact menu. 
+.. note:: Contacts in disabled address books are not shown in the Contacts app and the Contact menu.
 
 See :doc:`index` for more details about syncing your address books
 with iOS, macOS, Thunderbird and other CardDAV clients.
@@ -152,8 +177,9 @@ Create a team
 ~~~~~~~~~~~~~
 
 In the left menu, click on the + next to Teams.
-Set a team name
+Set a team name.
 Landing on the team configuration screen, you can:
+
 - add members to your team
 - clicking on the three dot menu next to a user allow you to modify its role within the team.
 

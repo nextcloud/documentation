@@ -28,7 +28,7 @@ You can customize the events user interface.
 Hide export buttons
 ~~~~~~~~~~~~~~~~~~~
 
-By default users can export their calendar data from the editor and the sidebar. Admins can disable this feature::
+By default users can export their calendar data from the event editor. Admins can disable this feature::
 
  sudo -E -u www-data php occ config:app:set calendar hideEventExport --value=yes
 
@@ -179,3 +179,51 @@ or::
 
   # Allow users to create calendars/subscriptions without restriction
   sudo -E -u www-data php occ config:app:set dav maximumCalendarsSubscriptions --type=integer --value=-1
+
+Example event
+-------------
+
+.. versionadded:: 32.0.0
+
+When a user logs in for the first time an example event is created in their personal calendar.
+As an admin, you can disable the creation of the example event.
+It is also possible to replace the default event with a custom one.
+
+To disable the creation of the example event for new users:
+
+1. Navigate to the Groupware settings in the admin settings.
+2. Scroll down to the "Example content" section.
+3. Disable the "Add example event ..." setting with the checkbox
+
+To replace the built-in default event with a custom one:
+
+1. Navigate to the Groupware settings in the admin settings.
+2. Press the "Import calendar event" button.
+3. Choose an ICS file to be imported.
+
+.. note:: The start and end date will be overwritten with dates in the future when a custom event
+   is supplied to ensure that the user sees the event.
+
+It is also possible to revert to the default built-in event by pressing the "Reset to default"
+button next to the import button.
+
+.. _caldav-data-retention:
+
+Data retention
+--------------
+
+.. versionadded:: 26.0.0
+
+You can configure how long Nextcloud keeps some of the calendar sync tokens.
+
+Sync tokens
+~~~~~~~~~~~
+
+The CalDAV backend keeps track of any modifications of calendars. That is anything added, modified or removed. The data is used for differential synchronization of offline clients like Thunderbird. At a certain point in time, the data can be considered outdated assuming there will be no more client needing it. This can help keep the database table `calendarchanges` small::
+
+  sudo -E -u www-data php occ config:app:set totalNumberOfSyncTokensToKeep --value=30000
+
+The default is keeping 10,000 entries. This option should be set adequate to the number of users. E.g. on an installation with 5000 active synced calendars the system would only keep an average of 10 changes per calendar. This will lead to premature data deletion and synchronization problems.
+
+
+.. warning:: This setting will also influence :ref:`CardDAV data retention<carddav-data-retention>`.

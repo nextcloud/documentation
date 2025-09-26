@@ -221,8 +221,6 @@ These include:
 
 - ``X-Content-Type-Options: nosniff``
 	- Instructs some browsers to not sniff the mimetype of files. This is used for example to prevent browsers from interpreting text files as JavaScript.
-- ``X-XSS-Protection: 1; mode=block``
-	- Instructs browsers to enable their browser side Cross-Site-Scripting filter.
 - ``X-Robots-Tag: noindex, nofollow``
 	- Instructs search machines to not index these pages and not follow any links there.
 - ``X-Frame-Options: SAMEORIGIN``
@@ -257,7 +255,7 @@ Some functionalities require the Nextcloud server to be able to connect remote s
 This paragraph also includes the data which is being transmitted to the Nextcloud GmbH.
 Depending on your server setup, these are the possible connections:
 
-- nextcloud.com, startpage.com, eff.org, edri.org
+- www.nextcloud.com, www.startpage.com, www.eff.org, www.edri.org, nextcloud.com, startpage.com, eff.org, edri.org
 	- `optional (config)`_
 	- for checking the internet connection
 - cloud.nextcloud.com

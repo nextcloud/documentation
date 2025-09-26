@@ -10,10 +10,16 @@ now = datetime.datetime.now()
 
 os.environ["READTHEDOCS"] = "True"
 
-extensions = ['sphinx_rtd_theme', 'sphinx_rtd_dark_mode', 'sphinx_copybutton', 'sphinxcontrib.mermaid']
+extensions = [
+    'sphinx_rtd_theme',
+    'sphinx_rtd_dark_mode',
+    'sphinx_copybutton',
+    'sphinxcontrib.mermaid',
+    'notfound.extension',
+]
 
 # General information about the project.
-copyright = str(now.year) + ' Nextcloud GmbH'
+copyright = '2016-' + str(now.year) + ' Nextcloud GmbH and Nextcloud contributors'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -34,6 +40,9 @@ html_theme_options = {
 
 # relative path to subdirectories
 html_logo = "../_shared_assets/static/logo-white.png"
+
+# disable including the reST sources in HTML builds (in _sources/) (default is True)
+html_copy_source = False
 
 # substitutions go here
 rst_epilog =  '.. |version| replace:: %s' % version
@@ -81,7 +90,42 @@ html_css_files = [
 edit_on_github_project = 'nextcloud/documentation'
 edit_on_github_branch = 'master'
 
+# Automatically add EoL warning banner to docs for unsupported releases
+if (version.isdigit() and version < version_start):
+    rst_prolog = """.. danger::
+        **OUTDATED DOCUMENTATION**
+    
+        *You are viewing documentation for a retired version of Nextcloud.
+        Do not follow these instructions for current releases.*
+
+        **To ensure you have the most reliable and up-to-date guidance,
+        please visit the** `Nextcloud Documentation homepage
+        <https://docs.nextcloud.com/>`_.
+    """
+
 # user starts in light mode
 default_dark_mode = False
 
 latex_engine = "xelatex"
+
+# -- Options for sphinx-notfound-page extension -----------------------------------
+# https://github.com/readthedocs/sphinx-notfound-page
+
+# content context passed to the 404 template
+notfound_context = {
+    "title": "404 Page Not Found",
+    "body": """
+<h1>Page Not Found</h1>
+<h2>Sorry, we can't seem to find the page you're looking for.</h2>
+<h6>Error code: 404</h6>
+
+<h3>Here are some alternatives:</h3>
+<ol>
+  <li>Try using the search box.</li>
+  <li>Check the content menu on the side of this page.</li>
+  <li>Regroup at our <a href="/">documentation homepage.</a></p></li>
+</ol>
+""",
+}
+
+notfound_urls_prefix = None

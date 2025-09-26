@@ -19,10 +19,10 @@ synchronization is current and you are connected to your Nextcloud server.
 The blue icon with the white semi-circles means synchronization is in progress.
 
 .. figure:: images/icon-paused.png
-   :alt: Status icon, yellow circle and vertical parallel
+   :alt: Status icon, grey circle and vertical parallel
     lines
 
-The yellow icon with the parallel lines tells you your synchronization
+The grey icon with the parallel lines tells you your synchronization
 has been paused. (Most likely by you.)
 
 .. figure:: images/icon-offline.png
@@ -56,7 +56,7 @@ operations.
 This menu provides the following options:
 
 * Open main dialog
-* Paus sync/Resume sync
+* Pause sync/Resume sync
 * Settings
 * Exit Nextcloud, logging out and closing the client
 
@@ -209,7 +209,7 @@ General Window
 --------------
 
 The General window has configuration options such as **Launch on System
-Startup**, **Use Monochrome Icons**, and **Show Desktop Notifications**. This
+Startup**, **Use Monochrome Icons**, and **Show Server Notifications**. This
 is where you will find the **Edit Ignored Files** button, to launch the ignored
 files editor, and **Ask confirmation before downloading
 folders larger than [folder size]**.

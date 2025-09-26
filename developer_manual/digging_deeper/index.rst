@@ -8,6 +8,7 @@ Digging deeper
    api
    config/index
    classloader
+   context_chat
    continuous_integration
    dashboard
    deadlock
@@ -47,4 +48,5 @@ Digging deeper
    user_migration
    users
    web_host_metadata
+   webdav_collection_preload
    time

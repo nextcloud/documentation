@@ -1,3 +1,5 @@
+# Version 2025-07-23
+
 upstream php-handler {
     server 127.0.0.1:9000;
     #server unix:/run/php/php8.2-fpm.sock;
@@ -80,6 +82,13 @@ server {
         client_body_timeout 300s;
         fastcgi_buffers 64 4K;
 
+        # Proxy and client response timeouts
+        # Uncomment an increase these if facing timeout errors during large file uploads
+        #proxy_connect_timeout 60s;
+        #proxy_send_timeout 60s;
+        #proxy_read_timeout 60s;
+        #send_timeout 60s;
+
         # Enable gzip but do not remove ETag headers
         gzip on;
         gzip_vary on;
@@ -111,7 +120,6 @@ server {
         add_header X-Frame-Options                   "SAMEORIGIN"        always;
         add_header X-Permitted-Cross-Domain-Policies "none"              always;
         add_header X-Robots-Tag                      "noindex, nofollow" always;
-        add_header X-XSS-Protection                  "1; mode=block"     always;
 
         # Remove X-Powered-By, which is an information leak
         fastcgi_hide_header X-Powered-By;
@@ -162,7 +170,13 @@ server {
             fastcgi_pass php-handler;
 
             fastcgi_intercept_errors on;
-            fastcgi_request_buffering off;
+            fastcgi_request_buffering on;                   # Required as PHP-FPM does not support chunked transfer encoding and requires a valid ContentLength header.
+
+            # PHP-FPM 504 response timeouts
+            # Uncomment and increase these if facing timeout errors during large file uploads
+            #fastcgi_read_timeout 60s;
+            #fastcgi_send_timeout 60s;
+            #fastcgi_connect_timeout 60s;
 
             fastcgi_max_temp_file_size 0;
         }
@@ -177,7 +191,6 @@ server {
             add_header X-Frame-Options                   "SAMEORIGIN"        always;
             add_header X-Permitted-Cross-Domain-Policies "none"              always;
             add_header X-Robots-Tag                      "noindex, nofollow" always;
-            add_header X-XSS-Protection                  "1; mode=block"     always;
             access_log off;     # Optional: Don't log access to assets
         }
 

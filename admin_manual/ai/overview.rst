@@ -25,7 +25,7 @@ Nextcloud uses modularity to separate raw AI functionality from the Graphical Us
    "Suspicious login detection","`Suspicious Login <https://apps.nextcloud.com/apps/suspicious_login>`_","Green","Yes","Yes","Yes","Yes"
    "Related resources","`Related Resources <https://apps.nextcloud.com/apps/related_resources>`_","Green","Yes","Yes","Yes","Yes"
    "Recommended files","recommended_files","Green","Yes","Yes","Yes","Yes"
-   "Text processing using LLMs","`llm2 (ExApp) <https://apps.nextcloud.com/apps/llm2>`_","Green","Yes","Yes - Llama 3.1 model by Meta","Yes","Yes"
+   "Text processing using LLMs","`Local large language model 2 (ExApp) (ExApp) <https://apps.nextcloud.com/apps/llm2>`_","Green","Yes","Yes - Llama 3.1 model by Meta","Yes","Yes"
    "","`OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_","Red","No","No","No","No"
    "","`OpenAI and LocalAI integration (via LocalAI) <https://apps.nextcloud.com/apps/integration_openai>`_","Yellow","Yes","Yes - e.g. Llama models by Meta", "No","Yes"
    "","`OpenAI and LocalAI integration (via Ollama) <https://apps.nextcloud.com/apps/integration_openai>`_","Yellow","Yes","Yes - e.g. Llama models by Meta", "No","Yes"
@@ -55,7 +55,6 @@ Nextcloud uses modularity to separate raw AI functionality from the Graphical Us
    "","`Replicate integration <https://apps.nextcloud.com/apps/integration_replicate>`_","Yellow","Yes","Yes - Whisper models by OpenAI","No","No"
    "Image generation","`Local Stable Diffusion <https://apps.nextcloud.com/apps/text2image_stablediffusion>`_","Yellow","Yes","Yes - StableDiffusion XL model by StabilityAI","No","Yes"
    "","`Replicate integration <https://apps.nextcloud.com/apps/integration_replicate>`_","Yellow","Yes","Yes - StableDiffusion models by StabilityAI","No","No"
-   "","`Local large language model 2 (ExApp) <https://apps.nextcloud.com/apps/llm2>`_","Yellow","Yes","Yes","No","Yes"
    "","`OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_","Red","No","No","No","No"
    "","`OpenAI and LocalAI integration (via LocalAI) <https://apps.nextcloud.com/apps/integration_openai>`_","Green","Yes","Yes","Yes","Yes"
    "","`OpenAI and LocalAI integration (via Ollama) <https://apps.nextcloud.com/apps/integration_openai>`_","Yellow","Yes","Yes - e.g. Llama models by Meta", "No","Yes"
@@ -65,8 +64,11 @@ Nextcloud uses modularity to separate raw AI functionality from the Graphical Us
    "","`OpenAI and LocalAI integration (via MistralAI) <https://apps.nextcloud.com/apps/integration_openai>`_","Orange","No","Yes","No","No"
    "Context Chat","`Nextcloud Assistant Context Chat <https://apps.nextcloud.com/apps/context_chat>`_","Yellow","Yes","Yes","No","Yes"
    "","`Nextcloud Assistant Context Chat (Backend) <https://apps.nextcloud.com/apps/context_chat_backend>`_","Yellow","Yes","Yes","No","Yes"
+   "Context Chat Search","`Nextcloud Assistant Context Chat <https://apps.nextcloud.com/apps/context_chat>`_","Yellow","Yes","Yes","No","Yes"
    "Context Agent","`Nextcloud Context Agent <https://apps.nextcloud.com/apps/context_agent>`_","Green","Yes","Yes","Yes","Yes"
    "Text To Speech","`Open AI Text To Speech <https://apps.nextcloud.com/apps/integration_openai>`_","Red","No","No","No","No"
+   "","`Local Text To Speech <https://apps.nextcloud.com/apps/text2speech_kokoro>`_","Yellow","Yes","Yes","No","Yes"
+   "Document generation","`Nextcloud Office <https://apps.nextcloud.com/apps/richdocuments>`_","Green","Yes","Yes","Yes","Yes"
 
 
 Ethical AI Rating
@@ -180,6 +182,25 @@ Backend apps
 * *integration_replicate* - Integrates with the replicate API to provide AI functionality from replicate servers (see :ref:`AI as a Service<ai-ai_as_a_service>`)
 
 
+Text-To-Speech
+^^^^^^^^^^^^^^
+
+.. _t2s-consumer-apps:
+
+As you can see in the table above we have multiple apps offering speech generation capabilities. In downstream apps like the assistant app, users can use the speech generation functionality regardless of which app implements it behind the scenes.
+
+Frontend apps
+~~~~~~~~~~~~~
+
+* `Assistant <https://apps.nextcloud.com/apps/assistant>`_ for offering a audio chat
+
+Backend apps
+~~~~~~~~~~~~
+
+* `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
+* *text2speech_kokoro* (Runs a local model)
+
+
 Context Chat
 ^^^^^^^^^^^^
 Our Context Chat feature was introduced in Nextcloud Hub 7 (v28). It allows asking questions to the assistant related to your documents in Nextcloud. You will need to install both the context_chat app as well as the context_chat_backend External App. Be prepared that things might break or be a little rough around the edges. We look forward to your feedback!
@@ -201,6 +222,43 @@ Apps can integrate their content with Context Chat to make it available for quer
 
 * *files*
 * `Analytics <https://apps.nextcloud.com/apps/analytics>`_
+
+
+
+Context Chat Search
+^^^^^^^^^^^^^^^^^^^
+Our Context Chat Search feature allows searching through your documents using natural language. You will need to install both the context_chat app as well as the context_chat_backend External App. We look forward to your feedback!
+
+Frontend apps
+~~~~~~~~~~~~~
+
+* `Assistant <https://apps.nextcloud.com/apps/assistant>`_ for offering a graphical UI for the context chat search tasks
+
+Backend apps
+~~~~~~~~~~~~
+
+* :ref:`context_chat + context_chat_backend<ai-app-context_chat>` -  (Customer support available upon request)
+
+Provider apps
+~~~~~~~~~~~~~
+
+See *Context Chat* section above.
+
+Document generation
+^^^^^^^^^^^^^^^^^^^
+Since Hub 11 you can let Nextcloud automatically generate Office documents with content.
+This functionality is available in the assistant app and made possible by the Nextcloud Office app.
+
+Frontend apps
+~~~~~~~~~~~~~
+
+* `Assistant <https://apps.nextcloud.com/apps/assistant>`_ for offering a graphical UI for the context chat search tasks
+
+Backend apps
+~~~~~~~~~~~~
+
+* `Nextcloud Office <https://apps.nextcloud.com/apps/richdocuments>`_
+
 
 .. _ai-overview_improve-ai-task-pickup-speed:
 

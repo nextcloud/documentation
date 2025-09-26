@@ -15,6 +15,7 @@ To consume the  Task Processing API, you will need to :ref:`inject<dependency-in
 
  * ``hasProviders()`` This method returns a boolean which indicates if any providers have been registered. If this is false you cannot use the TextProcessing feature.
  * ``getAvailableTaskTypes(bool $showDisabled = false)`` This method returns an array of enabled task types indexed by their ID with their names and additional metadata. If you set ``$showdisabled`` to ``true`` (available since NC31), it will include disabled task types.
+ * ``getAvailableTaskTypeIds()`` This method (available since NC32) returns a list of available task type IDs. It uses the same logic as ``getAvailableTaskTypes()`` but is faster because it does not compute the task types metadata (which can be slow when getting default field values or multiselect value lists). If you just want to check if a feature is available, prefer using this method rather than ``getAvailableTaskTypes()``.
  * ``scheduleTask(Task $task)`` This method provides the actual scheduling functionality. The task is defined using the Task class. This method runs the task asynchronously in a background job.
  * ``getTask(int $id)`` This method fetches a task specified by its id.
  * ``deleteTask(Task $task)`` This method deletes a task
@@ -121,6 +122,13 @@ The following built-in task types are available:
          * ``input``: ``Text``
       * Output shape:
          * ``speech``: ``Audio``
+ * ``'core:analyze-images'``: This task type is for analyzing images. It is implemented by ``\OCP\TaskProcessing\TaskTypes\AnalyzeImages``
+      * Input shape:
+         * ``input``: ``Text``
+         * ``images``: ``ListOfImages``
+      * Output shape:
+         * ``output``: ``Text``
+
 
 
 Task types can be disabled in the AI admin settings so they are not available for the Assistant or other apps even if they are implemented. All implemented Task types are enabled by default.
@@ -203,7 +211,10 @@ To create a task we use the ``\OCP\TaskProcessing\Task`` class. Its constructor 
 
 .. code-block:: php
 
-    if (isset($textprocessingManager->getAvailableTaskTypes()[TextToTextSummary::ID]) {
+    // getAvailableTaskTypeIds is faster than getAvailableTaskTypes
+    // if (isset($textprocessingManager->getAvailableTaskTypes()[TextToTextSummary::ID]) {
+    // if you don't need the task type metadata, prefer this:
+    if (in_array(TextToTextSummary::ID, $textprocessingManager->getAvailableTaskTypeIds(), true) {
         $summaryTask = new Task(TextToTextSummary::ID, $emailText, "my_app", $userId, (string) $emailId);
     } else {
         // cannot use summarization

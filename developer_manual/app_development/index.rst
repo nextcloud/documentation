@@ -11,4 +11,5 @@ App development
    info
    init
    dependency_management
+   dav_extension
    translation_setup

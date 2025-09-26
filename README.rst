@@ -69,6 +69,12 @@ To edit a document, you can edit the .rst files on your local system, or work
 directly on GitHub. The latter is only suitable for small fixes and improvements
 because substantial editing efforts can better be controlled on your local PC.
 
+.. tip::
+   If you're getting to know our documentation syntax, `give Documatt Snippets
+   <https://snippets.documatt.com/>`_ a try. This online editor is a great way 
+   to practice with reStructuredText and Sphinx, and it provides a more accurate
+   preview of your work than GitHub does.
+
 The best way is to install a complete Sphinx build environment and work on your
 local PC. You will be able to make your own local builds, which is the fastest
 and best way to preview for errors. Sphinx will report syntax errors, missing
@@ -99,7 +105,7 @@ which if you have privacy enabled will be github.username@users.noreply.github.c
 Translations
 ------------
 
-`Help translate the documentation <https://www.transifex.com/nextcloud/nextcloud-user-documentation/dashboard/>`_.
+`Help translate the documentation <https://explore.transifex.com/nextcloud/nextcloud-user-documentation/>`_.
 
 For developers that want to ease the translation process, please read `this documentation <https://docs.transifex.com/integrations/sphinx-doc>`_.
 
@@ -143,6 +149,17 @@ Using venv
 5. Now you can use ``make ...`` to build all the stuff - for example ``make html`` to build the HTML flavor of all manuals
    The build assets will be put into the individual documentation subdirectories like ``developer_manual/_build/html/com``
 
+Building translated versions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Only available in user_manual:
+
+1. Build the english version as described above before
+2. Create translation files: ``../build/change_file_extension.sh``
+3. Create German (``de``) version: ``make html-lang-de``
+4. Find the HTML files in ``_build/html/de/index.html``
+5. Before building another language you have to delete the complete ``_build`` directory
+
 Autobuilding
 ^^^^^^^^^^^^
 
@@ -156,6 +173,27 @@ When editing the documentation installing ``sphinx-autobuild`` though pip can be
 
 Building PDF
 ============
+
+Building inside docker
+^^^^^^^^^^^^^^^^^^^^^^
+
+1. Create a docker:: ``docker run --platform linux/amd64 --volume .:/docs --interactive --tty --name nextcloud-docs ghcr.io/nextcloud/continuous-integration-documentation:documentation-15 bash``
+2. Change into the documentation directory: ``cd /docs``
+3. Only once: Create a venv: ``python -m venv venv``
+4. Activate the environment: ``source venv/bin/activate``
+5. Install the dependencies ``pip install -r requirements.txt``
+6. Change into the documentation of choice (admin, developer, user): ``cd /docs/user_manual``
+7. To build the English version: ``make latexpdf``
+8. To build the translated version (only available in user_manual):
+   1. Create translation files: ``../build/change_file_extension.sh``
+   2. Create German (``de``) version: ``make latexpdf-lang-de``
+   3. Find the file in ``_build/latex/Nextcloud_User_Manual.pdf``
+   4. Before building another language you have to delete the complete ``_build`` directory
+
+Building locally
+^^^^^^^^^^^^^^^^
+
+.. note:: Because of the many dependencies LaTeX and the other tools bring in, it is not recommended to install the tools locally.
 
 1. Follow instructions for "Building HTML" above
 2. Install ``latexmk`` and ``texlive-latex-extra`` - https://pipenv.readthedocs.io/en/latest/

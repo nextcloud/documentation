@@ -35,7 +35,7 @@ $mapping = array(
     'admin-oauth2'            => '/admin_manual/configuration_server/oauth2.html',
     'admin-performance'       => '/admin_manual/installation/server_tuning.html',
     'admin-php-fpm'           => '/admin_manual/installation/source_installation.html#php-fpm-tips-label',
-    'admin-php-modules'       => '/admin_manual/installation/php_configuration.html#php-modules',
+    'admin-php-modules'       => '/admin_manual/installation/php_configuration.html#required-php-modules',
     'admin-php-opcache'       => '/admin_manual/installation/server_tuning.html#enable-php-opcache',
     'admin-provisioning-api'  => '/admin_manual/configuration_user/user_provisioning_api.html',
     'admin-reverse-proxy'     => '/admin_manual/configuration_server/reverse_proxy_configuration.html',
@@ -55,6 +55,7 @@ $mapping = array(
     'admin-warnings'          => '/admin_manual/configuration_server/security_setup_warnings.html',
     'admin-windows-compatible-filenames' => '/admin_manual/configuration_files/windows_compatible_filenames.html',
     'admin-workflowengine'    => '/admin_manual/file_workflows/index.html',
+    'admin-android-deep-link-handling'    => 'admin_manual/configuration_server/android_deep_link_handling.html',
 
     'developer-manual'        => '/developer_manual',
     'developer-backports'     => '/developer_manual/getting_started/development_process.html#bugfixes',
