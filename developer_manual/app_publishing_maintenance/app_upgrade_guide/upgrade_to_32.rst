@@ -60,6 +60,7 @@ Deprecated APIs
 
 - ``--color-error-rgb``, ``--color-info-rgb``, ``--color-success-rgb``, ``--color-warning-rgb`` are deprecated.
   Instead use the native CSS color utils with the the existing variables like ``--color-error`` and similar.
+- The ``OC.SystemTags`` api is deprecated. If you need to get the list of system tags, check `this merge request <https://github.com/nextcloud/files_retention/pull/855>`_ for how to fetch the tags directly.
 
 Removed APIs
 ^^^^^^^^^^^^
