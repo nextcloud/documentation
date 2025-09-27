@@ -213,10 +213,12 @@ Sensitive data exposure
 
 Always store user data or configuration files in safe locations, e.g. **nextcloud/data/** and not in the webroot where they can be accessed by anyone using a web browser.
 
+.. _csrf_introduction:
+
 Cross site request forgery
 --------------------------
 
-Using `CSRF <https://en.wikipedia.org/wiki/Cross-site_request_forgery>`_ one can trick a user into executing a request that they did not want to make. Thus every POST and GET request needs to be protected against it. The only places where no CSRF checks are needed are in the main template, which is rendering the application, or in externally callable interfaces.
+Using `CSRF <https://en.wikipedia.org/wiki/Cross-site_request_forgery>`_ (see also on `MDN <https://developer.mozilla.org/en-US/docs/Glossary/CSRF>`__) one can trick a user into executing a request that they did not want to make. Thus every POST and GET request needs to be protected against it. The only places where no CSRF checks are needed are in the main template, which is rendering the application, or in externally callable interfaces.
 
 .. note:: Submitting a form is also a POST/GET request!
 
@@ -227,7 +229,11 @@ To prevent CSRF in an app, be sure to call the following method at the top of al
   <?php
   OCP\JSON::callCheck();
 
-If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitly exclude it by setting the ``#[NoCSRFRequired]`` attribute or ``@NoCSRFRequired`` annotation before the controller method, see :doc:`../basics/controllers`
+If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitly exclude it by setting the ``#[NoCSRFRequired]`` attribute or ``@NoCSRFRequired`` annotation before the controller method, see :doc:`../basics/controllers`.
+
+Additionally, it is advised to carefully select the HTTP method used for requests.
+Requests of type ``GET`` should not alter data but just read existing data.
+This way, at least no typed (or copied) URL might alter data (e.g. clicking a link from a spam mail message by accident).
 
 Unvalidated redirects
 ---------------------
@@ -249,6 +255,28 @@ Always validate the URL before redirecting if the requested URL is on the same d
 
   <?php
   header('Location: https://example.com'. $_GET['redirectURL']);
+
+
+CORS
+----
+
+`Cross-origin resource sharing (CORS) <https://en.wikipedia.org/wiki/Cross-origin_resource_sharing>`_ (see also on `MDN <https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS>`__) is a method implemented by browser to access resources from different domains at the same time.
+Assume, there is a website published on host A.
+The URL would for example be ``https://A/path/to/index.html``.
+If there is a _different_ host B that serves a resource (e.g. an image file) as ``https://B/assets/image.jpg``, the index file on host A could simply link to the image on B.
+However, to protect B and its property (the image), the browsers do not silently embed the image of B into the page of A.
+Instead, B is kindly asked by the browser if embedding is allowed (the so-called `preflight <https://developer.mozilla.org/en-US/docs/Glossary/Preflight_request>`_).
+
+To do so, there is a first request made to the resource on B with the ``OPTIONS`` HTTP command/verb.
+The server only answers with the headers as specified and adds ``Access-Control-*`` headers.
+These define, what the browser is to be allowed to do.
+Only if the destination server B confirms cross site resource sharing is allowed, the browser access the resource.
+
+Basically, accessing foreign resources is not limited to embedding images.
+Using JavaScript, arbitrary XHR/Ajax requests can be directed at arbitrary other hosts, which might be used to call APIs that leak your data.
+There are some safety measurements in place (especially about cookie handling), but one has still to be careful not to leak information unwillingly.
+Especially, if the destination server B allows to sent credentials using ``Access-Control-Allow-Credentials: true``, cross site scripting is very critical.
+You need :ref:`CSRF protection <csrf_introduction>` in place or your users are at relatively high risk.
 
 Getting help
 ------------

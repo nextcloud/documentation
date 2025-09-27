@@ -100,7 +100,7 @@ epub_copyright = "2012-2024, The Nextcloud developers"
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-latex-output
 
 latex_elements = {
-    "preamble": "\extrafloats{100}\maxdeadcycles=500\DeclareUnicodeCharacter{274C}{\sffamily X}",
+    "preamble": "\\extrafloats{100}\\maxdeadcycles=500\\DeclareUnicodeCharacter{274C}{\\sffamily X}",
 }
 latex_documents = [
     (
