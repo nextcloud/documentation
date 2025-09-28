@@ -2800,7 +2800,9 @@ objectstore
 				// if omitted
 				'serviceName' => 'swift',
 				// The Interface / URL Type, optional
-				'urlType' => 'internal'
+				'urlType' => 'internal',
+				// Maximum amount of data that can be uploaded
+				'totalSizeLimit' => 1024 * 1024 * 1024,
 			],
 		],
 
