@@ -4,12 +4,40 @@ Webhook Listeners
 
 .. _webhook_listeners:
 
-Nextcloud supports listening to internal events via webhooks.
+Introduction
+------------
+
+Nextcloud supports sending notifications to external services whenever something 
+important happens, such as when files are changed or updated.
+
+Overview
+--------
+
+The Webhook Listeners app enables your Nextcloud server to automatically notify
+external services whenever important events - such as file changes, uploads, or
+deletions - occur in your instance. By configuring webhook listeners, administrators
+can set up custom HTTP notifications (webhooks) that are triggered by specific
+internal events, allowing seamless integration with other platforms and automation of
+workflows without manual intervention.
+
+The Webhook Listeners app enables your Nextcloud server to automatically notify
+external services whenever important events - such as file changes, uploads, or
+deletions - occur in your instance. By configuring webhook listeners, administrators
+can set up custom HTTP notifications (webhooks) that are triggered by specific
+internal events, allowing seamless integration with other platforms and automation of
+workflows without manual intervention.
+
+The app works by monitoring Nextcloud's event system and dispatching HTTP
+requests to defined endpoints whenever a matching event takes place. Management and
+configuration of webhook listeners are handled via the Nextcloud OCS API and
+command-line tools. The app is ideal for scenarios where you want to connect Nextcloud
+with notification systems, external automation platforms, or custom integrations -
+without requiring manual polling.
 
 Installation
 ------------
 
- * Enable the ``webhook_listeners`` app that comes bundled with Nextcloud
+Enable the ``webhook_listeners`` app that comes bundled with Nextcloud - e.g.
 
 .. code-block:: bash
 
@@ -18,37 +46,58 @@ Installation
 Listening to events
 -------------------
 
-You can use the OCS API to add webhooks for specific events: https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index
+You can use the OCS API to add webhooks for specific events. See: 
+`Register a new webhook <https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index>`_.
 
-.. TODO ON RELEASE: Update version number above on release
+.. TODO ON RELEASE: Update version number above upon release.
 
-Note: When authenticating with the OCS API to register webhooks the account you authenticate as must have administrator rights or delegated administrator rights.
+Note: When authenticating with the OCS API to register webhooks, the account you
+use must have administrator rights or delegated administrator rights.
 
 Filters
 ~~~~~~~
 
-When registering a webhook listener, you can specify a filter parameter. The value of this parameter must be a JSON object whose properties represent filter conditions. The ``{}`` is an empty query, meaning no specific criteria, so all events are matched.
+When registering a webhook listener, you can specify a filter parameter. The value of
+this parameter must be a JSON object whose properties represent filter conditions.
+The ``{}`` object is an empty query, meaning no specific criteria are set, so all events
+are matched.
 
-If you would like to match events fired by a specific user, you can pass ``{ "user.uid": "bob" }`` to match all events fired in the context of user ``"bob"``.
+If you want to match events triggered by a specific user, you can pass
+``{ "user.uid": "bob" }`` to match all events associated with the user ``bob``.
 
-If you would like to enforce multiple criteria, you can simply pass multiple properties ``{ "event.tableId": 42, "event.rowId": 3 }``
+To enforce multiple criteria, simply pass multiple properties:
+``{ "event.tableId": 42, "event.rowId": 3 }``.
 
-If you would like to match values partially, you can use regular expressions: ``{ "user.uid": "/admin_.*/"}`` will match any user whose user ID starts with ``admin_``. This can be especially useful for filesystem events for filtering by path: ``{ "event.node.path": "/^\\/.*\\/files\\/Special folder\\//"}`` will match files inside the ``Special folder`` of any user (Note especially, that the slashes in the path need to be escaped with two back-slashes, once because we're inside a json string and once because we're inside a regular expression).
+If you want to match values partially, you can use regular expressions:
+``{ "user.uid": "/admin_.*/" }`` will match any user whose user ID starts with
+``admin_``. This can be especially useful for filesystem events when filtering by path:
+``{ "event.node.path": "/^\\/.*\\/files\\/Special folder\\//" }`` will match files
+inside the ``Special folder`` of any user. Note that the slashes in the path need to be
+escaped with two backslashes: once because you are inside a JSON string, and once
+because you are inside a regular expression.
 
-You can also use additional comparison operators (``$e, $ne, $gt, $gte, $lt, $lte, $in, $nin``) as well as logical operators (``$and, $or, $not, $nor``). For example use ``{ "time" : { "$lt": 1711971024 } }`` to accept only events prior to April 1st 2024 and ``{ "time" : { "$not": { "$lt": 1711971024 } } }`` to accept events after April 1st 2024.
-
+You can also use additional comparison operators (``$e``, ``$ne``, ``$gt``, ``$gte``,
+``$lt``, ``$lte``, ``$in``, ``$nin``) as well as logical operators (``$and``, ``$or``,
+``$not``, ``$nor``). For example, use ``{ "time": { "$lt": 1711971024 } }`` to accept
+only events prior to April 1st, 2024, and ``{ "time": { "$not": { "$lt": 1711971024 } }}`` 
+to accept events after April 1st, 2024.
 
 Speeding up webhook dispatch
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This app uses background jobs to trigger the registered webhooks. Thus, by default, webhooks will be triggered only every 5 minutes, as the default cron interval is 5 minutes.
-To trigger webhooks earlier, you can set up a background job worker. The following command will launch a worker for the webhook call background job:
+This app uses background jobs to trigger registered webhooks. By default, webhooks
+are triggered every 5 minutes, as the default cron interval is set to 5 minutes.
+To trigger webhooks sooner, you can set up a background job worker.
+
+The following command will launch a worker for the webhook call background job:
 
 Screen or tmux session
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Run the following occ command inside a screen or a tmux session, preferably 4 or more times for parallel processing of multiple requests by different or the same user.
-It would be best to run one command per screen session or per tmux window/pane to keep the logs visible and the worker easily restartable.
+Run the following ``occ`` command inside a screen or tmux session, preferably four 
+or more times, to enable parallel processing of multiple requests by different users
+or the same user. It is best to run one command per screen session or tmux window/pane 
+to keep logs visible and make each worker easy to restart.
 
 .. code-block::
 
