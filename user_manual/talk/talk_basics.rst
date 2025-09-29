@@ -4,12 +4,16 @@ Basics of Nextcloud Talk
 
 Nextcloud Talk lets you chat and have video calls on your own server.
 
-Chats and calls take place in conversations. You can create any number of conversations. There are two kinds of conversations:
+Chats and calls take place in conversations. You can create any number of conversations. There are several kinds of conversations:
 
 1. **One-on-one conversations.** This is where you have a private chat or call with another Talk user. You can't add other people to this conversation or share it with a link. You start a direct one-on-one chat by looking for another user in the search bar and then clicking their name.
+If a user becomes unavailable for long period and set an out-of-office status, you will find additional information in this conversation, such as provided description, absence date, or their replacement person.
 
 
 2. **Group conversations.** Besides the person who created the conversation, a group conversation can have any number of people in it. A group conversation can be shared publicly with a link, so external guest users can join a call. It can also be listed, so other people on your Nextcloud server can join the conversation.
+
+
+3. **Note to self.** This is a special conversation with yourself. You can use it to write message notes, create to-do lists or forward content to save.
 
 Creating a chat
 ---------------
@@ -96,6 +100,16 @@ Inserting emoji
 You can add emoji using the picker on the left of the text input field.
 
 .. image:: images/emoji-picker.png
+   :width: 400px
+
+Smart Picker
+------------
+
+Smart picker shortcut makes it easier to insert links, files, or other content into your conversations.
+Just choose the type of content you want to insert (files, Talk conversations, Deck cards, GIFs, etc.)
+You can also type `/` in the chat input to open the selector.
+
+.. image:: images/smart-picker.png
    :width: 400px
 
 Editing messages
@@ -230,6 +244,28 @@ Here you can configure the description, guest access, if the conversation is vis
 
 .. image:: images/conversation-settings-dialog.png
    :width: 600px
+
+Ban participants
+----------------
+
+To help keep discussions safe and under control, moderators can ban participants from conversations.
+It could be internal users or guests (in this case their IP-addresse will additionally be banned).
+
+In the participants list, select the user or guest you, and click ``Remove participant``.
+
+.. image:: images/ban-participant.png
+    :width: 300px
+
+There, toggle checkbox ``Also ban from this conversation`` and provide a reason for the ban. The banned user will be removed and prevented from rejoining.
+
+.. image:: images/ban-participant-dialog.png
+    :width: 400px
+
+You can later find the list of banned users in the ``Moderation`` section of conversation settings.
+Here, you can see the reason for the ban and revert it if needed.
+
+.. image:: images/ban-participant-list.png
+    :width: 400px
 
 Messages expiration
 -------------------
