@@ -100,3 +100,23 @@ If you want to set a specific contact that should be created.
 
 Switching back to the default example contact provided by nextcloud is possible by pressing the
 "Reset to default" button next to the import button.
+
+.. _carddav-data-retention:
+
+Data retention
+--------------
+
+.. versionadded:: 26.0.0
+
+You can configure how long Nextcloud keeps some of the contacts sync tokens.
+
+Sync tokens
+^^^^^^^^^^^
+
+The CardDAV backend keeps track of any modifications of address books. That is anything added, modified or removed. The data is used for differential synchronization of offline clients like Thunderbird. At a certain point in time, the data can be considered outdated assuming there will be no more client needing it. This can help keep the database table `addressbookchanges` small::
+
+  sudo -E -u www-data php occ config:app:set totalNumberOfSyncTokensToKeep --value=30000
+
+The default is keeping 10,000 entries. This option should be set adequate to the number of users. E.g. on an installation with 5000 active synced addressbooks the system would only keep an average of 10 changes per sync. This will lead to premature data deletion and synchronization problems.
+
+.. warning:: This setting will also influence :ref:`CalDAV data retention<caldav-data-retention>`.
