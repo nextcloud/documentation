@@ -248,6 +248,8 @@ security headers are shipped.
 .. _Web TLS Profiler: https://tlsprofiler.danielfett.de/
 .. _RFC 4086 ("Randomness Requirements for Security"): https://tools.ietf.org/html/rfc4086#section-5.2
 
+.. _connections_to_remote_servers:
+
 Connections to remote servers
 -----------------------------
 
@@ -255,7 +257,7 @@ Some functionalities require the Nextcloud server to be able to connect remote s
 This paragraph also includes the data which is being transmitted to the Nextcloud GmbH.
 Depending on your server setup, these are the possible connections:
 
-- www.nextcloud.com, www.startpage.com, www.eff.org, www.edri.org, nextcloud.com, startpage.com, eff.org, edri.org
+- connectivity.nextcloud.com, www.eff.org, edri.org
 	- `optional (config)`_
 	- for checking the internet connection
 - cloud.nextcloud.com
