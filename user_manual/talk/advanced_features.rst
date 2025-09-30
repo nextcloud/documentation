@@ -87,6 +87,16 @@ From within Deck, you can share tasks into chat conversations.
 .. image:: images/deck-talk-share-card-to-chat-in-talk.png
     :width: 600px
 
+Meetings and events
+--------------------
+
+If calendar events have a Talk conversation set as event location, you will see an information about upcoming events inside of this conversation.
+That way you can stay informed about scheduled meetings or activities directly within your chat.
+If Calendar app is enabled, you can click on an event to view details.
+
+.. image:: images/events-upcoming.png
+    :width: 400px
+
 Breakout rooms
 --------------
 Breakout rooms allow you to divide a Nextcloud Talk call into smaller groups for more focused discussions. The moderator
@@ -204,8 +214,6 @@ Federated conversation
 ----------------------
 With Federation feature, users can create conversations across different federated Talk instances and use Talk features as if they were on a same server.
 
-**Important** Under current development. Basic chat features are available, more to come in the future!
-
 Feature is required to be set up by the system administration.
 
 Send and accept invites
@@ -230,3 +238,5 @@ By accepting the invite, conversation will appear in the list as any other one.
 
 .. image:: images/federation-conversations-list.png
    :width: 400px
+
+You can use it further to chat with participants from other federated servers, join calls and use other available Talk features.
