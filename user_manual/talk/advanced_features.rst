@@ -240,3 +240,11 @@ By accepting the invite, conversation will appear in the list as any other one.
    :width: 400px
 
 You can use it further to chat with participants from other federated servers, join calls and use other available Talk features.
+
+Chat summary
+------------
+
+When AI assistant is enabled, a summary can be generated if there are more than 100 unread messages.
+You can generate it by pressing the button that is visible in chat above the first unread messages.
+  
+You can use it further to chat with participants from other federated servers, join calls and use other available Talk features.
