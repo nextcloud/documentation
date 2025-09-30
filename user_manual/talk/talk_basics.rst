@@ -66,6 +66,19 @@ You can then clear the filter from the filters menu.
 .. image:: images/clear-filter.png
     :width: 400px
 
+Archive conversations
+---------------------
+You can archive conversations that you no longer need to see in your main conversation list. When a conversation is archived, it will be moved to the ``Archived conversations`` section.
+An archived conversation will not appear in your main conversation list, but it will still align with notification level set in its settings.
+
+.. image:: images/archived-conversations-list.png
+    :width: 400px
+
+The list is accessible from the button at the bottom of the navigation bar.
+
+.. image:: images/archived-conversations-button.png
+    :width: 400px
+
 Sharing files in a chat
 -----------------------
 
@@ -187,6 +200,40 @@ You can enhance your messages with a markdown syntax support. See list for usage
   Column A | Column B
   -- | --
   Data A | Data B
+
+Polls in chat
+-------------
+
+You can create a poll in groups chats from the new message additional actions.
+
+.. image:: images/create-new-poll.png
+   :width: 400px
+
+A poll has two settings:
+
+- **Anonymous polls**: Participants cannot see who voted for which option.
+- **Allow multiple choices**: Participants can select more than one option.
+
+You can also import polls for auto-fill and export polls as JSON files to save it locally.
+
+.. image:: images/import-poll.png
+   :width: 400px
+
+Closing poll is possible from the poll dialog.
+
+.. image:: images/close-poll.png
+   :width: 400px
+
+As a moderator, you can create the poll directly or you can save it as a draft to edit it later. 
+
+.. image:: images/save-poll-draft.png
+   :width: 400px
+
+You can find poll drafts in ``Shared items`` tab or next to the poll title input field.
+
+.. image:: images/poll-drafts-list.png
+   :width: 400px
+
 
 Setting reminder on messages
 ----------------------------
@@ -332,6 +379,20 @@ The promoted view shows the speaker large and others in a row below. If the peop
     :width: 700px
 
 
+Download call participants list
+-------------------------------
+
+You can download the list of participants in a call from the ``...`` menu in the top bar. This will download a CSV file with the names and email addresses of all participants in the call.
+
+.. image:: images/download-participants-list.png
+   :width: 400px
+
+The table in the CSV file contains the following columns:
+
+- **Name**: The name of the participant.
+- **Email**: The email address of the participant.
+- **Type**: Indicates whether the participant is a registered user or a guest.
+- **Identifier**: Unique identifier for the participant.
 
 
 
