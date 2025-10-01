@@ -6,8 +6,7 @@ Nextcloud Talk lets you chat and have video calls on your own server.
 
 Chats and calls take place in conversations. You can create any number of conversations. There are several kinds of conversations:
 
-1. **One-on-one conversations.** This is where you have a private chat or call with another Talk user. You can't add other people to this conversation or share it with a link. You start a direct one-on-one chat by looking for another user in the search bar and then clicking their name.
-If a user becomes unavailable for long period and set an out-of-office status, you will find additional information in this conversation, such as provided description, absence date, or their replacement person.
+1. **One-on-one conversations.** This is where you have a private chat or call with another Talk user. You can't add other people to this conversation or share it with a link. You start a direct one-on-one chat by looking for another user in the search bar and then clicking their name. If a user becomes unavailable for long period and set an out-of-office status, you will find additional information in this conversation, such as provided description, absence date, or their replacement person.
 
 
 2. **Group conversations.** Besides the person who created the conversation, a group conversation can have any number of people in it. A group conversation can be shared publicly with a link, so external guest users can join a call. It can also be listed, so other people on your Nextcloud server can join the conversation.
@@ -365,6 +364,8 @@ If video from your camera is also available, other participants will see it in a
 .. image:: images/share-screen-with-camera.png
     :width: 700px
 
+You can zoom in and out of the shared screen with mouse wheel, double click or touchpad gestures.
+
 Changing view in a call
 -----------------------
 
@@ -394,8 +395,28 @@ The table in the CSV file contains the following columns:
 - **Type**: Indicates whether the participant is a registered user or a guest.
 - **Identifier**: Unique identifier for the participant.
 
+Compact view of conversations list
+----------------------------------
+
+Compact view allows to hide last message preview in the conversation list, providing a more focused interface. 
+You can enable it from the ``Talk settings`` dialog  in ``Appearance`` section.
+
+.. image:: images/talk-compact-view.png
+   :width: 200px
 
 
+Messages search in a conversation
+---------------------------------
+
+In addition to global unified search, you can search for messages within a specific conversation. In the content sidebar of a conversation, click the search icon to open the search tab.
+
+.. image:: images/chat-search-messages.png
+   :width: 500px
+
+You can narrow down your search by using filters such as date range, and sender.
+
+.. image:: images/chat-search-messages-tab.png
+   :width: 500px
 
 
 
