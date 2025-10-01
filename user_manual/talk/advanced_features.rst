@@ -97,6 +97,12 @@ If Calendar app is enabled, you can click on an event to view details.
 .. image:: images/events-upcoming.png
     :width: 400px
 
+It is possible to schedule a meeting directly from a conversation. In the dialog, you can set meeting details such as title, date, time and description.
+You can also choose to invite all participants including email guests, or select specific ones.
+
+.. image:: images/talk-schedule-meeting.png
+   :width: 400px
+  
 Breakout rooms
 --------------
 Breakout rooms allow you to divide a Nextcloud Talk call into smaller groups for more focused discussions. The moderator
@@ -252,4 +258,3 @@ You can generate it by pressing the button that is visible in chat above the fir
 
 .. image:: images/chat-summary-text.png
    :width: 500px
-  
