@@ -4,20 +4,83 @@ Basics of Nextcloud Talk
 
 Nextcloud Talk lets you chat and have video calls on your own server.
 
-Chats and calls take place in conversations. You can create any number of conversations. There are several kinds of conversations:
+Getting started
+---------------
 
-1. **One-on-one conversations.** This is where you have a private chat or call with another Talk user. You can't add other people to this conversation or share it with a link. You start a direct one-on-one chat by looking for another user in the search bar and then clicking their name. If a user becomes unavailable for long period and set an out-of-office status, you will find additional information in this conversation, such as provided description, absence date, or their replacement person.
+Chats and calls take place in conversations. You can create any number of conversations. There are different types of conversations:
+
+1. Private (one-to-one) conversations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This is where you have a private chat or call with another Talk user.
+
+In content sidebar, you can find additional information about the person you are chatting with, such as their email address, phone number, or other details they have shared in their profile.
+
+.. image:: images/one-to-one-right-sidebar.png
+    :width: 300px
+
+Nobody except you and the other person can see this conversation or join a call in it.
+You can extend an ongoing call to a new group conversation by adding more people. Call will be continued there without interruption.
+
+.. image:: images/one-to-one-extend.png
+    :width: 300px
+
+If a user becomes unavailable and set an **out-of-office** status in ``Personal settings > Availability``, you will find additional information in this conversation, such as provided description, absence date, or their replacement person.
+
+.. image:: images/one-to-one-out-of-office.png
+    :width: 500px
+
+2. Group conversations
+^^^^^^^^^^^^^^^^^^^^^^
+A group conversation can have any number of people in it.
+You can add internal users, email guests, groups or teams to a group conversation upon creation, or when it already exists, via the ``Participants`` tab.
+
+A group conversation can be shared with a public link, so guests can join a chat and a call.
+It can also be opened to registered users (or users from 'Guests' app), so they can discover and join this conversation.
+
+.. image:: images/group-public-settings.png
+    :width: 400px
 
 
-2. **Group conversations.** Besides the person who created the conversation, a group conversation can have any number of people in it. A group conversation can be shared publicly with a link, so external guest users can join a call. It can also be listed, so other people on your Nextcloud server can join the conversation.
+3. Note to self
+^^^^^^^^^^^^^^^
+This is a special conversation with yourself. Messages here do not have a limit for editing or deletion. You can use it to:
 
+- **Take notes**: write down ideas, reminders, or important information you want to keep handy.
+- **Create to-do lists**: use Markdown syntax to create checklists for tasks you need to complete.
+- **Forward messages from other chat**: use the message menu to forward important messages from other conversations to your Note to self.
 
-3. **Note to self.** This is a special conversation with yourself. You can use it to write message notes, create to-do lists or forward content to save.
+.. image:: images/note-to-self.png
+    :width: 500px
+
+4. Disposable conversations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+These conversations cover some special cases and exist for a limited period of time. Retention period can be configured by an instance administration:
+
+- **Instant meetings**: these conversations can be created for quick, ad-hoc meetings. They can be started instantly from the Talk Dashboard.
+- **Event conversations**: these are created when set as an event location by Calendar app.
+- **Phone conversations**: these are dedicated for SIP dial-in & dial-out phone calls (requires a SIP gateway).
+- **Video verification**: these are created, when someone tries to access a public link, protected by password with video verification (deleted instantly after call ends).
+
+.. image:: images/instant-meeting-dispose.png
+    :width: 500px
+
+Talk Dashboard
+--------------
+
+The Talk Dashboard is your central hub for managing and accessing your conversations. It provides an overview of your:
+
+- Unread mentions and messages in private chats;
+- Message reminders, scheduled to be tackled on later;
+- Scheduled meetings, with event details and shortcut buttons to join them;
+- Shortcut actions to create new conversations, join open ones, or quickly check your media devices.
+
+.. image:: images/talk-dashboard.png
+    :width: 600px
 
 Creating a chat
 ---------------
 
-You can create a direct, one-on-one chat by searching for the name of a user, a group or a team and clicking it. For a single user, a conversation is immediately created and you can start your chat. For a group or circle you get to pick a name and settings before you create the conversation and add the participants.
+You can create a private (one-to-one) chat by searching for the name of a user, a group or a team and clicking it. For a single user, a conversation is immediately created and you can start your chat. For a group or circle you get to pick a name and settings before you create the conversation and add the participants.
 
 .. image:: images/chat-with-one-user.png
     :width: 400px
@@ -53,9 +116,10 @@ You can view all the conversations that you can join by clicking the button next
 Filter your conversations
 -------------------------
 
-You can filter your conversations using the filter button located next to the search field. There are two options for filtering:
-1. Filter unread mentions: This option allows you to view group conversations with unread mentions or unread one-on-one conversations.
-2. Filter unread messages: This option allows you to view all unread messages in all joined conversations.
+You can filter your conversations using the filter button next to the search field. There are several options for filtering:
+1. **Unread mentions**: view unread private conversations, or group conversations, where you have been mentioned.
+2. **Unread messages**: view unread messages in all conversations you are a part of.
+2. **Event conversations**: view all conversations, created for upcoming or past events.
 
 .. image:: images/filters-menu.png
     :width: 400px
@@ -255,7 +319,7 @@ You can reply to a message using the arrow that appears when you hover a message
 .. image:: images/reply.png
    :width: 600px
 
-In the ``...`` menu you can also choose to reply privately. This will open a one-on-one chat.
+In the ``...`` menu you can also choose to reply privately. This will open a one-to-one chat.
 
 .. image:: images/chat-message-menu.png
    :width: 600px
@@ -329,7 +393,7 @@ Starting a call
 When you're in a conversation, you can start a call any time with the ``Start call`` button. Other participants will get notified and can join the call.
 
 .. image:: images/device-settings-before-call.png
-    :width: 400px
+    :width: 600px
 
 If somebody else has started a call already, the button will change in a green ``Join call`` button.
 
