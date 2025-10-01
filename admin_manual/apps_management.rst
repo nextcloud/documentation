@@ -24,7 +24,7 @@ Those apps are supported and developed by Nextcloud GmbH directly and
 have an **Featured**-tag.
 
 .. note:: Your Nextcloud server needs to be able to communicate with
-          ``https://apps.nextcloud.com`` to list and download apps. Please make sure to whitelist this target in your firewall or proxy if necessary.
+          ``https://apps.nextcloud.com``, ``https://ltd[1-3].nextcloud.com``, ``https://garm[1-5].nextcloud.com`` to list and download apps. Please make sure to whitelist this target in your firewall or proxy if necessary.
 
 .. note:: To get access to work-arounds, long-term-support, priority bug fixing
           and custom consulting for supported apps, contact our `sales team <https://nextcloud.com/enterprise/>`_.
