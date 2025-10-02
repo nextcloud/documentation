@@ -118,13 +118,13 @@ of our mobile apps.
 Files App
 ^^^^^^^^^
 
-- **iOS** 15.0+
+- **iOS** 17.0+
 - **Android** 8.1+
 
 Talk App
 ^^^^^^^^
 
-- **iOS** 15.0+
+- **iOS** 16.0+
 - **Android** 8.0+
 - **Nextcloud Server** 19.0+
 - **Nextcloud Talk** 9.0+
