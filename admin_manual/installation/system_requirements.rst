@@ -17,14 +17,14 @@ For best performance, stability and functionality we have documented some recomm
 | Operating System | - **Ubuntu 24.04 LTS** (recommended)                                  |
 | (64-bit)         | - Ubuntu 22.04 LTS                                                    |
 |                  | - **Red Hat Enterprise Linux 9** (recommended)                        |
-|                  | - Red Hat Enterprise Linux 8                                          |
 |                  | - Debian 12 (Bookworm)                                                |
 |                  | - SUSE Linux Enterprise Server 15                                     |
 |                  | - openSUSE Leap 15.6                                                  |
 |                  | - CentOS Stream                                                       |
 |                  | - Alpine Linux                                                        |
 +------------------+-----------------------------------------------------------------------+
-| Database         | - MySQL 8.0 / **8.4** or MariaDB 10.6/ **10.11** (recommended) / 11.4 |
+| Database         | - MySQL 8.0 / **8.4** (recommended)                                   |
+|                  | - MariaDB 10.6 / 10.11 / **11.4** (recommended) / 11.8                |
 |                  | - Oracle Database 11g, 19c, 21c, 23ai                                 |
 |                  |   (*only as part of an enterprise subscription*)                      |
 |                  | - PostgreSQL 13/14/15/16/17                                           |
@@ -33,10 +33,9 @@ For best performance, stability and functionality we have documented some recomm
 | Webserver        | - **Apache 2.4 with** ``mod_php`` **or** ``php-fpm`` (recommended)    |
 |                  | - nginx with ``php-fpm``                                              |
 +------------------+-----------------------------------------------------------------------+
-| PHP Runtime      | - 8.1 (*deprecated*)                                                  |
-|                  | - 8.2                                                                 |
-|                  | - **8.3** (*recommended*)                                             |
-|                  | - 8.4                                                                 |
+| PHP Runtime      | - 8.2 (*deprecated*)                                                  |
+|                  | - 8.3                                                                 |
+|                  | - **8.4** (*recommended*)                                             |
 +------------------+-----------------------------------------------------------------------+
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
