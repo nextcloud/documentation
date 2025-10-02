@@ -3,6 +3,30 @@ Advanced Talk features
 
 Nextcloud Talk has a number of advanced features users might find useful.
 
+Notifications and privacy
+-------------------------
+
+By default, Nextcloud Talk will notify you about:
+
+- New messages in private conversations;
+- Replies to messages you sent;
+- Messages mentioning you or group/team you are member of;
+- Started calls in conversations you are part of.
+
+You can change this behavior in the conversation settings. Additionally, you can configure:
+
+- **Important conversations**: you will be always notificed about new messages, even if you are in "Do Not Disturb" mode;
+- **Sensitive conversations**: content of messages will not be shown in the conversation list and obscured from notifications.
+
+.. image:: images/conversation-notifications.png
+    :width: 300px
+
+To have more control over your privacy, you can also configure the visibility of your typing and read indicators in ``Talk settings``:
+
+.. image:: images/privacy-settings.png
+    :width: 400px
+
+
 Matterbridge
 ------------
 
@@ -86,6 +110,37 @@ From within Deck, you can share tasks into chat conversations.
 
 .. image:: images/deck-talk-share-card-to-chat-in-talk.png
     :width: 600px
+
+Meetings and events
+--------------------
+
+If calendar events have a Talk conversation set as event location, you will see an information about upcoming events inside of this conversation.
+That way you can stay informed about scheduled meetings or activities directly within your chat.
+If Calendar app is enabled, you can click on an event to view details.
+
+.. image:: images/events-upcoming.png
+    :width: 400px
+
+It is possible to schedule a meeting directly from a conversation. In the dialog, you can set meeting details such as title, date, time and description.
+You can also choose to invite all participants including email guests, or select specific ones.
+
+.. image:: images/talk-schedule-meeting.png
+   :width: 400px
+
+Schedule from Calendar
+^^^^^^^^^^^^^^^^^^^^^^
+
+When creating a new event in Calendar, you can set a Talk conversation as event location. This will create a new conversation if one does not exist yet.
+
+.. image:: images/calendar-create-event.png
+   :width: 600px
+
+When the event is created, you will see a link to the conversation in the event details. Conversation will also show up in the list of conversations (discoverable by ``Events`` filter).
+
+.. image:: images/event-conversation-list.png
+   :width: 300px
+
+Like instant meetings, event conversations will be automatically deleted after configured period of inactivity (by default 28 days).
 
 Breakout rooms
 --------------
@@ -204,8 +259,6 @@ Federated conversation
 ----------------------
 With Federation feature, users can create conversations across different federated Talk instances and use Talk features as if they were on a same server.
 
-**Important** Under current development. Basic chat features are available, more to come in the future!
-
 Feature is required to be set up by the system administration.
 
 Send and accept invites
@@ -230,3 +283,17 @@ By accepting the invite, conversation will appear in the list as any other one.
 
 .. image:: images/federation-conversations-list.png
    :width: 400px
+
+You can use it further to chat with participants from other federated servers, join calls and use other available Talk features.
+
+Chat summary
+------------
+
+When AI assistant is enabled, a summary can be generated if there are more than 100 unread messages.
+You can generate it by pressing the button that is visible in chat above the first unread messages.
+
+.. image:: images/chat-summary-button.png
+   :width: 500px
+
+.. image:: images/chat-summary-text.png
+   :width: 500px

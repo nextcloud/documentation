@@ -10,6 +10,7 @@ Files & synchronization
    deleted_file_management
    desktop_mobile_sync
    encrypting_files
+   using_e2ee
    sharing
    file_drop
    large_file_upload
@@ -17,4 +18,4 @@ Files & synchronization
    version_control
    projects
    transfer_ownership
-   federated_cloud_sharing 
+   federated_cloud_sharing

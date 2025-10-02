@@ -248,6 +248,8 @@ security headers are shipped.
 .. _Web TLS Profiler: https://tlsprofiler.danielfett.de/
 .. _RFC 4086 ("Randomness Requirements for Security"): https://tools.ietf.org/html/rfc4086#section-5.2
 
+.. _connections_to_remote_servers:
+
 Connections to remote servers
 -----------------------------
 
@@ -255,7 +257,7 @@ Some functionalities require the Nextcloud server to be able to connect remote s
 This paragraph also includes the data which is being transmitted to the Nextcloud GmbH.
 Depending on your server setup, these are the possible connections:
 
-- www.nextcloud.com, www.startpage.com, www.eff.org, www.edri.org, nextcloud.com, startpage.com, eff.org, edri.org
+- connectivity.nextcloud.com, www.eff.org, edri.org
 	- `optional (config)`_
 	- for checking the internet connection
 - cloud.nextcloud.com
@@ -267,7 +269,7 @@ Depending on your server setup, these are the possible connections:
 - apps.nextcloud.com
 	- to check for available apps and their updates 
 	- submitted data: subscription key
-- github.com, objects.githubusercontent.com
+- github.com, objects.githubusercontent.com, release-assets.githubusercontent.com
 	- to download Nextcloud standard apps
 	- to download Nextcloud server releases
 - push-notifications.nextcloud.com
@@ -285,6 +287,7 @@ Depending on your server setup, these are the possible connections:
 	- if the admin has agreed to share anonymized server data
 	- submitted data: statistical data. see here for the `detailed field list`_
 - Any remote Nextcloud server that is connected with federated sharing
+- When downloading apps from the App store other domains might be accessed, based on the choice of the app developers where they host the releases. For all official Nextcloud apps this is not the case though, because they are hosted on Github.
 
 .. _optional (config): https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#has-internet-connection
 .. _detailed field list : https://github.com/nextcloud/survey_client
