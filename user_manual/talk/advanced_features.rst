@@ -3,6 +3,30 @@ Advanced Talk features
 
 Nextcloud Talk has a number of advanced features users might find useful.
 
+Notifications and privacy
+-------------------------
+
+By default, Nextcloud Talk will notify you about:
+
+- New messages in private conversations;
+- Replies to messages you sent;
+- Messages mentioning you or group/team you are member of;
+- Started calls in conversations you are part of.
+
+You can change this behavior in the conversation settings. Additionally, you can configure:
+
+- **Important conversations**: you will be always notificed about new messages, even if you are in "Do Not Disturb" mode;
+- **Sensitive conversations**: content of messages will not be shown in the conversation list and obscured from notifications.
+
+.. image:: images/conversation-notifications.png
+    :width: 300px
+
+To have more control over your privacy, you can also configure the visibility of your typing and read indicators in ``Talk settings``:
+
+.. image:: images/privacy-settings.png
+    :width: 400px
+
+
 Matterbridge
 ------------
 
@@ -102,7 +126,22 @@ You can also choose to invite all participants including email guests, or select
 
 .. image:: images/talk-schedule-meeting.png
    :width: 400px
-  
+
+Schedule from Calendar
+^^^^^^^^^^^^^^^^^^^^^^
+
+When creating a new event in Calendar, you can set a Talk conversation as event location. This will create a new conversation if one does not exist yet.
+
+.. image:: images/calendar-create-event.png
+   :width: 600px
+
+When the event is created, you will see a link to the conversation in the event details. Conversation will also show up in the list of conversations (discoverable by ``Events`` filter).
+
+.. image:: images/event-conversation-list.png
+   :width: 300px
+
+Like instant meetings, event conversations will be automatically deleted after configured period of inactivity (by default 28 days).
+
 Breakout rooms
 --------------
 Breakout rooms allow you to divide a Nextcloud Talk call into smaller groups for more focused discussions. The moderator
