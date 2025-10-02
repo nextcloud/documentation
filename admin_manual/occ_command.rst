@@ -704,6 +704,13 @@ addressbooks shared with you. This example syncs to your calendar from user bern
 
  sudo -E -u www-data php occ dav:sync-birthday-calendar bernie
 
+Disable creation of example events
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This will disable the automatic creation of example events in calendar: ::
+
+ sudo -E -u www-data php occ config:app:set dav create_example_event --value=false --type=boolean
+
 
 .. _database_conversion_label:
 
