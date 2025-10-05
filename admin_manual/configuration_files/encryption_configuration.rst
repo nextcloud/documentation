@@ -243,6 +243,8 @@ To encrypt all files for all users run:
 - Progress is displayed until all files are encrypted.
 - **Make sure no users access files during this process.**
 
+.. _occ_disable_encryption_label:
+
 Decrypting Files / Disabling Encryption
 ---------------------------------------
 
