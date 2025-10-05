@@ -1,358 +1,330 @@
-====================================
-Server-side encryption configuration
-====================================
+======================
+Server-side Encryption
+======================
 
-The primary purpose of the Nextcloud server-side encryption is to protect users' 
-files on remote storage, such as Dropbox and Google Drive, and to do it easily 
-and seamlessly from within Nextcloud.
+Overview
+--------
 
-Server-side encryption separates encryption of local and remote storage. 
-This allows you to encrypt remote storage, such as Dropbox and 
-Google, without having to also encrypt your home storage on your Nextcloud 
-server (en- or disable the checkbox "enabling encryption on your home 
-storage" in the **Server-side encryption** section of your Admin page.)
+Nextcloud provides several encryption methods to protect your data. These work at
+different layers of the system and address different security needs. This guide
+focuses on Nextcloud's built-in Server-Side Encryption (SSE).
 
-.. note:: Nextcloud supports Authenticated Encryption for all
-   newly encrypted files. See https://hackerone.com/reports/108082 for more 
-   technical information about the impact.
-   
-   For maximum security make sure to configure external storage with "Check for 
-   changes: Never". This will let Nextcloud ignore new files not added via Nextcloud, 
-   so a malicious external storage administrator could not add new files to the 
-   storage without your knowledge. Of course, this is not wise if your external 
-   storage is subject to legitimate external changes.
+.. note::
+   Encryption and risk management is a complex and nuanced topic. Unless you are
+   already an expert, it is recommended to consult a professional or perform a
+   deep dive to ensure your approach targets your specific concerns.
+   You may also find this Nextcloud Blog post helpful:
+   `Data encryption methods in Nextcloud <https://nextcloud.com/blog/encryption-in-nextcloud/>`_.
+   It provides a solid high-level overview of the different approaches commonly
+   considered when using Nextcloud.
 
-Nextcloud server-side encryption encrypts files stored on the Nextcloud server, 
-and files on remote storage that is connected to your Nextcloud server. 
-Encryption and decryption are performed on the Nextcloud server. All files sent 
-to remote storage will be encrypted by the Nextcloud server, and upon retrieval, 
-decrypted before serving them to you and anyone you have shared them with.
+Definitions
+-----------
 
-.. note:: Encryption files generate a slight overhead in size by ~1% (35% before Nextcloud 25).
-   User's quotas are based on the unencrypted file size, and not the encrypted file size.
+- **Server-Side Encryption (SSE):** Performed by the Nextcloud server, protecting
+  files at rest on local and external storage. Encryption keys are stored on the server.
+- **End-to-End Encryption (E2EE):** Performed by Nextcloud desktop or mobile clients
+  before uploading files. Only the client can decrypt, making data inaccessible to
+  server administrators and external storage providers.
+- **Master Key:** A central key controlled by the server, used to encrypt all files.
+- **User Keys:** Each user has their own key, protected by their password, to encrypt
+  their files.
+- **Recovery Key:** An admin-defined key to recover files if users lose their passwords.
 
-When files on external storage are encrypted in Nextcloud, you cannot share them 
-directly from the external storage services, but only through Nextcloud sharing 
-because the key to decrypt the data never leaves the Nextcloud server.
+Encryption Method Comparison
+----------------------------
 
-Nextcloud's server-side encryption generates a strong encryption key, which is 
-unlocked by user's passwords. Your users don't need to track an extra 
-password, but simply log in as they normally do. It encrypts only the contents 
-of files, and not filenames and directory structures.
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 25 35
 
-You should regularly backup all encryption keys to prevent permanent data loss. 
-The encryption keys are stored in the following directories:
+   * - Method
+     - Encryption Location
+     - Who Can Decrypt?
+     - Protects Against
+   * - SSE (Master Key)
+     - Server
+     - Admins & users
+     - External storage providers
+   * - SSE (User Keys)
+     - Server
+     - Users & malicious admins
+     - External storage providers
+   * - SSE (User Keys w/ Recovery)
+     - Server
+     - Users & admins with recovery key
+     - External storage providers
+   * - E2EE
+     - Client
+     - Users only
+     - Admins, external storage providers
+   * - Disk/Block Encryption
+     - Server
+     - OS admin
+     - Physical tampering, theft
 
-``data/<user>/files_encryption`` 
-  Users' private keys and all other keys necessary to decrypt the users' files
-``data/files_encryption``
-  private keys and all other keys necessary to decrypt the files stored on a
-  system wide external storage
-  
-When encryption is enabled, all files are encrypted and decrypted by the 
-Nextcloud application, and stored encrypted on your remote storage.
-This protects your data on externally hosted storage. The Nextcloud 
-admin and the storage admin will see only encrypted files when browsing backend 
-storage.  
-  
-.. warning:: Encryption keys are stored only on the Nextcloud server, eliminating
-   exposure of your data to third-party storage providers. The encryption app 
-   does **not** protect your data if your Nextcloud server is compromised, and it
-   does not prevent Nextcloud administrators from reading user's files. This 
-   would require client-side encryption, which this app does not provide. If 
-   your Nextcloud server is not connected to any external storage services then 
-   it is better to use other encryption tools, such as file-level or 
-   whole-disk encryption. 
-   
-   Note also that SSL terminates at or before Apache on the Nextcloud server, and 
-   all files will exist in an unencrypted state between the SSL connection 
-   termination and the Nextcloud code that encrypts and decrypts files. This is 
-   also potentially exploitable by anyone with administrator access to your 
-   server. Read `How Nextcloud uses encryption to protect your data 
-   <https://nextcloud.com/blog/encryption-in-nextcloud/>`_ for more information.
-   
-Before enabling encryption
---------------------------
+Key Points & Limitations
+------------------------
 
-Plan very carefully before enabling encryption because it is not reversible via 
-the Nextcloud Web interface. If you lose your encryption keys your files are not 
-recoverable. Always have backups of your encryption keys stored in a safe 
-location, and consider enabling all recovery options.
+- Encryption methods are not interchangeable; each is designed for specific risks.
+- SSE is mainly for protecting files on external, third-party storage.
+- E2EE is for scenarios where server administrators must not access data.
+- SSE does **not** encrypt filenames or folder structures, only file contents.
+- SSE does not protect data from a compromised Nextcloud server or malicious administrator.
+  Use E2EE for this threat.
+- Server-Side Encryption cannot be reversed via the Nextcloud Web interface.
+- Troubleshooting SSE matters generally requires ``occ`` command access. Make sure you have
+  it before enabling SSE!
+- Losing encryption keys or your instance secret results in permanent data loss.
+- Nextcloud quotas are based on unencrypted file size; encrypted files may be ~1% larger
+  (was 35% before Nextcloud 25).
+- SSL/TLS (HTTPS) terminates before files are encrypted, so files may be exposed in memory
+  between SSL/TLS and Nextcloud’s encryption code.
+- When files on external storage are encrypted in Nextcloud, you cannot share them directly
+  from the external storage provider; sharing is only possible via Nextcloud, since the
+  decryption key never leaves the Nextcloud server.
+- For local storage, it may be better to use other encryption tools, such as disk/block device
+  encryption (e.g., LUKS) provided by your operating system. This protects against other concerns,
+  such as theft of your physical server, which is not SSE's goal.
 
-There are two encryption mode, `master key` and `user keys`. By default, `master key` is used.
+.. note::
+   Don't confuse Nextcloud's SSE with S3 SSE-C (also supported).
 
-If you do not want to use a master key setup, but wish to use user key encryption
-instead, please run the following command before enabling the encryption::
+.. note::
+   Nextcloud (since v9.0.0) supports Authenticated Encryption for all newly encrypted files.
+   See https://hackerone.com/reports/108082 for technical details.
 
- occ encryption:disable-master-key
+.. note::
+   For maximum security, configure external storage with "Check for changes: Never".
+   This causes Nextcloud to ignore new files not added via Nextcloud, preventing unauthorized
+   additions by external storage admins. Do not use this if your storage is subject to legitimate
+   external changes.
 
-You have more options via the ``occ`` command (see :ref:`occ_encryption_label`).
+Before You Enable Encryption
+----------------------------
 
-.. _enable_encryption_label:
+1. Read this guide fully and understand the risks.
+2. Back up your instance configuration and all encryption keys in a safe location before proceeding.
+3. Decide which key management mode suits your needs (see below).
 
-Enabling encryption
--------------------
+Key Management Modes
+--------------------
 
-Nextcloud encryption consists of two parts. The base encryption system is 
-enabled and disabled on your Admin page. First you must enable this, and then 
-select an encryption module to load. Currently the only available encryption 
-module is the Nextcloud Default Encryption Module.
+**Master Key (default):**
 
-First go to the **Server-side encryption** section of your Admin page and check 
-**Enable server-side encryption**. You have one last chance to change your mind.
+- All files are encrypted with a central server-controlled key.
+- Admins can decrypt any user’s files.
+- Offers better performance and compatibility with more login/authentication modes.
+- Best for organizations that need to recover files if users forget their passwords.
+
+**User Keys:**
+
+- Each user’s files are encrypted with a password-protected key.
+- Admins cannot (readily) decrypt files without the user's password, unless a recovery key is defined.
+- If a user forgets their password and no recovery key exists, their files are lost.
+
+**How to choose:**
+
+- If you trust your server administrators, use master key mode.
+- If you need to prevent admins from accessing files, use E2EE.
+- User key mode offers some protection against malicious server administrators, but has limitations.
+
+**To select user key mode:**  
+
+Run:
+
+.. code-block:: bash
+
+   occ encryption:disable-master-key
+
+before enabling encryption.
+
+
+Enabling Encryption (Step-by-Step)
+----------------------------------
+
+1. Go to the **Server-side encryption** section of your Admin page.
+2. Check **Enable server-side encryption**.
+3. You’ll see a message: "No encryption module loaded."
+   Go to your Apps page and enable the Nextcloud Default Encryption Module.
+4. Return to your Admin page. The module will appear and be auto-selected.
+5. Log out and log back in to initialize your encryption keys.
+6. Optional: Un-check the box for encrypting home storage if you wish to keep local files unencrypted.
 
 .. figure:: images/encryption3.png
 
-After clicking the **Enable Encryption** button you see the message "No 
-encryption module loaded, please load a encryption module in the app menu", so 
-go to your Apps page to enable the Nextcloud Default Encryption Module.
-
-.. figure:: images/encryption1.png
-
-Return to your Admin page to see the Nextcloud Default Encryption 
-Module added to the module selector, and automatically selected. Now you must 
-log out and then log back in to initialize your encryption keys.
-
 .. figure:: images/encryption14.png
-
-When you log back in, there is a checkbox for enabling encryption on your home 
-storage. This is checked by default. Un-check to avoid encrypting your home 
-storage.
 
 .. figure:: images/encryption15.png
 
-Encrypting external mountpoints
--------------------------------
+Backups
+-------
 
-You and your users can encrypt individual external mountpoints. You must have
-external storage enabled on your Admin page, and enabled for your users.
+Encryption keys are stored in:
 
-Encryption settings can be configured in the mount options for an external
-storage mount, see :ref:`external_storage_mount_options_label`
-(:doc:`external_storage_configuration_gui`)
+- ``data/<user>/files_encryption`` (per-user keys)
+- ``data/files_encryption`` (system-wide/external storage keys)
 
+Encrypting External Mountpoints and Team Folders
+------------------------------------------------
 
-Encrypting team folders
------------------------
+- You and your users can encrypt external mountpoints.
 
-By default team folder are not encrypted. If you want to encrypt your team folders
-as well you need to run following occ command:
+   - Set encryption options in the mount configuration for each external storage.
+   - See :ref:`external_storage_mount_options_label` in :doc:`external_storage_configuration_gui`.
 
- occ config:app:set groupfolders enable_encryption --value=true
+- To encrypt Team Folders, run:
 
-Like for all other files and server-side-encryption in general, this will not encrypt
-already existing files in team folders but only new or updated files after
-the occ command was executed.
+.. code-block:: bash
 
-.. _occ_encryption_label:
+   occ config:app:set groupfolders enable_encryption --value=true
 
-occ encryption commands
------------------------
+.. note::
+   Only new or updated files in team folders will be encrypted.
 
-If you have shell access you may use the ``occ`` command to perform encryption
-operations, and you have additional options such as decryption and creating a
-single master encryption key. See :ref:`encryption_label`  for detailed
-instructions on using ``occ``.
+Managing Encryption via occ Commands
+------------------------------------
 
-Get the current status of encryption and the loaded encryption module::
+Here is a reference table for common occ commands:
 
- occ encryption:status
-  - enabled: false
-  - defaultModule: OC_DEFAULT_MODULE
+.. list-table::
+   :header-rows: 1
+   :widths: 35 65
 
-This is equivalent to checking **Enable server-side encryption** on your Admin
-page::
+   * - Command
+     - Description
+   * - occ encryption:status
+     - Show encryption status and module
+   * - occ encryption:enable
+     - Enable server-side encryption
+   * - occ encryption:list-modules
+     - List available encryption modules
+   * - occ encryption:set-default-module [Module ID]
+     - Select default encryption module
+   * - occ encryption:encrypt-all
+     - Encrypt all files for all users
+   * - occ encryption:decrypt-all [user]
+     - Decrypt all files (or for one user)
+   * - occ encryption:show-key-storage-root
+     - Show key storage location
+   * - occ encryption:change-key-storage-root [dir]
+     - Move key storage directory
+   * - occ encryption:enable-master-key
+     - Enable master key mode
+   * - occ encryption:disable-master-key
+     - Enable user key mode
+   * - occ encryption:fix-encrypted-version
+     - Fix bad signature errors
+   * - occ encryption:fix-key-location [user]
+     - Fix key not found errors
 
- occ encryption:enable
- Encryption enabled
+**Example: Move keys to a new directory (Ubuntu Linux):**
 
- Default module: OC_DEFAULT_MODULE
+.. code-block:: bash
 
-List the available encryption modules::
+   cd /your/nextcloud/data
+   mkdir keys
+   chown -R root:www-data keys
+   chmod -R 0770 keys
+   occ encryption:change-key-storage-root keys
 
- occ encryption:list-modules
-  - OC_DEFAULT_MODULE: Default encryption module [default*]
-
-Select a different default Encryption module (currently the only available
-module is OC_DEFAULT_MODULE)::
-
- occ encryption:set-default-module [Module ID].
-
-The [module ID] is taken from the ``encryption:list-modules`` command.
-
-Encrypt all data files for all users. For performance reasons, when you enable
-encryption on a Nextcloud server only new and changed files are encrypted. This
-command gives you the option to encrypt all files.
-
-Run ``occ``::
-
- occ encryption:encrypt-all
-
- You are about to start to encrypt all files stored in your Nextcloud.
- It will depend on the encryption module you use which files get encrypted.
- Depending on the number and size of your files this can take some time.
- Please make sure that no users access their files during this process!
-
- Do you really want to continue? (y/n)
-
-When you type ``y`` it creates a key pair for each of your users, and then
-encrypts their files, displaying progress until all user files are encrypted.
-
-Decrypt all user data files, or optionally a single user::
-
- occ encryption:decrypt-all [username]
-
-View current location of keys::
-
- occ encryption:show-key-storage-root
- Current key storage root:  default storage location (data/)
-
-Move keys to a different folder, either locally or on a different server.
-The folder must already exist, be owned by root and your HTTP group, and be
-restricted to root and your HTTP group. Further the folder needs to be located
-somewhere in your Nextcloud data folder, either physically, or as a mount.
-This example is for Ubuntu Linux. Note that the new folder is relative to your ``occ`` directory::
-
- cd /your/nextcloud/data
- mkdir keys
- chown -R root:www-data keys
- chmod -R 0770 keys
- occ encryption:change-key-storage-root keys
- Start to move keys:
-    4 [============================]
- Key storage root successfully changed to keys
-
-Create a new master key. Use this when you have a single-sign on
-infrastructure.  Use this only on fresh installations with no existing data, or
-on systems where encryption has not already been enabled. It is not possible to
-disable it::
-
- occ encryption:enable-master-key
-
-Fix Bad signature errors::
-
- occ encryption:fix-encrypted-version --all
- occ encryption:fix-encrypted-version <userid>
- occ encryption:fix-encrypted-version <userid> -p <path>
-
-Fix key not found errors::
-
- occ encryption:fix-key-location <userid>
-
-.. _occ_disable_encryption_label:
-
-Disabling encryption
+Encrypting All Files
 --------------------
 
-You may disable encryption only with ``occ``. Make sure you have backups of all 
-encryption keys, including users'.
-Disable your encryption module with this command::
+By default, only new and changed files are encrypted when you enable SSE.
+To encrypt all files for all users run:
 
- occ encryption:decrypt-all
+.. code-block:: bash
 
-It will put your server into maintenance mode and back.
-It also takes care of disabling encryption when all files have been decrypted.
-If the command is aborted some files have been decrypted and others are still encrypted.
-In this case the command will keep the encryption turned on
-and Nextcloud can handle this situation fine.
-You can proceed decrypting the remaining files by calling the command again
-once the problems that caused the abortion have been resolved.
+   occ encryption:encrypt-all
 
-.. warning:: Disabling encryption without decrypting all the files will lead to decryption errors in the future as this state causes unpredictable behaviors.
-.. note:: The ``occ encryption:decrypt-all`` can take a lot of time. You can run one user at a time like so: ``occ encryption:decrypt-all <user-id>``.
+- **Make sure you have backups before running.**
+- The command creates a key pair for each user and encrypts their files.
+- Progress is displayed until all files are encrypted.
+- **Make sure no users access files during this process.**
 
-Files not encrypted
+Decrypting Files / Disabling Encryption
+---------------------------------------
+
+- Only possible via occ.
+- First, decrypt all files:
+
+.. code-block:: bash
+
+   occ encryption:decrypt-all
+
+- **Make sure you have backups before running.**
+- Server enters maintenance mode. If interrupted, rerun until complete.
+- If some files remain encrypted, rerun the command after resolving issues.
+- **Warning:** Disabling encryption without decrypting all files will cause unpredictable errors.
+
+You can decrypt for individual users:
+
+.. code-block:: bash
+
+   occ encryption:decrypt-all <user-id>
+
+Data Not Encrypted
 -------------------
 
-Only the data in the files in ``data/user/files`` are encrypted, and not the 
-filenames or folder structures. These files are never encrypted:
+Only file contents is encrypted. The following are **not** encrypted:
 
-- Existing files in the trash bin & Versions. Only new and changed files after 
-  encryption is enabled are encrypted.
-- Existing files in Versions
-- Image thumbnails from the Gallery app
-- Previews from the Files app
-- The search index from the full text search app
-- Third-party app data
+.. list-table::
+   :header-rows: 1
 
-There may be other files that are not encrypted; only files that are exposed to 
-third-party storage providers are guaranteed to be encrypted.
+   * - Not Encrypted
+   * - Filenames and folder structures
+   * - Existing trash bin files
+   * - Existing historical file versions
+   * - Image thumbnails
+   * - Image previews
+   * - Full text search index
+   * - Application data that isn't file-based (e.g., Deck, Tables)
 
+User Keys: Sharing & Recovery
+-----------------------------
 
-Using user keys
----------------
+**Sharing encrypted files:**
 
-If you disabled master key and are using user keys instead, mind the following information:
-
-Sharing encrypted files
-^^^^^^^^^^^^^^^^^^^^^^^
-
-After encryption is enabled your users must also log out and log back in to
-generate their personal encryption keys. They will see a yellow warning banner
-that says "Encryption App is enabled but your keys are not initialized, please
-log-out and log-in again."
-
-Share owners may need to re-share files after encryption is enabled; users
-trying to access the share will see a message advising them to ask the share
-owner to re-share the file with them. For individual shares, un-share and
-re-share the file. For group shares, share with any individuals who can't access
-the share. This updates the encryption, and then the share owner can remove the
-individual shares.
+- After enabling user key mode, users must log out and log in to generate keys.
+- Users who see "Encryption App is enabled but your keys are not initialized..." must log out and back in.
+- Shared files may need to be re-shared after encryption is enabled.
+    - For individual shares: un-share and re-share the file.
+    - For group shares: share with any individuals who cannot access the share, then remove their individual shares.
 
 .. figure:: images/encryption9.png
 
-.. _enable-file-recovery-key:
+**Enabling file recovery keys:**
 
-Enabling users file recovery keys
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you lose your Nextcloud password, then you lose access to your encrypted
-files. If one of your users loses their Nextcloud password their files are
-unrecoverable. You cannot reset their password in the normal way; you'll see a
-yellow banner warning "Please provide an admin recovery password, otherwise all
-user data will be lost".
-
-To avoid all this, create a Recovery Key. Go to the Encryption section of your
-Admin page and set a recovery key password.
+- If you lose your Nextcloud password, you lose access to your encrypted files.
+- If a user loses their password, their files are unrecoverable unless a recovery key is enabled.
+- To enable recovery, go to Encryption in Admin page and set a recovery key password.
+- Users must enable password recovery in their Personal settings for the Recovery Key to work.
+- For users who have enabled password recovery, admins can reset passwords and recover files using the Recovery Key.
 
 .. figure:: images/encryption10.png
-
-Then your users have the option of enabling password recovery on their Personal
-pages. If they do not do this, then the Recovery Key won't work for them.
-
 .. figure:: images/encryption7.png
-
-For users who have enabled password recovery, give them a new password and
-recover access to their encrypted files by supplying the Recovery Key on the
-Users page.
-
 .. figure:: images/encryption8.png
-
-You may change your Recovery Key password.
-
 .. figure:: images/encryption12.png
 
-Please check the various key types in detail `here <encryption_details.html>`_
+LDAP and External User Backends
+-------------------------------
 
-LDAP and other external user back-ends
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you use an external user back-end, such as an LDAP or Samba server, and you
-change a user's password on the back-end, the user will be prompted to change
-their Nextcloud login to match on their next Nextcloud login. The user will need
-both their old and new passwords to do this. If you have enabled the Recovery
-Key then you can change a user's password in the Nextcloud Users panel to match
-their back-end password, and then, of course, notify the user and give them
-their new password.
+- If using LDAP/Samba and changing passwords on the backend, users will need both their old and new passwords on next login.
+- If recovery key is enabled, admins can reset the password via Nextcloud and notify users.
 
 Troubleshooting
 ---------------
 
-Invalid private key for encryption app
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- **Invalid private key for encryption app:**
+  See `GitHub Issue #8546 <https://github.com/nextcloud/server/issues/8546>`_ and
+  `workaround <https://github.com/nextcloud/server/issues/8546#issuecomment-514139714>`_.
 
-This `issue <https://github.com/nextcloud/server/issues/8546>`_ is being worked
-on. In the meantime there is a 
-`workaround <https://github.com/nextcloud/server/issues/8546#issuecomment-514139714>`_
-which unfortunately is only suitable for administrators comfortable with the
-command line.
+Further Reading
+---------------
+
+- `How Nextcloud uses encryption to protect your data <https://nextcloud.com/blog/encryption-in-nextcloud/>`_
+- `Technical impact of Authenticated Encryption <https://hackerone.com/reports/108082>`_
+- `Nextcloud SSE Implementation Details <encryption_details.html>`_
+- `Nextcloud Encryption (SSE & E2EE) Recovery Tools <https://github.com/nextcloud/encryption-recovery-tools>`_
+- `Nextcloud E2EE Server API App (required for E2EE usage) <https://github.com/nextcloud/end_to_end_encryption/>`_
