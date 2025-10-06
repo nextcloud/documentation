@@ -51,7 +51,6 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
 - The string ``/nextcloud`` is prepended to all prefix paths.
 - The root of the domain is mapped to ``/var/www`` rather than ``/var/www/nextcloud``, so that the URI ``/nextcloud`` is mapped to the server directory ``/var/www/nextcloud``.
 - The blocks that handle requests for paths outside of ``/nextcloud`` (i.e. ``/robots.txt`` and ``/.well-known``) are pulled out of the ``location ^~ /nextcloud`` block.
-- The block which handles `/.well-known` doesn't need a regex exception, since the rule which prevents users from accessing hidden folders at the root of the Nextcloud installation no longer matches that path.
 
 .. literalinclude:: nginx-subdir.conf.sample
    :language: nginx
