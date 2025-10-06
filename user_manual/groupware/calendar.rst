@@ -108,7 +108,8 @@ always be free, regardless of an events' settings.
 Sharing calendars
 ~~~~~~~~~~~~~~~~~
 
-You may share your calendar with other users or groups.
+You may share your calendar with local users, groups or read-only with remote users on federated
+servers.
 
 .. figure:: images/calendar_sharing_1.png
 
