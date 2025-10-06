@@ -55,6 +55,6 @@ Removed APIs
 
 - The ``\OCP\BackgroundJob\IJob::execute`` method was deprecated since Nextcloud 25 and was now removed.
   Instead use the ``IJob::start`` method, available since Nextcloud 25.
-- The ``\OCP\Search\PaggedProvider``, ``\OCP\Search\Provider`` and ``\OCP\Search\Result`` classes were
+- The ``\OCP\Search\PagedProvider``, ``\OCP\Search\Provider`` and ``\OCP\Search\Result`` classes were
   deprecated since Nextcloud 20 and were now removed. Instead use ``\OCP\Search\SearchResult`` and
-  ``\OCP\Search\IProvier``, available since Nextcloud 20.
+  ``\OCP\Search\IProvider``, available since Nextcloud 20.
