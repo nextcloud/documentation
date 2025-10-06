@@ -134,6 +134,23 @@ If you need to allow this, change the following parameter to::
 
  sudo -E -u www-data php occ config:app:set dav webcalAllowLocalAccess --value yes
 
+Federated calendar shares
+-------------------------
+
+.. versionadded:: 32.0.0
+
+Nextcloud supports creating read-only federated calendar shares.
+A user is able to share a calendar with a remote user on a federated instance.
+For now, the shares are read-only and remote users are not able to change the events inside the
+shared calendar.
+
+The feature can be optionally disabled through an app config.
+Run the following command to disable creating new federated calendar shares for all users::
+
+  sudo -E -u www-data php occ config:app:set dav enableCalendarFederation --type=bool --value=false
+
+Note that existing shares will not be deleted when the feature is disabled.
+
 Trash bin
 ---------
 
