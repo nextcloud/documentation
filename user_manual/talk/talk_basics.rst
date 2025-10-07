@@ -414,6 +414,11 @@ From media settings dialog, you can also change the background of your video.
 .. image:: images/background-settings-in-call.png
     :width: 400px
 
+All these settings are also available as direct actions in the bottom bar.
+
+.. image:: images/call-bottom-bar.png
+    :width: 300px
+
 You can change other settings in the ``Talk settings`` dialog.
 
 .. image:: images/talk-settings.png
@@ -433,7 +438,12 @@ You can zoom in and out of the shared screen with mouse wheel, double click or t
 Changing view in a call
 -----------------------
 
-You can switch the view in a call with the little four-block icon in the top-right between promoted-view and grid view. The grid view will show everyone equally big and if the people do not fit on the screen, buttons will appear on the left and right that let you navigate.
+You can switch the view in a call in the bottom bar between promoted view and grid view. 
+
+.. image:: images/call-view-toggle-button.png
+    :width: 300px
+
+The grid view will show as many people as the screen can fit, allowing navigation with buttons on the left and right.
 
 .. image:: images/talk-grid-view.png
     :width: 700px
@@ -482,14 +492,35 @@ You can narrow down your search by using filters such as date range, and sender.
 .. image:: images/chat-search-messages-tab.png
    :width: 500px
 
+Threaded messages
+-----------------
 
+You can create threads in conversations to keep discussions organized. The thread creation option is available in the new message additional actions.
 
+.. image:: images/thread-create-action.png
+   :width: 500px
 
+Then, you can add a title and description for the thread and start the discussion.
 
+.. image:: images/thread-example.png
+   :width: 500px
 
+You can view all replies in a thread either from the replies button on the message or from ``Shared items`` tab in the content sidebar.
 
+.. image:: images/threads-list-shared-items.png
+   :width: 500px
 
+You can subscribe to a thread to receive notifications about new replies. It is possible to subscribe from the thread itself or from the sidebar.
 
+.. image:: images/thread-notifications.png
+   :width: 500px
 
+Subscribed threads are easily accessible from the navigation bar in ``Threads`` navigation.
 
+.. image:: images/threads-followed.png
+   :width: 500px
 
+Editing thread title is possible from the thread itself or from the sidebars.
+
+.. image:: images/thread-edit-title.png
+   :width: 500px
