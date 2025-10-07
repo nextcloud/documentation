@@ -16,3 +16,4 @@ Artificial Intelligence
     app_context_agent
     app_summary_bot
     ai_as_a_service
+    insight_and_debugging
