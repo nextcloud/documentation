@@ -247,11 +247,6 @@ For compliance reasons with various privacy rights, it is possible to ask partic
 If recording consent is enabled, every participant, including moderators, will see a highlighted section in the "Media settings" before joining a call.
 This section informs participants that the call may be recorded. To give explicit consent for recording, participants must check the box. If they do not give consent, they will not be allowed to join the call.
 
-.. image:: images/give-recording-consent.png
-    :width: 500px
-
-|
-
 .. image:: images/give-recording-consent-checked.png
     :width: 500px
 
@@ -296,4 +291,14 @@ You can generate it by pressing the button that is visible in chat above the fir
    :width: 500px
 
 .. image:: images/chat-summary-text.png
+   :width: 500px
+
+Call live transcription
+-----------------------
+
+Call live transcription allows to transcribe the speech in real-time during a call. It is set up by the system administration (High-performance backend and `Live Transcription App <https://apps.nextcloud.com/apps/live_transcription>`_ are required).
+Moderators need to set the language of the transcription in the conversation settings. All participants then can enable or disable the transcription for themselves in the call bottom bar.
+When enabled, the transcription will appear in the bottom and will be updated in real-time.
+
+.. image:: images/call-transcription.png
    :width: 500px
