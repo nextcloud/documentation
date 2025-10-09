@@ -225,6 +225,9 @@ Here is a reference table for common occ commands:
    * - occ encryption:fix-key-location [user]
      - Fix key not found errors
 
+.. tip::
+   See the :ref:`encryption_label` section of the ``occ`` reference guide for further ``encryption`` command examples and details.
+
 **Example: Move keys to a new directory (Ubuntu Linux):**
 
 .. code-block:: bash
@@ -332,6 +335,7 @@ Troubleshooting
 Further Reading
 ---------------
 
+- :ref:`occ Command Reference: Encryption <encryption_label>`
 - `How Nextcloud uses encryption to protect your data <https://nextcloud.com/blog/encryption-in-nextcloud/>`_
 - `Technical impact of Authenticated Encryption <https://hackerone.com/reports/108082>`_
 - `Nextcloud SSE Implementation Details <encryption_details.html>`_
