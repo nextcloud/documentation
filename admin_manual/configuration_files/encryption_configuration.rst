@@ -30,6 +30,10 @@ Definitions
 - **User Keys:** Each user has their own key, protected by their password, to encrypt
   their files.
 - **Recovery Key:** An admin-defined key to recover files if users lose their passwords.
+- **Disk/Block Device Encryption:** A method of securing all data stored on a physical 
+  storage device by encrypting it at the hardware or filesystem level - typically using 
+  tools such as LUKS on Linux - so that data is only accessible after the device is 
+  unlocked with the correct key or password.
 
 Encryption Method Comparison
 ----------------------------
@@ -67,34 +71,37 @@ Key Points & Limitations
 ------------------------
 
 - Encryption methods are not interchangeable; each is designed for specific risks.
-- SSE is mainly for protecting files on external, third-party storage.
-- E2EE is for scenarios where server administrators must not access data.
+- **Server-Side Encryption (SSE)** is mainly for protecting files on external, third-party storage.
+- **End-to-End Encryption (E2EE)** is for scenarios where server administrators must not access data.
 - SSE does **not** encrypt filenames or folder structures, only file contents.
 - SSE does not protect data from a compromised Nextcloud server or malicious administrator.
   Use E2EE for this threat.
-- Server-Side Encryption cannot be reversed via the Nextcloud Web interface.
-- Troubleshooting SSE matters generally requires ``occ`` command access. Make sure you have
-  it before enabling SSE!
+- SSE cannot be reversed via the Nextcloud Web interface.
+- Troubleshooting SSE generally requires ``occ`` command access. Make sure you have
+  this before enabling SSE!
 - Losing encryption keys or your instance secret results in permanent data loss.
-- Nextcloud quotas are based on unencrypted file size; encrypted files may be ~1% larger
+- Nextcloud quotas are based on unencrypted file size; files encrypted with SSE may be ~1% larger
   (was 35% before Nextcloud 25).
 - SSL/TLS (HTTPS) terminates before files are encrypted, so files may be exposed in memory
-  between SSL/TLS and Nextcloud’s encryption code.
-- When files on external storage are encrypted in Nextcloud, you cannot share them directly
+  between SSL/TLS and Nextcloud’s SSE encryption code.
+- When files on external storage are encrypted with SSE, you cannot share them directly
   from the external storage provider; sharing is only possible via Nextcloud, since the
   decryption key never leaves the Nextcloud server.
 - For local storage, it may be better to use other encryption tools, such as disk/block device
   encryption (e.g., LUKS) provided by your operating system. This protects against other concerns,
   such as theft of your physical server, which is not SSE's goal.
 
+.. warning::
+   SSE does **not** encrypt filenames or folder structures, only file contents.
+
 .. note::
    Don't confuse Nextcloud's SSE with S3 SSE-C (also supported).
 
-.. note::
+.. versionchanged:: 9.0.0
    Nextcloud (since v9.0.0) supports Authenticated Encryption for all newly encrypted files.
    See https://hackerone.com/reports/108082 for technical details.
 
-.. note::
+.. tip::
    For maximum security, configure external storage with "Check for changes: Never".
    This causes Nextcloud to ignore new files not added via Nextcloud, preventing unauthorized
    additions by external storage admins. Do not use this if your storage is subject to legitimate
