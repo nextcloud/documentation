@@ -5,52 +5,64 @@ Troubleshooting
 ===============
 
 Calendar
-########
+--------
 
 Missing Shared Calendars
-************************
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Problem:**
-    User should have access to a shared calendar, but the calendar is not displayed in Nextcloud Calendar or other CalDAV clients (e.g., DAVx⁵ or Thunderbird).
+    A user should have access to a shared calendar, but the calendar is not displayed in Nextcloud Calendar or other CalDAV clients (e.g., DAVx⁵ or Thunderbird).
 
 **Affected Versions:**
     - Nextcloud Server 31.0.5 and below
     - Nextcloud Server 30.0.11 and below
 
 **Possible Reason:**
-   A bug in previous versions of Nextcloud Server could mistakenly add a calendar unshare instead of removing the share permission. For example, a user has read access through a group membership, and the owner grants permission to a single user to modify a calendar. When removing the modify permission again, the unshare record was created.
+    A bug in previous versions of Nextcloud Server could mistakenly add a calendar unshare instead of removing the share permission. For example, a user has read access through a group membership, and the owner grants permission to a single user to modify a calendar. When the modify permission is removed, an unshare record is incorrectly created.
 
 **Troubleshooting Steps:**
 
 1. **Check for Hidden Calendars:**
-    It's possible for a user to hide a calendar. Please check in Nextcloud Calendar if the missing calendar is listed in the "hidden" section. If the missing calendar is listed there, check the box in front of the calendar to enable it again.
+    It’s possible for a user to hide a calendar. Please check in Nextcloud Calendar if the missing calendar is listed in the "hidden" section. If it is, check the box in front of the calendar to enable it again.
 
 2. **List Calendar Shares:**
-    Run the command ``occ dav:list-calendar-shares <uid>`` to list all shares for a user. Look for lines with the Calendar URI/Calendar Name of the missing calendar and Permissions = Unshare. If there's such a line, but the user should have access, you have three options:
+    Run the command ``occ dav:list-calendar-shares <uid>`` to list all shares for a user. Look for lines with the Calendar URI/Calendar Name of the missing calendar and Permissions = Unshare. If such a line exists, but the user should have access, you have three options:
 
 A. **Create a User Share and Remove It Again:**
     In most cases, sharing the calendar with the user again (as an individual/user share) will correct the state in the database.
 
 B. **Remove All Calendar Unshares for a User:**
-    ``occ dav:clear-calendar-unshares <uid>``.
+    Run ``occ dav:clear-calendar-unshares <uid>``.
 
 C. **Delete Specific Unshares:**
-    Some users may have many calendar unshares, so it might be easier to delete only the unwanted unshare. The ``Share Id`` references the id of a row in the ``oc_dav_shares`` database table. Delete the row with the matching id to remove the unshare.
+    Some users may have many calendar unshares, so it might be easier to delete only the unwanted unshare. The ``Share Id`` refers to the ID of a row in the ``oc_dav_shares`` database table. Delete the row with the matching ID to remove the unshare.
 
-**Why Isn't there an Automated Migration to Correct the Problem?**
-    Unsharing a calendar is a feature, and with the given information, we cannot determine if a calendar was unshared on purpose or as a result of the bug.
+**Why isn't there an automated migration to correct the problem?**
+    Unsharing a calendar is a feature, and with the given information, we cannot determine if a calendar was unshared intentionally or as a result of the bug.
+
+Contacts
+--------
+
+Unable to update contacts or events
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you get an error like:
+
+``PATCH https://example.com/remote.php/dav HTTP/1.0 501 Not Implemented``
+
+it is likely because of a misconfigured web server. Please refer to :ref:`trouble-webdav-label` for troubleshooting steps.
 
 Mail
-####
+----
 
 Autoconfig for your mail domain fails
-*************************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If autoconfiguration for your domain fails, you can create an autoconfig file and place it as ``https://autoconfig.yourdomain.tld/mail/config-v1.1.xml``. For more information please refer to `Mozilla's documentation <https://wiki.mozilla.org/Thunderbird:Autoconfiguration:ConfigFileFormat>`_.
 
 
 Database insert problems on MySQL
-*********************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If the mail app fails to insert new rows for messages (`oc_mail_messages`), recipients (`oc_mail_recipients`) or similar tables, you are possibly not using the 4 byte support.
 
@@ -58,7 +70,7 @@ See :doc:`../configuration_database/mysql_4byte_support` for how to update your 
 
 
 Export threading data
-*********************
+^^^^^^^^^^^^^^^^^^^^^
 
 If you encounter an issue with threading, e.g. messages that belong to the same conversation thread don't show up as one, you can export the data the algorithm will use to build threads. We are dealing with sensitive data here, but the command will optionally redact the data with the ``--redact`` switch. The exported data will then only keep the original database IDs, the rest of the data is randomized. This format does not the export message details, it still contains metadata about how many messages you have and how they relate. Please consider this before posting the data online.
 
@@ -118,7 +130,7 @@ It's recommended practice to pipe the export into a file, which you can later sh
 .. _mail_get_account_ids_groupware:
 
 Get account IDs
-***************
+^^^^^^^^^^^^^^^
 
 For many troubleshooting instructions you need to know the `id` of a mail account. You can acquire this through the database, but it's also possible to utilize the account export command of :doc:`occ  <../occ_command>` if you know the UID of the user utilizing the mail account::
 
@@ -138,14 +150,13 @@ In this example, ``1393`` is the `account ID`.
 
 
 Issues connecting to Outlook.com
-********************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you can not access your Outlook.com account try to enable the `Two-Factor Verification <https://account.live.com/proofs/Manage>`_ and set up an `app password <https://account.live.com/proofs/AppPassword>`_, which you then use for the Nextcloud Mail app.
 
 
 Logging the IMAP/SMTP/Sieve connections
-***************************************
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The Nextcloud Mail app offers an extensive logging system to make it easier identifying and tracking down bugs. As this may include sensitive data, be sure to remove or mask them before posting them publicly.
 
 Per mail account
@@ -211,7 +222,7 @@ Once you've collected the necessary data, it's highly recommended to disable the
 
 
 Timeout and other connectivity issues
-*************************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can use OpenSSL to test and benchmark the connection from your nextcloud host to the IMAP/SMTP host.::
 
@@ -235,7 +246,7 @@ The output should look similar to this::
 
 
 Manual account synchronization and threading
-********************************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To troubleshoot synchronization or threading problems it's helpful to run the sync from the command line while the user does not use the web interface (reduces chances of a conflict)::
 
