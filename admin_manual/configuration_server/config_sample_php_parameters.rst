@@ -4223,27 +4223,6 @@ Defaults to ``true``
 App config options
 ------------------
 
-.. _label-activity-app-config:
-
-Activity app
-^^^^^^^^^^^^
-
-Retention for activities of the activity app:
-
-
-::
-
-	'activity_expire_days' => 365,
-
-Every day a cron job is ran, which deletes all activities for all users
-which are older then the number of days that is set for ``activity_expire_days``
-
-::
-
-	'activity_use_cached_mountpoints' => false,
-
-Before enabling this, read the warning in :ref:`label-activities-groupfolders`
-
 Settings app
 ^^^^^^^^^^^^
 
