@@ -1,187 +1,82 @@
 {% if READTHEDOCS %}
-{# Add rst-badge after rst-versions for small badge style. #}
+  {# Add rst-badge after rst-versions for small badge style. #}
   <!-- Here go the languages -->
-  {% set available_languages = available_languages|sort %}
+
+  {# Language code to name mapping #}
+  {% set language_names = {
+    'af': 'Afrikaans',
+    'ar': 'Arabic',
+    'br': 'Breton',
+    'ca': 'Catalan',
+    'cs': 'Czech',
+    'da': 'Danish',
+    'de': 'German',
+    'el': 'Greek',
+    'eo': 'Esperanto',
+    'es': 'Spanish',
+    'en': 'English',
+    'fi_FI': 'Finnish',
+    'fr': 'French',
+    'hr': 'Croatian',
+    'hu_HU': 'Hungarian',
+    'ga': 'Irish',
+    'gl': 'Galician',
+    'id': 'Indonesian',
+    'it': 'Italian',
+    'ja_JP': 'Japanese',
+    'ko': 'Korean',
+    'mn': 'Mongolian',
+    'nb_NO': 'Norwegian (NB)',
+    'nl': 'Dutch',
+    'nn': 'Norwegian (NN)',
+    'pl': 'Polish',
+    'pt_PT': 'Portuguese',
+    'pt_BR': 'Portuguese (BR)',
+    'ro': 'Romanian',
+    'ru': 'Russian',
+    'si': 'Sinhala',
+    'sk_SK': 'Slovakian',
+    'sq': 'Albanian',
+    'sr': 'Slovenian',
+    'sv': 'Swedish',
+    'ta': 'Tamil',
+    'tr': 'Turkish',
+    'uk': 'Ukrainian',
+    'uz': 'Uzbek',
+    'vi': 'Vietnamese',
+    'zh_CN': 'Chinese',
+    'zh_HK': 'Chinese (HK)',
+    'zh_TW': 'Chinese (TW)'
+  } %}
+
+  {# Build list of {code, name} pairs for available languages #}
+  {% set language_tuples = [] %}
+  {% for code in available_languages %}
+    {% set _ = language_tuples.append({'code': code, 'name': language_names.get(code, code)}) %}
+  {% endfor %}
+  {% set sorted_languages = language_tuples | sort(attribute='name') %}
+
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      🌐
-      {% set language_code = language %}
-      {% if language_code == 'cs' %}
-      Czech
-      {% elif language_code == 'da' %}
-      Danish
-      {% elif language_code == 'de' %}
-      German
-      {% elif language_code == 'el' %}
-      Greek
-      {% elif language_code == 'es' %}
-      Spanish
-      {% elif language_code == 'en' %}
-      English
-      {% elif language_code == 'fi_FI' %}
-      Finnish
-      {% elif language_code == 'fr' %}
-      French
-      {% elif language_code == 'hr' %}
-      Croatian
-      {% elif language_code == 'hu_HU' %}
-      Hungarian
-      {% elif language_code == 'id' %}
-      Indonesian
-      {% elif language_code == 'it' %}
-      Italian
-      {% elif language_code == 'ja_JP' %}
-      Japanese
-      {% elif language_code == 'ko' %}
-      Korean
-      {% elif language_code == 'mn' %}
-      Mongolian
-      {% elif language_code == 'nb_NO' %}
-      Norwegian
-      {% elif language_code == 'nl' %}
-      Dutch
-      {% elif language_code == 'pl' %}
-      Polish
-      {% elif language_code == 'pt_PT' %}
-      Portuguese
-      {% elif language_code == 'pt_BR' %}
-      Portuguese (BR)
-      {% elif language_code == 'ro' %}
-      Romanian
-      {% elif language_code == 'ru' %}
-      Russian
-      {% elif language_code == 'sk_SK' %}
-      Slovakian
-      {% elif language_code == 'sq' %}
-      Albanian
-      {% elif language_code == 'sr' %}
-      Slovenian
-      {% elif language_code == 'sv' %}
-      Swedish
-      {% elif language_code == 'tr' %}
-      Turkish
-      {% elif language_code == 'uk' %}
-      Ukrainian
-      {% elif language_code == 'uz' %}
-      Uzbek
-      {% elif language_code == 'vi' %}
-      Vietnamese
-      {% elif language_code == 'zh_CN' %}
-      Chinese
-      {% elif language_code == 'zh_HK' %}
-      Chinese (HK)
-      {% elif language_code == 'zh_TW' %}
-      Chinese (TW)
-      {% else %}
-      {{ language_code }}
-      {% endif %}
+      🌐 {{ language_names.get(language, language) }}
       <span class="fa fa-caret-down"></span>
-
        ☁️ {{ current_version }}
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
       <dl>
         <dt>🌐 {{ _('Languages') }}</dt>
-          {% for language_code in available_languages %}
-            <dd style="width: 32%; vertical-align: top;">
-              <a href="/server/latest/user_manual/{{ language_code }}/"
-                 {% if language_code == language %}
-                 style="color: var(--dark-link-color);"
-                 {% endif %}
-              >
-                {% if language_code == 'af' %}
-                Afrikaans
-                {% elif language_code == 'ar' %}
-                Arabic
-                {% elif language_code == 'br' %}
-                Breton
-                {% elif language_code == 'ca' %}
-                Catalan
-                {% elif language_code == 'cs' %}
-                Czech
-                {% elif language_code == 'da' %}
-                Danish
-                {% elif language_code == 'de' %}
-                German
-                {% elif language_code == 'el' %}
-                Greek
-                {% elif language_code == 'eo' %}
-                Esperanto
-                {% elif language_code == 'es' %}
-                Spanish
-                {% elif language_code == 'en' %}
-                English
-                {% elif language_code == 'fi_FI' %}
-                Finnish
-                {% elif language_code == 'fr' %}
-                French
-                {% elif language_code == 'hr' %}
-                Croatian
-                {% elif language_code == 'hu_HU' %}
-                Hungarian
-                {% elif language_code == 'ga' %}
-                Irish
-                {% elif language_code == 'gl' %}
-                Galician
-                {% elif language_code == 'id' %}
-                Indonesian
-                {% elif language_code == 'it' %}
-                Italian
-                {% elif language_code == 'ja_JP' %}
-                Japanese
-                {% elif language_code == 'ko' %}
-                Korean
-                {% elif language_code == 'mn' %}
-                Mongolian
-                {% elif language_code == 'nb_NO' %}
-                Norwegian (NB)
-                {% elif language_code == 'nl' %}
-                Dutch
-                {% elif language_code == 'nn' %}
-                Norwegian (NN)
-                {% elif language_code == 'pl' %}
-                Polish
-                {% elif language_code == 'pt_PT' %}
-                Portuguese
-                {% elif language_code == 'pt_BR' %}
-                Portuguese (BR)
-                {% elif language_code == 'ro' %}
-                Romanian
-                {% elif language_code == 'ru' %}
-                Russian
-                {% elif language_code == 'si' %}
-                Sinhala
-                {% elif language_code == 'sk_SK' %}
-                Slovakian
-                {% elif language_code == 'sq' %}
-                Albanian
-                {% elif language_code == 'sr' %}
-                Slovenian
-                {% elif language_code == 'sv' %}
-                Swedish
-                {% elif language_code == 'ta' %}
-                Tamil
-                {% elif language_code == 'tr' %}
-                Turkish
-                {% elif language_code == 'uk' %}
-                Ukrainian
-                {% elif language_code == 'uz' %}
-                Uzbek
-                {% elif language_code == 'vi' %}
-                Vietnamese
-                {% elif language_code == 'zh_CN' %}
-                Chinese
-                {% elif language_code == 'zh_HK' %}
-                Chinese (HK)
-                {% elif language_code == 'zh_TW' %}
-                Chinese (TW)
-                {% else %}
-                {{ language_code }}
-                {% endif %}
-              </a>
-            </dd>
-          {% endfor %}
+        {% for lang in sorted_languages %}
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/{{ lang.code }}/"
+               {% if lang.code == language %}
+               style="color: var(--dark-link-color);"
+               {% endif %}
+            >
+              {{ lang.name }}
+            </a>
+          </dd>
+        {% endfor %}
       </dl>
     </div>
     <div class="rst-other-versions">
@@ -208,12 +103,12 @@
       <dl>
         {# Translators: The phrase "Read the Docs" is not translated #}
         <dt>{{ _('On Read the Docs') }}</dt>
-          <dd>
-            <a href="//{{ PRODUCTION_DOMAIN }}/projects/{{ slug }}/?fromdocs={{ slug }}">{{ _('Project Home') }}</a>
-          </dd>
-          <dd>
-            <a href="//{{ PRODUCTION_DOMAIN }}/builds/{{ slug }}/?fromdocs={{ slug }}">{{ _('Builds') }}</a>
-          </dd>
+        <dd>
+          <a href="//{{ PRODUCTION_DOMAIN }}/projects/{{ slug }}/?fromdocs={{ slug }}">{{ _('Project Home') }}</a>
+        </dd>
+        <dd>
+          <a href="//{{ PRODUCTION_DOMAIN }}/builds/{{ slug }}/?fromdocs={{ slug }}">{{ _('Builds') }}</a>
+        </dd>
       </dl>
     </div>
   </div>
