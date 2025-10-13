@@ -49,16 +49,16 @@ streaming, and it doesn't work in your Web browser, it may be a browser issue. S
 File controls
 -------------
 
-Nextcloud can display thumbnail previews for image files, MP3 covers,
-and text files, if this enabled by your server administrator. Hover your cursor
-over a file or folder to expose the controls for the following operations:
+Nextcloud can display thumbnail previews for various file types, such as images, audio files, and text files.
+The specific types supported are up to the server administrator.
+Hover your cursor over a file or folder to expose the controls for the following operations:
 
 Favorites
   Click the star to the left of the file icon to mark it as a favorite:
-  
+
   .. figure:: ../images/files_page-1.png
    :alt: Marking Favorite files.
-   
+
   You can also quickly find all of your favorites with the Favorites filter on the left
   sidebar.
 
@@ -179,5 +179,5 @@ Creating or connecting to a Federation Share link
 -------------------------------------------------
 
 Federated Cloud Sharing allows you to mount file shares from remote Nextcloud
-servers, and manage them just like a local share. See :doc:`federated_cloud_sharing` 
+servers, and manage them just like a local share. See :doc:`federated_cloud_sharing`
 to learn to how to create and connect to new Federated Cloud shares.
