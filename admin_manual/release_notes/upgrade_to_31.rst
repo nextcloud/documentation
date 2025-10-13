@@ -45,3 +45,9 @@ Monitoring: Counting of active users
 ------------------------------------
 
 Starting with Nextcloud 31.0.6 the monitoring app was adjusted to count the active users in the same way as occ user:report and the support app.
+
+Previews
+--------
+
+Starting with Nextcloud 31.0.10, the preview provider for MP3 files, which reads cover images embedded in the files, is disabled by default for performance and stability reasons.
+See :doc:`../configuration_files/previews_configuration` for details on how to enable or disable the preview provider.
