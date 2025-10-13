@@ -38,7 +38,6 @@ templates_path = [
     '_templates',
 ]
 
-
 exclude_patterns = [
     '_build',
 ]
@@ -90,7 +89,6 @@ epub_copyright = u'2012-2025, The Nextcloud developers'
 
 # -- Options for LaTeX output ------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-latex-output
-
 
 latex_elements = {
 }
@@ -154,6 +152,19 @@ pdf_documents = [
 current_docs = 'user_manual'
 html_context['versions'] = generateVersionsDocs(current_docs)
 html_context['theme_vcs_pageview_mode'] += current_docs
-html_context['available_languages'] = [
-    ]
 
+# Automatically detect available languages and pass to template
+
+locale_path = os.path.join(os.path.dirname(__file__), 'locale')
+available_languages = []
+
+if os.path.isdir(locale_path):
+    available_languages = [
+        lang for lang in os.listdir(locale_path)
+        if os.path.isdir(os.path.join(locale_path, lang)) and lang != 'source'
+    ]
+    if 'en' not in available_languages:
+        available_languages.append('en')
+    available_languages.sort()
+
+html_context['available_languages'] = available_languages
