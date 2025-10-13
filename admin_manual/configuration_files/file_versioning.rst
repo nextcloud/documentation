@@ -55,3 +55,21 @@ Deactivate background job: ``occ config:app:set --value=no files_versions backgr
 Activate background job: ``occ config:app:delete files_versions background_job_expire_versions``
 
 Expire versions: ``occ versions:expire`` or ``occ versions:expire --quiet`` (without the progress bar)
+
+.. note::
+
+*Deviations in behavior: “job run” vs “auto-expiry”*
+
+The ``versions_retention_obligation`` setting behaves slightly differently
+depending on whether version expiration is triggered by an *explicit job run*
+(for example, via ``occ versions:expire`` or a scheduled background job) or by
+*automatic expiry*.
+
+Explicit job-based expiration is *strict* and adheres closely to the configured
+``versions_retention_obligation``.
+
+Auto-expiry follows the same retention principles but may apply them more flexibly, allowing minor deviations when
+necessary to maintain adequate free storage space.
+
+This distinction can lead to different results depending on whether cleanup is
+performed automatically or manually.
