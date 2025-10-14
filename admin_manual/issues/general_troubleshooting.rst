@@ -306,12 +306,12 @@ Make sure to change /nextcloud to the actual subfolder your Nextcloud instance i
 
 .. note:: If you put the above directives directly into an Apache
    configuration file (usually within ``/etc/apache2/``)
-   instead of ``.htaccess``, you need to prepend the first argument of
+   instead of ``.htaccess``, you may need to prepend the first argument of
    each ``RewriteRule`` option with a forward slash ``/``, for example
    ``^/\.well-known/carddav``.
    This is because Apache normalizes paths for the use in ``.htaccess``
    files by dropping any number of leading slashes, but it does not
-   do so for the use in its main configuration files.
+   always do so for the use in its main configuration files (depending on your operating system: Debian Bullseye does not need these leading slashes).
 
 If you are running NGINX, make sure ``location = /.well-known/carddav {`` and ``location = /.well-known/caldav {`` are properly configured as described in :doc:`../installation/nginx`, adapt to use a subfolder if necessary.
 
