@@ -245,7 +245,6 @@ Nextcloud to use Imaginary by editing your ``config.php`` file:
 .. code:: php
 
     'enabledPreviewProviders' => [
-        'OC\Preview\MP3',
         'OC\Preview\TXT',
         'OC\Preview\MarkDown',
         'OC\Preview\OpenDocument',
