@@ -917,9 +917,13 @@ characters).
 
 By default, the passwords are stored encrypted in the database.
 
-WARNING: If disabled, password changes on the user backend (e.g., on LDAP) no
-longer log connected clients out automatically. Users can still disconnect
-the clients by deleting the app token from the security settings.
+
+
+.. warning::
+
+  If disabled, password changes on the user backend (e.g., on LDAP) no
+  longer log connected clients out automatically. Users can still disconnect
+  the clients by deleting the app token from the security settings.
 
 hide_login_form
 ^^^^^^^^^^^^^^^
@@ -1004,8 +1008,12 @@ mail_smtpdebug
 
 Enable SMTP class debugging.
 
-NOTE: ``loglevel`` will likely need to be adjusted too. See docs:
-  https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/email_configuration.html#enabling-debug-mode
+
+
+.. note::
+
+  ``loglevel`` will likely need to be adjusted too. See docs:
+    https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/email_configuration.html#enabling-debug-mode
 
 Defaults to ``false``
 
@@ -2658,11 +2666,15 @@ Available failover modes:
  - \\RedisCluster::FAILOVER_ERROR - failover to slaves for read commands if master is unavailable (recommended)
  - \\RedisCluster::FAILOVER_DISTRIBUTE - randomly distribute read commands across master and slaves
 
-WARNING: FAILOVER_DISTRIBUTE is a not recommended setting, and we strongly
-suggest to not use it if you use Redis for file locking. Due to the way Redis
-is synchronized, it could happen that the read for an existing lock is
-scheduled to a slave that is not fully synchronized with the connected master
-which then causes a FileLocked exception.
+
+
+.. warning::
+
+  FAILOVER_DISTRIBUTE is a not recommended setting, and we strongly
+  suggest to not use it if you use Redis for file locking. Due to the way Redis
+  is synchronized, it could happen that the read for an existing lock is
+  scheduled to a slave that is not fully synchronized with the connected master
+  which then causes a FileLocked exception.
 
 See https://redis.io/topics/cluster-spec for details about the Redis cluster
 
@@ -2808,11 +2820,15 @@ exclusive access to the object store container because it only stores the
 binary data for each file. The metadata is currently kept in the local
 database for performance reasons.
 
-WARNING: The current implementation is incompatible with any app that uses
-direct file I/O and circumvents our virtual filesystem. That includes
-Encryption and Gallery. Gallery will store thumbnails directly in the
-filesystem, and encryption will cause severe overhead because key files need
-to be fetched in addition to any requested file.
+
+
+.. warning::
+
+  The current implementation is incompatible with any app that uses
+  direct file I/O and circumvents our virtual filesystem. That includes
+  Encryption and Gallery. Gallery will store thumbnails directly in the
+  filesystem, and encryption will cause severe overhead because key files need
+  to be fetched in addition to any requested file.
 
 objectstore
 ^^^^^^^^^^^
@@ -3295,7 +3311,11 @@ Block specific files or filenames, disallowing uploads or access (read and write
 
 ``.htaccess`` is blocked by default.
 
-WARNING: Use this only if you understand the implications.
+
+
+.. warning::
+
+  Use this only if you understand the implications.
 
 Note: This list is case-insensitive.
 
@@ -3463,8 +3483,12 @@ localstorage.allowsymlinks
 
 Allow local storage to contain symlinks.
 
-WARNING: Not recommended, as this allows Nextcloud to access files outside the
-data directory, posing a potential security risk.
+
+
+.. warning::
+
+  Not recommended, as this allows Nextcloud to access files outside the
+  data directory, posing a potential security risk.
 
 Defaults to ``false``
 
@@ -3854,7 +3878,11 @@ csrf.optout
 List of user agents exempt from SameSite cookie protection due to non-standard
 HTTP behavior.
 
-WARNING: Use only if you understand the implications.
+
+
+.. warning::
+
+  Use only if you understand the implications.
 
 Defaults to:
 - /^WebDAVFS/ (OS X Finder)
@@ -3872,7 +3900,11 @@ Specify allowed user agents for Login Flow V2 using regular expressions.
 
 User agents not matching this list are denied access to Login Flow V2.
 
-WARNING: Use only if you understand the implications.
+
+
+.. warning::
+
+  Use only if you understand the implications.
 
 Example: Allow only the Nextcloud Android app:
 'core.login_flow_v2.allowed_user_agents' => ['/Nextcloud-android/i'],
@@ -3962,9 +3994,13 @@ query_log_file
 
 Log all database queries to a file.
 
-WARNING: This significantly reduces server performance and is intended only
-for debugging or profiling query interactions. Sensitive data may be logged in
-plain text.
+
+
+.. warning::
+
+  This significantly reduces server performance and is intended only
+  for debugging or profiling query interactions. Sensitive data may be logged in
+  plain text.
 
 query_log_file_requestid
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3989,7 +4025,11 @@ query_log_file_parameters
 Include all query parameters in the query log when set to `yes`.
 
 Requires `query_log_file` to be set.
-WARNING: This may log sensitive data in plain text.
+
+
+.. warning::
+
+  This may log sensitive data in plain text.
 
 query_log_file_backtrace
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4013,9 +4053,13 @@ redis_log_file
 
 Log all Redis requests to a file.
 
-WARNING: This significantly reduces server performance and is intended only
-for debugging or profiling Redis interactions. Sensitive data may be logged in
-plain text.
+
+
+.. warning::
+
+  This significantly reduces server performance and is intended only
+  for debugging or profiling Redis interactions. Sensitive data may be logged in
+  plain text.
 
 diagnostics.logging
 ^^^^^^^^^^^^^^^^^^^
