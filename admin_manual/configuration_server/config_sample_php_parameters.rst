@@ -903,9 +903,13 @@ characters).
 
 By default, the passwords are stored encrypted in the database.
 
-WARNING: If disabled, password changes on the user back-end (e.g. on LDAP) no
-longer log connected clients out automatically. Users can still disconnect
-the clients by deleting the app token from the security settings.
+
+
+.. warning::
+
+  If disabled, password changes on the user back-end (e.g. on LDAP) no
+  longer log connected clients out automatically. Users can still disconnect
+  the clients by deleting the app token from the security settings.
 
 hide_login_form
 ^^^^^^^^^^^^^^^
@@ -990,8 +994,12 @@ mail_smtpdebug
 
 Enable SMTP class debugging.
 
-NOTE: ``loglevel`` will likely need to be adjusted too. See docs:
-  https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/email_configuration.html#enabling-debug-mode
+
+
+.. note::
+
+  ``loglevel`` will likely need to be adjusted too. See docs:
+    https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/email_configuration.html#enabling-debug-mode
 
 Defaults to ``false``
 
@@ -2532,11 +2540,15 @@ Available failover modes:
  - \\RedisCluster::FAILOVER_ERROR - failover to slaves for read commands if master is unavailable (recommended)
  - \\RedisCluster::FAILOVER_DISTRIBUTE - randomly distribute read commands across master and slaves
 
-WARNING: FAILOVER_DISTRIBUTE is a not recommended setting, and we strongly
-suggest to not use it if you use Redis for file locking. Due to the way Redis
-is synchronized it could happen, that the read for an existing lock is
-scheduled to a slave that is not fully synchronized with the connected master
-which then causes a FileLocked exception.
+
+
+.. warning::
+
+  FAILOVER_DISTRIBUTE is a not recommended setting, and we strongly
+  suggest to not use it if you use Redis for file locking. Due to the way Redis
+  is synchronized it could happen, that the read for an existing lock is
+  scheduled to a slave that is not fully synchronized with the connected master
+  which then causes a FileLocked exception.
 
 See https://redis.io/topics/cluster-spec for details about the Redis cluster
 
@@ -2667,11 +2679,15 @@ exclusive access to the object store container because it only stores the
 binary data for each file. The metadata is currently kept in the local
 database for performance reasons.
 
-WARNING: The current implementation is incompatible with any app that uses
-direct file IO and circumvents our virtual filesystem. That includes
-Encryption and Gallery. Gallery will store thumbnails directly in the
-filesystem and encryption will cause severe overhead because key files need
-to be fetched in addition to any requested file.
+
+
+.. warning::
+
+  The current implementation is incompatible with any app that uses
+  direct file IO and circumvents our virtual filesystem. That includes
+  Encryption and Gallery. Gallery will store thumbnails directly in the
+  filesystem and encryption will cause severe overhead because key files need
+  to be fetched in addition to any requested file.
 
 objectstore
 ^^^^^^^^^^^
@@ -3156,7 +3172,11 @@ Block a specific file or files and disallow the upload of files with this name.
 This blocks any access to those files (read and write).
 ``.htaccess`` is blocked by default.
 
-WARNING: USE THIS ONLY IF YOU KNOW WHAT YOU ARE DOING.
+
+
+.. warning::
+
+  USE THIS ONLY IF YOU KNOW WHAT YOU ARE DOING.
 
 Note that this list is case-insensitive.
 
@@ -3329,8 +3349,12 @@ localstorage.allowsymlinks
 
 Option to allow local storage to contain symlinks.
 
-WARNING: Not recommended. This would make it possible for Nextcloud to access
-files outside the data directory and could be considered a security risk.
+
+
+.. warning::
+
+  Not recommended. This would make it possible for Nextcloud to access
+  files outside the data directory and could be considered a security risk.
 
 Defaults to ``false``
 
@@ -3345,8 +3369,12 @@ localstorage.umask
 Nextcloud overrides umask to ensure suitable access permissions
 regardless of webserver/php-fpm configuration and worker state.
 
-WARNING: Modifying this value has security implications and
-may soft-break the installation.
+
+
+.. warning::
+
+  Modifying this value has security implications and
+  may soft-break the installation.
 
 Most installs shall not modify this value.
 
@@ -3721,7 +3749,11 @@ List of incompatible user agents opted out from Same Site Cookie Protection.
 Some user agents are notorious and don't really properly follow HTTP
 specifications. For those, have an opt-out.
 
-WARNING: only use this if you know what you are doing
+
+
+.. warning::
+
+  only use this if you know what you are doing
 
 simpleSignUpLink.shown
 ^^^^^^^^^^^^^^^^^^^^^^
