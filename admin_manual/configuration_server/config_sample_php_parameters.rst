@@ -5,15 +5,15 @@ Configuration Parameters
 Introduction
 ------------
 
-Nextcloud uses ``config/config.php`` as its main configuration file. This file controls 
-various fundamental aspects of server operations. It is typically modified as part of initial 
+Nextcloud uses ``config/config.php`` as its main configuration file. This file controls
+various fundamental aspects of server operations. It is typically modified as part of initial
 deployment, when troubleshooting, and when making adjustments to surrounding infrastructure.
 
-This is a required file for all Nextcloud deployments and thus it is critical for Nextcloud 
+This is a required file for all Nextcloud deployments and thus it is critical for Nextcloud
 administrators to be familiar with managing it.
 
-This section of the *Administration Manual* documents how to adjust this essential file, 
-certain special characteristics of the ``config/`` directory, and all of the supported 
+This section of the *Administration Manual* documents how to adjust this essential file,
+certain special characteristics of the ``config/`` directory, and all of the supported
 parameters that can be specified in a ``config/config.php`` file.
 
 .. note:: While ``config/config.php`` is a required file, many Nextcloud or Nextcloud app
@@ -23,39 +23,39 @@ parameters that can be specified in a ``config/config.php`` file.
 Loading
 -------
 
-Configuration files located in ``config/`` are parsed automatically when Nextcloud 
-starts up. They are also checked for changes periodically (approximately every two seconds 
-in a standard PHP environment running with default *OPcache* settings; approximately every 
+Configuration files located in ``config/`` are parsed automatically when Nextcloud
+starts up. They are also checked for changes periodically (approximately every two seconds
+in a standard PHP environment running with default *OPcache* settings; approximately every
 sixty seconds in many pre-packaged Nextcloud installation methods).
 
-The ``config/config.php`` file may be supplemented by additional ``*.config.php`` files 
+The ``config/config.php`` file may be supplemented by additional ``*.config.php`` files
 placed in the ``config/`` directory (if appropriately named and formatted).
 
-.. danger:: Be cautious when naming or creating backup copies of your active 
+.. danger:: Be cautious when naming or creating backup copies of your active
    ``config/config.php``. If a backup is located within ``config/`` and is named
    ``(ANYTHING).config.php``, it will be loaded as part of your live configuration
    and override your ``config/config.php`` values!
 
-.. tip:: If your configuration changes don't seem to be taking effect, check: (a) your PHP opcache 
+.. tip:: If your configuration changes don't seem to be taking effect, check: (a) your PHP opcache
    configuration; (b) for additional ``*.config.php`` files located in ``config/``; (c) the documentation
    for your Nextcloud installation method/package; (d) the output of ``occ config:list system``.
 
 Format
 ------
 
-The short answer is that ``config/`` files are plain text files with some special formatting 
+The short answer is that ``config/`` files are plain text files with some special formatting
 requirements for different types of parameters and values. This makes it extensible and easy for
-Nextcloud to interact with. It also makes it easy for administrators to view with any text viewer 
+Nextcloud to interact with. It also makes it easy for administrators to view with any text viewer
 and from the command-line.
 
-Technically these configuration files are PHP files containing a special (to Nextcloud) PHP array 
-called ``$CONFIG``. This array consists of various Nextcloud specific "key-value" pairs (in some cases 
+Technically these configuration files are PHP files containing a special (to Nextcloud) PHP array
+called ``$CONFIG``. This array consists of various Nextcloud specific "key-value" pairs (in some cases
 arrays themselves). Each pair has the form ``key => value`` and is comma-separated.
 
 Types of Values
 ^^^^^^^^^^^^^^^
 
-Strings: 
+Strings:
 
 * ``"thisIsAnImportantValue"``
 * Note: These must be either single or double quoted - i.e. ``"string"`` or ``'string'``.
@@ -65,7 +65,7 @@ Strings:
    - ``'versions_retention_obligation' => 'auto, D',``
    - ``'logtimezone' => 'Europe/Berlin',``
 
-Boolean: 
+Boolean:
 
 * ``true`` or ``false``
 * Note: These should **not** be surrounded by quote marks within the configuration file itself.
@@ -91,19 +91,19 @@ Arrays of any of the above types:
    - ``'connectivity_check_domains' => [ 'www.nextcloud.com', 'www.eff.org', ],``
    - ``'enabledPreviewProviders' => [ 'OC\Preview\BMP', 'OC\Preview\GIF', 'OC\Preview\JPEG', ],``
 
-.. tip:: Nextcloud attempts to remedy some value type/formatting mistakes, but this is not foolproof. 
-   Use the correct formatting (for the type of value in question) to avoid unexpected results arising 
+.. tip:: Nextcloud attempts to remedy some value type/formatting mistakes, but this is not foolproof.
+   Use the correct formatting (for the type of value in question) to avoid unexpected results arising
    from values being cast in unexpected ways.
 
 Modifying
 ---------
 
-Parameters may be modified in a standard text editor (i.e. via the command-line or externally 
+Parameters may be modified in a standard text editor (i.e. via the command-line or externally
 then re-uploaded). They may also, in most cases, be modified using the commands in
 the ``occ config:system:*`` namespace.
 
 .. tip:: Incorrectly formatted ``key => value`` entries (or incorrectly specified values) may
-   not generate immediate errors or problems (such as parsing / syntax errors), but may still 
+   not generate immediate errors or problems (such as parsing / syntax errors), but may still
    lead to unexpected and undesirable results. Review your fully parsed (by PHP) configuration
    by using the command ``occ config:list system`` and/or ``occ config:list system --private``
    to identify anything unexpected.
@@ -111,42 +111,42 @@ the ``occ config:system:*`` namespace.
 Defaults
 --------
 
-Nextcloud creates a base ``config/config.php`` file at installation time containing the most 
+Nextcloud creates a base ``config/config.php`` file at installation time containing the most
 essential parameters for operations. These values are a mixture of auto-generated and drawn from
 information provided by the administrator at installation time.
 
-The file ``config/config.sample.php`` lists all the parameters within Nextcloud that can be 
-specified in ``config/`` files, along with example and default values for each. The content of 
-that sample configuration file is included :ref:`below<config-php-sample>` for ease of reference 
+The file ``config/config.sample.php`` lists all the parameters within Nextcloud that can be
+specified in ``config/`` files, along with example and default values for each. The content of
+that sample configuration file is included :ref:`below<config-php-sample>` for ease of reference
 and alongside additional context.
 
-.. tip:: Only add parameters to ``config/config.php`` that you wish to modify. 
+.. tip:: Only add parameters to ``config/config.php`` that you wish to modify.
 
-.. danger:: Do not copy everything from ``config/config.sample.php`` into your own 
+.. danger:: Do not copy everything from ``config/config.sample.php`` into your own
    ``config/config.php``! Besides being unnecessary, it will break things and possibly even
    require re-installation.
 
 Multiple/Merged Configuration Files
 -----------------------------------
 
-Nextcloud supports loading configuration parameters from multiple files. You can add arbitrary 
-files ending with ``.config.php*`` (i.e. ``*.config.php``) in the ``config/`` directory. The values 
-in these files take precedence over ``config/config.php``. This allows you to easily create and 
-manage custom configurations, or to divide a large complex configuration file into a set of smaller files. 
+Nextcloud supports loading configuration parameters from multiple files. You can add arbitrary
+files ending with ``.config.php*`` (i.e. ``*.config.php``) in the ``config/`` directory. The values
+in these files take precedence over ``config/config.php``. This allows you to easily create and
+manage custom configurations, or to divide a large complex configuration file into a set of smaller files.
 These custom files are not overwritten by Nextcloud.
 
-For example, you could place your email server configuration in ``config/email.config.php`` and 
+For example, you could place your email server configuration in ``config/email.config.php`` and
 whatever parameters you specify in it will be merged with your ``config/config.php``.
 
-.. note:: The values in these additional configuration files **always** take precedence over 
+.. note:: The values in these additional configuration files **always** take precedence over
    ``config/config.php``.
 
-.. tip:: To view your fully merged configuration (i.e. incorporating all config files), use 
+.. tip:: To view your fully merged configuration (i.e. incorporating all config files), use
    ``occ config:list system`` and/or ``occ config:list system --private``.
 
-.. danger:: Be cautious when naming or creating backup copies of your active 
-   ``config/config.php``. If a backup config file is located within ``config/`` and happens to be 
-   named ``(ANYTHING).config.php``, it will be loaded as part of your live configuration and override 
+.. danger:: Be cautious when naming or creating backup copies of your active
+   ``config/config.php``. If a backup config file is located within ``config/`` and happens to be
+   named ``(ANYTHING).config.php``, it will be loaded as part of your live configuration and override
    your ``config/config.php`` values!
 
 Examples
@@ -174,8 +174,8 @@ this after installation. The SQLite database is stored in your Nextcloud
     'installed' => true,
   );
 
-.. note:: SQLite is a simple, lightweight embedded database that is fine for testing 
-   and simple installations, but production environments you should use MySQL/MariaDB, 
+.. note:: SQLite is a simple, lightweight embedded database that is fine for testing
+   and simple installations, but production environments you should use MySQL/MariaDB,
    Oracle, or PosgreSQL.
 
 This example is from a new Nextcloud installation using MariaDB::
@@ -1441,20 +1441,23 @@ Nextcloud.
 Available values (D1 and D2 are configurable numbers):
 
 * ``auto``
-    default setting. Keeps files and folders in the trash bin for 30 days
-    and automatically deletes anytime after that if space is needed (note:
-    files may not be deleted if space is not needed).
+    Default setting. Keeps files and folders in the trash bin for at least **30** days.
+
+    Then, **if space is needed**, deletes trashed files anytime after that.
 * ``D1, auto``
-    keeps files and folders in the trash bin for D1+ days, delete anytime if
-    space needed (note: files may not be deleted if space is not needed)
+    Keeps files and folders in the trash bin for at least **D1** days.
+
+    Then, **if space is needed**, deletes trashed files anytime after that.
 * ``auto, D2``
-    delete all files in the trash bin that are older than D2 days
-    automatically, delete other files anytime if space needed
+    **If space is needed**, deletes trashed files anytime.
+
+    After **D2** days, delete all trashed files automatically
 * ``D1, D2``
-    keep files and folders in the trash bin for at least D1 days and
-    delete when exceeds D2 days (note: files will not be deleted automatically if space is needed)
+    Keeps files and folders in the trash bin for at least **D1** days.
+
+    Then, after **D2** days, delete all trashed files automatically.
 * ``disabled``
-    trash bin auto clean disabled, files and folders will be kept forever
+    Trash bin auto clean is disabled, files and folders will be kept forever.
 
 Defaults to ``auto``
 
@@ -2116,7 +2119,7 @@ like in normal shares (when set to ``true``).
 .. warning::
 
   Enabling this comes with some CRITICAL trade-offs:
-  
+
   - If team folder "Advanced Permissions" (ACLs) are used, activities do not
     respect the permissions and therefore all users see all activities, even
     for files and directories they do not have access to.
@@ -2784,16 +2787,16 @@ memcached_options
 			\Memcached::OPT_SEND_TIMEOUT => 50,
 			\Memcached::OPT_RECV_TIMEOUT => 50,
 			\Memcached::OPT_POLL_TIMEOUT => 50,
-	
+
 			// Enable compression
 			\Memcached::OPT_COMPRESSION => true,
-	
+
 			// Turn on consistent hashing
 			\Memcached::OPT_LIBKETAMA_COMPATIBLE => true,
-	
+
 			// Enable Binary Protocol
 			\Memcached::OPT_BINARY_PROTOCOL => true,
-	
+
 			// Binary serializer will be enabled if the igbinary PECL module is available
 			//\Memcached::OPT_SERIALIZER => \Memcached::SERIALIZER_IGBINARY,
 		],
