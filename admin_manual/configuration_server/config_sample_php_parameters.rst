@@ -228,8 +228,6 @@ automatically by the installer. This example is for documentation only,
 and you should never use it because it will not work. A valid ``instanceid``
 is created when you install Nextcloud.
 
-'instanceid' => 'd3c944a9a',
-
 passwordsalt
 ^^^^^^^^^^^^
 
@@ -273,13 +271,10 @@ necessary security checks.
 
 You can specify:
 
-- The exact hostname of your host or virtual host, e.g., demo.example.org.
-- The exact hostname with permitted port, e.g., demo.example.org:443.
-  This disallows all other ports on this host
-- Use * as a wildcard, e.g., ubos-raspberry-pi*.local will allow
-  ubos-raspberry-pi.local and ubos-raspberry-pi-2.local
-- The IP address with or without permitted port, e.g., [2001:db8::1]:8080
-  Using TLS certificates where commonName=<IP address> is deprecated
+- The exact hostname of your host or virtual host, e.g. ``demo.example.org``.
+- The exact hostname with permitted port, e.g. ``demo.example.org:443``. This disallows all other ports on this host
+- Use ``*`` as a wildcard, e.g., ``ubos-raspberry-pi*.local`` will allow ``ubos-raspberry-pi.local`` and ``ubos-raspberry-pi-2.local``
+- The IP address with or without permitted port, e.g. ``[2001:db8::1]:8080`` Using TLS certificates where ``commonName=<IP address>`` is deprecated
 
 cookie_domain
 ^^^^^^^^^^^^^
@@ -289,11 +284,11 @@ cookie_domain
 
 	'cookie_domain' => '',
 
-The validity domain for cookies, for example '' (cookies will be sent only
-the domain that defined it, e.g. 'demo.example.org'), 'demo.example.org'
+The validity domain for cookies, for example ``''`` (cookies will be sent only
+the domain that defined it, e.g. ``'demo.example.org'``), ``'demo.example.org'``
 (cookies will be valid for the domain and all subdomains), ...
 
-Defaults to '' (safe option)
+Defaults to ``''`` (safe option)
 
 datadirectory
 ^^^^^^^^^^^^^
@@ -408,7 +403,7 @@ dbpersistent
 
 Enable persistent connections to the database.
 
-This setting uses the "persistent" option from Doctrine DBAL, which in turn
+This setting uses the ``persistent`` option from Doctrine DBAL, which in turn
 uses the PDO::ATTR_PERSISTENT option from the PDO driver.
 
 dbreplica
@@ -480,9 +475,9 @@ French. The default_language parameter is only used when the browser does
 not send any language, and the user hasn’t configured their own language
 preferences.
 
-Nextcloud has two distinguished language codes for German, 'de' and 'de_DE'.
-'de' is used for informal German and 'de_DE' for formal German. By setting
-this value to 'de_DE', you can enforce the formal version of German unless
+Nextcloud has two distinguished language codes for German, ``de`` and ``de_DE``.
+``de`` is used for informal German and ``de_DE`` for formal German. By setting
+this value to ``de_DE``, you can enforce the formal version of German unless
 the user has chosen something different explicitly.
 
 Defaults to ``en``
@@ -532,7 +527,7 @@ With this setting, it is possible to reduce the languages available in the
 language chooser. The languages have to be set as array values using ISO_639-1
 language codes such as ``en`` for English, ``de`` for German, etc.
 
-For example: Set to ['de', 'fr'] to only allow German and French languages.
+For example: Set to ``['de', 'fr']`` to only allow German and French languages.
 
 default_phone_region
 ^^^^^^^^^^^^^^^^^^^^
@@ -589,7 +584,9 @@ knowledgebaseenabled
 	'knowledgebaseenabled' => true,
 
 ``true`` enables the Help menu item in the user menu (top right of the
-Nextcloud Web interface). ``false`` removes the Help item.
+Nextcloud Web interface).
+
+``false`` removes the Help item.
 
 knowledgebase.embedded
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -679,8 +676,8 @@ session_lifetime
 
 The lifetime of a session after inactivity.
 
-The maximum possible time is limited by the session.gc_maxlifetime php.ini setting
-which would overwrite this option if it is less than the value in the config.php
+The maximum possible time is limited by the ``session.gc_maxlifetime`` php.ini setting
+which would overwrite this option if it is less than the value in the ``config.php``
 
 Defaults to ``60*60*24`` seconds (24 hours)
 
@@ -702,7 +699,7 @@ carddav_sync_request_timeout
 
 	'carddav_sync_request_timeout' => 30,
 
-The timeout in seconds for synchronizing address books, e.g., federated system address books (as run by `occ federation:sync-addressbooks`).
+The timeout in seconds for synchronizing address books, e.g., federated system address books (as run by ``occ federation:sync-addressbooks``).
 
 Defaults to ``30`` seconds
 
@@ -714,7 +711,7 @@ carddav_sync_request_truncation
 
 	'carddav_sync_request_truncation' => 2500,
 
-The limit applied to the synchronization report request, e.g. federated system address books (as run by `occ federation:sync-addressbooks`).
+The limit applied to the synchronization report request, e.g. federated system address books (as run by ``occ federation:sync-addressbooks``).
 
 session_relaxed_expiry
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -724,11 +721,11 @@ session_relaxed_expiry
 
 	'session_relaxed_expiry' => false,
 
-`true` enables a relaxed session timeout, where the session timeout would no longer be
+``true`` enables a relaxed session timeout, where the session timeout would no longer be
 handled by Nextcloud but by either the PHP garbage collection or the expiration of
 potential other session backends like Redis.
 
-This may lead to sessions being available for longer than what session_lifetime uses but
+This may lead to sessions being available for longer than what ``session_lifetime`` uses but
 comes with performance benefits as sessions are no longer a locking operation for concurrent
 requests.
 
@@ -756,9 +753,14 @@ auto_logout
 
 Enable or disable the automatic logout after session_lifetime, even if session
 keepalive is enabled. This will make sure that an inactive browser will log itself out
-even if requests to the server might extend the session lifetime. Note: the logout is
-handled on the client side. This is not a way to limit the duration of potentially
-compromised sessions.
+even if requests to the server might extend the session lifetime.
+
+
+
+.. note::
+
+  The logout is handled on the client side. This is not a way to
+  limit the duration of potentially compromised sessions.
 
 Defaults to ``false``
 
@@ -804,7 +806,11 @@ auth.bruteforce.protection.enabled
 
 Whether the brute force protection shipped with Nextcloud should be enabled or not.
 
-Disabling this is discouraged for security reasons.
+
+
+.. warning::
+
+  Disabling this is discouraged for security reasons.
 
 Defaults to ``true``
 
@@ -868,7 +874,11 @@ ratelimit.protection.enabled
 
 Whether the rate limit protection shipped with Nextcloud should be enabled or not.
 
-Disabling this is discouraged for security reasons.
+
+
+.. warning::
+
+  Disabling this is discouraged for security reasons.
 
 Defaults to ``true``
 
@@ -917,9 +927,13 @@ characters).
 
 By default, the passwords are stored encrypted in the database.
 
-WARNING: If disabled, password changes on the user backend (e.g., on LDAP) no
-longer log connected clients out automatically. Users can still disconnect
-the clients by deleting the app token from the security settings.
+
+
+.. warning::
+
+  If disabled, password changes on the user backend (e.g., on LDAP) no
+  longer log connected clients out automatically. Users can still disconnect
+  the clients by deleting the app token from the security settings.
 
 hide_login_form
 ^^^^^^^^^^^^^^^
@@ -933,7 +947,7 @@ By default, the login form is always available. There are cases (SSO) where an
 admin wants to avoid users entering their credentials to the system if the SSO
 app is unavailable.
 
-This will show an error. But the direct login still works with adding ?direct=1
+This will show an error. But the direct login still works with adding ``?direct=1``
 
 lost_password_link
 ^^^^^^^^^^^^^^^^^^
@@ -945,10 +959,10 @@ lost_password_link
 
 If your user backend does not allow password resets (e.g., when it's a
 read-only user backend like LDAP), you can specify a custom link, where the
-user is redirected to, when clicking the "reset password" link after a failed
+user is redirected to, when clicking the "Reset password" link after a failed
 login attempt.
 
-In case you do not want to provide any link, replace the URL with 'disabled'
+In case you do not want to provide any link, replace the URL with ``'disabled'``
 
 logo_url
 ^^^^^^^^
@@ -1004,8 +1018,12 @@ mail_smtpdebug
 
 Enable SMTP class debugging.
 
-NOTE: ``loglevel`` will likely need to be adjusted too. See docs:
-  https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/email_configuration.html#enabling-debug-mode
+
+
+.. note::
+
+  ``loglevel`` will likely need to be adjusted too. See docs:
+    https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/email_configuration.html#enabling-debug-mode
 
 Defaults to ``false``
 
@@ -1270,27 +1288,27 @@ htaccess.RewriteBase
 
 	'htaccess.RewriteBase' => '/',
 
-To have clean URLs without `/index.php`, this parameter needs to be configured.
+To have clean URLs without ``/index.php``, this parameter needs to be configured.
 
 This parameter will be written as "RewriteBase" on update and installation of
-Nextcloud to your `.htaccess` file. While this value is often simply the URL
+Nextcloud to your ``.htaccess`` file. While this value is often simply the URL
 path of the Nextcloud installation, it cannot be set automatically properly in
 every scenario and needs thus some manual configuration.
 
 In a standard Apache setup, this usually equals the folder that Nextcloud is
-accessible at. So if Nextcloud is accessible via "https://mycloud.org/nextcloud",
-the correct value would most likely be "/nextcloud". If Nextcloud is running
-under "https://mycloud.org/", then it would be "/".
+accessible at. So if Nextcloud is accessible via ``https://mycloud.org/nextcloud``,
+the correct value would most likely be ``/nextcloud``. If Nextcloud is running
+under ``https://mycloud.org/``, then it would be ``/``.
 
 Note that the above rule is not valid in every case, as there are some rare setup
 cases where this may not apply. However, to avoid any update problems, this
 configuration value is explicitly opt-in.
 
-After setting this value, run `occ maintenance:update:htaccess`. Now, when the
-following conditions are met, Nextcloud URLs won't contain `index.php`:
+After setting this value, run ``occ maintenance:update:htaccess``. Now, when the
+following conditions are met, Nextcloud URLs won't contain ``index.php``:
 
-- `mod_rewrite` is installed
-- `mod_env` is installed
+- ``mod_rewrite`` is installed
+- ``mod_env`` is installed
 
 Defaults to ``''`` (empty string)
 
@@ -1302,13 +1320,13 @@ htaccess.IgnoreFrontController
 
 	'htaccess.IgnoreFrontController' => false,
 
-For server setups that don't have `mod_env` enabled or restricted (e.g., suEXEC),
+For server setups that don't have ``mod_env`` enabled or restricted (e.g., suEXEC),
 this parameter has to be set to true and will assume mod_rewrite.
 
-Please check if `mod_rewrite` is active and functional before setting this
-parameter, and you updated your .htaccess with `occ maintenance:update:htaccess`.
-Otherwise, your Nextcloud installation might not be reachable anymore.
-For example, try accessing resources by leaving out `index.php` in the URL.
+Please check if ``mod_rewrite`` is active and functional before setting this
+parameter, and you updated your .htaccess with ``occ maintenance:update:htaccess``.
+Otherwise, your Nextcloud installation might not be reachable any more.
+For example, try accessing resources by leaving out ``index.php`` in the URL.
 
 proxy
 ^^^^^
@@ -1320,8 +1338,12 @@ proxy
 
 The URL of your proxy server, for example, ``proxy.example.com:8081``.
 
-Note: Guzzle (the HTTP library used by Nextcloud) reads the environment
-variables HTTP_PROXY (only for CLI requests), HTTPS_PROXY, and NO_PROXY by default.
+
+
+.. note::
+
+  Guzzle (the HTTP library used by Nextcloud) reads the environment
+  variables ``HTTP_PROXY`` (only for CLI requests), ``HTTPS_PROXY``, and ``NO_PROXY`` by default.
 
 If you configure a proxy with Nextcloud, any default configuration by Guzzle
 is overwritten. Make sure to set ``proxyexclude`` accordingly if necessary.
@@ -1355,7 +1377,7 @@ List of hostnames that should not be proxied to.
 For example: ``['.mit.edu', 'foo.com']``.
 
 Hint: Use something like ``explode(',', getenv('NO_PROXY'))`` to sync this
-value with the global NO_PROXY option.
+value with the global ``NO_PROXY`` option.
 
 Defaults to empty array.
 
@@ -1369,7 +1391,7 @@ allow_local_remote_servers
 
 Allow remote servers with local addresses, e.g., in federated shares, webcal services, and more
 
-Defaults to false
+Defaults to ``false``
 
 Deleted Items (trash bin)
 -------------------------
@@ -1577,8 +1599,8 @@ will show a warning. Set to an empty list to not do any such checks (warning
 will still be shown).
 
 If no protocol is provided, both http and https will be tested.
-For example, 'http://www.nextcloud.com' and 'https://www.nextcloud.com'
-will be tested for 'www.nextcloud.com'
+For example, ``http://www.nextcloud.com`` and ``https://www.nextcloud.com``
+will be tested for ``www.nextcloud.com``
 If a protocol is provided, only this one will be tested.
 
 Defaults to the following domains:
@@ -1598,7 +1620,7 @@ check_for_working_wellknown_setup
 
 Allows Nextcloud to verify a working .well-known URL redirects. This is done
 by attempting to make a request from JS to
-https://your-domain.com/.well-known/caldav/
+``https://example.tld/.well-known/caldav/``
 
 Defaults to ``true``
 
@@ -1668,15 +1690,10 @@ log_type
 
 This parameter determines where the Nextcloud logs are sent.
 
-``file``: the logs are written to file ``nextcloud.log`` in the default
-Nextcloud data directory. The log file can be changed with parameter
-``logfile``.
-``syslog``: the logs are sent to the system log. This requires a syslog daemon
-to be active.
-``errorlog``: the logs are sent to the PHP ``error_log`` function.
-``systemd``: the logs are sent to the Systemd journal. This requires a system
-that runs Systemd and the Systemd journal. The PHP extension ``systemd``
-must be installed and active.
+- ``file``: the logs are written to file ``nextcloud.log`` in the default Nextcloud data directory. The log file can be changed with parameter ``logfile``.
+- ``syslog``: the logs are sent to the system log. This requires a syslog daemon to be active.
+- ``errorlog``: the logs are sent to the PHP ``error_log`` function.
+- ``systemd``: the logs are sent to the Systemd journal. This requires a system that runs Systemd and the Systemd journal. The PHP extension ``systemd`` must be installed and active.
 
 Defaults to ``file``
 
@@ -1728,7 +1745,7 @@ logfilemode
 
 Log file mode for the Nextcloud logging type in octal notation.
 
-Defaults to 0640 (writable by user, readable by group).
+Defaults to ``0640`` (writable by user, readable by group).
 
 loglevel
 ^^^^^^^^
@@ -1738,10 +1755,16 @@ loglevel
 
 	'loglevel' => 2,
 
-Loglevel to start logging at. Valid values are: 0 = Debug, 1 = Info, 2 =
-Warning, 3 = Error, and 4 = Fatal. The default value is Warning.
+Loglevel to start logging at. Valid values are:
 
-Defaults to ``2``
+- ``0`` = Debug
+- ``1`` = Info
+- ``2`` = Warning
+- ``3`` = Error
+- ``4`` = Fatal.
+
+
+Defaults to ``2`` (Warning)
 
 loglevel_frontend
 ^^^^^^^^^^^^^^^^^
@@ -1864,8 +1887,8 @@ logdateformat
 
 This uses PHP.date formatting; see https://www.php.net/manual/en/function.date.php
 
-Defaults to ISO 8601 ``2005-08-15T15:52:01+00:00`` - see \DateTime::ATOM
-(https://www.php.net/manual/en/class.datetime.php#datetime.constants.atom)
+Defaults to ISO 8601 ``2005-08-15T15:52:01+00:00``, see ``\DateTime::ATOM``
+https://www.php.net/manual/en/class.datetimeinterface.php#datetimeinterface.constants.atom
 
 logtimezone
 ^^^^^^^^^^^
@@ -1875,8 +1898,7 @@ logtimezone
 
 	'logtimezone' => 'Europe/Berlin',
 
-The timezone for logfiles. You may change this; see
-https://www.php.net/manual/en/timezones.php
+The timezone for logfiles. See https://www.php.net/manual/en/timezones.php
 
 Defaults to ``UTC``
 
@@ -2053,6 +2075,60 @@ Defaults to:
 - iOS client app ID: ``1125420102``
 - F-Droid client: ``https://f-droid.org/packages/com.nextcloud.client/``
 
+Activity
+--------
+
+Options for the activity app.
+
+
+activity_expire_days
+^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'activity_expire_days' => 365,
+
+Retention of activities.
+
+A daily cron job deletes all activities for all users which are older than
+the number of days specified here.
+
+Defaults to ``365``
+
+activity_use_cached_mountpoints
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'activity_use_cached_mountpoints' => false,
+
+Activities in Team Folders and External Storages.
+
+By default, activities in team folders or external storages are only generated
+for the current user. This is due to a limitations in current implementations.
+This config flag makes activities in group folders and external storages work
+like in normal shares (when set to ``true``).
+
+
+
+.. warning::
+
+  Enabling this comes with some CRITICAL trade-offs:
+  
+  - If team folder "Advanced Permissions" (ACLs) are used, activities do not
+    respect the permissions and therefore all users see all activities, even
+    for files and directories they do not have access to.
+  - Users who had access to a team folder, share, or external storage can see
+    activities in their stream and emails that happen after they are removed
+    until they log in again.
+  - Users who are newly added to a team folder, share, or external storage
+    cannot see activities in their stream or emails that happen after they
+    are added until they log in again.
+
+Defaults to ``false``
+
 Apps
 ----
 
@@ -2142,9 +2218,8 @@ indicates if a Web server can write files to that folder.
 Previews
 --------
 
-Nextcloud supports previews of image files, the covers of MP3 files, and text
-files. These options control enabling and disabling previews, and thumbnail
-size.
+Nextcloud supports generating previews for various file types, such as images, audio files, and text files.
+These options control enabling and disabling previews, and thumbnail size.
 
 
 enable_previews
@@ -2158,7 +2233,6 @@ enable_previews
 By default, Nextcloud can generate previews for the following filetypes:
 
 - Image files
-- Covers of MP3 files
 - Text documents
 
 Valid values are ``true``, to enable previews, or
@@ -2178,8 +2252,8 @@ Number of all preview requests being processed concurrently,
 including previews that need to be newly generated, and those that have
 been generated.
 
-This should be greater than 'preview_concurrency_new'.
-If unspecified, defaults to twice the value of 'preview_concurrency_new'.
+This should be greater than ``preview_concurrency_new``.
+If unspecified, defaults to twice the value of ``preview_concurrency_new``.
 
 preview_concurrency_new
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -2191,7 +2265,7 @@ preview_concurrency_new
 
 Number of new previews that are being concurrently generated.
 
-Depending on the max preview size set by 'preview_max_x' and 'preview_max_y',
+Depending on the max preview size set by ``preview_max_x`` and ``preview_max_y``,
 the generation process can consume considerable CPU and memory resources.
 It's recommended to limit this to be no greater than the number of CPU cores.
 If unspecified, defaults to the number of CPU cores, or 4 if that cannot
@@ -2251,7 +2325,7 @@ Max memory for generating image previews with imagegd (default behavior)
 Reads the image dimensions from the header and assumes 32 bits per pixel.
 
 If creating the image would allocate more memory, preview generation will
-be disabled and the default mimetype icon is shown. Set to -1 for no limit.
+be disabled and the default mimetype icon is shown. Set to ``-1`` for no limit.
 
 Defaults to ``256`` megabytes
 
@@ -2335,7 +2409,6 @@ enabledPreviewProviders
 			'OC\Preview\JPEG',
 			'OC\Preview\Krita',
 			'OC\Preview\MarkDown',
-			'OC\Preview\MP3',
 			'OC\Preview\OpenDocument',
 			'OC\Preview\PNG',
 			'OC\Preview\TXT',
@@ -2347,21 +2420,21 @@ Only register providers that have been explicitly enabled
 The following providers are disabled by default due to performance or privacy
 concerns:
 
+ - ``OC\Preview\EMF``
  - ``OC\Preview\Font``
  - ``OC\Preview\HEIC``
  - ``OC\Preview\Illustrator``
- - ``OC\Preview\Movie``
+ - ``OC\Preview\MP3``
  - ``OC\Preview\MSOffice2003``
  - ``OC\Preview\MSOffice2007``
  - ``OC\Preview\MSOfficeDoc``
+ - ``OC\Preview\Movie``
  - ``OC\Preview\PDF``
  - ``OC\Preview\Photoshop``
  - ``OC\Preview\Postscript``
- - ``OC\Preview\StarOffice``
  - ``OC\Preview\SVG``
+ - ``OC\Preview\StarOffice``
  - ``OC\Preview\TIFF``
- - ``OC\Preview\EMF``
-
 
 Defaults to the following providers:
 
@@ -2370,7 +2443,6 @@ Defaults to the following providers:
  - ``OC\Preview\JPEG``
  - ``OC\Preview\Krita``
  - ``OC\Preview\MarkDown``
- - ``OC\Preview\MP3``
  - ``OC\Preview\OpenDocument``
  - ``OC\Preview\PNG``
  - ``OC\Preview\TXT``
@@ -2387,7 +2459,12 @@ metadata_max_filesize
 Maximum file size for metadata generation.
 
 If a file exceeds this size, metadata generation will be skipped.
-Note: memory equivalent to this size will be used for metadata generation.
+
+
+
+.. note::
+
+  memory equivalent to this size will be used for metadata generation.
 
 Default: 256 megabytes.
 
@@ -2658,15 +2735,19 @@ Redis Cluster support requires the PHP module phpredis in version 3.0.0 or
 higher.
 
 Available failover modes:
- - \\RedisCluster::FAILOVER_NONE - only send commands to master nodes (default)
- - \\RedisCluster::FAILOVER_ERROR - failover to slaves for read commands if master is unavailable (recommended)
- - \\RedisCluster::FAILOVER_DISTRIBUTE - randomly distribute read commands across master and slaves
+ - ``\RedisCluster::FAILOVER_NONE`` - only send commands to master nodes (default)
+ - ``\RedisCluster::FAILOVER_ERROR`` - failover to slaves for read commands if master is unavailable (recommended)
+ - ``\RedisCluster::FAILOVER_DISTRIBUTE`` - randomly distribute read commands across master and slaves
 
-WARNING: FAILOVER_DISTRIBUTE is a not recommended setting, and we strongly
-suggest to not use it if you use Redis for file locking. Due to the way Redis
-is synchronized, it could happen that the read for an existing lock is
-scheduled to a slave that is not fully synchronized with the connected master
-which then causes a FileLocked exception.
+
+
+.. warning::
+
+  ``\RedisCluster::FAILOVER_DISTRIBUTE`` is a not recommended setting, and we strongly
+  suggest to not use it if you use Redis for file locking. Due to the way Redis
+  is synchronized, it could happen that the read for an existing lock is
+  scheduled to a slave that is not fully synchronized with the connected master
+  which then causes a FileLocked exception.
 
 See https://redis.io/topics/cluster-spec for details about the Redis cluster
 
@@ -2814,11 +2895,15 @@ exclusive access to the object store container because it only stores the
 binary data for each file. The metadata is currently kept in the local
 database for performance reasons.
 
-WARNING: The current implementation is incompatible with any app that uses
-direct file I/O and circumvents our virtual filesystem. That includes
-Encryption and Gallery. Gallery will store thumbnails directly in the
-filesystem, and encryption will cause severe overhead because key files need
-to be fetched in addition to any requested file.
+
+
+.. warning::
+
+  The current implementation is incompatible with any app that uses
+  direct file I/O and circumvents our virtual filesystem. That includes
+  Encryption and Gallery. Gallery will store thumbnails directly in the
+  filesystem, and encryption will cause severe overhead because key files need
+  to be fetched in addition to any requested file.
 
 objectstore
 ^^^^^^^^^^^
@@ -2969,7 +3054,7 @@ sharing.force_share_accept
 
 	'sharing.force_share_accept' => false,
 
-Set to true to enforce that internal shares need to be accepted
+Set to ``true`` to enforce that internal shares need to be accepted
 
 sharing.allow_custom_share_folder
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3024,9 +3109,9 @@ transferIncomingShares
 	'transferIncomingShares' => false,
 
 Set to true to always transfer incoming shares by default
-when running "occ files:transfer-ownership".
+when running ``occ files:transfer-ownership``.
 
-Defaults to false, so incoming shares are not transferred if not specifically requested
+Defaults to ``false``, so incoming shares are not transferred if not specifically requested
 by a command line argument.
 
 Federated Cloud Sharing
@@ -3074,7 +3159,7 @@ hashingThreads
 
 The number of CPU threads to be used by the algorithm for computing a hash.
 
-The value must be an integer, and the minimum value is 1. Rationally, it does
+The value must be an integer, and the minimum value is ``1``. Rationally, it does
 not help to provide a number higher than the available threads on the machine.
 Values that undershoot the minimum will be ignored in favor of the minimum.
 
@@ -3101,7 +3186,7 @@ hashingTimeCost
 
 The number of iterations that are used by the algorithm for computing a hash.
 
-The value must be an integer, and the minimum value is 1. Values that
+The value must be an integer, and the minimum value is ``1``. Values that
 undershoot the minimum will be ignored in favor of the minimum.
 
 hashingCost
@@ -3138,10 +3223,10 @@ encryption in MySQL or specify a custom wait timeout on a cheap hoster.
 
 When setting up TLS/SSL for encrypting the connections, you need to ensure that
 the passed keys and certificates are readable by the PHP process. In addition,
-PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT might need to be set to false, if the
+``PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT`` might need to be set to false, if the
 database server's certificate CN does not match with the hostname used to connect.
 The standard behavior here is different from the MySQL/MariaDB CLI client, which
-does not verify the server cert except --ssl-verify-server-cert is passed manually.
+does not verify the server cert except ``--ssl-verify-server-cert`` is passed manually.
 
 sqlite.journal_mode
 ^^^^^^^^^^^^^^^^^^^
@@ -3152,7 +3237,7 @@ sqlite.journal_mode
 	'sqlite.journal_mode' => 'DELETE',
 
 SQLite3 journal mode can be specified using this configuration parameter -
-can be 'WAL' or 'DELETE'. See https://www.sqlite.org/wal.html for more details.
+can be ``'WAL'`` or ``'DELETE'``. See https://www.sqlite.org/wal.html for more details.
 
 mysql.utf8mb4
 ^^^^^^^^^^^^^
@@ -3167,30 +3252,30 @@ to enable MySQL to handle 4-byte characters instead of 3-byte characters.
 
 To convert an existing 3-byte setup to a 4-byte setup, configure the MySQL
 parameters as described below and run the migration command:
-./occ db:convert-mysql-charset
+``./occ db:convert-mysql-charset``
 This config setting will be automatically updated after a successful migration.
 
 Refer to the documentation for more details.
 
 MySQL requires specific settings for longer indexes (> 767 bytes), which are
-necessary for 4-byte character support:
+necessary for 4-byte character support::
 
-[mysqld]
-innodb_large_prefix=ON
-innodb_file_format=Barracuda
-innodb_file_per_table=ON
+    [mysqld]
+    innodb_large_prefix=ON
+    innodb_file_format=Barracuda
+    innodb_file_per_table=ON
 
 Tables will be created with:
- * character set: utf8mb4
- * collation:     utf8mb4_bin
- * row_format:    dynamic
+ * character set: ``utf8mb4``
+ * collation:     ``utf8mb4_bin``
+ * row_format:    ``dynamic``
 
 See:
-https://dev.mysql.com/doc/refman/5.7/en/charset-unicode-utf8mb4.html
-https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_large_prefix
-https://mariadb.com/kb/en/mariadb/xtradbinnodb-server-system-variables/#innodb_large_prefix
-http://www.tocker.ca/2013/10/31/benchmarking-innodb-page-compression-performance.html
-http://mechanics.flite.com/blog/2014/07/29/using-innodb-large-prefix-to-avoid-error-1071/
+ * https://dev.mysql.com/doc/refman/5.7/en/charset-unicode-utf8mb4.html
+ * https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_large_prefix
+ * https://mariadb.com/kb/en/mariadb/xtradbinnodb-server-system-variables/#innodb_large_prefix
+ * http://www.tocker.ca/2013/10/31/benchmarking-innodb-page-compression-performance.html
+ * http://mechanics.flite.com/blog/2014/07/29/using-innodb-large-prefix-to-avoid-error-1071/
 
 mysql.collation
 ^^^^^^^^^^^^^^^
@@ -3207,9 +3292,9 @@ accent-sensitive searches.
 MariaDB and MySQL share some collations, but also have incompatible ones,
 depending on the database server version.
 
-This option allows overriding the automatic collation choice. Example:
+This option allows overriding the automatic collation choice. Example::
 
-'mysql.collation' => 'utf8mb4_0900_as_ci',
+    'mysql.collation' => 'utf8mb4_0900_as_ci',
 
 This setting does not affect table creation or setup, where utf8[mb4]_bin is
 always used. It applies only to SQL queries using LIKE comparison operators.
@@ -3283,8 +3368,8 @@ updatedirectory
 
 Override the location where Nextcloud stores update files during updates.
 
-Useful when the default `datadirectory` is on a network disk like NFS or is
-otherwise restricted. Defaults to the value of `datadirectory` if unset.
+Useful when the default ``datadirectory`` is on a network disk like NFS or is
+otherwise restricted. Defaults to the value of ``datadirectory`` if unset.
 
 If set, the directory must be located outside the Nextcloud installation
 directory and writable by the web server user.
@@ -3301,9 +3386,17 @@ Block specific files or filenames, disallowing uploads or access (read and write
 
 ``.htaccess`` is blocked by default.
 
-WARNING: Use this only if you understand the implications.
 
-Note: This list is case-insensitive.
+
+.. warning::
+
+  Use this only if you understand the implications.
+
+
+
+.. note::
+
+  This list is case-insensitive.
 
 Defaults to ``['.htaccess']``
 
@@ -3321,7 +3414,11 @@ cannot be updated, and no new files can be created in matching folders.
 The basename is the filename without the extension, e.g., for "archive.tar.gz",
 the basename is "archive".
 
-Note: This list is case-insensitive.
+
+
+.. note::
+
+  This list is case-insensitive.
 
 Defaults to ``[]`` (empty array)
 
@@ -3338,7 +3435,7 @@ systems (e.g., Windows) that do not support certain characters. Matching
 existing files cannot be updated, and no new files can be created in matching
 folders.
 
-The '/' and '\' characters, as well as ASCII characters [0-31], are always
+The ``/`` and ``\`` characters, as well as ASCII characters [0-31], are always
 forbidden.
 
 Example for Windows: ``['?', '<', '>', ':', '*', '|', '"']``
@@ -3357,7 +3454,7 @@ forbidden_filename_extensions
 Deny specific file extensions. Matching existing files cannot be updated, and
 no new files can be created in matching folders.
 
-The '.part' extension is always forbidden, as it is used internally by Nextcloud.
+The ``'.part'`` extension is always forbidden, as it is used internally by Nextcloud.
 
 Defaults to ``['.filepart', '.part']``
 
@@ -3383,8 +3480,8 @@ enforce_theme
 	'enforce_theme' => '',
 
 Enforce a specific user theme, disabling user theming settings. Must be a
-valid ITheme ID, e.g., dark, dark-highcontrast, default, light,
-light-highcontrast, opendyslexic.
+valid ITheme ID, e.g., ``dark``, ``dark-highcontrast``, ``default``, ``light``,
+``light-highcontrast``, ``opendyslexic``.
 
 theming.standalone_window.enabled
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3469,8 +3566,12 @@ localstorage.allowsymlinks
 
 Allow local storage to contain symlinks.
 
-WARNING: Not recommended, as this allows Nextcloud to access files outside the
-data directory, posing a potential security risk.
+
+
+.. warning::
+
+  Not recommended, as this allows Nextcloud to access files outside the
+  data directory, posing a potential security risk.
 
 Defaults to ``false``
 
@@ -3539,9 +3640,8 @@ files_external_allow_create_new_local
 	'files_external_allow_create_new_local' => true,
 
 Allow creation of external storages of type "Local" via the web interface and
-APIs. When disabled, local storages can still be created using the occ command:
-
-occ files_external:create /mountpoint local null::null -c datadir=/path/to/data
+APIs. When disabled, local storages can still be created using the occ command::
+  occ files_external:create /mountpoint local null::null -c datadir=/path/to/data
 
 Defaults to ``true``
 
@@ -3557,10 +3657,8 @@ Specify how often the local filesystem (Nextcloud data/ directory and NFS
 mounts in data/) is checked for changes made outside Nextcloud. This does not
 apply to external storage.
 
-0 -> Never check the filesystem for outside changes, improving performance
-     when no external changes are expected.
-1 -> Check each file or folder at most once per request, recommended for
-     general use if outside changes are possible.
+- ``0`` -> Never check the filesystem for outside changes, improving performance when no external changes are expected.
+- ``1`` -> Check each file or folder at most once per request, recommended for general use if outside changes are possible.
 
 Defaults to ``0``
 
@@ -3613,16 +3711,17 @@ trusted_proxies
 	'trusted_proxies' => ['203.0.113.45', '198.51.100.128', '192.168.2.0/24'],
 
 List of trusted proxy servers. Supported formats:
-- IPv4 addresses, e.g., `192.168.2.123`
-- IPv4 ranges in CIDR notation, e.g., `192.168.2.0/24`
-- IPv6 addresses, e.g., `fd9e:21a7:a92c:2323::1`
-- IPv6 ranges in CIDR notation, e.g., `2001:db8:85a3:8d3:1319:8a20::/95`
 
-If a request's `REMOTE_ADDR` matches an address here, it is treated as a proxy,
+- IPv4 addresses, e.g., ``192.168.2.123``
+- IPv4 ranges in CIDR notation, e.g., ``192.168.2.0/24``
+- IPv6 addresses, e.g., ``fd9e:21a7:a92c:2323::1``
+- IPv6 ranges in CIDR notation, e.g., ``2001:db8:85a3:8d3:1319:8a20::/95``
+
+If a request's ``REMOTE_ADDR`` matches an address here, it is treated as a proxy,
 and the client IP is read from the HTTP header specified in
-`forwarded_for_headers` instead of `REMOTE_ADDR`.
+``forwarded_for_headers`` instead of ``REMOTE_ADDR``.
 
-Ensure `forwarded_for_headers` is configured if `trusted_proxies` is set.
+Ensure ``forwarded_for_headers`` is configured if ``trusted_proxies`` is set.
 
 Defaults to ``[]`` (empty array)
 
@@ -3635,8 +3734,8 @@ forwarded_for_headers
 	'forwarded_for_headers' => ['HTTP_X_FORWARDED', 'HTTP_FORWARDED_FOR'],
 
 Headers trusted as containing the client IP address when used with
-`trusted_proxies`. For example, use `HTTP_X_FORWARDED_FOR` for the
-`X-Forwarded-For` header.
+``trusted_proxies``. For example, use ``HTTP_X_FORWARDED_FOR`` for the
+``X-Forwarded-For`` header.
 
 Incorrect configuration allows clients to spoof their IP address, bypassing
 access controls and rendering logs unreliable.
@@ -3655,8 +3754,8 @@ List of trusted IP ranges for admin actions. If non-empty, all admin actions
 must originate from IPs within these ranges.
 
 Supported formats:
-- IPv4 addresses or ranges, e.g., `192.0.2.42/32`, `233.252.0.0/24`
-- IPv6 addresses or ranges, e.g., `2001:db8::13:37/64`
+- IPv4 addresses or ranges, e.g., ``192.0.2.42/32``, ``233.252.0.0/24``
+- IPv6 addresses or ranges, e.g., ``2001:db8::13:37/64``
 
 Defaults to ``[]`` (empty array)
 
@@ -3687,7 +3786,7 @@ filelocking.ttl
 Set the lock's time-to-live (TTL) in seconds. Locks older than this are
 automatically cleaned up.
 
-Defaults to ``3600`` seconds (1 hour) or the PHP `max_execution_time`,
+Defaults to ``3600`` seconds (1 hour) or the PHP ``max_execution_time``,
 whichever is higher.
 
 memcache.locking
@@ -3715,7 +3814,7 @@ Enable debug logging for file locking. This can generate a large volume of log
 entries, potentially causing performance degradation and large log files on
 busy instances.
 
-Use with `log.condition` to limit logging in production environments.
+Use with ``log.condition`` to limit logging in production environments.
 
 Defaults to ``false``
 
@@ -3787,8 +3886,8 @@ data-fingerprint
 	'data-fingerprint' => '',
 
 Set the data fingerprint for the current data served. Used by clients to
-detect if a backup has been restored. Update this by running:
-./occ maintenance:data-fingerprint
+detect if a backup has been restored. Update this by running::
+  occ maintenance:data-fingerprint
 
 Changing or deleting this value may cause connected clients to stall until
 conflicts are resolved.
@@ -3841,7 +3940,7 @@ gs.federation
 
 	'gs.federation' => 'internal',
 
-Configure federation for Global Scale setups. Set to 'global' to allow
+Configure federation for Global Scale setups. Set to ``global`` to allow
 federation outside the environment.
 
 Defaults to ``internal``
@@ -3860,11 +3959,16 @@ csrf.optout
 List of user agents exempt from SameSite cookie protection due to non-standard
 HTTP behavior.
 
-WARNING: Use only if you understand the implications.
+
+
+.. warning::
+
+  Use only if you understand the implications.
 
 Defaults to:
-- /^WebDAVFS/ (OS X Finder)
-- /^Microsoft-WebDAV-MiniRedir/ (Windows WebDAV drive)
+
+- ``/^WebDAVFS/`` (OS X Finder)
+- ``/^Microsoft-WebDAV-MiniRedir/`` (Windows WebDAV drive)
 
 core.login_flow_v2.allowed_user_agents
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3878,10 +3982,15 @@ Specify allowed user agents for Login Flow V2 using regular expressions.
 
 User agents not matching this list are denied access to Login Flow V2.
 
-WARNING: Use only if you understand the implications.
 
-Example: Allow only the Nextcloud Android app:
-'core.login_flow_v2.allowed_user_agents' => ['/Nextcloud-android/i'],
+
+.. warning::
+
+  Use only if you understand the implications.
+
+Example: Allow only the Nextcloud Android app::
+
+   'core.login_flow_v2.allowed_user_agents' => ['/Nextcloud-android/i'],
 
 Defaults to ``[]`` (empty array)
 
@@ -3968,9 +4077,13 @@ query_log_file
 
 Log all database queries to a file.
 
-WARNING: This significantly reduces server performance and is intended only
-for debugging or profiling query interactions. Sensitive data may be logged in
-plain text.
+
+
+.. warning::
+
+  This significantly reduces server performance and is intended only
+  for debugging or profiling query interactions. Sensitive data may be logged in
+  plain text.
 
 query_log_file_requestid
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3982,7 +4095,7 @@ query_log_file_requestid
 
 Prefix all queries with the request ID when set to `yes`.
 
-Requires `query_log_file` to be set.
+Requires ``query_log_file`` to be set.
 
 query_log_file_parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3994,8 +4107,12 @@ query_log_file_parameters
 
 Include all query parameters in the query log when set to `yes`.
 
-Requires `query_log_file` to be set.
-WARNING: This may log sensitive data in plain text.
+Requires ``query_log_file`` to be set.
+
+
+.. warning::
+
+  This may log sensitive data in plain text.
 
 query_log_file_backtrace
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4007,7 +4124,7 @@ query_log_file_backtrace
 
 Include a backtrace in the query log when set to `yes`.
 
-Requires `query_log_file` to be set.
+Requires ``query_log_file`` to be set.
 
 redis_log_file
 ^^^^^^^^^^^^^^
@@ -4019,9 +4136,13 @@ redis_log_file
 
 Log all Redis requests to a file.
 
-WARNING: This significantly reduces server performance and is intended only
-for debugging or profiling Redis interactions. Sensitive data may be logged in
-plain text.
+
+
+.. warning::
+
+  This significantly reduces server performance and is intended only
+  for debugging or profiling Redis interactions. Sensitive data may be logged in
+  plain text.
 
 diagnostics.logging
 ^^^^^^^^^^^^^^^^^^^
@@ -4032,7 +4153,7 @@ diagnostics.logging
 	'diagnostics.logging' => true,
 
 Enable diagnostics event logging. Logs timings of common execution steps at
-debug level. Use with `log.condition` to enable conditionally in production.
+debug level. Use with ``log.condition`` to enable conditionally in production.
 
 Defaults to ``true``
 
