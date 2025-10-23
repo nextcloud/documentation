@@ -2,25 +2,23 @@
 # Nextcloud NGINX Example Configuration (v2025-09-21-v6)
 # - Latest version: https://docs.nextcloud.com/server/latest/admin_manual/go.php?to=admin-nginx
 # - Tested: NGINX 1.24.x/1.25.x   Nextcloud 30.x/31.x
-# - All 'TODO:' lines must be changed for your environment.
+# - All lines labeled 'TODO:' must be changed for your environment.
 # ==============================================================================
 
 # ==== QUICK SETUP: REQUIRED CHANGES ====
 # 1) Set $nextcloud_root in section 1
 # 2) Set PHP-FPM socket/IP in section 2
-# 3) Set listen directives for your NGINX version in section 5
-# 4) Set server_name in sections 4 & 5
+# 3) Set server_name in sections 4 & 5
+# 4) Set listen directives for your NGINX version in section 5
 # 5) Set SSL cert/key in section 5
-# REMINDER: Restart nginx after changes.
+# Reminder: restart NGINX after making changes.
 
 # ==============================================================================
-# 1. Variables for Maintainability
+# 1. Variables
 # ==============================================================================
 
 # TODO: Set to your Nextcloud install path
 set $nextcloud_root   /var/www/nextcloud;
-
-# Nginx does not support the rest of the "TODO" values being handled via variables.
 
 # ==============================================================================
 # 2. Upstream PHP Handler
@@ -36,7 +34,7 @@ upstream php-handler {
 # 3. Cache-Control Map
 # ==============================================================================
 
-# Sets $asset_immutable based on '?v=' parameter for smarter caching of assets.
+# Sets $asset_immutable based on the '?v=' URL parameter for smarter asset caching.
 map $arg_v $asset_immutable {
     ""          "";                # No version param: no 'immutable'
     default     ", immutable";     # With param: add 'immutable'
@@ -77,7 +75,7 @@ server {
     # listen        [::]:443 ssl;          # IPv6
     # http2         on;                    # HTTP/2
 
-    # If in doubt, use <v1.25.1 syntax; it'll work with released NGINX versions
+    # If in doubt, use the <v1.25.1 syntax; it will work with released NGINX versions
     # but may emit a warning or stop working in future NGINX versions.
 
     server_tokens   off;
@@ -89,155 +87,126 @@ server {
     root            $nextcloud_root;
 
     # ------------------------------------------------------------
-    # ---- Web Server Tuning
+    # ---- 5.1 Web Server Tuning
     # ------------------------------------------------------------
     #
     # These are reasonable values for a "typical" single web server deployment.
-    # If you encounter problems, ensure your PHP/Proxy/kernel config is in alignment.
+    # If you encounter problems, ensure your PHP/Proxy/kernel configuration is aligned.
 
     # ---- Client Request Handling ----
 
-    # Change the memory buffer for client request bodies from the default (8KB|16KB) to 512KB.
-    #     "Sets buffer size for reading client request body. In case the request body is larger 
-    #     than the buffer, the whole body or only its part is written to a temporary file."
-
+    # Increase the memory buffer for client request bodies from the default (8KB|16KB) to 512KB.
+    #     Sets buffer size for reading client request body. If the request body is larger than the buffer,
+    #     the whole body or part of it is written to a temporary file.
     client_body_buffer_size 512k;
 
-    # Change the timeout for reading client request bodies from the default (60s) to 300s.
-    #    "Defines a timeout for reading client request body. The timeout is set only for a period 
-    #    between two successive read operations, not for the transmission of the whole request 
-    #    body. If a client does not transmit anything within this time, the request is terminated 
-    #    with the 408 (Request Time-out) error."
-
+    # Increase the timeout for reading client request bodies from the default (60s) to 300s.
+    #    Defines a timeout for reading the client request body. The timeout applies to the period between
+    #    successive read operations. If a client transmits nothing within this time, the request ends with
+    #    a 408 (Request Time-out) error.
     client_body_timeout     300s;
 
-    # Change the maximum allowed size for client request bodies from the default (1MB) to 512MB.
-    #    "Sets the maximum allowed size of the client request body. If the size in a request
-    #    exceeds the configured value, the 413 (Request Entity Too Large) error is returned to the 
-    #    client."
-
+    # Increase the maximum allowed size for client request bodies from the default (1MB) to 512MB.
+    #    Sets the maximum allowed size of the client request body. If the request exceeds this, a 413
+    #    (Request Entity Too Large) error is returned.
     client_max_body_size    512M;
 
     # ---- Client Response Handling ----
 
     # Change the timeout for sending responses to clients from the default (60s) to 180s.
-    #    "Sets a timeout for transmitting a response to the client. The timeout is set only between 
-    #    two successive write operations, not for the transmission of the whole response. If the
-    #    client does not receive anything within this time, the connection is closed."
-    # Can help reduce transient dropped or reset connections for slow clients / slow connectivity.
-    # Symptom in nginx error log: `client prematurely closed connection` (client will not receive an HTTP code).
+    #    Sets a timeout for transmitting a response to the client. The timeout applies between successive
+    #    write operations. If the client receives nothing within this time, the connection is closed.
+    # Can help reduce transient dropped/reset connections for slow clients or slow networks.
+    # Symptom in NGINX error log: `client prematurely closed connection` (client will not receive an HTTP code).
     # Note: Upstream (PHP) transaction is usually already completed.
-    # Not enabled by default; adjust value and uncomment if needed.
-
-    # send_timeout          60s;
+    # Not enabled by default; adjust and uncomment if needed.
+    # send_timeout          180s;
 
     # ------------------------------------------------------------
-    # ---- FastCGI Server Tuning
+    # ---- 5.2 FastCGI Server Tuning
     # ------------------------------------------------------------
 
     # ---- FastCGI Response Handling ----
 
-    # Change the number/size of the buffers from the default (8/4KB|8KB) for PHP-FPM response bodies to 64/4KB.
-    #    "Sets the number and size of the buffers used for reading a response from the FastCGI server, 
-    #     for a single connection."
-    # Keeps larger response bodies in memory.
-
+    # Increase the number/size of buffers for PHP-FPM response bodies from the default to 64x4KB.
+    #    Sets the number and size of buffers used for reading a response from the FastCGI server for a
+    #    single connection. Keeps larger response bodies in memory.
     fastcgi_buffers         64 4K; 
 
-    # Change the maximum size of the temporary file from the default (1GB) for PHP-FPM response bodies to 0 (disabled).
-    #     "When buffering of responses from the FastCGI server is enabled, and the whole response does 
-    #    not fit into the buffers set by the fastcgi_buffer_size and fastcgi_buffers directives, a part 
-    #    of the response can be saved to a temporary file. This directive sets the maximum size of the 
-    #    temporary file. The zero value disables buffering of responses to temporary files."
-    # Switches to unbuffered mode for larger responses that exceed fastcgi_buffers.
-
+    # Change the maximum size of the temporary file for PHP-FPM responses from the default (1GB) to 0 (disabled).
+    #    When buffering is enabled and the response does not fit into the buffers, part of the response
+    #    can be saved to a temporary file. This sets the maximum size of that file. A zero value disables
+    #    buffering to temporary files.
     fastcgi_max_temp_file_size  0;
 
-    # Change the timeout for reading responses from PHP-FPM from the default (60s) to 180s.
-    #    "Defines a timeout for reading a response from the FastCGI server. The timeout is set only 
-    #    between two successive read operations, not for the transmission of the whole response. If the 
-    #    FastCGI server does not transmit anything within this time, the connection is closed."
-    # Can help reduce transient 504 (Gateway Timeout) errors due to long-running transactions.
-    # Symptom in nginx error log: `upstream timed out (110: Connection timed out) while READING response header from upstream`.
-    # Sometimes useful for large uploads, slower server-side storage I/O, slow database queries, and any heavy transactions.
-    # Not enabled by default; adjust value and uncomment if needed.
-
+    # Increase the timeout for reading responses from PHP-FPM from the default (60s) to 180s.
+    #    Defines a timeout for reading a response from the FastCGI server. The timeout applies between
+    #    successive read operations. If the FastCGI server transmits nothing within this time, the
+    #    connection is closed.
+    # Can help reduce transient 504 (Gateway Timeout) errors for long-running transactions.
+    # Symptom in NGINX error log: `upstream timed out (110: Connection timed out) while READING response header from upstream`.
+    # Useful for large uploads, slower server-side storage I/O, slow DB queries, and heavy transactions.
+    # Not enabled by default; adjust and uncomment if needed.
     # fastcgi_read_timeout      180s;
 
     # ---- FastCGI Request Handling ----
 
-    # Change the use of buffering for client request bodies with PHP-FPM from the default (on) to on.
-    #    "When enabled, the entire request body is read from the client before sending the request to a
-    #    FastCGI server. When disabled, the request body is sent to the FastCGI server immediately as it 
-    #    is received."
-    # Not enabled by default; uncomment if needed.
-    # FIXME: Remove this from the sample config as this is already the default.
-
-    # fastcgi_request_buffering   on;
+    #    When enabled, the entire request body is read from the client before sending the request to the
+    #    FastCGI server. When disabled, the request body is sent immediately as it is received.
+    # Note: This is the default; consider removing it from the sample.
+    # fastcgi_request_buffering on;
 
     # Change the timeout for sending requests to PHP-FPM from the default (60s) to 180s.
-    #    "Sets a timeout for transmitting a request to the FastCGI server. The timeout is set only between 
-    #    two successive write operations, not for the transmission of the whole request. If the FastCGI 
-    #    server does not receive anything within this time, the connection is closed."
-    # Can help reduce transient 504 (Gateway Timeout) errors due to large uploads.
-    # Symptom in nginx error log: `upstream timed out (110: Connection timed out) while WRITING request to upstream`.
-    # Sometimes useful for large uploads and slower networks (particularly when non-chunked).
-    # Not enabled by default; adjust value and uncomment if needed.
-
+    #    Sets a timeout for transmitting a request to the FastCGI server. The timeout applies between
+    #    successive write operations. If the FastCGI server receives nothing within this time, the
+    #    connection is closed.
+    # Can help reduce transient 504 (Gateway Timeout) errors for large uploads or slower networks.
+    # Symptom in NGINX error log: `upstream timed out (110: Connection timed out) while WRITING request to upstream`.
+    # Not enabled by default; adjust and uncomment if needed.
     # fastcgi_send_timeout     180s;
 
     # ------------------------------------------------------------
-    # ---- Gzip Response Compression
+    # ---- 5.3 Gzip Response Compression
     # ------------------------------------------------------------
 
     gzip                    on;
-    gzip_comp_level         4;      # Good compromise between CPU/size
-    gzip_min_length         256;    # Avoid compressing small responses
-    gzip_proxied                    # Response types to compress when proxying (FIXME: Remove; irrelevant for this use case)
-        expired
-        no-cache
-        no-store
-        private
-        no_last_modified
-        no_etag
-        auth;
-    gzip_vary               on;     # Make sure intermediate caches serve correct response
-    gzip_types                      # Response MIME types to compress; text/html is always compressed
-        application/atom+xml
-        application/javascript
-        application/json
-        application/ld+json
-        application/manifest+json
-        application/rss+xml
-        application/vnd.geo+json
-        application/vnd.ms-fontobject
-        application/wasm
-        application/x-font-ttf
-        application/x-web-app-manifest+json
-        application/xhtml+xml
-        application/xml
+    gzip_comp_level         4;      # Good compromise between CPU usage and size
+    gzip_min_length         256;    # Avoid compressing very small responses
+
+    # MIME types to compress (text/html is always compressed by NGINX)
+    # Includes common text-like assets, fonts, WebAssembly, and selected image types
+    gzip_types
+        application/atom+xml application/javascript application/json application/ld+json
+        application/manifest+json application/rss+xml application/vnd.geo+json
+        application/vnd.ms-fontobject application/wasm application/x-font-ttf
+        application/x-web-app-manifest+json application/xhtml+xml application/xml
         font/opentype
-        image/bmp
-        image/svg+xml
-        image/x-icon
-        text/cache-manifest
-        text/css
-        text/javascript
-        text/plain
-        text/vcard
-        text/vnd.rim.location.xloc
-        text/vtt
-        text/x-component
-        text/x-cross-domain-policy;
+        image/bmp image/svg+xml image/x-icon
+        text/cache-manifest text/css text/javascript text/plain text/vcard
+        text/vnd.rim.location.xloc text/vtt text/x-component text/x-cross-domain-policy;
+
+    # Response types to compress for requests marked as proxied (i.e., indicated by Via header)
+    # Targets dynamic / non-cacheable responses intermediate proxies usually won't cache.
+    gzip_proxied
+        expired                    # Expires header indicates the response has expired
+        no-cache                   # Cache-Control contains "no-cache"
+        no-store                   # Cache-Control contains "no-store"
+        private                    # Cache-Control contains "private"
+        no_last_modified           # Last-Modified header is missing
+        no_etag                    # ETag header is missing
+        auth;                      # Request includes an Authorization header
+
+    gzip_vary               on;    # Ensure intermediate caches serve the correct response
 
     # ------------------------------------------------------------
-    # ---- Security Header Settings
+    # ---- 5.4 Security Header Settings
     # ------------------------------------------------------------
-    # WARNING: Any add_header inside a location block disables inheritance.
+    # NOTE: Nextcloud itself handles other headers such as CSP/etc.
 
     fastcgi_hide_header X-Powered-By;
 
     # ---- Required headers ----
+    # WARNING: Any add_header inside a location block disables inheritance.
 
     add_header      Referrer-Policy        "no-referrer"       always;
     add_header      X-Content-Type-Options "nosniff"           always;
@@ -245,15 +214,15 @@ server {
     add_header      X-Permitted-Cross-Domain-Policies "none"   always;
     add_header      X-Robots-Tag           "noindex, nofollow" always;
 
-    # ---- HTTP Strict-Transport-Security (HSTS) ----
+    # ---- Optional headers ----
 
-    # add_header  Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+    # Use HTTP Strict-Transport-Security (HSTS)
     # WARNING: Uncomment only after reviewing consequences (see FURTHER RESOURCES)
-
-    # XXX: Is HSTS properly handled when *Static Asset Handling* header repeats are taken into consideration (it's not repeated)?
+    # XXX: Is HSTS properly handled when static asset header repeats are taken into consideration?
+    # add_header  Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
 
     # ------------------------------------------------------------
-    # ---- MIME Type Settings
+    # ---- 5.5 MIME Type Settings
     # ------------------------------------------------------------
 
     # Re-included since we want to extend (not replace) the default list, and it would otherwise be overridden.
@@ -263,25 +232,21 @@ server {
 
     types {
         text/javascript mjs;
-        application/wasm wasm;       # NGINX <v1.27.1
-
-    # If in doubt, include `wasm`; it'll work but may emit a warning.
+        application/wasm wasm;       # NGINX <v1.27.1 (if in doubt, include `wasm`; it will work but may emit a warning).
     }
 
     # ------------------------------------------------------------
-    # ---- Folder Index/Fallback Request Handling
+    # ---- 5.6 Request Handling
     # ------------------------------------------------------------
 
-    # Requests that match real folders containing index.php/index.html are served directly; others go thru the default frontend
+    # ---- Folder Index/Fallback Request Handling ----
+    # Requests that match real folders containing index.php/index.html are served directly; others go through the default frontend
     index
         index.php                  # Used if found in target folder
-        index.html                 # FIXME: Just in case; used if found, but probably unnecessary for our use-case
-        /index.php$request_uri;    # Fallback (i.e. everything else) is sent via the default frontend
+        index.html                 # Included just in case; used if found
+        /index.php$request_uri;    # Fallback (everything else) is sent via the default frontend
 
-    # ------------------------------------------------------------
-    # ---- Microsoft WebDAV Clients Handling
-    # ------------------------------------------------------------
-
+    # ---- Microsoft WebDAV Clients Handling ----
     # Exact match (Priority Order 1)
     location = / {
         if ($http_user_agent ~ ^DavClnt) {
@@ -289,10 +254,7 @@ server {
         }
     }
 
-    # ------------------------------------------------------------
-    # ---- /robots.txt Handling
-    # ------------------------------------------------------------
-
+    # ---- /robots.txt Handling ----
     # Exact match (Priority Order 1)
     location = /robots.txt {
         allow           all;
@@ -300,109 +262,96 @@ server {
         access_log      off;
     }
 
-    # ------------------------------------------------------------
-    # ---- /.well-known/* Handling 
-    # ------------------------------------------------------------
-
-    # Supports Nextcloud handlers (internal and apps) as well as non-Nextcloud handler responses
+    # ---- /.well-known/* Handling ----
+    # Supports Nextcloud handlers (internal and apps) as well as non-Nextcloud handlers.
 
     # Preferential prefix match (Priority Order: 2)
     location ^~ /.well-known {
         # Exact match (Priority Order: 1)
         location = /.well-known/carddav {              # CardDAV requests
-            return      301 /remote.php/dav/;          # Let DAV endpoint handle
+            return      301 /remote.php/dav/;          # Let the DAV endpoint handle
         }
 
         # Exact match (Priority Order: 1)
         location = /.well-known/caldav {               # CalDAV requests
-            return      301 /remote.php/dav/;          # Let DAV endpoint handle
+            return      301 /remote.php/dav/;          # Let the DAV endpoint handle
         }
 
         # Prefix match (longest) (Priority Order: 4)
         location /.well-known/acme-challenge {         # ACME HTTP-01 challenges (non-Nextcloud)
-            try_files   $uri $uri/ =404;               # If exists on-disk serve it; otherwise 404
+            try_files   $uri $uri/ =404;               # If exists on disk serve it; otherwise 404
         }
 
         # Prefix match (longest) (Priority Order: 4)
         location /.well-known/pki-validation {         # PKI Validation (non-Nextcloud)
-            try_files   $uri $uri/ =404;               # If exists on-disk serve it; otherwise 404
+            try_files   $uri $uri/ =404;               # If exists on disk serve it; otherwise 404
         }
 
         # Everything else (no match)
         return          301 /index.php$request_uri;    # Let the default frontend handle (internal, apps, 404, etc.)
     }
 
-    # ------------------------------------------------------------
-    # ---- Sensitive Folder and File Protections
-    # ------------------------------------------------------------
-
-    # FIXME: Could possibly be replaced with preferential prefix matches (^~) for improved readability, greater flexibility
-    #     (ordering), and better performance (less regex / more optimized prefix-based matching).
+    # ---- Sensitive Folder and File Protections ----
+    # FIXME: Could possibly be replaced with preferential prefix matches (^~) for improved readability,
+    #     ordering, and performance (less regex / more optimized prefix-based matching).
 
     # Regular expression match (Priority Order: 3)
     location ~ ^/(?:build|tests|config|lib|3rdparty|templates|data)(?:$|/) {    # Sensitive folder requests
         return      404;                                                        # ...get a 404
     }
 
-    # - Unlike the folder matcher (above), there is no end or final slash required "($|/)".
-    # - Only URIs in the webroot can match - e.g. "/occ", but not "/apps/occweb".
-
     # Regular expression match (Priority Order: 3)
+    # - Unlike the folder matcher above, there is no end or final slash required "($|/)".
+    # - Only URIs in the webroot can match - e.g. "/occ", but not "/apps/occweb".
     location ~ ^/(?:\.|autotest|occ|issue|indie|db_|console) {                   # Sensitive file requests
         return      404;                                                         # ...get a 404
     }
 
-    # ------------------------------------------------------------
-    # PHP Request Handling
-    # ------------------------------------------------------------
-
+    # ---- PHP Request Handling ----
     # Handles all PHP requests: passes them to PHP-FPM via 'upstream php-handler'.
     # Ensures pretty URLs and Nextcloud endpoints work correctly.
-    # This block must come before static asset rules!
-
-    # - The `.php` can be anywhere in the URI (e.g. /foo.php, /foo/bar.php, /foo.php/bar)
-    # - i.e. URI must either end after the `.php` or be followed by immediately by a forward slash (`/`).
-
+    #
     # Regular expression match (Priority order: 3)
-    location ~ \.php(?:$|/) {    # Any requests containing `.php($|/)`
+    # - This block must come before static asset rules!
+    location ~ \.php(?:$|/) {   # Matches requests with ".php" at the end or followed by "/"
+        # Send most requests to the front controller (index.php) for Nextcloud "pretty" URLs,
+        # except for explicit endpoints listed in the negative lookahead below.
+        # (This rewrite runs before FastCGI handling.)
+        rewrite ^/(?!index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+|.+/richdocumentscode(_arm64)?/proxy) /index.php$request_uri;
 
-        # Send most requests to index.php for Nextcloud pretty URLs, except for listed endpoints.
-        rewrite
-            ^/(?!index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+|.+/richdocumentscode(_arm64)?/proxy)
-            /index.php$request_uri;
+        # Split path info for PHP (e.g. /file.php/extra/path -> $fastcgi_script_name=/file.php, $fastcgi_path_info=/extra/path)
+        # - The `.php` can be anywhere in the URI (e.g. /foo.php, /foo/bar.php, /foo.php/bar)
+        # - i.e. URI must either end after the `.php` or be followed immediately by a forward slash (`/`).
+        fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+        set $path_info $fastcgi_path_info;
 
-        fastcgi_split_path_info     ^(.+?\.php)(/.*)$;
-        set                         $path_info $fastcgi_path_info;
+        # Ensure the target script exists; otherwise return 404
+        try_files $fastcgi_script_name =404;
 
-        try_files                   $fastcgi_script_name =404;
-
+        # FastCGI params and environment
         include         fastcgi_params;
-        fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_param   PATH_INFO $path_info;
-        fastcgi_param   HTTPS on;
-        fastcgi_param   modHeadersAvailable true;
-        fastcgi_param   front_controller_active true;
+        fastcgi_param   SCRIPT_FILENAME            $document_root$fastcgi_script_name;
+        fastcgi_param   PATH_INFO                  $path_info;
+        fastcgi_param   HTTPS                      on;
+        fastcgi_param   modHeadersAvailable        true;
+        fastcgi_param   front_controller_active    true;
+
+        # Send to configured PHP backend
         fastcgi_pass    php-handler;
-
-        fastcgi_intercept_errors    on;
-
+        fastcgi_intercept_errors on;
     }
 
-    # --------------------------------------------------------------------------
-    # 5.15 Static Asset Handling (JS, CSS, images, fonts, etc.)
-    # --------------------------------------------------------------------------
-
+    # ---- Static Asset Handling (JS, CSS, images, fonts, etc.) ----
     location ~ \.(?:css|js|mjs|svg|gif|ico|jpg|png|webp|wasm|tflite|map|ogg|flac)$ {
         try_files   $uri /index.php$request_uri;
 
         # Set the HTTP Cache-Control header for different types of static assets:
         #     Tells browsers how aggressively to cache a given asset.
-        #     The $asset_immutable variable to dynamically set using the map in section 3
+        #     The $asset_immutable variable is set dynamically by the map in section 3.
         #     Requests for assets with a 'v=' parameter are set to immutable.
         add_header  Cache-Control "public, max-age=15778463$asset_immutable";
 
-        # Security headers repeated from section 5.6, see there for details.
-        # These must be repeated here due to NGINX add_header inheritance rules:
+        # Security headers repeated from section 5.4. These must be repeated due to NGINX add_header inheritance rules:
         add_header  Referrer-Policy        "no-referrer"       always;
         add_header  X-Content-Type-Options "nosniff"           always;
         add_header  X-Frame-Options        "SAMEORIGIN"        always;
@@ -419,16 +368,12 @@ server {
         access_log  off;
     }
 
-    # --------------------------------------------------------------------------
-    # 5.16 Redirect /remote to /remote.php (legacy compatibility)
-    # --------------------------------------------------------------------------
+    # ---- Redirect /remote to /remote.php (legacy compatibility) ----
     location /remote {
         return      301 /remote.php$request_uri;
     }
 
-    # --------------------------------------------------------------------------
-    # 5.17 Fallback: Pass all other requests to the default frontend
-    # --------------------------------------------------------------------------
+    # ---- Fallback: Pass all other requests to the default frontend ----
     location / {
         try_files   $uri $uri/ /index.php$request_uri;
     }
@@ -467,7 +412,7 @@ server {
 
 # ==============================================================================
 # REMINDERS:
-#   - Restart nginx after changes!
+#   - Restart NGINX after changes!
 #   - See testing tips at the top in QUICK SETUP.
 # END OF FILE
 # ==============================================================================
