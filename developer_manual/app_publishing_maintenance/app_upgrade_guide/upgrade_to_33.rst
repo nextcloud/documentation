@@ -87,3 +87,7 @@ Removed APIs
 - The ``\OCP\Search\PagedProvider``, ``\OCP\Search\Provider`` and ``\OCP\Search\Result`` classes were
   deprecated since Nextcloud 20 and were now removed. Instead use ``\OCP\Search\SearchResult`` and
   ``\OCP\Search\IProvider``, available since Nextcloud 20.
+- The ``\OCP\DB\IQueryBuilder::execute`` method was deprecated since Nextcloud 22 and was now removed.
+  Instead use the ``\OCP\DB\IQueryBuilder::executeQuery`` or ``\OCP\DB\IQueryBuilder::executeStatement``
+  method, available since Nextcloud 20.
+
