@@ -241,6 +241,8 @@ installer. (There are also per-user salts.) If you lose this salt, you lose
 all your passwords. This example is for documentation only, and you should
 never use it.
 
+.. deprecated:: 9.0.0 This salt is deprecated and only used for legacy-compatibility, developers should *NOT* use this value for anything nowadays.
+
 secret
 ^^^^^^
 
@@ -2515,6 +2517,8 @@ Sort groups in the user settings by name instead of the user count
 
 By enabling this, the user count beside the group name is disabled as well.
 
+.. deprecated:: 29.0.0 Use the frontend instead or set the app config value ``group.sortBy`` for ``core`` to ``2``
+
 Comments
 --------
 
@@ -3640,7 +3644,8 @@ files_external_allow_create_new_local
 
 Allow creation of external storages of type "Local" via the web interface and
 APIs. When disabled, local storages can still be created using the occ command::
-  occ files_external:create /mountpoint local null::null -c datadir=/path/to/data
+
+    occ files_external:create /mountpoint local null::null -c datadir=/path/to/data
 
 Defaults to ``true``
 
@@ -3886,7 +3891,8 @@ data-fingerprint
 
 Set the data fingerprint for the current data served. Used by clients to
 detect if a backup has been restored. Update this by running::
-  occ maintenance:data-fingerprint
+
+    occ maintenance:data-fingerprint
 
 Changing or deleting this value may cause connected clients to stall until
 conflicts are resolved.
