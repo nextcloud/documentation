@@ -38,6 +38,7 @@ Digging deeper
    security
    settings
    setup_checks
+   snowflake_ids
    speech-to-text
    talk
    task_processing

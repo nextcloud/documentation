@@ -46,6 +46,7 @@ occ command Directory
 * :ref:`system_tags_commands_label`
 * :ref:`antivirus_commands_label`
 * :ref:`setupchecks_commands_label`
+* :ref:`snowflakes_commands_label`
 * :ref:`share_operations_label`
 * `Debugging`_
 
@@ -2272,6 +2273,28 @@ Example output::
     ✓ Data directory protected
     ✓ Internet connectivity
     ...
+
+.. _snowflakes_commands_label:
+
+Snowflake IDs
+-------------
+
+You can decode Snowflake IDs with occ::
+
+  sudo -E -u www-data php occ decode-snowflake <snowflake_id>
+
+Example output::
+
+  +--------------------+-------------------------+
+  | Snowflake ID       | 6768789079123765868     |
+  | Seconds            | 1575981518              |
+  | Milliseconds       | 50                      |
+  | Created from CLI   | no                      |
+  | Server ID          | 441                     |
+  | Sequence ID        | 2668                    |
+  | Creation timestamp | 3335258318.050          |
+  | Creation date      | 2075-09-09 12:38:38.050 |
+  +--------------------+-------------------------+
 
 .. _share_operations_label:
 
