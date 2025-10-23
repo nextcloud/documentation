@@ -21,6 +21,20 @@ The Versions app never uses more than 50% of the user's currently available
 free space. If the stored versions exceed this limit, Nextcloud deletes the 
 oldest file versions until it meets the disk space limit again.
 
+The ``versions_retention_obligation`` setting behaves slightly differently
+depending on whether version expiration is triggered by an *explicit job run*
+(for example, via ``occ versions:expire`` or a scheduled background job) or by
+*automatic expiry*.
+
+Explicit job-based expiration is *strict* and adheres closely to the configured
+``versions_retention_obligation``.
+
+Auto-expiry follows the same retention principles but may apply them more flexibly, allowing minor deviations when
+necessary to maintain adequate free storage space.
+
+This distinction can lead to different results depending on whether cleanup is
+performed automatically or manually.
+
 .. note:: Versions named by a user will never be deleted.
 
 You may alter the default pattern in ``config.php``. The default setting is 
@@ -30,12 +44,12 @@ You may alter the default pattern in ``config.php``. The default setting is
 
 Additional options are:
 
-* ``D, auto``   
-    Keep versions at least for D days, apply expiration rules to all versions 
+* ``D, auto``
+    Keep versions at least for D days, apply expiration rules to all versions
     that are older than D days
 
-* ``auto, D``   
-    Delete all versions that are older than D days automatically, delete other 
+* ``auto, D``
+    Delete all versions that are older than D days automatically, delete other
     versions according to expiration rules
  
 * ``D1, D2``    
@@ -55,21 +69,3 @@ Deactivate background job: ``occ config:app:set --value=no files_versions backgr
 Activate background job: ``occ config:app:delete files_versions background_job_expire_versions``
 
 Expire versions: ``occ versions:expire`` or ``occ versions:expire --quiet`` (without the progress bar)
-
-.. note::
-
-*Deviations in behavior: “job run” vs “auto-expiry”*
-
-The ``versions_retention_obligation`` setting behaves slightly differently
-depending on whether version expiration is triggered by an *explicit job run*
-(for example, via ``occ versions:expire`` or a scheduled background job) or by
-*automatic expiry*.
-
-Explicit job-based expiration is *strict* and adheres closely to the configured
-``versions_retention_obligation``.
-
-Auto-expiry follows the same retention principles but may apply them more flexibly, allowing minor deviations when
-necessary to maintain adequate free storage space.
-
-This distinction can lead to different results depending on whether cleanup is
-performed automatically or manually.
