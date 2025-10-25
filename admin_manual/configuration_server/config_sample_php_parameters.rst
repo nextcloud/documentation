@@ -3114,6 +3114,20 @@ clients or other unexpected results.
 
 Defaults to ``2.3.0``
 
+maximum.supported.desktop.version
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'maximum.supported.desktop.version' => '99.99.99',
+
+The maximum Nextcloud desktop client version that will be allowed to sync with
+this server instance. All connections made from later clients will be denied
+by the server.
+
+Defaults to 99.99.99
+
 localstorage.allowsymlinks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
