@@ -264,8 +264,9 @@ Depending on your server setup, these are the possible connections:
 - updates.nextcloud.com
 	- to check for available Nextcloud server updates
 	- submitted data: server version, subscription key, install time, instance id, instance size
-- apps.nextcloud.com
-	- to check for available apps and their updates 
+- apps.nextcloud.com, ltd[1-3].nextcloud.com, garm[1-5].nextcloud.com
+	- to check for available apps and their updates
+	- source is apps.nextcloud.com the ltd and garm servers are just mirroring the apps.json file
 	- submitted data: subscription key
 - github.com, objects.githubusercontent.com, release-assets.githubusercontent.com
 	- to download Nextcloud standard apps
