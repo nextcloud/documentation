@@ -531,14 +531,26 @@ If you would like to implement providers that handle additional task types, you 
     }
 
 Internal task types
-~~~~~~~~~~~~~~~~~~~
+###################
 
 .. versionadded:: 33.0.0
 
 Other apps and clients will assume that task types are user-facing and will display them on the frontend. If your custom
-task types are not intended to be shown to users, you should implement the `IInternalTaskType` interface instead. This will
+task types are not intended to be shown to users, you should implement the ``IInternalTaskType`` interface instead. This will
 make sure that other apps and clients know not to show your custom task type to end users.
 
+
+Triggerable providers
+^^^^^^^^^^^^^^^^^^^^^
+
+.. versionadded:: 33.0.0
+
+Synchronous providers are executed automatically by a background job that will usually be targeted by a worker to make sure
+that it runs almost instantly. ExApps on the other hand used to have to poll the server for new tasks. Since the introduction of triggerable
+providers ExApps are now notified immediately of new tasks when they are scheduled. This is implemented via the ``ITriggerableProvider`` interface,
+which adds an additional ``trigger(): void`` method to the provider interface which is called when a new task is scheduled for this provider and
+there are no running tasks for it at the moment. Usually if you implement a provider in PHP you will not have to deal with this interface but it is documented
+here for completeness.
 
 Provider and task type registration
 -----------------------------------
