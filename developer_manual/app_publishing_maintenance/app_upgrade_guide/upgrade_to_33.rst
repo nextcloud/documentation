@@ -29,6 +29,9 @@ Removed APIs
 - ``OC.set`` and ``OC.get`` were removed. Both are deprecated since Nextcloud 19.
   For ``get``, if really needed, use `lodash get <https://lodash.com/docs#get>`_.
   And for ``set``, use `lodash set <https://lodash.com/docs#set>`_.
+- ``OC.redirect`` and ``OC.reload`` were removed. Both were deprecated since Nextcloud 17.
+  To replace ``OC.redirect`` directly use ``window.location``.
+  To replace ``OC.reload`` directly use ``window.location.reload``.
 - The `OCA.Sharing.ExternalLinkActions` API was deprecated in Nextcloud 23 and is now removed.
   It was replaced with `OCA.Sharing.ExternalShareAction` which now have a proper API by using `registerSidebarAction` from `@nextcloud/sharing` instead.
 
