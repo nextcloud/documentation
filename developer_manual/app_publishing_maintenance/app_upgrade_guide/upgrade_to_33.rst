@@ -32,6 +32,8 @@ Removed APIs
 - ``OC.redirect`` and ``OC.reload`` were removed. Both were deprecated since Nextcloud 17.
   To replace ``OC.redirect`` directly use ``window.location``.
   To replace ``OC.reload`` directly use ``window.location.reload``.
+- ``OC.fileIsBlacklisted`` was removed. It was deprecated since Nextcloud 18.
+  The replacement is to use ``validateFilename`` from the `@nextcloud/files <https://www.npmjs.com/package/@nextcloud/files>`_ package.
 - The `OCA.Sharing.ExternalLinkActions` API was deprecated in Nextcloud 23 and is now removed.
   It was replaced with `OCA.Sharing.ExternalShareAction` which now have a proper API by using `registerSidebarAction` from `@nextcloud/sharing` instead.
 
