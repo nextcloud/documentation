@@ -73,7 +73,7 @@ To generate a new ID, call ``nextId`` function on the generator:
 Decode a Snowflake ID
 ---------------------
 
-IDs can be decoded with ``occ decode-snowflake <id>`` command.
+IDs can be decoded with ``occ snowflake:decode <id>`` command.
 
 It’s also possible to decode IDs in your code, for example to get creation time of your object:
 
