@@ -149,7 +149,7 @@ Run the following command to disable creating new federated calendar shares for 
 
   sudo -E -u www-data php occ config:app:set dav enableCalendarFederation --type=bool --value=false
 
-Note that existing shares will be deleted when the feature is disabled as they will fail to sync.
+Note that existing shares will not be deleted when the feature is disabled.
 
 Trash bin
 ---------
