@@ -15,3 +15,9 @@ Previews
 
 The preview provider for MP3 files, which reads cover images embedded in the files, is disabled by default for performance and stability reasons.
 See :doc:`../configuration_files/previews_configuration` for details on how to enable or disable the preview provider.
+
+Snowflake IDs
+-------------
+
+This version of Nextcloud ships with `Snowflake IDs <https://en.wikipedia.org/wiki/Snowflake_ID>`_. Those IDs include the creation time of object, a sequence ID and a server ID.
+The server ID should now be configured in your config.php file or using environment variables. See :doc:`../configuration_server/config_sample_php_parameters` for more information.
