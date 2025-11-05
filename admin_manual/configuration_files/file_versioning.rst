@@ -24,7 +24,7 @@ oldest file versions until it meets the disk space limit again.
 Nextcloud manages file versions using a combination of on-save pruning and scheduled cleanup. This ensures that versions are retained while respecting storage quotas.
 
 During Version Creation
-----------------------
+-----------------------
 
 Nextcloud automatically creates new file versions whenever a file is modified, allowing users to restore previous states when needed. After each new version is stored, the system automatically checks storage limits and retention rules. Versions are filtered according to the above pattern to keep representative versions and remove redundant ones. If the user’s quota is exceeded, auto-expiry is triggered.
 When storage space runs low, Nextcloud sorts all versions from oldest to newest and removes the oldest ones first, while always preserving at least the two most recent versions to free up space.
