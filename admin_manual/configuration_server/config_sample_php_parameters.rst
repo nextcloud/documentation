@@ -228,6 +228,26 @@ automatically by the installer. This example is for documentation only,
 and you should never use it because it will not work. A valid ``instanceid``
 is created when you install Nextcloud.
 
+serverid
+^^^^^^^^
+
+
+::
+
+	'serverid' => -1,
+
+This is a unique identifier for your server.
+
+It is useful when your Nextcloud instance is using different PHP servers.
+Once it's set it shouldn't be changed.
+
+Value must be an integer, comprised between 0 and 1023.
+
+When config.php is shared between different servers, this value should be overriden with "NC_serverid=<int>" on each server.
+Note that it must be overriden for CLI and for your webserver.
+
+Example for CLI: NC_serverid=42 occ config:list system
+
 passwordsalt
 ^^^^^^^^^^^^
 
