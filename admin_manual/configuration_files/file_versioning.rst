@@ -21,19 +21,19 @@ The Versions app never uses more than 50% of the user's currently available
 free space. If the stored versions exceed this limit, Nextcloud deletes the 
 oldest file versions until it meets the disk space limit again.
 
-The ``versions_retention_obligation`` setting behaves slightly differently
-depending on whether version expiration is triggered by an *explicit job run*
-(for example, via ``occ versions:expire`` or a scheduled background job) or by
-*automatic expiry*.
+Nextcloud manages file versions using a combination of on-save pruning and scheduled cleanup. This ensures that versions are retained while respecting storage quotas.
 
-Explicit job-based expiration is *strict* and adheres closely to the configured
-``versions_retention_obligation``.
+During Version Creation
+----------------------
 
-Auto-expiry follows the same retention principles but may apply them more flexibly, allowing minor deviations when
-necessary to maintain adequate free storage space.
+Nextcloud automatically creates new file versions whenever a file is modified, allowing users to restore previous states when needed. After each new version is stored, the system automatically checks storage limits and retention rules. Versions are filtered according to the above pattern to keep representative versions and remove redundant ones. If the user’s quota is exceeded, auto-expiry is triggered.
+When storage space runs low, Nextcloud sorts all versions from oldest to newest and removes the oldest ones first, while always preserving at least the two most recent versions to free up space.
 
-This distinction can lead to different results depending on whether cleanup is
-performed automatically or manually.
+During the Regular Background Job
+---------------------------------
+
+Nextcloud runs a background cleanup task that automatically removes old file versions for each user. During this process, the system checks the user's version storage folder and identifies versions that are older than the configured maximum retention period or whose original files no longer exist.
+When an outdated or orphaned version is found, it is safely deleted from both the filesystem and the version database to reclaim storage space and maintain consistency.
 
 .. note:: Versions named by a user will never be deleted.
 
