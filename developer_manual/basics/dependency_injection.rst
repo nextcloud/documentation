@@ -1,70 +1,158 @@
-====================
-Dependency injection
-====================
+=================================
+Containers / Dependency Injection
+=================================
 
-.. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
+Introduction
+------------
 
-The App Framework assembles the application by using a container based on the
-software pattern `Dependency Injection <https://en.wikipedia.org/wiki/Dependency_injection>`_.
-This makes the code easier to test and thus easier to maintain.
+Modern software applications are composed of various components that need to interact
+with one another. Traditionally, objects create their own dependencies internally,
+which leads to tight coupling and makes code harder to test, maintain, and extend.
+`Dependency injection (DI) <https://en.wikipedia.org/wiki/Dependency_injection>`_ is
+a software design pattern that helps solve this problem by having dependencies provided
+from the outside, rather than being constructed inside the object itself.
 
-If you are unfamiliar with this pattern, watch the following video:
+Dependency injection may sound like a big concept, but it’s really just about making
+your code easier to work with and more flexible. Instead of each part of your app
+creating the things it needs by itself, those “dependencies” are handed to it -- usually
+by a special helper called a container. This means your classes don’t need to know how
+to create their collaborators; they just need to know how to use them.
+
+The App Framework in Nextcloud assembles applications using a container based on this
+design pattern. This approach leads to more modular, testable, and maintainable code. 
+
+Using dependency injection is about more than just elegant code. When all apps follow
+this pattern:
+
+- It’s easier to test and upgrade both apps and the server, since dependencies can be
+  swapped out or mocked.
+- Apps stay decoupled from internal server details, making it safer for Nextcloud to
+  evolve without breaking your app.
+- Core features like autowiring, service discovery, and new APIs become available to all
+  apps without extra boilerplate.
+- Memory and resource usage can be reduced.
+- New services or APIs become easier to adopt as Nextcloud evolves.
+
+By sharing a consistent approach to building and wiring up dependencies, everyone --
+core and app developers alike -- benefits from a more robust, secure, and future-proof
+platform.
+
+If you are unfamiliar with the DI design pattern, don't worry -- it's widely used in
+modern frameworks, and you'll soon become comfortable with it. You can also watch the
+following video introduction:
 
 * `Google Clean Code Talks <https://www.youtube.com/watch?v=RlfLCWKxHJ0>`_
 
 .. _dependency-injection:
 
-Dependency injection
---------------------
+Basic Pattern of Dependency Injection
+-------------------------------------
 
-Dependency Injection sounds pretty complicated but it just means: Don't put
-new dependencies in your constructor or methods but pass them in. So this:
+The essence of dependency injection is: **don't instantiate dependencies directly inside
+your classes or methods, but instead pass them in as parameters**. This allows swapping
+out dependencies (such as with mocks in unit tests), makes dependencies explicit, and
+centralizes object creation logic.
+
+For example, consider the following pattern:
 
 .. code-block:: php
 
+  /** 
+   * Without dependency injection:
+   */
+
   use OCP\IDBConnection;
 
-  // without dependency injection
   class AuthorMapper {
+
+    // Define a property to store the dependency
     private IDBConnection $db;
 
     public function __construct() {
+      // The dependency is instantiated within the class
       $this->db = new Db();
     }
   }
 
-would turn into this by using Dependency Injection:
+With dependency injection, you would instead pass the dependency into the constructor:
 
 .. code-block:: php
 
+  /**
+   * Using dependency injection:
+   */
+
   use OCP\IDBConnection;
 
-  // with dependency injection
   class AuthorMapper {
+
+    // Define a property to store the dependency
     private IDBConnection $db;
 
+    // The dependency is passed in from outside (typically by the container)
     public function __construct(IDBConnection $db) {
+      // Assigned to the property
       $this->db = $db;
     }
   }
 
-Controller injection
+Or, more succinctly, by using constructor property promotion (since PHP 7.4):
+
+.. code-block:: php
+
+  /**
+   * Using dependency injection with constructor property promotion:
+   */
+
+  use OCP\IDBConnection;
+
+  class AuthorMapper {
+
+    /**
+     * Constructor property promotion with DI reduces boilerplate code by 
+     * handling everything within the constructor parameters. The example below 
+     * does exactly the same thing as the prior example, but in less code:
+     *
+     * - The dependency is passed in from outside (by the container)
+     * - The private property is established to store the dependency
+     * - The dependency is assigned directly to that property
+     */
+    public function __construct(private IDBConnection $db) {
+    }
+  }
+
+Advantages
+----------
+
+- **Testability:** You can inject mock objects for unit testing.
+- **Maintainability:** Changing how a dependency is constructed (in the container)
+  updates it wherever it is injected in the application.
+- **Explicitness:** Dependencies are clearly listed in constructors or method signatures,
+  improving readability and maintainability.
+
+Controller Injection
 --------------------
 
-For controllers it's possible to also have dependencies injected into methods.
+For controllers, Nextcloud allows dependencies to also be injected directly into
+individual methods, not just constructors. This is referred to as *method injection* and
+enables you to specify dependencies only where needed, potentially reducing resource
+usage for rarely required services.
 
 .. code-block:: php
   :caption: lib/Controller/ApiController.php
-  :emphasize-lines: 12-13, 16-17
+  :emphasize-lines: 15-16, 19-20
 
   <?php
 
   namespace OCA\MyApp\Controller;
 
+  use OCA\MyApp\Service\BarService;
+  use OCA\MyApp\Service\FooService;
+  use OCP\AppFramework\Controller;
   use OCP\IRequest;
 
-  class ApiController {
-      public function __construct($appName, IRequest $request) {
+  class ApiController extends Controller {
+      public function __construct(string $appName, IRequest $request) {
           parent::__construct($appName, $request);
       }
 
@@ -110,7 +198,7 @@ use the **IRegistrationContext::registerService** method:
   use OCP\AppFramework\Bootstrap\IBootContext;
   use OCP\AppFramework\Bootstrap\IRegistrationContext;
   use OCP\IDBConnection;
-
+  use OCP\IRequest;
   use OCA\MyApp\Controller\AuthorController;
   use OCA\MyApp\Service\AuthorService;
   use OCA\MyApp\Db\AuthorMapper;
@@ -136,7 +224,7 @@ use the **IRegistrationContext::registerService** method:
       $context->registerService(AuthorController::class, function(ContainerInterface $c): AuthorController {
         return new AuthorController(
           $c->get('appName'),
-          $c->get(Request::class),
+          $c->get(IRequest::class),
           $c->get(AuthorService::class)
         );
       });
@@ -171,7 +259,7 @@ The container works in the following way:
 
     return new AuthorController(
       $c->get('appName'),
-      $c->get(Request::class),
+      $c->get(IRequest::class),
       $c->get(AuthorService::class)
     );
 
@@ -187,8 +275,8 @@ The container works in the following way:
 
 * **AuthorMapper** is queried::
 
-    $container->registerService(AuthorMappers::class, function(ContainerInterface $c): AuthorMapper {
-      return new AuthorService(
+    $container->registerService(AuthorMapper::class, function(ContainerInterface $c): AuthorMapper {
+      return new AuthorMapper(
         $c->get(IDBConnection::class)
       );
     });
