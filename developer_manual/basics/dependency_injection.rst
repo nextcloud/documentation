@@ -56,6 +56,7 @@ centralizes object creation logic.
 For example, consider the following pattern:
 
 .. code-block:: php
+  :emphasize-lines: 10, 14
 
   /** 
    * Without dependency injection:
@@ -77,6 +78,7 @@ For example, consider the following pattern:
 With dependency injection, you would instead pass the dependency into the constructor:
 
 .. code-block:: php
+  :emphasize-lines: 10, 13, 15
 
   /**
    * Using dependency injection:
@@ -99,6 +101,7 @@ With dependency injection, you would instead pass the dependency into the constr
 Or, more succinctly, by using constructor property promotion (since PHP 7.4):
 
 .. code-block:: php
+  :emphasize-lines: 18
 
   /**
    * Using dependency injection with constructor property promotion:
