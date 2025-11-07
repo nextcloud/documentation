@@ -75,6 +75,11 @@ In this release support for PHP 8.1 was removed. Follow the steps below to make 
 
 3. If you have :ref:`continuous integration <app-ci>` set up, remove PHP 8.1 from the matrices of tests and linters.
 
+Default user agent for outgoing requests changed
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Starting with this release, the default user agent for requests done by the instance was changed from ``Nextcloud Server Crawler`` to ``Nextcloud-Server-Crawler/X.Y.Z``, where ``X.Y.Z`` is the current server version.
+
 Added Events
 ^^^^^^^^^^^^
 
