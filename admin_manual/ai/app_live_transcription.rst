@@ -14,7 +14,7 @@ Installation
 
 1. Make sure the `Nextcloud Talk app <https://apps.nextcloud.com/apps/spreed>`_ is installed.
 2. Make sure the High-Performance Backend is installed and configured in Nextcloud Talk settings. See the `Nextcloud Talk install manual <https://nextcloud-talk.readthedocs.io/en/latest/quick-install/>`_ for more information.
-3. Setup a :ref:`Deploy Demon <ai-app_api>` in AppAPI Admin settings.
+3. Setup a :ref:`Deploy Daemon <ai-app_api>` in AppAPI Admin settings.
 4. Install the **live_transcription** app via the "Apps" page in Nextcloud, or by executing
 
 .. code-block::
