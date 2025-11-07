@@ -21,3 +21,9 @@ Snowflake IDs
 
 This version of Nextcloud ships with `Snowflake IDs <https://en.wikipedia.org/wiki/Snowflake_ID>`_. Those IDs include the creation time of object, a sequence ID and a server ID.
 The server ID should now be configured in your config.php file or using environment variables. See :doc:`../configuration_server/config_sample_php_parameters` for more information.
+
+
+Default user agent for outgoing requests changed
+------------------------------------------------
+
+Starting with this release, the default user agent for requests done by the instance was changed from ``Nextcloud Server Crawler`` to ``Nextcloud-Server-Crawler/X.Y.Z``, where ``X.Y.Z`` is the current server version.
