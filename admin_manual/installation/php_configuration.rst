@@ -38,16 +38,19 @@ The following PHP modules **must** be installed and enabled for Nextcloud Server
 - `fileinfo` (included with PHP)
 - `filter` (only on Mageia and FreeBSD)
 - `GD`
-- `libxml` (requires Linux package `libxml2` version >= 2.7.0)
+- `xml` (provides SimpleXML, XMLReader and XMLWriter; requires Linux package `libxml2` version >= 2.7.0)
 - `mbstring`
 - `OpenSSL` (included with PHP)
 - `posix`
 - `session` (included with PHP)
-- `SimpleXML`
-- `XMLReader`
-- `XMLWriter`
 - `zip`
 - `zlib`
+
+.. note::
+   The PHP "xml" extension is commonly packaged as `php-xml` or shown as `libxml` by OS package managers. This
+   extension provides the underlying libxml2 bindings and exposes SimpleXML, XMLReader and XMLWriter. Ensure the
+   corresponding `php-xml` (or distribution-specific) package is installed so that SimpleXML, XMLReader and XMLWriter
+   are available to PHP.
 
 The `ctype`, `fileinfo`, and `OpenSSL` modules are generally included and enabled in PHP by default. Often 
 some of the other required modules are automatically installed by OS distribution package managers. 
@@ -81,6 +84,7 @@ These modules are not required, but are highly recommended to improve functional
     bcrypt will be used if Argon2 is unavailable, but if passwords were previously hashed with Argon2 
     (such as when migrating an existing Nextcloud Server installation to a new server environment) and this 
     module is missing, accounts will not be able to log-in).
+- `sysvsem`: Enables System V semaphores used by Nextcloud to coordinate preview generation across PHP processes. Recommended; if missing, previews still work but may be less reliable under heavy load.
 
 -------------------------------
 Recommended PHP Caching Modules
