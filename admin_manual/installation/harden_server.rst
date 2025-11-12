@@ -250,6 +250,8 @@ security headers are shipped.
 .. _Web TLS Profiler: https://tlsprofiler.danielfett.de/
 .. _RFC 4086 ("Randomness Requirements for Security"): https://tools.ietf.org/html/rfc4086#section-5.2
 
+.. _connections_to_remote_servers:
+
 Connections to remote servers
 -----------------------------
 
