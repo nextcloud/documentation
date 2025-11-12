@@ -41,6 +41,8 @@ For best performance, stability and functionality we have documented some recomm
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
 
+To ensure the full functionality of your Nextcloud, please make sure that the server can reach the :ref:`required remote systems<connections_to_remote_servers>`. 
+
 CPU Architecture and OS
 ^^^^^^^^^^^^^^^^^^^^^^^
 A 64-bit CPU, OS and PHP is required for Nextcloud to run well.
