@@ -325,6 +325,17 @@ When looking through your mailbox you will see a short AI generated summary of y
 
 .. note:: Please note that the feature has to be enabled by the administrator
 
+Quick actions
+-------------
+.. versionadded:: 5.5 (Nextcloud 30)
+
+Allows you to group action steps that you would normally perform on envelopes such as tagging, moving, marking as read ... into quick actions that can be executed with a single click.
+Quick actions are scoped to one mail account and can be created and managed in the mail settings under "Quick actions" or directly from the envelope action menu.
+
+.. note:: Some action steps such as `Mark as spam`, `Move thread` and `Delete thread` are mutually exclusive and cannot be part of the same quick action, they also can't be re-ordered and will always be executed last.
+
+.. note:: Please note that quick actions will be performed on all messages in a thread when executed on one.
+
 Message actions
 ---------------
 
