@@ -10,7 +10,7 @@ timeouts) and running it in command-line mode is not an option (such as in some 
 In these cases a manual upgrade may be the best approach.
 
 A manual upgrade consists of downloading and unpacking the Nextcloud Archive file either to your PC or host. Then
-deleting your existing Nextcloud Server installation files and folders, **except ``data/`` and ``config/``**, on 
+deleting your existing Nextcloud Server installation files and folders, **except** ``data/`` and ``config/``, on 
 your host. Then moving the new Nextcloud Server installation files into the appropriate place on your host, 
 again preserving your existing ``data/`` and ``config/`` files. And doing a few other housekeeping items, such as
 making sure your installed apps are transferred into the new installation and adjusting permissions. That may sound
