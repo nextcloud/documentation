@@ -228,6 +228,26 @@ automatically by the installer. This example is for documentation only,
 and you should never use it because it will not work. A valid ``instanceid``
 is created when you install Nextcloud.
 
+serverid
+^^^^^^^^
+
+
+::
+
+	'serverid' => -1,
+
+This is a unique identifier for your server.
+
+It is useful when your Nextcloud instance is using different PHP servers.
+Once it's set it shouldn't be changed.
+
+Value must be an integer, comprised between 0 and 1023.
+
+When config.php is shared between different servers, this value should be overriden with "NC_serverid=<int>" on each server.
+Note that it must be overriden for CLI and for your webserver.
+
+Example for CLI: NC_serverid=42 occ config:list system
+
 passwordsalt
 ^^^^^^^^^^^^
 
@@ -883,6 +903,35 @@ Whether the rate limit protection shipped with Nextcloud should be enabled or no
   Disabling this is discouraged for security reasons.
 
 Defaults to ``true``
+
+ratelimit_overwrite
+^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'ratelimit_overwrite' => [
+			'profile.profilepage.index' => [
+				'user' => ['limit' => 300, 'period' => 3600],
+				'anon' => ['limit' => 1, 'period' => 300],
+			]
+		],
+
+Overwrite the individual rate limit for a specific route
+
+From time to time it can be necessary to extend the rate limit of a specific route,
+depending on your usage pattern or when you script some actions.
+Instead of completely disabling the rate limit or excluding an IP address from the
+rate limit, the following config allows to overwrite the rate limit duration and period.
+
+The first level key is the name of the route. You can find the route name from a URL
+using the ``occ router:list`` command of your server.
+
+You can also specify different limits for logged-in users with the ``user`` key
+and not-logged-in users with the ``anon`` key. However, if there is no specific ``user`` limit,
+the ``anon`` limit is also applied for logged-in users.
+
+Defaults to empty array ``[]``
 
 security.ipv6_normalized_subnet_size
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2405,15 +2454,16 @@ enabledPreviewProviders
 ::
 
 	'enabledPreviewProviders' => [
-			'OC\Preview\BMP',
-			'OC\Preview\GIF',
-			'OC\Preview\JPEG',
-			'OC\Preview\Krita',
-			'OC\Preview\MarkDown',
-			'OC\Preview\OpenDocument',
 			'OC\Preview\PNG',
-			'OC\Preview\TXT',
+			'OC\Preview\JPEG',
+			'OC\Preview\GIF',
+			'OC\Preview\BMP',
 			'OC\Preview\XBitmap',
+			'OC\Preview\Krita',
+			'OC\Preview\WebP',
+			'OC\Preview\MarkDown',
+			'OC\Preview\TXT',
+			'OC\Preview\OpenDocument',
 		],
 
 Only register providers that have been explicitly enabled
@@ -2425,29 +2475,36 @@ concerns:
  - ``OC\Preview\Font``
  - ``OC\Preview\HEIC``
  - ``OC\Preview\Illustrator``
+ - ``OC\Preview\Movie``
  - ``OC\Preview\MP3``
  - ``OC\Preview\MSOffice2003``
  - ``OC\Preview\MSOffice2007``
  - ``OC\Preview\MSOfficeDoc``
- - ``OC\Preview\Movie``
  - ``OC\Preview\PDF``
  - ``OC\Preview\Photoshop``
  - ``OC\Preview\Postscript``
- - ``OC\Preview\SVG``
+ - ``OC\Preview\SGI``
  - ``OC\Preview\StarOffice``
+ - ``OC\Preview\SVG``
+ - ``OC\Preview\TGA``
  - ``OC\Preview\TIFF``
+
+The following providers are disabled by default, because they provide an alternative to the built-in providers:
+  - ``OC\Preview\Imaginary``
+  - ``OC\Preview\ImaginaryPDF``
 
 Defaults to the following providers:
 
- - ``OC\Preview\BMP``
- - ``OC\Preview\GIF``
- - ``OC\Preview\JPEG``
- - ``OC\Preview\Krita``
- - ``OC\Preview\MarkDown``
- - ``OC\Preview\OpenDocument``
  - ``OC\Preview\PNG``
- - ``OC\Preview\TXT``
+ - ``OC\Preview\JPEG``
+ - ``OC\Preview\GIF``
+ - ``OC\Preview\BMP``
  - ``OC\Preview\XBitmap``
+ - ``OC\Preview\Krita``
+ - ``OC\Preview\WebP``
+ - ``OC\Preview\MarkDown``
+ - ``OC\Preview\TXT``
+ - ``OC\Preview\OpenDocument``
 
 metadata_max_filesize
 ^^^^^^^^^^^^^^^^^^^^^
