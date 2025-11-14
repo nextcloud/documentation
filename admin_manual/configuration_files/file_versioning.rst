@@ -15,7 +15,7 @@ pattern used to delete old versions:
 * After the first 30 days Nextcloud keeps one version every week
 
 The versions are adjusted along this pattern every time a new version is 
-created.
+created. Nextcloud will always keep the latest version in each of the time windows.
 
 The Versions app never uses more than 50% of the user's currently available 
 free space. If the stored versions exceed this limit, Nextcloud deletes the 
