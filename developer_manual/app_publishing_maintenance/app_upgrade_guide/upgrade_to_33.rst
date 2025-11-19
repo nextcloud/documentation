@@ -88,7 +88,17 @@ Added Events
 Added APIs
 ^^^^^^^^^^
 
-- TBD
+- We now expose ``\OCP\DB\IResult::iterateAssociative``, ``\OCP\DB\IResult::iterateNumeric`` from doctrine/dbal.
+  These two methods returns iterators that can be directly used in a `foreach` to iterate over a SQL query result.
+  For example:
+
+.. code-block:: php
+
+    $result = $qb->executeQuery();
+    foreach ($result->iterateAssociative() as $row) {
+        $id = $row['id'];
+    }
+    $result->closeCursor();
 
 Changed APIs
 ^^^^^^^^^^^^
@@ -98,7 +108,12 @@ Changed APIs
 Deprecated APIs
 ^^^^^^^^^^^^^^^
 
-- TBD
+- The ``\OCP\DB\IResult::fetch`` and ``\OCP\DB\IResult::fetchAll`` are soft-deprecated. Instead you can use
+  ``\OCP\DB\IResult::fetchAssociative``, ``\OCP\DB\IResult::fetchNumeric`` and ``\OCP\DB\IResult::fetchOne``
+  as replacement for ``\OCP\DB\IResult::fetch``; and ``\OCP\DB\IResult::fetchAllAssociative``,
+  ``\OCP\DB\IResult::fetchAllNumeric`` and ``\OCP\DB\IResult::fetchFirstColumn`` as replacement for 
+  ``\OCP\DB\IResult::fetchAll``. If you use rector, you can use the Nextcloud33 set, to automatically port
+  most of your code to the new methods.
 
 Removed APIs
 ^^^^^^^^^^^^
