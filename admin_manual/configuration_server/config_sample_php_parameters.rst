@@ -3000,6 +3000,30 @@ objectstore
 
 To use Swift V3
 
+objectstore
+^^^^^^^^^^^
+
+
+::
+
+	'objectstore' => [
+			'class' => 'OC\\Files\\ObjectStore\\S3',
+			'arguments' => [
+				'bucket' => 'nextcloud',
+				'key' => 'your-access-key',
+				'secret' => 'your-secret-key',
+				'hostname' => 's3.example.com',
+				'port' => 443,
+				'use_ssl' => true,
+				'region' => 'us-east-1',
+				// optional: Maximum number of retry attempts for failed S3 requests
+				// Default: 5
+				'retriesMaxAttempts' => 5,
+			],
+		],
+
+To use S3 object storage
+
 objectstore.multibucket.preview-distribution
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
