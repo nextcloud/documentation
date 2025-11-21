@@ -48,10 +48,10 @@ html_copy_source = False
 rst_epilog =  '.. |version| replace:: %s' % version
 
 # building the versions list
-version_start = 29		# THIS IS THE OLDEST SUPPORTED VERSION NUMBER
+version_start = 31		# THIS IS THE OLDEST SUPPORTED VERSION NUMBER
 
 						# THIS IS THE VERSION THAT IS MAPPED TO https://docs.nextcloud.com/server/stable/
-version_stable = 31		# CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
+version_stable = 32		# CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
 
 # Also search for "TODO ON RELEASE" in the rst files
 
