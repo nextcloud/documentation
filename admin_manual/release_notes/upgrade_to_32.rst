@@ -19,3 +19,25 @@ Monitoring: Counting of active users
 ------------------------------------
 
 The monitoring app was adjusted to count the active users in the same way as occ user:report and the support app.
+
+System address book
+--------------------
+
+During the upgrade to Nextcloud 32 the system address book might become disabled if the amount of system users exceeds the default limit of 5000 users. This is to prevent performance issues. You can re-enable the system address book using the command line or administration interface.
+
+For more information about the system address book, see the documentation. :ref:`System Address Book <system-address-book>`
+
+Previews
+--------
+
+Starting with Nextcloud 32.0.1, the preview provider for MP3 files, which reads cover images embedded in the files, is disabled by default for performance and stability reasons.
+See :doc:`../configuration_files/previews_configuration` for details on how to enable or disable the preview provider.
+
+S3 integrity protections enabled, configuration update may be needed
+--------------------------------------------------------------------
+
+The AWS SDK for PHP was updated and now enables the default integrity protections for S3. If your S3 backend does not support the default integrity protection yet, you can disable it since Nextcloud 32.0.2 by adding ``'request_checksum_calculation' => 'when_required',`` and ``'response_checksum_validation' => 'when_required',`` to the object store configuration.
+
+If your S3 backend does not support this, you may see an error such as ``Checksum Type mismatch occurred, expected checksum Type: null, actual checksum Type: crc32`` in your logs when uploading files.
+
+More details about S3 integrity protection can be found at https://docs.aws.amazon.com/sdkref/latest/guide/feature-dataintegrity.html and https://github.com/aws/aws-sdk-php/discussions/3100.
