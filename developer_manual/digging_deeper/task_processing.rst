@@ -242,6 +242,11 @@ The task class objects have the following methods available:
  * ``getWebhookUri()`` This returns the webhook URI that will be notified when the task execution has ended
  * ``getWebhookMethod()`` This returns the HTTP method that will be used for the webhook when the task execution has ended
 
+
+.. versionadded:: 33.0.0
+
+ * ``getUserFacingErrorMessage()`` This returns any error message that is meant to be displayed to the user, even if a task has failed, this is not guaranteed to be set.
+
 You could now schedule the task as follows:
 
 .. code-block:: php
@@ -400,7 +405,10 @@ A **Task processing provider** will usually be a class that implements the inter
 
 The method ``getName`` returns a string to identify the registered provider in the user interface.
 
-The method ``process`` implements the task processing step. In case execution fails for some reason, you should throw a ``\OCP\TaskProcessing\Exception\ProcessingException`` with an explanatory error message. Important to note here is that ``Image``, ``Audio``, ``Video`` and ``File`` slots in the input array will be filled with ``\OCP\Files\File`` objects for your convenience. When outputting one of these you should simply return a string, the API will turn the data into a proper file for convenience. The ``$reportProgress`` parameter is a callback that you may use at will to report the task progress as a single float value between 0 and 1. Its return value will indicate if the task is still running (``true``) or if it was cancelled (``false``) and processing should be terminated.
+The method ``process`` implements the task processing step. In case execution fails for some reason, you should throw a ``\OCP\TaskProcessing\Exception\ProcessingException`` with an explanatory error message.
+Since v33.0.0 you can now also throw an ``OCP\TaskProcessing\Exception\UserFacingProcessingException`` which includes a string parameter to set for error messages that will be propagated to the end-user, make sure to always translate these into the language of the user that requested the task. The rule of thumb of when to use a user-facing error message, is as follows: When the error happened due to a mistake from the user or the user can do something to fix the error, throw a user facing error. However, do make sure to not include implementation or server details in the user facing error message, that's what the normal error message is for; it will only be visible to administrators.
+
+Important to note here is that ``Image``, ``Audio``, ``Video`` and ``File`` slots in the input array will be filled with ``\OCP\Files\File`` objects for your convenience. When outputting one of these you should simply return a string, the API will turn the data into a proper file for convenience. The ``$reportProgress`` parameter is a callback that you may use at will to report the task progress as a single float value between 0 and 1. Its return value will indicate if the task is still running (``true``) or if it was cancelled (``false``) and processing should be terminated.
 
 This class would typically be saved into a file in ``lib/TaskProcessing`` of your app but you are free to put it elsewhere as long as it's loadable by Nextcloud's :ref:`dependency injection container<dependency-injection>`.
 
