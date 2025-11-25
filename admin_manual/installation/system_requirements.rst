@@ -27,7 +27,7 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - MariaDB 10.6 / 10.11 / **11.4** (recommended) / 11.8                |
 |                  | - Oracle Database 19c, 21c, 23ai                                      |
 |                  |   (*only as part of an enterprise subscription*)                      |
-|                  | - PostgreSQL 13/14/15/16/17                                           |
+|                  | - PostgreSQL 14/14/15/16/18                                           |
 |                  | - SQLite 3.24+ (*only recommended for testing and minimal-instances*) |
 +------------------+-----------------------------------------------------------------------+
 | Webserver        | - **Apache 2.4 with** ``mod_php`` **or** ``php-fpm`` (recommended)    |
