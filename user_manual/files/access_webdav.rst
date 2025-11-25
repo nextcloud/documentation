@@ -72,7 +72,12 @@ The URL to use when configuring third-party apps to connect to Nextcloud is a bi
    URL of your Nextcloud server (omit the directory part if the installation is
    in the root of your domain), and **USERNAME** with the username of the connecting user.
 
-   See the WebDAV URL (bottom left in settings) on your Nextcloud.
+   See the WebDAV URL, to be found in Files Settings -> WebDAV in the Files on your Nextcloud account.
+
+   .. image:: ../images/webdav_link.png
+    :alt: Screenshot of the Files settings showing the personal WebDAV link
+
+
 
 
 Accessing files using Linux
