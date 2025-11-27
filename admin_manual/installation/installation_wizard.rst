@@ -55,7 +55,7 @@ Database choice
 
 SQLite is the default database for Nextcloud Server and it is good only for
 testing and lightweight single-user setups without client synchronization.
-Supported databases are MySQL, MariaDB, Oracle 11g, and PostgreSQL, and we
+Supported databases are MySQL, MariaDB, Oracle, and PostgreSQL, and we
 recommend :doc:`MySQL/MariaDB <system_requirements>`. Your database and PHP
 connectors must be installed before you run the Installation Wizard. When
 you install Nextcloud from packages all the necessary dependencies will be

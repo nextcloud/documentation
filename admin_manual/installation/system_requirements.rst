@@ -25,7 +25,7 @@ For best performance, stability and functionality we have documented some recomm
 +------------------+-----------------------------------------------------------------------+
 | Database         | - MySQL 8.0 / **8.4** (recommended)                                   |
 |                  | - MariaDB 10.6 / 10.11 / **11.4** (recommended) / 11.8                |
-|                  | - Oracle Database 11g, 19c, 21c, 23ai                                 |
+|                  | - Oracle Database 19c, 21c, 23ai                                      |
 |                  |   (*only as part of an enterprise subscription*)                      |
 |                  | - PostgreSQL 13/14/15/16/17                                           |
 |                  | - SQLite 3.24+ (*only recommended for testing and minimal-instances*) |

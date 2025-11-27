@@ -33,7 +33,7 @@ Supported databases are::
  - sqlite (SQLite3 - Nextcloud Community edition only)
  - mysql (MySQL/MariaDB)
  - pgsql (PostgreSQL)
- - oci (Oracle 11g currently only possible if you contact us at https://nextcloud.com/enterprise as part of a subscription)
+ - oci (Oracle currently only possible if you contact us at https://nextcloud.com/enterprise as part of a subscription)
  
 See :ref:`command_line_installation_label` for more information.
 
