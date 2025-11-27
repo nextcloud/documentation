@@ -6,6 +6,8 @@ a web interface as well as mobile apps.
 
 You can find out more about Nextcloud Talk `on our website <https://nextcloud.com/talk/>`_.
 
+.. FIXME Link to dedicated pages and keep this one as a "quick intro"
+
 Joining a chat
 --------------
 
@@ -35,7 +37,7 @@ You can start a call any time with the ``Start call`` button. Other participants
 Before actually joining the call you will see a device check, where you can pick the right camera and microphone, enable background blur or even join with any devices.
 
 .. image:: images/device-settings-before-call.png
-    :width: 400px
+    :width: 600px
 
 During a call, you can find the Camera and Microphone settings in the ``...`` menu in the top bar.
 
