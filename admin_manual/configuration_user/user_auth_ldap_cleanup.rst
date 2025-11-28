@@ -70,7 +70,7 @@ Following flags can be specified additionally:
 * ``--json``: instead of a table, the output is json-encoded. **This makes it easy to process the data programmatically if desired**.
 
 Manually Deleting User Accounts
-------------------------------
+-------------------------------
 
 After reviewing the users that have been marked for deletion, you can manually remove an account and all its data using:
 
