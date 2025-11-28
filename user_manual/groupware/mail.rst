@@ -71,6 +71,9 @@ Priority inbox
 Priority inbox has 2 section *Important* and *Others*.
 Messages will automatically be marked as important based on which messages you interacted with or marked as important. In the beginning you might have to manually change the importance to teach the system, but it will improve over time.
 
+The automatic classification is optional. You can opt-out when setting up an account. The classification can also be turned on and off in the account settings at any time.
+
+
 .. figure:: images/priority-inbox.png
 
 All inboxes
