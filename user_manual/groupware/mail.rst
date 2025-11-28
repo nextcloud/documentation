@@ -107,6 +107,12 @@ Mail can move a message to a different folder when it is marked as junk.
 
 .. figure:: images/mail_move-message-to-junk-folder.png
 
+Refresh mailbox
+~~~~~~~~~~~~~~~~
+
+You can manually trigger a sync of your mailbox by clicking the refresh button located at the top of the mailbox list.
+Starting from ``version 5.7`` triggering the sync will also refresh the list of folders for the selected account.
+
 Search in mailbox
 ~~~~~~~~~~~~~~~~~
 
