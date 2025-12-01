@@ -284,10 +284,9 @@ dependencies/lib
     * can contain a **min-version** attribute (maximum 3 digits separated by dots)
     * can contain a **max-version** attribute (maximum 3 digits separated by dots)
 dependencies/nextcloud
-    * required on Nextcloud 11 or higher
-    * if absent white-listed owncloud versions will be taken from the owncloud element (see below)
+    * required
     * must contain a **min-version** attribute (maximum 3 digits separated by dots)
-    * can contain a **max-version** attribute (maximum 3 digits separated by dots)
+    * must contain a **max-version** attribute (maximum 3 digits separated by dots)
 	
 .. note:: Dependencies `dependencies/php`, `dependencies/database` and `dependencies/lib` are checked at installation time (not on update time), hence applications need to stick to the dependencies supported by a major version of Nextcloud the moment an app releases support for that version, i.e. app needs to support the same PHP version-range the supported Nextcloud version supports.
 	
