@@ -97,20 +97,6 @@ If successful, the ExApp will be displayed under the "Your apps" list.
 
 .. image:: ./img/exapp_list_example.png
 
-FAQ
----
-
-* I have two graphics cards XXX with 6/8/Y GB of ram each. How can I run something which does not fit into one graphics card?
-    * Distributing models across multiple GPUs is currently not supported. You will need a GPU that fits all of the model you are trying to use.
-* I have YYY graphics card that does not supports CUDA - can I use it and how?
-    * No, our AI apps require GPUs with CUDA support to function at this time.
-* What is the minimum VRAM size requirement for the GPU if I want to install multiple apps?
-    * When running multiple ExApps on the same GPU, the GPU must hold the largest model amongst the apps you install.
-* Is it possible to add more graphics cards for my instance to enable parallel requests or to speed up one request?
-    * Parallel processing of AI workloads for the same app with multiple GPUs is currently not supported.
-* Can I use the CPU and GPU in parallel for AI processing?
-    * No, you can only process AI workloads on either the CPU or GPU for one app. For different apps, you can decide whether to run them on CPU or GPU.
-
 Docker Socket Proxy vs HaRP
 ---------------------------
 
