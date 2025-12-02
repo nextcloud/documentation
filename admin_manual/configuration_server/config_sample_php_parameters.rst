@@ -3787,6 +3787,20 @@ Enable features that are do respect accessibility standards yet.
 
 Defaults to ``true``
 
+default_certificates_bundle_path
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'default_certificates_bundle_path' => \OC::$SERVERROOT . '/resources/config/ca-bundle.crt',
+
+Change the default certificates bundle used for trusting certificates.
+
+Nextcloud ships its own up-to-date certificates bundle, but in certain cases admins may wish to specify a different bundle, for example the one shipped by their distro.
+
+Defaults to `\\OC::$SERVERROOT . '/resources/config/ca-bundle.crt'`.
+
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
 
