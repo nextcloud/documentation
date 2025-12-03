@@ -1,9 +1,8 @@
 ==========================
-macOS Virtual Files client
+macOS virtual files client
 ==========================
 
-Virtual file-based synchronisation for Nextcloud desktop users is now
-available on macOS.
+On macOS, our client also can seamlessly integrate Nextcloud files into the file system of macOS.
 
 Unlike on Windows, virtual files support on macOS is provided by a
 separate client version. This allows us to maintain the best possible
@@ -51,16 +50,16 @@ back to the classic sync client. This includes any pre-existing standard
 sync folders, as the virtual files client also supports classic sync.
 
 .. note::
-    Due to technical limitations in macOS we are unable to provide
-    integration in Finder for both classic sync folders and virtual file
-    sync folders. Classic sync folders in the virtual files client will
+    Due to technical limitations in macOS, we are unable to provide
+    integration in Finder for classic synchronization folders and virtual file
+    system simultaneously. Classic sync folders in the virtual files client will
     therefore not have Finder integrations such as sync state icons or
     context menu actions.
 
 
 Any existing or newly-configured accounts will have virtual files
 automatically enabled. On macOS, each account’s virtual files live under
-their own domain, separate from any pre-existing classic sync folders.
+their own domain, independent from any pre-existing classic sync folders.
 These domains can be found listed under the “Locations” group in the
 Finder sidebar.
 
@@ -83,7 +82,7 @@ Sync status indicators
 ----------------------
 
 Similarly to classic sync client, the virtual files client displays
-icons next to virtual files that indicate what their status is.
+standardized system icons next to virtual files which indicate their status.
 
 .. image:: images/macosvfs-sync-status-icons.png
    :alt: Sync status icons for macOS virtual files
@@ -91,6 +90,7 @@ icons next to virtual files that indicate what their status is.
 - *Cloud with arrow*: item or its children is virtual and is available
   for local keeping
 - *Cloud outline*: item is partially available locally
+- *Cloud strike-through*: item is excluded from synchronization
 - *No icon*: item is available offline
 
 Context menu actions
@@ -104,12 +104,12 @@ of the features supported by Nextcloud. These include:
 - File locking (if supported by server)
 
 .. image:: images/macosvfs-file-locking.png
-   :alt: File locking UI for macOS virtual files
+   :alt: File locking user interface for macOS virtual files
 
 - File sharing (if supported by server)
 
 .. image:: images/macosvfs-file-sharing.png
-   :alt: File sharing UI for macOS virtual files
+   :alt: File sharing user interface for macOS virtual files
 
 Configuration
 -------------
@@ -120,10 +120,4 @@ via the Nextcloud desktop client’s settings window.
 .. image:: images/macosvfs-settings.png
    :alt: macOS virtual files settings
 
-The virtual files section offers a number of options relevant to
-virtual files interaction:
-
-- Enable/disable virtual files for the target account
-- Enable/disable fast sync
-- Manage local storage usage and evict local copies
-- Force the virtual files domain to check for updates
+Here, the integration into Finder can be enabled or disabled.
