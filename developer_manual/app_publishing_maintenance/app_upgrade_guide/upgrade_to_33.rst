@@ -114,6 +114,7 @@ Deprecated APIs
   ``\OCP\DB\IResult::fetchAllNumeric`` and ``\OCP\DB\IResult::fetchFirstColumn`` as replacement for 
   ``\OCP\DB\IResult::fetchAll``. If you use rector, you can use the Nextcloud33 set, to automatically port
   most of your code to the new methods.
+- The ``\OC_Util::runningOnMac()`` is deprecated. Instead you can just check ``PHP_OS_FAMILY === 'Darwin'``.
 
 Removed APIs
 ^^^^^^^^^^^^
