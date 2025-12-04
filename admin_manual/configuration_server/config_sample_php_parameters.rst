@@ -2898,6 +2898,36 @@ objectstore
 
 To use Swift V3
 
+objectstore
+^^^^^^^^^^^
+
+
+::
+
+	'objectstore' => [
+		'class' => 'OC\\Files\\ObjectStore\\S3',
+		'arguments' => [
+			'bucket' => 'nextcloud',
+			'key' => 'your-access-key',
+			'secret' => 'your-secret-key',
+			'hostname' => 's3.example.com',
+			'port' => 443,
+			'use_ssl' => true,
+			'region' => 'us-east-1',
+			// optional: Maximum number of retry attempts for failed S3 requests
+			// Default: 5
+			'retriesMaxAttempts' => 5,
+			// Data Integrity Protections for Amazon S3 (https://docs.aws.amazon.com/sdkref/latest/guide/feature-dataintegrity.html)
+			// Valid values are "when_required" (default) and "when_supported".
+			// To ensure compatibility with 3rd party S3 implementations, Nextcloud disables it by default. However, if you are
+			// using Amazon S3 (or any other implementation that supports it) we recommend enabling it by using "when_supported".
+			'request_checksum_calculation' => 'when_required',
+			'response_checksum_validation' => 'when_required',
+		],
+	],
+
+To use S3 object storage
+
 objectstore.multibucket.preview-distribution
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
