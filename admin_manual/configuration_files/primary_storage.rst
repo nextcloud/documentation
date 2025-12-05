@@ -203,6 +203,7 @@ Optional parameters less commonly needing adjustment:
 * :code:`legacy_auth` has no default
 * :code:`version` defaults to :code:`latest`
 * :code:`verify_bucket_exists` defaults to :code:`true` [Note: Setting this to :code:`false` *after* confirming the bucket has been created may provide a performance benefit, but may not be possible in multibucket scenarios.]
+* :code:`validateWrites` defaults to :code:`true` [Note: Setting this to :code:false is recommended for object stores with "eventual consistency". It prevents false errors where a file is successfully uploaded but not yet visible to an immediate check.]
 
 **If you are using Amazon S3:** the :code:`region` parameter is required unless you're happy with 
 the default of :code:`eu-west-1`. There is no need to override the :code:`hostname` or :code:`port`. 
