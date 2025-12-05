@@ -41,3 +41,13 @@ Monitoring: Counting of active users
 ------------------------------------
 
 Starting with Nextcloud 30.0.12 the monitoring app was adjusted to count the active users in the same way as occ user:report and the support app.
+
+AppApi (app_app) is now a default app
+-------------------------------------
+
+Starting with Nextcloud 30.0.1, the AppApi app is included and enabled by default. See :doc:`../exapps_management` for details.
+
+This app can be disabled in the standard manner via the *Apps* menu if you do not expect to use AppApi integrations in the near future. 
+
+When it is disabled, other apps thet depend on AppApi will not be visible in the app store. AppApi related setup checks will also be deactivated.
+
