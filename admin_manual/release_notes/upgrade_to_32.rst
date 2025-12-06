@@ -37,7 +37,7 @@ See :doc:`../configuration_files/previews_configuration` for details on how to e
 AppApi (app_app) is now a default app
 -------------------------------------
 
-Starting with Nextcloud 30.0.1, the AppApi app is included and enabled by default. See :doc:`../exapps_management` for details. In addition, as of 32.0.0 the AppApi expanded its setup checks. 
+Starting with Nextcloud 30.0.1, the AppApi app is included and enabled by default. See :doc:`../exapps_management/index` for details. In addition, as of 32.0.0 the AppApi expanded its setup checks. 
 
 This app can be disabled in the standard manner via the *Apps* menu if you do not expect to use AppApi integrations in the near future. 
 
