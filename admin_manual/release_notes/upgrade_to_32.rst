@@ -33,15 +33,14 @@ Previews
 Starting with Nextcloud 32.0.1, the preview provider for MP3 files, which reads cover images embedded in the files, is disabled by default for performance and stability reasons.
 See :doc:`../configuration_files/previews_configuration` for details on how to enable or disable the preview provider.
 
+AppAPI (app_api) setup checks expanded
+--------------------------------------
 
-AppApi (app_app) is now a default app
--------------------------------------
+Starting with Nextcloud 30.0.1, the AppAPI app is included and enabled by default. See :doc:`../exapps_management/index` for details. Additionally, as of version 32.0.0, the AppAPI has expanded its setup checks.
 
-Starting with Nextcloud 30.0.1, the AppApi app is included and enabled by default. See :doc:`../exapps_management/index` for details. In addition, as of 32.0.0 the AppApi expanded its setup checks. 
+You can disable this app in the standard manner via the *Apps* menu if you do not expect to use AppAPI integrations in the near future.
 
-This app can be disabled in the standard manner via the *Apps* menu if you do not expect to use AppApi integrations in the near future. 
-
-When it is disabled, other apps thet depend on AppApi will not be visible in the app store. AppApi related setup checks will also be deactivated.
+If AppAPI is disabled, other apps that depend on it will not be visible in the app store. AppAPI-related setup checks will also be deactivated.
 
 S3 integrity protections enabled, configuration update may be needed
 --------------------------------------------------------------------
