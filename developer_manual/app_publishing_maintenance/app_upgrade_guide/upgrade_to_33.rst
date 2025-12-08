@@ -123,3 +123,4 @@ Removed APIs
 - The ``\OCP\Search\PagedProvider``, ``\OCP\Search\Provider`` and ``\OCP\Search\Result`` classes were
   deprecated since Nextcloud 20 and were now removed. Instead use ``\OCP\Search\SearchResult`` and
   ``\OCP\Search\IProvider``, available since Nextcloud 20.
+- The ``\OC_Util::runningOnMac()`` method was removed. Instead you can just check ``PHP_OS_FAMILY === 'Darwin'``.
