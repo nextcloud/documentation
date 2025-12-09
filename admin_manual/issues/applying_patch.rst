@@ -28,6 +28,11 @@ Patching server
 
     patch -p 1 < /path/to/the/file.patch
 
+3. Alternatively, if the patch command is not available, use::
+
+    git apply --check /path/to/the/file.diff
+    git apply /path/to/the/file.diff
+
 Patching apps
 ^^^^^^^^^^^^^
 
@@ -41,6 +46,10 @@ Reverting a patch
 2. Revert the patch with the ``-R`` option::
 
     patch -R -p 1 < /path/to/the/file.patch
+
+3. Alternatively, if the patch command is not available, use::
+
+    git apply --reverse /path/to/the/file.diff
 
 Notes and troubleshooting
 -------------------------
