@@ -11,7 +11,7 @@ Patching server
 1. Navigate into your Nextcloud server's root directory (contains the ``status.php`` file)
 2. Now apply the patch with the following command::
 
-    patch -p 1 < /path/to/the/file.patch
+    patch -p 1 < ./26396.diff
 
 .. note::
 
@@ -29,7 +29,7 @@ Reverting a patch
 1. Navigate to the directory where you applied the patch.
 2. Now revert the patch with the ``-R`` option::
 
-    patch -R -p 1 < /path/to/the/file.patch
+    patch -R -p 1 < ./26396.diff
 
 Getting a patch from a GitHub pull request
 ------------------------------------------
