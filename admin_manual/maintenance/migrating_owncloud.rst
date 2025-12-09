@@ -18,6 +18,7 @@ See the table below for a version map, where migrating is easily possible:
 | 10.13.x           | 25.0.13                       |
 | 10.14.x           | 25.0.13                       |
 | 10.15.x           | 25.0.13                       |
+| 10.16.x           | 25.0.13                       |
 +-------------------+-------------------------------+
 
 .. note:: Since ownCloud does not and will not support PHP 8.0 or higher, you
