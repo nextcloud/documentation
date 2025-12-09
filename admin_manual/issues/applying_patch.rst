@@ -13,9 +13,10 @@ Patching server
 
     patch -p 1 < /path/to/the/file.patch
 
-.. note::
+3. Alternatively, if the patch command is not available, use::
 
-   There can be errors about not found files, especially when you take a patch from GitHub there might be development or test files included in the patch. when the files are in build/ or a tests/ subdirectory it is mostly being
+    git apply --check /path/to/the/file.diff
+    git apply /path/to/the/file.diff
 
 Patching apps
 ^^^^^^^^^^^^^
@@ -31,8 +32,12 @@ Reverting a patch
 
     patch -R -p 1 < /path/to/the/file.patch
 
-Getting a patch from a GitHub pull request
-------------------------------------------
+3. Alternatively, if the patch command is not available, use::
+
+    git apply --reverse /path/to/the/file.diff
+
+Notes and troubleshooting
+-------------------------
 
 If you found a related pull request on GitHub that solves your issue, or you want to help developers and verify a fix works, you can get a patch for the pull request.
 
