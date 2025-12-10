@@ -147,8 +147,8 @@ Should be replaced by the following code:
     try {
         $qb->insert(...);
         $qb->executeStatement();
-    } catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException) {
-        if ($e->getReason() !== Exception::REASON_UNIQUE_CONSTRAINT_VIOLATION) {
+    } catch (\OCP\DB\Exception $e) {
+        if ($e->getReason() !== \OCP\DB\Exception::REASON_UNIQUE_CONSTRAINT_VIOLATION) {
             throw $e;
         }
 
