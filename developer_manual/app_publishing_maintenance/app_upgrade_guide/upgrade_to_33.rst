@@ -124,3 +124,33 @@ Removed APIs
   deprecated since Nextcloud 20 and were now removed. Instead use ``\OCP\Search\SearchResult`` and
   ``\OCP\Search\IProvider``, available since Nextcloud 20.
 - The ``\OC_Util::runningOnMac()`` method was removed. Instead you can just check ``PHP_OS_FAMILY === 'Darwin'``.
+- The ``\OCP\DB\IQueryBuilder::execute`` method was deprecated since Nextcloud 22 and was now removed.
+  Instead use the ``\OCP\DB\IQueryBuilder::executeQuery`` when doing executing a ``SELECT`` query and ``\OCP\DB\IQueryBuilder::executeStatement``
+  method when executing a ``UPDATE``, ``INSERT`` and ``DELETE`` statement, available since Nextcloud 20.
+
+  Instead of catching a exceptions from the Doctrine DBAL package, you now need to catch ``OCP\DB\Exception``
+  and check the `getReason``. For example, the following old code:
+
+.. code-block:: php
+
+    try {
+        $qb->insert(...);
+        $qb->execute();
+    } catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException) {
+        // Do stuff
+    }
+
+Should be replaced by the following code:
+
+.. code-block:: php
+
+    try {
+        $qb->insert(...);
+        $qb->executeStatement();
+    } catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException) {
+        if ($e->getReason() !== Exception::REASON_UNIQUE_CONSTRAINT_VIOLATION) {
+            throw $e;
+        }
+
+        // Do stuff
+    }
