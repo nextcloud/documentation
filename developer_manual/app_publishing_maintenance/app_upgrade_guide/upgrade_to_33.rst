@@ -103,7 +103,7 @@ Added APIs
 Changed APIs
 ^^^^^^^^^^^^
 
-- TBD
+- The ``setId`` and ``getId`` of ``\OCP\BackgroundJob\IJob`` were changed to return/accept a string instead of an int. Same for ``\OCP\BackgroundJob\IJobList`` were some methods (``removedById``, ``getById`` and ``getDetailsById``) are now taking a string instead of an int.
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
