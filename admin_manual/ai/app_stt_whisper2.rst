@@ -10,7 +10,7 @@ This app supports input and output in languages other than English if the underl
 
 This app uses `faster-whisper <https://github.com/SYSTRAN/faster-whisper>`_ under the hood. Output quality will differ depending on which model you use, we recommend the following models:
 
- * OpenAI Whisper large-v2 or v3 (multilingual)
+ * OpenAI Whisper large v3 turbo (multilingual)
  * OpenAI Whisper medium.en (English only)
 
 Whisper large v3 supports about ~100 languages and shows outstanding performance in ~10 of them. For more details see the `OpenAI Whisper paper <https://cdn.openai.com/papers/whisper.pdf>`_

@@ -12,7 +12,7 @@ Overview of AI features
 Nextcloud uses modularity to separate raw AI functionality from the Graphical User interfaces and apps that make use of said functionality. Each instance can thus make use of various backends that provide the functionality for the same frontends and the same functionality can be implemented by multiple apps using on-premises processing or third-party AI service providers.
 
 .. figure:: images/ai_overview.png
-  :scale: 80%
+  :scale: 60%
 
 .. csv-table::
    :header: "Feature","App","Rating","Open source","Freely available model","Freely available training data","Privacy: Keeps data on premises"
@@ -53,7 +53,7 @@ Nextcloud uses modularity to separate raw AI functionality from the Graphical Us
    "","`OpenAI and LocalAI integration (via Groqcloud) <https://apps.nextcloud.com/apps/integration_openai>`_","Orange","No","Yes","No","No"
    "","`OpenAI and LocalAI integration (via MistralAI) <https://apps.nextcloud.com/apps/integration_openai>`_","Orange","No","Yes","No","No"
    "","`Replicate integration <https://apps.nextcloud.com/apps/integration_replicate>`_","Yellow","Yes","Yes - Whisper models by OpenAI","No","No"
-   "Image generation","`Local Stable Diffusion <https://apps.nextcloud.com/apps/text2image_stablediffusion>`_","Yellow","Yes","Yes - StableDiffusion XL model by StabilityAI","No","Yes"
+   "Image generation","`Local Stable Diffusion 2 (ExApp) <https://apps.nextcloud.com/apps/text2image_stablediffusion2>`_","Yellow","Yes","Yes - StableDiffusion XL model by StabilityAI","No","Yes"
    "","`Replicate integration <https://apps.nextcloud.com/apps/integration_replicate>`_","Yellow","Yes","Yes - StableDiffusion models by StabilityAI","No","No"
    "","`OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_","Red","No","No","No","No"
    "","`OpenAI and LocalAI integration (via LocalAI) <https://apps.nextcloud.com/apps/integration_openai>`_","Green","Yes","Yes","Yes","Yes"
@@ -67,8 +67,9 @@ Nextcloud uses modularity to separate raw AI functionality from the Graphical Us
    "Context Chat Search","`Nextcloud Assistant Context Chat <https://apps.nextcloud.com/apps/context_chat>`_","Yellow","Yes","Yes","No","Yes"
    "Context Agent","`Nextcloud Context Agent <https://apps.nextcloud.com/apps/context_agent>`_","Green","Yes","Yes","Yes","Yes"
    "Text To Speech","`Open AI Text To Speech <https://apps.nextcloud.com/apps/integration_openai>`_","Red","No","No","No","No"
-   "","`Local Text To Speech <https://apps.nextcloud.com/apps/text2speech_kokoro>`_","Yellow","Yes","Yes","No","Yes"
+   "","`Local Text To Speech (ExApp) <https://apps.nextcloud.com/apps/text2speech_kokoro>`_","Yellow","Yes","Yes","No","Yes"
    "Document generation","`Nextcloud Office <https://apps.nextcloud.com/apps/richdocuments>`_","Green","Yes","Yes","Yes","Yes"
+   "Live Transcription","`Local Live Transcription <https://apps.nextcloud.com/apps/live_transcription>`_","Green","Yes","Yes","Yes","Yes"
 
 
 Ethical AI Rating
@@ -94,7 +95,7 @@ Features used by other apps
 ---------------------------
 
 Some of our AI features are realized as generic APIs that any app can use and any app can provide an implementation for by registering a provider. So far, these are
-Machine translation, Speech-To-Text, Image generation, Text processing and Context Chat.
+Machine translation, Speech-To-Text, Text-To-Speech, Image generation, Text processing and Context Chat.
 
 Text processing
 ^^^^^^^^^^^^^^^
@@ -108,9 +109,10 @@ Frontend apps
 ~~~~~~~~~~~~~
 
 * *Text* for offering an inline graphical UI for the various tasks
-* `Assistant <https://apps.nextcloud.com/apps/assistant>`_ for offering a graphical UI for the various tasks and a smart picker
+* `Assistant <https://apps.nextcloud.com/apps/assistant>`_ for offering a graphical UI for the various tasks, a smart picker and "Chat with AI" functionality
 * `Mail <https://apps.nextcloud.com/apps/mail>`_ for summarizing mail threads (see :ref:`the Nextcloud Mail docs<mail_thread_summary>` for how to enable this)
 * `Summary Bot <https://apps.nextcloud.com/apps/summary_bot>`_ for summarizing chat histories in `Talk <https://apps.nextcloud.com/apps/spreed>`_
+* `Talk <https://apps.nextcloud.com/apps/spreed>`_ for summarizing chat history (see `Nextcloud Talk docs <https://nextcloud-talk.readthedocs.io/en/latest/settings/#app-configuration>`_ for how to enable this)
 
 
 Backend apps
@@ -140,6 +142,7 @@ Backend apps
 ~~~~~~~~~~~~
 
 * :ref:`translate2 (ExApp)<ai-app-translate2>` - Runs open source AI translation models locally on your own server hardware (Customer support available upon request)
+* `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 * *integration_deepl* - Integrates with the deepl API to provide translation functionality from Deepl.com servers (Only community supported)
 
 Speech-To-Text
@@ -152,7 +155,7 @@ As you can see in the table above we have multiple apps offering Speech-To-Text 
 Frontend apps
 ~~~~~~~~~~~~~
 
-* `Assistant <https://apps.nextcloud.com/apps/assistant>`_ offering a graphical translation UI and a smart picker
+* `Assistant <https://apps.nextcloud.com/apps/assistant>`_ offering a graphical translation UI, a smart picker and Audio Chat
 * `Talk <https://apps.nextcloud.com/apps/spreed>`_ for transcribing calls (see `Nextcloud Talk docs <https://nextcloud-talk.readthedocs.io/en/latest/settings/#app-configuration>`_ for how to enable this)
 
 Backend apps
@@ -177,7 +180,7 @@ Frontend apps
 Backend apps
 ~~~~~~~~~~~~
 
-* text2image_stablediffusion (Customer support available upon request)
+* `Local Stable Diffusion 2 (ExApp) <https://apps.nextcloud.com/apps/text2image_stablediffusion2>`_ (Customer support available upon request)
 * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 * *integration_replicate* - Integrates with the replicate API to provide AI functionality from replicate servers (see :ref:`AI as a Service<ai-ai_as_a_service>`)
 
@@ -198,7 +201,7 @@ Backend apps
 ~~~~~~~~~~~~
 
 * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
-* *text2speech_kokoro* (Runs a local model)
+* `Local Text To Speech (ExApp) <https://apps.nextcloud.com/apps/text2speech_kokoro>`_ (Customer support available upon request)
 
 
 Context Chat
@@ -209,6 +212,7 @@ Frontend apps
 ~~~~~~~~~~~~~
 
 * `Assistant <https://apps.nextcloud.com/apps/assistant>`_ for offering a graphical UI for the context chat tasks
+* `Nextcloud Context Agent <https://apps.nextcloud.com/apps/context_agent>`_ for offering Context chat as a tool that the agent can execute in the "Chat with AI" feature
 
 Backend apps
 ~~~~~~~~~~~~
@@ -222,8 +226,8 @@ Apps can integrate their content with Context Chat to make it available for quer
 
 * *files*
 * `Analytics <https://apps.nextcloud.com/apps/analytics>`_
-
-
+* `Mail <https://apps.nextcloud.com/apps/mail>`_ (coming soon)
+* `Bookmarks <https://apps.nextcloud.com/apps/bookmarks>`_
 
 Context Chat Search
 ^^^^^^^^^^^^^^^^^^^
@@ -244,6 +248,28 @@ Provider apps
 
 See *Context Chat* section above.
 
+
+Context Agent
+^^^^^^^^^^^^^
+Our Context Agent feature was introduced in Nextcloud Hub 9 (v30). It allows asking the assistant to execute tasks related to Nextcloud. You will need to install both the context_agent app as well as a text processing provider.
+
+Frontend apps
+~~~~~~~~~~~~~
+
+* `Assistant <https://apps.nextcloud.com/apps/assistant>`_ for offering a graphical UI for the "Chat with AI" feature
+
+Backend apps
+~~~~~~~~~~~~
+
+* `Nextcloud Context Agent <https://apps.nextcloud.com/apps/context_agent>`_  (Customer support available upon request)
+
+Provider apps
+~~~~~~~~~~~~~
+
+* :ref:`llm2<ai-app-llm2>` - Runs open source AI LLM models on your own server hardware  (Customer support available upon request)
+* `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
+
+
 Document generation
 ^^^^^^^^^^^^^^^^^^^
 Since Hub 11 you can let Nextcloud automatically generate Office documents with content.
@@ -259,6 +285,27 @@ Backend apps
 
 * `Nextcloud Office <https://apps.nextcloud.com/apps/richdocuments>`_
 
+Provider apps
+~~~~~~~~~~~~~
+
+* :ref:`llm2<ai-app-llm2>` - Runs open source AI LLM models on your own server hardware  (Customer support available upon request)
+* `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
+* `IBM watsonx.ai integration (via IBM watsonx.ai as a Service) <https://apps.nextcloud.com/apps/integration_watsonx>`_ - Integrates with the IBM watsonx.ai API to provide AI functionality from IBM Cloud servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
+
+
+Live transcription
+^^^^^^^^^^^^^^^^^^
+Since Hub 25 Autumn you can let Nextcloud automatically generate produce subtitles for video and audio calls in Nextcloud Talk.
+
+Frontend apps
+~~~~~~~~~~~~~
+
+* `Talk <https://apps.nextcloud.com/apps/spreed>`_ for displaying the subtitles in calls
+
+Backend apps
+~~~~~~~~~~~~
+
+* :ref:`live_transcription<ai-live-transcription>` - Runs open source AI Speech-To-Text models on your own server hardware (Customer support available upon request)
 
 .. _ai-overview_improve-ai-task-pickup-speed:
 
