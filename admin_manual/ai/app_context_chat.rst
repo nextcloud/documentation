@@ -50,7 +50,7 @@ Installation
 ------------
 
 1. Make sure the :ref:`Nextcloud Assistant app<ai-app-assistant>` is installed
-2. Setup a :ref:`Deploy Daemon <ai-app_api>` in AppAPI Admin settings. HaRP is not supported yet, please use Docker Socket Proxy (DSP).
+2. Setup a :ref:`Deploy Daemon <ai-app_api>` in AppAPI Admin settings
 3. Install the *context_chat_backend* ExApp via the "Apps" page in Nextcloud, or by executing (checkout the readme at https://github.com/nextcloud/context_chat_backend for manual install steps)
 
 .. code-block::
