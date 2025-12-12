@@ -104,7 +104,29 @@ Synchronous indexing
 Scaling
 -------
 
-It is currently not possible to scale ExApps like Context Chat, we are working on this. Based on our calculations an instance has a rough capacity of 1000 user requests per hour. However, this number is based on theory and we do appreciate real-world feedback on this.
+There are three major parts that influence the performance of the system:
+
+1. **The text-to-text task processing provider (like OpenAI and LocalAI integration, LLM2, etc.)**
+
+   The text-to-text task processing provider can be scaled by using a hosted service using the `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ like OpenAI or by hosting your own model on powerful hardware.
+
+2. **The vector DB performance**
+
+   | The vector DB performance can be scaled by using a dedicated or cluster setup for PostgreSQL with the pgvector extension.
+   | The connection string of the external vector DB can be set using the environment variable ``EXTERNAL_DB`` during deployment in the "Deploy Options".
+
+3. **The embedding model performance**
+
+   | The embedding model performance can be scaled by using a hosted embedding service, locally or remotely hosted. It should be able to serve an OpenAI-compatible API.
+   | The embedding service URL can be set using the environment variable ``CC_EM_BASE_URL`` during deployment in the "Deploy Options". Other options like the model name, api key, or username and password can be set using the environment variables ``CC_EM_MODEL_NAME``, ``CC_EM_API_KEY``, ``CC_EM_USERNAME``, and ``CC_EM_PASSWORD`` respectively.
+
+If context_chat_backend is already deployed, you can change these environment variables by redeploying it with the new values.
+
+1. Go to Apps page -> search for "Context Chat Backend"
+2. Disable and remove the app taking care the data is not removed
+3. Set the "Deploy Options" with the new environment variables
+4. Reinstall the app
+
 
 App store
 ---------
