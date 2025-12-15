@@ -270,6 +270,37 @@ all files for that user in their corresponding bucket.
 You can find out more information about upscaling with object storage and Nextcloud in the
 `Nextcloud customer portal <https://portal.nextcloud.com/article/object-store-as-primary-storage-16.html>`_.
 
+----------------------------------------------------------------
+Multibucket Object Store with per Bucket configuration overrides
+----------------------------------------------------------------
+
+When using an Object Store with :code:`'multibucket => true'` it is possible to configure overrides for all config options per bucket:
+
+::
+
+	'objectstore' => [
+		'class' => 'Object\\Storage\\Backend\\Class',
+		'arguments' => [
+			'multibucket' => true,
+			'bucket' => 'nextcloud_',
+			'perBucket' => [
+				'nextcloud_1' => [
+					'port' => 9999,
+				],
+			],
+		],
+	],
+
+This can be useful for example if you want to configure credentials per bucket that is used by a Team folder.
+A script for provisioning new Team folders this way could look like this (first make sure the bucket exists with those credentials):
+
+::
+
+	occ config:system:set --type=string --value=KEYVALUE objectstore arguments perBucket BUCKETNAME key
+	occ config:system:set --type=string --value=SECRETVALUE objectstore arguments perBucket BUCKETNAME secret
+	occ groupfolders:create --bucket BUCKETNAME TEAMFOLDERNAME
+
+The credentials must be set before the new Team folder is created.
 
 ---------------------------
 S3 SSE-C encryption support
