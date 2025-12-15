@@ -100,7 +100,7 @@ You will also need a text processing provider as specified above (ie. llm2, inte
 Chat
 ~~~~
 
-In order to make use of our "Chat with AI" feature you will need the following apps:
+In order to make use of our "Chat with AI" feature you will need any one of the following apps:
 
 * :ref:`llm2<ai-app-llm2>` - Runs open source AI language models locally on your own server hardware (Customer support available upon request)
 * * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
@@ -109,7 +109,7 @@ In order to make use of our "Chat with AI" feature you will need the following a
 Voice Chat
 ~~~~~~~~~~
 
-In order to make use of our "Audio chat" feature which allows you to interact with the assistant Chat via your Voice and Ears as if in a real conversation, you will need the following apps:
+In order to make use of our "Audio chat" feature which allows you to interact with the assistant Chat via your Voice and Ears as if in a real conversation, you will need any of the following set of apps:
 
 * Either
     * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
