@@ -65,11 +65,11 @@ Nextcloud uses modularity to separate raw AI functionality from the Graphical Us
    "Context Chat","`Nextcloud Assistant Context Chat <https://apps.nextcloud.com/apps/context_chat>`_","Yellow","Yes","Yes","No","Yes"
    "","`Nextcloud Assistant Context Chat (Backend) <https://apps.nextcloud.com/apps/context_chat_backend>`_","Yellow","Yes","Yes","No","Yes"
    "Context Chat Search","`Nextcloud Assistant Context Chat <https://apps.nextcloud.com/apps/context_chat>`_","Yellow","Yes","Yes","No","Yes"
-   "Context Agent","`Nextcloud Context Agent <https://apps.nextcloud.com/apps/context_agent>`_","Green","Yes","Yes","Yes","Yes"
+   "Context Agent","`Nextcloud Context Agent (ExApp) <https://apps.nextcloud.com/apps/context_agent>`_","Green","Yes","Yes","Yes","Yes"
    "Text To Speech","`Open AI Text To Speech <https://apps.nextcloud.com/apps/integration_openai>`_","Red","No","No","No","No"
    "","`Local Text To Speech (ExApp) <https://apps.nextcloud.com/apps/text2speech_kokoro>`_","Yellow","Yes","Yes","No","Yes"
    "Document generation","`Nextcloud Office <https://apps.nextcloud.com/apps/richdocuments>`_","Green","Yes","Yes","Yes","Yes"
-   "Live Transcription","`Local Live Transcription <https://apps.nextcloud.com/apps/live_transcription>`_","Green","Yes","Yes","Yes","Yes"
+   "Live Transcription","`Local Live Transcription <https://apps.nextcloud.com/apps/live_transcription>`_","Yellow","Yes","Yes","No","Yes"
 
 
 Ethical AI Rating
@@ -161,7 +161,7 @@ Frontend apps
 Backend apps
 ~~~~~~~~~~~~
 
-* :ref:`stt_whisper2<ai-app-stt_whisper2>` - Runs open source AI Speech-To-Text models on your own server hardware  (Customer support available upon request)
+* :ref:`stt_whisper2<ai-app-stt_whisper2>` - Runs open weights AI Speech-To-Text models on your own server hardware  (Customer support available upon request)
 * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 
 
@@ -261,7 +261,7 @@ Frontend apps
 Backend apps
 ~~~~~~~~~~~~
 
-* `Nextcloud Context Agent <https://apps.nextcloud.com/apps/context_agent>`_  (Customer support available upon request)
+* `Nextcloud Context Agent <https://apps.nextcloud.com/apps/context_agent>`_ for agentic AI capabilities in the "Chat with AI" feature (Customer support available upon request)
 
 Provider apps
 ~~~~~~~~~~~~~
@@ -305,7 +305,7 @@ Frontend apps
 Backend apps
 ~~~~~~~~~~~~
 
-* :ref:`live_transcription<ai-live-transcription>` - Runs open source AI Speech-To-Text models on your own server hardware (Customer support available upon request)
+* :ref:`live_transcription<ai-live-transcription>` - Runs open weights AI Speech-To-Text models on your own server hardware (Customer support available upon request)
 
 .. _ai-overview_improve-ai-task-pickup-speed:
 
