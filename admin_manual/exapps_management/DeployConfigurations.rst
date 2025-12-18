@@ -17,7 +17,7 @@ Orchestrates the deployment of applications as Docker containers.
 	| The administrator is responsible for the security actions taken to configure the Docker daemon connected to the Nextcloud instance.
 	| These schemes are only examples of possible configurations.
 
-	| For Docker Deploy Daemon (HaRP), `AppAPI HaRP <https://github.com/nextcloud/harp>`_ is required or `AIO HaRP <#nextcloud-in-aio-and-docker-on-the-same-host>`_ for Nextcloud AIO.
+	| For Docker Deploy Daemon (HaRP), `AppAPI HaRP <https://github.com/nextcloud/harp>`_ is required.
 	| For Docker Deploy Daemon (Docker Socket Proxy), we recommend that you use the `AppAPI Docker Socket Proxy <https://github.com/nextcloud/docker-socket-proxy>`_ or `AIO Docker Socket Proxy <#nextcloud-in-docker-aio-all-in-one>`_ container for Nextcloud AIO.
 
 There are several Docker Daemon Deploy configurations (example schemes):
@@ -25,7 +25,7 @@ There are several Docker Daemon Deploy configurations (example schemes):
 	* Nextcloud and Docker on the **same host** (via socket, DockerSocketProxy, or HaRP)
 	* Nextcloud on the host and Docker on a **remote** host (via DockerSocketProxy with HTTPS, or HaRP)
 	* Nextcloud and **ExApps** in the **same Docker network** (via DockerSocketProxy, or HaRP)
-	* Nextcloud in AIO Docker and **ExApps** in the **same Docker network** (via AIO DockerSocketProxy or HaRP)
+	* Nextcloud in AIO Docker and **ExApps** in the **same Docker network** (via AIO DockerSocketProxy)
 
 
 .. _ai-app_api_ddd-harp:
@@ -175,18 +175,6 @@ A setup with the HaRP container itself on the remote is not supported.
 8. Make it executable: ``chmod +x /usr/local/bin/frpc``.
 9. Start the FRP client with the command: ``frpc -c /path/to/frpc.toml``.
 10. Finally, test the whole setup with "Test deploy" in the 3-dots menu of the deploy daemon.
-
-Nextcloud in AIO and Docker on the same host
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Nextcloud AIO (All-in-One) comes with a built-in HaRP container that can be used to deploy ExApps on the same host.
-Enabling the "HaRP" container should automatically create a Deploy Daemon and configure it to work out-of-the-box.
-
-Just go to AppAPI admin settings and register a ``HaRP All-in-One`` daemon.
-
-.. image:: ./img/harp_aio.png
-
-Finally, test the whole setup with "Test deploy" in the 3-dots menu of the deploy daemon.
 
 .. _ai-app_api_ddd-dsp:
 
