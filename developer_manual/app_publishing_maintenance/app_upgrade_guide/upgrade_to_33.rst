@@ -48,6 +48,11 @@ Removed APIs
 Back-end changes
 ----------------
 
+Support for PHP 8.5 added
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+See below section for option code changes in your app and dependency management
+
 Support for PHP 8.1 removed
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -58,7 +63,7 @@ In this release support for PHP 8.1 was removed. Follow the steps below to make 
 .. code-block:: xml
 
   <dependencies>
-    <php min-version="8.2" max-version="8.4" />
+    <php min-version="8.2" max-version="8.5" />
     <nextcloud min-version="31" max-version="33" />
   </dependencies>
 
@@ -69,11 +74,11 @@ In this release support for PHP 8.1 was removed. Follow the steps below to make 
 
   {
     "require": {
-      "php": ">=8.2 <=8.4"
+      "php": ">=8.2 <=8.5"
     }
   }
 
-3. If you have :ref:`continuous integration <app-ci>` set up, remove PHP 8.1 from the matrices of tests and linters.
+3. If you have :ref:`continuous integration <app-ci>` set up, remove PHP 8.1 and add PHP 8.5 from the matrices of tests and linters.
 
 Default user agent for outgoing requests changed
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
