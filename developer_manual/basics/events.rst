@@ -335,7 +335,6 @@ To register the listener in your app's boostrap class:
         public function boot(IBootContext $context): void {
         }
     }
-}
 
 **Explanation:**
 
@@ -742,7 +741,7 @@ Filesystem scanner hooks available in scope **\\OC\\Files\\Utils\\Scanner**:
 
 
 Public emitters (Deprecated)
----------------------------
+----------------------------
 
 .. deprecated:: 18
     Use the `OCP event dispatcher`_ instead.
