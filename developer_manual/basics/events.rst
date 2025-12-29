@@ -312,7 +312,7 @@ Below is an expanded example, building on on our earlier ``UserCreatedEvent``. I
         }
     }
 
-To register the listener in your app's boostrap class:
+To register the listener in your app's bootstrap class:
 
 .. code-block:: php
 
