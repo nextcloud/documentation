@@ -85,6 +85,17 @@ Default user agent for outgoing requests changed
 
 Starting with this release, the default user agent for requests done by the instance was changed from ``Nextcloud Server Crawler`` to ``Nextcloud-Server-Crawler/X.Y.Z``, where ``X.Y.Z`` is the current server version.
 
+Snowflake IDS
+^^^^^^^^^^^^^
+
+The following tables are now using snowflake ids:
+
+- ``oc_previews``
+- ``oc_jobs``
+- ``oc_share_external``
+
+The API related to these tables are now using a string instead of a int. See Changed APIs section and :doc:`/digging_deeper/snowflake_ids`.
+
 Added Events
 ^^^^^^^^^^^^
 
@@ -108,7 +119,8 @@ Added APIs
 Changed APIs
 ^^^^^^^^^^^^
 
-- The ``setId`` and ``getId`` of ``\OCP\BackgroundJob\IJob`` were changed to return/accept a string instead of an int. Same for ``\OCP\BackgroundJob\IJobList`` were some methods (``removedById``, ``getById`` and ``getDetailsById``) are now taking a string instead of an int.
+- The ``setId`` and ``getId`` methods of ``\OCP\BackgroundJob\IJob`` were changed to return/accept a string instead of an int. Same for ``\OCP\BackgroundJob\IJobList`` were some methods (``removedById``, ``getById`` and ``getDetailsById``) are now taking a string instead of an int. The string is suppose to be a snowflake id.
+- The ``setObjectId`` and ``getObjectId`` methods of ``\OCP\Activity\IEvent`` were changed to return/accept a string in addition to an int. The string is suppose to be a snowflake id.
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
@@ -159,3 +171,5 @@ Should be replaced by the following code:
 
         // Do stuff
     }
+
+- The ``\OCP\Files::buildNotExistingFileName`` and related private helper ``\OC_Helper::buildNotExistingFileName`` were deprecated since Nextcloud 14 and were now removed. Use ``\OCP\Files\Folder::getNonExistingName`` instead.
