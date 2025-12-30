@@ -1,4 +1,4 @@
-FROM python:3.10 as final
+FROM python:3.12 as final
 
 USER root
 
