@@ -5,6 +5,38 @@ Upgrade to Nextcloud 33
 Front-end changes
 -----------------
 
+Files API
+^^^^^^^^^
+
+Breaking changes in the Files API package
+"""""""""""""""""""""""""""""""""""""""""
+
+The ``nextcloud/files`` library was updated to version v4.0.0 in Server.
+This release includes breaking API changes, so you’ll need to update your code in time for Server 33.
+
+To improve developer experience, we’ve expanded the context object passed to file actions.
+It now includes additional fields such as the current folder and the current file list.
+Function signatures have also changed: Action handlers now use destructured parameters instead of positional array arguments.
+
+You can find the full changelog and migration details in the repository: `nextcloud-files (4.0.0 beta) <https://github.com/nextcloud-libraries/nextcloud-files>`_.
+
+Sidebar
+"""""""
+
+The files API was changed in this release to use the Node API (available since Nextcloud 27) instead of the legacy ``FileInfo`` API.
+For this the way to register sidebar tabs and actions has changed.
+The ``OCA.Files.Sidebar`` API was removed and replaced with a new sidebar API available from the `@nextcloud/files <https://www.npmjs.com/package/@nextcloud/files>`_ package.
+
+To register sidebar tabs you now have to use the new API which is based on web components,
+for more details please refer to the changelog of the ``@nextcloud/files`` package.
+
+If you used the Files sidebar within your app you have to now use your own sidebar using the ``NcAppSidebar`` component from the `@nextcloud/vue <https://www.npmjs.com/package/@nextcloud/vue>`_ package.
+
+Otherwise if you already use your own sidebar implementation in your app but rely on the Viewer app to open the sidebar using the ``OCA.Files.Sidebar`` API,
+you now have to listen to the ``viewer:sidebar:open`` event-bus event from the Viewer app to open your sidebar.
+So enable the **open sidebar** action within the viewer you have to set ``enabledSidebar``
+when opening the viewer to allow opening the sidebar from within the viewer and listen for the mentioned event.
+
 Added APIs
 ^^^^^^^^^^
 
@@ -41,6 +73,10 @@ Removed APIs
   - To replace ``OC.getHostName`` use ``window.location.hostname``.
   - To replace ``OC.getPort`` use ``window.location.port``.
   - To replace ``OC.getProtocol`` use ``window.location.protocol``.
+
+- The ``OCA.Files.Sidebar`` API is removed.
+  This was the last API using the legacy ``FileInfo`` API.
+  It is now replaced with the new Node based sidebar API available from the `@nextcloud/files <https://www.npmjs.com/package/@nextcloud/files>`_ package.
 
 - The ``OCA.Sharing.ExternalLinkActions`` API was deprecated in Nextcloud 23 and is now removed.
   It was replaced with ``OCA.Sharing.ExternalShareAction`` which now have a proper API by using ``registerSidebarAction`` from `@nextcloud/sharing <https://www.npmjs.com/package/@nextcloud/sharing>`_ instead.
