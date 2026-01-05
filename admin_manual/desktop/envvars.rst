@@ -13,6 +13,7 @@ The environment variables are:
 - `OWNCLOUD_MAX_PARALLEL` (default: 6) - Maximum number of parallel jobs. 
 - `OWNCLOUD_BLACKLIST_TIME_MIN` (default: 25 s) - Minimum timeout for blacklisted files.
 - `OWNCLOUD_BLACKLIST_TIME_MAX` (default: 24\*60\*60 s; one day) - Maximum timeout for blacklisted files.
+- `OWNCLOUD_HTTP2_ENABLED` (default: false) - If the client should communicate with the server using HTTP/2. (This may not be compatible with all server setups)
 
 Low Disk Space
 ^^^^^^^^^^^^^^
