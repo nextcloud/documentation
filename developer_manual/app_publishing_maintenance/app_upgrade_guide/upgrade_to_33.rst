@@ -37,10 +37,49 @@ you now have to listen to the ``viewer:sidebar:open`` event-bus event from the V
 So enable the **open sidebar** action within the viewer you have to set ``enabledSidebar``
 when opening the viewer to allow opening the sidebar from within the viewer and listen for the mentioned event.
 
+Profile app
+^^^^^^^^^^^
+
+To make the profile sections API framework agnostic, allowing us to migrate the profile app to Vue 3
+while still allow external apps to use Vue 2 based profile section,
+the ``OCA.Core.ProfileSections`` API was replaced with ``OCA.Profile.ProfileSections``
+which uses custom web components instead of being based on Vue components.
+
+As of Nextcloud 33 the ``OCA.Profile.ProfileSections.registerSection`` method accepts
+a section object in the following format:
+
+.. code-block:: typescript
+
+  interface ProfileSection {
+    /**
+     * Unique identifier for the section
+     */
+    id: string
+    /**
+     * The order in which the section should appear (lower numbers appear first)
+     */
+    order: number
+    /**
+     * The custom element tag name to be used for this section
+     *
+     * The custom element must have been registered beforehand,
+     * and must have the a `user` property of type `string | undefined`.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/Web_components
+     */
+    tagName: string
+    /**
+     * Static parameters to be passed to the custom web component
+     */
+    params?: Record<string, unknown>
+  }
+
+
 Added APIs
 ^^^^^^^^^^
 
-- TBD
+- ``OCA.Profile.ProfileSections`` was added as a framework agnostic replacement for ``OCA.Core.ProfileSections``.
+  See section about the profile app above.
 
 Changed APIs
 ^^^^^^^^^^^^
@@ -73,6 +112,9 @@ Removed APIs
   - To replace ``OC.getHostName`` use ``window.location.hostname``.
   - To replace ``OC.getPort`` use ``window.location.port``.
   - To replace ``OC.getProtocol`` use ``window.location.protocol``.
+
+- The ``OCA.Core.ProfileSections`` API was removed and replaced with the framework agnostic ``OCA.Profile.ProfileSections`` API.
+  See section about the profile app above.
 
 - The ``OCA.Files.Sidebar`` API is removed.
   This was the last API using the legacy ``FileInfo`` API.
