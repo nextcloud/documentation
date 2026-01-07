@@ -24,6 +24,7 @@ Digging deeper
    notifications
    oidc
    out_of_office
+   openmetrics
    performance
    phonenumberutil
    psr
