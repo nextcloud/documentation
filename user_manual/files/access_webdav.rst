@@ -147,6 +147,9 @@ automatically every time you log in to your Linux computer.
 
     usermod -aG davfs2 <username>
 
+.. note::
+	**If the davfs2 group doesn't exist after installing the package, you may need to create it yourself and, possibly, adjust the davfs config file to use the group after you've created it.
+
 #. Then create a ``nextcloud`` directory in your home directory for the
    mount point, and ``.davfs2/`` for your personal configuration file::
 
