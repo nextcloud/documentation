@@ -65,6 +65,7 @@ Table of contents
 .. toctree::
     :caption: Maintenance
 
+    configuration_monitoring/index
     maintenance/index
     issues/index
 

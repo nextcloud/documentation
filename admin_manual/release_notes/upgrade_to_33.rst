@@ -25,6 +25,14 @@ Snowflake IDs
 This version of Nextcloud ships with `Snowflake IDs <https://en.wikipedia.org/wiki/Snowflake_ID>`_. Those IDs include the creation time of object, a sequence ID and a server ID.
 The server ID should now be configured in your config.php file or using environment variables. See :doc:`../configuration_server/config_sample_php_parameters` for more information.
 
+OpenMetrics endpoint
+--------------------
+
+Nextcloud 33 introduces a ``/metrics`` endpoint that can be integrated into every OpenMetrics (Prometheus) system.
+For security, it only answers on localhost by default.
+
+See :doc:`../configuration_monitoring/index` for more information about it.
+
 
 Default user agent for outgoing requests changed
 ------------------------------------------------
