@@ -4444,6 +4444,41 @@ Nextcloud ships its own up-to-date certificates bundle, but in certain cases adm
 
 Defaults to `\\OC::$SERVERROOT . '/resources/config/ca-bundle.crt'`.
 
+openmetrics_skipped_classes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'openmetrics_skipped_classes' => [
+			'OC\OpenMetrics\Exporters\FilesByType',
+			'OCA\Files_Sharing\OpenMetrics\SharesCount',
+		],
+
+OpenMetrics skipped exporters
+Allows to skip some exporters in the OpenMetrics endpoint ``/metrics``.
+
+Default to ``[]`` (empty array)
+
+openmetrics_allowed_clients
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'openmetrics_allowed_clients' => [
+			'192.168.0.0/16',
+			'fe80::/10',
+			'10.0.0.1',
+		],
+
+OpenMetrics allowed client IP addresses
+Restricts the IP addresses able to make requests on the ``/metrics`` endpoint.
+
+Keep this list as restrictive as possible as metrics can consume a lot of resources.
+
+Default to ``[127.0.0.0/16', '::1/128]`` (allow loopback interface only)
+
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
 
