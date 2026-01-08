@@ -7,18 +7,11 @@ Webhook Listeners
 Introduction
 ------------
 
-Nextcloud supports sending notifications to external services whenever something 
+Nextcloud supports sending notifications to external services whenever something
 important happens, such as when files are changed or updated.
 
 Overview
 --------
-
-The Webhook Listeners app enables your Nextcloud server to automatically notify
-external services whenever important events - such as file changes, uploads, or
-deletions - occur in your instance. By configuring webhook listeners, administrators
-can set up custom HTTP notifications (webhooks) that are triggered by specific
-internal events, allowing seamless integration with other platforms and automation of
-workflows without manual intervention.
 
 The Webhook Listeners app enables your Nextcloud server to automatically notify
 external services whenever important events - such as file changes, uploads, or
@@ -46,7 +39,7 @@ Enable the ``webhook_listeners`` app that comes bundled with Nextcloud - e.g.
 Listening to events
 -------------------
 
-You can use the OCS API to add webhooks for specific events. See: 
+You can use the OCS API to add webhooks for specific events. See:
 `Register a new webhook <https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index>`_.
 
 .. TODO ON RELEASE: Update version number above upon release.
@@ -79,7 +72,7 @@ because you are inside a regular expression.
 You can also use additional comparison operators (``$e``, ``$ne``, ``$gt``, ``$gte``,
 ``$lt``, ``$lte``, ``$in``, ``$nin``) as well as logical operators (``$and``, ``$or``,
 ``$not``, ``$nor``). For example, use ``{ "time": { "$lt": 1711971024 } }`` to accept
-only events prior to April 1st, 2024, and ``{ "time": { "$not": { "$lt": 1711971024 } }}`` 
+only events prior to April 1st, 2024, and ``{ "time": { "$not": { "$lt": 1711971024 } }}``
 to accept events after April 1st, 2024.
 
 Speeding up webhook dispatch
@@ -94,9 +87,9 @@ The following command will launch a worker for the webhook call background job:
 Screen or tmux session
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Run the following ``occ`` command inside a screen or tmux session, preferably four 
+Run the following ``occ`` command inside a screen or tmux session, preferably four
 or more times, to enable parallel processing of multiple requests by different users
-or the same user. It is best to run one command per screen session or tmux window/pane 
+or the same user. It is best to run one command per screen session or tmux window/pane
 to keep logs visible and make each worker easy to restart.
 
 .. code-block::
@@ -172,571 +165,302 @@ It is recommended to restart this worker at least once a day to make sure code c
 Nextcloud Webhook Events
 ------------------------
 
-This is an exhaustive list of available events. It features the event ID and the available variables for filtering.
+This is list of typically available events. It features the event ID and the available variables for filtering.
 
- * OCA\\Forms\\Events\\FormSubmittedEvent
+.. note::
 
-  .. code-block:: text
+   In addition to the events listed below (which are provided by Nextcloud server and included apps), optional apps may register their own webhook-compatible events. The exact set of events available on your server will depend on your Nextcloud version and installed apps. If you need to discover available events, consult your app documentation or refer to your app source code or the Nextcloud developer documentation.
 
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "class": string,
-        "form": array{
-         "id": int,
-         "hash": string,
-	 "title": string,
-	 "description": string,
-	 "ownerId": string,
-	 "fileId": string|null,
-	 "fileFormat": string|null,
-	 "created": int,
-	 "access": int,
-	 "expires": int,
-	 "isAnonymous": bool,
-	 "submitMultiple": bool,
-	 "showExpiration": bool,
-	 "lastUpdated": int,
-	 "submissionMessage": string|null,
-	 "state": int,
-        },
-        "submission": array{
-          "id": int,
-	  "formId": int,
-	  "userId": string,
-	  "timestamp": int,
-        },
-      }
-    }
+**Note:** Example payloads below are based on actual webhook HTTP POST payloads, using real JSON and data types. Field types are indicated in example objects by their value type: for example, ``"id": 123`` is an integer, not a string.
 
- * OCA\\Tables\\Event\\RowAddedEvent
+Node (Files / Folders) Events
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  .. code-block:: text
+Node events include those that act on a single node as well as those that act on two nodes (such as copy, rename, and restore). In single-node events, the payload includes a single ``node`` object with information about the affected file or folder. In two-node events, the payload includes both a ``source`` object (the original node) and a ``target`` object (the resulting node after the operation). The examples below demonstrate these unique payload formats.
 
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "class": string,
-        "tableId": int,
-        "rowId": int,
-        "previousValues": null|array<int, mixed>,
-        "values": null|array<int, mixed>
-      }
-    }
+**1. Single-node events**
 
- * OCA\\Tables\\Event\\RowDeletedEvent
+Applies to:
 
-  .. code-block:: text
+- ``OCP\Files\Events\Node\BeforeNodeCreatedEvent``
+- ``OCP\Files\Events\Node\BeforeNodeTouchedEvent``
+- ``OCP\Files\Events\Node\BeforeNodeWrittenEvent``
+- ``OCP\Files\Events\Node\BeforeNodeReadEvent``
+- ``OCP\Files\Events\Node\BeforeNodeDeletedEvent``
+- ``OCP\Files\Events\Node\NodeCreatedEvent``
+- ``OCP\Files\Events\Node\NodeTouchedEvent``
+- ``OCP\Files\Events\Node\NodeWrittenEvent``
+- ``OCP\Files\Events\Node\NodeDeletedEvent``
 
-     array{
-       "user": array {"uid": string, "displayName": string},
-       "time": int,
-       "event": array{
-         "class": string,
-         "tableId": int,
-         "rowId": int,
-         "previousValues": null|array<int, mixed>,
-         "values": null|array<int, mixed>
+.. code-block:: json
+
+   {
+     "event": "NodeCreatedEvent",
+     "node": {
+       "id": 437,
+       "path": "/admin/files/test-webhook.txt"
+     }
+   }
+
+Where:
+
+- ``"id"`` is an integer (unique node ID)
+- ``"path"`` is a string (file/folder path)
+
+.. note::
+
+   In some events (such as ``NodeDeletedEvent`` or when the node refers to a non-existent file or folder), the ``node`` object may not have an ``id`` field. This happens when the node no longer exists in the filesystem/database, and is represented in Nextcloud by an internal ``NonExistingFile`` or ``NonExistingFolder``. In such cases, only the ``path`` field will be present. Always check for the presence of the ``id`` field in these payloads. Usually, the corresponding ``Before*`` event (such as ``BeforeNodeDeletedEvent``) can be used if you require the ``id`` of the node before deletion.
+
+Example of a deleted node webhook payload:
+
+.. code-block:: json
+
+   {
+     "event": "NodeDeletedEvent",
+     "node": {
+       "path": "/user/files/oldfile.txt"
+     }
+   }
+
+**2. Two-node events**
+
+Applies to:
+
+- ``OCP\Files\Events\Node\NodeCopiedEvent``
+- ``OCP\Files\Events\Node\NodeRenamedEvent``
+- ``OCP\Files\Events\Node\NodeRestoredEvent``
+- ``OCP\Files\Events\Node\BeforeNodeCopiedEvent``
+- ``OCP\Files\Events\Node\BeforeNodeRestoredEvent``
+- ``OCP\Files\Events\Node\BeforeNodeRenamedEvent``
+
+.. code-block:: json
+
+   {
+     "event": "NodeRestoredEvent",
+     "source": {
+       "id": 399,
+       "path": "/admin/files/Deleted/myfile.txt"
+     },
+     "target": {
+       "id": 437,
+       "path": "/admin/files/myfile.txt"
+     }
+   }
+
+Where:
+
+- ``"source"`` is an object representing the original node, with ``"id"`` (integer) and ``"path"`` (string)
+- ``"target"`` is an object representing the resulting/copied/restored/renamed node, with ``"id"`` (integer) and ``"path"`` (string)
+
+.. note::
+
+   For some two-node events, the ``source`` or ``target`` node may not have an ``id`` field, for instance if the node was deleted or is otherwise missing from the filesystem. Always check for the presence of the ``id`` field in these objects. Typically, if you need the ``id`` of a node just before deletion or change, the respective ``Before*`` event (such as ``BeforeNodeRenamedEvent``) will include it.
+
+Example of a two-node event (NodeRenamedEvent) where the source node is missing:
+
+.. code-block:: json
+
+   {
+     "event": "NodeRenamedEvent",
+     "source": {
+       "path": "/user/files/previousname.txt"
+     },
+     "target": {
+       "id": 599,
+       "path": "/user/files/newname.txt"
+     }
+   }
+
+.. note::
+
+   Only these fields are guaranteed by Nextcloud core. Additional fields may appear if added by custom plugins or future versions.
+
+System Tag Events
+~~~~~~~~~~~~~~~~~
+
+* ``OCP\SystemTag\TagAssignedEvent``
+* ``OCP\SystemTag\TagUnassignedEvent``
+
+.. code-block:: json
+
+   {
+     "event": "TagAssignedEvent",
+     "objectType": "files",
+     "objectIds": ["437","438"],
+     "tagIds": [3,17]
+   }
+
+Calendar Object Events
+~~~~~~~~~~~~~~~~~~~~~~
+
+Calendar object events use two distinct payload formats, depending on the event.
+
+**Standard payload**
+
+Applies to:
+
+- ``OCP\Calendar\Events\CalendarObjectCreatedEvent``
+- ``OCP\Calendar\Events\CalendarObjectDeletedEvent``
+- ``OCP\Calendar\Events\CalendarObjectMovedToTrashEvent``
+- ``OCP\Calendar\Events\CalendarObjectRestoredEvent``
+- ``OCP\Calendar\Events\CalendarObjectUpdatedEvent``
+
+.. code-block:: json
+
+   {
+     "event": "CalendarObjectCreatedEvent",
+     "user": {
+       "uid": "david",
+       "displayName": "David"
+     },
+     "time": 1700100000,
+     "eventData": {
+       "calendarId": 9,
+       "calendarData": {
+         "id": 9,
+         "uri": "work",
+         "{http://calendarserver.org/ns/}getctag": "1736283",
+         "{http://sabredav.org/ns}sync-token": 9651,
+         "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": "VEVENT,VTODO",
+         "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": "opaque"
+       },
+       "shares": [
+         {
+           "href": "mailto:alice@example.com",
+           "commonName": "Alice",
+           "status": 2,
+           "readOnly": false,
+           "{http://owncloud.org/ns}principal": "principal:users/alice",
+           "{http://owncloud.org/ns}group-share": false
+         }
+       ],
+       "objectData": {
+         "id": 22,
+         "uri": "event-20251111T100000Z.ics",
+         "lastmodified": 1700099500,
+         "etag": "19fa45b394",
+         "calendarid": 9,
+         "size": 4096,
+         "component": "VEVENT",
+         "classification": 0
        }
      }
-
- * OCA\\Tables\\Event\\RowUpdatedEvent
-
-  .. code-block:: text
-
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "class": string,
-        "tableId": int,
-        "rowId": int,
-        "previousValues": null|array<int, mixed>,
-        "values": null|array<int, mixed>
-      }
-    }
-
- * OCP\\Calendar\\Events\\CalendarObjectCreatedEvent
-
-  .. code-block:: text
-
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "calendarId": int,
-        "calendarData": array{
-          "id": int,
-          "uri": string,
-          "{http://calendarserver.org/ns/}getctag": string,
-          "{http://sabredav.org/ns}sync-token": int,
-          "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": 'Sabre\CalDAV\Xml\Property\SupportedCalendarComponentSet',
-          "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": 'Sabre\CalDAV\Xml\Property\ScheduleCalendarTransp'
-          "{urn:ietf:params:xml:ns:caldav}calendar-timezone": string|null
-        },
-        "shares": list<array{
-          "href": string,
-          "commonName": string,
-          "status": int,
-          "readOnly": bool,
-          "{http://owncloud.org/ns}principal": string,
-          "{http://owncloud.org/ns}group-share": bool
-        }>,
-        "objectData": array{
-          "id": int,
-          "uri": string,
-          "lastmodified": int,
-          "etag": string,
-          "calendarid": int,
-          "size": int,
-          "component": string|null,
-          "classification": int
-        }
-      }
-    }
-
- * OCP\\Calendar\\Events\\CalendarObjectDeletedEvent
-
-  .. code-block:: text
-
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "calendarId": int,
-        "calendarData": array{
-          "id": int,
-          "uri": string,
-          "{http://calendarserver.org/ns/}getctag": string,
-          "{http://sabredav.org/ns}sync-token": int,
-          "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": 'Sabre\CalDAV\Xml\Property\SupportedCalendarComponentSet',
-          "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": 'Sabre\CalDAV\Xml\Property\ScheduleCalendarTransp'
-          "{urn:ietf:params:xml:ns:caldav}calendar-timezone": string|null
-        },
-        "shares": list<array{
-          "href": string,
-          "commonName": string,
-          "status": int,
-          "readOnly": bool,
-          "{http://owncloud.org/ns}principal": string,
-          "{http://owncloud.org/ns}group-share": bool
-        }>,
-        "objectData": array{
-          "id": int,
-          "uri": string,
-          "lastmodified": int,
-          "etag": string,
-          "calendarid": int,
-          "size": int,
-          "component": string|null,
-          "classification": int
-        }
-      }
-    }
-
- * OCP\\Calendar\\Events\\CalendarObjectMovedEvent
-
-  .. code-block:: text
-
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "sourceCalendarId": int,
-        "sourceCalendarData": array{
-          "id": int,
-          "uri": string,
-          "{http://calendarserver.org/ns/}getctag": string,
-          "{http://sabredav.org/ns}sync-token": int,
-          "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": 'Sabre\CalDAV\Xml\Property\SupportedCalendarComponentSet',
-          "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": 'Sabre\CalDAV\Xml\Property\ScheduleCalendarTransp'
-          "{urn:ietf:params:xml:ns:caldav}calendar-timezone": string|null
-        },
-        "targetCalendarId": int,
-        "targetCalendarData": array{
-          "id": int,
-          "uri": string,
-          "{http://calendarserver.org/ns/}getctag": string,
-          "{http://sabredav.org/ns}sync-token": int,
-          "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": 'Sabre\CalDAV\Xml\Property\SupportedCalendarComponentSet',
-          "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": 'Sabre\CalDAV\Xml\Property\ScheduleCalendarTransp'
-          "{urn:ietf:params:xml:ns:caldav}calendar-timezone": string|null
-        },
-        "sourceShares": list<array{
-          "href": string,
-          "commonName": string,
-          "status": int,
-          "readOnly": bool,
-          "{http://owncloud.org/ns}principal": string,
-          "{http://owncloud.org/ns}group-share": bool
-        }>,
-        "targetShares": list<array{
-          "href": string,
-          "commonName": string,
-          "status": int,
-          "readOnly": bool,
-          "{http://owncloud.org/ns}principal": string,
-          "{http://owncloud.org/ns}group-share": bool
-        }>,
-        "objectData": array{
-          "id": int,
-          "uri": string,
-          "lastmodified": int,
-          "etag": string,
-          "calendarid": int,
-          "size": int,
-          "component": string|null,
-          "classification": int
-        }
-      }
-    }
-
- * OCP\\Calendar\\Events\\CalendarObjectMovedToTrashEvent
-
-  .. code-block:: text
-
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "calendarId": int,
-        "calendarData": array{
-          "id": int,
-          "uri": string,
-          "{http://calendarserver.org/ns/}getctag": string,
-          "{http://sabredav.org/ns}sync-token": int,
-          "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": 'Sabre\CalDAV\Xml\Property\SupportedCalendarComponentSet',
-          "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": 'Sabre\CalDAV\Xml\Property\ScheduleCalendarTransp'
-          "{urn:ietf:params:xml:ns:caldav}calendar-timezone": string|null
-        },
-        "shares": list<array{
-          "href": string,
-          "commonName": string,
-          "status": int,
-          "readOnly": bool,
-          "{http://owncloud.org/ns}principal": string,
-          "{http://owncloud.org/ns}group-share": bool
-        }>,
-        "objectData": array{
-          "id": int,
-          "uri": string,
-          "lastmodified": int,
-          "etag": string,
-          "calendarid": int,
-          "size": int,
-          "component": string|null,
-          "classification": int
-        }
-      }
-    }
-
- * OCP\\Calendar\\Events\\CalendarObjectRestoredEvent
-
-  .. code-block:: text
-
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "calendarId": int,
-        "calendarData": array{
-          "id": int,
-          "uri": string,
-          "{http://calendarserver.org/ns/}getctag": string,
-          "{http://sabredav.org/ns}sync-token": int,
-          "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": 'Sabre\CalDAV\Xml\Property\SupportedCalendarComponentSet',
-          "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": 'Sabre\CalDAV\Xml\Property\ScheduleCalendarTransp'
-          "{urn:ietf:params:xml:ns:caldav}calendar-timezone": string|null
-        },
-        "shares": list<array{
-          "href": string,
-          "commonName": string,
-          "status": int,
-          "readOnly": bool,
-          "{http://owncloud.org/ns}principal": string,
-          "{http://owncloud.org/ns}group-share": bool
-        }>,
-        "objectData": array{
-          "id": int,
-          "uri": string,
-          "lastmodified": int,
-          "etag": string,
-          "calendarid": int,
-          "size": int,
-          "component": string|null,
-          "classification": int
-        }
-      }
-    }
-
- * OCP\\Calendar\\Events\\CalendarObjectUpdatedEvent
-
-  .. code-block:: text
-
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "calendarId": int,
-        "calendarData": array{
-          "id": int,
-          "uri": string,
-          "{http://calendarserver.org/ns/}getctag": string,
-          "{http://sabredav.org/ns}sync-token": int,
-          "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": 'Sabre\CalDAV\Xml\Property\SupportedCalendarComponentSet',
-          "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": 'Sabre\CalDAV\Xml\Property\ScheduleCalendarTransp'
-          "{urn:ietf:params:xml:ns:caldav}calendar-timezone": string|null
-        },
-        "shares": list<array{
-          "href": string,
-          "commonName": string,
-          "status": int,
-          "readOnly": bool,
-          "{http://owncloud.org/ns}principal": string,
-          "{http://owncloud.org/ns}group-share": bool
-        }>,
-        "objectData": array{
-          "id": int,
-          "uri": string,
-          "lastmodified": int,
-          "etag": string,
-          "calendarid": int,
-          "size": int,
-          "component": string|null,
-          "classification": int
-        }
-      }
-    }
-
- * OCP\\Files\\Events\\Node\\BeforeNodeCreatedEvent
-
-  .. code-block:: text
-
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "class": string,
-        "node": array{"id": string, "path": string}
-      }
-    }
-
- * OCP\\Files\\Events\\Node\\BeforeNodeTouchedEvent
-
-  .. code-block:: text
-
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "class": string,
-        "node": array{"id": string, "path": string}
-      }
-    }
-
- * OCP\\Files\\Events\\Node\\BeforeNodeWrittenEvent
-
-  .. code-block:: text
-
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "class": string,
-        "node": array{"id": string, "path": string}
-      }
-    }
-
- * OCP\\Files\\Events\\Node\\BeforeNodeReadEvent
-
-  .. code-block:: text
-
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "class": string,
-        "node": array{"id": string, "path": string}
-      }
-    }
-
- * OCP\\Files\\Events\\Node\\BeforeNodeDeletedEvent
-
-  .. code-block:: text
-
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "class": string,
-        "node": array{"id": string, "path": string}
-      }
-    }
-
- * OCP\\Files\\Events\\Node\\NodeCreatedEvent
-
-  .. code-block:: text
-
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "class": string,
-        "node": array{"id": string, "path": string}
-      }
-    }
-
- * OCP\\Files\\Events\\Node\\NodeTouchedEvent
-
-  .. code-block:: text
-
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "class": string,
-        "node": array{"id": string, "path": string}
-      }
-    }
-
- * OCP\\Files\\Events\\Node\\NodeWrittenEvent
-
-  .. code-block:: text
-
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "class": string,
-        "node": array{"id": string, "path": string}
-      }
-    }
-
- * OCP\\Files\\Events\\Node\\NodeDeletedEvent
-
-  .. code-block:: text
-
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "class": string,
-        "node": array{"id": string, "path": string}
-      }
-    }
-
- * OCP\\Files\\Events\\Node\\NodeCopiedEvent
-
-  .. code-block:: text
-
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "class": string,
-        "source": array{"id": string, "path": string}
-        "target": array{"id": string, "path": string}
-      }
-    }
-
- * OCP\\Files\\Events\\Node\\NodeRestoredEvent
-
-  .. code-block:: text
-
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "class": string,
-        "source": array{"id": string, "path": string}
-        "target": array{"id": string, "path": string}
-      }
-    }
-
- * OCP\\Files\\Events\\Node\\NodeRenamedEvent
-
-  .. code-block:: text
-
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "class": string,
-        "source": array{"id": string, "path": string}
-        "target": array{"id": string, "path": string}
-      }
-    }
-
- * OCP\\Files\\Events\\Node\\BeforeNodeCopiedEvent
-
-  .. code-block:: text
-
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "class": string,
-        "source": array{"id": string, "path": string}
-        "target": array{"id": string, "path": string}
-      }
-    }
-
- * OCP\\Files\\Events\\Node\\BeforeNodeRestoredEvent
-
-  .. code-block:: text
-
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "class": string,
-        "source": array{"id": string, "path": string}
-        "target": array{"id": string, "path": string}
-      }
-    }
-
- * OCP\\Files\\Events\\Node\\BeforeNodeRenamedEvent
-
-  .. code-block:: text
-
-    array{
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "class": string,
-        "source": array{"id": string, "path": string}
-        "target": array{"id": string, "path": string}
-      }
-    }
-
- * OCP\\SystemTag\\TagAssignedEvent
-
-  .. code-block:: text
-
-    array {
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "class": string,
-        "objectType": string (e.g. 'files'),
-        "objectIds": string[],
-        "tagIds": int[],
-      }
-    }
-
- * OCP\\SystemTag\\TagUnassignedEvent
-
-  .. code-block:: text
-
-    array {
-      "user": array {"uid": string, "displayName": string},
-      "time": int,
-      "event": array{
-        "class": string,
-        "objectType": string (e.g. 'files'),
-        "objectIds": string[],
-        "tagIds": int[],
-      }
-    }
+   }
+
+**Distinct payload for two-calendar events**
+
+Applies to:
+
+- ``OCP\Calendar\Events\CalendarObjectMovedEvent``
+
+.. code-block:: json
+
+   {
+     "event": "CalendarObjectMovedEvent",
+     "sourceCalendarId": 9,
+     "sourceCalendarData": {
+       "id": 9,
+       "uri": "work"
+     },
+     "targetCalendarId": 11,
+     "targetCalendarData": {
+       "id": 11,
+       "uri": "meetings"
+     },
+     "sourceShares": [
+       {
+         "href": "mailto:alice@example.com",
+         "commonName": "Alice"
+       }
+     ],
+     "targetShares": [
+       {
+         "href": "mailto:bob@example.com",
+         "commonName": "Bob"
+       }
+     ],
+     "objectData": {
+       "id": 22,
+       "uri": "event-20251111T100000Z.ics"
+     }
+   }
+
+Forms App Events
+~~~~~~~~~~~~~~~~
+
+When the optional ``forms`` app is installed:
+
+* ``OCA\Forms\Events\FormSubmittedEvent``
+
+.. code-block:: json
+
+   {
+     "event": "FormSubmittedEvent",
+     "user": {
+       "uid": "bob",
+       "displayName": "Bob"
+     },
+     "time": 1700001234,
+     "eventData": {
+       "class": "OCA\\Forms\\Events\\FormSubmittedEvent",
+       "form": {
+         "id": 51,
+         "hash": "abc123def456",
+         "title": "Employee Feedback",
+         "description": "Annual employee feedback form.",
+         "ownerId": "alice",
+         "fileId": 1002,
+         "fileFormat": "pdf",
+         "created": 1700001000,
+         "access": 0,
+         "expires": 1702606600,
+         "isAnonymous": false,
+         "submitMultiple": false,
+         "showExpiration": true,
+         "lastUpdated": 1700001200,
+         "submissionMessage": null,
+         "state": 1
+       },
+       "submission": {
+         "id": 220,
+         "formId": 51,
+         "userId": "bob",
+         "timestamp": 1700001234
+       }
+     }
+   }
+
+Tables App Events
+~~~~~~~~~~~~~~~~~
+
+When the optional ``tables`` app is installed:
+
+- ``OCA\Tables\Event\RowAddedEvent``
+- ``OCA\Tables\Event\RowDeletedEvent``
+- ``OCA\Tables\Event\RowUpdatedEvent``
+
+.. code-block:: json
+
+   {
+     "event": "RowAddedEvent",
+     "user": {
+       "uid": "carol",
+       "displayName": "Carol"
+     },
+     "time": 1700054321,
+     "eventData": {
+       "class": "OCA\\Tables\\Event\\RowAddedEvent",
+       "tableId": 34,
+       "rowId": 7,
+       "previousValues": null,
+       "values": {
+         "0": "Project X",
+         "1": 2025,
+         "2": "active"
+       }
+     }
+   }
+
+.. note::
+
+   For filtering or automation, always check the actual payload you receive, as it matches the JSON examples above, not PHPDoc or internal PHP array type style.
