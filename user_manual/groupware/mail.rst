@@ -20,6 +20,16 @@ Switch layout
 
 .. figure:: images/mail_layout.png
 
+Use Compact Mode
+~~~~~~~~~~~~~~~~
+.. versionadded:: 5.7.0
+
+1. Visit the mail settings.
+2. Go to **Appearance**.
+3. For each of the three existing layouts, a compact mode is also available.
+
+.. figure:: images/user-compact-mode.png
+
 Message Display / Operation Mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
