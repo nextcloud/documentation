@@ -24,9 +24,11 @@ Use Compact Mode
 ~~~~~~~~~~~~~~~~
 .. versionadded:: 5.7.0
 
-1. Visit the mail settings.
-2. Go to **Appearance**.
-3. For each of the three existing layouts, a compact mode is also available.
+Compact mode offers a cleaner and more efficient way to view your messages. Avatars are hidden, selection checkboxes are always visible, and the preview of messages is removed. It saves space allowing you to see more emails at once.
+
+1. Visit the mail settings
+2. Go to **Appearance**
+3. Toggle the Compact Mode
 
 .. figure:: images/user-compact-mode.png
 
