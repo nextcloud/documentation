@@ -56,6 +56,17 @@ Change sort order
 
 .. note:: This change will apply across all your accounts and mailboxes
 
+Sort favorites up
+~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 5.7 Nextcloud 31 or newer
+
+This setting allows you to show messages set as favorite in a separate section on top of the message list.
+
+1. Visit mail settings
+2. Go to *Appearance*
+3. Enable sorting favorites up 
+
 .. _mail-scheduled-messages:
 
 Scheduled messages
