@@ -43,12 +43,12 @@ Import a Calendar
 If you want to transfer your calendar and their respective events to your Nextcloud
 instance, importing is the best way to do so.
 
-.. figure:: images/calendar_settings_sidebar.png
-            :scale: 80%
+.. figure:: images/calendar_importing.png
+            :scale: 50%
 
 1. Click on the settings-icon labeled with ``Calendar settings`` at the bottom-left.
 
-2. After clicking on ``Import Calendar`` you can select one or more calendar files
+2. After clicking on ``Import Calendar``, found in the ``General`` section, you can select one or more calendar files
    from your local device to upload.
 
 3. Select a ``Calendar to import into``.
