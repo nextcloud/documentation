@@ -11,12 +11,15 @@ jobs:
   user_manual:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: ammaraskar/sphinx-action@master
+    - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
+    - uses: actions/setup-python@7f4fc3e22c37d6ff65e88745f38bd3157c663f7c # v4
       with:
-        docs-folder: "user_manual/"
-        pre-build-command: pip install -r requirements.txt
-        build-command: make gettext
+        python-version: '3.12'
+        cache: 'pip'
+    - name: Install pip dependencies
+      run: pip --version; pip install -r requirements.txt
+    - name: Build using Makefile
+      run: cd user_manual && make gettext
     - uses: peter-evans/create-pull-request@v3
       with:
         commit-message: Updates catalog templates (POT files fetched automatically by transifex)
