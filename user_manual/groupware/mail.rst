@@ -519,3 +519,10 @@ The mail app offers two widgets designed for integration with Nextcloud's dashbo
 * Important mails: This widget shows emails that have been flagged as important.
 
 These widgets utilize the emails from the email accounts that are set up for your account.
+
+Keyboard shortcuts
+------------------
+
+The Mail app implements several keyboard shortcuts to speed up your experience.
+
+For a full list of the supported shortcuts, check out the Mail settings in your instance.
