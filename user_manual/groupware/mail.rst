@@ -539,3 +539,22 @@ The mail app offers two widgets designed for integration with Nextcloud's dashbo
 * Important mails: This widget shows emails that have been flagged as important.
 
 These widgets utilize the emails from the email accounts that are set up for your account.
+
+Keyboard shortcuts
+------------------
+
+Speed up your Mail experience by using keyboard shortcuts.
+
+============== ===================================
+Action         Shortcut
+============== ===================================
+Newer message  ``K`` or ``←``
+Older message  ``J`` or ``→``
+Toggle star    ``S``
+Toggle unread  ``U``
+Archive        ``A``
+Delete         ``Del``
+Search         ``Ctrl`` + ``F``
+Send           ``Ctrl`` + ``↵``
+Refresh        ``R``
+============== ===================================
