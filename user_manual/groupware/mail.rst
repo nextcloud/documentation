@@ -543,18 +543,6 @@ These widgets utilize the emails from the email accounts that are set up for you
 Keyboard shortcuts
 ------------------
 
-Speed up your Mail experience by using keyboard shortcuts.
+The Mail app implements several keyboard shortcuts to speed up your experience.
 
-============== ===================================
-Action         Shortcut
-============== ===================================
-Newer message  ``K`` or ``←``
-Older message  ``J`` or ``→``
-Toggle star    ``S``
-Toggle unread  ``U``
-Archive        ``A``
-Delete         ``Del``
-Search         ``Ctrl`` + ``F``
-Send           ``Ctrl`` + ``↵``
-Refresh        ``R``
-============== ===================================
+For a full list of the supported shortcuts, check out the Mail settings in your instance.

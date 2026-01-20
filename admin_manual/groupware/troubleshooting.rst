@@ -40,6 +40,121 @@ C. **Delete Specific Unshares:**
 **Why isn't there an automated migration to correct the problem?**
     Unsharing a calendar is a feature, and with the given information, we cannot determine if a calendar was unshared intentionally or as a result of the bug.
 
+Contacts
+--------
+
+Unable to update contacts or events
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you get an error like:
+
+``PATCH https://example.com/remote.php/dav HTTP/1.0 501 Not Implemented``
+
+it is likely because of a misconfigured web server. Please refer to :ref:`trouble-webdav-label` for troubleshooting steps.
+
+Mail
+----
+
+Autoconfig for your mail domain fails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If autoconfiguration for your domain fails, you can create an autoconfig file and place it as ``https://autoconfig.yourdomain.tld/mail/config-v1.1.xml``. For more information please refer to `Mozilla's documentation <https://wiki.mozilla.org/Thunderbird:Autoconfiguration:ConfigFileFormat>`_.
+
+
+Database insert problems on MySQL
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If the mail app fails to insert new rows for messages (`oc_mail_messages`), recipients (`oc_mail_recipients`) or similar tables, you are possibly not using the 4 byte support.
+
+See :doc:`../configuration_database/mysql_4byte_support` for how to update your database configuration.
+
+
+Export threading data
+^^^^^^^^^^^^^^^^^^^^^
+
+If you encounter an issue with threading, e.g. messages that belong to the same conversation thread don't show up as one, you can export the data the algorithm will use to build threads. We are dealing with sensitive data here, but the command will optionally redact the data with the ``--redact`` switch. The exported data will then only keep the original database IDs, the rest of the data is randomized. This format does not the export message details, it still contains metadata about how many messages you have and how they relate. Please consider this before posting the data online.
+
+::
+
+    sudo -E -u www-data php occ mail:account:export-threads 1393
+
+.. note:: 1393 represents the :ref:`account ID <mail_get_account_ids_groupware>`.
+
+The output will look similar to this::
+
+    [
+        {
+            "subject": "83379f9bc36915d5024de878386060b5@redacted",
+            "id": "2def0f3597806ecb886da1d9cc323a7c@redacted",
+            "references": [],
+            "databaseId": 261535
+        },
+            {
+            "subject": "Re: 1d4725ae1ac4e4798b541ca3f3cdce6e@redacted",
+            "id": "ce9e248333c44a5a64ccad26f2550f95@redacted",
+            "references": [
+                "bc95cbaff3abbed716e1d40bbdaa58a0@redacted",
+                "8651a9ac37674907606c936ced1333d7@redacted",
+                "4a87e94522a3cf26dba8977ae901094d@redacted",
+                "a3b30430b1ccb41089170eecbe315d3a@redacted",
+                "8e9f60369dce3d8b2b27430bd50ec46d@redacted",
+                "46cfa6e729ff329e6ede076853154113@redacted",
+                "079e7bc89d69792839a5e1831b1cbc80@redacted",
+                "079e7bc89d69792839a5e1831b1cbc80@redacted"
+            ],
+            "databaseId": 262086
+        },
+        {
+            "subject": "Re: 1d4725ae1ac4e4798b541ca3f3cdce6e@redacted",
+            "id": "8dd0e0ef2f7ab100b75922489ff26306@redacted",
+            "references": [
+                "bc95cbaff3abbed716e1d40bbdaa58a0@redacted",
+                "8651a9ac37674907606c936ced1333d7@redacted",
+                "4a87e94522a3cf26dba8977ae901094d@redacted",
+                "a3b30430b1ccb41089170eecbe315d3a@redacted",
+                "8e9f60369dce3d8b2b27430bd50ec46d@redacted",
+                "46cfa6e729ff329e6ede076853154113@redacted",
+                "079e7bc89d69792839a5e1831b1cbc80@redacted",
+                "ce9e248333c44a5a64ccad26f2550f95@redacted",
+                "ce9e248333c44a5a64ccad26f2550f95@redacted"
+            ],
+            "databaseId": 262087
+        }
+    ]
+
+It's recommended practice to pipe the export into a file, which you can later share with the Mail app community and developers::
+
+    sudo -E -u www-data php occ mail:account:export-threads 1393 | gzip -c > /tmp/nextcloud-mail-threads-1393.json.gz
+
+
+.. _mail_get_account_ids_groupware:
+
+Get account IDs
+^^^^^^^^^^^^^^^
+
+For many troubleshooting instructions you need to know the `id` of a mail account. You can acquire this through the database, but it's also possible to utilize the account export command of :doc:`occ  <../occ_command>` if you know the UID of the user utilizing the mail account::
+
+    sudo -E -u www-data php occ mail:account:export user123
+
+The output will look similar to this::
+
+    Account 1393:
+    - E-Mail: christoph@domain.com
+    - Name: Christoph Wurst
+    - IMAP user: christoph
+    - IMAP host: mx.domain.com:993, security: ssl
+    - SMTP user: christoph
+    - SMTP host: mx.domain.com:587, security: tls
+
+In this example, ``1393`` is the `account ID`.
+
+
+Issues connecting to Outlook.com
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you can not access your Outlook.com account try to enable the `Two-Factor Verification <https://account.live.com/proofs/Manage>`_ and set up an `app password <https://account.live.com/proofs/AppPassword>`_, which you then use for the Nextcloud Mail app.
+
+
 Logging the IMAP/SMTP/Sieve connections
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The Nextcloud Mail app offers an extensive logging system to make it easier identifying and tracking down bugs. As this may include sensitive data, be sure to remove or mask them before posting them publicly.
@@ -105,12 +220,6 @@ Once you've collected the necessary data, it's highly recommended to disable the
     sudo -E -u www-data php occ config:system:set debug --value false --type bool
     sudo -E -u www-data php occ config:system:set loglevel --value 2 --type int
 
-Database insert problems on MySQL
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If the mail app fails to insert new rows for messages (`oc_mail_messages`), recipients (`oc_mail_recipients`) or similar tables, you are possibly not using the 4 byte support.
-
-See :doc:`../configuration_database/mysql_4byte_support` for how to update your database configuration.
 
 Timeout and other connectivity issues
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -135,26 +244,6 @@ The output should look similar to this::
     497 connections in 0.97s; 512.37 connections/user sec, bytes read 0
     497 connections in 31 real seconds, 0 bytes read per connection
 
-.. _mail_get_account_ids_groupware:
-
-Get account IDs
-^^^^^^^^^^^^^^^
-
-For many troubleshooting instructions you need to know the `id` of a mail account. You can acquire this through the database, but it's also possible to utilize the account export command of :doc:`occ  <../occ_command>` if you know the UID of the user utilizing the mail account::
-
-    sudo -E -u www-data php occ mail:account:export user123
-
-The output will look similar to this::
-
-    Account 1393:
-    - E-Mail: christoph@domain.com
-    - Name: Christoph Wurst
-    - IMAP user: christoph
-    - IMAP host: mx.domain.com:993, security: ssl
-    - SMTP user: christoph
-    - SMTP host: mx.domain.com:587, security: tls
-
-In this example, ``1393`` is the `account ID`.
 
 Manual account synchronization and threading
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -201,84 +290,3 @@ The output will look similar to this::
     [debug] Account 1393 has 9839 threads
     [debug] Account 1393 has 0 messages with a new thread IDs
     62MB of memory used
-
-
-Export threading data
-^^^^^^^^^^^^^^^^^^^^^
-
-If you encounter an issue with threading, e.g. messages that belong to the same conversation thread don't show up as one, you can export the data the algorithm will use to build threads. We are dealing with sensitive data here, but the command will optionally redact the data with the ``--redact`` switch. The exported data will then only keep the original database IDs, the rest of the data is randomized. This format does not the export message details, it still contains metadata about how many messages you have and how they relate. Please consider this before posting the data online.
-
-::
-
-    sudo -E -u www-data php occ mail:account:export-threads 1393
-
-.. note:: 1393 represents the :ref:`account ID <mail_get_account_ids_groupware>`.
-
-The output will look similar to this::
-
-    [
-        {
-            "subject": "83379f9bc36915d5024de878386060b5@redacted",
-            "id": "2def0f3597806ecb886da1d9cc323a7c@redacted",
-            "references": [],
-            "databaseId": 261535
-        },
-            {
-            "subject": "Re: 1d4725ae1ac4e4798b541ca3f3cdce6e@redacted",
-            "id": "ce9e248333c44a5a64ccad26f2550f95@redacted",
-            "references": [
-                "bc95cbaff3abbed716e1d40bbdaa58a0@redacted",
-                "8651a9ac37674907606c936ced1333d7@redacted",
-                "4a87e94522a3cf26dba8977ae901094d@redacted",
-                "a3b30430b1ccb41089170eecbe315d3a@redacted",
-                "8e9f60369dce3d8b2b27430bd50ec46d@redacted",
-                "46cfa6e729ff329e6ede076853154113@redacted",
-                "079e7bc89d69792839a5e1831b1cbc80@redacted",
-                "079e7bc89d69792839a5e1831b1cbc80@redacted"
-            ],
-            "databaseId": 262086
-        },
-        {
-            "subject": "Re: 1d4725ae1ac4e4798b541ca3f3cdce6e@redacted",
-            "id": "8dd0e0ef2f7ab100b75922489ff26306@redacted",
-            "references": [
-                "bc95cbaff3abbed716e1d40bbdaa58a0@redacted",
-                "8651a9ac37674907606c936ced1333d7@redacted",
-                "4a87e94522a3cf26dba8977ae901094d@redacted",
-                "a3b30430b1ccb41089170eecbe315d3a@redacted",
-                "8e9f60369dce3d8b2b27430bd50ec46d@redacted",
-                "46cfa6e729ff329e6ede076853154113@redacted",
-                "079e7bc89d69792839a5e1831b1cbc80@redacted",
-                "ce9e248333c44a5a64ccad26f2550f95@redacted",
-                "ce9e248333c44a5a64ccad26f2550f95@redacted"
-            ],
-            "databaseId": 262087
-        }
-    ]
-
-It's recommended practice to pipe the export into a file, which you can later share with the Mail app community and developers::
-
-    sudo -E -u www-data php occ mail:account:export-threads 1393 | gzip -c > /tmp/nextcloud-mail-threads-1393.json.gz
-
-Autoconfig for your mail domain fails
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If autoconfiguration for your domain fails, you can create an autoconfig file and place it as ``https://autoconfig.yourdomain.tld/mail/config-v1.1.xml``. For more information please refer to `Mozilla's documentation <https://wiki.mozilla.org/Thunderbird:Autoconfiguration:ConfigFileFormat>`_.
-
-Issues connecting to Outlook.com
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you can not access your Outlook.com account try to enable the `Two-Factor Verification <https://account.live.com/proofs/Manage>`_ and set up an `app password <https://account.live.com/proofs/AppPassword>`_, which you then use for the Nextcloud Mail app.
-
-
-Contacts
---------
-
-Unable to update contacts or events
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you get an error like:
-
-``PATCH https://example.com/remote.php/dav HTTP/1.0 501 Not Implemented``
-
-it is likely because of a misconfigured web server. Please refer to :ref:`trouble-webdav-label` for troubleshooting steps.
