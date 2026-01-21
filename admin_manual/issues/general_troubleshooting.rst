@@ -374,25 +374,6 @@ Troubleshooting contacts & calendar
 .. tip::
   Please also refer to the troubleshooting article in the groupware section: :ref:`troubleshooting_groupware`.
 
-Unable to update contacts or events
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you get an error like:
-
-``PATCH https://example.com/remote.php/dav HTTP/1.0 501 Not Implemented``
-
-it is likely caused by one of the following reasons:
-
-Using Pound reverse-proxy/load balancer
-  As of writing this Pound doesn't support the HTTP/1.1 verb.
-  Pound is easily `patched
-  <http://www.apsis.ch/pound/pound_list/archive/2013/2013-08/1377264673000>`_
-  to support HTTP/1.1.
-
-Misconfigured Web server
-  Your Web server is misconfigured and blocks the needed DAV methods.
-  Please refer to :ref:`trouble-webdav-label` above for troubleshooting steps.
-
 Troubleshooting data-directory
 ------------------------------
 
