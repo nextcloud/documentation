@@ -275,24 +275,28 @@ URLs:
 
 | ``https://example.com/.well-known/carddav``
 | ``https://example.com/.well-known/caldav``
-|
 
 Those need to be redirecting your clients to the correct endpoints. If Nextcloud
-is running at the document root of your Web server the correct URL is
+is running at the ``DocumentRoot`` of your Web server the correct URL is
 ``https://example.com/remote.php/dav`` for CardDAV and CalDAV and if running in a
-subfolder like ``nextcloud``, then ``https://example.com/nextcloud/remote.php/dav``.
+subfolder like ``nextcloud``, then the correct URL is ``https://example.com/nextcloud/remote.php/dav``.
+.. note:: By default, the Apache ``DocumentRoot`` is the directory ``/var/www/html``
 
-For the first case the :file:`.htaccess` file shipped with Nextcloud should do
+For the first case, the :file:`.htaccess` file shipped with Nextcloud should do
 this work for you when you're running Apache. You need to make sure that your
 Web server is using this file. Additionally, you need the mod_rewrite Apache
 module installed and ``AllowOverride All`` set in your :file:`apache2.conf`
 or vHost-file to process these redirects. When running Nginx please refer to
 :doc:`../installation/nginx`.
 
+For the second case, you need to add the following to :file:`/etc/apache2/apache2.conf`::
 
-If your Nextcloud instance is installed in a subfolder called ``nextcloud`` and
-you're running Apache, create or edit the :file:`.htaccess` file within the
-document root of your Web server and add the following lines::
+   <Directory /var/www/html>
+   	AllowOverride FileInfo
+   </Directory>
+
+In this, we are using the Apache default ``DocumentRoot`` of ``/var/www/html``, but you should change it to whatever your ``DocumentRoot`` is if it differs.
+Next, create or edit the :file:`.htaccess` file within the ``DocumentRoot`` of your Web server and add the following lines::
 
     <IfModule mod_rewrite.c>
       RewriteEngine on
