@@ -146,8 +146,8 @@ on your network!
 .. figure:: external_storage/images/user_mounts.png
    :alt: Checkboxes to allow users to mount external storage services.
 
-Adding files to external storages
----------------------------------
+Adding files to external storage
+--------------------------------
 
 We recommend configuring the background job **Webcron** or
 **Cron** (see :doc:`../configuration_server/background_jobs_configuration`)
@@ -162,3 +162,7 @@ You might need to setup a cron job that runs ``sudo -E -u www-data php occ files
 (or replace ``--all`` with the user name, see also :doc:`../occ_command`)
 to trigger a rescan of the user's files periodically (for example every 15 minutes), which includes
 the mounted external storage.
+
+If you are running NextCloud in a Docker container under "All-In-One"(AIO), the equivalent command 
+in that environment is ``sudo docker exec --user www-data -it nextcloud-aio-nextcloud php occ files:scan --all``. 
+If you are running a different version under Docker, just substitute the container name of your installed version for "nextcloud-aio-nextcloud".
