@@ -92,7 +92,7 @@ define(['jquery', 'lodash', 'enquire', 'bodymovin', 'headroom', 'headroomJquery'
 						maxDiameter = (Math.sqrt(windowDiameter)) * 1.5;
 
 					$(this.variables.mobileBackgroundSelector).css({
-						'top': - maxDiameter / 2+ 'px',
+						'top': - maxDiameter / 2 + 'px',
 						'right': - maxDiameter / 2 + 'px',
 						'width': maxDiameter + 'px',
 						'height': maxDiameter + 'px'
@@ -194,7 +194,6 @@ define(['jquery', 'lodash', 'enquire', 'bodymovin', 'headroom', 'headroomJquery'
 						background.removeClass(this.variables.backgroundAnimationClass);
 					},this));
 
-					var backgroundWrapper = $(this.variables.navBackgroundWrapper);
 					backgroundWrapper.removeClass(this.variables.linksVisibleClass);
 				},
 
