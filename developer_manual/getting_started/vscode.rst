@@ -72,6 +72,32 @@ For working with Nextcloud documentation:
 - `reStructuredText <https://marketplace.visualstudio.com/items?itemName=lextudio.restructuredtext>`_ - RST language support
 - `PDF Viewer <https://marketplace.visualstudio.com/items?itemName=tomoki1207.pdf>`_ - Preview PDF files
 
+Problem Panel Integration
+-------------------------
+
+These extensions report errors and warnings directly in VS Code's Problems panel (``Ctrl+Shift+M``):
+
+**PHP:**
+
+- `PHP Intelephense <https://marketplace.visualstudio.com/items?itemName=bmewburn.vscode-intelephense-client>`_ - Syntax errors, undefined variables, type mismatches
+- `PHPStan <https://marketplace.visualstudio.com/items?itemName=swordev.phpstan>`_ - Static analysis errors
+- `PHP CS Fixer <https://marketplace.visualstudio.com/items?itemName=junstyle.php-cs-fixer>`_ - Code style violations
+
+**JavaScript/TypeScript:**
+
+- `ESLint <https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint>`_ - Linting errors and warnings
+- `TypeScript <https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next>`_ - Type checking errors
+- `Error Lens <https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens>`_ - Shows errors inline in the editor
+
+**PowerShell (for Windows scripts):**
+
+- `PowerShell <https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell>`_ - Includes PSScriptAnalyzer for linting
+
+**General:**
+
+- `Error Lens <https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens>`_ - Highlights errors/warnings inline
+- `Problems Tab Highlighter <https://marketplace.visualstudio.com/items?itemName=prantlf.problems-highlighter>`_ - Enhanced problem highlighting
+
 Workspace Settings
 ==================
 
