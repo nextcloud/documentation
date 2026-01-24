@@ -540,6 +540,48 @@ The mail app offers two widgets designed for integration with Nextcloud's dashbo
 
 These widgets utilize the emails from the email accounts that are set up for your account.
 
+Calendar integration
+--------------------
+
+The Mail app integrates with the Calendar app to help you manage meeting invitations and keep your calendar up to date.
+
+Meeting invitations
+~~~~~~~~~~~~~~~~~~~
+
+When you receive a message containing a meeting invitation, the Mail app automatically detects the attached calendar file and displays a formatted action section to help you respond.
+
+You can:
+
+* **Accept** the invitation
+* **Decline** the invitation
+* **Tentatively accept** the invitation
+
+Your response is sent directly from the Mail app, and the event is added to your primary calendar accordingly.
+
+You can also manually add a meeting invitation to a specific calendar:
+
+1. Open the message with the meeting invitation
+2. Scroll to the bottom of the message to the attachments section
+3. Select the calendar file (usually with a .ics extension), then click the three dots menu.
+4. Click "Import in to calendar" and choose the desired calendar.
+
+Meeting invitation automation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When a meeting organizer sends updates to an existing event (such as time changes or location updates), the Mail app processes these automatically and updates the corresponding event in your calendar.
+
+.. versionadded:: 5.7 (Nextcloud 32 or newer)
+
+You can also configure Mail to automatically add all new meeting invitations to your calendar without requiring manual acceptance. The invitations will be added to the calendar as tentative.
+
+To enable this feature:
+
+1. Visit account settings of a specific mail account
+2. Navigate to Calendar settings section
+3. Enable *Automatically create tentative appointments in calendar*
+
+.. note:: With this setting enabled, invitations will still appear in your mail list, but they will be automatically added to your calendar.
+
 Keyboard shortcuts
 ------------------
 
