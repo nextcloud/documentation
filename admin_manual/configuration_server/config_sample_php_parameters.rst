@@ -567,6 +567,7 @@ without the country code (e.g., +49 for Germany).
 If the user base is truly international and there is no default that would make sense, the phone region can be set to none:
 
 ::
+	
 	'default_phone_region' => 'none',
 
 
