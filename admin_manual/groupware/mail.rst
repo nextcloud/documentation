@@ -5,6 +5,8 @@ Mail
 Configuration
 -------------
 
+**Administration settings** →  **Groupware** -> **Mail app**
+
 Anti-abuse alerts
 ^^^^^^^^^^^^^^^^^
 
@@ -49,6 +51,22 @@ Configure how often Mail keeps users' mailboxes updated in the background in sec
 ::
 
     'app.mail.background-sync-interval' => 7200,
+
+
+Default mail server settings
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  'app.mail.accounts.default' => [
+      'email' => '%USERID%@example.com', // %USERID% and %EMAIL% are placeholders
+      'imapHost' => 'imap.example.com',
+      'imapPort' => 993,
+      'imapSslMode' => 'ssl',
+      'smtpHost' => 'smtp.example.com',
+      'smtpPort' => 465,
+      'smtpSslMode' => 'ssl',
+  ],
 
 Disable TLS verification for IMAP/SMTP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
