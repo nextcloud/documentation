@@ -177,7 +177,7 @@ To create a mapper, inherit from the mapper base class and call the parent const
         public function authorNameCount($name) {
             $qb = $this->db->getQueryBuilder();
 
-            $qb->selectAlias($qb->createFunction('COUNT(*)'), 'count')
+            $qb->select($qb->func()->count('*', 'count'))
                ->from('myapp_authors')
                ->where(
                    $qb->expr()->eq('name', $qb->createNamedParameter($name, IQueryBuilder::PARAM_STR))
