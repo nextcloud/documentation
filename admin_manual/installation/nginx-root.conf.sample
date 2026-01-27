@@ -148,6 +148,16 @@ server {
     location ~ ^/(?:build|tests|config|lib|3rdparty|templates|data)(?:$|/)  { return 404; }
     location ~ ^/(?:\.|autotest|occ|issue|indie|db_|console)                { return 404; }
 
+    # Hide grunt, package files
+    location ~* (Gruntfile|package)\.(js|json|jsonc)$ {
+        return 404;
+    }
+
+    # Hide all composer files
+    location ~* composer\. {
+        return 404;
+    }
+
     # Ensure this block, which passes PHP files to the PHP process, is above the blocks
     # which handle static assets (as seen below). If this block is not declared first,
     # then Nginx will encounter an infinite rewriting loop when it prepends `/index.php`
