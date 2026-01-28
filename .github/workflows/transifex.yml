@@ -2,25 +2,28 @@ name: AutoMerge Transifex Pull Requests
 on:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   approve:
-    runs-on: ubuntu-latest
+    if: github.event.pull_request.user.login == 'transifex-integration[bot]'
+    runs-on: ubuntu-latest-low
+    permissions:
+      # for hmarr/auto-approve-action to approve PRs
+      pull-requests: write
+      # for alexwilson/enable-github-automerge-action to approve PRs
+      contents: write
+
     name: Approve
     steps:
-      - uses: hmarr/auto-approve-action@v4.0.0
-        if: github.actor == 'transifex-integration[bot]'
+      - uses: hmarr/auto-approve-action@f0939ea97e9205ef24d872e76833fa908a770363 # v4.0.0
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
 
-  automerge:
-    runs-on: ubuntu-latest
-    name: Auto-merge
-    needs: approve
-    steps:
-      - uses: pascalgn/automerge-action@v0.16.4
-        if: github.actor == 'transifex-integration[bot]'
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          MERGE_LABELS: ""
-          MERGE_RETRIES: 10
-          MERGE_RETRY_SLEEP: 120000
+      # Enable GitHub auto merge
+      - name: Auto merge
+        uses: alexwilson/enable-github-automerge-action@56e3117d1ae1540309dc8f7a9f2825bc3c5f06ff # v2.0.0
+        if: startsWith(steps.branchname.outputs.branch, 'translations_')
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
