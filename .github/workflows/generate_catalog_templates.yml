@@ -8,34 +8,52 @@ on:
       - 'user_manual/**'
       - '!user_manual/locale/**'
 
+permissions:
+  contents: read
+
 jobs:
   user_manual:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
 
-      - uses: ammaraskar/sphinx-action@master
+      - uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5.4.0
+        with:
+          python-version: '3.13'
+
+      - uses: ammaraskar/sphinx-action@54e52bfb642e9b60ea5b6bcb05fe3f74b40d290a # v8.2.3
         with:
           docs-folder: "user_manual/"
-          pre-build-command: pip install -r requirements.txt
-          build-command: make gettext
+          pre-build-command: "pip install -r requirements.txt"
+          build-command: "make gettext"
 
-      - uses: peter-evans/create-pull-request@v7
+      - name: Change file owner to correct user
+        run: |
+          ls -la user_manual/locale/source
+          sudo chown -R 1001:1001 user_manual/locale/source
+          ls -la user_manual/locale/source
+
+      - uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7.0.8
         id: cpr
         with:
           token: ${{ secrets.COMMAND_BOT_PAT }}
-          commit-message: "chore(l10n): Updates catalog templates (POT files fetched automatically by transifex)"
-          title: Updates catalog templates
-          branch: update-l10n
+          commit-message: 'chore(l10n): Updates catalog templates (POT files fetched automatically by transifex)'
+          committer: GitHub <noreply@github.com>
+          author: nextcloud-command <nextcloud-command@users.noreply.github.com>
           signoff: true
+          branch: 'automated/noid/update-l10n'
+          title: 'Updates catalog templates'
 
-      - uses: hmarr/auto-approve-action@v4.0.0
+      - uses: hmarr/auto-approve-action@f0939ea97e9205ef24d872e76833fa908a770363 # v4.0.0
         if: steps.cpr.outputs.pull-request-operation == 'created'
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
           pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
 
-      - uses: pascalgn/automerge-action@v0.16.4
+      - uses: pascalgn/automerge-action@7961b8b5eec56cc088c140b56d864285eabd3f67 # v0.16.4
         if: steps.cpr.outputs.pull-request-operation == 'created'
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
