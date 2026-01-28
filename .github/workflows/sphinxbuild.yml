@@ -7,79 +7,95 @@ on:
       - master
       - stable*
 
+permissions:
+  contents: read
+
 jobs:
   user_manual:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@ff7abcd0c3c05ccf6adc123a8cd1fd4fb30fb493
-    - uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
-        cache: 'pip'
-    - name: Install pip dependencies
-      run: pip install -r requirements.txt
-    - name: Build using Makefile
-      run: cd user_manual && make html
-    - name: Pack  the results in local tar file
-      shell: bash
-      run: tar czf /tmp/documentation.tar.gz -C user_manual/_build/html .
-    - name: Upload static documentation
-      uses: actions/upload-artifact@v4.6.2
-      with:
-        name: User manual.zip
-        path: "/tmp/documentation.tar.gz"
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548 # v6.1.0
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      - name: Install pip dependencies
+        run: pip install -r requirements.txt
+      - name: Build using Makefile
+        run: cd user_manual && make html
+      - name: Pack  the results in local tar file
+        shell: bash
+        run: tar czf /tmp/documentation.tar.gz -C user_manual/_build/html .
+      - name: Upload static documentation
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: User manual.zip
+          path: "/tmp/documentation.tar.gz"
 
   user_manual-en:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@ff7abcd0c3c05ccf6adc123a8cd1fd4fb30fb493
-    - uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
-        cache: 'pip'
-    - name: Install pip dependencies
-      run: pip install -r requirements.txt
-    - name: Build using Makefile
-      run: cd user_manual && make html-lang-en
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548 # v6.1.0
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      - name: Install pip dependencies
+        run: pip install -r requirements.txt
+      - name: Build using Makefile
+        run: cd user_manual && make html-lang-en
 
   developer_manual:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@ff7abcd0c3c05ccf6adc123a8cd1fd4fb30fb493
-    - uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
-        cache: 'pip'
-    - name: Install pip dependencies
-      run: pip install -r requirements.txt
-    - name: Build using Makefile
-      run: cd developer_manual && make html
-    - name: Pack the results in local tar file
-      shell: bash
-      run: tar czf /tmp/documentation.tar.gz -C developer_manual/_build/html/com .
-    - name: Upload static documentation
-      uses: actions/upload-artifact@v4.6.2
-      with:
-        name: Developer manual.zip
-        path: "/tmp/documentation.tar.gz"
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548 # v6.1.0
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      - name: Install pip dependencies
+        run: pip install -r requirements.txt
+      - name: Build using Makefile
+        run: cd developer_manual && make html
+      - name: Pack the results in local tar file
+        shell: bash
+        run: tar czf /tmp/documentation.tar.gz -C developer_manual/_build/html/com .
+      - name: Upload static documentation
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: Developer manual.zip
+          path: "/tmp/documentation.tar.gz"
 
   admin_manual:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@ff7abcd0c3c05ccf6adc123a8cd1fd4fb30fb493
-    - uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
-        cache: 'pip'
-    - name: Install pip dependencies
-      run: pip install -r requirements.txt
-    - name: Build using Makefile
-      run: cd admin_manual && make html
-    - name: Pack the results in local tar file
-      shell: bash
-      run: tar czf /tmp/documentation.tar.gz -C admin_manual/_build/html/com .
-    - name: Upload static documentation
-      uses: actions/upload-artifact@v4.6.2
-      with:
-        name: Administration manual.zip
-        path: "/tmp/documentation.tar.gz"
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548 # v6.1.0
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      - name: Install pip dependencies
+        run: pip install -r requirements.txt
+      - name: Build using Makefile
+        run: cd admin_manual && make html
+      - name: Pack the results in local tar file
+        shell: bash
+        run: tar czf /tmp/documentation.tar.gz -C admin_manual/_build/html/com .
+      - name: Upload static documentation
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: Administration manual.zip
+          path: "/tmp/documentation.tar.gz"
