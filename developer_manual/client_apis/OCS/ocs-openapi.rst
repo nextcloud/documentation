@@ -714,6 +714,7 @@ How to expose Capabilities
 --------------------------
 
 Imagine we take the same Todo app of the previous example and want to expose some capabilities to let clients know what they can expect.
+First, you should create your `Capabilities` in the `lib/AppInfo` folder :
 
 .. code-block:: php
 
@@ -748,6 +749,33 @@ Now you have to add the correct return type annotation:
     }
 
 The capabilities will automatically appear in the generated specification.
+
+You must register your `Capabilities` in the `lib/AppInfo/Application.php` file and you need to implement `IBootstrap` :
+
+.. code-block:: php
+    :emphasize-lines: 3
+
+    namespace OCA\Todo\AppInfo;
+
+    use OCP\AppFramework\Bootstrap\IBootstrap;
+
+    class Application extends App implements IBootstrap {
+        public const APP_ID = 'todo';
+
+        public function __construct(array $urlParams = []) {
+            parent::__construct(self::APP_ID, $urlParams);
+        }
+
+        public function register(IRegistrationContext $context): void {
+            // code
+
+            $context->registerCapability(Capabilities::class);
+        }
+
+        public function boot(IBootContext $context): void {
+        }
+    }
+
 
 Scopes
 ------
