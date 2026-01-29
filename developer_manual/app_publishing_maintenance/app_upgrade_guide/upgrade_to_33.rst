@@ -196,6 +196,10 @@ Added APIs
     }
     $result->closeCursor();
 
+- This version allows to expose some Nextcloud related metrics using OpenMetrics format.
+  You can add your own exporters by implementing ``\OCP\OpenMetrics\IMetricFamily`` interface.
+  See :doc:`/digging_deeper/openmetrics` for more information.
+
 Changed APIs
 ^^^^^^^^^^^^
 
