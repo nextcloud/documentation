@@ -1074,7 +1074,7 @@ Enable SMTP class debugging.
 .. note::
 
   ``loglevel`` will likely need to be adjusted too. See docs:
-    https://docs.nextcloud.com/server/33/admin_manual/configuration_server/email_configuration.html#enabling-debug-mode
+    https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/email_configuration.html#enabling-debug-mode
 
 Defaults to ``false``
 
@@ -2194,7 +2194,7 @@ defaultapp
 	'defaultapp' => 'dashboard,files',
 
 Set the default app to open on login. The entry IDs can be retrieved from
-the Navigations OCS API endpoint: https://docs.nextcloud.com/server/33/developer_manual/_static/openapi.html#/operations/core-navigation-get-apps-navigation.
+the Navigations OCS API endpoint: https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html#/operations/core-navigation-get-apps-navigation.
 
 You can use a comma-separated list of app names, so if the first
 app is not enabled for a user, then Nextcloud will try the second one, and so
