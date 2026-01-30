@@ -59,6 +59,10 @@ The configuration has the following structure:
 		],
 	],
 
+.. note:: You are NOT supposed to disable file locking and this is now considered potentially
+	dangerous. Locking is handled in Redis and is handled separately from the underlying storage. If
+	you have disabled file locking already it is highly encouraged for you to re-enable it.
+
 ~~~~~~~~~~~~~~~
 OpenStack Swift
 ~~~~~~~~~~~~~~~
@@ -264,9 +268,10 @@ configuration in :code:`config.php`:
 Multibucket object store backend maps every user to a range of buckets and saves
 all files for that user in their corresponding bucket.
 
-.. note:: While it is possible to change the number of buckets used by an existing Nextcloud
-          instance, the user-to-buckets mapping is only created once, so only newly created
-          users will be mapped to the updated range of buckets.
+.. note::
+	While it is possible to change the number of buckets used by an existing Nextcloud
+	instance, the user-to-buckets mapping is only created once, so only newly created
+	users will be mapped to the updated range of buckets.
 
 You can find out more information about upscaling with object storage and Nextcloud in the
 `Nextcloud customer portal <https://portal.nextcloud.com/article/object-store-as-primary-storage-16.html>`_.
