@@ -55,8 +55,10 @@ Additional options are:
 * ``D1, D2``    
     Keep versions for at least D1 days and delete when they exceed D2 days.
 
-* ``disabled``  
-    Disable the Versions app; no old file versions will be deleted.
+* `disabled`
+    Disable automatic expiration (pruning) of file versions; file versions
+    will continue to be created, but no old file versions will be deleted automatically.
+
 
 Background job
 --------------
