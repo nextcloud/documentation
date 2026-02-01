@@ -232,8 +232,8 @@ transparent encryption layer via the ``CryptoSessionData`` class. Data written t
 ``OCP\ISession`` API benefits from these optimizations and is automatically encrypted at rest.
 
 .. danger::
-    Never use PHP superglobals like ``$_SESSION``. This bypasses Nextcloud's encryption and 
-    lifecycle management. leading to race conditions or lost data.
+    Never use the PHP superglobal ``$_SESSION``. The superglobal bypasses Nextcloud's encryption and 
+    lifecycle management, leading to race conditions or lost data.
 
 Basic usage
 ~~~~~~~~~~~
@@ -305,6 +305,9 @@ Use the ``#[UseSession]`` attribute when:
   I/O overhead from repeated open/close cycles).
 * **Reference Manipulation**: You need the session to remain open for complex logic or to ensure data 
   consistency throughout the method.
+* **Regenerating session ids**: You are elevating a user's privileges (e.g. a valid share password is
+  entered and the "access granted" status is stored in the session) or the user performs a sensitive 
+  alteration (e.g. password change).
 
 .. note::
     The ``#[UseSession]`` attribute was introduced in Nextcloud 26. Previously, this feature used the 
