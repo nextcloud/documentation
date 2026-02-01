@@ -1,8 +1,8 @@
-.. _Translation setup:
+.. _Translation:
 
-=================
-Translation setup
-=================
+===========
+Translation
+===========
 
 Nextcloud's translation system is powered by `Transifex <https://explore.transifex.com/nextcloud/>`_. To start translating sign up and enter a group. If your community app should be translated by the `Nextcloud community on Transifex <https://explore.transifex.com/nextcloud/>`_ just follow the setup section below.
 
