@@ -34,6 +34,34 @@ Installation
 
 5. Install a Text-to-text task processing provider app like the :ref:`translate2 app <ai-app-translate2>` for translation capabilities.
 
+Requirements
+------------
+
+* Minimal Nextcloud version: 33
+* Nextcloud AIO is supported
+* We currently support NVIDIA GPUs and x86_64 CPUs. Only CPU-based transcription is supported and works well on modern x86 CPUs.
+* CUDA >= v12.4.1 on your host system for GPU-based transcription
+* GPU Sizing
+
+   * A NVIDIA GPU with at least 10 GB VRAM
+   * 16 GB of system RAM should be enough for one or two concurrent calls
+
+* CPU Sizing
+
+   * x86 CPU with 4 threads. Additional 2 threads per concurrent call.
+   * 16 GB of RAM should be enough for one or two concurrent calls
+
+* Space usage
+   * ~ 2.8 GB for the docker container
+   * ~ 6.0 GB for the default models
+
+.. note::
+
+   We currently have very little real-world experience running this software on production instances.
+   The above sizing recommendations come from our estimates and are not real-world benchmarks.
+   Actual requirements will vary based on factors such as the number of concurrent calls, audio quality, and selected languages.
+   Please do thorough testing to confirm your hardware meets your needs.
+
 App store
 ---------
 
