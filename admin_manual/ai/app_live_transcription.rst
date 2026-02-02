@@ -5,10 +5,10 @@ App: Live Transcription and Translation in Nextcloud Talk (live_transcription)
 .. _ai-live-transcription:
 
 | This app provides live transcription and translation of speech in Nextcloud Talk calls using open source AI models provided by `Vosk <https://alphacephei.com/vosk/>`_.
-| The transcription is done on your own server, preserving your privacy and data sovereignty, while the translation is done using a translation task processing provider like the :ref:`translate2 app <ai-app-translate2>`. `OpenAI and LocalAI integration <https://apps.nextcloud.com/apps/integration_openai>`_ and `Deepl integration <http://apps.nextcloud.com/apps/integration_deepl>`_ apps will soon also be supported for translation.
+| The transcription is done on your own server, preserving your privacy and data sovereignty, while the translation is done using a translation task processing provider like the :ref:`translate2 app <ai-app-translate2>`. `OpenAI and LocalAI integration <https://apps.nextcloud.com/apps/integration_openai>`_ and `DeepL integration <http://apps.nextcloud.com/apps/integration_deepl>`_ apps will soon also be supported for translation.
 
 | A good set of language models for transcription are auto-downloaded. They include Arabic, Arabic (Tunisian), Breton, Catalan, Czech, German, English, Esperanto, Spanish, Persian (Farsi), French, Hindi, Italian, Japanese, Kazakh, Korean, Dutch, Polish, Portuguese (Brazilian), Russian, Telegu, Tajik, Turkish, Ukrainian, Uzbek, Vietnamese and Chinese.
-| The translation capabilities depend on the installed Text-to-text task processing provider app. The :ref:`translate2 app <ai-app-translate2>` supports a wide range of languages.
+| The translation capabilities depend on the installed translation task processing provider app. A list of translation-capable apps can be found :ref:`here <mt-consumer-apps>` in the "Backend apps" section.
 
 Installation
 ------------
@@ -27,19 +27,19 @@ Installation
 
 .. important::
 
-   The environment variables ``LT_HPB_URL`` and ``LT_INTERNAL_SECRET`` must be set in the Deploy Options during installation,
+   The environment variables ``LT_HPB_URL`` and ``LT_INTERNAL_SECRET`` must be set in the :ref:`Deploy Options <ai-app_api_deploy_options>` during installation,
    and the High-Performance Backend must be functionally configured in Nextcloud Talk settings for the app to work.
 
    Changing these environment variables after installation is possible through a re-installation of the app after uninstalling it first.
 
-5. Install a Text-to-text task processing provider app like the :ref:`translate2 app <ai-app-translate2>` for translation capabilities.
+5. Install a Text-to-text task processing provider app for translation capabilities from the "Backend apps" section :ref:`here <mt-consumer-apps>`.
 
 Requirements
 ------------
 
 * Minimal Nextcloud version: 33
 * Nextcloud AIO is supported
-* We currently support NVIDIA GPUs and x86_64 CPUs. Only CPU-based transcription is supported and works well on modern x86 CPUs.
+* We currently support NVIDIA GPUs and x86_64 CPUs. Only CPU-based transcription is also supported and works well on modern x86 CPUs.
 * CUDA >= v12.4.1 on your host system for GPU-based transcription
 * GPU Sizing
 
@@ -81,4 +81,4 @@ Limitations
 * The app currently supports only a limited number of languages. More languages may be added in the future.
 * The languages other than English may have lower accuracy mainly due to the shipped models being smaller.
 * The app currently does not support punctuation in the transcription.
-* `OpenAI and LocalAI integration <https://apps.nextcloud.com/apps/integration_openai>`_ and `Deepl integration <http://apps.nextcloud.com/apps/integration_deepl>`_ apps are not yet supported for translation.
+* `OpenAI and LocalAI integration <https://apps.nextcloud.com/apps/integration_openai>`_ and `DeepL integration <http://apps.nextcloud.com/apps/integration_deepl>`_ apps are not yet supported for translation.

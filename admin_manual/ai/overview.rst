@@ -137,13 +137,14 @@ Frontend apps
 * *Text* for offering the translation menu
 * `Assistant <https://apps.nextcloud.com/apps/assistant>`_ offering a graphical translation UI
 * `Analytics <https://apps.nextcloud.com/apps/analytics>`_ for translating graph labels
+* `Talk <https://apps.nextcloud.com/apps/spreed>`_ for translating messages and live translations in calls in conjunction with the :ref:`Live Transcription app <ai-live-transcription>`
 
 Backend apps
 ~~~~~~~~~~~~
 
 * :ref:`translate2 (ExApp)<ai-app-translate2>` - Runs open source AI translation models locally on your own server hardware (Customer support available upon request)
 * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
-* *integration_deepl* - Integrates with the deepl API to provide translation functionality from Deepl.com servers (Only community supported)
+* `DeepL integration <http://apps.nextcloud.com/apps/integration_deepl>`__ - Integrates with the deepl API to provide translation functionality from Deepl.com servers (Only community supported)
 
 Speech-To-Text
 ^^^^^^^^^^^^^^
