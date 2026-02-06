@@ -6,7 +6,10 @@
 Development environment
 =======================
 
-We have a tutorial available on setting up your development environment using docker. You can find the tutorial `here <https://cloud.nextcloud.com/s/iyNGp8ryWxc7Efa?path=%2F>`_. We recommend you to follow that tutorial. 
+We have a tutorial available on setting up your development environment using docker. You can find the tutorial `here <https://cloud.nextcloud.com/s/iyNGp8ryWxc7Efa?path=%2F>`_. We recommend you to follow that tutorial.
+
+.. tip::
+   If you use VS Code as your IDE, check out the :ref:`vscode` guide for recommended extensions, DevContainer setup, and debugging configuration.
 
 This page describes how to set up your development environment without docker.
 
