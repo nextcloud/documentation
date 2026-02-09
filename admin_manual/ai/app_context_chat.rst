@@ -6,14 +6,14 @@ App: Context Chat
 
 Context Chat is an :ref:`assistant<ai-app-assistant>` feature that is implemented via an ensemble of two apps:
 
- * the *context_chat* app, written purely in PHP
- * the *context_chat_backend* ExternalApp written in Python
+ * the ``context_chat`` app, written purely in PHP
+ * the ``context_chat_backend`` ExternalApp written in Python
 
 Together they provide the ContextChat *text processing* and *search* tasks accessible via the :ref:`Nextcloud Assistant app<ai-app-assistant>`.
 
-The *context_chat* and *context_chat_backend* apps will use the Free text-to-text task processing providers like OpenAI integration, LLM2, etc. and such a provider is required on a fresh install, or it can be configured to run open source models entirely on-premises. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
+The ``context_chat`` and ``context_chat_backend`` apps will use the configured text-to-text task processing provider, which is required on a fresh install. It can be configured to run open source models entirely on-premises, see the list of providers :ref:`here <tp-consumer-apps>` in the "Backend apps" section.
 
-This app supports input and output in the same languages that the currently configured Free text-to-text task processing provider supports.
+This app supports input and output in the same languages that the currently configured text-to-text task processing provider supports.
 
 Requirements
 ------------
@@ -26,18 +26,16 @@ Requirements
 * GPU Setup Sizing
 
    * A NVIDIA GPU with at least 2GB VRAM
-      * The requirements for the Free text-to-text providers should be checked separately
-      * llm2's requirements can be found :ref:`here <ai-app-llm2>`
-      * integration_openai does not have any additional GPU requirements
+      * The requirements for the text-to-text providers should be checked separately for each app :ref:`here <tp-consumer-apps>` in the "Backend apps" section, as they can vary greatly based on the model used and whether the provider is hosted locally or remotely.
    * At least 8GB of system RAM
       * 2 GB + additional 500MB for each concurrent request made to the backend if configuration parameters are changed
 
 * CPU Setup Sizing
 
    * At least 12GB of system RAM
-      * 2 GB + additional 500MB for each request made to the backend if the Free text-to-text provider is not on the same machine
+      * 2 GB + additional 500MB for each additional concurrent query request
       * 8 GB is recommended in the above case for the default settings
-   * This app makes use of the configured free text-to-text task processing provider instead of running its own language model by default, you will thus need 4+ cores for the embedding model only
+   * This app makes use of the configured text-to-text task processing provider instead of running its own language model by default, thus 4+ cores for the embedding model is needed
 
 * A dedicated machine is recommended
 
@@ -51,19 +49,19 @@ Installation
 
 1. Make sure the :ref:`Nextcloud Assistant app<ai-app-assistant>` is installed
 2. Setup a :ref:`Deploy Daemon <ai-app_api>` in AppAPI Admin settings
-3. Install the *context_chat_backend* ExApp via the "Apps" page in Nextcloud, or by executing (checkout the readme at https://github.com/nextcloud/context_chat_backend for manual install steps)
+3. Install the ``context_chat_backend`` ExApp via the "Apps" page in Nextcloud, or by executing (checkout the readme at https://github.com/nextcloud/context_chat_backend for manual install steps)
 
 .. code-block::
 
    occ app_api:app:register context_chat_backend
 
-4. Install the *context_chat* app via the "Apps" page in Nextcloud, or by executing
+4. Install the ``context_chat`` app via the "Apps" page in Nextcloud, or by executing
 
 .. code-block::
 
    occ app:enable context_chat
 
-5. Install a text generation backend like :ref:`llm2 <ai-app-llm2>` or `integration_openai <https://github.com/nextcloud/integration_openai>`_ via the "Apps" page in Nextcloud
+5. Install a text-to-text provider (text generation provider) via the "Apps" page in Nextcloud. A list of providers can be found :ref:`here <tp-consumer-apps>` in the "Backend apps" section.
 
 6. Optionally but recommended, setup background workers for faster pickup of tasks. See :ref:`the relevant section in AI Overview<ai-overview_improve-ai-task-pickup-speed>` for more information.
 
@@ -104,23 +102,27 @@ Synchronous indexing
 Scaling
 -------
 
-There are three major parts that influence the performance of the system:
+Listed below are the major parts of the system that can be scaled independently to improve performance:
 
-1. **The text-to-text task processing provider (like OpenAI and LocalAI integration, LLM2, etc.)**
+1. The text-to-text task processing provider (from among the list of providers :ref:`here <tp-consumer-apps>` in the "Backend apps" section)
 
    The text-to-text task processing provider can be scaled by using a hosted service using the `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ like OpenAI or by hosting your own model on powerful hardware.
 
-2. **The vector DB performance**
+2. The vector DB performance
 
    | The vector DB performance can be scaled by using a dedicated or cluster setup for PostgreSQL with the pgvector extension.
    | The connection string of the external vector DB can be set using the environment variable ``EXTERNAL_DB`` during deployment in the "Deploy Options".
 
-3. **The embedding model performance**
+3. The embedding model performance
 
    | The embedding model performance can be scaled by using a hosted embedding service, locally or remotely hosted. It should be able to serve an OpenAI-compatible API.
    | The embedding service URL can be set using the environment variable ``CC_EM_BASE_URL`` during deployment in the "Deploy Options". Other options like the model name, api key, or username and password can be set using the environment variables ``CC_EM_MODEL_NAME``, ``CC_EM_API_KEY``, ``CC_EM_USERNAME``, and ``CC_EM_PASSWORD`` respectively.
 
-If context_chat_backend is already deployed, you can change these environment variables by redeploying it with the new values.
+One part of the system that cannot be scaled yet is the parsing of the documents to extract text.
+This is currently done in a single instance of the ``context_chat_backend`` ExApp.
+It is a CPU-bound task so having a powerful CPU will help speed up the parsing process.
+
+If ``context_chat_backend`` is already deployed, you can change these environment variables by redeploying it with the new values.
 
 1. Go to Apps page -> search for "Context Chat Backend"
 2. Disable and remove the app taking care the data is not removed
@@ -131,7 +133,7 @@ If context_chat_backend is already deployed, you can change these environment va
 App store
 ---------
 
-You can also find the *context_chat* app in our app store, where you can write a review: `<https://apps.nextcloud.com/apps/context_chat>`_
+You can also find the ``context_chat`` app in our app store, where you can write a review: `<https://apps.nextcloud.com/apps/context_chat>`_
 
 Repository
 ----------
