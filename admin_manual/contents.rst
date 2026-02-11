@@ -27,3 +27,4 @@ Table of contents
     maintenance/index
     issues/index
     gdpr/index
+    declarations/index
