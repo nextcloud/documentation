@@ -178,6 +178,134 @@ A setup with the HaRP container itself on the remote is not supported.
 
 .. _ai-app_api_ddd-dsp:
 
+
+Docker / Reverse Proxy / Nextcloud on 3 independant hosts - with HaRP container
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This is the related infrastructure
+
+.. mermaid::
+
+	stateDiagram-v2
+		classDef docker fill: #1f97ee, color: white, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
+		classDef nextcloud fill: #006aa3, color: white, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/nextcloud.svg) no-repeat center center / contain
+		classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
+
+		Direction LR
+
+			Host1 --> Host2 : by port
+			Host3 --> Host1 : by port
+			Host3 --> Host2 : by port
+
+		state Host1 {
+			Nextcloud
+		}
+
+		state Host2 {
+			[*] --> DockerSocketProxy : by port
+			Daemon --> Containers
+
+			state Containers {
+				[*] --> DockerSocketProxy : /var/run/docker.sock
+				DockerSocketProxy --> ExApp1
+				DockerSocketProxy --> ExApp2
+				DockerSocketProxy --> ExApp3
+			}
+		}
+
+		state Host3 {
+			Apache Reverse Proxy
+		}
+
+		class Nextcloud nextcloud
+		class Daemon docker
+		class ExApp1 python
+		class ExApp2 python
+		class ExApp3 python
+
+Please see below the steps I follow
+All of the following steps are based on a Almalinux Distro. 
+Please customize for your distribution.
+
+1. On the Host2 Docker
+
+1.1. Creation of Cert folder (if necessary)
+
+  .. code-block:: bash
+
+	mkdir -p /some/path/{certs,}
+
+1.2. Open ports
+
+  .. code-block:: bash
+
+	firewall-cmd --permanent --zone=public --add-port=8780/tcp
+	firewall-cmd --permanent --zone=public --add-port=8782/tcp
+	firewall-cmd --reload
+
+1.3. Deploy of the HaRP Container
+
+  .. code-block:: bash
+
+	docker run \
+	  -e HP_SHARED_KEY="some_very_secure_password" \
+	  -e NC_INSTANCE_URL="https://cloud.acme.com" \
+	  -e HP_TRUSTED_PROXY_IPS="192.168.0.0/24" \
+	  -v /var/run/docker.sock:/var/run/docker.sock \
+	  -v /some/path/certs:/certs \
+	  -p 8780:8780 \
+	  -p 8782:8782 \
+	  --name appapi-harp -h appapi-harp \
+	  --restart unless-stopped \
+	  -d ghcr.io/nextcloud/nextcloud-appapi-harp:release
+
+
+2. On the Host3 Apache Reverse Proxy - Reverse proxy redirections
+
+On the virtual Host "cloud.acme.com" of the apache conf file
+Add the following lines (before the existing configuration)
+
+	.. code-block:: apache
+
+		#  AppAPI Configuration
+		ProxyPass /exapps/ http://<IP_host2_docker>:8780/exapps/
+		ProxyPassReverse /exapps/ http://<IP_host2_docker>:8780/exapps/
+
+
+3. On the Nextcloud Web Interface - Daemon Register
+
+Add the following configuration :
+
+* Daemon Configuraiton template : ``HaRP Proxy (HOST)``
+* Surname : ``appapi-harp``
+* Display name : ``appapi-harp``
+* Deployment method : ``docker-install``
+* HaRP host : ``<IP_host2_docker>:8780``
+* HaRP shared key : ``some_very_secure_password``
+* Nextcloud URL : ``https://cloud.acme.com``
+* FRP server address : ``<IP_host2_docker>:8782``
+* Docker network : ``bridge``
+
+Finally, test the whole setup with “Test deploy” in the 3-dots menu of the deploy daemon.
+
+4. Additional tests from the network of your hosts
+
+  .. code-block:: bash
+
+	curl -fsS \
+	  -H "harp-shared-key: some_very_secure_password" \
+	  -H "docker-engine-port: 24000" \
+	  http://<IP_host2_docker>:8780/exapps/app_api/v1.41/_ping
+
+
+  .. code-block:: bash
+
+	curl -fsS \
+	  -H "harp-shared-key: some_very_secure_password" \
+	  -H "docker-engine-port: 24000" \
+	  https://cloud.acme.com/exapps/app_api/v1.41/_ping
+
+
 Docker Deploy Daemon (Docker Socket Proxy)
 ------------------------------------------
 
