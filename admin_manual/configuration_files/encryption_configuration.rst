@@ -136,7 +136,7 @@ Encrypting team folders
 -----------------------
 
 By default team folder are not encrypted. If you want to encrypt your team folders
-as well you need to run following occ command:
+as well you need to run following occ command::
 
  occ config:app:set groupfolders enable_encryption --value=true
 

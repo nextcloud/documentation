@@ -23,11 +23,11 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - CentOS Stream                                                       |
 |                  | - Alpine Linux                                                        |
 +------------------+-----------------------------------------------------------------------+
-| Database         | - MySQL 8.0 / **8.4** (recommended)                                   |
-|                  | - MariaDB 10.6 / 10.11 / **11.4** (recommended) / 11.8                |
-|                  | - Oracle Database 11g, 19c, 21c, 23ai                                 |
+| Database         | - MySQL 8.0 / 8.4                                                     |
+|                  | - MariaDB 10.6 / 10.11 / 11.4 / **11.8** (recommended)                |
+|                  | - Oracle Database 19c, 21c, 23ai                                      |
 |                  |   (*only as part of an enterprise subscription*)                      |
-|                  | - PostgreSQL 13/14/15/16/17                                           |
+|                  | - PostgreSQL 14 / 15 / 16 / 17 / **18** (recommended)                 |
 |                  | - SQLite 3.24+ (*only recommended for testing and minimal-instances*) |
 +------------------+-----------------------------------------------------------------------+
 | Webserver        | - **Apache 2.4 with** ``mod_php`` **or** ``php-fpm`` (recommended)    |
@@ -36,9 +36,12 @@ For best performance, stability and functionality we have documented some recomm
 | PHP Runtime      | - 8.2 (*deprecated*)                                                  |
 |                  | - 8.3                                                                 |
 |                  | - **8.4** (*recommended*)                                             |
+|                  | - 8.5                                                                 |
 +------------------+-----------------------------------------------------------------------+
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
+
+To ensure the full functionality of your Nextcloud, please make sure that the server can reach the :ref:`required remote systems<connections_to_remote_servers>`. 
 
 CPU Architecture and OS
 ^^^^^^^^^^^^^^^^^^^^^^^

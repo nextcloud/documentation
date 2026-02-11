@@ -46,6 +46,31 @@ options and information.
 
 See :doc:`auth_mechanisms` for more information on authentication schemes.
 
+Case sensitive file system
+--------------------------
+
+This option tells Nextcloud whether the SMB share is backed by a case-sensitive
+filesystem. It does not change how the SMB server stores files, it only affects
+how Nextcloud performs lookups and validates paths.
+
+* **Enabled (default)**: Nextcloud assumes the share is case-sensitive.
+  File existence checks use exact case and case-only renames are allowed.
+* **Disabled**: Nextcloud assumes the share is case-insensitive and compensates
+  by scanning directory entries to find the exact name used on the server. It
+  also blocks renames that only change letter case. This can be slower on large
+  directories.
+
+If the setting does not match the SMB server's filesystem, you can run into
+confusing behavior:
+
+* Case-insensitive SMB (for example NTFS or FAT) with the option enabled can
+  lead to cache inconsistencies or conflicts, because Nextcloud may treat
+  ``File.txt`` and ``file.txt`` as separate while the server treats them as the
+  same file.
+* Case-sensitive SMB (for example ext4) with the option disabled can cause
+  unnecessary directory scans and case-only renames being rejected, even though
+  the server itself would allow them.
+
 SMB update notifications
 ------------------------
 

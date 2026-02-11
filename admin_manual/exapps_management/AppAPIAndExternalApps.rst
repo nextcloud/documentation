@@ -134,7 +134,7 @@ Frontend requests in case of Docker Socket Proxy:
 		B[Proxy]
 
 		subgraph Services behind the proxy
-			C[Dcker Socket Proxy]
+			C[Docker Socket Proxy]
 			D[ExApp]
 			E[Nextcloud Server / AppAPI]
 		end

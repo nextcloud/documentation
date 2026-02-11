@@ -244,14 +244,15 @@ Multibucket Object Store
 It's possible to configure Nextcloud to distribute the data over multiple buckets
 for scalability purposes.
 
-To setup multiple buckets, use :code:`'objectstore_multibucket'` storage backend
-in :code:`config.php`:
+To setup multiple buckets, set :code:`'multibucket => true'` in the object store
+configuration in :code:`config.php`:
 
 ::
 
-	'objectstore_multibucket' => [
+	'objectstore' => [
 		'class' => 'Object\\Storage\\Backend\\Class',
 		'arguments' => [
+			'multibucket' => true,
 			// optional, defaults to 64
 			'num_buckets' => 64,
 			// will be postfixed by an integer in the range from 0 to (num_nuckets-1)
@@ -270,6 +271,88 @@ all files for that user in their corresponding bucket.
 You can find out more information about upscaling with object storage and Nextcloud in the
 `Nextcloud customer portal <https://portal.nextcloud.com/article/object-store-as-primary-storage-16.html>`_.
 
+----------------------------------------------------------------
+Multibucket Object Store with per Bucket configuration overrides
+----------------------------------------------------------------
+
+When using an Object Store with :code:`'multibucket => true'` it is possible to configure overrides for all config options per bucket:
+
+::
+
+	'objectstore' => [
+		'class' => 'Object\\Storage\\Backend\\Class',
+		'arguments' => [
+			'multibucket' => true,
+			'bucket' => 'nextcloud_',
+			'perBucket' => [
+				'nextcloud_1' => [
+					'port' => 9999,
+				],
+			],
+		],
+	],
+
+This can be useful for example if you want to configure credentials per bucket that is used by a Team folder.
+A script for provisioning new Team folders this way could look like this (first make sure the bucket exists with those credentials):
+
+::
+
+	occ config:system:set --type=string --value=KEYVALUE objectstore arguments perBucket BUCKETNAME key
+	occ config:system:set --type=string --value=SECRETVALUE objectstore arguments perBucket BUCKETNAME secret
+	occ groupfolders:create --bucket BUCKETNAME TEAMFOLDERNAME
+
+The credentials must be set before the new Team folder is created.
+
+---------------------------
+Multi-instance Object Store
+---------------------------
+
+It's possible to configure Nextcloud to distribute the data over multiple object store
+instances for further scaling and gradual migration.
+
+To setup multiple buckets, set :code:`'objectstore'` to an array of named configurations
+configuration in :code:`config.php` and set the :code:`'default'` to the name of the
+configuration to use for newly created users:
+
+::
+
+	'objectstore' => [
+		'default' => 'server2',
+		'root' => 'server1',
+		'server1' => [
+			'class' => 'Object\\Storage\\Backend\\Class',
+			'arguments' => [
+				'hostname' => 's3-server1.example.com',
+				'bucket' => 's1_nextcloud',
+				...
+			],
+		],
+		'server2' => [
+		'class' => 'Object\\Storage\\Backend\\Class',
+			'arguments' => [
+				'multibucket' => true,
+				'hostname' => 's3-server2.example.com',
+				'bucket' => 's2_nextcloud_',
+				...
+			],
+		],
+	],
+
+.. note:: Bucket names must be unique between all configured object store instances.
+
+Newly created users will be mapped to the object store instance set in :code:`default`.
+Files that are not part of the users storage are put in the :code:`root` instance, or
+in the :code:`default` instance if no :code:`root` instance is configured.
+
+In the above example, if :code:`server2` is starting to run low on capacity, an admin can
+setup and configure a new :code:`server3` and change the :code:`default` to :code:`server3`.
+Than any newly created user will have their files put on :code:`server3`.
+
+.. note:: As with multibucket object store, the user-to-instance mapping is only created once,
+          so only newly created users will be mapped to the new default instance.
+
+It is possible to mix different object store backends and multibucket and non-multibucket in
+a multi-instance configuration.
 
 ---------------------------
 S3 SSE-C encryption support

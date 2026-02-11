@@ -34,7 +34,7 @@ You can also configure theming using the ``occ theming:config`` command.
 
 Available settings include:
 
-- `name`, `url`, `imprintUrl`, `privacyUrl`, `slogan`, `color`, `primary_color`.
+- `name`, `url`, `imprintUrl`, `privacyUrl`, `slogan`, `background_color`, `primary_color`.
   Example: ``occ theming:config name "My Example Cloud"``
 - `background`, `logo`, `favicon`, `logoheader`.
   Example: ``occ theming:config logo /tmp/mylogo.png``
@@ -47,7 +47,7 @@ To use a color (instead of an image) for the background:
 
 ::
 
-   occ theming:config color "#0082c9"
+   occ theming:config background_color "#0082c9"
    occ theming:config background backgroundColor
 
 Icon theming

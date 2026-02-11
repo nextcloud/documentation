@@ -20,6 +20,18 @@ Switch layout
 
 .. figure:: images/mail_layout.png
 
+Use Compact Mode
+~~~~~~~~~~~~~~~~
+.. versionadded:: 5.7.0
+
+Compact mode offers a cleaner and more efficient way to view your messages. Avatars are hidden, selection checkboxes are always visible, and the preview of messages is removed. It saves space allowing you to see more emails at once.
+
+1. Visit the mail settings
+2. Go to **Appearance**
+3. Toggle the Compact Mode
+
+.. figure:: images/use-compact-mode.png
+
 Message Display / Operation Mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -56,6 +68,17 @@ Change sort order
 
 .. note:: This change will apply across all your accounts and mailboxes
 
+Sort favorites up
+~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 5.7 Nextcloud 31 or newer
+
+This setting allows you to show messages set as favorite in a separate section on top of the message list.
+
+1. Visit mail settings
+2. Go to *Appearance*
+3. Enable sorting favorites up 
+
 .. _mail-scheduled-messages:
 
 Scheduled messages
@@ -70,6 +93,9 @@ Priority inbox
 ~~~~~~~~~~~~~~
 Priority inbox has 2 section *Important* and *Others*.
 Messages will automatically be marked as important based on which messages you interacted with or marked as important. In the beginning you might have to manually change the importance to teach the system, but it will improve over time.
+
+The automatic classification is optional. You can opt-out when setting up an account. The classification can also be turned on and off in the account settings at any time.
+
 
 .. figure:: images/priority-inbox.png
 
@@ -106,6 +132,12 @@ Mail can move a message to a different folder when it is marked as junk.
 5) Click Move messages to Junk folder
 
 .. figure:: images/mail_move-message-to-junk-folder.png
+
+Refresh mailbox
+~~~~~~~~~~~~~~~~
+
+You can manually trigger a sync of your mailbox by clicking the refresh button located at the top of the mailbox list.
+Starting from ``version 5.7`` triggering the sync will also refresh the list of folders for the selected account.
 
 Search in mailbox
 ~~~~~~~~~~~~~~~~~
@@ -325,6 +357,17 @@ When looking through your mailbox you will see a short AI generated summary of y
 
 .. note:: Please note that the feature has to be enabled by the administrator
 
+Quick actions
+-------------
+.. versionadded:: 5.5 (Nextcloud 30)
+
+Allows you to group action steps that you would normally perform on envelopes such as tagging, moving, marking as read ... into quick actions that can be executed with a single click.
+Quick actions are scoped to one mail account and can be created and managed in the mail settings under "Quick actions" or directly from the envelope action menu.
+
+.. note:: Some action steps such as `Mark as spam`, `Move thread` and `Delete thread` are mutually exclusive and cannot be part of the same quick action, they also can't be re-ordered and will always be executed last.
+
+.. note:: Please note that quick actions will be performed on all messages in a thread when executed on one.
+
 Message actions
 ---------------
 
@@ -508,3 +551,52 @@ The mail app offers two widgets designed for integration with Nextcloud's dashbo
 * Important mails: This widget shows emails that have been flagged as important.
 
 These widgets utilize the emails from the email accounts that are set up for your account.
+
+Calendar integration
+--------------------
+
+The Mail app integrates with the Calendar app to help you manage meeting invitations and keep your calendar up to date.
+
+Meeting invitations
+~~~~~~~~~~~~~~~~~~~
+
+When you receive a message containing a meeting invitation, the Mail app automatically detects the attached calendar file and displays a formatted action section to help you respond.
+
+You can:
+
+* **Accept** the invitation
+* **Decline** the invitation
+* **Tentatively accept** the invitation
+
+Your response is sent directly from the Mail app, and the event is added to your primary calendar accordingly.
+
+You can also manually add a meeting invitation to a specific calendar:
+
+1. Open the message with the meeting invitation
+2. Scroll to the bottom of the message to the attachments section
+3. Select the calendar file (usually with a .ics extension), then click the three dots menu.
+4. Click "Import in to calendar" and choose the desired calendar.
+
+Meeting invitation automation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When a meeting organizer sends updates to an existing event (such as time changes or location updates), the Mail app processes these automatically and updates the corresponding event in your calendar.
+
+.. versionadded:: 5.7 (Nextcloud 32 or newer)
+
+You can also configure Mail to automatically add all new meeting invitations to your calendar without requiring manual acceptance. The invitations will be added to the calendar as tentative.
+
+To enable this feature:
+
+1. Visit account settings of a specific mail account
+2. Navigate to Calendar settings section
+3. Enable *Automatically create tentative appointments in calendar*
+
+.. note:: With this setting enabled, invitations will still appear in your mail list, but they will be automatically added to your calendar.
+
+Keyboard shortcuts
+------------------
+
+The Mail app implements several keyboard shortcuts to speed up your experience.
+
+For a full list of the supported shortcuts, check out the Mail settings in your instance.

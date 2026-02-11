@@ -24,6 +24,7 @@ Digging deeper
    notifications
    oidc
    out_of_office
+   openmetrics
    performance
    phonenumberutil
    psr
@@ -38,6 +39,7 @@ Digging deeper
    security
    settings
    setup_checks
+   snowflake_ids
    speech-to-text
    talk
    task_processing
