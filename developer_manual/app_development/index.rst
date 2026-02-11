@@ -12,4 +12,4 @@ App development
    init
    dependency_management
    dav_extension
-   translation_setup
+   translation
