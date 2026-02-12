@@ -75,7 +75,7 @@ For details take a look at :ref:`OCS <ocscontroller>`.
 
             public function someControllerMethod(): JSONResponse {
                 ...
-                return JSONResponse(...);
+                return new JSONResponse(...);
             }
         }
 
@@ -468,7 +468,7 @@ Let's imagine you built a Todo list app for Nextcloud and have the following con
             return new DataResponse(null);
         }
 
-        private function formatTodo(Todo $todo): DataResponse() {
+        private function formatTodo(Todo $todo): DataResponse {
             return new DataResponse([
                 "id" => $todo->id,
                 "title" => $todo->title,
@@ -639,7 +639,9 @@ It will only work with that file name at that location.
      */
     class ResponseDefinitions {}
 
-The name of every type definition has to start with the app ID.
+The name of every type definition must start with the *readable app ID* as expected by theopenapi-extractor.
+This is a TitleCase / normalized form used to namespace types per app (for example, the app ``Tables``
+uses types like ``TablesColumn``.
 
 To import and use the type definition you have to import it in your controller:
 
@@ -694,7 +696,9 @@ How to ignore certain endpoints
 -------------------------------
 
 The tool already ignores all the endpoints that are not reachable from the outside, but some apps have reachable endpoints that are not APIs (e.g. serving some HTML).
-To ignore those you can add the ``#[OpenAPI(scope: OpenAPI::SCOPE_IGNORE)]`` attribute or if you still support PHP 7 the ``@IgnoreOpenAPI`` annotation to the controller method or the controller class:
+To ignore those you can add the ``#[OpenAPI(scope: OpenAPI::SCOPE_IGNORE)]`` attribute to the controller method
+or the controller class. There is also a deprecated ``#[IgnoreOpenAPI]`` attribute (deprecated since Nextcloud 28) for compatibility, but
+``OpenAPI::SCOPE_IGNORE`` should be preferred:
 
 .. code-block:: php
     :emphasize-lines: 4,6
