@@ -63,6 +63,17 @@ Best practices
 Note that you can find a step-by-step tutorial after this section.
 You can also read the tutorial before reading the best practices.
 
+In brief:
+
+* Prefer OCS endpoints (``OCSController`` + ``DataResponse``) for public APIs
+* Add explicit types everywhere (parameters, helper methods, and return types)
+* Use ``null`` (or ``\stdClass``) to represent an empty JSON object
+* In OCS endpoints, only throw OCS*Exceptions
+* Keep response shapes consistent across status-code groups (2xx together, 4xx together)
+* Use ``setHeaders()`` instead of ``addHeader()``
+* Avoid catch-all error wrappers that make every error possible on every endpoint
+* Add descriptions for controllers, parameters, methods, and status codes
+
 PREFER to expose your APIs using OCS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -108,14 +119,11 @@ Psalm will catch these problems for you if you configured the issue handlers men
         :caption: Bad
         :emphasize-lines: 2
 
-        /**
-         * @return array
-         */
-        public function someHelperMethod() {
+        public function someHelperMethod(): array {
             ...
             return [
-                "id" => id,
-                "name" => name,
+                "id" => $id,
+                "name" => $name,
             ];
         }
 
@@ -126,18 +134,18 @@ Psalm will catch these problems for you if you configured the issue handlers men
         /**
          * @return array{id: int, name: string}
          */
-        public function someHelperMethod() {
+        public function someHelperMethod(): array {
             ...
             return [
-                "id" => id,
-                "name" => name,
+                "id" => $id,
+                "name" => $name,
             ];
         }
 
 PREFER to use ``null`` to represent empty data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Your API should be designed in a way that represents empty data with ``null``.
+When an endpoint conceptually returns an object, prefer ``null`` to represent "no data".
 
 There is a problem with PHP and arrays that get converted to JSON.
 JSON has lists and objects while PHP only has arrays.
@@ -193,7 +201,8 @@ If you are working with an existing API where you can not break compatibility, y
 DO NOT throw non-OCS*Exceptions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Only use OCS*Exceptions as any other Exceptions do not produce JSON responses.
+In OCS endpoints, only throw OCS*Exceptions. Other exception types may result in non-JSON (plain text/HTML) error
+responses and will not be represented correctly in the extracted OpenAPI specification.
 
 .. collapse:: Examples
 
@@ -223,7 +232,8 @@ DO use the same data structures for the same group of responses
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Using ``null`` to represent empty data is encouraged.
-All 2xx responses should return the same data structure and all 4xx should also return the same data structure.
+Keep response shapes consistent within status-code groups: all 2xx responses should use the same data structure, and
+all 4xx responses should use the same data structure.
 
 .. collapse:: Examples
 
@@ -237,9 +247,9 @@ All 2xx responses should return the same data structure and all 4xx should also 
         public function someControllerMethod() {
             ...
             if (...) {
-                return new DataResponse(["name" => name], Http::STATUS_OK);
+                return new DataResponse(["name" => $name], Http::STATUS_OK);
             } else {
-                return new DataResponse(["id" => id, "name" => name], Http::STATUS_CREATED);
+                return new DataResponse(["id" => $id, "name" => $name], Http::STATUS_CREATED);
             }
         }
 
@@ -265,9 +275,9 @@ All 2xx responses should return the same data structure and all 4xx should also 
         public function someControllerMethod() {
             ...
             if (...) {
-                return new DataResponse(["id" => id, "name" => name], Http::STATUS_OK);
+                return new DataResponse(["id" => $id, "name" => $name], Http::STATUS_OK);
             } else {
-                return new DataResponse(["id" => id, "name" => name], Http::STATUS_CREATED);
+                return new DataResponse(["id" => $id, "name" => $name], Http::STATUS_CREATED);
             }
         }
 
@@ -286,7 +296,7 @@ All 2xx responses should return the same data structure and all 4xx should also 
 DO NOT use the ``addHeader`` method for setting headers for your responses
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Right now it is not possible for psalm to trace headers you set this way, so they will not be validated by psalm.
+Psalm cannot trace headers set via ``addHeader()``, so they cannot be validated or included correctly in the extracted specification.
 Use the ``setHeaders`` method instead.
 
 .. collapse:: Examples
@@ -313,11 +323,14 @@ CONSIDER how your API will be used
 When building your API you will probably only think about how to implement in the easiest or best way.
 You need to consider what your code implies to someone trying to use your API through the OpenAPI specification.
 
-One such example that appears in some apps are generic error handlers.
+One common pitfall is a generic "catch-all" error handler that is reused across many endpoints.
 They are great for your API implementation because you have an easy catch-all solution and you do not need to worry about handling every error correctly.
 They are not great for your OpenAPI documentation and consumers because they will find that every error can occur on every endpoint which is most often not correct.
 Instead you should implement manual error handling and only return the relevant errors where they can actually appear.
 You can still use helper methods with generic issue handlers where it makes sense, but only if all the controller methods that call the particular helper method actually throw the caught exceptions.
+
+In particular, avoid patterns that make *every* endpoint appear to throw *every* error handled by a shared helper,
+even when the endpoint cannot actually produce those errors.
 
 .. collapse:: Examples
 
@@ -381,9 +394,9 @@ DO set all descriptions for parameters and methods
 
 It improves the documentation and makes it easier to understand what your API does.
 
-You can also set descriptions for Controllers.
+You can also set descriptions for controllers.
 Those will be included in the specification.
-There you can explain what the APIs in the controller do or give examples an how to use multiple API endpoints together.
+There you can explain what the APIs in the controller do, or give examples of how to use multiple endpoints together.
 
 .. collapse:: Examples
 
@@ -432,7 +445,7 @@ Let's imagine you built a Todo list app for Nextcloud and have the following con
 
     class TodoApiController extends OCSController {
         #[NoAdminRequired]
-        public function create(string $title, string $description = null, string $image = null): DataResponse {
+        public function create(string $title, ?string $description = null, ?string $image = null): DataResponse {
             $todo = $this->service->createTodo($title, $description, $image);
 
             return $this->formatTodo($todo);
@@ -450,7 +463,7 @@ Let's imagine you built a Todo list app for Nextcloud and have the following con
         }
 
         #[NoAdminRequired]
-        public function update(int $id, string $etag, string $title = null, string $description = null, string $image = null): DataResponse {
+        public function update(int $id, string $etag, ?string $title = null, ?string $description = null, ?string $image = null): DataResponse {
             try {
                 $todo = $this->service->updateTodo($id, $etag, $title, $description, $image);
             } catch (NotFoundException $e) {
@@ -497,7 +510,7 @@ What you want to do now is to firstly create the correct parameter annotations a
      * @param string|null $image The base64-encoded image of the new Todo item. Can be left empty
      */
     #[NoAdminRequired]
-    public function create(string $title, string $description = null, string $image = null): DataResponse {
+    public function create(string $title, ?string $description = null, ?string $image = null): DataResponse {
         ...
     }
 
