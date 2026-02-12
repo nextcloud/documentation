@@ -14,44 +14,48 @@ Psalm also helps validate your changes and catch type issues before they become 
 Requirements and prerequisites
 ------------------------------
 
-Your app supports at least Nextcloud 28
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Before you start, make sure the following requirements are met:
 
-Nextcloud 28 is the first version that has the required changes to get OpenAPI support going.
+* **Your app supports >=Nextcloud 28.**
+  Nextcloud 28 is the first version that includes the framework changes required for OpenAPI extraction.
 
-Psalm is set up and configured
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* **Psalm is set up and configured.**
+  Psalm is used to validate types and return shapes so ``openapi-extractor`` can infer accurate schemas.
 
-Install psalm in your app as explained in `<https://psalm.dev/docs/running_psalm/installation>`_.
+  Install Psalm in your app as explained in `<https://psalm.dev/docs/running_psalm/installation>`_.
 
-You need to have at least psalm ``5.9.0``. Previous versions contain a bug which will make it impossible for the changes outlined in this tutorial to work.
+  You need to Psalm >=``5.9.0``. Older versions contain a bug that prevents the changes in this tutorial from working.
 
-Install and enable the required extensions as explained in :ref:`Required PHP extensions <psalm-php-extensions>`.
+  Install and enable the required extensions as explained in :ref:`Required PHP extensions <psalm-php-extensions>`.
 
-Configure the following issue handlers in your Psalm config (see `<https://psalm.dev/docs/running_psalm/dealing_with_code_issues>`_ for a tutorial):
+  Configure the following issue handlers in your Psalm config (see `<https://psalm.dev/docs/running_psalm/dealing_with_code_issues>`_ for a tutorial):
 
-.. code-block:: xml
+  .. code-block:: xml
 
-    <LessSpecificReturnStatement errorLevel="error"/>
-    <LessSpecificReturnType errorLevel="error"/>
-    <LessSpecificImplementedReturnType errorLevel="error"/>
-    <MoreSpecificReturnType errorLevel="error"/>
+      <LessSpecificReturnStatement errorLevel="error"/>
+      <LessSpecificReturnType errorLevel="error"/>
+      <LessSpecificImplementedReturnType errorLevel="error"/>
+      <MoreSpecificReturnType errorLevel="error"/>
 
-Install ``openapi-extractor`` in your app as explained in `<https://github.com/nextcloud/openapi-extractor>`_.
+* **``openapi-extractor`` is installed.**
+  This tool generates the OpenAPI specification from your server-side code.
+
+  Install ``openapi-extractor`` in your app as explained in `<https://github.com/nextcloud/openapi-extractor>`_.
 
 Tips and tricks
 ---------------
 
-``openapi-extractor`` expects descriptions in many places.
-To speed up initial adoption, you can use ``--allow-missing-docs`` to ignore missing descriptions.
+* ``openapi-extractor`` expects descriptions in many places.
+  To speed up initial adoption, you can use ``--allow-missing-docs`` to ignore missing descriptions.
 
-By default, the tool may stop at the first error.
-To list multiple problems in one run, use ``--continue-on-error``.
+* By default, the tool may stop at the first error.
+  To list multiple problems in one run, use ``--continue-on-error``.
 
-Do not use these flags when generating the final specification.
-They can hide real problems in your code.
-In particular, ``--continue-on-error`` is risky because the command may appear "successful" even if issues remain.
-Use these flags only to speed up the initial adaptation process.
+.. warning::
+  Do not use these flags when generating the final specification.
+  They can hide real problems in your code.
+  In particular, ``--continue-on-error`` is risky because the command may appear "successful" even if issues remain.
+  Use these flags only to speed up the initial adaptation process.
 
 Best practices
 --------------
