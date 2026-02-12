@@ -42,26 +42,11 @@ Before you start, make sure the following requirements are met:
 
   Install ``openapi-extractor`` in your app as explained in `<https://github.com/nextcloud/openapi-extractor>`_.
 
-Tips and tricks
----------------
-
-* ``openapi-extractor`` expects descriptions in many places.
-  To speed up initial adoption, you can use ``--allow-missing-docs`` to ignore missing descriptions.
-
-* By default, the tool may stop at the first error.
-  To list multiple problems in one run, use ``--continue-on-error``.
-
-.. warning::
-  Do not use these flags when generating the final specification.
-  They can hide real problems in your code.
-  In particular, ``--continue-on-error`` is risky because the command may appear "successful" even if issues remain.
-  Use these flags only to speed up the initial adaptation process.
-
 Best practices
 --------------
 
 Note that you can find a step-by-step tutorial after this section.
-You can also read the tutorial before reading the best practices.
+You can read the tutorial first, then come back here for guidance.
 
 In brief:
 
@@ -74,8 +59,11 @@ In brief:
 * Avoid catch-all error wrappers that make every error possible on every endpoint
 * Add descriptions for controllers, parameters, methods, and status codes
 
+API design and consistency
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 PREFER to expose your APIs using OCS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 It provides a more standardized and easier way to write your APIs.
 Other methods are considered legacy.
@@ -107,43 +95,8 @@ For details take a look at :ref:`OCS <ocscontroller>`.
             }
         }
 
-DO type controller and helper methods as explicit as possible
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The closer you narrow down a type without violating any constraints the better the resulting specification will be.
-Psalm will catch these problems for you if you configured the issue handlers mentioned above correctly.
-
-.. collapse:: Examples
-
-    .. code-block:: php
-        :caption: Bad
-        :emphasize-lines: 2
-
-        public function someHelperMethod(): array {
-            ...
-            return [
-                "id" => $id,
-                "name" => $name,
-            ];
-        }
-
-    .. code-block:: php
-        :caption: Good
-        :emphasize-lines: 2
-
-        /**
-         * @return array{id: int, name: string}
-         */
-        public function someHelperMethod(): array {
-            ...
-            return [
-                "id" => $id,
-                "name" => $name,
-            ];
-        }
-
 PREFER to use ``null`` to represent empty data
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When an endpoint conceptually returns an object, prefer ``null`` to represent "no data".
 
@@ -198,38 +151,8 @@ If you are working with an existing API where you can not break compatibility, y
             return new DataResponse([]);
         }
 
-DO NOT throw non-OCS*Exceptions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-In OCS endpoints, only throw OCS*Exceptions. Other exception types may result in non-JSON (plain text/HTML) error
-responses and will not be represented correctly in the extracted OpenAPI specification.
-
-.. collapse:: Examples
-
-    .. code-block:: php
-        :caption: Bad
-
-        /**
-         * @throws BadRequestException
-         */
-        public function someControllerMethod() {
-            ...
-            throw new BadRequestException([]);
-        }
-
-    .. code-block:: php
-        :caption: Good
-
-        /**
-         * @throws OCSBadRequestException
-         */
-        public function someControllerMethod() {
-            ...
-            throw new OCSBadRequestException("some message");
-        }
-
 DO use the same data structures for the same group of responses
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Using ``null`` to represent empty data is encouraged.
 Keep response shapes consistent within status-code groups: all 2xx responses should use the same data structure, and
@@ -293,32 +216,8 @@ all 4xx responses should use the same data structure.
             }
         }
 
-DO NOT use the ``addHeader`` method for setting headers for your responses
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Psalm cannot trace headers set via ``addHeader()``, so they cannot be validated or included correctly in the extracted specification.
-Use the ``setHeaders`` method instead.
-
-.. collapse:: Examples
-
-    .. code-block:: php
-        :caption: Bad
-        :emphasize-lines: 2
-
-        $response = new DataResponse();
-        $response->addHeader("X-My-Header", "some value");
-        return $response;
-
-    .. code-block:: php
-        :caption: Good
-        :emphasize-lines: 2
-
-        $response = new DataResponse();
-        $response->setHeaders(["X-My-Header" => "some value"]);
-        return $response;
-
 CONSIDER how your API will be used
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When building your API you will probably only think about how to implement in the easiest or best way.
 You need to consider what your code implies to someone trying to use your API through the OpenAPI specification.
@@ -389,8 +288,46 @@ even when the endpoint cannot actually produce those errors.
             }
         }
 
+Typing and documentation
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+DO type controller and helper methods as explicit as possible
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The closer you narrow down a type without violating any constraints the better the resulting specification will be.
+Psalm will catch these problems for you if you configured the issue handlers mentioned above correctly.
+
+.. collapse:: Examples
+
+    .. code-block:: php
+        :caption: Bad
+        :emphasize-lines: 2
+
+        public function someHelperMethod(): array {
+            ...
+            return [
+                "id" => $id,
+                "name" => $name,
+            ];
+        }
+
+    .. code-block:: php
+        :caption: Good
+        :emphasize-lines: 2
+
+        /**
+         * @return array{id: int, name: string}
+         */
+        public function someHelperMethod(): array {
+            ...
+            return [
+                "id" => $id,
+                "name" => $name,
+            ];
+        }
+
 DO set all descriptions for parameters and methods
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 It improves the documentation and makes it easier to understand what your API does.
 
@@ -436,8 +373,80 @@ There you can explain what the APIs in the controller do, or give examples of ho
             }
         }
 
-How to add OpenAPI support to your OCS API
-------------------------------------------
+Errors and headers
+^^^^^^^^^^^^^^^^^^
+
+DO NOT throw non-OCS*Exceptions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In OCS endpoints, only throw OCS*Exceptions. Other exception types may result in non-JSON (plain text/HTML) error
+responses and will not be represented correctly in the extracted OpenAPI specification.
+
+.. collapse:: Examples
+
+    .. code-block:: php
+        :caption: Bad
+
+        /**
+         * @throws BadRequestException
+         */
+        public function someControllerMethod() {
+            ...
+            throw new BadRequestException([]);
+        }
+
+    .. code-block:: php
+        :caption: Good
+
+        /**
+         * @throws OCSBadRequestException
+         */
+        public function someControllerMethod() {
+            ...
+            throw new OCSBadRequestException("some message");
+        }
+
+DO NOT use the ``addHeader`` (use ``setHeaders``)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Psalm cannot trace headers set via ``addHeader()``, so they cannot be validated or included correctly in the extracted specification.
+Use the ``setHeaders`` method instead.
+
+.. collapse:: Examples
+
+    .. code-block:: php
+        :caption: Bad
+        :emphasize-lines: 2
+
+        $response = new DataResponse();
+        $response->addHeader("X-My-Header", "some value");
+        return $response;
+
+    .. code-block:: php
+        :caption: Good
+        :emphasize-lines: 2
+
+        $response = new DataResponse();
+        $response->setHeaders(["X-My-Header" => "some value"]);
+        return $response;
+
+Tips and tricks
+---------------
+
+* ``openapi-extractor`` expects descriptions in many places.
+  To speed up initial adoption, you can use ``--allow-missing-docs`` to ignore missing descriptions.
+
+* By default, the tool may stop at the first error.
+  To list multiple problems in one run, use ``--continue-on-error``.
+
+.. warning::
+  Do not use these flags when generating the final specification.
+  They can hide real problems in your code.
+  In particular, ``--continue-on-error`` is risky because the command may appear "successful" even if issues remain.
+  Use these flags only to speed up the initial adaptation process.
+
+Tutorial: How to add OpenAPI support to your OCS API
+----------------------------------------------------
 
 Let's imagine you built a Todo list app for Nextcloud and have the following controller:
 
@@ -637,8 +646,47 @@ You have to add a description for every status code returned by the method.
         ...
     }
 
-How to add response definitions to share type definitions
----------------------------------------------------------
+Scopes
+------
+
+In some cases a consumer of the API might not want or need to implement all APIs your app offers.
+Examples are federation between apps on different servers, administration related endpoints, and more.
+The default client which should implement the main functionality is called ``OpenAPI::SCOPE_DEFAULT``.
+Constants are available in ``OCP\AppFramework\Http\Attribute\OpenAPI::SCOPE_*`` for better cross-app experience.
+A controller and methods can have multiple scopes, however when a method has the attribute set,
+all scopes from the controller are ignored.
+
+Methods that require admin permissions due to missing ``#[NoAdminRequired]`` or ``#[PublicPage]`` attribute or the
+matching annotation, default to the ``OpenAPI::SCOPE_ADMINISTRATION`` scope.
+
+.. code-block:: php
+
+    #[OpenAPI(scope: OpenAPI::SCOPE_ADMINISTRATION)]
+    #[OpenAPI(scope: OpenAPI::SCOPE_FEDERATION)]
+    #[OpenAPI(scope: OpenAPI::SCOPE_DEFAULT)]
+    #[OpenAPI(scope: 'myscope')]
+    public function show(): TemplateResponse {
+        ...
+    }
+
+The different scopes will be saved as ``openapi.json`` for the default scope and ``openapi-{scope}.json`` for the others.
+
+Tags
+----
+
+To organize the API endpoints within a scope, tags can be used to group them. By default the controller name is used.
+Tags can also differ between different scopes.
+
+.. code-block:: php
+
+    #[OpenAPI(scope: OpenAPI::SCOPE_DEFAULT, tags: ['mytag1'])]
+    #[OpenAPI(scope: OpenAPI::SCOPE_ADMINISTRATION, tags: ['settings', 'custom2'])]
+    public function saveSettings(): TemplateResponse {
+        ...
+    }
+
+Share type response definitions
+-------------------------------
 
 In the previous steps we have been reusing the same data structure multiple times, but it was copied every time.
 This is tedious and error prone, therefore we want to create some shared type definitions.
@@ -675,8 +723,8 @@ To import and use the type definition you have to import it in your controller:
 
 Now you can replace every occurrence of ``array{id: int, title: string, description: ?string, image: ?string}`` with ``TodoItem``.
 
-How to handle exceptions
-------------------------
+Handle exceptions
+-----------------
 
 Sometimes you want to end with an exception instead of returning a response.
 For this example our ``update`` will throw an exception when the ETag does not match:
@@ -710,8 +758,8 @@ Adding the correct annotation works like this:
 The description after the exception class name works exactly like the description for the status codes we added earlier.
 Note that you should only used OCS*Exceptions, as any other Exception will result in a plain text body instead of JSON.
 
-How to ignore certain endpoints
--------------------------------
+Ignore certain endpoints
+------------------------
 
 The tool already ignores all the endpoints that are not reachable from the outside, but some apps have reachable endpoints that are not APIs (e.g. serving some HTML).
 To ignore those you can add the ``#[OpenAPI(scope: OpenAPI::SCOPE_IGNORE)]`` attribute to the controller method
@@ -732,8 +780,8 @@ or the controller class. There is also a deprecated ``#[IgnoreOpenAPI]`` attribu
         ...
     }
 
-How to expose Capabilities
---------------------------
+Expose capabilities
+-------------------
 
 Imagine we take the same Todo app of the previous example and want to expose some capabilities to let clients know what they can expect.
 
@@ -771,47 +819,8 @@ Now you have to add the correct return type annotation:
 
 The capabilities will automatically appear in the generated specification.
 
-Scopes
-------
-
-In some cases a consumer of the API might not want or need to implement all APIs your app offers.
-Examples are federation between apps on different servers, administration related endpoints, and more.
-The default client which should implement the main functionality is called ``OpenAPI::SCOPE_DEFAULT``.
-Constants are available in ``OCP\AppFramework\Http\Attribute\OpenAPI::SCOPE_*`` for better cross-app experience.
-A controller and methods can have multiple scopes, however when a method has the attribute set,
-all scopes from the controller are ignored.
-
-Methods that require admin permissions due to missing ``#[NoAdminRequired]`` or ``#[PublicPage]`` attribute or the
-matching annotation, default to the ``OpenAPI::SCOPE_ADMINISTRATION`` scope.
-
-.. code-block:: php
-
-    #[OpenAPI(scope: OpenAPI::SCOPE_ADMINISTRATION)]
-    #[OpenAPI(scope: OpenAPI::SCOPE_FEDERATION)]
-    #[OpenAPI(scope: OpenAPI::SCOPE_DEFAULT)]
-    #[OpenAPI(scope: 'myscope')]
-    public function show(): TemplateResponse {
-        ...
-    }
-
-The different scopes will be saved as ``openapi.json`` for the default scope and ``openapi-{scope}.json`` for the others.
-
-Tags
-^^^^
-
-To organize the API endpoints within a scope, tags can be used to group them. By default the controller name is used.
-Tags can also differ between different scopes.
-
-.. code-block:: php
-
-    #[OpenAPI(scope: OpenAPI::SCOPE_DEFAULT, tags: ['mytag1'])]
-    #[OpenAPI(scope: OpenAPI::SCOPE_ADMINISTRATION, tags: ['settings', 'custom2'])]
-    public function saveSettings(): TemplateResponse {
-        ...
-    }
-
-How to generate the specification
----------------------------------
+Generate the specification
+--------------------------
 
 If you followed the installation instructions for openapi-extractor you can run ``composer exec generate-spec`` in your
 apps root folder and you will have a new file called ``openapi.json`` (depending on the used scopes).
