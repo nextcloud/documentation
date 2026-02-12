@@ -2,25 +2,25 @@
 OCS OpenAPI tutorial
 ====================
 
-This page explains you how you can add OpenAPI support to your app so that you can automatically generate an OpenAPI specification from your server code.
+This page explains how to add OpenAPI support to your app so you can automatically generate an OpenAPI specification from your code.
 
 Please read the whole tutorial before starting to adapt your app.
 
-Don't be afraid that you do not know everything from the start.
-The openapi-extractor tool gives you many warnings and fails if there is something utterly broken that would not work.
-Let the tool run and it will tell you if there is something wrong.
-Psalm will also help you validate your changes to ensure that nothing is broken.
+You do not need to understand everything up front.
+The ``openapi-extractor`` tool will emit warnings, and it will fail if something is fundamentally broken.
+Run it early and often; it will usually point you to what needs fixing.
+Psalm also helps validate your changes and catch type issues before they become runtime problems.
 
 Requirements and prerequisites
 ------------------------------
 
-App supports at least Nextcloud 28
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Your app supports at least Nextcloud 28
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Nextcloud 28 is the first version that has the required changes to get OpenAPI support going.
 
-Psalm is setup and configured
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Psalm is set up and configured
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Install psalm in your app as explained in `<https://psalm.dev/docs/running_psalm/installation>`_.
 
@@ -28,7 +28,7 @@ You need to have at least psalm ``5.9.0``. Previous versions contain a bug which
 
 Install and enable the required extensions as explained in :ref:`Required PHP extensions <psalm-php-extensions>`.
 
-Setup the following issue handlers in the psalm config (see `<https://psalm.dev/docs/running_psalm/dealing_with_code_issues>`_ for a tutorial):
+Configure the following issue handlers in your Psalm config (see `<https://psalm.dev/docs/running_psalm/dealing_with_code_issues>`_ for a tutorial):
 
 .. code-block:: xml
 
@@ -37,20 +37,21 @@ Setup the following issue handlers in the psalm config (see `<https://psalm.dev/
     <LessSpecificImplementedReturnType errorLevel="error"/>
     <MoreSpecificReturnType errorLevel="error"/>
 
-Install openapi-extractor in your app as explained in `<https://github.com/nextcloud/openapi-extractor>`_.
+Install ``openapi-extractor`` in your app as explained in `<https://github.com/nextcloud/openapi-extractor>`_.
 
 Tips and tricks
 ---------------
 
-The openapi-extractor tool forces you to set descriptions everywhere.
-To ease the adoption process you can set the ``--allow-missing-docs`` flag to ignore those problems.
+``openapi-extractor`` expects descriptions in many places.
+To speed up initial adoption, you can use ``--allow-missing-docs`` to ignore missing descriptions.
 
-The tool also only shows errors one by one by default, but you can also let it show you all problems at once using the ``--continue-on-error``.
+By default, the tool may stop at the first error.
+To list multiple problems in one run, use ``--continue-on-error``.
 
-It is advised to use neither of the mentioned flags to generate the final specification.
-They hide problems that your code has.
-Especially the later one is dangerous because it will never fail when any problem exists in your code.
-They should only be used to speed up the initial adaption process.
+Do not use these flags when generating the final specification.
+They can hide real problems in your code.
+In particular, ``--continue-on-error`` is risky because the command may appear "successful" even if issues remain.
+Use these flags only to speed up the initial adaptation process.
 
 Best practices
 --------------
