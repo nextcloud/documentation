@@ -335,6 +335,19 @@ While it is enabled, other participants will not receive notifications from your
 .. image:: images/message-silent.png
    :width: 600px
 
+Pinning messages
+----------------
+
+A moderator can pin important messages in a conversation, for certain period of time or until it's no longer relevant.
+
+.. image:: images/message-pin-action.png
+   :width: 400px
+
+Pinned messages are highlighted and accessible above the chat or in the ``Shared items`` tab of the content sidebar. If you no longer need a pinned message, you can unpin it for everyone or only yourself from quick actions.
+
+.. image:: images/message-pin-in-chat.png
+   :width: 700px
+
 Managing a conversation
 -----------------------
 
