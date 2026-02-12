@@ -374,7 +374,7 @@ Changing permissions of a user that joined a public conversation will also perma
 Moderators can configure the conversation. Select ``Conversation settings`` from the ``...`` menu of the conversation on the top to access the settings.
 
 .. image:: images/open-settings.png
-    :width: 400px
+    :width: 500px
 
 Here you can configure the description, guest access, if the conversation is visible to others on the server and more.
 
@@ -438,7 +438,7 @@ You can access your settings and choose a different webcam, microphone and other
 From media settings dialog, you can also change the background of your video.
 
 .. image:: images/background-settings-in-call.png
-    :width: 400px
+    :width: 500px
 
 All these settings are also available as direct actions in the bottom bar.
 
@@ -515,7 +515,7 @@ You can choose between classic list or message bubbles, with your own messages o
 You can change both settings from the ``Talk settings`` dialog  in ``Appearance`` section.
 
 .. image:: images/talk-appearance-settings.png
-   :width: 500px
+   :width: 600px
 
 
 Messages search in a conversation
@@ -537,12 +537,12 @@ Threaded messages
 You can create threads in conversations to keep discussions organized. The thread creation option is available in the new message additional actions.
 
 .. image:: images/thread-create-action.png
-   :width: 500px
+   :width: 400px
 
 Then, you can add a title and description for the thread and start the discussion.
 
 .. image:: images/thread-example.png
-   :width: 500px
+   :width: 600px
 
 You can view all replies in a thread either from the replies button on the message or from ``Shared items`` tab in the content sidebar.
 
