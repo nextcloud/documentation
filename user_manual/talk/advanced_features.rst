@@ -24,7 +24,7 @@ You can change this behavior in the conversation settings. Additionally, you can
 To have more control over your privacy, you can also configure the visibility of your typing and read indicators in ``Talk settings``:
 
 .. image:: images/privacy-settings.png
-    :width: 400px
+    :width: 600px
 
 
 Matterbridge
@@ -119,13 +119,13 @@ That way you can stay informed about scheduled meetings or activities directly w
 If Calendar app is enabled, you can click on an event to view details.
 
 .. image:: images/events-upcoming.png
-    :width: 400px
+    :width: 500px
 
 It is possible to schedule a meeting directly from a conversation. In the dialog, you can set meeting details such as title, date, time and description.
 You can also choose to invite all participants including email guests, or select specific ones.
 
 .. image:: images/talk-schedule-meeting.png
-   :width: 400px
+   :width: 500px
 
 Schedule from Calendar
 ^^^^^^^^^^^^^^^^^^^^^^
