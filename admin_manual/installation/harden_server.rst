@@ -288,6 +288,18 @@ Depending on your server setup, these are the possible connections:
 	- optional
 	- if the admin has agreed to share anonymized server data
 	- submitted data: statistical data. see here for the `detailed field list`_
+- nominatim.openstreetmap.org
+	- optional
+	- if the weather status app is enabled and used
+	- submitted data: address manually entered by the user to resolve to longitude and latitude
+- api.opentopodata.org
+	- optional
+	- if the weather status app is enabled and used
+	- submitted data: address manually entered by the user to resolve the altitude of the location
+- api.met.no
+	- optional
+	- if the weather status app is enabled and used
+	- submitted data: longitude and latitude configured in the weather status app by the individual user
 - Any remote Nextcloud server that is connected with federated sharing
 - When downloading apps from the App store other domains might be accessed, based on the choice of the app developers where they host the releases. For all official Nextcloud apps this is not the case though, because they are hosted on Github.
 
