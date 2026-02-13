@@ -7,9 +7,11 @@ Context Chat
 .. versionadded:: 32.0.0
 
 Nextcloud offers a **Context Chat** API which allows apps like files to submit data
-to the `Nextcloud Assistant Context Chat <https://docs.nextcloud.com/server/latest/admin_manual/ai/app_context_chat.html>`_,
-thereby enabling `Nextcloud Assistant <https://docs.nextcloud.com/server/latest/admin_manual/ai/app_assistant.html>`_
+to the `Nextcloud Assistant Context Chat <https://docs.nextcloud.com/server/32/admin_manual/ai/app_context_chat.html>`_,
+thereby enabling `Nextcloud Assistant <https://docs.nextcloud.com/server/32/admin_manual/ai/app_assistant.html>`_
 to answer questions, provide insights and search results based on the submitted data and natural language queries.
+
+.. TODO ON RELEASE: Update version number above on release
 
 Implementing a content provider for Context Chat
 ------------------------------------------------

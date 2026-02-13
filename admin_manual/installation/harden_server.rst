@@ -302,7 +302,7 @@ Depending on your server setup, these are the possible connections:
 - Any remote Nextcloud server that is connected with federated sharing
 - When downloading apps from the App store other domains might be accessed, based on the choice of the app developers where they host the releases. For all official Nextcloud apps this is not the case though, because they are hosted on Github.
 
-.. _optional (config): https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#has-internet-connection
+.. _optional (config): https://docs.nextcloud.com/server/32/admin_manual/configuration_server/config_sample_php_parameters.html#has-internet-connection
 .. _detailed field list: https://github.com/nextcloud/survey_client
 
 .. TODO ON RELEASE: Update version number above on release
