@@ -98,7 +98,7 @@ forcing them.
    <https://github.com/owncloud/core/issues/7009>`_ for discussion of this.
 
 .. note:: There are more sharing options on config.php level available:
-   `Configuration Parameters <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#sharing>`_
+   `Configuration Parameters <https://docs.nextcloud.com/server/32/admin_manual/configuration_server/config_sample_php_parameters.html#sharing>`_
 
 .. TODO ON RELEASE: Update version number above on release
 
@@ -176,7 +176,7 @@ Trashbin contents are not transferred::
 reference.)
 
 Users may also transfer files or folders selectively by themselves.
-See `user documentation <https://docs.nextcloud.com/server/latest/user_manual/en/files/transfer_ownership.html>`_ for details.
+See `user documentation <https://docs.nextcloud.com/server/32/user_manual/en/files/transfer_ownership.html>`_ for details.
 
 .. TODO ON RELEASE: Update version number above on release
 

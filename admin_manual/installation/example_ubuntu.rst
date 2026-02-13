@@ -14,7 +14,7 @@ following commands in a terminal::
 
 * This installs the packages for the Nextcloud core system. 
   If you are planning on running additional apps, keep in mind that they might
-  require additional packages.  See `Prerequisites for manual installation <https://docs.nextcloud.com/server/latest/admin_manual/installation/source_installation.html#prerequisites-for-manual-installation>`_ for details.
+  require additional packages.  See `Prerequisites for manual installation <https://docs.nextcloud.com/server/32/admin_manual/installation/source_installation.html#prerequisites-for-manual-installation>`_ for details.
 
 .. TODO ON RELEASE: Update version number above on release
 

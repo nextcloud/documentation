@@ -346,7 +346,7 @@ Sources
 -------
 
 - `encryption-recovery-tools repository on GitHub <https://github.com/nextcloud/encryption-recovery-tools>`_
-- `Nextcloud Encryption Configuration documentation <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html>`_
+- `Nextcloud Encryption Configuration documentation <https://docs.nextcloud.com/server/32/admin_manual/configuration_files/encryption_configuration.html>`_
 - `Nextcloud Help response concerning the usage of version information <https://help.nextcloud.com/t/allow-file-decryption-with-only-the-files-keys-and-passwords/436/12>`_
 - `Sourcecode: Creation of the Message Authentication Code <https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L504>`_
 - `Sourcecode: Derivation of the Encryption Key <https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L346>`_

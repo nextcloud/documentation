@@ -43,7 +43,7 @@ You can then compile them to ``.mo`` files using `ui_example's <https://github.c
 Manual install
 **************
 
-For the ``manual-install`` type, an administrator will have to manually extract to the server's `writable apps directory <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#apps-paths>`_ ``l10n`` folder of the ExApp
+For the ``manual-install`` type, an administrator will have to manually extract to the server's `writable apps directory <https://docs.nextcloud.com/server/32/admin_manual/configuration_server/config_sample_php_parameters.html#apps-paths>`_ ``l10n`` folder of the ExApp
 (e.g. ``/path/to/apps-writable/<appid>/l10n/*.(js|json)``).
 This will allow the server to access the ExApp's strings with translations.
 

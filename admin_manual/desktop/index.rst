@@ -27,5 +27,7 @@ You can find additional information here:
 * `User manual`_
 * `Developer manual`_
 
-.. _`User manual`: https://docs.nextcloud.com/server/latest/user_manual/en/desktop/index.html
-.. _`Developer manual`: https://docs.nextcloud.com/server/latest/developer_manual/desktop/index.html
+.. _`User manual`: https://docs.nextcloud.com/server/32/user_manual/en/desktop/index.html
+.. _`Developer manual`: https://docs.nextcloud.com/server/32/developer_manual/desktop/index.html
+
+.. TODO ON RELEASE: Update version number above on release

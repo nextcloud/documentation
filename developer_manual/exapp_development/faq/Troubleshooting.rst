@@ -27,7 +27,7 @@ Here are some common steps to verify the network configuration:
 ExApp deployment issues
 -----------------------
 
-The deployment issues questions are covered in the `Test Deploy <https://docs.nextcloud.com/server/latest/admin_manual/exapps_management/TestDeploy.html>`_ section of the administration guide.
+The deployment issues questions are covered in the `Test Deploy <https://docs.nextcloud.com/server/32/admin_manual/exapps_management/TestDeploy.html>`_ section of the administration guide.
 Generally speaking, there are three steps to find the proper error message to understand the problem:
 
 .. TODO ON RELEASE: Update version number above on release
