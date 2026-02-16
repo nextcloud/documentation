@@ -27,7 +27,7 @@ You can access your settings and choose a different webcam, microphone and other
 From media settings dialog, you can also change the background of your video.
 
 .. image:: images/background-settings-in-call.png
-    :width: 400px
+    :width: 500px
 
 All these settings are also available as direct actions in the bottom bar.
 
@@ -92,6 +92,11 @@ When enabled, the transcription will appear in the bottom and will be updated in
 
 .. image:: images/call-transcription.png
    :width: 500px
+
+With `live_transcription` provider app enabled, you can also use live translation. Instead of receiving the transcription in the original message, it will be translated to the language of your choice.
+
+.. image:: images/call-translation-actions.png
+   :width: 400px
 
 
 

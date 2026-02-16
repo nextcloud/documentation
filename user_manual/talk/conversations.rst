@@ -118,15 +118,6 @@ You can then clear the filter from the filters menu.
 .. image:: images/clear-filter.png
     :width: 400px
 
-Compact view of conversations list
-----------------------------------
-
-Compact view allows to hide last message preview in the conversation list, providing a more focused interface. 
-You can enable it from the ``Talk settings`` dialog  in ``Appearance`` section.
-
-.. image:: images/talk-compact-view.png
-   :width: 200px
-
 Archive conversations
 ---------------------
 You can archive conversations that you no longer need to see in your main conversation list. When a conversation is archived, it will be moved to the ``Archived conversations`` section.
@@ -153,7 +144,7 @@ Changing permissions of a user that joined a public conversation will also perma
 Moderators can configure the conversation. Select ``Conversation settings`` from the ``...`` menu of the conversation on the top to access the settings.
 
 .. image:: images/open-settings.png
-    :width: 400px
+    :width: 500px
 
 Here you can configure the description, guest access, if the conversation is visible to others on the server and more.
 
@@ -213,4 +204,4 @@ You can change this behavior in the conversation settings. Additionally, you can
 To have more control over your privacy, you can also configure the visibility of your typing and read indicators in ``Talk settings``:
 
 .. image:: images/privacy-settings.png
-    :width: 400px
+    :width: 600px

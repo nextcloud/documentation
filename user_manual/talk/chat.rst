@@ -114,6 +114,19 @@ While it is enabled, other participants will not receive notifications from your
 .. image:: images/message-silent.png
    :width: 600px
 
+Scheduling messages
+-------------------
+
+If you want to send a message not right now, but at a specific time, you can schedule it. Just select the desired date and time in the quick actions next to the input field.
+
+.. image:: images/message-schedule-action.png
+   :width: 600px
+
+You can find all your scheduled messages by clicking on the clock icon next to the input field. There you can edit, reschedule or delete currently prepared messages.
+
+.. image:: images/message-schedule-toggle.png
+   :width: 400px
+
 Chat summary
 ------------
 

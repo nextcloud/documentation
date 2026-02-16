@@ -10,6 +10,19 @@ You can edit messages and captions to file shares up to 6 hours after sending.
 .. image:: images/message-editing.png
    :width: 600px
 
+Pinning messages
+----------------
+
+A moderator can pin important messages in a conversation, for certain period of time or until it's no longer relevant.
+
+.. image:: images/message-pin-action.png
+   :width: 400px
+
+Pinned messages are highlighted and accessible above the chat or in the ``Shared items`` tab of the content sidebar. If you no longer need a pinned message, you can unpin it for everyone or only yourself from quick actions.
+
+.. image:: images/message-pin-in-chat.png
+   :width: 700px
+
 Setting reminder on messages
 ----------------------------
 
@@ -55,12 +68,12 @@ Threaded messages
 You can create threads in conversations to keep discussions organized. The thread creation option is available in the new message additional actions.
 
 .. image:: images/thread-create-action.png
-   :width: 500px
+   :width: 400px
 
 Then, you can add a title and description for the thread and start the discussion.
 
 .. image:: images/thread-example.png
-   :width: 500px
+   :width: 600px
 
 You can view all replies in a thread either from the replies button on the message or from ``Shared items`` tab in the content sidebar.
 

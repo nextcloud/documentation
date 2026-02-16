@@ -6,6 +6,7 @@ Conversations
 
    conversations
    open_conversations
+   appearance
    federation
    files_integration
    calendar_integration
