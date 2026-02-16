@@ -16,6 +16,13 @@ Android: 3.36.0
 Desktop: 4.1.0
 iOS: 7.3.0
 
+Supported server apps
+---------------------
+richdocuments: Convert .docx to .md
+assistant: Transcribe audio file
+files_zip: Zip a file or folder
+contacts: Create new contact from vfc
+
 Exposing actions via capability
 -------------------------------
 
