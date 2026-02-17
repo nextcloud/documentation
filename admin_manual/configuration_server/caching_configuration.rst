@@ -49,7 +49,7 @@ Small/Private home server
 
 Only use APCu::
 
-    'memcache.local' => '\OC\Memcache\APCu',
+    'l' => '\OC\Memcache\APCu',
 
 Organizations with single-server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -187,6 +187,7 @@ The following options are available to configure when using a single redis serve
    'memcache.locking' => '\OC\Memcache\Redis',
    'memcache.distributed' => '\OC\Memcache\Redis',
    'memcache.local' =>'\OC\Memcache\Redis' ,
+   'memcache.customprefix' => 'mynextcloudprefix',
    'redis' => [
       // 'host'      => see connection parameters below
       // 'port'      => see connection parameters below
@@ -202,6 +203,7 @@ The following options are available to configure when using a redis cluster (all
    'memcache.locking' => '\OC\Memcache\Redis',
    'memcache.distributed' => '\OC\Memcache\Redis',
    'memcache.local' =>'\OC\Memcache\Redis' ,
+   'memcache.customprefix' => 'mynextcloudprefix',
    'redis.cluster' => [
       'seeds' => [ // provide some/all of the cluster servers to bootstrap discovery, port required
          'cache-cluster:7000',
@@ -374,3 +376,17 @@ Cache Directory location
 The cache directory defaults to ``data/$user/cache`` where ``$user`` is the 
 current user. You may use the ``'cache_path'`` directive in ``config.php``
 (See :doc:`config_sample_php_parameters`) to select a different location.
+
+Cache Key Prefix for Redis or Memcached
+---------------------------------
+
+By default, Nextcloud generates a semi-unique prefix for cache keys using information like instance ID, version etc. to mitigate the problem of
+collisions when using the same cache for multiple Nextcloud instances.
+If you want to make sure to prevent collisions alltogether, you can use the following
+setting to define your custom prefix::
+
+  'memcache.customprefix' => 'mynextcloudprefix',
+
+This also allows you to create ACLs in Redis and limit the keys specific users can access
+(e.g. if you want to isolate specific Nextcloud instances when using the same cache).
+This may be security-relevant for you.
