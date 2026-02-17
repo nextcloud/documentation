@@ -4479,6 +4479,20 @@ Keep this list as restrictive as possible as metrics can consume a lot of resour
 
 Default to ``[127.0.0.0/16', '::1/128]`` (allow loopback interface only)
 
+preview_expiration_days
+^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'preview_expiration_days' => 0,
+
+Delete previews older than a certain number of days to reduce storage usage.
+
+Less than one day is not allowed, so set it to 0 to disable the deletion.
+
+Defaults to ``0``.
+
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
 
