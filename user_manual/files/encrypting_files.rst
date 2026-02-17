@@ -1,8 +1,8 @@
-=============================================
-Encrypting your Nextcloud files on the server
-=============================================
+============================
+Using server-side encryption
+============================
 
-Nextcloud includes a server side Encryption app, and when it is enabled by
+Nextcloud includes a server-side encryption app, and when it is enabled by
 your Nextcloud administrator all of your Nextcloud data files are automatically
 encrypted on the server.
 Encryption is server-wide, so when it is enabled you cannot choose to keep your
