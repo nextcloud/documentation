@@ -49,7 +49,7 @@ Small/Private home server
 
 Only use APCu::
 
-    'l' => '\OC\Memcache\APCu',
+    'memcache.local' => '\OC\Memcache\APCu',
 
 Organizations with single-server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
