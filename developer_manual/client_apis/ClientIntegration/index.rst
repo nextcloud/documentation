@@ -65,6 +65,7 @@ Requirements:
 - Method: supports POST/GET
 
 .. code-block:: javascript 
+  
   [
       'name' => 'translated title',
       'url' => '/ocs/v2.php/apps/abc',
@@ -122,7 +123,8 @@ The tooltip response is a regular DataResponse type, with payload:
 - version: Indicates which version it is. Clients will be backwards compatible. If server sends a newer version than the client can understand the response will be ignored.
 - tooltip: Translated text, which will be shown as tooltip / snackbar.
 
-.. code-block:: javascript 
+.. code-block:: javascript
+
   {
     "ocs": {
       "meta": {
