@@ -2717,13 +2717,13 @@ Memory caching backend for locally stored data
 
 Defaults to ``none``
 
-memcache.customprefix
+memcache_customprefix
 ^^^^^^^^^^^^^^^^^^^^^
 
 
 ::
 
-	'memcache.customprefix' => 'mynextcloudprefix',
+	'memcache_customprefix' => 'mynextcloudprefix',
 
 Custom cache key prefix for Redis or Memcached
 
