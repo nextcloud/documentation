@@ -33,7 +33,7 @@ Exposing actions via capability
 
 Each app can add new actions via capabilities, following the syntax "app-id", "hook-name" and list of all endpoints.
 
-.. code::
+.. code-block:: javascript 
 
     'client_integration' => [
         Application::APP_ID => [
@@ -64,7 +64,7 @@ Requirements:
 - Icons are always svgs
 - Method: supports POST/GET
 
-.. code::
+.. code-block:: javascript 
     [
         'name' => 'translated title',
         'url' => '/ocs/v2.php/apps/abc',
@@ -85,7 +85,7 @@ The declarative UI response allows the app to send back a new UI to be rendered 
 - version: Indicates which version it is. Clients will be backwards compatible. If server sends a newer version than the client can understand the response will be ignored.
 - tooltip: Translated text, which will be shown as tooltip / snackbar.
 
-.. code::
+.. code-block:: javascript 
 
     {
       "ocs": {
@@ -122,7 +122,7 @@ The tooltip response is a regular DataResponse type, with payload:
 - version: Indicates which version it is. Clients will be backwards compatible. If server sends a newer version than the client can understand the response will be ignored.
 - tooltip: Translated text, which will be shown as tooltip / snackbar.
 
-.. code::
+.. code-block:: javascript 
     {
       "ocs": {
         "meta": {
@@ -145,7 +145,8 @@ Here is an example of using the Assistant app.
 
 `ocs/v1.php/cloud/capabilities` returns the following capability:
 
-.. code::
+.. code-block:: javascript 
+  
      "client_integration": {
           "assistant": {
             "version": 0.1,
@@ -186,7 +187,7 @@ The Assistant integration has a few endpoints for the client to show and execute
 Looking at the "Summarize using AI" action, it will only show for files with mimetypes starting with "text/" or the specified document and PDF mimetypes, as described in `mimetype_filters`.
 When clicking on the action, the client will send a POST request to the specified URL, replacing {fileId} with the actual file id. The app can then handle the request and for example send a tooltip response back to the client. The client will show the tooltip to the user:
 
-.. code::
+.. code-block:: javascript 
 
     {
         "ocs": {
