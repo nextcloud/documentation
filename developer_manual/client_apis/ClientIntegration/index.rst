@@ -35,14 +35,14 @@ Each app can add new actions via capabilities, following the syntax "app-id", "h
 
 .. code-block:: javascript 
 
-    'client_integration' => [
-        Application::APP_ID => [
-            'version' => 0.1,
-			'context-menu' => [
-                … endpoints …
-            ]
-        ]
-    ]
+  'client_integration' => [
+      Application::APP_ID => [
+          'version' => 0.1,
+    'context-menu' => [
+              … endpoints …
+          ]
+      ]
+  ]
 
 Hooks
 -----
@@ -65,14 +65,14 @@ Requirements:
 - Method: supports POST/GET
 
 .. code-block:: javascript 
-    [
-        'name' => 'translated title',
-        'url' => '/ocs/v2.php/apps/abc',
-        'method' => 'POST/GET',
-        'mimetype_filters' => 'text/, application/pdf', // will match text/* and PDFs
-        'params' => ['file_id' => '{fileId}','file_path' => '{filePath}'], // only for POST; the key can vary depending on the app
-        'icon' => '/apps/abc/img/app.svg'
-    ],
+  [
+      'name' => 'translated title',
+      'url' => '/ocs/v2.php/apps/abc',
+      'method' => 'POST/GET',
+      'mimetype_filters' => 'text/, application/pdf', // will match text/* and PDFs
+      'params' => ['file_id' => '{fileId}','file_path' => '{filePath}'], // only for POST; the key can vary depending on the app
+      'icon' => '/apps/abc/img/app.svg'
+  ],
 
 Response
 --------
@@ -87,32 +87,32 @@ The declarative UI response allows the app to send back a new UI to be rendered 
 
 .. code-block:: javascript 
 
-    {
-      "ocs": {
-        "meta": {
-          "status": "ok",
-          "statuscode": 200,
-          "message": "OK"
-        },
-        "data": {
-          "version": 0.1,
-          "root": {
-            "orientation": "vertical",
-            "rows": [
-              {
-                "children": [
-                  {
-                    "element": "URL",
-                    "text": "Link created",
-                    "url": "/some/link/to/a/page"
-                  }
-                ]
-              }
-            ]
-          }
+  {
+    "ocs": {
+      "meta": {
+        "status": "ok",
+        "statuscode": 200,
+        "message": "OK"
+      },
+      "data": {
+        "version": 0.1,
+        "root": {
+          "orientation": "vertical",
+          "rows": [
+            {
+              "children": [
+                {
+                  "element": "URL",
+                  "text": "Link created",
+                  "url": "/some/link/to/a/page"
+                }
+              ]
+            }
+          ]
         }
       }
     }
+  }
 
 At the moment only rows with text and url elements are supported, but in the future we will add more elements and options.
 
@@ -123,19 +123,19 @@ The tooltip response is a regular DataResponse type, with payload:
 - tooltip: Translated text, which will be shown as tooltip / snackbar.
 
 .. code-block:: javascript 
-    {
-      "ocs": {
-        "meta": {
-          "status": "ok",
-          "statuscode": 200,
-          "message": "OK"
-        },
-        "data": {
-          "version": "0.1",
-          "tooltip": "Task submitted successfully"
-        }
+  {
+    "ocs": {
+      "meta": {
+        "status": "ok",
+        "statuscode": 200,
+        "message": "OK"
+      },
+      "data": {
+        "version": "0.1",
+        "tooltip": "Task submitted successfully"
       }
     }
+  }
 
 Example:
 ----------
@@ -146,62 +146,64 @@ Here is an example of using the Assistant app.
 `ocs/v1.php/cloud/capabilities` returns the following capability:
 
 .. code-block:: javascript 
-  
-     "client_integration": {
-          "assistant": {
-            "version": 0.1,
-            "context-menu": [
-              {
-                "name": "Summarize using AI",
-                "url": "/ocs/v2.php/apps/assistant/api/v1/file-action/{fileId}/core:text2text:summary",
-                "method": "POST",
-                "mimetype_filters": "text/, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.oasis.opendocument.text, application/pdf",
-                "icon": "/apps/assistant/img/client_integration/summarize.svg"
-              },
-              {
-                "name": "Transcribe audio using AI",
-                "url": "/ocs/v2.php/apps/assistant/api/v1/file-action/{fileId}/core:audio2text",
-                "method": "POST",
-                "mimetype_filters": "audio/",
-                "icon": "/apps/assistant/img/client_integration/speech_to_text.svg"
-              },
-              {
-                "name": "Text-To-Speech using AI",
-                "url": "/ocs/v2.php/apps/assistant/api/v1/file-action/{fileId}/core:text2speech",
-                "method": "POST",
-                "mimetype_filters": "text/, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.oasis.opendocument.text, application/pdf",
-                "icon": "/apps/assistant/img/client_integration/text_to_speech.svg"
-              }
-            ]
-          },
+
+  "client_integration": {
+    "assistant": {
+      "version": 0.1,
+      "context-menu": [
+        {
+          "name": "Summarize using AI",
+          "url": "/ocs/v2.php/apps/assistant/api/v1/file-action/{fileId}/core:text2text:summary",
+          "method": "POST",
+          "mimetype_filters": "text/, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.oasis.opendocument.text, application/pdf",
+          "icon": "/apps/assistant/img/client_integration/summarize.svg"
         },
+        {
+          "name": "Transcribe audio using AI",
+          "url": "/ocs/v2.php/apps/assistant/api/v1/file-action/{fileId}/core:audio2text",
+          "method": "POST",
+          "mimetype_filters": "audio/",
+          "icon": "/apps/assistant/img/client_integration/speech_to_text.svg"
+        },
+        {
+          "name": "Text-To-Speech using AI",
+          "url": "/ocs/v2.php/apps/assistant/api/v1/file-action/{fileId}/core:text2speech",
+          "method": "POST",
+          "mimetype_filters": "text/, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.oasis.opendocument.text, application/pdf",
+          "icon": "/apps/assistant/img/client_integration/text_to_speech.svg"
+        }
+      ]
+    },
+  },
 
 The Assistant integration has a few endpoints for the client to show and execute. They appear like this on the client side:
 
 .. image:: ../images/client-integration-ios.png
-    alt: "Client integration on iOS"
+   :alt: Client integration on iOS
+	 :scale: 50%
 
 .. image:: ../images/client-integration-android.png
-    alt: "Client integration on Android"
+   :alt: Client integration on Android
+	 :scale: 50%
 
 Looking at the "Summarize using AI" action, it will only show for files with mimetypes starting with "text/" or the specified document and PDF mimetypes, as described in `mimetype_filters`.
 When clicking on the action, the client will send a POST request to the specified URL, replacing {fileId} with the actual file id. The app can then handle the request and for example send a tooltip response back to the client. The client will show the tooltip to the user:
 
 .. code-block:: javascript 
 
-    {
-        "ocs": {
-            "meta": {
-                "status": "ok",
-                "statuscode": 200,
-                "message": "OK"
-            },
-            "data": {
-                "version": 0.1,
-                "tooltip": "Summarization task submitted successfully"
-            }
-        }
-    }
+  {
+      "ocs": {
+          "meta": {
+              "status": "ok",
+              "statuscode": 200,
+              "message": "OK"
+          },
+          "data": {
+              "version": 0.1,
+              "tooltip": "Summarization task submitted successfully"
+          }
+      }
+  }
 
 Issues/Bugs
 -----------
