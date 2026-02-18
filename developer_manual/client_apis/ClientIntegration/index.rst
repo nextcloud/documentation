@@ -33,13 +33,13 @@ Exposing actions via capability
 
 Each app can add new actions via capabilities, following the syntax "app-id", "hook-name" and list of all endpoints.
 
-.. code-block:: javascript 
+.. code-block:: php
 
   'client_integration' => [
       Application::APP_ID => [
           'version' => 0.1,
           'context-menu' => [
-              … endpoints …
+              // ... endpoints ...
           ]
       ]
   ]
