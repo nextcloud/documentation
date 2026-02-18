@@ -177,10 +177,10 @@ Here is an example of using the Assistant app.
 
 The Assistant integration has a few endpoints for the client to show and execute. They appear like this on the client side:
 
-.. image:: /images/client-integration-ios.png
+.. image:: ../images/client-integration-ios.png
     alt: "Client integration on iOS"
 
-.. image:: /images/client-integration-android.png
+.. image:: ../images/client-integration-android.png
     alt: "Client integration on Android"
 
 Looking at the "Summarize using AI" action, it will only show for files with mimetypes starting with "text/" or the specified document and PDF mimetypes, as described in `mimetype_filters`.
