@@ -38,7 +38,7 @@ Each app can add new actions via capabilities, following the syntax "app-id", "h
   'client_integration' => [
       Application::APP_ID => [
           'version' => 0.1,
-    'context-menu' => [
+          'context-menu' => [
               … endpoints …
           ]
       ]
@@ -65,7 +65,7 @@ Requirements:
 - Method: supports POST/GET
 
 .. code-block:: javascript 
-  
+
   [
       'name' => 'translated title',
       'url' => '/ocs/v2.php/apps/abc',
