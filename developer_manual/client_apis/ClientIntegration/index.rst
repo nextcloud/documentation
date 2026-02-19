@@ -178,15 +178,15 @@ Here is an example of using the Assistant app.
     },
   },
 
-The Assistant integration has a few endpoints for the client to show and execute. They appear like this on the client side:
+The Assistant integration has a few endpoints for the client to show and execute. "Summarize using AI" and "Text-To-Speech using AI" appears at the bottom of each menu on the client side:
 
-.. image:: ../images/client-integration-ios.png
-   :alt: Client integration on iOS
-	 :scale: 10%
+|pic1| |pic2|
 
-.. image:: ../images/client-integration-android.png
-   :alt: Client integration on Android
-	 :scale: 10%
+.. |pic1| image:: ../images/client-integration-ios.png
+   :width: 45%
+
+.. |pic2| image:: ../images/client-integration-android.png
+   :width: 45%
 
 Looking at the "Summarize using AI" action, it will only show for files with mimetypes starting with "text/" or the specified document and PDF mimetypes, as described in `mimetype_filters`.
 When clicking on the action, the client will send a POST request to the specified URL, replacing {fileId} with the actual file id. The app can then handle the request and for example send a tooltip response back to the client. The client will show the tooltip to the user:
