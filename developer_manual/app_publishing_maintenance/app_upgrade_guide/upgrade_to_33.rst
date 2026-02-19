@@ -81,6 +81,7 @@ Added APIs
 - ``OCA.Profile.ProfileSections`` was added as a framework agnostic replacement for ``OCA.Core.ProfileSections``.
   See section about the profile app above.
 
+
 Changed APIs
 ^^^^^^^^^^^^
 
@@ -197,11 +198,18 @@ Added APIs
     }
     $result->closeCursor();
 
+- ``ImageToTextOpticalCharacterRecognition`` TaskProcessing task type was added
+
+- ``ISynchronousWatermarkingProvider`` TaskProcessing provider interface was added to allow synchronous processing providers to react to the boolean includeWatermark flag
+
+
 Changed APIs
 ^^^^^^^^^^^^
 
 - The ``setId`` and ``getId`` methods of ``\OCP\BackgroundJob\IJob`` were changed to return/accept a string instead of an int. Same for ``\OCP\BackgroundJob\IJobList`` were some methods (``removedById``, ``getById`` and ``getDetailsById``) are now taking a string instead of an int. The string is suppose to be a snowflake id.
 - The ``setObjectId`` and ``getObjectId`` methods of ``\OCP\Activity\IEvent`` were changed to return/accept a string in addition to an int. The string is suppose to be a snowflake id.
+- The ``\OCP\TaskProcessing\Task`` class now has ``getIncludeWatermark`` and ``setIncludeWatermark`` methods for indicating whether the provider should add a watermark to the generated output.
+- The TaskProcessing OCS API now also accepts the ``includeWatermark`` flag when scheduling tasks
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
