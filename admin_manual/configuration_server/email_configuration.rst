@@ -75,9 +75,10 @@ connect Nextcloud to a remote SMTP server:
 
 .. note:: The ``overwrite.cli.url`` parameter from ``config.php`` will be used for the SMTP EHLO.
 
-Your changes are saved immediately, and you can click the Send Email button to
-test your configuration. This sends a test message to the email address you
-configured on your Personal page. The test message says::
+Your changes are saved immediately, and you can click the Send email button to
+test your configuration. This requires that an email address is configured in your settings under menu **Personal info** 
+field **Email** because the test email will be sent to that email address. If not, clicking the
+Send email button will give an error. The test email should say::
 
   If you received this email, the settings seem to be correct.
 
