@@ -182,11 +182,11 @@ The Assistant integration has a few endpoints for the client to show and execute
 
 .. image:: ../images/client-integration-ios.png
    :alt: Client integration on iOS
-	 :scale: 50%
+	 :scale: 10%
 
 .. image:: ../images/client-integration-android.png
    :alt: Client integration on Android
-	 :scale: 50%
+	 :scale: 10%
 
 Looking at the "Summarize using AI" action, it will only show for files with mimetypes starting with "text/" or the specified document and PDF mimetypes, as described in `mimetype_filters`.
 When clicking on the action, the client will send a POST request to the specified URL, replacing {fileId} with the actual file id. The app can then handle the request and for example send a tooltip response back to the client. The client will show the tooltip to the user:
