@@ -95,61 +95,83 @@ For details take a look at :ref:`OCS <ocscontroller>`.
             }
         }
 
-PREFER to use ``null`` to represent empty data
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CAREFULLY handle empty values in JSON Responses
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When an endpoint conceptually returns an object, prefer ``null`` to represent "no data".
+When defining API responses, it’s important to make explicit whether an empty value should be ``null``, an empty object (``{}``), or an empty array (``[]``) in the resulting JSON. The PHP type you return determines this, and using the wrong one can easily lead to confusing or inconsistent results for your API consumers.
 
-There is a problem with PHP and arrays that get converted to JSON.
-JSON has lists and objects while PHP only has arrays.
-If you were to return an empty array in PHP it will always turn into ``[]`` in JSON.
-This is not a problem for endpoints that always return lists, but most endpoints return a single JSON object.
-For those endpoints returning ``[]`` in PHP is a problem because the consumer will either get ``[]`` or ``{...}`` which is hard to handle.
+.. note::
 
-If you are not able to use ``null`` for whatever reason, use ``new \stdClass()`` instead.
-It will get correctly converted into ``{}`` in the JSON response on Nextcloud 28 and later.
+   In PHP, ``null``, ``[]``, and ``new \stdClass()`` are distinct types and will be serialized to different values in JSON. This is especially important for OpenAPI consumers, which often expect a consistent type.
 
-If you are working with an existing API where you can not break compatibility, you can also type the result as ``list<empty>``.
+Here is how PHP values are serialized to JSON:
+
++-------------------+--------------------+
+| PHP Value         | JSON Output        |
++===================+====================+
+| null              | null               |
++-------------------+--------------------+
+| new \stdClass()   | {}                 |
++-------------------+--------------------+
+| []                | []                 |
++-------------------+--------------------+
+
+- Use ``null`` to indicate that a value is explicitly absent. This should be preferred for most “empty” responses.
+- Use ``new \stdClass()`` **if and only if** the client expects an empty object (`{}`) rather than `null`. This is sometimes required by schema contracts that always expect an object shape, even if empty.
+
+.. important::
+
+   Returning ``new \stdClass()`` as an API response requires at least Nextcloud 28 to reliably serialize to ``{}``.
+
+- **Avoid returning ``[]``** for endpoints expected to yield a JSON object, as this will serialize to a JSON array (`[]`), causing downstream consumers to deal with unpredictable types.
+
+If you are modifying or extending existing APIs and are unable to use ``null`` or ``\stdClass()`` without breaking backward compatibility, you may type the result as ``list<empty>`` to signal an empty array is expected.
 
 .. collapse:: Examples
 
     .. code-block:: php
-        :caption: Bad
+       :caption: Incorrect (returns empty array instead of empty object or null)
 
-        /**
-         * @return DataResponse<Http::STATUS_OK, array, array{}>
-         */
-        public function someControllerMethod() {
-            ...
-            return new DataResponse([]);
-        }
+       /**
+        * @return DataResponse<Http::STATUS_OK, array, array{}>
+        */
+       public function someControllerMethod() {
+           // ...
+           return new DataResponse([]);
+       }
 
     .. code-block:: php
-        :caption: Good
+       :caption: Correct (empty data as null)
 
-        /**
-         * @return DataResponse<Http::STATUS_OK, null, array{}>
-         */
-        public function someControllerMethod() {
-            ...
-            return new DataResponse(null);
-        }
+       /**
+        * @return DataResponse<Http::STATUS_OK, null, array{}>
+        */
+       public function someControllerMethod() {
+           // ...
+           return new DataResponse(null); // Serializes to: null in JSON
+       }
 
-        /**
-         * @return DataResponse<Http::STATUS_OK, \stdClass, array{}>
-         */
-        public function someControllerMethod() {
-            ...
-            return new DataResponse(new \stdClass());
-        }
+    .. code-block:: php
+       :caption: Correct (explicit empty object)
 
-        /**
-         * @return DataResponse<Http::STATUS_OK, list<empty>, array{}>
-         */
-        public function someControllerMethod() {
-            ...
-            return new DataResponse([]);
-        }
+       /**
+        * @return DataResponse<Http::STATUS_OK, \stdClass, array{}>
+        */
+       public function someControllerMethod() {
+           // ...
+           return new DataResponse(new \stdClass()); // Serializes to: {} in JSON
+       }
+
+    .. code-block:: php
+       :caption: For legacy or compatibility cases (explicit empty list)
+
+       /**
+        * @return DataResponse<Http::STATUS_OK, list<empty>, array{}>
+        */
+       public function someControllerMethod() {
+           // ...
+           return new DataResponse([]); // Serializes to: [] in JSON
+       }
 
 DO use the same data structures for the same group of responses
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
