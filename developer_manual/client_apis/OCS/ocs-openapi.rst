@@ -52,7 +52,7 @@ In brief:
 
 * Prefer OCS endpoints (``OCSController`` + ``DataResponse``) for public APIs
 * Add explicit types everywhere (parameters, helper methods, and return types)
-* Use ``null`` (or ``\stdClass``) to represent an empty JSON object
+* Use ``\stdClass`` to represent an empty JSON object
 * In OCS endpoints, only throw OCS*Exceptions
 * Keep response shapes consistent across status-code groups (2xx together, 4xx together)
 * Use ``setHeaders()`` instead of ``addHeader()``
@@ -656,7 +656,7 @@ Constants are available in ``OCP\AppFramework\Http\Attribute\OpenAPI::SCOPE_*`` 
 A controller and methods can have multiple scopes, however when a method has the attribute set,
 all scopes from the controller are ignored.
 
-Methods that require admin permissions due to missing ``#[NoAdminRequired]`` or ``#[PublicPage]`` attribute or the
+Methods that require admin permissions due to missing ``#[NoAdminRequired]`` or a present ``#[PublicPage]`` attribute or the
 matching annotation, default to the ``OpenAPI::SCOPE_ADMINISTRATION`` scope.
 
 .. code-block:: php
@@ -705,7 +705,7 @@ It will only work with that file name at that location.
      */
     class ResponseDefinitions {}
 
-The name of every type definition must start with the *readable app ID* as expected by theopenapi-extractor.
+The name of every type definition must start with the *readable app ID* as expected by the openapi-extractor.
 This is a TitleCase / normalized form used to namespace types per app (for example, the app ``Tables``
 uses types like ``TablesColumn``.
 
