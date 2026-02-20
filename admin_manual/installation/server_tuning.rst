@@ -2,7 +2,12 @@
 Server tuning
 =============
 
-.. TODO: Add introductory paragraph
+Server tuning helps optimize Nextcloud's performance, responsiveness, and resource utilization.
+This guide covers various configuration options and best practices to improve your Nextcloud
+server's efficiency. While a default Nextcloud installation works out of the box, implementing
+these tuning recommendations can significantly enhance the user experience, especially for
+larger deployments or systems with limited resources.
+
 .. TODO: Sort according to (generalized) difficulty
 .. TODO: Consider adding a category (or even table) with Impact vs Difficulty
 
