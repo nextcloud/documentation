@@ -1444,6 +1444,22 @@ Allow remote servers with local addresses, e.g., in federated shares, webcal ser
 
 Defaults to ``false``
 
+http_client_add_user_agent_url
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'http_client_add_user_agent_url' => false,
+
+Add the URL of the Nextcloud server in User-Agent headers HTTP calls.
+
+This helps service providers identifying calls from your server,
+which can be helpful for them, but can be a privacy issue on small
+Nextcloud servers.
+
+Defaults to ``false``
+
 Deleted Items (trash bin)
 -------------------------
 
