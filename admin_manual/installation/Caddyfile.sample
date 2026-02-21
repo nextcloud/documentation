@@ -1,0 +1,151 @@
+cloud.example.com  # Public server hostname
+
+request_body {
+	max_size 10G
+}
+
+# Enable gzip but do not remove ETag headers
+encode {
+	zstd
+	gzip 4
+
+	minimum_length 256
+
+	match {
+		header Content-Type application/atom+xml
+		header Content-Type application/javascript
+		header Content-Type application/json
+		header Content-Type application/ld+json
+		header Content-Type application/manifest+json
+		header Content-Type application/rss+xml
+		header Content-Type application/vnd.geo+json
+		header Content-Type application/vnd.ms-fontobject
+		header Content-Type application/wasm
+		header Content-Type application/x-font-ttf
+		header Content-Type application/x-web-app-manifest+json
+		header Content-Type application/xhtml+xml
+		header Content-Type application/xml
+		header Content-Type font/opentype
+		header Content-Type image/bmp
+		header Content-Type image/svg+xml
+		header Content-Type image/x-icon
+		header Content-Type text/cache-manifest
+		header Content-Type text/css
+		header Content-Type text/plain
+		header Content-Type text/vcard
+		header Content-Type text/vnd.rim.location.xloc
+		header Content-Type text/vtt
+		header Content-Type text/x-component
+		header Content-Type text/x-cross-domain-policy
+	}
+}
+
+# Add headers to serve security related headers
+header Referrer-Policy no-referrer
+header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;"
+header X-Content-Type-Options nosniff
+header X-Download-Options noopen
+header X-Frame-Options SAMEORIGIN
+header X-Permitted-Cross-Domain-Policies none
+header X-Robots-Tag none
+header X-XSS-Protection "1; mode=block"
+
+# Path to the root of your installation
+root * /var/www/nextcloud
+
+route {
+	# Rule borrowed from `.htaccess` to handle Microsoft DAV clients
+	@msftdavclient {
+		header User-Agent DavClnt*
+		path /
+	}
+	redir @msftdavclient /remote.php/webdav/ temporary
+
+	route /robots.txt {
+		skip_log
+		file_server
+	}
+
+	# Add exception for `/.well-known` so that clients can still access it
+	# despite the existence of the `error @internal 404` rule which would
+	# otherwise handle requests for `/.well-known` below
+	route /.well-known/* {
+		redir /.well-known/carddav /remote.php/dav/ permanent
+		redir /.well-known/caldav /remote.php/dav/ permanent
+		
+		@well-known-static path \
+			/.well-known/acme-challenge /.well-known/acme-challenge/* \
+			/.well-known/pki-validation /.well-known/pki-validation/*
+		route @well-known-static {
+			try_files {path} {path}/ =404
+			file_server
+		}
+
+		redir * /index.php{path} permanent
+	}
+
+	@internal path \
+		/build /build/* \
+		/tests /tests/* \
+		/config /config/* \
+		/lib /lib/* \
+		/3rdparty /3rdparty/* \
+		/templates /templates/* \
+		/data /data/* \
+		\
+		/.* \
+		/autotest* \
+		/occ* \
+		/issue* \
+		/indie* \
+		/db_* \
+		/console*
+	error @internal 404
+
+	@assets {
+		path *.css *.js *.svg *.gif *.png *.jpg *.jpeg *.ico *.wasm *.tflite *.map *.wasm2
+		file {path}  # Only if requested file exists on disk, otherwise /index.php will take care of it
+	}
+	route @assets {
+		header /*       Cache-Control "max-age=15552000"   # Cache-Control policy borrowed from `.htaccess`
+		header /*.woff2 Cache-Control "max-age=604800"     # Cache-Control policy borrowed from `.htaccess`
+		skip_log                                           # Optional: Don't log access to assets
+		file_server {
+			precompressed gzip
+		}
+	}
+
+	# Rule borrowed from `.htaccess`
+	redir /remote/* /remote.php{path} permanent
+
+	# Serve found static files, continuing to the PHP default handler below if not found
+	try_files {path} {path}/
+	@notphpordir not path /*.php /*.php/* / /*/
+	file_server @notphpordir {
+		pass_thru
+	}
+	
+	# Required for legacy support
+	#
+	# Rewrites all other requests to be prepended by “/index.php” unless they match a known-valid PHP file path.
+	@unknownphppath not path \
+		/index.php /index.php/* \
+		/remote.php /remote.php/* \
+		/public.php /public.php/* \
+		/cron.php /cron.php/* \
+		/core/ajax/update.php /core/ajax/update.php/* \
+		/status.php /status.php/* \
+		/ocs/v1.php /ocs/v1.php/* \
+		/ocs/v2.php /ocs/v2.php/* \
+		/updater/*.php /updater/*.php/* \
+		/ocm-provider/*.php /ocm-provider/*.php/* \
+		/ocs-provider/*.php /ocs-provider/*.php/* \
+		/*/richdocumentscode/proxy.php /*/richdocumentscode/proxy.php/*
+	rewrite @unknownphppath /index.php{path}
+	
+	# Let everything else be handled by the PHP-FPM component
+	php_fastcgi nextcloud:9000 {
+		env modHeadersAvailable true         # Avoid sending the security headers twice
+		env front_controller_active true     # Enable pretty urls
+	}
+}
