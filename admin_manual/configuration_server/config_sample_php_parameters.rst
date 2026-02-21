@@ -365,9 +365,8 @@ dbhost
 Your host server name, for example ``localhost``, ``hostname``,
 ``hostname.example.com``, or the IP address.
 
-To specify a port, use ``hostname:####``; for IPv6 addresses, use the URI notation ``[ip]:port``.
-To specify a Unix socket, use ``localhost:/path/to/directory/containing/socket`` or
-``:/path/to/directory/containing/socket``, e.g., ``localhost:/run/postgresql/``.
+To specify a port use ``hostname:####``, for IPv6 addresses use the URI notation ``[ip]:port``.
+To specify a Unix socket use ``localhost:/path/to/directory/containing/socket`` or ``:/path/to/directory/containing/socket``, e.g. ``localhost:/run/postgresql/``.
 
 dbname
 ^^^^^^
