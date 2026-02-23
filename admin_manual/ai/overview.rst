@@ -113,6 +113,7 @@ Frontend apps
 * `Mail <https://apps.nextcloud.com/apps/mail>`_ for summarizing mail threads (see :ref:`the Nextcloud Mail docs<mail_thread_summary>` for how to enable this)
 * `Summary Bot <https://apps.nextcloud.com/apps/summary_bot>`_ for summarizing chat histories in `Talk <https://apps.nextcloud.com/apps/spreed>`_
 * `Talk <https://apps.nextcloud.com/apps/spreed>`_ for summarizing chat history (see `Nextcloud Talk docs <https://nextcloud-talk.readthedocs.io/en/latest/settings/#app-configuration>`_ for how to enable this)
+* *Desktop Clients* for simple "Chat with AI"
 
 
 Backend apps
