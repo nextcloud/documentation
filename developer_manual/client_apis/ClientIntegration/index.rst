@@ -62,7 +62,7 @@ Requirements:
 - ``mimetype_filters`` is a comma-separated list of filters (matches anything that starts with the filter). If there is no filter, the action is shown for every file/folder.
 - All ``urls`` must be relative.
 - ``params`` is used for body params (currently only POST).
-- ``icons`` are always SVGs.
+- ``icon`` field should always provide an SVG.
 - ``method`` supports POST/GET.
 
 .. code-block:: javascript 
