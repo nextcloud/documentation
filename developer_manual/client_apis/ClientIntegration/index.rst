@@ -54,15 +54,16 @@ Endpoint
 The endpoint tells the client how the menu entry should look like and how the client can send a request to the server.
 
 Requirements:
-- Every text need to be translated by the app
-- Current predefined params are fileId and filePath
-- {fileId} and {filePath} will be replaced on clients with actual values
-- url placeholder are always replaced
-- mimetype_filters is a comma-separated list of filters (matches anything that starts with the filter). If there is no filter, the action is shown for every file/folder.
-- all urls must be relative
-- params is used for body params (currently only POST)
-- Icons are always svgs
-- Method: supports POST/GET
+
+- Every text need to be translated by the app itself.
+- Current predefined params are ``fileId`` and ``filePath``,
+- ``{fileId}`` and ``{filePath}`` will be replaced by clients with actual values,
+- ``url`` placeholders are always replaced,
+- ``mimetype_filters`` is a comma-separated list of filters (matches anything that starts with the filter). If there is no filter, the action is shown for every file/folder.
+- All ``urls`` must be relative.
+- ``params`` is used for body params (currently only POST).
+- ``icons`` are always SVGs.
+- ``method`` supports POST/GET.
 
 .. code-block:: javascript 
 
@@ -75,13 +76,13 @@ Requirements:
       'icon' => '/apps/abc/img/app.svg'
   ],
 
-Response
---------
+Responses
+---------
 When clicking on a menu entry the client sends a predefined request to the server.
 The app in question can then handle the request and can send two different response types:
 
-Declarative UI
-^^^^^^^^^^^^^^
+Declarative UI response
+^^^^^^^^^^^^^^^^^^^^^^^
 The declarative UI response allows the app to send back a new UI to be rendered by the client: 
 - version: Indicates which version it is. Clients will be backwards compatible. If server sends a newer version than the client can understand the response will be ignored.
 - tooltip: Translated text, which will be shown as tooltip / snackbar.
@@ -207,8 +208,77 @@ When clicking on the action, the client will send a POST request to the specifie
       }
   }
 
+Develop your first app with client integration
+-----------------------------------------------
+
+Create a skeleton app
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+See `Develop your first Hello World app <https://cloud.nextcloud.com/s/iyNGp8ryWxc7Efa?dir=%2F%2F2%20Develop%20your%20first%20Hello%20World%20app>`_ for more help on that topic:
+
+- Create ``Capabilities.php`` in ``/lib`` folder and add to array in ``getCapabilities()``:
+
+  .. code-block:: php
+
+     'client_integration' => [
+                     'pingpong' => [
+                         'version' => 0.1,
+                         'context-menu' => [
+                             [
+                                 'name' => $this->l10n->t('Ping'),
+                                 'url' => '/ocs/v2.php/apps/pingpong/ping/{fileId}',
+                                 'method' => 'GET',
+                             ],
+                         ],
+                     ],
+                 ],
+
+  - The schema is:
+
+    - First ``app-id``
+    - Then hook name, currently only ``context-menu``.
+    - Then list of endpoints:
+
+      - Text need to be translated by the app.
+      - Current predefined params are fileId and filePath.
+      - ``mimetype_filters`` is a comma-separated list of filters (matches anything that starts with the filter). If there is no filter, the action will be shown in every file/folder.
+      - All urls are relative.
+      - ``params`` is used for body params (currently only ``POST``).
+      - Url placeholder are always replaced (currently ``{fileId}`` and ``{filePath}``).
+      - Icons are always SVGs.
+
+- Register the app in ``lib/AppInfo/Application.php``
+
+  .. code-block:: php
+
+     public function register(IRegistrationContext $context): void {
+         $context->registerCapability(Capabilities::class);
+     }
+
+- Add consuming function in ``/lib/Controller/ApiController.php``:
+
+  .. code-block:: php
+
+     #[NoAdminRequired]
+     #[ApiRoute(verb: 'GET', url: '/ping/{fileId}')]
+     public function ping(int $fileId = 1): DataResponse {
+         return new DataResponse(
+             ['version' => 0.1,
+                 'tooltip' => $this->l10n->t("Pong file %s", $fileId)]
+         );
+     }
+
+- Response is ``DataResponse`` with a version (currently 0.1) and a translated tooltip.
+
+.. toctree::
+   :maxdepth: 2
+
+   tutorial
+
 Issues/Bugs
 -----------
 
 Please report issues, bugs or feature requests at https://github.com/nextcloud/files-clients with label "Client integration".
+
+
 
