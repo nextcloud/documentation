@@ -144,11 +144,12 @@ Federated calendar shares
 -------------------------
 
 .. versionadded:: 32.0.0
+.. versionchanged:: 33.0.0 Federated calendar shares are now read/write.
 
-Nextcloud supports creating read-only federated calendar shares.
+Nextcloud supports creating federated calendar shares.
 A user is able to share a calendar with a remote user on a federated instance.
-For now, the shares are read-only and remote users are not able to change the events inside the
-shared calendar.
+Starting with Nextcloud 33, remote users are able to create, edit, and delete events inside the
+shared calendar. In Nextcloud 32, shares were read-only.
 
 The feature can be optionally disabled through an app config.
 Run the following command to disable creating new federated calendar shares for all users::
