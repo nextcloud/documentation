@@ -49,6 +49,8 @@ Hooks
 
 Currently only "context-menu" is supported.
 
+.. _endpoint-section:
+
 Endpoint
 --------
 The endpoint tells the client how the menu entry should look like and how the client can send a request to the server.
@@ -140,8 +142,8 @@ The tooltip response is a regular DataResponse type, with payload:
     }
   }
 
-Example:
-----------
+Example
+---------
 Here is an example of using the Assistant app. 
 
 **Capabilities:**
@@ -211,12 +213,9 @@ When clicking on the action, the client will send a POST request to the specifie
 Develop your first app with client integration
 -----------------------------------------------
 
-Create a skeleton app
-^^^^^^^^^^^^^^^^^^^^^^^^
+1. Familiarize yourself on how to create an app via `Develop your first Hello World app <https://cloud.nextcloud.com/s/iyNGp8ryWxc7Efa?dir=%2F%2F2%20Develop%20your%20first%20Hello%20World%20app>`_ for more help on that topic:
 
-See `Develop your first Hello World app <https://cloud.nextcloud.com/s/iyNGp8ryWxc7Efa?dir=%2F%2F2%20Develop%20your%20first%20Hello%20World%20app>`_ for more help on that topic:
-
-- Create ``Capabilities.php`` in ``/lib`` folder and add to array in ``getCapabilities()``:
+2. Create ``Capabilities.php`` in ``/lib`` folder and add to array in ``getCapabilities()``:
 
   .. code-block:: php
 
@@ -233,21 +232,9 @@ See `Develop your first Hello World app <https://cloud.nextcloud.com/s/iyNGp8ryW
                      ],
                  ],
 
-  - The schema is:
+See :ref:`endpoint-section` for endpoint details.
 
-    - First ``app-id``
-    - Then hook name, currently only ``context-menu``.
-    - Then list of endpoints:
-
-      - Text need to be translated by the app.
-      - Current predefined params are fileId and filePath.
-      - ``mimetype_filters`` is a comma-separated list of filters (matches anything that starts with the filter). If there is no filter, the action will be shown in every file/folder.
-      - All urls are relative.
-      - ``params`` is used for body params (currently only ``POST``).
-      - Url placeholder are always replaced (currently ``{fileId}`` and ``{filePath}``).
-      - Icons are always SVGs.
-
-- Register the app in ``lib/AppInfo/Application.php``
+3. Register the app in ``lib/AppInfo/Application.php``
 
   .. code-block:: php
 
@@ -255,7 +242,7 @@ See `Develop your first Hello World app <https://cloud.nextcloud.com/s/iyNGp8ryW
          $context->registerCapability(Capabilities::class);
      }
 
-- Add consuming function in ``/lib/Controller/ApiController.php``:
+4. Add consuming function in ``/lib/Controller/ApiController.php``:
 
   .. code-block:: php
 
@@ -268,12 +255,7 @@ See `Develop your first Hello World app <https://cloud.nextcloud.com/s/iyNGp8ryW
          );
      }
 
-- Response is ``DataResponse`` with a version (currently 0.1) and a translated tooltip.
-
-.. toctree::
-   :maxdepth: 2
-
-   tutorial
+5. Response is ``DataResponse`` with a version (currently 0.1) and a translated tooltip.
 
 Issues/Bugs
 -----------
