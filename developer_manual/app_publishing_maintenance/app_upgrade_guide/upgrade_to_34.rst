@@ -71,4 +71,5 @@ Deprecated APIs
 Removed APIs
 ^^^^^^^^^^^^
 
-- TBD
+- ``\OCP\Share_Backend``, ``\OCP\Share_Backend_Collection``, ``\OCP\Share_Backend_File_Dependent`` were removed. This old
+  share backend was replaced in Nextcloud 9 with a new backend system based on ``IShareProvider``.
