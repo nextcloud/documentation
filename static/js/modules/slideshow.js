@@ -245,9 +245,9 @@ define(['jquery', 'lodash', 'enquire', 'scrollMagic', 'hammer', 'inview'],
 						lastElement = $('.right-text-grey').last(),
 						visibleElement = $('.textTrigger').parent(),
 						slidesCount = $('.right-text-grey').first().data('slide'),
-						NoMoreSlides = $('.right-text-grey.active').data('slide');
+						currentSlideNumber = $('.right-text-grey.active').data('slide');
 
-					if (slidesCount < NoMoreSlides) {
+					if (slidesCount < currentSlideNumber) {
 						var currentText = $('.right-text-grey.active'),
 							previousText = $('.right-text-grey.active').prev();
 

@@ -78,27 +78,27 @@ $mapping = array(
 
 ############# Do not edit below this line #################
 
-$from = $_GET['to'];
-$proto = isset($_SERVER['HTTPS']) ? 'https' : 'http';
+$shortcode = $_GET['to'];
+$protocol = isset($_SERVER['HTTPS']) ? 'https' : 'http';
 $port = $_SERVER['SERVER_PORT'];
 $port = ($port !== '80' && $port !== '443') ? ":$port" : '';
-$name = $_SERVER['SERVER_NAME'];
+$serverName = $_SERVER['SERVER_NAME'];
 $path = dirname($_SERVER['REQUEST_URI']);
-$location = "$proto://$name$port$path";
+$location = "$protocol://$serverName$port$path";
 
 header('HTTP/1.1 302 Moved Temporarily');
-if (array_key_exists($from, $mapping)) {
-    $subPath = $mapping[$from];
-} elseif (str_starts_with($from, 'admin-')) {
-    $subPath = '/admin_manual';
-} elseif (str_starts_with($from, 'developer-')) {
-    $subPath = '/developer_manual';
+if (array_key_exists($shortcode, $mapping)) {
+    $targetPath = $mapping[$shortcode];
+} elseif (str_starts_with($shortcode, 'admin-')) {
+    $targetPath = '/admin_manual';
+} elseif (str_starts_with($shortcode, 'developer-')) {
+    $targetPath = '/developer_manual';
 } else {
-    $subPath = '/user_manual';
+    $targetPath = '/user_manual';
 }
 
-$subPathParts = explode('/', $subPath);
-$manual = $subPathParts[1] ?? '';
+$targetPathParts = explode('/', $targetPath);
+$manual = $targetPathParts[1] ?? '';
 if ($manual === 'user_manual') {
     // Sort accepted languages by their weight
     $acceptLanguages = array_reduce(
@@ -125,11 +125,11 @@ if ($manual === 'user_manual') {
         // To test locally add '/_build/html/' to the path.
         if (file_exists(__DIR__ . '/user_manual/' . $language)) {
             // Insert the language /user_manual/<language>/...
-            array_splice($subPathParts, 2, 0, [$language]);
-            $subPath = implode('/', $subPathParts);
+            array_splice($targetPathParts, 2, 0, [$language]);
+            $targetPath = implode('/', $targetPathParts);
             break;
         }
     }
 }
 
-header('Location: ' . $location . $subPath);
+header('Location: ' . $location . $targetPath);

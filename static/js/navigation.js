@@ -87,22 +87,22 @@ $(document).ready(function() {
 
 		mobileBgAnimation: function() {
 			var windowDiameter = ($(window).width() * 2) * $(window).height() * 2,
-				returnBiggest = (Math.sqrt(windowDiameter)) * 1.5;
+				maxDiameter = (Math.sqrt(windowDiameter)) * 1.5;
 
 			$(this.variables.mobileBackgroundSelector).css({
-				'top': - returnBiggest / 2+ 'px',
-				'right': - returnBiggest / 2 + 'px',
-				'width': returnBiggest + 'px',
-				'height': returnBiggest + 'px'
+				'top': - maxDiameter / 2 + 'px',
+				'right': - maxDiameter / 2 + 'px',
+				'width': maxDiameter + 'px',
+				'height': maxDiameter + 'px'
 			});
 		},
 
 		showAndHideHeader: function(variables) {
 
-			var myElement = document.querySelector('.nav');
+			var navigationElement = document.querySelector('.nav');
 
 			//I should pass the variable object inside the headroom
-			this.headroom  = new Headroom(myElement, {
+			this.headroom  = new Headroom(navigationElement, {
 				offset: 510,
 				tolerance : {
 					up : 20,
@@ -146,14 +146,14 @@ $(document).ready(function() {
 			$(this.variables.sectionSelector).click(_.bind(this.showSubMenu, this));
 		},
 
-		setBackgroundDropdown: function(bg) {
-			bg.addClass(this.variables.backgroundAnimationClass);
+		setBackgroundDropdown: function(background) {
+			background.addClass(this.variables.backgroundAnimationClass);
 		},
 
 		backgroundDropdown: function(event) {
 			var cssPadding = 30,
-				bg = $(this.variables.navBackgroundSelector),
-				bgWrapper = $(this.variables.navBackgroundWrapper),
+				background = $(this.variables.navBackgroundSelector),
+				backgroundWrapper = $(this.variables.navBackgroundWrapper),
 				selectedDropdown = $(event.currentTarget).find(this.variables.linksSelector),
 				height = selectedDropdown.innerHeight(),
 				width = selectedDropdown.innerWidth(),
@@ -162,10 +162,10 @@ $(document).ready(function() {
 				marginNavigation = (windowWidth - navigationWidth) / 2,
 				backgroundDropdownPosition = $(event.currentTarget).offset().left + cssPadding + ($(event.currentTarget).innerWidth() - cssPadding) /2 - width/2 - marginNavigation;
 
-			setTimeout(_.bind(this.setBackgroundDropdown, this, bg));
-			bgWrapper.addClass(this.variables.linksVisibleClass);
+			setTimeout(_.bind(this.setBackgroundDropdown, this, background));
+			backgroundWrapper.addClass(this.variables.linksVisibleClass);
 
-			bg.css({
+			background.css({
 				'-moz-transform': 'translateX(' + backgroundDropdownPosition + 'px)',
 				'-webkit-transform': 'translateX(' + backgroundDropdownPosition + 'px)',
 				'-ms-transform': 'translateX(' + backgroundDropdownPosition + 'px)',
@@ -185,15 +185,14 @@ $(document).ready(function() {
 
 		// Clear dropdowns in mouse leave
 		destroyDropdown: function(event) {
-			var bg = $(this.variables.navBackgroundSelector),
-				bgWrapper = $(this.variables.navBackgroundWrapper);
+			var background = $(this.variables.navBackgroundSelector),
+				backgroundWrapper = $(this.variables.navBackgroundWrapper);
 
 			setTimeout(_.bind(function() {
-				bg.removeClass(this.variables.backgroundAnimationClass);
+				background.removeClass(this.variables.backgroundAnimationClass);
 			},this));
 
-			var bgWrapper = $(this.variables.navBackgroundWrapper);
-			bgWrapper.removeClass(this.variables.linksVisibleClass);
+			backgroundWrapper.removeClass(this.variables.linksVisibleClass);
 		},
 
 
