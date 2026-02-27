@@ -16,10 +16,13 @@ For best performance, stability and functionality we have documented some recomm
 +==================+=======================================================================+
 | Operating System | - **Ubuntu 24.04 LTS** (recommended)                                  |
 | (64-bit)         | - Ubuntu 22.04 LTS                                                    |
-|                  | - **Red Hat Enterprise Linux 9** (recommended)                        |
+|                  | - **Red Hat Enterprise Linux 10** (recommended)                       |
+|                  | - Red Hat Enterprise Linux 9                                          |
+|                  | - Debian 13 (Trixi)                                                   |
 |                  | - Debian 12 (Bookworm)                                                |
-|                  | - SUSE Linux Enterprise Server 15                                     |
-|                  | - openSUSE Leap 15.6                                                  |
+|                  | - SUSE Linux Enterprise Server 16                                     |
+|                  | - SUSE Linux Enterprise Server 15 SP6 (or later)                      |
+|                  | - openSUSE Leap 16                                                    |
 |                  | - CentOS Stream                                                       |
 |                  | - Alpine Linux                                                        |
 +------------------+-----------------------------------------------------------------------+
@@ -51,6 +54,7 @@ A 64-bit CPU, OS and PHP is required for Nextcloud to run well.
 
 - Dates before Unix Epoch (1970-01-01) are not supported
 - Dates after 2038 are not supported
+- Some external apps may not work with 32-bit systems
 
 Memory
 ^^^^^^
