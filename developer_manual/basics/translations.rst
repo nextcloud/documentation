@@ -343,7 +343,7 @@ iOS
 Adding translations
 -------------------
 
-The steps how to set up translations for an app have been moved to it's own page in the "App development" chapter: :ref:`Translation setup`
+The steps how to set up translations for an app have been moved to it's own page in the "App development" chapter: :ref:`Translation`
 
 Testing translations
 --------------------
