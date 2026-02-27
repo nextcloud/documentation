@@ -7,4 +7,5 @@ Getting started
 
    development_process
    devenv
+   vscode
    coding_standards/index
