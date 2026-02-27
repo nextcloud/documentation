@@ -96,7 +96,7 @@ For more details and help tuning your database:
 Using Redis-based transactional file locking
 --------------------------------------------
 
-Transactional File Focking uses the database as the default backend. This
+Transactional File Locking uses the database as the default backend. This places
 additional load on your database. See the section
 :doc:`../configuration_files/files_locking_transactional` for instructions on
 configuring Nextcloud to use Redis-based Transactional File Locking.
