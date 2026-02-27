@@ -564,6 +564,13 @@ using ISO 3166-1 country codes such as ``DE`` for Germany, ``FR`` for France, â€
 It is required to allow inserting phone numbers in the user profiles starting
 without the country code (e.g., +49 for Germany).
 
+If the user base is truly international and there is no default that would make sense, the phone region can be set to none:
+
+::
+	
+	'default_phone_region' => 'none',
+
+
 No default value!
 
 force_locale
