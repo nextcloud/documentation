@@ -2717,7 +2717,6 @@ Memory caching backend for locally stored data
 
 Defaults to ``none``
 
-
 memcache.distributed
 ^^^^^^^^^^^^^^^^^^^^
 
