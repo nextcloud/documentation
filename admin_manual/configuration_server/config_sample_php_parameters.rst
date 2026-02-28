@@ -2717,20 +2717,6 @@ Memory caching backend for locally stored data
 
 Defaults to ``none``
 
-memcache_customprefix
-^^^^^^^^^^^^^^^^^^^^^
-
-
-::
-
-	'memcache_customprefix' => 'mynextcloudprefix',
-
-Custom cache key prefix for Redis or Memcached
-
-* Used for avoiding collisions in the cache system
-* May be used for ACL restrictions in Redis
-
-Defaults to an auto-generated, semi-unique ID
 
 memcache.distributed
 ^^^^^^^^^^^^^^^^^^^^
