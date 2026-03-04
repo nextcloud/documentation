@@ -378,7 +378,7 @@ current user. You may use the ``'cache_path'`` directive in ``config.php``
 (See :doc:`config_sample_php_parameters`) to select a different location.
 
 Cache Key Prefix for Redis or Memcached
----------------------------------
+---------------------------------------
 
 By default, Nextcloud generates a semi-unique prefix for cache keys using information like instance ID, version etc. to mitigate the problem of
 collisions when using the same cache for multiple Nextcloud instances.
