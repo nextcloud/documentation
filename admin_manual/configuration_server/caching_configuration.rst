@@ -382,7 +382,7 @@ Cache Key Prefix for Redis or Memcached
 
 By default, Nextcloud generates a semi-unique prefix for cache keys using information like instance ID, version etc. to mitigate the problem of
 collisions when using the same cache for multiple Nextcloud instances.
-If you want to make sure to prevent collisions alltogether, you can use the following
+If you want to make sure to prevent collisions altogether, you can use the following
 setting to define your custom prefix::
 
   'memcache_customprefix' => 'mynextcloudprefix',
