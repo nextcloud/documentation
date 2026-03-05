@@ -391,14 +391,18 @@ location before moving into production.
 
 For safely moving the data directory, the recommended actions are:
 
-1. Make sure no cron jobs are running and, if using system cron, that the Nextcloud crontab
-entry is disabled.
+1. Make sure no cron jobs are running and, if using system cron, that the Nextcloud crontab entry is disabled.
+
 2. Stop web/app server(s).
-3. Move ``/data`` to the new location (ensure you also move hidden/dot files such as
-``.ncdata``).
+
+3. Move ``/data`` to the new location (ensure you also move hidden/dot files such as ``.ncdata``).
+
 4. Create a symlink from the original location to the new location.
+
 5. Ensure permissions are still correct (including for any parent folders).
+
 6. Restart web/app server(s).
+
 7. Re-enable Nextcloud's system crontab entry (if applicable).
 
 .. note::
@@ -407,17 +411,21 @@ entry is disabled.
 It is also possible to move the data directory without using symlinks, but
 this requires manually modifying the internal ``oc_storages`` database table:
 
-1. Make sure no cron jobs are running and, if using system cron, that the Nextcloud crontab
-entry is disabled.
+1. Make sure no cron jobs are running and, if using system cron, that the Nextcloud crontab entry is disabled.
+
 2. Stop web/app server(s).
-3. Move ``/data`` to the new location (ensure you also move hidden/dot files such as
-``.ncdata``).
+
+3. Move ``/data`` to the new location (ensure you also move hidden/dot files such as ``.ncdata``).
+
 4. Update the value of ``datadirectory`` in your ``config.php``.
-5. Edit the database: In the ``oc_storages`` table, update the path portion of the ``id``
-field of the entry beginning with ``local::/old-data-dir/`` (e.g., change
-``local::/old-data-dir/`` to ``local::/new-data-dir/``).
+
+5. Edit the database: In the ``oc_storages`` table, update the path portion of the ``id`` field of the entry
+   beginning with ``local::/old-data-dir/`` (e.g., change ``local::/old-data-dir/`` to ``local::/new-data-dir/``).
+
 6. Ensure permissions are still correct (including for any parent folders).
+
 7. Restart web/app server(s).
+
 8. Re-enable Nextcloud's system crontab entry (if applicable).
 
 .. warning::
