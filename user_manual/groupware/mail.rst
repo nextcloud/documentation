@@ -349,6 +349,8 @@ Quick actions
 -------------
 .. versionadded:: 5.5 (Nextcloud 30)
 
+.. figure:: images/mail_use-quick-actions.gif
+
 Allows you to group action steps that you would normally perform on envelopes such as tagging, moving, marking as read ... into quick actions that can be executed with a single click.
 Quick actions are scoped to one mail account and can be created and managed in the mail settings under "Quick actions" or directly from the envelope action menu.
 
