@@ -2748,6 +2748,21 @@ Memory caching backend for distributed data
 
 Defaults to ``none``
 
+memcache_customprefix
+^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'memcache_customprefix' => 'mycustomprefix',
+
+Cache Key Prefix for Redis or Memcached
+
+* Used for avoiding collisions in the cache system
+* May be used for ACL restrictions in Redis
+
+Defaults to ``''`` (empty string)
+
 redis
 ^^^^^
 
@@ -3777,12 +3792,24 @@ part_file_in_storage
 
 	'part_file_in_storage' => true,
 
-Store part files created during upload in the same storage as the upload
-target. Setting this to false stores part files in the root of the user's
-folder, which may be necessary for external storage with limited rename
-capabilities.
+Control where temporary ".part" files are written during direct (non-chunked)
+uploads.
 
-Defaults to ``true``
+While an upload is in progress, Nextcloud writes data to a temporary ".part"
+file and renames it to the final filename when the upload completes.
+
+- true: create the temporary ".part" file in the destination storage/path.
+  This typically avoids cross-storage moves and can improve reliability and
+  performance on backends where rename within the same storage is cheap/atomic.
+- false: create the temporary ".part" file in the user's root folder first.
+  This may help with some external storages that have limited rename/move
+  behavior, but can add extra copy/move overhead.
+
+Note: This setting applies to direct (non-chunked) uploads only. Chunked/
+resumable uploads use a separate uploads staging mechanism and are not
+controlled by this option.
+
+Defaults to ``true``.
 
 mount_file
 ^^^^^^^^^^
@@ -3804,10 +3831,31 @@ filesystem_cache_readonly
 
 	'filesystem_cache_readonly' => false,
 
-Prevent Nextcloud from updating the cache due to filesystem changes for all
-storage.
+Read-only mode for scan/detection reconciliation writes to filecache.
 
-Defaults to ``false``
+When true, Nextcloud does not store filecache metadata changes that are
+identified through scanner/change-detection reconciliation paths (global:
+all storages).
+
+Scope note:
+
+- Nextcloud-originated operations (UI/WebDAV/clients) are generally
+  handled through normal application write paths and thus will still
+  update filecache even when this is set to true.
+- Reconciliation/refresh paths are prevented from writing back discovered
+  metadata deltas while this is enabled.
+
+Practical effect:
+
+- Changes made directly on storage outside Nextcloud are generally not
+  reflected while enabled.
+- Some metadata-dependent behavior can appear stale until this parameter
+  is disabled (permitting reconciliation writes again).
+
+Warning: This is an expert/global setting for specialized environments and
+is intentionally not default-safe for general deployments.
+
+Defaults to ``false``.
 
 trusted_proxies
 ^^^^^^^^^^^^^^^
