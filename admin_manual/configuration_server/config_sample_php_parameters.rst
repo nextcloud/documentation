@@ -3811,18 +3811,6 @@ controlled by this option.
 
 Defaults to ``true``.
 
-mount_file
-^^^^^^^^^^
-
-
-::
-
-	'mount_file' => '/var/www/nextcloud/data/mount.json',
-
-Specify the location of the ``mount.json`` file.
-
-Defaults to ``data/mount.json`` in the Nextcloud directory.
-
 filesystem_cache_readonly
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
