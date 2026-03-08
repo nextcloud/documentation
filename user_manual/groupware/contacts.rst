@@ -182,6 +182,36 @@ The Contacts settings is also where you can share, export and delete addressbook
 See :doc:`index` for more details about syncing your address books
 with iOS, macOS, Thunderbird and other CardDAV clients.
 
+Organization Chart for Contacts
+-------------------------------
+
+Nextcloud allows administrators to define a manager, job title, and role for users in the system address book. This functionality is essential for maintaining a hierarchical view of your organization’s structure.
+
+Prerequisites
+~~~~~~~~~~~~~
+- The user must be part of the system address book.
+
+Assigning a Manager
+~~~~~~~~~~~~~~~~~~~
+To assign a manager to a user:
+
+1. Go to **Contacts** in the Nextcloud interface.
+2. Select the user for whom you want to assign a manager.
+3. Under the **Manager** field, search and select the manager from the system address book.
+4. Save your changes.
+
+Setting Job Title and Role
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+To set a user’s job title and role:
+
+1. Open the user’s profile in **Contacts**.
+2. In the **Job Title** field, enter the appropriate job title.
+3. In the **Role** field, specify the user’s role within the organization.
+4. Save your changes.
+
+System Address Book Requirement
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The organization chart feature only works with users listed in the system address book. Ensure that all relevant users are added to the address book for this functionality to be effective.
 
 Teams
 -----
