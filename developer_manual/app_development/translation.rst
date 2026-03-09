@@ -160,20 +160,20 @@ The following describes four processes:
 
 1. Process to translate new string
 
-.. image:: ../images/translation process1.png
+.. image:: ../images/translation_process1.png
    :alt: Process to translate new string
 
 2. Process to correct typo/grammar issue in translated string
 
-.. image:: ../images/translation process2.png
+.. image:: ../images/translation_process2.png
    :alt: Process to correct typo/grammar issue in translated string
 
 3. Process for making an untranslatable string translatable
 
-.. image:: ../images/translation process3.png
+.. image:: ../images/translation_process3.png
    :alt: Process for making an untranslatable string translatable
 
 4. Process to correct issue in source string
 
-.. image:: ../images/translation process4.png
+.. image:: ../images/translation_process4.png
    :alt: Process to correct issue in source string
