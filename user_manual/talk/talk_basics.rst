@@ -335,6 +335,32 @@ While it is enabled, other participants will not receive notifications from your
 .. image:: images/message-silent.png
    :width: 600px
 
+Scheduling messages
+-------------------
+
+If you want to send a message not right now, but at a specific time, you can schedule it. Just select the desired date and time in the quick actions next to the input field.
+
+.. image:: images/message-schedule-action.png
+   :width: 600px
+
+You can find all your scheduled messages by clicking on the clock icon next to the input field. There you can edit, reschedule or delete currently prepared messages.
+
+.. image:: images/message-schedule-toggle.png
+   :width: 400px
+
+Pinning messages
+----------------
+
+A moderator can pin important messages in a conversation, for certain period of time or until it's no longer relevant.
+
+.. image:: images/message-pin-action.png
+   :width: 400px
+
+Pinned messages are highlighted and accessible above the chat or in the ``Shared items`` tab of the content sidebar. If you no longer need a pinned message, you can unpin it for everyone or only yourself from quick actions.
+
+.. image:: images/message-pin-in-chat.png
+   :width: 700px
+
 Managing a conversation
 -----------------------
 
@@ -348,7 +374,7 @@ Changing permissions of a user that joined a public conversation will also perma
 Moderators can configure the conversation. Select ``Conversation settings`` from the ``...`` menu of the conversation on the top to access the settings.
 
 .. image:: images/open-settings.png
-    :width: 400px
+    :width: 500px
 
 Here you can configure the description, guest access, if the conversation is visible to others on the server and more.
 
@@ -412,7 +438,7 @@ You can access your settings and choose a different webcam, microphone and other
 From media settings dialog, you can also change the background of your video.
 
 .. image:: images/background-settings-in-call.png
-    :width: 400px
+    :width: 500px
 
 All these settings are also available as direct actions in the bottom bar.
 
@@ -469,14 +495,27 @@ The table in the CSV file contains the following columns:
 - **Type**: Indicates whether the participant is a registered user or a guest.
 - **Identifier**: Unique identifier for the participant.
 
+Appearance
+----------
+
 Compact view of conversations list
-----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Compact view allows to hide last message preview in the conversation list, providing a more focused interface. 
-You can enable it from the ``Talk settings`` dialog  in ``Appearance`` section.
 
 .. image:: images/talk-compact-view.png
    :width: 200px
+
+Chat messages
+^^^^^^^^^^^^^
+
+Chat appearance settings allow you to customize the look of your conversation chats.
+You can choose between classic list or message bubbles, with your own messages on the side.
+
+You can change both settings from the ``Talk settings`` dialog  in ``Appearance`` section.
+
+.. image:: images/talk-appearance-settings.png
+   :width: 600px
 
 
 Messages search in a conversation
@@ -498,12 +537,12 @@ Threaded messages
 You can create threads in conversations to keep discussions organized. The thread creation option is available in the new message additional actions.
 
 .. image:: images/thread-create-action.png
-   :width: 500px
+   :width: 400px
 
 Then, you can add a title and description for the thread and start the discussion.
 
 .. image:: images/thread-example.png
-   :width: 500px
+   :width: 600px
 
 You can view all replies in a thread either from the replies button on the message or from ``Shared items`` tab in the content sidebar.
 

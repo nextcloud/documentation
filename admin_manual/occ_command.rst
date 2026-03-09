@@ -1766,6 +1766,12 @@ You can reset any user's password, including administrators (see
    Confirm the new password:
    Successfully reset password for layla
 
+It is possible to clear a user's passwords with ``--no-password`` ::
+
+ sudo -E -u www-data php occ user:resetpassword --no-password layla
+   Are you sure you want to clear the password for layla?
+   Successfully reset password for layla
+
 You may also use ``password-from-env`` to reset passwords::
 
  export OC_PASS=newpassword

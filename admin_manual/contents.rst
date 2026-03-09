@@ -11,6 +11,7 @@ Table of contents
     index
     release_schedule
     gdpr/index
+    declarations/index
 
 .. toctree::
     :caption: Release notes

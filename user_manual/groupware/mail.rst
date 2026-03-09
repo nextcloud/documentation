@@ -20,6 +20,18 @@ Switch layout
 
 .. figure:: images/mail_layout.png
 
+Use Compact Mode
+~~~~~~~~~~~~~~~~
+.. versionadded:: 5.7.0
+
+Compact mode offers a cleaner and more efficient way to view your messages. Avatars are hidden, selection checkboxes are always visible, and the preview of messages is removed. It saves space allowing you to see more emails at once.
+
+1. Visit the mail settings
+2. Go to **Appearance**
+3. Toggle the Compact Mode
+
+.. figure:: images/use-compact-mode.png
+
 Message Display / Operation Mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -348,6 +360,8 @@ When looking through your mailbox you will see a short AI generated summary of y
 Quick actions
 -------------
 .. versionadded:: 5.5 (Nextcloud 30)
+
+.. figure:: images/mail_use-quick-actions.gif
 
 Allows you to group action steps that you would normally perform on envelopes such as tagging, moving, marking as read ... into quick actions that can be executed with a single click.
 Quick actions are scoped to one mail account and can be created and managed in the mail settings under "Quick actions" or directly from the envelope action menu.

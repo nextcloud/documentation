@@ -108,8 +108,7 @@ always be free, regardless of an events' settings.
 Sharing calendars
 ~~~~~~~~~~~~~~~~~
 
-You may share your calendar with local users, groups or read-only with remote users on federated
-servers.
+You may share your calendar with local users, groups or with remote users on federated servers.
 
 .. figure:: images/calendar_sharing_1.png
 
@@ -118,6 +117,19 @@ Calendars may be shared with write access or read-only. When sharing a calendar 
 .. figure:: images/calendar_sharing_2.png
 
 .. note:: Calendar shares currently cannot be accepted or rejected. If you want to stop having a calendar that someone shared with you, you can click on the 3-dot menu next to the calendar in the calendar list and click on "Unshare from me". To restore a share, the calendar can be reshared again, either for the whole group, resetting all unshares, or for a single user.
+
+Federated calendar sharing
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 32.0.0
+.. versionchanged:: 33.0.0 Federated calendar shares support read/write access.
+
+Sharing a calendar with a user on another Nextcloud instance works just like sharing with a local user.
+The difference is that you need to use the federated user identifier as the recipient, which has the format
+``<username>@<instance>`` (e.g. ``alice@cloud.example.com``).
+
+Starting with Nextcloud 33, federated shares support full read/write access, allowing remote users to
+create, edit, and delete events in the shared calendar. In Nextcloud 32, federated shares were read-only.
 
 Publishing a calendar
 ~~~~~~~~~~~~~~~~~~~~~

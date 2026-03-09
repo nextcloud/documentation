@@ -45,8 +45,12 @@ If AppAPI is disabled, other apps that depend on it will not be visible in the a
 S3 integrity protections enabled, configuration update may be needed
 --------------------------------------------------------------------
 
-The AWS SDK for PHP was updated and now enables the default integrity protections for S3. If your S3 backend does not support the default integrity protection yet, you can disable it since Nextcloud 32.0.2 by adding ``'request_checksum_calculation' => 'when_required',`` and ``'response_checksum_validation' => 'when_required',`` to the object store configuration.
+The AWS SDK for PHP was updated and now supports the data integrity protections for S3.
+
+>= Nextcloud 32.0.2: If your S3 backend does not support the data integrity protection, you can disable it by adding ``'request_checksum_calculation' => 'when_required',`` and ``'response_checksum_validation' => 'when_required',`` to the object store configuration.
+
+>= Nextcloud 32.0.3: S3 data integrity protections are disabled by default and are now opt-in.
 
 If your S3 backend does not support this, you may see an error such as ``Checksum Type mismatch occurred, expected checksum Type: null, actual checksum Type: crc32`` in your logs when uploading files.
 
-More details about S3 integrity protection can be found at https://docs.aws.amazon.com/sdkref/latest/guide/feature-dataintegrity.html and https://github.com/aws/aws-sdk-php/discussions/3100.
+More details about data integrity protections for S3 can be found at https://docs.aws.amazon.com/sdkref/latest/guide/feature-dataintegrity.html and https://github.com/aws/aws-sdk-php/discussions/3100.
