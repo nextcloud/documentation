@@ -152,3 +152,28 @@ Now the following folder structure is available::
         |-- myapp.pot
 
 You then just need the :file:`.json` and :file:`.js` files for a working localized app.
+
+Documentation on the translation process
+----------------------------------------
+
+The following describes four processes:
+
+1. Process to translate new string
+
+.. image:: ../images/translation process1.png
+   :alt: Process to translate new string
+
+2. Process to correct typo/grammar issue in translated string
+
+.. image:: ../images/translation process2.png
+   :alt: Process to correct typo/grammar issue in translated string
+
+3. Process for making an untranslatable string translatable
+
+.. image:: ../images/translation process3.png
+   :alt: Process for making an untranslatable string translatable
+
+4. Process to correct issue in source string
+
+.. image:: ../images/translation process4.png
+   :alt: Process to correct issue in source string
