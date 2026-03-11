@@ -324,3 +324,15 @@ the current working directory.
    your system, ensure that you have enough disk space to accommodate these files.
    Also, due to their size, we strongly recommend that you properly compress any
    core dump files prior to sending them to Nextcloud Customer Support.
+
+Citrix Workspace known issues
+-----------------------------
+
+These are known issues when running the desktop client in a Citrix workspace:
+  - The Windows user's Roaming profile needs to be persisted between sessions - see :ref:`configuration_files`. 
+    The failure on doing so will result in result in users having to set up their account again in every new session.
+  - Every time the user logs in a Citrix environment, it creates a session with the desktop client and in that session the client will sync the user's files, 
+    that can quickly lead to the storage running out of space.
+
+For more information on Citrix support:
+- :ref:`system_requirements`

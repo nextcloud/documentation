@@ -1,7 +1,7 @@
 ==================
 Configuration File
 ==================
-
+.. _configuration_files:
 The Nextcloud Client reads a configuration file.  You can locate this configuration file as follows:
 
 On Linux distributions:
@@ -13,6 +13,9 @@ On Microsoft Windows systems:
 On macOS systems:
         ``$HOME/Library/Preferences/Nextcloud/nextcloud.cfg``
 
+.. note:: 
+    In a Citrix workspace, the user's Roaming profile needs to be persisted between sessions. 
+    The failure on doing so will result in result in users having to set up their account again in every new session.
 
 The configuration file contains settings using the Microsoft Windows .ini file
 format. You can overwrite changes using the Nextcloud configuration dialog.
