@@ -30,16 +30,22 @@ KWallet, so that the sync client can login automatically.
 You will also find links to source code archives and older versions on the
 download page.
 
+.. _system_requirements:
 System Requirements
 ----------------------------------
 
 - Windows 10+ (64-bits only)
 - macOS 12.0+ (64-bits only)
 - Linux (Ubuntu 22.04 or openSUSE 15.5 or Alma 8 or ...) (64-bits only)
+    For Linux distributions, we support, if technically feasible, the current LTS releases.
+    For BSD, we support them if technically feasible but we do not test.
 
 .. note::
-   For Linux distributions, we support, if technically feasible, the current LTS releases.
-   For BSD, we support them if technically feasible but we do not test
+   We do not support Citrix. 
+
+   - We will do our best to advise Citrix users from the desktop client point of view. 
+   - We will fix issues that are also reproducible on the standard supported systems. 
+   - Everything else is outside of our scope.
 
 Customizing the Windows Installation
 ------------------------------------
