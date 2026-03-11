@@ -329,10 +329,7 @@ Citrix Workspace known issues
 -----------------------------
 
 These are known issues when running the desktop client in a Citrix workspace:
-  - The Windows user's Roaming profile needs to be persisted between sessions - see :ref:`configuration_files`. 
+  - The Windows user's Roaming profile needs to be persisted between sessions - see :ref:`Config file <configfile>`::
     The failure on doing so will result in result in users having to set up their account again in every new session.
   - Every time the user logs in a Citrix environment, it creates a session with the desktop client and in that session the client will sync the user's files, 
     that can quickly lead to the storage running out of space.
-
-For more information on Citrix support:
-- :ref:`system_requirements`

@@ -30,7 +30,6 @@ KWallet, so that the sync client can login automatically.
 You will also find links to source code archives and older versions on the
 download page.
 
-.. _system_requirements:
 System Requirements
 ----------------------------------
 

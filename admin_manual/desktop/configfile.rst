@@ -1,7 +1,7 @@
 ==================
 Configuration File
 ==================
-.. _configuration_files:
+.. _configfile:
 The Nextcloud Client reads a configuration file.  You can locate this configuration file as follows:
 
 On Linux distributions:
