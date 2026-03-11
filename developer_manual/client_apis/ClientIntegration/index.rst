@@ -14,7 +14,7 @@ Supported clients
 
 Android: 3.36.0 and above
 
-Desktop: 4.1.0 and above
+Desktop: 33.0.0 and above
 
 iOS: 7.3.0 and above
 
