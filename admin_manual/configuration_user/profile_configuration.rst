@@ -253,3 +253,69 @@ In the above example, phone and role are overwritten to ``Private`` and
 
 .. note::
    Use ``\OCP\Accounts\IAccountManager`` constants for both property keys and scope values.
+
+FAQ: How do I lock profile visibility down as tightly as possible?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If your goal is maximum privacy:
+
+1. Disable profiles globally (strictest option):
+
+   .. code-block:: php
+
+     'profile.enabled' => false,
+
+   Effect:
+
+   - Profile functionality is removed.
+   - Profile-based discoverability/usability features are reduced accordingly.
+
+2. If profiles must remain enabled, set restrictive defaults for new users:
+
+   .. code-block:: php
+
+     'account_manager.default_property_scope' => [
+       \OCP\Accounts\IAccountManager::PROPERTY_ADDRESS => \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,
+       \OCP\Accounts\IAccountManager::PROPERTY_PHONE => \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,
+       \OCP\Accounts\IAccountManager::PROPERTY_WEBSITE => \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,
+       \OCP\Accounts\IAccountManager::PROPERTY_TWITTER => \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,
+       \OCP\Accounts\IAccountManager::PROPERTY_BLUESKY => \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,
+       \OCP\Accounts\IAccountManager::PROPERTY_FEDIVERSE => \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,
+       \OCP\Accounts\IAccountManager::PROPERTY_ORGANISATION => \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,
+       \OCP\Accounts\IAccountManager::PROPERTY_ROLE => \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,
+       \OCP\Accounts\IAccountManager::PROPERTY_HEADLINE => \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,
+       \OCP\Accounts\IAccountManager::PROPERTY_BIOGRAPHY => \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,
+       \OCP\Accounts\IAccountManager::PROPERTY_BIRTHDATE => \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,
+       \OCP\Accounts\IAccountManager::PROPERTY_PRONOUNS => \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,
+       \OCP\Accounts\IAccountManager::PROPERTY_AVATAR => \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,
+     ]
+
+   Notes:
+
+   - ``PROPERTY_DISPLAYNAME`` and ``PROPERTY_EMAIL`` cannot be set to ``Private``; server-side enforcement requires at least ``Local``.
+   - Defaults apply to **new users**. Existing users keep stored scopes unless changed.
+
+What becomes limited when you lock it down?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+With more restrictive scopes (especially ``Private``), expect reduced visibility in:
+
+- User discovery/search/user cards
+- Share dialogs and mention/autocomplete context
+- Public-share pages showing owner/profile metadata
+- Federated visibility of profile attributes
+- Public lookup publication (only ``Published`` appears there)
+
+In short: tighter privacy reduces profile-based convenience and discoverability.
+
+Recommended rollout
+^^^^^^^^^^^^^^^^^^^
+
+- Test with staging accounts first (owner, local user, unauthenticated user, federated peer).
+- Communicate behavior changes to users.
+- Re-test after upgrades, because profile-consuming features can evolve.
+
+.. comment
+   - Sharing settings + Mentions + Property Scope interactions (i.e. auto-completion, group/user-to-group/user sharing)
+   - Since default visibility scope changes only apply to new users, perhaps we can cover whether their's a migration path for existing users?
+   - How do scopes interact with the system address book?
