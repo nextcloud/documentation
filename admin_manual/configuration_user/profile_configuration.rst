@@ -108,14 +108,15 @@ Scope audience overview
 +============+===================+=======================================================+======================================+=====================+======================+
 | Private    | Yes               | Limited: authenticated + known-user relation required | No                                   | No                  | No                   |
 +------------+-------------------+-------------------------------------------------------+--------------------------------------+---------------------+----------------------+
-| Local      | Yes               | Yes                                                   | Yes (where applicable)               | No                  | No                   |
+| Local      | Yes               | Yes                                                   | Yes (where applicable**)             | No                  | No                   |
 +------------+-------------------+-------------------------------------------------------+--------------------------------------+---------------------+----------------------+
-| Federated  | Yes               | Yes                                                   | Yes (where applicable)               | Yes                 | No                   |
+| Federated  | Yes               | Yes                                                   | Yes (where applicable**)             | Yes                 | No                   |
 +------------+-------------------+-------------------------------------------------------+--------------------------------------+---------------------+----------------------+
-| Published  | Yes               | Yes                                                   | Yes (where applicable)               | Yes                 | Yes                  |
+| Published  | Yes               | Yes                                                   | Yes (where applicable**)             | Yes                 | Yes                  |
 +------------+-------------------+-------------------------------------------------------+--------------------------------------+---------------------+----------------------+
 
 (*) Scope primarily governs exposure to others; owner access follows account/endpoint behavior.
+(**) Public-context visibility depends on feature path; scope alone does not guarantee display.
 
 Known-user relation (for ``Private``)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -123,7 +124,7 @@ Known-user relation (for ``Private``)
 For ``Private`` properties, Nextcloud may allow visibility on specific local feature
 paths only when the requester is considered a *known user* of the target user.
 
-In practical terms, this relation is derived by server contact-matching logic and is
+In practical terms, this relation is derived by server-side known-contact logic and is
 directional (A known to B does not imply B known to A). Users are always known to
 themselves.
 
@@ -139,8 +140,8 @@ share dialogs, search, mentions, Contacts, and other integrations).
 For local users on the same instance:
 
 - ``Private``: not generally visible to all local users; visibility is restricted
-  on applicable paths to authenticated users that satisfy known-user relation and other
-  feature constraints.
+  on applicable paths to authenticated users that satisfy the known-user relation
+  and other feature constraints.
 - ``Local``: visible on the local instance.
 - ``Federated``: visible on the local instance (and also shared with trusted federated servers).
 - ``Published``: visible on the local instance (and also federated + public lookup).
@@ -217,7 +218,7 @@ Example defaults (verify against your deployed version):
 +--------------+--------------------------+
 | Property     | Default visibility scope |
 +==============+==========================+
-| Full name    | Federated                |
+| Display name | Federated                |
 +--------------+--------------------------+
 | Address      | Local                    |
 +--------------+--------------------------+
@@ -328,7 +329,7 @@ In short: tighter privacy reduces profile-based convenience and discoverability.
 
 .. TODO/Future additions
    - Sharing settings + Mentions + Property Scope interactions (i.e. auto-completion, group/user-to-group/user sharing)
-   - Since default visibility scope changes only apply to new users, perhaps we can cover whether their's a migration path for existing users?
+   - Since default visibility scope changes only apply to new users, perhaps we can cover whether there's a migration path for existing users?
    - define "public lookup server"
    - better integrate (cross-link? separate out?) with chapters covering sharing and federation
    - unify with User Manual
