@@ -16,6 +16,13 @@ Contacts
 
 #. On the address book view, click the down arrow near **New Address Book** and choose **Add CardDAV Address Book**.
 #. In the next window, type your **Username** and **Location** (Server URL).
+
+   To subscribe to all address books, use ``https://example.com/remote.php/dav/addressbooks/users/USERNAME/``
+
+   To subscribe to a specific address book, use ``https://example.com/remote.php/dav/addressbooks/users/USERNAME/ADDRESS-BOOK-NAME/``
+
+   Replace ``example.com`` with your Nextcloud server URL and ``USERNAME`` with your Nextcloud username.
+
 #. The next window will ask for your username and password for this account.
 #. The previous window will be refreshed and ask you which address books you wish to sync.
 #. Choose and then click **Continue**.
@@ -33,7 +40,15 @@ Calendars
 
    .. image:: ../images/new_calendar.png
 
-#. Type your **Username** and **Location** (Server URL), then click on **Find Calendars**.
+#. Type your **Username** and **Location** (Server URL), then click on
+   **Find Calendars**.
+
+   To discover all your calendars, use ``https://example.com/remote.php/dav/calendars/USERNAME/``
+
+   To subscribe to a specific calendar, use ``https://example.com/remote.php/dav/calendars/USERNAME/CALENDAR-NAME/``
+
+   Replace ``example.com`` with your Nextcloud server URL and ``USERNAME`` with your Nextcloud username. You can find the URL for a specific calendar in the Nextcloud Calendar web UI by clicking the pencil icon next to a calendar and copying the **Internal link**.
+
 #. Choose which calendars you want to add and click **Subscribe**
 
 Same thing here, if you later want to add more calendars, just redo the procedure.
