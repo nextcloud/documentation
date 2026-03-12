@@ -1,8 +1,8 @@
 .. _profile:
 
-=====================
-Profile configuration
-=====================
+========
+Profiles
+========
 
 The user profile displays information about an account.
 Profiles are enabled by default.
@@ -34,10 +34,10 @@ on privacy controls.
 Configuration
 -------------
 
-Set profile default for new users
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Set the profile default for new users
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In **Administration settings** → **Basic settings**, use the profile default toggle.
+In **Administration settings** -> **Basic settings**, use the profile default toggle.
 
 .. figure:: ../images/profile_default_setting.png
 
@@ -62,8 +62,8 @@ To disable profile functionality for all users, add this to ``config.php``:
 
 .. _profile-property-scopes:
 
-Property scopes
----------------
+Property visibility scopes
+---------------------------
 
 User properties (Display name, Address, Website, Role, etc.) have visibility scopes:
 Private, Local, Federated, Published.
@@ -100,7 +100,7 @@ The visibility scopes are:
    On profile surfaces, the effective visibility is the more restrictive of
    profile-visibility settings and property scope.
 
-Scope audience overview
+Scope visibility matrix
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 +------------+-------------------+-------------------------------------------------------+--------------------------------------+---------------------+----------------------+
@@ -118,7 +118,7 @@ Scope audience overview
 (*) Scope primarily governs exposure to others; owner access follows account/endpoint behavior.
 (**) Public-context visibility depends on feature path; scope alone does not guarantee display.
 
-Known-user relation (for ``Private``)
+Known-user rule for ``Private`` scope
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For ``Private`` properties, Nextcloud may allow visibility on specific local feature
@@ -146,8 +146,13 @@ For local users on the same instance:
 - ``Federated``: visible on the local instance (and also shared with trusted federated servers).
 - ``Published``: visible on the local instance (and also federated + public lookup).
 
-Verification workflow for administrators
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. note::
+   System address book exposure is scope-aware and context-aware:
+   private/empty-scope properties are excluded from generated cards, and
+   federated reads strip local-scoped properties.
+
+How to verify scope behavior
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Because effective visibility can vary by feature path, administrators should verify
 scope behavior in their own deployment.
@@ -206,8 +211,8 @@ Practical implications:
 - ``PROPERTY_DISPLAYNAME`` and ``PROPERTY_EMAIL`` cannot be ``Private``; server-side
   validation/enforcement requires at least ``Local``.
 
-Default scope values
-^^^^^^^^^^^^^^^^^^^^
+Default scope values (reference)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Default values are defined in server code and may change over time. The authoritative
 source is the ``DEFAULT_SCOPES`` constant in ``OC\Accounts\AccountManager``:
@@ -249,8 +254,8 @@ Example defaults (verify against your deployed version):
 | Pronouns     | Federated                |
 +--------------+--------------------------+
 
-Override defaults in ``config.php``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Override default scopes in ``config.php``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To override one or several default visibility scopes for *new users*, use
 ``account_manager.default_property_scope`` (default: empty array):
@@ -268,8 +273,8 @@ In the above example, phone and role are overwritten to ``Private`` and
 .. note::
    Use ``\OCP\Accounts\IAccountManager`` constants for both property keys and scope values.
 
-FAQ: How do I lock profile visibility down as tightly as possible?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FAQ: How to lock profile visibility down
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If your goal is maximum privacy:
 
@@ -316,16 +321,11 @@ With more restrictive scopes (especially ``Private``), expect reduced visibility
 
 - User discovery/search/user cards
 - Share dialogs and mention/autocomplete context
-- Public-share pages showing owner/profile metadata
+- Public/share-related contexts where account metadata may be shown
 - Federated visibility of profile attributes
 - Public lookup publication (only ``Published`` appears there)
 
 In short: tighter privacy reduces profile-based convenience and discoverability.
-
-.. note::
-   System address book exposure is scope-aware and context-aware:
-   private/empty-scope properties are excluded from generated cards, and
-   federated reads strip local-scoped properties.
 
 .. TODO/Future additions
    - Sharing settings + Mentions + Property Scope interactions (i.e. auto-completion, group/user-to-group/user sharing)
