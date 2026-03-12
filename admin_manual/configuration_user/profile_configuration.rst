@@ -341,3 +341,9 @@ In short: tighter privacy reduces profile-based convenience and discoverability.
    - better integrate (cross-link? separate out?) with chapters covering sharing and federation
    - unify with User Manual
    - Dev Manual coverage 
+   - better "known user context" description
+   - better "public contexts" description
+   - better "varies by feature/UI/API/app" description
+   - more definite statements; more direct statements
+   - simplify simplify simplify
+
