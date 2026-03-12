@@ -326,13 +326,6 @@ With more restrictive scopes (especially ``Private``), expect reduced visibility
 
 In short: tighter privacy reduces profile-based convenience and discoverability.
 
-Recommended rollout
-~~~~~~~~~~~~~~~~~~~
-
-- Test with staging accounts first (owner, local user, unauthenticated user, federated peer).
-- Communicate behavior changes to users.
-- Re-test after upgrades, because profile-consuming features can evolve.
-
 .. TODO/Future additions
    - Sharing settings + Mentions + Property Scope interactions (i.e. auto-completion, group/user-to-group/user sharing)
    - Since default visibility scope changes only apply to new users, perhaps we can cover whether their's a migration path for existing users?
