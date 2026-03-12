@@ -22,7 +22,7 @@ on privacy controls.
 .. note::
    Profile visibility is layered.
 
-   - **Profile enablement** controls whether profile functionality is available.
+   - **Profile enablement** determines if the profile feature is active at all.
    - **Profile field visibility settings** control whether a field is shown.
    - **Account property scopes** (for example ``private``, ``local``, ``federated``,
      ``published``) define the intended audience for each property.
@@ -74,22 +74,28 @@ that all its attributes are visible.
 The visibility scopes are:
 
 :Private:
-  Most restrictive scope. Not exposed through public profile contexts, federation,
-  or the public lookup server.
 
-  On local-instance user-to-user surfaces, ``Private`` data is not generally visible
-  to all local users. Visibility may require an authenticated requester and a
-  server-recognized known-user relationship with the target user.
+  The most restrictive level. Data is hidden from public profiles, federation, and
+  public lookup. On the local server, it is only shown in specific features and
+  typically only to authenticated users who have a recognized relationship with the
+  account owner (for example, as a known contact).
+
 :Local:
   Contact details visible on the local instance and in some public contexts where
   profile/account attributes are required (for example owner/uploader metadata).
   Not shared to federated servers and not published to the public lookup server.
+
 :Federated:
   Contact details visible on the local instance, in relevant public contexts,
   and on trusted federated servers.
+
 :Published:
   Contact details visible on the local instance, in relevant public contexts,
   on trusted federated servers, and published to the public lookup server.
+
+.. note::
+   **Public lookup server**: a public directory used to find users across Nextcloud instances.
+   Only profile fields marked Published may be exposed there.
 
 .. important::
    A reachable profile does not mean all attributes are public. Each attribute is
@@ -104,19 +110,21 @@ Scope visibility matrix
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 +------------+-------------------+-------------------------------------------------------+--------------------------------------+---------------------+----------------------+
-| Scope      | User themself (*) | Other users on same local instance                    | Public contexts (feature-dependent)  | Trusted federation  | Public lookup server |
+| Scope      | User themself [1] | Other users on same local instance                    | Public contexts (feature-dependent)  | Trusted federation  | Public lookup server |
 +============+===================+=======================================================+======================================+=====================+======================+
 | Private    | Yes               | Limited: authenticated + known-user relation required | No                                   | No                  | No                   |
 +------------+-------------------+-------------------------------------------------------+--------------------------------------+---------------------+----------------------+
-| Local      | Yes               | Yes                                                   | Yes (where applicable**)             | No                  | No                   |
+| Local      | Yes               | Yes                                                   | Yes (where applicable) [2]           | No                  | No                   |
 +------------+-------------------+-------------------------------------------------------+--------------------------------------+---------------------+----------------------+
-| Federated  | Yes               | Yes                                                   | Yes (where applicable**)             | Yes                 | No                   |
+| Federated  | Yes               | Yes                                                   | Yes (where applicable) [2]           | Yes                 | No                   |
 +------------+-------------------+-------------------------------------------------------+--------------------------------------+---------------------+----------------------+
-| Published  | Yes               | Yes                                                   | Yes (where applicable**)             | Yes                 | Yes                  |
+| Published  | Yes               | Yes                                                   | Yes (where applicable) [2]           | Yes                 | Yes                  |
 +------------+-------------------+-------------------------------------------------------+--------------------------------------+---------------------+----------------------+
 
-(*) Scope primarily governs exposure to others; owner access follows account/endpoint behavior.
-(**) Public-context visibility depends on feature path; scope alone does not guarantee display.
+Notes:
+
+1. Scope primarily governs exposure to others; owner access follows account/endpoint behavior.
+2. Public-context visibility depends on feature path; scope alone does not guarantee display.
 
 Known-user rule for ``Private`` scope
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -125,8 +133,8 @@ For ``Private`` properties, Nextcloud may allow visibility on specific local fea
 paths only when the requester is considered a *known user* of the target user.
 
 In practical terms, this relation is derived by server-side known-contact logic and is
-directional (A known to B does not imply B known to A). Users are always known to
-themselves.
+directional (e.g., Alice might be in Bob's contacts, but Bob isn't necessarily in
+Alice's). Users are always known to themselves.
 
 What local users can see
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -330,7 +338,6 @@ In short: tighter privacy reduces profile-based convenience and discoverability.
 .. TODO/Future additions
    - Sharing settings + Mentions + Property Scope interactions (i.e. auto-completion, group/user-to-group/user sharing)
    - Since default visibility scope changes only apply to new users, perhaps we can cover whether there's a migration path for existing users?
-   - define "public lookup server"
    - better integrate (cross-link? separate out?) with chapters covering sharing and federation
    - unify with User Manual
    - Dev Manual coverage 
