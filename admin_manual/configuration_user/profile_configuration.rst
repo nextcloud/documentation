@@ -4,7 +4,6 @@
 Profile configuration
 =====================
 
-
 The user profile displays information about an account.
 Profiles are enabled by default.
 
@@ -20,7 +19,6 @@ Profile data can also be used by other features (for example the
 :ref:`system address book<system-address-book>`), but what is exposed depends
 on privacy controls.
 
-
 .. note::
    Profile visibility is layered.
 
@@ -29,7 +27,7 @@ on privacy controls.
    - **Account property scopes** (for example ``private``, ``local``, ``federated``,
      ``published``) define the intended audience for each property.
    - **Discovery restrictions** (for example sharing/autocomplete enumeration rules)
-     can further reduce what other users can find or see.
+     can further reduce what other accounts can find or see.
 
    In short: effective visibility is the most restrictive result of all applicable controls.
 
@@ -67,7 +65,7 @@ To disable profile functionality for all users, add this to ``config.php``:
 Property scopes
 ---------------
 
-User properties (Full name, Address, Website, Role, …) have visibility scopes:
+User properties (Display name, Address, Website, Role, etc.) have visibility scopes:
 Private, Local, Federated, Published.
 
 These scopes are evaluated per attribute. A profile being reachable does not imply
@@ -80,18 +78,17 @@ The visibility scopes are:
   or the public lookup server.
 
   On local-instance user-to-user surfaces, ``Private`` data is not generally visible
-  to all local users. Visibility requires an authenticated requester and a
+  to all local users. Visibility may require an authenticated requester and a
   server-recognized known-user relationship with the target user.
 :Local:
-  Contact details visible on the local instance and through public share-links
-  (where profile/account attributes are inherently required - i.e. as file
-  owner/uploader metadata, etc.).  Not shared to federated servers and not published
-  to the public lookup server.
+  Contact details visible on the local instance and in some public contexts where
+  profile/account attributes are required (for example owner/uploader metadata).
+  Not shared to federated servers and not published to the public lookup server.
 :Federated:
-  Contact details visible on the local instance, through local public-link contexts,
+  Contact details visible on the local instance, in relevant public contexts,
   and on trusted federated servers.
 :Published:
-  Contact details visible on the local instance, through local public-link contexts,
+  Contact details visible on the local instance, in relevant public contexts,
   on trusted federated servers, and published to the public lookup server.
 
 .. important::
@@ -106,17 +103,17 @@ The visibility scopes are:
 Scope audience overview
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-+------------+-------------------+-------------------------------------------------------------+--------------------+---------------------+----------------------+
-| Scope      | User themself (*) | Other users on same local instance                          | Public link/public | Trusted federation  | Public lookup server |
-+============+===================+=============================================================+====================+=====================+======================+
-| Private    | Yes               | Limited: authenticated + known-user relation required       | No                 | No                  | No                   |
-+------------+-------------------+-------------------------------------------------------------+--------------------+---------------------+----------------------+
-| Local      | Yes               | Yes                                                         | Yes                | No                  | No                   |
-+------------+-------------------+-------------------------------------------------------------+--------------------+---------------------+----------------------+
-| Federated  | Yes               | Yes                                                         | Yes                | Yes                 | No                   |
-+------------+-------------------+-------------------------------------------------------------+--------------------+---------------------+----------------------+
-| Published  | Yes               | Yes                                                         | Yes                | Yes                 | Yes                  |
-+------------+-------------------+-------------------------------------------------------------+--------------------+---------------------+----------------------+
++------------+-------------------+-------------------------------------------------------+--------------------------------------+---------------------+----------------------+
+| Scope      | User themself (*) | Other users on same local instance                    | Public contexts (feature-dependent)  | Trusted federation  | Public lookup server |
++============+===================+=======================================================+======================================+=====================+======================+
+| Private    | Yes               | Limited: authenticated + known-user relation required | No                                   | No                  | No                   |
++------------+-------------------+-------------------------------------------------------+--------------------------------------+---------------------+----------------------+
+| Local      | Yes               | Yes                                                   | Yes (where applicable)               | No                  | No                   |
++------------+-------------------+-------------------------------------------------------+--------------------------------------+---------------------+----------------------+
+| Federated  | Yes               | Yes                                                   | Yes (where applicable)               | Yes                 | No                   |
++------------+-------------------+-------------------------------------------------------+--------------------------------------+---------------------+----------------------+
+| Published  | Yes               | Yes                                                   | Yes (where applicable)               | Yes                 | Yes                  |
++------------+-------------------+-------------------------------------------------------+--------------------------------------+---------------------+----------------------+
 
 (*) Scope primarily governs exposure to others; owner access follows account/endpoint behavior.
 
@@ -142,7 +139,8 @@ share dialogs, search, mentions, Contacts, and other integrations).
 For local users on the same instance:
 
 - ``Private``: not generally visible to all local users; visibility is restricted
-  to authenticated users that satisfy the known-user relation for that feature path.
+  on applicable paths to authenticated users that satisfy known-user relation and other
+  feature constraints.
 - ``Local``: visible on the local instance.
 - ``Federated``: visible on the local instance (and also shared with trusted federated servers).
 - ``Published``: visible on the local instance (and also federated + public lookup).
@@ -190,9 +188,6 @@ Recommended test procedure:
    - Confirm new defaults apply only to newly initialized accounts.
    - Confirm existing users retain stored scopes unless explicitly changed.
 
-.. tip::
-   Keep one "scope matrix" test account in staging and re-run this checklist after upgrades.
-
 Scope defaults and precedence
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -214,8 +209,8 @@ Default scope values
 ^^^^^^^^^^^^^^^^^^^^
 
 Default values are defined in server code and may change over time. The authoritative
-source is the ``DEFAULT_SCOPES`` constant in ``OC\Accounts\AccountManager``. The latest
-version is `here <https://github.com/nextcloud/server/blob/master/lib/private/Accounts/AccountManager.php>`_).
+source is the ``DEFAULT_SCOPES`` constant in ``OC\Accounts\AccountManager``:
+`latest source <https://github.com/nextcloud/server/blob/master/lib/private/Accounts/AccountManager.php>`_.
 
 Example defaults (verify against your deployed version):
 
@@ -326,7 +321,15 @@ With more restrictive scopes (especially ``Private``), expect reduced visibility
 
 In short: tighter privacy reduces profile-based convenience and discoverability.
 
+.. note::
+   System address book exposure is scope-aware and context-aware:
+   private/empty-scope properties are excluded from generated cards, and
+   federated reads strip local-scoped properties.
+
 .. TODO/Future additions
    - Sharing settings + Mentions + Property Scope interactions (i.e. auto-completion, group/user-to-group/user sharing)
    - Since default visibility scope changes only apply to new users, perhaps we can cover whether their's a migration path for existing users?
-   - How do scopes interact with the system address book?
+   - define "public lookup server"
+   - better integrate (cross-link? separate out?) with chapters covering sharing and federation
+   - unify with User Manual
+   - Dev Manual coverage 
