@@ -4,45 +4,63 @@
 Profile configuration
 =====================
 
-The user profile presents the information of a user and is enabled by default
-for all users. Users may individually enable or disable their profile in their
-Personal info settings under the Personal settings section.
 
-As an administrator you may change the default for new users and may also
-disable profile globally to remove all profile functionality.
+The user profile displays information about an account.
+Profiles are enabled by default.
 
-Profile properties are also written into the :ref:`system address book<system-address-book>`.
+Users can enable or disable their own profile in **Personal settings** under
+**Personal info**.
 
-.. note:: If not disabled, the profile is publicly visible.
-  The visibility of the individual profile attributes can be either controlled
-  by the assigned visibility scopes (e.g. "Private" will disable public access),
-  or by the user defined profile visibility.
+As an administrator, you can:
+
+- set the default profile state for new users, and
+- disable profiles globally.
+
+Profile data can also be used by other features (for example the
+:ref:`system address book<system-address-book>`), but what is exposed depends
+on privacy controls.
+
+
+.. note::
+   Profile visibility is layered.
+
+   - **Profile enablement** controls whether profile functionality is available.
+   - **Profile field visibility settings** control whether a field is shown.
+   - **Account property scopes** (for example ``private``, ``local``, ``federated``,
+     ``published``) define the intended audience for each property.
+   - **Discovery restrictions** (for example sharing/autocomplete enumeration rules)
+     can further reduce what other users can find or see.
+
+   In short: effective visibility is the most restrictive result of all applicable controls.
 
 Configuration
 -------------
 
-To enable or disable profile by default for new users switch the toggle in
-Basic settings under the Administration settings section.
+Set profile default for new users
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In **Administration settings** → **Basic settings**, use the profile default toggle.
 
 .. figure:: ../images/profile_default_setting.png
 
-You may also run the ``occ`` command below instead to change the default to ``false``:
+You can also set this via ``occ``:
 
 ::
 
   occ config:app:set settings profile_enabled_by_default --value="0"
 
-Please refer to :doc:`../occ_command` for all available
-``occ`` commands.
+Use ``--value="1"`` to enable it by default again.
 
-To disable profile globally add the following line to your ``config.php``
+See :doc:`../occ_command` for more ``occ`` usage details.
+
+Disable profiles globally
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To disable profile functionality for all users, add this to ``config.php``:
 
 ::
 
   'profile.enabled' => false,
-
-Please refer to :doc:`../configuration_server/config_sample_php_parameters` for
-all available ``config.php`` options.
 
 .. _profile-property-scopes:
 
@@ -86,7 +104,7 @@ The visibility scopes are:
    profile-visibility settings and property scope.
 
 Scope audience overview
-~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^
 
 +------------+-------------------+-------------------------------------------------------------+--------------------+---------------------+----------------------+
 | Scope      | User themself (*) | Other users on same local instance                          | Public link/public | Trusted federation  | Public lookup server |
@@ -103,7 +121,7 @@ Scope audience overview
 (*) Scope primarily governs exposure to others; owner access follows account/endpoint behavior.
 
 Known-user relation (for ``Private``)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For ``Private`` properties, Nextcloud may allow visibility on specific local feature
 paths only when the requester is considered a *known user* of the target user.
@@ -113,7 +131,7 @@ directional (A known to B does not imply B known to A). Users are always known t
 themselves.
 
 What local users can see
-~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 A common question is what one user can see about another user on the same instance.
 
@@ -130,7 +148,7 @@ For local users on the same instance:
 - ``Published``: visible on the local instance (and also federated + public lookup).
 
 Verification workflow for administrators
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Because effective visibility can vary by feature path, administrators should verify
 scope behavior in their own deployment.
@@ -176,7 +194,7 @@ Recommended test procedure:
    Keep one "scope matrix" test account in staging and re-run this checklist after upgrades.
 
 Scope defaults and precedence
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Visibility is determined per property using this order:
 
@@ -193,7 +211,7 @@ Practical implications:
   validation/enforcement requires at least ``Local``.
 
 Default scope values
-~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 Default values are defined in server code and may change over time. The authoritative
 source is the ``DEFAULT_SCOPES`` constant in ``OC\Accounts\AccountManager``. The latest
@@ -236,7 +254,7 @@ Example defaults (verify against your deployed version):
 +--------------+--------------------------+
 
 Override defaults in ``config.php``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To override one or several default visibility scopes for *new users*, use
 ``account_manager.default_property_scope`` (default: empty array):
@@ -255,7 +273,7 @@ In the above example, phone and role are overwritten to ``Private`` and
    Use ``\OCP\Accounts\IAccountManager`` constants for both property keys and scope values.
 
 FAQ: How do I lock profile visibility down as tightly as possible?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If your goal is maximum privacy:
 
@@ -296,7 +314,7 @@ If your goal is maximum privacy:
    - Defaults apply to **new users**. Existing users keep stored scopes unless changed.
 
 What becomes limited when you lock it down?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 With more restrictive scopes (especially ``Private``), expect reduced visibility in:
 
@@ -309,13 +327,13 @@ With more restrictive scopes (especially ``Private``), expect reduced visibility
 In short: tighter privacy reduces profile-based convenience and discoverability.
 
 Recommended rollout
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
 - Test with staging accounts first (owner, local user, unauthenticated user, federated peer).
 - Communicate behavior changes to users.
 - Re-test after upgrades, because profile-consuming features can evolve.
 
-.. comment
+.. TODO/Future additions
    - Sharing settings + Mentions + Property Scope interactions (i.e. auto-completion, group/user-to-group/user sharing)
    - Since default visibility scope changes only apply to new users, perhaps we can cover whether their's a migration path for existing users?
    - How do scopes interact with the system address book?
