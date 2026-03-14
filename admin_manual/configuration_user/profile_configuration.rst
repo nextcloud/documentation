@@ -60,10 +60,38 @@ To disable profile functionality for all users, add this to ``config.php``:
 
   'profile.enabled' => false,
 
+Profile field visibility settings
+---------------------------------
+
+Each profile field has its own **profile visibility** setting (stored per user in the
+profile configuration):
+
+- **Show to everyone** (``show``): visible to anyone, including unauthenticated visitors,
+  *subject to the field's property scope*.
+- **Show to logged in accounts only** (``show_users_only``): visible only to authenticated
+  users, *subject to the field's property scope*.
+- **Hide** (``hide``): never shown on profile surfaces regardless of property scope.
+
+These correspond to the visibility options in **Personal settings** -> **Personal info**
+-> **Edit your Profile visibility**.
+
+.. important::
+   Effective visibility is the most restrictive result of **both** controls:
+   the profile visibility setting and the property scope.
+
+Defaults
+^^^^^^^^
+
+By default, most profile fields are configured as **Show to everyone**, while some
+contact-related fields default to **Show to logged in accounts only**.
+
+Administrators should note that these defaults are independent from the default
+*property scopes* described below.
+
 .. _profile-property-scopes:
 
 Property visibility scopes
----------------------------
+--------------------------
 
 User properties (Display name, Address, Website, Role, etc.) have visibility scopes:
 Private, Local, Federated, Published.
@@ -74,7 +102,6 @@ that all its attributes are visible.
 The visibility scopes are:
 
 :Private:
-
   The most restrictive level. Data is hidden from public profiles, federation, and
   public lookup. On the local server, it is only shown in specific features and
   typically only to authenticated users who have a recognized relationship with the
@@ -97,6 +124,13 @@ The visibility scopes are:
    **Public lookup server**: a public directory used to find users across Nextcloud instances.
    Only profile fields marked Published may be exposed there.
 
+.. note::
+   Not all fields are eligible for lookup publication even if their scope is set to
+   ``Published``. Some fields are intentionally never published (for example Biography,
+   Headline, Organisation, Role, Birthdate).
+
+   In other words: ``Published`` is necessary but not always sufficient for lookup publication.
+
 .. important::
    A reachable profile does not mean all attributes are public. Each attribute is
    filtered by its own scope, and effective visibility can also depend on the
@@ -112,7 +146,8 @@ Scope visibility matrix
 +------------+-------------------+-------------------------------------------------------+--------------------------------------+---------------------+----------------------+
 | Scope      | User themself [1] | Other users on same local instance                    | Public contexts (feature-dependent)  | Trusted federation  | Public lookup server |
 +============+===================+=======================================================+======================================+=====================+======================+
-| Private    | Yes               | Limited: authenticated + known-user relation required | No                                   | No                  | No                   |
+| Private    | Yes               | Limited on profile surfaces:                          | No                                   | No                  | No                   |
+|            |                   | authenticated + known-user relation required [3]      |                                      |                     |                      |
 +------------+-------------------+-------------------------------------------------------+--------------------------------------+---------------------+----------------------+
 | Local      | Yes               | Yes                                                   | Yes (where applicable) [2]           | No                  | No                   |
 +------------+-------------------+-------------------------------------------------------+--------------------------------------+---------------------+----------------------+
@@ -125,6 +160,12 @@ Notes:
 
 1. Scope primarily governs exposure to others; owner access follows account/endpoint behavior.
 2. Public-context visibility depends on feature path; scope alone does not guarantee display.
+3. Some non-profile surfaces may exclude Private-scoped properties entirely (for example
+   generated system address book cards), even for authenticated users.
+
+.. note::
+   The matrix describes **profile visibility behavior**. Other consuming features may apply
+   additional filtering and may not expose Private-scoped properties at all.
 
 Known-user rule for ``Private`` scope
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -132,9 +173,11 @@ Known-user rule for ``Private`` scope
 For ``Private`` properties, Nextcloud may allow visibility on specific local feature
 paths only when the requester is considered a *known user* of the target user.
 
-In practical terms, this relation is derived by server-side known-contact logic and is
-directional (e.g., Alice might be in Bob's contacts, but Bob isn't necessarily in
-Alice's). Users are always known to themselves.
+In practical terms, this relation is derived by server-side *known-contact matching*.
+In current Nextcloud versions this matching is primarily established via **phone-number
+matching** (for example through the Talk mobile contact integration), and it is directional
+(e.g., Alice might be known to Bob, but Bob isn't necessarily known to Alice).
+Users are always known to themselves.
 
 What local users can see
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -174,7 +217,9 @@ Recommended test procedure:
    - ``charlie`` (second local user for control)
 
 2. As ``alice``, set distinct test values for profile fields and assign different
-   scopes (Private, Local, Federated, Published).
+   scopes where possible (for example Private vs Local via the UI, and Federated/Published
+   via API/administrative tooling if supported in your deployment).
+
 3. Verify as ``alice``:
 
    - Confirm owner-visible values as expected.
@@ -341,8 +386,12 @@ In short: tighter privacy reduces profile-based convenience and discoverability.
    - better integrate (cross-link? separate out?) with chapters covering sharing and federation
    - unify with User Manual
    - Dev Manual coverage 
+   - better distinguish user facing profile field visibility settings from admin instance-level scope settings
    - better "known user context" description
    - better "public contexts" description
+   - better "lookup server" description/context
+      - https://github.com/nextcloud/lookup-server?tab=readme-ov-file#what-is-lookup-server
+      - https://github.com/nextcloud/lookup-server/blob/master/doc/architecture.md#overview
    - better "varies by feature/UI/API/app" description
    - more definite statements; more direct statements
    - simplify simplify simplify
