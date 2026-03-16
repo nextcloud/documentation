@@ -1,8 +1,8 @@
 .. _webdavindex:
 
-==========
-Basic APIs
-==========
+==============================
+Basic File & Folder Operations
+==============================
 
 This document provides a quick overview of the WebDAV operations supported in Nextcloud, to keep things readable it won't go into many details
 for each operation, further information for each operation can be found in the corresponding RFC where applicable.
@@ -10,11 +10,13 @@ for each operation, further information for each operation can be found in the c
 WebDAV basics
 -------------
 
-The base url for all (authenticated) WebDAV operations for a Nextcloud instance is :code:`/remote.php/dav`.
+The base url for all (authenticated) WebDAV operations for a Nextcloud instance is :code:`/remote.php/dav`. For file operations, this usually
+means paths below :code:`/remote.php/dav/files/{user}/...`.
 
 All requests need to provide authentication information, either as a basic auth header or by passing a set of valid session cookies.
 
-If your Nextcloud installation uses an external auth provider (such as an OIDC server) you may have to create an app password.
+If your Nextcloud installation uses an external auth provider (such as an OIDC server) or enforces policies like 2FA, you may need to create an
+app password for WebDAV clients and scripts.
 To do that, go to your personal security settings and create one. It will provide a username and password which you can use within the Basic Auth header.
 
 Public shares
@@ -82,12 +84,45 @@ Here is a JavaScript code sample to get you started:
 			</d:propfind>`,
 	})
 
+Quick method/header cheat sheet
+-------------------------------
+
+The table below summarizes common WebDAV methods used by Nextcloud and the most relevant headers.
+
++------------+-------------------------------------------+---------------------------------------------+--------------------------------------------------------------+
+| Method     | Typical endpoint                          | Important request headers                    | Notes                                                       |
++============+===========================================+=============================================+==============================================================+
+| PROPFIND   | ``/remote.php/dav/files/{user}/path``     | ``Depth: 0`` (properties of node only)       | Without ``Depth: 0``, folder listings include child entries.|
++------------+-------------------------------------------+---------------------------------------------+--------------------------------------------------------------+
+| REPORT     | ``/remote.php/dav/files/{user}/path``     | (none required)                              | Used for filtered queries such as favorites.                |
++------------+-------------------------------------------+---------------------------------------------+--------------------------------------------------------------+
+| GET (file) | ``/remote.php/dav/files/{user}/file``     | (none required)                              | Downloads file content.                                     |
++------------+-------------------------------------------+---------------------------------------------+--------------------------------------------------------------+
+| GET (dir)  | ``/remote.php/dav/files/{user}/folder``   | ``Accept: application/zip`` or               | Nextcloud extension for folder archive download.            |
+|            |                                           | ``Accept: application/x-tar``                |                                                             |
++------------+-------------------------------------------+---------------------------------------------+--------------------------------------------------------------+
+| PUT        | ``/remote.php/dav/files/{user}/file``     | Optional: ``X-OC-MTime``, ``X-OC-CTime``,    | Uploads/overwrites file content.                            |
+|            |                                           | ``OC-Checksum``, ``OC-Total-Length``,        |                                                             |
+|            |                                           | ``X-NC-WebDAV-AutoMkcol``                    |                                                             |
++------------+-------------------------------------------+---------------------------------------------+--------------------------------------------------------------+
+| MKCOL      | ``/remote.php/dav/files/{user}/folder``   | (none required)                              | Creates a folder.                                           |
++------------+-------------------------------------------+---------------------------------------------+--------------------------------------------------------------+
+| DELETE     | ``/remote.php/dav/files/{user}/path``     | (none required)                              | Folder deletes are recursive.                               |
++------------+-------------------------------------------+---------------------------------------------+--------------------------------------------------------------+
+| MOVE       | ``/remote.php/dav/files/{user}/path``     | ``Destination: <full URL>``                  | Optional: ``Overwrite: T`` (default) or ``Overwrite: F``.   |
++------------+-------------------------------------------+---------------------------------------------+--------------------------------------------------------------+
+| COPY       | ``/remote.php/dav/files/{user}/path``     | ``Destination: <full URL>``                  | Optional: ``Overwrite: T`` (default) or ``Overwrite: F``.   |
++------------+-------------------------------------------+---------------------------------------------+--------------------------------------------------------------+
+| PROPPATCH  | ``/remote.php/dav/files/{user}/path``     | (none required)                              | Sets properties such as ``oc:favorite``.                    |
++------------+-------------------------------------------+---------------------------------------------+--------------------------------------------------------------+
+
 Requesting properties
 ---------------------
 
 By default, a :code:`PROPFIND` request will only return a small number of properties for each file: last modified date, file size, whether it's a folder, etag and mime type.
 
 You can request additional properties by sending a request body with the :code:`PROPFIND` request that lists all requested properties.
+If a property is not supported for a resource, the server will report it as not found in the multi-status response for that property.
 
 .. code-block:: xml
 
@@ -135,16 +170,21 @@ And here is how it should look in your DAV request:
 .. code-block:: xml
 
 	<?xml version="1.0"?>
-		<d:propfind
-			xmlns:d="DAV:"
-			xmlns:oc="http://owncloud.org/ns"
-			xmlns:nc="http://nextcloud.org/ns"
-			xmlns:ocs="http://open-collaboration-services.org/ns">
-			xmlns:ocm="http://open-cloud-mesh.org/ns">
+	<d:propfind
+		xmlns:d="DAV:"
+		xmlns:oc="http://owncloud.org/ns"
+		xmlns:nc="http://nextcloud.org/ns"
+		xmlns:ocs="http://open-collaboration-services.org/ns"
+		xmlns:ocm="http://open-cloud-mesh.org/ns">
 		...
+	</d:propfind>
 
 Supported properties
 ^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+   Properties in the ``d:`` namespace are standard WebDAV properties (RFC 4918).
+   Most properties in ``oc:``, ``nc:``, ``ocs:``, and ``ocm:`` are Nextcloud-specific extensions.
 
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 |           Property            |                   Description                   |                                 Example                                              |
@@ -410,6 +450,8 @@ The optional files list can be provided as a JSON encoded array through the :cod
 
 	GET remote.php/dav/files/user/path/to/folder?accept=zip&files=["image.png","document.txt"]
 
+When using query parameters, ensure values are URL-encoded. In particular, :code:`files` must be a URL-encoded JSON array.
+
 Uploading files
 ---------------
 
@@ -451,7 +493,7 @@ A file or folder can be moved by sending a :code:`MOVE` request to the file or f
 	MOVE remote.php/dav/files/user/path/to/file
 	Destination: https://cloud.example/remote.php/dav/files/user/new/location
 
-The overwrite behavior of the move can be controlled by setting the :code:`Overwrite` head to :code:`T` or :code:`F` to enable or disable overwriting respectively.
+The overwrite behavior of the move can be controlled by setting the :code:`Overwrite` header to :code:`T` or :code:`F` to enable or disable overwriting respectively.
 
 Copying files and folders (rfc4918_)
 ------------------------------------
@@ -463,12 +505,12 @@ A file or folder can be copied by sending a :code:`COPY` request to the file or 
 	COPY remote.php/dav/files/user/path/to/file
 	Destination: https://cloud.example/remote.php/dav/files/user/new/location
 
-The overwrite behavior of the copy can be controlled by setting the :code:`Overwrite` head to :code:`T` or :code:`F` to enable or disable overwriting respectively.
+The overwrite behavior of the copy can be controlled by setting the :code:`Overwrite` header to :code:`T` or :code:`F` to enable or disable overwriting respectively.
 
 Settings favorites
 ------------------
 
-A file or folder can be marked as favorite by sending a :code:`PROPPATCH` request to the file or folder and setting the :code:`oc-favorite` property
+A file or folder can be marked as favorite by sending a :code:`PROPPATCH` request to the file or folder and setting the :code:`oc:favorite` property.
 
 .. code-block:: xml
 
@@ -487,7 +529,7 @@ Setting the :code:`oc:favorite` property to ``1`` marks a file as favorite, sett
 Listing favorites
 -----------------
 
-Favorites for a user can be retrieved by sending a :code:`REPORT` request and specifying :code:`oc:favorite` as a filter
+Favorites for a user can be retrieved by sending a :code:`REPORT` request and specifying :code:`oc:favorite` as a filter.
 
 .. code-block:: xml
 
