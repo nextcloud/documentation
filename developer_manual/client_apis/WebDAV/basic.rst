@@ -94,32 +94,32 @@ Quick method/header cheat sheet
 
 The table below summarizes common WebDAV methods used by Nextcloud and the most relevant headers.
 
-+------------+-------------------------------------------+---------------------------------------------+--------------------------------------------------------------+
++------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
 | Method     | Typical endpoint                          | Important request headers                    | Notes                                                       |
-+============+===========================================+=============================================+==============================================================+
++============+===========================================+==============================================+=============================================================+
 | PROPFIND   | ``/remote.php/dav/files/{user}/path``     | ``Depth: 0`` (properties of node only)       | Without ``Depth: 0``, folder listings include child entries.|
-+------------+-------------------------------------------+---------------------------------------------+--------------------------------------------------------------+
++------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
 | REPORT     | ``/remote.php/dav/files/{user}/path``     | (none required)                              | Used for filtered queries such as favorites.                |
-+------------+-------------------------------------------+---------------------------------------------+--------------------------------------------------------------+
++------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
 | GET (file) | ``/remote.php/dav/files/{user}/file``     | (none required)                              | Downloads file content.                                     |
 +------------+-------------------------------------------+---------------------------------------------+--------------------------------------------------------------+
 | GET (dir)  | ``/remote.php/dav/files/{user}/folder``   | ``Accept: application/zip`` or               | Nextcloud extension for folder archive download.            |
 |            |                                           | ``Accept: application/x-tar``                |                                                             |
-+------------+-------------------------------------------+---------------------------------------------+--------------------------------------------------------------+
++------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
 | PUT        | ``/remote.php/dav/files/{user}/file``     | Optional: ``X-OC-MTime``, ``X-OC-CTime``,    | Uploads/overwrites file content.                            |
 |            |                                           | ``OC-Checksum``, ``OC-Total-Length``,        |                                                             |
 |            |                                           | ``X-NC-WebDAV-AutoMkcol``                    |                                                             |
-+------------+-------------------------------------------+---------------------------------------------+--------------------------------------------------------------+
++------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
 | MKCOL      | ``/remote.php/dav/files/{user}/folder``   | (none required)                              | Creates a folder.                                           |
-+------------+-------------------------------------------+---------------------------------------------+--------------------------------------------------------------+
++------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
 | DELETE     | ``/remote.php/dav/files/{user}/path``     | (none required)                              | Folder deletes are recursive.                               |
-+------------+-------------------------------------------+---------------------------------------------+--------------------------------------------------------------+
++------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
 | MOVE       | ``/remote.php/dav/files/{user}/path``     | ``Destination: <full URL>``                  | Optional: ``Overwrite: T`` (default) or ``Overwrite: F``.   |
-+------------+-------------------------------------------+---------------------------------------------+--------------------------------------------------------------+
++------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
 | COPY       | ``/remote.php/dav/files/{user}/path``     | ``Destination: <full URL>``                  | Optional: ``Overwrite: T`` (default) or ``Overwrite: F``.   |
-+------------+-------------------------------------------+---------------------------------------------+--------------------------------------------------------------+
++------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
 | PROPPATCH  | ``/remote.php/dav/files/{user}/path``     | (none required)                              | Sets properties such as ``oc:favorite``.                    |
-+------------+-------------------------------------------+---------------------------------------------+--------------------------------------------------------------+
++------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
 
 Requesting properties
 ---------------------
@@ -262,8 +262,8 @@ Supported properties
 |                               |                                                 | | ``'external'`` = external storage                                                  |
 |                               |                                                 | | ``'external-session'`` = external storage                                          |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:hide-download />          | For shares this indicate if any download action | ``true`` or ``false``                                                                |
-|                               | should be hidden from the user or not.          |                                                                                      |
+| <nc:hide-download />          | | For shares, indicate if any download          | ``true`` or ``false``                                                                |
+|                               | | action should be hidden or not.               |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:is-encrypted />           | Whether the folder is end-to-end encrypted.     | | ``0`` for ``false``                                                                |
 |                               |                                                 | | ``1`` for ``true``                                                                 |
@@ -382,10 +382,11 @@ Supported properties
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:lock-owner-editor>        | App id of an app owned lock.                    |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:lock-time>                | Date when the lock was created as a timestamp.  | ``1675789581``                                                                       |
+| <nc:lock-time>                | | Date when the lock was created                | ``1675789581``                                                                       |
+|                               | | as a timestamp.                               |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:lock-timeout>             | TTL of the lock in seconds staring from the     | ``0`` = No timeout                                                                   |
-|                               | creation time.                                  |                                                                                      |
+| <nc:lock-timeout>             | | TTL of the lock in seconds starting           | ``0`` = No timeout                                                                   |
+|                               | | from the creation time.                       |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:lock-token>               | The token of the lock.                          | ``files_lock/0e53dfb6-61b4-46f0-b38e-d9a428292998``                                  |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
@@ -396,14 +397,14 @@ Supported properties
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:version-author />         | The author's id of a specified file version.    | ``admin``, ``jane``, ``thisAuthorsID``                                               |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:is-federated />           | Whether the node originates from a              | ``true`` or ``false``                                                                |
-|                               | federated (server-to-server) share.             |                                                                                      |
+| <nc:is-federated />           | | Whether the node originates from a            | ``true`` or ``false``                                                                |
+|                               | | federated (server-to-server) share.           |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:metadata_etag />          | An etag representing the file's metadata state. |                                                                                      |
-|                               | Changes when metadata (not content) is updated. |                                                                                      |
+| <nc:metadata_etag />          | | An etag covering the file's metadata. Changes |                                                                                      |
+|                               | | when metadata (not content), is updated.      |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:download-url-expiration />| Expiration date/time of a direct download URL,  |                                                                                      |
-|                               | if one has been generated.                      |                                                                                      |
+| <nc:download-url-expiration />| | Expiration date/time of a direct download     |                                                                                      |
+|                               | | URL (if one has been generated).              |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 
 .. note::
@@ -576,44 +577,44 @@ Request Headers
 
 You can set some special headers that Nextcloud will interpret.
 
-+-----------------------+-----------------------------------------------------------------+------------------------------------------+
-|        Header         |                           Description                           |                 Example                  |
-+=======================+=================================================================+==========================================+
-| X-OC-MTime            | | Allow to specify a modification time.                         | ``1675789581``                           |
-|                       | | The response will contain the header ``X-OC-MTime: accepted`` |                                          |
-|                       | | if the mtime was accepted.                                    |                                          |
-+-----------------------+-----------------------------------------------------------------+------------------------------------------+
-| X-OC-CTime            | | Allow to specify a creation time.                             | ``1675789581``                           |
-|                       | | The response will contain the header ``X-OC-CTime: accepted`` |                                          |
-|                       | | if the mtime was accepted.                                    |                                          |
-+-----------------------+-----------------------------------------------------------------+------------------------------------------+
-| OC-Checksum           | | A checksum that will be stored in the DB.                     | ``md5:04c36b75222cd9fd47f2607333029106`` |
-|                       | | For regular ``PUT`` uploads, the server stores the value      |                                          |
-|                       | | without validation. During bulk uploads, the checksum         |                                          |
-|                       | | **is** validated against the uploaded content.                |                                          |
-|                       | | Currently used algorithms are ``MD5``, ``SHA1``, ``SHA256``,  |                                          |
-|                       | | ``SHA3-256``, ``Adler32``.                                    |                                          |
-+-----------------------+-----------------------------------------------------------------+------------------------------------------+
-| X-Hash                | | On ``PUT`` requests, instructs the server to compute a hash   | ``md5``, ``sha1``, ``sha256``,           |
-|                       | | of the uploaded file content during the write. The server     | or ``all``                               |
-|                       | | returns the hash(es) in response headers named                |                                          |
-|                       | | ``X-Hash-MD5``, ``X-Hash-SHA1``, and/or ``X-Hash-SHA256``.    |                                          |
-|                       | | Setting the value to ``all`` computes all three hashes.       |                                          |
-|                       | | Beware of performance implications!                           |                                          |
-+-----------------------+-----------------------------------------------------------------+------------------------------------------+
-| OC-Total-Length       | | Contains the total size of the file during a chunk upload.    | ``4052412``                              |
-|                       | | This allow the server to abort faster if the remaining        |                                          |
-|                       | | user's quota is not enough.                                   |                                          |
-+-----------------------+-----------------------------------------------------------------+------------------------------------------+
-| X-NC-WebDAV-AutoMkcol | | When set to ``1``, instructs the server to automatically      |                                          |
-|                       | | create any missing parent directories when uploading a file.  |                                          |
-|                       | | Available since Nextcloud 32.                                |                                          |
-+-----------------------+-----------------------------------------------------------------+------------------------------------------+
-| OC-Chunked            | | Used for legacy chunk upload to differentiate a regular       | Deprecated ⚠️                            |
-|                       | | upload from a chunked upload. It allowed checking for quota   |                                          |
-| (deprecated)          | | and various other things. Nowadays, you need to provide the   | You do not have to provide this anymore  |
-|                       | | ``OC-Total-Length`` header on the ``PUT`` requests instead.   |                                          |
-+-----------------------+-----------------------------------------------------------------+------------------------------------------+
++-----------------------+-----------------------------------------------------------------+--------------------------------------------+
+|        Header         |                           Description                           |                 Example                    |
++=======================+=================================================================+============================================+
+| X-OC-MTime            | | Allow to specify a modification time.                         | ``1675789581``                             |
+|                       | | The response will contain the header ``X-OC-MTime: accepted`` |                                            |
+|                       | | if the mtime was accepted.                                    |                                            |
++-----------------------+-----------------------------------------------------------------+--------------------------------------------+
+| X-OC-CTime            | | Allow to specify a creation time.                             | ``1675789581``                             |
+|                       | | The response will contain the header ``X-OC-CTime: accepted`` |                                            |
+|                       | | if the mtime was accepted.                                    |                                            |
++-----------------------+-----------------------------------------------------------------+--------------------------------------------+
+| OC-Checksum           | | A checksum that will be stored in the DB.                     | ``md5:04c36b75222cd9fd47f2607333029106``   |
+|                       | | For regular ``PUT`` uploads, the server stores the value      |                                            |
+|                       | | without validation. During bulk uploads, the checksum         |                                            |
+|                       | | **is** validated against the uploaded content.                |                                            |
+|                       | | Currently used algorithms are ``MD5``, ``SHA1``, ``SHA256``,  |                                            |
+|                       | | ``SHA3-256``, ``Adler32``.                                    |                                            |
++-----------------------+-----------------------------------------------------------------+--------------------------------------------+
+| X-Hash                | | On ``PUT`` requests, instructs the server to compute a hash   | ``md5``, ``sha1``, ``sha256``,             |
+|                       | | of the uploaded file content during the write. The server     | or ``all``                                 |
+|                       | | returns the hash(es) in response headers named                |                                            |
+|                       | | ``X-Hash-MD5``, ``X-Hash-SHA1``, and/or ``X-Hash-SHA256``.    |                                            |
+|                       | | Setting the value to ``all`` computes all three hashes.       |                                            |
+|                       | | Beware of performance implications!                           |                                            |
++-----------------------+-----------------------------------------------------------------+--------------------------------------------+
+| OC-Total-Length       | | Contains the total size of the file during a chunk upload.    | ``4052412``                                |
+|                       | | This allow the server to abort faster if the remaining        |                                            |
+|                       | | user's quota is not enough.                                   |                                            |
++-----------------------+-----------------------------------------------------------------+--------------------------------------------+
+| X-NC-WebDAV-AutoMkcol | | When set to ``1``, instructs the server to automatically      |                                            |
+|                       | | create any missing parent directories when uploading a file.  |                                            |
+|                       | | Available since Nextcloud 32.                                 |                                            |
++-----------------------+-----------------------------------------------------------------+--------------------------------------------+
+| OC-Chunked            | | Used for legacy chunk upload to differentiate a regular       | Deprecated                                 |
+|                       | | upload from a chunked upload. It allowed checking for quota   |                                            |
+| (deprecated)          | | and various other things. Nowadays, you need to provide the   | You do not have to provide                 |
+|                       | | ``OC-Total-Length`` header on the ``PUT`` requests instead.   | this anymore                               |
++-----------------------+-----------------------------------------------------------------+--------------------------------------------+
 
 Response Headers
 ----------------
