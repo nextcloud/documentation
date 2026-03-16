@@ -30,6 +30,11 @@ If a password is set for the share then a basic auth header must be sent with ``
 
 .. note:: This endpoint for public shares is available since Nextcloud 29.
 
+.. warning::
+   For non-GET requests (e.g. PROPFIND, PUT) to ``/public.php/dav``, the request must include the header
+   ``X-Requested-With: XMLHttpRequest``, unless outgoing server-to-server sharing is enabled on the instance.
+   Without this header, the server will reject the request with a ``401 Not Authenticated`` response.
+
 Testing requests
 ----------------
 
@@ -241,8 +246,8 @@ Supported properties
 | <oc:permissions />            | | The permissions that the user has over the    | | ``S``: Shared                                                                      |
 |                               | | file or folder. The value is a string         | | ``R``: Shareable                                                                   |
 |                               | | containing letters for all available          | | ``M``: Mounted                                                                     |
-|                               | | permissions.                                  | | ``G``: Readable                                                                    |
-|                               |                                                 | | ``D``: Deletable                                                                   |
+|                               | | permissions. On public shares, ``S`` and      | | ``G``: Readable                                                                    |
+|                               | | ``M`` are stripped from the returned value.   | | ``D``: Deletable                                                                   |
 |                               |                                                 | | ``N``: Renameable                                                                  |
 |                               |                                                 | | ``V``: Moveable                                                                    |
 |                               |                                                 | | ``W``: Writable (file)                                                             |
@@ -263,7 +268,7 @@ Supported properties
 | <nc:is-encrypted />           | Whether the folder is end-to-end encrypted.     | | ``0`` for ``false``                                                                |
 |                               |                                                 | | ``1`` for ``true``                                                                 |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:is-mount-root>            | | This is a special property which is used to   | ``true`` or ``false``                                                                |
+| <nc:is-mount-root />          | | This is a special property which is used to   | ``true`` or ``false``                                                                |
 |                               | | determine if a node is a mount root or not,   |                                                                                      |
 |                               | | e.g. a shared folder. If so, then the node    |                                                                                      |
 |                               | | can only be unshared and not deleted.         |                                                                                      |
@@ -323,7 +328,7 @@ Supported properties
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:has-preview />            | Whether a preview of the file is available.     | ``true`` or ``false``                                                                |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
-| <nc:hidden>                   | | Defines if a file should be hidden            | ``true`` or ``false``                                                                |
+| <nc:hidden />                 | | Defines if a file should be hidden            | ``true`` or ``false``                                                                |
 |                               | | Currently only used for live photos           |                                                                                      |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <oc:size />                   | | Unlike ``getcontentlength``, this property    | ``127815235``                                                                        |
@@ -391,6 +396,20 @@ Supported properties
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
 | <nc:version-author />         | The author's id of a specified file version.    | ``admin``, ``jane``, ``thisAuthorsID``                                               |
 +-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
+| <nc:is-federated />           | Whether the node originates from a              | ``true`` or ``false``                                                                |
+|                               | federated (server-to-server) share.             |                                                                                      |
++-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
+| <nc:metadata_etag />          | An etag representing the file's metadata state. |                                                                                      |
+|                               | Changes when metadata (not content) is updated. |                                                                                      |
++-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
+| <nc:download-url-expiration />| Expiration date/time of a direct download URL,  |                                                                                      |
+|                               | if one has been generated.                      |                                                                                      |
++-------------------------------+-------------------------------------------------+--------------------------------------------------------------------------------------+
+
+.. note::
+   Properties prefixed with ``nc:metadata-`` (e.g. ``nc:metadata-blurhash``) are dynamic, app-registered
+   metadata properties. They are not listed individually here as they depend on which apps are enabled.
+   You can request them via PROPFIND like any other property.
 
 Listing folders (rfc4918_)
 --------------------------
@@ -444,6 +463,7 @@ Optionally it is possible to only include some files from the folder in the arch
 
 As setting headers is not possible with HTML links it is also possible to provide this both options as query parameters.
 In this case the :code:`Accept` header value must be passed as the :code:`accept` query parameter.
+Both full MIME types (:code:`application/zip`, :code:`application/x-tar`) and shorthand values (:code:`zip`, :code:`tar`) are accepted.
 The optional files list can be provided as a JSON encoded array through the :code:`files` query parameter.
 
 .. code::
@@ -568,13 +588,18 @@ You can set some special headers that Nextcloud will interpret.
 |                       | | if the mtime was accepted.                                    |                                          |
 +-----------------------+-----------------------------------------------------------------+------------------------------------------+
 | OC-Checksum           | | A checksum that will be stored in the DB.                     | ``md5:04c36b75222cd9fd47f2607333029106`` |
-|                       | | The server will not do any sort of  validation.               |                                          |
+|                       | | For regular ``PUT`` uploads, the server stores the value      |                                          |
+|                       | | without validation. During bulk uploads, the checksum         |                                          |
+|                       | | **is** validated against the uploaded content.                |                                          |
 |                       | | Currently used algorithms are ``MD5``, ``SHA1``, ``SHA256``,  |                                          |
 |                       | | ``SHA3-256``, ``Adler32``.                                    |                                          |
 +-----------------------+-----------------------------------------------------------------+------------------------------------------+
-| X-Hash                | | Allow to request the file's hash from the server.             | ``md5``, ``sha1``, or ``sha256``         |
-|                       | | The server will return the hash in a header named either:     |                                          |
-|                       | | ``X-Hash-MD5``, ``X-Hash-SHA1``, or ``X-Hash-SHA256``.        |                                          |
+| X-Hash                | | On ``PUT`` requests, instructs the server to compute a hash   | ``md5``, ``sha1``, ``sha256``,           |
+|                       | | of the uploaded file content during the write. The server     | or ``all``                               |
+|                       | | returns the hash(es) in response headers named                |                                          |
+|                       | | ``X-Hash-MD5``, ``X-Hash-SHA1``, and/or ``X-Hash-SHA256``.    |                                          |
+|                       | | Setting the value to ``all`` computes all three hashes.       |                                          |
+|                       | | Beware of performance implications!                           |                                          |
 +-----------------------+-----------------------------------------------------------------+------------------------------------------+
 | OC-Total-Length       | | Contains the total size of the file during a chunk upload.    | ``4052412``                              |
 |                       | | This allow the server to abort faster if the remaining        |                                          |
@@ -582,6 +607,7 @@ You can set some special headers that Nextcloud will interpret.
 +-----------------------+-----------------------------------------------------------------+------------------------------------------+
 | X-NC-WebDAV-AutoMkcol | | When set to ``1``, instructs the server to automatically      |                                          |
 |                       | | create any missing parent directories when uploading a file.  |                                          |
+|                       | | Available since Nextcloud 32.                                |                                          |
 +-----------------------+-----------------------------------------------------------------+------------------------------------------+
 | OC-Chunked            | | Used for legacy chunk upload to differentiate a regular       | Deprecated ⚠️                            |
 |                       | | upload from a chunked upload. It allowed checking for quota   |                                          |
