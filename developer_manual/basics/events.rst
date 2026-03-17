@@ -519,7 +519,7 @@ This event is triggered when a user deletes a card in an address-book.
 
 This event is triggered when a user updates a card in an address-book.
 
-``OCA\DAV\Events\SabrePluginAddEvent``
+``\OCA\DAV\Events\SabrePluginAddEvent``
 **************************************
 
 .. versionadded:: 28
@@ -552,7 +552,7 @@ This event is triggered when a user deletes a calendar-subscription.
 
 .. versionadded:: 20
 
-This event is triggered when a user deletes a calendar-subscription.
+This event is triggered when a user updates a calendar-subscription.
 
 ``\OCA\FederatedFileSharing\Events\FederatedShareAddedEvent``
 *************************************************************
@@ -580,7 +580,7 @@ Emitted before the rendering step of the public share page happens. The event ho
 
 .. versionadded:: 28
 
-Emitted after a file or folder is moved to the trashbin.
+Emitted before a file or folder is moved to the trashbin. Allow other apps to disable the trash bin for specific files.
 
 ``\OCA\Settings\Events\BeforeTemplateRenderedEvent``
 ********************************************************
