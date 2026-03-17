@@ -155,15 +155,11 @@ A listener is a class that handles an event by implementing the ``OCP\EventDispa
         }
     }
 
-The listener is registered during app bootstrap and is instantiated by the upstream DI container when the corresponding event is fired. During the listener's existence, the handler (``handle()``) within it is called whenever an ``AddEvent`` is fired. The listener's handler implements the business logic (i.e. does the 
-interesting thing).
+The listener is registered during app bootstrap and is lazily instantiated by the upstream DI container the first time the corresponding event fires. During the listener's existence, the handler (``handle()``) within it is called whenever an ``AddEvent`` is fired. The listener's handler implements the business logic (i.e. does the 
+interesting thing). If the event fires again within the same request, the same listener instance is reused.
 
 .. note::
     PHP parameter type hints cannot be more specific than those on the interface, so you can't type-hint ``AddEvent`` in the method signature; instead use instanceof inside the handler method.
-
-.. note::
-    By default there is no persistent "listener object" kept by the dispatcher. Each time the event is fired, the DI container will lazily instantiate a new instance of the listener (the class), invoke the handle() method, and then discard the instance. There are more advanced approaches to listener registration (singleton/shared), but
-    that is a more advanced use case -- not the default for DI-registered event listeners in Nextcloud. You may find this approach in core, but rarely in apps.
 
 Registering Listeners 
 `````````````````````
