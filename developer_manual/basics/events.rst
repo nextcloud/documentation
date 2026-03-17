@@ -512,7 +512,7 @@ This event is triggered when a user deletes a card in an address-book.
 This event is triggered when a user updates a card in an address-book.
 
 ``\OCA\DAV\Events\SabrePluginAddEvent``
-**************************************
+***************************************
 
 .. versionadded:: 28
 
