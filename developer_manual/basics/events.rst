@@ -83,7 +83,7 @@ Events are dedicated classes extending ``\OCP\EventDispatcher\Event``:
     /**
      * Event emitted when something is added in MyApp.
      */
-    class AddEvent extends Event {}
+    class SomethingHappenedEvent extends Event {}
 
 This event simply signals that *something happened*. In many cases, you want to transport data with the event -- for example, the affected resource. In these cases, events act as `data transfer objects <https://en.wikipedia.org/wiki/Data_transfer_object>`_: they need a constructor for the data, private members to store it, and getters for listeners to access the values:
 
@@ -96,6 +96,7 @@ This event simply signals that *something happened*. In many cases, you want to 
     namespace OCA\MyApp\Events;
 
     use OCP\EventDispatcher\Event;
+    use OCP\EventDispatcher\IEventListener;
     use OCP\IUser;
 
     /**
@@ -108,6 +109,7 @@ This event simply signals that *something happened*. In many cases, you want to 
         ) {
         }
 
+        // one of our DTO getters
         public function getUser(): IUser {
             return $this->user;
         }
@@ -132,7 +134,7 @@ A listener is a class that handles an event by implementing the ``OCP\EventDispa
 
     declare(strict_types=1);
 
-    namespace OCA\MyApp\Events;
+    namespace OCA\MyApp\Listeners;
 
     use OCA\MyApp\Events\AddEvent;
     use OCP\EventDispatcher\Event;
@@ -175,17 +177,18 @@ Registering connects your listener class to the events. Modern Nextcloud apps im
     namespace OCA\MyApp\AppInfo;
 
     use OCA\MyApp\Events\AddEvent;
-    use OCA\MyApp\Listener\AddTwoListener;
+    use OCA\MyApp\Listeners\AddTwoListener;
     use OCP\AppFramework\App;
+    use OCP\AppFramework\Bootstrap\IBootContext;
     use OCP\AppFramework\Bootstrap\IBootstrap;
     use OCP\AppFramework\Bootstrap\IRegistrationContext;
 
     class Application extends App implements IBootstrap {
         public const APP_ID = 'myapp';
 
-	    public function __construct(array $urlParams = []) {
-		    parent::__construct(self::APP_ID, $urlParams);
-	    }
+        public function __construct(array $urlParams = []) {
+            parent::__construct(self::APP_ID, $urlParams);
+        }
 
         public function register(IRegistrationContext $context): void {
             // Register event listener AddTwoListener for handling AddEvent events
@@ -204,7 +207,7 @@ The ``EventListener`` class (``AddTwoListener``) is instantiated by the DI conta
 
     declare(strict_types=1);
 
-    namespace OCA\MyApp\Events;
+    namespace OCA\MyApp\Listeners;
 
     use OCA\MyApp\Events\AddEvent;
     use OCP\EventDispatcher\Event;
@@ -244,7 +247,7 @@ The event (``AddEvent``, etc) will **not** be passed to the listener's construct
 Expanded Example
 ````````````````
 
-Below is an expanded example, building on on our earlier ``UserCreatedEvent``. It demonstrates:
+Below is an expanded example, reusing our earlier ``UserCreatedEvent``. It demonstrates:
 
 - How to use the event's ``getUser()`` method to access payload data
 - How to inject and use a logger service in the listener
@@ -255,33 +258,7 @@ Below is an expanded example, building on on our earlier ``UserCreatedEvent``. I
 
     declare(strict_types=1);
 
-    namespace OCA\MyApp\Events;
-
-    use OCP\EventDispatcher\Event;
-    use OCP\EventDispatcher\IEventListener;
-    use OCP\IUser;
-
-    /**
-     * Event emitted after a user has been created.
-     */
-    class UserCreatedEvent extends Event {
-
-        public function __construct(
-            private IUser $user
-        ) {
-        }
-
-        // one of our DTO getters
-        public function getUser(): IUser {
-            return $this->user;
-        }
-    }
-
-.. code-block:: php
-
-    <?php
-
-    declare(strict_types=1);
+    namespace OCA\MyApp\Listeners;
 
     use OCP\EventDispatcher\Event;
     use OCP\EventDispatcher\IEventListener;
@@ -321,12 +298,19 @@ To register the listener in your app's bootstrap class:
 
     namespace OCA\MyApp\AppInfo;
 
+    use OCA\MyApp\Events\UserCreatedEvent;
+    use OCA\MyApp\Listeners\LogCreatedUserListener;
+    use OCP\AppFramework\App;
+    use OCP\AppFramework\Bootstrap\IBootContext;
     use OCP\AppFramework\Bootstrap\IBootstrap;
     use OCP\AppFramework\Bootstrap\IRegistrationContext;
-    use OCA\MyApp\Events\UserCreatedEvent;
-    use OCA\MyApp\Events\LogCreatedUserListener;
 
-    class Bootstrap implements IBootstrap {
+    class Application extends App implements IBootstrap {
+        public const APP_ID = 'myapp';
+
+        public function __construct(array $urlParams = []) {
+            parent::__construct(self::APP_ID, $urlParams);
+        }
 
         public function register(IRegistrationContext $context): void {
             $context->registerEventListener(UserCreatedEvent::class, LogCreatedUserListener::class);
