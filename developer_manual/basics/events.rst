@@ -142,6 +142,8 @@ A listener is a class that handles an event by implementing the ``OCP\EventDispa
 
     /**
      * Listener that adds two to a counter whenever an AddEvent is fired.
+     *
+     * @template-implements IEventListener<AddEvent>
      */
     class AddTwoListener implements IEventListener {
 
@@ -211,6 +213,8 @@ The ``EventListener`` class (``AddTwoListener``) is instantiated by the DI conta
 
     /**
      * Listener that uses MyService (external dependency) when an AddEvent is fired.
+     *
+     * @template-implements IEventListener<AddEvent>
      */
     class AddTwoListener implements IEventListener {
 
@@ -262,12 +266,14 @@ Below is an expanded example, reusing our earlier ``UserCreatedEvent``. It demon
 
     /**
      * Listener that logs the creation of a user when UserCreatedEvent is fired.
+     *
+     * @template-implements IEventListener<UserCreatedEvent>
      */
     class LogCreatedUserListener implements IEventListener {
 
         // Logger is injected by the DI container
         public function __construct(
-            private LoggerInterface $logger
+            private LoggerInterface $logger,
         ) {
         }
 
@@ -341,9 +347,8 @@ To allow other apps or components to react to actions in your app, you can emit 
     use OCA\MyApp\Events\UserCreatedEvent;
 
     class UserManager {
-
         public function __construct(
-            private IEventDispatcher $dispatcher
+            private IEventDispatcher $dispatcher,
         ) {
         }
 
