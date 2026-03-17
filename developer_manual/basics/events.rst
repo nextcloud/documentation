@@ -375,7 +375,7 @@ To allow other apps or components to react to actions in your app, you can emit 
 
             // Emit an event so other apps can react
             $event = new UserCreatedEvent($user);
-            $this->dispatcher->dispatch($event);
+            $this->dispatcher->dispatchTyped($event);
 
             return $user;
         }
