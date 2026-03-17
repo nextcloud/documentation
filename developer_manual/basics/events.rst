@@ -240,6 +240,13 @@ The ``EventListener`` class (``AddTwoListener``) is instantiated by the DI conta
 
 The event (``AddEvent``, etc) will **not** be passed to the listener's constructor; it’s passed to ``handle()``. The listener is injected with ``MyService`` at instantiate time; its handler is called whenever ``AddEvent`` is fired during its lifetime. When the event listener is instantiated, the upstream container injects dependencies per the type-hints in the listener's constructor (In this case, a service called ``MyService $myservice``). The``MyService`` dependency/injected service is available for use by the handler as needed.
 
+.. warning::
+   Known limitation: Event listeners are resolved from the server container, not your app's container.
+   This means standard OCP services and auto-wirable OCA\* classes work as constructor dependencies,
+   but custom aliases, parameters, or string-keyed services registered in your app container may not
+   be available. To avoid issues, type-hint only concrete classes or OCP interfaces in your listener
+   constructors. See nextcloud/server#27793 for details and status.
+
 .. tip::
     You may see older code that registers listeners in a slightly different way, such as by using lower level functions such as ``addServiceListener()`` and ``addListener()`` (and/or possibly registering via the constructor). These are not covered here as they are not recommended for newer implementations. If maintaining a 
     legacy app that does not implement ``IBootstrap``, event listeners may be registered in the ``Application`` class as outlined in previous versions of the documentation. For all new development, use ``IBootstrap`` pattern described here.
