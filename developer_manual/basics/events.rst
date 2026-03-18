@@ -96,7 +96,6 @@ This event simply signals that *something happened*. In many cases, you want to 
     namespace OCA\MyApp\Events;
 
     use OCP\EventDispatcher\Event;
-    use OCP\EventDispatcher\IEventListener;
     use OCP\IUser;
 
     /**
@@ -121,7 +120,8 @@ You may never need to write your own event, as many `Public Events <Available Pu
     Don't get too hung up regarding data transportation at the moment if you're unfamiliar  with the topic. We'll return to the ``UserCreatedEvent`` and DTO in the context of a fuller example later on. For now, let's return to the simpler ``AddEvent``, which merely fires ("this happened"), without transporting any data to our listener.
 
 .. note::
-    You may see older code that calls the parent constructor (i.e. ``parent::__construct();``) in its Event class. This is no longer necessary; it won't hurt anything in existing code, but is a no-op.
+   You might notice code calling the parent constructor in the Event class.
+   This is an empty compatibility shim; calling it is safe, but it is not required.
 
 Writing Listeners
 `````````````````
@@ -731,9 +731,17 @@ Filesystem scanner hooks available in scope **\\OC\\Files\\Utils\\Scanner**:
 * **postScanFile** (string $absolutePath)
 * **postScanFolder** (string $absolutePath)
 
+Deprecated
+----------
 
-Public emitters (Deprecated)
-----------------------------
+dispatch() - string-named
+`````````````````````````
+
+.. deprecated:: 21
+   Use ``dispatchType()`` instead.
+
+Public emitters
+```````````````
 
 .. deprecated:: 18
     Use the `OCP event dispatcher`_ instead.
