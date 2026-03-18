@@ -53,6 +53,13 @@ OCP Event Dispatcher
 
 This mechanism provides a robust, typed approach to events in Nextcloud's PHP code. It uses objects rather than just passing primitives or untyped arrays, improving developer experience and reducing the risk of unexpected API changes that are hard to diagnose after the initial implementation.
 
+.. versionadded:: 17
+    The OCP Event Dispatcher (``\OCP\EventDispatcher\IEventDispatcher``) was introduced.
+
+.. versionadded:: 20
+    The ``IBootstrap`` interface and ``registerEventListener()`` on ``IRegistrationContext``
+    were introduced, providing the recommended registration pattern.
+
 Naming Events
 `````````````
 
@@ -117,11 +124,15 @@ This event simply signals that *something happened*. In many cases, you want to 
 You may never need to write your own event, as many `Public Events <Available Public Events>`_ are already implemented by Nextcloud core and apps.
 
 .. tip::
-    Don't get too hung up regarding data transportation at the moment if you're unfamiliar  with the topic. We'll return to the ``UserCreatedEvent`` and DTO in the context of a fuller example later on. For now, let's return to the simpler ``AddEvent``, which merely fires ("this happened"), without transporting any data to our listener.
+    Don't get too hung up regarding data transportation at the moment if you're unfamiliar with
+    the topic. We'll return to the ``UserCreatedEvent`` and DTO in the context of a fuller example
+    later on. For now, let's return to the simpler ``AddEvent``, which merely fires ("this happened"),
+    without transporting any data to our listener.
 
 .. note::
-   You might notice code calling the parent constructor in the Event class.
-   This is an empty compatibility shim; calling it is safe, but it is not required.
+   The base ``Event`` class has an empty constructor that was added as a compatibility shim.
+   Calling ``parent::__construct()`` is safe and many core event classes still do so by convention,
+   but it is not strictly required. Omitting or including it will not affect behavior.
 
 Writing Listeners
 `````````````````
@@ -166,7 +177,10 @@ interesting thing). If the event fires again within the same request, the same l
 Registering Listeners 
 `````````````````````
 
-Registering connects your listener class to the events. Modern Nextcloud apps implement the ``IBootstrap`` interface in their ``Application`` class. Event listeners should be registered in the :php:meth:`register()` method of this class by calling ``registerEventListener()``. The listener class is instantiated only when the event is fired:
+Registering connects your listener class to the events. Modern Nextcloud apps (Nextcloud 20+)
+implement the ``IBootstrap`` interface in their ``Application`` class. Event listeners should
+be registered in the :php:meth:`register()` method of this class by calling
+``registerEventListener()``. The listener class is instantiated only when the event is fired:
 
 .. code-block:: php
 
@@ -196,6 +210,14 @@ Registering connects your listener class to the events. Modern Nextcloud apps im
         public function boot(IBootContext $context): void {
         }
     }
+
+An optional third argument, ``$priority``, controls the order in which listeners fire (default ``0``).
+Higher values cause earlier execution:
+
+.. code-block:: php
+
+    // This listener fires before others registered at the default priority
+    $context->registerEventListener(AddEvent::class, AddTwoListener::class, 100);
 
 The ``EventListener`` class (``AddTwoListener``) is instantiated by the DI container, so you can add a constructor (in the listener class) with any type-hinted dependencies your event listener needs (such as services). The ``Event`` object itself will be passed to the ``handle()`` method when the event fires. Example based on the ``AddTwoListener`` event listener class we created previously:
 
@@ -238,18 +260,58 @@ The ``EventListener`` class (``AddTwoListener``) is instantiated by the DI conta
         }
     }
 
-The event (``AddEvent``, etc) will **not** be passed to the listener's constructor; it’s passed to ``handle()``. The listener is injected with ``MyService`` at instantiate time; its handler is called whenever ``AddEvent`` is fired during its lifetime. When the event listener is instantiated, the upstream container injects dependencies per the type-hints in the listener's constructor (In this case, a service called ``MyService $myservice``). The``MyService`` dependency/injected service is available for use by the handler as needed.
+The event (``AddEvent``, etc) will **not** be passed to the listener's constructor; it’s passed to
+``handle()``. The listener is injected with ``MyService`` at instantiate time; its handler is called
+whenever ``AddEvent`` is fired during its lifetime. When the event listener is instantiated, the
+upstream container injects dependencies per the type-hints in the listener's constructor (In this
+case, a service called ``MyService $myservice``). The``MyService`` dependency/injected service is
+available for use by the handler as needed.
 
 .. warning::
-   Known limitation: Event listeners are resolved from the server container, not your app's container.
-   This means standard OCP services and auto-wirable OCA\* classes work as constructor dependencies,
-   but custom aliases, parameters, or string-keyed services registered in your app container may not
-   be available. To avoid issues, type-hint only concrete classes or OCP interfaces in your listener
-   constructors. See nextcloud/server#27793 for details and status.
+   Known limitation: Event listeners are resolved from the **server** container, not your
+   app's container. The server container does attempt to route ``OCA\*`` class lookups through
+   the corresponding app container, so standard OCP services and auto-wirable ``OCA\*`` classes
+   generally work as constructor dependencies. However, custom aliases, parameters, or
+   string-keyed services registered only in your app container will **not** be available.
+   To avoid issues, type-hint only concrete classes or OCP interfaces in your listener
+   constructors. See `nextcloud/server#27793 <https://github.com/nextcloud/server/issues/27793>`_
+   (still open) for details and status.
 
 .. tip::
-    You may see older code that registers listeners in a slightly different way, such as by using lower level functions such as ``addServiceListener()`` and ``addListener()`` (and/or possibly registering via the constructor). These are not covered here as they are not recommended for newer implementations. If maintaining a 
-    legacy app that does not implement ``IBootstrap``, event listeners may be registered in the ``Application`` class as outlined in previous versions of the documentation. For all new development, use ``IBootstrap`` pattern described here.
+    **register() vs boot():** Always register ``IEventListener`` classes in ``register()`` using
+    ``registerEventListener()``. This ensures lazy loading -- your listener class is only
+    instantiated when its event fires.
+
+    The ``register()`` method is for **declarative registrations only** -- use it to tell the
+    framework what classes, aliases, and listeners exist. Do not attempt to **query or resolve**
+    services from the DI container during ``register()``, as containers are not yet fully
+    assembled. The ``IRegistrationContext`` provides methods like ``registerService()`` and
+    ``registerServiceAlias()`` for deferred service registration, but the factories you provide
+    will not be invoked until the services are actually needed.
+
+    Use ``boot()`` when you need to **resolve services or perform imperative actions**. As the
+    PHPDoc on ``IBootstrap::boot()`` states: *"At this stage you can assume that all services
+    are registered and the DI container(s) are ready to be queried."* For example, registering
+    a closure-based listener that needs a fully resolved service:
+
+    .. code-block:: php
+
+        public function boot(IBootContext $context): void {
+            $context->injectFn(function (IEventDispatcher $dispatcher) {
+                $dispatcher->addListener(SomeEvent::class, function (SomeEvent $event) {
+                    // closure-based listener with full DI access
+                });
+            });
+        }
+
+    For all new development, prefer ``IEventListener`` classes registered in ``register()``
+    over closure-based listeners registered in ``boot()``.
+
+    You may also see older code that uses lower-level functions such as ``addServiceListener()``
+    and ``addListener()`` directly. The ``registerEventListener()`` method on
+    ``IRegistrationContext`` is a convenience wrapper around ``addServiceListener()``. If
+    maintaining a legacy app that does not implement ``IBootstrap``, event listeners may be
+    registered in the ``Application`` class as outlined in previous versions of the documentation.
 
 Expanded Example
 ````````````````
@@ -267,6 +329,7 @@ Below is an expanded example, reusing our earlier ``UserCreatedEvent``. It demon
 
     namespace OCA\MyApp\Listeners;
 
+    use OCA\MyApp\Events\UserCreatedEvent;
     use OCP\EventDispatcher\Event;
     use OCP\EventDispatcher\IEventListener;
     use Psr\Log\LoggerInterface;
@@ -372,6 +435,158 @@ To allow other apps or components to react to actions in your app, you can emit 
             return $user;
         }
     }
+
+.. note::
+    Always use ``dispatchTyped()`` (available since Nextcloud 18) to emit events. The older
+    ``dispatch(string $eventName, Event $event)`` method is deprecated since Nextcloud 21 and
+    should not be used in new code.
+
+.. tip::
+    If constructing the event object is expensive, you can check whether any listeners are
+    registered before building it, using ``$dispatcher->hasListeners(UserCreatedEvent::class)``.
+    This method returns ``true`` if at least one listener is registered for the given event class.
+
+    .. versionadded:: 29
+        ``hasListeners()`` was added to ``IEventDispatcher``.
+
+Stopping Event Propagation
+``````````````````````````
+
+The base ``\OCP\EventDispatcher\Event`` class implements the `PSR-14 <https://www.php-fig.org/psr/psr-14/>`__
+``StoppableEventInterface``. Any listener can call ``$event->stopPropagation()`` to prevent subsequent
+listeners from being called for this event dispatch. You can check whether propagation has been
+stopped with ``$event->isPropagationStopped()``.
+
+.. code-block:: php
+
+    <?php
+
+    declare(strict_types=1);
+
+    namespace OCA\MyApp\Listeners;
+
+    use OCA\MyApp\Events\SomethingHappenedEvent;
+    use OCP\EventDispatcher\Event;
+    use OCP\EventDispatcher\IEventListener;
+
+    /**
+     * @template-implements IEventListener<SomethingHappenedEvent>
+     */
+    class StopEarlyListener implements IEventListener {
+        public function handle(Event $event): void {
+            if (!($event instanceof SomethingHappenedEvent)) {
+                return;
+            }
+
+            // Prevent any further listeners from receiving this event
+            $event->stopPropagation();
+        }
+    }
+
+.. versionadded:: 22
+    stopPropagation() and isPropagationStopped() were added to the base Event class.
+
+.. note::
+    Stopping propagation prevents later listeners from running, but it does not by
+    itself cancel or undo the action that triggered the event. To block an operation,
+    see Blocking Operations with Before Events_ below.
+
+Blocking Operations with Before Events
+``````````````````````````````````````
+
+Some ``Before*`` events allow listeners to prevent the underlying operation from completing.
+The modern approach (since Nextcloud 29) is to throw ``\OCP\Exceptions\AbortedEventException``
+from your listener:
+
+.. code-block:: php
+
+    <?php
+
+    declare(strict_types=1);
+
+    namespace OCA\MyApp\Listeners;
+
+    use OCP\EventDispatcher\Event;
+    use OCP\EventDispatcher\IEventListener;
+    use OCP\Exceptions\AbortedEventException;
+    use OCP\Files\Events\Node\BeforeNodeDeletedEvent;
+
+    /**
+     * Listener that prevents deletion of nodes under certain conditions.
+     *
+     * @template-implements IEventListener<BeforeNodeDeletedEvent>
+     */
+    class PreventDeletionListener implements IEventListener {
+        public function handle(Event $event): void {
+            if (!($event instanceof BeforeNodeDeletedEvent)) {
+                return;
+            }
+
+            $node = $event->getNode();
+            if ($node->getName() === 'protected-file.txt') {
+                throw new AbortedEventException('Deletion of this file is not allowed');
+            }
+        }
+    }
+
+Not every ``Before*`` event supports aborting the operation. Check the source of the
+specific event class to see whether the emitting code catches ``AbortedEventException``.
+For example, ``BeforeNodeDeletedEvent`` and ``BeforeNodeRenamedEvent`` support this
+pattern. Some older events use a different mechanism: for example, ``BeforeDirectFileDownloadEvent``
+provides a ``setSuccessful(false)`` method instead.
+
+.. versionadded:: 29
+    ``\OCP\Exceptions\AbortedEventException` was introduced as the standard way to abort
+    operations from ``Before*`` event listeners.
+
+.. note::
+    Some events still have a legacy ``abortOperation()`` method (e.g.,
+    ``BeforeNodeDeletedEvent::abortOperation()``), but this method is deprecated since
+    Nextcloud 29 and internally just wraps/throws ``AbortedEventException``.
+
+Broadcasted Events
+``````````````````
+
+Events that extend ``\OCP\EventDispatcher\ABroadcastedEvent`` are automatically pushed to
+connected web clients (via the Nextcloud push service) after being dispatched.
+
+To create a broadcasted event, extend ``ABroadcastedEvent`` instead of ``Event`` and
+implement the required methods:
+
+.. code-block:: php
+
+    <?php
+
+    declare(strict_types=1);
+
+    namespace OCA\MyApp\Events;
+
+    use OCP\EventDispatcher\ABroadcastedEvent;
+
+    class ItemUpdatedEvent extends ABroadcastedEvent {
+
+        public function __construct(
+            private string $itemId,
+            private string $userId,
+        ) {
+        }
+
+        // Which users should receive the push notification
+        public function getUids(): array {
+            return [$this->userId];
+        }
+
+        // Serialized payload sent to clients
+        public function jsonSerialize(): array {
+            return ['itemId' => $this->itemId];
+        }
+    }
+
+You can optionally override ``broadcastAs()`` to customize the event name seen by
+clients (defaults to the fully-qualified class name).
+
+.. versionadded:: 18
+    ABroadcastedEvent was introduced.
 
 Available Public Events
 ```````````````````````
@@ -604,8 +819,11 @@ This event is triggered whenever the viewer is loaded and extensions should be l
 
 .. include:: _available_events_ocp.rst
 
-Hooks (Deprecated)
-------------------
+Deprecated
+----------
+
+Hooks
+`````
 
 .. deprecated:: 18
     Use the `OCP event dispatcher`_ instead.
@@ -617,7 +835,7 @@ Hooks are a legacy event mechanism. Do **NOT** use for new app development.
 Hooks should be registered in the :doc:`Bootstrapping process <../app_development/bootstrap>`.
 
 Using Hooks
-```````````
+***********
 
 The scope is the first parameter that is passed to the **listen** method, the second parameter is the method and the third one the callback that should be executed once the hook is being called, e.g.:
 
@@ -643,12 +861,12 @@ Hooks can also be removed by using the **removeListener** method on the object:
 
 
 Available hooks
-```````````````
+***************
 
 The following hooks are available:
 
 Session
-*******
+~~~~~~~
 
 Injectable from the ServerContainer with the ``\OCP\IUserSession`` service.
 
@@ -666,7 +884,7 @@ Hooks available in scope **\\OC\\User**:
 * **logout** ()
 
 UserManager
-***********
+~~~~~~~~~~~
 
 Injectable from the ServerContainer with the ``\OCP\IUserManager`` service.
 
@@ -680,7 +898,7 @@ Hooks available in scope **\\OC\\User**:
 * **postCreateUser** (\\OC\\User\\User $user, string $password)
 
 GroupManager
-************
+~~~~~~~~~~~~
 
 Hooks available in scope **\\OC\\Group**:
 
@@ -694,7 +912,7 @@ Hooks available in scope **\\OC\\Group**:
 * **postCreate** (\\OC\\Group\\Group $group)
 
 Filesystem root
-***************
+~~~~~~~~~~~~~~~
 
 Injectable from the ServerContainer by calling the method **getRootFolder()**, **getUserFolder()** or **getAppFolder()**.
 
@@ -722,7 +940,7 @@ Filesystem hooks available in scope **\\OC\\Files**:
 * **postRename** (\\OCP\\Files\\Node $source, \\OCP\\Files\\Node $target)
 
 Filesystem scanner
-******************
+~~~~~~~~~~~~~~~~~~
 
 Filesystem scanner hooks available in scope **\\OC\\Files\\Utils\\Scanner**:
 
@@ -731,14 +949,22 @@ Filesystem scanner hooks available in scope **\\OC\\Files\\Utils\\Scanner**:
 * **postScanFile** (string $absolutePath)
 * **postScanFolder** (string $absolutePath)
 
-Deprecated
-----------
+GenericEvent
+````````````
+
+.. deprecated:: 22
+    Use dedicated, typed event classes extending ``\OCP\EventDispatcher\Event`` instead.
+
+``\OCP\EventDispatcher\GenericEvent`` is a convenience class that allows passing arbitrary
+key-value data via an array. It still exists in the codebase for backward compatibility,
+but all new code should use purpose-built event classes with typed properties and getters.
+If you encounter ``GenericEvent`` in existing code, consider migrating to a dedicated event class.
 
 dispatch() - string-named
 `````````````````````````
 
 .. deprecated:: 21
-   Use ``dispatchType()`` instead.
+   Use ``dispatchTyped()`` instead.
 
 Public emitters
 ```````````````
