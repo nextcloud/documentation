@@ -46,7 +46,7 @@ The modern mechanism for emitting and listening to events in the server and apps
     Older approaches -- **hooks** and **public emitters** -- were used in early Nextcloud versions. They are now deprecated and available only for rare migration or compatibility scenarios.
 
 .. tip::
-    If you’re migrating old code, see `Hooks (Deprecated)`_ and `Public Emitters (Deprecated)`_ sections -- or refer to older documentation versions -- for more historical context helpful to transitioning, including some of the other ways of registering listeners.
+    If you’re migrating old code, see `Hooks`_ and `Public Emitters`_ sections -- or refer to older documentation versions -- for more historical context helpful to transitioning, including some of the other ways of registering listeners.
 
 OCP Event Dispatcher
 --------------------
