@@ -70,10 +70,15 @@ escaped with two backslashes: once because you are inside a JSON string, and onc
 because you are inside a regular expression.
 
 You can also use additional comparison operators (``$e``, ``$ne``, ``$gt``, ``$gte``,
-``$lt``, ``$lte``, ``$in``, ``$nin``) as well as logical operators (``$and``, ``$or``,
-``$not``, ``$nor``). For example, use ``{ "time": { "$lt": 1711971024 } }`` to accept
-only events prior to April 1st, 2024, and ``{ "time": { "$not": { "$lt": 1711971024 } }}``
+``$lt``, ``$lte``, ``$in``, ``$nin``, ``$all``, ``$exists``, ``$mod``) as well as
+logical operators (``$and``, ``$or``, ``$not``, ``$nor``).
+
+For example, use ``{ "time": { "$lt": 1711971024 } }`` to accept
+only events prior to April 1st, 2024, and ``{ "time": { "$not": { "$lt": 1711971024 } } }``
 to accept events after April 1st, 2024.
+
+Use ``{ "event.node.id": { "$exists": true } }`` to match only events where the node
+still has an ID (i.e. is not a ``NonExistingFile``/``NonExistingFolder``).
 
 Speeding up webhook dispatch
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -171,12 +176,42 @@ This is list of typically available events. It features the event ID and the ava
 
    In addition to the events listed below (which are provided by Nextcloud server and included apps), optional apps may register their own webhook-compatible events. The exact set of events available on your server will depend on your Nextcloud version and installed apps. If you need to discover available events, consult your app documentation or refer to your app source code or the Nextcloud developer documentation.
 
-**Note:** Example payloads below are based on actual webhook HTTP POST payloads, using real JSON and data types. Field types are indicated in example objects by their value type: for example, ``"id": 123`` is an integer, not a string.
+Payload envelope
+~~~~~~~~~~~~~~~~
+
+Every webhook HTTP POST body shares the same top-level structure:
+
+.. code-block:: json
+
+   {
+     "event": { … },
+     "user": { "uid": "alice", "displayName": "Alice" },
+     "time": 1700100000
+   }
+
+Where:
+
+- ``"event"`` is an object containing the event-specific data **plus** a ``"class"`` field
+  holding the fully-qualified PHP class name (e.g.
+  ``"OCP\\Files\\Events\\Node\\NodeCreatedEvent"``).
+- ``"user"`` is the user who triggered the event (``null`` when no user session exists).
+  Contains ``"uid"`` (string) and ``"displayName"`` (string).
+- ``"time"`` is an integer Unix timestamp of when the event was captured.
+
+Filters operate on this full envelope using dot-notation, e.g. ``event.node.path``,
+``user.uid``, or ``time``.
+
+**Note:** Example payloads below are based on actual webhook HTTP POST payloads, using
+real JSON and data types. Field types are indicated by their value type: for example,
+``"id": 123`` is an integer, not a string.
 
 Node (Files / Folders) Events
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Node events include those that act on a single node as well as those that act on two nodes (such as copy, rename, and restore). In single-node events, the payload includes a single ``node`` object with information about the affected file or folder. In two-node events, the payload includes both a ``source`` object (the original node) and a ``target`` object (the resulting node after the operation). The examples below demonstrate these unique payload formats.
+Node events include those that act on a single node as well as those that act on two
+nodes (such as copy, rename, and restore). In single-node events, the ``event`` object
+includes a ``node`` object. In two-node events, it includes both a ``source`` and a
+``target`` object. The examples below show the **complete** payloads.
 
 **1. Single-node events**
 
@@ -195,31 +230,53 @@ Applies to:
 .. code-block:: json
 
    {
-     "event": "NodeCreatedEvent",
-     "node": {
-       "id": 437,
-       "path": "/admin/files/test-webhook.txt"
-     }
+     "event": {
+       "class": "OCP\\Files\\Events\\Node\\NodeCreatedEvent",
+       "node": {
+         "id": 437,
+         "path": "/admin/files/test-webhook.txt"
+       }
+     },
+     "user": {
+       "uid": "admin",
+       "displayName": "Admin"
+     },
+     "time": 1700100000
    }
 
 Where:
 
-- ``"id"`` is an integer (unique node ID)
-- ``"path"`` is a string (file/folder path)
+- ``"event.class"`` is the fully-qualified event class name (string)
+- ``"event.node.id"`` is an integer (unique node ID) — may be absent, see note below
+- ``"event.node.path"`` is a string (file/folder path)
 
 .. note::
 
-   In some events (such as ``NodeDeletedEvent`` or when the node refers to a non-existent file or folder), the ``node`` object may not have an ``id`` field. This happens when the node no longer exists in the filesystem/database, and is represented in Nextcloud by an internal ``NonExistingFile`` or ``NonExistingFolder``. In such cases, only the ``path`` field will be present. Always check for the presence of the ``id`` field in these payloads. Usually, the corresponding ``Before*`` event (such as ``BeforeNodeDeletedEvent``) can be used if you require the ``id`` of the node before deletion.
+    In some events (such as ``NodeDeletedEvent`` or when the node refers to a
+    non-existent file or folder), the ``node`` object may not have an ``id`` field.
+    This happens when the node no longer exists in the filesystem/database, and is
+    represented in Nextcloud by an internal ``NonExistingFile`` or ``NonExistingFolder``.
+    In such cases, only the ``path`` field will be present. Always check for the
+    presence of the ``id`` field in these payloads. Usually, the corresponding ``Before*``
+    event (such as ``BeforeNodeDeletedEvent``) can be used if you require the ``id`` of
+    the node before deletion.
 
 Example of a deleted node webhook payload:
 
 .. code-block:: json
-
+ 
    {
-     "event": "NodeDeletedEvent",
-     "node": {
-       "path": "/user/files/oldfile.txt"
-     }
+     "event": {
+       "class": "OCP\\Files\\Events\\Node\\NodeDeletedEvent",
+       "node": {
+         "path": "/user/files/oldfile.txt"
+       }
+     },
+     "user": {
+       "uid": "user",
+       "displayName": "User"
+     },
+     "time": 1700100500
    }
 
 **2. Two-node events**
@@ -235,17 +292,24 @@ Applies to:
 
 .. code-block:: json
 
-   {
-     "event": "NodeRestoredEvent",
-     "source": {
-       "id": 399,
-       "path": "/admin/files/Deleted/myfile.txt"
-     },
-     "target": {
-       "id": 437,
-       "path": "/admin/files/myfile.txt"
-     }
-   }
+    {
+      "event": {
+        "class": "OCP\\Files\\Events\\Node\\NodeRestoredEvent",
+        "source": {
+          "id": 399,
+          "path": "/admin/files_trashbin/files/myfile.txt"
+        },
+        "target": {
+          "id": 437,
+          "path": "/admin/files/myfile.txt"
+        }
+      },
+      "user": {
+        "uid": "admin",
+        "displayName": "Admin"
+      },
+      "time": 1700100000
+    }
 
 Where:
 
@@ -261,15 +325,22 @@ Example of a two-node event (NodeRenamedEvent) where the source node is missing:
 .. code-block:: json
 
    {
-     "event": "NodeRenamedEvent",
-     "source": {
-       "path": "/user/files/previousname.txt"
-     },
-     "target": {
-       "id": 599,
-       "path": "/user/files/newname.txt"
-     }
-   }
+     "event": {
+        "class": "OCP\\Files\\Events\\Node\\NodeRenamedEvent",
+        "source": {
+            "path": "/user/files/previousname.txt"
+        },
+        "target": {
+            "id": 599,
+            "path": "/user/files/newname.txt"
+         }
+       },
+       "user": {
+            "uid": "user",
+            "displayName": "Joe User"
+        },
+        "time": 1700100000
+    }
 
 .. note::
 
@@ -283,12 +354,19 @@ System Tag Events
 
 .. code-block:: json
 
-   {
-     "event": "TagAssignedEvent",
-     "objectType": "files",
-     "objectIds": ["437","438"],
-     "tagIds": [3,17]
-   }
+    {
+        "event": {
+            "class": "OCP\\SystemTag\\TagAssignedEvent",
+            "objectType": "files",
+            "objectIds": ["437", "438"],
+            "tagIds": [3, 17]
+        },
+        "user": {
+            "uid": "admin",
+            "displayName": "Admin"
+        },
+        "time": 1700100000
+    }
 
 Calendar Object Events
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -307,45 +385,45 @@ Applies to:
 
 .. code-block:: json
 
-   {
-     "event": "CalendarObjectCreatedEvent",
-     "user": {
-       "uid": "david",
-       "displayName": "David"
-     },
-     "time": 1700100000,
-     "eventData": {
-       "calendarId": 9,
-       "calendarData": {
-         "id": 9,
-         "uri": "work",
-         "{http://calendarserver.org/ns/}getctag": "1736283",
-         "{http://sabredav.org/ns}sync-token": 9651,
-         "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": "VEVENT,VTODO",
-         "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": "opaque"
-       },
-       "shares": [
-         {
-           "href": "mailto:alice@example.com",
-           "commonName": "Alice",
-           "status": 2,
-           "readOnly": false,
-           "{http://owncloud.org/ns}principal": "principal:users/alice",
-           "{http://owncloud.org/ns}group-share": false
-         }
-       ],
-       "objectData": {
-         "id": 22,
-         "uri": "event-20251111T100000Z.ics",
-         "lastmodified": 1700099500,
-         "etag": "19fa45b394",
-         "calendarid": 9,
-         "size": 4096,
-         "component": "VEVENT",
-         "classification": 0
-       }
-     }
-   }
+    {
+      "event": {
+        "class": "OCP\\Calendar\\Events\\CalendarObjectCreatedEvent",
+        "calendarId": 9,
+        "calendarData": {
+          "id": 9,
+          "uri": "work",
+          "{http://calendarserver.org/ns/}getctag": "1736283",
+          "{http://sabredav.org/ns}sync-token": 9651,
+          "{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set": "VEVENT,VTODO",
+          "{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp": "opaque"
+        },
+        "shares": [
+          {
+            "href": "mailto:alice@example.com",
+            "commonName": "Alice",
+            "status": 2,
+            "readOnly": false,
+            "{http://owncloud.org/ns}principal": "principal:users/alice",
+            "{http://owncloud.org/ns}group-share": false
+          }
+        ],
+        "objectData": {
+          "id": 22,
+          "uri": "event-20251111T100000Z.ics",
+          "lastmodified": 1700099500,
+          "etag": "19fa45b394",
+          "calendarid": 9,
+          "size": 4096,
+          "component": "VEVENT",
+          "classification": 0
+        }
+      },
+      "user": {
+        "uid": "david",
+        "displayName": "David"
+      },
+      "time": 1700100000
+    }
 
 **Distinct payload for two-calendar events**
 
@@ -355,35 +433,45 @@ Applies to:
 
 .. code-block:: json
 
-   {
-     "event": "CalendarObjectMovedEvent",
-     "sourceCalendarId": 9,
-     "sourceCalendarData": {
-       "id": 9,
-       "uri": "work"
-     },
-     "targetCalendarId": 11,
-     "targetCalendarData": {
-       "id": 11,
-       "uri": "meetings"
-     },
-     "sourceShares": [
-       {
-         "href": "mailto:alice@example.com",
-         "commonName": "Alice"
-       }
-     ],
-     "targetShares": [
-       {
-         "href": "mailto:bob@example.com",
-         "commonName": "Bob"
-       }
-     ],
-     "objectData": {
-       "id": 22,
-       "uri": "event-20251111T100000Z.ics"
-     }
-   }
+    {
+      "event": {
+        "class": "OCP\\Calendar\\Events\\CalendarObjectMovedEvent",
+        "sourceCalendarId": 9,
+        "sourceCalendarData": {
+          "id": 9,
+          "uri": "work"
+          ...
+        },
+        "targetCalendarId": 11,
+        "targetCalendarData": {
+          "id": 11,
+          "uri": "meetings"
+          ...
+        },
+        "sourceShares": [
+          {
+            "href": "mailto:alice@example.com",
+            "commonName": "Alice"
+            ...
+          }
+        ],
+        "targetShares": [
+          {
+           "href": "mailto:bob@example.com",
+           "commonName": "Bob"
+          ...
+          }
+        ],
+        "objectData": {
+          "id": 22,
+          "uri": "event-20251111T100000Z.ics"
+          ...
+        },
+        "user": {
+          ...
+        },
+        "time": ...
+      }
 
 Forms App Events
 ~~~~~~~~~~~~~~~~
@@ -395,13 +483,7 @@ When the optional ``forms`` app is installed:
 .. code-block:: json
 
    {
-     "event": "FormSubmittedEvent",
-     "user": {
-       "uid": "bob",
-       "displayName": "Bob"
-     },
-     "time": 1700001234,
-     "eventData": {
+     "event": {
        "class": "OCA\\Forms\\Events\\FormSubmittedEvent",
        "form": {
          "id": 51,
@@ -427,7 +509,12 @@ When the optional ``forms`` app is installed:
          "userId": "bob",
          "timestamp": 1700001234
        }
-     }
+     },
+     "user": {
+       "uid": "bob",
+       "displayName": "Bob"
+     },
+     "time": 1700001234,
    }
 
 Tables App Events
@@ -442,13 +529,7 @@ When the optional ``tables`` app is installed:
 .. code-block:: json
 
    {
-     "event": "RowAddedEvent",
-     "user": {
-       "uid": "carol",
-       "displayName": "Carol"
-     },
-     "time": 1700054321,
-     "eventData": {
+     "event": {
        "class": "OCA\\Tables\\Event\\RowAddedEvent",
        "tableId": 34,
        "rowId": 7,
@@ -458,9 +539,15 @@ When the optional ``tables`` app is installed:
          "1": 2025,
          "2": "active"
        }
-     }
+     },
+     "user": {
+       "uid": "carol",
+       "displayName": "Carol"
+     },
+     "time": 1700054321,
    }
 
 .. note::
 
-   For filtering or automation, always check the actual payload you receive, as it matches the JSON examples above, not PHPDoc or internal PHP array type style.
+   For filtering or automation, always check the actual payload you receive, as it matches
+   the JSON examples above, not PHPDoc or internal PHP array type style.
