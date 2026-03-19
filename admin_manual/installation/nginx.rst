@@ -4,10 +4,7 @@
 NGINX configuration
 ===================
 
-.. note::
-    This page covers example NGINX configurations to run a Nextcloud server.
-    These configurations examples were originally provided by `@josh4trunks <https://github.com/josh4trunks>`_
-    and are exclusively community-maintained. (Thank you contributors!)
+This page covers how to run a Nextcloud server using NGINX backed by PHP-FPM, which is also an officially supported setup.
 
 - You need to insert the following code into **your Nginx configuration file**.
   Choose the appropriate example based on whether you are deploying :ref:`nginx_webroot_example` (i.e. :code:`https://cloud.example.com/`) or :ref:`nginx_subdir_example` (i.e. :code:`https://cloud.example.com/nextcloud`).
