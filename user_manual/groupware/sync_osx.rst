@@ -5,40 +5,44 @@ Synchronizing with macOS
 Setup your Accounts
 -------------------
 
-In the following steps you will add your server resources for **CalDAV** (Calendar)
-and **CardDAV** (Contacts) to your Nextcloud.
+In the following steps you will add **CalDAV** (Calendar)
+and **CardDAV** (Contacts) to your macOS integrated Calendar and Contacts applications.
+At the time of writing this guide, macOS is at version 26.3.1.
 
-1. Open the **system preferences** of your macOS device.
-
-2. Navigate to **Internet Accounts**:
+1. Click on the Apple logo in the top left corner of your screen and select
+   **System Settings...** from the dropdown menu.
 
 .. figure:: ./images/macos_1.png
 
-3. Click on **Add Other Account…** and click on **CalDAV Account** for Calendar
-   or **CardDAV Account** for Contacts:
+2. Navigate to **Internet Accounts**:
 
 .. figure:: ./images/macos_2.png
 
-.. note:: You can not setup Calendar/Contacts together. You need to setup them
-          in **separate accounts**.
-
-4. Select **Manual** as Account-Type and type in your respective credentials:
-
-   **Username**: Your Nextcloud username or email
-
-   **Password**: Your generated app-password/token (:ref:`Learn more<managing_devices>`).
-
-   **Server Address**: URL of your Nextcloud server (e.g. ``https://cloud.example.com``)
+3. Click on the small blue **choose from a list.**
 
 .. figure:: ./images/macos_3.png
 
-5. Click on **Sign In**.
-
-For **CalDAV (Calendar)**: You can now select, with which applications you want
-to use this resource. In the most cases, this will be the "Calendar" application,
-sometimes you may also want to use it for your **Tasks and reminders**.
+4. Click on **add Other Account...** 
 
 .. figure:: ./images/macos_4.png
+
+5. Select **CalDAV Account** for calendar and **CardDAV Account** for contacts.
+
+.. figure:: ./images/macos_5.png
+
+.. note:: You can not setup Calendar/Contacts together. You need to setup them **separately**.
+
+6. Select **Manual** as Account Type and type in your respective credentials:
+
+   **Username**: Your Nextcloud username or email
+
+   **Password**: Either your password or if you use 2FA your generated app-password/token (:ref:`Learn more<managing_devices>`).
+
+   **Server Address**: URL of your Nextcloud server (e.g. ``https://nextcloud.yourdomain.com``)
+
+.. figure:: ./images/macos_6.png
+
+7. Click on **Sign In**.
 
 Troubleshooting
 ---------------
