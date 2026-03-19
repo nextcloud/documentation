@@ -47,13 +47,46 @@ You can use the OCS API to add webhooks for specific events. See:
 Note: When authenticating with the OCS API to register webhooks, the account you
 use must have administrator rights or delegated administrator rights.
 
+Listing registered webhooks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can list all currently registered webhook listeners from the command line:
+
+.. code-block:: bash
+
+   occ webhook_listeners:list
+
+By default this prints a table. Use the ``--output`` option to change the format.
+Each row contains the full configuration of a registered webhook
+
 Filters
 ~~~~~~~
 
-When registering a webhook listener, you can specify a filter parameter. The value of
-this parameter must be a JSON object whose properties represent filter conditions.
-The ``{}`` object is an empty query, meaning no specific criteria are set, so all events
-are matched.
+When registering a webhook listener, you can specify a filter parameter (``eventFilter``).
+The filter is evaluated against the **complete webhook payload envelope**, which has this
+structure:
+
+.. code-block:: json
+
+   {
+     "event": { "class": "…", "…event-specific fields…" },
+     "user": { "uid": "…", "displayName": "…" },
+     "time": 1700100000
+   }
+
+Filter keys use **dot-notation** to traverse into nested objects. For example:
+
+- ``time`` — matches the top-level Unix timestamp
+- ``user.uid`` — matches the ``uid`` field inside the ``user`` object
+- ``event.class`` — matches the event's fully-qualified class name inside ``event``
+- ``event.node.path`` — matches the ``path`` field inside ``event`` → ``node``
+  (for node events)
+- ``event.calendarId`` — matches the ``calendarId`` field inside ``event``
+  (for calendar events)
+
+The value of the filter parameter must be a JSON object whose properties represent filter
+conditions. The ``{}`` object is an empty query, meaning no specific criteria are set, so
+all events are matched.
 
 If you want to match events triggered by a specific user, you can pass
 ``{ "user.uid": "bob" }`` to match all events associated with the user ``bob``.
@@ -69,7 +102,7 @@ inside the ``Special folder`` of any user. Note that the slashes in the path nee
 escaped with two backslashes: once because you are inside a JSON string, and once
 because you are inside a regular expression.
 
-You can also use additional comparison operators (``$e``, ``$ne``, ``$gt``, ``$gte``,
+You can also use comparison operators (``$e``, ``$ne``, ``$gt``, ``$gte``,
 ``$lt``, ``$lte``, ``$in``, ``$nin``, ``$all``, ``$exists``, ``$mod``) as well as
 logical operators (``$and``, ``$or``, ``$not``, ``$nor``).
 
@@ -79,6 +112,9 @@ to accept events after April 1st, 2024.
 
 Use ``{ "event.node.id": { "$exists": true } }`` to match only events where the node
 still has an ID (i.e. is not a ``NonExistingFile``/``NonExistingFolder``).
+
+Use ``{ "event.class": "OCP\\Files\\Events\\Node\\NodeCreatedEvent" }`` to match only
+``NodeCreatedEvent`` events (backslashes must be escaped in JSON strings).
 
 Speeding up webhook dispatch
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -184,7 +220,7 @@ Every webhook HTTP POST body shares the same top-level structure:
 .. code-block:: json
 
    {
-     "event": { … },
+     "event": {},
      "user": { "uid": "alice", "displayName": "Alice" },
      "time": 1700100000
    }
@@ -197,9 +233,6 @@ Where:
 - ``"user"`` is the user who triggered the event (``null`` when no user session exists).
   Contains ``"uid"`` (string) and ``"displayName"`` (string).
 - ``"time"`` is an integer Unix timestamp of when the event was captured.
-
-Filters operate on this full envelope using dot-notation, e.g. ``event.node.path``,
-``user.uid``, or ``time``.
 
 **Note:** Example payloads below are based on actual webhook HTTP POST payloads, using
 real JSON and data types. Field types are indicated by their value type: for example,
@@ -439,39 +472,36 @@ Applies to:
         "sourceCalendarId": 9,
         "sourceCalendarData": {
           "id": 9,
-          "uri": "work"
-          ...
+          "uri": "work",
         },
         "targetCalendarId": 11,
         "targetCalendarData": {
           "id": 11,
-          "uri": "meetings"
-          ...
+          "uri": "meetings",
         },
         "sourceShares": [
           {
             "href": "mailto:alice@example.com",
             "commonName": "Alice"
-            ...
           }
         ],
         "targetShares": [
           {
            "href": "mailto:bob@example.com",
            "commonName": "Bob"
-          ...
           }
         ],
         "objectData": {
           "id": 22,
           "uri": "event-20251111T100000Z.ics"
-          ...
         },
-        "user": {
-          ...
-        },
-        "time": ...
-      }
+      },
+      "user": {
+        "uid": "david",
+        "displayName": "David"
+      },
+      "time": 1700100000
+    }
 
 Forms App Events
 ~~~~~~~~~~~~~~~~
