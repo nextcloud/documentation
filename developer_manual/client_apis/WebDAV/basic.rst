@@ -550,12 +550,18 @@ You can set some special headers that Nextcloud will interpret.
 Response Headers
 ----------------
 
-+-----------+------------------------------------------------+-----------------------------------------+
-|  Header   |                  Description                   |                 Example                 |
-+===========+================================================+=========================================+
-| OC-Etag   | | On creation, move and copy,                  | ``"50ef2eba7b74aa84feff013efee2a5ef"``  |
-|           | | the response contain the etag of the file.   |                                         |
-+-----------+------------------------------------------------+-----------------------------------------+
-| OC-FileId | | On creation, move and copy,                  | | Format: ``<padded-id><instance-id>``. |
-|           | | the response contain the fileid of the file. | | Example: ``00000259oczn5x60nrdu``     |
-+-----------+------------------------------------------------+-----------------------------------------+
++-------------------+-----------------------------------------------+-----------------------------------------+
+| Header            | Description                                   | Example                                 |
++===================+===============================================+=========================================+
+|| OC-Etag          || On creation, move and copy,                  || ``"50ef2eba7b74aa84feff013efee2a5ef"`` |
+||                  || the response contain the etag of the file.   ||                                        |
++-------------------+-----------------------------------------------+-----------------------------------------+
+|| OC-FileId        || On creation, move and copy,                  || Format: ``<padded-id><instance-id>``.  |
+||                  || the response contain the fileid of the file. || Example: ``00000259oczn5x60nrdu``      |
++-------------------+-----------------------------------------------+-----------------------------------------+
+|| X-NC-OwnerId     || On creation, the response contains the owner || Example: ``admin``                     |
+||                  || ID.                                          ||                                        |
++-------------------+-----------------------------------------------+-----------------------------------------+
+|| X-NC-Permissions || On creation, the response contains the       || Example: ``RGDNVW``                    |
+||                  || permissions string.                          ||                                        |
++-------------------+-----------------------------------------------+-----------------------------------------+
