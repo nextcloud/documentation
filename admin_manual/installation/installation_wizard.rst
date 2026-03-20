@@ -141,7 +141,7 @@ details on autoconfig files, see :doc:`../configuration_server/automatic_configu
 
 .. figure:: images/install-wizard-autoconfig.png
    :scale: 75%
-   :alt: Nextcloud wizard screen when an autoconfig file is detecte
+   :alt: Nextcloud wizard screen when an autoconfig file is detected
 
 Completing Installation
 ^^^^^^^^^^^^^^^^^^^^^^^
