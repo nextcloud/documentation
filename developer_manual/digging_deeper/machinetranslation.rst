@@ -1,4 +1,4 @@
-.. _translation:
+.. _machinetranslation:
 
 ===================
 Machine Translation

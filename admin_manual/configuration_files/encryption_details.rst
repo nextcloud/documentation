@@ -2,7 +2,7 @@
 Server-side encryption details
 ==============================
 
-This document - provided by `SysEleven <https://syseleven.de>`_ - describes the server-side encryption scheme implemented by Nextcloud's default encryption module. This includes:
+This document describes the server-side encryption scheme implemented by Nextcloud's default encryption module. This includes:
 
 - the encryption and signature of files with a master key.
 - the encryption and signature of files with a public sharing key.

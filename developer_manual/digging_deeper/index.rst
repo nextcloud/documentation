@@ -18,7 +18,7 @@ Digging deeper
    groupware/index
    http_client
    javascript-apis
-   translation
+   machinetranslation
    flow
    npm
    notifications
