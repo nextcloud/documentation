@@ -13,8 +13,7 @@ Currently implemented tools
 ---------------------------
 
 Artificial intelligence tools
-#############################
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Ask a question to context chat (requires :ref:`Context Chat<ai-app-context_chat>`)
 
@@ -35,7 +34,7 @@ Artificial intelligence tools
   * Example prompt: *"Can you generate me an image of a cartoon drawing of a roman soldier typing something on a laptop?"*
 
 Calendar tools
-##############
+~~~~~~~~~~~~~~
 
 * List the user's calendars
 
@@ -50,7 +49,7 @@ Calendar tools
   * Example prompt: *"Find a free 1-hour slot for a meeting with me and Marco next week."*
 
 Tasks tools
-###########
+~~~~~~~~~~~
 
 * Create a task
 
@@ -75,7 +74,7 @@ Tasks tools
 
 
 Circles/teams tools
-###################
+~~~~~~~~~~~~~~~~~~~
 
 * List circles
 
@@ -112,7 +111,7 @@ Circles/teams tools
 
 
 Contacts tools
-##############
+~~~~~~~~~~~~~~
 
 * Find a contact
 
@@ -127,7 +126,7 @@ Contacts tools
   * Example prompt: *"Where do I live?"*
 
 Cookbook tools
-##############
+~~~~~~~~~~~~~~
 
 * List recipes
 
@@ -154,7 +153,7 @@ Cookbook tools
   * Example prompt: *"Which recipe categories do I have in my cookbook?"*
 
 Deck tools
-##########
+~~~~~~~~~~
 
 * List deck boards
 
@@ -177,7 +176,7 @@ Deck tools
   * Example prompt: *"Delete the 'Repair kitchen sink' card in my Personal deck board."*
 
 Files tools
-###########
+~~~~~~~~~~~
 
 * Get contents of a file
 
@@ -213,7 +212,7 @@ Files tools
   * Example prompt: *"Delete the Ideas.md file."*
 
 Forms tools
-###########
+~~~~~~~~~~~
 
 * List all forms
 
@@ -240,7 +239,7 @@ Forms tools
   * Example prompt: *"Delete the Retreat signup form."*
 
 Search tools
-############
+~~~~~~~~~~~~
 All search providers in Nextcloud are also automatically available as tools.
 
 * Search for files
@@ -248,7 +247,7 @@ All search providers in Nextcloud are also automatically available as tools.
   * Example prompt: *"List all the powerpoint presentations in my files with file ending pptx."*
 
 Share tools
-###########
+~~~~~~~~~~~
 
 * List shares
 
@@ -281,7 +280,7 @@ Share tools
 
 
 Talk tools
-##########
+~~~~~~~~~~
 
 * List the user's talk conversations (requires `Talk <https://apps.nextcloud.com/apps/spreed>`_)
 
@@ -300,7 +299,7 @@ Talk tools
   * Example prompt: *"Can you create a new public talk conversation titled 'Press conference'?"*
 
 Miscellaneous tools
-###################
+~~~~~~~~~~~~~~~~~~~
 
 * Get coordinates for an Address from Open Street Maps Nomatim
 
