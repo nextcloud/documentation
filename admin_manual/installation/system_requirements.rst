@@ -125,7 +125,7 @@ Files App
 ^^^^^^^^^
 
 - **iOS** 17.0+
-- **Android** 8.1+
+- **Android** 9.0+
 
 Talk App
 ^^^^^^^^
