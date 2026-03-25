@@ -363,6 +363,10 @@ These tools can also be combined by the agent to fulfil tasks like the following
 
   * Looks up Anna's userID and searches for files that belong to her
 
+* *"Send the content of my draft.md file to Andrew in Talk"*
+
+  * Gets the content of the file and sends it in a 1-1 Talk conversation with Andrew
+
 Custom Tools using MCP
 -----------------------
 
