@@ -148,37 +148,79 @@ server {
     location ~ ^/(?:build|tests|config|lib|3rdparty|templates|data)(?:$|/)  { return 404; }
     location ~ ^/(?:\.|autotest|occ|issue|indie|db_|console)                { return 404; }
 
-    # Ensure this block, which passes PHP files to the PHP process, is above the blocks
-    # which handle static assets (as seen below). If this block is not declared first,
-    # then Nginx will encounter an infinite rewriting loop when it prepends `/index.php`
-    # to the URI, resulting in a HTTP 500 error response.
+    # Pass PHP requests to PHP-FPM.
+    #
+    # Important: keep this block above the static asset locations below.
+    # Those locations fall back to `/index.php$request_uri`; if they are
+    # matched before this PHP handler, nginx can repeatedly rewrite the
+    # request to `/index.php`, causing an internal redirection loop and
+    # ultimately an HTTP 500 response.
     location ~ \.php(?:$|/) {
-        # Required for legacy support
+        # Rewrite PHP requests to Nextcloud's main front controller (`/index.php`)
+        # by default.
+        #
+        # This mirrors the PHP-facing subset of Nextcloud's Apache
+        # front-controller exceptions: some public entry points and special
+        # endpoints must remain directly reachable instead of being rewritten
+        # to `/index.php`.
+        #
+        # Excluded from this rewrite (for requests handled by this PHP location):
+        # - `index.php`, `remote.php`, `public.php`, `cron.php`, `status.php`
+        # - `ocs/v1.php`, `ocs/v2.php`, `ocs-provider/...`
+        # - `core/ajax/update.php`, `updater/...`
+        # - `.../richdocumentscode(_arm64)?/proxy`
+        #
+        # Other front-controller exceptions, such as `/.well-known`, are
+        # handled by dedicated location blocks elsewhere in this config.
+        #
+        # Be careful when editing this expression: small changes can break
+        # routing, DAV/service dispatch, updater/provider handling, or
+        # reintroduce rewrite loops.
         rewrite ^/(?!index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|ocs-provider\/.+|.+\/richdocumentscode(_arm64)?\/proxy) /index.php$request_uri;
 
+        # Split `/file.php/path/info` into:
+        # - script name: `/file.php`
+        # - PATH_INFO:   `/path/info`
+        #
+        # This is required for entry-points such as `remote.php` and `public.php`,
+        # which route requests based on PATH_INFO.
         fastcgi_split_path_info ^(.+?\.php)(/.*)$;
-        set $path_info $fastcgi_path_info;
+        set $path_info $fastcgi_path_info;    # Preserve PATH_INFO for PHP
 
+        # Prevent nonexistent PHP script paths from being sent to PHP-FPM.
         try_files $fastcgi_script_name =404;
 
         include fastcgi_params;
+
+        # Resolve the PHP script to execute and pass through PATH_INFO.
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         fastcgi_param PATH_INFO $path_info;
+
+        # This sample assumes TLS terminates at this nginx server block.
+        # Adjust or remove this parameter if HTTPS is terminated elsewhere.
         fastcgi_param HTTPS on;
 
-        fastcgi_param modHeadersAvailable true;         # Avoid sending the security headers twice
-        fastcgi_param front_controller_active true;     # Enable pretty urls
+        # Signal to Nextcloud that nginx is handling these response headers
+        # and that front-controller routing is active.
+        fastcgi_param modHeadersAvailable true;         # Avoid duplicate security headers
+        fastcgi_param front_controller_active true;     # Enable pretty URLs
+
         fastcgi_pass php-handler;
 
         fastcgi_intercept_errors on;
-        fastcgi_request_buffering on;                   # Required as PHP-FPM does not support chunked transfer encoding and requires a valid ContentLength header.
 
-        # PHP-FPM 504 response timeouts
-        # Uncomment and increase these if facing timeout errors during large file uploads
+        # Keep request buffering enabled for uploads: PHP-FPM does not support
+        # chunked transfer encoding and expects a valid Content-Length header.
+        fastcgi_request_buffering on;
+
+        # Optional PHP-FPM timeout tuning (e.g. for 504 response timeouts).
+        # Increase these only if uploads or long-running PHP requests are
+        # timing out in your environment.
         #fastcgi_read_timeout 60s;
         #fastcgi_send_timeout 60s;
         #fastcgi_connect_timeout 60s;
 
+        # Do not buffer FastCGI responses to temporary files on disk.
         fastcgi_max_temp_file_size 0;
     }
 
