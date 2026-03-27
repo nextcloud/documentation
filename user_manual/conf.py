@@ -218,7 +218,7 @@ latex_logo = '../_shared_assets/static/logo-blue.pdf'
 
 # -- Options for pdf page output -----------------------------------------------
 
-pdf_documents = [('contents', u'NextcloudUserManual', u'Nextcloud User Manual', u'The Nextcloud developers'),]
+pdf_documents = [('contents', u'Nextcloud_User_Manual', u'Nextcloud User Manual', u'The Nextcloud developers'),]
 
 # -- Options for manual page output --------------------------------------------
 
