@@ -176,8 +176,8 @@ server {
         rewrite ^/(?!index|remote|public|cron|status|ocs\/v[12]|ocs-provider\/.+|core\/ajax\/update|updater\/.+|.+\/richdocumentscode(_arm64)?\/proxy) /index.php$request_uri;
 
         # Split `/file.php/path/info` into:
-        # - script name: `/file.php`
-        # - PATH_INFO:   `/path/info`
+        # - $fastcgi_script_name: `/file.php`
+        # - $fastcgi_path_info:   `/path/info`
         #
         # This is required for entry-points such as `remote.php` and `public.php`,
         # which route requests based on PATH_INFO.
