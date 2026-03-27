@@ -1,0 +1,57 @@
+name: Checkout File from Master
+
+on:
+  workflow_dispatch:
+    inputs:
+      file_path:
+        description: 'Path to the file to checkout from master'
+        required: true
+        type: string
+        default: .github/workflows/sphinxbuild.yml
+
+jobs:
+  checkout:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        target_branch:
+          - stable19
+          - stable20
+          - stable21
+          - stable22
+          - stable23
+          - stable24
+          - stable25
+          - stable26
+          - stable27
+          - stable28
+          - stable29
+          - stable30
+          - stable31
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Fetch full history to access all branches
+        token: ${{ secrets.WORKFLOW_TOKEN }}
+        ref: ${{ matrix.target_branch }}
+    
+    - name: Configure Git
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+    
+    - name: Checkout file from master
+      run: |
+        echo "Checking out file: ${{ inputs.file_path }} from master branch"
+        git checkout origin/master -- ${{ inputs.file_path }}
+    
+    - name: Commit and push changes
+      run: |
+        git add ${{ inputs.file_path }}
+        git commit -sm "chore: update ${{ inputs.file_path }} from master branch"
+        
+        git push origin ${{ matrix.target_branch }}
