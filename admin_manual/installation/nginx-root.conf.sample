@@ -150,32 +150,30 @@ server {
 
     # Pass PHP requests to PHP-FPM.
     #
-    # Important: keep this block above the static asset locations below.
-    # Those locations fall back to `/index.php$request_uri`; if they are
-    # matched before this PHP handler, nginx can repeatedly rewrite the
-    # request to `/index.php`, causing an internal redirection loop and
-    # ultimately an HTTP 500 response.
+    # Important: this block must appear above the static asset locations
+    # below. Those locations fall back to `/index.php$request_uri`; if
+    # they appear first, nginx can repeatedly rewrite to `/index.php`,
+    # causing an internal redirection loop.
+
     location ~ \.php(?:$|/) {
-        # Rewrite PHP requests to Nextcloud's main front controller (`/index.php`)
-        # by default.
+
+        # Rewrite most PHP requests to Nextcloud's front controller (`/index.php`).
         #
-        # This mirrors the PHP-facing subset of Nextcloud's Apache
-        # front-controller exceptions: some public entry points and special
-        # endpoints must remain directly reachable instead of being rewritten
-        # to `/index.php`.
+        # (Mirrors the rewrite exceptions in Nextcloud's Apache .htaccess.)
         #
-        # Excluded from this rewrite (for requests handled by this PHP location):
-        # - `index.php`, `remote.php`, `public.php`, `cron.php`, `status.php`
-        # - `ocs/v1.php`, `ocs/v2.php`, `ocs-provider/...`
-        # - `core/ajax/update.php`, `updater/...`
-        # - `.../richdocumentscode(_arm64)?/proxy`
+        # Exceptions (not rewritten; must remain directly reachable):
+        #   index.php, remote.php, public.php, cron.php, status.php
+        #   core/ajax/update.php
+        #   ocs/v1.php, ocs/v2.php
+        #   updater/*, ocs-provider/*
+        #   */richdocumentscode(_arm64)?/proxy
         #
-        # Other front-controller exceptions, such as `/.well-known`, are
-        # handled by dedicated location blocks elsewhere in this config.
+        # Other exceptions (e.g. /.well-known) are handled by dedicated
+        # location blocks elsewhere in this config.
         #
-        # Be careful when editing this expression: small changes can break
-        # routing, DAV/service dispatch, updater/provider handling, or
-        # reintroduce rewrite loops.
+        # Caution: small edits to this regex can break routing or introduce
+        # rewrite loops.
+
         rewrite ^/(?!index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|ocs-provider\/.+|.+\/richdocumentscode(_arm64)?\/proxy) /index.php$request_uri;
 
         # Split `/file.php/path/info` into:
@@ -185,32 +183,31 @@ server {
         # This is required for entry-points such as `remote.php` and `public.php`,
         # which route requests based on PATH_INFO.
         fastcgi_split_path_info ^(.+?\.php)(/.*)$;
-        set $path_info $fastcgi_path_info;    # Preserve PATH_INFO for PHP
+        set $path_info $fastcgi_path_info;    # Save before try_files resets it
 
-        # Prevent nonexistent PHP script paths from being sent to PHP-FPM.
+        # Return 404 for nonexistent PHP scripts (avoids passing arbitrary
+        # paths to PHP-FPM, which is a known security risk).
         try_files $fastcgi_script_name =404;
 
         include fastcgi_params;
 
-        # Resolve the PHP script to execute and pass through PATH_INFO.
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_param PATH_INFO $path_info;
+        fastcgi_param SCRIPT_FILENAME            $document_root$fastcgi_script_name;
+        fastcgi_param PATH_INFO                  $path_info;
+        fastcgi_param HTTPS                      on;       # Assumes TLS terminates here
+        fastcgi_param modHeadersAvailable        true;     # Avoid duplicate security headers
+        fastcgi_param front_controller_active    true;     # Enable pretty URLs
 
-        # This sample assumes TLS terminates at this nginx server block.
-        # Adjust or remove this parameter if HTTPS is terminated elsewhere.
-        fastcgi_param HTTPS on;
-
-        # Signal to Nextcloud that nginx is handling these response headers
-        # and that front-controller routing is active.
-        fastcgi_param modHeadersAvailable true;         # Avoid duplicate security headers
-        fastcgi_param front_controller_active true;     # Enable pretty URLs
+        # If TLS is terminated upstream (e.g. a load balancer), remove or
+        # adjust the HTTPS parameter above.
 
         fastcgi_pass php-handler;
 
+        # Let nginx handle HTTP error responses from PHP-FPM (e.g. custom
+        # error pages). Disable for debugging if PHP errors are being hidden.
         fastcgi_intercept_errors on;
 
-        # Keep request buffering enabled for uploads: PHP-FPM does not support
-        # chunked transfer encoding and expects a valid Content-Length header.
+        # Required for uploads: PHP-FPM does not support chunked
+        # transfer encoding and needs a Content-Length header.
         fastcgi_request_buffering on;
 
         # Optional PHP-FPM timeout tuning (e.g. for 504 response timeouts).
@@ -220,7 +217,8 @@ server {
         #fastcgi_send_timeout 60s;
         #fastcgi_connect_timeout 60s;
 
-        # Do not buffer FastCGI responses to temporary files on disk.
+        # Disable on-disk buffering of FastCGI responses (reduces disk I/O at
+        # the cost of holding responses in memory).
         fastcgi_max_temp_file_size 0;
     }
 
