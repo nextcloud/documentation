@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation Redirect</title>
+
+</head>
+<body>
+	<h1>Redirecting to documentation...</h1>
+	<p>If you are not redirected automatically, enable JavaScript in your browser.</p>
+
+    <script>
+        // Mapping from the original PHP file
+        const mapping = {
+            'admin': '/admin_manual',
+            'admin-2fa': '/admin_manual/configuration_user/two_factor-auth.html',
+            'admin-antivirus-configuration': '/admin_manual/configuration_server/antivirus_configuration.html',
+            'admin-background-jobs': '/admin_manual/configuration_server/background_jobs_configuration.html',
+            'admin-backup': '/admin_manual/maintenance/backup.html',
+            'admin-big-file-upload': '/admin_manual/configuration_files/big_file_upload_configuration.html',
+            'admin-bigint-conversion': '/admin_manual/configuration_database/bigint_identifiers.html',
+            'admin-cache': '/admin_manual/configuration_server/caching_configuration.html',
+            'admin-code-integrity': '/admin_manual/issues/code_signing.html',
+            'admin-config': '/admin_manual/configuration_server/config_sample_php_parameters.html',
+            'admin-db-configuration': '/admin_manual/configuration_database/linux_database_configuration.html',
+            'admin-db-conversion': '/admin_manual/configuration_database/db_conversion.html',
+            'admin-db-transaction': '/admin_manual/configuration_database/linux_database_configuration.html#database-read-committed-transaction-isolation-level',
+            'admin-delegation': '/admin_manual/configuration_server/admin_delegation_configuration.html',
+            'admin-deploy-options': '/admin_manual/exapps_management/AdvancedDeployOptions.html',
+            'admin-email': '/admin_manual/configuration_server/email_configuration.html',
+            'admin-encryption': '/admin_manual/configuration_files/encryption_configuration.html',
+            'admin-external-storage': '/admin_manual/configuration_files/external_storage_configuration_gui.html',
+            'admin-files-access-control': '/admin_manual/file_workflows/access_control.html',
+            'admin-files-automated-tagging': '/admin_manual/file_workflows/automated_tagging.html',
+            'admin-files-retention': '/admin_manual/file_workflows/retention.html',
+            'admin-groupware-oauth-microsoft': '/admin_manual/groupware/mail.html#xoauth2-authentication-with-microsoft-azure-ad',
+            'admin-install': '/admin_manual/installation/index.html',
+            'admin-ldap': '/admin_manual/configuration_user/user_auth_ldap.html',
+            'admin-logging': '/admin_manual/configuration_server/logging_configuration.html',
+            'admin-long-running-migration-steps': '/admin_manual/maintenance/upgrade.html#long-running-migration-steps',
+            'admin-mysql-utf8mb4': '/admin_manual/configuration_database/mysql_4byte_support.html',
+            'admin-nginx': '/admin_manual/installation/nginx.html',
+            'admin-oauth2': '/admin_manual/configuration_server/oauth2.html',
+            'admin-performance': '/admin_manual/installation/server_tuning.html',
+            'admin-php-fpm': '/admin_manual/installation/source_installation.html#php-fpm-tips-label',
+            'admin-php-modules': '/admin_manual/installation/php_configuration.html#php-modules',
+            'admin-php-opcache': '/admin_manual/installation/server_tuning.html#enable-php-opcache',
+            'admin-provisioning-api': '/admin_manual/configuration_user/user_provisioning_api.html',
+            'admin-reverse-proxy': '/admin_manual/configuration_server/reverse_proxy_configuration.html',
+            'admin-security': '/admin_manual/installation/harden_server.html',
+            'admin-setup-well-known-URL': '/admin_manual/issues/general_troubleshooting.html#service-discovery',
+            'admin-sharing': '/admin_manual/configuration_files/file_sharing_configuration.html',
+            'admin-sharing-federated': '/admin_manual/configuration_files/federated_cloud_sharing_configuration.html',
+            'admin-source_install': '/admin_manual/installation/source_installation.html',
+            'admin-sse-legacy-format': '/admin_manual/configuration_files/encryption_migration.html',
+            'admin-sso': '/admin_manual/configuration_server/sso_configuration.html',
+            'admin-system-requirements': '/admin_manual/installation/system_requirements.html',
+            'admin-theming': '/admin_manual/configuration_server/theming.html',
+            'admin-theming-icons': '/admin_manual/configuration_server/theming.html#theming-of-icons',
+            'admin-transactional-locking': '/admin_manual/configuration_files/files_locking_transactional.html',
+            'admin-trusted-domains': '/admin_manual/installation/installation_wizard.html#trusted-domains',
+            'admin-update': '/admin_manual/maintenance/update.html',
+            'admin-warnings': '/admin_manual/configuration_server/security_setup_warnings.html',
+            'admin-windows-compatible-filenames': '/admin_manual/configuration_files/windows_compatible_filenames.html',
+            'admin-workflowengine': '/admin_manual/file_workflows/index.html',
+
+            'developer-manual': '/developer_manual',
+            'developer-backports': '/developer_manual/getting_started/development_process.html#bugfixes',
+            'developer-code-integrity': '/developer_manual/app_publishing_maintenance/code_signing.html',
+            'developer-css': '/developer_manual/html_css_design/css.html',
+            'developer-theming': '/developer_manual/basics/front-end/theming.html',
+
+			// Please always include the en language code in the URL
+            'user': '/user_manual',
+            'user-2fa': '/user_manual/en/user_2fa.html',
+            'user-encryption': '/user_manual/en/files/encrypting_files.html',
+            'user-files': '/user_manual/en/files/index.html',
+            'user-manual': '/user_manual/en',
+            'user-sharing-federated': '/user_manual/en/files/federated_cloud_sharing.html',
+            'user-sync-calendars': '/user_manual/en/groupware/calendar.html',
+            'user-sync-contacts': '/user_manual/en/groupware/contacts.html',
+            'user-trashbin': '/user_manual/en/files/deleted_file_management.html',
+            'user-versions': '/user_manual/en/files/version_control.html',
+            'user-webdav': '/user_manual/en/files/access_webdav.html'
+        }
+
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search)
+            return urlParams.get(param)
+        }
+
+        function getPreferredLanguage() {
+			const languages = navigator.languages || [navigator.language]
+			const supportedLanguages = [
+				'af', 'br', 'cs', 'de', 'el_GR', 'es', 'fi_FI', 'ga', 'hr', 'hu_HU', 'it',
+				'ko', 'nb_NO', 'nn', 'pt_BR', 'ro', 'si', 'sr', 'ta', 'tr', 'uz', 'zh_CN',
+				'zh_TW', 'ar', 'ca', 'da', 'el', 'eo', 'eu', 'fr', 'gl', 'hu', 'id', 'ja_JP',
+				'mn', 'nl', 'pl', 'pt_PT', 'ru', 'sk_SK', 'sq', 'sv', 'th', 'uk', 'vi', 'zh_HK',
+			]
+
+			for (const lang of languages) {
+				const fullLang = lang.replace('-', '_'); // Normalize e.g. en-US → en_US
+				const lowerFullLang = fullLang.toLowerCase()
+
+				// Try full language code (e.g., en_US)
+				if (supportedLanguages.includes(lowerFullLang)) {
+					return lowerFullLang
+				}
+
+				// Try base language code (e.g., en)
+				const baseLang = lowerFullLang.split('_')[0]
+				if (supportedLanguages.includes(baseLang)) {
+					return baseLang
+				}
+			}
+
+			return 'en'; // Default to English
+		}
+
+
+        function performRedirect() {
+            const from = getQueryParam('to')
+            const currentLocation = window.location
+            const basePath = currentLocation.pathname.replace('/go.php/', '').replace('/go.php', '')
+            
+            let subPath
+            
+            if (mapping[from]) {
+				subPath = mapping[from]
+			} else {
+				// If no mapping found, redirect to the parent directory
+				subPath = '/'
+			}
+
+            // Handle user manual language detection
+            if (subPath.startsWith('/user_manual')) {
+                const preferredLang = getPreferredLanguage()
+                const subPathParts = subPath.split('/')
+                
+                if (subPathParts.length >= 2 && subPathParts[1] === 'user_manual') {
+					// Replace the language part with the preferred language
+					subPathParts[2] = preferredLang
+				}
+
+				// Join the parts back together
+				if (subPathParts.length > 2) {
+					subPath = subPathParts.join('/')
+                }
+            }
+
+            const redirectUrl = `${currentLocation.protocol}//${currentLocation.host}${basePath}${subPath}`
+                       
+            // Perform the redirect
+            window.location.href = redirectUrl
+        }
+
+        // Perform redirect when page loads
+        window.onload = performRedirect
+    </script>
+</body>
+</html>
