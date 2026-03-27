@@ -154,18 +154,15 @@ server {
     # below. Those locations fall back to `/index.php$request_uri`; if
     # they appear first, nginx can repeatedly rewrite to `/index.php`,
     # causing an internal redirection loop.
-
     location ~ \.php(?:$|/) {
-
         # Rewrite most PHP requests to Nextcloud's front controller (`/index.php`).
         #
         # (Mirrors the rewrite exceptions in Nextcloud's Apache .htaccess.)
         #
         # Exceptions (not rewritten; must remain directly reachable):
         #   index.php, remote.php, public.php, cron.php, status.php
-        #   core/ajax/update.php
-        #   ocs/v1.php, ocs/v2.php
-        #   updater/*, ocs-provider/*
+        #   ocs/v1.php, ocs/v2.php, ocs-provider/*
+        #   core/ajax/update.php, updater/*
         #   */richdocumentscode(_arm64)?/proxy
         #
         # Other exceptions (e.g. /.well-known) are handled by dedicated
@@ -173,8 +170,7 @@ server {
         #
         # Caution: small edits to this regex can break routing or introduce
         # rewrite loops.
-
-        rewrite ^/(?!index|remote|public|cron|core\/ajax\/update|status|ocs\/v[12]|updater\/.+|ocs-provider\/.+|.+\/richdocumentscode(_arm64)?\/proxy) /index.php$request_uri;
+        rewrite ^/(?!index|remote|public|cron|status|ocs\/v[12]|ocs-provider\/.+|core\/ajax\/update|updater\/.+|.+\/richdocumentscode(_arm64)?\/proxy) /index.php$request_uri;
 
         # Split `/file.php/path/info` into:
         # - script name: `/file.php`
@@ -190,17 +186,13 @@ server {
         try_files $fastcgi_script_name =404;
 
         include fastcgi_params;
+        fastcgi_pass php-handler;
 
         fastcgi_param SCRIPT_FILENAME            $document_root$fastcgi_script_name;
         fastcgi_param PATH_INFO                  $path_info;
         fastcgi_param HTTPS                      on;       # Assumes TLS terminates here
         fastcgi_param modHeadersAvailable        true;     # Avoid duplicate security headers
         fastcgi_param front_controller_active    true;     # Enable pretty URLs
-
-        # If TLS is terminated upstream (e.g. a load balancer), remove or
-        # adjust the HTTPS parameter above.
-
-        fastcgi_pass php-handler;
 
         # Let nginx handle HTTP error responses from PHP-FPM (e.g. custom
         # error pages). Disable for debugging if PHP errors are being hidden.
