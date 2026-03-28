@@ -74,6 +74,8 @@ $mapping = array(
     'user-trashbin'           => '/user_manual/en/files/deleted_file_management.html',
     'user-versions'           => '/user_manual/en/files/version_control.html',
     'user-webdav'             => '/user_manual/en/files/access_webdav.html',
+    'user_mobile'             => '/user_manual/mobile',
+    'user-mobile-providing-android-app-logs'                => '/user_manual/mobile/providing_android_app_logs.html',
 );
 
 ############# Do not edit below this line #################
