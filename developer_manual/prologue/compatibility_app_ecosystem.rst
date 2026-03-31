@@ -20,7 +20,7 @@ There are three procedures in place to facilitate communication to app developer
 
   This means the development of your pull request cannot be considered done if you introduced changes (additions, removals or modifications) that affect app developers that you did not document.
 
-2. A change that affects app developers, has to be reported and documented by the author of the pull request in the :ref:`App Upgrade guide <app-upgrade-guide>` section.
+2. A change necessary for app developers to execute for app compatibility in a new version, has to be reported and documented by the author of the pull request in the :ref:`App Upgrade guide <app-upgrade-guide>` section.
 
   The requirements for this documentation are:
 
@@ -28,7 +28,10 @@ There are three procedures in place to facilitate communication to app developer
   - The steps should be explicitly written, so the documentation shall not rely upon links to external resources for the steps. While it is encouraged to add an external links as additional reference, it is a hard requirement that the documentation is readable and actionable without browsing to this link.
   - The change author's name should be added to the section so readers can reach out to the author if they have questions or if something is unclear.
   - Timeline: the documentation is required to be handed in when finalizing the pull request and should be merged timely close to the actual change.
-  
+
+3. New APIs are advertised at :ref:`new-apis` but need a dedicated documentation section.
+
+4. Deprecations are collected at :ref:`deprecated-apis`.
   
 Other documentation requirements
 --------------------------------
