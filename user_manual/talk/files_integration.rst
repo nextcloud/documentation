@@ -4,7 +4,7 @@ Files integration
 Talk from Files
 ---------------
 
-In the Files app, you can chat about files in the sidebar, and even have a call while editing it. You first have to join the chat.
+In the Files app, you can chat about files in the sidebar, and even have a call while editing the file. You first have to join the chat.
 
 .. image:: images/join-chat.png
     :width: 500px

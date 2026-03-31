@@ -4,7 +4,7 @@ Calendar integration with Talk
 Meetings and events
 --------------------
 
-If calendar events have a Talk conversation set as event location, you will see an information about upcoming events inside of this conversation.
+If calendar events have a Talk conversation set as event location, you will see information about upcoming events inside of this conversation.
 That way you can stay informed about scheduled meetings or activities directly within your chat.
 If Calendar app is enabled, you can click on an event to view details.
 
@@ -25,7 +25,7 @@ When creating a new event in Calendar, you can set a Talk conversation as event 
 .. image:: images/calendar-create-event.png
    :width: 600px
 
-When the event is created, you will see a link to the conversation in the event details. Conversation will also show up in the list of conversations (discoverable by ``Events`` filter).
+When the event is created, you will see a link to the conversation in the event details. The conversation will also appear in the list of conversations (discoverable by ``Events`` filter).
 
 .. image:: images/event-conversation-list.png
    :width: 300px

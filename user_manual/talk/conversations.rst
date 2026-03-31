@@ -2,15 +2,13 @@
 Conversations
 =============
 
-Nextcloud Talk lets you chat and have video calls on your own server.
-
 Chats and calls take place in conversations. You can create any number of conversations. There are different types of conversations:
 
 1. Private (one-to-one) conversations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This is where you have a private chat or call with another Talk user.
 
-In content sidebar, you can find additional information about the person you are chatting with, such as their email address, phone number, or other details they have shared in their profile.
+In the content sidebar, you can find additional information about the person you are chatting with, such as their email address, phone number, or other details they have shared in their profile.
 
 .. image:: images/one-to-one-right-sidebar.png
     :width: 300px
@@ -21,7 +19,7 @@ You can extend an ongoing call to a new group conversation by adding more people
 .. image:: images/one-to-one-extend.png
     :width: 300px
 
-If a user becomes unavailable and set an **out-of-office** status in ``Personal settings > Availability``, you will find additional information in this conversation, such as provided description, absence date, or their replacement person.
+If a user becomes unavailable and has set an **out-of-office** status in ``Personal settings > Availability``, you will find additional information in this conversation, such as provided description, absence date, or their replacement person.
 
 .. image:: images/one-to-one-out-of-office.png
     :width: 500px
@@ -108,7 +106,7 @@ Filter your conversations
 You can filter your conversations using the filter button next to the search field. There are several options for filtering:
 1. **Unread mentions**: view unread private conversations, or group conversations, where you have been mentioned.
 2. **Unread messages**: view unread messages in all conversations you are a part of.
-2. **Event conversations**: view all conversations, created for upcoming or past events.
+3. **Event conversations**: view all conversations, created for upcoming or past events.
 
 .. image:: images/filters-menu.png
     :width: 400px
@@ -155,9 +153,9 @@ Ban participants
 ----------------
 
 To help keep discussions safe and under control, moderators can ban participants from conversations.
-It could be internal users or guests (in this case their IP-addresse will additionally be banned).
+This applies to internal users and guests alike; for guests, their IP address will also be banned.
 
-In the participants list, select the user or guest you, and click ``Remove participant``.
+In the participants list, select the user or guest, and click ``Remove participant``.
 
 .. image:: images/ban-participant.png
     :width: 300px

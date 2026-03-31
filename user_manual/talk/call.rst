@@ -86,7 +86,7 @@ The table in the CSV file contains the following columns:
 Call live transcription
 -----------------------
 
-Call live transcription allows to transcribe the speech in real-time during a call. It is set up by the system administration (High-performance backend and `Live Transcription App <https://apps.nextcloud.com/apps/live_transcription>`_ are required).
+Call live transcription transcribes speech in real-time during a call. It is set up by the system administration (High-performance backend and `Live Transcription App <https://apps.nextcloud.com/apps/live_transcription>`_ are required).
 Moderators need to set the language of the transcription in the conversation settings. All participants then can enable or disable the transcription for themselves in the call bottom bar.
 When enabled, the transcription will appear in the bottom and will be updated in real-time.
 

@@ -1,7 +1,7 @@
 Call recording
 ==============
 
-The recording feature provides users with an opportunity to:
+The recording feature lets you:
 
 - Start and stop recordings during a call.
 - Record the video and audio stream of the speaker, as well as screen share.
@@ -43,7 +43,7 @@ After stopping a recording, the server will take some time to prepare and save t
 Recording consent
 -----------------
 
-For compliance reasons with various privacy rights, it is possible to ask participants for consent to be recorded before joining the call. The system administration has the flexibility to utilize this feature in several ways:
+For compliance with privacy regulations, it is possible to ask participants for consent to be recorded before joining the call. Administrators can configure this feature in several ways:
 
 - Disable consent completely.
 - Enable mandatory consent system-wide, requiring consent for all conversations.

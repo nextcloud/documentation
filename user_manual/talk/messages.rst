@@ -13,7 +13,7 @@ You can edit messages and captions to file shares up to 6 hours after sending.
 Pinning messages
 ----------------
 
-A moderator can pin important messages in a conversation, for certain period of time or until it's no longer relevant.
+A moderator can pin important messages in a conversation, for a certain period of time or until it's no longer relevant.
 
 .. image:: images/message-pin-action.png
    :width: 400px
@@ -79,7 +79,7 @@ Subscribed threads are easily accessible from the navigation bar in ``Threads`` 
 .. image:: images/threads-followed.png
    :width: 500px
 
-Editing thread title is possible from the thread itself or from the sidebars.
+You can edit the thread title from the thread itself or from the sidebar.
 
 .. image:: images/thread-edit-title.png
    :width: 500px

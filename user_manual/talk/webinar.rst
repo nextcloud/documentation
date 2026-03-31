@@ -1,3 +1,4 @@
+=================
 Webinar and lobby
 =================
 
@@ -7,3 +8,5 @@ The lobby feature allows you to show guests a waiting screen until the call star
     :width: 600px
 
 You can choose to let the participants join the call at a specific time, or when you dismiss the lobby manually.
+
+You can configure the lobby in ``Conversation settings`` under the ``Webinar`` section.

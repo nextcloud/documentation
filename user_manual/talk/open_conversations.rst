@@ -1,9 +1,11 @@
 ==================
-Open Conversations
+Open conversations
 ==================
 
 Creating an open conversation
 -----------------------------
+
+You can create an open conversation that any registered user on this server can discover and join.
 
 .. image:: images/creating-open-conversation.png
     :width: 500px

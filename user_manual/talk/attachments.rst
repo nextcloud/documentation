@@ -5,7 +5,7 @@ Attachments
 Sharing files in a chat
 -----------------------
 
-You can share files in a chat in 3 ways.
+You can share files in a chat in three ways.
 
 First, you can simply drag'n'drop them on the chat.
 
@@ -43,17 +43,17 @@ A poll has two settings:
 - **Anonymous polls**: Participants cannot see who voted for which option.
 - **Allow multiple choices**: Participants can select more than one option.
 
-You can also import polls for auto-fill and export polls as JSON files to save it locally.
+You can also import polls for auto-fill and export polls as JSON files to save them locally.
 
 .. image:: images/import-poll.png
    :width: 400px
 
-Closing poll is possible from the poll dialog.
+You can close a poll from the poll dialog.
 
 .. image:: images/close-poll.png
    :width: 400px
 
-As a moderator, you can create the poll directly or you can save it as a draft to edit it later. 
+As a moderator, you can create the poll directly or you can save it as a draft to edit it later.
 
 .. image:: images/save-poll-draft.png
    :width: 400px

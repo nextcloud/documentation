@@ -5,7 +5,7 @@ Sending messages
 Using Markdown
 ---------------
 
-You can enhance your messages with a markdown syntax support. See list for usage:
+You can enhance your messages using Markdown syntax. Supported elements:
 
 **Headings and dividers**
 
@@ -81,8 +81,8 @@ You can add emoji using the picker on the left of the text input field.
 Smart Picker
 ------------
 
-Smart picker shortcut makes it easier to insert links, files, or other content into your conversations.
-Just choose the type of content you want to insert (files, Talk conversations, Deck cards, GIFs, etc.)
+The smart picker makes it easier to insert links, files, or other content into your conversations.
+Just choose the type of content you want to insert (files, Talk conversations, Deck cards, GIFs, etc.).
 You can also type `/` in the chat input to open the selector.
 
 .. image:: images/smart-picker.png
@@ -130,7 +130,7 @@ You can find all your scheduled messages by clicking on the clock icon next to t
 Chat summary
 ------------
 
-When AI assistant is enabled, a summary can be generated if there are more than 100 unread messages.
+When AI assistant is enabled, a summary can be generated for a conversation if there are more than 100 unread messages.
 You can generate it by pressing the button that is visible in chat above the first unread messages.
 
 .. image:: images/chat-summary-button.png
