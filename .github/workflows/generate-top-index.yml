@@ -28,7 +28,7 @@ jobs:
     - name: Get stable branches
       id: branch
       run: |
-        branches=$(git branch -r | grep -E 'origin/stable[0-9]+' | sed 's/.*stable//' | sort -n -r | tr '\n' ' ')
+        branches=$(git ls-remote --heads origin "heads/stable[0-9][0-9]"| awk '{gsub(/^refs\/heads\/stable/, "", $2); print $2}' | sort -n -r | tr '\n' ' ')
         echo "branches=$branches" >> $GITHUB_OUTPUT
 
     - name: Setup php

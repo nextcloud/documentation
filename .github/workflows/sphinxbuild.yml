@@ -119,7 +119,7 @@ jobs:
         current_branch="${GITHUB_REF#refs/heads/}"
 
         # Find the highest numbered stable branch
-        highest_stable=$(git branch -r | grep -E 'origin/stable[0-9]+' | sed 's/.*stable//' | sort -n | tail -1)
+        highest_stable=$(git ls-remote --heads origin 'heads/stable[0-9][0-9]' | sed 's?.*refs/heads/stable??' | sort -n | tail -1)
         highest_stable_branch="stable${highest_stable}"
 
         echo "Current branch: $current_branch"
