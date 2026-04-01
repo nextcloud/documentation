@@ -58,6 +58,81 @@ date format in the example below, the date/time format will be written in the fo
     "loglevel" => 3,
     "logdateformat" => "F d, Y H:i:s",
 
+Additional file-based logging parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following optional parameters can also be set in :file:`config/config.php`:
+
+**logfilemode**
+    Sets the file permissions (in octal notation) for the log file.
+
+    Defaults to ``0640``.
+
+    ::
+
+        "logfilemode" => 0640,
+
+**logtimezone**
+    Sets the timezone used for log timestamps. See the `PHP list of supported timezones <https://www.php.net/manual/en/timezones.php>`_.
+
+    Defaults to ``UTC``.
+
+    ::
+
+        "logtimezone" => "Europe/Berlin",
+
+**log_rotate_size**
+    Enables log rotation and limits the total size of log files. The value is
+    specified in bytes. When the current log file reaches this size a new log
+    file is created. If a rotated log file already exists it will be
+    overwritten. Set to ``0`` to disable rotation.
+
+    Defaults to ``104857600`` (100 MB).
+
+    ::
+
+        "log_rotate_size" => 100 * 1024 * 1024,
+
+**log.backtrace**
+    When enabled, a backtrace is appended to every log line, not only to
+    exceptions. This significantly increases log size and should only be used
+    for debugging.
+
+    Defaults to ``false``.
+
+    ::
+
+        "log.backtrace" => true,
+
+**log_query**
+    Appends all database queries and their parameters to the log file. Use
+    this only for debugging as it produces very large log files.
+
+    Defaults to ``false``.
+
+    ::
+
+        "log_query" => true,
+
+**loglevel_frontend**
+    Sets a separate log level for messages originating from the Nextcloud
+    frontend (browser). Accepts the same values as ``loglevel`` (0–4).
+
+    Defaults to ``2`` (WARN).
+
+    ::
+
+        "loglevel_frontend" => 2,
+
+**loglevel_dirty_database_queries**
+    Sets the log level at which dirty database queries (queries executed
+    after the response has already been sent) are logged.
+
+    Defaults to ``0`` (DEBUG).
+
+    ::
+
+        "loglevel_dirty_database_queries" => 0,
 syslog
 ~~~~~~
 
