@@ -155,6 +155,101 @@ All log information will be sent to Systemd journal. Requires `php-systemd <http
     "log_type" => "systemd",
     "syslog_tag" => "Nextcloud",
 
+Conditional logging (log.condition)
+-----------------------------------
+
+Nextcloud supports conditional overrides that temporarily increase the log
+level to **DEBUG** when certain criteria are met. This is useful for
+diagnosing problems in production without flooding the entire log with debug
+output.
+
+The ``log.condition`` parameter is set in :file:`config/config.php`.
+
+Basic conditions
+~~~~~~~~~~~~~~~~
+
+At the top level you can specify one or more of the following keys. When
+*any* of them match, the log level for that request is set to **DEBUG**:
+
+**shared_secret**
+    Match requests that pass the query parameter ``log_secret`` with this
+    value.
+
+**users**
+    An array of user IDs. If the currently authenticated user is in the
+    list, the condition is satisfied.
+
+**apps**
+    An array of app identifiers. Any log message whose app context matches
+    one of these apps will be logged at DEBUG level.
+
+Example – enable debug logging for user ``jane`` and the ``files`` app:
+
+::
+
+    'log.condition' => [
+        'users' => ['jane'],
+        'apps' => ['files'],
+    ],
+
+Advanced compound conditions (matches)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ``matches`` key accepts an array of condition groups. Each group can
+combine all of the keys above plus:
+
+**message**
+    A substring that must appear in the log message.
+
+**loglevel**
+    The log level to apply when this group matches (instead of the default
+    DEBUG / ``0``).
+
+All keys within a single group must match for the group to apply (logical
+AND). Multiple groups are evaluated independently (logical OR).
+
+Example – log all messages from the ``files`` app at INFO level, and log any
+message containing ``"Lock"`` for user ``admin`` at DEBUG level:
+
+::
+
+    'log.condition' => [
+        'matches' => [
+            [
+                'apps' => ['files'],
+                'loglevel' => 1,
+            ],
+            [
+                'users' => ['admin'],
+                'message' => 'Lock',
+                'loglevel' => 0,
+            ],
+        ],
+    ],
+
+Using a shared secret for on-demand debugging
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can trigger debug logging for a single request by adding a
+``log_secret`` query parameter. Set a secret in :file:`config/config.php`:
+
+::
+
+    'log.condition' => [
+        'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
+    ],
+
+Then call your Nextcloud URL with the secret appended:
+
+::
+
+    https://cloud.example.com/index.php?log_secret=57b58edb6637fe3059b3595cf9c41b9
+
+.. warning::
+
+    Keep the shared secret private. Anyone who knows it can enable debug-level
+    logging on your instance.
+
 Log fields explained
 --------------------
 
