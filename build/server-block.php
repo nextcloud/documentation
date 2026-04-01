@@ -1,5 +1,11 @@
 <?php
-function generate_section(string $version, int $index): string {
+/**
+ * Generate the HTML section for a given Nextcloud version,
+ * including links to manuals and notes about the version status.
+ * The $index parameter is used to determine if the version is latest, stable, previous stable, or last supported stable.
+ * If $index is null, it means it's a legacy version (released but outside support window).
+ */
+function generate_section(string $version, ?int $index = null): string {
 	$note = '';
 	$label = $version;
 	if ($index === 0) {

@@ -146,7 +146,7 @@ foreach ($stableVersions as $idx => $version) {
 $legacy = [];
 foreach ($branches as $branch) {
 	if (isset($released_branches[$branch]) && !in_array($branch, $stableVersions)) {
-		$legacy[] = generate_section($branch, 1);
+		$legacy[] = generate_section($branch, null);
 	}
 }
 

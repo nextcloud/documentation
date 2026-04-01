@@ -12,12 +12,9 @@ permissions:
   contents: write
 
 jobs:
-  build:
+  build-and-deploy:
     name: Build index.html
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
 
     steps:
     - name: Cache git metadata
@@ -72,4 +69,4 @@ jobs:
         mv /tmp/static/ static/
         git add index.html static/
         git commit -m "chore: update index.html for documentation" || echo "No changes to commit"
-        git push origin gh-pages
+        git push origin gh-pages || echo "Nothing to push (expected if no changes)"
