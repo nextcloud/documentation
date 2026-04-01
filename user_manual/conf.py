@@ -82,97 +82,14 @@ htmlhelp_basename = 'NextcloudUserManual'
 # -- Options for EPUB output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-epub-output
 
-# -- Options for LaTeX output --------------------------------------------------
-
-latex_elements = {
-# The paper size ('letterpaper' or 'a4paper').
-#'papersize': 'letterpaper',
-
-# The font size ('10pt', '11pt' or '12pt').
-#'pointsize': '10pt',
-
-# Additional stuff for the LaTeX preamble.
-#'preamble': '',
-}
-
-# Grouping the document tree into LaTeX files. List of tuples
-# (source start file, target name, title, author, documentclass [howto/manual]).
-latex_documents = [
-  ('contents', 'Nextcloud_User_Manual.tex', u'Nextcloud User Manual',
-   u'The Nextcloud developers', 'manual'),
-]
-
-# The name of an image file (relative to this directory) to place at the top of
-# the title page.
-latex_logo = '../_shared_assets/static/logo-blue.pdf'
-
-# For "manual" documents, if this is true, then toplevel headings are parts,
-# not chapters.
-#latex_use_parts = False
-
-# If true, show page references after internal links.
-#latex_show_pagerefs = False
-
-# If true, show URL addresses after external links.
-#latex_show_urls = False
-
-# Documents to append as an appendix to all manuals.
-#latex_appendices = []
-
-# If false, no module index is generated.
-#latex_domain_indices = True
-
-# -- Options for pdf page output -----------------------------------------------
-
-pdf_documents = [('contents', u'Nextcloud_User_Manual', u'Nextcloud User Manual', u'The Nextcloud developers'),]
-
-# -- Options for manual page output --------------------------------------------
-
-# One entry per manual page. List of tuples
-# (source start file, name, description, authors, manual section).
-man_pages = [
-    ('contents', 'nextcloudusermanual', u'Nextcloud User Manual',
-     [u'The Nextcloud developers'], 1)
-]
-
-# If true, show URL addresses after external links.
-#man_show_urls = False
-
-
-# -- Options for Texinfo output ------------------------------------------------
-
-# Grouping the document tree into Texinfo files. List of tuples
-# (source start file, target name, title, author,
-#  dir menu entry, description, category)
-texinfo_documents = [
-  ('contents', 'NextcloudUserManual', u'Nextcloud User Manual',
-   u'The Nextcloud developers', 'Nextcloud', 'The Nextcloud User Manual.',
-   'Miscellaneous'),
-]
-
-# Documents to append as an appendix to all manuals.
-#texinfo_appendices = []
-
-# If false, no module index is generated.
-#texinfo_domain_indices = True
-
-# How to display URL addresses: 'footnote', 'no', or 'inline'.
-#texinfo_show_urls = 'footnote'
-
-
-# -- Options for Epub output ---------------------------------------------------
-
-# Bibliographic Dublin Core info.
 epub_title = u'Nextcloud User Manual'
 epub_author = u'The Nextcloud developers'
 epub_publisher = u'The Nextcloud developers'
 epub_copyright = u'2012-2025, The Nextcloud developers'
 
-# -- Options for LaTeX output ------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-latex-output
+# -- Options for LaTeX output --------------------------------------------------
 
-latex_elements = {
-}
+latex_elements = {}
 latex_documents = [
     (
         'contents',
