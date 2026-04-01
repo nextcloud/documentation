@@ -12,6 +12,7 @@ permissions:
 
 jobs:
   build:
+
     name: Build ${{ matrix.manual.name }}
     runs-on: ubuntu-latest
 
@@ -71,6 +72,7 @@ jobs:
     - name: Build pdf documentation
       if: ${{ matrix.manual.build_pdf_path }}
       run: |
+        set -e
         cd ${{ matrix.manual.directory }}
         make pdf
         ls -la ${{ matrix.manual.build_pdf_path }}
@@ -119,7 +121,7 @@ jobs:
         current_branch="${GITHUB_REF#refs/heads/}"
 
         # Find the highest numbered stable branch from the remote
-        highest_stable=$(git ls-remote --heads origin 'stable[0-9]*' | sed 's?.*refs/heads/stable??' | sort -n | tail -1)
+        highest_stable=$(git ls-remote --heads origin | sed -n 's?.*refs/heads/stable\([0-9]\{2\}\)$?\1?p' | sort -n | tail -1)
         highest_stable_branch="stable${highest_stable}"
 
         echo "Current branch: $current_branch"

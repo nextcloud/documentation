@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    branches:
+      - master
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -11,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write
+      contents: read
 
     steps:
     - name: Cache git metadata
@@ -31,7 +37,7 @@ jobs:
     - name: Get stable branches
       id: branch
       run: |
-        branches=$(git ls-remote --heads origin "stable[0-9]*" | awk '{gsub(/^refs\/heads\/stable/, "", $2); print $2}' | sort -n -r | tr '\n' ' ')
+        branches=$(git ls-remote --heads origin "heads/stable[0-9][0-9]" | awk '{gsub(/^refs\/heads\/stable/, "", $2); print $2}' | sort -n -r | tr '\n' ' ')
         echo "branches=$branches" >> $GITHUB_OUTPUT
 
     - name: Setup php
@@ -43,7 +49,14 @@ jobs:
         mv build/index.html /tmp/index.html
         mv build/static/ /tmp/static/
 
+    - name: Verify index.html structure and links
+      run: |
+        # Temporarily put index.html in build folder for verification
+        cp /tmp/index.html build/index.html
+        php build/verify-index.php
+
     - name: Switch to gh-pages branch
+      if: github.event_name == 'push'
       run: |
         git fetch origin gh-pages
         git checkout gh-pages
@@ -51,6 +64,7 @@ jobs:
         git config --local user.name "GitHub Action"
     
     - name: Commit and push changes
+      if: github.event_name == 'push'
       run: |
         # Move the generated index.html and static files to the root of the gh-pages branch
         rm -rf index.html static/
