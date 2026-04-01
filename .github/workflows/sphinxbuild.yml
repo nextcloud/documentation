@@ -85,8 +85,21 @@ jobs:
     - name: Build html documentation
       run: cd ${{ matrix.manual.directory }} && make ${{ matrix.manual.make_target }}
 
+    - name: Compute PDF release version
+      if: ${{ matrix.manual.build_pdf_path }}
+      id: pdf_version
+      run: |
+        branch="${GITHUB_REF#refs/heads/}"
+        if [[ "$branch" == stable* ]]; then
+          echo "release=${branch#stable}" >> $GITHUB_OUTPUT
+        else
+          echo "release=latest" >> $GITHUB_OUTPUT
+        fi
+
     - name: Build pdf documentation
       if: ${{ matrix.manual.build_pdf_path }}
+      env:
+        DOCS_RELEASE: ${{ steps.pdf_version.outputs.release }}
       run: |
         set -e
         cd ${{ matrix.manual.directory }}
