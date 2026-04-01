@@ -118,8 +118,8 @@ jobs:
       run: |
         current_branch="${GITHUB_REF#refs/heads/}"
 
-        # Find the highest numbered stable branch
-        highest_stable=$(git ls-remote --heads origin 'heads/stable[0-9][0-9]' | sed 's?.*refs/heads/stable??' | sort -n | tail -1)
+        # Find the highest numbered stable branch from the remote
+        highest_stable=$(git ls-remote --heads origin 'stable[0-9]*' | sed 's?.*refs/heads/stable??' | sort -n | tail -1)
         highest_stable_branch="stable${highest_stable}"
 
         echo "Current branch: $current_branch"
@@ -132,6 +132,8 @@ jobs:
             ;;
           "$highest_stable_branch")
             echo "branch_name=stable" >> $GITHUB_OUTPUT
+            # Also record the numeric version so we can publish to server/<number>/ too
+            echo "version_name=${highest_stable}" >> $GITHUB_OUTPUT
             ;;
           *)
             # Remove stable prefix for current branch
@@ -150,15 +152,23 @@ jobs:
         rm -rf server/${{ steps.branch.outputs.branch_name }}
         mkdir -p server/${{ steps.branch.outputs.branch_name }}
 
-        # Copy all built documentation
+        # Copy all built documentation into dedicated subdirectories
         for artifact in artifacts/*; do
           if [ -d "$artifact" ]; then
-            cp -r "$artifact/" server/${{ steps.branch.outputs.branch_name }}
+            manual_name="$(basename "$artifact")"
+            mkdir -p "server/${{ steps.branch.outputs.branch_name }}/$manual_name"
+            cp -r "$artifact/"* "server/${{ steps.branch.outputs.branch_name }}/$manual_name/"
           fi
         done
 
         # Move pdf files to the root of the branch_name
         mv server/${{ steps.branch.outputs.branch_name }}/*/*.pdf server/${{ steps.branch.outputs.branch_name }}/ || true
+
+        # If this is the highest stable branch, also deploy to its versioned folder
+        if [ -n "${{ steps.branch.outputs.version_name }}" ]; then
+          rm -rf server/${{ steps.branch.outputs.version_name }}
+          cp -r server/${{ steps.branch.outputs.branch_name }} server/${{ steps.branch.outputs.version_name }}
+        fi
 
         # Cleanup
         find . -type d -empty -delete
@@ -166,6 +176,9 @@ jobs:
 
     - name: Add various redirects
       run: |
+        # Fetch source branches so git checkout origin/... works from the gh-pages checkout
+        git fetch origin ${{ github.event.repository.default_branch }} ${{ github.ref_name }}
+
         # Generate go.php redirect from main branch
         git checkout origin/${{ github.event.repository.default_branch }} -- go.php/index.html
         mkdir -p server/${{ steps.branch.outputs.branch_name }}/go.php

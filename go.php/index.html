@@ -64,6 +64,7 @@
             'admin-warnings': '/admin_manual/configuration_server/security_setup_warnings.html',
             'admin-windows-compatible-filenames': '/admin_manual/configuration_files/windows_compatible_filenames.html',
             'admin-workflowengine': '/admin_manual/file_workflows/index.html',
+            'admin-android-deep-link-handling': '/admin_manual/configuration_server/android_deep_link_handling.html',
 
             'developer-manual': '/developer_manual',
             'developer-backports': '/developer_manual/getting_started/development_process.html#bugfixes',
@@ -98,20 +99,24 @@
 				'zh_TW', 'ar', 'ca', 'da', 'el', 'eo', 'eu', 'fr', 'gl', 'hu', 'id', 'ja_JP',
 				'mn', 'nl', 'pl', 'pt_PT', 'ru', 'sk_SK', 'sq', 'sv', 'th', 'uk', 'vi', 'zh_HK',
 			]
+			// Build a lowercase lookup map to canonical form for case-insensitive matching
+			const supportedLower = supportedLanguages.map(l => l.toLowerCase())
 
 			for (const lang of languages) {
 				const fullLang = lang.replace('-', '_'); // Normalize e.g. en-US → en_US
 				const lowerFullLang = fullLang.toLowerCase()
 
-				// Try full language code (e.g., en_US)
-				if (supportedLanguages.includes(lowerFullLang)) {
-					return lowerFullLang
+				// Try full language code (e.g., en_US) — return canonical directory name
+				const fullIdx = supportedLower.indexOf(lowerFullLang)
+				if (fullIdx !== -1) {
+					return supportedLanguages[fullIdx]
 				}
 
-				// Try base language code (e.g., en)
+				// Try base language code (e.g., en) — return canonical directory name
 				const baseLang = lowerFullLang.split('_')[0]
-				if (supportedLanguages.includes(baseLang)) {
-					return baseLang
+				const baseIdx = supportedLower.indexOf(baseLang)
+				if (baseIdx !== -1) {
+					return supportedLanguages[baseIdx]
 				}
 			}
 
@@ -122,15 +127,21 @@
         function performRedirect() {
             const from = getQueryParam('to')
             const currentLocation = window.location
-            const basePath = currentLocation.pathname.replace('/go.php/', '').replace('/go.php', '')
+            const basePath = currentLocation.pathname.replace(/\/go\.php(\/.*)?$/, '')
             
             let subPath
             
             if (mapping[from]) {
 				subPath = mapping[from]
 			} else {
-				// If no mapping found, redirect to the parent directory
-				subPath = '/'
+				// Prefix-based fallback to preserve legacy PHP redirect behavior
+				if (from && from.startsWith('admin-')) {
+					subPath = '/admin_manual'
+				} else if (from && from.startsWith('developer-')) {
+					subPath = '/developer_manual'
+				} else {
+					subPath = '/user_manual'
+				}
 			}
 
             // Handle user manual language detection
