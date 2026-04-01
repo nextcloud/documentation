@@ -16,5 +16,5 @@ external chat services.
    webinar
    call_recording
    breakout_rooms
+   bots
    matterbridge
-.. bots
