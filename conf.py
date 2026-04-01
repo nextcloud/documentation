@@ -20,7 +20,8 @@ copyright = str(now.year) + ' Nextcloud GmbH'
 # The short X.Y version.
 version = 'latest'
 # The full version, including alpha/beta/rc tags.
-release = version
+# Can be overridden via DOCS_RELEASE env var (used for PDF builds to show the actual version number)
+release = os.environ.get('DOCS_RELEASE', version)
 
 # RTD theme options
 html_theme_options = {
