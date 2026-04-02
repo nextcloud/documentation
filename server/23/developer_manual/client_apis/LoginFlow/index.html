@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Flow &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Remote wipe" href="../RemoteWipe/index.html" />
+    <link rel="prev" title="OCS Status API" href="../OCS/ocs-status-api.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Nextcloud design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Clients and Client APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../android_library/index.html">Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WebDAV/index.html">Webdav</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../OCS/index.html">OCS API</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Login Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#opening-the-webview">Opening the webview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#login-in-the-user">Login in the user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#obtaining-the-login-credentials">Obtaining the login credentials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#converting-to-app-passwords">Converting to app passwords</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deleting-an-app-password">Deleting an app password</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#login-flow-v2">Login flow v2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../RemoteWipe/index.html">Remote wipe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../OCS/ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../OCS/ocs-sharee-api.html">OCS Sharee API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../activity-api.html">Activity API</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Clients and Client APIs</a></li>
+      <li class="breadcrumb-item active">Login Flow</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/client_apis/LoginFlow/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="login-flow">
+<span id="loginflowindex"></span><h1>Login Flow<a class="headerlink" href="#login-flow" title="Link to this heading"></a></h1>
+<p>This document provides a quick overview of the new login flow that should be used by clients to obtain
+login credentials. This will assure that each client gets its own set of credentials. This has several advantages:</p>
+<ol class="arabic simple">
+<li><p>A client never stores the password of the user</p></li>
+<li><p>The user can revoke access on a per client basis from the web</p></li>
+</ol>
+<section id="opening-the-webview">
+<h2>Opening the webview<a class="headerlink" href="#opening-the-webview" title="Link to this heading"></a></h2>
+<p>The client should open a webview to <code class="code docutils literal notranslate"><span class="pre">&lt;server&gt;/index.php/login/flow</span></code>. Be sure to set the <code class="code docutils literal notranslate"><span class="pre">OCS-APIREQUEST</span></code>
+header to <code class="code docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>The client will register an URL handler to catch urls of the <code class="code docutils literal notranslate"><span class="pre">nc</span></code> protocol. This is required to obtain the
+credentials in the final stage.</p>
+<p>This should be a one time webview. Which means:</p>
+<ul class="simple">
+<li><p>There should be no cookies set when creating the webview</p></li>
+<li><p>Passwords should not be stored</p></li>
+<li><p>No state should be preserved after the webview has terminated</p></li>
+</ul>
+<p>To have a good user experince please consider the following things:</p>
+<ul class="simple">
+<li><p>set a proper <code class="code docutils literal notranslate"><span class="pre">ACCEPT_LANGUAGE</span></code> header</p></li>
+<li><p>set a proper <code class="code docutils literal notranslate"><span class="pre">USER_AGENT</span></code> header</p></li>
+</ul>
+</section>
+<section id="login-in-the-user">
+<h2>Login in the user<a class="headerlink" href="#login-in-the-user" title="Link to this heading"></a></h2>
+<p>The user will now see a webpage telling them they will grant access to <code class="code docutils literal notranslate"><span class="pre">USER_AGENT</span></code>. When they follow the steps
+they will be asked to login. If they have two factor authentication enabled they will require this to login. But since
+this is all in the webview itself the client does not need to care about this.</p>
+</section>
+<section id="obtaining-the-login-credentials">
+<h2>Obtaining the login credentials<a class="headerlink" href="#obtaining-the-login-credentials" title="Link to this heading"></a></h2>
+<p>On the final login the server will do a redirect to a url of the following format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nc</span><span class="p">:</span><span class="o">//</span><span class="n">login</span><span class="o">/</span><span class="n">server</span><span class="p">:</span><span class="o">&lt;</span><span class="n">server</span><span class="o">&gt;&amp;</span><span class="n">user</span><span class="p">:</span><span class="o">&lt;</span><span class="n">loginname</span><span class="o">&gt;&amp;</span><span class="n">password</span><span class="p">:</span><span class="o">&lt;</span><span class="n">password</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>server: The address of the server to connect to. The server may specify a protocol (http or https). If no protocol is specified the client will assume https.</p></li>
+<li><p>loginname: The username that the client must use to login. <strong>Note:</strong> Keep in mind that this is the loginname and could be different from the username. For example the email address could be used to login but not for generating the webdav URL. You could fetch the actual username from the OCS API endpoint <code class="code docutils literal notranslate"><span class="pre">&lt;server&gt;/ocs/v1.php/cloud/user</span></code>.</p></li>
+<li><p>password: The password that the client must use to login and store securely</p></li>
+</ul>
+<p>This information will be used by the client to create a new account.
+After this the webview is destroyed including all the state the webview holds.</p>
+</section>
+<section id="converting-to-app-passwords">
+<h2>Converting to app passwords<a class="headerlink" href="#converting-to-app-passwords" title="Link to this heading"></a></h2>
+<p>Old configurations of clients might still be using username and passwords. The login flow ensures that each device has an unique app password. In order to facilitate transparent migration to app passwords there is an endpoint that can be called by client.</p>
+<p>If the client is authenticated with an app password a 403 will be returned. If the client is authenticating with a real password an app password will be generated and returned.</p>
+<p>The user agent header will be used to name the app password.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>username:password<span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;OCS-APIRequest: true&#39;</span><span class="w"> </span>https://cloud.example.com/ocs/v2.php/core/getapppassword
+</pre></div>
+</div>
+<p>The response would look (in XML) something like:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w">        </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">                </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">                </span><span class="nt">&lt;statuscode&gt;</span>200<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">                </span><span class="nt">&lt;message&gt;</span>OK<span class="nt">&lt;/message&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w">        </span><span class="nt">&lt;data&gt;</span>
+<span class="w">                </span><span class="nt">&lt;apppassword&gt;</span>M1DqHwuZWwjEC3ku7gJsspR7bZXopwf01kj0XGppYVzEkGtbZBRaXlOUxFZdbgJ6Zk9OwG9x<span class="nt">&lt;/apppassword&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/data&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="deleting-an-app-password">
+<h2>Deleting an app password<a class="headerlink" href="#deleting-an-app-password" title="Link to this heading"></a></h2>
+<p>When an account on a client is removed for housekeeping it is desired to destroy the apptoken in use.
+This can be done by a simple call:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>username:app-password<span class="w"> </span>-X<span class="w"> </span>DELETE<span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;OCS-APIREQUEST: true&#39;</span><span class="w">  </span>http://localhost/ocs/v2.php/core/apppassword
+</pre></div>
+</div>
+<p>The response should be a plain OCS response with a status 200</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w">        </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">                </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">                </span><span class="nt">&lt;statuscode&gt;</span>200<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">                </span><span class="nt">&lt;message&gt;</span>OK<span class="nt">&lt;/message&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w">        </span><span class="nt">&lt;data/&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+<p>If a non 200 status code is returned the client should still proceed with removing the account.</p>
+</section>
+<section id="login-flow-v2">
+<h2>Login flow v2<a class="headerlink" href="#login-flow-v2" title="Link to this heading"></a></h2>
+<p>While the login flow works very nice in a lot of cases there are especially on desktop application certain hurdles. Special proxy configuration, client side certificates and the likes can cause trouble. To solve this we have come up with a second login flow that uses the users default webbrowser to authenticate. Thus ensuring that if they can login via the web they can also login in the client.</p>
+<p>To initiate a login do an anonymous POST request</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://cloud.example.com/index.php/login/v2
+</pre></div>
+</div>
+<p>This will return a json object like</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;poll&quot;</span><span class="p">:{</span>
+<span class="w">        </span><span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="s2">&quot;mQUYQdffOSAMJYtm8pVpkOsVqXt5hglnuSpO5EMbgJMNEPFGaiDe8OUjvrJ2WcYcBSLgqynu9jaPFvZHMl83ybMvp6aDIDARjTFIBpRWod6p32fL9LIpIStvc6k8Wrs1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="s2">&quot;https:\/\/cloud.example.com\/login\/v2\/poll&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;login&quot;</span><span class="p">:</span><span class="s2">&quot;https:\/\/cloud.example.com\/login\/v2\/flow\/guyjGtcKPTKCi4epIRIupIexgJ8wNInMFSfHabACRPZUkmEaWZSM54bFkFuzWksbps7jmTFQjeskLpyJXyhpHlgK8sZBn9HXLXjohIx5iXgJKdOkkZTYCzUWHlsg3YFg&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The url in login should be opened in the default browser, this is where the user will follow the login procedure.
+The program should directly start polling the poll endpoint:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://cloud.example.com/login/v2/poll<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;token=mQUYQdffOSAMJYtm8pVpkOsVqXt5hglnuSpO5EMbgJMNEPFGaiDe8OUjvrJ2WcYcBSLgqynu9jaPFvZHMl83ybMvp6aDIDARjTFIBpRWod6p32fL9LIpIStvc6k8Wrs1&quot;</span>
+</pre></div>
+</div>
+<p>This will return a 404 until authentication is done. Once a 200 is returned it is another json object.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;server&quot;</span><span class="p">:</span><span class="s2">&quot;https:\/\/cloud.example.com&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;loginName&quot;</span><span class="p">:</span><span class="s2">&quot;username&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;appPassword&quot;</span><span class="p">:</span><span class="s2">&quot;yKTVA4zgxjfivy52WqD8kW3M2pKGQr6srmUXMipRdunxjPFripJn0GMfmtNOqOolYSuJ6sCN&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Use the server and the provided credentials to connect.
+Note that the 200 will only be returned once.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../OCS/ocs-status-api.html" class="btn btn-neutral float-left" title="OCS Status API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../RemoteWipe/index.html" class="btn btn-neutral float-right" title="Remote wipe" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/20/developer_manual">20</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/21/developer_manual">21</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/22/developer_manual">22</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

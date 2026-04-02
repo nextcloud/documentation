@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>App upgrade guide &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Nextcloud design guidelines" href="../design/index.html" />
+    <link rel="prev" title="Release Automation" href="release_automation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">App publishing and maintenance</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="code_signing.html">Code signing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publishing.html">App store publishing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_automation.html">Release Automation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">App upgrade guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#upgrading-to-nextcloud-23">Upgrading to Nextcloud 23</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#back-end-changes">Back-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#updated-core-libraries">Updated core libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrading-to-nextcloud-22">Upgrading to Nextcloud 22</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general">General</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#front-end-changes">Front-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Back-end changes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrading-to-nextcloud-21">Upgrading to Nextcloud 21</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">General</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrading-to-nextcloud-20">Upgrading to Nextcloud 20</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Front-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Back-end changes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrading-to-nextcloud-19">Upgrading to Nextcloud 19</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Front-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">Back-end changes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrading-to-nextcloud-18">Upgrading to Nextcloud 18</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id15">Front-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">Back-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#behavioral-changes">Behavioral changes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrading-to-nextcloud-17">Upgrading to Nextcloud 17</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id19">Front-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id22">Back-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id25">Behavioral changes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrading-to-nextcloud-16">Upgrading to Nextcloud 16</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id26">Front-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id27">Back-end changes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrading-to-nextcloud-15">Upgrading to Nextcloud 15</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id29">Front-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id31">Back-end changes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrading-to-nextcloud-14">Upgrading to Nextcloud 14</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id34">General</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id35">Front-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id36">Back-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id40">Behavioral changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuration-changes">Configuration changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ocs-changes">OCS changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#internal-changes">Internal changes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Nextcloud design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">App publishing and maintenance</a></li>
+      <li class="breadcrumb-item active">App upgrade guide</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/app_publishing_maintenance/upgrade-guide.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="app-upgrade-guide">
+<h1>App upgrade guide<a class="headerlink" href="#app-upgrade-guide" title="Link to this heading"></a></h1>
+<p>Once you’ve created and published the first version of your app, you will want to keep it up to date with the latest Nextcloud features.</p>
+<p>This document will cover the most important changes in Nextcloud, as well as some guides on how to upgrade existing apps.</p>
+<section id="upgrading-to-nextcloud-23">
+<h2>Upgrading to Nextcloud 23<a class="headerlink" href="#upgrading-to-nextcloud-23" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Critical changes were collected <a class="reference external" href="https://github.com/nextcloud/server/issues/27846">on GitHub</a>. See the original ticket for links to the pull requests and tickets.</p>
+</div>
+<section id="back-end-changes">
+<h3>Back-end changes<a class="headerlink" href="#back-end-changes" title="Link to this heading"></a></h3>
+<section id="changed-apis">
+<h4>Changed APIs<a class="headerlink" href="#changed-apis" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\User\Events\UserLoggedInEvent::getPassword</span></code> is now nullable because logins are possible without a password in SSO setups</p></li>
+</ul>
+</section>
+<section id="deprecated-apis">
+<h4>Deprecated APIs<a class="headerlink" href="#deprecated-apis" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Calendar\IManager::search</span></code>: use <a class="reference internal" href="../digging_deeper/groupware/calendar.html#calendar-search"><span class="std std-ref">the new calendar search API</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Calendar\IManager::isEnabled</span></code>: there is no replacement</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Calendar\IManager::registerCalendar</span></code>: use <a class="reference internal" href="../digging_deeper/groupware/calendar.html#calendar-providers"><span class="std std-ref">calendar providers</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Calendar\IManager::unregisterCalendar</span></code> there is no replacement</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Calendar\IManager::register</span></code>: use <a class="reference internal" href="../digging_deeper/groupware/calendar.html#calendar-providers"><span class="std std-ref">calendar providers</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Calendar\IManager::getCalendars</span></code>: use <a class="reference internal" href="../digging_deeper/groupware/calendar.html#calendar-access"><span class="std std-ref">the new calendar API</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Calendar\IManager::clear</span></code>: there is no replacement</p></li>
+</ul>
+</section>
+</section>
+<section id="updated-core-libraries">
+<h3>Updated core libraries<a class="headerlink" href="#updated-core-libraries" title="Link to this heading"></a></h3>
+<section id="doctrine-dbal">
+<h4><code class="docutils literal notranslate"><span class="pre">doctrine/dbal</span></code><a class="headerlink" href="#doctrine-dbal" title="Link to this heading"></a></h4>
+<p>The Doctrine Database Abstraction Layer (dbal) powers Nextcloud’s database connection and query builder. In Nextcloud 23 this dependency was updated from 3.0 to 3.1. As a consequence the <code class="docutils literal notranslate"><span class="pre">\OC\DB\QueryBuilder\QueryBuilder::getFirstResult</span></code> method now returns <code class="docutils literal notranslate"><span class="pre">0</span></code> instead of <code class="docutils literal notranslate"><span class="pre">null</span></code> if <code class="docutils literal notranslate"><span class="pre">\OC\DB\QueryBuilder\QueryBuilder::setFirstResult</span></code> wasn’t called.</p>
+</section>
+</section>
+</section>
+<section id="upgrading-to-nextcloud-22">
+<h2>Upgrading to Nextcloud 22<a class="headerlink" href="#upgrading-to-nextcloud-22" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Critical changes were collected <a class="reference external" href="https://github.com/nextcloud/server/issues/26407">on GitHub</a>. See the original ticket for links to the pull requests and tickets.</p>
+</div>
+<section id="general">
+<h3>General<a class="headerlink" href="#general" title="Link to this heading"></a></h3>
+<section id="migration-commands">
+<h4>Migration commands<a class="headerlink" href="#migration-commands" title="Link to this heading"></a></h4>
+<p>The occ commands in the <code class="docutils literal notranslate"><span class="pre">migration:*</span></code> namespace are now only available in <a class="reference internal" href="../digging_deeper/debugging.html#debug-mode"><span class="std std-ref">debug mode</span></a>.</p>
+<p>See <a class="reference external" href="https://github.com/nextcloud/server/pull/27113">the pull request on GitHub</a> for more information. If you thought you needed them, feel free to ping the author or a reviewer of the PR to solve the problem correctly. Running migrations directly mostly breaks the database status and is therefore only meant for debugging faulty migrations.</p>
+</section>
+<section id="log-format">
+<h4>Log format<a class="headerlink" href="#log-format" title="Link to this heading"></a></h4>
+<p>The JSON log format no longer contains full exception in the message field, but a separate exception entry is added and the existing message will only contain the exception message text. This might need adjustments by administrators when logs are extracted to external sources.</p>
+</section>
+</section>
+<section id="front-end-changes">
+<h3>Front-end changes<a class="headerlink" href="#front-end-changes" title="Link to this heading"></a></h3>
+<section id="scss-variable-and-compilation-deprecation">
+<h4>Scss variable and compilation deprecation<a class="headerlink" href="#scss-variable-and-compilation-deprecation" title="Link to this heading"></a></h4>
+<p>Nextcloud is slowly phasing out scss variables and the compilation of app style sheets. It’s recommended that apps use their own compilation (e.g. through Webpack) to transform scss and similar to plain css. The ability of Nextcloud compiling scss for apps will be removed in the future. Subscribe to <a class="reference external" href="https://github.com/nextcloud/server/issues/9940">GitHub ticket 9940</a> to get updates on how to best approach this. Right now some scss variables can be replaced with css variables. Other mechanisms like the icon generation still depend on the scss compilation by Nextcloud.</p>
+</section>
+<section id="node-js-upgrade">
+<h4>Node.js upgrade<a class="headerlink" href="#node-js-upgrade" title="Link to this heading"></a></h4>
+<p>Most Nextcloud apps and Nextcloud itself is now built with Node v14 LTS instead of v12. We recommend updating the configuration of your app accordingly.</p>
+</section>
+<section id="ie11-removal">
+<h4>IE11 removal<a class="headerlink" href="#ie11-removal" title="Link to this heading"></a></h4>
+<p>Internet Explorer 11 was phased out over the past few releases and starting with Nextcloud 22 the front-end code isn’t transpiled for IE11 any longer. You may also drop IE11 from your app as core components will possibly fail with this browser anyway.</p>
+</section>
+<section id="deprecated-global-variables">
+<h4>Deprecated global variables<a class="headerlink" href="#deprecated-global-variables" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DOMPurify</span></code>: ship your own.</p></li>
+</ul>
+</section>
+</section>
+<section id="id1">
+<h3>Back-end changes<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<section id="removed-support-for-database-xml">
+<h4>Removed support for database.xml<a class="headerlink" href="#removed-support-for-database-xml" title="Link to this heading"></a></h4>
+<p>The support for an app’s <code class="docutils literal notranslate"><span class="pre">appinfo/database.xml</span></code> has been removed.</p>
+</section>
+<section id="psr-events">
+<h4>PSR events<a class="headerlink" href="#psr-events" title="Link to this heading"></a></h4>
+<p>In order to bring Nextcloud APIs closer to <a class="reference internal" href="../digging_deeper/psr.html#psr"><span class="std std-ref">PSR</span></a> the base event class no longer extends the old Symfony event class but only <code class="docutils literal notranslate"><span class="pre">\Psr\EventDispatcher\StoppableEventInterface</span></code>. From an app’s perspective this change is transparent.</p>
+</section>
+<section id="psr-container">
+<h4>PSR container<a class="headerlink" href="#psr-container" title="Link to this heading"></a></h4>
+<p>The <a class="reference internal" href="../digging_deeper/psr.html#psr11"><span class="std std-ref">PSR 11 container interface</span></a> was updated from version 1.0 to 1.1.</p>
+</section>
+<section id="ldap-factory-availability">
+<h4>LDAP factory availability<a class="headerlink" href="#ldap-factory-availability" title="Link to this heading"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">\OCP\LDAP\ILDAPProviderFactory</span></code> received a new method <code class="docutils literal notranslate"><span class="pre">isAvailable</span></code> so apps can check if LDAP is configured and used before any attributes are fetched or similar.</p>
+</section>
+<section id="boolean-database-columns">
+<h4>Boolean database columns<a class="headerlink" href="#boolean-database-columns" title="Link to this heading"></a></h4>
+<p>Since Oracle can not store booleans in a non-nullable boolean column Nextcloud doesn’t support non-null boolean columns anymore. Apps have to migrate their schema to nullable boolean columns.</p>
+</section>
+<section id="http-401-for-invalid-username-password">
+<h4>HTTP 401 for invalid username/password<a class="headerlink" href="#http-401-for-invalid-username-password" title="Link to this heading"></a></h4>
+<p>When invalid username/password is sent to a Nextcloud API, Nextcloud will now respond with a HTTP 401 status instead of 403.</p>
+</section>
+<section id="removed-apis">
+<h4>Removed APIs<a class="headerlink" href="#removed-apis" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\OC\Memcache\Factory::create</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\User</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::isIe</span></code></p></li>
+</ul>
+</section>
+<section id="id2">
+<h4>Deprecated APIs<a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Log\ILogFactory::getCustomLogger</span></code>: use <code class="docutils literal notranslate"><span class="pre">\OCP\Log\ILogFactory::getCustomPsrLogger</span></code> to get a customized <a class="reference internal" href="../digging_deeper/psr.html#psr3"><span class="std std-ref">PSR3</span></a> logger</p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCP\IDBConnection::ADD_MISSING_INDEXES</span></code> and the corresponding constant <code class="docutils literal notranslate"><span class="pre">\OCP\IDBConnection::ADD_MISSING_INDEXES_EVENT</span></code>: internal event</p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCP\IDBConnection::CHECK_MISSING_INDEXES</span></code> and the corresponding constant <code class="docutils literal notranslate"><span class="pre">\OCP\IDBConnection::CHECK_MISSING_INDEXES_EVENT</span></code>: internal event</p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCP\IDBConnection::ADD_MISSING_PRIMARY_KEYS</span></code> and the corresponding constant <code class="docutils literal notranslate"><span class="pre">\OCP\IDBConnection::ADD_MISSING_PRIMARY_KEYS_EVENT</span></code>: internal event</p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCP\IDBConnection::CHECK_MISSING_PRIMARY_KEYS</span></code> and the corresponding constant <code class="docutils literal notranslate"><span class="pre">\OCP\IDBConnection::CHECK_MISSING_PRIMARY_KEYS_EVENT</span></code>: internal event</p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCP\IDBConnection::ADD_MISSING_COLUMNS_EVENT</span></code> and the corresponding constant <code class="docutils literal notranslate"><span class="pre">\OCP\IDBConnection::ADD_MISSING_COLUMNS</span></code>: internal event</p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCP\IDBConnection::CHECK_MISSING_COLUMNS</span></code> and the corresponding constant <code class="docutils literal notranslate"><span class="pre">\OCP\IDBConnection::CHECK_MISSING_COLUMNS</span></code>: internal event</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="upgrading-to-nextcloud-21">
+<h2>Upgrading to Nextcloud 21<a class="headerlink" href="#upgrading-to-nextcloud-21" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Critical changes were collected <a class="reference external" href="https://github.com/nextcloud/server/issues/23210">on GitHub</a>. See the original ticket for links to the pull requests and tickets.</p>
+</div>
+<section id="id3">
+<h3>General<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>The biggest change in Nextcloud 21 is the initial support for PHP 8 and the corresponding updates of many core dependencies, which could have direct and indirect consequences for apps.</p>
+<section id="php-8-support">
+<h4>PHP 8 support<a class="headerlink" href="#php-8-support" title="Link to this heading"></a></h4>
+<p>Nextcloud 21 is the first major release that is compatible with the new PHP 8.0. As a consequence, some previously working syntax can cause problems when an app is deployed with PHP newer than 7.4. The full changelog can be found <a class="reference external" href="https://www.php.net/ChangeLog-8.php">on the php.net website</a>. There is also a document for all breaking changes <a class="reference external" href="https://github.com/php/php-src/blob/PHP-8.0/UPGRADING#L20">on GitHub</a>.</p>
+<p>To check compatibility automatically we recommend adding or updating the <a class="reference internal" href="../digging_deeper/continuous_integration.html#app-ci"><span class="std std-ref">Continuous Integration</span></a> of your app so that linters, tests and static analysis can warn you about any problems before the app is shipped to users.</p>
+</section>
+<section id="id4">
+<h4>Updated core libraries<a class="headerlink" href="#id4" title="Link to this heading"></a></h4>
+<p>If apps use only official public APIs of Nextcloud, the update of core libraries should have little to no effect on apps. However, there are some edge cases where an app still has a code dependency to a library shipped with Nextcloud, e.g. when those 3rdparty classes or functions are used, and therefore app developers are recommended to check their code for any incompatibility. Moreover it’s recommended to check compatibility with sophisticated tools, as documented at the  <a class="reference internal" href="../digging_deeper/continuous_integration.html#app-static-analysis"><span class="std std-ref">static analysis</span></a> section.</p>
+<section id="id5">
+<h5><code class="docutils literal notranslate"><span class="pre">doctrine/dbal</span></code><a class="headerlink" href="#id5" title="Link to this heading"></a></h5>
+<p>The Doctrine Database Abstraction Layer powers Nextcloud’s database connection and query builder. In Nextcloud 21, this dependency was updated from 2.x to 3.0. As a consequence, some types that were previously exported through the Nextcloud OCP API are removed or changed by this update. For backwards-compatibility, there is now a tiny compatibility layer between the original Doctrine API and what apps use via the Nextcloud API.</p>
+<p>Optimistically speaking, the database connection and the query builder should mostly work like in Nextcloud 20 or older. The main differences are that prepared statements and query results are not handled by the removed Doctrine <code class="docutils literal notranslate"><span class="pre">Statement</span></code> but two new Nextcloud types <code class="docutils literal notranslate"><span class="pre">IPreparedStatement</span></code> and <code class="docutils literal notranslate"><span class="pre">IResult</span></code>. You don’t have to worry about these types unless you pass around the result of a query to class/method/function with type hints. In this rare case, please adjust the type hints accordingly for the new type if you only support Nextcloud 21 in your apps or remove the type hint temporarily for multi-version Nextcloud support.</p>
+<p>Some (minor) breaking changes were inevitable. Here’s the summary</p>
+<ul class="simple">
+<li><p>Many of the database connection methods have now a documented exception that can be thrown: <code class="docutils literal notranslate"><span class="pre">\OCP\DB\Exception</span></code>. This also acts as a replacement for the removed <code class="docutils literal notranslate"><span class="pre">\Doctrine\DBAL\DBALException</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$queryBuilder-&gt;execute()-&gt;fetch()</span></code> only has one argument now (there were three previously)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$queryBuilder-&gt;execute()-&gt;fetchColumn()</span></code> has no more arguments and got also deprecated. Use <code class="docutils literal notranslate"><span class="pre">fetchOne</span></code> instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$queryBuilder-&gt;execute()-&gt;bindParam()</span></code> was removed because conceptually it does not make sense to bind a parameter <em>after</em> executing a query. Use <code class="docutils literal notranslate"><span class="pre">bindParam</span></code> on the <code class="docutils literal notranslate"><span class="pre">IPeparedStatement</span></code> instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$queryBuilder-&gt;execute()-&gt;bindValue()</span></code> was removed because conceptually it does not make sense to bind a value <em>after</em> executing a query. Use <code class="docutils literal notranslate"><span class="pre">bindValue</span></code> on the <code class="docutils literal notranslate"><span class="pre">IPeparedStatement</span></code> instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$queryBuilder-&gt;execute()-&gt;columnCount()</span></code> was removed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$queryBuilder-&gt;execute()-&gt;errorCode()</span></code> was removed from Doctrine</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$queryBuilder-&gt;execute()-&gt;errorInfo()</span></code> was removed from Doctrine</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$queryBuilder-&gt;execute()-&gt;setFetchMode()</span></code> was removed from Doctrine</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$connection-&gt;prepare()-&gt;execute()</span></code> previously returned <code class="docutils literal notranslate"><span class="pre">false</span></code> under some error conditions, it now always gives you an <code class="docutils literal notranslate"><span class="pre">IResult</span></code> or throws a <code class="docutils literal notranslate"><span class="pre">\OCP\DB\Exception</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\Doctrine\DBAL\Types\Type::*</span></code> type constants were moved, which some apps used for column type constants in apps. Use the new <code class="docutils literal notranslate"><span class="pre">\OCP\DB\Types::*</span></code> as a replacement.</p></li>
+</ul>
+<p>The details of this change can also be seen in the <a class="reference external" href="https://github.com/nextcloud/server/pull/24948">pull request on GitHub</a> and in the upstream <a class="reference external" href="https://github.com/doctrine/dbal/blob/3.0.x/UPGRADE.md">dbal 3.0.xx upgrade document</a>.</p>
+</section>
+<section id="guzzlehttp-guzzle">
+<h5><code class="docutils literal notranslate"><span class="pre">guzzlehttp/guzzle</span></code><a class="headerlink" href="#guzzlehttp-guzzle" title="Link to this heading"></a></h5>
+<p>The HTTP client library behind the Nextcloud HTTP client was updated for PHP 8 compatibility. The Nextcloud abstraction remained untouched and will work like before. If you used Guzzle directly, make sure you don’t use the fluent API on requests or responses.</p>
+</section>
+<section id="psr-log">
+<h5><code class="docutils literal notranslate"><span class="pre">psr/log</span></code><a class="headerlink" href="#psr-log" title="Link to this heading"></a></h5>
+<p>The <a class="reference internal" href="../digging_deeper/psr.html#psr3"><span class="std std-ref">PSR-3: Logger Interface</span></a> package was updated to v1.1. The <code class="docutils literal notranslate"><span class="pre">log</span></code> method can now theoretically throw an <code class="docutils literal notranslate"><span class="pre">\Psr\Log\InvalidArgumentException</span></code>, though Nextcloud does not make use of this at the moment. It’s recommended to check any usage of the method nevertheless and add error handling if appropriate.</p>
+</section>
+<section id="sabre">
+<h5><code class="docutils literal notranslate"><span class="pre">sabre/*</span></code><a class="headerlink" href="#sabre" title="Link to this heading"></a></h5>
+<p>The Sabre packages received a minor update. Only apps that provide DAV functionality should be effected, if any.</p>
+</section>
+</section>
+<section id="app-code-checker-deprecation">
+<h4>App code checker deprecation<a class="headerlink" href="#app-code-checker-deprecation" title="Link to this heading"></a></h4>
+<p>The app code checker (<code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">app:check-code</span> <span class="pre">myapp</span></code>) is obsolete due to <a class="reference internal" href="../digging_deeper/continuous_integration.html#app-static-analysis"><span class="std std-ref">static analysis</span></a>. For Nextcloud 21 it will act as NOOP, meaning that you can still call the command but it will never fail. This allows you to still use it on CI if you test against 21, 20 and older releases. But prepare the switch to static analysis if you haven’t already. Please also note that the app code checker hadn’t received many updates recently, hence the number of issues it can detect is low.</p>
+</section>
+<section id="psr-0-deprecation">
+<h4>PSR-0 deprecation<a class="headerlink" href="#psr-0-deprecation" title="Link to this heading"></a></h4>
+<p>The original <cite>PSR-0</cite> standard was deprecated in 2014 and therefore the support for it in Nextcloud will also end soon. Hence we recommend migrating your class file names to <cite>PSR-4</cite>.</p>
+</section>
+<section id="last-version-with-database-xml-support-and-migration">
+<h4>Last version with database.xml support and migration<a class="headerlink" href="#last-version-with-database-xml-support-and-migration" title="Link to this heading"></a></h4>
+<p>Nextcloud 21 is the last major release that supports an app’s <code class="docutils literal notranslate"><span class="pre">appinfo/database.xml</span></code> to define the database schema. This is your last chance to automatically convert this deprecated file into the new migration classes using <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">migrations:generate-from-schema</span></code>.</p>
+</section>
+<section id="replaced-well-known-handler-api">
+<h4>Replaced well-known handler API<a class="headerlink" href="#replaced-well-known-handler-api" title="Link to this heading"></a></h4>
+<p>There was an old, unused and inofficial mechanism to hook into well-known discovery via config settings. This includes <code class="docutils literal notranslate"><span class="pre">host-meta</span></code>, <code class="docutils literal notranslate"><span class="pre">host-meta.json</span></code>, <code class="docutils literal notranslate"><span class="pre">nodeinfo</span></code> and <code class="docutils literal notranslate"><span class="pre">webfinger</span></code>. A <a class="reference internal" href="../digging_deeper/web_host_metadata.html#web-host-metadata"><span class="std std-ref">new public API replaces this mechanism</span></a> in Nextcloud 21.</p>
+</section>
+</section>
+</section>
+<section id="upgrading-to-nextcloud-20">
+<h2>Upgrading to Nextcloud 20<a class="headerlink" href="#upgrading-to-nextcloud-20" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Critical changes were collected <a class="reference external" href="https://github.com/nextcloud/server/issues/20953">on GitHub</a>. See the original ticket for links to the pull requests and tickets.</p>
+</div>
+<section id="id6">
+<h3>Front-end changes<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="body-theme">
+<h4>Body theme<a class="headerlink" href="#body-theme" title="Link to this heading"></a></h4>
+<p>The body theme classes are now <code class="docutils literal notranslate"><span class="pre">theme--highcontrast</span></code>, <code class="docutils literal notranslate"><span class="pre">theme--dark</span></code> and/or <code class="docutils literal notranslate"><span class="pre">theme--light</span></code>.</p>
+</section>
+<section id="jquery-update">
+<h4>jQuery update<a class="headerlink" href="#jquery-update" title="Link to this heading"></a></h4>
+<p>jQuery was updated to v2.2. The most notable change is that <code class="docutils literal notranslate"><span class="pre">$(document).ready(...)</span></code> or <code class="docutils literal notranslate"><span class="pre">$(...)</span></code> for short fires sooner than before. Use the <a class="reference external" href="https://developer.mozilla.org/fr/docs/Web/Events/DOMContentLoaded">DOMContentLoaded event</a> instead.</p>
+</section>
+<section id="search">
+<h4>Search<a class="headerlink" href="#search" title="Link to this heading"></a></h4>
+<p>The <a class="reference internal" href="../digging_deeper/search.html#unified-search"><span class="std std-ref">unified search</span></a> replaces the traditional search input, hence <code class="docutils literal notranslate"><span class="pre">OCA.Search</span></code> became a noop. For backwards compatibility, the code will not raise any errors now, but it does not have any functionality.</p>
+</section>
+<section id="removed-globals">
+<h4>Removed globals<a class="headerlink" href="#removed-globals" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">escape-html</span></code>: use <cite>the escape-html package &lt;https://www.npmjs.com/package/escape-html&gt;</cite> or similar</p></li>
+</ul>
+</section>
+<section id="id7">
+<h4>Deprecated global variables<a class="headerlink" href="#id7" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">humanFileSize</span></code>: use <code class="docutils literal notranslate"><span class="pre">formatfilesize</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/files">https://www.npmjs.com/package/&#64;nextcloud/files</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.getCanonicalLocale</span></code>: use <code class="docutils literal notranslate"><span class="pre">getCanonicalLocale</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/l10n">https://www.npmjs.com/package/&#64;nextcloud/l10n</a></p></li>
+</ul>
+</section>
+<section id="removed-jquery-plugins">
+<h4>Removed jQuery plugins<a class="headerlink" href="#removed-jquery-plugins" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$.tipsy</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="id8">
+<h3>Back-end changes<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<section id="app-bootstrap-logic">
+<h4>App bootstrap logic<a class="headerlink" href="#app-bootstrap-logic" title="Link to this heading"></a></h4>
+<p>The code that initializes an app or anything that should run for every request and command is now moved to a dedicated and typed API. The <code class="docutils literal notranslate"><span class="pre">appinfo/app.php</span></code> is therefore obsolete and deprecated. See <a class="reference internal" href="../app_development/bootstrap.html#bootstrapping"><span class="std std-ref">bootstrapping</span></a> for details.</p>
+</section>
+<section id="psr-3-integration">
+<span id="upgrade-psr3"></span><h4>PSR-3 integration<a class="headerlink" href="#psr-3-integration" title="Link to this heading"></a></h4>
+<p>Nextcloud 20 is the first major release of Nextcloud that brings full compatibility with <a class="reference internal" href="../digging_deeper/psr.html#psr3"><span class="std std-ref">PSR-3: Logger Interface</span></a>. From this point on it is highly recommended to use this interface mainly as the old <code class="docutils literal notranslate"><span class="pre">\OCP\ILogger</span></code> got deprecated with the last remaining changes. The majority of methods are identical between the Nextcloud-specific interface and the PSR one. Pay attention to usages of <code class="docutils literal notranslate"><span class="pre">\OCP\ILogger::logException</span></code> as that method does not exist on the PSR logger. However, you can specifcy an <code class="docutils literal notranslate"><span class="pre">exception</span></code> key in the <code class="docutils literal notranslate"><span class="pre">$context</span></code> argument of any <code class="docutils literal notranslate"><span class="pre">\Psr\Log\LoggerInterface</span></code> method and Nextcloud will format it like it did with the old <code class="docutils literal notranslate"><span class="pre">logException</span></code>.</p>
+</section>
+<section id="psr-11-integration">
+<span id="upgrade-psr11"></span><h4>PSR-11 integration<a class="headerlink" href="#psr-11-integration" title="Link to this heading"></a></h4>
+<p>Nextcloud 20 is the first major release of Nextcloud that brings full compatibility with <a class="reference internal" href="../digging_deeper/psr.html#psr11"><span class="std std-ref">PSR-11: Container Interface</span></a>. From this point on it is highly recommended to use this interface mainly as the old <code class="docutils literal notranslate"><span class="pre">\OCP\IContainer</span></code> got deprecated with this change.</p>
+<p>The interfaces <code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\IAppContainer</span></code> and <code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer</span></code> will remain, but they won’t extend the <code class="docutils literal notranslate"><span class="pre">IContainer</span></code> anymore once that interface gets removed. As a result, <code class="docutils literal notranslate"><span class="pre">IAppContainer</span></code> and <code class="docutils literal notranslate"><span class="pre">IServerContainer</span></code> will eventually become tagging interfaces with the sole purpose of making it possible to have either the app or server container injected explicitly.</p>
+<p>If your app requires Nextcloud 20 or later, you can replace any of the old type hints with one of <code class="docutils literal notranslate"><span class="pre">\Psr\Container\ContainerInterface</span></code> and replace calls of <code class="docutils literal notranslate"><span class="pre">query</span></code> with <code class="docutils literal notranslate"><span class="pre">get</span></code>, e.g. on the closures used when registering services:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">// old</span>
+<span class="x">$container-&gt;registerService(&#39;DecryptAll&#39;, function (IAppContainer $c) {</span>
+<span class="x">  return new DecryptAll(</span>
+<span class="x">    $c-&gt;query(&#39;Util&#39;),</span>
+<span class="x">    $c-&gt;query(KeyManager::class),</span>
+<span class="x">    $c-&gt;query(&#39;Crypt&#39;),</span>
+<span class="x">    $c-&gt;query(ISession::class)</span>
+<span class="x">  )</span>
+<span class="x">})</span>
+</pre></div>
+</div>
+<p>becomes</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">// new</span>
+<span class="x">$container-&gt;registerService(&#39;DecryptAll&#39;, function (ContainerInterface $c) {</span>
+<span class="x">  return new DecryptAll(</span>
+<span class="x">    $c-&gt;get(&#39;Util&#39;),</span>
+<span class="x">    $c-&gt;get(KeyManager::class&#39;),</span>
+<span class="x">    $c-&gt;get(&#39;Crypt&#39;),</span>
+<span class="x">    $c-&gt;get(ISession::class)</span>
+<span class="x">  )</span>
+<span class="x">})</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a smoother transition, the old interfaces were changed so they are based on <code class="docutils literal notranslate"><span class="pre">ContainerInterface</span></code>, hence you can use <code class="docutils literal notranslate"><span class="pre">has</span></code> and <code class="docutils literal notranslate"><span class="pre">get</span></code> on <code class="docutils literal notranslate"><span class="pre">IContainer</span></code> and sub types.</p>
+</div>
+</section>
+<section id="id9">
+<h4>Deprecated APIs<a class="headerlink" href="#id9" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IContainer</span></code>: see <a class="reference internal" href="#upgrade-psr11"><span class="std std-ref">PSR-11 integration</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\ILogger</span></code>: see <a class="reference internal" href="#upgrade-psr3"><span class="std std-ref">PSR-3 integration</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getEventDispatcher</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getCalendarManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getCalendarResourceBackendManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getCalendarRoomBackendManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getContactsManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getEncryptionManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getEncryptionFilesHelper</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getEncryptionKeyStorage</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getRequest</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getPreviewManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getTagManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getSystemTagManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getSystemTagObjectMapper</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getAvatarManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getRootFolder</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getUserManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getGroupManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getUserSession</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getSession</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getTwoFactorAuthManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getNavigationManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getConfig</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getSystemConfig</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getAppConfig</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getL10NFactory</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getL10N</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getURLGenerator</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getAppFetcher</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getMemCacheFactory</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getGetRedisFactory</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getDatabaseConnection</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getActivityManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getJobList</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getLogger</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getLogFactory</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getRouter</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getSearch</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getSecureRandom</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getCrypto</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getHasher</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getCredentialsManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getCertificateManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getHTTPClientService</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::createEventSource</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getEventLogger</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getQueryLogger</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getTempManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getAppManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getMailer</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getWebRoot</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getOcsClient</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getDateTimeZone</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getDateTimeFormatter</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getMountProviderCollection</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getIniWrapper</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getCommandBus</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getTrustedDomainHelper</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getLockingProvider</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getMountManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getUserMountCache</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getMimeTypeDetector</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getMimeTypeLoader</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getCapabilitiesManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getNotificationManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getCommentsManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getThemingDefaults</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getIntegrityCodeChecker</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getSessionCryptoWrapper</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getCsrfTokenManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getBruteForceThrottler</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getContentSecurityPolicyManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getContentSecurityPolicyNonceManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getStoragesBackendService</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getGlobalStoragesService</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getUserGlobalStoragesService</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getUserStoragesService</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getShareManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getCollaboratorSearch</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getAutoCompleteManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getLDAPProvider</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getSettingsManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getAppDataDir</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getCloudIdManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getGlobalScaleConfig</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getCloudFederationProviderManager</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getRemoteApiFactory</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getCloudFederationFactory</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getRemoteInstanceFactory</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getStorageFactory</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getGeneratorHelper</span></code>: have the interface injected instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OC_App::registerLogIn()</span></code>: use <a class="reference internal" href="../app_development/bootstrap.html#bootstrapping"><span class="std std-ref">bootstrapping</span></a> and <code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Bootstrap\IRegistrationContext::registerAlternativeLogin</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\CalDAV\CalDavBackend::createCachedCalendarObject</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CachedCalendarObjectCreatedEvent</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\CalDAV\CalDavBackend::createCalendar</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CalendarCreatedEvent</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\CalDAV\CalDavBackend::createCalendarObject</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CalendarObjectCreatedEvent</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\CalDAV\CalDavBackend::createSubscription</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\SubscriptionCreatedEvent</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\CalDAV\CalDavBackend::deleteCachedCalendarObject</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CachedCalendarObjectDeletedEvent</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\CalDAV\CalDavBackend::deleteCalendar</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CalendarDeletedEvent</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\CalDAV\CalDavBackend::deleteCalendarObject</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CalendarObjectDeletedEvent</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\CalDAV\CalDavBackend::deleteSubscription</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\SubscriptionDeletedEvent</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\CalDAV\CalDavBackend::publishCalendar</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CalendarPublishedEvent</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\CalDAV\CalDavBackend::publishCalendar</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CalendarUnpublishedEvent</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\CalDAV\CalDavBackend::updateCachedCalendarObject</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CachedCalendarObjectUpdatedEvent</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\CalDAV\CalDavBackend::updateCalendar</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CalendarUpdatedEvent</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\CalDAV\CalDavBackend::updateCalendarObject</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CalendarObjectUpdatedEvent</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\CalDAV\CalDavBackend::updateShares</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CalendarShareUpdatedEvent</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\CalDAV\CalDavBackend::updateSubscription</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\SubscriptionUpdatedEvent</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\\OCA\DAV\CardDAV\CardDavBackend::createCard</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CardCreatedEvent</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\CardDAV\CardDavBackend::deleteCard</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CardDeletedEvent</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\CardDAV\CardDavBackend::updateCard</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CardUpdatedEvent</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCA\Files_Sharing::loadAdditionalScripts::</span> <span class="pre">publicShareAuth</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCA\Files_Sharing\Event\BeforeTemplateRenderedEvent</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCA\Files_Sharing::loadAdditionalScripts</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCA\Files_Sharing\Event\BeforeTemplateRenderedEvent</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCA\User_LDAP\User\User::postLDAPBackendAdded</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCA\User_LDAP\Events\UserBackendRegistered</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCA\User_LDAP\User\User::postLDAPBackendAdded</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCA\User_LDAP\Events\GroupBackendRegistered</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\StandaloneTemplateResponse::EVENT_LOAD_ADDITIONAL_SCRIPT</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\Events\BeforeTemplateRenderedEvent</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\StandaloneTemplateResponse::EVENT_LOAD_ADDITIONAL_SCRIPTS_LOGGEDIN</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\Events\BeforeTemplateRenderedEvent</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCP\WorkflowEngine::loadAdditionalSettingScripts</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCP\WorkflowEngine\Events\LoadSettingsScriptsEvent</span></code></p></li>
+</ul>
+</section>
+<section id="removed-from-public-namespace">
+<h4>Removed from public namespace<a class="headerlink" href="#removed-from-public-namespace" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IServerContainer::getAppFolder</span></code></p></li>
+<li><p>Hook <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Connector\Sabre::authInit</span></code>: use the <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\SabrePluginAuthInitEvent</span></code> event instead</p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OC_User::post_removeFromGroup</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCP\Group\Events\UserRemovedEvent</span></code></p></li>
+<li><p>Event <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Connector\Sabre::authInit</span></code>: listen to <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\SabrePluginAuthInitEvent</span></code></p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="upgrading-to-nextcloud-19">
+<h2>Upgrading to Nextcloud 19<a class="headerlink" href="#upgrading-to-nextcloud-19" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Critical changes were collected <a class="reference external" href="https://github.com/nextcloud/server/issues/18479">on GitHub</a>. See the original ticket for links to the pull requests and tickets.</p>
+</div>
+<section id="id10">
+<h3>Front-end changes<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<section id="jquery-deprecation">
+<h4>jQuery deprecation<a class="headerlink" href="#jquery-deprecation" title="Link to this heading"></a></h4>
+<p>As of Nextcloud 19, the global <cite>jquery</cite> and <cite>$</cite> are deprecated for apps. While the library won’t be removed immediately to give developers time to adapt, we encourage you to either replace it with another library or simply use a bundling tool like webpack to scope it to your own. The library will be upgraded in Nextcloud in future versions of Nextcloud and there are breaking changes in the newer versions of jQuery.</p>
+</section>
+<section id="id11">
+<h4>Deprecated global variables<a class="headerlink" href="#id11" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.currentUser</span></code>: use <code class="docutils literal notranslate"><span class="pre">getCurrentUser</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/auth">https://www.npmjs.com/package/&#64;nextcloud/auth</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.filePath</span></code>: use <code class="docutils literal notranslate"><span class="pre">generateFilePath</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/router">https://www.npmjs.com/package/&#64;nextcloud/router</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.generateUrl</span></code>: use <code class="docutils literal notranslate"><span class="pre">generateUrl</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/router">https://www.npmjs.com/package/&#64;nextcloud/router</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.get</span></code>: use <a class="reference external" href="https://lodash.com/docs#get">https://lodash.com/docs#get</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.getCurrentUser</span></code>: use <code class="docutils literal notranslate"><span class="pre">getCurrentUser</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/auth">https://www.npmjs.com/package/&#64;nextcloud/auth</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.getRootPath</span></code>: use <code class="docutils literal notranslate"><span class="pre">getRootUrl</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/router">https://www.npmjs.com/package/&#64;nextcloud/router</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.imagePath</span></code>: use <code class="docutils literal notranslate"><span class="pre">imagePath</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/router">https://www.npmjs.com/package/&#64;nextcloud/router</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.linkTo</span></code>: use <code class="docutils literal notranslate"><span class="pre">linkTo</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/router">https://www.npmjs.com/package/&#64;nextcloud/router</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.linkToOCS</span></code>: use <code class="docutils literal notranslate"><span class="pre">generateOcsUrl</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/router">https://www.npmjs.com/package/&#64;nextcloud/router</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.linkToRemote</span></code>: use <code class="docutils literal notranslate"><span class="pre">generateRemoteUrl</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/router">https://www.npmjs.com/package/&#64;nextcloud/router</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.set</span></code>: use <a class="reference external" href="https://lodash.com/docs#set">https://lodash.com/docs#set</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.webroot</span></code>: use <code class="docutils literal notranslate"><span class="pre">getRootUrl</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/router">https://www.npmjs.com/package/&#64;nextcloud/router</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP.Toast.*</span></code>: use <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/dialogs">https://www.npmjs.com/package/&#64;nextcloud/dialogs</a></p></li>
+</ul>
+</section>
+<section id="id12">
+<h4>Removed globals<a class="headerlink" href="#id12" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">getURLParameter</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">formatDate</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">humanFileSize</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">relative_modified_date</span></code></p></li>
+</ul>
+</section>
+<section id="removed-libraries">
+<h4>Removed libraries<a class="headerlink" href="#removed-libraries" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">marked</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="id13">
+<h3>Back-end changes<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<section id="symfony-update">
+<h4>Symfony update<a class="headerlink" href="#symfony-update" title="Link to this heading"></a></h4>
+<p>Symfony was updated to <a class="reference external" href="https://github.com/symfony/symfony/blob/4.4/CHANGELOG-4.4.md">v4.4</a>. The most important change for apps is to return an int value from CLI commands. Returning null (explicitly or implicitly) won’t be allowed in future versions of Symfony.</p>
+</section>
+<section id="deprecation-of-injection-of-named-services">
+<h4>Deprecation of injection of named services<a class="headerlink" href="#deprecation-of-injection-of-named-services" title="Link to this heading"></a></h4>
+<p>Apps had been able to query core services like the implementation of the interface <code class="docutils literal notranslate"><span class="pre">\OCP\ITagManager</span></code> as <code class="docutils literal notranslate"><span class="pre">TagManager</span></code>. To unify the service resolution with type hints for the constructor injection, the named resolution is deprecated, logs warnings and will be removed in the future. Use the fully-qualifier class name (with the <cite>::class</cite> constant) instead:</p>
+<p>If you had</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$tagManager = \OC::$server-&gt;query(&#39;TagManager&#39;);</span>
+</pre></div>
+</div>
+<p>change your code to</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$tagManager = \OC::$server-&gt;query(\OCP\ITagManager::class);</span>
+</pre></div>
+</div>
+<p>On constructor arguments you should always type-hint the service by its interface. If you do so already, nothing changes for you.</p>
+</section>
+<section id="new-apis">
+<h4>New APIs<a class="headerlink" href="#new-apis" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Authentication\Events\LoginFailedEvent</span></code> class added</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Comments\IComment::getReferenceId</span></code> method added</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Comments\IComment::setReferenceId</span></code> method added</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Contacts\Events\ContactInteractedWithEvent</span></code> class added</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\EventDispatcher\IEventDispatcher::removeListener</span></code> method added</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\ITags::TAG_FAVORITE</span></code> constant added</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Mail\Events\BeforeMessageSent</span></code> class added</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Lock\LockedException::getExistingLock</span></code> method added</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Share\Events\VerifyMountPointEvent</span></code> class added</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Share\IManager::allowEnumeration</span></code> method added</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Share\IManager::limitEnumerationToGroups</span></code> method added</p></li>
+</ul>
+</section>
+<section id="id14">
+<h4>Changed APIs<a class="headerlink" href="#id14" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\User\Events\BeforeUserLoggedInEvent::getUsername</span></code> now correctly returns a string and not an <code class="docutils literal notranslate"><span class="pre">\OCP\IUser</span></code></p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="upgrading-to-nextcloud-18">
+<h2>Upgrading to Nextcloud 18<a class="headerlink" href="#upgrading-to-nextcloud-18" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Critical changes were collected <a class="reference external" href="https://github.com/nextcloud/server/issues/17131">on GitHub</a>. See the original ticket for links to the pull requests and tickets.</p>
+</div>
+<section id="id15">
+<h3>Front-end changes<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<section id="css">
+<h4>CSS<a class="headerlink" href="#css" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Overall font-size was increased. Please make sure you use relative units like <cite>rem</cite> instead of pixels.</p></li>
+</ul>
+</section>
+<section id="id16">
+<h4>Deprecated global variables<a class="headerlink" href="#id16" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Backbone</span></code>: ship your own.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Clipboard</span></code>: ship your own.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ClipboardJs</span></code>: ship your own.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DOMPurify</span></code>: ship your own.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Handlebars</span></code>: ship your own.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jstimezonedetect</span></code>: ship your own.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jstz</span></code>: ship your own.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">md5</span></code>: ship your own.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">moment</span></code>: ship your own.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.basename</span></code>: use <code class="docutils literal notranslate"><span class="pre">basename</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/paths">https://www.npmjs.com/package/&#64;nextcloud/paths</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.dirname</span></code>: use <code class="docutils literal notranslate"><span class="pre">dirname</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/paths">https://www.npmjs.com/package/&#64;nextcloud/paths</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.encodePath</span></code>: use <code class="docutils literal notranslate"><span class="pre">encodePath</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/paths">https://www.npmjs.com/package/&#64;nextcloud/paths</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.isSamePath</span></code>: use <code class="docutils literal notranslate"><span class="pre">isSamePath</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/paths">https://www.npmjs.com/package/&#64;nextcloud/paths</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.joinPaths</span></code>: use <code class="docutils literal notranslate"><span class="pre">joinPaths</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/paths">https://www.npmjs.com/package/&#64;nextcloud/paths</a></p></li>
+</ul>
+</section>
+</section>
+<section id="id17">
+<h3>Back-end changes<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<section id="id18">
+<h4>New APIs<a class="headerlink" href="#id18" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\WorkflowEngine</span></code> namespace</p></li>
+</ul>
+</section>
+<section id="deprecations">
+<h4>Deprecations<a class="headerlink" href="#deprecations" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Collaboration\Resources\IManager::registerResourceProvider</span></code>: use <code class="docutils literal notranslate"><span class="pre">\OCP\Collaboration\Resources\IProviderManager::registerResourceProvider</span></code> instead.</p></li>
+</ul>
+</section>
+</section>
+<section id="behavioral-changes">
+<h3>Behavioral changes<a class="headerlink" href="#behavioral-changes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Email shares and link shares now share the same config.
+You cannot create mail shares if the share links are disabled by your administrator</p></li>
+<li><p>Please register new sidebar tabs scripts with the <code class="docutils literal notranslate"><span class="pre">OCA\Files\Event\LoadSidebar\Event</span></code> script</p></li>
+<li><p>Viewer binds the full file object to the views now. Variables names changed!</p></li>
+</ul>
+</section>
+</section>
+<section id="upgrading-to-nextcloud-17">
+<h2>Upgrading to Nextcloud 17<a class="headerlink" href="#upgrading-to-nextcloud-17" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Critical changes were collected <a class="reference external" href="https://github.com/nextcloud/server/issues/15339">on GitHub</a>. See the original ticket for links to the pull requests and tickets.</p>
+</div>
+<section id="id19">
+<h3>Front-end changes<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
+<section id="id20">
+<h4>Deprecated global variables<a class="headerlink" href="#id20" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">initCore</span></code>: don’t use this internal function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_appconfig</span></code>: use <code class="docutils literal notranslate"><span class="pre">OC.appConfig</span></code> instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_appswebroots</span></code>: use <code class="docutils literal notranslate"><span class="pre">OC.appswebroots</span></code> instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_capabilities</span></code>: use <code class="docutils literal notranslate"><span class="pre">OC.getCapabilities()</span></code> instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_config</span></code>: use <code class="docutils literal notranslate"><span class="pre">OC.config</span></code> instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_current_user</span></code>: use <code class="docutils literal notranslate"><span class="pre">OC.getCurrentUser().uid</span></code> instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_debug</span></code>: use <code class="docutils literal notranslate"><span class="pre">OC.debug</span></code> instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_isadmin</span></code>: use <code class="docutils literal notranslate"><span class="pre">OC.isUserAdmin()</span></code> instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_requesttoken</span></code>: use <code class="docutils literal notranslate"><span class="pre">OC.requestToken</span></code> instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_webroot</span></code>: use <code class="docutils literal notranslate"><span class="pre">OC.getRootPath()</span></code> instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCDialogs</span></code>: use <code class="docutils literal notranslate"><span class="pre">OC.dialogs</span></code> instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC._capabilities</span></code>: use <code class="docutils literal notranslate"><span class="pre">OC.getCapabilities()</span></code> instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.addTranslations</span></code>: use <cite>OC.L10N.load</cite> instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.coreApps</span></code>: internal use only, no replacement.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.getHost</span></code>: use the use <code class="docutils literal notranslate"><span class="pre">window.location.host</span></code> directly.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.getHostName</span></code>: use the use <code class="docutils literal notranslate"><span class="pre">window.location.hostname</span></code> directly.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.getPort</span></code>: use the use <code class="docutils literal notranslate"><span class="pre">window.location.port</span></code> directly.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.getProtocol</span></code>: use the use <code class="docutils literal notranslate"><span class="pre">window.location.protocol.split(':')[0]</span></code> directly.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.fileIsBlacklisted</span></code>: use the regex <code class="docutils literal notranslate"><span class="pre">OC.config.blacklist_files_regex</span></code> directly.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.redirect</span></code>: use <code class="docutils literal notranslate"><span class="pre">window.location</span></code> directly.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.reload</span></code>: use <code class="docutils literal notranslate"><span class="pre">window.location.reload()</span></code> directly.</p></li>
+</ul>
+</section>
+<section id="id21">
+<h4>Removed jQuery plugins<a class="headerlink" href="#id21" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">singleselect</span></code>: ship your own if you really need it.</p></li>
+</ul>
+</section>
+</section>
+<section id="id22">
+<h3>Back-end changes<a class="headerlink" href="#id22" title="Link to this heading"></a></h3>
+<section id="id23">
+<h4>Removed from public namespace<a class="headerlink" href="#id23" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\App::checkAppEnabled</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Security\StringUtils</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::callCheck</span></code></p></li>
+</ul>
+</section>
+<section id="id24">
+<h4>Deprecations<a class="headerlink" href="#id24" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Http\EmptyContentSecurityPolicy::allowEvalScript</span></code>: This means apps should no longer use eval in their JavaScript. We aim to forbid this in general in a future version of Nextcloud.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Utility\IControllerMethodReflector::reflec</span></code>: Will be removed in 18.</p></li>
+</ul>
+</section>
+</section>
+<section id="id25">
+<h3>Behavioral changes<a class="headerlink" href="#id25" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>LDAP: default value for <code class="docutils literal notranslate"><span class="pre">ldapGroupMemberAssocAttr</span></code> changed from <code class="docutils literal notranslate"><span class="pre">uniqueMember</span></code> to unset. On scripted setups, it has to be set if LDAP groups should be used within Nextcloud.</p></li>
+<li><p>Provisioning API: creating users will return the assigned user ID as dataset, as in <code class="docutils literal notranslate"><span class="pre">['id'</span> <span class="pre">=&gt;</span> <span class="pre">$userid]</span></code>.</p></li>
+</ul>
+</section>
+</section>
+<section id="upgrading-to-nextcloud-16">
+<h2>Upgrading to Nextcloud 16<a class="headerlink" href="#upgrading-to-nextcloud-16" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Critical changes were collected <a class="reference external" href="https://github.com/nextcloud/server/issues/12915">on GitHub</a>. See the original ticket for links to the pull requests and tickets.</p>
+</div>
+<section id="id26">
+<h3>Front-end changes<a class="headerlink" href="#id26" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>CSP: <code class="docutils literal notranslate"><span class="pre">frame-anchestor</span></code> set to <code class="docutils literal notranslate"><span class="pre">self</span></code> by default.</p></li>
+</ul>
+<section id="deprecation-of-shipped-javascript-libraries">
+<h4>Deprecation of shipped JavaScript libraries<a class="headerlink" href="#deprecation-of-shipped-javascript-libraries" title="Link to this heading"></a></h4>
+<p>The following libraries are considered as deprecated from Nextcloud 16 on. If you use one of those in your app, make sure to ship your own version that is properly bundled with your app.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">marked</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Clipboard</span></code> -&gt; now exported as <code class="docutils literal notranslate"><span class="pre">ClipboardJS</span></code> to resolve naming conflicts in Chrome.</p></li>
+<li><p>Apps should ship their own javascript dependencies and not depend on server shipping for example jquery etc. Depending on the server dist package is deprecated starting NC16.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">escapeHTML</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">formatDate</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getURLParameter</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">humanFileSize</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">relative_modified_date</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">select2</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="id27">
+<h3>Back-end changes<a class="headerlink" href="#id27" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Php7.0 support removed. Php7.1 or higher required.</p></li>
+<li><p>PostgreSQL 9.5+ required.</p></li>
+<li><p>Autoloading: In the past it was also possible to autoload PHP classes in apps by specify a list of classes and filenames in <cite>appinfo/classpath.php</cite>. This should not be used anymore and also isn’t used by any app that is publicly available.</p></li>
+</ul>
+<section id="id28">
+<h4>Removed APIs<a class="headerlink" href="#id28" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Activity\IManager::getNotificationTypes</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Activity\IManager::getDefaultTypes</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Activity\IManager::getTypeIcon</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Activity\IManager::translate</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Activity\IManager::getSpecialParameterList</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Activity\IManager::getGroupParameter</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Activity\IManager::getNavigation</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Activity\IManager::isFilterValid</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Activity\IManager::filterNotificationTypes</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Activity\IManager::getQueryForFilter</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Security\ISecureRandom::getLowStrengthGenerator</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Security\ISecureRandom::getMediumStrengthGenerator</span></code></p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="upgrading-to-nextcloud-15">
+<h2>Upgrading to Nextcloud 15<a class="headerlink" href="#upgrading-to-nextcloud-15" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Critical changes were collected <a class="reference external" href="https://github.com/nextcloud/server/issues/15339">on GitHub</a>. See the original ticket for links to the pull requests and tickets.</p>
+</div>
+<section id="id29">
+<h3>Front-end changes<a class="headerlink" href="#id29" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">unsafe-eval</span></code> not allowed anymore by default.</p></li>
+</ul>
+<section id="id30">
+<h4>Removed APIs<a class="headerlink" href="#id30" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fileDownloadPath()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getScrollBarWidth()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.AppConfig.hasKey()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.AppConfig.deleteApp()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.Share.ShareConfigModel.areAvatarsEnabled()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.Util.hasSVGSupport()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.Util.replaceSVGIcon()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.Util.replaceSVG()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.Util.scaleFixForIE8()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.Util.isIE8()</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="id31">
+<h3>Back-end changes<a class="headerlink" href="#id31" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Removed php7.0 support</p></li>
+</ul>
+<section id="id32">
+<h4>Deprecated APIs<a class="headerlink" href="#id32" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::linkToPublic</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::recursiveArraySearch</span></code></p></li>
+</ul>
+</section>
+<section id="id33">
+<h4>Removed APIs<a class="headerlink" href="#id33" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Activity\IManager::publishActivity</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::logException</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::mb_substr_replace</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::mb_str_replace</span></code></p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="upgrading-to-nextcloud-14">
+<h2>Upgrading to Nextcloud 14<a class="headerlink" href="#upgrading-to-nextcloud-14" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Critical changes were collected <a class="reference external" href="https://github.com/nextcloud/server/issues/7827">on GitHub</a>. See the original ticket for links to the pull requests and tickets.</p>
+</div>
+<section id="id34">
+<h3>General<a class="headerlink" href="#id34" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>php7.0 and php7.1 support added.</p></li>
+<li><p>Introduction of type hints for scalar types in public APIs according to existing PHPDoc.</p></li>
+</ul>
+</section>
+<section id="id35">
+<h3>Front-end changes<a class="headerlink" href="#id35" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCA.Search</span></code> is now <code class="docutils literal notranslate"><span class="pre">OCA.Search.Core</span></code>.</p></li>
+<li><p>Overall structure changed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.with-app-sidebar</span></code> not required anymore to open the sidebar only use <cite>disappear</cite> on the sidebar</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.svg</span></code> not required anymore</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.with-settings</span></code> not required anymore</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.with-icon</span></code> not required anymore</p></li>
+</ul>
+</section>
+<section id="id36">
+<h3>Back-end changes<a class="headerlink" href="#id36" title="Link to this heading"></a></h3>
+<section id="id37">
+<h4>Changed APIs<a class="headerlink" href="#id37" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AppFramework\Http\Request::getHeader</span></code> always returns a string (and not null).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Security\ICrypto::decrypt</span></code> only accepts strings.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Utility\ITimeFactory</span></code> is strictly typed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IL10N</span></code> is strictly typed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Mail</span></code> and the email templates got type hints.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Authentication\TwoFactorAuth</span></code> got typehints and return type hints.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Migration\IMigrationStep</span></code> has two new methods.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EMailTemplate</span></code> child classes should use the <cite>%$1s</cite> notation for replacements to be future compatible and be able to reuse parameters.</p></li>
+</ul>
+</section>
+<section id="id38">
+<h4>Deprecated APIs<a class="headerlink" href="#id38" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files</span></code></p></li>
+<li><p>Setting custom client URLs in a custom <code class="docutils literal notranslate"><span class="pre">\OC_Theme</span></code> class. Settings in config.php should be used.</p></li>
+<li><p>Log levels in <code class="docutils literal notranslate"><span class="pre">OCP\Util</span></code>. Moved to the <code class="docutils literal notranslate"><span class="pre">\OCP\ILogger</span></code> interface</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\Db\Mapper</span></code>. Move to <code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Db\QBMapper</span></code></p></li>
+</ul>
+</section>
+<section id="id39">
+<h4>Removed APIs<a class="headerlink" href="#id39" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>several deprecated functions from <code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework/IAppContainer</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\BackgroundJob::registerJob</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Config</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Contacts</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\DB</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Files::tmpFile</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Files::tmpFolder</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\IHelper</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\ISearch\search</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\JSON</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Response</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Share::resolveReshare</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\User::getDisplayNames</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util\formatDate</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::generateRandomBytes</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::sendMail</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::encryptedFiles</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::getServerProtocol</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::getServerHost</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::getServerProtocol</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::getRequestUri</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::getScriptName</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Util::urlgenerator</span></code></p></li>
+<li><p>Deprecated <cite>OCP</cite> constants</p></li>
+<li><p>Deprecated template functions from OCP</p></li>
+<li><p>Some deprecated methods  of <code class="docutils literal notranslate"><span class="pre">\OCP\Response</span></code></p></li>
+<li><p>HTTPHelper</p></li>
+</ul>
+</section>
+</section>
+<section id="id40">
+<h3>Behavioral changes<a class="headerlink" href="#id40" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Removed <code class="docutils literal notranslate"><span class="pre">--no-app-disable</span></code> from <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">upgrade</span></code> command.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$fromMailAddress</span></code> won’t be injected anymore by the DI container.</p></li>
+<li><p>Apps that are enabled for groups can now provide public pages, that are available even if a user is not logged in.</p></li>
+<li><p>OCS API method <cite>AddUser</cite> <cite>POST:/users</cite> now allow empty password iff email is set and valid.</p></li>
+<li><p>Email texts are not automatically escaped anymore in all cases.</p></li>
+</ul>
+</section>
+<section id="configuration-changes">
+<h3>Configuration changes<a class="headerlink" href="#configuration-changes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>When using Swift Objectstore as home storage make sure that to set the <code class="docutils literal notranslate"><span class="pre">bucket/container</span></code> parameter.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mail_smtpmode</span></code> can no longer be set to <code class="docutils literal notranslate"><span class="pre">php</span></code>. As this option is lost with the upgrade of phpmailer.</p></li>
+</ul>
+</section>
+<section id="ocs-changes">
+<h3>OCS changes<a class="headerlink" href="#ocs-changes" title="Link to this heading"></a></h3>
+<section id="added-apis">
+<h4>Added APIs<a class="headerlink" href="#added-apis" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Details endpoint for the user list</p></li>
+<li><p>Details endpoint for the groups list</p></li>
+</ul>
+</section>
+<section id="id41">
+<h4>Changed APIs<a class="headerlink" href="#id41" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>OCS API <cite>getGroup</cite> method replaced by <cite>getGroupUsers</cite> #8904</p></li>
+</ul>
+</section>
+</section>
+<section id="internal-changes">
+<h3>Internal changes<a class="headerlink" href="#internal-changes" title="Link to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only relevant if you used non-public APIs. Don’t use them.</p>
+</div>
+<ul class="simple">
+<li><p>cleanup of <code class="docutils literal notranslate"><span class="pre">OC_*</span></code> namespace - we removed quite some classes, methods and constants from our internal namespace.</p></li>
+<li><p>Removed <code class="docutils literal notranslate"><span class="pre">OC_Group_Backend</span></code></p></li>
+<li><p>Removed <code class="docutils literal notranslate"><span class="pre">OC_Response::setStatus</span></code> and the constants for status codes</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="release_automation.html" class="btn btn-neutral float-left" title="Release Automation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../design/index.html" class="btn btn-neutral float-right" title="Nextcloud design guidelines" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/20/developer_manual">20</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/21/developer_manual">21</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/22/developer_manual">22</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

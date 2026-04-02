@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="el" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Διαχείριση διαγραμμένων αρχείων &mdash; Τεκμηρίωση του Nextcloud latest User Manual - latest</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=b9ccd51a"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=dd0234b1"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Ευρετήριο" href="../genindex.html" />
+    <link rel="search" title="Αναζήτηση" href="../search.html" />
+    <link rel="next" title="Συγχρονισμός επιτραπέζιων υπολογιστών και κινητών" href="desktop_mobile_sync.html" />
+    <link rel="prev" title="Πρόσβαση σε αρχεία Nextcloud χρησιμοποιώντας το WebDAV" href="access_webdav.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud | έκδοση | εγχειρίδιο χρήστη εισαγωγή</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Τι νέο υπάρχει για τους χρήστες στο Nextcloud | έκδοση |</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Η διεπαφή Nextcloud Web</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Αρχεία και συγχρονισμός</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Πρόσβαση στα αρχεία σας χρησιμοποιώντας τη διεπαφή Web Nextcloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Πρόσβαση σε αρχεία Nextcloud χρησιμοποιώντας το WebDAV</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Διαχείριση διαγραμμένων αρχείων</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#quotas">Ποσοστώσεις</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-happens-when-shared-files-are-deleted">Τι συμβαίνει όταν διαγράφονται κοινόχρηστα αρχεία</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-the-deleted-files-app-manages-storage-space">Πώς διαχειρίζεται η εφαρμογή διαγραμμένα αρχεία αποθηκευτικού χώρου</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Συγχρονισμός επιτραπέζιων υπολογιστών και κινητών</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Κρυπτογράφηση των αρχείων Nextcloud στο διακομιστή</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Κοινή χρήση αρχείων</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Ομόσπονδες μετοχές</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Πραγματοποίηση ανώνυμων μεταφορτώσεων</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Μεγάλες μεταφορτώσεις αρχείων</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Όριο αποθήκευσης</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Έλεγχος έκδοσης</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Εργα</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Μεταβίβαση ιδιοκτησίας</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Χρήση κοινών μετοχών</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Ορισμός των προτιμήσεών σας</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Χρήση ελέγχου ταυτότητας δύο παραγόντων</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Διαχείριση συνδεδεμένων προγραμμάτων περιήγησης και συσκευών</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Εξωτερικός χώρος αποθήκευσης</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Αρχεία και συγχρονισμός</a></li>
+      <li class="breadcrumb-item active">Διαχείριση διαγραμμένων αρχείων</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/deleted_file_management.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="managing-deleted-files">
+<h1>Διαχείριση διαγραμμένων αρχείων<a class="headerlink" href="#managing-deleted-files" title="Link to this heading"></a></h1>
+<p>When you delete a file in Nextcloud, it is not immediately deleted permanently,
+only moved into the trash bin. It is not permanently deleted until you manually
+delete it, or when the Deleted Files app deletes it to make room for new files.</p>
+<p>Βρείτε τα διαγραμμένα αρχεία σας κάνοντας κλικ στο κουμπί ** Διαγραμμένα αρχεία ** στη σελίδα Αρχεία της διεπαφής Nextcloud Web. Θα έχετε επιλογές είτε για επαναφορά είτε για οριστική διαγραφή αρχείων.</p>
+<section id="quotas">
+<h2>Ποσοστώσεις<a class="headerlink" href="#quotas" title="Link to this heading"></a></h2>
+<p>Τα διαγραμμένα αρχεία δεν καταλογίζονται στο όριο αποθήκευσης. Μόνο τα προσωπικά σας αρχεία υπολογίζονται στο όριο σας και όχι σε αρχεία που κοινοποιήθηκαν σε εσάς. (Δείτε: doc: «quota» για να μάθετε περισσότερα σχετικά με τις ποσοστώσεις.)</p>
+</section>
+<section id="what-happens-when-shared-files-are-deleted">
+<h2>Τι συμβαίνει όταν διαγράφονται κοινόχρηστα αρχεία<a class="headerlink" href="#what-happens-when-shared-files-are-deleted" title="Link to this heading"></a></h2>
+<p>Η διαγραφή αρχείων γίνεται λίγο περίπλοκη όταν είναι κοινόχρηστα αρχεία, καθώς αυτό το σενάριο δείχνει:</p>
+<ol class="arabic simple">
+<li><p>Ο χρήστης1 μοιράζεται ένα φάκελο «test» με το User2 και το User3</p></li>
+<li><p>Ο χρήστης2 (ο παραλήπτης) διαγράφει ένα αρχείο / φάκελο «sub» στο εσωτερικό του «test»</p></li>
+<li><p>The folder «sub» will be moved to the trash bin of both User1 (owner) and
+User2 (recipient)</p></li>
+<li><p>Αλλά ο Χρήστης3 δεν θα έχει αντίγραφο του «υπο» στον κάδο απορριμμάτων του</p></li>
+</ol>
+<p>Όταν ο Χρήστης 1 διαγράψει το «υπο» τότε μεταφέρεται στον Κάδο απορριμμάτων του Χρήστη 1. Διαγράφεται από το User2 και το User3, αλλά δεν τοποθετείται στους κάδους απορριμμάτων τους.</p>
+<p>Όταν μοιράζεστε αρχεία, άλλοι χρήστες μπορούν να αντιγράψουν, να μετονομάσουν, να μετακινήσουν και να τα μοιραστούν με άλλα άτομα, όπως μπορούν για οποιοδήποτε αρχείο υπολογιστή. Το Nextcloud δεν έχει μαγικές δυνάμεις για να το αποτρέψει.</p>
+</section>
+<section id="how-the-deleted-files-app-manages-storage-space">
+<h2>Πώς διαχειρίζεται η εφαρμογή διαγραμμένα αρχεία αποθηκευτικού χώρου<a class="headerlink" href="#how-the-deleted-files-app-manages-storage-space" title="Link to this heading"></a></h2>
+<p>Για να διασφαλιστεί ότι οι χρήστες δεν ξεπερνούν τα όρια αποθήκευσης, η εφαρμογή «Διαγραμμένα αρχεία» εκχωρεί έως και το 50% του διαθέσιμου ελεύθερου χώρου τους σε διαγραμμένα αρχεία. Εάν τα διαγραμμένα αρχεία σας υπερβούν αυτό το όριο, το Nextcloud διαγράφει τα παλαιότερα αρχεία (αρχεία με τις παλαιότερες χρονικές σημάνσεις από τη στιγμή που διαγράφηκαν) έως ότου εκπληρώσει ξανά το όριο χρήσης μνήμης.</p>
+<p>Nextcloud checks the age of deleted files every time new files are added to the
+deleted files. By default, deleted files stay in the trash bin for 30 days. The
+Nextcloud server administrator can adjust this value in the <code class="docutils literal notranslate"><span class="pre">config.php</span></code> file
+by setting the <code class="docutils literal notranslate"><span class="pre">trashbin_retention_obligation</span></code> value. Files older than the
+<code class="docutils literal notranslate"><span class="pre">trashbin_retention_obligation</span></code> value will be deleted permanently.
+Additionally, Nextcloud calculates the maximum available space every time a new
+file is added. If the deleted files exceed the new maximum allowed space
+Nextcloud will permanently delete those trashed files with the soonest expiration
+until the space limit is met again.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Ο διαχειριστής σας ενδέχεται να έχει ρυθμίσει την περίοδο διατήρησης του κάδου απορριμμάτων για να παρακάμψει τη διαχείριση του χώρου αποθήκευσης. Ανατρέξτε στην ενότητα «τεκμηρίωση διαχειριστή &lt;<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#deleted-items-trash-bin">https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#deleted-items-trash-bin</a>&gt;» _ για περισσότερες λεπτομέρειες.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="access_webdav.html" class="btn btn-neutral float-left" title="Πρόσβαση σε αρχεία Nextcloud χρησιμοποιώντας το WebDAV" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-right" title="Συγχρονισμός επιτραπέζιων υπολογιστών και κινητών" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/id/">id</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/nn/">nn</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/si/">si</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/th/">th</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/uk/">uk</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Εκδόσεις</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/20/user_manual">20</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/21/user_manual">21</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/22/user_manual">22</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Λήψεις</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Διαβάστε τα Έγγραφα</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Έργο του σπιτιού</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Κατασκευάζει</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

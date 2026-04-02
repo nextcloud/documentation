@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>App metadata &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Navigation and pre-app configuration" href="init.html" />
+    <link rel="prev" title="Bootstrapping" href="bootstrap.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">App development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bootstrap.html">Bootstrapping</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">App metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependency_management.html">Dependency management</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Nextcloud design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">App development</a></li>
+      <li class="breadcrumb-item active">App metadata</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/app_development/info.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="app-metadata">
+<span id="id1"></span><h1>App metadata<a class="headerlink" href="#app-metadata" title="Link to this heading"></a></h1>
+<p>The <code class="file docutils literal notranslate"><span class="pre">appinfo/info.xml</span></code> contains metadata about the app. A detailed documentation can be found at the <a class="reference external" href="https://nextcloudappstore.readthedocs.io/en/latest/developer.html#info-xml">app store documentation</a>.</p>
+<p>The info.xml is validated using an XML Schema which can be accessed <a class="reference external" href="https://apps.nextcloud.com/schema/apps/info.xsd">online</a>.</p>
+<p>A minimum valid <strong>info.xml</strong> would look like this:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;info</span><span class="w"> </span><span class="na">xmlns:xsi=</span><span class="w"> </span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<span class="w">      </span><span class="na">xsi:noNamespaceSchemaLocation=</span><span class="s">&quot;https://apps.nextcloud.com/schema/apps/info.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;id&gt;</span>news<span class="nt">&lt;/id&gt;</span>
+<span class="w">    </span><span class="nt">&lt;name&gt;</span>News<span class="nt">&lt;/name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;summary&gt;</span>An<span class="w"> </span>RSS/Atom<span class="w"> </span>feed<span class="w"> </span>reader<span class="nt">&lt;/summary&gt;</span>
+<span class="w">    </span><span class="nt">&lt;description&gt;</span>An<span class="w"> </span>RSS/Atom<span class="w"> </span>feed<span class="w"> </span>reader<span class="nt">&lt;/description&gt;</span>
+<span class="w">    </span><span class="nt">&lt;version&gt;</span>8.8.2<span class="nt">&lt;/version&gt;</span>
+<span class="w">    </span><span class="nt">&lt;licence&gt;</span>agpl<span class="nt">&lt;/licence&gt;</span>
+<span class="w">    </span><span class="nt">&lt;author&gt;</span>Bernhard<span class="w"> </span>Posselt<span class="nt">&lt;/author&gt;</span>
+<span class="w">    </span><span class="nt">&lt;category&gt;</span>multimedia<span class="nt">&lt;/category&gt;</span>
+<span class="w">    </span><span class="nt">&lt;bugs&gt;</span>https://github.com/nextcloud/news/issues<span class="nt">&lt;/bugs&gt;</span>
+<span class="w">    </span><span class="nt">&lt;dependencies&gt;</span>
+<span class="w">        </span><span class="nt">&lt;nextcloud</span><span class="w"> </span><span class="na">min-version=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/dependencies&gt;</span>
+<span class="nt">&lt;/info&gt;</span>
+</pre></div>
+</div>
+<p>A full blown example would look like this (needs to be utf-8 encoded):</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;info</span><span class="w"> </span><span class="na">xmlns:xsi=</span><span class="w"> </span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<span class="w">      </span><span class="na">xsi:noNamespaceSchemaLocation=</span><span class="s">&quot;https://apps.nextcloud.com/schema/apps/info.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;id&gt;</span>news<span class="nt">&lt;/id&gt;</span>
+<span class="w">    </span><span class="nt">&lt;name</span><span class="w"> </span><span class="na">lang=</span><span class="s">&quot;de&quot;</span><span class="nt">&gt;</span>Nachrichten<span class="nt">&lt;/name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;name&gt;</span>News<span class="nt">&lt;/name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;summary</span><span class="w"> </span><span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>An<span class="w"> </span>RSS/Atom<span class="w"> </span>feed<span class="w"> </span>reader<span class="nt">&lt;/summary&gt;</span>
+<span class="w">    </span><span class="nt">&lt;description</span><span class="w"> </span><span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>#<span class="w"> </span>Description\nAn<span class="w"> </span>RSS/Atom<span class="w"> </span>feed<span class="w"> </span>reader<span class="nt">&lt;/description&gt;</span>
+<span class="w">    </span><span class="nt">&lt;description</span><span class="w"> </span><span class="na">lang=</span><span class="s">&quot;de&quot;</span><span class="nt">&gt;</span><span class="cp">&lt;![CDATA[# Beschreibung\nEine Nachrichten App, welche mit [RSS/Atom](https://en.wikipedia.org/wiki/RSS) umgehen kann]]&gt;</span><span class="nt">&lt;/description&gt;</span>
+<span class="w">    </span><span class="nt">&lt;version&gt;</span>8.8.2<span class="nt">&lt;/version&gt;</span>
+<span class="w">    </span><span class="nt">&lt;licence&gt;</span>agpl<span class="nt">&lt;/licence&gt;</span>
+<span class="w">    </span><span class="nt">&lt;author</span><span class="w"> </span><span class="na">mail=</span><span class="s">&quot;mail@provider.com&quot;</span><span class="w"> </span><span class="na">homepage=</span><span class="s">&quot;http://example.com&quot;</span><span class="nt">&gt;</span>Bernhard<span class="w"> </span>Posselt<span class="nt">&lt;/author&gt;</span>
+<span class="w">    </span><span class="nt">&lt;author&gt;</span>Alessandro<span class="w"> </span>Cosentino<span class="nt">&lt;/author&gt;</span>
+<span class="w">    </span><span class="nt">&lt;author&gt;</span>Jan-Christoph<span class="w"> </span>Borchardt<span class="nt">&lt;/author&gt;</span>
+<span class="w">    </span><span class="nt">&lt;documentation&gt;</span>
+<span class="w">        </span><span class="nt">&lt;user&gt;</span>https://github.com/nextcloud/news/wiki#user-documentation<span class="nt">&lt;/user&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admin&gt;</span>https://github.com/nextcloud/news#readme<span class="nt">&lt;/admin&gt;</span>
+<span class="w">        </span><span class="nt">&lt;developer&gt;</span>https://github.com/nextcloud/news/wiki#developer-documentation<span class="nt">&lt;/developer&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/documentation&gt;</span>
+<span class="w">    </span><span class="nt">&lt;category&gt;</span>multimedia<span class="nt">&lt;/category&gt;</span>
+<span class="w">    </span><span class="nt">&lt;category&gt;</span>tools<span class="nt">&lt;/category&gt;</span>
+<span class="w">    </span><span class="nt">&lt;website&gt;</span>https://github.com/nextcloud/news<span class="nt">&lt;/website&gt;</span>
+<span class="w">    </span><span class="nt">&lt;discussion&gt;</span>https://your.forum.com<span class="nt">&lt;/discussion&gt;</span>
+<span class="w">    </span><span class="nt">&lt;bugs&gt;</span>https://github.com/nextcloud/news/issues<span class="nt">&lt;/bugs&gt;</span>
+<span class="w">    </span><span class="nt">&lt;repository&gt;</span>https://github.com/nextcloud/news<span class="nt">&lt;/repository&gt;</span>
+<span class="w">    </span><span class="nt">&lt;screenshot</span><span class="w"> </span><span class="na">small-thumbnail=</span><span class="s">&quot;https://example.com/1-small.png&quot;</span><span class="nt">&gt;</span>https://example.com/1.png<span class="nt">&lt;/screenshot&gt;</span>
+<span class="w">    </span><span class="nt">&lt;screenshot&gt;</span>https://example.com/2.jpg<span class="nt">&lt;/screenshot&gt;</span>
+<span class="w">    </span><span class="nt">&lt;dependencies&gt;</span>
+<span class="w">        </span><span class="nt">&lt;php</span><span class="w"> </span><span class="na">min-version=</span><span class="s">&quot;5.6&quot;</span><span class="w"> </span><span class="na">min-int-size=</span><span class="s">&quot;64&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;database</span><span class="w"> </span><span class="na">min-version=</span><span class="s">&quot;9.4&quot;</span><span class="nt">&gt;</span>pgsql<span class="nt">&lt;/database&gt;</span>
+<span class="w">        </span><span class="nt">&lt;database&gt;</span>sqlite<span class="nt">&lt;/database&gt;</span>
+<span class="w">        </span><span class="nt">&lt;database</span><span class="w"> </span><span class="na">min-version=</span><span class="s">&quot;5.5&quot;</span><span class="nt">&gt;</span>mysql<span class="nt">&lt;/database&gt;</span>
+<span class="w">        </span><span class="nt">&lt;command&gt;</span>grep<span class="nt">&lt;/command&gt;</span>
+<span class="w">        </span><span class="nt">&lt;command&gt;</span>ls<span class="nt">&lt;/command&gt;</span>
+<span class="w">        </span><span class="nt">&lt;lib</span><span class="w"> </span><span class="na">min-version=</span><span class="s">&quot;2.7.8&quot;</span><span class="nt">&gt;</span>libxml<span class="nt">&lt;/lib&gt;</span>
+<span class="w">        </span><span class="nt">&lt;lib&gt;</span>curl<span class="nt">&lt;/lib&gt;</span>
+<span class="w">        </span><span class="nt">&lt;lib&gt;</span>SimpleXML<span class="nt">&lt;/lib&gt;</span>
+<span class="w">        </span><span class="nt">&lt;lib&gt;</span>iconv<span class="nt">&lt;/lib&gt;</span>
+<span class="w">        </span><span class="nt">&lt;nextcloud</span><span class="w"> </span><span class="na">min-version=</span><span class="s">&quot;9&quot;</span><span class="w"> </span><span class="na">max-version=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/dependencies&gt;</span>
+<span class="w">    </span><span class="nt">&lt;background-jobs&gt;</span>
+<span class="w">        </span><span class="nt">&lt;job&gt;</span>OCA\DAV\CardDAV\Sync\SyncJob<span class="nt">&lt;/job&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/background-jobs&gt;</span>
+<span class="w">    </span><span class="nt">&lt;repair-steps&gt;</span>
+<span class="w">        </span><span class="nt">&lt;pre-migration&gt;</span>
+<span class="w">            </span><span class="nt">&lt;step&gt;</span>OCA\DAV\Migration\Classification<span class="nt">&lt;/step&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/pre-migration&gt;</span>
+<span class="w">        </span><span class="nt">&lt;post-migration&gt;</span>
+<span class="w">            </span><span class="nt">&lt;step&gt;</span>OCA\DAV\Migration\Classification<span class="nt">&lt;/step&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/post-migration&gt;</span>
+<span class="w">        </span><span class="nt">&lt;live-migration&gt;</span>
+<span class="w">            </span><span class="nt">&lt;step&gt;</span>OCA\DAV\Migration\GenerateBirthdays<span class="nt">&lt;/step&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/live-migration&gt;</span>
+<span class="w">        </span><span class="nt">&lt;install&gt;</span>
+<span class="w">            </span><span class="nt">&lt;step&gt;</span>OCA\DAV\Migration\GenerateBirthdays<span class="nt">&lt;/step&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/install&gt;</span>
+<span class="w">        </span><span class="nt">&lt;uninstall&gt;</span>
+<span class="w">            </span><span class="nt">&lt;step&gt;</span>OCA\DAV\Migration\GenerateBirthdays<span class="nt">&lt;/step&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/uninstall&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/repair-steps&gt;</span>
+<span class="w">    </span><span class="nt">&lt;two-factor-providers&gt;</span>
+<span class="w">        </span><span class="nt">&lt;provider&gt;</span>OCA\AuthF\TwoFactor\Provider<span class="nt">&lt;/provider&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/two-factor-providers&gt;</span>
+<span class="w">    </span><span class="nt">&lt;commands&gt;</span>
+<span class="w">        </span><span class="nt">&lt;command&gt;</span>A\Php\Class<span class="nt">&lt;/command&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/commands&gt;</span>
+<span class="w">    </span><span class="nt">&lt;settings&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admin&gt;</span>OCA\Theming\Settings\Admin<span class="nt">&lt;/admin&gt;</span>
+<span class="w">        </span><span class="nt">&lt;admin-section&gt;</span>OCA\Theming\Settings\Section<span class="nt">&lt;/admin-section&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/settings&gt;</span>
+<span class="w">    </span><span class="nt">&lt;activity&gt;</span>
+<span class="w">        </span><span class="nt">&lt;settings&gt;</span>
+<span class="w">            </span><span class="nt">&lt;setting&gt;</span>OCA\Files\Activity\Settings\FavoriteAction<span class="nt">&lt;/setting&gt;</span>
+<span class="w">            </span><span class="nt">&lt;setting&gt;</span>OCA\Files\Activity\Settings\FileChanged<span class="nt">&lt;/setting&gt;</span>
+<span class="w">            </span><span class="nt">&lt;setting&gt;</span>OCA\Files\Activity\Settings\FileCreated<span class="nt">&lt;/setting&gt;</span>
+<span class="w">            </span><span class="nt">&lt;setting&gt;</span>OCA\Files\Activity\Settings\FileDeleted<span class="nt">&lt;/setting&gt;</span>
+<span class="w">            </span><span class="nt">&lt;setting&gt;</span>OCA\Files\Activity\Settings\FileFavorite<span class="nt">&lt;/setting&gt;</span>
+<span class="w">            </span><span class="nt">&lt;setting&gt;</span>OCA\Files\Activity\Settings\FileRestored<span class="nt">&lt;/setting&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/settings&gt;</span>
+
+<span class="w">        </span><span class="nt">&lt;filters&gt;</span>
+<span class="w">            </span><span class="nt">&lt;filter&gt;</span>OCA\Files\Activity\Filter\FileChanges<span class="nt">&lt;/filter&gt;</span>
+<span class="w">            </span><span class="nt">&lt;filter&gt;</span>OCA\Files\Activity\Filter\Favorites<span class="nt">&lt;/filter&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/filters&gt;</span>
+
+<span class="w">        </span><span class="nt">&lt;providers&gt;</span>
+<span class="w">            </span><span class="nt">&lt;provider&gt;</span>OCA\Files\Activity\FavoriteProvider<span class="nt">&lt;/provider&gt;</span>
+<span class="w">            </span><span class="nt">&lt;provider&gt;</span>OCA\Files\Activity\Provider<span class="nt">&lt;/provider&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/providers&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/activity&gt;</span>
+<span class="w">    </span><span class="nt">&lt;navigations&gt;</span>
+<span class="w">        </span><span class="nt">&lt;navigation</span><span class="w"> </span><span class="na">role=</span><span class="s">&quot;admin&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;id&gt;</span>files<span class="nt">&lt;/id&gt;</span>
+<span class="w">            </span><span class="nt">&lt;name&gt;</span>Files<span class="nt">&lt;/name&gt;</span>
+<span class="w">            </span><span class="nt">&lt;route&gt;</span>files.view.index<span class="nt">&lt;/route&gt;</span>
+<span class="w">            </span><span class="nt">&lt;order&gt;</span>0<span class="nt">&lt;/order&gt;</span>
+<span class="w">            </span><span class="nt">&lt;icon&gt;</span>app.svg<span class="nt">&lt;/icon&gt;</span>
+<span class="w">            </span><span class="nt">&lt;type&gt;</span>link<span class="nt">&lt;/type&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/navigation&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/navigations&gt;</span>
+<span class="w">    </span><span class="nt">&lt;collaboration&gt;</span>
+<span class="w">        </span><span class="nt">&lt;plugins&gt;</span>
+<span class="w">            </span><span class="nt">&lt;plugin</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;collaborator-search&quot;</span><span class="w"> </span><span class="na">share-type=</span><span class="s">&quot;SHARE_TYPE_CIRCLE&quot;</span><span class="nt">&gt;</span>OCA\Circles\Collaboration\v1\CollaboratorSearchPlugin<span class="nt">&lt;/plugin&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/plugins&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/collaboration&gt;</span>
+<span class="nt">&lt;/info&gt;</span>
+</pre></div>
+</div>
+<p>The following tags are validated and used in the following way:</p>
+<dl>
+<dt>id</dt><dd><ul class="simple">
+<li><p>required</p></li>
+<li><p>must contain only lowercase ASCII characters and underscore</p></li>
+<li><p>must match the first folder in the archive</p></li>
+<li><p>will be used to identify the app</p></li>
+</ul>
+</dd>
+<dt>name</dt><dd><ul class="simple">
+<li><p>required</p></li>
+<li><p>must occur at least once with <strong>lang=”en”</strong> or no lang attribute</p></li>
+<li><p>can be translated by using multiple elements with different <strong>lang</strong> attribute values, language code needs to be set <strong>lang</strong> attribute</p></li>
+<li><p>will be rendered on the app detail page</p></li>
+</ul>
+</dd>
+<dt>summary</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>if not provided the description element’s text will be used</p></li>
+<li><p>must occur at least once with <strong>lang=”en”</strong> or no lang attribute</p></li>
+<li><p>can be translated by using multiple elements with different <strong>lang</strong> attribute values, language code needs to be set <strong>lang</strong> attribute</p></li>
+<li><p>will be rendered on the app list page as short description</p></li>
+</ul>
+</dd>
+<dt>description</dt><dd><ul class="simple">
+<li><p>required</p></li>
+<li><p>must occur at least once with <strong>lang=”en”</strong> or no lang attribute</p></li>
+<li><p>can contain Markdown</p></li>
+<li><p>can be translated by using multiple elements with different <strong>lang</strong> attribute values, language code needs to be set <strong>lang</strong> attribute</p></li>
+<li><p>will be rendered on the app detail page</p></li>
+</ul>
+</dd>
+<dt>version</dt><dd><ul>
+<li><p>required</p></li>
+<li><p>must be a <a class="reference external" href="http://semver.org/">semantic version</a> without build metadata, e.g. 9.0.1 or 9.1.0-alpha.1</p></li>
+<li><p>semantic version also means:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>when you add a new Nextcloud version as a supported version, you bump the minor version (second number)</p></li>
+<li><p>when you remove a Nextcloud version from the supported versions, you bump the major version (first number)</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</dd>
+<dt>licence</dt><dd><ul class="simple">
+<li><p>required</p></li>
+<li><p>must contain <strong>agpl</strong>, <strong>mpl*</strong> and/or <strong>apache</strong> as the only valid values. These refer to the AGPLv3, MPL 2.0 and Apache License 2.0</p></li>
+</ul>
+</dd>
+<dt>author</dt><dd><ul class="simple">
+<li><p>required</p></li>
+<li><p>can occur multiple times with different authors</p></li>
+<li><p>can contain a <strong>mail</strong> attribute which must be an email</p></li>
+<li><p>can contain a <strong>homepage</strong> which must be an URL</p></li>
+<li><p>will not (yet) be rendered on the App Store</p></li>
+<li><p>will be provided through the REST API</p></li>
+</ul>
+</dd>
+<dt>documentation/user</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain an URL to the user documentation</p></li>
+<li><p>will be rendered on the app detail page</p></li>
+</ul>
+</dd>
+<dt>documentation/admin</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain an URL to the admin documentation</p></li>
+<li><p>will be rendered on the app detail page</p></li>
+</ul>
+</dd>
+<dt>documentation/developer</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain an URL to the developer documentation</p></li>
+<li><p>will be rendered on the app detail page</p></li>
+</ul>
+</dd>
+<dt>category</dt><dd><ul>
+<li><p>optional</p></li>
+<li><p>if not provided the category <strong>tools</strong> will be used</p></li>
+<li><p>must contain one of the following values:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>customization</strong></p></li>
+<li><p><strong>files</strong></p></li>
+<li><p><strong>games</strong></p></li>
+<li><p><strong>integration</strong></p></li>
+<li><p><strong>monitoring</strong></p></li>
+<li><p><strong>multimedia</strong></p></li>
+<li><p><strong>office</strong></p></li>
+<li><p><strong>organization</strong></p></li>
+<li><p><strong>security</strong></p></li>
+<li><p><strong>social</strong></p></li>
+<li><p><strong>tools</strong></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>old categories are migrated:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>auth</strong> will be converted to <strong>security</strong></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>can occur more than once with different categories</p></li>
+</ul>
+</dd>
+<dt>website</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain an URL to the project’s homepage</p></li>
+<li><p>will be rendered on the app detail page</p></li>
+</ul>
+</dd>
+<dt>discussion</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain an URL to the project’s discussion page/forum</p></li>
+<li><p>will be rendered on the app detail page as the “ask question or discuss” button</p></li>
+<li><p>if absent, it will default to our forum at <a class="reference external" href="https://help.nextcloud.com/">https://help.nextcloud.com/</a> and create a new category in the apps category</p></li>
+</ul>
+</dd>
+<dt>bugs</dt><dd><ul class="simple">
+<li><p>required</p></li>
+<li><p>must contain an URL to the project’s bug tracker</p></li>
+<li><p>will be rendered on the app detail page</p></li>
+</ul>
+</dd>
+<dt>repository</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain an URL to the project’s repository</p></li>
+<li><p>can contain a <strong>type</strong> attribute, <strong>git</strong>, <strong>mercurial</strong>, <strong>subversion</strong> and <strong>bzr</strong> are allowed values, defaults to <strong>git</strong></p></li>
+<li><p>currently not used</p></li>
+</ul>
+</dd>
+<dt>screenshot</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain an HTTPS URL to an image</p></li>
+<li><p>can contain a <strong>small-thumbnail</strong> attribute which must contain an https url to an image. This image will be used as small preview (e.g. on the app list overview). Keep it small so it renders fast</p></li>
+<li><p>will be rendered on the app list and detail page in the given order</p></li>
+</ul>
+</dd>
+<dt>dependencies/php</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>can contain a <strong>min-version</strong> attribute (maximum 3 digits separated by dots)</p></li>
+<li><p>can contain a <strong>max-version</strong> attribute (maximum 3 digits separated by dots)</p></li>
+<li><p>can contain a <strong>min-int-size</strong> attribute, 32 or 64 are allowed as valid values</p></li>
+<li><p>will be rendered on the app releases page</p></li>
+</ul>
+</dd>
+<dt>dependencies/database</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain the database name as text, <strong>sqlite</strong>, <strong>pgsql</strong> and <strong>mysql</strong> are allowed as valid values</p></li>
+<li><p>can occur multiple times with different databases</p></li>
+<li><p>can contain a <strong>min-version</strong> attribute (maximum 3 digits separated by dots)</p></li>
+<li><p>can contain a <strong>max-version</strong> attribute (maximum 3 digits separated by dots)</p></li>
+<li><p>will be rendered on the app releases page</p></li>
+</ul>
+</dd>
+<dt>dependencies/command</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain a linux command as text value</p></li>
+<li><p>can occur multiple times with different commands</p></li>
+<li><p>will be rendered on the app releases page</p></li>
+</ul>
+</dd>
+<dt>dependencies/lib</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>will be rendered on the app releases page</p></li>
+<li><p>must contain a required php extension</p></li>
+<li><p>can occur multiple times with different php extensions</p></li>
+<li><p>can contain a <strong>min-version</strong> attribute (maximum 3 digits separated by dots)</p></li>
+<li><p>can contain a <strong>max-version</strong> attribute (maximum 3 digits separated by dots)</p></li>
+</ul>
+</dd>
+<dt>dependencies/nextcloud</dt><dd><ul class="simple">
+<li><p>required on Nextcloud 11 or higher</p></li>
+<li><p>if absent white-listed owncloud versions will be taken from the owncloud element (see below)</p></li>
+<li><p>must contain a <strong>min-version</strong> attribute (maximum 3 digits separated by dots)</p></li>
+<li><p>can contain a <strong>max-version</strong> attribute (maximum 3 digits separated by dots)</p></li>
+</ul>
+</dd>
+<dt>background-jobs/job</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain a php class which is run as background jobs</p></li>
+<li><p>will not be used, only validated</p></li>
+</ul>
+</dd>
+<dt>repair-steps/pre-migration/step</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain a php class which is run before executing database migrations</p></li>
+<li><p>will not be used, only validated</p></li>
+</ul>
+</dd>
+<dt>repair-steps/post-migration/step</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain a php class which is run after executing database migrations</p></li>
+<li><p>will not be used, only validated</p></li>
+</ul>
+</dd>
+<dt>repair-steps/live-migration/step</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain a php class which is run after executing post-migration jobs</p></li>
+<li><p>will not be used, only validated</p></li>
+</ul>
+</dd>
+<dt>repair-steps/install/step</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain a php class which is run after installing the app</p></li>
+<li><p>will not be used, only validated</p></li>
+</ul>
+</dd>
+<dt>repair-steps/uninstall/step</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain a php class which is run after uninstalling the app</p></li>
+<li><p>will not be used, only validated</p></li>
+</ul>
+</dd>
+<dt>two-factor-providers/provider</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain a php class which is registered as two factor auth provider</p></li>
+<li><p>will not be used, only validated</p></li>
+</ul>
+</dd>
+<dt>commands/command</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain a php class which is registered as occ command</p></li>
+<li><p>will not be used, only validated</p></li>
+</ul>
+</dd>
+<dt>activity/settings/setting</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain a php class which implements OCPActivityISetting and is used to add additional settings ui elements to the activity app</p></li>
+</ul>
+</dd>
+<dt>activity/filters/filter</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain a php class which implements OCPActivityIFilter and is used to add additional filters to the activity app</p></li>
+</ul>
+</dd>
+<dt>activity/providers/provider</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain a php class which implements OCPActivityIProvider and is used to react to events from the activity app</p></li>
+</ul>
+</dd>
+<dt>settings/admin</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain a php class which implements OCPSettingsISettings and returns the form to render for the global settings area</p></li>
+</ul>
+</dd>
+<dt>settings/admin-section</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain a php class which implements OCPSettingsISection and returns data to render navigation entries in the global settings area</p></li>
+</ul>
+</dd>
+<dt>navigations</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain at least one navigation element</p></li>
+</ul>
+</dd>
+<dt>navigations/navigation</dt><dd><ul class="simple">
+<li><p>required</p></li>
+<li><p>must contain a name and route element</p></li>
+<li><p>denotes a navigation entry</p></li>
+<li><p>role denotes the visibility, all means everyone can see it, admin means only an admin can see the navigation entry, defaults to all</p></li>
+</ul>
+</dd>
+<dt>navigations/navigation/id</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>the app id</p></li>
+<li><p>you can also create entries for other apps by setting an id other than your app one’s</p></li>
+</ul>
+</dd>
+<dt>navigations/navigation/name</dt><dd><ul class="simple">
+<li><p>required</p></li>
+<li><p>will be displayed below the navigation entry icon</p></li>
+<li><p>will be translated by the default translation tools</p></li>
+</ul>
+</dd>
+<dt>navigations/navigation/route</dt><dd><ul class="simple">
+<li><p>required</p></li>
+<li><p>name of the route that will be used to generate the link</p></li>
+</ul>
+</dd>
+<dt>navigations/navigation/icon</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>name of the icon which is looked up in the app’s <strong>img/</strong> folder</p></li>
+<li><p>defaults to app.svg</p></li>
+</ul>
+</dd>
+<dt>navigations/navigation/order</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>used to sort the navigation entries</p></li>
+<li><p>a higher order number means that the entry will be ordered further to the bottom</p></li>
+</ul>
+</dd>
+<dt>navigations/navigation/type</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>can be either link or settings</p></li>
+<li><p>link means that the entry is added to the default app menu</p></li>
+<li><p>settings means that the entry is added to the right-side menu which also contains the personal, admin, users, help and logout entry</p></li>
+</ul>
+</dd>
+<dt>collaboration</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>can contain plugins for collaboration search (e.g. supplying share dialog)</p></li>
+</ul>
+</dd>
+<dt>collaboration/plugins</dt><dd><ul class="simple">
+<li><p>optional</p></li>
+<li><p>must contain at least one plugin</p></li>
+</ul>
+</dd>
+<dt>collaboration/plugins/plugin</dt><dd><ul class="simple">
+<li><p>required</p></li>
+<li><p>the PHP class name of the plugin</p></li>
+<li><p>must contain <strong>type</strong> attribute (currently only <em>collaboration-search</em>). The class must implement OCPCollaborationCollaboratorsISearchPlugin.</p></li>
+<li><p>must contain <strong>share-type</strong> attribute, according to the specific OCPShare constants</p></li>
+</ul>
+</dd>
+</dl>
+<p>The following character maximum lengths are enforced:</p>
+<ul class="simple">
+<li><p>All description Strings are database text fields and therefore not limited in size</p></li>
+<li><p>All other Strings have a maximum of 256 characters</p></li>
+</ul>
+<p>The following elements are either deprecated or for internal use only and will fail the validation if present:</p>
+<ul class="simple">
+<li><p><strong>standalone</strong></p></li>
+<li><p><strong>default_enable</strong></p></li>
+<li><p><strong>shipped</strong></p></li>
+<li><p><strong>public</strong></p></li>
+<li><p><strong>remote</strong></p></li>
+<li><p><strong>requiremin</strong></p></li>
+<li><p><strong>requiremax</strong></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bootstrap.html" class="btn btn-neutral float-left" title="Bootstrapping" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="init.html" class="btn btn-neutral float-right" title="Navigation and pre-app configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/20/developer_manual">20</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/21/developer_manual">21</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/22/developer_manual">22</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

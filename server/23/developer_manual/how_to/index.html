@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to test … &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Digging deeper" href="../digging_deeper/index.html" />
+    <link rel="prev" title="External API" href="../core/externalapi.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../core/index.html">Core development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/externalapi.html">External API</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">How to test …</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#redis">Redis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cluster">Cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#smb">SMB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#saml-setup-with-onelogin">SAML setup with onelogin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#collabora-without-ssl">Collabora without SSL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#onlyoffice">OnlyOffice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#webauthn-without-ssl">WebAuthn without SSL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Nextcloud design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../core/index.html">Core development</a></li>
+      <li class="breadcrumb-item active">How to test …</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/how_to/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="how-to-test">
+<h1>How to test …<a class="headerlink" href="#how-to-test" title="Link to this heading"></a></h1>
+<p>This page should explain how to test given features in Nextcloud.</p>
+<section id="redis">
+<h2>Redis<a class="headerlink" href="#redis" title="Link to this heading"></a></h2>
+<p>First you need to install the <a class="reference external" href="https://github.com/phpredis/phpredis">phpredis extension</a> . There is a install document available <a class="reference external" href="https://github.com/phpredis/phpredis/blob/develop/INSTALL.markdown">inside the repo</a> and many linux distribtutions ship it in their repositories as well.</p>
+<blockquote>
+<div><p>pecl install redis</p>
+</div></blockquote>
+</section>
+<section id="cluster">
+<h2>Cluster<a class="headerlink" href="#cluster" title="Link to this heading"></a></h2>
+<p>For a local Redis cluster setup there are some docker script collected in <a class="reference external" href="https://github.com/Grokzen/docker-redis-cluster">this repository</a>. It boils down to clone the repo and run <cite>make up</cite>. Then the redis cluster is available at <code class="docutils literal notranslate"><span class="pre">localhost:7000</span></code>.</p>
+<p>Following <code class="docutils literal notranslate"><span class="pre">config.php</span></code> can be used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.distributed&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
+<span class="s1">&#39;redis.cluster&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+   <span class="s1">&#39;seeds&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="o">//</span> <span class="n">provide</span> <span class="n">some</span><span class="o">/</span><span class="nb">all</span> <span class="n">of</span> <span class="n">the</span> <span class="n">cluster</span> <span class="n">servers</span> <span class="n">to</span> <span class="n">bootstrap</span> <span class="n">discovery</span><span class="p">,</span> <span class="n">port</span> <span class="n">required</span>
+      <span class="s1">&#39;localhost:7000&#39;</span><span class="p">,</span>
+   <span class="p">],</span>
+   <span class="s1">&#39;timeout&#39;</span> <span class="o">=&gt;</span> <span class="mf">0.0</span><span class="p">,</span>
+   <span class="s1">&#39;read_timeout&#39;</span> <span class="o">=&gt;</span> <span class="mf">0.0</span><span class="p">,</span>
+   <span class="s1">&#39;failover_mode&#39;</span> <span class="o">=&gt;</span> \<span class="n">RedisCluster</span><span class="p">::</span><span class="n">FAILOVER_ERROR</span><span class="p">,</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+</section>
+<section id="smb">
+<h2>SMB<a class="headerlink" href="#smb" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">samba</span>
+<span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">-</span><span class="n">p</span> <span class="mi">139</span><span class="p">:</span><span class="mi">139</span> <span class="o">-</span><span class="n">p</span> <span class="mi">445</span><span class="p">:</span><span class="mi">445</span> \
+    <span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">samba</span><span class="p">:</span><span class="o">/</span><span class="n">smbmount</span> <span class="n">dperson</span><span class="o">/</span><span class="n">samba</span> \
+    <span class="o">-</span><span class="n">u</span> <span class="s2">&quot;user;password&quot;</span> <span class="o">-</span><span class="n">s</span> <span class="s2">&quot;public;/smbmount;yes;no;yes&quot;</span>
+</pre></div>
+</div>
+<p>Make sure that smbclient is installed on your Nextcloud server and has the following configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># /etc/samba/smb.conf</span>
+<span class="p">[</span><span class="k">global</span><span class="p">]</span>
+<span class="n">client</span> <span class="nb">min</span> <span class="n">protocol</span> <span class="o">=</span> <span class="n">SMB2</span>
+<span class="n">client</span> <span class="nb">max</span> <span class="n">protocol</span> <span class="o">=</span> <span class="n">SMB3</span>
+<span class="n">hide</span> <span class="n">dot</span> <span class="n">files</span> <span class="o">=</span> <span class="n">no</span>
+</pre></div>
+</div>
+<p>The setup can be verified with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smbclient</span> <span class="o">//</span><span class="mf">127.0.0.1</span><span class="o">/</span><span class="n">public</span> <span class="o">-</span><span class="n">u</span> <span class="n">user</span>
+</pre></div>
+</div>
+</section>
+<section id="saml-setup-with-onelogin">
+<h2>SAML setup with onelogin<a class="headerlink" href="#saml-setup-with-onelogin" title="Link to this heading"></a></h2>
+<ul>
+<li><p>create dev account on onelogin.com</p></li>
+<li><p>log into onelogin.com</p></li>
+<li><p>create new app: SAML Test Connector (Advanced)</p>
+<blockquote>
+<div><ul>
+<li><p>go to “Configuration”</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Audience: <a class="reference external" href="https://localhost/apps/user_saml/saml/metadata">https://localhost/apps/user_saml/saml/metadata</a></p></li>
+<li><p>Recipient: <a class="reference external" href="https://localhost/apps/user_saml/saml/acs">https://localhost/apps/user_saml/saml/acs</a></p></li>
+<li><p>ACS (Consumer) URL Validator: <a class="reference external" href="https://localhost/apps/user_saml/saml/acs">https://localhost/apps/user_saml/saml/acs</a></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>go to “Parameters”</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Add “User.email” -&gt; email (and add to assertion)</p></li>
+<li><p>Add “User.FirstName” -&gt; first name (and add to assertion)</p></li>
+<li><p>Add “User.LastName” -&gt; last name (and add to assertion)</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>open Nextcloud SAML settings</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Select SAML</p></li>
+<li><p>Configure it according to <a class="reference external" href="https://portal.nextcloud.com/article/configuring-single-sign-on-10.html">https://portal.nextcloud.com/article/configuring-single-sign-on-10.html</a></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="collabora-without-ssl">
+<h2>Collabora without SSL<a class="headerlink" href="#collabora-without-ssl" title="Link to this heading"></a></h2>
+<p><strong>1) Start Collabora in a docker container</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">p</span> <span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">9980</span><span class="p">:</span><span class="mi">9980</span> <span class="o">-</span><span class="n">e</span> <span class="s1">&#39;domain=172.17.0.1&#39;</span> \
+    <span class="o">-</span><span class="n">e</span> <span class="s1">&#39;username=admin&#39;</span> <span class="o">-</span><span class="n">e</span> <span class="s1">&#39;password=487903ffcf4&#39;</span> \
+    <span class="o">-</span><span class="n">e</span> <span class="n">extra_params</span><span class="o">=</span><span class="s1">&#39;--o:ssl.enable=false&#39;</span> \
+    <span class="o">--</span><span class="n">restart</span> <span class="n">always</span> <span class="o">--</span><span class="n">cap</span><span class="o">-</span><span class="n">add</span> <span class="n">MKNOD</span> <span class="n">collabora</span><span class="o">/</span><span class="n">code</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>172.17.0.1 is localhost, which is default by Docker</p></li>
+<li><p>get IP of Collabora container: docker inspect –format=’{{ .NetworkSettings.IPAddress }}’ $containerName</p></li>
+</ul>
+<dl class="simple">
+<dt><strong>2) Configure Nextcloud</strong></dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>go to your local cloud (e.g. 172.17.0.1/nc) -&gt; Settings -&gt; Collabora</dt><dd><ul>
+<li><p>set URL to IP you found out above, e.g: <a class="reference external" href="http://172.17.0.2:9980">http://172.17.0.2:9980</a></p></li>
+<li><p>check “Disable certificate verification (insecure)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt><strong>3) Use</strong></dt><dd><ul class="simple">
+<li><p>please note that you cannot use it with localhost, but you have to enter a valid IP address of localhost</p></li>
+<li><p>with this approach you can also use it with mobile clients</p></li>
+</ul>
+</dd>
+<dt><strong>4) Troubleshoot</strong></dt><dd><ul class="simple">
+<li><p><a class="reference external" href="http://172.17.0.2:9980/hosting/capabilities">http://172.17.0.2:9980/hosting/capabilities</a> should give you:</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;convert-to&quot;</span><span class="p">:{</span><span class="s2">&quot;available&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">},</span><span class="s2">&quot;hasMobileSupport&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span><span class="s2">&quot;hasTemplateSaveAs&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span><span class="s2">&quot;productName&quot;</span><span class="p">:</span><span class="s2">&quot;Collabora Online Development Edition&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="onlyoffice">
+<h2>OnlyOffice<a class="headerlink" href="#onlyoffice" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Create self signed cert, should be on a permanent path:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oo</span><span class="o">/</span><span class="n">certs</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oo</span><span class="o">/</span><span class="n">certs</span>
+<span class="n">openssl</span> <span class="n">genrsa</span> <span class="o">-</span><span class="n">out</span> <span class="n">onlyoffice</span><span class="o">.</span><span class="n">key</span> <span class="mi">4096</span>
+<span class="n">openssl</span> <span class="n">req</span> <span class="o">-</span><span class="n">new</span> <span class="o">-</span><span class="n">key</span> <span class="n">onlyoffice</span><span class="o">.</span><span class="n">key</span> <span class="o">-</span><span class="n">out</span> <span class="n">onlyoffice</span><span class="o">.</span><span class="n">csr</span>
+<span class="n">openssl</span> <span class="n">x509</span> <span class="o">-</span><span class="n">req</span> <span class="o">-</span><span class="n">days</span> <span class="mi">3650</span> <span class="o">-</span><span class="ow">in</span> <span class="n">onlyoffice</span><span class="o">.</span><span class="n">csr</span> <span class="o">-</span><span class="n">signkey</span> <span class="n">onlyoffice</span><span class="o">.</span><span class="n">key</span> <span class="o">-</span><span class="n">out</span> <span class="n">onlyoffice</span><span class="o">.</span><span class="n">crt</span>
+<span class="n">openssl</span> <span class="n">dhparam</span> <span class="o">-</span><span class="n">out</span> <span class="n">dhparam</span><span class="o">.</span><span class="n">pem</span> <span class="mi">4096</span>
+<span class="n">chmod</span> <span class="mi">400</span> <span class="n">onlyoffice</span><span class="o">.</span><span class="n">key</span>
+<span class="n">chmod</span> <span class="mi">400</span> <span class="n">onlyoffice</span><span class="o">.</span><span class="n">crt</span>
+<span class="n">chmod</span> <span class="mi">400</span> <span class="n">onlyoffice</span><span class="o">.</span><span class="n">csr</span>
+<span class="n">chmod</span> <span class="mi">400</span> <span class="n">dhparam</span><span class="o">.</span><span class="n">pem</span>
+</pre></div>
+</div>
+</li>
+<li><p>Start docker, important: do not use certs folder, but parent folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">name</span><span class="o">=</span><span class="n">ONLYOFFICEDOCKER</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">t</span> <span class="o">-</span><span class="n">d</span> <span class="o">-</span><span class="n">p</span> <span class="mi">4433</span><span class="p">:</span><span class="mi">443</span> \
+<span class="o">-</span><span class="n">e</span> <span class="n">JWT_ENABLED</span><span class="o">=</span><span class="s1">&#39;true&#39;</span> <span class="o">-</span><span class="n">e</span> <span class="n">JWT_SECRET</span><span class="o">=</span><span class="s1">&#39;secret&#39;</span> <span class="o">--</span><span class="n">restart</span><span class="o">=</span><span class="n">always</span> \
+<span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oo</span><span class="o">/</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">onlyoffice</span><span class="o">/</span><span class="n">Data</span> <span class="n">onlyoffice</span><span class="o">/</span><span class="n">documentserver</span>
+</pre></div>
+</div>
+</li>
+<li><p>Go into docker container:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>docker exec -it ONLYOFFICEDOCKER /bin/bash</p></li>
+<li><p>apt-get update</p></li>
+<li><p>apt-get install vim -y</p></li>
+<li><dl class="simple">
+<dt>vim /etc/onlyoffice/documentserver/default.json</dt><dd><ul>
+<li><p>change rejectUnauthorized to false</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>vim /etc/onlyoffice/documentserver/local.json</dt><dd><ul>
+<li><p>change token -&gt; inbox -&gt; header to “AuthorizationJWT”</p></li>
+<li><p>change token -&gt; outbox -&gt; header to “AuthorizationJWT”</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Add the following to your config.php</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;onlyoffice&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span> <span class="p">(</span>
+    <span class="s1">&#39;verify_peer_off&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s1">&#39;jwt_secret&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;secret&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;jwt_header&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;AuthorizationJWT&#39;</span>
+<span class="p">),</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+<dl class="simple">
+<dt>Test with local ip: <a class="reference external" href="https://localhost:4433">https://localhost:4433</a></dt><dd><ul class="simple">
+<li><p>accept cert warning</p></li>
+<li><p>verify that “Document Server is running” is shown</p></li>
+</ul>
+</dd>
+<dt>Test with Nextcloud</dt><dd><ul class="simple">
+<li><p>download &amp; enable OnlyOffice app</p></li>
+<li><dl class="simple">
+<dt>configure:</dt><dd><ul>
+<li><p>Document Editing Service address: <a class="reference external" href="https://localhost:4433/">https://localhost:4433/</a></p></li>
+<li><p>Secret key : secret (as above)</p></li>
+<li><p>Document Editing Service address for internal requests from the server: <a class="reference external" href="https://localhost:4433/">https://localhost:4433/</a></p></li>
+<li><p>Server address for internal requests from the Document Editing Service: <a class="reference external" href="http://192.168.1.95/nc16/">http://192.168.1.95/nc16/</a> (needs to be real IP address, as localhost points to docker)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="webauthn-without-ssl">
+<h2>WebAuthn without SSL<a class="headerlink" href="#webauthn-without-ssl" title="Link to this heading"></a></h2>
+<p><a href="#id1"><span class="problematic" id="id2">`Chrome has the option to test WebAuthn with a fake device.&lt;https://developer.chrome.com/docs/devtools/webauthn/&gt;`_</span></a> Browsers support WebAuthn on HTTPS protected sites and localhost domains. Unfortunately this is not supported by the used PHP library where the check for HTTPS needs to be commented for testing on non-HTTPS localhost development environments.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>diff --git a/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAssertionResponseValidator.php b/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAssertionResponseValidator.php
+index 8400ba9c..49279cc7 100644
+--- a/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAssertionResponseValidator.php
++++ b/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAssertionResponseValidator.php
+@@ -152,7 +152,7 @@ class AuthenticatorAssertionResponseValidator
+             Assertion::isArray($parsedRelyingPartyId, &#39;Invalid origin&#39;);
+             if (!in_array($facetId, $securedRelyingPartyId, true)) {
+                 $scheme = $parsedRelyingPartyId[&#39;scheme&#39;] ?? &#39;&#39;;
+-                Assertion::eq(&#39;https&#39;, $scheme, &#39;Invalid scheme. HTTPS required.&#39;);
++                #Assertion::eq(&#39;https&#39;, $scheme, &#39;Invalid scheme. HTTPS required.&#39;);
+             }
+             $clientDataRpId = $parsedRelyingPartyId[&#39;host&#39;] ?? &#39;&#39;;
+             Assertion::notEmpty($clientDataRpId, &#39;Invalid origin rpId.&#39;);
+diff --git a/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php b/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php
+index f3e5a15d..3927bf23 100644
+--- a/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php
++++ b/3rdparty/web-auth/webauthn-lib/src/AuthenticatorAttestationResponseValidator.php
+@@ -150,7 +150,7 @@ class AuthenticatorAttestationResponseValidator
+
+             if (!in_array($facetId, $securedRelyingPartyId, true)) {
+                 $scheme = $parsedRelyingPartyId[&#39;scheme&#39;] ?? &#39;&#39;;
+-                Assertion::eq(&#39;https&#39;, $scheme, &#39;Invalid scheme. HTTPS required.&#39;);
++                #Assertion::eq(&#39;https&#39;, $scheme, &#39;Invalid scheme. HTTPS required.&#39;);
+             }
+
+             /* @see 7.1.6 */
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../core/externalapi.html" class="btn btn-neutral float-left" title="External API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../digging_deeper/index.html" class="btn btn-neutral float-right" title="Digging deeper" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/20/developer_manual">20</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/21/developer_manual">21</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/22/developer_manual">22</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

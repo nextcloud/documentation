@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SCSS &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Icons" href="icons.html" />
+    <link rel="prev" title="HTML elements" href="html.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Nextcloud design guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">HTML/CSS guidelines</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="navigation.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="navigation.html#new-button">New button</a></li>
+<li class="toctree-l2"><a class="reference internal" href="navigation.html#app-navigation-menu">App navigation menu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="navigation.html#settings">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content.html">Main content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html">Content list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="popovermenu.html">Popover menu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="html.html">HTML elements</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SCSS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#css-variables">CSS variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scss-icon-mixins">SCSS icon mixins</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="icons.html">Icons</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">HTML/CSS guidelines</a></li>
+      <li class="breadcrumb-item active">SCSS</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/html_css_design/css.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="scss">
+<span id="css"></span><h1>SCSS<a class="headerlink" href="#scss" title="Link to this heading"></a></h1>
+<p>Nextcloud supports SCSS natively.
+You can migrate your files by simply renaming your <code class="docutils literal notranslate"><span class="pre">.css</span></code> files to <code class="docutils literal notranslate"><span class="pre">.scss</span></code>.
+The server will automatically compile, cache and serve it.
+The SCSS file is prioritized. Having two files with the same name and a <code class="docutils literal notranslate"><span class="pre">scss</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">css</span></code> extension
+will ensure backwards compatibility with &lt;12 versions as scss files will be ignored by the server.</p>
+<section id="css-variables">
+<span id="cssvars"></span><h2>CSS variables<a class="headerlink" href="#css-variables" title="Link to this heading"></a></h2>
+<p>App developers should use CSS4 variables so you get the values which Nextcloud defines. This way you can be sure that the theming and accessibility app can dynamically adjust the values.</p>
+<p>A list of available variables is listed in the server repository:
+<a class="reference external" href="https://github.com/nextcloud/server/blob/master/core/css/css-variables.scss">https://github.com/nextcloud/server/blob/master/core/css/css-variables.scss</a></p>
+</section>
+<section id="scss-icon-mixins">
+<span id="cssicons"></span><h2>SCSS icon mixins<a class="headerlink" href="#scss-icon-mixins" title="Link to this heading"></a></h2>
+<p>Some SCSS mixins and functions are employed to add and manage SVG icons.</p>
+<p>These functions need to be used to add the icons via background-image. They create a list of every icon used in Nextcloud and create an associated list of variables.
+This allows us to invert the colors of the SVGs when using the dark theme.</p>
+<div class="highlight-scss notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm">* SVG COLOR API</span>
+<span class="cm">*</span>
+<span class="cm">* @param string $icon the icon filename</span>
+<span class="cm">* @param string $dir the icon folder within /core/img if $core or app name</span>
+<span class="cm">* @param string $color the desired color in hexadecimal</span>
+<span class="cm">* @param int $version the version of the file</span>
+<span class="cm">* @param bool [$core] search icon in core</span>
+<span class="cm">*</span>
+<span class="cm">* @returns string the url to the svg api endpoint</span>
+<span class="cm">*/</span>
+<span class="k">@mixin</span><span class="nf"> icon-color</span><span class="p">(</span><span class="nv">$icon</span><span class="o">,</span><span class="w"> </span><span class="nv">$dir</span><span class="o">,</span><span class="w"> </span><span class="nv">$color</span><span class="o">,</span><span class="w"> </span><span class="nv">$version</span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="o">,</span><span class="w"> </span><span class="nv">$core</span><span class="o">:</span><span class="w"> </span><span class="n n-Pseudo">false</span><span class="p">)</span>
+
+<span class="c1">// Examples</span>
+<span class="o">.</span><span class="no">icon</span><span class="o">-</span><span class="n">menu</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">@include</span><span class="nd"> icon-color</span><span class="p">(</span><span class="s1">&#39;menu&#39;</span><span class="o">,</span><span class="w"> </span><span class="s1">&#39;actions&#39;</span><span class="o">,</span><span class="w"> </span><span class="nv">$color-white</span><span class="o">,</span><span class="w"> </span><span class="mi">1</span><span class="o">,</span><span class="w"> </span><span class="n n-Pseudo">true</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// --icon-menu: url(&#39;/svg/core/actions/menu/ffffff?v=1&#39;);</span>
+<span class="w">        </span><span class="c1">// background-image: var(--icon-menu)</span>
+<span class="p">}</span>
+<span class="nc">.icon-folder</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">@include</span><span class="nd"> icon-color</span><span class="p">(</span><span class="s1">&#39;folder&#39;</span><span class="o">,</span><span class="w"> </span><span class="s1">&#39;files&#39;</span><span class="o">,</span><span class="w"> </span><span class="nv">$color-black</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// --icon-folder: url(&#39;/svg/files/folder/000000?v=1&#39;);</span>
+<span class="w">        </span><span class="c1">// background-image: var(--icon-folder)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>More information about the <a class="reference internal" href="icons.html#svgcolorapi"><span class="std std-ref">svg color api</span></a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">icon-black-white</span></code> mixin is a shortand for the <code class="docutils literal notranslate"><span class="pre">icon-color</span></code> function but it generates two sets of icons with the suffix <code class="docutils literal notranslate"><span class="pre">-white</span></code> and without (default black).</p>
+<div class="highlight-scss notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm">* Create black and white icons</span>
+<span class="cm">* This will add a default black version of and an additional white version when .icon-white is applied</span>
+<span class="cm">*/</span>
+<span class="k">@mixin</span><span class="nf"> icon-black-white</span><span class="p">(</span><span class="nv">$icon</span><span class="o">,</span><span class="w"> </span><span class="nv">$dir</span><span class="o">,</span><span class="w"> </span><span class="nv">$version</span><span class="o">,</span><span class="w"> </span><span class="nv">$core</span><span class="o">:</span><span class="w"> </span><span class="n n-Pseudo">false</span><span class="p">)</span>
+
+<span class="c1">// Examples</span>
+<span class="o">@</span><span class="n">include</span><span class="w"> </span><span class="nf">icon-black-white</span><span class="p">(</span><span class="s1">&#39;add&#39;</span><span class="o">,</span><span class="w"> </span><span class="s1">&#39;actions&#39;</span><span class="o">,</span><span class="w"> </span><span class="mi">1</span><span class="o">,</span><span class="w"> </span><span class="n n-Pseudo">true</span><span class="p">);</span>
+
+<span class="c1">// Will result in</span>
+<span class="nc">.icon-add</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">@include</span><span class="nd"> icon-color</span><span class="p">(</span><span class="s1">&#39;add&#39;</span><span class="o">,</span><span class="w"> </span><span class="s1">&#39;actions&#39;</span><span class="o">,</span><span class="w"> </span><span class="nv">$color-black</span><span class="o">,</span><span class="w"> </span><span class="mi">1</span><span class="o">,</span><span class="w"> </span><span class="n n-Pseudo">true</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.icon-add-white</span><span class="o">,</span>
+<span class="nc">.icon-add.icon-white</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">@include</span><span class="nd"> icon-color</span><span class="p">(</span><span class="s1">&#39;add&#39;</span><span class="o">,</span><span class="w"> </span><span class="s1">&#39;actions&#39;</span><span class="o">,</span><span class="w"> </span><span class="nv">$color-white</span><span class="o">,</span><span class="w"> </span><span class="mi">1</span><span class="o">,</span><span class="w"> </span><span class="n n-Pseudo">true</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="html.html" class="btn btn-neutral float-left" title="HTML elements" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="icons.html" class="btn btn-neutral float-right" title="Icons" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/20/developer_manual">20</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/21/developer_manual">21</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/22/developer_manual">22</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

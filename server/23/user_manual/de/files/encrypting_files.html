@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="de" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verschlüsseln Ihrer Nextcloud-Dateien auf dem Server &mdash; Nextcloud latest User Manual latest Dokumentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=7178e243"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=70a09b52"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="search" title="Suche" href="../search.html" />
+    <link rel="next" title="Dateifreigabe" href="sharing.html" />
+    <link rel="prev" title="Synchronisierung für Mobilgeräte und Desktops" href="desktop_mobile_sync.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Dokumentation durchsuchen" aria-label="Dokumentation durchsuchen" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest - Einführung zur Benutzeranleitung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Was gibt es Neues für Benutzer in Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Die Weboberfläche von Nextcloud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Dateien &amp; Synchronisation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Zugriff auf Ihre Dateien über die Nextcloud-Weboberfläche</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Zugriff auf Nextcloud-Dateien über WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Gelöschte Dateien verwalten</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Synchronisierung für Mobilgeräte und Desktops</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Verschlüsseln Ihrer Nextcloud-Dateien auf dem Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#encryption-faq">Verschlüsselungs-FAQ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-can-encryption-be-disabled">Wie kann die Verschlüsselung deaktiviert werden?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-possible-to-disable-encryption-with-the-recovery-key">Ist es möglich, die Verschlüsselung mit dem Wiederherstellungsschlüssel zu deaktivieren?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#can-encryption-be-disabled-without-the-user-s-password">Kann die Verschlüsselung ohne das Passwort des Benutzers deaktiviert werden?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">Ist geplant, dies auf die nächste Benutzeranmeldung oder einen Hintergrundjob zu verschieben?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-group-sharing-possible-with-the-recovery-key">Ist eine Gruppenfreigabe mit dem Wiederherstellungsschlüssel möglich?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-encryption">Verschlüsselung verwenden</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-encrypted-files">Verschlüsselte Dateien teilen</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#recovery-key-password">Wiederherstellungs-Passwort</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#files-not-encrypted">Dateien nicht verschlüsselt</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#change-private-key-password">Passwort für den Privaten Schlüssel ändern</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Dateifreigabe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Federated-Freigaben</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Anonyme Uploads durchführen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Große Dateien hochladen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Speicherkontingent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Versionskontrolle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projekte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Eigentum übertragen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Federated-Freigaben verwenden</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Einstellungen vornehmen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universeller Zugriff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Verwendung der Zwei-Faktor-Authentifizierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Verwalten Sie verbundene Browser und Geräte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Externer Speicher</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Dateien &amp; Synchronisation</a></li>
+      <li class="breadcrumb-item active">Verschlüsseln Ihrer Nextcloud-Dateien auf dem Server</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/encrypting_files.rst" class="fa fa-github"> Auf GitHub bearbeiten</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="encrypting-your-nextcloud-files-on-the-server">
+<h1>Verschlüsseln Ihrer Nextcloud-Dateien auf dem Server<a class="headerlink" href="#encrypting-your-nextcloud-files-on-the-server" title="Link to this heading"></a></h1>
+<p>Nextcloud enthält eine App für die serverseitige Verschlüsselung und wenn diese von Ihrem Nextcloud Administrator aktiviert wurde, werden all Ihre Nextcloud-Dateien automatisch auf dem Server verschlüsselt. Die Verschlüsselung gilt für den gesamten Server, d.h. wenn sie aktiviert wurde, ist es nicht möglich, Dateien unverschlüsselt zu lassen. Sie müssen hierfür nichts Besonderes tun - Nextcloud nutzt Ihre Zugangsdaten als Passwort für Ihren einzigartigen privaten Schlüssel. Sie können sich ein- und ausloggen und Ihre Dateien wie gewohnt verwalten und freigeben, genauso können Sie auch jederzeit Ihr Passwort ändern.</p>
+<p>Der Hauptzweck besteht darin, Dateien auf entfernten Speicherdiensten, die mit Ihrem Nextcloud-Server verbunden sind, zu verschlüsseln. Dies ist eine einfache Möglichkeit, Ihre Dateien auf entfernten Speichergeräten zu schützen. Sie können Ihre entfernten Dateien wie gehabt über Nextcloud teilen, aber Sie können Ihre verschlüsselten Dateien nicht direkt über den entfernten Dienst teilen, da die Schlüssel auf Ihrem Nextcloud-Server gespeichert und niemals an externe Anbieter weitergegeben werden.</p>
+<p>Wenn Ihr Nextcloud-Server nicht mit einem entfernten Speicherdienst verbunden ist, so ist es besser, eine andere Form der Verschlüsselung zu nutzen, wie Dateisystem- oder Datenträgerverschlüsselung. Da die Schlüssel auf Ihrem Nextcloud-Server verbleiben, ist es Ihrem Nextcloud-Administrator möglich, Ihre Dateien einzusehen, und falls der Server kompromittiert wird, könnte der Angreifer Zugriff auf Ihre Dateien erlangen. (Für weitere Informationen vergleichen Sie <a href="#id1"><span class="problematic" id="id2">`</span></a>Encryption in Nextcloud <a href="#id3"><span class="problematic" id="id4">`</span></a>_.)</p>
+<section id="encryption-faq">
+<h2>Verschlüsselungs-FAQ<a class="headerlink" href="#encryption-faq" title="Link to this heading"></a></h2>
+<section id="how-can-encryption-be-disabled">
+<h3>Wie kann die Verschlüsselung deaktiviert werden?<a class="headerlink" href="#how-can-encryption-be-disabled" title="Link to this heading"></a></h3>
+<p>Die einzige Art und Weise, Verschlüsselung zu deaktivieren, besteht darin, das Skript <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label">„decrypt all“</a> auszuführen, welches alle Dateien entschlüsselt und Verschlüsselung deaktiviert.</p>
+</section>
+<section id="is-it-possible-to-disable-encryption-with-the-recovery-key">
+<h3>Ist es möglich, die Verschlüsselung mit dem Wiederherstellungsschlüssel zu deaktivieren?<a class="headerlink" href="#is-it-possible-to-disable-encryption-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>Ja, <em>wenn</em> jeder Benutzer den <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">Wiederherstellungsschlüssel</a> verwendet,  wird <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label">„decrypt all“</a> diesen Schlüssel nutzen, um alle Dateien zu entschlüsseln.</p>
+</section>
+<section id="can-encryption-be-disabled-without-the-user-s-password">
+<h3>Kann die Verschlüsselung ohne das Passwort des Benutzers deaktiviert werden?<a class="headerlink" href="#can-encryption-be-disabled-without-the-user-s-password" title="Link to this heading"></a></h3>
+<p>Wenn Sie das Passwort Ihrer Benutzer nicht besitzen, oder den <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">file recovery key</a>, dann gibt es keine Möglichkeit, alle Dateien zu entschlüsseln. Außerdem wäre es gefährlich, es bei der Anmeldung auszuführen, da es wahrscheinlich Timeouts geben würde.</p>
+</section>
+<section id="is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">
+<h3>Ist geplant, dies auf die nächste Benutzeranmeldung oder einen Hintergrundjob zu verschieben?<a class="headerlink" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job" title="Link to this heading"></a></h3>
+<p>In diesem Fall müssten wir Ihr Anmeldekennwort in der Datenbank speichern. Dies könnte als Sicherheitsproblem angesehen werden, daher ist nichts dergleichen geplant.</p>
+</section>
+<section id="is-group-sharing-possible-with-the-recovery-key">
+<h3>Ist eine Gruppenfreigabe mit dem Wiederherstellungsschlüssel möglich?<a class="headerlink" href="#is-group-sharing-possible-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>Meinen Sie damit, dass es auf magische Weise funktionieren sollte, wenn Sie Benutzer zu Gruppen hinzufügen? Leider nein. Dies funktioniert nur mit dem Master-Schlüssel.</p>
+</section>
+</section>
+<section id="using-encryption">
+<h2>Verschlüsselung verwenden<a class="headerlink" href="#using-encryption" title="Link to this heading"></a></h2>
+<p>Die Verschlüsselung von Nextcloud ist gewissermaßen vom Typ „Erst konfigurieren, dann vergessen“, dennoch haben Sie einige Einstellungsmöglichkeiten.</p>
+<p>Wenn Ihr Nextcloud-Administrator zum ersten Mal Verschlüsselung aktiviert, müssen Sie sich abmelden und anschließend wieder anmelden, um Ihre Schlüssel zu erstellen und Ihre Dateien zu verschlüsseln. Wenn Verschlüsselung auf Ihrem Nextcloud-Server aktiviert wurde, sehen Sie ein gelbes Banner auf Ihrer Dateien-Seite, das sie darauf hinweist, sich ab- und anzumelden:</p>
+<figure class="align-default">
+<img alt="../../_images/encryption1.png" src="../../_images/encryption1.png" />
+</figure>
+<p>Wenn Sie sich erneut anmelden, wird dieser Vorgang - je nach Anzahl Ihrer Dateien - einige Minuten in Anspruch nehmen, bevor Sie zu Ihrer standardmäßigen Nextcloud-Seite umgeleitet werden.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption2.png" src="../../_images/encryption2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Bemerkung</p>
+<p>Sie dürfen Ihr Nextcloud-Passwort niemals verlieren, da Sie dadurch den Zugriff auf Ihre Daten verlieren werden. Allerdings gibt es eine optionale Wiederherstellungsmöglichkeit, die Ihr Nextcloud-Administrator aktivieren kann; vergleichen Sie unten den Abschnitt „Rettungsschlüssel-Passwort“.</p>
+</div>
+</section>
+<section id="sharing-encrypted-files">
+<h2>Verschlüsselte Dateien teilen<a class="headerlink" href="#sharing-encrypted-files" title="Link to this heading"></a></h2>
+<p>Nur Benutzer mit privaten Schlüsseln haben Zugriff auf verschlüsselte Freigaben von Dateien und Ordnern. Benutzer, die noch keine privaten Schlüssel erstellt haben, werden keinen Zugriff auf verschlüsselte Datei-Freigaben haben; sie werden Ordner und Dateinamen sehen, aber keine Möglichkeit haben, die Dateien zu öffnen oder herunterzuladen. Sie werden ein gelbes Banner mit folgendem Hinweis sehen „Verschlüsselungs-App ist aktiviert, aber Ihre Schlüssel sind noch nicht initialisiert, bitte ab- und wieder anmelden.“</p>
+<p>Besitzer von Freigaben müssen Ihre Dateien möglicherweise erneut teilen, nachdem Verschlüsselung aktiviert wurde; Benutzer, die auf die Freigabe zugreifen wollen, werden eine Benachrichtigung sehen, den Besitzer der Freigabe aufzufordern, diese erneut mit ihnen zu teilen. Für individuelle Freigaben heben Sie die Freigabe für die Datei auf und erteilen Sie sie erneut. Für Gruppen-Freigaben teilen Sie einfach mit den Personen, die keinen Zugriff auf die Freigabe haben. Dadurch wird die Verschlüsselung aktualisiert, sodass der Besitzer der Freigabe die individuellen Freigaben entfernen kann.</p>
+<section id="recovery-key-password">
+<h3>Wiederherstellungs-Passwort<a class="headerlink" href="#recovery-key-password" title="Link to this heading"></a></h3>
+<p>Wenn Ihr Nextcloud-Administrator die Funktion „Rettungsschlüssel“ aktiviert hat, können Sie diese Funktion für Ihr Konto nutzen. Wenn Sie Passwort-Wiederherstellung aktivieren, kann der Administrator Ihre Daten mit einem speziellen Passwort lesen. Durch diese Funktion kann der Administrator Ihre Dateien wiederherstellen, falls Sie Ihr Nextcloud-Passwort verlieren. Falls der Rettungsschlüssel nicht aktiviert ist, gibt es keine Möglichkeit, Ihre Dateien wiederherzustellen, wenn Sie Ihr Anmelde-Passwort verlieren.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption3.png" src="../../_images/encryption3.png" />
+</figure>
+</section>
+</section>
+<section id="files-not-encrypted">
+<h2>Dateien nicht verschlüsselt<a class="headerlink" href="#files-not-encrypted" title="Link to this heading"></a></h2>
+<p>Nur die Daten innerhalb Ihrer Dateien werden verschlüsselt, aber weder die Dateinamen noch die Ordnerstruktur. Folgende Dateien werden niemals verschlüsselt:</p>
+<ul class="simple">
+<li><p>Alte Dateien im Papierkorb.</p></li>
+<li><p>Vorschaubilder aus der Gallerie-App</p></li>
+<li><p>Vorschaubilder aus der Dateien-App</p></li>
+<li><p>Der Suchindex aus der Volltextsuche-App.</p></li>
+<li><p>Drittanbieter App-Daten</p></li>
+</ul>
+<p>Es können nur Dateien auf Freigaben externer Speicherdienstleister verschlüsselt werden, die übrigen Dateien dürfen nicht verschlüsselt werden.</p>
+<section id="change-private-key-password">
+<h3>Passwort für den Privaten Schlüssel ändern<a class="headerlink" href="#change-private-key-password" title="Link to this heading"></a></h3>
+<p>Diese Option ist nur verfügbar, wenn das Passwort für die Verschlüsselung vom Administrator nicht geändert wurde, sondern nur das Passwort für die Anmeldung. Dies kann auftreten, wenn Ihr Nextcloud-Anbieter ein externes Benutzer-Backend verwendet (z.B. LDAP) und Ihr Anmelde-Passwort über diese Backend-Konfiguration geändert hat. In diesem Falle können Sie Ihr Verschlüsselungs-Passwort als Ihr neues Anmelde-Passwort festlegen, indem Sie Ihr altes und Ihr neues Anmelde-Passwort angeben. Die Verschlüsselungs-App funktioniert nur, wenn Anmelde-Passwort und Verschlüsselungs-Passwort identisch sind.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-left" title="Synchronisierung für Mobilgeräte und Desktops" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Zurück</a>
+        <a href="sharing.html" class="btn btn-neutral float-right" title="Dateifreigabe" accesskey="n" rel="next">Weiter <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/id/">id</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/nn/">nn</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/si/">si</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/th/">th</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/uk/">uk</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versionen</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/20/user_manual">20</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/21/user_manual">21</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/22/user_manual">22</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Auf "Read the docs"</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Projekt Startseite</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

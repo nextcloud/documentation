@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Layout components &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Atomic components" href="atomiccomponents.html" />
+    <link rel="prev" title="Layout" href="layout.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Nextcloud design guidelines</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="foundations.html">Foundations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layout.html">Layout</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Layout components</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#navigation">Navigation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#main-action-button">Main action button</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#navigation-entries">Navigation entries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#new-item-element">New item element</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#settings">Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#list-item">List item</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#content">Content</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#views">Views</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sizing">Sizing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#sidebar">Sidebar</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#details">Details</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#activity">Activity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing">Sharing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="atomiccomponents.html">Atomic components</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Nextcloud design guidelines</a></li>
+      <li class="breadcrumb-item active">Layout components</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/design/layoutcomponents.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="layout-components">
+<h1>Layout components<a class="headerlink" href="#layout-components" title="Link to this heading"></a></h1>
+<p>All Nextcloud apps are built using individual reusable components for consistency and efficiency. Currently, these components are written in Vue and can be found at the <a class="reference external" href="https://github.com/nextcloud/nextcloud-vue/">nextcloud-vue repository on Github</a> with the documentation available at <a class="reference external" href="https://nextcloud-vue-components.netlify.app/">the Nextcloud Vue components style guide</a>.</p>
+<section id="navigation">
+<span id="id1"></span><h2>Navigation<a class="headerlink" href="#navigation" title="Link to this heading"></a></h2>
+<img alt="Contacts navigation" src="../_images/contacts-navigation.png" />
+<p>The left navigation provides a way for users to move around different sections of your app.</p>
+<p><a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/AppNavigation?id=appnavigation-1">Vue component for the app navigation</a>.</p>
+<p>The navigation consists of 4 main elements:</p>
+<ul class="simple">
+<li><p>Main action button</p></li>
+<li><p>Navigation entries</p></li>
+<li><p>New item element (optional)</p></li>
+<li><p>Settings menu (optional)</p></li>
+</ul>
+<section id="main-action-button">
+<h3>Main action button<a class="headerlink" href="#main-action-button" title="Link to this heading"></a></h3>
+<img alt="Mail primary action button.png" src="../_images/mail-primary-action-button.png" />
+<p>For most apps, the first element in the navigation is the main action button. For example:</p>
+<ul class="simple">
+<li><p>Mail has a “New message” button to compose a new mail</p></li>
+<li><p>Contacts has a “New contact” button</p></li>
+<li><p>in Talk, you can create a new conversation</p></li>
+<li><p>in Calendar there is a “New event” button</p></li>
+<li><p>Forms has a “New form” action</p></li>
+</ul>
+</section>
+<section id="navigation-entries">
+<h3>Navigation entries<a class="headerlink" href="#navigation-entries" title="Link to this heading"></a></h3>
+<img alt="Mail navigation entries" src="../_images/mail-navigation-entries.png" />
+<p>The different sections of your app would be organized by different navigation entries. For example, the Files app contains different categories of files in its navigation, and the Contacts app contains different groups and circles. When creating your navigation, make sure that the entries in this section:</p>
+<ul class="simple">
+<li><p>are easy to understand</p></li>
+<li><p>are frequently used</p></li>
+<li><p>are organized</p></li>
+<li><p>do not change positions frequently</p></li>
+</ul>
+<p>Top-level navigation entries ideally have a suitable icon left next to them. Optionally they may also have:</p>
+<ul class="simple">
+<li><p>a 3 dot action menu (seen in Mail)</p></li>
+<li><p>a counter (seen in Contacts and Mail)</p></li>
+</ul>
+<p>A sublevel of navigation is possible, but can lead to entries being hard to discover. It is only advised if there is actually a hierarchy like for folders in Mail or News.</p>
+<p><a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/AppNavigation?id=appnavigationitem">Navigation entries Vue component</a>.</p>
+</section>
+<section id="new-item-element">
+<h3>New item element<a class="headerlink" href="#new-item-element" title="Link to this heading"></a></h3>
+<img alt="Add new item element" src="../_images/new-item-element.gif" />
+<p>Users can easily create a new item with a suitable name by using the new item element. This element can be used in the navigation, as in the case of Deck, or in the content. Other apps which use this:</p>
+<ul class="simple">
+<li><p>“Create a new group” in Contacts</p></li>
+<li><p>“Add mailbox” in Mail</p></li>
+<li><p>“New calendar” in Calendar</p></li>
+</ul>
+<p><a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/AppNavigation?id=appnavigationnewitem">New item Vue component</a>.</p>
+</section>
+<section id="settings">
+<span id="id2"></span><h3>Settings<a class="headerlink" href="#settings" title="Link to this heading"></a></h3>
+<img alt="Talk settings modal" src="../_images/talk-settings-modal.png" />
+<p>The user-specific settings for your app may be shown in a settings modal, which can be accessed through a settings entry at the bottom of the navigation. Try to keep the settings to a minimum, as too many configurable options can be a burden to the user. If no settings are needed for the app, that is great and the settings modal can be omitted. Within the modal, categorizing your settings can sometimes offer a better experience if you have a lot of settings. If this is required, the categories are placed in the left of the settings modal.</p>
+<p>You can also include a “Help” as an entry in the settings of your app and provide some simple information about your app and how to use it. Some apps like Talk and Mail also include keyboard shortcuts.</p>
+<p><a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/App%20containers/AppNavigation?id=appnavigationsettings">Settings Vue component</a>.</p>
+<p>Also see: <a class="reference internal" href="atomiccomponents.html#modal"><span class="std std-ref">Modal</span></a></p>
+</section>
+</section>
+<section id="list-item">
+<span id="list"></span><h2>List item<a class="headerlink" href="#list-item" title="Link to this heading"></a></h2>
+<img alt="Talk list" src="../_images/list-item.gif" />
+<p>List items can be used to display a collection of elements from which one can be selected. List items are seen in the left list of chats in Talk, as well as the list of messages in Mail and the list of contacts in Contacts. List items usually have an avatar or a descriptive icon, a main line and optionally a subline. A list item may also contain:</p>
+<ul class="simple">
+<li><p>an <a class="reference internal" href="atomiccomponents.html#action-menu"><span class="std std-ref">Action menu</span></a> which has commonly used actions for that type of item</p></li>
+<li><p>a counter bubble: Talk for example uses an unread messages counter</p></li>
+</ul>
+<p><a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/List%20items">List item Vue component</a>.</p>
+</section>
+<section id="content">
+<span id="id3"></span><h2>Content<a class="headerlink" href="#content" title="Link to this heading"></a></h2>
+<p>The content section of your app takes up the most screen space, and is the core of what your app does. The content of every app is unique, but do make sure that it follows some basic rules like responsiveness, accessibility, and support in different languages so that it can be used by everyone. The layout of your content depends on what your app does, as the content of almost every Nextcloud app looks different. The <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/App%20containers?id=appcontent">appContent Vue component</a> should be used for the content of your app.</p>
+<section id="views">
+<h3>Views<a class="headerlink" href="#views" title="Link to this heading"></a></h3>
+<p>Some apps offer different views on their content so people can pick a preference which should be remembered automatically. It is important to consider which should be the default one and whether to have different views at all, since most people do not change the default.</p>
+<ul class="simple">
+<li><p>Files (web, Android &amp; iOS), Bookmarks: List view or grid view</p></li>
+<li><p>Calendar: Month view, week view, day view, list view / agenda</p></li>
+<li><p>Talk (web, Android &amp; iOS): Speaker view and grid view in a call</p></li>
+</ul>
+<p>The content is also the section where you can quickly explain to people how to get started with your app, for example using an <a class="reference internal" href="atomiccomponents.html#empty-content"><span class="std std-ref">Empty content</span></a> atomic component.</p>
+</section>
+<section id="sizing">
+<h3>Sizing<a class="headerlink" href="#sizing" title="Link to this heading"></a></h3>
+<p>For text-based apps like chat, mails, and other paragraphs of text, the width of the content should not go over a certain width to facilitate readability. In Nextcloud Text for example the width is limited to 650px and we do it similarly in Mail and Talk, even if the screen size is larger.</p>
+<p>For every clickable element in your interface, make sure it has a minimum clickable area of at least 44px by 44px (48px for Android). Anything smaller than this will make your app inaccessible and difficult for users to use your app on mobile as they might miss while trying to tap on the element.</p>
+<p>Spacing between elements in your app should be in multiples of 4px.</p>
+</section>
+</section>
+<section id="sidebar">
+<span id="id4"></span><h2>Sidebar<a class="headerlink" href="#sidebar" title="Link to this heading"></a></h2>
+<p>Details of a particular entry in your content, as well as some actions associated with it, are shown in the right sidebar. In apps where the sidebar is used, it only opens when required. The sidebar is never used in the 3-column layout (Navigation + list + content). It contains the main information and sometimes a preview of the selected item, as well as a maximum of 3 possible tabs.</p>
+<p><a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/App%20containers?id=appsidebar">Sidebar Vue component</a>.</p>
+<p>Commonly used tabs in the sidebar are:</p>
+<section id="details">
+<h3>Details<a class="headerlink" href="#details" title="Link to this heading"></a></h3>
+<img alt="Details tab in Calendar sidebar" src="../_images/sidebar-details.png" />
+<p>The details tab contains information about the entry it refers to, which is often editable using various input fields. The details included here will depend upon your app. For example, the details tab in the sidebar of the Calendar app contains information about the selected event, like location, description, and status. Also see <a class="reference internal" href="atomiccomponents.html#input-fields"><span class="std std-ref">Input fields</span></a> in the atomic components section for more details about the various input fields that can be used here.</p>
+</section>
+<section id="activity">
+<h3>Activity<a class="headerlink" href="#activity" title="Link to this heading"></a></h3>
+<p>Major changes done to the selected item, as well as comments left by users, are shown in the activity tab. These details are shown by latest activity up top.</p>
+<p>If your app includes comment support, the “Write comment” input box should be placed here so it is nicely integrated.</p>
+<p>If there is the possibility to restore earlier versions, this can be integrated using a 3-dot action menu on any past activity.</p>
+</section>
+<section id="sharing">
+<h3>Sharing<a class="headerlink" href="#sharing" title="Link to this heading"></a></h3>
+<img alt="Proposed sharing tab in the sidebar" src="../_images/sidebar-sharing.png" />
+<p>The sharing tab allows users to share the selected item with others in different ways. An item can be shared with specific users or groups on the instance by simply selecting whom you want to share with. Another very simple way of sharing is through a share link, which can optionally also be configured using the “Advanced settings” option.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="layout.html" class="btn btn-neutral float-left" title="Layout" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="atomiccomponents.html" class="btn btn-neutral float-right" title="Atomic components" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/20/developer_manual">20</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/21/developer_manual">21</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/22/developer_manual">22</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

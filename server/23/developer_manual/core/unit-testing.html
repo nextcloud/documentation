@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unit-Testing &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="External API" href="externalapi.html" />
+    <link rel="prev" title="Core development" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Core development</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Unit-Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#php-unit-testing">PHP unit testing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#getting-phpunit">Getting PHPUnit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#writing-php-unit-tests">Writing PHP unit tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bootstrapping-nextcloud">Bootstrapping Nextcloud</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-unit-tests-for-the-nextcloud-core-project">Running unit tests for the Nextcloud core project</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#further-reading">Further reading</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#javascript-unit-testing-for-core">JavaScript unit testing for core</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#installing-node-js">Installing Node JS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-all-tests">Running all tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#debugging-tests-in-the-browser">Debugging tests in the browser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unit-test-paths">Unit test paths</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#documentation">Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="externalapi.html">External API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how_to/index.html">How to test …</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Nextcloud design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Core development</a></li>
+      <li class="breadcrumb-item active">Unit-Testing</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/core/unit-testing.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="unit-testing">
+<h1>Unit-Testing<a class="headerlink" href="#unit-testing" title="Link to this heading"></a></h1>
+<section id="php-unit-testing">
+<h2>PHP unit testing<a class="headerlink" href="#php-unit-testing" title="Link to this heading"></a></h2>
+<section id="getting-phpunit">
+<h3>Getting PHPUnit<a class="headerlink" href="#getting-phpunit" title="Link to this heading"></a></h3>
+<p>Nextcloud uses PHPUnit &gt;= 8.5 for unit testing.</p>
+<p>PHPUnit documentation: <a class="reference external" href="https://phpunit.de/documentation.html">https://phpunit.de/documentation.html</a></p>
+</section>
+<section id="writing-php-unit-tests">
+<h3>Writing PHP unit tests<a class="headerlink" href="#writing-php-unit-tests" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>To get started, do the following:</dt><dd><ul class="simple">
+<li><p>Create a directory called <code class="docutils literal notranslate"><span class="pre">tests</span></code> in the top level of your application</p></li>
+<li><p>Create a PHP file in the directory and <code class="docutils literal notranslate"><span class="pre">require_once</span></code> your class which you want to test</p></li>
+</ul>
+</dd>
+</dl>
+<p>Then you can simply run the created test with <strong>phpunit</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you use Nextcloud functions in your class under test (i.e., OC::getUser()) you’ll need to bootstrap Nextcloud or use dependency injection.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You’ll most likely run your tests under a different user than the Web server. This might cause problems with your PHP settings (i.e., open_basedir) and requires you to adjust your configuration.</p>
+</div>
+<p>An example for a simple test would be:</p>
+<p><code class="file docutils literal notranslate"><span class="pre">/srv/http/nextcloud/apps/myapp/tests/testaddtwo.php</span></code></p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\Myapp\Tests</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">TestAddTwo</span> <span class="k">extends</span> <span class="nx">\Test\TestCase</span> <span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$testMe</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">setUp</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">testMe</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\OCA\Myapp\TestMe</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testAddTwo</span><span class="p">(){</span>
+          <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">testMe</span><span class="o">-&gt;</span><span class="na">addTwo</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="file docutils literal notranslate"><span class="pre">/srv/http/nextcloud/apps/myapp/lib/testme.php</span></code></p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\Myapp</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">TestMe</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">addTwo</span><span class="p">(</span><span class="nv">$number</span><span class="p">){</span>
+        <span class="k">return</span> <span class="nv">$number</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In <code class="file docutils literal notranslate"><span class="pre">/srv/http/nextcloud/apps/myapp/</span></code> you run the test with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">phpunit</span> <span class="n">tests</span><span class="o">/</span><span class="n">testaddtwo</span><span class="o">.</span><span class="n">php</span>
+</pre></div>
+</div>
+<p>Make sure to extend the <code class="docutils literal notranslate"><span class="pre">\Test\TestCase</span></code> class with your test and always call the parent methods
+when overwriting <code class="docutils literal notranslate"><span class="pre">setUp()</span></code>, <code class="docutils literal notranslate"><span class="pre">setUpBeforeClass()</span></code>, <code class="docutils literal notranslate"><span class="pre">tearDown()</span></code> or <code class="docutils literal notranslate"><span class="pre">tearDownAfterClass()</span></code> method
+from the TestCase. These methods set up important stuff and clean up the system after the test,
+so the next test can run without side effects, like remaining files and entries in the file cache, etc.</p>
+<p>For more resources on PHPUnit visit: <a class="reference external" href="https://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html">https://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html</a></p>
+</section>
+<section id="bootstrapping-nextcloud">
+<h3>Bootstrapping Nextcloud<a class="headerlink" href="#bootstrapping-nextcloud" title="Link to this heading"></a></h3>
+<p>If you use Nextcloud functions or classes in your code, you’ll need to make them available to your test by bootstrapping Nextcloud.</p>
+<p>To do this, you’ll need to provide the <code class="docutils literal notranslate"><span class="pre">--bootstrap</span></code> argument when running PHPUnit:</p>
+<p><code class="file docutils literal notranslate"><span class="pre">/srv/http/nextcloud</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">phpunit</span> <span class="o">--</span><span class="n">bootstrap</span> <span class="n">tests</span><span class="o">/</span><span class="n">bootstrap</span><span class="o">.</span><span class="n">php</span> <span class="n">apps</span><span class="o">/</span><span class="n">myapp</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">testsuite</span><span class="o">.</span><span class="n">php</span>
+</pre></div>
+</div>
+<p>If you run the test under a different user than your Web server, you’ll have to
+adjust your php.ini and file rights.</p>
+<p><code class="file docutils literal notranslate"><span class="pre">/etc/php/php.ini</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">open_basedir</span> <span class="o">=</span> <span class="n">none</span>
+</pre></div>
+</div>
+<p><code class="file docutils literal notranslate"><span class="pre">/srv/http/nextcloud</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">su</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;chmod a+r config/config.php&quot;</span>
+<span class="n">su</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;chmod a+rx data/&quot;</span>
+<span class="n">su</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;chmod a+w data/nextcloud.log&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="running-unit-tests-for-the-nextcloud-core-project">
+<h3>Running unit tests for the Nextcloud core project<a class="headerlink" href="#running-unit-tests-for-the-nextcloud-core-project" title="Link to this heading"></a></h3>
+<p>The core project provides core unit tests using different database backends like sqlite, mysql, pgsql, oci (for Oracle).
+Every database to test needs to accesible either</p>
+<ul class="simple">
+<li><p>natively, setup with</p>
+<ul>
+<li><p>Host: localhost</p></li>
+<li><p>Database: oc_autotest</p></li>
+<li><p>User: oc_autotest</p></li>
+<li><p>Password: owncloud</p></li>
+</ul>
+</li>
+<li><p>or via docker by setting the USEDOCKER environment variable.</p></li>
+</ul>
+<p>Notes on how to setup databases for this test can be found in <a class="reference external" href="https://github.com/nextcloud/server/blob/master/autotest.sh">https://github.com/nextcloud/server/blob/master/autotest.sh</a>.</p>
+<p>To run tests for all database engines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">autotest</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>To run tests only for sqlite:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">autotest</span><span class="o">.</span><span class="n">sh</span> <span class="n">sqlite</span>
+</pre></div>
+</div>
+<p>To run a specific test suite (note that the test file path is relative to the “tests” directory):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">autotest</span><span class="o">.</span><span class="n">sh</span> <span class="n">sqlite</span> <span class="n">lib</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">share</span><span class="o">.</span><span class="n">php</span>
+</pre></div>
+</div>
+</section>
+<section id="further-reading">
+<h3>Further reading<a class="headerlink" href="#further-reading" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://googletesting.blogspot.de/2008/08/by-miko-hevery-so-you-decided-to.html">https://googletesting.blogspot.de/2008/08/by-miko-hevery-so-you-decided-to.html</a></p></li>
+<li><p><a class="reference external" href="https://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html">https://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=4E4672CS58Q&amp;feature=bf_prev&amp;list=PLBDAB2BA83BB6588E">https://www.youtube.com/watch?v=4E4672CS58Q&amp;feature=bf_prev&amp;list=PLBDAB2BA83BB6588E</a></p></li>
+<li><p>Clean Code: A Handbook of Agile Software Craftsmanship (Robert C. Martin)</p></li>
+</ul>
+</section>
+</section>
+<section id="javascript-unit-testing-for-core">
+<h2>JavaScript unit testing for core<a class="headerlink" href="#javascript-unit-testing-for-core" title="Link to this heading"></a></h2>
+<p>JavaScript Unit testing for <strong>core</strong> and <strong>core apps</strong> is done using the <a class="reference external" href="http://karma-runner.github.io">Karma</a> test runner with <a class="reference external" href="https://jasmine.github.io/">Jasmine</a>.</p>
+<section id="installing-node-js">
+<h3>Installing Node JS<a class="headerlink" href="#installing-node-js" title="Link to this heading"></a></h3>
+<p>To run the JavaScript unit tests you will need to install <strong>Node JS</strong>.</p>
+<p>You can get it here: <a class="reference external" href="https://nodejs.org/">https://nodejs.org/</a></p>
+<p>After that you will need to setup the <strong>Karma</strong> test environment.
+The easiest way to do this is to run the automatic test script first, see next section.</p>
+</section>
+<section id="running-all-tests">
+<h3>Running all tests<a class="headerlink" href="#running-all-tests" title="Link to this heading"></a></h3>
+<p>To run all tests, just run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">autotest</span><span class="o">-</span><span class="n">js</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>This will also automatically set up your test environment.</p>
+</section>
+<section id="debugging-tests-in-the-browser">
+<h3>Debugging tests in the browser<a class="headerlink" href="#debugging-tests-in-the-browser" title="Link to this heading"></a></h3>
+<p>To debug tests in the browser, you need to run <strong>Karma</strong> in browser mode:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">karma</span> <span class="n">start</span> <span class="n">tests</span><span class="o">/</span><span class="n">karma</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+</div>
+<p>From there, open the URL <a class="reference external" href="http://localhost:9876">http://localhost:9876</a> in a web browser.</p>
+<p>On that page, click on the “Debug” button.</p>
+<p>An empty page will appear, from which you must open the browser console (F12 in Firefox/Chrome).</p>
+<p>Every time you reload the page, the unit tests will be relaunched and will output the results in the browser console.</p>
+</section>
+<section id="unit-test-paths">
+<h3>Unit test paths<a class="headerlink" href="#unit-test-paths" title="Link to this heading"></a></h3>
+<p>JavaScript unit test examples can be found in <code class="file docutils literal notranslate"><span class="pre">apps/files/tests/js/</span></code>.</p>
+<p>Unit tests for the core app JavaScript code can be found in <code class="file docutils literal notranslate"><span class="pre">core/js/tests/specs</span></code>.</p>
+</section>
+<section id="documentation">
+<h3>Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h3>
+<p>Here are some useful links about how to write unit tests with Jasmine and Sinon:</p>
+<ul class="simple">
+<li><p>Karma test runner: <a class="reference external" href="https://karma-runner.github.io/">https://karma-runner.github.io/</a></p></li>
+<li><p>Jasmine: <a class="reference external" href="https://pivotal.github.io/jasmine">https://pivotal.github.io/jasmine</a></p></li>
+<li><p>Sinon (for mocking and stubbing): <a class="reference external" href="http://sinonjs.org/">http://sinonjs.org/</a></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Core development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="externalapi.html" class="btn btn-neutral float-right" title="External API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/20/developer_manual">20</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/21/developer_manual">21</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/22/developer_manual">22</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
