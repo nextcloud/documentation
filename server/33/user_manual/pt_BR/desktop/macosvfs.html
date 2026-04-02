@@ -1,0 +1,691 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cliente de Arquivos Virtuais do macOS &mdash; Documentação Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/desktop/macosvfs.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5eb80f5b"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=71a39b36"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="next" title="O Atualizador Automático" href="autoupdate.html" />
+    <link rel="prev" title="Uso do Cliente de Sincronização" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Pesquisar documentos" aria-label="Pesquisar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introdução ao manual do usuário do Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">A interface web do Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Arquivos &amp; sincronização</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Clientes de Desktop</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Instalação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html">Uso do Cliente de Sincronização</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Cliente de Arquivos Virtuais do macOS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#supported-features">Recursos suportados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-and-initial-setup">Instalação e configuração inicial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#finder-integration">Integração com o Finder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sync-status-indicators">Indicadores de status de sincronização</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#context-menu-actions">Ações do menu de contexto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuração</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="autoupdate.html">O Atualizador Automático</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Canais de atualização</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conflicts.html">Conflitos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">Perguntas Frequentes (FAQ)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Configuração de suas preferências</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Acesso universal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Uso da autenticação de dois fatores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gerenciar navegadores e dispositivos conectados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Armazenamento externo</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Menu de navegação móvel" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Navegação da página">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Clientes de Desktop</a></li>
+      <li class="breadcrumb-item active">Cliente de Arquivos Virtuais do macOS</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/macosvfs.rst" class="fa fa-github"> Editar no GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="macos-virtual-files-client">
+<h1>Cliente de Arquivos Virtuais do macOS<a class="headerlink" href="#macos-virtual-files-client" title="Link para este cabeçalho"></a></h1>
+<p>A sincronização baseada em arquivos virtuais agora está disponível no macOS para usuários de Nextcloud Desktop.</p>
+<p>Diferentemente do Windows, o suporte a arquivos virtuais no macOS é fornecido por uma versão de cliente separada. Isso nos permite manter a melhor experiência possível para arquivos sincronizados de forma clássica, incluindo a integração do status de sincronização e ações do menu de contexto, para usuários que desejam continuar usando este método de sincronização. Assim como o nosso cliente de sincronização clássico, o cliente de arquivos virtuais do macOS é lançado juntamente com o cliente de desktop para Windows e Linux e se beneficiará de atualizações regulares de correção de bugs e recursos que melhoram a experiência do usuário.</p>
+<section id="supported-features">
+<h2>Recursos suportados<a class="headerlink" href="#supported-features" title="Link para este cabeçalho"></a></h2>
+<ul class="simple">
+<li><p>Retenção e evicção local por arquivo</p></li>
+<li><p>Evicção inteligente de cópias locais</p></li>
+<li><p>Integração com o Spotlight</p></li>
+<li><p>Pré-visualização de arquivos no Finder para arquivos virtuais</p></li>
+<li><p>Suporte para formatos específicos do Apple, como pacotes de aplicativos e pacotes do iWork (Pages, Numbers, Keynote)</p></li>
+<li><p>Compatibilidade com o bloqueio remoto de arquivos</p></li>
+<li><p>Suporte de “Editar localmente”</p></li>
+<li><p>Compartilhamento de arquivos com outros usuários</p></li>
+<li><p>Sincronização automática de alterações remotas</p></li>
+<li><p>Mais!</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Para melhorar a detecção de alterações remotas, recomendamos ativar o aplicativo <code class="docutils literal notranslate"><span class="pre">notify_push</span></code> em seu servidor Nextcloud. Este aplicativo notificará o cliente de desktop sobre as alterações no servidor assim que elas ocorrerem, reduzindo o tempo necessário para que o cliente detecte as alterações. Isso também eliminará a necessidade de o cliente de desktop solicitar continuamente o servidor em busca de alterações.</p>
+</div>
+</section>
+<section id="installation-and-initial-setup">
+<h2>Instalação e configuração inicial<a class="headerlink" href="#installation-and-initial-setup" title="Link para este cabeçalho"></a></h2>
+<p>O cliente de arquivos virtuais é distribuído como um pacote de instalação que se assemelha ao cliente de sincronização clássico do macOS. O cliente de desktop pode ser instalado seguindo as etapas apresentadas pelo instalador.</p>
+<p>O cliente de desktop de arquivos virtuais é intercambiável com o cliente de desktop de sincronização clássico. Isso significa que suas contas e configurações existentes serão transferidas para este cliente e vice-versa, caso você decida voltar para o cliente de sincronização clássico. Isso inclui todas as pastas de sincronização padrão pré-existentes, pois o cliente de arquivos virtuais também suporta a sincronização clássica.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Devido a limitações técnicas no macOS, não podemos fornecer integração no Finder para as duas opções, pastas de sincronização clássicas e pastas de sincronização de arquivos virtuais. Portanto, as pastas de sincronização clássicas no cliente de arquivos virtuais não terão integrações do Finder, como ícones de estado de sincronização ou ações do menu de contexto.</p>
+</div>
+<p>Todas as contas existentes ou recém-configuradas terão os arquivos virtuais ativados automaticamente. No macOS, os arquivos virtuais de cada conta vivem em seu próprio domínio, separados de quaisquer pastas de sincronização clássica pré-existentes. Estes domínios podem ser encontrados listados no grupo “Locais” na barra lateral do Finder.</p>
+<img alt="Barra lateral do Finder mostrando domínios de arquivos virtuais" src="../../_images/macosvfs-finder-sidebar.png" />
+<p>Ao acessar um destes domínios pela primeira vez, o cliente de desktop solicitará informações sobre arquivos remotos do servidor. Esta primeira sincronização pode levar algum tempo, dependendo da quantidade de arquivos hospedados no servidor.</p>
+</section>
+<section id="finder-integration">
+<h2>Integração com o Finder<a class="headerlink" href="#finder-integration" title="Link para este cabeçalho"></a></h2>
+<p>O cliente de arquivos virtuais tem integrações distintas com o Finder que permitem uma integração mais profunda e nativa com o navegador de arquivos do macOS do que o cliente de sincronização clássico.</p>
+</section>
+<section id="sync-status-indicators">
+<h2>Indicadores de status de sincronização<a class="headerlink" href="#sync-status-indicators" title="Link para este cabeçalho"></a></h2>
+<p>Da mesma forma que o cliente de sincronização clássico, o cliente de arquivos virtuais exibe ícones ao lado dos arquivos virtuais que indicam qual é o status deles.</p>
+<img alt="Ícones de status de sincronização para arquivos virtuais do macOS" src="../../_images/macosvfs-sync-status-icons.png" />
+<ul class="simple">
+<li><p><em>Nuvem com seta</em>: o item ou seus filhos são virtuais e estão disponíveis para armazenamento local</p></li>
+<li><p><em>Contorno de nuvem</em>: o item está parcialmente disponível localmente</p></li>
+<li><p><em>Sem ícone</em>: o item está disponível off-line</p></li>
+</ul>
+</section>
+<section id="context-menu-actions">
+<h2>Ações do menu de contexto<a class="headerlink" href="#context-menu-actions" title="Link para este cabeçalho"></a></h2>
+<p>Clicar com a tecla Control, clicar com dois dedos ou clicar com o botão direito do mouse em um item do Finder fornecerá o menu de contexto, no qual você poderá encontrar várias entradas fornecidas pelo cliente de arquivos virtuais que permitem usar alguns dos recursos suportados pelo Nextcloud. Estes recursos incluem:</p>
+<ul class="simple">
+<li><p>Bloqueio de arquivos (se suportado pelo servidor)</p></li>
+</ul>
+<img alt="UI de bloqueio de arquivos para arquivos virtuais do macOS" src="../../_images/macosvfs-file-locking.png" />
+<ul class="simple">
+<li><p>Compartilhamento de arquivos (se suportado pelo servidor)</p></li>
+</ul>
+<img alt="UI de compartilhamento de arquivos para arquivos virtuais do macOS" src="../../_images/macosvfs-file-sharing.png" />
+</section>
+<section id="configuration">
+<h2>Configuração<a class="headerlink" href="#configuration" title="Link para este cabeçalho"></a></h2>
+<p>As configurações relacionadas a arquivos virtuais podem ser ajustadas por conta por meio da janela de configurações do cliente Nextcloud Desktop.</p>
+<img alt="Configurações de arquivos virtuais do macOS" src="../../_images/macosvfs-settings.png" />
+<p>A seção de arquivos virtuais oferece várias opções relevantes para a interação com os arquivos virtuais:</p>
+<ul class="simple">
+<li><p>Ativar/desativar arquivos virtuais para a conta de destino</p></li>
+<li><p>Ativar/desativar a sincronização rápida</p></li>
+<li><p>Gerenciar o uso do armazenamento local e eliminar cópias locais</p></li>
+<li><p>Forçar o domínio de arquivos virtuais a verificar se há atualizações</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Rodapé">
+        <a href="usage.html" class="btn btn-neutral float-left" title="Uso do Cliente de Sincronização" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="autoupdate.html" class="btn btn-neutral float-right" title="O Atualizador Automático" accesskey="n" rel="next">Próximo <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Direitos autorais 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 pt-BR
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Idiomas</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versões</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Em Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Página Inicial do Projeto</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Builds</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

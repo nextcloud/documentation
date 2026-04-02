@@ -1,0 +1,1041 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task Processing &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/digging_deeper/task_processing.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Text Processing" href="text_processing.html" />
+    <link rel="prev" title="Talk Integration" href="talk.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/index.html">Config &amp; Preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="context_chat.html">Context Chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="continuous_integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard.html">Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deadlock.html">Deadlocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files-metadata.html">Files Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupware/index.html">Groupware integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html">HTTP Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translation.html">Machine Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oidc.html">OpenID Connect (Oidc)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="out_of_office.html">Out-of-office periods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openmetrics.html">Open Metrics exporter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonenumberutil.html">Phone number util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psr.html">PSR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile.html">Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiler.html">Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">Reference providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_apis.html">REST APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_checks.html">Setup checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snowflake_ids.html">Snowflake IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speech-to-text.html">Speech-To-Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talk.html">Talk Integration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Task Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#consuming-the-task-processing-api">Consuming the Task Processing API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tasks-types">Tasks types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tasks">Tasks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-statuses">Task statuses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#listening-to-the-task-processing-events">Listening to the task processing events</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#implementing-a-taskprocessing-provider">Implementing a TaskProcessing provider</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#providing-additional-inputs-and-outputs">Providing additional inputs and outputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#providing-input-defaults">Providing input defaults</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#working-with-enum-shape-types">Working with Enum shape types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#providing-more-task-types">Providing more task types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#triggerable-providers">Triggerable providers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#provider-and-task-type-registration">Provider and task type registration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="text_processing.html">Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text2image.html">Text-To-Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status.html">User Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">User migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_host_metadata.html">Web Host Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webdav_collection_preload.html">WebDAV collection preload events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html">Working with time</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Digging deeper</a></li>
+      <li class="breadcrumb-item active">Task Processing</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/task_processing.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="task-processing">
+<span id="id1"></span><h1>Task Processing<a class="headerlink" href="#task-processing" title="Link to this heading"></a></h1>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 30.0.0.</span></p>
+</div>
+<p>Nextcloud offers a <strong>Task Processing</strong> API which replaces the previously introduced <a class="reference internal" href="text_processing.html#text-processing"><span class="std std-ref">Text Processing</span></a>, <a class="reference internal" href="text2image.html#text2image"><span class="std std-ref">TextToImage</span></a> and <a class="reference internal" href="speech-to-text.html#speech-to-text"><span class="std std-ref">Speech-To-Text</span></a> APIs. The overall idea is that there is a central OCP API that apps can use to schedule all kinds of tasks (mainly intended for AI tasks). To be technology agnostic any other app can provide this task functionality by registering Task Processing providers for specific Task types.</p>
+<section id="consuming-the-task-processing-api">
+<h2>Consuming the Task Processing API<a class="headerlink" href="#consuming-the-task-processing-api" title="Link to this heading"></a></h2>
+<p>To consume the  Task Processing API, you will need to <a class="reference internal" href="../basics/dependency_injection.html#id2"><span class="std std-ref">inject</span></a> <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\IManager</span></code>. This manager offers the following methods:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hasProviders()</span></code> This method returns a boolean which indicates if any providers have been registered. If this is false you cannot use the TextProcessing feature.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getAvailableTaskTypes(bool</span> <span class="pre">$showDisabled</span> <span class="pre">=</span> <span class="pre">false)</span></code> This method returns an array of enabled task types indexed by their ID with their names and additional metadata. If you set <code class="docutils literal notranslate"><span class="pre">$showdisabled</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> (available since NC31), it will include disabled task types. Since NC33 this will also include the <code class="docutils literal notranslate"><span class="pre">isInternal</span></code> field that signifies whether the task type is user-facing or intended for internal use only.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getAvailableTaskTypeIds()</span></code> This method (available since NC32) returns a list of available task type IDs. It uses the same logic as <code class="docutils literal notranslate"><span class="pre">getAvailableTaskTypes()</span></code> but is faster because it does not compute the task types metadata (which can be slow when getting default field values or multiselect value lists). If you just want to check if a feature is available, prefer using this method rather than <code class="docutils literal notranslate"><span class="pre">getAvailableTaskTypes()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scheduleTask(Task</span> <span class="pre">$task)</span></code> This method provides the actual scheduling functionality. The task is defined using the Task class. This method runs the task asynchronously in a background job.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getTask(int</span> <span class="pre">$id)</span></code> This method fetches a task specified by its id.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">deleteTask(Task</span> <span class="pre">$task)</span></code> This method deletes a task</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cancelTask(int</span> <span class="pre">$id)</span></code> This method cancels a task specified by its id.</p></li>
+</ul>
+</div></blockquote>
+<p>If you would like to use the task processing functionality in a client, there are also OCS endpoints available for this: <a class="reference internal" href="../client_apis/OCS/ocs-taskprocessing-api.html#ocs-taskprocessing-api"><span class="std std-ref">OCS Task Processing API</span></a></p>
+<section id="tasks-types">
+<h3>Tasks types<a class="headerlink" href="#tasks-types" title="Link to this heading"></a></h3>
+<p>The following built-in task types are available:</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'core:text2text'</span></code>: This task allows passing an arbitrary prompt to the language model. It is implemented by <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\TaskTypes\TextToText</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>Input shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Output shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'core:text2text:chat'</span></code>: This task allows chatting with the language model. It is implemented by <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\TaskTypes\TextToTextChat</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>Input shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">system_prompt</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">history</span></code>: <code class="docutils literal notranslate"><span class="pre">ListOfTexts</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Output shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'core:text2text:chatwithtools'</span></code>: This task allows chatting with the language model with tools calling support. It is implemented by <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\TaskTypes\TextToTextChatWithTools</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>Input shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">system_prompt</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tool_message</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code> A string containing a JSON array of <code class="docutils literal notranslate"><span class="pre">{&quot;name&quot;:</span> <span class="pre">string,</span> <span class="pre">&quot;content&quot;:</span> <span class="pre">string,</span> <span class="pre">&quot;tool_call_id&quot;:</span> <span class="pre">string}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">history</span></code>: <code class="docutils literal notranslate"><span class="pre">ListOfTexts</span></code> Each list item is a JSON string with <code class="docutils literal notranslate"><span class="pre">{&quot;role&quot;:</span> <span class="pre">&quot;human&quot;,</span> <span class="pre">&quot;content&quot;:</span> <span class="pre">string}</span></code> or <code class="docutils literal notranslate"><span class="pre">{&quot;role&quot;:</span> <span class="pre">&quot;assistant&quot;,</span> <span class="pre">&quot;content&quot;:</span> <span class="pre">string,</span> <span class="pre">(optional:</span> <span class="pre">&quot;tool_calls&quot;:</span> <span class="pre">array&lt;{&quot;name&quot;:</span> <span class="pre">string,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;tool_call&quot;,</span> <span class="pre">&quot;id&quot;:</span> <span class="pre">string,</span> <span class="pre">&quot;args&quot;:</span> <span class="pre">object}&gt;)}</span></code> or <code class="docutils literal notranslate"><span class="pre">{&quot;role&quot;:</span> <span class="pre">&quot;tool&quot;,</span> <span class="pre">&quot;content&quot;:</span> <span class="pre">string,</span> <span class="pre">&quot;name&quot;:</span> <span class="pre">string,</span> <span class="pre">&quot;tool_call_id&quot;:</span> <span class="pre">string}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tools</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code> The tools parameter should be a JSON array formatted according to the OpenAI API specifications: <a class="reference external" href="https://platform.openai.com/docs/api-reference/chat/create#chat-create-tools">https://platform.openai.com/docs/api-reference/chat/create#chat-create-tools</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Output shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tool_calls</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code> A string containing a JSON array with <code class="docutils literal notranslate"><span class="pre">{&quot;name&quot;:</span> <span class="pre">string,</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;tool_call&quot;,</span> <span class="pre">&quot;id&quot;:</span> <span class="pre">string,</span> <span class="pre">&quot;args&quot;:</span> <span class="pre">object}</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'core:contextagent:interaction'</span></code>: This task allows chatting with an agent. It is implemented by <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\TaskTypes\ContextAgentInteraction</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>Input shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">confirmation</span></code>: <code class="docutils literal notranslate"><span class="pre">Number</span></code> Boolean integer indicating whether to confirm previously requested actions: 0 to reject or 1 to confirm.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conversation_token</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code> Token representing the conversation</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Output shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conversation_token</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">actions</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'core:text2text:formalization'</span></code>: This task will reformulate the passed input text to be more formal in tone. It is implemented by <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\TaskTypes\TextToTextFormalization</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>Input shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Output shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'core:text2text:headline'</span></code>: This task will generate a headline for the passed input text. It is implemented by <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\TaskTypes\TextToTextHeadline</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>Input shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Output shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'core:text2text:reformulation'</span></code>: This task will reformulate the passed input text arbitrarily. It is implemented by <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\TaskTypes\TextToTextReformulation</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>Input shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Output shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'core:text2text:simplification'</span></code>: This task will reformulate the passed input text to be very easy to understand, e.g. by children. It is implemented by <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\TaskTypes\TextToTextSimplification</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>Input shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Output shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'core:text2text:summary'</span></code>: This task will summarize the passed input text. It is implemented by <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\TaskTypes\TextToTextSummary</span></code></dt><dd><ul>
+<li><p>Input shape:
+* <code class="docutils literal notranslate"><span class="pre">input</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+<li><p>Output shape:
+* <code class="docutils literal notranslate"><span class="pre">output</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'core:text2text:topics'</span></code>: This task will generate a comma-separated list of topics for the passed input text. It is implemented by <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\TaskTypes\TextToTextTopics</span></code></dt><dd><ul>
+<li><p>Input shape:
+* <code class="docutils literal notranslate"><span class="pre">input</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+<li><p>Output shape:
+* <code class="docutils literal notranslate"><span class="pre">output</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'core:text2text:translate'</span></code>: This task will translate text from one language to another. It is implemented by <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\TaskTypes\TextToTextTranslate</span></code></dt><dd><ul>
+<li><p>Input shape:
+* <code class="docutils literal notranslate"><span class="pre">input</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code>
+* <code class="docutils literal notranslate"><span class="pre">origin_language</span></code>: <code class="docutils literal notranslate"><span class="pre">Enum</span></code>
+* <code class="docutils literal notranslate"><span class="pre">target_language</span></code>: <code class="docutils literal notranslate"><span class="pre">Enum</span></code></p></li>
+<li><p>Output shape:
+* <code class="docutils literal notranslate"><span class="pre">output</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'core:audio2text'</span></code>: This task type is for transcribing audio to text. It is implemented by <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\TaskTypes\AudioToText</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>Input shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: <code class="docutils literal notranslate"><span class="pre">Audio</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Output shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'core:text2image'</span></code>: This task type is for generating images from text prompts. It is implemented by <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\TaskTypes\TextToImage</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>Input shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numberOfImages</span></code>: <code class="docutils literal notranslate"><span class="pre">Number</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Output shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: <code class="docutils literal notranslate"><span class="pre">ListOfImages</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'core:text2text:changetone'</span></code>: This task type is for reformulating a text, changing its tone. It is implemented by <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\TaskTypes\TextToTextChangeTone</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>Input shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tone</span></code>: <code class="docutils literal notranslate"><span class="pre">Enum</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Output shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'core:text2text:proofread'</span></code>: This task type is for proofreading a text, checking it for grammar and spelling mistakes. It is implemented by <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\TaskTypes\TextToTextProofread</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>Input shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Output shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'core:text2speech'</span></code>: This task type is for generating speech from text prompts. It is implemented by <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\TaskTypes\TextToSpeech</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>Input shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Output shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">speech</span></code>: <code class="docutils literal notranslate"><span class="pre">Audio</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'core:analyze-images'</span></code>: This task type is for analyzing images. It is implemented by <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\TaskTypes\AnalyzeImages</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>Input shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">images</span></code>: <code class="docutils literal notranslate"><span class="pre">ListOfImages</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Output shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: <code class="docutils literal notranslate"><span class="pre">Text</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">'core:image2text:ocr'</span></code>: This task type is for extracting text from files using OCR. It is implemented by <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\TaskTypes\ImageToTextOpticalCharacterRecognition</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>Input shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: <code class="docutils literal notranslate"><span class="pre">ListOfFiles</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Output shape:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: <code class="docutils literal notranslate"><span class="pre">ListOfTexts</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<p>Task types can be disabled in the AI admin settings so they are not available for the Assistant or other apps even if they are implemented. All implemented Task types are enabled by default.</p>
+<section id="llm-prompts-and-multilingual-i-o">
+<h4>LLM Prompts and multilingual I/O<a class="headerlink" href="#llm-prompts-and-multilingual-i-o" title="Link to this heading"></a></h4>
+<p>When writing prompts for the TextToText task type in your apps, we recommend testing it with at least</p>
+<ul class="simple">
+<li><p>OpenAI GPT-3.5</p></li>
+<li><p>Llama 3.1</p></li>
+</ul>
+<p>Also, make sure that you instruct the model to use the correct language in its output. By default most models will answer in English if the main prompt is in English, even though the source data is in another language.
+A tweak to make sure of this is to instruct the model as follows:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Detect the language used in the text and make sure to answer in the same language without mentioning the language explicitly.&quot;</span>
+</pre></div>
+</div>
+<section id="input-and-output-shapes">
+<h5>Input and output shapes<a class="headerlink" href="#input-and-output-shapes" title="Link to this heading"></a></h5>
+<p>Each task type defines how its input and output should look. This is called the input and output shape.</p>
+<p>For example the TextToImage type defines its input shape as follows:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * @return ShapeDescriptor[]</span>
+<span class="sd"> * @since 30.0.0</span>
+<span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">getInputShape</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="s1">&#39;input&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">ShapeDescriptor</span><span class="p">(</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Prompt&#39;</span><span class="p">),</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Describe the image you want to generate&#39;</span><span class="p">),</span>
+            <span class="nx">EShapeType</span><span class="o">::</span><span class="na">Text</span>
+        <span class="p">),</span>
+        <span class="s1">&#39;numberOfImages&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">ShapeDescriptor</span><span class="p">(</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Number of images&#39;</span><span class="p">),</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;How many images to generate&#39;</span><span class="p">),</span>
+            <span class="nx">EShapeType</span><span class="o">::</span><span class="na">Number</span>
+        <span class="p">),</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The task input and output are always represented by an associative array. In this case, the task input for TextToImage must have an array key named <code class="docutils literal notranslate"><span class="pre">'input'</span></code> which must contain a text and an array key named <code class="docutils literal notranslate"><span class="pre">'numberOfImages'</span></code> which must contain a number.</p>
+<p>If you want to simply use a task type, you can look up it’s input and output shapes above or, if it is not built-in, in the documentation or implementation of the app introducing the task type. If you would like to use task types dynamically without knowing their shapes in advance, you can get their shape information from the <code class="docutils literal notranslate"><span class="pre">IManager#getAvailableTaskTypes()</span></code> method. The ShapeDescriptor class allows accessing the type data as well as human readable name and description using the <code class="docutils literal notranslate"><span class="pre">getName()</span></code>, <code class="docutils literal notranslate"><span class="pre">getDescription()</span></code> and <code class="docutils literal notranslate"><span class="pre">getShapeType()</span></code> methods.</p>
+</section>
+<section id="shape-types">
+<h5>Shape types<a class="headerlink" href="#shape-types" title="Link to this heading"></a></h5>
+<p>Input and output shape keys can have one of a pre-defined set of types, which are enumerated in the <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\EShapeType</span></code> Enum:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nx">enum</span> <span class="nx">EShapeType</span><span class="o">:</span> <span class="nx">int</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nx">Number</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nx">Text</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nx">Image</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nx">Audio</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nx">Video</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nx">File</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nx">Enum</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nx">ListOfNumbers</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nx">ListOfTexts</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nx">ListOfImages</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nx">ListOfAudio</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nx">ListOfVideo</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nx">ListOfFiles</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>When consuming the task processing API, <code class="docutils literal notranslate"><span class="pre">Image</span></code>, <code class="docutils literal notranslate"><span class="pre">Audio</span></code>, <code class="docutils literal notranslate"><span class="pre">Video</span></code> and <code class="docutils literal notranslate"><span class="pre">File</span></code> slots are filled with Nextcloud file IDs, so instead of supplying the image data directly as a string to the task you create a file for it and pass the id. Similarly, if the task outputs an image, you will receive a file ID in that slot.</p>
+</section>
+</section>
+</section>
+<section id="tasks">
+<h3>Tasks<a class="headerlink" href="#tasks" title="Link to this heading"></a></h3>
+<p>To create a task we use the <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\Task</span></code> class. Its constructor takes the following arguments: <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">\OCP\TaskProcessing\Task(string</span> <span class="pre">$taskTypeId,</span> <span class="pre">array</span> <span class="pre">$input,</span> <span class="pre">string</span> <span class="pre">$appId,</span> <span class="pre">?string</span> <span class="pre">$userId,</span> <span class="pre">string</span> <span class="pre">$customId</span> <span class="pre">=</span> <span class="pre">'')</span></code>. For example:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// getAvailableTaskTypeIds is faster than getAvailableTaskTypes</span>
+<span class="c1">// if (isset($textprocessingManager-&gt;getAvailableTaskTypes()[TextToTextSummary::ID]) {</span>
+<span class="c1">// if you don&#39;t need the task type metadata, prefer this:</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">in_array</span><span class="p">(</span><span class="nx">TextToTextSummary</span><span class="o">::</span><span class="na">ID</span><span class="p">,</span> <span class="nv">$textprocessingManager</span><span class="o">-&gt;</span><span class="na">getAvailableTaskTypeIds</span><span class="p">(),</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$summaryTask</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Task</span><span class="p">(</span><span class="nx">TextToTextSummary</span><span class="o">::</span><span class="na">ID</span><span class="p">,</span> <span class="nv">$emailText</span><span class="p">,</span> <span class="s2">&quot;my_app&quot;</span><span class="p">,</span> <span class="nv">$userId</span><span class="p">,</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$emailId</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// cannot use summarization</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The task class objects have the following methods available:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">getTaskTypeId()</span></code> This returns the task type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getStatus()</span></code> This method returns one of the below statuses.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getId()</span></code> This method will return <code class="docutils literal notranslate"><span class="pre">null</span></code> before the task has been passed to <code class="docutils literal notranslate"><span class="pre">scheduleTask</span></code> otherwise it will return the unique ID of the task.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getInput()</span></code> This returns the input array.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getOutput()</span></code> This method will return <code class="docutils literal notranslate"><span class="pre">null</span></code> unless the task was successfully run, in that case it will return the output array</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getAppId()</span></code> This returns the originating application ID of the task.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getCustomId()</span></code> This returns the original scheduler-defined identifier for the task</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getUserId()</span></code> This returns the originating user ID of the task.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getCompletionExpectedAt()</span></code> This is available after scheduling the task and returns the DateTime when the task is expected to be completed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getLastUpdated()</span></code> This returns the time the task was last updated as a unix timestamp</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getScheduledAt()</span></code> This returns the time the task was scheduled as a unix timestamp</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getStartedAt()</span></code> This returns the time the task execution started as a unix timestamp</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getEndedAt()</span></code> This returns the time the task execution ended as a unix timestamp</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getErrorMessage()</span></code> This returns the error message if the task execution failed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getProgress()</span></code> This returns the current task progress, between 0 and 1 while the task is running. Will be 1 when the task is completed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setWebhookUri()</span></code> This sets the URI of a webhook that will be notified when the task execution has ended</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setWebhookMethod()</span></code> This sets the HTTP method that will be used for the webhook when the task execution has ended</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getWebhookUri()</span></code> This returns the webhook URI that will be notified when the task execution has ended</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getWebhookMethod()</span></code> This returns the HTTP method that will be used for the webhook when the task execution has ended</p></li>
+</ul>
+</div></blockquote>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 33.0.0: </span></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">getUserFacingErrorMessage()</span></code> This returns any error message that is meant to be displayed to the user, even if a task has failed, this is not guaranteed to be set.</p></li>
+</ul>
+</div>
+<p>You could now schedule the task as follows:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$taskprocessingManager</span><span class="o">-&gt;</span><span class="na">scheduleTask</span><span class="p">(</span><span class="nv">$summaryTask</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">OCP\TaskProcessing\Exception\Exception</span><span class="o">|</span><span class="nx">OCP\TaskProcessing\Exception\PreConditionNotMetException</span><span class="o">|</span><span class="nx">OCP\TaskProcessing\Exception\UnauthorizedException</span><span class="o">|</span><span class="nx">OCP\TaskProcessing\Exception\ValidationException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// scheduling task failed</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="task-statuses">
+<h3>Task statuses<a class="headerlink" href="#task-statuses" title="Link to this heading"></a></h3>
+<p>All tasks always have one of the below statuses:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nx">Task</span><span class="o">::</span><span class="na">STATUS_CANCELLED</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="nx">Task</span><span class="o">::</span><span class="na">STATUS_FAILED</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="nx">Task</span><span class="o">::</span><span class="na">STATUS_SUCCESSFUL</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="nx">Task</span><span class="o">::</span><span class="na">STATUS_RUNNING</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nx">Task</span><span class="o">::</span><span class="na">STATUS_SCHEDULED</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nx">Task</span><span class="o">::</span><span class="na">STATUS_UNKNOWN</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="listening-to-the-task-processing-events">
+<h3>Listening to the task processing events<a class="headerlink" href="#listening-to-the-task-processing-events" title="Link to this heading"></a></h3>
+<p>Since <code class="docutils literal notranslate"><span class="pre">scheduleTask</span></code> does not block, you will need to listen to the following events in your app to obtain the output or be notified of any failure.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing\Events\TaskSuccessfulEvent</span></code> This event class offers the <code class="docutils literal notranslate"><span class="pre">getTask()</span></code> method which returns the up-to-date task object, with the task output.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing\Events\TaskFailedEvent</span></code> In addition to the <code class="docutils literal notranslate"><span class="pre">getTask()</span></code> method, this event class provides the <code class="docutils literal notranslate"><span class="pre">getErrorMessage()</span></code> method which returns the error message as a string (only in English and for debugging purposes, so don’t show this to the user)</p></li>
+</ul>
+</div></blockquote>
+<p>For example, in your <code class="docutils literal notranslate"><span class="pre">lib/AppInfo/Application.php</span></code> file:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerEventListener</span><span class="p">(</span><span class="nx">OCP\TaskProcessing\Events\TaskSuccessfulEvent</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">MyPromptResultListener</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerEventListener</span><span class="p">(</span><span class="nx">OCP\TaskProcessing\Events\TaskFailedEvent</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">MyPromptResultListener</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The corresponding <code class="docutils literal notranslate"><span class="pre">MyPromptResultListener</span></code> class can look like:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Listener</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\AppInfo\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\TaskProcessing\Events\AbstractTaskProcessingEvent</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\TaskProcessing\Events\TaskSuccessfulEvent</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\TaskProcessing\Events\TaskFailedEvent</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\IEventListener</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MyPromptResultListener</span> <span class="k">implements</span> <span class="nx">IEventListener</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$event</span> <span class="nx">instanceof</span> <span class="nx">AbstractTaskProcessingEvent</span> <span class="o">||</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getTask</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getAppId</span><span class="p">()</span> <span class="o">!==</span> <span class="nx">Application</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span> <span class="nx">instanceof</span> <span class="nx">TaskSuccessfulEvent</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$output</span> <span class="o">=</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getTask</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getOutput</span><span class="p">()</span>
+            <span class="c1">// store $output somewhere</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span> <span class="nx">instanceof</span> <span class="nx">TaskFailedEvent</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$error</span> <span class="o">=</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getErrorMessage</span><span class="p">()</span>
+            <span class="nv">$userId</span> <span class="o">=</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getTask</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getUserId</span><span class="p">()</span>
+            <span class="c1">// Notify relevant user about failure</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="implementing-a-taskprocessing-provider">
+<h2>Implementing a TaskProcessing provider<a class="headerlink" href="#implementing-a-taskprocessing-provider" title="Link to this heading"></a></h2>
+<p>A <strong>Task processing provider</strong> will usually be a class that implements the interface <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing\ISynchrounousProvider</span></code>.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\TaskProcessing</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\AppInfo\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Files\File</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\TaskProcessing\IProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\TaskProcessing\TaskTypes\TextToTextSummary</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\TaskProcessing\SummaryTaskType</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IL10N</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Provider</span> <span class="k">implements</span> <span class="nx">ISynchrounousProvider</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">IL10N</span> <span class="nv">$l</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getId</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="s1">&#39;myapp:summary&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;My awesome summary provider&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getTaskTypeId</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">TextToTextSummary</span><span class="o">::</span><span class="na">ID</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">process</span><span class="p">(</span><span class="o">?</span><span class="nx">string</span> <span class="nv">$userId</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$input</span><span class="p">,</span> <span class="nx">callable</span> <span class="nv">$reportProgress</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="c1">// Return the output here</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getExpectedRuntime</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span> <span class="p">{</span>
+        <span class="c1">// usually takes 1min on average</span>
+        <span class="k">return</span> <span class="mi">60</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getInputShapeDefaults</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[];</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getOptionalInputShape</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[];</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getOptionalInputShapeDefaults</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[];</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getOptionalOutputShape</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[];</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getInputShapeEnumValues</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[];</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getOptionalInputShapeEnumValues</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[];</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getOutputShapeEnumValues</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[];</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getOptionalOutputShapeEnumValues</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The method <code class="docutils literal notranslate"><span class="pre">getName</span></code> returns a string to identify the registered provider in the user interface.</p>
+<p>The method <code class="docutils literal notranslate"><span class="pre">process</span></code> implements the task processing step. In case execution fails for some reason, you should throw a <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\Exception\ProcessingException</span></code> with an explanatory error message.
+Since v33.0.0 you can now also throw an <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing\Exception\UserFacingProcessingException</span></code> which includes a string parameter to set for error messages that will be propagated to the end-user, make sure to always translate these into the language of the user that requested the task. The rule of thumb of when to use a user-facing error message, is as follows: When the error happened due to a mistake from the user or the user can do something to fix the error, throw a user facing error. However, do make sure to not include implementation or server details in the user facing error message, that’s what the normal error message is for; it will only be visible to administrators.</p>
+<p>Important to note here is that <code class="docutils literal notranslate"><span class="pre">Image</span></code>, <code class="docutils literal notranslate"><span class="pre">Audio</span></code>, <code class="docutils literal notranslate"><span class="pre">Video</span></code> and <code class="docutils literal notranslate"><span class="pre">File</span></code> slots in the input array will be filled with <code class="docutils literal notranslate"><span class="pre">\OCP\Files\File</span></code> objects for your convenience. When outputting one of these you should simply return a string, the API will turn the data into a proper file for convenience. The <code class="docutils literal notranslate"><span class="pre">$reportProgress</span></code> parameter is a callback that you may use at will to report the task progress as a single float value between 0 and 1. Its return value will indicate if the task is still running (<code class="docutils literal notranslate"><span class="pre">true</span></code>) or if it was cancelled (<code class="docutils literal notranslate"><span class="pre">false</span></code>) and processing should be terminated.</p>
+<p>This class would typically be saved into a file in <code class="docutils literal notranslate"><span class="pre">lib/TaskProcessing</span></code> of your app but you are free to put it elsewhere as long as it’s loadable by Nextcloud’s <a class="reference internal" href="../basics/dependency_injection.html#id2"><span class="std std-ref">dependency injection container</span></a>.</p>
+<section id="providing-additional-inputs-and-outputs">
+<h3>Providing additional inputs and outputs<a class="headerlink" href="#providing-additional-inputs-and-outputs" title="Link to this heading"></a></h3>
+<p>Built-in task types often only specify the most basic input and output slots. If you would like to offer more input options
+with your provider you can specify optional inputs and outputs using the <code class="docutils literal notranslate"><span class="pre">getOptionalInputShape</span></code> and <code class="docutils literal notranslate"><span class="pre">getOptionalOutputShape</span></code> methods.
+You will need to return an associative array of <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\ShapeDescriptor</span></code> objects.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">getOptionalInputShape</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="s1">&#39;tone&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">ShapeDescriptor</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Tone of voice&#39;</span><span class="p">),</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Set the tone of voice to be used for the output&#39;</span><span class="p">),</span> <span class="nx">EShapeType</span><span class="o">::</span><span class="na">Text</span><span class="p">)</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the same vein you can also provide optional output shape slots in addition to the pre-defined output slots.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">getOptionalOutputShape</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="s1">&#39;co2_emissions&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">ShapeDescriptor</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;CO2 Emissions&#39;</span><span class="p">),</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;The CO2 emissions produced by running this task in metric tons&#39;</span><span class="p">),</span> <span class="nx">EShapeType</span><span class="o">::</span><span class="na">Number</span><span class="p">)</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="providing-input-defaults">
+<h3>Providing input defaults<a class="headerlink" href="#providing-input-defaults" title="Link to this heading"></a></h3>
+<p>With the method <code class="docutils literal notranslate"><span class="pre">getInputShapeDefaults</span></code> you can specify default values for input slots (which are defined by the task type). For example:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">getInputShapeDefaults</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="s1">&#39;input&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;There was once a man with many cows who wanted to have even more cows.&#39;</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note that you can only specify default values for ‘Text’ and ‘Number’ slots.</p>
+<p>The same works for your optional input shapes that you defined in <code class="docutils literal notranslate"><span class="pre">getOptionalInputShape</span></code>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">getOptionalInputShapeDefaults</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="s1">&#39;tone&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Formal&#39;</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="working-with-enum-shape-types">
+<h3>Working with Enum shape types<a class="headerlink" href="#working-with-enum-shape-types" title="Link to this heading"></a></h3>
+<p>Both input and output shapes as well as the optional input and output shapes allow declaring slots of type <code class="docutils literal notranslate"><span class="pre">'Enum'</span></code>. An Enum
+is a type that only allows values from a pre-defined set. In the case of the TaskProcessing API this set is not defined by the task type, but
+by the provider implementing the task type using <code class="docutils literal notranslate"><span class="pre">getInputShapeEnumValues</span></code>, <code class="docutils literal notranslate"><span class="pre">getOutputShapeEnumValues</span></code>, <code class="docutils literal notranslate"><span class="pre">getOptionalInputShapeEnumValues</span></code> and <code class="docutils literal notranslate"><span class="pre">getOptionalOutputShapeEnumValues</span></code>.</p>
+<p>You could, for example, implement the above tone of voice slot using an Enum:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">getOptionalInputShape</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="s1">&#39;tone&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">ShapeDescriptor</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Tone of voice&#39;</span><span class="p">),</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Set the tone of voice to be used for the output&#39;</span><span class="p">),</span> <span class="nx">EShapeType</span><span class="o">::</span><span class="na">Enum</span><span class="p">)</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">getOptionalInputShapeEnumValues</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="s1">&#39;tone&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="k">new</span> <span class="nx">ShapeEnumValue</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Simple&#39;</span><span class="p">),</span> <span class="s1">&#39;So that a kid could understand&#39;</span><span class="p">),</span>
+            <span class="k">new</span> <span class="nx">ShapeEnumValue</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Funny&#39;</span><span class="p">),</span> <span class="s1">&#39;Funny&#39;</span><span class="p">),</span>
+            <span class="k">new</span> <span class="nx">ShapeEnumValue</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Formal&#39;</span><span class="p">),</span> <span class="s1">&#39;Formal&#39;</span><span class="p">),</span>
+        <span class="p">]</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="providing-more-task-types">
+<h3>Providing more task types<a class="headerlink" href="#providing-more-task-types" title="Link to this heading"></a></h3>
+<p>If you would like to implement providers that handle additional task types, you can create your own Task type classes implementing the <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing\ITaskType</span></code> interface:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\TaskProcessing</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\AppInfo\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Files\File</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\TaskProcessing\ITaskType</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IL10N</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AudioToImage</span> <span class="k">implements</span> <span class="nx">ITaskType</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">const</span> <span class="no">ID</span> <span class="o">=</span> <span class="s1">&#39;myapp:audiotoimage&#39;</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getId</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="na">ID</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;Get Spectrogram&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getDescription</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;Turns audio into an image&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getInputShape</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="s1">&#39;audio&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">ShapeDescriptor</span><span class="p">(</span><span class="s1">&#39;Audio&#39;</span><span class="p">,</span> <span class="s1">&#39;The audio&#39;</span><span class="p">,</span> <span class="nx">EShapeType</span><span class="o">::</span><span class="na">Audio</span><span class="p">),</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getOutputShape</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="s1">&#39;spectrogram&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">ShapeDescriptor</span><span class="p">(</span><span class="s1">&#39;Spectrogram&#39;</span><span class="p">,</span> <span class="s1">&#39;The audio spectrogram&#39;</span><span class="p">,</span> <span class="nx">EShapeType</span><span class="o">::</span><span class="na">Image</span><span class="p">),</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="internal-task-types">
+<h4>Internal task types<a class="headerlink" href="#internal-task-types" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 33.0.0.</span></p>
+</div>
+<p>Other apps and clients will assume that task types are user-facing and will display them on the frontend. If your custom
+task types are not intended to be shown to users, you should implement the <code class="docutils literal notranslate"><span class="pre">IInternalTaskType</span></code> interface instead. This will
+make sure that other apps and clients know not to show your custom task type to end users.</p>
+</section>
+</section>
+<section id="triggerable-providers">
+<h3>Triggerable providers<a class="headerlink" href="#triggerable-providers" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 33.0.0.</span></p>
+</div>
+<p>Synchronous providers are executed automatically by a background job that will usually be targeted by a worker to make sure
+that it runs almost instantly. ExApps on the other hand used to have to poll the server for new tasks. Since the introduction of triggerable
+providers ExApps are now notified immediately of new tasks when they are scheduled. This is implemented via the <code class="docutils literal notranslate"><span class="pre">ITriggerableProvider</span></code> interface,
+which adds an additional <code class="docutils literal notranslate"><span class="pre">trigger():</span> <span class="pre">void</span></code> method to the provider interface which is called when a new task is scheduled for this provider and
+there are no running tasks for it at the moment. Usually if you implement a provider in PHP you will not have to deal with this interface but it is documented
+here for completeness.</p>
+</section>
+</section>
+<section id="provider-and-task-type-registration">
+<h2>Provider and task type registration<a class="headerlink" href="#provider-and-task-type-registration" title="Link to this heading"></a></h2>
+<p>Providers and task types are registered via the <a class="reference internal" href="../app_development/bootstrap.html#bootstrapping"><span class="std std-ref">bootstrap mechanism</span></a> of the <code class="docutils literal notranslate"><span class="pre">Application</span></code> class.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\AppInfo</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\TaskProcessing\Provider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCA\MyApp\TaskProcessing\AudioToImage</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\App</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IBootContext</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IBootstrap</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IRegistrationContext</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+<span class="hll">        <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerTaskProcessingProvider</span><span class="p">(</span><span class="nx">Provider</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span><span class="hll">        <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerTaskProcessingTaskType</span><span class="p">(</span><span class="nx">AudioToImage</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span>    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">(</span><span class="nx">IBootContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="talk.html" class="btn btn-neutral float-left" title="Talk Integration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="text_processing.html" class="btn btn-neutral float-right" title="Text Processing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Apr 02, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

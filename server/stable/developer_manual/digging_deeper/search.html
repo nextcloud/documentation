@@ -1,0 +1,733 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/digging_deeper/search.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Security" href="security.html" />
+    <link rel="prev" title="REST APIs" href="rest_apis.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/index.html">Config &amp; Preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="context_chat.html">Context Chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="continuous_integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard.html">Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deadlock.html">Deadlocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files-metadata.html">Files Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupware/index.html">Groupware integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html">HTTP Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translation.html">Machine Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oidc.html">OpenID Connect (Oidc)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="out_of_office.html">Out-of-office periods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openmetrics.html">Open Metrics exporter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonenumberutil.html">Phone number util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psr.html">PSR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile.html">Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiler.html">Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">Reference providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_apis.html">REST APIs</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Search</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#concept-overview">Concept overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fetching-provider-ids">Fetching provider IDs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fetching-individual-search-results">Fetching individual search results</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#simple-search-providers">Simple search providers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-search-provider">Advanced search provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#external-search-provider">External search provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#provider-registration">Provider registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#handling-search-requests">Handling search requests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pagination">Pagination</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optional-attributes">Optional attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#declare-in-app-search">Declare in-app search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#privacy">Privacy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_checks.html">Setup checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snowflake_ids.html">Snowflake IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speech-to-text.html">Speech-To-Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talk.html">Talk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task_processing.html">Task Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_processing.html">Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text2image.html">Text-To-Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status.html">User Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">User migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_host_metadata.html">Web Host Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webdav_collection_preload.html">WebDAV collection preload events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html">Working with time</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Digging deeper</a></li>
+      <li class="breadcrumb-item active">Search</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/search.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="search">
+<span id="unified-search"></span><h1>Search<a class="headerlink" href="#search" title="Link to this heading"></a></h1>
+<p>Nextcloud 20 offers a new <strong>unified search</strong>. The overall idea is to have one combined view for search, but have results of any data source displayed there. Hence this is logic is built on a pluggable architecture where apps register their search providers.</p>
+<section id="concept-overview">
+<h2>Concept overview<a class="headerlink" href="#concept-overview" title="Link to this heading"></a></h2>
+<p>The unified search combines a variable number of search providers into a unified search result for the user. To improve the user experience with search, the search results should be displayed quickly. Therefore parallelism is used to split the process into several requests that can be processed concurrently, to give the client (e.g. JavaScript in the browser) the ability to display partial search results as they come on.</p>
+<p>Hence the search process consists of two steps.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Fetch the current set of search provider IDs</p></li>
+<li><p>Fetch each provider’s search results</p></li>
+</ol>
+</div></blockquote>
+<p>These two steps have to be run consecutively, but the individual requests in the second step can be dispatched and processed concurrently.</p>
+<section id="fetching-provider-ids">
+<h3>Fetching provider IDs<a class="headerlink" href="#fetching-provider-ids" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">https://cloud.domain/ocs/v2.php/search/providers</span></code></p>
+<p>This will return a structure like</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;ocs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;…&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;…&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;talk-message&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;appId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;spreed&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Messages&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/apps/spreed/img/app.svg&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-2</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;triggers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;talk-message&quot;</span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;filters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;term&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;since&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;datetime&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;until&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;datetime&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;person&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;person&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;inAppSearch&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;files&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;appId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;files&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Fichiers&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/apps/files/img/app.svg&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;triggers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;files&quot;</span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;filters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;term&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;since&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;datetime&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;until&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;datetime&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;person&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;person&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;min-size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;int&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;max-size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;int&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;mime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;inAppSearch&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">filters</span></code> list filters supported by the provider with their expected type</p>
+</section>
+<section id="fetching-individual-search-results">
+<h3>Fetching individual search results<a class="headerlink" href="#fetching-individual-search-results" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">https://cloud.domain/ocs/v2.php/search/providers/files/search?term=cat</span></code></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;ocs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;…&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;…&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Files&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;isPaginated&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;entries&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;thumbnailUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/core/preview?x=32&amp;y=32&amp;fileId=9261&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my cute cats.jpg&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;subline&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/my cute cats.jpg&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;resourceUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/apps/files/?dir=/&amp;scrollto=my%20cute%20cats.jpg&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;thumbnailUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/core/preview?x=32&amp;y=32&amp;fileId=1553&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cat (2).png&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;subline&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/cat (2).png&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;resourceUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/apps/files/?dir=/&amp;scrollto=cat%20%282%29.png&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;cursor&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="simple-search-providers">
+<h2>Simple search providers<a class="headerlink" href="#simple-search-providers" title="Link to this heading"></a></h2>
+<p>A <strong>search provider</strong> is a class which implements the interface <code class="docutils literal notranslate"><span class="pre">\OCP\Search\IProvider</span></code>.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Search</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\AppInfo\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IUser</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Search\IProvider</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Provider</span> <span class="k">implements</span> <span class="nx">IProvider</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getId</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;mysearchprovider&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;My custom group&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getOrder</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$route</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$routeParameters</span><span class="p">)</span><span class="o">:</span> <span class="nx">int</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">str_contains</span><span class="p">(</span><span class="nv">$route</span><span class="p">,</span> <span class="nx">Application</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">))</span> <span class="p">{</span>
+            <span class="c1">// Active app, prefer my results</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="mi">55</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">search</span><span class="p">(</span><span class="nx">IUser</span> <span class="nv">$user</span><span class="p">,</span> <span class="nx">ISearchQuery</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="nx">SearchResult</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">SearchResult</span><span class="o">::</span><span class="na">complete</span><span class="p">(</span>
+            <span class="s1">&#39;My custom group&#39;</span><span class="p">,</span> <span class="c1">// TODO: this should be translated</span>
+            <span class="p">[</span>
+                <span class="o">...</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The method <code class="docutils literal notranslate"><span class="pre">getId</span></code> returns a string identifier of the registered provider. It has to be globally unique, hence must not conflict with any other apps. Therefore it’s advised to use just the app ID (e.g. <code class="docutils literal notranslate"><span class="pre">mail</span></code>) as ID or an ID that is prefixed with the app id, like <code class="docutils literal notranslate"><span class="pre">mail_recipients</span></code>. <code class="docutils literal notranslate"><span class="pre">getName</span></code> is a translated name for your search results.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">getOrder</span></code> method returns the order of the provider for the current page. With the route parameter you can check if the route is from your app and in that case use a negative value. Otherwise your app should use a value around 50.</p>
+<p>The method <code class="docutils literal notranslate"><span class="pre">search</span></code> transforms a search request into a search result.</p>
+<p>The class would typically be saved into a file in <code class="docutils literal notranslate"><span class="pre">lib/Search</span></code> of your app but you are free to put it elsewhere as long as it’s loadable by Nextcloud’s <a class="reference internal" href="../basics/dependency_injection.html#id2"><span class="std std-ref">dependency injection container</span></a>.</p>
+</section>
+<section id="advanced-search-provider">
+<h2>Advanced search provider<a class="headerlink" href="#advanced-search-provider" title="Link to this heading"></a></h2>
+<p>Since Nextcloud 28.0, it is possible to use advanced search providers by implementing <code class="docutils literal notranslate"><span class="pre">\OCP\Search\IFilteringProvider</span></code>.
+This interface allows to supports other filtering types.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Search</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\AppInfo\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IUser</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Search\FilterDefinition</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Search\IFilteringProvider</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Provider</span> <span class="k">implements</span> <span class="nx">IFilteringProvider</span> <span class="p">{</span>
+
+    <span class="c1">// TODO Implement functions from simple search provider</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">getSupportedFilters</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="s1">&#39;term&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;since&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;until&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;person&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;custom_int&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;custom_user&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;custom_bool&#39;</span><span class="p">,</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">getAlternateIds</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[];</span>
+    <span class="p">}</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">getCustomFilters</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="k">new</span> <span class="nx">FilterDefinition</span><span class="p">(</span><span class="s1">&#39;custom_int&#39;</span><span class="p">,</span> <span class="nx">FilterDefinition</span><span class="o">::</span><span class="na">TYPE_INT</span><span class="p">),</span>
+            <span class="k">new</span> <span class="nx">FilterDefinition</span><span class="p">(</span><span class="s1">&#39;custom_user&#39;</span><span class="p">,</span> <span class="nx">FilterDefinition</span><span class="o">::</span><span class="na">TYPE_USER</span><span class="p">),</span>
+            <span class="k">new</span> <span class="nx">FilterDefinition</span><span class="p">(</span><span class="s1">&#39;custom_bool&#39;</span><span class="p">,</span> <span class="nx">FilterDefinition</span><span class="o">::</span><span class="na">TYPE_BOOL</span><span class="p">),</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">search</span><span class="p">(</span><span class="nx">IUser</span> <span class="nv">$user</span><span class="p">,</span> <span class="nx">ISearchQuery</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="nx">SearchResult</span> <span class="p">{</span>
+        <span class="c1">// Retrieve filters</span>
+        <span class="sd">/** @var $since ?DateTimeImmutable */</span>
+        <span class="nv">$since</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getFilter</span><span class="p">(</span><span class="s1">&#39;since&#39;</span><span class="p">)</span><span class="o">?-&gt;</span><span class="na">get</span><span class="p">();</span>
+        <span class="sd">/** @var $user ?IUser */</span>
+        <span class="nv">$user</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getFilter</span><span class="p">(</span><span class="s1">&#39;custom_user&#39;</span><span class="p">)</span><span class="o">?-&gt;</span><span class="na">get</span><span class="p">();</span>
+
+        <span class="c1">// TODO Do actual search</span>
+
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">SearchResult</span><span class="p">(</span><span class="cm">/* … */</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">getSupportedFilters</span></code> lists the filters supported by the provider. If filters send by client are not supported, the provider will not receive the request.</p>
+<p><code class="docutils literal notranslate"><span class="pre">getCustomFilters</span></code> allows to declare specific filters. In current state, the specific filters will only be available in the API.</p>
+</section>
+<section id="external-search-provider">
+<h2>External search provider<a class="headerlink" href="#external-search-provider" title="Link to this heading"></a></h2>
+<p>Since Nextcloud 32, to improve privacy, you can extend your provider with the <code class="docutils literal notranslate"><span class="pre">\OCP\Search\IExternalProvider</span></code> interface and implement the <code class="docutils literal notranslate"><span class="pre">isExternalProvider()</span></code> method to indicate that the search is performed on external (3rd-party) resources.
+In the Unified Search UI, searching through these providers is disabled by default (via toggle switch).</p>
+</section>
+<section id="provider-registration">
+<h2>Provider registration<a class="headerlink" href="#provider-registration" title="Link to this heading"></a></h2>
+<p>The provider class is registered via the <a class="reference internal" href="../app_development/bootstrap.html#bootstrapping"><span class="std std-ref">bootstrap mechanism</span></a> of the <code class="docutils literal notranslate"><span class="pre">Application</span></code> class.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\AppInfo</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\Search\Provider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\App</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IBootContext</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IBootstrap</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IRegistrationContext</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerSearchProvider</span><span class="p">(</span><span class="nx">Provider</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">(</span><span class="nx">IBootContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="handling-search-requests">
+<h2>Handling search requests<a class="headerlink" href="#handling-search-requests" title="Link to this heading"></a></h2>
+<p>Search requests are processed in the <code class="docutils literal notranslate"><span class="pre">search</span></code> method. The <code class="docutils literal notranslate"><span class="pre">$user</span></code> object is the user who the result shall be generated for. <code class="docutils literal notranslate"><span class="pre">$query</span></code> gives context information like the <strong>search term</strong>, the <strong>sort order</strong>, the <strong>route information</strong>, the <strong>size limit</strong> of a request and the <strong>cursor</strong> for follow-up request of paginated results.</p>
+<p>The result is encapsulated in the <code class="docutils literal notranslate"><span class="pre">SearchResult</span></code> class that offers two static factory methods <code class="docutils literal notranslate"><span class="pre">complete</span></code> and <code class="docutils literal notranslate"><span class="pre">paginated</span></code>. Both of these methods take an array of <code class="docutils literal notranslate"><span class="pre">SearchResultEntry</span></code> objects.</p>
+<p>Next, you’ll see a dummy provider that returns a static set of results.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Search</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\AppInfo\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IL10N</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IURLGenerator</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IUser</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Search\IProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Search\SearchResult</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Search\SearchResultEntry</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Search\ISearchQuery</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Provider</span> <span class="k">implements</span> <span class="nx">IProvider</span> <span class="p">{</span>
+
+    <span class="sd">/** @var IL10N */</span>
+    <span class="k">private</span> <span class="nv">$l10n</span><span class="p">;</span>
+
+    <span class="sd">/** @var IURLGenerator */</span>
+    <span class="k">private</span> <span class="nv">$urlGenerator</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IL10N</span> <span class="nv">$l10n</span><span class="p">,</span>
+                                <span class="nx">IURLGenerator</span> <span class="nv">$urlGenerator</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span> <span class="o">=</span> <span class="nv">$l10n</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">urlGenerator</span> <span class="o">=</span> <span class="nv">$urlGenerator</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getId</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;mysearchprovider&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;My app&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getOrder</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$route</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$routeParameters</span><span class="p">)</span><span class="o">:</span> <span class="nx">int</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">strpos</span><span class="p">(</span><span class="nv">$route</span><span class="p">,</span> <span class="nx">Application</span><span class="o">::</span><span class="na">APP_ID</span> <span class="o">.</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Active app, prefer my results</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="mi">25</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">search</span><span class="p">(</span><span class="nx">IUser</span> <span class="nv">$user</span><span class="p">,</span> <span class="nx">ISearchQuery</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="nx">SearchResult</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">SearchResult</span><span class="o">::</span><span class="na">complete</span><span class="p">(</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;My app&#39;</span><span class="p">),</span>
+            <span class="p">[</span>
+                <span class="k">new</span> <span class="nx">SearchResultEntry</span><span class="p">(</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">urlGenerator</span><span class="o">-&gt;</span><span class="na">linkToRoute</span><span class="p">(</span>
+                        <span class="s1">&#39;myapp.Preview.getPreviewByFileId&#39;</span><span class="p">,</span>
+                        <span class="p">[</span>
+                            <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span>
+                        <span class="p">]</span>
+                    <span class="p">),</span>
+                    <span class="s1">&#39;Search result 1&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;This goes into the subline&#39;</span><span class="p">,</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">urlGenerator</span><span class="o">-&gt;</span><span class="na">linkToRoute</span><span class="p">(</span>
+                        <span class="s1">&#39;myapp.view.index&#39;</span><span class="p">,</span>
+                        <span class="p">[</span>
+                            <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+                        <span class="p">]</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Each of the result entry has</p>
+<ul class="simple">
+<li><p>A thumbnail or icon that is a (relative) URL</p></li>
+<li><p>A title, e.g. the name of a file</p></li>
+<li><p>A subline, e.g. the path to a file</p></li>
+<li><p>A resource URL that makes it possible to navigate to the details of this result</p></li>
+<li><p>Optional icon CSS class that is applied then the thumbnail URL was not set</p></li>
+<li><p>A boolean rounded, whether the thumbnail should be rounded, e.g. when it’s an avatar</p></li>
+</ul>
+<p>Apps <strong>may</strong> return the full result in <code class="docutils literal notranslate"><span class="pre">search</span></code>, but in most cases the size of the result set can become too big to fit into one HTTP request and is complicated to display to the user, hence the set should be split into chunks – it should be <strong>paginated</strong>.</p>
+<section id="pagination">
+<h3>Pagination<a class="headerlink" href="#pagination" title="Link to this heading"></a></h3>
+<p>Paginated results work almost like complete results. The differences are that the <code class="docutils literal notranslate"><span class="pre">SearchResult::paginated</span></code> factory method is used to build the set and that you need a <strong>cursor</strong> for this.</p>
+<p>There are two ways to use the <strong>cursor</strong>: offset-based pagination and cursor-based pagination.</p>
+<p>For <strong>offset-based pagination</strong> you return <code class="docutils literal notranslate"><span class="pre">$query-&gt;getLimit()</span></code> results and specify this number as <strong>cursor</strong>. Any subsequent call where <code class="docutils literal notranslate"><span class="pre">$query-&gt;getCursor()</span></code> does not return <code class="docutils literal notranslate"><span class="pre">null</span></code> you take the value as <strong>offset</strong> for the next page. The following example shall demonstrate this use case.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Search</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\AppInfo\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IL10N</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IURLGenerator</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IUser</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Search\IProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Search\SearchResult</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Search\ISearchQuery</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Provider</span> <span class="k">implements</span> <span class="nx">IProvider</span> <span class="p">{</span>
+
+    <span class="sd">/** @var IL10N */</span>
+    <span class="k">private</span> <span class="nv">$l10n</span><span class="p">;</span>
+
+    <span class="sd">/** @var IURLGenerator */</span>
+    <span class="k">private</span> <span class="nv">$urlGenerator</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IL10N</span> <span class="nv">$l10n</span><span class="p">,</span>
+                                <span class="nx">IURLGenerator</span> <span class="nv">$urlGenerator</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span> <span class="o">=</span> <span class="nv">$l10n</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">urlGenerator</span> <span class="o">=</span> <span class="nv">$urlGenerator</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getId</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;mysearchprovider&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;My app&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getOrder</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$route</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$routeParameters</span><span class="p">)</span><span class="o">:</span> <span class="nx">int</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">strpos</span><span class="p">(</span><span class="nv">$route</span><span class="p">,</span> <span class="nx">Application</span><span class="o">::</span><span class="na">APP_ID</span> <span class="o">.</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Active app, prefer my results</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="mi">25</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">search</span><span class="p">(</span><span class="nx">IUser</span> <span class="nv">$user</span><span class="p">,</span> <span class="nx">ISearchQuery</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="nx">SearchResult</span> <span class="p">{</span>
+        <span class="nv">$offset</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getCursor</span><span class="p">()</span> <span class="o">??</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="nv">$limit</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getLimit</span><span class="p">();</span>
+
+        <span class="nv">$data</span> <span class="o">=</span> <span class="p">[];</span> <span class="c1">// Fill this with $limit entries, where the first entry is row $offset</span>
+
+        <span class="k">return</span> <span class="nx">SearchResult</span><span class="o">::</span><span class="na">paginated</span><span class="p">(</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;My app&#39;</span><span class="p">),</span>
+            <span class="nv">$data</span><span class="p">,</span>
+            <span class="nv">$offset</span> <span class="o">+</span> <span class="nv">$limit</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>So the first call will get a cursor of <code class="docutils literal notranslate"><span class="pre">null</span></code> and a limit of, say, 20. So the first 20 rows are fetched. The next call will have a cursor of 20, so the 20st to 39th rows are fetched.</p>
+<p>The downside of a offset-based pagination is that when the underlying data changes (new entries are inserted into or deleted from the database, files change), the offset might be out of sync from on request to its successor. Therefore, if possible, a true cursor-based pagination is preferable.</p>
+<p>For a <strong>cursor-based pagination</strong> a app-specific property is used to know a reference to the last element of the previous search request. The presumption of this algorithm is that the result set is sorted by an attribute and this attribute is an <code class="docutils literal notranslate"><span class="pre">int</span></code> or <code class="docutils literal notranslate"><span class="pre">string</span></code>. The attribute value of the last element in the result page determines the cursor for the next search request. Again, a small example shall demonstrate how this works.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Search</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\AppInfo\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IL10N</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IURLGenerator</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IUser</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Search\IProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Search\SearchResult</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Search\ISearchQuery</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Provider</span> <span class="k">implements</span> <span class="nx">IProvider</span> <span class="p">{</span>
+
+    <span class="sd">/** @var IL10N */</span>
+    <span class="k">private</span> <span class="nv">$l10n</span><span class="p">;</span>
+
+    <span class="sd">/** @var IURLGenerator */</span>
+    <span class="k">private</span> <span class="nv">$urlGenerator</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IL10N</span> <span class="nv">$l10n</span><span class="p">,</span>
+                                <span class="nx">IURLGenerator</span> <span class="nv">$urlGenerator</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span> <span class="o">=</span> <span class="nv">$l10n</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">urlGenerator</span> <span class="o">=</span> <span class="nv">$urlGenerator</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getId</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;mysearchprovider&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;My app&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getOrder</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$route</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$routeParameters</span><span class="p">)</span><span class="o">:</span> <span class="nx">int</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">strpos</span><span class="p">(</span><span class="nv">$route</span><span class="p">,</span> <span class="nx">Application</span><span class="o">::</span><span class="na">APP_ID</span> <span class="o">.</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Active app, prefer my results</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="mi">25</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">search</span><span class="p">(</span><span class="nx">IUser</span> <span class="nv">$user</span><span class="p">,</span> <span class="nx">ISearchQuery</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="nx">SearchResult</span> <span class="p">{</span>
+        <span class="nv">$cursor</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getCursor</span><span class="p">();</span>
+        <span class="nv">$limit</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getLimit</span><span class="p">();</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$cursor</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$data</span> <span class="o">=</span> <span class="p">[];</span> <span class="c1">// Fill this with $limit entries sorted ascending by created_at</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nv">$data</span> <span class="o">=</span> <span class="p">[];</span> <span class="c1">// Fill this with $limit entries sorted ascending by created_at that have a created_at &gt; $cursor</span>
+        <span class="p">}</span>
+        <span class="nv">$last</span> <span class="o">=</span> <span class="nb">end</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nx">SearchResult</span><span class="o">::</span><span class="na">paginated</span><span class="p">(</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;My app&#39;</span><span class="p">),</span>
+            <span class="nv">$data</span><span class="p">,</span>
+            <span class="nv">$last</span><span class="o">-&gt;</span><span class="na">getCreatedAt</span><span class="p">()</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="optional-attributes">
+<h3>Optional attributes<a class="headerlink" href="#optional-attributes" title="Link to this heading"></a></h3>
+<p>The unified search is available via OCS, which means client application like the mobile apps can use it to get access to the server search mechanism. The default properties of a search result entry might be difficult to parse and interpret in those clients, hence it’s possible to add optional string attributes to each entry.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="nv">$entry</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SearchResultEntry</span><span class="p">(</span><span class="cm">/* same arguments as above */</span><span class="p">);</span>
+<span class="nv">$entry</span><span class="o">-&gt;</span><span class="na">addAttribute</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;deckCard&quot;</span><span class="p">);</span>
+<span class="nv">$entry</span><span class="o">-&gt;</span><span class="na">addAttribute</span><span class="p">(</span><span class="s2">&quot;cardId&quot;</span><span class="p">,</span> <span class="s2">&quot;1234&quot;</span><span class="p">);</span>
+<span class="nv">$entry</span><span class="o">-&gt;</span><span class="na">addAttribute</span><span class="p">(</span><span class="s2">&quot;boardId&quot;</span><span class="p">,</span> <span class="s2">&quot;567&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method was added in Nextcloud 21. If your app also targets Nextcloud 20 you should either not use it or add a version check to invoke the method only conditionally.</p>
+</div>
+</section>
+</section>
+<section id="declare-in-app-search">
+<h2>Declare in-app search<a class="headerlink" href="#declare-in-app-search" title="Link to this heading"></a></h2>
+<p>If your application also have in-app search (like <code class="docutils literal notranslate"><span class="pre">mail</span></code> or <code class="docutils literal notranslate"><span class="pre">talk</span></code>), your provider can also implements interface <code class="docutils literal notranslate"><span class="pre">\OCP\Search\IInAppSearch</span></code>.</p>
+<p>This will add a link for it after search results.</p>
+</section>
+<section id="privacy">
+<h2>Privacy<a class="headerlink" href="#privacy" title="Link to this heading"></a></h2>
+<p>All search providers have to value privacy and prevent leaking of sensitive data by default. Therefore search terms must not be sent to third parties by default. If a search provider makes use of third party services, user consent has to be acquired, e.g. by an opt-in toggle in the user’s personal settings.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="rest_apis.html" class="btn btn-neutral float-left" title="REST APIs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="security.html" class="btn btn-neutral float-right" title="Security" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Apr 02, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

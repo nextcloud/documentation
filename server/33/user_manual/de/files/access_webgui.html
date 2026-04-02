@@ -1,0 +1,758 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="de" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zugriff auf Ihre Dateien über die Nextcloud-Weboberfläche &mdash; Nextcloud latest User Manual latest Dokumentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/files/access_webgui.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=d9e2867d"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=9bf55d28"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="search" title="Suche" href="../search.html" />
+    <link rel="next" title="Zugriff auf Nextcloud-Dateien über WebDAV" href="access_webdav.html" />
+    <link rel="prev" title="Dateien &amp; Synchronisation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Dokumentation durchsuchen" aria-label="Dokumentation durchsuchen" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest - Einführung zur Benutzeranleitung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Die Weboberfläche von Nextcloud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Dateien &amp; Synchronisation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Zugriff auf Ihre Dateien über die Nextcloud-Weboberfläche</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tagging-files">Dateien mit Schlagworten versehen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comments">Kommentare</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#video-player">Videoplayer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-controls">Steuerelemente für Dateien</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#previewing-files">Dateivorschau</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#navigating-inside-your-nextcloud">Navigieren in Ihrer Nextcloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-status-icons">Freigabe-Status-Symbole</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-or-uploading-files-and-directories">Dateien oder Verzeichnisse erstellen oder hochladen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#selecting-files-or-folders">Dateien oder Verzeichnisse auswählen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filtering-the-files-view">Filtern der Dateiansicht</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#moving-files">Dateien verschieben</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-or-connecting-to-a-federation-share-link">Erstellen oder Verbinden mit einer Federated-Freigabe (Link)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Zugriff auf Nextcloud-Dateien über WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Gelöschte Dateien verwalten</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Synchronisierung für Mobilgeräte und Desktops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Verschlüsseln Ihrer Nextcloud-Dateien auf dem Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Dateifreigabe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Federated-Freigaben</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Anonyme Uploads durchführen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Große Dateien hochladen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Speicherkontingent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Versionskontrolle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projekte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Eigentum übertragen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Federated-Freigaben verwenden</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop-Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Einstellungen vornehmen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universeller Zugriff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Verwendung der Zwei-Faktor-Authentifizierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Verwaltung verbundener Browser und Geräte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Externer Speicher</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Dateien &amp; Synchronisation</a></li>
+      <li class="breadcrumb-item active">Zugriff auf Ihre Dateien über die Nextcloud-Weboberfläche</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webgui.rst" class="fa fa-github"> Auf GitHub bearbeiten</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="accessing-your-files-using-the-nextcloud-web-interface">
+<h1>Zugriff auf Ihre Dateien über die Nextcloud-Weboberfläche<a class="headerlink" href="#accessing-your-files-using-the-nextcloud-web-interface" title="Link to this heading"></a></h1>
+<p>Sie können über die Nextcloud-Weboberfläche auf Ihre Nextcloud-Dateien zugreifen und Dateien erstellen, in der Vorschau anzeigen, bearbeiten, löschen, freigeben und erneut freigeben. Ihre Nextcloud-Adminstration hat die Möglichkeit, diese Funktionen zu deaktivieren. Wenn eine dieser Funktionen auf Ihrem System fehlt, wenden Sie sich an Ihre Adminstration.</p>
+<figure class="align-default">
+<img alt="Die Dateianzeige." src="../../_images/users-files.png" />
+</figure>
+<section id="tagging-files">
+<h2>Dateien mit Schlagworten versehen<a class="headerlink" href="#tagging-files" title="Link to this heading"></a></h2>
+<p>Sie können Dateien Schlagworte zuweisen. Um Schlagworte zu erzeugen, öffnen Sie die Detailansicht einer Datei und geben dort Ihre Schlagworte ein. Um mehr als ein Schlagwort einzugeben, drücken Sie nach jedem Schlagwort die ENTER-Taste. Alle Schlagworte sind systemweit verfügbar und können von allen Benutzern Ihres Nextcloud–Servers verwendet werden.</p>
+<figure class="align-default">
+<img alt="Schlagworte für Dateien erstellen." src="../../_images/files_page-7.png" />
+</figure>
+<p>Dann benutzen Sie den Schlagwort-Filter in der linken Seitenleiste, um Dateien nach Schlagworten zu filtern:</p>
+<figure class="align-default">
+<img alt="Schlagworte für Dateien ansehen." src="../../_images/files_page-8.png" />
+</figure>
+</section>
+<section id="comments">
+<h2>Kommentare<a class="headerlink" href="#comments" title="Link to this heading"></a></h2>
+<p>Benutzen Sie die Detailansicht, um Kommentare zu einer Datei oder einem Ordner hinzuzufügen oder zu lesen. Kommentare sind für jede Person sichtbar, die Zugriff auf die Datei hat:</p>
+<figure class="align-default">
+<img alt="Kommentare erstellen und ansehen." src="../../_images/file_menu_comments_2.png" />
+</figure>
+</section>
+<section id="video-player">
+<h2>Videoplayer<a class="headerlink" href="#video-player" title="Link to this heading"></a></h2>
+<p>Sie können Videos in Nextcloud mit der Video-App abspielen, indem Sie einfach auf die Video-Datei klicken. Das Video-Streaming durch die integrierte Nextcloud-Video-App hängt von Ihrem Webbrowser und dem Videoformat ab. Wenn Ihre Nextcloud-Adminstration das Video-Streaming aktiviert hat und es in Ihrem Webbrowser nicht funktioniert, kann es sich um ein Browser-Problem handeln. Siehe <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility">https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility</a> für die unterstützten Multimedia-Formate in Webbrowsern.</p>
+<figure class="align-default">
+<img alt="Einen Film ansehen." src="../../_images/video_player_2.png" />
+</figure>
+</section>
+<section id="file-controls">
+<h2>Steuerelemente für Dateien<a class="headerlink" href="#file-controls" title="Link to this heading"></a></h2>
+<p>Nextcloud can display thumbnail previews for various file types, such as images, audio files, and text files.
+The specific types supported are up to the server administrator.
+Hover your cursor over a file or folder to expose the controls for the following operations:</p>
+<dl>
+<dt>Favoriten</dt><dd><p>Klicken Sie auf den Stern links vom Dateisymbol, um die Datei als Favorit zu markieren:</p>
+<figure class="align-default">
+<img alt="Favorisierte Dateien markieren." src="../../_images/files_page-1.png" />
+</figure>
+<p>Sie können auch schnell auf Ihre Favoriten zugreifen, indem Sie den Favoriten-Filter in der linken Seitenleiste verwenden.</p>
+</dd>
+<dt>Dreipunkt-Menü</dt><dd><p>Das Dreipunkt-Menü zeigt Dateidetails an und erlaubt das Umbenennen, Herunterladen oder Löschen von Dateien:</p>
+<figure class="align-default">
+<img alt="Dreipunkt-Menü" src="../../_images/files_page-3.png" />
+</figure>
+<p>Die Detailansicht zeigt Aktivitäten, Freigaben und Versionsinformationen:</p>
+</dd>
+</dl>
+<figure class="align-default">
+<img alt="Details-Anzeige." src="../../_images/files_page-4.png" />
+</figure>
+<p>Das Zahnradsymbol <strong>Einstellungen</strong> unten links ermöglicht es Ihnen, versteckte Dateien in Ihrer Nextcloud-Webansicht ein- oder auszublenden. Diese werden auch Punktdateien genannt, weil ihnen ein Punkt vorangestellt ist, z. B. <code class="docutils literal notranslate"><span class="pre">.mailfile</span></code>. Der Punkt weist Ihr Betriebssystem an, diese Dateien in Ihren Dateibrowsern zu verstecken, es sei denn, Sie möchten sie angezeigt bekommen. Gewöhnlich handelt es sich dabei um Konfigurationsdateien, sodass es übersichtlicher ist, diese zu verstecken.</p>
+<figure class="align-default">
+<img alt="Versteckte Dateien anzeigen oder verbergen." src="../../_images/hidden_files.png" />
+</figure>
+</section>
+<section id="previewing-files">
+<h2>Dateivorschau<a class="headerlink" href="#previewing-files" title="Link to this heading"></a></h2>
+<p>Sie können unkomprimierte Textdateien, OpenDocument-Dateien, Videos und Bilddateien direkt in Nextcloud betrachten, indem Sie auf den Dateinamen klicken. Möglicherweise ist die Vorschau auch für andere Dateitypen verfügbar, falls Ihre Nextcloud-Administration diese freigeschaltet hat. Wenn Nextcloud eine Datei nicht anzeigen kann, wird diese stattdessen auf Ihren Computer heruntergeladen.</p>
+</section>
+<section id="navigating-inside-your-nextcloud">
+<h2>Navigieren in Ihrer Nextcloud<a class="headerlink" href="#navigating-inside-your-nextcloud" title="Link to this heading"></a></h2>
+<p>Die Ordner-Navigation in Nextcloud ist denkbar einfach, klicken Sie einfach auf einen Ordner, um ihn zu öffnen, und benutzen Sie die Zurück-Taste, um in Ihrem Browser auf die vorherige Ebene zu wechseln. Für schnelle Navigation bietet Nextcloud auch eine Navigationsleiste oberhalb des Dateien-Feldes.</p>
+</section>
+<section id="sharing-status-icons">
+<h2>Freigabe-Status-Symbole<a class="headerlink" href="#sharing-status-icons" title="Link to this heading"></a></h2>
+<p>Ein Ordner, der freigegeben wurde, wird mit dem Symbol <code class="docutils literal notranslate"><span class="pre">Geteilt</span></code> markiert. Öffentliche Freigaben werden mit einem Ketten-Symbol markiert. Ungeteilte Ordner werden nicht markiert:</p>
+<figure class="align-default">
+<img alt="Status-Symbole teilen." src="../../_images/files_page-5.png" />
+</figure>
+</section>
+<section id="creating-or-uploading-files-and-directories">
+<h2>Dateien oder Verzeichnisse erstellen oder hochladen<a class="headerlink" href="#creating-or-uploading-files-and-directories" title="Link to this heading"></a></h2>
+<p>Laden Sie Dateien hoch oder erstellen Sie neue Dateien und Ordner direkt in einem Nextcloud-Ordner, indem Sie in der Dateien-App auf die Schaltfläche <em>Neu</em> klicken:</p>
+<figure class="align-default">
+<img alt="Das Menü für neue Dateien/Ordner/Hochladen." src="../../_images/files_page-6.png" />
+</figure>
+<p>Die Schaltfläche <em>Neu</em> bietet die folgenden Möglichkeiten:</p>
+<dl class="simple">
+<dt>Aufwärtspfeil</dt><dd><p>Laden Sie Dateien von Ihrem Computer in die Nextcloud hoch. Sie können Dateien auch hochladen, indem Sie sie per Drag &amp; Drop aus Ihrem Dateimanager ziehen.</p>
+</dd>
+<dt>Textdatei</dt><dd><p>Erstellt eine neue Textdatei und fügt die Datei Ihrem aktuellen Ordner hinzu.</p>
+</dd>
+<dt>Verzeichnis</dt><dd><p>Erstellt ein neues Verzeichnis im aktuellen Verzeichnis</p>
+</dd>
+</dl>
+</section>
+<section id="selecting-files-or-folders">
+<h2>Dateien oder Verzeichnisse auswählen<a class="headerlink" href="#selecting-files-or-folders" title="Link to this heading"></a></h2>
+<p>Sie können mehrere Dateien oder Ordner auswählen, indem Sie die entsprechenden Häkchen setzen. Um alle Dateien im aktuellen Ordner auszuwählen, klicken Sie in der Dateiliste auf das oberste Kästchen für die gesamte Spalte.</p>
+<p>Wenn Sie mehrere Dateien auswählen, können Sie alle auf einmal löschen oder sie als ZIP-Datei herunterladen, indem Sie oben auf die Schaltflächen <code class="docutils literal notranslate"><span class="pre">Löschen</span></code> oder <code class="docutils literal notranslate"><span class="pre">Herunterladen</span></code> klicken.</p>
+<div class="admonition note">
+<p class="admonition-title">Bemerkung</p>
+<p>Wenn die Schaltfläche <code class="docutils literal notranslate"><span class="pre">Herunterladen</span></code> nicht angezeigt wird, hat die Adminstration diese Funktion deaktiviert.</p>
+</div>
+</section>
+<section id="filtering-the-files-view">
+<h2>Filtern der Dateiansicht<a class="headerlink" href="#filtering-the-files-view" title="Link to this heading"></a></h2>
+<p>Die linke Seitenleiste auf der Dateien-Seite enthält diverse Filter für die schnelle Sortierung und Verwaltung Ihrer Dateien.</p>
+<dl class="simple">
+<dt>Alle Dateien</dt><dd><p>Die Standardansicht; Zeigt alle Dateien an, auf die Sie Zugriff haben.</p>
+</dd>
+<dt>Favoriten</dt><dd><p>Mit dem gelben Stern markierte Dateien oder Verzeichnisse.</p>
+</dd>
+<dt>Mit Ihnen geteilt</dt><dd><p>Zeigt alle Dateien, die von einem anderen Benutzer oder einer anderen Gruppe mit Ihnen geteilt wurden.</p>
+</dd>
+<dt>Geteilt mit anderen</dt><dd><p>Zeigt alle Dateien an, die Sie für andere Benutzer oder Gruppen freigegeben haben.</p>
+</dd>
+<dt>Über einen Link geteilt</dt><dd><p>Zeigt alle Dateien, die Sie über einen öffentlichen Link freigegeben haben.</p>
+</dd>
+<dt>Externer Speicher (optional)</dt><dd><p>Für Sie zugängliche Dateien auf Externen Speichergeräten oder Diensten wie Amazon S3, SMB/CIFS, FTP …</p>
+</dd>
+</dl>
+</section>
+<section id="moving-files">
+<h2>Dateien verschieben<a class="headerlink" href="#moving-files" title="Link to this heading"></a></h2>
+<p>Sie können Dateien und Ordner verschieben, indem Sie sie in ein beliebiges Verzeichnis ziehen und dort ablegen.</p>
+</section>
+<section id="creating-or-connecting-to-a-federation-share-link">
+<h2>Erstellen oder Verbinden mit einer Federated-Freigabe (Link)<a class="headerlink" href="#creating-or-connecting-to-a-federation-share-link" title="Link to this heading"></a></h2>
+<p>Federated-Cloud-Freigaben ermöglichen es Ihnen, auf Dateifreigaben von entfernten Nextcloud-Servern zuzugreifen und diese wie lokale Freigaben zu verwalten. Vergleichen Sie <a class="reference internal" href="federated_cloud_sharing.html"><span class="doc">Federated-Freigaben verwenden</span></a> um zu lernen, wie man sich mit Federated-Cloud-Freigaben verbindet oder diese erstellt.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Dateien &amp; Synchronisation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Zurück</a>
+        <a href="access_webdav.html" class="btn btn-neutral float-right" title="Zugriff auf Nextcloud-Dateien über WebDAV" accesskey="n" rel="next">Weiter <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 German
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Sprachen</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versionen</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Auf "Read the docs"</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Projekt Startseite</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Builds</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

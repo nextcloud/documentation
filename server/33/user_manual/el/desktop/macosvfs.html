@@ -1,0 +1,693 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="el" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Πελάτης Εικονικών Αρχείων για macOS &mdash; Τεκμηρίωση του Nextcloud latest User Manual - latest</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/desktop/macosvfs.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=ba845f4f"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=e109e2be"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Ευρετήριο" href="../genindex.html" />
+    <link rel="search" title="Αναζήτηση" href="../search.html" />
+    <link rel="next" title="Ο Αυτόματος Ενημερωτής" href="autoupdate.html" />
+    <link rel="prev" title="Χρήση του Πελάτη Συγχρονισμού" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Εισαγωγή εγχειριδίου χρήστη Nextcloud |έκδοση|</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Η Διεπαφή Web του Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Αρχεία και συγχρονισμός</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Πελάτες Επιφάνειας Εργασίας</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Εγκατάσταση</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html">Χρήση του Πελάτη Συγχρονισμού</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Πελάτης Εικονικών Αρχείων για macOS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#supported-features">Υποστηριζόμενες λειτουργίες</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-and-initial-setup">Εγκατάσταση και αρχική ρύθμιση</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#finder-integration">Ενσωμάτωση Finder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sync-status-indicators">Δείκτες κατάστασης συγχρονισμού</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#context-menu-actions">Ενέργειες μενού περιβάλλοντος</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Ρύθμιση παραμέτρων</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="autoupdate.html">Ο Αυτόματος Ενημερωτής</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Κανάλια ενημέρωσης</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conflicts.html">Συγκρούσεις</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">Συχνές Ερωτήσεις</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Ορισμός των προτιμήσεών σας</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Καθολική Πρόσβαση</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Χρήση ελέγχου ταυτότητας δύο παραγόντων</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Διαχείριση συνδεδεμένων προγραμμάτων περιήγησης και συσκευών</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Εξωτερικός χώρος αποθήκευσης</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Πελάτες Επιφάνειας Εργασίας</a></li>
+      <li class="breadcrumb-item active">Πελάτης Εικονικών Αρχείων για macOS</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/macosvfs.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="macos-virtual-files-client">
+<h1>Πελάτης Εικονικών Αρχείων για macOS<a class="headerlink" href="#macos-virtual-files-client" title="Link to this heading"></a></h1>
+<p>Ο εικονικός συγχρονισμός βασισμένος σε αρχεία για χρήστες επιφάνειας εργασίας του Nextcloud είναι πλέον διαθέσιμος στο macOS.</p>
+<p>Σε αντίθεση με τα Windows, η υποστήριξη εικονικών αρχείων στο macOS παρέχεται από μια ξεχωριστή έκδοση πελάτη. Αυτό μας επιτρέπει να διατηρήσουμε την καλύτερη δυνατή εμπειρία για τα κλασικά συγχρονισμένα αρχεία, συμπεριλαμβανομένης της ενσωμάτωσης κατάστασης συγχρονισμού και των ενεργειών μενού περιβάλλοντος, για χρήστες που θέλουν να συνεχίσουν να χρησιμοποιούν αυτήν τη μέθοδο συγχρονισμού. Όπως ακριβώς και ο κλασικός πελάτης συγχρονισμού μας, ο πελάτης εικονικών αρχείων για macOS κυκλοφορεί παράλληλα με τον πελάτη επιφάνειας εργασίας για Windows και Linux, και θα επωφεληθεί από τακτικές ενημερώσεις διόρθωσης σφαλμάτων και λειτουργιών που βελτιώνουν την εμπειρία χρήστη.</p>
+<section id="supported-features">
+<h2>Υποστηριζόμενες λειτουργίες<a class="headerlink" href="#supported-features" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Τοπική διατήρηση και εκδίωξη ανά αρχείο</p></li>
+<li><p>Έξυπνη εκδίωξη τοπικών αντιγράφων</p></li>
+<li><p>Ενσωμάτωση με το Spotlight</p></li>
+<li><p>Προεπισκοπήσεις αρχείων εντός του Finder για εικονικά αρχεία</p></li>
+<li><p>Υποστήριξη μορφών ειδικών για την Apple όπως συσκευασίες εφαρμογών και συσκευασίες iWork (Pages, Numbers, Keynote)</p></li>
+<li><p>Συμβατότητα απομακρυσμένης κλείδωσης αρχείων</p></li>
+<li><p>Υποστήριξη «Επεξεργασία τοπικά»</p></li>
+<li><p>Κοινοποίηση αρχείων με άλλους χρήστες</p></li>
+<li><p>Αυτόματος συγχρονισμός απομακρυσμένων αλλαγών</p></li>
+<li><p>Και άλλα!</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Για να βελτιωθεί ο εντοπισμός απομακρυσμένων αλλαγών, συνιστούμε να ενεργοποιήσετε την εφαρμογή <code class="docutils literal notranslate"><span class="pre">notify_push</span></code> στον διακομιστή Nextcloud σας. Αυτή η εφαρμογή θα ειδοποιεί τον πελάτη επιφάνειας εργασίας για αλλαγές στον διακομιστή μόλις συμβαίνουν, μειώνοντας το χρόνο που χρειάζεται ο πελάτης για να εντοπίσει αλλαγές. Αυτό θα εξαλείψει επίσης την ανάγκη ο πελάτης επιφάνειας εργασίας να ελέγχει συνεχώς τον διακομιστή για αλλαγές.</p>
+</div>
+</section>
+<section id="installation-and-initial-setup">
+<h2>Εγκατάσταση και αρχική ρύθμιση<a class="headerlink" href="#installation-and-initial-setup" title="Link to this heading"></a></h2>
+<p>Ο πελάτης εικονικών αρχείων διανέμεται ως πακέτο εγκαταστάτη που μοιάζει με τον κλασικό πελάτη συγχρονισμού macOS. Ο πελάτης επιφάνειας εργασίας μπορεί να εγκατασταθεί ακολουθώντας τα βήματα που παρουσιάζει ο εγκαταστάτης.</p>
+<p>Ο πελάτης επιφάνειας εργασίας εικονικών αρχείων είναι εναλλάξιμος με τον κλασικό πελάτη συγχρονισμού επιφάνειας εργασίας. Αυτό σημαίνει ότι οι υπάρχοντες λογαριασμοί και ρυθμίσεις σας θα μεταφερθούν σε αυτόν τον πελάτη και αντίστροφα, εάν ποτέ αποφασίσετε να επιστρέψετε στον κλασικό πελάτη συγχρονισμού. Αυτό περιλαμβάνει τυχόν προϋπάρχοντες τυπικούς φακέλους συγχρονισμού, καθώς ο πελάτης εικονικών αρχείων υποστηρίζει επίσης τον κλασικό συγχρονισμό.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Λόγω τεχνικών περιορισμών στο macOS, δεν μπορούμε να παρέχουμε ενσωμάτωση στο Finder τόσο για κλασικούς φακέλους συγχρονισμού όσο και για φακέλους συγχρονισμού εικονικών αρχείων. Επομένως, οι κλασικοί φακέλοι συγχρονισμού στον πελάτη εικονικών αρχείων δεν θα έχουν ενσωματώσεις Finder όπως εικονίδια κατάστασης συγχρονισμού ή ενέργειες μενού περιβάλλοντος.</p>
+</div>
+<p>Οποιοσδήποτε υπάρχων ή νέα ρυθμισμένος λογαριασμός θα έχει τα εικονικά αρχεία ενεργοποιημένα αυτόματα. Στο macOS, τα εικονικά αρχεία κάθε λογαριασμού βρίσκονται στον δικό τους τομέα, χωριστά από τυχόν προϋπάρχοντες κλασικούς φακέλους συγχρονισμού. Αυτοί οι τομείς μπορούν να βρεθούν καταχωρημένοι στην ομάδα «Τοποθεσίες» στην πλαϊνή γραμμή του Finder.</p>
+<img alt="Πλαϊνή γραμμή Finder που εμφανίζει τομείς εικονικών αρχείων" src="../../_images/macosvfs-finder-sidebar.png" />
+<p>Κατά την πρώτη πρόσβαση σε έναν από αυτούς τους τομείς, ο πελάτης επιφάνειας εργασίας θα αρχίσει να ζητά πληροφορίες σχετικά με απομακρυσμένα αρχεία από τον διακομιστή. Αυτός ο πρώτος συγχρονισμός μπορεί να πάρει κάποιο χρόνο ανάλογα με την ποσότητα των αρχείων που φιλοξενούνται στον διακομιστή.</p>
+</section>
+<section id="finder-integration">
+<h2>Ενσωμάτωση Finder<a class="headerlink" href="#finder-integration" title="Link to this heading"></a></h2>
+<p>Ο πελάτης εικονικών αρχείων έχει ξεχωριστές ενσωματώσεις Finder που του επιτρέπουν να ενσωματώνεται πιο βαθιά και πιο εγγενώς με το πρόγραμμα περιήγησης αρχείων του macOS από τον κλασικό πελάτη συγχρονισμού.</p>
+</section>
+<section id="sync-status-indicators">
+<h2>Δείκτες κατάστασης συγχρονισμού<a class="headerlink" href="#sync-status-indicators" title="Link to this heading"></a></h2>
+<p>Παρόμοια με τον κλασικό πελάτη συγχρονισμού, ο πελάτης εικονικών αρχείων εμφανίζει εικονίδια δίπλα στα εικονικά αρχεία που υποδεικνύουν ποια είναι η κατάστασή τους.</p>
+<img alt="Εικονίδια κατάστασης συγχρονισμού για εικονικά αρχεία macOS" src="../../_images/macosvfs-sync-status-icons.png" />
+<ul class="simple">
+<li><p><em>Σύννεφο με βέλος</em>: το αντικείμενο ή τα παιδιά του είναι εικονικά και είναι διαθέσιμα για τοπική διατήρηση</p></li>
+<li><p><em>Περίγραμμα σύννεφου</em>: το αντικείμενο είναι μερικώς διαθέσιμο τοπικά</p></li>
+<li><p><em>Χωρίς εικονίδιο</em>: το αντικείμενο είναι διαθέσιμο εκτός σύνδεσης</p></li>
+</ul>
+</section>
+<section id="context-menu-actions">
+<h2>Ενέργειες μενού περιβάλλοντος<a class="headerlink" href="#context-menu-actions" title="Link to this heading"></a></h2>
+<p>Το κλικ με πλήκτρο Control, το κλικ με δύο δάχτυλα ή το δεξί κλικ σε ένα αντικείμενο Finder θα εμφανίσει το μενού περιβάλλοντος, στο οποίο μπορείτε να βρείτε πολλές εγγραφές που παρέχονται από τον πελάτη εικονικών αρχείων που σας επιτρέπουν να χρησιμοποιήσετε μερικές από τις λειτουργίες που υποστηρίζονται από το Nextcloud. Αυτές περιλαμβάνουν:</p>
+<ul class="simple">
+<li><p>Κλείδωμα αρχείου (εάν υποστηρίζεται από τον διακομιστή)</p></li>
+</ul>
+<img alt="Διεπαφή χρήστη κλειδώματος αρχείων για εικονικά αρχεία macOS" src="../../_images/macosvfs-file-locking.png" />
+<ul class="simple">
+<li><p>Κοινοποίηση αρχείου (εάν υποστηρίζεται από τον διακομιστή)</p></li>
+</ul>
+<img alt="Διεπαφή χρήστη κοινοποίησης αρχείων για εικονικά αρχεία macOS" src="../../_images/macosvfs-file-sharing.png" />
+</section>
+<section id="configuration">
+<h2>Ρύθμιση παραμέτρων<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>Οι ρυθμίσεις που σχετίζονται με τα εικονικά αρχεία μπορούν να προσαρμοστούν ανά λογαριασμό μέσω του παραθύρου ρυθμίσεων του πελάτη επιφάνειας εργασίας Nextcloud.</p>
+<img alt="Ρυθμίσεις εικονικών αρχείων macOS" src="../../_images/macosvfs-settings.png" />
+<p>Η ενότητα εικονικών αρχείων προσφέρει μια σειρά από επιλογές σχετικές με την αλληλεπίδραση εικονικών αρχείων:</p>
+<ul class="simple">
+<li><p>Ενεργοποίηση/απενεργοποίηση εικονικών αρχείων για τον προορισμένο λογαριασμό</p></li>
+<li><p>Ενεργοποίηση/απενεργοποίηση γρήγορου συγχρονισμού</p></li>
+<li><p>Διαχείριση χρήσης τοπικού χώρου αποθήκευσης και εκδίωξη τοπικών αντιγράφων</p></li>
+<li><p>Εξαναγκασμός του τομέα εικονικών αρχείων να ελέγξει για ενημερώσεις</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="usage.html" class="btn btn-neutral float-left" title="Χρήση του Πελάτη Συγχρονισμού" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="autoupdate.html" class="btn btn-neutral float-right" title="Ο Αυτόματος Ενημερωτής" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 Greek
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Γλώσσες</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Εκδόσεις</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Λήψεις</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Στο Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Αρχική Σελίδα Έργου</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Παραλλαγές</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

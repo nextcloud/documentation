@@ -1,0 +1,736 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Partage de fichiers &mdash; Documentation Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/files/sharing.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=2c11b175"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=e6b791cb"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Faire des téléversements anonymes" href="file_drop.html" />
+    <link rel="prev" title="Using end-to-end encryption" href="using_e2ee.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Manuel utilisateur de Nextcloud latest : Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">L’interface web de Nextcloud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Fichiers &amp; synchronisation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Accéder à vos fichiers en utilisant l’interface Web</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Accès aux fichiers Nextcloud avec WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Gérer les fichiers supprimés</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Synchronisation sur bureau et sur mobile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Chiffrer vos fichiers Nextcloud sur le serveur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Partage de fichiers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#public-link-shares">Partage de liens publics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#internal-shares-with-users-and-groups">Partage interne entre utilisateurs et groupes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#others-with-access">Autres avec accès</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#federated-shares">Partages Fédérés</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-new-federation-share">Création d’un nouveau partage fédéré</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-public-share-to-your-nextcloud">Ajout d’un partage public à votre Nextcloud</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Faire des téléversements anonymes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Téléversement de gros fichiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Quota de stockage utilisable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Contrôle de version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Transfert de propriété</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Utilisation du partage entre instances</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Clients de bureau</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Définir vos préférences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Accès universel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Utilisation de l’authentification à deux facteurs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gestion des navigateurs et des appareils liés</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Stockage externe</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Fichiers &amp; synchronisation</a></li>
+      <li class="breadcrumb-item active">Partage de fichiers</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/sharing.rst" class="fa fa-github"> Éditer sur GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-sharing">
+<h1>Partage de fichiers<a class="headerlink" href="#file-sharing" title="Lien vers cette rubrique"></a></h1>
+<p>Les utilisateurs et utilisatrices peuvent partager des fichiers et des dossiers. Les cibles possibles sont:</p>
+<ul class="simple">
+<li><p>liens publiques</p></li>
+<li><p>utilisateurs</p></li>
+<li><p>groupes</p></li>
+<li><p>cercles</p></li>
+<li><p>conversations</p></li>
+<li><p>utilisateurs ou groupes sur serveurs Nextcloud fédérés</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some options may not be available due to administrative configuration.
+See <a class="reference external" href="https://docs.nextcloud.com/server/33/admin_manual/configuration_files/file_sharing_configuration.html">administrator documentation</a> for details.</p>
+</div>
+<section id="public-link-shares">
+<h2>Partage de liens publics<a class="headerlink" href="#public-link-shares" title="Lien vers cette rubrique"></a></h2>
+<p>Vous pouvez partager fichiers et dossiers grâce aux liens publiques</p>
+<p>Un jeton aléatoire de 15 chiffres va être créé. Le lien ressemblera à ceci <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/s/yxcFKRWBJqYYzp4</span></code>.</p>
+<p>Un certain nombre d’options sont disponibles pour les <em>dossiers</em> publics partagés:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_public_folder.png" src="../../_images/sharing_public_folder.png" />
+</figure>
+<ul class="simple">
+<li><p><strong>Read only</strong> pour autoriser seulement à voir et à télécharger</p></li>
+<li><p><strong>Autoriser le téléversement et l’édition</strong></p></li>
+<li><p>Avec <strong>File drop</strong>, la personne autorisée peut téléverser des fichiers dans un dossier sans voir les fichiers déjà présents dans ce dossier.</p></li>
+<li><p><strong>Masquer le téléchargement</strong> cache les boutons de téléchargement et les options de clic droit du navigateur par défaut afin de rendre le téléchargement plus difficile pour le partage.</p></li>
+<li><p><strong>Protéger par mot de passe</strong></p></li>
+<li><p><strong>Définir une date d’expiration</strong> désactivera automatiquement le partage</p></li>
+<li><p><strong>Note au destinataire</strong></p></li>
+<li><p><strong>Annuler le partage</strong> pour annuler le partage</p></li>
+<li><p><strong>Ajouter un nouveau lien</strong> pour créer plusieurs liens publiques avec des droits différents</p></li>
+</ul>
+<p>Pour les partages de fichiers publiques, vous pouvez autoriser l’édition du fichier avec une des solutions de collaboration de Nextcloud:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_public_file.png" src="../../_images/sharing_public_file.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>La protection par mot de passe ainsi que l’expiration des fichiers sont aussi propagés avec le Partage de Fichiers Fédéré depuis Nextcloud 22.</p>
+</div>
+</section>
+<section id="internal-shares-with-users-and-groups">
+<h2>Partage interne entre utilisateurs et groupes<a class="headerlink" href="#internal-shares-with-users-and-groups" title="Lien vers cette rubrique"></a></h2>
+<p>Lorsque vous partagez des fichiers avec d’autre utilisateurs, groupes, cercles ou membres d’une conversation Talk, les droits d’accès des fichiers et dossiers sont modulables :</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_internal.png" src="../../_images/sharing_internal.png" />
+</figure>
+<p>En tant qu’utilisateur partageant des fichiers, vous pouvez configurer si vous voulez automatiquement accepter tous les partages entrants et les faire ajouter à votre dossier racine, ou si vous voulez qu’on vous demande à chaque fois si vous voulez accepter ou refuser le partage.</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_internal_acceptNotification.png" src="../../_images/sharing_internal_acceptNotification.png" />
+</figure>
+<p>Pour régler les paramètres, allez à <strong>Settings</strong> &gt; <strong>Personal</strong> &gt; <strong>Sharing</strong>:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_autoAcceptSetting.png" src="../../_images/sharing_autoAcceptSetting.png" />
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>Si le propriétaire renomme un fichier ou un dossier partagé, le nouveau nom ne sera pas répercuté du côté du destinataire. Ceci est nécessaire pour éviter de remplacer les fichiers ou dossiers existants du côté du destinataire.</p>
+</div>
+</section>
+<section id="others-with-access">
+<h2>Autres avec accès<a class="headerlink" href="#others-with-access" title="Lien vers cette rubrique"></a></h2>
+<p>Dans le but de savoir si un fichier ou un dossier est accessible à d’autres à travers le partage d’un dossier parent, cliquez sur <strong>Others with access</strong> dans l’onglet de partage.</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_others-with-access__collapsed.png" src="../../_images/sharing_others-with-access__collapsed.png" />
+</figure>
+<p>La liste comprends tous les utilisateurs et utilisatrices, groupes, chats, etc, que l’objet a été partagé, à travers un dossier parent:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_others-with-access__details.png" src="../../_images/sharing_others-with-access__details.png" />
+</figure>
+<p>Cliquez sur les 3 points pour:</p>
+<ul class="simple">
+<li><p>voir qui a initié le partage</p></li>
+<li><p>voir où le partage a été initié (cliquez pour naviguer dans les dossiers pour lesquels vous avez les accès)</p></li>
+<li><p>annuler le partage initial (uniquement possible pour le propriétaire du partage)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Cette information est uniquement visible pour les propriétaires de fichiers/dossiers ou pour les membres ayant obtenu les droits de re-partage.</p>
+</div>
+</section>
+</section>
+<section id="federated-shares">
+<h1>Partages Fédérés<a class="headerlink" href="#federated-shares" title="Lien vers cette rubrique"></a></h1>
+<p>Le Partage Fédéré vous permet de monter des partages de fichiers depuis des serveurs Nextcloud distants, créant ainsi votre propre réseau Nextcloud. Vous pouvez aussi créer des liens de partage directs avec d’autres utilisateurs sur d’autres serveurs Nextcloud.</p>
+<section id="creating-a-new-federation-share">
+<h2>Création d’un nouveau partage fédéré<a class="headerlink" href="#creating-a-new-federation-share" title="Lien vers cette rubrique"></a></h2>
+<p>Le partage fédéré est activé par défaut sur les nouvelles installations Nextcloud ainsi que sur celles qui ont été mises à jour. Pour créer un nouveau partage avec un autre serveur Nextcloud ou ownCLoud, suivez ces étapes :</p>
+<p>Allez à votre page <code class="docutils literal notranslate"><span class="pre">Fichiers</span></code> et cliquer sur l’icon Partager sur le fichier ou le dossier que vous voulez partager. Dans le menu latéral, entrez le nom d’utilisateur ou d’utilisatrice, et l’URL de l’utilisateur distant de cette form:<code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code>. Dans cet exemple, ce sera <code class="docutils literal notranslate"><span class="pre">bob&#64;cloud.example.com</span></code>:</p>
+<figure class="align-default">
+<img alt="../../_images/share-federation-1.png" src="../../_images/share-federation-1.png" />
+</figure>
+<p>La personne autorisée reçoit une notification dans son Nextcloud, leur donnant la possibilité d’accepter ou refuser ce partage entrant:</p>
+<figure class="align-default">
+<img alt="../../_images/share-federation-2-notification.png" src="../../_images/share-federation-2-notification.png" />
+</figure>
+</section>
+<section id="adding-a-public-share-to-your-nextcloud">
+<h2>Ajout d’un partage public à votre Nextcloud<a class="headerlink" href="#adding-a-public-share-to-your-nextcloud" title="Lien vers cette rubrique"></a></h2>
+<p>Les pages de partage de liens publics Nextcloud offrent la possibilité d’ajouter ce fichier ou dossier en tant que partage fédéré dans votre propre instance Nextcloud. Il suffit d’entrer votre <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code> comme indiqué ci-dessus pour les partages sortants :</p>
+<figure class="align-default">
+<img alt="../../_images/share-federation-3-public.png" src="../../_images/share-federation-3-public.png" />
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="using_e2ee.html" class="btn btn-neutral float-left" title="Using end-to-end encryption" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="file_drop.html" class="btn btn-neutral float-right" title="Faire des téléversements anonymes" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 French
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Langues</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Téléchargements</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Au sujet de la lecture de Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Projet Racine</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Versions</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,779 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="el" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Χρήση του Πελάτη Συγχρονισμού &mdash; Τεκμηρίωση του Nextcloud latest User Manual - latest</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/desktop/usage.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=ba845f4f"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=e109e2be"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Ευρετήριο" href="../genindex.html" />
+    <link rel="search" title="Αναζήτηση" href="../search.html" />
+    <link rel="next" title="Πελάτης Εικονικών Αρχείων για macOS" href="macosvfs.html" />
+    <link rel="prev" title="Εγκατάσταση" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Εισαγωγή εγχειριδίου χρήστη Nextcloud |έκδοση|</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Η Διεπαφή Web του Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Αρχεία και συγχρονισμός</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Πελάτες Επιφάνειας Εργασίας</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Εγκατάσταση</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Χρήση του Πελάτη Συγχρονισμού</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#systray-icon">Εικονίδιο Γραμμής Εργασιών Συστήματος</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-nextcloud-account-settings">Ρύθμιση των Ρυθμίσεων Λογαριασμού Nextcloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-new-accounts">Προσθήκη Νέων Λογαριασμών</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-manager-overlay-icons">Εικονίδια Επικάλυψης Διαχειριστή Αρχείων</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-the-user-status">Ορισμός της κατάστασης χρήστη</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-from-your-desktop">Κοινοποίηση Από την Επιφάνεια Εργασίας Σας</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general-window">Παράθυρο Γενικών Ρυθμίσεων</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-network-window">Χρήση του Παραθύρου Ρυθμίσεων Δικτύου</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-ignored-files-editor">Χρήση του Επεξεργαστή Αγνοημένων Αρχείων</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="macosvfs.html">Πελάτης Εικονικών Αρχείων για macOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoupdate.html">Ο Αυτόματος Ενημερωτής</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Κανάλια ενημέρωσης</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conflicts.html">Συγκρούσεις</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">Συχνές Ερωτήσεις</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Ορισμός των προτιμήσεών σας</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Καθολική Πρόσβαση</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Χρήση ελέγχου ταυτότητας δύο παραγόντων</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Διαχείριση συνδεδεμένων προγραμμάτων περιήγησης και συσκευών</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Εξωτερικός χώρος αποθήκευσης</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Πελάτες Επιφάνειας Εργασίας</a></li>
+      <li class="breadcrumb-item active">Χρήση του Πελάτη Συγχρονισμού</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/usage.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-synchronization-client">
+<h1>Χρήση του Πελάτη Συγχρονισμού<a class="headerlink" href="#using-the-synchronization-client" title="Link to this heading"></a></h1>
+<p>Ο Πελάτης Επιφάνειας Εργασίας Nextcloud παραμένει στο παρασκήνιο και είναι ορατός ως εικονίδιο στη γραμμή εργασιών συστήματος (Windows, KDE), τη γραμμή μενού (macOS) ή την περιοχή ειδοποιήσεων (Linux).</p>
+<figure class="align-default">
+<img alt="Εικονίδιο κατάστασης, πράσινος κύκλος και λευκό σημάδι ελέγχου" src="../../_images/icon.png" />
+</figure>
+<p>Ο δείκτης κατάστασης χρησιμοποιεί εικονίδια για να υποδεικνύει την τρέχουσα κατάσταση του συγχρονισμού σας. Ο πράσινος κύκλος με το λευκό σημάδι ελέγχου σας λέει ότι ο συγχρονισμός σας είναι ενημερωμένος και είστε συνδεδεμένοι στο διακομιστή Nextcloud σας.</p>
+<figure class="align-default">
+<img alt="Εικονίδιο κατάστασης, μπλε κύκλος και λευκά ημικύκλια" src="../../_images/icon-syncing.png" />
+</figure>
+<p>Το μπλε εικονίδιο με τα λευκά ημικύκλια σημαίνει ότι ο συγχρονισμός βρίσκεται σε εξέλιξη.</p>
+<figure class="align-default">
+<img alt="Εικονίδιο κατάστασης, γκρι κύκλος και κάθετες παράλληλες γραμμές" src="../../_images/icon-paused.png" />
+</figure>
+<p>Το γκρι εικονίδιο με τις παράλληλες γραμμές σας λέει ότι ο συγχρονισμός σας έχει παύσει. (Πιθανότατα από εσάς.)</p>
+<figure class="align-default">
+<img alt="Εικονίδιο κατάστασης, γκρι κύκλος και τρεις οριζόντιες λευκές κουκκίδες" src="../../_images/icon-offline.png" />
+</figure>
+<p>Το γκρι εικονίδιο με τις τρεις λευκές κουκκίδες σημαίνει ότι ο πελάτης συγχρονισμού σας έχει χάσει τη σύνδεσή του με τον διακομιστή Nextcloud σας.</p>
+<figure class="align-default">
+<img alt="Εικονίδιο κατάστασης, σύμβολο &quot;!&quot; σε κίτρινο κύκλο" src="../../_images/icon-information.png" />
+</figure>
+<p>Όταν βλέπετε έναν κίτρινο κύκλο με το σύμβολο «!», αυτό είναι το εικονίδιο πληροφόρησης, οπότε πρέπει να κάνετε κλικ πάνω του για να δείτε τι έχει να σας πει.</p>
+<figure class="align-default">
+<img alt="Εικονίδιο κατάστασης, κόκκινος κύκλος και λευκό x" src="../../_images/icon-error.png" />
+</figure>
+<p>Ο κόκκινος κύκλος με το λευκό «x» υποδεικνύει ένα σφάλμα ρύθμισης παραμέτρων, όπως λανθασμένο login ή URL διακομιστή.</p>
+<section id="systray-icon">
+<h2>Εικονίδιο Γραμμής Εργασιών Συστήματος<a class="headerlink" href="#systray-icon" title="Link to this heading"></a></h2>
+<p>Ένα δεξί κλικ στο εικονίδιο της γραμμής εργασιών συστήματος ανοίγει ένα μενού για γρήγορη πρόσβαση σε πολλαπλές λειτουργίες.</p>
+<figure class="align-default">
+<img alt="το μενού του πελάτη συγχρονισμού με δεξί κλικ" src="../../_images/traymenu.png" />
+</figure>
+<p>Αυτό το μενού παρέχει τις ακόλουθες επιλογές:</p>
+<ul class="simple">
+<li><p>Άνοιγμα κύριου διαλόγου</p></li>
+<li><p>Παύση συγχρονισμού/Συνέχιση συγχρονισμού</p></li>
+<li><p>Ρυθμίσεις</p></li>
+<li><p>Έξοδος από το Nextcloud, αποσύνδεση και κλείσιμο του πελάτη</p></li>
+</ul>
+<p>Ένα αριστερό κλικ στο εικονίδιο της γραμμής εργασιών συστήματος ανοίγει τον κύριο διάλογο του πελάτη επιφάνειας εργασίας.</p>
+<figure class="align-default">
+<img alt="Κύριος διάλογος" src="../../_images/main_dialog.png" />
+</figure>
+<p>Οι κύριοι διάλογοι εμφανίζουν τις πρόσφατες δραστηριότητες, τα σφάλματα και τις ειδοποιήσεις του διακομιστή.</p>
+<p>Κάνοντας κλικ στον κύριο διάλογο και στη συνέχεια κλικ στο avatar του χρήστη, μπορούν να ανοίξουν οι Ρυθμίσεις.</p>
+</section>
+<section id="configuring-nextcloud-account-settings">
+<h2>Ρύθμιση των Ρυθμίσεων Λογαριασμού Nextcloud<a class="headerlink" href="#configuring-nextcloud-account-settings" title="Link to this heading"></a></h2>
+<figure class="align-default">
+<img alt="Κύριος διάλογος" src="../../_images/settingsdialog.png" />
+</figure>
+<p>Στο επάνω μέρος του παραθύρου υπάρχουν καρτέλες για κάθε ρυθμισμένο λογαριασμό συγχρονισμού και δύο άλλες για Γενικές ρυθμίσεις και Ρυθμίσεις Δικτύου. Στις καρτέλες του λογαριασμού σας έχετε τις ακόλουθες λειτουργίες:</p>
+<ul class="simple">
+<li><p>Κατάσταση σύνδεσης, που δείχνει σε ποιον διακομιστή Nextcloud είστε συνδεδεμένοι και το όνομα χρήστη Nextcloud σας.</p></li>
+<li><p>Χρησιμοποιημένος και διαθέσιμος χώρος στο διακομιστή.</p></li>
+<li><p>Τρέχουσα κατάσταση συγχρονισμού.</p></li>
+<li><p>Κουμπί <strong>Προσθήκη Σύνδεσης Συγχρονισμού Φακέλου</strong>.</p></li>
+</ul>
+<p>Το μικρό κουμπί με τις τρεις κουκκίδες (το μενού υπερχείλισης) που βρίσκεται στα δεξιά της γραμμής κατάστασης συγχρονισμού προσφέρει πρόσθετες επιλογές:</p>
+<ul class="simple">
+<li><p>Άνοιγμα Φακέλου</p></li>
+<li><p>Επιλογή Τι να Συγχρονιστεί (Αυτό εμφανίζεται μόνο όταν το δέντρο αρχείων σας είναι συμπτυγμένο και αναπτύσσει το δέντρο αρχείων)</p></li>
+<li><p>Παύση Συγχρονισμού / Συνέχιση Συγχρονισμού</p></li>
+<li><p>Αφαίρεση σύνδεσης συγχρονισμού φακέλου</p></li>
+<li><p>Διαθεσιμότητα (Διαθέσιμο μόνο εάν είναι ενεργοποιημένη η υποστήριξη εικονικών αρχείων)</p></li>
+<li><p>Ενεργοποίηση υποστήριξης εικονικών αρχείων/Απενεργοποίηση υποστήριξης εικονικών αρχείων</p></li>
+</ul>
+<p>Το <strong>Άνοιγμα Φακέλου</strong> ανοίγει τον τοπικό φάκελο συγχρονισμού Nextcloud σας.</p>
+<p>Η <strong>Παύση Συγχρονισμού</strong> διακόπτει τις λειτουργίες συγχρονισμού χωρίς να κάνει αλλαγές στο λογαριασμό σας. Θα συνεχίσει να ενημερώνει τις λίστες αρχείων και φακέλων, χωρίς να κατεβάζει ή να ενημερώνει αρχεία. Για να διακόψετε όλη τη δραστηριότητα συγχρονισμού χρησιμοποιήστε <strong>Αφαίρεση Σύνδεσης Συγχρονισμού Φακέλου</strong>.</p>
+<figure class="align-default">
+<img alt="Επιπλέον επιλογές για λειτουργίες συγχρονισμού" src="../../_images/general_settings_folder_context_menu.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Το Nextcloud δεν διατηρεί το mtime (χρόνο τροποποίησης) των καταλόγων, αν και ενημερώνει τα mtimes στα αρχεία. Δείτε <a class="reference external" href="https://github.com/owncloud/core/issues/7009">Λανθασμένη ημερομηνία φακέλου κατά τον συγχρονισμό</a> για συζήτηση αυτού.</p>
+</div>
+</section>
+<section id="adding-new-accounts">
+<h2>Προσθήκη Νέων Λογαριασμών<a class="headerlink" href="#adding-new-accounts" title="Link to this heading"></a></h2>
+<p>Μπορείτε να ρυθμίσετε πολλούς λογαριασμούς Nextcloud στον πελάτη συγχρονισμού επιφάνειας εργασίας σας. Απλώς κάντε κλικ στο κουμπί <strong>Λογαριασμός</strong> &gt; <strong>Προσθήκη Νέου</strong> σε οποιαδήποτε καρτέλα λογαριασμού για να προσθέσετε έναν νέο λογαριασμό και, στη συνέχεια, ακολουθήστε τον οδηγό δημιουργίας λογαριασμού. Ο νέος λογαριασμός θα εμφανιστεί ως νέα καρτέλα στο παράθυρο διαλόγου ρυθμίσεων, όπου μπορείτε να προσαρμόσετε τις ρυθμίσεις του ανά πάσα στιγμή. Χρησιμοποιήστε <strong>Λογαριασμός</strong> &gt; <strong>Αφαίρεση</strong> για να διαγράψετε λογαριασμούς.</p>
+</section>
+<section id="file-manager-overlay-icons">
+<h2>Εικονίδια Επικάλυψης Διαχειριστή Αρχείων<a class="headerlink" href="#file-manager-overlay-icons" title="Link to this heading"></a></h2>
+<p>Ο πελάτης συγχρονισμού Nextcloud παρέχει εικονίδια επικάλυψης, εκτός από τα κανονικά εικονίδια τύπου αρχείου, για τον διαχειριστή αρχείων συστήματός σας (Explorer στα Windows, Finder στο Mac και Nautilus στο Linux) για να υποδεικνύει την κατάσταση συγχρονισμού των αρχείων Nextcloud σας.</p>
+<p>Τα εικονίδια επικάλυψης είναι παρόμοια με τα εικονίδια γραμμής εργασιών συστήματος που παρουσιάστηκαν παραπάνω. Συμπεριφέρονται διαφορετικά σε αρχεία και καταλόγους ανάλογα με την κατάσταση συγχρονισμού και τα σφάλματα.</p>
+<p>Το εικονίδιο επικάλυψης ενός μεμονωμένου αρχείου υποδεικνύει την τρέχουσα κατάσταση συγχρονισμού του. Εάν το αρχείο είναι συγχρονισμένο με την έκδοση του διακομιστή, εμφανίζει ένα πράσινο σημάδι ελέγχου.</p>
+<p>Εάν το αρχείο αγνοείται από τον συγχρονισμό, για παράδειγμα επειδή βρίσκεται στη λίστα εξαίρεσής σας ή επειδή είναι συμβολικός σύνδεσμος, εμφανίζει ένα εικονίδιο προειδοποίησης.</p>
+<p>Εάν υπάρχει σφάλμα συγχρονισμού ή το αρχείο βρίσκεται στη μαύρη λίστα, εμφανίζει ένα εντυπωσιακό κόκκινο X.</p>
+<p>Εάν το αρχείο περιμένει να συγχρονιστεί ή συγχρονίζεται αυτήν τη στιγμή, το εικονίδιο επικάλυψης εμφανίζει ένα μπλε εικονίδιο κύκλου.</p>
+<p>Όταν ο πελάτης είναι εκτός σύνδεσης, δεν εμφανίζονται εικονίδια για να αντικατοπτρίζουν ότι ο φάκελος είναι προς το παρόν εκτός συγχρονισμού και καμία αλλαγή δεν συγχρονίζεται με τον διακομιστή.</p>
+<p>Το εικονίδιο επικάλυψης ενός συγχρονισμένου καταλόγου υποδεικνύει την κατάσταση των αρχείων στον κατάλογο. Εάν υπάρχουν σφάλματα συγχρονισμού, ο κατάλογος σημειώνεται με ένα εικονίδιο προειδοποίησης.</p>
+<p>Εάν ένας κατάλογος περιλαμβάνει αγνοημένα αρχεία που σημειώνονται με εικονίδια προειδοποίησης, αυτό δεν αλλάζει την κατάσταση των γονικών καταλόγων.</p>
+</section>
+<section id="set-the-user-status">
+<h2>Ορισμός της κατάστασης χρήστη<a class="headerlink" href="#set-the-user-status" title="Link to this heading"></a></h2>
+<p>Εάν έχετε εγκαταστήσει την εφαρμογή κατάστασης χρήστη στον διακομιστή Nextcloud σας, μπορείτε να ορίσετε την κατάσταση χρήστη σας από τον πελάτη επιφάνειας εργασίας. Για να το κάνετε αυτό, ανοίξτε τον κύριο διάλογο. Στη συνέχεια, κάντε κλικ στο avatar σας και μετά κλικ στις τρεις κουκκίδες. Στο μενού που ανοίγει κάντε κλικ στο <strong>Ορισμός κατάστασης</strong>.</p>
+<figure class="align-default">
+<img alt="Άνοιγμα διαλόγου κατάστασης χρήστη από τον κύριο διάλογο." src="../../_images/user_status_selector_main_dialog.png" />
+</figure>
+<p>Στο παράθυρο διαλόγου που ανοίγει, μπορείτε να ορίσετε την κατάσταση σύνδεσής σας κάνοντας κλικ είτε στο <strong>Συνδεδεμένος</strong>, <strong>Απών</strong>, <strong>Μην ενοχλείτε</strong> ή <strong>Αόρατος</strong>. Μπορείτε επίσης να ορίσετε ένα προσαρμοσμένο μήνυμα κατάστασης με το πεδίο κειμένου παρακάτω ή να επιλέξετε ένα από τα προκαθορισμένα μηνύματα κατάστασης παρακάτω. Είναι επίσης δυνατό να ορίσετε ένα προσαρμοσμένο emoji κάνοντας κλικ στο κουμπί με το emoji δίπλα στο πεδίο εισαγωγής κειμένου. Το τελευταίο πράγμα που μπορεί να θέλετε να ορίσετε είναι πότε θα διαγραφεί η κατάσταση χρήστη σας. Μπορείτε να επιλέξετε την περίοδο μετά την οποία θα διαγραφεί η κατάσταση χρήστη κάνοντας κλικ στο κουμπί στα αριστερά του κειμένου <strong>Διαγραφή μηνύματος κατάστασης μετά</strong>.</p>
+<figure class="align-default">
+<img alt="Διάλογος για τον ορισμό κατάστασης χρήστη." src="../../_images/user_status-selector_dialog.png" />
+</figure>
+<p>Εάν είστε ικανοποιημένοι με την κατάσταση που έχετε δημιουργήσει, μπορείτε να ενεργοποιήσετε αυτήν την κατάσταση με το κουμπί <strong>Ορισμός μηνύματος κατάστασης</strong>. Εάν είχατε ήδη ορισμένη μια κατάσταση, μπορείτε να την διαγράψετε κάνοντας κλικ στο κουμπί <strong>Διαγραφή μηνύματος κατάστασης</strong>.</p>
+</section>
+<section id="sharing-from-your-desktop">
+<h2>Κοινοποίηση Από την Επιφάνεια Εργασίας Σας<a class="headerlink" href="#sharing-from-your-desktop" title="Link to this heading"></a></h2>
+<p>Ο πελάτης συγχρονισμού επιφάνειας εργασίας Nextcloud ενσωματώνεται με τον διαχειριστή αρχείων σας. Finder στο macOS και Explorer στα Windows. Οι χρήστες Linux πρέπει να εγκαταστήσουν ένα επιπλέον πακέτο ανάλογα με τον χρησιμοποιούμενο διαχειριστή αρχείων. Διαθέσιμα είναι π.χ. <code class="docutils literal notranslate"><span class="pre">nautilus-nextcloud</span></code> (Ubuntu/Debian), <code class="docutils literal notranslate"><span class="pre">dolphin-nextcloud</span></code> (Kubuntu), <code class="docutils literal notranslate"><span class="pre">nemo-nextcloud</span></code> και <code class="docutils literal notranslate"><span class="pre">caja-nextcloud</span></code>. Μπορείτε να δημιουργήσετε συνδέσμους κοινοποίησης και να κοινοποιήσετε με εσωτερικούς χρήστες Nextcloud με τον ίδιο τρόπο όπως στη Διεπαφή Web του Nextcloud σας.</p>
+<p>Στον εξερευνητή αρχείων σας, κάντε κλικ σε ένα αρχείο και στο μενού περιβάλλοντος μεταβείτε στο <strong>Nextcloud</strong> και στη συνέχεια κάντε κλικ στις <strong>Επιλογές κοινοποίησης</strong> για να εμφανίσετε το παράθυρο διαλόγου Κοινοποίησης.</p>
+<figure class="align-default">
+<img alt="Κοινοποίηση από τον Εξερευνητή των Windows." src="../../_images/share_context_menu.png" />
+</figure>
+<p>Από αυτό το παράθυρο διαλόγου μπορείτε να κοινοποιήσετε ένα αρχείο.</p>
+<figure class="align-default">
+<img alt="Παράθυρο διαλόγου Κοινοποίησης" src="../../_images/share_dialog.png" />
+</figure>
+</section>
+<section id="general-window">
+<h2>Παράθυρο Γενικών Ρυθμίσεων<a class="headerlink" href="#general-window" title="Link to this heading"></a></h2>
+<p>Το παράθυρο Γενικών ρυθμίσεων έχει επιλογές ρύθμισης όπως <strong>Εκκίνηση κατά την εκκίνηση συστήματος</strong>, <strong>Χρήση μονόχρωμων εικονιδίων</strong> και <strong>Εμφάνιση ειδοποιήσεων διακομιστή</strong>. Εδώ θα βρείτε το κουμπί <strong>Επεξεργασία Αγνοημένων Αρχείων</strong>, για να εκκινήσετε τον επεξεργαστή αγνοημένων αρχείων, και <strong>Ζήτηση επιβεβαίωσης πριν από τη λήψη φακέλων μεγαλύτερων από [μέγεθος φακέλου]</strong>.</p>
+<figure class="align-default">
+<img alt="Το παράθυρο Γενικών ρυθμίσεων περιέχει επιλογές ρύθμισης." src="../../_images/settings_general.png" />
+</figure>
+</section>
+<section id="using-the-network-window">
+<h2>Χρήση του Παραθύρου Ρυθμίσεων Δικτύου<a class="headerlink" href="#using-the-network-window" title="Link to this heading"></a></h2>
+<p id="index-0">Το παράθυρο ρυθμίσεων Δικτύου σας επιτρέπει να ορίσετε ρυθμίσεις διακομιστή μεσολάβησης δικτύου και επίσης να περιορίσετε το εύρος ζώνης λήψης και αποστολής.</p>
+<figure class="align-default">
+<img alt="../../_images/settings_network.png" src="../../_images/settings_network.png" />
+</figure>
+</section>
+<section id="using-the-ignored-files-editor">
+<span id="usingignoredfileseditor-label"></span><h2>Χρήση του Επεξεργαστή Αγνοημένων Αρχείων<a class="headerlink" href="#using-the-ignored-files-editor" title="Link to this heading"></a></h2>
+<p id="index-1">Μπορεί να έχετε ορισμένα τοπικά αρχεία ή καταλόγους που δεν θέλετε να δημιουργήσετε αντίγραφα ασφαλείας και να αποθηκεύσετε στο διακομιστή. Για να εντοπίσετε και να εξαιρέσετε αυτά τα αρχεία ή καταλόγους, μπορείτε να χρησιμοποιήσετε τον <em>Επεξεργαστή Αγνοημένων Αρχείων</em> (καρτέλα Γενικά).</p>
+<figure class="align-default">
+<img alt="../../_images/ignored_files_editor.png" src="../../_images/ignored_files_editor.png" />
+</figure>
+<p>Για τη διευκόλυνσή σας, ο επεξεργαστής είναι προ-συμπληρωμένος με μια προεπιλεγμένη λίστα τυπικών προτύπων αγνόησης. Αυτά τα πρότυπα περιέχονται σε ένα αρχείο συστήματος (συνήθως <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code>) που βρίσκεται στον κατάλογο εφαρμογών του Πελάτη Nextcloud. Δεν μπορείτε να τροποποιήσετε αυτά τα προ-συμπληρωμένα πρότυπα απευθείας από τον επεξεργαστή. Ωστόσο, εάν είναι απαραίτητο, μπορείτε να τοποθετήσετε το δείκτη πάνω από οποιοδήποτε πρότυπο στη λίστα για να εμφανίσετε τη διαδρομή και το όνομα αρχείου που σχετίζονται με αυτό το πρότυπο, να εντοπίσετε το αρχείο και να επεξεργαστείτε το αρχείο <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Η τροποποίηση του καθολικού αρχείου ορισμού εξαίρεσης μπορεί να καταστήσει τον πελάτη μη χρησιμοποιήσιμο ή να οδηγήσει σε ανεπιθύμητη συμπεριφορά.</p>
+</div>
+<p>Κάθε γραμμή στον επεξεργαστή περιέχει μια συμβολοσειρά προτύπου αγνόησης. Κατά τη δημιουργία προσαρμοσμένων προτύπων, εκτός από τη δυνατότητα χρήσης κανονικών χαρακτήρων για τον ορισμό ενός προτύπου αγνόησης, μπορείτε να χρησιμοποιήσετε χαρακτήρες μπαλαντέρ για αντιστοίχιση τιμών. Για παράδειγμα, μπορείτε να χρησιμοποιήσετε έναν αστερίσκο (<code class="docutils literal notranslate"><span class="pre">*</span></code>) για να προσδιορίσετε έναν αυθαίρετο αριθμό χαρακτήρων ή ένα ερωτηματικό (<code class="docutils literal notranslate"><span class="pre">?</span></code>) για να προσδιορίσετε έναν μόνο χαρακτήρα.</p>
+<p>Τα πρότυπα που τελειώνουν με τον χαρακτήρα κάθετου (<code class="docutils literal notranslate"><span class="pre">/</span></code>) εφαρμόζονται μόνο σε συστατικά καταλόγου της διαδρομής που ελέγχεται.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Οι προσαρμοσμένες εγγραφές δεν ελέγχονται προς το παρόν για συντακτική ορθότητα από τον επεξεργαστή, επομένως δεν θα δείτε προειδοποιήσεις για κακή σύνταξη. Εάν ο συγχρονισμός σας δεν λειτουργεί όπως αναμένατε, ελέγξτε τη σύνταξή σας.</p>
+</div>
+<p>Κάθε συμβολοσειρά προτύπου στη λίστα ακολουθείται από ένα πλαίσιο ελέγχου. Όταν το πλαίσιο ελέγχου περιέχει ένα σημάδι ελέγχου, εκτός από την αγνόηση του αρχείου ή του συστατικού καταλόγου που ταιριάζει με το πρότυπο, οποιαδήποτε αρχεία που ταιριάζουν θεωρούνται επίσης «πρόσκαιρα μεταδεδομένα» και αφαιρούνται από τον πελάτη.</p>
+<p>Εκτός από τον αποκλεισμό αρχείων και καταλόγων που χρησιμοποιούν πρότυπα που ορίζονται σε αυτήν τη λίστα:</p>
+<ul class="simple">
+<li><p>Ο Πελάτης Nextcloud αποκλείει πάντα αρχεία που περιέχουν χαρακτήρες που δεν μπορούν να συγχρονιστούν σε άλλα συστήματα αρχείων.</p></li>
+<li><p>Αφαιρούνται αρχεία που προκαλούν μεμονωμένα σφάλματα τρεις φορές κατά τη διάρκεια ενός συγχρονισμού. Ωστόσο, ο πελάτης παρέχει την επιλογή επανάληψης ενός συγχρονισμού τρεις επιπλέον φορές σε αρχεία που παράγουν σφάλματα.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Εγκατάσταση" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="macosvfs.html" class="btn btn-neutral float-right" title="Πελάτης Εικονικών Αρχείων για macOS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 Greek
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Γλώσσες</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Εκδόσεις</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Λήψεις</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Στο Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Αρχική Σελίδα Έργου</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Παραλλαγές</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

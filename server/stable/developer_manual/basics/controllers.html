@@ -1,0 +1,1258 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Controllers &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/basics/controllers.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Middlewares" href="middlewares.html" />
+    <link rel="prev" title="Dependency injection" href="dependency_injection.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Basic concepts</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="request_lifecycle.html">Request lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routing.html">Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependency_injection.html">Dependency injection</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Controllers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#connecting-a-controller-and-a-route">Connecting a controller and a route</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-request-parameters">Getting request parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#casting-parameters">Casting parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#json-parameters">JSON parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reading-headers-files-cookies-and-environment-variables">Reading headers, files, cookies and environment variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reading-and-writing-session-variables">Reading and writing session variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setting-cookies">Setting cookies</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#responses">Responses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#html-based-responses">HTML-based Responses</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#templates">Templates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#public-page-templates">Public page templates</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#data-based-responses">Data-based responses</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ocs">OCS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#json">JSON</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#handling-errors">Handling errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#responders">Responders</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#miscellaneous-responses">Miscellaneous responses</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#redirects">Redirects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#downloads">Downloads</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-custom-responses">Creating custom responses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#streamed-and-lazily-rendered-responses">Streamed and lazily rendered responses</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#security-considerations">Security considerations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#authentication">Authentication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rate-limiting">Rate limiting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#brute-force-protection">Brute-force protection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modifying-the-content-security-policy">Modifying the content security policy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="middlewares.html">Middlewares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="front-end/index.html">Front-end</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translations.html">Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setting.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storage/index.html">Storage and database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="public_share_template.html">Public share template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Basic concepts</a></li>
+      <li class="breadcrumb-item active">Controllers</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/basics/controllers.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="controllers">
+<h1>Controllers<a class="headerlink" href="#controllers" title="Link to this heading"></a></h1>
+<p>Controllers are used to connect <a class="reference internal" href="routing.html"><span class="doc">routes</span></a> with app logic. Think of it as callbacks that are executed once a request has come in. Controllers are defined inside the <strong>lib/Controller/</strong> directory.</p>
+<p>To create a controller, simply extend the Controller class and create a method that should be executed on a request:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Response</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AuthorController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="connecting-a-controller-and-a-route">
+<h2>Connecting a controller and a route<a class="headerlink" href="#connecting-a-controller-and-a-route" title="Link to this heading"></a></h2>
+<p>If you use a proper namespace for your app (see <a class="reference internal" href="../digging_deeper/classloader.html#appclassloader"><span class="std std-ref">Classloader</span></a>) Nextcloud
+will resolve your controller and its dependencies automatically.</p>
+<p>An example route name would look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">author_api</span><span class="c1">#some_method</span>
+</pre></div>
+</div>
+<p>This name is processed in the following way:</p>
+<ul>
+<li><p>Remove the underscore and uppercase the next character:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">authorApi</span><span class="c1">#someMethod</span>
+</pre></div>
+</div>
+</li>
+<li><p>Split at the # and uppercase the first letter of the left part:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AuthorApi</span>
+<span class="n">someMethod</span>
+</pre></div>
+</div>
+</li>
+<li><p>Append Controller to the first part:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AuthorApiController</span>
+<span class="n">someMethod</span>
+</pre></div>
+</div>
+</li>
+<li><p>Now retrieve the service listed under <strong>AuthorApiController</strong> from the container, look up the parameters of the <strong>someMethod</strong> method in the request, cast them if there are PHPDoc type annotations and execute the <strong>someMethod</strong> method on the controller with those parameters.</p></li>
+</ul>
+</section>
+<section id="getting-request-parameters">
+<h2>Getting request parameters<a class="headerlink" href="#getting-request-parameters" title="Link to this heading"></a></h2>
+<p>Parameters can be passed in many ways:</p>
+<ul class="simple">
+<li><p>Extracted from the URL using curly braces like <strong>{key}</strong> inside the URL (see <a class="reference internal" href="routing.html"><span class="doc">Routing</span></a>)</p></li>
+<li><p>Appended to the URL as a GET request (e.g. ?something=true)</p></li>
+<li><p>application/x-www-form-urlencoded from a form or jQuery</p></li>
+<li><p>application/json from a POST, PATCH or PUT request</p></li>
+</ul>
+<p>All those parameters can easily be accessed by adding them to the controller method:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Response</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+    <span class="c1">// this method will be executed with the id and name parameter taken</span>
+    <span class="c1">// from the request</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">doSomething</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
+
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>It is also possible to set default parameter values by using PHP default method values so common values can be omitted:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Response</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @param int $id</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">doSomething</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$name</span><span class="o">=</span><span class="s1">&#39;john&#39;</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$job</span><span class="o">=</span><span class="s1">&#39;author&#39;</span><span class="p">)</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
+        <span class="c1">// GET ?id=3&amp;job=killer</span>
+        <span class="c1">// $id = 3</span>
+        <span class="c1">// $name = &#39;john&#39;</span>
+        <span class="c1">// $job = &#39;killer&#39;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="casting-parameters">
+<h3>Casting parameters<a class="headerlink" href="#casting-parameters" title="Link to this heading"></a></h3>
+<p>URL, GET and application/x-www-form-urlencoded have the problem that every parameter is a string, meaning that:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>?doMore=false
+</pre></div>
+</div>
+<p>would be passed in as the string <em>‘false’</em> which is not what one would expect. To cast these to the correct types, simply add PHPDoc in the form of:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@param type $name
+</pre></div>
+</div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Response</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @param int $id</span>
+<span class="sd">     * @param bool $doMore</span>
+<span class="sd">     * @param float $value</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">doSomething</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">bool</span> <span class="nv">$doMore</span><span class="p">,</span> <span class="nx">float</span> <span class="nv">$value</span><span class="p">)</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
+        <span class="c1">// GET /index.php/apps/myapp?id=3&amp;doMore=false&amp;value=3.5</span>
+        <span class="c1">// =&gt; $id = 3</span>
+        <span class="c1">//    $doMore = false</span>
+        <span class="c1">//    $value = 3.5</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The following types will be cast:</p>
+<ul class="simple">
+<li><p><strong>bool</strong> or <strong>boolean</strong></p></li>
+<li><p><strong>float</strong></p></li>
+<li><p><strong>int</strong> or <strong>integer</strong></p></li>
+</ul>
+</section>
+<section id="json-parameters">
+<h3>JSON parameters<a class="headerlink" href="#json-parameters" title="Link to this heading"></a></h3>
+<p>It is possible to pass JSON using a POST, PUT or PATCH request. To do that the <strong>Content-Type</strong> header has to be set to <strong>application/json</strong>. The JSON is being parsed as an array and the first level keys will be used to pass in the arguments, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">myapp</span><span class="o">/</span><span class="n">authors</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s2">&quot;publisher&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;customFields&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;mail&quot;</span><span class="p">:</span> <span class="s2">&quot;test@example.com&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;Somewhere&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Response</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$number</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$publisher</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$customFields</span><span class="p">)</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
+        <span class="c1">// $name = &#39;test&#39;</span>
+        <span class="c1">// $number = 3</span>
+        <span class="c1">// $publisher = true</span>
+        <span class="c1">// $customFields = array(&quot;mail&quot; =&gt; &quot;test@example.com&quot;, &quot;address&quot; =&gt; &quot;Somewhere&quot;)</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="reading-headers-files-cookies-and-environment-variables">
+<h3>Reading headers, files, cookies and environment variables<a class="headerlink" href="#reading-headers-files-cookies-and-environment-variables" title="Link to this heading"></a></h3>
+<p>Headers, files, cookies and environment variables can be accessed directly from the request object:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Response</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IRequest</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">someMethod</span><span class="p">()</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
+        <span class="nv">$type</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getHeader</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">);</span>  <span class="c1">// $_SERVER[&#39;HTTP_CONTENT_TYPE&#39;]</span>
+        <span class="nv">$cookie</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getCookie</span><span class="p">(</span><span class="s1">&#39;myCookie&#39;</span><span class="p">);</span>  <span class="c1">// $_COOKIES[&#39;myCookie&#39;]</span>
+        <span class="nv">$file</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getUploadedFile</span><span class="p">(</span><span class="s1">&#39;myfile&#39;</span><span class="p">);</span>  <span class="c1">// $_FILES[&#39;myfile&#39;]</span>
+        <span class="nv">$env</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getEnv</span><span class="p">(</span><span class="s1">&#39;SOME_VAR&#39;</span><span class="p">);</span>  <span class="c1">// $_ENV[&#39;SOME_VAR&#39;]</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Why should those values be accessed from the request object and not from the global array like $_FILES? Simple: <a class="reference external" href="http://c2.com/cgi/wiki?GlobalVariablesAreBad">because it’s bad practice</a> and will make testing harder.</p>
+</section>
+<section id="reading-and-writing-session-variables">
+<span id="controller-use-session"></span><h3>Reading and writing session variables<a class="headerlink" href="#reading-and-writing-session-variables" title="Link to this heading"></a></h3>
+<p>To set, get or modify session variables, the ISession object has to be injected into the controller.</p>
+<p>Nextcloud will read existing session data at the beginning of the request lifecycle and close the session afterwards. This means that in order to write to the session, the session has to be opened first. This is done implicitly when calling the set method, but would close immediately afterwards. To prevent this, the session has to be explicitly opened by calling the reopen method.</p>
+<p>Alternatively, you can use the <code class="docutils literal notranslate"><span class="pre">#[UseSession]</span></code> attribute to automatically open and close the session for you.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="hll"><span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Attribute\UseSession</span><span class="p">;</span>
+</span><span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Response</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+<span class="hll">    <span class="p">#[</span><span class="nd">UseSession</span><span class="p">]</span>
+</span>    <span class="k">public</span> <span class="k">function</span> <span class="nf">writeASessionVariable</span><span class="p">()</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">#[UseSession]</span></code> was added in Nextcloud 26 and requires PHP 8.0 or later. If your app targets older releases and PHP 7.x then use the deprecated <code class="docutils literal notranslate"><span class="pre">&#64;UseSession</span></code> annotation.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="hll"><span class="sd"> * @UseSession</span>
+</span><span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">writeASessionVariable</span><span class="p">()</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
+    <span class="c1">// ....</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>In case the session may be read and written by concurrent requests of your application, keeping the session open during your controller method execution may be required to ensure that the session is locked and no other request can write to the session at the same time. When reopening the session, the session data will also get updated with the latest changes from other requests. Using the annotation will keep the session lock for the whole duration of the controller method execution.</p>
+<p>For additional information on how session locking works in PHP see the article about <a class="reference external" href="https://ma.ttias.be/php-session-locking-prevent-sessions-blocking-in-requests/">PHP Session Locking: How To Prevent Sessions Blocking in PHP requests</a>.</p>
+<p>Then session variables can be accessed like this:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The session is closed automatically for writing, unless you add the <code class="docutils literal notranslate"><span class="pre">#[UseSession]</span></code> attribute!</p>
+</div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\ISession</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IRequest</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Attribute\UseSession</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Response</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="nx">ISession</span> <span class="nv">$session</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$appName</span><span class="p">,</span> <span class="nx">IRequest</span> <span class="nv">$request</span><span class="p">,</span> <span class="nx">ISession</span> <span class="nv">$session</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$appName</span><span class="p">,</span> <span class="nv">$request</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span> <span class="o">=</span> <span class="nv">$session</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="p">#[</span><span class="nd">UseSession</span><span class="p">]</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">writeASessionVariable</span><span class="p">()</span><span class="o">:</span> <span class="nx">Response</span> <span class="p">{</span>
+        <span class="c1">// read a session variable</span>
+        <span class="nv">$value</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">];</span>
+
+        <span class="c1">// write a session variable</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;new value&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="setting-cookies">
+<h3>Setting cookies<a class="headerlink" href="#setting-cookies" title="Link to this heading"></a></h3>
+<p>Cookies can be set or modified directly on the response class:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span> <span class="o">&lt;?</span><span class="nx">php</span>
+ <span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+ <span class="k">use</span> <span class="nx">DateTime</span><span class="p">;</span>
+
+ <span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+ <span class="k">use</span> <span class="nx">OCP\AppFramework\Http\TemplateResponse</span><span class="p">;</span>
+ <span class="k">use</span> <span class="nx">OCP\IRequest</span><span class="p">;</span>
+
+ <span class="k">class</span> <span class="nc">BakeryController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+     <span class="sd">/**</span>
+<span class="sd">      * Adds a cookie &quot;foo&quot; with value &quot;bar&quot; that expires after user closes the browser</span>
+<span class="sd">      * Adds a cookie &quot;bar&quot; with value &quot;foo&quot; that expires 2015-01-01</span>
+<span class="sd">      */</span>
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">addCookie</span><span class="p">()</span><span class="o">:</span> <span class="nx">TemplateResponse</span> <span class="p">{</span>
+         <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="o">...</span><span class="p">);</span>
+         <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">addCookie</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">);</span>
+         <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">addCookie</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">(</span><span class="s1">&#39;2015-01-01 00:00&#39;</span><span class="p">));</span>
+         <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="sd">/**</span>
+<span class="sd">      * Invalidates the cookie &quot;foo&quot;</span>
+<span class="sd">      * Invalidates the cookie &quot;bar&quot; and &quot;bazinga&quot;</span>
+<span class="sd">      */</span>
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">invalidateCookie</span><span class="p">()</span><span class="o">:</span> <span class="nx">TemplateResponse</span> <span class="p">{</span>
+         <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="o">...</span><span class="p">);</span>
+         <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">invalidateCookie</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
+         <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">invalidateCookies</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;bazinga&#39;</span><span class="p">));</span>
+         <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
+     <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="responses">
+<h2>Responses<a class="headerlink" href="#responses" title="Link to this heading"></a></h2>
+<p>Similar to how every controller receives a request object, every controller method has to return a Response.
+This can be in the form of a Response subclass or in the form of a value that can be handled by a registered responder.</p>
+<p>There are different kinds of responses available, like HTML-based responses, data responses, or other.
+The app decides of which kind the response is, by returning an appropriate <code class="docutils literal notranslate"><span class="pre">Response</span></code> object in the corresponding controller method.
+The following sections give an overview over the various kinds and how to implement them.</p>
+</section>
+<section id="html-based-responses">
+<span id="controller-html-responses"></span><h2>HTML-based Responses<a class="headerlink" href="#html-based-responses" title="Link to this heading"></a></h2>
+<p>HTML pages are typically served using template responses.
+This is typically used as a starting point to load the website.
+This code linked by the template is by default encapsulated by the server to provide some common styling (e.g. the header row).
+The code then uses JavaScript to load further components (see <a class="reference internal" href="front-end/js.html#applicationjs"><span class="std std-ref">Frontend building in Vue</span></a>) and the actual data.
+This section only focuses on the actual HTML content, not the data to fill into the dynamic pages.</p>
+<section id="templates">
+<span id="controller-template"></span><h3>Templates<a class="headerlink" href="#templates" title="Link to this heading"></a></h3>
+<p>A <a class="reference internal" href="front-end/templates.html"><span class="doc">template</span></a> can be rendered by returning a TemplateResponse. A TemplateResponse takes the following parameters:</p>
+<ul>
+<li><p><strong>appName</strong>: tells the template engine in which app the template should be located</p></li>
+<li><p><strong>templateName</strong>: the name of the template inside the templates/ folder without the .php extension</p></li>
+<li><p><strong>parameters</strong>: optional array parameters that are available in the template through $_, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;something&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>can be accessed through:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$_[&#39;key&#39;]
+</pre></div>
+</div>
+</li>
+<li><p><strong>renderAs</strong>: defaults to <em>user</em>, tells Nextcloud if it should include it in the web interface, or in case <em>blank</em> is passed solely render the template</p></li>
+</ul>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\TemplateResponse</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span><span class="o">:</span> <span class="nx">TemplateResponse</span> <span class="p">{</span>
+        <span class="nv">$templateName</span> <span class="o">=</span> <span class="s1">&#39;main&#39;</span><span class="p">;</span>  <span class="c1">// will use templates/main.php</span>
+        <span class="nv">$parameters</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;hi&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">appName</span><span class="p">,</span> <span class="nv">$templateName</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Showing a template is the only exception to the rule to <a class="reference internal" href="../prologue/security.html#csrf-introduction"><span class="std std-ref">not disable CSRF checks</span></a>:
+The user might type the URL directly (or use a browser bookmark or similar) to navigate to a HTML template.
+Therefore, usage of the <code class="docutils literal notranslate"><span class="pre">#[NoCSRFRequired]</span></code> attribute (see <a class="reference internal" href="#controller-authentication"><span class="std std-ref">below</span></a>) is acceptable in this context.</p>
+</section>
+<section id="public-page-templates">
+<h3>Public page templates<a class="headerlink" href="#public-page-templates" title="Link to this heading"></a></h3>
+<p>For public pages, that are rendered to users who are not logged in to the
+Nextcloud instance, a <code class="docutils literal notranslate"><span class="pre">OCP\\AppFramework\\Http\\Template\\PublicTemplateResponse</span></code> should be used, to load the
+correct base template. It also allows adding an optional set of actions that
+will be shown in the top right corner of the public page.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Template\SimpleMenuAction</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Template\PublicTemplateResponse</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span><span class="o">:</span> <span class="nx">PublicTemplateResponse</span> <span class="p">{</span>
+        <span class="nv">$template</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PublicTemplateResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">appName</span><span class="p">,</span> <span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="p">[]);</span>
+        <span class="nv">$template</span><span class="o">-&gt;</span><span class="na">setHeaderTitle</span><span class="p">(</span><span class="s1">&#39;Public page&#39;</span><span class="p">);</span>
+        <span class="nv">$template</span><span class="o">-&gt;</span><span class="na">setHeaderDetails</span><span class="p">(</span><span class="s1">&#39;some details&#39;</span><span class="p">);</span>
+        <span class="nv">$template</span><span class="o">-&gt;</span><span class="na">setHeaderActions</span><span class="p">([</span>
+            <span class="k">new</span> <span class="nx">SimpleMenuAction</span><span class="p">(</span><span class="s1">&#39;download&#39;</span><span class="p">,</span> <span class="s1">&#39;Label 1&#39;</span><span class="p">,</span> <span class="s1">&#39;icon-css-class1&#39;</span><span class="p">,</span> <span class="s1">&#39;link-url&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="k">new</span> <span class="nx">SimpleMenuAction</span><span class="p">(</span><span class="s1">&#39;share&#39;</span><span class="p">,</span> <span class="s1">&#39;Label 2&#39;</span><span class="p">,</span> <span class="s1">&#39;icon-css-class2&#39;</span><span class="p">,</span> <span class="s1">&#39;link-url&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+        <span class="p">]);</span>
+        <span class="k">return</span> <span class="nv">$template</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The header title and subtitle will be rendered in the header, next to the logo.
+The action with the highest priority (lowest number) will be used as the
+primary action, others will shown in the popover menu on demand.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">OCP\\AppFramework\\Http\\Template\\SimpleMenuAction</span></code> will be a link with an icon added to the menu. App
+developers can implement their own types of menu renderings by adding a custom
+class implementing the <code class="docutils literal notranslate"><span class="pre">OCP\\AppFramework\\Http\\Template\\IMenuAction</span></code> interface.</p>
+<p>As the public template is also some HTML template, the same argumentation as for <a class="reference internal" href="#controller-template"><span class="std std-ref">regular templates</span></a> regarding the CSRF checks hold true:
+The usage of <code class="docutils literal notranslate"><span class="pre">#[NoCSRFRequired]</span></code> for public pages is considered acceptable for some pages:
+Each page that the user should be able to directly access (by typing/pastig the URL in the browser or clicking on a link in a mail) should have this attribute set.
+For multi-page forms in the second and later stages, this should <strong>not</strong> be set as the user should follow the series of pages.</p>
+</section>
+</section>
+<section id="data-based-responses">
+<h2>Data-based responses<a class="headerlink" href="#data-based-responses" title="Link to this heading"></a></h2>
+<p>In contrast to the HTML template responses, the data responses return some user-data in packed form.
+There are different encodings thinkable like JSON, XML, or other formats.
+The main point is that the data is requested by the browser using JavaScript on behalf of the shown website.
+The user only indirectly requested the data by user interaction with the frontend.</p>
+<section id="ocs">
+<span id="ocscontroller"></span><h3>OCS<a class="headerlink" href="#ocs" title="Link to this heading"></a></h3>
+<p>In order to simplify exchange of data between the Nextcloud backend and any client (be it the web frontend or whatever else), the OCS API has been introduced.
+Here, JSON and XML responders have been prepared and are installed without additional effort.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The usage of OCS is closely related to the usage of <a class="reference internal" href="../digging_deeper/rest_apis.html"><span class="doc">REST APIs</span></a>.
+Unless you have a clear use-case, it is advised to use OCS over pure REST.
+A more detailed description can be found in <a class="reference internal" href="../digging_deeper/rest_apis.html#ocs-vs-rest"><span class="std std-ref">Relation of REST and OCS</span></a>.</p>
+</div>
+<p>To use OCS in your API you can use the <strong>OCP\AppFramework\OCSController</strong> base class and return your data in the form of a <strong>DataResponse</strong> in the following way:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\DataResponse</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Attribute\NoAdminRequired</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\OCSController</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ShareController</span> <span class="k">extends</span> <span class="nx">OCSController</span> <span class="p">{</span>
+
+    <span class="p">#[</span><span class="nd">NoAdminRequired</span><span class="p">]</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getShares</span><span class="p">()</span><span class="o">:</span> <span class="nx">DataResponse</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span>
+            <span class="c1">//Your data here</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For <code class="docutils literal notranslate"><span class="pre">OCSController</span></code> classes and their methods, <a class="reference internal" href="#controller-responders"><span class="std std-ref">responders</span></a> can be registered as with any other <code class="docutils literal notranslate"><span class="pre">Controller</span></code> method.
+The <code class="docutils literal notranslate"><span class="pre">OCSController</span></code> class have however automatically two responders pre-installed:
+Both JSON (<code class="docutils literal notranslate"><span class="pre">application/json</span></code>) and XML (<code class="docutils literal notranslate"><span class="pre">text/xml</span></code>) are generated on-the-fly depending on the request by the browser/user.
+To select the output format, the <code class="docutils literal notranslate"><span class="pre">?format=</span></code> query parameter or the <code class="docutils literal notranslate"><span class="pre">Accept</span></code> header of the request work out of the box, no intervention is required.
+It is advised to prefer the header generally, as this is the more standardized way.</p>
+<p>To make routing work for OCS, the route must be registered in the core.
+This can be done in two ways:
+You can add an attribute <cite>#[ApiRoute]</cite> to the controller method.
+Alternatively, you can add <a class="reference internal" href="routing.html#routes-ocs"><span class="std std-ref">a separate ‘ocs’ entry</span></a> to the routing table in <code class="docutils literal notranslate"><span class="pre">appinfo/routes.php</span></code> of your app.
+Inside these, there are the same information as there are for normal routes.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">return</span> <span class="p">[</span>
+     <span class="s1">&#39;ocs&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+         <span class="p">[</span>
+             <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Share#getShares&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/v1/shares&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+         <span class="p">],</span>
+     <span class="p">],</span>
+<span class="p">];</span>
+</pre></div>
+</div>
+<p>Now your method will be reachable via <code class="docutils literal notranslate"><span class="pre">&lt;server&gt;/ocs/v2.php/apps/&lt;APPNAME&gt;/api/v1/shares</span></code></p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 29: </span>You can use the attribute <code class="docutils literal notranslate"><span class="pre">ApiRoute</span></code> as described in <a class="reference internal" href="routing.html"><span class="doc">Routing</span></a> instead of the entry in <code class="docutils literal notranslate"><span class="pre">appinfo/routes.php</span></code> as an alternative.</p>
+</div>
+</section>
+<section id="json">
+<h3>JSON<a class="headerlink" href="#json" title="Link to this heading"></a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The usage of standard controller to access content data like JSON (no HTML) is considered legacy.
+Better use <a class="reference internal" href="#ocscontroller"><span class="std std-ref">OCS</span></a> for this type of requests.</p>
+</div>
+<p>Returning JSON is simple, just pass an array to a JSONResponse:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\JSONResponse</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">returnJSON</span><span class="p">()</span><span class="o">:</span> <span class="nx">JSONResponse</span> <span class="p">{</span>
+        <span class="nv">$params</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;test&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;hi&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">JSONResponse</span><span class="p">(</span><span class="nv">$params</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Because returning JSON is such a common task, there’s even a shorter way to do this:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">returnJSON</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;test&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;hi&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Why does this work? Because the dispatcher sees that the controller did not return a subclass of a Response and asks the controller to turn the value into a Response. That’s where responders come in.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 30: </span>Usage of “index.php”-controllers for data transmission should be avoided. Use OCS instead.</p>
+</div>
+</section>
+<section id="handling-errors">
+<h3>Handling errors<a class="headerlink" href="#handling-errors" title="Link to this heading"></a></h3>
+<p>Sometimes a request should fail, for instance if an author with id 1 is requested but does not exist. In that case use an appropriate <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error">HTTP error code</a> to signal the client that an error occurred.</p>
+<p>Each response subclass has access to the <strong>setStatus</strong> method which lets you set an HTTP status code. To return a JSONResponse signaling that the author with id 1 has not been found, use the following code:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\JSONResponse</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AuthorController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">show</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="c1">// try to get author with $id</span>
+
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">NotFoundException</span> <span class="nv">$ex</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">JSONResponse</span><span class="p">(</span><span class="k">array</span><span class="p">(),</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_NOT_FOUND</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="responders">
+<span id="controller-responders"></span><h3>Responders<a class="headerlink" href="#responders" title="Link to this heading"></a></h3>
+<p>Responders are short functions that take a value and return a response. They are used to return different kinds of responses based on a <strong>format</strong> parameter which is supplied by the client. Think of an API that is able to return both XML and JSON depending on if you call the URL with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>?format=xml
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>?format=json
+</pre></div>
+</div>
+<p>The appropriate responder is being chosen by the following criteria:</p>
+<ul>
+<li><p>First the dispatcher checks the Request if there is a <strong>format</strong> parameter, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>?format=xml
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">myapp</span><span class="o">/</span><span class="n">authors</span><span class="o">.</span><span class="p">{</span><span class="nb">format</span><span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>If there is none, take the <strong>Accept</strong> header, use the first mimetype and cut off <em>application/</em>. In the following example the format would be <em>xml</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">xml</span><span class="p">,</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+</pre></div>
+</div>
+</li>
+<li><p>If there is no Accept header or the responder does not exist, format defaults to <strong>json</strong>.</p></li>
+</ul>
+<p>By default there is only a responder for JSON but more can be added easily:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\DataResponse</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">returnHi</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+
+        <span class="c1">// XMLResponse has to be implemented</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">registerResponder</span><span class="p">(</span><span class="s1">&#39;xml&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$value</span> <span class="nx">instanceof</span> <span class="nx">DataResponse</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="k">new</span> <span class="nx">XMLResponse</span><span class="p">(</span>
+                    <span class="nv">$value</span><span class="o">-&gt;</span><span class="na">getData</span><span class="p">(),</span>
+                    <span class="nv">$value</span><span class="o">-&gt;</span><span class="na">getStatus</span><span class="p">(),</span>
+                    <span class="nv">$value</span><span class="o">-&gt;</span><span class="na">getHeaders</span><span class="p">()</span>
+                <span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="k">new</span> <span class="nx">XMLResponse</span><span class="p">(</span><span class="nv">$value</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+
+        <span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;test&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;hi&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The above example would only return XML if the <strong>format</strong> parameter was <em>xml</em>. If you want to return an XMLResponse regardless of the format parameter, extend the Response class and return a new instance of it from the controller method instead.</p>
+</div>
+<p>Because returning values works fine in case of a success but not in case of failure that requires a custom HTTP error code, you can always wrap the value in a <strong>DataResponse</strong>. This works for both normal responses and error responses.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\DataResponse</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Http</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">returnHi</span><span class="p">()</span><span class="o">:</span> <span class="nx">DataResponse</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="nx">calculate_hi</span><span class="p">());</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$ex</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;msg&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;not found!&#39;</span><span class="p">),</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_NOT_FOUND</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="miscellaneous-responses">
+<h2>Miscellaneous responses<a class="headerlink" href="#miscellaneous-responses" title="Link to this heading"></a></h2>
+<p>Some special responses are available as well.
+These are discussed here.</p>
+<section id="redirects">
+<h3>Redirects<a class="headerlink" href="#redirects" title="Link to this heading"></a></h3>
+<p>A redirect can be achieved by returning a RedirectResponse:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\RedirectResponse</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">toGoogle</span><span class="p">()</span><span class="o">:</span> <span class="nx">RedirectResponse</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">RedirectResponse</span><span class="p">(</span><span class="s1">&#39;https://google.com&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="downloads">
+<h3>Downloads<a class="headerlink" href="#downloads" title="Link to this heading"></a></h3>
+<p>A file download can be triggered by returning a DownloadResponse:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\DownloadResponse</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">downloadXMLFile</span><span class="p">()</span><span class="o">:</span> <span class="nx">DownloadResponse</span> <span class="p">{</span>
+        <span class="nv">$path</span> <span class="o">=</span> <span class="s1">&#39;/some/path/to/file.xml&#39;</span><span class="p">;</span>
+        <span class="nv">$contentType</span> <span class="o">=</span> <span class="s1">&#39;application/xml&#39;</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DownloadResponse</span><span class="p">(</span><span class="nv">$path</span><span class="p">,</span> <span class="nv">$contentType</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="creating-custom-responses">
+<h3>Creating custom responses<a class="headerlink" href="#creating-custom-responses" title="Link to this heading"></a></h3>
+<p>If no premade Response fits the needed use case, it is possible to extend the Response base class and custom Response. The only thing that needs to be implemented is the <strong>render</strong> method which returns the result as string.</p>
+<p>Creating a custom XMLResponse class could look like this:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Http</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Response</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">XMLResponse</span> <span class="k">extends</span> <span class="nx">Response</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="k">array</span> <span class="nv">$xml</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$xml</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addHeader</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">,</span> <span class="s1">&#39;application/xml&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">xml</span> <span class="o">=</span> <span class="nv">$xml</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">render</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="nv">$root</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SimpleXMLElement</span><span class="p">(</span><span class="s1">&#39;&lt;root/&gt;&#39;</span><span class="p">);</span>
+        <span class="nb">array_walk_recursive</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">xml</span><span class="p">,</span> <span class="k">array</span> <span class="p">(</span><span class="nv">$root</span><span class="p">,</span> <span class="s1">&#39;addChild&#39;</span><span class="p">));</span>
+        <span class="k">return</span> <span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">asXML</span><span class="p">();</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="streamed-and-lazily-rendered-responses">
+<h3>Streamed and lazily rendered responses<a class="headerlink" href="#streamed-and-lazily-rendered-responses" title="Link to this heading"></a></h3>
+<p>By default all responses are rendered at once and sent as a string through middleware. In certain cases this is not a desirable behavior, for instance if you want to stream a file in order to save memory. To do that use the now available <strong>OCP\AppFramework\Http\StreamResponse</strong> class:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\StreamResponse</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">downloadXMLFile</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">StreamResponse</span><span class="p">(</span><span class="s1">&#39;/some/path/to/file.xml&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you want to use a custom, lazily rendered response simply implement the interface <strong>OCP\AppFramework\Http\ICallbackResponse</strong> for your response:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Http</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Response</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\ICallbackResponse</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">LazyResponse</span> <span class="k">extends</span> <span class="nx">Response</span> <span class="k">implements</span> <span class="nx">ICallbackResponse</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">callback</span><span class="p">(</span><span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// custom code in here</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Because this code is rendered after several usually built in helpers, you need to take care of errors and proper HTTP caching by yourself.</p>
+</div>
+</section>
+</section>
+<section id="security-considerations">
+<h2>Security considerations<a class="headerlink" href="#security-considerations" title="Link to this heading"></a></h2>
+<p>Depending on your use-case, you can tighten or loosen the security measurements installed by default on the routes.
+This section gives you a quick overview over the options.</p>
+<section id="authentication">
+<span id="controller-authentication"></span><h3>Authentication<a class="headerlink" href="#authentication" title="Link to this heading"></a></h3>
+<p>By default every controller method enforces the maximum security, which is:</p>
+<ul class="simple">
+<li><p>Ensure that the user is admin</p></li>
+<li><p>Ensure that the user is logged in</p></li>
+<li><p>Ensure that the user has passed the two-factor challenge, if applicable</p></li>
+<li><p>Ensure the request is no CSRF attack, that is at least one of the following:</p>
+<ul>
+<li><p>Ensure the CSRF token is present and valid</p></li>
+<li><p>Ensure the <code class="docutils literal notranslate"><span class="pre">OCS-APIRequest</span></code> header is present and set to <code class="docutils literal notranslate"><span class="pre">true</span></code> <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
+</ul>
+</li>
+</ul>
+<section id="loosening-the-default-restrictions">
+<h4>Loosening the default restrictions<a class="headerlink" href="#loosening-the-default-restrictions" title="Link to this heading"></a></h4>
+<p>Most of the time though it makes sense to also allow normal users to access the page and the <code class="docutils literal notranslate"><span class="pre">PageController-&gt;index()</span></code> method should not check the CSRF token because it has not yet been sent to the client and because of that can’t work.</p>
+<p>To turn off checks the following <em>Attributes</em> can be added before the controller:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#[NoAdminRequired]</span></code>: Also users that are not admins can access the page</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#[PublicPage]</span></code>: Everyone can access the page without having to log in</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#[NoTwoFactorRequired]</span></code>: A user can access the page before the two-factor challenge has been passed (use this wisely and only in two-factor auth apps, e.g. to allow setup during login)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#[NoCSRFRequired]</span></code>: Don’t check the CSRF token (use this wisely since you might create a security hole; to understand what it does see <a class="reference external" href="../prologue/security.html#cross-site-request-forgery">CSRF in the security section</a>)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The attributes are only available in Nextcloud 27 or later. In older versions annotations with the same names exist:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;NoAdminRequired</span></code> instead of <code class="docutils literal notranslate"><span class="pre">#[NoAdminRequired]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;PublicPage`</span></code> instead of <code class="docutils literal notranslate"><span class="pre">#[PublicPage]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;NoTwoFactorRequired`</span></code> instead of <code class="docutils literal notranslate"><span class="pre">#[NoTwoFactorRequired]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;NoCSRFRequired`</span></code> instead of <code class="docutils literal notranslate"><span class="pre">#[NoCSRFRequired]</span></code></p></li>
+</ul>
+</div>
+<p>In the following some examples of configurations are given.</p>
+</section>
+<section id="showing-an-html-page-by-the-user">
+<h4>Showing an HTML page by the user<a class="headerlink" href="#showing-an-html-page-by-the-user" title="Link to this heading"></a></h4>
+<p>A typical app needs an <code class="docutils literal notranslate"><span class="pre">index.html</span></code> page to show all content within.
+This page should be visible by all users in the instance.
+Therefore, you need to loosen the restriction from admins only (<code class="docutils literal notranslate"><span class="pre">#[NoAdminRequired]</span></code>).
+Additionally, as the user might not have a CSRF checker cookie set yet, the CSRF checks should be disabled (which is fine as this is a template response).</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\TemplateResponse</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Attribute\NoCSRFRequired</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Attribute\PublicPage</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+    <span class="p">#[</span><span class="nd">NoCSRFRequired</span><span class="p">]</span>
+    <span class="p">#[</span><span class="nd">NoAdminRequired</span><span class="p">]</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span><span class="o">:</span> <span class="nx">TemplateResponse</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">appName</span><span class="p">,</span> <span class="s1">&#39;main&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If the page should only be visible to the admin, you can keep the restrictive default by omitting the attribute <code class="docutils literal notranslate"><span class="pre">#[NoAdminRequired]</span></code>.</p>
+</section>
+<section id="getting-data-from-the-backend-using-ajax-requests">
+<h4>Getting data from the backend using AJAX requests<a class="headerlink" href="#getting-data-from-the-backend-using-ajax-requests" title="Link to this heading"></a></h4>
+<p>Data for the frontend needs to be made available from the backend.
+Here, OCS is the suggested way to go.
+Here is the example from <a class="reference internal" href="#ocscontroller"><span class="std std-ref">OCS controllers</span></a>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\DataResponse</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Attribute\NoAdminRequired</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\OCSController</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ShareController</span> <span class="k">extends</span> <span class="nx">OCSController</span> <span class="p">{</span>
+
+    <span class="p">#[</span><span class="nd">NoAdminRequired</span><span class="p">]</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getShares</span><span class="p">()</span><span class="o">:</span> <span class="nx">DataResponse</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span>
+            <span class="c1">// Your data here</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">#[NoAdminRequired]</span></code> is needed here as normal users should be able to access the data.
+It can be left out in case only the admin user should be able to access the data.
+The CSRF check is still active.
+Thus, the client must obey the corresponding requirements.</p>
+</section>
+<section id="completely-disabled-authentication">
+<h4>Completely disabled authentication<a class="headerlink" href="#completely-disabled-authentication" title="Link to this heading"></a></h4>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is a security issue if the side-effects are not carefully considered.
+You should only use this for public pages that anyone is allowed to access.</p>
+</div>
+<p>A controller method that turns off all checks would look like this:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\IRequest</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="hll"><span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Attribute\NoCSRFRequired</span><span class="p">;</span>
+</span><span class="hll"><span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Attribute\PublicPage</span><span class="p">;</span>
+</span>
+<span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+<span class="hll">    <span class="p">#[</span><span class="nd">NoCSRFRequired</span><span class="p">]</span>
+</span><span class="hll">    <span class="p">#[</span><span class="nd">PublicPage</span><span class="p">]</span>
+</span>    <span class="k">public</span> <span class="k">function</span> <span class="nf">freeForAll</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="rate-limiting">
+<h3>Rate limiting<a class="headerlink" href="#rate-limiting" title="Link to this heading"></a></h3>
+<p>Nextcloud supports rate limiting on a controller method basis and in a <a class="reference internal" href="../digging_deeper/security.html#programmatic-rate-limiting"><span class="std std-ref">programmatic way</span></a>. By default controller methods are not rate limited. Rate limiting should be used on expensive or security sensitive functions (e.g. password resets) to increase the overall security of your application.</p>
+<p>The native rate limiting will return a 429 status code to clients when the limit is reached and a default Nextcloud error page. When implementing rate limiting in your application, you should thus consider handling error situations where a 429 is returned by Nextcloud.</p>
+<p>To enable rate limiting the following <em>Attributes</em> can be added to the controller:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#[UserRateLimit(limit:</span> <span class="pre">int,</span> <span class="pre">period:</span> <span class="pre">int)]</span></code>: The rate limiting that is applied to logged-in users. If not specified Nextcloud will fallback to <code class="docutils literal notranslate"><span class="pre">AnonRateLimit</span></code> if available.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#[AnonRateLimit(limit:</span> <span class="pre">int,</span> <span class="pre">period:</span> <span class="pre">int)]</span></code>: The rate limiting that is applied to guests.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The attributes are only available in Nextcloud 27 or later. In older versions the <code class="docutils literal notranslate"><span class="pre">&#64;UserRateThrottle(limit=int,</span> <span class="pre">period=int)</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;AnonRateThrottle(limit=int,</span> <span class="pre">period=int)</span></code> annotation can be used. If both are present, the attribute will be considered first.</p>
+</div>
+<p>A controller method that would allow five requests for logged-in users and one request for anonymous users within the last 100 seconds would look as following:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\IRequest</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Attribute\AnonRateLimit</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Attribute\UserRateLimit</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @PublicPage</span>
+<span class="sd">     */</span>
+<span class="hll">    <span class="p">#[</span><span class="nd">UserRateLimit</span><span class="p">(</span><span class="nx">limit</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nx">period</span><span class="o">:</span> <span class="mi">100</span><span class="p">)]</span>
+</span><span class="hll">    <span class="p">#[</span><span class="nd">AnonRateLimit</span><span class="p">(</span><span class="nx">limit</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">period</span><span class="o">:</span> <span class="mi">100</span><span class="p">)]</span>
+</span>    <span class="k">public</span> <span class="k">function</span> <span class="nf">rateLimitedForAll</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="brute-force-protection">
+<h3>Brute-force protection<a class="headerlink" href="#brute-force-protection" title="Link to this heading"></a></h3>
+<p>Nextcloud supports brute-force protection on an action basis. By default controller methods are not protected. Brute-force protection should be used on security sensitive functions (e.g. login attempts) to increase the overall security of your application.</p>
+<p>The native brute-force protection will slow down requests if too many violations have been found. This slow down will be applied to all requests against a brute-force protected controller with the same action from the affected IP.</p>
+<p>To enable brute force protection the following <em>Attribute</em> can be added to the controller:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#[BruteForceProtection(action:</span> <span class="pre">'string')]</span></code>: “string” is the name of the action. Such as “login” or “reset”. Brute-force attempts are on a per-action basis; this means if a violation for the “login” action is triggered, other actions such as “reset” or “foobar” are not affected.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The attribute is only available in Nextcloud 27 or later. In older versions the <code class="docutils literal notranslate"><span class="pre">&#64;BruteForceProtection(action=string)</span></code> annotation can be used, but that does not allow multiple assignments to a single controller method.</p>
+</div>
+<p>Then the <strong>throttle()</strong> method has to be called on the response in case of a violation. Doing so will increase the throttle counter and make following requests slower, until a slowness of roughly 30 seconds is reached and the controller returns a <code class="docutils literal notranslate"><span class="pre">429</span> <span class="pre">Too</span> <span class="pre">Many</span> <span class="pre">Requests</span></code> status without further processing the request.</p>
+<p>A controller method that would implement brute-force protection with an action of “foobar” would look as following:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\IRequest</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Attribute\BruteForceProtection</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\TemplateResponse</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+<span class="hll">    <span class="p">#[</span><span class="nd">BruteForceProtection</span><span class="p">(</span><span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;foobar&#39;</span><span class="p">)]</span>
+</span>    <span class="k">public</span> <span class="k">function</span> <span class="nf">bruteforceProtected</span><span class="p">()</span><span class="o">:</span> <span class="nx">TemplateResponse</span> <span class="p">{</span>
+        <span class="nv">$templateResponse</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="nx">…</span><span class="p">);</span>
+        <span class="c1">// In case of a violation increase the throttle counter</span>
+        <span class="c1">// note that $this-&gt;auth-&gt;isSuccessful here is just an</span>
+        <span class="c1">// example.</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">auth</span><span class="o">-&gt;</span><span class="na">isSuccessful</span><span class="p">())</span> <span class="p">{</span>
+<span class="hll">             <span class="nv">$templateResponse</span><span class="o">-&gt;</span><span class="na">throttle</span><span class="p">();</span>
+</span>        <span class="p">}</span>
+        <span class="k">return</span> <span class="nv">$templateResponse</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A controller can also have multiple factors to brute force against. In this case you can specify multiple attributes and then in the throttle you specify the action which was violated. This is especially useful when a secret, in the sample below token, could be guessed on multiple endpoints e.g. a share token on the API level, preview endpoint, frontend controller, etc. while another secret (password), is specific to this one controller method.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\IRequest</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Attribute\BruteForceProtection</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\TemplateResponse</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+<span class="hll">    <span class="p">#[</span><span class="nd">BruteForceProtection</span><span class="p">(</span><span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;token&#39;</span><span class="p">)]</span>
+</span><span class="hll">    <span class="p">#[</span><span class="nd">BruteForceProtection</span><span class="p">(</span><span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;password&#39;</span><span class="p">)]</span>
+</span>    <span class="k">public</span> <span class="k">function</span> <span class="nf">getPasswordProtectedShare</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$token</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$password</span><span class="p">)</span><span class="o">:</span> <span class="nx">TemplateResponse</span> <span class="p">{</span>
+        <span class="nv">$templateResponse</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="nx">…</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">shareManager</span><span class="o">-&gt;</span><span class="na">getByToken</span><span class="p">(</span><span class="nv">$token</span><span class="p">))</span> <span class="p">{</span>
+<span class="hll">            <span class="nv">$templateResponse</span><span class="o">-&gt;</span><span class="na">throttle</span><span class="p">([</span><span class="s1">&#39;action&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;token&#39;</span><span class="p">]);</span>
+</span>        <span class="p">}</span>
+        <span class="c1">// …</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$share</span><span class="o">-&gt;</span><span class="na">verifyPassword</span><span class="p">(</span><span class="nv">$password</span><span class="p">))</span> <span class="p">{</span>
+<span class="hll">            <span class="nv">$templateResponse</span><span class="o">-&gt;</span><span class="na">throttle</span><span class="p">([</span><span class="s1">&#39;action&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;password&#39;</span><span class="p">]);</span>
+</span>        <span class="p">}</span>
+        <span class="k">return</span> <span class="nv">$templateResponse</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="modifying-the-content-security-policy">
+<h3>Modifying the content security policy<a class="headerlink" href="#modifying-the-content-security-policy" title="Link to this heading"></a></h3>
+<p>By default Nextcloud disables all resources which are not served on the same domain, forbids cross domain requests and disables inline CSS and JavaScript by setting a <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy">Content Security Policy</a>.
+However if an app relies on third-party media or other features which are forbidden by the current policy the policy can be relaxed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Double check your content and edge cases before you relax the policy! Also read the <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy">documentation provided by MDN</a></p>
+</div>
+<p>To relax the policy pass an instance of the ContentSecurityPolicy class to your response. The methods on the class can be chained.</p>
+<p>The following methods turn off security features by passing in <strong>true</strong> as the <strong>$isAllowed</strong> parameter</p>
+<ul>
+<li><p><strong>allowInlineScript</strong> (bool $isAllowed)</p></li>
+<li><p><strong>allowInlineStyle</strong> (bool $isAllowed)</p></li>
+<li><p><strong>allowEvalScript</strong> (bool $isAllowed)</p></li>
+<li><p><strong>useStrictDynamic</strong> (bool $isAllowed)</p>
+<p>Trust all scripts that are loaded by a trusted script, see ‘script-src’ and ‘strict-dynamic’</p>
+</li>
+<li><p><strong>useStrictDynamicOnScripts</strong> (bool $isAllowed)</p>
+<p>Trust all scripts that are loaded by a trusted script which was loaded using a <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> tag, see ‘script-src-elem’ <strong>(enabled by default)</strong></p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">useStrictDynamicOnScripts</span></code> is enabled by default to allow module javascript to load its dependencies using <code class="docutils literal notranslate"><span class="pre">import</span></code> since Nextcloud 28. You can disable this by passing <strong>false</strong> as the parameter.</p>
+</div>
+<p>The following methods whitelist domains by passing in a domain or * for any domain:</p>
+<ul class="simple">
+<li><p><strong>addAllowedScriptDomain</strong> (string $domain)</p></li>
+<li><p><strong>addAllowedStyleDomain</strong> (string $domain)</p></li>
+<li><p><strong>addAllowedFontDomain</strong> (string $domain)</p></li>
+<li><p><strong>addAllowedImageDomain</strong> (string $domain)</p></li>
+<li><p><strong>addAllowedConnectDomain</strong> (string $domain)</p></li>
+<li><p><strong>addAllowedMediaDomain</strong> (string $domain)</p></li>
+<li><p><strong>addAllowedObjectDomain</strong> (string $domain)</p></li>
+<li><p><strong>addAllowedFrameDomain</strong> (string $domain)</p></li>
+<li><p><strong>addAllowedChildSrcDomain</strong> (string $domain)</p></li>
+</ul>
+<p>The following policy for instance allows images, audio and videos from other domains:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\TemplateResponse</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\ContentSecurityPolicy</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="s1">&#39;main&#39;</span><span class="p">);</span>
+        <span class="nv">$csp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ContentSecurityPolicy</span><span class="p">();</span>
+        <span class="nv">$csp</span><span class="o">-&gt;</span><span class="na">addAllowedImageDomain</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">);</span>
+            <span class="o">-&gt;</span><span class="na">addAllowedMediaDomain</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">);</span>
+        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContentSecurityPolicy</span><span class="p">(</span><span class="nv">$csp</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Even though the header name <code class="docutils literal notranslate"><span class="pre">OCS-APIRequest</span></code> hints purely at OCS controllers, with NC 30 classic controller methods respect this header as well.
+Until NC 30, classical controller methods did not respect the header.</p>
+</aside>
+</aside>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dependency_injection.html" class="btn btn-neutral float-left" title="Dependency injection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="middlewares.html" class="btn btn-neutral float-right" title="Middlewares" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Apr 02, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

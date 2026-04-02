@@ -1,0 +1,675 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="uk-UA" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Синхронізація з Android &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/groupware/sync_android.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=e691f3da"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=0958edf7"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Індекс" href="../genindex.html" />
+    <link rel="search" title="Пошук" href="../search.html" />
+    <link rel="next" title="Синхронізація з iOS" href="sync_ios.html" />
+    <link rel="prev" title="Налаштування повідомлень поза офісом" href="absence.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Вступ до посібника користувача Nextcloud (latest)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Інтерфейс веб-версії Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Файли та синхронізація</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Програмне забезпечення для групової роботи</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Використання програми «Контакти</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Використання програми «Календар</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mail.html">Використання програми «Пошта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">Налаштування повідомлень поза офісом</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Синхронізація з Android</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#files-and-notifications">Файли та сповіщення</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#contacts-and-calendar">Контакти та календар</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#with-the-nextcloud-mobile-app">За допомогою мобільного додатку Nextcloud</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#without-the-nextcloud-mobile-app">Без мобільного додатку Nextcloud</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">Синхронізація з iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">Синхронізація з MacOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Синхронізація з Thunderbird</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Синхронізація з KDE Kontact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Синхронізація з робочим столом GNOME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Синхронізація з Windows 10</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Розмови</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Десктопні клієнти</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Налаштуйте ваші вподобання</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Універсальний доступ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Використання двофакторної аутентифікації</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Керуйте підключеними браузерами та пристроями</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Зовнішнє сховище</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Програмне забезпечення для групової роботи</a></li>
+      <li class="breadcrumb-item active">Синхронізація з Android</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/sync_android.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="synchronizing-with-android">
+<h1>Синхронізація з Android<a class="headerlink" href="#synchronizing-with-android" title="Link to this heading"></a></h1>
+<section id="files-and-notifications">
+<h2>Файли та сповіщення<a class="headerlink" href="#files-and-notifications" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Встановіть клієнт Nextcloud для Android <a href="#id2"><span class="problematic" id="id3">`з Google Play Store &amp;lt;https://play.google.com/store/apps/details?id=com.nextcloud.client&amp;gt;`__</span></a> або <a href="#id2"><span class="problematic" id="id4">`з F-Droid &amp;lt;https://f-droid.org/packages/com.nextcloud.client/&amp;gt;`__</span></a>.</p></li>
+<li><p>Запустіть додаток. Існує два способи його налаштування:</p>
+<p><em>Або</em>: введіть URL-адресу вашого сервера, продовжте, введіть ім’я користувача та пароль і підтвердіть надання доступу.</p>
+<p><em>Або</em>: У веб-графічному інтерфейсі Nextcloud перейдіть до <a class="reference external" href="../userpreferences.html">користувацьких налаштувань</a>, перейдіть до <strong>Безпека</strong>. Згенеруйте пароль додатку, натисніть «Згенерувати QR-код» і торкніться іконки QR-сканера в додатку Nextcloud, направте камеру телефону на екран.</p>
+</li>
+</ol>
+</section>
+<section id="contacts-and-calendar">
+<h2>Контакти та календар<a class="headerlink" href="#contacts-and-calendar" title="Link to this heading"></a></h2>
+<section id="with-the-nextcloud-mobile-app">
+<h3>За допомогою мобільного додатку Nextcloud<a class="headerlink" href="#with-the-nextcloud-mobile-app" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Встановіть <a href="#id14"><span class="problematic" id="id15">`DAVx⁵ (раніше відомий як DAVDroid) &amp;lt;https://www.davx5.com/download/&amp;gt;`_</span></a> на ваш пристрій Android, <a href="#id2"><span class="problematic" id="id5">`з Google Play Store &amp;lt;https://play.google.com/store/apps/details?id=at.bitfire.davdroid&amp;gt;`__</span></a> або <a href="#id2"><span class="problematic" id="id6">`з F-Droid &amp;lt;https://f-droid.org/packages/at.bitfire.davdroid/&amp;gt;`__</span></a>.</p></li>
+<li><p>У мобільному Nextcloud перейдіть до <strong>Налаштування</strong>/<strong>Додатково</strong>, натисніть «<strong>Синхронізувати календарі та контакти</strong>».</p></li>
+<li><p>Тепер DAVx⁵ відкриє вікно входу до Nextcloud Webflow, де вам потрібно буде ввести свої облікові дані та надати доступ.</p></li>
+<li><p>DAVx⁵ відкриється і попросить вас створити обліковий запис. Введіть ім’я облікового запису на свій розсуд і встановіть <strong>Метод групи контактів</strong> на <strong>Групи - це категорії для кожного контакту</strong>.</p></li>
+<li><p>Після цього DAVx⁵ закриється, і знову з’явиться додаток Nextcloud. Щоб завершити налаштування, вам потрібно знову запустити DAVx⁵ вручну.</p></li>
+<li><p>Натисніть на іконку щойно створеного облікового запису DAVx⁵, за запитом надайте DAVx⁵ доступ до ваших календарів і контактів.</p></li>
+<li><p>Коли ви торкнетеся іконки облікового запису, який налаштовано у DAVx⁵, програма відкриє доступні адресні книги та календарі. Виберіть ті, які ви хочете синхронізувати, і завершіть.</p></li>
+</ol>
+</section>
+<section id="without-the-nextcloud-mobile-app">
+<h3>Без мобільного додатку Nextcloud<a class="headerlink" href="#without-the-nextcloud-mobile-app" title="Link to this heading"></a></h3>
+<p>Якщо ви не хочете встановлювати мобільний додаток Nextcloud, виконайте наступні кроки:</p>
+<ol class="arabic simple">
+<li><p>Встановіть <a href="#id16"><span class="problematic" id="id17">`DAVx⁵ (раніше відомий як DAVDroid) &amp;lt;https://www.davx5.com/download/&amp;gt;`_</span></a> на ваш пристрій Android, <a href="#id2"><span class="problematic" id="id7">`з Google Play Store &amp;lt;https://play.google.com/store/apps/details?id=at.bitfire.davdroid&amp;gt;`__</span></a> або <a href="#id2"><span class="problematic" id="id8">`з F-Droid &amp;lt;https://f-droid.org/packages/at.bitfire.davdroid/&amp;gt;`__</span></a>.</p></li>
+<li><p>За бажанням встановіть OpenTasks (<a href="#id2"><span class="problematic" id="id9">`Google Play Store &amp;lt;https://play.google.com/store/apps/details?id=org.dmfs.tasks&amp;gt;`__</span></a> або <a href="#id2"><span class="problematic" id="id10">`F-Droid &amp;lt;https://f-droid.org/packages/org.dmfs.tasks/&amp;gt;`__</span></a>).</p></li>
+<li><p>Створіть новий обліковий запис (кнопка «+»).</p></li>
+<li><p>Виберіть <strong>Підключення з URL та іменем користувача</strong>. <strong>Базова URL-адреса:</strong> URL-адреса вашого екземпляра Nextcloud (наприклад, <code class="docutils literal notranslate"><span class="pre">https://sub.example.com/remote.php/dav</span></code>) та ваші облікові дані.</p></li>
+<li><p>Для <strong>Метод групи контактів:</strong> виберіть опцію <code class="docutils literal notranslate"><span class="pre">Групи</span> <span class="pre">-</span> <span class="pre">це</span> <span class="pre">категорії</span> <span class="pre">для</span> <span class="pre">кожного</span> <span class="pre">контакту</span></code>.</p></li>
+<li><p>Натисніть <strong>Підключитися</strong>.</p></li>
+<li><p>Виберіть дані, які потрібно синхронізувати.</p></li>
+<li><p>За запитом надайте дозволи на доступ до DAVx⁵ для ваших контактів, календарів і, за бажанням, завдань.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Введіть свою електронну адресу як ім’я облікового запису DAVx⁵ (обов’язково, якщо ви хочете мати можливість надсилати запрошення до календаря). Якщо ваша електронна адреса зареєстрована у ваших налаштуваннях Nextcloud і ви налаштували свій акаунт за допомогою мобільного додатку Nextcloud, це вже має бути так.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Використання імені користувача та пароля не працюватиме, якщо увімкнено 2-факторну автентифікацію, і спричинить типову помилку «Невідомий ресурс». Замість цього використовуйте <a class="reference internal" href="../session_management.html#managing-devices"><span class="std std-ref">виділений пароль програми</span></a>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Порада</p>
+<p>У DAVx⁵ перелічені підписки на календар, зроблені через додаток Nextcloud Calendar, але для їх синхронізації вам потрібно встановити додаток <a href="#id2"><span class="problematic" id="id11">`ICSx⁵ (раніше відомий як ICSDroid) &amp;lt;https://icsx5.bitfire.at/&amp;gt;`__</span></a> на вашому пристрої Android, <a href="#id2"><span class="problematic" id="id12">`з Google Play Store &amp;lt;https://play.google.com/store/apps/details?id=at.bitfire.icsdroid&amp;gt;`__</span></a> або <a href="#id2"><span class="problematic" id="id13">`з F-Droid &amp;lt;https://f-droid.org/packages/at.bitfire.icsdroid/&amp;gt;`__</span></a>.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="absence.html" class="btn btn-neutral float-left" title="Налаштування повідомлень поза офісом" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sync_ios.html" class="btn btn-neutral float-right" title="Синхронізація з iOS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 uk-UA
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Мови</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Версії</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Завантаження</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Прочитайте документацію</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Головна Проєкту</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Побудови</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,703 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Автоматическое обновление &mdash; документация Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/desktop/autoupdate.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=ca9b7fb8"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=5b699b7f"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Update channels" href="updatechannel.html" />
+    <link rel="prev" title="macOS Virtual Files client" href="macosvfs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Логотип"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest руководство пользователя. Введение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Веб-интерфейс Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Файлы и синхронизация</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Программное обеспечение для совместной работы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Clients</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html">Using the Synchronization Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macosvfs.html">macOS Virtual Files client</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Автоматическое обновление</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-workflow">Базовый рабочий процесс</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#windows">Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#macos">macOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linux">Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#preventing-automatic-updates">Предотвращение автоматического обновления</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#preventing-automatic-updates-in-windows-environments">Предотвращение автоматических обновлений в средах Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preventing-automatic-updates-in-linux-environments">Предотвращение автоматического обновления в средах Linux</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Update channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conflicts.html">Конфликты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">Часто задаваемые вопросы</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Персональные настройки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Специальные возможности</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Использование двухфакторной аутентификации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Управление подключенными браузерами и устройствами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Внешнее хранилище</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Desktop Clients</a></li>
+      <li class="breadcrumb-item active">Автоматическое обновление</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/autoupdate.rst" class="fa fa-github"> Редактировать на GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-automatic-updater">
+<h1>Автоматическое обновление<a class="headerlink" href="#the-automatic-updater" title="Ссылка на этот заголовок"></a></h1>
+<p>Автоматическое обновление гарантирует, что у вас всегда будут новейшие функции и исправления ошибок для вашего клиента синхронизации Nextcloud.</p>
+<p>Программа автоматического обновления обновляется только на компьютерах macOS и Windows; пользователям Linux необходимо использовать только обычные менеджеры пакетов. Однако в системах Linux программа обновления будет проверять наличие обновлений и уведомлять вас о появлении новой версии.</p>
+<section id="basic-workflow">
+<h2>Базовый рабочий процесс<a class="headerlink" href="#basic-workflow" title="Ссылка на этот заголовок"></a></h2>
+<p>В следующих разделах описано, как использовать программу автоматического обновления в различных операционных системах.</p>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Ссылка на этот заголовок"></a></h3>
+<p>Клиент Nextcloud проверяет наличие обновлений и загружает их, когда они доступны. Вы можете просмотреть статус обновления в разделе <code class="docutils literal notranslate"><span class="pre">Настройки</span> <span class="pre">-&gt;</span> <span class="pre">Общие</span> <span class="pre">-&gt;</span> <span class="pre">Обновления</span></code> в клиенте Nextcloud.</p>
+<p>Если обновление доступно и было успешно загружено, клиент Nextcloud запускает автоматическое обновление перед следующим запуском, а затем перезапускается сам. В случае сбоя автоматического обновления клиент предлагает загрузить его вручную.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Для выполнения обновления требуются права администратора.</p>
+</div>
+</section>
+<section id="macos">
+<h3>macOS<a class="headerlink" href="#macos" title="Ссылка на этот заголовок"></a></h3>
+<p>Клиент macOS имеет программу автоматического обновления, которая использует платформу Sparkle Framework. Эта программа автоматического обновления включена в комплект клиентского приложения и проверяет наличие обновлений при запуске, уведомляя вас о наличии обновлений. При этом появится всплывающее окно, которое позволит вам автоматически загрузить и установить последнее обновление клиента одним щелчком мыши.</p>
+<p>В версиях клиента, в которых автообновление на основе Sparkle не входит в комплект поставки, появится интерактивное уведомление, информирующее о доступе обновления. После нажатия на указанное уведомление в веб-браузере системы откроется страница загрузки последней версии клиента.</p>
+<p>Как и в других системах, вы можете просмотреть статус обновления в разделе <code class="docutils literal notranslate"><span class="pre">Настройки</span> <span class="pre">-&gt;</span> <span class="pre">Общие</span> <span class="pre">-&gt;</span> <span class="pre">Обновления</span></code> в клиенте Nextcloud.</p>
+</section>
+<section id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Ссылка на этот заголовок"></a></h3>
+<p>Дистрибутивы Linux предоставляют собственные средства обновления, поэтому клиенты Nextcloud, использующие операционную систему Linux, не выполняют никаких обновлений самостоятельно. Клиент сообщит вам (<code class="docutils literal notranslate"><span class="pre">Настройки</span> <span class="pre">-&gt;</span> <span class="pre">Общие</span> <span class="pre">-&gt;</span> <span class="pre">Обновления</span></code>), когда обновление будет доступно.</p>
+</section>
+</section>
+<section id="preventing-automatic-updates">
+<h2>Предотвращение автоматического обновления<a class="headerlink" href="#preventing-automatic-updates" title="Ссылка на этот заголовок"></a></h2>
+<p>В контролируемых средах, таких как компании или университеты, вы можете не захотеть включать механизм автоматического обновления, поскольку это мешает работе инструментов и политик контролируемого развертывания. Для решения этой проблемы можно полностью отключить автоматическое обновление. В следующих разделах описано, как отключить механизм автоматического обновления для различных операционных систем.</p>
+<section id="preventing-automatic-updates-in-windows-environments">
+<h3>Предотвращение автоматических обновлений в средах Windows<a class="headerlink" href="#preventing-automatic-updates-in-windows-environments" title="Ссылка на этот заголовок"></a></h3>
+<p>Пользователи могут отключить автоматическое обновление, добавив эту строку в раздел [Общие] своих файлов <code class="docutils literal notranslate"><span class="pre">nextcloud.cfg</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">skipUpdateCheck</span><span class="o">=</span><span class="n">true</span>
+</pre></div>
+</div>
+<p>У администраторов Windows есть больше возможностей предотвратить автоматическое обновление в среде Windows, используя один из двух методов. Первый метод позволяет пользователям переопределить механизм автоматической проверки обновлений, в то время как второй метод предотвращает любые переопределения вручную.</p>
+<p>Чтобы предотвратить автоматическое обновление, но разрешить ручное переопределение:</p>
+<ol class="arabic">
+<li><p>Отредактируйте эти разделы реестра:</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>(32-bit-Windows) <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Nextcloud\Nextcloud</span></code></p></li>
+<li><p>(64-bit-Windows) <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Wow6432Node\Nextcloud\Nextcloud</span></code></p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>Добавьте ключ <cite>skipUpdateCheck</cite> (типа DWORD).</p></li>
+<li><p>Укажите для устройства значение <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+</ol>
+<p>Чтобы вручную переопределить этот ключ, используйте то же значение в <code class="docutils literal notranslate"><span class="pre">HKEY_CURRENT_USER</span></code>.</p>
+<p>Чтобы предотвратить автоматическое обновление и запретить ручные переопределения:</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Это предпочтительный метод управления поведением программы обновления с помощью групповых политик.</p>
+</div>
+<ol class="arabic">
+<li><p>Отредактируйте этот раздел реестра:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Policies\Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code></p>
+</div></blockquote>
+</li>
+<li><p>Добавьте ключ <cite>skipUpdateCheck</cite> (типа DWORD).</p></li>
+<li><p>Укажите для устройства значение <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>у фирменных клиентов разные ключевые названия</p>
+</div>
+</section>
+<section id="preventing-automatic-updates-in-linux-environments">
+<h3>Предотвращение автоматического обновления в средах Linux<a class="headerlink" href="#preventing-automatic-updates-in-linux-environments" title="Ссылка на этот заголовок"></a></h3>
+<p>Поскольку клиент Linux не поддерживает функцию автоматического обновления, нет необходимости снимать флажок автоматического обновления. Однако, если вы хотите отключить его, отредактируйте файл конфигурации вашего настольного клиента <code class="docutils literal notranslate"><span class="pre">$HOME/.config/Nextcloud/nextcloud.cfg</span></code>. Добавьте эту строку в раздел [Общие]:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">skipUpdateCheck</span><span class="o">=</span><span class="n">true</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="macosvfs.html" class="btn btn-neutral float-left" title="macOS Virtual Files client" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="updatechannel.html" class="btn btn-neutral float-right" title="Update channels" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2016-2026 Nextcloud GmbH and Nextcloud contributors. </p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 Russian
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Languages</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Версии</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Загрузки</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Читать на Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">В начало</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Сборка</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

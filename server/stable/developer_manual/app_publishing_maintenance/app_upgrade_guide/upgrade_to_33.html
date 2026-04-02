@@ -1,0 +1,471 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upgrade to Nextcloud 33 &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/app_publishing_maintenance/app_upgrade_guide/upgrade_to_33.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Upgrade to Nextcloud 32" href="upgrade_to_32.html" />
+    <link rel="prev" title="App upgrade guide" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">App publishing and maintenance</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../maintainer.html">Maintainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release_process.html">Release process</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://nextcloudappstore.readthedocs.io/en/latest/developer.html">Publishing App on the App Store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monetizing.html">Monetizing your app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing.html">The Nextcloud app store rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_signing.html">Code signing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release_automation.html">Release Automation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">App upgrade guide</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Upgrade to Nextcloud 33</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#front-end-changes">Front-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#back-end-changes">Back-end changes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_32.html">Upgrade to Nextcloud 32</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_31.html">Upgrade to Nextcloud 31</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_30.html">Upgrade to Nextcloud 30</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_29.html">Upgrade to Nextcloud 29</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_28.html">Upgrade to Nextcloud 28</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_27.html">Upgrade to Nextcloud 27</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_26.html">Upgrade to Nextcloud 26</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_25.html">Upgrade to Nextcloud 25</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_24.html">Upgrade to Nextcloud 24</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_23.html">Upgrade to Nextcloud 23</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_22.html">Upgrade to Nextcloud 22</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_21.html">Upgrade to Nextcloud 21</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_20.html">Upgrade to Nextcloud 20</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_19.html">Upgrade to Nextcloud 19</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_18.html">Upgrade to Nextcloud 18</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_17.html">Upgrade to Nextcloud 17</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_16.html">Upgrade to Nextcloud 16</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_15.html">Upgrade to Nextcloud 15</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_14.html">Upgrade to Nextcloud 14</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">App publishing and maintenance</a></li>
+          <li class="breadcrumb-item"><a href="index.html">App upgrade guide</a></li>
+      <li class="breadcrumb-item active">Upgrade to Nextcloud 33</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/app_publishing_maintenance/app_upgrade_guide/upgrade_to_33.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="upgrade-to-nextcloud-33">
+<h1>Upgrade to Nextcloud 33<a class="headerlink" href="#upgrade-to-nextcloud-33" title="Link to this heading"></a></h1>
+<section id="front-end-changes">
+<h2>Front-end changes<a class="headerlink" href="#front-end-changes" title="Link to this heading"></a></h2>
+<section id="files-api">
+<h3>Files API<a class="headerlink" href="#files-api" title="Link to this heading"></a></h3>
+<section id="breaking-changes-in-the-files-api-package">
+<h4>Breaking changes in the Files API package<a class="headerlink" href="#breaking-changes-in-the-files-api-package" title="Link to this heading"></a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">nextcloud/files</span></code> library was updated to version v4.0.0 in Server.
+This release includes breaking API changes, so you’ll need to update your code in time for Server 33.</p>
+<p>To improve developer experience, we’ve expanded the context object passed to file actions.
+It now includes additional fields such as the current folder and the current file list.
+Function signatures have also changed: Action handlers now use destructured parameters instead of positional array arguments.</p>
+<p>You can find the full changelog and migration details in the repository: <a class="reference external" href="https://github.com/nextcloud-libraries/nextcloud-files">nextcloud-files (4.0.0 beta)</a>.</p>
+</section>
+<section id="sidebar">
+<h4>Sidebar<a class="headerlink" href="#sidebar" title="Link to this heading"></a></h4>
+<p>The files API was changed in this release to use the Node API (available since Nextcloud 27) instead of the legacy <code class="docutils literal notranslate"><span class="pre">FileInfo</span></code> API.
+For this the way to register sidebar tabs and actions has changed.
+The <code class="docutils literal notranslate"><span class="pre">OCA.Files.Sidebar</span></code> API was removed and replaced with a new sidebar API available from the <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/files">&#64;nextcloud/files</a> package.</p>
+<p>To register sidebar tabs you now have to use the new API which is based on web components,
+for more details please refer to the changelog of the <code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/files</span></code> package.</p>
+<p>If you used the Files sidebar within your app you have to now use your own sidebar using the <code class="docutils literal notranslate"><span class="pre">NcAppSidebar</span></code> component from the <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/vue">&#64;nextcloud/vue</a> package.</p>
+<p>Otherwise if you already use your own sidebar implementation in your app but rely on the Viewer app to open the sidebar using the <code class="docutils literal notranslate"><span class="pre">OCA.Files.Sidebar</span></code> API,
+you now have to listen to the <code class="docutils literal notranslate"><span class="pre">viewer:sidebar:open</span></code> event-bus event from the Viewer app to open your sidebar.
+So enable the <strong>open sidebar</strong> action within the viewer you have to set <code class="docutils literal notranslate"><span class="pre">enabledSidebar</span></code>
+when opening the viewer to allow opening the sidebar from within the viewer and listen for the mentioned event.</p>
+</section>
+</section>
+<section id="profile-app">
+<h3>Profile app<a class="headerlink" href="#profile-app" title="Link to this heading"></a></h3>
+<p>To make the profile sections API framework agnostic, allowing us to migrate the profile app to Vue 3
+while still allow external apps to use Vue 2 based profile section,
+the <code class="docutils literal notranslate"><span class="pre">OCA.Core.ProfileSections</span></code> API was replaced with <code class="docutils literal notranslate"><span class="pre">OCA.Profile.ProfileSections</span></code>
+which uses custom web components instead of being based on Vue components.</p>
+<p>As of Nextcloud 33 the <code class="docutils literal notranslate"><span class="pre">OCA.Profile.ProfileSections.registerSection</span></code> method accepts
+a section object in the following format:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kd">interface</span><span class="w"> </span><span class="nx">ProfileSection</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="cm">/**</span>
+<span class="cm">   * Unique identifier for the section</span>
+<span class="cm">   */</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">  </span><span class="cm">/**</span>
+<span class="cm">   * The order in which the section should appear (lower numbers appear first)</span>
+<span class="cm">   */</span>
+<span class="w">  </span><span class="nx">order</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span>
+<span class="w">  </span><span class="cm">/**</span>
+<span class="cm">   * The custom element tag name to be used for this section</span>
+<span class="cm">   *</span>
+<span class="cm">   * The custom element must have been registered beforehand,</span>
+<span class="cm">   * and must have the a `user` property of type `string | undefined`.</span>
+<span class="cm">   *</span>
+<span class="cm">   * @see https://developer.mozilla.org/en-US/docs/Web/API/Web_components</span>
+<span class="cm">   */</span>
+<span class="w">  </span><span class="nx">tagName</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">  </span><span class="cm">/**</span>
+<span class="cm">   * Static parameters to be passed to the custom web component</span>
+<span class="cm">   */</span>
+<span class="w">  </span><span class="nx">params?</span><span class="o">:</span><span class="w"> </span><span class="kt">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">unknown</span><span class="o">&gt;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="added-apis">
+<h3>Added APIs<a class="headerlink" href="#added-apis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCA.Profile.ProfileSections</span></code> was added as a framework agnostic replacement for <code class="docutils literal notranslate"><span class="pre">OCA.Core.ProfileSections</span></code>.
+See section about the profile app above.</p></li>
+</ul>
+</section>
+<section id="changed-apis">
+<h3>Changed APIs<a class="headerlink" href="#changed-apis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>TBD</p></li>
+</ul>
+</section>
+<section id="deprecated-apis">
+<h3>Deprecated APIs<a class="headerlink" href="#deprecated-apis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>TBD</p></li>
+</ul>
+</section>
+<section id="removed-apis">
+<h3>Removed APIs<a class="headerlink" href="#removed-apis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>The global <code class="docutils literal notranslate"><span class="pre">md5</span></code> implementation is removed. It was deprecated since Nextcloud 20 and not used by Nextcloud anymore.
+If you still need a <code class="docutils literal notranslate"><span class="pre">md5</span></code> implementation you can just use some external package like <a class="reference external" href="https://www.npmjs.com/package/crypto-browserify">crypto-browserify</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP.WhatsNew</span></code> was removed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.AppConfig</span></code> was deprecated since Nextcloud 16 and was now removed. Instead use <code class="docutils literal notranslate"><span class="pre">OCP.AppConfig</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">OC.Settings.UserSettings</span></code> api was removed.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">OC.SystemTags</span></code> api was removed. If you need to get the list of system tags,
+check <a class="reference external" href="https://github.com/nextcloud/files_retention/pull/855">this merge request</a> for how to fetch the tags directly.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.set</span></code> and <code class="docutils literal notranslate"><span class="pre">OC.get</span></code> were removed. Both are deprecated since Nextcloud 19.
+For <code class="docutils literal notranslate"><span class="pre">get</span></code>, if really needed, use <a class="reference external" href="https://lodash.com/docs#get">lodash get</a>.
+And for <code class="docutils literal notranslate"><span class="pre">set</span></code>, use <a class="reference external" href="https://lodash.com/docs#set">lodash set</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.redirect</span></code> and <code class="docutils literal notranslate"><span class="pre">OC.reload</span></code> were removed. Both were deprecated since Nextcloud 17.
+To replace <code class="docutils literal notranslate"><span class="pre">OC.redirect</span></code> directly use <code class="docutils literal notranslate"><span class="pre">window.location</span></code>.
+To replace <code class="docutils literal notranslate"><span class="pre">OC.reload</span></code> directly use <code class="docutils literal notranslate"><span class="pre">window.location.reload</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.fileIsBlacklisted</span></code> was removed. It was deprecated since Nextcloud 18.
+The replacement is to use <code class="docutils literal notranslate"><span class="pre">validateFilename</span></code> from the <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/files">&#64;nextcloud/files</a> package.</p></li>
+<li><p>The deprecated host methods from <cite>OC</cite> were deprecated since Nextcloud 17 and are now removed</p>
+<ul>
+<li><p>To replace <code class="docutils literal notranslate"><span class="pre">OC.getHost</span></code> use <code class="docutils literal notranslate"><span class="pre">window.location.host</span></code>.</p></li>
+<li><p>To replace <code class="docutils literal notranslate"><span class="pre">OC.getHostName</span></code> use <code class="docutils literal notranslate"><span class="pre">window.location.hostname</span></code>.</p></li>
+<li><p>To replace <code class="docutils literal notranslate"><span class="pre">OC.getPort</span></code> use <code class="docutils literal notranslate"><span class="pre">window.location.port</span></code>.</p></li>
+<li><p>To replace <code class="docutils literal notranslate"><span class="pre">OC.getProtocol</span></code> use <code class="docutils literal notranslate"><span class="pre">window.location.protocol</span></code>.</p></li>
+</ul>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">OCA.Core.ProfileSections</span></code> API was removed and replaced with the framework agnostic <code class="docutils literal notranslate"><span class="pre">OCA.Profile.ProfileSections</span></code> API.
+See section about the profile app above.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">OCA.Files.Sidebar</span></code> API is removed.
+This was the last API using the legacy <code class="docutils literal notranslate"><span class="pre">FileInfo</span></code> API.
+It is now replaced with the new Node based sidebar API available from the <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/files">&#64;nextcloud/files</a> package.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">OCA.Sharing.ExternalLinkActions</span></code> API was deprecated in Nextcloud 23 and is now removed.
+It was replaced with <code class="docutils literal notranslate"><span class="pre">OCA.Sharing.ExternalShareAction</span></code> which now have a proper API by using <code class="docutils literal notranslate"><span class="pre">registerSidebarAction</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/sharing">&#64;nextcloud/sharing</a> instead.</p></li>
+</ul>
+</section>
+</section>
+<section id="back-end-changes">
+<h2>Back-end changes<a class="headerlink" href="#back-end-changes" title="Link to this heading"></a></h2>
+<section id="support-for-php-8-5-added">
+<h3>Support for PHP 8.5 added<a class="headerlink" href="#support-for-php-8-5-added" title="Link to this heading"></a></h3>
+<p>See below section for option code changes in your app and dependency management</p>
+</section>
+<section id="support-for-php-8-1-removed">
+<h3>Support for PHP 8.1 removed<a class="headerlink" href="#support-for-php-8-1-removed" title="Link to this heading"></a></h3>
+<p>In this release support for PHP 8.1 was removed. Follow the steps below to make your app compatible.</p>
+<ol class="arabic simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">appinfo/info.xml</span></code> has a dependency specification for PHP, increase the <code class="docutils literal notranslate"><span class="pre">min-version</span></code> to 8.2.</p></li>
+</ol>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dependencies&gt;</span>
+<span class="w">  </span><span class="nt">&lt;php</span><span class="w"> </span><span class="na">min-version=</span><span class="s">&quot;8.2&quot;</span><span class="w"> </span><span class="na">max-version=</span><span class="s">&quot;8.5&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;nextcloud</span><span class="w"> </span><span class="na">min-version=</span><span class="s">&quot;31&quot;</span><span class="w"> </span><span class="na">max-version=</span><span class="s">&quot;33&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>If your app has a <code class="docutils literal notranslate"><span class="pre">composer.json</span></code> and the file contains the PHP restrictions from <code class="docutils literal notranslate"><span class="pre">info.xml</span></code>, adjust it as well.</p></li>
+</ol>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;require&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;php&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&gt;=8.2 &lt;=8.5&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>If you have <a class="reference internal" href="../../digging_deeper/continuous_integration.html#app-ci"><span class="std std-ref">continuous integration</span></a> set up, remove PHP 8.1 and add PHP 8.5 from the matrices of tests and linters.</p></li>
+</ol>
+</section>
+<section id="default-user-agent-for-outgoing-requests-changed">
+<h3>Default user agent for outgoing requests changed<a class="headerlink" href="#default-user-agent-for-outgoing-requests-changed" title="Link to this heading"></a></h3>
+<p>Starting with this release, the default user agent for requests done by the instance was changed from <code class="docutils literal notranslate"><span class="pre">Nextcloud</span> <span class="pre">Server</span> <span class="pre">Crawler</span></code> to <code class="docutils literal notranslate"><span class="pre">Nextcloud-Server-Crawler/X.Y.Z</span></code>, where <code class="docutils literal notranslate"><span class="pre">X.Y.Z</span></code> is the current server version.</p>
+</section>
+<section id="snowflake-ids">
+<h3>Snowflake IDS<a class="headerlink" href="#snowflake-ids" title="Link to this heading"></a></h3>
+<p>The following tables are now using snowflake ids:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_previews</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_jobs</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oc_share_external</span></code></p></li>
+</ul>
+<p>The API related to these tables are now using a string instead of a int. See Changed APIs section and <a class="reference internal" href="../../digging_deeper/snowflake_ids.html"><span class="doc">Snowflake IDs</span></a>.</p>
+</section>
+<section id="added-events">
+<h3>Added Events<a class="headerlink" href="#added-events" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>TBD</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3>Added APIs<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>We now expose <code class="docutils literal notranslate"><span class="pre">\OCP\DB\IResult::iterateAssociative</span></code>, <code class="docutils literal notranslate"><span class="pre">\OCP\DB\IResult::iterateNumeric</span></code> from doctrine/dbal.
+These two methods returns iterators that can be directly used in a <cite>foreach</cite> to iterate over a SQL query result.
+For example:</p></li>
+</ul>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$result</span> <span class="o">=</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">();</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$result</span><span class="o">-&gt;</span><span class="na">iterateAssociative</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$row</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="nv">$result</span><span class="o">-&gt;</span><span class="na">closeCursor</span><span class="p">();</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ImageToTextOpticalCharacterRecognition</span></code> TaskProcessing task type was added</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ISynchronousWatermarkingProvider</span></code> TaskProcessing provider interface was added to allow synchronous processing providers to react to the boolean includeWatermark flag</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>Changed APIs<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">setId</span></code> and <code class="docutils literal notranslate"><span class="pre">getId</span></code> methods of <code class="docutils literal notranslate"><span class="pre">\OCP\BackgroundJob\IJob</span></code> were changed to return/accept a string instead of an int. Same for <code class="docutils literal notranslate"><span class="pre">\OCP\BackgroundJob\IJobList</span></code> were some methods (<code class="docutils literal notranslate"><span class="pre">removedById</span></code>, <code class="docutils literal notranslate"><span class="pre">getById</span></code> and <code class="docutils literal notranslate"><span class="pre">getDetailsById</span></code>) are now taking a string instead of an int. The string is suppose to be a snowflake id.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">setObjectId</span></code> and <code class="docutils literal notranslate"><span class="pre">getObjectId</span></code> methods of <code class="docutils literal notranslate"><span class="pre">\OCP\Activity\IEvent</span></code> were changed to return/accept a string in addition to an int. The string is suppose to be a snowflake id.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">\OCP\TaskProcessing\Task</span></code> class now has <code class="docutils literal notranslate"><span class="pre">getIncludeWatermark</span></code> and <code class="docutils literal notranslate"><span class="pre">setIncludeWatermark</span></code> methods for indicating whether the provider should add a watermark to the generated output.</p></li>
+<li><p>The TaskProcessing OCS API now also accepts the <code class="docutils literal notranslate"><span class="pre">includeWatermark</span></code> flag when scheduling tasks</p></li>
+</ul>
+</section>
+<section id="id5">
+<h3>Deprecated APIs<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">\OCP\DB\IResult::fetch</span></code> and <code class="docutils literal notranslate"><span class="pre">\OCP\DB\IResult::fetchAll</span></code> are soft-deprecated. Instead you can use
+<code class="docutils literal notranslate"><span class="pre">\OCP\DB\IResult::fetchAssociative</span></code>, <code class="docutils literal notranslate"><span class="pre">\OCP\DB\IResult::fetchNumeric</span></code> and <code class="docutils literal notranslate"><span class="pre">\OCP\DB\IResult::fetchOne</span></code>
+as replacement for <code class="docutils literal notranslate"><span class="pre">\OCP\DB\IResult::fetch</span></code>; and <code class="docutils literal notranslate"><span class="pre">\OCP\DB\IResult::fetchAllAssociative</span></code>,
+<code class="docutils literal notranslate"><span class="pre">\OCP\DB\IResult::fetchAllNumeric</span></code> and <code class="docutils literal notranslate"><span class="pre">\OCP\DB\IResult::fetchFirstColumn</span></code> as replacement for
+<code class="docutils literal notranslate"><span class="pre">\OCP\DB\IResult::fetchAll</span></code>. If you use rector, you can use the Nextcloud33 set, to automatically port
+most of your code to the new methods.</p></li>
+</ul>
+</section>
+<section id="id6">
+<h3>Removed APIs<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">\OCP\BackgroundJob\IJob::execute</span></code> method was deprecated since Nextcloud 25 and was now removed.
+Instead use the <code class="docutils literal notranslate"><span class="pre">IJob::start</span></code> method, available since Nextcloud 25.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">\OCP\Search\PagedProvider</span></code>, <code class="docutils literal notranslate"><span class="pre">\OCP\Search\Provider</span></code> and <code class="docutils literal notranslate"><span class="pre">\OCP\Search\Result</span></code> classes were
+deprecated since Nextcloud 20 and were now removed. Instead use <code class="docutils literal notranslate"><span class="pre">\OCP\Search\SearchResult</span></code> and
+<code class="docutils literal notranslate"><span class="pre">\OCP\Search\IProvider</span></code>, available since Nextcloud 20.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">\OC_Util::runningOnMac()</span></code> method was removed. Instead you can just check <code class="docutils literal notranslate"><span class="pre">PHP_OS_FAMILY</span> <span class="pre">===</span> <span class="pre">'Darwin'</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">\OCP\DB\IQueryBuilder::execute</span></code> method was deprecated since Nextcloud 22 and was now removed.
+Instead use the <code class="docutils literal notranslate"><span class="pre">\OCP\DB\IQueryBuilder::executeQuery</span></code> when doing executing a <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> query and <code class="docutils literal notranslate"><span class="pre">\OCP\DB\IQueryBuilder::executeStatement</span></code>
+method when executing a <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>, <code class="docutils literal notranslate"><span class="pre">INSERT</span></code> and <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> statement, available since Nextcloud 20.</p>
+<p>Instead of catching a exceptions from the Doctrine DBAL package, you now need to catch <code class="docutils literal notranslate"><span class="pre">OCP\DB\Exception</span></code>
+and check the <cite>getReason`</cite>. For example, the following old code:</p>
+</li>
+</ul>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span><span class="o">...</span><span class="p">);</span>
+    <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Doctrine\DBAL\Exception\UniqueConstraintViolationException</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Do stuff</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Should be replaced by the following code:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span><span class="o">...</span><span class="p">);</span>
+    <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">executeStatement</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\OCP\DB\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getReason</span><span class="p">()</span> <span class="o">!==</span> <span class="nx">\OCP\DB\Exception</span><span class="o">::</span><span class="na">REASON_UNIQUE_CONSTRAINT_VIOLATION</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="nv">$e</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Do stuff</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">\OCP\Files::buildNotExistingFileName</span></code> and related private helper <code class="docutils literal notranslate"><span class="pre">\OC_Helper::buildNotExistingFileName</span></code> were deprecated since Nextcloud 14 and were now removed. Use <code class="docutils literal notranslate"><span class="pre">\OCP\Files\Folder::getNonExistingName</span></code> instead.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">WhatsNew</span></code> feature was removed as such the <code class="docutils literal notranslate"><span class="pre">OC\Updater\ChangesCheck</span></code> class and related APIs.
+This also includes the <code class="docutils literal notranslate"><span class="pre">whats_new</span></code> database table and the <code class="docutils literal notranslate"><span class="pre">WhatsNewController</span></code> class which was serving the now removed <code class="docutils literal notranslate"><span class="pre">/core/whatsnew</span></code> endpoint.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="App upgrade guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="upgrade_to_32.html" class="btn btn-neutral float-right" title="Upgrade to Nextcloud 32" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Apr 02, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

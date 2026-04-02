@@ -1,0 +1,623 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upgrade to Nextcloud 31 &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/app_publishing_maintenance/app_upgrade_guide/upgrade_to_31.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Upgrade to Nextcloud 30" href="upgrade_to_30.html" />
+    <link rel="prev" title="Upgrade to Nextcloud 32" href="upgrade_to_32.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">App publishing and maintenance</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../maintainer.html">Maintainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release_process.html">Release process</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://nextcloudappstore.readthedocs.io/en/latest/developer.html">Publishing App on the App Store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monetizing.html">Monetizing your app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing.html">The Nextcloud app store rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_signing.html">Code signing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release_automation.html">Release Automation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">App upgrade guide</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_33.html">Upgrade to Nextcloud 33</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_32.html">Upgrade to Nextcloud 32</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Upgrade to Nextcloud 31</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#front-end-changes">Front-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#back-end-changes">Back-end changes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_30.html">Upgrade to Nextcloud 30</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_29.html">Upgrade to Nextcloud 29</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_28.html">Upgrade to Nextcloud 28</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_27.html">Upgrade to Nextcloud 27</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_26.html">Upgrade to Nextcloud 26</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_25.html">Upgrade to Nextcloud 25</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_24.html">Upgrade to Nextcloud 24</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_23.html">Upgrade to Nextcloud 23</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_22.html">Upgrade to Nextcloud 22</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_21.html">Upgrade to Nextcloud 21</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_20.html">Upgrade to Nextcloud 20</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_19.html">Upgrade to Nextcloud 19</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_18.html">Upgrade to Nextcloud 18</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_17.html">Upgrade to Nextcloud 17</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_16.html">Upgrade to Nextcloud 16</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_15.html">Upgrade to Nextcloud 15</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_14.html">Upgrade to Nextcloud 14</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">App publishing and maintenance</a></li>
+          <li class="breadcrumb-item"><a href="index.html">App upgrade guide</a></li>
+      <li class="breadcrumb-item active">Upgrade to Nextcloud 31</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/app_publishing_maintenance/app_upgrade_guide/upgrade_to_31.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="upgrade-to-nextcloud-31">
+<h1>Upgrade to Nextcloud 31<a class="headerlink" href="#upgrade-to-nextcloud-31" title="Link to this heading"></a></h1>
+<section id="front-end-changes">
+<h2>Front-end changes<a class="headerlink" href="#front-end-changes" title="Link to this heading"></a></h2>
+<section id="user-guest-and-public-template-layout">
+<h3>User-, guest-, and public-template layout<a class="headerlink" href="#user-guest-and-public-template-layout" title="Link to this heading"></a></h3>
+<p>The main layout for all apps (the user, guest and public template) has been changed,
+the main content is no longer rendered within a <code class="docutils literal notranslate"><span class="pre">&lt;main&gt;</span></code> element with the class <code class="docutils literal notranslate"><span class="pre">content</span></code> but in a <code class="docutils literal notranslate"><span class="pre">div</span></code> element with the class <code class="docutils literal notranslate"><span class="pre">content</span></code>.
+The reason for this is to allow writing Vue 3 based apps which would incorrectly render two stacked <code class="docutils literal notranslate"><span class="pre">main</span></code>-elements otherwise.</p>
+<p>For Vue 2 apps this <strong>does not change anything</strong>.
+But if you just use vanilla templates or other frameworks this changes the page layout and might require adjustments.
+We recommend you to wrap your content in a custom <code class="docutils literal notranslate"><span class="pre">main</span></code>-element if you use non or not Vue as the framework.</p>
+</section>
+<section id="logical-position-css-rules">
+<h3>Logical position CSS rules<a class="headerlink" href="#logical-position-css-rules" title="Link to this heading"></a></h3>
+<p>With Nextcloud 31 all server provided styles are migrated to use <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values">logical positioning</a>
+instead of physical, this allows the front-end layout to adjust to different language directions (right-to-left).
+App developers are strongly encouraged to migrate their apps to logical positioning too.</p>
+<p>Examples for logical vs physical positioning:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">margin-inline-start:</span> <span class="pre">4px;</span></code> instead of <code class="docutils literal notranslate"><span class="pre">margin-left:</span> <span class="pre">4px;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inset-inline-end:</span> <span class="pre">8px;</span></code> instead of <code class="docutils literal notranslate"><span class="pre">right:</span> <span class="pre">8px</span></code></p></li>
+</ul>
+</section>
+<section id="files-and-files-sharing">
+<h3>Files and Files sharing<a class="headerlink" href="#files-and-files-sharing" title="Link to this heading"></a></h3>
+<p>With Nextcloud 28 the Files app front-end was migrated to Vue and the private API ( <code class="docutils literal notranslate"><span class="pre">OCA.Files</span></code> ) was removed,
+but for public shares the legacy frontend-end was still used. With Nextcloud 31 public shares also use the new Vue front-end.
+This means accessing the legacy private API in <code class="docutils literal notranslate"><span class="pre">OCA.Files</span></code> is no longer possible, all existing apps should migrate to the <a class="reference internal" href="../../digging_deeper/javascript-apis.html#js-library-nextcloud-files"><span class="std std-ref">public API</span></a>.</p>
+<p>To make migration easier utility functions are provided in the <code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/sharing</span></code> <a class="reference internal" href="../../digging_deeper/javascript-apis.html#js-library-nextcloud-sharing"><span class="std std-ref">package</span></a>
+to check whether the current Files app instance is a public share or not, and if so to fetch the share token.</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">isPublicShare</span><span class="p">,</span><span class="w"> </span><span class="nx">getSharingToken</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/sharing/public&#39;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isPublicShare</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;This is a public share with the sharing token: &#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">getSharingToken</span><span class="p">())</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="removed-apis">
+<h3>Removed APIs<a class="headerlink" href="#removed-apis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCA.FilesSharingDrop</span></code> removed as part of the Vue migration. Use the Files app API provided by the <a class="reference internal" href="../../digging_deeper/javascript-apis.html#js-library-nextcloud-files"><span class="std std-ref">package</span></a> .</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$.Event('OCA.Notification.Action')</span></code> jQuery event removed from Notifications app as part of the Vue migration. Use <code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/event-bus</span></code> <a class="reference internal" href="../../digging_deeper/javascript-apis.html#js-library-nextcloud-event-bus"><span class="std std-ref">package</span></a> instead.</p></li>
+</ul>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">subscribe</span><span class="p">,</span><span class="w"> </span><span class="nx">unsubscribe</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/event-bus&#39;</span>
+
+<span class="nx">subscribe</span><span class="p">(</span><span class="s1">&#39;notifications:action:execute&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;Notification action has been executed:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">notification</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">action</span><span class="p">)</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="back-end-changes">
+<h2>Back-end changes<a class="headerlink" href="#back-end-changes" title="Link to this heading"></a></h2>
+<section id="support-for-php-8-4-added">
+<h3>Support for PHP 8.4 added<a class="headerlink" href="#support-for-php-8-4-added" title="Link to this heading"></a></h3>
+<p>In this release support for PHP 8.4 was added. Follow the steps below to make your app compatible.</p>
+<p>1. If <code class="docutils literal notranslate"><span class="pre">appinfo/info.xml</span></code> has a dependency specification for PHP, increase the <code class="docutils literal notranslate"><span class="pre">max-version</span></code> to 8.4.
+However, it is recommended to always support all PHP versions that are compatible with supported Nextcloud version.
+In that case the <code class="docutils literal notranslate"><span class="pre">php</span></code>-dependencies entries can be omitted.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dependencies&gt;</span>
+<span class="w">  </span><span class="nt">&lt;php</span><span class="w"> </span><span class="na">min-version=</span><span class="s">&quot;8.1&quot;</span><span class="w"> </span><span class="na">max-version=</span><span class="s">&quot;8.4&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;nextcloud</span><span class="w"> </span><span class="na">min-version=</span><span class="s">&quot;29&quot;</span><span class="w"> </span><span class="na">max-version=</span><span class="s">&quot;31&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>If your app has a <code class="docutils literal notranslate"><span class="pre">composer.json</span></code> and the file contains the PHP restrictions from <code class="docutils literal notranslate"><span class="pre">info.xml</span></code>, adjust it as well.</p></li>
+</ol>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;require&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;php&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&gt;=8.1 &lt;=8.4&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>3. If you have <a class="reference internal" href="../../digging_deeper/continuous_integration.html#app-ci"><span class="std std-ref">continuous integration</span></a> set up, extend your test matrix with PHP 8.4 tests and linters.
+This happens automatically when you reuse our <a class="reference external" href="https://github.com/nextcloud/.github">GitHub Workflow templates</a>,
+but you can also use the underlying <a class="reference external" href="https://github.com/icewind1991/nextcloud-version-matrix">icewind1991/nextcloud-version-matrix Action</a> directly.</p>
+<p>Information about code changes can be found on <a class="reference external" href="https://www.php.net/migration84">php.net</a> and <a class="reference external" href="https://stitcher.io/blog/new-in-php-84">stitcher.io</a>.</p>
+</section>
+<section id="added-apis">
+<h3>Added APIs<a class="headerlink" href="#added-apis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>It is now possible to download folders as zip or tar archives using the WebDAV backend using <code class="code docutils literal notranslate"><span class="pre">GET</span></code> requests.
+See the relevant <a class="reference internal" href="../../client_apis/WebDAV/basic.html#webdav-download-folders"><span class="std std-ref">endpoint documentation</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\SetupCheck\CheckServerResponseTrait</span></code> was added to ease implementing custom <a class="reference internal" href="../../digging_deeper/setup_checks.html#setup-checks"><span class="std std-ref">setup checks</span></a>
+which need to check HTTP calls to the the server itself.</p></li>
+<li><p>Any implementation of <code class="docutils literal notranslate"><span class="pre">OCP\Files\Mount\IMountPoint</span></code> can additionally implement <code class="docutils literal notranslate"><span class="pre">OCP\Files\Mount\IShareOwnerlessMount</span></code> which allows everyone with share permission to edit and delete any share on the files and directories below the mountpoint.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Navigation\Events\LoadAdditionalEntriesEvent</span></code> is dispatched when the navigation manager needs to know about its entries, apart of standard app entries that are loaded automatically. This is only relevant for apps that provide extraneous entries.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\User\Backend\ILimitAwareCountUsersBackend</span></code> was added as a replacement for <code class="docutils literal notranslate"><span class="pre">ICountUsersBackend</span></code>. It allows to specify a limit to the user count to avoid counting all users when the caller do not need it. You can safely ignore the limit if it does not make sense for your usecase.</p></li>
+<li><p>If an app supports file conversion, it may now register an <code class="docutils literal notranslate"><span class="pre">OCP\Files\Conversion\ConversionProvider</span></code> which will
+be called automatically based on the supported MIME types. An app may register as many of these as needed.</p></li>
+<li><p>New events <code class="docutils literal notranslate"><span class="pre">OCP\User\Events\BeforeUserIdUnassignedEvent</span></code>, <code class="docutils literal notranslate"><span class="pre">OCP\User\Events\UserIdUnassignedEvent</span></code>, and <code class="docutils literal notranslate"><span class="pre">OCP\User\Events\UserIdAssignedEvent</span></code> have been added to replace the hooks <code class="docutils literal notranslate"><span class="pre">\OC\User::preUnassignedUserId</span></code>, <code class="docutils literal notranslate"><span class="pre">\OC\User::postUnassignedUserId</span></code> and <code class="docutils literal notranslate"><span class="pre">\OC\User::assignedUserId</span></code>.</p></li>
+<li><p>New interface <code class="docutils literal notranslate"><span class="pre">OCP\Files\Storage\IConstructableStorage</span></code> for storages that can be built by passing only an array to the constructor.</p></li>
+<li><p>New service <code class="docutils literal notranslate"><span class="pre">OCP\RichObjectStrings\IRichTextFormatter</span></code> to format rich text into parsed plain text using its <code class="docutils literal notranslate"><span class="pre">richToParsed</span></code> method.</p></li>
+<li><p>New magic query parameter <code class="docutils literal notranslate"><span class="pre">forceLanguage</span></code> to force a specific language for a web request (API or frontend). See <a class="reference internal" href="../../client_apis/OCS/ocs-api-overview.html#api-force-language"><span class="std std-ref">Forcing language for a given call</span></a>.</p></li>
+<li><p>The new WebDAV property <code class="docutils literal notranslate"><span class="pre">nc:hide-download</span></code> was added to indicate if download actions should be hidden for a shared file or folder.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Security\PasswordContext</span></code> was added, this allows defining a context for which a password should be used.
+It is used by the <code class="docutils literal notranslate"><span class="pre">GenerateSecurePasswordEvent</span></code> and <code class="docutils literal notranslate"><span class="pre">ValidatePasswordPolicyEvent</span></code> allowing to apply different rules for different contexts.</p></li>
+</ul>
+</section>
+<section id="changed-apis">
+<h3>Changed APIs<a class="headerlink" href="#changed-apis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Clarify <code class="docutils literal notranslate"><span class="pre">OCP\Files\Storage\IStorage::getOwner()</span></code> returns <code class="docutils literal notranslate"><span class="pre">string|false</span></code>.</p></li>
+<li><p>Added method parameter and return types to all inheritors of <code class="docutils literal notranslate"><span class="pre">OCP\Files\Storage\IStorage</span></code>. To migrate in a backwards compatible manner:</p>
+<ol class="arabic simple">
+<li><p>Add all return types to your implementation now.</p></li>
+<li><p>Add all parameter types to your implementation once Nextcloud 31 is the lowest supported version.</p></li>
+</ol>
+</li>
+<li><p>The Nextcloud implementation of the <code class="docutils literal notranslate"><span class="pre">log</span></code> method of <code class="docutils literal notranslate"><span class="pre">Psr\Log\LoggerInterface</span></code> now supports <code class="docutils literal notranslate"><span class="pre">Psr\Log\LogLevel</span></code> as log level parameter.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">OCP\DB\QueryBuilder\IQueryBuilder</span></code> now supports more date / time related parameter types:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">PARAM_DATE_MUTABLE</span></code> and <code class="docutils literal notranslate"><span class="pre">PARAM_DATE_IMMUTABLE</span></code> for passing a <code class="docutils literal notranslate"><span class="pre">\DateTime</span></code> (<code class="docutils literal notranslate"><span class="pre">\DateTimeImmutable</span></code> respectively) instance when only interested in the date part.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PARAM_TIME_MUTABLE</span></code> and <code class="docutils literal notranslate"><span class="pre">PARAM_TIME_IMMUTABLE</span></code> to pass a <code class="docutils literal notranslate"><span class="pre">\DateTime</span></code> (<code class="docutils literal notranslate"><span class="pre">\DateTimeImmutable</span></code> respectively) instance when only interested in the time part.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PARAM_DATETIME_MUTABLE</span></code> and <code class="docutils literal notranslate"><span class="pre">PARAM_DATETIME_IMMUTABLE</span></code> to pass a <code class="docutils literal notranslate"><span class="pre">\DateTime</span></code> (<code class="docutils literal notranslate"><span class="pre">\DateTimeImmutable</span></code> respectively) instance without handling of the timezone.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PARAM_DATETIME_TZ_MUTABLE</span></code> and <code class="docutils literal notranslate"><span class="pre">PARAM_DATETIME_TZ_IMMUTABLE</span></code> to pass a <code class="docutils literal notranslate"><span class="pre">\DateTime</span></code> (<code class="docutils literal notranslate"><span class="pre">\DateTimeImmutable</span></code> respectively) instance with handling of the timezone.</p></li>
+</ul>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">OCP\\DB\\Types</span></code> now support more date and time related types for usage with the <code class="docutils literal notranslate"><span class="pre">Entity</span></code>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATE_IMMUTABLE</span></code> for fields that will (de)serialized as <code class="docutils literal notranslate"><span class="pre">\DateTimeImmutable</span></code> instances with only the date part set.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TIME_IMMUTABLE</span></code> for fields that will (de)serialized as <code class="docutils literal notranslate"><span class="pre">\DateTimeImmutable</span></code> instances with only the time part set.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATETIME_IMMUTABLE</span></code> for fields that will (de)serialized as <code class="docutils literal notranslate"><span class="pre">\DateTimeImmutable</span></code> instances with both the time part set but without timezone information.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATETIME_TZ</span></code> for fields that will (de)serialized as <code class="docutils literal notranslate"><span class="pre">\DateTime</span></code> instances with both the time part set and with timezone information.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATETIME_TZ_IMMUTABLE</span></code> for fields that will (de)serialized as <code class="docutils literal notranslate"><span class="pre">\DateTimeImmutable</span></code> instances with both the time part set and with timezone information.</p></li>
+</ul>
+</li>
+<li><p>It’s now possible to paginate DAV requests with new headers.</p>
+<ul>
+<li><p>First request should contains the following headers:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">X-NC-Paginate:</span> <span class="pre">true</span></code> enables the functionality</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">X-NC-Paginate-Count:</span> <span class="pre">X</span></code>  sets the number of results per page (default 100)</p></li>
+</ul>
+</li>
+<li><p>Server will answer with new headers:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">X-NC-Paginate-Total</span></code> indicates the total number of results.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">X-NC-Paginate-Token</span></code> gives a token to access other pages of the same result.</p></li>
+</ul>
+</li>
+<li><p>Issue new requests with token:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">X-NC-Paginate-Token:</span> <span class="pre">xxx</span></code> contains the token as sent by the server</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">X-NC-Paginate-Count:</span> <span class="pre">X</span></code>  sets the number of results per page (default 100)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">X-NC-Paginate-Offset:</span> <span class="pre">Y</span></code> sets the offset (number of ignored results) for the required page (usually “page_number × page_size”)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Legacy class <code class="docutils literal notranslate"><span class="pre">OC_Image</span></code> was moved to <code class="docutils literal notranslate"><span class="pre">OC\Image</span></code>. You should never use it directly but use <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">\OCP\Image()</span></code> instead for building the object and the <code class="docutils literal notranslate"><span class="pre">OCP\IImage</span></code> interface for calling methods.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Preview\BeforePreviewFetchedEvent</span></code> constructor has a new parameter <code class="docutils literal notranslate"><span class="pre">$mimeType</span></code> which should be a string or null.</p></li>
+<li><p>It has a new method <code class="docutils literal notranslate"><span class="pre">getMimeType()</span></code> to get the new property.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\Storage::needsPartFile</span></code> method was moved to interface <code class="docutils literal notranslate"><span class="pre">OCP\Files\Storage\IStorage</span></code>.</p></li>
+<li><p>The constructor was removed from interface <code class="docutils literal notranslate"><span class="pre">OCP\Files\Storage\IStorage</span></code> so that wrappers can use DI in their constructor. If your storage implementation is supposed to be built by calling the constructor, please implement the new interface <code class="docutils literal notranslate"><span class="pre">OCP\Files\Storage\IConstructableStorage</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\IUser::getFirstLogin</span></code> method was added to get first known login of a user. It will return a unix timestamp, or 0 if the user never logged in, or -1 if this data is not known (meaning the first login of this user was from before upgrading to 31).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Security\GenerateSecurePasswordEvent</span></code> and <code class="docutils literal notranslate"><span class="pre">OCP\Security\ValidatePasswordPolicyEvent</span></code> now have a <code class="docutils literal notranslate"><span class="pre">getContext</span></code> method returning the password context,
+this allows to apply different rules for different contexts.</p></li>
+</ul>
+</section>
+<section id="deprecated-apis">
+<h3>Deprecated APIs<a class="headerlink" href="#deprecated-apis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">/s/{token}/download</span></code> endpoint for downloading public shares is deprecated.
+Instead use the Nextcloud provided <a class="reference internal" href="../../client_apis/WebDAV/basic.html#webdav-download-folders"><span class="std std-ref">WebDAV endpoint</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\DB\QueryBuilder\IQueryBuilder::PARAM_DATE</span></code> is deprecated in favor of <code class="docutils literal notranslate"><span class="pre">PARAM_DATETIME_MUTABLE</span></code>
+to make clear that this type also includes the time part of a date time instance.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\User\Backend\ICountUsersBackend</span></code> was deprecated. Please implement and use <code class="docutils literal notranslate"><span class="pre">OCP\User\Backend\ILimitAwareCountUsersBackend</span></code> instead.</p></li>
+<li><p>Hooks <code class="docutils literal notranslate"><span class="pre">\OC\User::preUnassignedUserId</span></code>, <code class="docutils literal notranslate"><span class="pre">\OC\User::postUnassignedUserId</span></code> and <code class="docutils literal notranslate"><span class="pre">\OC\User::assignedUserId</span></code> are deprecated, use the new events in OCP instead.</p></li>
+</ul>
+</section>
+<section id="id1">
+<h3>Removed APIs<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Legacy, non functional, <code class="docutils literal notranslate"><span class="pre">OC_App::getForms</span></code> was removed.</p></li>
+<li><p>The private and legacy <code class="docutils literal notranslate"><span class="pre">OC_Files</span></code> class was removed.
+Instead use <code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\Http\StreamResponse</span></code> or <code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\Http\ZipResponse</span></code>.</p></li>
+<li><p>The private and legacy Ajax endpoint for downloading file archives (<code class="docutils literal notranslate"><span class="pre">/apps/files/ajax/download.php</span></code>) was removed.
+Instead use the Nextcloud provided <a class="reference internal" href="../../client_apis/WebDAV/basic.html#webdav-download-folders"><span class="std std-ref">WebDAV endpoint</span></a>.</p></li>
+<li><dl class="simple">
+<dt>All <code class="docutils literal notranslate"><span class="pre">OCP\ILogger</span></code> logging methods, deprecated since Nextcloud 20, are removed.</dt><dd><ul>
+<li><p>The interface now only holds the Nextcloud internal logging level constants.
+For all logging <code class="docutils literal notranslate"><span class="pre">Psr\Log\LoggerInterface</span></code> should be used.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">OCP\ILogger</span></code> interface can no longer be dependency injected as it now only holds constants.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\IServerContainer::getLogger</span></code> was removed, use dependency injection with <code class="docutils literal notranslate"><span class="pre">Psr\Log\LoggerInterface</span></code> instead.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>The internal class <code class="docutils literal notranslate"><span class="pre">OC\AppFramework\Logger</span></code> was removed, it should have been never used by apps.
+All using apps should migrate to <code class="docutils literal notranslate"><span class="pre">Psr\Log\LoggerInterface</span></code>.</p></li>
+<li><p>Legacy endpoint to test remote share endpoint (<code class="docutils literal notranslate"><span class="pre">/testremote</span></code>) was removed.</p></li>
+<li><p>Legacy class <code class="docutils literal notranslate"><span class="pre">OC_API</span></code> was moved to a private namespace. It should not be needed by applications.</p></li>
+<li><p>Deprecated interface <code class="docutils literal notranslate"><span class="pre">OCP\Files\Storage</span></code> was removed. Use <code class="docutils literal notranslate"><span class="pre">OCP\Files\Storage\IStorage</span></code> instead.</p></li>
+<li><p>Removed deprecated alias from DI, use the interfaces or class names instead:</p></li>
+</ul>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">Removed deprecated aliases</span><a class="headerlink" href="#id2" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Removed alias</p></th>
+<th class="head"><p>Replace by</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CalendarManager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Calendar\IManager::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>CalendarResourceBackendManager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Calendar\Resource\IManager::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>CalendarRoomBackendManager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Calendar\Room\IManager::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>ContactsManager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Contacts\IManager::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>PreviewManager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\IPreview::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>EncryptionManager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Encryption\IManager::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>EncryptionFileHelper</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Encryption\IFile::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>EncryptionKeyStorage</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Encryption\Keys\IStorage::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>TagMapper</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OC\Tagging\TagMapper::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>TagManager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\ITagManager::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>SystemTagObjectMapper</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\SystemTag\ISystemTagObjectMapper::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>LazyRootFolder</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\IRootFolder::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>UserManager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\IUserManager::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>GroupManager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\IGroupManager::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>UserSession</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\IUserSession::class::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>NavigationManager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\INavigationManager::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>AllConfig</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\IConfig::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>SystemConfig</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OC\SystemConfig::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>AppConfig</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\IAppConfig::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>L10NFactory</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\L10N\IFactory::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>URLGenerator</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\IURLGenerator::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>AppFetcher</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OC\App\AppStore\Fetcher\AppFetcher::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>CategoryFetcher</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OC\App\AppStore\Fetcher\CategoryFetcher::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>UserCache</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\ICache::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>MemCacheFactory</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\ICacheFactory::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>ActivityManager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Activity\IManager::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>AvatarManager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\IAvatarManager::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Logger</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\ILogger::class</span></code> (but please use LoggerInterface instead)</p></td>
+</tr>
+<tr class="row-even"><td><p>JobList</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\BackgroundJob\IJobList::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Router</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Route\IRouter::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>SecureRandom</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Security\ISecureRandom::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Crypto</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Security\ICrypto::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Hasher</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Security\IHasher::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>CredentialsManager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Security\ICredentialsManager::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>DatabaseConnection</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\IDBConnection::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>EventLogger</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Diagnostics\IEventLogger::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>QueryLogger</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Diagnostics\IQueryLogger::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>TempManager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\ITempManager::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>AppManager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\App\IAppManager::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>DateTimeZone</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\IDateTimeZone::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>DateTimeFormatter</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\IDateTimeFormatter::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>UserMountCache</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\Config\IUserMountCache::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>MountConfigManager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\Config\IMountProviderCollection::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>IniWrapper</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bantu\IniGetWrapper\IniGetWrapper::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>AsyncCommandBus</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Command\IBus::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>TrustedDomainHelper</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Security\ITrustedDomainHelper::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Throttler</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Security\Bruteforce\IThrottler::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Request</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\IRequest::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Mailer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Mail\IMailer::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>LDAPProvider</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\LDAP\ILDAPProvider::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>LockingProvider</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Lock\ILockingProvider::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>MountManager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\Mount\IMountManager::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>MimeTypeDetector</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">IMimeTypeDetector::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>MimeTypeLoader</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\IMimeTypeLoader::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>NotificationManager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Notification\IManager::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>CapabilitiesManager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OC\CapabilitiesManager::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>CommentsManager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Comments\ICommentsManager::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>CsrfTokenManager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OC\Security\CSRF\CsrfTokenManager::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>ContentSecurityPolicyManager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Security\IContentSecurityPolicyManager::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>ShareManager</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Share\IManager::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>CollaboratorSearch</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Collaboration\Collaborators\ISearch::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>ControllerMethodReflector</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\Utility\IControllerMethodReflector::class</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>TimeFactory</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\Utility\ITimeFactory::class</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Defaults</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OCP\Defaults::class</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="upgrade_to_32.html" class="btn btn-neutral float-left" title="Upgrade to Nextcloud 32" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="upgrade_to_30.html" class="btn btn-neutral float-right" title="Upgrade to Nextcloud 30" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Apr 02, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

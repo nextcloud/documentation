@@ -1,0 +1,856 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="el" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Χρήση της εφαρμογής Επαφές &mdash; Τεκμηρίωση του Nextcloud latest User Manual - latest</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/groupware/contacts.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=ba845f4f"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=e109e2be"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Ευρετήριο" href="../genindex.html" />
+    <link rel="search" title="Αναζήτηση" href="../search.html" />
+    <link rel="next" title="Χρήση της εφαρμογής Ημερολόγιο" href="calendar.html" />
+    <link rel="prev" title="Groupware" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Εισαγωγή εγχειριδίου χρήστη Nextcloud |έκδοση|</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Η Διεπαφή Web του Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Αρχεία και συγχρονισμός</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Χρήση της εφαρμογής Επαφές</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#adding-contacts">Προσθήκη Επαφών</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#importing-virtual-contacts">Εισαγωγή Εικονικών Επαφών</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-contacts-manually">Χειροκίνητη Προσθήκη Επαφών</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-or-remove-contact-information">Επεξεργασία ή Αφαίρεση Πληροφοριών Επαφής</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contact-picture">Εικόνα Επαφής</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-multiple-contacts-at-a-time">Διαχείριση πολλαπλών Επαφών ταυτόχρονα</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#merging-duplicate-contacts">Συγχώνευση διπλότυπων Επαφών</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#organize-your-contacts-with-contact-groups">Οργανώστε τις Επαφές σας με Ομάδες Επαφών</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-and-managing-address-books">Προσθήκη και Διαχείριση Φακέλων Διευθύνσεων</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#teams">Ομάδες</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-team">Δημιουργία ομάδας</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#team-roles">Ρόλοι ομάδας</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-members-to-a-team">Προσθήκη μελών σε ομάδα</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#team-options">Επιλογές ομάδας</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shared-items">Κοινοποιημένα αντικείμενα</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Χρήση της εφαρμογής Ημερολόγιο</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mail.html">Χρήση της εφαρμογής Αλληλογραφίας</a></li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">Ρύθμιση μηνυμάτων απουσίας</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Συγχρονισμός με Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">Συγχρονισμός με iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">Συγχρονισμός με macOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Συγχρονισμός με Thunderbird</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Συγχρονισμός με KDE Kontact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Συγχρονισμός με την επιφάνεια εργασίας GNOME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Συγχρονισμός με Windows 10</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Πελάτες Επιφάνειας Εργασίας</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Ορισμός των προτιμήσεών σας</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Καθολική Πρόσβαση</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Χρήση ελέγχου ταυτότητας δύο παραγόντων</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Διαχείριση συνδεδεμένων προγραμμάτων περιήγησης και συσκευών</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Εξωτερικός χώρος αποθήκευσης</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Groupware</a></li>
+      <li class="breadcrumb-item active">Χρήση της εφαρμογής Επαφές</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/contacts.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-contacts-app">
+<h1>Χρήση της εφαρμογής Επαφές<a class="headerlink" href="#using-the-contacts-app" title="Link to this heading"></a></h1>
+<p>Η εφαρμογή Επαφές δεν είναι ενεργοποιημένη από προεπιλογή στο Nextcloud <a href="#id2"><span class="problematic" id="id3">|έκδοση|</span></a> και πρέπει να εγκατασταθεί ξεχωριστά από το App Store μας.</p>
+<p>Η εφαρμογή Επαφές του Nextcloud είναι παρόμοια με άλλες εφαρμογές επαφών για κινητά, αλλά με περισσότερη λειτουργικότητα. Ας δούμε βασικά χαρακτηριστικά που θα σας βοηθήσουν να διατηρήσετε τον φάκελο διευθύνσεών σας στην εφαρμογή.</p>
+<p>Παρακάτω, θα μάθετε πώς να προσθέτετε επαφές, να επεξεργάζεστε ή να αφαιρείτε επαφές, να ανεβάζετε μια εικόνα επαφής και να διαχειρίζεστε τους φακέλους διευθύνσεών σας.</p>
+<section id="adding-contacts">
+<h2>Προσθήκη Επαφών<a class="headerlink" href="#adding-contacts" title="Link to this heading"></a></h2>
+<p>Όταν αποκτήσετε για πρώτη φορά πρόσβαση στην εφαρμογή Επαφές, ο φάκελος διευθύνσεων συστήματος που περιέχει όλους τους χρήστες στην εγκατάσταση που σας επιτρέπεται να δείτε, καθώς και ένας κενός προεπιλεγμένος φάκελος διευθύνσεων γίνονται διαθέσιμοι:</p>
+<figure class="align-default" id="id1">
+<img alt="../../_images/contacts_empty.png" src="../../_images/contacts_empty.png" />
+<figcaption>
+<p><span class="caption-text"><em>Προεπιλεγμένος Φάκελος Διευθύνσεων (κενός)</em></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Για να προσθέσετε επαφές στον φάκελο διευθύνσεών σας, μπορείτε να χρησιμοποιήσετε μία από τις ακόλουθες μεθόδους:</p>
+<ul class="simple">
+<li><p>Εισαγωγή επαφών χρησιμοποιώντας αρχείο Virtual Contact File (VCF/vCard)</p></li>
+<li><p>Προσθήκη επαφών χειροκίνητα</p></li>
+</ul>
+<p>Ο ταχύτερος τρόπος για να προσθέσετε μια επαφή είναι να χρησιμοποιήσετε ένα αρχείο Virtual Contact File (VCF/vCard).</p>
+<section id="importing-virtual-contacts">
+<h3>Εισαγωγή Εικονικών Επαφών<a class="headerlink" href="#importing-virtual-contacts" title="Link to this heading"></a></h3>
+<p>Για Εισαγωγή Επαφών Χρησιμοποιώντας Αρχείο VCF/vCard:</p>
+<ol class="arabic">
+<li><p>Στην επάνω αριστερή πλευρά της οθόνης έχετε το κουμπί «Εισαγωγή επαφών» που εμφανίζεται μόνο όταν δεν έχετε ακόμα επαφές.</p></li>
+<li><p>Βρείτε τις «Ρυθμίσεις» στο κάτω μέρος της αριστερής πλαϊνής μπάρας, δίπλα στο κουμπί γραναζιού:</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="Κουμπί γραναζιού ρυθμίσεων επαφών" src="../../_images/contact_bottombar.png" />
+</figure>
+</div></blockquote>
+</li>
+<li><p>Κάντε κλικ στο κουμπί γραναζιού. Θα εμφανιστεί το κουμπί «Εισαγωγή» της εφαρμογής Επαφές:</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="Πεδίο Μεταφόρτωσης Επαφών" src="../../_images/contact_uploadbutton.png" />
+</figure>
+</div></blockquote>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Η εφαρμογή Επαφές υποστηρίζει μόνο εισαγωγή vCards έκδοσης 3.0 και 4.0.</p>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Κάντε κλικ στο κουμπί «Εισαγωγή» και ανεβάστε το αρχείο VCF/vCard σας.</p></li>
+</ol>
+<p>Μετά την ολοκλήρωση της εισαγωγής, θα δείτε τη νέα σας επαφή στον φάκελο διευθύνσεών σας.</p>
+</section>
+<section id="adding-contacts-manually">
+<h3>Χειροκίνητη Προσθήκη Επαφών<a class="headerlink" href="#adding-contacts-manually" title="Link to this heading"></a></h3>
+<p>Εάν δεν μπορείτε να εισάγετε εικονικές επαφές, η εφαρμογή Επαφές σας επιτρέπει να <strong>προσθέτετε επαφές</strong> χειροκίνητα.</p>
+<p>Για Δημιουργία Νέας Επαφής:</p>
+<ol class="arabic">
+<li><p>Κάντε κλικ στο κουμπί <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Νέα</span> <span class="pre">επαφή</span></code>.</p>
+<p>Η διαμόρφωση Προβολής Επεξεργασίας ανοίγει στο πεδίο Προβολής Εφαρμογής:</p>
+</li>
+</ol>
+<blockquote>
+<div><figure class="align-default">
+<img alt="../../_images/contact_new.png" src="../../_images/contact_new.png" />
+</figure>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Καθορίστε τις πληροφορίες της νέας επαφής και έπειτα κάντε κλικ στο Αποθήκευση.</p></li>
+<li><p>Η λειτουργία Προβολής θα εμφανιστεί με τα δεδομένα που προσθέσατε</p></li>
+</ol>
+<blockquote>
+<div><figure class="align-default">
+<img alt="../../_images/contact_view_mode.png" src="../../_images/contact_view_mode.png" />
+</figure>
+</div></blockquote>
+</section>
+<section id="edit-or-remove-contact-information">
+<h3>Επεξεργασία ή Αφαίρεση Πληροφοριών Επαφής<a class="headerlink" href="#edit-or-remove-contact-information" title="Link to this heading"></a></h3>
+<p>Η εφαρμογή Επαφές σας επιτρέπει να επεξεργάζεστε ή να αφαιρείτε πληροφορίες επαφής.</p>
+<p>Για επεξεργασία ή αφαίρεση πληροφοριών επαφής:</p>
+<ol class="arabic simple">
+<li><p>Πλοηγηθείτε στη συγκεκριμένη επαφή που θέλετε να τροποποιήσετε.</p></li>
+<li><p>Επιλέξτε τις πληροφορίες στο πεδίο που θέλετε να επεξεργαστείτε ή να αφαιρέσετε.</p></li>
+<li><p>Κάντε τις τροποποιήσεις σας ή κάντε κλικ στον κάδο απορριμμάτων.</p></li>
+</ol>
+<p>Οι αλλαγές ή οι αφαιρέσεις που κάνατε σε οποιεσδήποτε πληροφορίες επαφής εφαρμόζονται αμέσως.</p>
+<p>Δεν θα μπορείτε να επεξεργαστείτε όλες τις επαφές. Ο φάκελος διευθύνσεων συστήματος δεν σας επιτρέπει να τροποποιήσετε τα δεδομένα κάποιου άλλου, μόνο τα δικά σας. Τα δικά σας δεδομένα μπορούν επίσης να τροποποιηθούν στις <a class="reference internal" href="../userpreferences.html"><span class="doc">ρυθμίσεις χρήστη</span></a>.</p>
+</section>
+<section id="contact-picture">
+<h3>Εικόνα Επαφής<a class="headerlink" href="#contact-picture" title="Link to this heading"></a></h3>
+<p>Για να προσθέσετε μια εικόνα για τις νέες σας επαφές, κάντε κλικ στο κουμπί μεταφόρτωσης:</p>
+<figure class="align-default">
+<img alt="Εικόνα επαφής (κουμπί μεταφόρτωσης)" src="../../_images/contact_picture.png" />
+</figure>
+<p>Αφού ορίσετε μια εικόνα επαφής, θα μοιάζει με αυτό:</p>
+<figure class="align-default">
+<img alt="Εικόνα επαφής (ορισμένη)" src="../../_images/contact_picture_set.png" />
+</figure>
+<p>Εάν θέλετε να ανεβάσετε μια νέα, να την αφαιρέσετε, να την δείτε σε πλήρες μέγεθος ή να την κατεβάσετε, κάντε κλικ στην εικόνα της επαφής για να εμφανιστούν οι ακόλουθες επιλογές:</p>
+<figure class="align-default">
+<img alt="../../_images/contact_picture_options.png" src="../../_images/contact_picture_options.png" />
+</figure>
+<p>If the administrator allows updates from social media in the admin groupware settings,
+users can also retrieve contact pictures directly from social networks.
+In that case the contact needs to have stored a user name in the social media section.
+Each entry of a supported social network adds a download entry for the respective
+network. Currently, the following social networks are supported:</p>
+<ul class="simple">
+<li><p>Instagram</p></li>
+<li><p>Mastodon</p></li>
+<li><p>Tumblr</p></li>
+<li><p>Diaspora</p></li>
+<li><p>Xing</p></li>
+<li><p>Telegram</p></li>
+<li><p>Gravatar</p></li>
+</ul>
+<p>Social avatars are only retrieved if publicly available without login to the
+respective social network. In the contact user settings on the contacts page,
+you can activate auto-updates from social media. This will update avatars
+with social profile data on a weekly basis. Social networks are checked in the
+order listed above.</p>
+</section>
+</section>
+<section id="managing-multiple-contacts-at-a-time">
+<h2>Διαχείριση πολλαπλών Επαφών ταυτόχρονα<a class="headerlink" href="#managing-multiple-contacts-at-a-time" title="Link to this heading"></a></h2>
+<p>Η εφαρμογή Επαφές σας επιτρέπει να επιλέξετε πολλαπλές επαφές και να εκτελέσετε μαζικές ενέργειες σε αυτές. Για να επιλέξετε πολλαπλές επαφές, είτε κάντε κλικ στην εικόνα προφίλ κάθε επαφής ξεχωριστά, είτε κάντε κλικ στην εικόνα προφίλ της πρώτης επαφής και έπειτα, ενώ κρατάτε πατημένο το πλήκτρο shift, κάντε κλικ σε μια άλλη επαφή στη λίστα για να επιλέξετε όλες τις επαφές μεταξύ της πρώτης και της δεύτερης.</p>
+<p>Αυτό θα εμφανίσει ένα μενού στην κορυφή της λίστας επαφών με διάφορες ενέργειες που μπορείτε να εκτελέσετε στις επιλεγμένες επαφές:</p>
+<figure class="align-default">
+<img alt="Ενέργειες πολλαπλής επιλογής επαφών" src="../../_images/contact_multiselect.png" />
+</figure>
+<p>Στη λειτουργία μαζικής επεξεργασίας, το κουμπί με το εικονίδιο του σταυρού θα αποεπιλέξει όλες τις επιλεγμένες επαφές, ενώ το κουμπί με το εικονίδιο του κάδου απορριμμάτων θα διαγράψει όλες τις επιλεγμένες επαφές.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Μπορεί να μην μπορείτε να τροποποιήσετε ή να διαγράψετε ορισμένες επαφές, για παράδειγμα εάν βρίσκονται σε φάκελο διευθύνσεων μόνο για ανάγνωση. Σε αυτήν την περίπτωση, οι σχετικές ενέργειες θα είναι απενεργοποιημένες.</p>
+</div>
+<section id="merging-duplicate-contacts">
+<h3>Συγχώνευση διπλότυπων Επαφών<a class="headerlink" href="#merging-duplicate-contacts" title="Link to this heading"></a></h3>
+<p>Για να συγχωνεύσετε επαφές, επιλέξτε δύο επαφές και έπειτα κάντε κλικ στο κουμπί εικονιδίου «Συγχώνευση επαφών» στην κορυφή της λίστας επαφών, αυτό θα ανοίξει ένα διάλογο που σας βοηθά να συγχωνεύσετε διπλότυπες επαφές. Ο διάλογος συγχώνευσης θα εμφανίσει τις λεπτομέρειες και των δύο επαφών δίπλα-δίπλα και μπορείτε να επιλέξετε ποιες λεπτομέρειες θα διατηρηθούν στη συγχωνευμένη επαφή.</p>
+<p>Οποιεσδήποτε ιδιότητες με κουμπί Radio (κυκλικό) μπορούν να έχουν μόνο μία τιμή, επομένως μία από τις δύο τιμές πρέπει να επιλεγεί (όπως το όνομα της επαφής, που μπορεί να έχει μόνο μία τιμή), ενώ τα πλαίσια ελέγχου (τετράγωνα κουμπιά) σας επιτρέπουν να διατηρήσετε και τις δύο τιμές εάν επιθυμείτε (όπως αριθμοί τηλεφώνου ή διευθύνσεις email, που μπορούν να έχουν πολλαπλές τιμές).</p>
+<p>Εάν οποιαδήποτε από τις επαφές είναι μέρος μιας ή περισσότερων ομάδων, από προεπιλογή η συγχωνευμένη επαφή θα είναι μέρος όλων των ομάδων στις οποίες ανήκαν οι δύο επαφές. Μπορείτε να αποεπιλέξετε οποιεσδήποτε ομάδες κατά τη διάρκεια της συγχώνευσης εάν δεν θέλετε η συγχωνευμένη επαφή να είναι μέρος τους.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Προς το παρόν μπορείτε να συγχωνεύσετε μόνο δύο επαφές τη φορά, και φυσικά μπορείτε να συγχωνεύσετε μόνο επαφές που μπορείτε να τροποποιήσετε. Εάν η ενέργεια συγχώνευσης είναι απενεργοποιημένη, ελέγξτε ότι έχετε επιλέξει επαφές που πληρούν αυτές τις προϋποθέσεις.</p>
+</div>
+</section>
+</section>
+<section id="organize-your-contacts-with-contact-groups">
+<h2>Οργανώστε τις Επαφές σας με Ομάδες Επαφών<a class="headerlink" href="#organize-your-contacts-with-contact-groups" title="Link to this heading"></a></h2>
+<p>Οι Ομάδες Επαφών σας βοηθούν να οργανώσετε τις επαφές σας σε ομάδες.</p>
+<p>Για να δημιουργήσετε μια νέα ομάδα επαφών, κάντε κλικ στο σύμβολο συν δίπλα στις «Ομάδες επαφών» στην αριστερή πλαϊνή μπάρα.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Οι ομάδες επαφών πρέπει να έχουν τουλάχιστον ένα μέλος για να αποθηκευτούν. Παρακαλώ σημειώστε ότι μπορείτε να προσθέσετε μόνο επαφές από εγγράψιμους φακέλους διευθύνσεων σε ομάδες επαφών. Επαφές από φακέλους διευθύνσεων μόνο για ανάγνωση, όπως ο φάκελος διευθύνσεων συστήματος, δεν μπορούν να προστεθούν.</p>
+</div>
+</section>
+<section id="adding-and-managing-address-books">
+<h2>Προσθήκη και Διαχείριση Φακέλων Διευθύνσεων<a class="headerlink" href="#adding-and-managing-address-books" title="Link to this heading"></a></h2>
+<p>Κάνοντας κλικ στο κουμπί «Ρυθμίσεις» (γρανάζι) στο κάτω μέρος της αριστερής πλαϊνής μπάρας παρέχεται πρόσβαση στις ρυθμίσεις της εφαρμογής Επαφές. Αυτό το πεδίο εμφανίζει όλους τους διαθέσιμους φακέλους διευθύνσεων, ορισμένες επιλογές για κάθε φάκελο διευθύνσεων και σας επιτρέπει να δημιουργήσετε νέους φακέλους διευθύνσεων, απλώς καθορίζοντας ένα όνομα φακέλου διευθύνσεων:</p>
+<figure class="align-default">
+<img alt="Προσθήκη φακέλου διευθύνσεων στις ρυθμίσεις επαφών" src="../../_images/contact_manageaddressbook.png" />
+</figure>
+<p>Οι ρυθμίσεις Επαφών είναι επίσης το μέρος όπου μπορείτε να κοινοποιήσετε, να εξαγάγετε και να διαγράψετε φακέλους διευθύνσεων. Θα βρείτε εκεί τις διευθύνσεις URL CardDAV.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Οι επαφές σε απενεργοποιημένους φακέλους διευθύνσεων δεν εμφανίζονται στην εφαρμογή Επαφές και στο μενού Επαφών.</p>
+</div>
+<p>Δείτε το <a class="reference internal" href="index.html"><span class="doc">Groupware</span></a> για περισσότερες λεπτομέρειες σχετικά με τον συγχρονισμό των φακέλων διευθύνσεών σας με iOS, macOS, Thunderbird και άλλους πελάτες CardDAV.</p>
+</section>
+<section id="teams">
+<h2>Ομάδες<a class="headerlink" href="#teams" title="Link to this heading"></a></h2>
+<p>Η ανεπίσημη συνεργασία λαμβάνει χώρα εντός των οργανισμών: ένα γεγονός που διοργανώνεται για λίγες εβδομάδες, μια σύντομη συνεδρίαση ιδεασμού μεταξύ μελών από διαφορετικές οντότητες, εργαστήρια, ένας χώρος για αστεϊσμούς και υποστήριξη της ομαδικής δόμησης, ή απλά σε πολύ οργανικούς οργανισμούς όπου η επίσημη δομή διατηρείται στο ελάχιστο.</p>
+<p>Για όλους αυτούς τους λόγους, το Nextcloud υποστηρίζει Ομάδες, ένα χαρακτηριστικό ενσωματωμένο στην εφαρμογή Επαφές, όπου κάθε χρήστης μπορεί να δημιουργήσει τη δική του ομάδα, έναν προσδιορισμένο από τον χρήστη συγκεντρωτικό λογαριασμών. Οι ομάδες μπορούν να χρησιμοποιηθούν αργότερα για κοινοποίηση αρχείων και φακέλων, να προστεθούν σε συνομιλίες Talk, όπως μια κανονική ομάδα.</p>
+<figure class="align-default">
+<img alt="Ομάδες στο αριστερό μενού της εφαρμογής Επαφές" src="../../_images/circle.png" />
+</figure>
+<section id="create-a-team">
+<h3>Δημιουργία ομάδας<a class="headerlink" href="#create-a-team" title="Link to this heading"></a></h3>
+<p>Στο αριστερό μενού, κάντε κλικ στο + δίπλα στις Ομάδες. Ορίστε ένα όνομα ομάδας. Καθώς φτάνετε στην οθόνη διαμόρφωσης ομάδας, μπορείτε:</p>
+<ul class="simple">
+<li><p>να προσθέσετε μέλη στην ομάδα σας</p></li>
+<li><p>κάνοντας κλικ στο μενού τριών τελειών δίπλα σε έναν χρήστη σας επιτρέπει να τροποποιήσετε το ρόλο του εντός της ομάδας.</p></li>
+</ul>
+</section>
+<section id="team-roles">
+<h3>Ρόλοι ομάδας<a class="headerlink" href="#team-roles" title="Link to this heading"></a></h3>
+<p>Οι ομάδες υποστηρίζουν 4 τύπους ρόλων:</p>
+<ul class="simple">
+<li><p>Μέλος</p></li>
+<li><p>Συντονιστής</p></li>
+<li><p>Διαχειριστής μπορεί να διαμορφώσει επιλογές ομάδας (+δικαιώματα συντονιστή)</p></li>
+<li><p>Κάτοχος</p></li>
+</ul>
+<p><strong>Μέλος</strong></p>
+<p>Το Μέλος είναι ο ρόλος με τα χαμηλότερα δικαιώματα. Ένα μέλος μπορεί να προσπελάσει μόνο τους πόρους που κοινοποιούνται με την ομάδα και να δεί τα μέλη της ομάδας.</p>
+<p><strong>Συντονιστής</strong></p>
+<p>Εκτός από τα δικαιώματα μέλους, ένας συντονιστής μπορεί να προσκαλεί, να επιβεβαιώνει προσκλήσεις και να διαχειρίζεται μέλη της ομάδας.</p>
+<p><strong>Διαχειριστής</strong></p>
+<p>Εκτός από τα δικαιώματα συντονιστή, ένας διαχειριστής μπορεί να διαμορφώσει επιλογές ομάδας.</p>
+<p><strong>Κάτοχος</strong></p>
+<p>Εκτός από τα δικαιώματα διαχειριστή, ένας κάτοχος μπορεί να μεταβιβάσει την ιδιοκτησία της ομάδας σε ένα άλλο μέλος της ομάδας. Μπορεί να υπάρχει μόνο ένας μόνο κάτοχος ανά ομάδα.</p>
+</section>
+<section id="add-members-to-a-team">
+<h3>Προσθήκη μελών σε ομάδα<a class="headerlink" href="#add-members-to-a-team" title="Link to this heading"></a></h3>
+<p>Τοπικοί λογαριασμοί, ομάδες, διευθύνσεις email ή άλλες ομάδες μπορούν να προστεθούν ως μέλη σε μια ομάδα. Για μια ομάδα ή μια ομάδα, ο ρόλος εφαρμόζεται σε όλα τα μέλη της ομάδας ή της ομάδας.</p>
+</section>
+<section id="team-options">
+<h3>Επιλογές ομάδας<a class="headerlink" href="#team-options" title="Link to this heading"></a></h3>
+<p>Διάφορες αυτονόητες επιλογές είναι διαθέσιμες για τη διαμόρφωση μιας ομάδας, τη διαχείριση προσκλήσεων και συμμετοχής, την ορατότητα της ομάδας, την άδεια για συμμετοχή σε άλλες ομάδες και την προστασία με κωδικό πρόσβασης.</p>
+</section>
+<section id="shared-items">
+<h3>Κοινοποιημένα αντικείμενα<a class="headerlink" href="#shared-items" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.5.</span></p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/shared-items.png" src="../../_images/shared-items.png" />
+</figure>
+<p>Αντικείμενα που κοινοποιούνται μεταξύ δύο επαφών θα εμφανίζονται στην εφαρμογή επαφών. Αυτό περιλαμβάνει πολυμέσα, συμβάντα ημερολογίου, δωμάτια συνομιλίας και κοινοποιημένες κάρτες deck, όλα τα οποία θα είναι ορατά στις λεπτομέρειες της επαφής. Αυτή η λειτουργικότητα περιορίζεται σε επαφές που καταγράφονται στον φάκελο διευθύνσεων συστήματος. Προς το παρόν, το σύστημά μας υποστηρίζει μόνο κοινοποιημένα αντικείμενα μεταξύ δύο επαφών.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Groupware" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="calendar.html" class="btn btn-neutral float-right" title="Χρήση της εφαρμογής Ημερολόγιο" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 Greek
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Γλώσσες</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Εκδόσεις</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Λήψεις</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Στο Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Αρχική Σελίδα Έργου</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Παραλλαγές</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

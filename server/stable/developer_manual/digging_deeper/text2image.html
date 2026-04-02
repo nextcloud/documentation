@@ -1,0 +1,453 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Text-To-Image &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/digging_deeper/text2image.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Two-factor providers" href="two-factor-provider.html" />
+    <link rel="prev" title="Text Processing" href="text_processing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/index.html">Config &amp; Preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="context_chat.html">Context Chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="continuous_integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard.html">Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deadlock.html">Deadlocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files-metadata.html">Files Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupware/index.html">Groupware integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html">HTTP Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translation.html">Machine Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oidc.html">OpenID Connect (Oidc)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="out_of_office.html">Out-of-office periods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openmetrics.html">Open Metrics exporter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonenumberutil.html">Phone number util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psr.html">PSR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile.html">Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiler.html">Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">Reference providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_apis.html">REST APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_checks.html">Setup checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snowflake_ids.html">Snowflake IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speech-to-text.html">Speech-To-Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talk.html">Talk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task_processing.html">Task Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_processing.html">Text Processing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Text-To-Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#consuming-the-text-to-image-api">Consuming the Text-To-Image API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tasks">Tasks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-statuses">Task statuses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#listening-to-the-image-generation-events">Listening to the image generation events</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#implementing-a-text-to-image-provider">Implementing a Text-To-Image provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#provider-registration">Provider registration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status.html">User Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">User migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_host_metadata.html">Web Host Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webdav_collection_preload.html">WebDAV collection preload events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html">Working with time</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Digging deeper</a></li>
+      <li class="breadcrumb-item active">Text-To-Image</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/text2image.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="text-to-image">
+<span id="text2image"></span><h1>Text-To-Image<a class="headerlink" href="#text-to-image" title="Link to this heading"></a></h1>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 30: </span>Use the TaskProcessing API instead</p>
+</div>
+<p>Nextcloud offers a <strong>Text-To-Image</strong> API. The overall idea is that there is a central OCP API that apps can use to prompt tasks to latent diffusion AI models and similar image generation tools. To be technology agnostic any app can provide this functionality by registering a Text-To-Image provider.</p>
+<section id="consuming-the-text-to-image-api">
+<h2>Consuming the Text-To-Image API<a class="headerlink" href="#consuming-the-text-to-image-api" title="Link to this heading"></a></h2>
+<p>To consume the Text-To-Image API, you will need to <a class="reference internal" href="../basics/dependency_injection.html#id2"><span class="std std-ref">inject</span></a> <code class="docutils literal notranslate"><span class="pre">\OCP\TextToImage\IManager</span></code>. This manager offers the following methods:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hasProviders()</span></code> This method returns a boolean which indicates if any providers have been registered. If this is false you cannot use the image generation feature.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">runTask(Task</span> <span class="pre">$task)</span></code> This method provides the actual functionality. The task is defined using the Task class. This method runs the task synchronously, so depending on the implementation it is uncertain how long it will take (between 3s and several hours).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scheduleTask(Task</span> <span class="pre">$task)</span></code> This method also runs a task, but asynchronously in a background job. The task is defined using the Task class.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">runOrScheduleTask(Task</span> <span class="pre">$task)</span></code> This method also runs a task, but fist checks the expected runtime of the provider to be used. If the runtime fits inside the available processing time for the current request the task is run synchronously, otherwise it is scheduled as a background job. The task is defined using the Task class.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getTask(int</span> <span class="pre">$id)</span></code> This method fetches a task specified by its id.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getUserTask(int</span> <span class="pre">$id,</span> <span class="pre">?string</span> <span class="pre">$userId)</span></code> This method fetches a task specified by its id and the user that is associated with it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getUserTasksByApp(?string</span> <span class="pre">$userId,</span> <span class="pre">string</span> <span class="pre">$appId,</span> <span class="pre">?string</span> <span class="pre">$identifier</span> <span class="pre">=</span> <span class="pre">null)</span></code> This method fetches tasks by a user created by a specific app (optionally, you can also specify the task identifier as an additional filter)</p></li>
+</ul>
+</div></blockquote>
+<p>If you would like to use the image generation functionality in a client, there are also OCS endpoints available for this: <a class="reference internal" href="../client_apis/OCS/ocs-text2image-api.html#ocs-text2image-api"><span class="std std-ref">OCS Text-To-Image API</span></a></p>
+<section id="tasks">
+<h3>Tasks<a class="headerlink" href="#tasks" title="Link to this heading"></a></h3>
+<p>To create a task we use the <code class="docutils literal notranslate"><span class="pre">\OCP\TextToImage\Task</span></code> class. Its constructor takes the following arguments: <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">\OCP\TextToImage\Task(string</span> <span class="pre">$input,</span> <span class="pre">string</span> <span class="pre">$appId,</span> <span class="pre">int</span> <span class="pre">$numberOfImages,</span> <span class="pre">?string</span> <span class="pre">$userId,</span> <span class="pre">string</span> <span class="pre">$identifier</span> <span class="pre">=</span> <span class="pre">'')</span></code>. For example:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$text2imageTask</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Task</span><span class="p">(</span><span class="nv">$documentTitle</span><span class="p">,</span> <span class="s2">&quot;my_app&quot;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="nv">$userId</span><span class="p">,</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$documentId</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The task class objects have the following methods available:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">getStatus()</span></code> This method returns one of the below statuses.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getId()</span></code> This method will return <code class="docutils literal notranslate"><span class="pre">null</span></code> before the task has been passed to <code class="docutils literal notranslate"><span class="pre">runTask</span></code> or <code class="docutils literal notranslate"><span class="pre">scheduleTask</span></code>, otherwise it will return an integer</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getInput()</span></code> This returns the input string.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getAppId()</span></code> This returns the originating application ID of the task.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getNumberOfImages()</span></code> This returns the number of generated images for the task.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getIdentifier()</span></code> This returns the original scheduler-defined identifier for the task</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getUserId()</span></code> This returns the originating user ID of the task.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getOutputImages()</span></code> This method will return <code class="docutils literal notranslate"><span class="pre">null</span></code> unless the task is successful, if its, it will return a list of <code class="docutils literal notranslate"><span class="pre">IImage</span></code> objects</p></li>
+</ul>
+</div></blockquote>
+<p>You could run the task directly as follows. However, this will block the current PHP process until the task is done, which can sometimes take dozens of minutes, depending on which provider is used.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$text2imageManager</span><span class="o">-&gt;</span><span class="na">runTask</span><span class="p">(</span><span class="nv">$text2imageTask</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\OCP\PreConditionNotMetException</span><span class="o">|</span><span class="nx">\OCP\TextToImage\Exception\TaskFailureException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// task failed</span>
+    <span class="c1">// return error</span>
+<span class="p">}</span>
+<span class="c1">// task was successful</span>
+</pre></div>
+</div>
+<p>The wiser choice, when you are in the context of a HTTP controller, is to schedule the task for execution in a background job, as follows:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$text2imageManager</span><span class="o">-&gt;</span><span class="na">scheduleTask</span><span class="p">(</span><span class="nv">$text2imageTask</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\OCP\PreConditionNotMetException</span><span class="o">|</span><span class="nx">\OCP\DB\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// scheduling task failed</span>
+<span class="p">}</span>
+<span class="c1">// task was scheduled successfully</span>
+</pre></div>
+</div>
+<p>Of course, you might want to schedule the task in a background job <strong>only</strong> if it takes longer than the request timeout. This is what runOrScheduleTask does.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$text2imageManager</span><span class="o">-&gt;</span><span class="na">runOrScheduleTask</span><span class="p">(</span><span class="nv">$text2imageTask</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\OCP\PreConditionNotMetException</span><span class="o">|</span><span class="nx">\OCP\DB\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// scheduling task failed</span>
+    <span class="c1">// return error</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\OCP\TextToImage\Exception\TaskFailureException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// task was run but failed</span>
+    <span class="c1">// status will be STATUS_FAILED</span>
+    <span class="c1">// return error</span>
+<span class="p">}</span>
+
+<span class="k">switch</span> <span class="p">(</span><span class="nv">$text2imageTask</span><span class="o">-&gt;</span><span class="na">getStatus</span><span class="p">())</span> <span class="p">{</span>
+<span class="k">case</span> <span class="nx">\OCP\TextToImage\Task</span><span class="o">::</span><span class="na">STATUS_SUCCESSFUL</span><span class="o">:</span>
+    <span class="c1">// task was run directly and was successful</span>
+<span class="k">case</span> <span class="nx">\OCP\TextToImage\Task</span><span class="o">::</span><span class="na">STATUS_RUNNING</span><span class="o">:</span>
+<span class="k">case</span> <span class="nx">\OCP\TextToImage\Task</span><span class="o">::</span><span class="na">STATUS_SCHEDULED</span><span class="o">:</span>
+    <span class="c1">// task was deferred to background job</span>
+<span class="k">default</span><span class="o">:</span>
+    <span class="c1">// something went wrong</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="task-statuses">
+<h3>Task statuses<a class="headerlink" href="#task-statuses" title="Link to this heading"></a></h3>
+<p id="text2image-statuses">All tasks always have one of the below statuses:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nx">Task</span><span class="o">::</span><span class="na">STATUS_FAILED</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="nx">Task</span><span class="o">::</span><span class="na">STATUS_SUCCESSFUL</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="nx">Task</span><span class="o">::</span><span class="na">STATUS_RUNNING</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nx">Task</span><span class="o">::</span><span class="na">STATUS_SCHEDULED</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nx">Task</span><span class="o">::</span><span class="na">STATUS_UNKNOWN</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="listening-to-the-image-generation-events">
+<h3>Listening to the image generation events<a class="headerlink" href="#listening-to-the-image-generation-events" title="Link to this heading"></a></h3>
+<p>Since <code class="docutils literal notranslate"><span class="pre">scheduleTask</span></code> does not block, you will need to listen to the following events in your app to obtain the resulting images or be notified of any failure.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\TextToImage\Events\TaskSuccessfulEvent</span></code> This event class offers the <code class="docutils literal notranslate"><span class="pre">getTask()</span></code> method which returns the up-to-date task object, with the output from the model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\TextToImage\Events\TaskFailedEvent</span></code> In addition to the <code class="docutils literal notranslate"><span class="pre">getTask()</span></code> method, this event class provides the <code class="docutils literal notranslate"><span class="pre">getErrorMessage()</span></code> method which returns the error message as a string (only in English and for debugging purposes, so don’t show this to the user)</p></li>
+</ul>
+</div></blockquote>
+<p>For example, in your <code class="docutils literal notranslate"><span class="pre">lib/AppInfo/Application.php</span></code> file:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerEventListener</span><span class="p">(</span><span class="nx">OCP\TextToImage\Events\TaskSuccessfulEvent</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">ImageGenerationResultListener</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerEventListener</span><span class="p">(</span><span class="nx">OCP\TextToImage\Events\TaskFailedEvent</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">ImageGenerationResultListener</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The corresponding <code class="docutils literal notranslate"><span class="pre">ImageGenerationResultListener</span></code> class could look like the following:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Listener</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\AppInfo\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\TextToImage\Events\AbstractTextToImageEvent</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\TextToImage\Events\TaskSuccessfulEvent</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\TextToImage\Events\TaskFailedEvent</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\IEventListener</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ImageGenerationResultListener</span> <span class="k">implements</span> <span class="nx">IEventListener</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$event</span> <span class="nx">instanceof</span> <span class="nx">AbstractTextProcessingEvent</span> <span class="o">||</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getTask</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getAppId</span><span class="p">()</span> <span class="o">!==</span> <span class="nx">Application</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span> <span class="nx">instanceof</span> <span class="nx">TaskSuccessfulEvent</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$images</span> <span class="o">=</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getTask</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getOutputImages</span><span class="p">()</span>
+            <span class="c1">// store $images somewhere</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span> <span class="nx">instanceof</span> <span class="nx">TaskFailedEvent</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$error</span> <span class="o">=</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getErrorMessage</span><span class="p">()</span>
+            <span class="nv">$userId</span> <span class="o">=</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getTask</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getUserId</span><span class="p">()</span>
+            <span class="c1">// Notify relevant user about failure</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="implementing-a-text-to-image-provider">
+<h2>Implementing a Text-To-Image provider<a class="headerlink" href="#implementing-a-text-to-image-provider" title="Link to this heading"></a></h2>
+<p>A <strong>Text-To-Image provider</strong> is a class that implements the interface <code class="docutils literal notranslate"><span class="pre">OCP\TextToImage\IProvider</span></code>.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\TextToImage</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\AppInfo\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Files\File</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\TextToImage\IProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IL10N</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ImageGenerationProvider</span> <span class="k">implements</span> <span class="nx">IProvider</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">IL10N</span> <span class="nv">$l</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getId</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="na">class</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;My awesome text to image provider&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">generate</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$input</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$resources</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="c1">// write the resulting images to the file resources in $resources</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The method <code class="docutils literal notranslate"><span class="pre">getId</span></code> returns a string to uniquely identify the registered provider. You can use the class name for this for example.</p>
+<p>The method <code class="docutils literal notranslate"><span class="pre">getName</span></code> returns a string to identify the registered provider in the user interface and should be localized.</p>
+<p>The method <code class="docutils literal notranslate"><span class="pre">generate</span></code> implements the image generation step. It gets passed an array of <code class="docutils literal notranslate"><span class="pre">resource</span></code> values. The length of the array indicates how many images should be generated. Each image should be written to one of the resources, e.g. using <code class="docutils literal notranslate"><span class="pre">fwrite()</span></code>. In case execution fails for some reason, you should throw a <code class="docutils literal notranslate"><span class="pre">RuntimeException</span></code> with an explanatory error message.</p>
+<p>The class would typically be saved into a file in <code class="docutils literal notranslate"><span class="pre">lib/TextToImage</span></code> of your app but you are free to put it elsewhere as long as it’s loadable by Nextcloud’s <a class="reference internal" href="../basics/dependency_injection.html#id2"><span class="std std-ref">dependency injection container</span></a>.</p>
+</section>
+<section id="provider-registration">
+<h2>Provider registration<a class="headerlink" href="#provider-registration" title="Link to this heading"></a></h2>
+<p>The provider class is registered via the <a class="reference internal" href="../app_development/bootstrap.html#bootstrapping"><span class="std std-ref">bootstrap mechanism</span></a> of the <code class="docutils literal notranslate"><span class="pre">Application</span></code> class.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\AppInfo</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\TextToImage\ImageGenerationProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\App</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IBootContext</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IBootstrap</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IRegistrationContext</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+<span class="hll">        <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerTextToImageProvider</span><span class="p">(</span><span class="nx">ImageGenerationProvider</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span>    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">(</span><span class="nx">IBootContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="text_processing.html" class="btn btn-neutral float-left" title="Text Processing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="two-factor-provider.html" class="btn btn-neutral float-right" title="Two-factor providers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Apr 02, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

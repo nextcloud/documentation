@@ -1,0 +1,1167 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ga" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ag baint úsáide as an app Calendar &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/groupware/calendar.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=d9c2735f"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Ag baint úsáide as an aip Mail" href="mail.html" />
+    <link rel="prev" title="Ag baint úsáide as an app Teagmhálacha" href="contacts.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest réamhrá lámhleabhar úsáideora</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Comhéadan Gréasáin Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Comhaid &amp; sioncronú</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Earraí grúpa</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Ag baint úsáide as an app Teagmhálacha</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Ag baint úsáide as an app Calendar</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#managing-your-calendars">D'fhéilirí a bhainistiú</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-calendar">Cruthaigh Féilire nua</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-a-calendar">Iompórtáil Féilire</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-an-event-add-ics-event">Imeacht a Iompórtáil/Imeacht .ics a Chur Leis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-export-or-delete-a-calendar">Eagar, Easpórtáil nó Scrios Féilire</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-transparency">Trédhearcacht Féilire</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing-calendars">Féilirí a roinnt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#federated-calendar-sharing">Federated calendar sharing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#publishing-a-calendar">Féilire a fhoilsiú</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-widget">Giuirléid Féilire</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subscribe-to-a-calendar">Liostáil le Féilire</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subscribe-to-a-holiday-calendar">Liostáil le Féilire Saoire</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-events">Imeachtaí a Bhainistiú</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-event">Cruthaigh imeacht nua</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-talk-conversation">Cuir comhrá leis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-duplicate-or-delete-an-event">Cuir imeacht in eagar, a dhúbailt nó a scriosadh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#invite-attendees-to-an-event">Tabhair cuireadh do lucht freastail chuig imeacht</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checking-attendees-busy-times">Ag seiceáil amanna gnóthacha an lucht freastail</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#assign-rooms-and-resources-to-an-event">Sann seomraí agus acmhainní d’imeacht</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#room-availability">Infhaighteacht seomra</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-attachments-to-events">Cuir ceangaltáin le himeachtaí</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-up-reminders">Socraigh meabhrúcháin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-recurring-options">Cuir roghanna athfhillteacha leis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trash-bin">Bruscar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automated-user-status">Stádas Úsáideora Uathoibrithe</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#responding-to-invitations">Ag freagairt cuirí</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#availability-working-hours">Infhaighteacht (Uaireanta Oibre)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#birthday-calendar">Féilire lá breithe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#appointments">Coinní</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-an-appointment-configuration">Cumraíocht coinne a chruthú</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#booking-an-appointment">Ag cur coinne in áirithe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#working-with-the-booked-appointment">Ag obair leis an coinne áirithinte</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-talk-room-for-booked-appointments">Cruthaigh seomra Caint le haghaidh coinní áirithinte</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#proposals">Proposals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#managing-proposals">Managing proposals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-proposal">Creating a proposal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#editing-a-proposal">Editing a proposal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#viewing-a-proposal-progress">Viewing a proposal progress</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notifications-for-a-proposed-meeting">Notifications for a proposed meeting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#responding-to-a-proposed-meeting">Responding to a proposed meeting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mail.html">Ag baint úsáide as an aip Mail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">Teachtaireachtaí as oifig a shocrú</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Sioncrónú le Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">Sioncrónú le iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">Sioncrónú le macOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Ag sioncronú le Thunderbird</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Ag sioncronú le KDE Kontact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Ag sioncronú leis an deasc GNOME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Ag sioncrónú le Windows 10</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Caint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Cliaint Deisce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Ag socrú do shainroghanna</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Rochtain uilíoch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Ag baint úsáide as fíordheimhniú dhá-fhachtóir</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Bainistigh brabhsálaithe agus gléasanna nasctha</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Stóráil Sheachtrach</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Earraí grúpa</a></li>
+      <li class="breadcrumb-item active">Ag baint úsáide as an app Calendar</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/calendar.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-calendar-app">
+<span id="calendar-app"></span><h1>Ag baint úsáide as an app Calendar<a class="headerlink" href="#using-the-calendar-app" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Tagann an aip Féilire suiteáilte le Nextcloud Hub de réir réamhshocraithe, ach is féidir é a dhíchumasú. Iarr ar do Riarthóir é.</p>
+</div>
+<p>Oibríonn an aip Féilire Nextcloud cosúil le feidhmchláir féilire eile ar féidir leat do fhéilirí agus imeachtaí Nextcloud a shioncronú leo.</p>
+<p>Nuair a fhaigheann tú rochtain ar an aip Féilire den chéad uair, cruthófar an chéad fhéilire réamhshocraithe duit.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_application.png" src="../../_images/calendar_application.png" />
+</figure>
+<section id="managing-your-calendars">
+<h2>D'fhéilirí a bhainistiú<a class="headerlink" href="#managing-your-calendars" title="Link to this heading"></a></h2>
+<section id="create-a-new-calendar">
+<h3>Cruthaigh Féilire nua<a class="headerlink" href="#create-a-new-calendar" title="Link to this heading"></a></h3>
+<p>Má tá sé ar intinn agat féilire nua a bhunú gan aon sean sonraí a aistriú ón bhféilire roimhe seo, is é féilire nua a chruthú an bealach ar cheart duit dul.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_create_1.png"><img alt="../../_images/calendar_create_1.png" src="../../_images/calendar_create_1.png" style="width: 604.0px; height: 480.8px;" />
+</a>
+</figure>
+<ol class="arabic simple">
+<li><p>Cliceáil ar <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Féilire</span> <span class="pre">Nua</span></code> sa bharra taoibh ar chlé.</p></li>
+<li><p>Clóscríobh ainm do d’fhéilire nua, m.sh. &quot;Obair&quot;, &quot;Baile&quot; nó &quot;Pleanáil margaíochta&quot;.</p></li>
+<li><p>Tar éis duit cliceáil ar an seicmharc, cruthaítear d’fhéilire nua agus is féidir é a shioncronú thar do ghléasanna, é a líonadh le himeachtaí nua agus a roinnt le do chairde agus do chomhghleacaithe.</p></li>
+</ol>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_create_2.png"><img alt="../../_images/calendar_create_2.png" src="../../_images/calendar_create_2.png" style="width: 603.2px; height: 478.40000000000003px;" />
+</a>
+</figure>
+</section>
+<section id="import-a-calendar">
+<h3>Iompórtáil Féilire<a class="headerlink" href="#import-a-calendar" title="Link to this heading"></a></h3>
+<p>Más mian leat d’fhéilire agus a n-imeachtaí faoi seach a aistriú chuig do shampla Nextcloud, is é iompórtáil an bealach is fearr chun é sin a dhéanamh.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_importing.png"><img alt="../../_images/calendar_importing.png" src="../../_images/calendar_importing.png" style="width: 697.5px; height: 225.0px;" />
+</a>
+</figure>
+<ol class="arabic simple">
+<li><p>Cliceáil ar dheilbhín na socruithe atá lipéadaithe le <code class="docutils literal notranslate"><span class="pre">Socruithe</span> <span class="pre">féilire</span></code> ag an mbun ar chlé.</p></li>
+<li><p>After clicking on <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">Calendar</span></code>, found in the <code class="docutils literal notranslate"><span class="pre">General</span></code> section, you can select one or more calendar files
+from your local device to upload.</p></li>
+<li><p>Roghnaigh <code class="docutils literal notranslate"><span class="pre">Féilire</span> <span class="pre">le</span> <span class="pre">hiompórtáil</span> <span class="pre">isteach</span> <span class="pre">ann</span></code>.</p></li>
+<li><p>Féadfaidh an t-uaslódáil roinnt ama a thógáil agus braitheann sé ar mhéid an fhéilire a allmhairíonn tú. Beidh barra dul chun cinn gorm le feiceáil faoi &quot;Socruithe Féilire&quot;.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ní thacaíonn feidhmchlár Féilire Nextcloud ach le <a href="#id1"><span class="problematic" id="id2">``</span></a>.ics`-comhaid atá comhoiriúnach le iCalendar, arna sainmhíniú in RFC 5545.</p>
+</div>
+</section>
+<section id="import-an-event-add-ics-event">
+<h3>Imeacht a Iompórtáil/Imeacht .ics a Chur Leis<a class="headerlink" href="#import-an-event-add-ics-event" title="Link to this heading"></a></h3>
+<p>I go leor áiteanna, is féidir leat sonraí imeachta a íoslódáil mar chomhad .ics, nó trí chnaipe a deir &quot;ical&quot;, &quot;Apple Calendar&quot; nó &quot;Outlook&quot;.</p>
+<ol class="arabic simple">
+<li><p>Cliceáil ar dheilbhín na socruithe atá lipéadaithe le <code class="docutils literal notranslate"><span class="pre">Socruithe</span> <span class="pre">féilire</span></code> ag an mbun ar chlé.</p></li>
+<li><p>Tar éis cliceáil ar <code class="docutils literal notranslate"><span class="pre">Iompórtáil</span> <span class="pre">féilire</span></code> is féidir leat comhad féilire amháin nó níos mó a roghnú ó do ghléas áitiúil le huaslódáil.</p></li>
+<li><p>Roghnaigh <code class="docutils literal notranslate"><span class="pre">Féilire</span> <span class="pre">le</span> <span class="pre">hiompórtáil</span> <span class="pre">isteach</span> <span class="pre">ann</span></code>.</p></li>
+<li><p>Féadfaidh an t-uaslódáil roinnt ama a thógáil agus braitheann sé ar mhéid an fhéilire/imeachta a iompórtálann tú. Beidh barra dul chun cinn gorm le feiceáil faoi &quot;Socruithe Féilire&quot;.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ní thacaíonn feidhmchlár Féilire Nextcloud ach le <a href="#id1"><span class="problematic" id="id2">``</span></a>.ics`-comhaid atá comhoiriúnach le iCalendar, arna sainmhíniú in RFC 5545.</p>
+</div>
+</section>
+<section id="edit-export-or-delete-a-calendar">
+<h3>Eagar, Easpórtáil nó Scrios Féilire<a class="headerlink" href="#edit-export-or-delete-a-calendar" title="Link to this heading"></a></h3>
+<p>Uaireanta b'fhéidir gur mhaith leat dath nó ainm iomlán féilire iompórtáilte nó cruthaithe roimhe seo a athrú. B'fhéidir gur mhaith leat é a onnmhairiú chuig do thiomáint crua áitiúil nó é a scriosadh go deo.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Cuimhnigh le do thoil gur gníomh do-aisiompaithe é féilire a scriosadh. Tar éis é a scriosadh, níl aon bhealach ann chun an féilire a athchóiriú mura bhfuil cúltaca áitiúil agat.</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/calendar_dropdown.png" src="../../_images/calendar_dropdown.png" />
+</figure>
+<p>Cliceáil ar an deilbhín &quot;peann&quot; den fhéilire faoi seach. Feicfidh tú preabfhuinneog nua a ligfidh duit ainm agus dath an fhéilire a athrú, agus cnaipí chun an féilire a scriosadh nó a onnmhairiú.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_settings.png" src="../../_images/calendar_settings.png" />
+</figure>
+</section>
+<section id="calendar-transparency">
+<h3>Trédhearcacht Féilire<a class="headerlink" href="#calendar-transparency" title="Link to this heading"></a></h3>
+<p>Is féidir leat an ticbhosca a scoránaigh &quot;Ná taispeáin dom chomh gnóthach riamh (socraigh an féilire go trédhearcach)&quot; chun tionchar a imirt má chuirtear imeachtaí an fhéilire seo san áireamh i ríomhanna Saor/Gnóthach. Má dhéantar é a sheiceáil, ní chuirfear aon imeachtaí san fhéilire seo san áireamh, beidh do sceideal saor in aisce i gcónaí, beag beann ar shocruithe na n-imeachtaí.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_transparency.png" src="../../_images/calendar_transparency.png" />
+</figure>
+</section>
+<section id="sharing-calendars">
+<h3>Féilirí a roinnt<a class="headerlink" href="#sharing-calendars" title="Link to this heading"></a></h3>
+<p>You may share your calendar with local users, groups or with remote users on federated servers.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_sharing_1.png" src="../../_images/calendar_sharing_1.png" />
+</figure>
+<p>Is féidir féilirí a roinnt le rochtain scríofa nó inléite amháin. Agus féilire á roinnt le rochtain scríofa, beidh úsáideoirí a bhfuil an féilire roinnte acu in ann imeachtaí nua a chruthú san fhéilire chomh maith leis na cinn atá ann cheana féin a chur in eagar agus a scriosadh.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_sharing_2.png" src="../../_images/calendar_sharing_2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ní féidir glacadh le scaireanna féilire nó iad a dhiúltú faoi láthair. Más mian leat deireadh a chur le féilire a chomhroinn duine éigin leat, is féidir leat cliceáil ar an roghchlár 3-ponc in aice leis an bhféilire sa liosta féilire agus cliceáil ar &quot;Dí-roinn uaim&quot;. Chun sciar a athbhunú, is féidir an féilire a athroinnt arís, don ghrúpa iomlán, do gach sciar a athshocrú, nó d'úsáideoir amháin.</p>
+</div>
+</section>
+<section id="federated-calendar-sharing">
+<h3>Federated calendar sharing<a class="headerlink" href="#federated-calendar-sharing" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 32.0.0.</span></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 33.0.0: </span>Federated calendar shares support read/write access.</p>
+</div>
+<p>Sharing a calendar with a user on another Nextcloud instance works just like sharing with a local user.
+The difference is that you need to use the federated user identifier as the recipient, which has the format
+<code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;instance&gt;</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">alice&#64;cloud.example.com</span></code>).</p>
+<p>Starting with Nextcloud 33, federated shares support full read/write access, allowing remote users to
+create, edit, and delete events in the shared calendar. In Nextcloud 32, federated shares were read-only.</p>
+</section>
+<section id="publishing-a-calendar">
+<h3>Féilire a fhoilsiú<a class="headerlink" href="#publishing-a-calendar" title="Link to this heading"></a></h3>
+<p>Is féidir féilirí a fhoilsiú trí nasc poiblí chun iad a dhéanamh infheicthe (inléite amháin) d’úsáideoirí seachtracha. Is féidir leat nasc poiblí a chruthú tríd an roghchlár comhroinnte a oscailt le haghaidh féilire agus cliceáil ar « + » in aice le « Comhroinn nasc ». Nuair a chruthaítear é, is féidir leat an nasc poiblí a chóipeáil chuig do ghearrthaisce nó é a sheoladh trí ríomhphost.</p>
+<p>Tá « cód leabú »  ann freisin a sholáthraíonn iframe HTML chun d’fhéilire a leabú i leathanaigh phoiblí.</p>
+<p>Is féidir féilirí iolracha a roinnt le chéile trína gcuid comharthaí uathúla a chur le deireadh nasc leabaithe. Is féidir comharthaí aonair a fháil ag deireadh nasc poiblí gach féilire. Beidh cuma <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/index.php/apps/calendar/embed/&lt;token1&gt;-&lt;token2&gt;-&lt;token3&gt;</span></code></p>
+<p>Chun an t-amharc réamhshocraithe nó dáta an fhéilire leabaithe a athrú, ní mór duit URL a chur ar fáil a bhfuil cuma `` <a class="reference external" href="https://cloud.example.com/index.php/apps/calendar/embed">https://cloud.example.com/index.php/apps/calendar/embed</a>/&lt;token&gt;/&lt;view&gt;/&lt;date&gt;`` ar fáil. Sa URL seo ní mór duit na hathróga seo a leanas a ionadú:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;token&gt;</span></code> le comhartha an fhéilire,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;view&gt;</span></code> le ceann de <code class="docutils literal notranslate"><span class="pre">dayGridMonth</span></code>, <code class="docutils literal notranslate"><span class="pre">timeGridWeek</span></code>, <code class="docutils literal notranslate"><span class="pre">timeGridDay</span></code>, <code class="docutils literal notranslate"><span class="pre">listMonth</span></code>, <code class="docutils literal notranslate"><span class="pre">listWeek</span></code>, <code class="docutils literal notranslate"><span class="pre">listDay</span></code>. Is é <code class="docutils literal notranslate"><span class="pre">dayGridMonth</span></code> an t-amharc réamhshocraithe agus is é <code class="docutils literal notranslate"><span class="pre">listMonth</span></code> an liosta a úsáidtear de ghnáth,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;date&gt;</span></code> le <code class="docutils literal notranslate"><span class="pre">anois</span></code> nó dáta ar bith leis an bhformáid seo a leanas <code class="docutils literal notranslate"><span class="pre">&lt;year&gt;-&lt;month&gt;-&lt;day&gt;</span></code> (m.sh. <code class="docutils literal notranslate"><span class="pre">2019-12-28</span></code>).</p></li>
+</ul>
+<p>Ar an leathanach poiblí, tá úsáideoirí in ann an nasc síntiús don fhéilire a fháil agus an féilire iomlán a onnmhairiú go díreach.</p>
+</section>
+<section id="calendar-widget">
+<h3>Giuirléid Féilire<a class="headerlink" href="#calendar-widget" title="Link to this heading"></a></h3>
+<p>Is féidir leat do chuid féilirí a leabú in aipeanna tacaithe ar nós <code class="docutils literal notranslate"><span class="pre">Labhair</span></code>, <code class="docutils literal notranslate"><span class="pre">Nótaí</span></code>, etc... tríd an nasc poiblí a roinnt chun an leaba a fheiceáil (inléite amháin) do gach úsáideoir nó tríd an nasc inmheánach a úsáid chun é a dhéanamh príobháideach.</p>
+</section>
+<section id="subscribe-to-a-calendar">
+<h3>Liostáil le Féilire<a class="headerlink" href="#subscribe-to-a-calendar" title="Link to this heading"></a></h3>
+<p>Is féidir leat síntiús a íoc le féilirí iCal díreach taobh istigh de do Nextcloud. Trí thacú leis an gcaighdeán idir-inoibritheach seo (RFC 5545) rinneamar féilire Nextcloud comhoiriúnach do Google Calendar, Apple iCloud agus go leor freastalaithe féilire eile ar féidir leat do chuid féilirí a mhalartú leo, lena n-áirítear naisc síntiús ón bhféilire a foilsíodh ar chásanna eile Nextcloud, mar a thuairiscítear thuas.</p>
+<ol class="arabic simple">
+<li><p>Cliceáil ar <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Féilire</span> <span class="pre">nua</span></code> sa bharra taoibh ar chlé</p></li>
+<li><p>Cliceáil ar <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Síntiús</span> <span class="pre">nua</span> <span class="pre">ón</span> <span class="pre">nasc</span> <span class="pre">(inléite</span> <span class="pre">amháin)</span></code></p></li>
+<li><p>Clóscríobh isteach nó greamaigh nasc an fhéilire roinnte a bhfuil tú ag iarraidh síntiús a íoc leis.</p></li>
+</ol>
+<p>Críochnaithe. Déanfar do shíntiúis féilire a nuashonrú go rialta.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Déantar síntiúis a athnuachan gach seachtain de réir réamhshocraithe. Seans gur athraigh do riarthóir an socrú seo.</p>
+</div>
+</section>
+<section id="subscribe-to-a-holiday-calendar">
+<h3>Liostáil le Féilire Saoire<a class="headerlink" href="#subscribe-to-a-holiday-calendar" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.4.</span></p>
+</div>
+<p>Is féidir leat síntiús a íoc le féilire saoire inléite amháin arna sholáthar ag <a href="#id1"><span class="problematic" id="id2">`Thunderbird &lt; https://www.thunderbird.net/calendar/holidays/&gt;`_</span></a>.</p>
+<ol class="arabic simple">
+<li><p>Cliceáil ar <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Féilire</span> <span class="pre">nua</span></code> sa bharra taoibh ar chlé</p></li>
+<li><p>Cliceáil ar <a href="#id1"><span class="problematic" id="id2">``</span></a>+ Cuir féilire saoire `` leis</p></li>
+<li><p>Aimsigh do thír nó réigiún agus cliceáil <code class="docutils literal notranslate"><span class="pre">Liostáil</span></code></p></li>
+</ol>
+</section>
+</section>
+<section id="managing-events">
+<h2>Imeachtaí a Bhainistiú<a class="headerlink" href="#managing-events" title="Link to this heading"></a></h2>
+<section id="create-a-new-event">
+<h3>Cruthaigh imeacht nua<a class="headerlink" href="#create-a-new-event" title="Link to this heading"></a></h3>
+<p>Is féidir imeachtaí a chruthú trí chliceáil ar an limistéar ina bhfuil an imeacht sceidealaithe. I radharc lae agus seachtaine an fhéilire níl le déanamh agat ach do chúrsóir a chliceáil, a tharraingt agus a scaoileadh thar an limistéar nuair a bhíonn an ócáid ar siúl.</p>
+<p>Má chliceálann tú ar an gcnaipe cruinne gheobhaidh tú an roghnóir crios ama suas. Tá tú in ann criosanna ama éagsúla a roghnú do thús agus deireadh d’imeachta. Tá sé seo úsáideach agus tú ag taisteal.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_new-event_week.png" src="../../_images/calendar_new-event_week.png" />
+</figure>
+<p>Ní theastaíonn ón radharc míosa ach cliceáil amháin isteach i limistéar an sprioclá.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_new-event_month.png" src="../../_images/calendar_new-event_month.png" />
+</figure>
+<p>Ina dhiaidh sin, is féidir leat ainm an imeachta a chlóscríobh (m.sh. <strong>Cruinniú le Linus</strong>), an féilire inar mian leat an t-imeacht a shábháil dó a roghnú (m.sh. <strong>Pearsanta</strong>, <strong>Imeachtaí Pobail</strong>), seiceáil agus coincréitigh an t-achar ama nó socraigh an t-imeacht mar imeacht lae. Roghnach is féidir leat a shonrú suíomh agus cur síos.</p>
+<p>If you want to edit advanced details such as the <strong>Attendees</strong> or <strong>Reminders</strong>, or if you
+want to set the event as a repeating event, click on the <code class="docutils literal notranslate"><span class="pre">More</span></code> button to open the advanced editor.</p>
+</section>
+<section id="add-talk-conversation">
+<h3>Cuir comhrá leis<a class="headerlink" href="#add-talk-conversation" title="Link to this heading"></a></h3>
+<p>Is féidir leat comhrá Plé atá ann cheana féin a chur san áireamh i d’imeacht trí chliceáil ar “Cuir Comhrá leis”. Chun féachaint ar liosta na gcomhráite Talk atá ann cheana féin, cinntigh go bhfuil an aip Talk cumasaithe. Más mian leat comhrá Caint nua a chruthú, is féidir leat é sin a dhéanamh go díreach ón modh céanna.</p>
+<figure class="align-default">
+<img alt="../../_images/add-talk-room.png" src="../../_images/add-talk-room.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you always want to open the advanced editor instead of the
+simple event editor popup, you uncheck the option
+<code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">simplified</span> <span class="pre">editor</span></code> in the <code class="docutils literal notranslate"><span class="pre">Settings</span></code> section of the app.</p>
+</div>
+<p>Má chliceálann tú ar an gcnaipe gorm <code class="docutils literal notranslate"><span class="pre">Cruthaigh</span></code> cruthófar an t-imeacht ar deireadh.</p>
+</section>
+<section id="edit-duplicate-or-delete-an-event">
+<h3>Cuir imeacht in eagar, a dhúbailt nó a scriosadh<a class="headerlink" href="#edit-duplicate-or-delete-an-event" title="Link to this heading"></a></h3>
+<p>Más mian leat imeacht ar leith a chur in eagar, a dhúbailt nó a scriosadh, ní mór duit cliceáil ar an imeacht ar dtús.</p>
+<p>Ina dhiaidh sin beidh tú in ann sonraí uile an imeachta a athshocrú agus an t-eagarthóir ardleibhéil a oscailt trí chliceáil ar <code class="docutils literal notranslate"><span class="pre">Tuilleadh</span></code>.</p>
+<p>Trí chliceáil ar an gcnaipe <code class="docutils literal notranslate"><span class="pre">Nuashonraigh</span></code> déanfar an ócáid ​​a nuashonrú. Chun do chuid athruithe a chealú, cliceáil ar an deilbhín dúnta ag barr ar dheis an fhuinneog aníos nó an eagarthóra ardleibhéil.</p>
+<p>Má osclaíonn tú an radharc ardleibhéil agus má chliceálann tú ar an roghchlár trí phonc in aice le hainm an imeachta, beidh rogha agat an t-imeacht a easpórtáil mar chomhad <code class="docutils literal notranslate"><span class="pre">.ics</span></code> nó an t-imeacht a bhaint de do fhéilire.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_event_menu.png" src="../../_images/calendar_event_menu.png" />
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Má scriosann tú imeachtaí cuirfear isteach iad i do <a class="reference internal" href="#calendar-trash-bin"><span class="std std-ref">trash bin</span></a>.  Is féidir leat teagmhais scriosta de thaisme a chur ar ais ansin.</p>
+</div>
+<p>Is féidir leat imeacht a easpórtáil, a dhúbailt nó a scriosadh ón eagarthóir bunúsach freisin.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_event_menu_modal.png" src="../../_images/calendar_event_menu_modal.png" />
+</figure>
+</section>
+<section id="invite-attendees-to-an-event">
+<span id="calendar-attendees"></span><h3>Tabhair cuireadh do lucht freastail chuig imeacht<a class="headerlink" href="#invite-attendees-to-an-event" title="Link to this heading"></a></h3>
+<p>Is féidir leat lucht freastail a chur le himeacht chun iad a chur ar an eolas go bhfuil cuireadh acu. Gheobhaidh siad cuireadh ríomhphoist agus beidh siad in ann a rannpháirtíocht san imeacht a dhearbhú nó a chealú. Seans gur úsáideoirí eile ar do chásanna Nextcloud, teagmhálaithe i do leabhair seoltaí agus seoltaí díreacha ríomhphoist iad na daoine atá i láthair. Is féidir leat freisin an leibhéal rannpháirtíochta in aghaidh gach freastail a athrú, nó an fhaisnéis ríomhphoist a dhíchumasú do fhreastalaí ar leith.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_invitation_level.png"><img alt="../../_images/calendar_event_invitation_level.png" src="../../_images/calendar_event_invitation_level.png" style="width: 811.2px; height: 380.8px;" />
+</a>
+</figure>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 25: </span>Ní thairgeann naisc freagartha ríomhphoist don lucht freastail ionchuir a thuilleadh chun nóta tráchta a chur leis nó chun cuireadh a thabhairt d’aíonna breise chuig an imeacht.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Agus úsáideoirí Nextcloud eile á gcur leis mar lucht freastail ar imeacht, féadfaidh tú rochtain a fháil ar a gcuid faisnéise saor-ghnóthach má tá sé ar fáil, ag cabhrú leat a chinneadh cén uair is fearr an sliotán ama do d’imeacht. Socraigh do <a class="reference internal" href="#calendar-working-hours"><span class="std std-ref">working hours</span></a> chun daoine eile a chur ar an eolas nuair a bhíonn tú ar fáil. Níl faisnéis ghnóthach in aisce ar fáil ach d’úsáideoirí eile ar an ásc céanna Nextcloud.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Ní mór do riarachán an fhreastalaí an freastalaí ríomhphoist a shocrú sa chluaisín <code class="docutils literal notranslate"><span class="pre">Socruithe</span> <span class="pre">Bunúsacha</span></code>, mar go n-úsáidfear an ríomhphost seo chun cuirí a sheoladh.</p>
+</div>
+<p>Finscéal stádais cuireadh (mar fhreastalaí):</p>
+<ul class="simple">
+<li><p><strong>Imeacht líonta isteach</strong>: Ghlac tú leis</p></li>
+<li><p><strong>Líne tríd</strong>: Dhiúltaigh tú</p></li>
+<li><p><strong>Stríoca</strong>: Sealadach</p></li>
+<li><p><strong>Imeacht folamh</strong>: Níl freagra tugtha agat fós</p></li>
+</ul>
+<p>Más tusa an t-eagraí agus má dhiúltaigh do chuid freastalaithe go léir, beidh an ócáid ​​folamh le siombail rabhaidh.</p>
+</section>
+<section id="checking-attendees-busy-times">
+<h3>Ag seiceáil amanna gnóthacha an lucht freastail<a class="headerlink" href="#checking-attendees-busy-times" title="Link to this heading"></a></h3>
+<p>Tar éis duit lucht freastail a chur le himeacht is féidir leat cliceáil ar <code class="docutils literal notranslate"><span class="pre">Faigh</span> <span class="pre">am</span></code> chun an modúl &quot;Saor / Gnóthach&quot; a thabhairt suas. Ligeann sé duit a fheiceáil nuair a bhíonn imeachtaí eile ag gach freastail, agus is féidir leis cabhrú leat cinneadh a dhéanamh ar am a bhfuil gach duine saor.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_free_busy_modal.png"><img alt="../../_images/calendar_free_busy_modal.png" src="../../_images/calendar_free_busy_modal.png" style="width: 942.0px; height: 752.4px;" />
+</a>
+</figure>
+<p>Taispeánfar do bhloic ghnóthacha féin sa dath céanna le do fhéilire pearsanta, taispeánfar do chuid amanna lasmuigh den oifig i liath, agus beidh an dath céanna ar amanna gnóthacha freastalaithe eile agus a thaispeántar san eagarthóir ardleibhéil.</p>
+<p>Is féidir leat sliotán ama a roghnú don imeacht go díreach ar an bhféilire.</p>
+</section>
+<section id="assign-rooms-and-resources-to-an-event">
+<h3>Sann seomraí agus acmhainní d’imeacht<a class="headerlink" href="#assign-rooms-and-resources-to-an-event" title="Link to this heading"></a></h3>
+<p>Cosúil leis an lucht freastail is féidir leat seomraí agus acmhainní a chur le d’imeachtaí. Cinnteoidh an córas go gcuirfear gach seomra agus acmhainn in áirithe gan coinbhleacht. An chéad uair a chuireann úsáideoir an seomra nó an acmhainn le himeacht, léireoidh sé mar a ghlactar leis. Léireoidh aon imeachtaí eile ag amanna forluiteacha an seomra nó an acmhainn mar a diúltaíodh.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ní bhainistíonn Nextcloud féin seomraí agus acmhainní agus ní cheadóidh an aip Calendar duit acmhainn a chur leis nó a athrú. Caithfidh do Riarthóir foircinn chúl na n-acmhainní a shuiteáil agus b'fhéidir a chumrú sular féidir leat iad a úsáid mar úsáideoir.</p>
+</div>
+</section>
+<section id="room-availability">
+<h3>Infhaighteacht seomra<a class="headerlink" href="#room-availability" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.0.</span></p>
+</div>
+<p>Má tá an aip “Féilire Seomraí agus Acmhainní” suiteáilte ar do chás, is féidir leat anois <code class="docutils literal notranslate"><span class="pre">Infhaighteacht</span> <span class="pre">Seomra</span></code> a fháil sa rannán <code class="docutils literal notranslate"><span class="pre">Acmhainní</span></code>. Liostaíonn sé na seomraí atá ann cheana féin. Is féidir leat infhaighteacht gach seomra a sheiceáil ar bhealach cosúil le stádas saor/ghnóthach lucht freastail imeachtaí a sheiceáil.</p>
+<figure class="align-default">
+<img alt="../../_images/room_availability.png" src="../../_images/room_availability.png" />
+</figure>
+</section>
+<section id="add-attachments-to-events">
+<h3>Cuir ceangaltáin le himeachtaí<a class="headerlink" href="#add-attachments-to-events" title="Link to this heading"></a></h3>
+<p>Is féidir leat ceangaltáin a allmhairiú le do chuid imeachtaí trí iad a uaslódáil nó iad a chur ó chomhaid</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_adding_attachments.png"><img alt="../../_images/calendar_adding_attachments.png" src="../../_images/calendar_adding_attachments.png" style="width: 790.4000000000001px; height: 382.40000000000003px;" />
+</a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Is féidir ceangaltáin a chur leis agus imeachtaí nua á gcruthú nó eagarthóireacht a dhéanamh ar imeachtaí reatha. Déanfar comhaid nua-uaslódála a shábháil i gcomhaid de réir réamhshocraithe san fhillteán féilire sa fhréamh-eolaire.</p>
+</div>
+<p>Is féidir leat an fillteán ceangaltáin a athrú trí dul go dtí <code class="docutils literal notranslate"><span class="pre">Socruithe</span> <span class="pre">Féilire</span></code> sa chúinne ag bun ar chlé agus `` suíomh réamhshocraithe na gceangaltán`` a athrú.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_attachments_location.png"><img alt="../../_images/calendar_attachments_location.png" src="../../_images/calendar_attachments_location.png" style="width: 389.4px; height: 357.0px;" />
+</a>
+</figure>
+</section>
+<section id="set-up-reminders">
+<h3>Socraigh meabhrúcháin<a class="headerlink" href="#set-up-reminders" title="Link to this heading"></a></h3>
+<p>Is féidir leat meabhrúcháin a shocrú le go gcuirfear ar an eolas iad sula dtarlóidh imeacht. Is iad na modhanna fógra a dtacaítear leo faoi láthair ná:</p>
+<ul class="simple">
+<li><p>Fógraí ríomhphoist</p></li>
+<li><p>Fógraí Nextcloud</p></li>
+</ul>
+<p>Is féidir leat meabhrúcháin a shocrú ag am a bhaineann leis an imeacht nó ar dháta faoi leith.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_reminders.png"><img alt="../../_images/calendar_event_reminders.png" src="../../_images/calendar_event_reminders.png" style="width: 507.20000000000005px; height: 284.0px;" />
+</a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ní bhfaighidh ach úinéir an fhéilire agus na daoine nó na grúpaí a bhfuil rochtain scríofa acu ar an bhféilire fógraí. Mura bhfaigheann tú aon fhógraí ach go gceapann tú gur cheart duit, d'fhéadfadh do Riarthóir é seo a dhíchumasú do do fhreastalaí freisin.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Má dhéanann tú d’fhéilire a shioncronú le gléasanna soghluaiste nó le cliaint 3ú páirtí eile, seans go dtaispeánfar fógraí ansin freisin.</p>
+</div>
+</section>
+<section id="add-recurring-options">
+<h3>Cuir roghanna athfhillteacha leis<a class="headerlink" href="#add-recurring-options" title="Link to this heading"></a></h3>
+<p>Féadfar imeacht a shocrú mar “athfhillteach”, ionas gur féidir leis tarlú gach lá, seachtain, mí nó bliain. Is féidir rialacha sonracha a chur leis chun an lá den tseachtain a tharlaíonn an teagmhas a shocrú nó rialacha níos casta a shocrú, amhail gach ceathrú Céadaoin de gach mí.</p>
+<p>Is féidir leat a insint freisin nuair a thagann deireadh leis an atarlú.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_repeat.png"><img alt="../../_images/calendar_event_repeat.png" src="../../_images/calendar_event_repeat.png" style="width: 519.2px; height: 557.6px;" />
+</a>
+</figure>
+</section>
+<section id="trash-bin">
+<span id="calendar-trash-bin"></span><h3>Bruscar<a class="headerlink" href="#trash-bin" title="Link to this heading"></a></h3>
+<p>Má scriosann tú imeachtaí, tascanna nó féilire i Calendar, níl do shonraí imithe fós. Ina áit sin, baileofar na míreanna sin i <em>araid bruscair</em>. Tugann sé seo deis duit scriosadh a chealú. Tar éis tréimhse mainneachtain go 30 lá (seans gur athraigh do riarachán an socrú seo), scriosfar na míreanna sin go buan. Is féidir leat míreanna a scriosadh go buan níos luaithe freisin más mian leat.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_trash_bin.png" src="../../_images/calendar_trash_bin.png" />
+</figure>
+<p>Scriosfaidh na cnaipí <code class="docutils literal notranslate"><span class="pre">Braid</span> <span class="pre">Bruscar</span> <span class="pre">folamh</span></code> inneachar an bhruscar go léir in aon chéim amháin.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Níl rochtain ar an mbosca bruscair ach ón aip Calendar. Ní bheidh aon fheidhmchlár nó aip nasctha in ann a bhfuil ann a thaispeáint. Mar sin féin, beidh imeachtaí, tascanna agus féilirí a scriostar in feidhmchláir nó aipeanna nasctha sa bhosca bruscair freisin.</p>
+</div>
+</section>
+<section id="automated-user-status">
+<span id="calendar-working-hours"></span><h3>Stádas Úsáideora Uathoibrithe<a class="headerlink" href="#automated-user-status" title="Link to this heading"></a></h3>
+<p>Nuair a bheidh imeacht féilire sceidealaithe agat a bhfuil stádas &quot;GNÓTHA&quot; aige, socrófar do stádas úsáideora go huathoibríoch go &quot;I gcruinniú&quot; ach amháin má tá &quot;Ná Cuir Isteach&quot; nó &quot;Dofheicthe&quot; socraithe agat. Is féidir leat an stádas a fhorscríobh le teachtaireacht saincheaptha am ar bith, nó d'imeachtaí féilire a shocrú go &quot;SAOR IN AISCE&quot;. Ní thabharfar aird ar fhéilirí atá trédhearcach.</p>
+</section>
+</section>
+<section id="responding-to-invitations">
+<h2>Ag freagairt cuirí<a class="headerlink" href="#responding-to-invitations" title="Link to this heading"></a></h2>
+<p>Is féidir leat freagra díreach a thabhairt ar chuirí laistigh den aip. Cliceáil ar an imeacht agus roghnaigh do stádas rannpháirtíochta. Is féidir leat freagra a thabhairt ar chuireadh trí ghlacadh, diúltú nó glacadh le triail.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_accept_simple_editor.png"><img alt="../../_images/calendar_accept_simple_editor.png" src="../../_images/calendar_accept_simple_editor.png" style="width: 663.2px; height: 477.6px;" />
+</a>
+</figure>
+<p>Is féidir leat freagra a thabhairt ar chuireadh ón eagarthóir ardleibhéil freisin.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_accept_advanced_editor.png"><img alt="../../_images/calendar_accept_advanced_editor.png" src="../../_images/calendar_accept_advanced_editor.png" style="width: 800.0px; height: 160.8px;" />
+</a>
+</figure>
+</section>
+<section id="availability-working-hours">
+<h2>Infhaighteacht (Uaireanta Oibre)<a class="headerlink" href="#availability-working-hours" title="Link to this heading"></a></h2>
+<p>Is féidir an infhaighteacht ghinearálta atá neamhspleách ar imeachtaí sceidealaithe a shocrú i socruithe grúpearraí Nextcloud. Léireofar na socruithe seo san amharc saorghnóthach nuair a dhéanann tú <a class="reference internal" href="#calendar-attendees"><span class="std std-ref">cruinniú le daoine eile</span></a> a sceidealú san Fhéilire. Taispeánfaidh roinnt cliant nasctha ar nós Thunderbird na sonraí seo freisin.</p>
+<figure class="align-default">
+<img alt="../../_images/caldav_availability.png" src="../../_images/caldav_availability.png" />
+</figure>
+<p>Is féidir leat neamhláithreachtaí aonuaire a chumrú sa bhreis ar do ghnáth-infhaighteacht sa <a class="reference internal" href="absence.html#groupware-absence"><span class="std std-ref">Socruithe Neamhláithreachta rannán</span></a>.</p>
+</section>
+<section id="birthday-calendar">
+<h2>Féilire lá breithe<a class="headerlink" href="#birthday-calendar" title="Link to this heading"></a></h2>
+<p>Is féilire uathghinte é an féilire lá breithe a gheobhaidh na laethanta breithe ó do theagmhálaithe go huathoibríoch. Is é an t-aon bhealach chun an féilire seo a chur in eagar ná do theagmhálaithe a chomhdú le dátaí breithe. Ní féidir leat an féilire seo a chur in eagar go díreach ón aip féilire.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Mura bhfeiceann tú an féilire lá breithe, seans go bhfuil sé seo díchumasaithe ag do Riarthóir do do fhreastalaí.</p>
+</div>
+</section>
+<section id="appointments">
+<h2>Coinní<a class="headerlink" href="#appointments" title="Link to this heading"></a></h2>
+<p>Amhail Féilire v3 is féidir leis an aip sliotáin choinne a ghiniúint ar féidir le húsáideoirí eile Nextcloud ach freisin daoine gan cuntas ar an ásc a chur in áirithe. Tairgeann coinní smacht mín-ghráinneach ar nuair is féidir leat bualadh le chéile. Féadann sé seo deireadh a chur leis an ngá atá le ríomhphoist a sheoladh ar ais agus amach le socrú ar dháta agus am.</p>
+<p>Sa chuid seo úsáidfimid an téarma <em>eagraí</em> don duine ar leis/léi an féilire agus a shocraíonn sliotáin choinní. Is é an <em>freastalaí</em> an duine a chuireann ceann de na sliotáin in áirithe.</p>
+<section id="creating-an-appointment-configuration">
+<h3>Cumraíocht coinne a chruthú<a class="headerlink" href="#creating-an-appointment-configuration" title="Link to this heading"></a></h3>
+<p>Mar eagraí coinní osclaíonn tú an príomh-UI gréasáin Calendar. Sa bharra taoibh ar chlé gheobhaidh tú roinn le haghaidh coinní, dá mbeadh tú in ann an dialóg a oscailt chun ceann nua a chruthú.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_new.png" src="../../_images/appointment_new.png" />
+</figure>
+<p>Ar cheann d’fhaisnéis bhunúsach gach coinne tá teideal a chuireann síos ar cad atá i gceist leis an gceapachán (m.sh. “duine ar dhuine” nuair is mian le heagraí glaoch pearsanta a thairiscint do chomhghleacaithe), cá háit a ndéanfar coinne agus cur síos níos mionsonraithe ar cad atá i gceist leis an gceapachán seo.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_basics.png" src="../../_images/appointment_config_basics.png" />
+</figure>
+<p>Is féidir fad an cheapacháin a roghnú ó liosta réamhshainithe. Ansin, is féidir leat an t-incrimint atá ag teastáil a shocrú. Is é an t-incrimint an ráta ag a bhfuil sliotáin fhéideartha ar fáil. Mar shampla, d'fhéadfá sliotáin uair an chloig ar fad a bheith agat, ach tugann tú ar shiúl iad ar incrimintí 30 nóiméad ionas gur féidir le freastail a chur in áirithe ag 9:00AM ach freisin ag 9:30AM. Tugann eolas roghnach faoin suíomh agus cur síos níos mó comhthéacs don lucht freastail. Déanfar gach coinne áirithinte a scríobh isteach i gceann de do chuid féilirí, ionas gur féidir leat an ceann ba cheart a roghnú. Is féidir le ceapacháin a bheith <em>poiblí</em> nó <em>príobháideach</em>. Is féidir ceapacháin phoiblí a aimsiú trí leathanach próifíle úsáideora Nextcloud. Níl rochtain ar choinní príobháideacha ach ag na daoine a fhaigheann an URL rúnda.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_calendar_settings.png" src="../../_images/appointment_config_calendar_settings.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ní thaispeánfar ach sliotáin nach dtagann salach ar imeachtaí reatha i d’fhéilirí don lucht freastail.</p>
+</div>
+<p>Is féidir le heagraí coinne a shonrú ag na hamanna den tseachtain inar féidir sliotán a chur in áirithe. D’fhéadfadh gurb é seo na huaireanta oibre ach freisin aon sceideal saincheaptha eile.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_booking_hours.png" src="../../_images/appointment_config_booking_hours.png" />
+</figure>
+<p>Éilíonn roinnt ceapacháin am le hullmhú, e.g. nuair a bhuaileann tú ag ionad agus caithfidh tú tiomáint ann. Is féidir leis an eagraí tréimhse ama a roghnú nach mór a bheith saor. Ní bheidh ar fáil ach sliotáin nach dtagann salach ar imeachtaí eile le linn an ama ullmhúcháin. Ina theannta sin tá an rogha ann am a shonrú tar éis gach coinne a chaithfidh a bheith saor. Chun cosc a chur ar fhreastalaí fógra ró-ghearr a chur in áirithe is féidir a shocrú cé chomh luath agus a d’fhéadfadh an chéad choinne eile tarlú. Má shocraítear uaslíon sliotán in aghaidh an lae is féidir teorainn a chur le líon na gcoinní a d’fhéadfadh lucht freastail a chur in áirithe.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_limits.png" src="../../_images/appointment_config_limits.png" />
+</figure>
+<p>Ansin liostófar an coinne cumraithe sa bharra taoibh ar chlé. Tríd an roghchlár trí ponc, is féidir leat réamhamharc a dhéanamh ar an gceapachán. Is féidir leat an nasc chuig an choinne a chóipeáil agus é a roinnt le do lucht freastail sprice, nó ligean dóibh do choinne poiblí a fháil amach tríd an leathanach próifíle. Is féidir leat an chumraíocht coinne a chur in eagar nó a scriosadh freisin.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_options.png" src="../../_images/appointment_config_options.png" />
+</figure>
+</section>
+<section id="booking-an-appointment">
+<h3>Ag cur coinne in áirithe<a class="headerlink" href="#booking-an-appointment" title="Link to this heading"></a></h3>
+<p>Léiríonn an leathanach áirithinte teideal, suíomh, cur síos agus fad an choinní don fhreastalaí. Le haghaidh lá roghnaithe beidh liosta ann leis na sliotáin ama go léir is féidir. Ar laethanta gan aon sliotáin ar fáil, an iomarca coinbhleachtaí nó teorainn uasta laethúil na gcoinní a cuireadh in áirithe cheana féin, seans go mbeidh an liosta folamh.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/appointment_booking_1.png"><img alt="../../_images/appointment_booking_1.png" src="../../_images/appointment_booking_1.png" style="width: 926.4000000000001px; height: 592.0px;" />
+</a>
+</figure>
+<p>Chun an áirithint a dhéanamh, caithfidh an lucht freastail ainm agus seoladh ríomhphoist a chur isteach. Roghnach is féidir leo a chur freisin comment.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/appointment_booking_2.png"><img alt="../../_images/appointment_booking_2.png" src="../../_images/appointment_booking_2.png" style="width: 745.6px; height: 463.20000000000005px;" />
+</a>
+</figure>
+<p>Nuair a d’éirigh leis an áirithint, taispeánfar agallamh deimhnithe don lucht freastail.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_3.png" src="../../_images/appointment_booking_3.png" />
+</figure>
+<p>Chun a fhíorú go bhfuil seoladh ríomhphoist an fhreastalaí bailí, seolfar ríomhphost deimhnithe chucu.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_confirmation_email.png" src="../../_images/appointment_booking_confirmation_email.png" />
+</figure>
+<p>Ní ghlacfar le háirithint na coinne agus cuirfear ar aghaidh chuig an eagraí é ach amháin tar éis don lucht freastail cliceáil ar an nasc deimhnithe ón ríomhphost.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_confirmation_dialogue.png" src="../../_images/appointment_booking_confirmation_dialogue.png" />
+</figure>
+<p>Gheobhaidh an freastail ríomhphost eile ag dearbhú sonraí a choinne.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_email_2.png" src="../../_images/appointment_booking_email_2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Mura bhfuil sliotán deimhnithe, beidh sé fós le feiceáil mar in áirithe. Go dtí sin d’fhéadfadh an sliotán ama a bheith curtha in áirithe ag úsáideoir eile a dheimhníonn a n-áirithint níos luaithe. Braithfidh an córas an choimhlint agus tairgfidh sé sliotán ama nua a roghnú.</p>
+</div>
+</section>
+<section id="working-with-the-booked-appointment">
+<h3>Ag obair leis an coinne áirithinte<a class="headerlink" href="#working-with-the-booked-appointment" title="Link to this heading"></a></h3>
+<p>Nuair a bheidh an áirithint déanta, gheobhaidh an t-eagraí imeacht ina bhféilire ar a mbeidh sonraí an choinní agus an <a class="reference internal" href="#calendar-attendees"><span class="std std-ref">attendee</span></a>.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_calendar_event.png" src="../../_images/appointment_calendar_event.png" />
+</figure>
+<p>Má tá an socrú &quot;Cuir am leis roimh imeacht&quot; nó &quot;Cuir am leis tar éis an imeachta&quot; cumasaithe ag an gceapachán, taispeánfar iad mar imeachtaí ar leith i bhféilire an eagraí.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_calendar_prep.png" src="../../_images/appointment_calendar_prep.png" />
+</figure>
+<p>Mar is amhlaidh le haon imeacht eile a bhfuil lucht freastail ag baint leis, spreagfaidh athruithe agus cealuithe fógra chuig ríomhphost an fhreastalaí.</p>
+<p>Más mian leis an lucht freastail an coinne a chur ar ceal caithfidh siad dul i dteagmháil leis an eagraí, ionas gur féidir leis an eagraí an t-imeacht a chur ar ceal nó fiú a scriosadh.</p>
+</section>
+<section id="create-talk-room-for-booked-appointments">
+<h3>Cruthaigh seomra Caint le haghaidh coinní áirithinte<a class="headerlink" href="#create-talk-room-for-booked-appointments" title="Link to this heading"></a></h3>
+<p>Is féidir leat seomra Caint a chruthú go díreach ón aip féilire le haghaidh coinne áirithinte. Is féidir an rogha a fháil ar an modúl ‘Cruthaigh coinne’. Cruthófar nasc uathúil le haghaidh gach coinne a chuirtear in áirithe agus seolfar é tríd an ríomhphost deimhnithe nuair a sheiceálann tú an rogha seo.</p>
+</section>
+</section>
+<section id="proposals">
+<h2>Proposals<a class="headerlink" href="#proposals" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 6.0.0.</span></p>
+</div>
+<p>Finding a meeting time for a group of participants can be challenging. As of Calendar v6, a new feature was introduced that allows users to create proposals for meeting times.
+This means that instead of just booking a time, or searching for a available time in the free busy view, participants can vote on a set of proposed times for a meeting.
+The organizer can then review the participants' preferences and choose the most suitable time for the meeting.</p>
+<section id="managing-proposals">
+<h3>Managing proposals<a class="headerlink" href="#managing-proposals" title="Link to this heading"></a></h3>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_list.png" src="../../_images/calendar_proposal_list.png" />
+</figure>
+<p>The proposal list in the left sidebar shows all the proposals that the user has created. The list shows the title of the proposal, the number of responded participants and a status of whether all participants have responded.</p>
+<p>The user can click on the three dot menu next to a proposal item to edit, delete or view an existing proposal.</p>
+</section>
+<section id="creating-a-proposal">
+<h3>Creating a proposal<a class="headerlink" href="#creating-a-proposal" title="Link to this heading"></a></h3>
+<p>To create a new proposal a user can click on the plus icon next to the &quot;Meeting Proposals&quot; header at the top of the proposal list. This will open a modal where the user can enter all the relevant details for the proposed meeting.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_create.png" src="../../_images/calendar_proposal_create.png" />
+</figure>
+<p>The proposal editor has some basic fields that are similar to the event editor, such as title, description, location, duration and participants selection, that the user can fill out. These details are then used to inform the participants about the proposed meeting and times.</p>
+<p>The key difference is the &quot;Proposed times&quot; selection, where the user can select multiple time slots for a meeting. The user can add as many time slots as they want, and each time slot can be edited or removed as needed.</p>
+<p>Once the user has filled out all the required details, title, duration, participants and selected the proposed times, they can click the &quot;Create&quot; button to create the proposal. This will save the proposal and send notifications to all the selected participants.</p>
+</section>
+<section id="editing-a-proposal">
+<h3>Editing a proposal<a class="headerlink" href="#editing-a-proposal" title="Link to this heading"></a></h3>
+<p>A user can edit an existing proposal by clicking on the three dot menu next to a proposal item in the proposal list and selecting &quot;Edit&quot;. This will open the same modal as when creating a new proposal, but with all the existing details filled out.</p>
+<p>After making any necessary changes, the user can click the &quot;Update&quot; button to save the changes. This will also send notifications to all the participants about the updated proposal.</p>
+</section>
+<section id="viewing-a-proposal-progress">
+<h3>Viewing a proposal progress<a class="headerlink" href="#viewing-a-proposal-progress" title="Link to this heading"></a></h3>
+<p>Users can view the progress of a proposal by clicking on the proposal item in the proposal list or clicking &quot;View&quot; in the three dot menu. This will open a detailed view of the proposal, with all details and a times and participants matrix, showing all the proposed times and participants' responses.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_view.png" src="../../_images/calendar_proposal_view.png" />
+</figure>
+<p>In this view, the user can see which participants have responded to the proposal and their preferences for each proposed time. The user can also see the total number of votes for each proposed time, which can help them decide on the best time for the meeting.</p>
+<p>Once the user has reviewed the participants' responses, they can select the most popular time for the meeting by clicking on the &quot;Create&quot; button at the end of the date/participant matrix. This will create a new event in the user's calendar and send notifications to all participants about the confirmed meeting time.</p>
+</section>
+<section id="notifications-for-a-proposed-meeting">
+<h3>Notifications for a proposed meeting<a class="headerlink" href="#notifications-for-a-proposed-meeting" title="Link to this heading"></a></h3>
+<p>Users will receive email notifications for various events related to a proposed meeting, including:</p>
+<ul class="simple">
+<li><p>When a new proposal is created</p></li>
+<li><p>When a proposal is updated</p></li>
+<li><p>When a proposal is deleted</p></li>
+<li><p>When the final meeting time is confirmed</p></li>
+</ul>
+<p>These notifications help all participants stay informed and engaged throughout the proposal process.</p>
+<p>The notification emails contain the basic details for the proposed meeting, like title, description, location, duration, and proposed times. They also include a link to the response page, where participants can see all the details and respond to the proposed times.</p>
+</section>
+<section id="responding-to-a-proposed-meeting">
+<h3>Responding to a proposed meeting<a class="headerlink" href="#responding-to-a-proposed-meeting" title="Link to this heading"></a></h3>
+<p>Participants can respond to a proposed meeting by clicking on the link in the notification email. This will open the detailed view of the proposed meeting, where they can see all the proposed times, other participants' and their responses, and select their availability/preferences for each proposed time.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_respond.png" src="../../_images/calendar_proposal_respond.png" />
+</figure>
+<p>Participants can select their availability for each proposed time by selecting their preference on the corresponding line in the times and participants matrix. They can choose from three options: &quot;Yes&quot;, &quot;No&quot;, or &quot;Maybe&quot;. Once they have made their selections, they can click the &quot;Submit&quot; button to save their responses.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="contacts.html" class="btn btn-neutral float-left" title="Ag baint úsáide as an app Teagmhálacha" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mail.html" class="btn btn-neutral float-right" title="Ag baint úsáide as an aip Mail" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 Irish
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Teangacha</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Leaganacha</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Íoslódálacha</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Ar Léigh na Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Tionscadal Baile</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Tógann</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

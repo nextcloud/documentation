@@ -1,0 +1,1127 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="cs" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Přístup k souborům v Nextcloud prostřednictvím protokolu WebDAV &mdash; Dokumentace pro Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/files/access_webdav.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=672a239f"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=22e1c300"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Správa smazaných souborů" href="deleted_file_management.html" />
+    <link rel="prev" title="Přístup k souborům prostřednictvím webového rozhraní Nextcloud" href="access_webgui.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Úvod do uživatelské příručky k Nextcloud verze latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Webové rozhraní Nextcloud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Soubory a synchronizace</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Přístup k souborům prostřednictvím webového rozhraní Nextcloud</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Přístup k souborům v Nextcloud prostřednictvím protokolu WebDAV</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#official-nextcloud-desktop-and-mobile-clients">Oficiální Nextcloud klienti pro desktopové a mobilní platformy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#third-party-webdav-clients">WebDAV klienti třetích stran</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-linux">Přístup k souborům ze systému Linux</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nautilus-file-manager">Správce souborů Nautilus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-with-kde-and-dolphin-file-manager">Přístup k souborům z desktopového prostředí KDE (prostřednictvím správce souborů Dolphin)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">Vytváření WebDAV připojení z linuxového příkazového řádku</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues">Známé problémy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#problem">Problém</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution">Řešení</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Problém</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Řešení</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-macos">Přístup k souborům ze systému macOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-microsoft-windows">Přistupování k souborům ze systému Microsoft Windows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-the-command-line">Mapování jednotek z příkazového řádku</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-windows-explorer">Mapování disků pomocí Průzkumníka Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-cyberduck">Přístup k souborům pomocí nástroje Cyberduck</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-public-shares-over-webdav">Přístup k veřejným sdílením prostřednictvím WebDAV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-problems">Známé problémy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Problém</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-1">Řešení</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-2">Jiné řešení</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Problém</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Řešení</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Problém</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#answer">Odpověď</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Problém</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Řešení</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Problém</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Řešení</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-curl">Přistupování k souborů pomocí cURL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-winscp">Přístup souborům pomocí WinSCP</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Správa smazaných souborů</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Synchronizace s desktopovými a mobilními platformami</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Šifrování souborů v Nextcloud na straně serveru</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Sdílení souborů</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Federovaná sdílení</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Provádění anonymních nahrání</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Nahrávání velkých souborů</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Kvóta úložiště</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Správa verzí</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projekty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Přenesení vlastnictví</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Používání federovaných sdílení</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Software pro podporu spolupráce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Klienti pro desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Nastavení vašich předvoleb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Zpřístupnění pro všechny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Používání dvoufázového ověřování se</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Správa připojených prohlížečů a zařízení</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Externí úložiště</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Soubory a synchronizace</a></li>
+      <li class="breadcrumb-item active">Přístup k souborům v Nextcloud prostřednictvím protokolu WebDAV</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webdav.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="accessing-nextcloud-files-using-webdav">
+<h1>Přístup k souborům v Nextcloud prostřednictvím protokolu WebDAV<a class="headerlink" href="#accessing-nextcloud-files-using-webdav" title="Link to this heading"></a></h1>
+<p>Nexcloud plně podporuje protokol WebDAV a proto ho můžete použít pro připojení se a synchronizaci s Nextcloud Soubory. V této kapitole se dozvíte jak připojit Linux, macOS, Windows a mobilní zařízení k vámi využívanému Nextcloud serveru prostřednictvím WebDAV.</p>
+<p>WebDAV je zkratka pro „Distributed Authoring and Versioning“ (distribuované vytváření a správa verzí). Jedná se o rozšíření protokolu HTTP, které usnadňuje vytváření, čtení upravování souborů, hostovaných na vzdálených webových serverech. Pomocí WebDAV může klient přistupovat k souborům v Nextcloud (včetně sdílení) na Linuxu, macOS a Windows podobně, jako k jakémukoli jinému síťovému sdílení a být synchronní.</p>
+<p>Než se pustíme do nastavování WebDAV, krátce se podívejme na doporučený způsob připojování klientských zařízení k Nextcloud.</p>
+<section id="official-nextcloud-desktop-and-mobile-clients">
+<h2>Oficiální Nextcloud klienti pro desktopové a mobilní platformy<a class="headerlink" href="#official-nextcloud-desktop-and-mobile-clients" title="Link to this heading"></a></h2>
+<p>Doporučeným způsobem synchronizace osobního počítače s Nextcloud serverem je pomocí <a class="reference external" href="https://nextcloud.com/install/#install-clients">oficiálních Nextcloud synchronizačních klientů</a>. Klienta je možné nastavit, aby ukládal soubory v libovolném adresáři v počítači a můžete zvolit, se kterými adresáři na Nextcloud serveru synchronizovat. Klient zobrazuje stav stávajícího spojení a zaznamenává veškerou aktivitu, takže vždy víte, které soubory z protějšku byly staženy na počítač a můžete si ověřit, že soubory vytvořené/aktualizované na počítači jsou správně synchronizovány na server.</p>
+<p>Doporučený způsob, jak synchronizovat Android a Apple iOS zařízení je pomocí <a class="reference external" href="https://nextcloud.com/install/">oficiálních Nextcloud mobilních aplikací</a>.</p>
+<p>Pro připojení oficiálních Nextcloud aplikací k Nextcloud serveru použijte stejnou URL, přes kterou přistupujete k Nextcloud z webového prohlížeče – např.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+</div>
+<p>Pokud je Nextcloud nainstalovaný v podsložce nazvané „nextcloud“:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</section>
+<section id="third-party-webdav-clients">
+<h2>WebDAV klienti třetích stran<a class="headerlink" href="#third-party-webdav-clients" title="Link to this heading"></a></h2>
+<p>Pokud chcete, můžete svůj počítač připojit k Nextcloud serveru také pomocí klienta třetí strany, který podporuje protokol WebDAV (včetně toho, který může být součástí vámi využívaného operačního systému).</p>
+<p>I pro připojení vašeho mobilního zařízení je možné používat aplikace třetích stran, schopně WebDAV.</p>
+<p>Při používání klientů třetích stran mějte na mysli, že nemusí být optimalizované pro používání s Nextcloud nebo implementovat schopnosti, které pro vaše používání považujete za důležité.</p>
+<p>Mobilní klienti, které členové Nextcloud komunity používají patří:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://foldersync.io/">FolderSync (Android)</a></p></li>
+<li><p><a class="reference external" href="https://apps.apple.com/us/app/webdav-navigator/id382551345">WebDAV Navigator (iPhone)</a></p></li>
+</ul>
+<p>URL, kterou používat při nastavování aplikací třetích stran pro připojování k Nextcloud je poněkud delší, než ta pro oficiální klienty:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Pokud je Nextcloud nainstalovaný v podsložce nazvané „nextcloud“:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Při používání WebDAV klienta třetí strany (včetně toho vestavěného ve vámi využívaném operačním systému), byste pro přihlašování měli používat heslo pro danou aplikaci, namísto hesla přímo k vašemu uživatelskému účtu v Nextcloud, toto <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">výrazně zvýší výkon</a>. Heslo pro danou aplikaci nastavíte tak, že se přihlásíte do webového rozhraní Nextcloud, kliknete na svůj zástupný obrázek v pravém horním rohu a vyberete <em>Osobní nastavení</em>. Pak v postranním panelu vlevo vyberte <em>Zabezpečení</em> a posunete až úplně dolů. Zde je možné vytvořit heslo pro danou aplikaci (platnost kterého je také možné v budoucnu odvolat aniž by bylo třeba měnit hlavní heslo uživatele.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>V následujících příkladech, je třeba nahradit <strong>example.com/nextcloud</strong> URL adresou vámi využívaného Nextcloud serveru (vynechte část se složkou, pokud je jeho instalace v kořeni domény). A <strong>UZIVATELSKEJMENO</strong> nahraďte identifikátorem připojujícího se uživatele.</p>
+<p>See the WebDAV URL, to be found in Files Settings -&gt; WebDAV in the Files on your Nextcloud account.</p>
+<img alt="Screenshot of the Files settings showing the personal WebDAV link" src="../../_images/webdav_link.png" />
+</div>
+</section>
+<section id="accessing-files-using-linux">
+<h2>Přístup k souborům ze systému Linux<a class="headerlink" href="#accessing-files-using-linux" title="Link to this heading"></a></h2>
+<p>Z linuxových systémů můžete k souborům přistupovat následujícími způsoby.</p>
+<section id="nautilus-file-manager">
+<h3>Správce souborů Nautilus<a class="headerlink" href="#nautilus-file-manager" title="Link to this heading"></a></h3>
+<p><strong>Když zadáte svůj Nextcloud účet do</strong> <a class="reference external" href="../groupware/sync_gnome.html">Ovládacích panelů GNOME</a>, <strong>budou vaše soubory automaticky připojeny správcem souborů Nautilus jako WebDAV sdílení (pokud nezrušíte zaškrtnutí přístupu k souborům)</strong>.</p>
+<p>Soubory z Nextcloud je možné také připojit (mount) ručně. Pro připojení správce souborů k svému Nextcloud sdílení použijte protokol <code class="docutils literal notranslate"><span class="pre">davs://</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">davs</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Pokud připojení k vámi využívanému serveru není zabezpečené pomocí HTTPS, použitje <code class="docutils literal notranslate"><span class="pre">dav://</span></code> namísto <code class="docutils literal notranslate"><span class="pre">davs://</span></code>.</p>
+</div>
+<img alt="Snímek obrazovky s nastavováním správce souborů Nautilus pro použití WebDAV" src="../../_images/webdav_gnome3_nautilus.png" />
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Stejná metoda funguje i pro ostatní správce souborů, kteří používají GVFS, jako například Caja z prostředí MATE a Nemo z Cinnamon.</p>
+</div>
+</section>
+<section id="accessing-files-with-kde-and-dolphin-file-manager">
+<h3>Přístup k souborům z desktopového prostředí KDE (prostřednictvím správce souborů Dolphin)<a class="headerlink" href="#accessing-files-with-kde-and-dolphin-file-manager" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Jděte do Nastavení systému -&gt; Síťování -&gt; Účty online</p></li>
+<li><p>Klikněte na „Přidat účet…“</p></li>
+<li><p>Klikněte na Nextcloud</p></li>
+<li><p>Zadejte adresu vámi využívaného serveru</p></li>
+<li><p>Následujte pokyny na obrazovce ohledně přihlášení se</p></li>
+<li><p>Po přihlášení se ověřte, že jste zaškrtli „Úložiště“ v sekci „Použít tento účet pro“</p></li>
+<li><p>Nyní můžete přistupovat ke svým souborů v Dolpin pod „Síť“ v postranním panelu</p></li>
+<li><p>(Volitelné) pro přidání tohoto jako zástupce v postranním panelu, klikněte pravým tlačítkem na „Úložiště Nextcloud“ a pak na „Přidat do Míst“</p></li>
+<li><p>(Volitelné) pokud si budete zástupce chtít přizpůsobit, klikněte na něj pravým tlačítkem v postranním panelu a pak na „Upravit…“ a přizpůsobte si ikonu a popisek dle libosti.</p></li>
+</ol>
+</section>
+</section>
+<section id="creating-webdav-mounts-on-the-linux-command-line">
+<h2>Vytváření WebDAV připojení z linuxového příkazového řádku<a class="headerlink" href="#creating-webdav-mounts-on-the-linux-command-line" title="Link to this heading"></a></h2>
+<p>WebDAV připojení (mount) je možné vytvářet z příkazového řádku. Toto se hodí, pokud chcete k Nexcloud přistupovat stejným způsobem, jako k jakémukoli na dálku připojenému souborovému systému. Následující příklad ukazuje jak vytvořit osobní připojení a zařídit to tak, aby bylo automaticky připojené pokaždé, když se přihlásíte do systému.</p>
+<ol class="arabic">
+<li><p>Nainstalujte ovladač WebDAV souborového systému <code class="docutils literal notranslate"><span class="pre">davfs2</span></code>, což vám umožní připojit WebDAV sdílení jako kterýkoli jiný vzdálený souborový systém. Pro instalaci na Debian/Ubuntu:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Pro instalaci na CentOS, Fedora a openSUSE použijte tento příkaz:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Přidejte se do skupiny <code class="docutils literal notranslate"><span class="pre">davfs2</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usermod</span> <span class="o">-</span><span class="n">aG</span> <span class="n">davfs2</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Poté ve svém domovském adresáři vytvořte adresáře <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code> (bude sloužit jako přípojný bod), a <code class="docutils literal notranslate"><span class="pre">.davfs2/</span></code> (pro soubor s osobním nastavením):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">~/</span><span class="n">nextcloud</span>
+<span class="n">mkdir</span> <span class="o">~/.</span><span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Zkopírujte <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/secrets</span></code> do <code class="docutils literal notranslate"><span class="pre">~/.davfs2</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span>  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+</pre></div>
+</div>
+</li>
+<li><p>Nastavte sami sebe jako vlastníka a oprávnění pro čtení-zápis nastavte pouze na vlastníka:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chown</span> <span class="o">&lt;</span><span class="n">linux_username</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">linux_username</span><span class="o">&gt;</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+<span class="n">chmod</span> <span class="mi">600</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+</pre></div>
+</div>
+</li>
+<li><p>Své přihlašovací údaje do Nexcloud přidejte na konec souboru <code class="docutils literal notranslate"><span class="pre">secrets</span></code> s použitím URL adresy Nexcloud serveru a svého Nexcloud uživatelského jména a hesla:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/ &lt;username&gt; &lt;password&gt;
+or
+$PathToMountPoint $USERNAME $PASSWORD
+for example
+/home/user/nextcloud john 1234
+</pre></div>
+</div>
+</li>
+<li><p>Přidejte údaje o připojení (mount) do souboru <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">linux_username</span><span class="o">&gt;/</span><span class="n">nextcloud</span> <span class="n">davfs</span> <span class="n">user</span><span class="p">,</span><span class="n">rw</span><span class="p">,</span><span class="n">auto</span> <span class="mi">0</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</li>
+<li><p>Poté vyzkoušejte, že se připojuje (mount) a ověřuje spuštěním následujícího příkazu. Pokud jste vše nastavili správně, nebude zapotřebí oprávnění správce systému:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mount</span> <span class="o">~/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</li>
+<li><p>Měli byste také být schopní ho odpojit (unmount):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">umount</span> <span class="o">~/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Nyní pokaždé, když se přihlásíte do svého linuxového systému, vaše Nextcloud sdílení by mělo být automaticky připojeno (mount) prostřednictvím WebDAV do adresáře <code class="docutils literal notranslate"><span class="pre">~/nextcloud</span></code>. Pokud chcete připojovat ručně, změňte v souboru s nastaveními <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code> na příslušném řádku hodnotu <code class="docutils literal notranslate"><span class="pre">auto</span></code> na <code class="docutils literal notranslate"><span class="pre">noauto</span></code>.</p>
+</section>
+<section id="known-issues">
+<h2>Známé problémy<a class="headerlink" href="#known-issues" title="Link to this heading"></a></h2>
+<section id="problem">
+<h3>Problém<a class="headerlink" href="#problem" title="Link to this heading"></a></h3>
+<p>Prostředek dočasně nedostupný</p>
+</section>
+<section id="solution">
+<h3>Řešení<a class="headerlink" href="#solution" title="Link to this heading"></a></h3>
+<p>Pokud narážíte na problémy při vytváření souboru v adresáři, přidejte do souboru <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/davfs2.conf</span></code> toto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">use_locks</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>Problém<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>Varování ohledně certifikátu</p>
+</section>
+<section id="id2">
+<h3>Řešení<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>Pokud používáte sám sebou podepsaný certifikát, obdržíte varování. To je možné změnit, nastavením <code class="docutils literal notranslate"><span class="pre">davfs2</span></code> tak, aby uznávalo váš certifikát. Zkopírujte <code class="docutils literal notranslate"><span class="pre">mujcertifikat.pem</span></code> do <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/certs/</span></code>. Poté upravte <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/davfs2.conf</span></code> a odkomentujte řádek <code class="docutils literal notranslate"><span class="pre">servercert</span></code>. Nyní přidejte popis umístění vašeho certifikátu, jako v této ukázce:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">servercert</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">davfs2</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">mycertificate</span><span class="o">.</span><span class="n">pem</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="accessing-files-using-macos">
+<h2>Přístup k souborům ze systému macOS<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>The macOS Finder suffers from a <a class="reference external" href="http://sabre.io/dav/clients/finder/">series of implementation problems</a> and should only be used if the Nextcloud server runs on <strong>Apache</strong> and <strong>mod_php</strong>, or <strong>Nginx 1.3.8+</strong>. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> (see instructions <a class="reference external" href="https://docs.nextcloud.com/server/33/user_manual/files/access_webdav.html#accessing-files-using-cyberduck">here</a>) and <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. Commercial clients include <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Transmit</a>, and <a class="reference external" href="https://mac.eltima.com/">Commander One</a>.</p>
+</div>
+<p>Pro přístup k souborům z macOS Finder:</p>
+<ol class="arabic">
+<li><p>Z nabídky v horním liště aplikace Finder zvolte <strong>Přejít na &gt; Připojit k serveru…</strong>:</p>
+<img alt="Snímek obrazovky se zadáváním adresy vámi využívaného Nextcloud serveru na macOS" src="../../_images/osx_webdav1.png" />
+</li>
+<li><p>Když se otevře okno <strong>Připojit k serveru…</strong>, zadejte WebDAV adresu vámi využívaného Nextcloud serveru do kolonky <strong>Adresa serveru</strong>, tj.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">YOURDOMAIN</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<img alt="Snímek obrazovky: Zadání adresy Nextcloud serveru v dialogu „Připojit k serveru…“" src="../../_images/osx_webdav2.png" />
+</li>
+<li><p>Klikněte na <strong>Připojit</strong>. Vámi používaný WebDAV server by se měl objevit na Ploše jako sdílená jednotka.</p></li>
+</ol>
+</section>
+<section id="accessing-files-using-microsoft-windows">
+<h2>Přistupování k souborům ze systému Microsoft Windows<a class="headerlink" href="#accessing-files-using-microsoft-windows" title="Link to this heading"></a></h2>
+<p>Pokud používáte nativní implementaci WebDAV ve Windows, je možné namapovat Nexcloud jako nový disk v Průzkumníkovi. Mapování na jednotku umožní procházet soubory, nacházející se na Nexcloud serveru stejně, jako v případě souborů, nacházejících se na namapovaném síťovém disku.</p>
+<p>Použití této funkce vyžaduje připojení k síti. Pokud chcete ukládat své soubory offline, použijte desktopového klienta pro synchronizování všech souborů na vámi využívané instanci Nexcloud na úložiště ve vašem počítači.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Před namapováním disku, pokud je zapnuté HTTPS, Windows 10 nyní ve výchozím stavu umožňuje Basic Authentication.</p>
+<p>Ve starších verzích Windows je třeba povolit používání Basic Authentication v registrech Windows:</p>
+<ul class="simple">
+<li><p>spusťte <code class="docutils literal notranslate"><span class="pre">regedit</span></code> a jděte do <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters</span></code>.</p></li>
+<li><p>Vytvořte nebo upravte hodnotu typu <code class="docutils literal notranslate"><span class="pre">DWORD</span></code> nazvanou <code class="docutils literal notranslate"><span class="pre">BasicAuthLevel</span></code> (Windows Vista, 7 a 8), nebo <code class="docutils literal notranslate"><span class="pre">UseBasicAuth</span></code> (Windows XP a Windows Server 2003),  a pro SSL spojení nastavte její obsah na <code class="docutils literal notranslate"><span class="pre">1</span></code>. Hodnota <code class="docutils literal notranslate"><span class="pre">0</span></code> znamená, že Basic Authentication je vypnuté, hodnota  <code class="docutils literal notranslate"><span class="pre">2</span></code> umožňuje jak SSL, tak ne-SSL spojení (nedoporučováno).</p></li>
+<li><p>Poté ukončete editor Registrů a počítač zrestartujte.</p></li>
+</ul>
+</div>
+<section id="mapping-drives-with-the-command-line">
+<h3>Mapování jednotek z příkazového řádku<a class="headerlink" href="#mapping-drives-with-the-command-line" title="Link to this heading"></a></h3>
+<p>Následující příklad zobrazuje jak namapovat jednotku z příkazového řádku. Pro namapování jednotky:</p>
+<ol class="arabic">
+<li><p>Ve Windows otevřete příkazový řádek.</p></li>
+<li><p>Pro namapování jednotky Z v počítači zadejte do příkazového řádku následující:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">drive_path</span><span class="o">&gt;/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span> <span class="n">yourpassword</span>
+</pre></div>
+</div>
+<p>s &lt;drive_path&gt; coby URL adresou vámi využívaného Nextcloud serveru. Například:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span> <span class="n">yourpassword</span>
+</pre></div>
+</div>
+<p>Počítač namapuje soubory z vašeho Nextcloud účtu na jednotku s písmenkem Z.</p>
+</li>
+</ol>
+<div class="admonition error">
+<p class="admonition-title">Chyba</p>
+<p>Pokud obdržíte následující chybu <code class="docutils literal notranslate"><span class="pre">Došlo</span> <span class="pre">k</span> <span class="pre">systémové</span> <span class="pre">chybě</span> <span class="pre">67.</span> <span class="pre">Název</span> <span class="pre">na</span> <span class="pre">síti</span> <span class="pre">se</span> <span class="pre">nepodařilo</span> <span class="pre">nalézt.</span></code>, nebo častá odpojení, otevřete aplikaci <strong>Služby</strong> a zajistěte, aby byla spuštěná služba <code class="docutils literal notranslate"><span class="pre">WebClient</span></code> a spouštěna automaticky při startu systému.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Byť to není doporučováno, je také možné Nextcloud server připojit pomocí HTTP, čímž ovšem bude spojení nešifrované.</p>
+<blockquote>
+<div><p>Pokud zamýšlíte používat HTTP spojení na zařízení, připojovaných do veřejných sítí, důrazně doporučujeme zajistit nezbytné zabezpečení používání VPN tunelu.</p>
+</div></blockquote>
+<p>Alternativní forma zápisu příkazu je:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> \\<span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="nd">@ssl</span>\<span class="n">nextcloud</span>\<span class="n">remote</span><span class="o">.</span><span class="n">php</span>\<span class="n">dav</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span>
+<span class="n">yourpassword</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mapping-drives-with-windows-explorer">
+<h3>Mapování disků pomocí Průzkumníka Windows<a class="headerlink" href="#mapping-drives-with-windows-explorer" title="Link to this heading"></a></h3>
+<p>Pro namapování disku pomocí Průzkumníka Windows:</p>
+<ol class="arabic">
+<li><p>Otevřete Průzkumníka na svém počítači s MS Windows.</p></li>
+<li><p>Klikněte pravým tlačítkem na položku <strong>Počítač</strong> a z rozbalovací nabídky vyberte <strong>Namapovat síťovou jednotku…</strong>.</p></li>
+<li><p>Zvolte písmenko pro nový místní síťový disk, na který chcete Nextcloud namapovat.</p></li>
+<li><p>Zadejte adresu vámi používané instance Nextloud, následovanou <strong>/remote.php/dav/files/UZIVATELSKEJMENO/</strong>.</p>
+<p>Například:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Pro servery, chráněné pomocí SSL, zaškrtněte <strong>Znovu připojit při přihlášení se</strong>, abyste zajistili, že mapování zůstane zachováno po následných restartech počítače. Pokud se chcete k Nexcloud serveru připojit jako jiný uživatel (než kterým jste právě přihlášeni do systému), zaškrtněte <strong>Připojit se pomocí jiných přihlašovacích údajů</strong>.</p>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="Snímek obrazovky s mapováním WebDAV ve Windows Průzkumníkovi" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" />
+</a>
+</figure>
+</li>
+</ol>
+<ol class="arabic simple" start="5">
+<li><p>Klikněte na <code class="docutils literal notranslate"><span class="pre">Dokončit</span></code>.</p></li>
+</ol>
+<p>Průzkumník Windows namapuje síťovou jednotku, čímž zpřístupní vámi využívanou instanci Nexcloud.</p>
+</section>
+</section>
+<section id="accessing-files-using-cyberduck">
+<h2>Přístup k souborům pomocí nástroje Cyberduck<a class="headerlink" href="#accessing-files-using-cyberduck" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://cyberduck.io/">Cyberduck</a> je open source prohlížeč FTP, SFTP, WebDAV, OpenStack Swift, a Amazon S3, navržený pro přenosy souborů v macOS a Windows.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>V tomto příkladu je použito Cyberduck verze 4.2.1.</p>
+</div>
+<p>Pro použití Cyberduck:</p>
+<ol class="arabic">
+<li><p>Zadejte server bez uvedení protokolu.</p>
+<p>Např.: <code class="docutils literal notranslate"><span class="pre">example.com</span></code></p>
+</li>
+<li><p>Zadejte příslušný port.</p>
+<p>Volba portu závisí na tom, zda vámi využívaný Nextcloud server podporuje SSL. Cyberduck vyžaduje, abyste pokud plánujete použít SSL, vybrali jiný typ připojení.</p>
+<dl class="simple">
+<dt>Například:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">80</span></code> pro nešifrované WebDAV</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">443</span></code> pro zabezpečené WebDAV (HTTPS/SSL)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Použijte rozbalovací nabídku „Další možnosti“ a přidejte zbytek vaší WebDAV URL do kolonky „Popis umístění“.</p>
+<p>Např.: <code class="docutils literal notranslate"><span class="pre">remote.php/dav/files/USERNAME/</span></code></p>
+</li>
+</ol>
+<p>Nyní Cyberduck umožní přístup k souborům na Nextcloud serveru.</p>
+</section>
+<section id="accessing-public-shares-over-webdav">
+<h2>Přístup k veřejným sdílením prostřednictvím WebDAV<a class="headerlink" href="#accessing-public-shares-over-webdav" title="Link to this heading"></a></h2>
+<p>Nextcloud poskytuje možnost přistupovat k veřejným sdílením anonymně prostřednictvím WebDAV.</p>
+<p>Pro přístup k veřejnému sdílení, otevřete:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">public</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span>
+</pre></div>
+</div>
+<p>Ve WebDAV klientovi, použijte token pro sdílení jako uživatelské jméno a (volitelné) heslo do sdílení. Například, pro odkaz na sdílení <a class="reference external" href="https://example.com/s/kFy9Lek5sm928xP">https://example.com/s/kFy9Lek5sm928xP</a>, <code class="docutils literal notranslate"><span class="pre">kFy9Lek5sm928xP</span></code> bude uživatelské jméno.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p><strong>Nastavení</strong> → <strong>Správa</strong> → <strong>Sdílení</strong> → <strong>Umožnit uživatelům na tomto serveru posílat sdílení na ostatní servery</strong>. Tato volba také umožní WebDAV přístup k veřejným sdílením, aby tato funkce byla k dispozici, krom případů, kdy je použito cURL (viz níže).</p>
+</div>
+</section>
+<section id="known-problems">
+<h2>Známé problémy<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
+<section id="id4">
+<h3>Problém<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>Windows se při použití HTTPS nepřipojují.</p>
+</section>
+<section id="solution-1">
+<h3>Řešení<a class="headerlink" href="#solution-1" title="Link to this heading"></a></h3>
+<p>WebDAV klient, obsažený v systému Windows, nemusí u šifrovaných spojení podporovat Server Name Indication (SNI). Pokud se setkáte s chybou při SSL šifrovaném připojování k instance Nexcloud, obraťte se na svého poskytovatele se žádostí o přidělení vyhrazené IP adresy pro váš na SSL založený server.</p>
+</section>
+<section id="solution-2">
+<h3>Jiné řešení<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
+<p>Může být, že WebDAV klient ve Windows nepodporuje TSLv1.1 a TSLv1.2 spojení. Pokud je v nastavení vámi využívaného serveru omezeno poskytování pouze na TLSv1.1 a novější, spojení se serverem se může nezdařit. Další informace naleznete v dokumentaci k <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a>.</p>
+</section>
+<section id="id5">
+<h3>Problém<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>Obdržíte následující chybové hlášení: <strong>Chyba 0x800700DF: Velikost souboru překračuje umožněný limit a není proto možné ho uložit.</strong></p>
+</section>
+<section id="id6">
+<h3>Řešení<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p>Systém Windows omezuje maximální velikost, jakou může mít soubor přenášený z nebo na WebDAV sdílení.  Tuto hodnotu je možné zvýšit a to úpravou v registrech, konkrétně klíče <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> v <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code>, kliknutím na <strong>Změnit</strong>.</p>
+<p>Pro zvýšení limitu na maximální hodnotu 4GB, vyberte <strong>Desítková</strong>, zadejte hodnotu <code class="docutils literal notranslate"><span class="pre">4294967295</span></code> a restartujte počítač nebo jen systémovou službu <strong>WebClient</strong>.</p>
+</section>
+<section id="id7">
+<h3>Problém<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<p>Přidání WebDAV disku do Windows prostřednictvím výše popsaných kroků nezobrazí správnou velikost prostoru, dostupného na Nextcloud a namísto toho zobrazí velikost disku C: a prostor dostupný na něm.</p>
+</section>
+<section id="answer">
+<h3>Odpověď<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
+<p>Žel toto je omezení WebDAV samotného, protože neposkytuje klientovi způsob, jak získat údaj o volném místě na serveru. Windows automaticky náhradně zobrazuje velikost disku C: a prostor dostupný na něm. Takže žel tento problém nemá skutečné řešení.</p>
+</section>
+<section id="id8">
+<h3>Problém<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<p>Přístup k vašim souborům z Microsoft Office prostřednictvím WebDAV se nedaří.</p>
+</section>
+<section id="id9">
+<h3>Řešení<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<p>Známé problémy a jejich řešení jsou popsány ve článku <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a> .</p>
+</section>
+<section id="id10">
+<h3>Problém<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>V systému Windows není možné namapovat jako WebDAV disk Nextcloud, na kterém je používán sám sebou podepsaný certifikát.</p>
+</section>
+<section id="id11">
+<h3>Řešení<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Přistupte do vámi využívané instance Nextcloud ze svého oblíbeného webového prohlížeče.</p></li>
+<li><p>Proklikejte se až obdržíte chybu certifikátu ve stavovém řádku prohlížeče.</p></li>
+<li><p>Zobrazte certifikát a pak na panelu Podrobnosti vyberte „Zkopírovat do souboru“.</p></li>
+<li><p>Uložte na plochu pod libovolným názvem, například <code class="docutils literal notranslate"><span class="pre">mujNextcloud.pem</span></code>.</p></li>
+<li><p>Jděte do nabídky start &gt; Spustit, napište MMC a klikněte na „OK“ a otevře se Microsoft Management Console.</p></li>
+<li><p>Jděte do Soubor &gt; Přidat/odebrat snap-in.</p></li>
+<li><p>Vyberte Certifikáty, klikněte na „Přidat“, zvolte „Můj uživatelský účet“, pak „Dokončit“ a nakonec „OK“.</p></li>
+<li><p>Jděte až do Důvěryhodné kořenové certifikační autority, Certifikáty.</p></li>
+<li><p>Klikněte na certifikát pravým tlačítkem, vyberte Všechny úlohy a Import.</p></li>
+<li><p>Vyberte uložený certifikát z plochy.</p></li>
+<li><p>Vyberte „Umístit veškeré certifikáty do následujícího úložiště“ a klikněte na Procházet.</p></li>
+<li><p>Zaškrtněte „Zobrazit fyzická úložiště“, rozbalte „Důvěryhodné kořenové certifikační autority“, vyberte zde „Místní počítač“, klikněte na „OK“ a dokončete tak import.</p></li>
+<li><p>Ověřte, že se na seznamu objevilo. Nejspíš pro to bude třeba nechat Znovu načíst.</p></li>
+<li><p>Ukončete MMC.</p></li>
+</ol>
+<p>Pro uživatele prohlížeče Firefox:</p>
+<ol class="arabic simple">
+<li><p>Spusťte svůj prohlížeč, jděte do nabídky Aplikace &gt; Historie &gt; Vyčistit nedávnou historii</p></li>
+<li><p>V rozbalovací nabídce ‚Období k vyčištění‘ vyberte  ‚Všechno‘</p></li>
+<li><p>Zaškrtněte ‚Aktivní přihlášení‘</p></li>
+<li><p>Klikněte na tlačítko ‚vyčistit nyní‘</p></li>
+<li><p>Zavřete prohlížeč, pak znovu otevřete a vyzkoušejte.</p></li>
+</ol>
+<p>Pro uživatele prohlížečů, založených na Chromiu (Chrome, Chromium, Microsoft Edge):</p>
+<ol class="arabic simple">
+<li><p>Otevřete do Ovládací panely Windows, přejděte dolů k Možnostem Internetu</p></li>
+<li><p>Na panelu Obsah, klikněte na tlačítko Vyčistit stav SSL.</p></li>
+<li><p>Zavřete prohlížeč, pak znovu otevřete a vyzkoušejte.</p></li>
+</ol>
+</section>
+</section>
+<section id="accessing-files-using-curl">
+<h2>Přistupování k souborů pomocí cURL<a class="headerlink" href="#accessing-files-using-curl" title="Link to this heading"></a></h2>
+<p>Protože WebDAV je rozšířením HTTP protokolu, lze pro naskriptování operací se soubory použít cURL.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p><strong>Nastavení</strong> → <strong>Správa</strong> → <strong>Sdílení</strong> → <strong>Umožnit uživatelům na tomto serveru posílat sdílení na ostatní servery</strong>. Pokud je tato volba vypnutá, pak je třeba cURL předat volbu <code class="docutils literal notranslate"><span class="pre">--header</span> <span class="pre">&quot;X-Requested-With:</span> <span class="pre">XMLHttpRequest&quot;</span></code>.</p>
+</div>
+<p>Pro vytvoření složky, nazvanou podle stávajícího data:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MKCOL<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>Pro nahrání souboru <code class="docutils literal notranslate"><span class="pre">error.log</span></code> do tohoto adresáře:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-T<span class="w"> </span>error.log<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">/error.log&quot;</span>
+</pre></div>
+</div>
+<p>Pro přesunutí souboru:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MOVE<span class="w"> </span>--header<span class="w"> </span><span class="s1">&#39;Destination: https://example.com/nextcloud/remote.php/dav/files/USERNAME/target.jpg&#39;</span><span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/source.jpg
+</pre></div>
+</div>
+<p>Pro získání vlastností souborů v kořenové složce:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>PROPFIND<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Depth: 1&quot;</span><span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/<span class="w"> </span><span class="p">|</span><span class="w"> </span>xml_pp
+<span class="w">    </span>&lt;?xml<span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="w"> </span><span class="nv">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>?&gt;
+&lt;d:multistatus<span class="w"> </span>xmlns:d<span class="o">=</span><span class="s2">&quot;DAV:&quot;</span><span class="w"> </span>xmlns:oc<span class="o">=</span><span class="s2">&quot;http://nextcloud.org/ns&quot;</span><span class="w"> </span>xmlns:s<span class="o">=</span><span class="s2">&quot;http://sabredav.org/ns&quot;</span>&gt;
+<span class="w">  </span>&lt;d:response&gt;
+<span class="w">    </span>&lt;d:href&gt;/nextcloud/remote.php/dav/files/USERNAME/&lt;/d:href&gt;
+<span class="w">    </span>&lt;d:propstat&gt;
+<span class="w">      </span>&lt;d:prop&gt;
+<span class="w">        </span>&lt;d:getlastmodified&gt;Tue,<span class="w"> </span><span class="m">13</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2015</span><span class="w"> </span><span class="m">17</span>:07:45<span class="w"> </span>GMT&lt;/d:getlastmodified&gt;
+<span class="w">        </span>&lt;d:resourcetype&gt;
+<span class="w">          </span>&lt;d:collection/&gt;
+<span class="w">        </span>&lt;/d:resourcetype&gt;
+<span class="w">        </span>&lt;d:quota-used-bytes&gt;163&lt;/d:quota-used-bytes&gt;
+<span class="w">        </span>&lt;d:quota-available-bytes&gt;11802275840&lt;/d:quota-available-bytes&gt;
+<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">&quot;561d3a6139d05&quot;</span>&lt;/d:getetag&gt;
+<span class="w">      </span>&lt;/d:prop&gt;
+<span class="w">      </span>&lt;d:status&gt;HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK&lt;/d:status&gt;
+<span class="w">    </span>&lt;/d:propstat&gt;
+<span class="w">  </span>&lt;/d:response&gt;
+<span class="w">  </span>&lt;d:response&gt;
+<span class="w">    </span>&lt;d:href&gt;/nextcloud/remote.php/dav/files/USERNAME/welcome.txt&lt;/d:href&gt;
+<span class="w">    </span>&lt;d:propstat&gt;
+<span class="w">      </span>&lt;d:prop&gt;
+<span class="w">        </span>&lt;d:getlastmodified&gt;Tue,<span class="w"> </span><span class="m">13</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2015</span><span class="w"> </span><span class="m">17</span>:07:35<span class="w"> </span>GMT&lt;/d:getlastmodified&gt;
+<span class="w">        </span>&lt;d:getcontentlength&gt;163&lt;/d:getcontentlength&gt;
+<span class="w">        </span>&lt;d:resourcetype/&gt;
+<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">&quot;47465fae667b2d0fee154f5e17d1f0f1&quot;</span>&lt;/d:getetag&gt;
+<span class="w">        </span>&lt;d:getcontenttype&gt;text/plain&lt;/d:getcontenttype&gt;
+<span class="w">      </span>&lt;/d:prop&gt;
+<span class="w">      </span>&lt;d:status&gt;HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK&lt;/d:status&gt;
+<span class="w">    </span>&lt;/d:propstat&gt;
+<span class="w">  </span>&lt;/d:response&gt;
+&lt;/d:multistatus&gt;
+</pre></div>
+</div>
+</section>
+<section id="accessing-files-using-winscp">
+<h2>Přístup souborům pomocí WinSCP<a class="headerlink" href="#accessing-files-using-winscp" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://winscp.net/eng/docs/introduction/">WinSCP</a>  je open source klient pro SFTP, FTP, WebDAV, S3 and SCP protokoly pro Windows. Jeho hlavní funkcí je přenos souborů mezi lokálním a vzdáleným počítačem. Krom toho, WinSCP nabízí skriptování a základní funkce pro správu souborů.</p>
+<p>Je možné si <a class="reference external" href="https://winscp.net/eng/downloads.php/">stáhnout</a> přímo spouštitelnou verzi WinSCP a a spouštět ji na Linuxu prostřednictvím <a class="reference external" href="https://wiki.winehq.org/Main_Page/">Wine</a>.</p>
+<p>Pokud chcete WinSCP spustit na Linuxu, nainstalujte si wine prostřednictvím správce balíčků vámi používané distribuce a pak spusťte pomocí příkazu: <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code>.</p>
+<p>Pro připojení se k Nextcloud:</p>
+<ul class="simple">
+<li><p>Spusťte WinSCP</p></li>
+<li><p>V nabídce stiskněte ‚Relace‘</p></li>
+<li><p>Z nabídky zvolte ‚Nová relace‘</p></li>
+<li><p>V rozbalovací nabídce ‚Souborový protokol‘ nastavte WebDAV</p></li>
+<li><p>V rozbalovací nabídce ‚Šifrování‘ nastavte výslovné TLS/SSL šifrování</p></li>
+<li><p>Vyplňte kolonku pro název hostitele, např.: <code class="docutils literal notranslate"><span class="pre">example.com</span></code></p></li>
+<li><p>Vyplňte kolonku pro uživatelské jméno: <code class="docutils literal notranslate"><span class="pre">NEXTCLOUDUZIVATELSKEJMENO</span></code></p></li>
+<li><p>Vyplňte kolonku pro heslo: <code class="docutils literal notranslate"><span class="pre">NEXTCLOUDHESLO</span></code></p></li>
+<li><p>Klikněte na tlačítko ‚Pokročilé…‘</p></li>
+<li><p>Přejděte do „Prostředí“, „Adresáře“ (vlevo)</p></li>
+<li><p>Vyplňte kolonku ‚Vzdálená složka‘ následujícím (např.): <code class="docutils literal notranslate"><span class="pre">/nextcloud/remote.php/dav/files/NEXTCLOUDUZIVATELSKEJMENO/</span></code></p></li>
+<li><p>Stiskněte tlačítko „0K“</p></li>
+<li><p>Stiskněte tlačítko „Uložit“</p></li>
+<li><p>Vyberte požadované předvolby a klikněte na ‚OK‘</p></li>
+<li><p>Kliknutím na  ‚Přihlásit‘ se připojte k Nextcloud</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Pokud používáte TOTP, je doporučeno použít coby heslo to určené pro konkrétní aplikaci, protože WinSCP doposud (2022-11-07) ještě nepodporuje TOTP ve spojení s Nextcloud.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="access_webgui.html" class="btn btn-neutral float-left" title="Přístup k souborům prostřednictvím webového rozhraní Nextcloud" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="deleted_file_management.html" class="btn btn-neutral float-right" title="Správa smazaných souborů" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 Czech
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Jazyky</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Verze</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Stahování</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Na službě Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Domovská stránka projektu</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Sestavení</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

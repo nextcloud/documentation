@@ -1,0 +1,419 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Windmill Workflows &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/admin_manual/windmill_workflows/index.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File sharing and management" href="../configuration_files/index.html" />
+    <link rel="prev" title="Webhook Listeners" href="../webhook_listeners/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Critical changes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Windmill Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-the-workspace-connection">Setting up the workspace connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-a-workflow">Building a workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nextcloud-scripts">Nextcloud Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#authentication">Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#passing-values-between-blocks">Passing values between blocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#approval-suspend-steps">Approval/Suspend steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#faq">FAQ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#can-i-create-a-script">Can I create a script?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Files</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Groupware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Office</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_monitoring/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/">Community Help Forum</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">User Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">Developer Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/install/">Download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://apps.nextcloud.com">App Store</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/t/translation-knowledge-valid-for-the-entire-nextcloud-project-wiki/51550">Translations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Supported versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud Enterprise</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/blob/master/COPYING-README">License</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/">Nextcloud GmbH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Windmill Workflows</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/windmill_workflows/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="windmill-workflows">
+<h1>Windmill Workflows<a class="headerlink" href="#windmill-workflows" title="Link to this heading"></a></h1>
+<p>Nextcloud integrates the <cite>Windmill workflow engine &lt;https://www.windmill.dev/&gt;</cite> to allow advanced custom workflows interacting with your Nextcloud instance.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Set up a Windmill instance</dt><dd><ul>
+<li><p>This should be a stand-alone instance. The External App “Flow” (see <a class="reference internal" href="../exapps_management/AppAPIAndExternalApps.html#ai-app-api"><span class="std std-ref">External Apps</span></a>) made it possible to have a packaged instance installed in Nextcloud, but this is deprecated since Nextcloud 33. For more information, please check out the admin manual for Nextcloud 32.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Enable the <code class="docutils literal notranslate"><span class="pre">webhook_listeners</span></code> app that comes with Nextcloud</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>occ<span class="w"> </span>app:enable<span class="w"> </span>webhook_listeners
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Install the <a class="reference external" href="https://apps.nextcloud.com/apps/integration_windmill">Windmill integration</a></p></li>
+<li><p>Enable <a class="reference internal" href="../installation/source_installation.html#pretty-urls-label"><span class="std std-ref">Pretty URLs</span></a> in your Nextcloud instance</p></li>
+</ul>
+</section>
+<section id="setting-up-the-workspace-connection">
+<h2>Setting up the workspace connection<a class="headerlink" href="#setting-up-the-workspace-connection" title="Link to this heading"></a></h2>
+<p>In Windmill, you have separate workspaces available. To enable Windmill to react to events happening on your Nextcloud instance, you need to connect a workspace to your Nextcloud connection. This is only possible for workspace admins.</p>
+<ul class="simple">
+<li><p>In Windmill, open the workspace settings of the workspace you want to connect to Nextcloud via Settings -&gt; Workspace</p></li>
+<li><p>Go to the Native Triggers tab and choose Nextcloud -&gt; Configure OAuth</p></li>
+<li><p>Follow the instructions to set up the OAuth connection</p></li>
+<li><p>Click on “Connect” and accept the OAuth connection <strong>with a Nextcloud admin account</strong> or an account that has webhook admin privileges</p></li>
+<li><p>If it shows “Connected”, the workspace connection is successfully set up.</p></li>
+</ul>
+<p>Every Flow configured in this workspace can now add Nextcloud triggers and scripts based on the credentials of the account you accepted the OAuth connection with.</p>
+</section>
+<section id="building-a-workflow">
+<h2>Building a workflow<a class="headerlink" href="#building-a-workflow" title="Link to this heading"></a></h2>
+<p>Each workflow in Windmill is a listener to a Nextcloud Webhook Event.
+If you are using the ExApp-packaged Windmill, it will automatically register webhooks for the workflows you build using the following mechanism.
+If you are not using the ExApp-packaged windmill install then you will have to register
+webhooks for your workflows manually via the webhook_listeners API:
+see <a class="reference external" href="https://docs.nextcloud.com/server/33/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index">https://docs.nextcloud.com/server/33/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index</a></p>
+<img alt="Screenshot of adding a Nextcloud trigger in a workflow" src="../_images/windmill_add_trigger.png" />
+<p>Now you can choose an event out of a drop-down list  of events that your flow should react to. You can additionally fill in some parameters:</p>
+<ul class="simple">
+<li><p><em>Event filters</em> allows more fine grained filtering for which events should be used. The filter condition as well as the available events with their payloads is documented in the <a class="reference internal" href="../webhook_listeners/index.html#id1"><span class="std std-ref">webhook_listeners documentation</span></a>.</p></li>
+<li><p>The <em>User ID filter</em> allows to define the user that can trigger a flow with their actions in Nextcloud. The webhook will only be called by requests from this user. Empty or null means no filtering.</p></li>
+<li><p>The <em>Headers</em> field allows to define an array of headers to be sent in a webhook call, which will mostly not be needed.</p></li>
+</ul>
+<p>You can add more than one trigger to a flow.</p>
+</section>
+<section id="nextcloud-scripts">
+<h2>Nextcloud Scripts<a class="headerlink" href="#nextcloud-scripts" title="Link to this heading"></a></h2>
+<p>Nextcloud makes available a variety of scripts to be used in Windmill for interfacing with Nextcloud apps. You can find them
+at <a class="reference external" href="https://hub.windmill.dev/integrations/nextcloud">https://hub.windmill.dev/integrations/nextcloud</a> and <a class="reference external" href="https://hub.windmill.dev/integrations/nextcloud/approvals">https://hub.windmill.dev/integrations/nextcloud/approvals</a>
+or in your windmill instance when selecting existing scripts for creating a new workflow.</p>
+<p>If you want to use a function that is not already represented there, you can easily write your own scripts using a skeleton script and our OCS API that provides lots of endpoints. You can check out the available endpoints in the <a class="reference external" href="https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html">Nextcloud OCS API documentation</a> or you can install our <a class="reference external" href="https://apps.nextcloud.com/apps/ocs_api_viewer">OCS API Viewer app</a> and check it out directly in your Nextcloud.</p>
+<p>You can create your own Nextcloud-related scripts by taking one of the existing ones as example.
+In a script, when sending a request to Nextcloud, make sure that the <code class="docutils literal notranslate"><span class="pre">EX-APP-ID</span></code> header is set to <code class="docutils literal notranslate"><span class="pre">flow</span></code>.
+Your custom scripts can make requests to any endpoint of the
+<a class="reference external" href="https://docs.nextcloud.com/server/33/developer_manual/_static/openapi.html">Nextcloud OCS API</a> .</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">wmill</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;windmill-client&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">createClient</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="w"> </span><span class="nx">Middleware</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;openapi-fetch&quot;</span><span class="p">;</span>
+
+<span class="nx">type</span><span class="w"> </span><span class="nx">Nextcloud</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="nx">baseUrl</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span>
+<span class="w">   </span><span class="nx">password</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span>
+<span class="w">   </span><span class="nx">username</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
+<span class="p">};</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">main</span><span class="p">(</span>
+<span class="w">   </span><span class="nx">nextcloud</span><span class="o">:</span><span class="w"> </span><span class="nx">Nextcloud</span><span class="p">,</span>
+<span class="w">   </span><span class="nx">$PARAMETER</span><span class="o">:</span><span class="w"> </span><span class="nx">$TYPE</span><span class="p">,</span>
+<span class="w">   </span><span class="c1">// add any input parameters you need here</span>
+<span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">   </span><span class="c1">// this part is the same for any script and should  not be changed</span>
+
+<span class="w">   </span><span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createClient</span><span class="o">&lt;</span><span class="nx">paths</span><span class="o">&gt;</span><span class="p">({</span><span class="w"> </span><span class="nx">baseUrl</span><span class="o">:</span><span class="w"> </span><span class="nx">nextcloud</span><span class="p">.</span><span class="nx">baseUrl</span><span class="w"> </span><span class="p">});</span>
+<span class="w">   </span><span class="kd">const</span><span class="w"> </span><span class="nx">authMiddleware</span><span class="o">:</span><span class="w"> </span><span class="nx">Middleware</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">async</span><span class="w"> </span><span class="nx">onRequest</span><span class="p">({</span><span class="w"> </span><span class="nx">request</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="c1">// fetch token, if it doesn’t exist</span>
+<span class="w">         </span><span class="c1">// add Authorization header to every request</span>
+<span class="w">         </span><span class="nx">request</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;Authorization&quot;</span><span class="p">,</span><span class="w"> </span><span class="sb">`Basic </span><span class="si">${</span><span class="nx">btoa</span><span class="p">(</span><span class="nx">nextcloud</span><span class="p">.</span><span class="nx">username</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;:&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">nextcloud</span><span class="p">.</span><span class="nx">password</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">         </span><span class="k">return</span><span class="w"> </span><span class="nx">request</span><span class="p">;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">   </span><span class="p">};</span>
+<span class="w">   </span><span class="nx">client</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">authMiddleware</span><span class="p">);</span>
+
+<span class="w">   </span><span class="c1">//starting here you can adapt the script</span>
+
+<span class="w">   </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">GET</span><span class="p">(</span><span class="s2">&quot;/ocs/v2.php/apps/$APP/$PATH/{$PATHPARAMETER}&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">params</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nx">header</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;OCS-APIRequest&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="nx">query</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">format</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;json&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">$PATHPARAMETER</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;$VALUE&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="p">},</span>
+
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nx">$BODYPARAMETER</span><span class="o">:</span><span class="w"> </span><span class="nx">$VALUE</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">   </span><span class="p">});</span>
+
+<span class="k">return</span><span class="w"> </span><span class="nx">data</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The endpoint path you have to fill in is provided in the API documentation.</p>
+<p>OCS uses two kinds of parameters: Path parameters that are part of the endpoint URL, and body parameters that are transmitted in the request body. In the example script, you can provide both kinds in the function parameters.</p>
+<p>Remember to also adapt the HTTP method (GET, POST, PUT etc.) if needed.</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">data</span></code> variable receives the response of the HTTP request, so any data or error messages coming from the Nextcloud instance is available in there.</p>
+<section id="authentication">
+<h3>Authentication<a class="headerlink" href="#authentication" title="Link to this heading"></a></h3>
+<p>All the scripts we provide one input parameter in common: <em>nextcloud</em> needs to be an object of the type “Nextcloud” and contain what is necessary to authenticate against Nextcloud:</p>
+<ul class="simple">
+<li><p>baseUrl: the URL your instance is reachable at, e.g. <code class="code docutils literal notranslate"><span class="pre">https://example.cloud</span></code></p></li>
+<li><p>userId: the user id of the user the script should authenticate with</p></li>
+<li><p>token: a password or token for that user</p></li>
+</ul>
+<p>We advise to either add these credentials as a resource of the Nextcloud type to your workspace and refer to the resource in your script, or use the authentication credentials that are provided in the webhook callback.
+For every flow that is triggered by a Nextcloud event, there are 2 sets of temporary credentials included:</p>
+<ul class="simple">
+<li><p>the credentials for the user account that is saved in the initial OAuth connection, available as <code class="code docutils literal notranslate"><span class="pre">flow_input.authentication.owner</span></code></p></li>
+<li><p>the credentials for the user account that triggered the event with their action, available as <code class="code docutils literal notranslate"><span class="pre">flow_input.authentication.trigger</span></code></p></li>
+</ul>
+<p>These temporary authentication credentials are valid for one hour after triggering the event.</p>
+</section>
+<section id="passing-values-between-blocks">
+<h3>Passing values between blocks<a class="headerlink" href="#passing-values-between-blocks" title="Link to this heading"></a></h3>
+<p>When specifying script inputs you can either fill the parameters with static values or make references to the workflow input and the previous workflow steps.</p>
+<p>In order to reference the workflow input (details about the event that triggered the webhook), use the <code class="docutils literal notranslate"><span class="pre">flow_input</span></code> variable.
+For example, <code class="docutils literal notranslate"><span class="pre">flow_input.event.form.hash</span></code> will reference the hash of a form from a nextcloud Forms event. As it is a JavaScript expression and not a static value, you have to switch the parameter input with the button next to it.</p>
+<img alt="Screenshot of adding a Nextcloud trigger in a workflow" src="../_images/windmill_js_expression.png" />
+<p>The fields available for each event are listed in the <a class="reference internal" href="../webhook_listeners/index.html#id1"><span class="std std-ref">webhook_listeners documentation</span></a>.</p>
+<p>Each step in a workflow is automatically assigned a letter identifier.
+In order to reference results from previous steps in your parameters, use the <code class="docutils literal notranslate"><span class="pre">results</span></code> variable with the id of the step
+to reference as a sub property. For example, use <code class="docutils literal notranslate"><span class="pre">results.e.submission.answers</span></code> to use the answers of of a form submission
+retrieved via the “Get form submission from Nextcloud Forms” script identified with the letter “e”. You can identify the letters in the flow overview diagram.</p>
+</section>
+<section id="approval-suspend-steps">
+<h3>Approval/Suspend steps<a class="headerlink" href="#approval-suspend-steps" title="Link to this heading"></a></h3>
+<p>Windmill allows using so-called approval steps, which are essentially asynchronous scripts that wait for the call to an additional webhook URL.
+The most prominent use case for this are approval workflows where you get automated input from somewhere which needs to be approved by a human.
+Once the human approves or disapproves by triggering the webhook URL the workflow will resume.</p>
+<p>In order to turn a newly added step into an approval step, the workflow edit screen,
+select the script and in the bottom right pan, go in the “Advanced” tab, “Suspend” sub tab and check “Suspend/Approval/Prompt”.</p>
+<img alt="Screenshot of the workspace edit screen to turn a normal step into an Approval step" src="../_images/windmill_approval_step_config.png" />
+<p>Using the scripts provided for Nextcloud, you can send approval links to the humans in charge of approving
+via Nextcloud Talk or a simple notification in Nextcloud.
+Of course, you may also use any of the other scripts for sending messages available in the Windmill hub.</p>
+<p>Windmill has a default approval user interface at a specific URL, but it looks very technical.
+We recommend using the <a class="reference external" href="https://apps.nextcloud.com/apps/approve_links">approve_links</a> app
+which allows creating a beautiful temporary approval page with a custom message and approve and disapprove buttons.</p>
+</section>
+</section>
+<section id="faq">
+<h2>FAQ<a class="headerlink" href="#faq" title="Link to this heading"></a></h2>
+<section id="can-i-create-a-script">
+<h3>Can I create a script?<a class="headerlink" href="#can-i-create-a-script" title="Link to this heading"></a></h3>
+<p>If the Windmill Hub does not contain any script to perform the action you have in mind,
+you can take an existing Nextcloud script as example and create your own.
+Your custom scripts can make requests to any endpoint of the
+<a class="reference external" href="https://docs.nextcloud.com/server/33/developer_manual/_static/openapi.html">Nextcloud OCS API</a> .</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../webhook_listeners/index.html" class="btn btn-neutral float-left" title="Webhook Listeners" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../configuration_files/index.html" class="btn btn-neutral float-right" title="File sharing and management" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/admin_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/admin_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

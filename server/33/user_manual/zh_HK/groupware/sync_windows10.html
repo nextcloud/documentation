@@ -1,0 +1,670 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-HK" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>與 Windows 10 同步 &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/groupware/sync_windows10.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=05269ba6"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=11dc2623"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Talk" href="../talk/index.html" />
+    <link rel="prev" title="與 GNOME 桌面同步" href="sync_gnome.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest 用戶手冊介紹</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud Web 介面</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">檔案與同步</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">使用聯絡人應用程式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">使用日曆應用程式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mail.html">使用郵件應用程式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">設置離開辦公室的消息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">與 Android 同步</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">與 iOS 同步</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">與 macOS 同步</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">與 Thunderbird 同步</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">與 KDE Kontact 同步</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">與 GNOME 桌面同步</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">與 Windows 10 同步</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#calendar">日曆</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#contacts">聯絡人</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">疑難解答</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">聯絡人</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">桌面客戶端</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">設置您的偏好</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">普遍存取</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">使用雙重身份驗證</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">管理已連接的瀏覽器和裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">外置儲存</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Groupware</a></li>
+      <li class="breadcrumb-item active">與 Windows 10 同步</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/sync_windows10.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="synchronizing-with-windows-10">
+<h1>與 Windows 10 同步<a class="headerlink" href="#synchronizing-with-windows-10" title="Link to this heading"></a></h1>
+<section id="calendar">
+<h2>日曆<a class="headerlink" href="#calendar" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>在瀏覽器中，導航到 Nextcloud 日曆應用。在「日曆設定」下，使用「複製 iOS/macOS CalDAV 地址」將地址複製到剪貼板。</p></li>
+<li><p>啟動 Windows 10 日曆應用。然後，點擊設定圖標（齒輪圖標），選擇「管理帳戶」。</p></li>
+<li><p>點擊「添加帳戶」，然後選擇「iCloud」。</p></li>
+<li><p>輸入一個電郵地址、用戶名和密碼。這些資訊不必有效，因為在接下來的步驟中都會更改。</p></li>
+<li><p>點擊「完成」。應顯示一條消息，指示設定已成功保存。</p></li>
+<li><p>在「管理帳戶」選項單中，點擊在前面的步驟中創建的 iCloud 帳戶，然後選擇「更改設定」。接下來，點擊「更改郵箱同步設定」。</p></li>
+<li><p>向下滾動對話框到底部，選擇「高級郵箱設定」。再向下滾動到對話框底部，將您的 CalDAV URL 粘貼到標記為「日曆伺服器（CalDAV）」的字段中。</p></li>
+<li><p>點擊「完成」。在適當的字段中輸入您的 Nextcloud 用戶名和密碼，並將帳戶名稱更改為您喜歡的名稱（例如「Nextcloud 日曆」）。點擊「保存」。</p></li>
+</ol>
+</section>
+<section id="contacts">
+<h2>聯絡人<a class="headerlink" href="#contacts" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>在聯絡人視圖的左下角（在 Nextcloud 聯絡人中），尋找一個小的（連結）符號，如下所示：</p></li>
+</ol>
+<img alt="../../_images/contacts_link.png" src="../../_images/contacts_link.png" />
+<p>這將顯示一個類似於以下的 URL：<a class="reference external" href="https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird/">https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird/</a></p>
+<ol class="arabic simple" start="2">
+<li><p>啟動 Windows 10 日曆應用。然後，點擊設定圖標（齒輪圖標），選擇「管理帳戶」。</p></li>
+<li><p>點擊「添加帳戶」，然後選擇「iCloud」。</p></li>
+<li><p>輸入一個電郵地址、用戶名和密碼。這些資訊不必有效，因為在接下來的步驟中都會更改。</p></li>
+<li><p>點擊「登錄」，然後點擊「完成」。應顯示一條消息，指示設置已成功保存。</p></li>
+<li><p>在「管理帳戶」選項單中，點擊在前面的步驟中創建的 iCloud 帳戶，然後選擇「更改設定」。接下來，點擊「更改郵箱同步設定」。</p></li>
+<li><p>向下滾動對話框到底部，選擇「高級郵箱設置」。再向下滾動到對話框底部，將您的 CardDAV URL 粘貼到標記為「聯絡人伺服器（CardDAV）」的字段中。</p></li>
+<li><p>點擊「完成」。在適當的字段中輸入您的 Nextcloud 用戶名和密碼，並將帳戶名稱更改為您喜歡的名稱（例如「Nextcloud 聯絡人」）。點擊「保存」。</p></li>
+</ol>
+</section>
+<section id="troubleshooting">
+<h2>疑難解答<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<p>按照所有這些步驟後，您的 Nextcloud 日曆應該會同步。如果沒有，請檢查您的用戶名和密碼。否則，請重複這些步驟。</p>
+<p><strong>注意：如果您啟用了雙因素身份驗證，則無法同步日曆。請按照以下步驟獲取可用於日曆客戶端應用的應用密碼：</strong></p>
+<ol class="arabic simple">
+<li><p>登錄 Nextcloud。點擊您的用戶圖標，然後點擊「設置」。</p></li>
+<li><p>點擊「安全性」，然後找到標記為「創建新應用密碼」的按鈕。在此按鈕旁邊，輸入「Windows 10 日曆應用」。然後，點擊該按鈕，複製並粘貼密碼。在第 8 步中使用此密碼替代您的 Nextcloud 密碼。</p></li>
+</ol>
+</section>
+<section id="id1">
+<h2>聯絡人<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>重複日曆說明中的第 1–7 步。如果您已經設置了日曆同步，則可以使用相同的帳戶。</p></li>
+<li><p>在「高級郵箱設置」中，將您的 CalDAV URL 粘貼到標記為「聯絡人伺服器（CardDAV）」的字段中。</p></li>
+<li><p>將 URL 中的路徑「principals」替換為「addressbooks」。</p></li>
+<li><p>點擊「完成」。在適當的字段中輸入您的 Nextcloud 用戶名和密碼，並將帳戶名稱更改為您喜歡的名稱（例如「Nextcloud」）。點擊「保存」。</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sync_gnome.html" class="btn btn-neutral float-left" title="與 GNOME 桌面同步" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../talk/index.html" class="btn btn-neutral float-right" title="Talk" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 zh-HK
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 語言</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ 版本</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>下載</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>於 Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">項目主頁</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Builds</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

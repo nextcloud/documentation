@@ -1,0 +1,714 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="de" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ &mdash; Nextcloud latest User Manual latest Dokumentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/desktop/faq.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=d9e2867d"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=9bf55d28"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="search" title="Suche" href="../search.html" />
+    <link rel="next" title="Einstellungen vornehmen" href="../userpreferences.html" />
+    <link rel="prev" title="Konflikte" href="conflicts.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Dokumentation durchsuchen" aria-label="Dokumentation durchsuchen" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest - Einführung zur Benutzeranleitung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Die Weboberfläche von Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Dateien &amp; Synchronisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop-Clients</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html">Verwenden des Synchronisierungsclients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macosvfs.html">macOS Virtual Files-Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoupdate.html">Der automatische Updater</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Update-Kanäle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conflicts.html">Konflikte</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">FAQ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-the-edit-locally-functionality-works">So funktioniert die Funktion „Lokal bearbeiten“</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-enable-it">So aktivieren Sie es</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#on-linux">Unter Linux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#on-windows">Unter Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#some-files-are-continuously-uploaded-to-the-server-even-when-they-are-not-modified">Einige Dateien werden kontinuierlich auf den Server hochgeladen, auch wenn sie nicht geändert werden.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#syncing-stops-when-attempting-to-sync-deeper-than-100-sub-directories">Beim Versuch, mehr als 100 Unterverzeichnisse zu synchronisieren, wird die Synchronisierung abgebrochen.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#there-was-a-warning-about-changes-in-synchronized-folders-not-being-tracked-reliably">Es gab eine Warnung, dass Änderungen in synchronisierten Ordnern nicht zuverlässig verfolgt werden.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#i-want-to-move-my-local-sync-folder">Ich möchte meinen lokalen Synchronisierungsordner verschieben</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#i-would-like-to-change-the-language-of-the-user-interface">Ich möchte die Sprache der Benutzeroberfläche ändern</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Einstellungen vornehmen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universeller Zugriff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Verwendung der Zwei-Faktor-Authentifizierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Verwaltung verbundener Browser und Geräte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Externer Speicher</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Desktop-Clients</a></li>
+      <li class="breadcrumb-item active">FAQ</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/faq.rst" class="fa fa-github"> Auf GitHub bearbeiten</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="faq">
+<h1>FAQ<a class="headerlink" href="#faq" title="Link to this heading"></a></h1>
+<section id="how-the-edit-locally-functionality-works">
+<h2>So funktioniert die Funktion „Lokal bearbeiten“<a class="headerlink" href="#how-the-edit-locally-functionality-works" title="Link to this heading"></a></h2>
+<p>Diese Funktionalität hängt von der Fähigkeit des Desktop-Clients ab, den MIME-Typ zu registrieren, um das nc://-Schema zu verarbeiten. Dies ist der Handler, der vom Server verwendet wird, um eine Datei lokal zu öffnen. Dadurch kann der Desktop-Client ein Dokument mit dem lokalen Editor öffnen, wenn Sie in Ihrer Nextcloud-Instanz auf die Option „Lokal bearbeiten“ klicken.</p>
+<div class="admonition note">
+<p class="admonition-title">Bemerkung</p>
+<p>Ohne ordnungsgemäße Registrierung des MIME-Typs kann der Desktop-Client – ​​unabhängig vom verwendeten Browser und der verwendeten Distribution – ein Dokument nicht mit dem lokalen Editor öffnen, wenn Sie in Ihrer Nextcloud-Instanz auf die Option „Lokal bearbeiten“ klicken.</p>
+<p>Der Browser warnt Sie vor dem Fehler: ‚nc://…‘ konnte nicht gestartet werden, da das Schema keinen registrierten Handler hat.“</p>
+</div>
+<section id="how-to-enable-it">
+<h3>So aktivieren Sie es<a class="headerlink" href="#how-to-enable-it" title="Link to this heading"></a></h3>
+<p>Dazu müssen Sie den Desktop-Client mit dem MSI-Installationsprogramm unter Windows installieren oder eine Drittanbietersoftware verwenden, um das AppImage in Ihr Linux-System zu integrieren.</p>
+</section>
+<section id="on-linux">
+<h3>Unter Linux<a class="headerlink" href="#on-linux" title="Link to this heading"></a></h3>
+<p>Wir verwenden AppImage aufgrund seiner universellen Kompatibilität, aber um die Funktionen des Desktop-Clients voll nutzen zu können, benötigen Sie Software von Drittanbietern, um das AppImage in Ihr System zu integrieren: Wir haben <a class="reference external" href="https://github.com/TheAssassin/AppImageLauncher">AppImageLauncher</a> getestet und alternativ gibt es <a class="reference external" href="https://github.com/probonopd/go-appimage">Go AppImage</a>.</p>
+</section>
+<section id="on-windows">
+<h3>Unter Windows<a class="headerlink" href="#on-windows" title="Link to this heading"></a></h3>
+<p>Das MSI-Installationsprogramm ändert Ihre Systemregistrierung, um das MIME für die Verarbeitung des nc://-Schemas zu registrieren.</p>
+<p>Alternativ können Sie den MIME-Typ manuell registrieren, um das nc://-Schema zu verarbeiten:</p>
+<ol class="arabic simple">
+<li><p>Den folgenden Inhalt in einer .reg-Datei speichern:</p></li>
+</ol>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\nc\shell\open\command]
+@=&quot;\&quot;C:\\Program Files\\Nextcloud\\nextcloud.exe\&quot; \&quot;%1\&quot;&quot;
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Auf die .reg-Datei doppelklicken, um sie in die Registrierung zu importieren.</p></li>
+</ol>
+<p>Weitere Informationen finden Sie unter <a class="reference external" href="https://nextcloud.com/blog/nextcloud-office-release-solves-document-compatibility-overhauls-knowledge-management/">https://nextcloud.com/blog/nextcloud-office-release-solves-document-compatibility-overhauls-knowledge-management/</a>.</p>
+</section>
+</section>
+<section id="some-files-are-continuously-uploaded-to-the-server-even-when-they-are-not-modified">
+<h2>Einige Dateien werden kontinuierlich auf den Server hochgeladen, auch wenn sie nicht geändert werden.<a class="headerlink" href="#some-files-are-continuously-uploaded-to-the-server-even-when-they-are-not-modified" title="Link to this heading"></a></h2>
+<p>Es ist möglich, dass ein anderes Programm das Änderungsdatum der Datei ändert. Wenn die Datei die Erweiterung <code class="docutils literal notranslate"><span class="pre">.eml</span></code> verwendet, ändert Windows automatisch und kontinuierlich alle Dateien, es sei denn, Sie entfernen <code class="docutils literal notranslate"><span class="pre">\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\PropertySystem\PropertyHandlers</span></code> aus der Windows-Registrierung. Weitere Informationen finden Sie unter <a class="reference external" href="http://petersteier.wordpress.com/2011/10/22/windows-indexer-changes-modification-dates-of-eml-files/">http://petersteier.wordpress.com/2011/10/22/windows-indexer-changes-modification-dates-of-eml-files/</a>.</p>
+</section>
+<section id="syncing-stops-when-attempting-to-sync-deeper-than-100-sub-directories">
+<h2>Beim Versuch, mehr als 100 Unterverzeichnisse zu synchronisieren, wird die Synchronisierung abgebrochen.<a class="headerlink" href="#syncing-stops-when-attempting-to-sync-deeper-than-100-sub-directories" title="Link to this heading"></a></h2>
+<p>Der Synchronisierungsclient wurde absichtlich so beschränkt, dass er nicht tiefer als 100 Unterverzeichnisse synchronisiert. Die harte Beschränkung dient dem Schutz vor Fehlern in Zyklen wie symbolischen Linkschleifen. Wenn ein tief verschachteltes Verzeichnis von der Synchronisierung ausgeschlossen wird, wird es zusammen mit anderen ignorierten Dateien und Verzeichnissen auf der Registerkarte „Nicht synchronisiert“ des Bereichs „Aktivität“ aufgelistet.</p>
+</section>
+<section id="there-was-a-warning-about-changes-in-synchronized-folders-not-being-tracked-reliably">
+<h2>Es gab eine Warnung, dass Änderungen in synchronisierten Ordnern nicht zuverlässig verfolgt werden.<a class="headerlink" href="#there-was-a-warning-about-changes-in-synchronized-folders-not-being-tracked-reliably" title="Link to this heading"></a></h2>
+<p>Wenn der synchronisierte Ordner unter Linux sehr viele Unterordner enthält, lässt das Betriebssystem möglicherweise nicht genügend Inotify-Überwachungen zu, um die Änderungen in allen Ordnern zu überwachen.</p>
+<p>In diesem Fall kann der Client den Synchronisierungsprozess nicht sofort starten, wenn sich eine Datei in einem der nicht überwachten Ordner ändert. Stattdessen zeigt der Client die Warnung an und durchsucht die Ordner in regelmäßigen Abständen (standardmäßig alle zwei Stunden) manuell nach Änderungen.</p>
+<p>Dieses Problem kann gelöst werden, indem der sysctl fs.inotify.max_user_watches auf einen höheren Wert gesetzt wird. Dies kann normalerweise vorübergehend folgendermaßen erfolgen:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="mi">524288</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">fs</span><span class="o">/</span><span class="n">inotify</span><span class="o">/</span><span class="n">max_user_watches</span>
+</pre></div>
+</div>
+<p>oder dauerhaft durch Anpassen von <code class="docutils literal notranslate"><span class="pre">/etc/sysctl.conf</span></code>.</p>
+</section>
+<section id="i-want-to-move-my-local-sync-folder">
+<h2>Ich möchte meinen lokalen Synchronisierungsordner verschieben<a class="headerlink" href="#i-want-to-move-my-local-sync-folder" title="Link to this heading"></a></h2>
+<p>Der Nextcloud-Desktop-Client bietet keine Möglichkeit, das lokale Synchronisierungsverzeichnis zu ändern. Dies ist jedoch möglich, obwohl es etwas unorthodox ist. Konkret müssen Sie Folgendes tun:</p>
+<ol class="arabic simple">
+<li><p>Entfernen Sie die bestehende Verbindung, die mit dem falschen Verzeichnis synchronisiert wird</p></li>
+<li><p>Neue Verbindung hinzufügen, die mit dem gewünschten Verzeichnis synchronisiert wird</p></li>
+</ol>
+<figure class="align-default">
+<img alt="Entfernen einer vorhandenen Verbindung" src="../../_images/remove.png" />
+</figure>
+<p>Klicken Sie dazu in der Client-Benutzeroberfläche, die Sie oben sehen, auf das Dropdown-Menü „<strong>Konto</strong>“ und dann auf „Entfernen“. Daraufhin wird ein Dialogfenster „<strong>Kontoentfernung bestätigen</strong>“ angezeigt.</p>
+<figure class="align-default">
+<img alt="Vorhandenen Verbindungsbestätigungsdialog entfernen" src="../../_images/confirm.png" />
+</figure>
+<p>Wenn Sie sicher sind, klicken Sie auf „<strong>Verbindung entfernen</strong>“.</p>
+<p>Klicken Sie dann erneut auf das Konto Dropdown-Menü und diesmal auf „<strong>Neu hinzufügen</strong>“.</p>
+<figure class="align-default">
+<img alt="Ersatz-Verbindungsassistent" src="../../_images/wizard.png" />
+</figure>
+<p>Dadurch wird der Nextcloud-Verbindungsassistent geöffnet, den Sie oben sehen können, <em>aber</em> mit einer zusätzlichen Option. Diese Option bietet folgende Möglichkeiten: die vorhandenen Daten beizubehalten (die durch die vorherige Verbindung synchronisiert wurden) oder eine saubere Synchronisierung zu starten (die vorhandenen Daten zu löschen).</p>
+<div class="admonition important">
+<p class="admonition-title">Wichtig</p>
+<p>Seien Sie vorsichtig, bevor Sie die Option „Neue Synchronisierung starten“ wählen. Der alte Synchronisierungsordner <em>kann</em> eine beträchtliche Datenmenge enthalten, die in den Gigabyte- oder Terabyte-Bereich reicht. Wenn dies der Fall ist, muss der Client nach dem Erstellen der neuen Verbindung <strong>alle</strong> dieser Informationen erneut herunterladen. Verschieben oder kopieren Sie stattdessen zuerst den alten lokalen Synchronisierungsordner, der eine Kopie der vorhandenen Dateien enthält, an den neuen Speicherort. Wählen Sie dann beim Erstellen der neuen Verbindung stattdessen „<em>Vorhandene Daten behalten</em>“. Der Nextcloud-Client überprüft die Dateien im neu hinzugefügten Synchronisierungsordner und stellt fest, dass sie mit denen auf dem Server übereinstimmen und nichts heruntergeladen werden muss.</p>
+</div>
+<p>Treffen Sie Ihre Wahl und klicken Sie auf „<strong>Verbinden…</strong>“. Sie werden dann durch den Verbindungsassistenten geführt, genau wie beim Einrichten der vorherigen Synchronisierungsverbindung, haben jedoch die Möglichkeit, ein neues Synchronisierungsverzeichnis auszuwählen.</p>
+</section>
+<section id="i-would-like-to-change-the-language-of-the-user-interface">
+<h2>Ich möchte die Sprache der Benutzeroberfläche ändern<a class="headerlink" href="#i-would-like-to-change-the-language-of-the-user-interface" title="Link to this heading"></a></h2>
+<p>Hierzu muss die Konfigurationsdatei <code class="docutils literal notranslate"><span class="pre">nextcloud.cfg</span></code> geändert werden. Im Abschnitt <code class="docutils literal notranslate"><span class="pre">Allgemein</span></code> muss eine Zeile mit der gewünschten Sprache hinzugefügt werden.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[General]
+language=de
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="conflicts.html" class="btn btn-neutral float-left" title="Konflikte" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Zurück</a>
+        <a href="../userpreferences.html" class="btn btn-neutral float-right" title="Einstellungen vornehmen" accesskey="n" rel="next">Weiter <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 German
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Sprachen</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versionen</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Auf "Read the docs"</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Projekt Startseite</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Builds</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

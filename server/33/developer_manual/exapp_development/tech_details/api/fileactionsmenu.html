@@ -1,0 +1,706 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File Actions Menu &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/exapp_development/tech_details/api/fileactionsmenu.html" />
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.2.0/dist/mermaid-layout-elk.esm.min.mjs"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.2.0/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+      <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
+
+const defaultStyle = document.createElement('style');
+defaultStyle.textContent = `pre.mermaid {
+    /* Same as .mermaid-container > pre */
+    display: block;
+    width: 100%;
+}
+
+pre.mermaid > svg {
+    /* Same as .mermaid-container > pre > svg */
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}
+`;
+document.head.appendChild(defaultStyle);
+
+const fullscreenStyle = document.createElement('style');
+fullscreenStyle.textContent = `.mermaid-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.mermaid-container > pre {
+    display: block;
+    width: 100%;
+}
+
+.mermaid-container > pre > svg {
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}
+
+.mermaid-fullscreen-btn {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 95vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-container-fullscreen pre.mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen .mermaid svg {
+    height: 100% !important;
+    width: 100% !important;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}`;
+document.head.appendChild(fullscreenStyle);
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        return brightness < 128;
+    }
+    return false;
+};
+
+const load = async () => {
+    await mermaid.run();
+
+    const all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if ("False" === "True") {
+        const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
+        if(mermaids_to_add_zoom > 0) {
+            var svgs = d3.selectAll("");
+            if(all_mermaids.length !== mermaids_processed.length) {
+                setTimeout(load, 200);
+                return;
+            } else if(svgs.size() !== mermaids_to_add_zoom) {
+                setTimeout(load, 200);
+                return;
+            } else {
+                svgs.each(function() {
+                    var svg = d3.select(this);
+                    svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+                    var inner = svg.select("g");
+                    var zoom = d3.zoom().on("zoom", function(event) {
+                        inner.attr("transform", event.transform);
+                    });
+                    svg.call(zoom);
+                });
+            }
+        }
+    } else if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(load, 200);
+        return;
+    }
+
+    const darkTheme = isDarkTheme();
+
+    // Stop here if not adding fullscreen capability
+    if ("True" !== "True") return;
+
+    const modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    const modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    let previousScrollOffset = [window.scrollX, window.scrollY];
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = ''
+        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    const allButtons = [];
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+        fullscreenBtn.style.opacity = '50%';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            previousScrollOffset = [window.scroll, window.scrollY];
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.sdisplay = 'block';
+
+                if ("False" === "True") {
+                    setTimeout(() => {
+                        const g = svg.querySelector('g');
+                        if (g) {
+                            var svgD3 = d3.select(svg);
+                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
+                            var inner = svgD3.select("g");
+                            var zoom = d3.zoom().on("zoom", function(event) {
+                                inner.attr("transform", event.transform);
+                            });
+                            svgD3.call(zoom);
+                        }
+                    }, 100);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        container.appendChild(fullscreenBtn);
+        allButtons.push(fullscreenBtn);
+    });
+
+    // Update theme classes when theme changes
+    const updateTheme = () => {
+        const dark = isDarkTheme();
+        allButtons.forEach(btn => {
+            if (dark) {
+                btn.classList.add('dark-theme');
+            } else {
+                btn.classList.remove('dark-theme');
+            }
+        });
+        if (dark) {
+            modal.classList.add('dark-theme');
+            modalContent.classList.add('dark-theme');
+            closeBtn.classList.add('dark-theme');
+        } else {
+            modal.classList.remove('dark-theme');
+            modalContent.classList.remove('dark-theme');
+            closeBtn.classList.remove('dark-theme');
+        }
+    };
+
+    // Watch for theme changes
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    observer.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style']
+    });
+};
+
+window.addEventListener("load", load);
+</script>
+      <script src="../../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <script src="../../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Top Menu Entry" href="topmenu.html" />
+    <link rel="prev" title="Miscellaneous OCS APIs" href="utils.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app_development/index.html">App development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">ExApp development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../Introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../DevSetup.html">Setting up dev environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development_overview/index.html">Development overview</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Technical details</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../InstallationFlow.html">App Installation Flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Deployment.html">Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Authentication.html">Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Translations.html">Translations</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">AppAPI Nextcloud APIs</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="appconfig.html">AppConfig</a></li>
+<li class="toctree-l4"><a class="reference internal" href="preferences.html">Preferences</a></li>
+<li class="toctree-l4"><a class="reference internal" href="exapp.html">ExApp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="routes.html">Routes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="utils.html">Miscellaneous OCS APIs</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">File Actions Menu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="topmenu.html">Top Menu Entry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="settings.html">Declarative Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="events_listener.html">Events Listener</a></li>
+<li class="toctree-l4"><a class="reference internal" href="occ_command.html">OCC Command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="talkbots.html">Talk bots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="other_ocs.html">Other OCS APIs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/index.html">Frequently Asked Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">ExApp development</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Technical details</a></li>
+          <li class="breadcrumb-item"><a href="index.html">AppAPI Nextcloud APIs</a></li>
+      <li class="breadcrumb-item active">File Actions Menu</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/exapp_development/tech_details/api/fileactionsmenu.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-actions-menu">
+<span id="file-actions-menu-section"></span><h1>File Actions Menu<a class="headerlink" href="#file-actions-menu" title="Link to this heading"></a></h1>
+<p>FileActionsMenu is a simple API for registering entry to the file actions menu for ExApps.
+AppAPI takes responsibility to register FileActionsMenu; ExApps only need to register it in AppAPI.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The FileActionsMenu is rendered only for enabled ExApps.</p>
+</div>
+<section id="register">
+<h2>Register<a class="headerlink" href="#register" title="Link to this heading"></a></h2>
+<p>OCS endpoint: <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/apps/app_api/api/v2/ui/files-actions-menu</span></code></p>
+<section id="params">
+<h3>Params<a class="headerlink" href="#params" title="Link to this heading"></a></h3>
+<p>Complete list of params (including optional):</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique_name_of_file_actions_menu&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Display name (for UI listing)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;actionHandler&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;/action_handler_route&quot;</span>
+<span class="w">    </span><span class="nt">&quot;mime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mime of files where to display action menu&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;img/icon.svg&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;permissions&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;order_in_file_actions_menu&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Urls <code class="docutils literal notranslate"><span class="pre">icon</span></code> and <code class="docutils literal notranslate"><span class="pre">actionHandler</span></code> are relative to the ExApp root, starting slash is not required.</p>
+</div>
+</section>
+<section id="optional-params">
+<h3>Optional params<a class="headerlink" href="#optional-params" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>permissions</cite> - File permissions required to display action menu, default: <strong>31</strong> (all permissions)</p></li>
+<li><p><cite>order</cite> - Order in file actions menu, default: <strong>0</strong></p></li>
+<li><p><cite>icon</cite> - Url to icon, default: <strong>null</strong></p></li>
+<li><p><cite>mime</cite> - One mime or mimes separated by commas, default: <strong>file</strong></p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+<section id="unregister">
+<h2>Unregister<a class="headerlink" href="#unregister" title="Link to this heading"></a></h2>
+<p>OCS endpoint: <code class="docutils literal notranslate"><span class="pre">DELETE</span> <span class="pre">/apps/app_api/api/v1/ui/files-actions-menu</span></code></p>
+<section id="id1">
+<h3>Params<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>To unregister FileActionsMenu, you just need to provide the name of the registered FileActionsMenu:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique_name_of_file_action_menu&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="action-payload-to-exapp">
+<span id="node-info"></span><h2>Action payload to ExApp<a class="headerlink" href="#action-payload-to-exapp" title="Link to this heading"></a></h2>
+<p>When FileActionsMenu is invoked, AppAPI forwards the handling action to the ExApp.
+The following data is sent to the ExApp FileActionsMenu handler from the context of the action:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;fileId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;filename&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;directory&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;relative/to/user/path/to/directory&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;etag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file_etag&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;mime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file_full_mime&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;fileType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dir/file&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;mtime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;last modify time(integer)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;favorite&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nc_favorite_flag&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file_permissions_for_owner&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;shareOwner&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;optional, str&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;shareOwnerId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;optional, str&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;shareTypes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;optional, int&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;shareAttributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;optional, int&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sharePermissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;optional, int&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;userId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;instanceId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="redirect-to-exapp-ui-page-top-menu">
+<h2>Redirect to ExApp UI page (top menu)<a class="headerlink" href="#redirect-to-exapp-ui-page-top-menu" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Supported only for Nextcloud 28+.</p>
+</div>
+<p>If you want to open some files in the ExApp UI, your FileActionsMenu has to be registered using OCS v2 version (<code class="docutils literal notranslate"><span class="pre">/apps/app_api/api/v2/ui/files-actions-menu</span></code>).</p>
+<p>After that, AppAPI will expect in the JSON response of the ExApp <code class="docutils literal notranslate"><span class="pre">action_handler</span></code>
+the <code class="docutils literal notranslate"><span class="pre">redirect_handler</span></code> - a relative path on the ExApp Top Menu page,
+to which AppAPI will attach a <code class="docutils literal notranslate"><span class="pre">fileIds</span></code> query parameter with the selected file IDs, for example:</p>
+<p><code class="docutils literal notranslate"><span class="pre">/index.php/apps/app_api/embedded/ui_example/first_menu/second_page?fileIds=123,124,125</span></code>,</p>
+<p>where the <code class="docutils literal notranslate"><span class="pre">first_menu</span></code> is the name of the Top Menu ExApp UI page,
+and the <code class="docutils literal notranslate"><span class="pre">second_page</span></code> the relative route handled on the frontend routing of the ExApp.
+the <code class="docutils literal notranslate"><span class="pre">fileIds</span></code> query parameter contains the selected file IDs separated by commas.
+After that, you can get the files info via WebDAV search request, see <a class="reference external" href="https://github.com/nextcloud/ui_example">ui_example</a>.</p>
+</section>
+<section id="request-flow">
+<h2>Request flow<a class="headerlink" href="#request-flow" title="Link to this heading"></a></h2>
+<p>General ExApp workflow based on FileActionsMenu.</p>
+<section id="user-action">
+<h3>User action<a class="headerlink" href="#user-action" title="Link to this heading"></a></h3>
+<pre  class="mermaid">
+        sequenceDiagram
+    User-&gt;&gt;FileActionMenu: Press on registered ExApp action
+    FileActionMenu-&gt;&gt;AppAPI: send action context payload
+    AppAPI-&gt;&gt;ExApp: forward request to handler
+    ExApp-&gt;&gt;AppAPI: handler accepted action status
+    AppAPI-&gt;&gt;User: Alert (action sent or error)
+    </pre></section>
+<section id="action-results">
+<h3>Action results<a class="headerlink" href="#action-results" title="Link to this heading"></a></h3>
+<p>File processing results could be stored next to the initial file or anywhere else,
+e.g. on a location configured in ExApp settings (<code class="docutils literal notranslate"><span class="pre">appconfig_ex</span></code>) or ExApp user settings (<code class="docutils literal notranslate"><span class="pre">preferences_ex</span></code>).</p>
+<pre  class="mermaid">
+        sequenceDiagram
+    ExApp-&gt;&gt;Nextcloud: Upload result file
+    ExApp-&gt;&gt;AppAPI: Send notification about action results
+    </pre></section>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<p>Here is a list of simple example ExApps based on FileActionsMenu:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/cloud-py-api/nc_py_api/tree/main/examples/as_app/to_gif">to_gif</a> - ExApp based on FileActionsMenu to convert videos to GIF in place</p></li>
+<li><p><a class="reference external" href="https://github.com/cloud-py-api/upscaler_example.git">upscaler_example</a> - ExApp based on FileActionsMenu to upscale image in place</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="utils.html" class="btn btn-neutral float-left" title="Miscellaneous OCS APIs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="topmenu.html" class="btn btn-neutral float-right" title="Top Menu Entry" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Apr 02, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

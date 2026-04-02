@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Files &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/client_apis/files.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Login Flow" href="LoginFlow/index.html" />
+    <link rel="prev" title="Examples" href="android_library/examples.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Clients and Client APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="general.html">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activity-api.html">Activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="android_library/index.html">Android</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#events">Events</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#router">Router</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="LoginFlow/index.html">Login Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OCS/index.html">OCS API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RemoteWipe/index.html">Remote wipe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WebDAV/index.html">Webdav</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Clients and Client APIs</a></li>
+      <li class="breadcrumb-item active">Files</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/client_apis/files.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="files">
+<span id="filesapi"></span><h1>Files<a class="headerlink" href="#files" title="Link to this heading"></a></h1>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 27.</span></p>
+</div>
+<p>Since Nextcloud 27, the files app has been rewritten to use new standards
+and frameworks. This means that the old documentation is no longer valid.
+We will update and document the new files app APIs and methods here.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some external libraries offers in-depth technical documentation.
+Please have a look at the following:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/nextcloud-libraries/nextcloud-event-bus">https://github.com/nextcloud-libraries/nextcloud-event-bus</a> (<a class="reference external" href="https://nextcloud-libraries.github.io/nextcloud-event-bus">documentation</a>)</p></li>
+<li><p><a class="reference external" href="https://github.com/nextcloud-libraries/nextcloud-files">https://github.com/nextcloud-libraries/nextcloud-files</a> (<a class="reference external" href="https://nextcloud-libraries.github.io/nextcloud-files">documentation</a>)</p></li>
+<li><p><a class="reference external" href="https://github.com/nextcloud-libraries/nextcloud-upload">https://github.com/nextcloud-libraries/nextcloud-upload</a> (<a class="reference external" href="https://nextcloud-libraries.github.io/nextcloud-upload">documentation</a>)</p></li>
+</ul>
+</div>
+<section id="events">
+<h2>Events<a class="headerlink" href="#events" title="Link to this heading"></a></h2>
+<p>To listen to files or folder changes or to trigger changes, you need to use
+the <code class="docutils literal notranslate"><span class="pre">event-bus</span></code> and use the following events:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">files:node:created</span></code>: the node has been created</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">files:node:deleted</span></code>: the node has been deleted</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">files:node:moved</span></code>: the node has been moved (and its data is already updated)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">files:node:updated</span></code>: the node data has been updated</p></li>
+</ul>
+</div></blockquote>
+<p>All these events use a Node as argument. You can use a webdav client (for example, by using the davGetClient function from <a class="reference external" href="https://nextcloud-libraries.github.io/nextcloud-files/">&#64;nextcloud/files</a>) to retrieve a node from a file’s name.</p>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
+<div class="highlight-ts notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Node</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/files&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">subscribe</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/event-bus&#39;</span>
+
+<span class="nx">subscribe</span><span class="p">(</span><span class="s1">&#39;files:node:created&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">node</span><span class="o">:</span><span class="w"> </span><span class="kt">Node</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Node created&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">node</span><span class="p">)</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="router">
+<h2>Router<a class="headerlink" href="#router" title="Link to this heading"></a></h2>
+<p>To change views and parameters of the current Files app, we expose the router.
+This directly maps to the Vue router. You can check their own <a class="reference external" href="https://router.vuejs.org/guide/essentials/navigation.html#navigate-to-a-different-location">documentation</a> to
+better understand the methods.</p>
+<div class="highlight-ts notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Trigger a route change on the files app</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param path the url path, eg: &#39;/trashbin?dir=/Deleted&#39;</span>
+<span class="cm"> * @param replace replace the current history</span>
+<span class="cm"> * @see https://router.vuejs.org/guide/essentials/navigation.html#navigate-to-a-different-location</span>
+<span class="cm"> */</span>
+<span class="nx">goTo</span><span class="p">(</span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">replace</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Route</span><span class="o">&gt;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Trigger a route change on the files App</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param name the route name</span>
+<span class="cm"> * @param params the route parameters</span>
+<span class="cm"> * @param query the url query parameters</span>
+<span class="cm"> * @param replace replace the current history</span>
+<span class="cm"> * @see https://router.vuejs.org/guide/essentials/navigation.html#navigate-to-a-different-location</span>
+<span class="cm"> */</span>
+<span class="nx">goToRoute</span><span class="p">(</span>
+<span class="w">  </span><span class="nx">name?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">params?</span><span class="o">:</span><span class="w"> </span><span class="kt">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">query?</span><span class="o">:</span><span class="w"> </span><span class="kt">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="p">)[]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">undefined</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">replace?</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">,</span>
+<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Route</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<section id="id1">
+<h3>Examples<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">OCP</span><span class="p">.</span><span class="nx">Files</span><span class="p">.</span><span class="nx">Router</span><span class="p">.</span><span class="nx">goTo</span><span class="p">(</span><span class="s1">&#39;/trashbin?dir=/Unsplash.d1680193199&#39;</span><span class="p">)</span>
+<span class="nx">OCP</span><span class="p">.</span><span class="nx">Files</span><span class="p">.</span><span class="nx">Router</span><span class="p">.</span><span class="nx">goToRoute</span><span class="p">(</span><span class="s1">&#39;fileslist&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">view</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;files&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">dir</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/Folders/Group folder&#39;</span><span class="w"> </span><span class="p">})</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="android_library/examples.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="LoginFlow/index.html" class="btn btn-neutral float-right" title="Login Flow" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Apr 02, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

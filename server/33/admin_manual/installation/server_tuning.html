@@ -1,0 +1,506 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Server tuning &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/admin_manual/installation/server_tuning.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Example installation on Ubuntu 22.04 LTS" href="example_ubuntu.html" />
+    <link rel="prev" title="Hardening and security guidance" href="harden_server.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Critical changes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation and server configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="system_requirements.html">System requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment_recommendations.html">Deployment recommendations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="php_configuration.html">Preparing PHP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source_installation.html">Installation on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_wizard.html">Installation wizard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Installing from command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">NGINX configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harden_server.html">Hardening and security guidance</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Server tuning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-cron-to-perform-background-jobs">Using cron to perform background jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reducing-system-load">Reducing system load</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#log-levels">Log Levels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debug-mode">Debug Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Caching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compression">Compression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#replacing-sqlite">Replacing SQLite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tuning-your-database">Tuning your database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-redis-based-transactional-file-locking">Using Redis-based transactional file locking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tls-encryption-app">TLS / encryption app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enable-http-2-for-faster-loading">Enable HTTP/2 for faster loading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tune-php-fpm">Tune PHP-FPM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enable-php-opcache">Enable PHP OPcache</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#revalidation">Revalidation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sizing">Sizing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comments">Comments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#jit">JIT</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#previews">Previews</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#settings">Settings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="example_ubuntu.html">Example installation on Ubuntu 22.04 LTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_centos.html">Example installation on CentOS 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_openbsd.html">Example installation on OpenBSD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Files</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Groupware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Office</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_monitoring/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/">Community Help Forum</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">User Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">Developer Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/install/">Download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://apps.nextcloud.com">App Store</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/t/translation-knowledge-valid-for-the-entire-nextcloud-project-wiki/51550">Translations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Supported versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud Enterprise</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/blob/master/COPYING-README">License</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/">Nextcloud GmbH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Installation and server configuration</a></li>
+      <li class="breadcrumb-item active">Server tuning</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/installation/server_tuning.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="server-tuning">
+<h1>Server tuning<a class="headerlink" href="#server-tuning" title="Link to this heading"></a></h1>
+<section id="using-cron-to-perform-background-jobs">
+<h2>Using cron to perform background jobs<a class="headerlink" href="#using-cron-to-perform-background-jobs" title="Link to this heading"></a></h2>
+<p>See <a class="reference internal" href="../configuration_server/background_jobs_configuration.html"><span class="doc">Background jobs</span></a> for a description and the
+benefits.</p>
+</section>
+<section id="reducing-system-load">
+<h2>Reducing system load<a class="headerlink" href="#reducing-system-load" title="Link to this heading"></a></h2>
+<p>High system load will slow down Nextcloud and may also lead to other unwanted
+side effects. To reduce load, you should first identify the source of the problem.
+Tools such as htop, iotop, <a class="reference external" href="https://my-netdata.io">netdata</a>, or
+<a class="reference external" href="https://nicolargo.github.io/glances/">glances</a>
+can help you identify the process or drive that slows down your system.
+First, make sure that you have installed and assigned enough RAM. Minimize swap
+usage as much as possible, as excessive swapping can severely degrade performance.
+If you run your database inside a VM, use a dedicated block device for database storage
+rather than storing it inside the VM’s disk image file, to reduce latency caused by
+multiple abstraction layers.</p>
+</section>
+<section id="log-levels">
+<span id="caching"></span><h2>Log Levels<a class="headerlink" href="#log-levels" title="Link to this heading"></a></h2>
+<p>Verify the <code class="docutils literal notranslate"><span class="pre">loglevel</span></code> in your <code class="docutils literal notranslate"><span class="pre">config.php</span></code> file. The default log level is
+set to <code class="docutils literal notranslate"><span class="pre">2</span></code> (WARN) in new installations. Sometimes this parameter is inadvertently
+left at the DEBUG level (<code class="docutils literal notranslate"><span class="pre">0</span></code>) after troubleshooting. In some older installations, this
+parameter may also be something other than the default. Use <code class="docutils literal notranslate"><span class="pre">0</span></code> (DEBUG)
+when you have a problem to diagnose, and then reset your log level to a
+less-verbose level. DEBUG outputs a lot of information, and can affect your
+server performance.</p>
+</section>
+<section id="debug-mode">
+<h2>Debug Mode<a class="headerlink" href="#debug-mode" title="Link to this heading"></a></h2>
+<p>Verify that <code class="docutils literal notranslate"><span class="pre">debug</span></code> is set to <code class="docutils literal notranslate"><span class="pre">false</span></code> in your <code class="docutils literal notranslate"><span class="pre">config.php</span></code> file. The default is <code class="docutils literal notranslate"><span class="pre">false</span></code> in new
+installations (or when not specified). While similar to the DEBUG logging level, this option
+also disables various optimizations (to facilitate easier debugging) and generates additional
+debug output both at the browser level and server-side. It should not be enabled in production
+environments except during isolated troubleshooting.</p>
+</section>
+<section id="id1">
+<h2>Caching<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>Caching improves performance by storing data, code, and other objects in memory. Memory caching is not enabled by default because it requires optional extensions (such as APCu) and/or system components (e.g., Redis). Although these add-ons are generally not challenging to install and activate—at least in single-server deployments—you must install them before enabling their use in Nextcloud. See :doc:../configuration_server/caching_configuration for guidance.</p>
+</section>
+<section id="compression">
+<h2>Compression<a class="headerlink" href="#compression" title="Link to this heading"></a></h2>
+<p>Enabling compression in your web server for JavaScript, CSS, and SVG files improves performance
+because less data is transferred to clients.</p>
+</section>
+<section id="replacing-sqlite">
+<h2>Replacing SQLite<a class="headerlink" href="#replacing-sqlite" title="Link to this heading"></a></h2>
+<p>SQLite is a suitable database for some use cases, but using MariaDB, MySQL, or PostgreSQL can be
+more beneficial with Nextcloud.</p>
+<p>If you do not select a database at installation time, SQLite is used by default because it does not require
+any external components.</p>
+<p>However, MySQL/MariaDB or PostgreSQL are generally recommended for Nextcloud because of the
+<a class="reference external" href="https://www.sqlite.org/whentouse.html">performance limitations of SQLite with highly concurrent applications</a>, like Nextcloud.</p>
+<p>If your installation is already running on
+SQLite, you can convert to MySQL or MariaDB using the steps provided in
+<a class="reference internal" href="../configuration_database/db_conversion.html"><span class="doc">Converting database type</span></a>.</p>
+<p>See the section <a class="reference internal" href="../configuration_database/linux_database_configuration.html"><span class="doc">Database configuration</span></a> for instructions
+on configuring Nextcloud for MySQL or MariaDB.</p>
+</section>
+<section id="tuning-your-database">
+<h2>Tuning your database<a class="headerlink" href="#tuning-your-database" title="Link to this heading"></a></h2>
+<p>Databases are not plug-and-play. They benefit not only from basic configuration for compatibility
+with Nextcloud, but also from tuning within the environment in which they are deployed. This
+tuning should be based on your hardware, storage, usage patterns, underlying operating system,
+priorities, and other factors.</p>
+<p>For more details and help tuning your database:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://mariadb.com/docs/server/ha-and-performance/optimization-and-tuning/">MariaDB – Optimization and Tuning</a></p></li>
+<li><p><a class="reference external" href="https://www.postgresql.org/docs/17/runtime-config-resource.html">PostgreSQL – Resource Consumption</a></p></li>
+<li><p><a class="reference external" href="https://wiki.postgresql.org/wiki/Tuning_Your_PostgreSQL_Server">PostgreSQL – Tuning Your PostgreSQL Server</a></p></li>
+</ul>
+</section>
+<section id="using-redis-based-transactional-file-locking">
+<h2>Using Redis-based transactional file locking<a class="headerlink" href="#using-redis-based-transactional-file-locking" title="Link to this heading"></a></h2>
+<p>Transactional File Locking uses the database as the default backend. This places
+additional load on your database. See the section
+<a class="reference internal" href="../configuration_files/files_locking_transactional.html"><span class="doc">Transactional file locking</span></a> for instructions on
+configuring Nextcloud to use Redis-based Transactional File Locking.</p>
+</section>
+<section id="tls-encryption-app">
+<h2>TLS / encryption app<a class="headerlink" href="#tls-encryption-app" title="Link to this heading"></a></h2>
+<p>TLS (HTTPS) and file encryption/decryption can be offloaded to a processor’s
+AES-NI extension. This can both speed up these operations while lowering
+processing overhead. This requires a processor with the <a class="reference external" href="https://wikipedia.org/wiki/AES_instruction_set">AES-NI instruction set</a>.</p>
+<p>Here are some examples of how to check if your CPU/environment supports the
+AES-NI extension:</p>
+<ul class="simple">
+<li><p>For each CPU core present: <code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">flags</span> <span class="pre">/proc/cpuinfo</span></code> or as a summary for
+all cores: <code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">-m</span> <span class="pre">1</span> <span class="pre">'^flags'</span> <span class="pre">/proc/cpuinfo</span></code>. If the result contains
+<code class="docutils literal notranslate"><span class="pre">aes</span></code>, the extension is present.</p></li>
+<li><p>For Intel processors, you can search the Intel ARK database to check if your CPU supports AES-NI. Use the <a class="reference external" href="https://ark.intel.com/MySearch.aspx?AESTech=true">Intel Processor Feature Filter</a>, filtering by “AES New Instructions”.</p></li>
+<li><p>For versions of openssl &gt;= 1.0.1, AES-NI does not work via an engine and
+will not show up in the <code class="docutils literal notranslate"><span class="pre">openssl</span> <span class="pre">engine</span></code> command. It is active by default
+on supported hardware. You can check the OpenSSL version via <code class="docutils literal notranslate"><span class="pre">openssl</span>
+<span class="pre">version</span> <span class="pre">-a</span></code>.</p></li>
+<li><p>If your processor supports AES-NI but it does not show up via <code class="docutils literal notranslate"><span class="pre">grep</span></code> or
+<code class="docutils literal notranslate"><span class="pre">coreinfo</span></code>, it may be just be disabled in the BIOS. Check your BIOS settings.</p></li>
+<li><p>If your environment runs virtualized, check the virtualization vendor for
+support.</p></li>
+</ul>
+</section>
+<section id="enable-http-2-for-faster-loading">
+<h2>Enable HTTP/2 for faster loading<a class="headerlink" href="#enable-http-2-for-faster-loading" title="Link to this heading"></a></h2>
+<p>HTTP/2 has <a class="reference external" href="https://www.troyhunt.com/i-wanna-go-fast-https-massive-speed-advantage/">huge speed improvements</a> over HTTP with multiple requests. Most <cite>browsers already support HTTP/2 over TLS (HTTPS)</cite>.</p>
+</section>
+<section id="tune-php-fpm">
+<h2>Tune PHP-FPM<a class="headerlink" href="#tune-php-fpm" title="Link to this heading"></a></h2>
+<p>The default configuration of PHP-FPM is extremely conservative. You might notice
+excessive load times on the web interface or even sync issues. Each simultaneous
+request is handled by a separate PHP-FPM process, so even on a small installation you
+should allow more processes to run in parallel to handle requests.</p>
+<p><a class="reference external" href="https://spot13.com/pmcalculator/">This link</a> can help you calculate the optimal values for your system.</p>
+</section>
+<section id="enable-php-opcache">
+<h2>Enable PHP OPcache<a class="headerlink" href="#enable-php-opcache" title="Link to this heading"></a></h2>
+<p>The <a class="reference external" href="https://php.net/manual/en/intro.opcache.php">OPcache</a> improves the performance of PHP applications by caching precompiled bytecode.</p>
+<section id="revalidation">
+<h3>Revalidation<a class="headerlink" href="#revalidation" title="Link to this heading"></a></h3>
+<p>OPcache revalidation in PHP handles changes made to PHP application code stored on disk. Code changes occur whenever:</p>
+<ul class="simple">
+<li><p>Nextcloud or a Nextcloud app is upgraded</p></li>
+<li><p>a configuration change is made (e.g. when <code class="docutils literal notranslate"><span class="pre">config.php</span></code> is modified)</p></li>
+</ul>
+<p>Nextcloud, as much as possible, handles cache revalidation internally when required. However, this is not foolproof. In a default PHP environment, revalidation is enabled, and cached scripts are checked for changes on disk every <code class="docutils literal notranslate"><span class="pre">2</span></code> seconds. In many environments, these default values are reasonable and may never need to be changed.</p>
+<p>However, the revalidation frequency can be adjusted and may <em>potentially</em> enhance performance. We make no recommendations here about appropriate values for revalidation (other than the PHP defaults).</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Increasing the time between revalidations (or disabling it completely) means that changes to scripts, including <code class="docutils literal notranslate"><span class="pre">config.php</span></code>, will take longer to become active (or may never do so if revalidation is disabled completely). Increasing the interval also raises the risk of transient server and application upgrade problems and prevents the proper toggling of maintenance mode.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you adjust these parameters, you are more likely to need to restart/reload your web server (<code class="docutils literal notranslate"><span class="pre">mod_php</span></code>) or PHP-FPM after making configuration changes or performing upgrades. If you forget to do so, you may experience unusual behavior due to a mismatch between what is on disk and what is in memory. These may appear to be bugs, but will go away as soon as you restart/reload <code class="docutils literal notranslate"><span class="pre">mod_php</span></code> / fpm.</p>
+</div>
+<p>To change the default from <code class="docutils literal notranslate"><span class="pre">2</span></code> and check for changes on disk at most every <code class="docutils literal notranslate"><span class="pre">60</span></code> seconds, add the following setting to your <code class="docutils literal notranslate"><span class="pre">php.ini</span></code> file:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">opcache.revalidate_freq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">60</span>
+</pre></div>
+</div>
+<p>Alternatively, you can disable the revalidation completely:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">opcache.validate_timestamps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0</span>
+</pre></div>
+</div>
+<p>Any server or app upgrades, or changes to <code class="docutils literal notranslate"><span class="pre">config.php</span></code>, will then require restarting PHP (or otherwise manually clearing the cache or invalidating this particular script).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please do not report bugs or odd behavior after upgrading Nextcloud or Nextcloud apps until after you’ve
+restarted mod_php/fpm (to confirm the issue is not caused by local revalidation configuration).</p>
+</div>
+</section>
+<section id="sizing">
+<h3>Sizing<a class="headerlink" href="#sizing" title="Link to this heading"></a></h3>
+<p>If any OPcache size limit exceeds 90% of its allocated size, the admin panel will show a related warning and suggest changes.</p>
+<p>For more details, check the <a class="reference external" href="https://php.net/manual/en/opcache.configuration.php">official PHP documentation</a>. To monitor OPcache usage and clear individual or all cache entries, you can use <a class="reference external" href="https://github.com/amnuts/opcache-gui">opcache-gui</a>.</p>
+</section>
+<section id="comments">
+<h3>Comments<a class="headerlink" href="#comments" title="Link to this heading"></a></h3>
+<p>Nextcloud strictly requires code comments to be preserved in opcode, which is the default. If your PHP settings have changed, ensure the following is set in your <code class="docutils literal notranslate"><span class="pre">php.ini</span></code>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">opcache.save_comments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span>
+</pre></div>
+</div>
+</section>
+<section id="jit">
+<h3>JIT<a class="headerlink" href="#jit" title="Link to this heading"></a></h3>
+<p>PHP ships with a JIT compiler that can be enabled on x86 platforms to benefit any CPU-intensive apps you might be running. To enable a tracing JIT with all optimizations, add to your <code class="docutils literal notranslate"><span class="pre">php.ini</span></code>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">opcache.jit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1255</span>
+<span class="na">opcache.jit_buffer_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">8M</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Most Nextcloud instances use less than 2 MiB of the configured JIT buffer size, so 8 MiB is generally sufficient.
+The overall OPcache usage, however, increases by a larger margin. The PHP parameter <code class="docutils literal notranslate"><span class="pre">opcache.memory_consumption</span></code>
+might need to be raised in some cases. JIT buffer usage can be monitored with
+<a class="reference external" href="https://github.com/amnuts/opcache-gui">opcache-gui</a> as well.</p>
+</div>
+</section>
+</section>
+<section id="previews">
+<h2>Previews<a class="headerlink" href="#previews" title="Link to this heading"></a></h2>
+<p>It is possible to speed up preview generation using an
+external microservice: <a class="reference external" href="https://github.com/h2non/imaginary">Imaginary</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Imaginary is currently incompatible with server-side encryption.
+See <a class="reference external" href="https://github.com/nextcloud/server/issues/34262">https://github.com/nextcloud/server/issues/34262</a></p>
+</div>
+<p>We strongly recommend running our custom Docker image, which is more up to date than the official image.
+You can find the image at <a class="reference external" href="https://ghcr.io/nextcloud-releases/aio-imaginary">https://ghcr.io/nextcloud-releases/aio-imaginary</a>. When running it, map a port by adding <cite>-p &lt;port&gt;:9000</cite> to the <cite>docker run</cite> command (or Compose equivalent), e.g.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">d</span> <span class="o">-</span><span class="n">p</span> <span class="mi">9000</span><span class="p">:</span><span class="mi">9000</span> <span class="o">--</span><span class="n">name</span> <span class="n">nextcloud_imaginary</span> <span class="o">--</span><span class="n">restart</span> <span class="n">always</span> <span class="n">ghcr</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">-</span><span class="n">releases</span><span class="o">/</span><span class="n">aio</span><span class="o">-</span><span class="n">imaginary</span><span class="p">:</span><span class="n">latest</span>
+</pre></div>
+</div>
+<p>Ensure the service is only accessible from your internal servers. Then, configure
+Nextcloud to use Imaginary by editing your <code class="docutils literal notranslate"><span class="pre">config.php</span></code> file:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">&#39;enabledPreviewProviders&#39; =&gt; [</span>
+<span class="x">    &#39;OC\Preview\TXT&#39;,</span>
+<span class="x">    &#39;OC\Preview\MarkDown&#39;,</span>
+<span class="x">    &#39;OC\Preview\OpenDocument&#39;,</span>
+<span class="x">    &#39;OC\Preview\Krita&#39;,</span>
+<span class="x">    &#39;OC\Preview\Imaginary&#39;,</span>
+<span class="x">],</span>
+<span class="x">&#39;preview_imaginary_url&#39; =&gt; &#39;http://&lt;url of imaginary&gt;:&lt;port&gt;&#39;,</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure to start Imaginary with the <code class="docutils literal notranslate"><span class="pre">-return-size</span></code> command line parameter. Otherwise, there will be a
+minor performance impact. The flag requires a recent version of Imaginary (newer than v1.2.4).
+Also, ensure to add the capability <code class="docutils literal notranslate"><span class="pre">SYS_NICE</span></code> via <code class="docutils literal notranslate"><span class="pre">--cap-add=sys_nice</span></code> or (for Compose)
+<code class="docutils literal notranslate"><span class="pre">cap_add:</span> <span class="pre">-</span> <span class="pre">SYS_NICE</span></code>, as it is required by Imaginary to generate HEIC previews.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For large instances, follow <a class="reference external" href="https://github.com/h2non/imaginary#scalability">Imaginary’s scalability recommendation</a>.</p>
+</div>
+<section id="settings">
+<h3>Settings<a class="headerlink" href="#settings" title="Link to this heading"></a></h3>
+<p>To set the preview format for Imaginary (default is jpeg), add to your <code class="docutils literal notranslate"><span class="pre">config.php</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;preview_format&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;webp&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>To set an API key for Imaginary:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;preview_imaginary_key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;secret&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>The default WebP quality setting for preview images is ‘80’. Change this with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">preview</span> <span class="n">webp_quality</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;30&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="harden_server.html" class="btn btn-neutral float-left" title="Hardening and security guidance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="example_ubuntu.html" class="btn btn-neutral float-right" title="Example installation on Ubuntu 22.04 LTS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/admin_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/admin_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

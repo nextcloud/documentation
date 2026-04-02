@@ -1,0 +1,479 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>REST APIs &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/digging_deeper/rest_apis.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Search" href="search.html" />
+    <link rel="prev" title="Repair steps" href="repair.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/index.html">Config &amp; Preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="context_chat.html">Context Chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="continuous_integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard.html">Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deadlock.html">Deadlocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files-metadata.html">Files Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupware/index.html">Groupware integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html">HTTP Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translation.html">Machine Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oidc.html">OpenID Connect (Oidc)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="out_of_office.html">Out-of-office periods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openmetrics.html">Open Metrics exporter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonenumberutil.html">Phone number util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psr.html">PSR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile.html">Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiler.html">Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">Reference providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">REST APIs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#modifying-the-cors-headers">Modifying the CORS headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#relation-of-rest-and-ocs">Relation of REST and OCS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#state-of-the-art-methods-and-comparison">State-of-the-Art methods and comparison</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#historical-options">Historical options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_checks.html">Setup checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snowflake_ids.html">Snowflake IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speech-to-text.html">Speech-To-Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talk.html">Talk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task_processing.html">Task Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_processing.html">Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text2image.html">Text-To-Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status.html">User Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">User migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_host_metadata.html">Web Host Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webdav_collection_preload.html">WebDAV collection preload events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html">Working with time</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Digging deeper</a></li>
+      <li class="breadcrumb-item active">REST APIs</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/rest_apis.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="rest-apis">
+<span id="id1"></span><h1>REST APIs<a class="headerlink" href="#rest-apis" title="Link to this heading"></a></h1>
+<p>Offering a RESTful API is not different from creating a <a class="reference internal" href="../basics/routing.html"><span class="doc">route</span></a> and <a class="reference internal" href="../basics/controllers.html"><span class="doc">controllers</span></a> for the web interface.
+It is recommended though to inherit from ApiController and add <code class="docutils literal notranslate"><span class="pre">#[CORS]</span></code> attribute to the methods so that <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">web applications will also be able to access the API</a>.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\ApiController</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Attribute\CORS</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IRequest</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AuthorApiController</span> <span class="k">extends</span> <span class="nx">ApiController</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$appName</span><span class="p">,</span> <span class="nx">IRequest</span> <span class="nv">$request</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$appName</span><span class="p">,</span> <span class="nv">$request</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="p">#[</span><span class="nd">CORS</span><span class="p">]</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>CORS also needs a separate URL for the preflighted <strong>OPTIONS</strong> request that can easily be added by adding the following route:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="c1">// appinfo/routes.php</span>
+<span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;author_api#preflighted_cors&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/1.0/{path}&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;OPTIONS&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;requirements&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;path&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;.+&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Keep in mind that multiple apps will likely depend on the API interface once it is published and they will move at different speeds to react to changes implemented in the API.
+Therefore it is recommended to version the API in the URL to not break existing apps when backwards incompatible changes are introduced:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">myapp</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">1.0</span><span class="o">/</span><span class="n">resource</span>
+</pre></div>
+</div>
+<section id="modifying-the-cors-headers">
+<h2>Modifying the CORS headers<a class="headerlink" href="#modifying-the-cors-headers" title="Link to this heading"></a></h2>
+<p>By default the following values will be used for the preflighted OPTIONS request:</p>
+<ul class="simple">
+<li><p><strong>Access-Control-Allow-Methods</strong>: ‘PUT, POST, GET, DELETE, PATCH’</p></li>
+<li><p><strong>Access-Control-Allow-Headers</strong>: ‘Authorization, Content-Type, Accept’</p></li>
+<li><p><strong>Access-Control-Max-Age</strong>: 1728000</p></li>
+</ul>
+<p>To add an additional method or header or allow less headers, simply pass additional values to the parent constructor:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">\OCP\AppFramework\ApiController</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">\OCP\IRequest</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AuthorApiController</span> <span class="k">extends</span> <span class="nx">ApiController</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$appName</span><span class="p">,</span> <span class="nx">IRequest</span> <span class="nv">$request</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span>
+            <span class="nv">$appName</span><span class="p">,</span>
+            <span class="nv">$request</span><span class="p">,</span>
+            <span class="s1">&#39;PUT, POST, GET, DELETE, PATCH&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Authorization, Content-Type, Accept&#39;</span><span class="p">,</span>
+            <span class="mi">1728000</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="relation-of-rest-and-ocs">
+<span id="ocs-vs-rest"></span><h2>Relation of REST and OCS<a class="headerlink" href="#relation-of-rest-and-ocs" title="Link to this heading"></a></h2>
+<p>There is a close relationship between REST APIs and <a class="reference internal" href="../basics/controllers.html#ocscontroller"><span class="std std-ref">OCS</span></a>.
+Both provide a way to transmit data between the backend of the app in the Nextcloud server and some frontend.
+This is explicitly not about <a class="reference internal" href="../basics/controllers.html#controller-html-responses"><span class="std std-ref">HTML template responses</span></a>.</p>
+<section id="state-of-the-art-methods-and-comparison">
+<h3>State-of-the-Art methods and comparison<a class="headerlink" href="#state-of-the-art-methods-and-comparison" title="Link to this heading"></a></h3>
+<p>The following combinations of attributes might be relevant for various scenarios:</p>
+<ol class="arabic simple">
+<li><p>Plain frontend route: <code class="docutils literal notranslate"><span class="pre">Controller</span></code> class</p></li>
+<li><p>OCS route: <code class="docutils literal notranslate"><span class="pre">OCSController</span></code> class</p></li>
+<li><p>OCS route with CORS enabled: <code class="docutils literal notranslate"><span class="pre">OCSController</span></code> class and <code class="docutils literal notranslate"><span class="pre">#[CORS]</span></code> attribute on the method</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Adding the <code class="docutils literal notranslate"><span class="pre">#[NoCRSFRequired]</span></code> attribute imposes a security risk.
+You should not add this to your controller methods unless you understand the implications and be sure that you absolutely need the attribute.
+Typically, you can use the <code class="docutils literal notranslate"><span class="pre">OCS-APIRequest</span></code> header for data requests instead, in order to satisfy the CSRF checks in your API requests.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Adding the attribute <code class="docutils literal notranslate"><span class="pre">#[CORS]</span></code> alone is not sufficient to allow access using CORS with plain frontend routes.
+Without further measures, the CSRF checker would fail.
+So, enabling CORS for plain controllers is generally and highly discouraged.</p>
+<p>You would have to disable the CSRF checks (one more security risk) or use the <code class="docutils literal notranslate"><span class="pre">OCP-APIRequest</span></code> header or send a CSRF token to successfully pass the checks.
+The latter requires dedicated JS code on the importing page.</p>
+</div>
+<p>There are different ways a clients might interact with your APIs.
+These ways depend on your API configuration (what you allow) and on which route the request is finally made.</p>
+<ul class="simple">
+<li><p><em>Access from web frontend</em> means the user is accessing the Nextcloud web frontend with a web browser.</p></li>
+<li><p><em>Access from non-browser</em> is if the user accesses the resource or page using something that is not a web browser, like an Android app or a curl command.</p></li>
+<li><p><em>Access from external website</em> means that the user browses some third party web site and data from your Nextcloud server appears.
+The other website has to embed/load/use images, JSON data, or other resources from a URL pointing to the Nextcloud server, to be able to do this.</p></li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The discussion here is for data requests only.
+If you think of controller <a class="reference internal" href="../basics/controllers.html#controller-html-responses"><span class="std std-ref">methods serving (HTML) templates</span></a>, disabling CSRF is considered fine.</p>
+</div>
+<table class="docutils align-center" id="id4">
+<caption><span class="caption-text">Comparison of different API types</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Description</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">Controller</span></code> class</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">OCSController</span></code> class</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">OCSController</span></code> class &amp; <code class="docutils literal notranslate"><span class="pre">CORS</span></code> on method</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>URL prefix (relative to server)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/apps/&lt;appid&gt;/</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/ocs/v2.php/apps/&lt;appid&gt;/</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/ocs/v2.php/apps/&lt;appid&gt;/</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Access from web frontend</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p>Access from non-browser</p></td>
+<td><p>partial <a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Access from external website</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p>Encapsulated data</p></td>
+<td><p>no</p></td>
+<td><p>yes (JSON or XML)</p></td>
+<td><p>yes (JSON or XML)</p></td>
+</tr>
+</tbody>
+</table>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id3" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>The external app has to satisfy the CSRF checks.
+That is, you need to have the <code class="docutils literal notranslate"><span class="pre">OCS-APIRequest</span></code> HTTP request header set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.
+This is only possible for Nextcloud 30 onwards, older versions do not respect the header.</p>
+</aside>
+</aside>
+<p>Methods from <code class="docutils literal notranslate"><span class="pre">Controller</span></code> classes can return <code class="docutils literal notranslate"><span class="pre">DataResponse</span></code> objects similar to <code class="docutils literal notranslate"><span class="pre">OCSController</span></code> class methods.
+For methods of a <code class="docutils literal notranslate"><span class="pre">Controller</span></code> class, the data of this response is sent e.g. as JSON as you provide it.
+Basically, the output is very similar to what <code class="docutils literal notranslate"><span class="pre">json_encode</span></code> would do.
+In contrast, the <code class="docutils literal notranslate"><span class="pre">OCSController</span></code> will encapsulate the data in an outer shell that provides some more (meta) information.
+For example a status code (similar to the HTTP status code) is transmitted at top level.
+The actual data is transmitted in the <code class="docutils literal notranslate"><span class="pre">data</span></code> property.</p>
+<p>As a rule of thumb one can conclude that OCS provides a good way to handle most use cases including sufficient security checks.
+The only exception to this is if you want to provide an API for external usage where you have to comply with an externally defined API scheme.
+Here, the encapsulation introduced in OCS and CSRF checks might be in your way.</p>
+</section>
+<section id="historical-options">
+<h3>Historical options<a class="headerlink" href="#historical-options" title="Link to this heading"></a></h3>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 30: </span>The information in this section are mainly for reference purposes. Do not use the approaches in new code.</p>
+</div>
+<p>Before Nextcloud 30 the plain <code class="docutils literal notranslate"><span class="pre">Controller</span></code> classes’ methods did not respect the <code class="docutils literal notranslate"><span class="pre">OCS-APIRequest</span></code> header.
+Thus, to provide access to this type of controller methods for external apps, it was necessary to use the <code class="docutils literal notranslate"><span class="pre">#[NoCSRFRequired]</span></code> attribute (or the corresponding <code class="docutils literal notranslate"><span class="pre">&#64;NoCSRFRequired</span></code> annotation).</p>
+<p>The following combinations of attributes were relevant for various scenarios:</p>
+<ol class="arabic simple">
+<li><p>Plain frontend route: <code class="docutils literal notranslate"><span class="pre">Controller</span></code> class</p></li>
+<li><p>Plain frontend with CRSF checks disabled: <code class="docutils literal notranslate"><span class="pre">Controller</span></code> class and <code class="docutils literal notranslate"><span class="pre">#[NoCSRFRequired]</span></code> attribute on the method</p></li>
+<li><p>Plain frontend route with CORS enabled: <code class="docutils literal notranslate"><span class="pre">Controller</span></code> class and <code class="docutils literal notranslate"><span class="pre">#[CORS]</span></code> and <code class="docutils literal notranslate"><span class="pre">#[NoCSRFRequired]</span></code> attributes on the route</p></li>
+<li><p>OCS route: <code class="docutils literal notranslate"><span class="pre">OCSController</span></code> class</p></li>
+<li><p>OCS route with CORS enabled: <code class="docutils literal notranslate"><span class="pre">OCSController</span></code> class and <code class="docutils literal notranslate"><span class="pre">#[CORS]</span></code> attribute on the method</p></li>
+</ol>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The two scenarios involving the <code class="docutils literal notranslate"><span class="pre">OCSController</span></code> have not changed and, thus, the state-of-the-art documentation as noted above still holds true.
+Thus, these options are not reconsidered here again for simplicity reasons and to get the overall view more crisp.</p>
+<p>The warnings about not using <code class="docutils literal notranslate"><span class="pre">NoCSRFRequired</span></code> and <code class="docutils literal notranslate"><span class="pre">CORS</span></code> as mentioned in the state-of-the-art section holds true here as well.</p>
+</div>
+<table class="docutils align-center" id="id5">
+<caption><span class="caption-text">Comparison of different API types</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><div class="line-block">
+<div class="line">Description</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">Controller</span></code> class</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">Controller</span></code> class with</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">NoCSRFRequired</span></code> on method</div>
+</div>
+</th>
+<th class="head"><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">Controller</span></code> class with</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">NoCSRFRequired</span></code> and <code class="docutils literal notranslate"><span class="pre">CORS</span></code></div>
+<div class="line">on method</div>
+</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>URL prefix (relative to server)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/apps/&lt;appid&gt;/</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/apps/&lt;appid&gt;/</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/apps/&lt;appid&gt;/</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Access from web frontend</p></td>
+<td><p>yes</p></td>
+<td><p>yes (CSRF risk)</p></td>
+<td><p>yes (CSRF risk)</p></td>
+</tr>
+<tr class="row-even"><td><p>Access from non-browser</p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Access from external website</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p>Encapsulated data</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="repair.html" class="btn btn-neutral float-left" title="Repair steps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="search.html" class="btn btn-neutral float-right" title="Search" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Apr 02, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
