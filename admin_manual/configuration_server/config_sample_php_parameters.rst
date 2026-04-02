@@ -2175,7 +2175,8 @@ Activities in Team Folders and External Storages.
 By default, activities in team folders or external storages are only generated
 for the current user. This is due to a limitations in current implementations.
 This config flag makes activities in group folders and external storages work
-like in normal shares (when set to ``true``).
+like in normal shares (when set to ``true``). Setting this flag does not allow
+past activities to be displayed (no retroactivity).
 
 
 
