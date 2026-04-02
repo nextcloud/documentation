@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Public share template &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Testing" href="testing.html" />
+    <link rel="prev" title="AppData" href="storage/appdata.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Basic concepts</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="request_lifecycle.html">Request lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routing.html">Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependency_injection.html">Dependency injection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="middlewares.html">Middlewares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="front-end/index.html">Front-end</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setting.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storage/index.html">Storage and database</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Public share template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Nextcloud design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Basic concepts</a></li>
+      <li class="breadcrumb-item active">Public share template</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/basics/public_share_template.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="public-share-template">
+<h1>Public share template<a class="headerlink" href="#public-share-template" title="Link to this heading"></a></h1>
+<p>It is possible to overrite the default public share view. This is possible by implementing the <code class="docutils literal notranslate"><span class="pre">IPublicShareTemplateProvider</span></code> interface.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="c1">// lib/AppInfo/Application.php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
+    <span class="o">...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="o">...</span>
+
+        <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerPublicShareTemplateProvider</span><span class="p">(</span><span class="nx">MyPublicShareTemplateProvider</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="c1">// lib/providers/MyPublicShareTemplateProvider.php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\AppInfo\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\ContentSecurityPolicy</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Template\PublicTemplateResponse</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\TemplateResponse</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Defaults</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IL10N</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IURLGenerator</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IUserManager</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Share\IShare</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Share\IPublicShareTemplateProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Services\IInitialState</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Util</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">E2EEPublicShareTemplateProvider</span> <span class="k">implements</span> <span class="nx">IPublicShareTemplateProvider</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">IUserManager</span> <span class="nv">$userManager</span><span class="p">,</span>
+        <span class="k">private</span> <span class="nx">IUrlGenerator</span> <span class="nv">$urlGenerator</span><span class="p">,</span>
+        <span class="k">private</span> <span class="nx">IL10N</span> <span class="nv">$l10n</span><span class="p">,</span>
+        <span class="k">private</span> <span class="nx">Defaults</span> <span class="nv">$defaults</span><span class="p">,</span>
+        <span class="k">private</span> <span class="nx">IInitialState</span> <span class="nv">$initialState</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">shouldRespond</span><span class="p">(</span><span class="nx">IShare</span> <span class="nv">$share</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span> <span class="p">{</span>
+        <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$share</span><span class="o">-&gt;</span><span class="na">getNode</span><span class="p">();</span>
+        <span class="k">return</span> <span class="o">...</span><span class="p">;</span> <span class="c1">// Whether your provider should be used or not.</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">renderPage</span><span class="p">(</span><span class="nx">IShare</span> <span class="nv">$share</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$token</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$path</span><span class="p">)</span><span class="o">:</span> <span class="nx">TemplateResponse</span> <span class="p">{</span>
+        <span class="nv">$shareNode</span> <span class="o">=</span> <span class="nv">$share</span><span class="o">-&gt;</span><span class="na">getNode</span><span class="p">();</span>
+        <span class="nv">$owner</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userManager</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$share</span><span class="o">-&gt;</span><span class="na">getShareOwner</span><span class="p">());</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">initialState</span><span class="o">-&gt;</span><span class="na">provideInitialState</span><span class="p">(</span><span class="s1">&#39;fileId&#39;</span><span class="p">,</span> <span class="nv">$shareNode</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">());</span>
+        <span class="o">...</span><span class="p">;</span> <span class="c1">// More initial state that you might need in your view.</span>
+
+        <span class="c1">// OpenGraph Support: http://ogp.me/</span>
+        <span class="nx">Util</span><span class="o">::</span><span class="na">addHeader</span><span class="p">(</span><span class="s1">&#39;meta&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;property&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;og:title&quot;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s2">&quot;Encrypted share&quot;</span><span class="p">)]);</span>
+        <span class="nx">Util</span><span class="o">::</span><span class="na">addHeader</span><span class="p">(</span><span class="s1">&#39;meta&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;property&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;og:description&quot;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">defaults</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">()</span> <span class="o">.</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">defaults</span><span class="o">-&gt;</span><span class="na">getSlogan</span><span class="p">()</span> <span class="o">!==</span> <span class="s1">&#39;&#39;</span> <span class="o">?</span> <span class="s1">&#39; - &#39;</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">defaults</span><span class="o">-&gt;</span><span class="na">getSlogan</span><span class="p">()</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">)]);</span>
+        <span class="nx">Util</span><span class="o">::</span><span class="na">addHeader</span><span class="p">(</span><span class="s1">&#39;meta&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;property&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;og:site_name&quot;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">defaults</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">()]);</span>
+        <span class="nx">Util</span><span class="o">::</span><span class="na">addHeader</span><span class="p">(</span><span class="s1">&#39;meta&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;property&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;og:url&quot;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">urlGenerator</span><span class="o">-&gt;</span><span class="na">linkToRouteAbsolute</span><span class="p">(</span><span class="s1">&#39;files_sharing.sharecontroller.showShare&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;token&#39;</span> <span class="o">=&gt;</span> <span class="nv">$token</span><span class="p">])]);</span>
+        <span class="nx">Util</span><span class="o">::</span><span class="na">addHeader</span><span class="p">(</span><span class="s1">&#39;meta&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;property&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;og:type&quot;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;object&quot;</span><span class="p">]);</span>
+
+        <span class="nv">$csp</span><span class="o">-&gt;</span><span class="na">addAllowedFrameDomain</span><span class="p">(</span><span class="s1">&#39;\&#39;self\&#39;&#39;</span><span class="p">);</span>
+        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContentSecurityPolicy</span><span class="p">(</span><span class="nv">$csp</span><span class="p">);</span>
+
+        <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PublicTemplateResponse</span><span class="p">(</span><span class="nx">Application</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">,</span> <span class="s1">&#39;myCustomTemplateFileName&#39;</span><span class="p">,</span> <span class="p">[]);</span>
+        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setHeaderTitle</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s2">&quot;My custom title&quot;</span><span class="p">));</span>
+
+        <span class="nv">$csp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ContentSecurityPolicy</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="storage/appdata.html" class="btn btn-neutral float-left" title="AppData" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="testing.html" class="btn btn-neutral float-right" title="Testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/24/developer_manual">24</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/25/developer_manual">25</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

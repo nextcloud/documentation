@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="cs" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Šifrování souborů v Nextcloud na straně serveru &mdash; Dokumentace pro Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=3fc2a9b2"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=0275affc"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Sdílení souborů" href="sharing.html" />
+    <link rel="prev" title="Synchronizace s desktopovými a mobilními platformami" href="desktop_mobile_sync.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Úvod do uživatelské příručky k Nextcloud verze latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Novinky pro uživatele v Nextcloud verze latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Webové rozhraní Nextcloud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Soubory a synchronizace</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Přístup k souborům prostřednictvím webového rozhraní Nextcloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Přístup k souborům v Nextcloud prostřednictvím protokolu WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Správa smazaných souborů</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Synchronizace s desktopovými a mobilními platformami</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Šifrování souborů v Nextcloud na straně serveru</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#encryption-faq">Často kladené dotazy ohledně šifrování</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-can-encryption-be-disabled">Jak je možné šifrování vypnout?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-possible-to-disable-encryption-with-the-recovery-key">Je možné vypnout šifrování pomocí záchranného klíče?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#can-encryption-be-disabled-without-the-user-s-password">Je možné šifrování vypnout bez hesla uživatele?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">Je plánováno přesunout toto na příští přihlášení se uživatele nebo do podoby úlohy, spuštěné na pozadí?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-group-sharing-possible-with-the-recovery-key">Je možné skupinové sdílení s obnovovacím klíčem?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-encryption">Používání šifrování</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-encrypted-files">Sdílení šifrovaných souborů</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#recovery-key-password">Heslo k záchrannému klíči</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#files-not-encrypted">Nešifrované soubory</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#change-private-key-password">Změna hesla k soukromé části klíče</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Sdílení souborů</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Federovaná sdílení</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Provádění anonymních nahrání</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Nahrávání velkých souborů</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Kvóta úložiště</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Správa verzí</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projekty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Přenesení vlastnictví</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Používání federovaných sdílení</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Software pro podporu spolupráce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Nastavení vašich předvoleb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Zpřístupnění pro všechny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Používání dvoufázového ověřování se</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Správa připojených prohlížečů a zařízení</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Externí úložiště</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Soubory a synchronizace</a></li>
+      <li class="breadcrumb-item active">Šifrování souborů v Nextcloud na straně serveru</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/encrypting_files.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="encrypting-your-nextcloud-files-on-the-server">
+<h1>Šifrování souborů v Nextcloud na straně serveru<a class="headerlink" href="#encrypting-your-nextcloud-files-on-the-server" title="Link to this heading"></a></h1>
+<p>Nextcloud includes a server side Encryption app, and when it is enabled by
+your Nextcloud administrator all of your Nextcloud data files are automatically
+encrypted on the server.
+Encryption is server-wide, so when it is enabled you cannot choose to keep your
+files unencrypted. You don’t have to do anything special, as it uses your
+Nextcloud login as the password for your unique private encryption key. Just log
+out and in and manage and share your files as you normally do, and you can
+still change your password whenever you want.</p>
+<p>Jeho hlavním účelem je šifrovat soubory na vzdálených úložných službách, které máte připojené k vámi využívanému Nextcloud serveru. Toto je snadný a hladký způsob jak chránit vaše soubory na vzdáleném úložišti. Své soubory můžete sdílet prostřednictvím Nextcloud jako obvykle, nicméně není možné je sdílet přímo ze vzdálených služeb, jako obvykle, protože šifrovací klíče se nacházejí na Nextcloud serveru a nikdy nejsou exponovány poskytovatelům okolních služeb.</p>
+<p>Pokud váš Nextcloud server není připojený k žádným vzdáleným úložným službám, pak je lépe použít nějakou jinou formu šifrování – jako například na úrovni souborů nebo celého datového úložiště. Protože klíče se nacházejí na vámi používaném Nextcloud serveru, jeho správce může vaše soubory vidět a pokud je server kompromitován, útočník k nim může přistupovat také. (Další informace viz <a class="reference external" href="https://nextcloud.com/blog/encryption-in-nextcloud/">Šifrování v Nextcloud</a>.)</p>
+<section id="encryption-faq">
+<h2>Často kladené dotazy ohledně šifrování<a class="headerlink" href="#encryption-faq" title="Link to this heading"></a></h2>
+<section id="how-can-encryption-be-disabled">
+<h3>Jak je možné šifrování vypnout?<a class="headerlink" href="#how-can-encryption-be-disabled" title="Link to this heading"></a></h3>
+<p>Jediným způsobem, jak šifrování vypnout je spuštěním skriptu <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label">„rozšifrovat vše“</a>, který rozšifruje všechny soubory a vypne šifrování.</p>
+</section>
+<section id="is-it-possible-to-disable-encryption-with-the-recovery-key">
+<h3>Je možné vypnout šifrování pomocí záchranného klíče?<a class="headerlink" href="#is-it-possible-to-disable-encryption-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>Ano, <em>pokud</em> každý uživatel používá <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">klíč pro obnovu souborů</a>, <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label">„rozšifrovat vše“</a> ho použije pro rozšifrování všech souborů.</p>
+</section>
+<section id="can-encryption-be-disabled-without-the-user-s-password">
+<h3>Je možné šifrování vypnout bez hesla uživatele?<a class="headerlink" href="#can-encryption-be-disabled-without-the-user-s-password" title="Link to this heading"></a></h3>
+<p>Pokud nemáte heslo uživatele nebo <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">klíč pro obnovu souboru</a>, pak neexistuje způsob, jak rozšifrovat všechny soubory. Co víc, spouštění při přihlášení může být nebezpečné, protože byste nejspíš skončili u překročení časových limitů.</p>
+</section>
+<section id="is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">
+<h3>Je plánováno přesunout toto na příští přihlášení se uživatele nebo do podoby úlohy, spuštěné na pozadí?<a class="headerlink" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job" title="Link to this heading"></a></h3>
+<p>Pokud bychom to udělali, pak by bylo třeba, aby vaše přihlašovací heslo bylo uloženo v databázi v čitelné podobě. To by bylo narušení zabezpečení, takže nic takového není plánováno.</p>
+</section>
+<section id="is-group-sharing-possible-with-the-recovery-key">
+<h3>Je možné skupinové sdílení s obnovovacím klíčem?<a class="headerlink" href="#is-group-sharing-possible-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>Mysleli jste přidání uživatelů do skupin a zařídit to tak, aby to jako kouzlem zafungovalo? Ne. Toto funguje pouze s hlavním klíčem.</p>
+</section>
+</section>
+<section id="using-encryption">
+<h2>Používání šifrování<a class="headerlink" href="#using-encryption" title="Link to this heading"></a></h2>
+<p>Šifrování Nextcloud je ve stylu „Jednou nastavíte a nadále už se netřeba starat“, ale je k dispozici několik možností, které je možné použít.</p>
+<p>Když správce vámi využívaného Nextcloud poprvé zapne šifrování, je třeba, abyste se odhlásili a pak přihlásili zpět, čímž budou vytvořené vaše šifrovací klíče a jimi zašifrovány vaše soubory. Když na vámi využívaném Nextcloud serveru bylo zapnuto šifrování, uvidíte na stránce Soubory žlutý pruh, upozorňující vás na nutnost odhlásit se a pak znovu přihlásit:</p>
+<figure class="align-default">
+<img alt="../../_images/encryption1.png" src="../../_images/encryption1.png" />
+</figure>
+<p>Když se přihlásíte zpět, zabere to několik minut, v závislosti na tom, kolik souborů máte a pak budete vráceni na vaší výchozí stránku v Nextcloud.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption2.png" src="../../_images/encryption2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Své heslo do Nexcloud nikdy nesmíte ztratit, protože byste ztratili přístup ke svým souborům. Ačkoli je zde možnost volitelné možnosti pro obnovování, kterou správce vámi používané instance Nexcloud mohl zapnout. Více viz níže sekce Heslo k záchrannému klíči.</p>
+</div>
+</section>
+<section id="sharing-encrypted-files">
+<h2>Sdílení šifrovaných souborů<a class="headerlink" href="#sharing-encrypted-files" title="Link to this heading"></a></h2>
+<p>Pouze uživatelé, kteří mají své soukromé šifrovací klíče, mají přístup ke sdíleným šifrovaným souborům a složkám. Uživatelé, kteří si své soukromé šifrovací klíče ještě nevytvořili, nebudou mít přístup k šifrovaným souborům. Uvidí složky a názvy souborů, ale nebudou moci soubory otevírat nebo stahovat. Uvidí žlutý varovný pruh který říká „Je zapnutá aplikace Šifrování, ale vaše klíče nejsou inicializovány – odhlaste se a znovu přihlaste.“</p>
+<p>Po zapnutí šifrování může být třeba, aby vlastníci sdílení nasdíleli znovu. Uživatelé, kteří se pokoušejí přistoupit na sdílení uvidí zprávu doporučující jim požádat vlastníka sdílení aby jim soubor nasdílel znovu. V případě jednotlivých sdílení, takové zrušte a pak soubor znovu nasdílejte. U sdílení skupinám, nasdílejte těm jednotlivcům, kteří nemají ke sdílení přístup. Toto aktualizuje šifrování a pak už vlastník sdílení může sdílení jednotlivcům zase odebrat.</p>
+<section id="recovery-key-password">
+<h3>Heslo k záchrannému klíči<a class="headerlink" href="#recovery-key-password" title="Link to this heading"></a></h3>
+<p>Pokud správce vámi využívaného Nextcloud zapnul funkci obnovovacího klíče, můžete zvolit, že pro svůj účet budete tuto funkci používat. Pokud zapnete „Obnovu hesla“, správce může vaše data číst pomocí speciálního hesla. Tato funkce umožňuje správci obnovit vaše soubory v případě, že ztratíte své heslo do Nextcloud. Pokud není obnovovací klíč zapnut, není možné vaše soubory v případě ztráty hesla obnovit.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption3.png" src="../../_images/encryption3.png" />
+</figure>
+</section>
+</section>
+<section id="files-not-encrypted">
+<h2>Nešifrované soubory<a class="headerlink" href="#files-not-encrypted" title="Link to this heading"></a></h2>
+<p>Šifrován je pouze obsah souborů, ne jejich názvy či struktury složek. Dále ještě nikdy nejsou šifrovány následující soubory:</p>
+<ul class="simple">
+<li><p>Staré soubory v koši.</p></li>
+<li><p>Náhledy obrázků z aplikace Galerie.</p></li>
+<li><p>Náhledy z aplikace Soubory.</p></li>
+<li><p>Vyhledávací rejstřík z aplikace pro plnotextové vyhledávání.</p></li>
+<li><p>Data aplikací třetích stran</p></li>
+</ul>
+<p>Šifrovat je možné pouze ty soubory, které jsou sdíleny poskytovatelům úložišť (třetí strana) – ostatní soubory šifrovat nelze.</p>
+<section id="change-private-key-password">
+<h3>Změna hesla k soukromé části klíče<a class="headerlink" href="#change-private-key-password" title="Link to this heading"></a></h3>
+<p>Tato volba je k dispozici pouze pokud správce změní přihlašovací, ale už ne šifrovací heslo. K tomu může dojít pokud vámi využívaný poskytovatel Nextcloud používá pro uživatelské účty externí podpůrnou vrstvu (například LDAP) a změnil v ní vaše přihlašovací heslo. V takovém případě si můžete své šifrovací heslo nastavit na stejnou hodnotu, jako to přihlašovací a to zadáním původního a nového přihlašovacího hesla. Aplikace Šifrování funguje pouze pokud jsou vaše hesla pro přihlašování a k šifrování stejná.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-left" title="Synchronizace s desktopovými a mobilními platformami" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sharing.html" class="btn btn-neutral float-right" title="Sdílení souborů" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/eu/">eu</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/id/">id</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/ja_JP/">ja_JP</a></dd>
+<dd><a href="/server/latest/user_manual/ko/">ko</a></dd>
+<dd><a href="/server/latest/user_manual/nb_NO/">nb_NO</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/nn/">nn</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/pt_PT/">pt_PT</a></dd>
+<dd><a href="/server/latest/user_manual/ro/">ro</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/si/">si</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/ta/">ta</a></dd>
+<dd><a href="/server/latest/user_manual/th/">th</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/uk/">uk</a></dd>
+<dd><a href="/server/latest/user_manual/vi/">vi</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+<dd><a href="/server/latest/user_manual/zh_TW/">zh_TW</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Verze</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/24/user_manual">24</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/25/user_manual">25</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Stahování</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Na službě Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Domovská stránka projektu</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Sestavení</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

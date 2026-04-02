@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gérer les fichiers supprimés &mdash; Documentation Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=7f569946"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=d99ca74e"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Synchronisation sur bureau et sur mobile" href="desktop_mobile_sync.html" />
+    <link rel="prev" title="Accès aux fichiers Nextcloud avec WebDAV" href="access_webdav.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Manuel utilisateur de Nextcloud latest : Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Quoi de neuf pour les utilisateurs de Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">L’interface web de Nextcloud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Fichiers &amp; synchronisation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Accéder à vos fichiers en utilisant l’interface Web</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Accès aux fichiers Nextcloud avec WebDAV</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Gérer les fichiers supprimés</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#quotas">Les quotas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-happens-when-shared-files-are-deleted">Que se passe-t-il lorsque des fichiers partagés sont supprimés?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-the-deleted-files-app-manages-storage-space">Comment l’application de fichiers supprimés gère l’espace de stockage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Synchronisation sur bureau et sur mobile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Chiffrer vos fichiers Nextcloud sur le serveur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Partage de fichiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Partages Fédérés</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Faire des téléversements anonymes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Téléversement de gros fichiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Quota de stockage utilisable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Contrôle de version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Transfert de propriété</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Utilisation du partage entre instances</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Définir vos préférences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Accès universel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Utilisation de l’authentification à deux facteurs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gestion des navigateurs et des appareils liés</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Stockage Externe</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Fichiers &amp; synchronisation</a></li>
+      <li class="breadcrumb-item active">Gérer les fichiers supprimés</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/deleted_file_management.rst" class="fa fa-github"> Éditer sur GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="managing-deleted-files">
+<h1>Gérer les fichiers supprimés<a class="headerlink" href="#managing-deleted-files" title="Link to this heading"></a></h1>
+<p>Lorsque vous supprimez un fichier dans Nextcloud, il n’est pas immédiatement supprimé définitivement, mais seulement déplacé dans la corbeille. Il n’est pas définitivement supprimé tant que vous ne l’avez pas supprimé manuellement, ou lorsque l’application Fichiers supprimés le supprime pour faire de la place à de nouveaux fichiers.</p>
+<p>Trouvez vos fichiers supprimés en cliquant sur le bouton <strong>Fichiers supprimés</strong> de la page Fichiers de l’interface Web Nextcloud. Vous aurez des options pour soit restaurer ou supprimer définitivement des fichiers.</p>
+<section id="quotas">
+<h2>Les quotas<a class="headerlink" href="#quotas" title="Link to this heading"></a></h2>
+<p>Les fichiers supprimés ne sont pas comptabilisés dans votre quota de stockage. Seulement vos fichiers personnel sont comptabilisés dans votre quota et non les fichiers partagés avec vous. (Voir <a class="reference internal" href="quota.html"><span class="doc">Quota de stockage utilisable</span></a> pour en savoir plus sur les quotas.)</p>
+</section>
+<section id="what-happens-when-shared-files-are-deleted">
+<h2>Que se passe-t-il lorsque des fichiers partagés sont supprimés?<a class="headerlink" href="#what-happens-when-shared-files-are-deleted" title="Link to this heading"></a></h2>
+<p>La suppression de fichiers devient un peu compliquée quand il s’agit de fichiers partagés, ce scénario l’illustre:</p>
+<ol class="arabic simple">
+<li><p>Utilisateur1 partage un dossier « test » avec Utilisateur2 et Utilisateur3</p></li>
+<li><p>Utilisateur2 (le destinataire) supprime un fichier / un sous-dossier à l’intérieur de « test »</p></li>
+<li><p>Le dossier « Sub » sera déplacé dans la corbeille des utilisateurs Utilisateur1  (le propriétaire) et Utilisateur2 (le destinataire).</p></li>
+<li><p>Mais Utilisateur3 n’aura pas une copie du sous-dossier dans sa corbeille</p></li>
+</ol>
+<p>Lorsque Utilisateur1 supprime le sous-dossier, il est déplacé vers la corbeille de Utilisateur1. Il est supprimé de Utilisateur2 et Utilisateur3, mais non placé dans leur corbeille.</p>
+<p>Lorsque vous partagez des fichiers, d’autres utilisateurs peuvent les copier, les renommer, les déplacer et les partager avec d’autres personnes, comme elles le peuvent pour tous les fichiers informatiques; Nextcloud n’a pas de pouvoirs magiques pour empêcher cela.</p>
+</section>
+<section id="how-the-deleted-files-app-manages-storage-space">
+<h2>Comment l’application de fichiers supprimés gère l’espace de stockage<a class="headerlink" href="#how-the-deleted-files-app-manages-storage-space" title="Link to this heading"></a></h2>
+<p>Pour vous assurer que les utilisateurs ne dépassent pas leurs quotas de stockage, le programme Fichiers supprimés alloue un maximum de 50% de l’espace libre disponible au fichiers supprimés. Si vos fichiers supprimés dépassent cette limite, Nextcloud supprime les fichiers les plus anciens (fichiers avec les horodatages les plus anciens depuis leur suppression) jusqu’à ce qu’il respecte à nouveau la limite d’utilisation de la mémoire.</p>
+<p>Nextcloud vérifie l’age des fichiers supprimés chaque fois que de nouveaux fichiers sont ajoutés à la corbeille. Par défaut, les fichiers supprimés sont conservés 30 jours dans la corbeille. L’administrateur du serveur Nextcloud peut modifier  ce paramètre dans « config.php »  en changeant la valeur  de « trashbin_retention_obligation ». Les fichiers plus vieux  que la valeur  de « trashbin_retention_obligation » seront supprimés de manière définitive. De plus,  Netxcloud calcule  le montant de l’espace disponible à chaque création de nouveau fichier. Si l’espace occupé par des fichiers supprimés excède la nouvelle valeur d’espace alloué, Nexcloud supprimera de manière définitive les fichiers supprimés dont la date d’expiration est la plus grande jusqu’à cette limite soit à nouveau remplie</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Votre administrateur pourrait avoir configuré la période de rétention de la corbeille pour passer outre la gestion de l’espace de stockage. Voir <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#deleted-items-trash-bin">admin documentation</a> pour plus de détails.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="access_webdav.html" class="btn btn-neutral float-left" title="Accès aux fichiers Nextcloud avec WebDAV" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-right" title="Synchronisation sur bureau et sur mobile" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/eu/">eu</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/id/">id</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/ja_JP/">ja_JP</a></dd>
+<dd><a href="/server/latest/user_manual/ko/">ko</a></dd>
+<dd><a href="/server/latest/user_manual/nb_NO/">nb_NO</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/nn/">nn</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/pt_PT/">pt_PT</a></dd>
+<dd><a href="/server/latest/user_manual/ro/">ro</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/si/">si</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/ta/">ta</a></dd>
+<dd><a href="/server/latest/user_manual/th/">th</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/uk/">uk</a></dd>
+<dd><a href="/server/latest/user_manual/vi/">vi</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+<dd><a href="/server/latest/user_manual/zh_TW/">zh_TW</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/24/user_manual">24</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/25/user_manual">25</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Téléchargements</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Au sujet de la lecture de Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Projet Racine</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Versions</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
