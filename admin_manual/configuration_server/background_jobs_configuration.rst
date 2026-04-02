@@ -119,6 +119,26 @@ Which returns::
 
 .. note:: Please refer to the crontab man page for the exact command syntax.
 
+.. note:: When called from the command line, ``cron.php`` picks up new jobs
+          from the queue for up to **14 minutes** before stopping.  Because the
+          system cron fires every 5 minutes, up to **three** ``cron.php``
+          processes may be running in parallel at any given time.  Nextcloud
+          handles this safely — each process locks the job it picks up, so no
+          single job is run twice simultaneously.
+
+          The 14-minute limit controls only how long the process will continue
+          **selecting new jobs**.  A job that is already running is never
+          interrupted — it always runs to completion, even if it takes much
+          longer than 14 minutes.  Once it finishes, the process checks the
+          time limit and exits without starting another job.
+
+          PHP's execution time limit is explicitly set to unlimited
+          (``set_time_limit(0)``) at the start of each CLI cron run, so
+          long-running jobs such as large file scans will not be killed by PHP.
+          However, jobs that exceed the 5-minute cron interval are logged at
+          escalating severity levels (debug → info → warning → error → fatal)
+          depending on how far over they run.
+
 .. _easyCron: https://www.easycron.com/
 
 systemd
