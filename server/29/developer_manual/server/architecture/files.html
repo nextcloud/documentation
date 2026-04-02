@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nextcloud filesystem API &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="How to test …" href="../../how_to/index.html" />
+    <link rel="prev" title="Nextcloud architecture" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Server development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../code-front-end.html">Front-end code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code-back-end.html">Back-end code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../static-analysis.html">Static analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../externalapi.html">External API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Nextcloud architecture</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Nextcloud filesystem API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#high-level-overview">High level overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#storage-cache-wrappers">Storage/Cache wrappers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#code-map">Code Map</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../how_to/index.html">How to test …</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Server development</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Nextcloud architecture</a></li>
+      <li class="breadcrumb-item active">Nextcloud filesystem API</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/server/architecture/files.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="nextcloud-filesystem-api">
+<h1>Nextcloud filesystem API<a class="headerlink" href="#nextcloud-filesystem-api" title="Link to this heading"></a></h1>
+<section id="high-level-overview">
+<h2>High level overview<a class="headerlink" href="#high-level-overview" title="Link to this heading"></a></h2>
+<p>The Nextcloud filesystem is roughly based on the unix filesystem, consisting of multiple storages
+mounted at various locations.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>     ┌──────────────────────────────────┐
+     │Code wanting to use the filesystem│
+     └─────────┬─────────────────────┬──┘
+               │                     │
+               │                     │
+┌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┐
+╎Filesystem    │                     │         ╎
+╎layer         │new                  │legacy   ╎
+╎              │                     │         ╎
+╎              ▼                     ▼         ╎
+╎      ┌────────┐ Partly build on  ┌─┴──────┐  ╎
+╎      │Node API├─────────────────►│View API│  ╎
+╎      └───────┬┘                  └─┬──────┘  ╎
+╎              │                     │         ╎
+└╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┘
+               │                     │
+┌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┐
+╎Storage layer │                     │         ╎
+╎              ├─────────────────────┤         ╎
+╎              │                     │         ╎
+╎              ▼                     ▼         ╎
+╎        ┌───────┐    ┌───────┐    ┌──────┐    ╎
+╎        │Storage│═══&gt;│Scanner│═══&gt;│Cache │    ╎
+╎        └───────┘    └───────┘    └──────┘    ╎
+╎                                              ╎
+╎                                              ╎
+└╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┘
+</pre></div>
+</div>
+<section id="filesystem-layer">
+<h3>Filesystem layer<a class="headerlink" href="#filesystem-layer" title="Link to this heading"></a></h3>
+<p>Any code that wants to use the filesystem has two API options to use, the new <code class="docutils literal notranslate"><span class="pre">Node</span></code> api and the old <code class="docutils literal notranslate"><span class="pre">View</span></code> api.
+New code should preferably use the <code class="docutils literal notranslate"><span class="pre">Node</span></code> api as it allows building systems with less overhead than the old api.</p>
+<p>Besides the filesystem apis, this layer also manages the available mounts, containing the logic to allow apps
+to setup their mounts and translating filesystem paths into a mountpoint + “internal” path.</p>
+</section>
+<section id="storage-layer">
+<h3>Storage layer<a class="headerlink" href="#storage-layer" title="Link to this heading"></a></h3>
+<p>The storage implementation handles the details of communicating with the filesystem or remote storage api
+and provide a uniform api for Nextcloud to use the storage.</p>
+<p>For each storage a metadata cache/index is maintained to allow reading metadata of the storage without having
+to talk to the (potentially) slow storage backend. The scanner is responsible for updating the cache with
+information from the storage backend.</p>
+</section>
+</section>
+<section id="storage-cache-wrappers">
+<h2>Storage/Cache wrappers<a class="headerlink" href="#storage-cache-wrappers" title="Link to this heading"></a></h2>
+<p>To allow apps to customize the behavior of a storage without requiring the app to implement this for every
+possible storage backend, a <code class="docutils literal notranslate"><span class="pre">Wrapper</span></code> system is used.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">Wrapper</span></code> encapsulates an inner storage and allows overwriting any method to customize its behavior, with
+all other methods being passed through to the inner storage.</p>
+<p>Generally search storage wrapper has an equivalent cache wrapper encapsulating the cache of the inner storage
+to provide the same behavior modifications when reading metadata from the cache.</p>
+<p>Wrappers can be layered to stack the behavior of the wrappers, for example the <code class="docutils literal notranslate"><span class="pre">groupfolders</span></code> app works by
+stacking a wrapper to provide access to a single folder on the root storage with a wrapper to limit the permissions
+of the storage.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>┌───────────────┐      ┌────────────────────┐
+│PermissionsMask├─────►│CachePermissionsMask│  PermissionsMask applies a mask to the permissions of a storage
+└───────┬───────┘      └─────────┬──────────┘  to provide less-privileged access to a storage
+        │                        │
+        ▼                        ▼
+┌───────────────┐      ┌────────────────────┐
+│Jail           ├─────►│CacheJail           │  Jail restricts access to a file or folder of a storage providing
+└───────┬───────┘      └─────────┬──────────┘  a limited view into the storage (think unix chroot or bind mount)
+        │                        │
+        ▼                        ▼
+┌───────────────┐      ┌────────────────────┐
+│Base Storage   ├─────►│Base Cache          │
+└───────────────┘      └────────────────────┘
+</pre></div>
+</div>
+</section>
+<section id="code-map">
+<h2>Code Map<a class="headerlink" href="#code-map" title="Link to this heading"></a></h2>
+<p>Approximate overview of the significant filesystem code</p>
+<section id="appdata">
+<h3>AppData<a class="headerlink" href="#appdata" title="Link to this heading"></a></h3>
+<p>High level api for accessing “appdata” folders, based on the <code class="docutils literal notranslate"><span class="pre">Node/SimpleFS</span></code> API</p>
+</section>
+<section id="cache">
+<h3>Cache<a class="headerlink" href="#cache" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Cache</span></code> implementation</p></li>
+<li><p>Cache wrappers</p></li>
+<li><p>Scanner and cache update logic</p></li>
+<li><p>Search infrastructure</p></li>
+</ul>
+</section>
+<section id="mount">
+<h3>Mount<a class="headerlink" href="#mount" title="Link to this heading"></a></h3>
+<p>Mountpoint management and setup</p>
+</section>
+<section id="node">
+<h3>Node<a class="headerlink" href="#node" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Node</span></code> filesystem api implementation</p>
+</section>
+<section id="objectstorage">
+<h3>ObjectStorage<a class="headerlink" href="#objectstorage" title="Link to this heading"></a></h3>
+<p>Implementation of the various supported object store storage backends</p>
+</section>
+<section id="simplefs">
+<h3>SimpleFS<a class="headerlink" href="#simplefs" title="Link to this heading"></a></h3>
+<p>Simplified version of the Node api, for providing a more limited api for some filesystem bits</p>
+</section>
+<section id="storage">
+<h3>Storage<a class="headerlink" href="#storage" title="Link to this heading"></a></h3>
+<p>Implementation of various storage backends and wrappers</p>
+</section>
+<section id="streams">
+<h3>Streams<a class="headerlink" href="#streams" title="Link to this heading"></a></h3>
+<p>Various low-level php stream wrapper used in storage implementations</p>
+</section>
+<section id="type">
+<h3>Type<a class="headerlink" href="#type" title="Link to this heading"></a></h3>
+<p>Mimetype management and detection</p>
+</section>
+<section id="view-php">
+<h3>View.php<a class="headerlink" href="#view-php" title="Link to this heading"></a></h3>
+<p>Legacy View api</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Nextcloud architecture" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../how_to/index.html" class="btn btn-neutral float-right" title="How to test …" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/developer_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/developer_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/28/developer_manual">28</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

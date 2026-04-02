@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="sq" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Synchronizing with Thunderbird &mdash; Dokumentim i Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=b6940f5a"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/translations.js?v=ad045675"></script>
+        <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Tregues" href="../genindex.html" />
+    <link rel="search" title="Kērko" href="../search.html" />
+    <link rel="next" title="Synchronizing with KDE Kontact" href="sync_kde.html" />
+    <link rel="prev" title="Synchronizing with macOS" href="sync_osx.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest user manual introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">What’s new for users in Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud Web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Files &amp; synchronization</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Using the Contacts app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Using the Calendar app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mail.html">Using the Mail app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">Setting out-of-office messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Synchronizing with Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">Synchronizing with iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">Synchronizing with macOS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Synchronizing with Thunderbird</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#recommended-method">Recommended method</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#contacts">Contacts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendars">Calendars</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#alternative-using-the-tbsync-addon">Alternative: Using the TbSync addon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alternative-using-the-cardbook-add-on-contacts-only">Alternative: Using the CardBook add-on (Contacts only)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Synchronizing with KDE Kontact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Synchronizing with the GNOME desktop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Synchronizing with Windows 10</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting your preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage connected browsers and devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">External Storage</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Groupware</a></li>
+      <li class="breadcrumb-item active">Synchronizing with Thunderbird</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/sync_thunderbird.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="synchronizing-with-thunderbird">
+<h1>Synchronizing with Thunderbird<a class="headerlink" href="#synchronizing-with-thunderbird" title="Link to this heading"></a></h1>
+<p><a class="reference external" href="https://www.thunderbird.net">Thunderbird</a> is a feature-rich and mature mail client that can be turned into a full-fledged Personal Information Manager (PIM). Since version 102, it supports address book synchronization via CardDAV and automatic discovery of calendars and address books available on the server.</p>
+<section id="recommended-method">
+<h2>Recommended method<a class="headerlink" href="#recommended-method" title="Link to this heading"></a></h2>
+<p>Since Thunderbird 102, the CardDAV &amp; CalDAV protocols are natively supported.</p>
+<section id="contacts">
+<h3>Contacts<a class="headerlink" href="#contacts" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>On the address book view, click the down arrow near <strong>New Address Book</strong> and choose <strong>Add CardDAV Address Book</strong>.</p></li>
+<li><p>In the next window, type your <strong>Username</strong> and <strong>Location</strong> (Server URL).</p></li>
+<li><p>The next window will ask for your username and password for this account.</p></li>
+<li><p>The previous window will be refreshed and ask you which address books you wish to sync.</p></li>
+<li><p>Choose and then click <strong>Continue</strong>.</p></li>
+</ol>
+<p>If you later want to add a new address book, you can redo all of those steps and only the books not already synchronized will be suggested.</p>
+</section>
+<section id="calendars">
+<h3>Calendars<a class="headerlink" href="#calendars" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Go to the calendar view in Thunderbird and select the <strong>New Calendar…</strong> button at the bottom of the left side panel.</p></li>
+<li><p>Choose <strong>On the network</strong>:</p>
+<img alt="../../_images/new_calendar.png" src="../../_images/new_calendar.png" />
+</li>
+<li><p>Type your <strong>Username</strong> and <strong>Location</strong> (Server URL), then click on <strong>Find Calendars</strong>.</p></li>
+<li><p>Choose which calendars you want to add and click <strong>Subscribe</strong></p></li>
+</ol>
+<p>Same thing here, if you later want to add more calendars, just redo the procedure.</p>
+</section>
+</section>
+<section id="alternative-using-the-tbsync-addon">
+<h2>Alternative: Using the TbSync addon<a class="headerlink" href="#alternative-using-the-tbsync-addon" title="Link to this heading"></a></h2>
+<p>For this method, you need to have two add-ons installed:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://addons.thunderbird.net/en/thunderbird/addon/tbsync/">TbSync</a>.</p></li>
+<li><p><a class="reference external" href="https://addons.thunderbird.net/en/thunderbird/addon/dav-4-tbsync/">TbSync provider for CalDAV and CardDAV</a>.</p></li>
+</ol>
+<p>When they are installed, go to <strong>Extras</strong>/<strong>Synchronization settings (TbSync)</strong> if you are on Windows, or <strong>Edit/Synchronization settings (TbSync)</strong> if on Linux, then:</p>
+<ol class="arabic simple">
+<li><p>In the account manager choose <strong>Add new account</strong> &gt; <strong>CalDAV &amp; CardDAV</strong></p></li>
+<li><p>In the next window, go with the default called <strong>Automatic Configuration</strong> and click <strong>Next</strong></p></li>
+<li><p>Enter an <strong>Account name</strong> (which you can freely choose), a <strong>User name</strong>, a <strong>Password</strong>, the <strong>Server URL</strong>, and click <strong>Next</strong></p></li>
+<li><p>In the next window, TbSync should have auto-discovered the CalDAV and CardDAV addresses. When it has, click <strong>Finish</strong></p></li>
+<li><p>Check the <strong>Enable and synchronize this account</strong> box. TbSync will now discover all address books and calendars your account has access to on the server</p></li>
+<li><p>Check the box next to each calendar and address book you want to have synchronized, set how often you want them to be synchronized, and push the button <strong>synchronize now</strong></p></li>
+<li><p>After the first successful synchronization is complete, you can close the window.</p></li>
+</ol>
+<p>Henceforth, TbSync will do the work for you. You are done with the basic configuration and can skip the next sections unless you need a more advanced address book.</p>
+</section>
+<section id="alternative-using-the-cardbook-add-on-contacts-only">
+<h2>Alternative: Using the CardBook add-on (Contacts only)<a class="headerlink" href="#alternative-using-the-cardbook-add-on-contacts-only" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://addons.thunderbird.net/en/thunderbird/addon/cardbook/">CardBook</a> is an advanced alternative to Thunderbird’s address book, which supports CardDAV. You can have TbSync and CardBook installed in parallel.</p>
+<ol class="arabic">
+<li><p>Click the CardBook icon in the upper right corner of Thunderbird:</p>
+<img alt="../../_images/cardbook_icon.png" src="../../_images/cardbook_icon.png" />
+</li>
+<li><p>In CardBook:</p>
+<ul class="simple">
+<li><p>Go to Address book &gt; New Address book <strong>Remote</strong> &gt; Next</p></li>
+<li><p>Select <strong>CardDAV</strong>, fill in the address of your Nextcloud server, your user name and password</p></li>
+</ul>
+<img alt="../../_images/new_addressbook.png" src="../../_images/new_addressbook.png" />
+</li>
+<li><p>Click on «Validate», click Next, then choose the name of the address book and click Next again:</p>
+<img alt="../../_images/addressbook_name.png" src="../../_images/addressbook_name.png" />
+</li>
+<li><p>When you are finished, CardBook synchronizes your address books. You can always trigger a synchronization manually by clicking «Synchronize» in the top left corner of CardBook:</p>
+<img alt="../../_images/synchronize_cardbook.png" src="../../_images/synchronize_cardbook.png" />
+</li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sync_osx.html" class="btn btn-neutral float-left" title="Synchronizing with macOS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sync_kde.html" class="btn btn-neutral float-right" title="Synchronizing with KDE Kontact" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/af/">af</a></dd>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/el_GR/">el_GR</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/eo/">eo</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/eu/">eu</a></dd>
+<dd><a href="/server/latest/user_manual/fi_FI/">fi_FI</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/hr/">hr</a></dd>
+<dd><a href="/server/latest/user_manual/hu/">hu</a></dd>
+<dd><a href="/server/latest/user_manual/hu_HU/">hu_HU</a></dd>
+<dd><a href="/server/latest/user_manual/id/">id</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/ja_JP/">ja_JP</a></dd>
+<dd><a href="/server/latest/user_manual/ko/">ko</a></dd>
+<dd><a href="/server/latest/user_manual/mn/">mn</a></dd>
+<dd><a href="/server/latest/user_manual/nb_NO/">nb_NO</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/nn/">nn</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/pt_PT/">pt_PT</a></dd>
+<dd><a href="/server/latest/user_manual/ro/">ro</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/si/">si</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sq/">sq</a></dd>
+<dd><a href="/server/latest/user_manual/sr/">sr</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/ta/">ta</a></dd>
+<dd><a href="/server/latest/user_manual/th/">th</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/uk/">uk</a></dd>
+<dd><a href="/server/latest/user_manual/uz/">uz</a></dd>
+<dd><a href="/server/latest/user_manual/vi/">vi</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+<dd><a href="/server/latest/user_manual/zh_TW/">zh_TW</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/user_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/user_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/28/user_manual">28</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

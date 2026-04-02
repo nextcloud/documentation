@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AppAPI and External Apps &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AI as a Service" href="ai_as_a_service.html" />
+    <link rel="prev" title="App: Context Chat" href="app_context_chat.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Artificial Intelligence</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_assistant.html">Nextcloud Assistant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_translate.html">App: Local Machine translation (translate)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_llm2.html">App: Local large language model (llm2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_stt_whisper2.html">App: Local Whisper Speech-To-Text (stt_whisper2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_recognize.html">App: Recognize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_context_chat.html">App: Context Chat</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">AppAPI and External Apps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#faq">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ai_as_a_service.html">AI as a Service</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Artificial Intelligence</a></li>
+      <li class="breadcrumb-item active">AppAPI and External Apps</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/ai/app_api_and_external_apps.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="appapi-and-external-apps">
+<h1>AppAPI and External Apps<a class="headerlink" href="#appapi-and-external-apps" title="Link to this heading"></a></h1>
+<p id="ai-app-api">Previously, Nextcloud only supported applications written in the PHP programming language. In order to support a wider range of use cases,
+the External App ecosystem was introduced, which allows installing apps that are docker containers.</p>
+<p>Most of our AI apps nowadays are ExApps (External Apps) and thus require some preparation of your Nextcloud before you can install them.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>You will need to install the <a class="reference external" href="https://apps.nextcloud.com/apps/app_api">AppAPI</a> Nextcloud app from the app store.</p></li>
+<li><p>You will need to set up a Deploy Daemon in the AppAPI admin settings. A Deploy Daemon is a way for Nextcloud to install and communicate with and control External Apps.</p>
+<ol class="arabic simple">
+<li><p>You will need to <a class="reference external" href="https://github.com/cloud-py-api/docker-socket-proxy#readme">setup a docker container called docker-socket-proxy that proxies access to docker for your Nextcloud instance</a></p></li>
+<li><p>Now you can connect your Nextcloud to the docker-socket-proxy by entering its details in the Deploy Daemon creation form in the AppAPI settings.</p></li>
+<li><p>Make sure to enable GPU support if you want the installed ExApps to be able to use the GPU</p></li>
+</ol>
+</li>
+<li><p>You can now install ExApps from the Nextcloud Appstore by clicking “Install” on the respective app in the AppAPI apps page.</p></li>
+</ol>
+</section>
+<section id="faq">
+<h2>FAQ<a class="headerlink" href="#faq" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>I have two graphic cards XXX with 6/8/Y GB of ram each, how can I run something what does not fit in one graphic card?
+* Distributing models across multiple GPUs is currently not supported. You will need a GPU that fits all of the model you are trying to use.</p></li>
+<li><p>I have YYY graphic card that does not supports CUDA - can I use it and how?
+* No, our AI apps require GPUs with CUDA support to function</p></li>
+<li><p>What is the minimum VRAM size requirement for a GPU if I want to install multiple apps?
+* When running multiple ExApps on the same GPU, it is currently required that the GPU can hold the largest model of the apps you install</p></li>
+<li><p>Is it possible to add more graphics cards for my instance to enable parallel requests or to speed up one request?
+* Parallel processing of AI workloads of the same app with multiple GPUs is currently not supported</p></li>
+<li><p>Can I use in parallel CPU and GPU for AI processing?
+* No, you can only process AI workloads for one app either on CPU or GPU. Between apps you can decide which app you want to run on CPU or GPU.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="app_context_chat.html" class="btn btn-neutral float-left" title="App: Context Chat" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ai_as_a_service.html" class="btn btn-neutral float-right" title="AI as a Service" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/admin_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/admin_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/28/admin_manual">28</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/admin_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/admin_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

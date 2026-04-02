@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="pl" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Udostępnianie plików &mdash; Nextcloud latest User Manual latest - dokumentacja</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=4c1cb254"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/translations.js?v=a186e9ce"></script>
+        <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Indeks" href="../genindex.html" />
+    <link rel="search" title="Szukaj" href="../search.html" />
+    <link rel="next" title="Anonimowe przesyłanie plików" href="file_drop.html" />
+    <link rel="prev" title="Szyfrowanie plików Nextcloud na serwerze" href="encrypting_files.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Szukaj" aria-label="Szukaj" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest wprowadzenie do instrukcji obsługi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Co nowego dla użytkowników w Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Interfejs sieciowy Nextcloud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Pliki i synchronizacja</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Dostęp do plików za pomocą interfejsu internetowego Nextcloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Dostęp do plików Nextcloud za pomocą WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Zarządzanie usuniętymi plikami</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Synchronizacja stacjonarna i mobilna</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Szyfrowanie plików Nextcloud na serwerze</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Udostępnianie plików</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#public-link-shares">Udostępnianie linków publicznych</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#internal-shares-with-users-and-groups">Udostępnienia wewnętrzne użytkownikom i grupom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#others-with-access">Inni z dostępem</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#federated-shares">Udostępnienia sfederowane</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-new-federation-share">Tworzenie nowego udostępnienia federacyjnego</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-public-share-to-your-nextcloud">Dodawanie udostepniania publicznego do Nextcloud</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Anonimowe przesyłanie plików</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Przesyłanie dużych plików</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Limit miejsca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Kontrola wersji</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projektowanie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Przeniesienie własności</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Korzystanie z udostępnień federacyjnych</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Oprogramowanie do pracy grupowej</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Ustawianie preferencji</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Uniwersalny dostęp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Korzystanie z uwierzytelniania dwuskładnikowego</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Zarządzaj połączonymi przeglądarkami i urządzeniami</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Pamięć zewnętrzna</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Pliki i synchronizacja</a></li>
+      <li class="breadcrumb-item active">Udostępnianie plików</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/sharing.rst" class="fa fa-github"> Edytuj na GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-sharing">
+<h1>Udostępnianie plików<a class="headerlink" href="#file-sharing" title="Link to this heading"></a></h1>
+<p>Użytkownicy Nextcloud mogą udostępniać pliki i katalogi. Możliwe docelowe opcje to:</p>
+<ul class="simple">
+<li><p>linki publiczne</p></li>
+<li><p>użytkownicy</p></li>
+<li><p>grupy</p></li>
+<li><p>kręgi</p></li>
+<li><p>rozmowy</p></li>
+<li><p>użytkownicy lub grupy na sfederowanych serwerach Nextcloud</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Informacja</p>
+<p>Niektóre opcje mogą być niedostępne z powodu konfiguracji administracyjnej. Szczegółowe informacje można znaleźć w <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/file_sharing_configuration.html">dokumentacji administratora</a>.</p>
+</div>
+<section id="public-link-shares">
+<h2>Udostępnianie linków publicznych<a class="headerlink" href="#public-link-shares" title="Link to this heading"></a></h2>
+<p>Możesz udostępniać pliki i katalogi za pośrednictwem linków publicznych.</p>
+<p>Zostanie utworzony losowy 15-cyfrowy token. Link będzie wyglądał jak <code class="docutils literal notranslate"><span class="pre">https://chmura.przyklad.com/s/yxcFKRWBJqYYzp4</span></code>.</p>
+<p>Dla udostępnień publicznych <em>katalogów</em> dostępnych jest kilka opcji:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_public_folder.png" src="../../_images/sharing_public_folder.png" />
+</figure>
+<ul class="simple">
+<li><p><strong>Tylko do odczytu</strong> do umożliwienia przeglądania i pobierania</p></li>
+<li><p><strong>Zezwól na przesyłanie i edycję</strong></p></li>
+<li><p>Dzięki <strong>Upuszczaniom plików</strong>, użytkownik dla którego zostały udostępnione pliki może je wysyłać bez przeglądania, ale tylko do katalogu, w którym już się znajdują.</p></li>
+<li><p><strong>Ukryj pobieranie</strong> ukrywa przyciski pobierania i domyślne opcje kliknięcia prawym przyciskiem myszy w przeglądarce, aby uniemożliwić pobieranie dla osoby udostępniającej</p></li>
+<li><p><strong>Ochrona hasłem</strong></p></li>
+<li><p><strong>Ustaw datę wygaśnięcia</strong> automatycznie wyłączy udostępnianie</p></li>
+<li><p><strong>Uwaga dla odbiorcy</strong></p></li>
+<li><p><strong>Zatrzymaj udostępnianie</strong> cofa udostępnianie</p></li>
+<li><p><strong>Dodaj kolejny link</strong> utwarza wiele linków publicznych z różnymi uprawnieniami</p></li>
+</ul>
+<p>W przypadku publicznych udostępniania <em>plików</em> możesz zezwolić na edycję pliku za pomocą jednego z rozwiązań do edycji zespołowej Nextcloud:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_public_file.png" src="../../_images/sharing_public_file.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Informacja</p>
+<p>Password protection as well as file expiration are also propagated using Federated File Sharing since Nextcloud 22.</p>
+</div>
+</section>
+<section id="internal-shares-with-users-and-groups">
+<h2>Udostępnienia wewnętrzne użytkownikom i grupom<a class="headerlink" href="#internal-shares-with-users-and-groups" title="Link to this heading"></a></h2>
+<p>Podczas udostępniania użytkownikom, grupom, kręgom lub członkom rozmowy w Talku prawa do plików lub zawartości katalogów mogą być ustawiane:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_internal.png" src="../../_images/sharing_internal.png" />
+</figure>
+<p>Jako użytkownik dla którego zostało udostępnione udostępnienie możesz skonfigurować je następująco: czy chcesz automatycznie akceptować wszystkie przychodzące udostępnienia i dodawać je do katalogu głównego, czy też chcesz za każdym razem otrzymywać pytanie o zaakceptowaniu lub odrzuceniu udostępnienia.</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_internal_acceptNotification.png" src="../../_images/sharing_internal_acceptNotification.png" />
+</figure>
+<p>Aby dostosować ustawienie akceptacji, przejdź do <strong>Ustawienia</strong> &gt; <strong>Osobiste</strong> &gt; <strong>Udostępnianie</strong>:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_autoAcceptSetting.png" src="../../_images/sharing_autoAcceptSetting.png" />
+</figure>
+</section>
+<section id="others-with-access">
+<h2>Inni z dostępem<a class="headerlink" href="#others-with-access" title="Link to this heading"></a></h2>
+<p>Aby dowiedzieć się, czy plik lub katalog jest dostępny dla innych poprzez udostępnianie wyższego poziomu hierarchii katalogów, kliknij <strong>Inni z dostępem</strong> w zakładce udostępnienia:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_others-with-access__collapsed.png" src="../../_images/sharing_others-with-access__collapsed.png" />
+</figure>
+<p>Lista pokazuje wszystkich użytkowników, grupy, czaty itp., dla których bieżący obiekt uzyskał dostęp poprzez udostępnienia nadrzędnego katalogu w hierarchii:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_others-with-access__details.png" src="../../_images/sharing_others-with-access__details.png" />
+</figure>
+<p>Kliknij w trzy kropki, aby:</p>
+<ul class="simple">
+<li><p>zobaczyć, kto zainicjował udostępnianie</p></li>
+<li><p>zobaczyć, gdzie zainicjowano udostępnianie (kliknij, aby przejść do katalogu, o ile masz do niego dostęp)</p></li>
+<li><p>cofnij udostępnianie początkowego udostępnienia (dostępne tylko dla właściciela udostępnienia)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Informacja</p>
+<p>Te informacje są widoczne tylko dla właściciela pliku/katalogu lub użytkowników dla których zostały udostępnione pliki z prawami do ponownego udostępniania.</p>
+</div>
+</section>
+</section>
+<section id="federated-shares">
+<h1>Udostępnienia sfederowane<a class="headerlink" href="#federated-shares" title="Link to this heading"></a></h1>
+<p>Udostępnianie federacyjne umożliwia montowanie udostępnionych plików ze zdalnych serwerów Nextcloud, w efekcie tworząc własną chmurę Nextclouds. Możesz tworzyć bezpośrednie linki udostępniania użytkownikom na innych serwerach Nextcloud.</p>
+<section id="creating-a-new-federation-share">
+<h2>Tworzenie nowego udostępnienia federacyjnego<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
+<p>Udostępnianie federacyjne jest domyślnie włączone. Wykonaj następujące kroki, aby utworzyć nowe udostępnienie z innymi serwerami Nextcloud lub ownCloud:</p>
+<p>Przejdź do strony <code class="docutils literal notranslate"><span class="pre">Pliki</span></code> i kliknij ikonę Udostępnij w pliku lub katalogu, który chcesz udostępnić. W pasku bocznym wprowadź nazwę użytkownika i adres URL zdalnego użytkownika w postaci: <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code>. W tym przykładzie jest to <code class="docutils literal notranslate"><span class="pre">bob&#64;chmura.przyklad.com</span></code>:</p>
+<figure class="align-default">
+<img alt="../../_images/share-federation-1.png" src="../../_images/share-federation-1.png" />
+</figure>
+<p>Użytkownik dla którego zostały udostępnione pliki, otrzymuje powiadomienie w swojej witrynie Nextcloud, dzięki czemu może zaakceptować lub odrzucić przychodzące udostępnienie:</p>
+<figure class="align-default">
+<img alt="../../_images/share-federation-2-notification.png" src="../../_images/share-federation-2-notification.png" />
+</figure>
+</section>
+<section id="adding-a-public-share-to-your-nextcloud">
+<h2>Dodawanie udostepniania publicznego do Nextcloud<a class="headerlink" href="#adding-a-public-share-to-your-nextcloud" title="Link to this heading"></a></h2>
+<p>Strony Nextcloud udostępniania linku publicznego oferują opcję dodania tego pliku lub katalogu jako udostępnianie federacyjne do własnej instancji Nextcloud. Po prostu wprowadź swój <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code>, tak jak pokazano powyżej dla udostępnień wychodzących:</p>
+<figure class="align-default">
+<img alt="../../_images/share-federation-3-public.png" src="../../_images/share-federation-3-public.png" />
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="encrypting_files.html" class="btn btn-neutral float-left" title="Szyfrowanie plików Nextcloud na serwerze" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Poprzedni</a>
+        <a href="file_drop.html" class="btn btn-neutral float-right" title="Anonimowe przesyłanie plików" accesskey="n" rel="next">Następny <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Prawa zastrzeżone 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/af/">af</a></dd>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/el_GR/">el_GR</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/eo/">eo</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/eu/">eu</a></dd>
+<dd><a href="/server/latest/user_manual/fi_FI/">fi_FI</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/hr/">hr</a></dd>
+<dd><a href="/server/latest/user_manual/hu/">hu</a></dd>
+<dd><a href="/server/latest/user_manual/hu_HU/">hu_HU</a></dd>
+<dd><a href="/server/latest/user_manual/id/">id</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/ja_JP/">ja_JP</a></dd>
+<dd><a href="/server/latest/user_manual/ko/">ko</a></dd>
+<dd><a href="/server/latest/user_manual/mn/">mn</a></dd>
+<dd><a href="/server/latest/user_manual/nb_NO/">nb_NO</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/nn/">nn</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/pt_PT/">pt_PT</a></dd>
+<dd><a href="/server/latest/user_manual/ro/">ro</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/si/">si</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sq/">sq</a></dd>
+<dd><a href="/server/latest/user_manual/sr/">sr</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/ta/">ta</a></dd>
+<dd><a href="/server/latest/user_manual/th/">th</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/uk/">uk</a></dd>
+<dd><a href="/server/latest/user_manual/uz/">uz</a></dd>
+<dd><a href="/server/latest/user_manual/vi/">vi</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+<dd><a href="/server/latest/user_manual/zh_TW/">zh_TW</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Wersje</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/user_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/user_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/28/user_manual">28</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Pliki do pobrania</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Przeczytaj dokumentację</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Strona główna projektu</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Wydania</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

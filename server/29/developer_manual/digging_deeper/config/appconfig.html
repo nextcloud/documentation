@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AppConfig &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Debugging" href="../debugging.html" />
+    <link rel="prev" title="Config &amp; Preferences" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Config &amp; Preferences</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">AppConfig</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#appframework">AppFramework</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#concept-overview">Concept overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#consuming-the-appconfig-api">Consuming the AppConfig API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../continuous_integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../email.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../files-metadata.html">Files Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../http_client.html">HTTP Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../psr.html">PSR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rest_apis.html">REST APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../speech-to-text.html">Speech-To-Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../talk.html">Talk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../translation.html">Machine Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../text_processing.html">Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../text2image.html">Text-To-Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dashboard.html">Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference.html">Reference providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../groupware/index.html">Groupware integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../web_host_metadata.html">Web Host Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../status.html">User Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security.html">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../profile.html">Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_migration.html">User migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../profiler.html">Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deadlock.html">Deadlocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phonenumberutil.html">Phone number util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../out_of_office.html">Out-of-office periods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../time.html">Working with time</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Digging deeper</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Config &amp; Preferences</a></li>
+      <li class="breadcrumb-item active">AppConfig</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/config/appconfig.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="appconfig">
+<h1>AppConfig<a class="headerlink" href="#appconfig" title="Link to this heading"></a></h1>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 29.</span></p>
+</div>
+<p>Since v29, Nextcloud includes a new API to manage your app configuration.</p>
+<section id="appframework">
+<h2>AppFramework<a class="headerlink" href="#appframework" title="Link to this heading"></a></h2>
+<p>The AppConfig API is also available in the AppFramework, allowing you to use it in your app.
+All of the methods are available in the <code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\Services\IAppConfig</span></code> interface.
+Any of the methods below will automatically be scoped to your app, meaning you can omit the app id.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Services\IAppConfig</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MyClass</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">IAppConfig</span> <span class="nv">$appConfig</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getSomeConfig</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">appConfig</span><span class="o">-&gt;</span><span class="na">getAppValueString</span><span class="p">(</span><span class="s1">&#39;mykey&#39;</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="concept-overview">
+<h2>Concept overview<a class="headerlink" href="#concept-overview" title="Link to this heading"></a></h2>
+<p>Nextcloud includes an API to store and access your app configuration values.
+On top of storing and accessing your configuration values, <code class="docutils literal notranslate"><span class="pre">IAppConfig</span></code> comes with different concepts:</p>
+<section id="typed-config-values">
+<span id="appconfig-concepts"></span><h3>Typed Config Values<a class="headerlink" href="#typed-config-values" title="Link to this heading"></a></h3>
+<p>To ensure better stability of your code, config values are typed enforced.
+Type is set only once, at creation in database, and cannot be changed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Value stored before Nextcloud 29 are automatically typed as <cite>mixed</cite>. However, it is not possible to manually set a value as <cite>mixed</cite>.</p></li>
+<li><p>Value not set as <cite>mixed</cite> must be retrieved using the corresponding method.</p></li>
+</ul>
+</div>
+</section>
+<section id="values-sensitivity">
+<h3>Values Sensitivity<a class="headerlink" href="#values-sensitivity" title="Link to this heading"></a></h3>
+<p>When storing a new config value, it can be set as <cite>sensitive</cite>.
+Configuration values set as <cite>sensitive</cite> are hidden from system reports and stored encrypted in the database.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nx">setValueString</span><span class="p">(</span>
+    <span class="s1">&#39;myapp&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mykey&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;myvalue&#39;</span><span class="p">,</span>
+    <span class="nx">sensitive</span><span class="o">:</span> <span class="k">true</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Once set as <cite>sensitive</cite>, it can only be reverted using <code class="docutils literal notranslate"><span class="pre">updateSensitive()</span></code></p>
+</div>
+</section>
+<section id="lazy-loading">
+<h3>Lazy Loading<a class="headerlink" href="#lazy-loading" title="Link to this heading"></a></h3>
+<p>To lighten the loading of all apps configuration at load, you have the possibility to set config values as <cite>lazy</cite>.
+All <cite>lazy</cite> configuration values are loaded from the database once one is read.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nx">setValueString</span><span class="p">(</span>
+    <span class="s1">&#39;myapp&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mykey&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;myvalue&#39;</span><span class="p">,</span>
+    <span class="nx">lazy</span><span class="o">:</span> <span class="k">true</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Flag as <cite>lazy</cite> as much ‘large block of text’ entries (json, key pairs, …) as possible,</p></li>
+<li><p>flag as <cite>lazy</cite> entries that are needed on quiet endpoints,</p></li>
+<li><p>do <strong>not</strong> flag as <cite>lazy</cite> part of code that might be called during the global loading of the instance and its apps.</p></li>
+</ul>
+</div>
+<p>Retrieving the configuration value will require to specify the fact that it is stored as <cite>lazy</cite>.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nx">getValueString</span><span class="p">(</span>
+    <span class="s1">&#39;myapp&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mykey&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;default&#39;</span><span class="p">,</span>
+    <span class="nx">lazy</span><span class="o">:</span> <span class="k">true</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Requesting with <code class="docutils literal notranslate"><span class="pre">1azy:</span> <span class="pre">false</span></code> will returns the default value if configuration value is stored as <cite>lazy</cite>.</p></li>
+<li><p>Requesting with <code class="docutils literal notranslate"><span class="pre">lazy:</span> <span class="pre">true</span></code> will returns the correct value even if configuration value is stored as <cite>non-lazy (as there is a huge probability that the `non-lazy</cite> value are already loaded)</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="consuming-the-appconfig-api">
+<h2>Consuming the AppConfig API<a class="headerlink" href="#consuming-the-appconfig-api" title="Link to this heading"></a></h2>
+<p>To consume the API, you first need to <a class="reference internal" href="../../basics/dependency_injection.html#id2"><span class="std std-ref">inject</span></a> <code class="docutils literal notranslate"><span class="pre">\OCP\IAppConfig</span></code></p>
+<section id="storing-a-config-value">
+<h3>Storing a config value<a class="headerlink" href="#storing-a-config-value" title="Link to this heading"></a></h3>
+<p>API provide multiple methods to store a config value, based on its type.
+The global behavior for each of those methods is to call them using:</p>
+<ul class="simple">
+<li><p>app id (string),</p></li>
+<li><p>config key (string),</p></li>
+<li><p>config value,</p></li>
+<li><p>lazy flag (boolean),</p></li>
+<li><p>sensitivity flag (boolean)</p></li>
+</ul>
+<p>The returned boolean will be true if an update of the database were needed.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">setValueString(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">string</span> <span class="pre">$value,</span> <span class="pre">bool</span> <span class="pre">$lazy,</span> <span class="pre">bool</span> <span class="pre">$sensitive)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setValueInt(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">int</span> <span class="pre">$value,</span> <span class="pre">bool</span> <span class="pre">$lazy,</span> <span class="pre">bool</span> <span class="pre">$sensitive)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setValueFloat(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">float</span> <span class="pre">$value,</span> <span class="pre">bool</span> <span class="pre">$lazy,</span> <span class="pre">bool</span> <span class="pre">$sensitive)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setValueBool(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">bool</span> <span class="pre">$value,</span> <span class="pre">bool</span> <span class="pre">$lazy)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setValueArray(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">array</span> <span class="pre">$value,</span> <span class="pre">bool</span> <span class="pre">$lazy,</span> <span class="pre">bool</span> <span class="pre">$sensitive)</span></code></p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="retrieving-a-config-value">
+<h3>Retrieving a config value<a class="headerlink" href="#retrieving-a-config-value" title="Link to this heading"></a></h3>
+<p>Configuration values are to be retrieved using one of the return typed method from the list:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">getValueString(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">string</span> <span class="pre">$default,</span> <span class="pre">bool</span> <span class="pre">$lazy)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getValueInt(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">int</span> <span class="pre">$default,</span> <span class="pre">bool</span> <span class="pre">$lazy)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getValueFloat(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">float</span> <span class="pre">$default,</span> <span class="pre">bool</span> <span class="pre">$lazy)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getValueBool(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">bool</span> <span class="pre">$default,</span> <span class="pre">bool</span> <span class="pre">$lazy)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getValueArray(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">array</span> <span class="pre">$default,</span> <span class="pre">bool</span> <span class="pre">$lazy)</span></code></p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="managing-config-keys">
+<h3>Managing config keys<a class="headerlink" href="#managing-config-keys" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">getApps()</span></code> returns list of ids of apps with stored configuration values</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getKeys(string</span> <span class="pre">$app)</span></code> returns list of stored configuration keys for an app by its id</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hasKey(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">?bool</span> <span class="pre">$lazy)</span></code> returns TRUE if key can be found</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isSensitive(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">?bool</span> <span class="pre">$lazy)</span></code> returns TRUE if value is set as <cite>sensitive</cite></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isLazy(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key)</span></code> returns TRUE if value is set as <cite>lazy</cite></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">updateSensitive(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">bool</span> <span class="pre">$sensitive)</span></code> update <cite>sensitive</cite> status of a configuration value</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">updateLazy(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key,</span> <span class="pre">bool</span> <span class="pre">$lazy)</span></code> update <cite>lazy</cite> status of a configuration value</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getValueType(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key)</span></code> returns bitflag defining the type of a configuration value</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">deleteKey(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key)</span></code> delete a config key and its value</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">deleteApp(string</span> <span class="pre">$app)</span></code> delete all config keys from an app (using app id)</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some method allows <code class="docutils literal notranslate"><span class="pre">$lazy</span></code> to be <code class="docutils literal notranslate"><span class="pre">null</span></code>, meaning that the search will be extended to all configuration values, <cite>lazy</cite> or not.</p>
+</div>
+</section>
+<section id="miscellaneous">
+<h3>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Link to this heading"></a></h3>
+<p>API also provide extra tools for broaded uses</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">getAllValues(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$prefix,</span> <span class="pre">bool</span> <span class="pre">$filtered)</span></code> returns all stored configuration values. <code class="docutils literal notranslate"><span class="pre">$filtered</span></code> can be set to TRUE to hide _sensitive_ values in the returned array</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">searchValues(string</span> <span class="pre">$key,</span> <span class="pre">bool</span> <span class="pre">$lazy)</span></code> search for apps and values that have a stored value for the specified configuration key.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getDetails(string</span> <span class="pre">$app,</span> <span class="pre">string</span> <span class="pre">$key)</span></code> get all details about a configuration key.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">convertTypeToInt(string</span> <span class="pre">$type)</span></code> convert human readable string to the bitflag defining the type of a value</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">convertTypeToString(int</span> <span class="pre">$type)</span></code> convert bitflag defining the type of a value to human readable string</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clearCache(bool</span> <span class="pre">$reload)</span></code> clear internal cache</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Config &amp; Preferences" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../debugging.html" class="btn btn-neutral float-right" title="Debugging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/developer_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/developer_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/28/developer_manual">28</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

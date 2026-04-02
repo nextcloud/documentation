@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ca" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Funcions avançades de Parla &mdash; Nextcloud latest User Manual latest documentació</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=8c4a028f"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/translations.js?v=d8dd923b"></script>
+        <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Índex" href="../genindex.html" />
+    <link rel="search" title="Cerca" href="../search.html" />
+    <link rel="next" title="Join a call or chat as guest" href="join_a_call_or_chat_as_guest.html" />
+    <link rel="prev" title="Basics of Nextcloud Talk" href="talk_basics.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest user manual introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Novetats per als usuaris a Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">La interfície web de Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Files &amp; synchronization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Talk</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="talk_basics.html">Basics of Nextcloud Talk</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Funcions avançades de Parla</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#matterbridge">Matterbridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lobby">Vestíbul</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#commands">Ordres</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#talk-from-files">Parla des de Fitxers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-tasks-from-chat-or-share-tasks-in-chat">Creeu tasques des del xat o compartiu tasques al xat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#breakout-rooms">Sales de treball</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configure-breakout-rooms">Configura les sales de treball</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#manage-breakout-rooms">Gestiona les sales de treball</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#call-recording">Call recording</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#manage-a-recording">Manage a recording</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#recording-consent">Recording consent</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#federated-conversation">Federated conversation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#send-and-accept-invites">Send and accept invites</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="join_a_call_or_chat_as_guest.html">Join a call or chat as guest</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting your preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage connected browsers and devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Emmagatzematge extern</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Talk</a></li>
+      <li class="breadcrumb-item active">Funcions avançades de Parla</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/talk/advanced_features.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="advanced-talk-features">
+<h1>Funcions avançades de Parla<a class="headerlink" href="#advanced-talk-features" title="Enllaça amb aquesta capçalera"></a></h1>
+<p>Nextcloud Parla té una sèrie de funcions avançades que els usuaris poden trobar útils.</p>
+<section id="matterbridge">
+<h2>Matterbridge<a class="headerlink" href="#matterbridge" title="Enllaça amb aquesta capçalera"></a></h2>
+<p>La integració de Matterbridge a Nextcloud Parla permet crear «ponts» entre converses de Parla i converses en altres serveis de xat com MS Teams, Discord, Matrix i altres. Podeu trobar una llista de protocols admesos a la pàgina Github de Matterbridge. &lt;<a class="reference external" href="https://github.com/42wim/matterbridge#features">https://github.com/42wim/matterbridge#features</a>&gt;`_</p>
+<p>Un moderador pot afegir una connexió Matterbridge a la configuració de la conversa de xat.</p>
+<img alt="../../_images/matterbridge-settings.png" src="../../_images/matterbridge-settings.png" />
+<p>Cadascun dels ponts té la seva pròpia necessitat de configuració. La informació per a la majoria està disponible al wiki de Matterbridge i es pot accedir darrere del menú <code class="docutils literal notranslate"><span class="pre">més</span> <span class="pre">informació</span></code> al menú <code class="docutils literal notranslate"><span class="pre">...</span></code>. També podeu <a class="reference external" href="https://github.com/42wim/matterbridge/wiki">accedir directament a la wiki.</a></p>
+</section>
+<section id="lobby">
+<h2>Vestíbul<a class="headerlink" href="#lobby" title="Enllaça amb aquesta capçalera"></a></h2>
+<p>La funció del vestíbul us permet mostrar als hostes una pantalla d’espera fins que comenci la trucada. Això és ideal per a seminaris web amb participants externs, per exemple.</p>
+<img alt="../../_images/lobby-in-talk.png" src="../../_images/lobby-in-talk.png" />
+<p>Podeu optar per permetre que els participants s’uneixin a la trucada en un moment específic o quan acomiadeu el vestíbul manualment.</p>
+</section>
+<section id="commands">
+<h2>Ordres<a class="headerlink" href="#commands" title="Enllaça amb aquesta capçalera"></a></h2>
+<p>Nextcloud permet als usuaris executar accions mitjançant ordres. Una ordre normalment sembla:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">/wiki</span> <span class="pre">avions</span></code></p>
+</div></blockquote>
+<p>Els administradors poden configurar, habilitar i desactivar ordres. Els usuaris poden utilitzar l’ordre <code class="docutils literal notranslate"><span class="pre">ajuda</span></code> per esbrinar quines ordres estan disponibles.</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">/help</span></code></p>
+</div></blockquote>
+<img alt="../../_images/command-help.png" src="../../_images/command-help.png" />
+<p>Trobeu més informació a la <a class="reference external" href="https://nextcloud-talk.readthedocs.io/en/stable/commands/">documentació administrativa de Parla.</a></p>
+</section>
+<section id="talk-from-files">
+<h2>Parla des de Fitxers<a class="headerlink" href="#talk-from-files" title="Enllaça amb aquesta capçalera"></a></h2>
+<p>A l’aplicació Fitxers, podeu xatejar sobre fitxers a la barra lateral i fins i tot rebre una trucada mentre l’editeu. Primer has d’unir-te al xat.</p>
+<img alt="../../_images/join-chat.png" src="../../_images/join-chat.png" />
+<img alt="../../_images/sidebar-chat.png" src="../../_images/sidebar-chat.png" />
+<p>A continuació, podeu xatejar o fer una trucada amb altres participants, fins i tot quan comenceu a editar el fitxer.</p>
+<img alt="../../_images/text-and-talk.png" src="../../_images/text-and-talk.png" />
+<p>A Parla, es crearà una conversa per al fitxer. Podeu xatejar des d’allà o tornar al fitxer utilitzant el menú <code class="docutils literal notranslate"><span class="pre">...</span></code> a la part superior dreta.</p>
+<img alt="../../_images/file-room.png" src="../../_images/file-room.png" />
+</section>
+<section id="create-tasks-from-chat-or-share-tasks-in-chat">
+<h2>Creeu tasques des del xat o compartiu tasques al xat<a class="headerlink" href="#create-tasks-from-chat-or-share-tasks-in-chat" title="Enllaça amb aquesta capçalera"></a></h2>
+<p>Si Targetes està instal·lat, podeu utilitzar el menú <code class="docutils literal notranslate"><span class="pre">...</span></code> d’un missatge de xat i convertir el missatge en una tasca de Targetes.</p>
+<img alt="../../_images/deck-talk-create-card-menu.png" src="../../_images/deck-talk-create-card-menu.png" />
+<img alt="../../_images/deck-talk-create-card-dialog.png" src="../../_images/deck-talk-create-card-dialog.png" />
+<p>Des de Targetes, podeu compartir tasques en converses de xat.</p>
+<img alt="../../_images/deck-talk-share-card-to-chat-menu.png" src="../../_images/deck-talk-share-card-to-chat-menu.png" />
+<img alt="../../_images/deck-talk-share-card-to-chat-in-talk.png" src="../../_images/deck-talk-share-card-to-chat-in-talk.png" />
+</section>
+<section id="breakout-rooms">
+<h2>Sales de treball<a class="headerlink" href="#breakout-rooms" title="Enllaça amb aquesta capçalera"></a></h2>
+<p>Les sales de treball et permeten dividir una trucada de Nextcloud Parla en grups més petits per a debats més centrats. El moderador de la trucada pot crear diverses sales de treball i assignar participants a cada sala.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Breakout rooms are currently not available in conversations that are joinable by guests (public conversations).</p>
+</div>
+<section id="configure-breakout-rooms">
+<h3>Configura les sales de treball<a class="headerlink" href="#configure-breakout-rooms" title="Enllaça amb aquesta capçalera"></a></h3>
+<p>Per crear sales de treball, has de ser moderador d’una conversa de grup. Feu clic al menú de la barra superior i feu clic a «Configura sales de grups».</p>
+<img alt="../../_images/talk-breakout-rooms-setup.png" src="../../_images/talk-breakout-rooms-setup.png" />
+<p>S’obrirà un diàleg on podeu especificar el nombre d’habitacions que voleu crear i el mètode d’assignació dels participants. Aquí se us presentaran 3 opcions:</p>
+<ul class="simple">
+<li><p><strong>Assigna participants automàticament</strong>: Parla assignarà participants automàticament a les sales.</p></li>
+<li><p><strong>Assigna participants manualment</strong>: passaràs per un editor de participants on podràs assignar participants a sales.</p></li>
+<li><p><strong>Permet als participants triar</strong>: els participants podran unir-se ells mateixos a les sales de treball.</p></li>
+</ul>
+<img alt="../../_images/talk-breakout-rooms-setup-dialog.png" src="../../_images/talk-breakout-rooms-setup-dialog.png" />
+</section>
+<section id="manage-breakout-rooms">
+<h3>Gestiona les sales de treball<a class="headerlink" href="#manage-breakout-rooms" title="Enllaça amb aquesta capçalera"></a></h3>
+<p>Un cop creades les sales de treball, les podreu veure a la barra lateral.</p>
+<img alt="../../_images/talk-breakout-rooms-sidebar.png" src="../../_images/talk-breakout-rooms-sidebar.png" />
+<p>Des de la capçalera de la barra lateral</p>
+<ul class="simple">
+<li><p><strong>Iniciar i aturar les sales de treball</strong>: això traslladarà tots els usuaris de la conversa parental a les seves respectives sales de treball.</p></li>
+<li><p><strong>Emet un missatge a totes les sales</strong>: això enviarà un missatge a totes les sales al mateix temps.</p></li>
+<li><p><strong>Fes canvis als participants assignats</strong>: això obrirà l’editor de participants on podràs canviar quins participants estan assignats a quina sala de treball. Des d’aquest diàleg també és possible suprimir les sales de treball.</p></li>
+</ul>
+<img alt="../../_images/talk-breakout-rooms-sidebar-header.png" src="../../_images/talk-breakout-rooms-sidebar-header.png" />
+<p>Des de l’element de la sala de grups de la barra lateral, també podeu unir-vos a una sala de grups particulars o enviar un missatge a una sala concreta.</p>
+<img alt="../../_images/talk-breakout-rooms-sidebar-item.png" src="../../_images/talk-breakout-rooms-sidebar-item.png" />
+</section>
+</section>
+<section id="call-recording">
+<h2>Call recording<a class="headerlink" href="#call-recording" title="Enllaça amb aquesta capçalera"></a></h2>
+<p>The recording feature provides users with an opportunity to:</p>
+<ul class="simple">
+<li><p>Start and stop recordings during a call.</p></li>
+<li><p>Record the video and audio stream of the speaker, as well as screen share.</p></li>
+<li><p>Access, share and download recorded files for future reference or distribution.</p></li>
+</ul>
+<p>Enabling this feature requires the recording server to be set up by the system administration.</p>
+<section id="manage-a-recording">
+<h3>Manage a recording<a class="headerlink" href="#manage-a-recording" title="Enllaça amb aquesta capçalera"></a></h3>
+<p>The moderator of the conversation can start a recording together with a call start or anytime during a call:</p>
+<ul class="simple">
+<li><p><strong>Before the call</strong>: tick the checkbox «Start recording immediately with the call» in «Media settings», then click on «Start call».</p></li>
+<li><p><strong>During the call</strong>: click on the top-bar menu, then click «Start recording».</p></li>
+</ul>
+<img alt="../../_images/start-recording-before-call.png" src="../../_images/start-recording-before-call.png" />
+<img alt="../../_images/start-recording-in-call.png" src="../../_images/start-recording-in-call.png" />
+<p>The recording will start shortly, and you will see a red indicator next to the call time. You can stop the recording at any time while the call is still ongoing by clicking on that indicator and selecting «Stop recording», or by using the same action in the top-bar menu. If you do not manually stop the recording, it will end automatically when the call ends.</p>
+<img alt="../../_images/stop-recording.png" src="../../_images/stop-recording.png" />
+<p>After stopping a recording, the server will take some time to prepare and save the recorded file. The moderator, who started the recording, receives a notification when the file is uploaded. From there, it can be shared in the chat.</p>
+<img alt="../../_images/share-recording-notification.png" src="../../_images/share-recording-notification.png" />
+<img alt="../../_images/shared-recordings.png" src="../../_images/shared-recordings.png" />
+</section>
+<section id="recording-consent">
+<h3>Recording consent<a class="headerlink" href="#recording-consent" title="Enllaça amb aquesta capçalera"></a></h3>
+<p>For compliance reasons with various privacy rights, it is possible to ask participants for consent to be recorded before joining the call. The system administration has the flexibility to utilize this feature in several ways:</p>
+<ul class="simple">
+<li><p>Disable consent completely.</p></li>
+<li><p>Enable mandatory consent system-wide, requiring consent for all conversations.</p></li>
+<li><p>Allow moderators to configure this option on a conversation level. In such cases, moderators can access the conversation settings to configure this option accordingly:</p></li>
+</ul>
+<img alt="../../_images/enable-recording-consent.png" src="../../_images/enable-recording-consent.png" />
+<p>If recording consent is enabled, every participant, including moderators, will see a highlighted section in the «Media settings» before joining a call.
+This section informs participants that the call may be recorded. To give explicit consent for recording, participants must check the box. If they do not give consent, they will not be allowed to join the call.</p>
+<img alt="../../_images/give-recording-consent.png" src="../../_images/give-recording-consent.png" />
+<img alt="../../_images/give-recording-consent-checked.png" src="../../_images/give-recording-consent-checked.png" />
+</section>
+</section>
+<section id="federated-conversation">
+<h2>Federated conversation<a class="headerlink" href="#federated-conversation" title="Enllaça amb aquesta capçalera"></a></h2>
+<p>With Federation feature, users can create conversations across different federated Talk instances and use Talk features as if they were on a same server.</p>
+<p><strong>Important</strong> Under current development. Basic chat features are available, more to come in the future!</p>
+<p>Feature is required to be set up by the system administration.</p>
+<section id="send-and-accept-invites">
+<h3>Send and accept invites<a class="headerlink" href="#send-and-accept-invites" title="Enllaça amb aquesta capçalera"></a></h3>
+<p>The moderator of the conversation can send an invite to participant on a different server:</p>
+<img alt="../../_images/federation-invite-send.png" src="../../_images/federation-invite-send.png" />
+<p>When receiving a notification, user will see a counter of pending invites above the conversations list.</p>
+<a class="reference internal image-reference" href="../../_images/federation-invite-pending.png"><img alt="../../_images/federation-invite-pending.png" src="../../_images/federation-invite-pending.png" style="width: 450px;" /></a>
+<p>Upon clicking it, more information will be provided about inviting party, and user can either accept or decline the invitation.</p>
+<a class="reference internal image-reference" href="../../_images/federation-invite-dialog.png"><img alt="../../_images/federation-invite-dialog.png" src="../../_images/federation-invite-dialog.png" style="width: 450px;" /></a>
+<p>By accepting the invite, conversation will appear in the list as any other one.</p>
+<a class="reference internal image-reference" href="../../_images/federation-conversations-list.png"><img alt="../../_images/federation-conversations-list.png" src="../../_images/federation-conversations-list.png" style="width: 450px;" /></a>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="talk_basics.html" class="btn btn-neutral float-left" title="Basics of Nextcloud Talk" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="join_a_call_or_chat_as_guest.html" class="btn btn-neutral float-right" title="Join a call or chat as guest" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/af/">af</a></dd>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/el_GR/">el_GR</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/eo/">eo</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/eu/">eu</a></dd>
+<dd><a href="/server/latest/user_manual/fi_FI/">fi_FI</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/hr/">hr</a></dd>
+<dd><a href="/server/latest/user_manual/hu/">hu</a></dd>
+<dd><a href="/server/latest/user_manual/hu_HU/">hu_HU</a></dd>
+<dd><a href="/server/latest/user_manual/id/">id</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/ja_JP/">ja_JP</a></dd>
+<dd><a href="/server/latest/user_manual/ko/">ko</a></dd>
+<dd><a href="/server/latest/user_manual/mn/">mn</a></dd>
+<dd><a href="/server/latest/user_manual/nb_NO/">nb_NO</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/nn/">nn</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/pt_PT/">pt_PT</a></dd>
+<dd><a href="/server/latest/user_manual/ro/">ro</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/si/">si</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sq/">sq</a></dd>
+<dd><a href="/server/latest/user_manual/sr/">sr</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/ta/">ta</a></dd>
+<dd><a href="/server/latest/user_manual/th/">th</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/uk/">uk</a></dd>
+<dd><a href="/server/latest/user_manual/uz/">uz</a></dd>
+<dd><a href="/server/latest/user_manual/vi/">vi</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+<dd><a href="/server/latest/user_manual/zh_TW/">zh_TW</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/user_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/user_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/28/user_manual">28</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Descàrregues</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Sobre la documentació</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Pàgina principal del projecte</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Versions compilades</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

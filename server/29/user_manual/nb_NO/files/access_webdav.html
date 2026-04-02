@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="nb-NO" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tilgang til Nextcloud filer ved hjelp av WebDAV &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=99743aa2"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/translations.js?v=5610e7d7"></script>
+        <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Søk" href="../search.html" />
+    <link rel="next" title="Administrere slettede filer" href="deleted_file_management.html" />
+    <link rel="prev" title="Få tilgang til filene dine ved hjelp av Nextcloud-nettgrensesnittet" href="access_webgui.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud |versjon| brukerhåndbok introduksjon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Hva er nytt for brukere i Nextcloud |versjon|</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud-nettgrensesnittet</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Filer og synkronisering</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Få tilgang til filene dine ved hjelp av Nextcloud-nettgrensesnittet</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tilgang til Nextcloud filer ved hjelp av WebDAV</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#official-nextcloud-desktop-and-mobile-clients">Offisielle Nextcloud PC og mobile klienter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#third-party-webdav-clients">Tredjeparts WebDAV-klienter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-linux">Tilgang til filer ved hjelp av Linux</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nautilus-file-manager">Nautilus filbehandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-with-kde-and-dolphin-file-manager">Tilgang til filer ved hjelp av KDE og Dolphin-filbehandler</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">Opprette WebDAV-monteringer på Linux-kommandolinjen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues">Kjente problemstillinger</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#problem">Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution">Løsning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Løsning</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-macos">Tilgang til filer ved hjelp av macOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-microsoft-windows">Tilgang til filer ved hjelp av Microsoft Windows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-the-command-line">Tilordne stasjoner med kommandolinjen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-windows-explorer">Tilordne stasjoner med Windows Utforsker</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-cyberduck">Tilgang til filer ved hjelp av Cyberduck</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-public-shares-over-webdav">Tilgang til offentlige delinger over WebDAV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-problems">Kjente problemer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-1">Løsning 1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-2">Løsning 2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Løsning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#answer">Svar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Løsning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Løsning</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-curl">Tilgang til filer ved hjelp av cURL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-winscp">Tilgang til filer ved hjelp av WinSCP</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Administrere slettede filer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Skrivebords- og mobilsynkronisering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Kryptering av Nextcloud filene dine på serveren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Fildeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Forente delinger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Foreta anonyme opplastinger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Store filopplastinger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Lagringskvote</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Versjonskontroll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Prosjekter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Overføre eierskap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Bruk av sammenknyttede deleressurser</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Angir preferansene dine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Bruker tofaktorautentisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Administrer tilkoblede nettlesere og enheter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Ekstern Lagring</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Filer og synkronisering</a></li>
+      <li class="breadcrumb-item active">Tilgang til Nextcloud filer ved hjelp av WebDAV</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webdav.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="accessing-nextcloud-files-using-webdav">
+<h1>Tilgang til Nextcloud filer ved hjelp av WebDAV<a class="headerlink" href="#accessing-nextcloud-files-using-webdav" title="Link to this heading"></a></h1>
+<p>Nextcloud støtter fullt ut WebDAV protokollen, og du kan koble til og synkronisere med Nextcloud Files via WebDAV. I dette kapittelet hvordan du kobler Linux-, macOS-, Windows- og mobile enheter til din Nextcloud server.</p>
+<p>WebDAV stands for Distributed Authoring and Versioning. It is an HTTP extension
+that makes it easy to create, read, and edit files hosted on remote Web servers. With
+a WebDAV client, you can access your Nextcloud Files (including shares) on Linux,
+macOS and Windows in a similar way as any remote network share, and stay synchronized.</p>
+<p>Før vi konfigurerer WebDAV, la oss ta en rask titt på den anbefalte måten å koble klienter til Netxcloud.</p>
+<section id="official-nextcloud-desktop-and-mobile-clients">
+<h2>Offisielle Nextcloud PC og mobile klienter<a class="headerlink" href="#official-nextcloud-desktop-and-mobile-clients" title="Link to this heading"></a></h2>
+<p>Den anbefalte måten å synkronisere en datamaskin med en Nextcloud-server er ved å bruke ’offisielle Nextcloud synkroniseringsklienter &lt;<a class="reference external" href="https://nextcloud.com/install/#install-clients">https://nextcloud.com/install/#install-clients</a>&gt;’_. Du kan konfigurere klienten til å lagre filer i hvilken som helst lokal katalog, og du kan velge hvilke kataloger på Nextcloud-serveren du vil synkronisere med. Klienten viser gjeldende tilkoblingsstatus og logger all aktivitet, slik at du alltid vet hvilke eksterne filer som er lastet ned til PCen, og du kan kontrollere at filer som er opprettet og oppdatert på den lokale PCen, er riktig synkronisert med serveren.</p>
+<p>Den anbefalte måten å synkronisere Android- og Apple iOS-enheter på er ved å bruke ’offisielle Nextcloud-mobilapper &lt;<a class="reference external" href="https://nextcloud.com/install/">https://nextcloud.com/install/</a>&gt;’_.</p>
+<p>For å koble de offisielle Nextcloud-appene til en Nextcloud-server, bruk samme URL som du bruker for å få tilgang til Nextcloud fra nettleseren din - for eksempel:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span> <span class="p">(</span><span class="k">if</span> <span class="n">Nextcloud</span> <span class="ow">is</span> <span class="n">installed</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">subdirectory</span> <span class="n">called</span> <span class="s2">&quot;nextcloud&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="third-party-webdav-clients">
+<h2>Tredjeparts WebDAV-klienter<a class="headerlink" href="#third-party-webdav-clients" title="Link to this heading"></a></h2>
+<p>Hvis du foretrekker det, kan du også koble datamaskinen til Nextcloud-serveren ved å bruke en tredjepartsklient som støtter WebDAV-protokollen (inkludert det som kan være innebygd i operativsystemet).</p>
+<p>Du kan også bruke WebDAV-kompatible apper fra tredjeparter til å koble mobilenheten din til Nextcloud.</p>
+<p>Når du bruker tredjepartsklienter, må du huske på at de kanskje ikke er optimalisert for bruk med Nextcloud eller implementerer funksjoner du anser som viktige for brukstilfellet.</p>
+<p>Mobilklienter som medlemmer av Nextcloud-fellesskapet har rapportert å bruke inkluderer:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://foldersync.io/">FolderSync (Android)</a></p></li>
+<li><p><a class="reference external" href="https://apps.apple.com/us/app/webdav-navigator/id382551345">WebDAV Navigator (iPhone)</a></p></li>
+</ul>
+<p>URL-en som skal brukes når du konfigurerer tredjepartsapper for å koble til Nextcloud, er litt lengre enn den for offisielle klienter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="p">(</span><span class="k">if</span> <span class="n">Nextcloud</span> <span class="ow">is</span> <span class="n">installed</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">subdirectory</span> <span class="n">called</span> <span class="s2">&quot;nextcloud&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Obs</p>
+<p>When using a third-party WebDAV client (including your operating system’s
+built-in client), you should use an application password for login rather than your
+regular password. In addition improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
+configure an application password, log into the Nextcloud Web interface, click on the avatar
+in the top right and choose <em>Personal settings</em>. Then choose <em>Security</em> in the left
+sidebar and scroll to the very bottom. There you can create an app password (which can
+also be revoked in the future without changing your main user password).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Obs</p>
+<p>I de følgende eksemplene bør du erstatte <strong>example.com/nextcloud</strong> med nettadressen til Nextcloud-serveren din (utelat katalogdelen hvis installasjonen er i roten til domenet ditt), og <strong>BRUKERNAVN</strong> med brukernavnet til den tilkoblede brukeren.</p>
+<p>Se WebDAV-URL-adressen (nederst til venstre i innstillingene) på Nextcloud.</p>
+</div>
+</section>
+<section id="accessing-files-using-linux">
+<h2>Tilgang til filer ved hjelp av Linux<a class="headerlink" href="#accessing-files-using-linux" title="Link to this heading"></a></h2>
+<p>Du kan få tilgang til filer i Linux-operativsystemer ved å bruke følgende metoder.</p>
+<section id="nautilus-file-manager">
+<h3>Nautilus filbehandler<a class="headerlink" href="#nautilus-file-manager" title="Link to this heading"></a></h3>
+<p><strong>Når du konfigurerer Nextcloud-kontoen din i ** ’GNOME Control Center &lt;.. /groupware/sync_gnome.html&gt;’_, **monteres filene dine automatisk av Nautilus som en delt WebDAV-ressurs, med mindre du velger bort filtilgang</strong>.</p>
+<p>Du kan også montere Nextcloud-filene dine manuelt. Bruk ’’ davs:// ’’ protokoll for å koble Nautilus filbehandler til din delte ressurs i Nextcloud:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">davs</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Obs</p>
+<p>Hvis servertilkoblingen din ikke er HTTPS-sikret, bruker du ’’<a class="reference external" href="dav://">dav://</a>’’ i stedet for ’’davs://’’:</p>
+</div>
+<img alt="Skjermbilde av konfigurering av Nautilus-filbehandler til å bruke WebDAV" src="../../_images/webdav_gnome3_nautilus.png" />
+<div class="admonition note">
+<p class="admonition-title">Obs</p>
+<p>Den samme metoden fungerer for andre filbehandlere som bruker GVFS, for eksempel MATEs Caja og Cinnamons Nemo.</p>
+</div>
+</section>
+<section id="accessing-files-with-kde-and-dolphin-file-manager">
+<h3>Tilgang til filer ved hjelp av KDE og Dolphin-filbehandler<a class="headerlink" href="#accessing-files-with-kde-and-dolphin-file-manager" title="Link to this heading"></a></h3>
+<p>For å få tilgang til Nextcloud-filene dine ved hjelp av Dolphin-filbehandleren i KDE, bruk ’’webdav://’-protokollen:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">webdav</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<img alt="Skjermbilde av konfigurering av Dolphin-filbehandler til å bruke WebDAV" src="../../_images/webdav_dolphin.png" />
+<p>Du kan opprette en permanent kobling til Nextcloud-serveren din:</p>
+<ol class="arabic simple">
+<li><p>Åpne Dolphin og klikk «Nettverk» i kolonnen «Steder» til venstre.</p></li>
+<li><p>Klikk på ikonet merket ** Legg til en nettverksmappe <a href="#id1"><span class="problematic" id="id2">**</span></a>. Den resulterende dialogboksen skal vises med WebDAV allerede valgt.</p></li>
+<li><p>Hvis WebDAV ikke er valgt, velg det.</p></li>
+<li><p>Klikk <strong>Neste</strong>.</p></li>
+<li><p>Angi følgende innstillinger:</p>
+<ul class="simple">
+<li><p>Navn: navnet du vil se i <strong>Steder</strong>-bokmerket, for eksempel Nextcloud.</p></li>
+<li><p>Bruker: Nextcloud-brukernavnet du brukte til å logge på, for eksempel admin.</p></li>
+<li><p>Server: Nextcloud-domenenavnet, for eksempel <strong>example.com</strong> (uten <strong>http://</strong> før eller kataloger etterpå).</p></li>
+<li><p>Mappe - Skriv inn banen ’’nextcloud/remote.php/dav/files/BRUKERNAVN/ ’’.</p></li>
+</ul>
+</li>
+<li><p>(Valgfritt) merk av for «Opprett ikon» for at et bokmerke skal vises i Steder-kolonnen.</p></li>
+<li><p>(Valgfritt) oppgi spesielle innstillinger eller et SSL-sertifikat i avkrysningsruten «Port &amp; Kryptert».</p></li>
+</ol>
+</section>
+</section>
+<section id="creating-webdav-mounts-on-the-linux-command-line">
+<h2>Opprette WebDAV-monteringer på Linux-kommandolinjen<a class="headerlink" href="#creating-webdav-mounts-on-the-linux-command-line" title="Link to this heading"></a></h2>
+<p>Du kan opprette WebDAV-monteringer fra Linux-kommandolinjen. Dette er nyttig hvis du foretrekker å få tilgang til Nextcloud på samme måte som alle andre eksterne filsystemmonteringer. Følgende eksempel viser hvordan du oppretter en personlig montering og får den montert automatisk hver gang du logger på Linux-datamaskinen.</p>
+<ol class="arabic">
+<li><p>Installer ’’davfs2’’ WebDAV-filsystemdriveren, som lar deg montere WebDAV-delinger akkurat som alle andre eksterne filsystemer. Bruk denne kommandoen for å installere den på Debian/Ubuntu:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Bruk denne kommandoen for å installere den på CentOS, Fedora og openSUSE:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Legg deg selv til «davfs2»-gruppen:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usermod</span> <span class="o">-</span><span class="n">aG</span> <span class="n">davfs2</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Deretter oppretter du en ’’nextcloud’’ katalog i hjemmekatalogen din for monteringspunktet, og ’’.davfs2 / ’’ for din personlige konfigurasjonsfil:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">~/</span><span class="n">nextcloud</span>
+<span class="n">mkdir</span> <span class="o">~/.</span><span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Kopier <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/secrets</span></code> til <code class="docutils literal notranslate"><span class="pre">~/.davfs2</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span>  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+</pre></div>
+</div>
+</li>
+<li><p>Sett deg selv som eier og gjør kun tillatelsene lese-skrive eier:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chown</span> <span class="o">&lt;</span><span class="n">linux_username</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">linux_username</span><span class="o">&gt;</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+<span class="n">chmod</span> <span class="mi">600</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+</pre></div>
+</div>
+</li>
+<li><p>Legg til din Nextcloud-påloggingsinformasjon til slutten av ’’ hemmeligheter ’’-filen, ved hjelp av Nextcloud-serverens URL og ditt Nextcloud brukernavn og passord:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/ &lt;username&gt; &lt;password&gt;
+or
+$PathToMountPoint $USERNAME $PASSWORD
+for example
+/home/user/nextcloud john 1234
+</pre></div>
+</div>
+</li>
+<li><p>Legg til monteringsinformasjonen til <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">linux_username</span><span class="o">&gt;/</span><span class="n">nextcloud</span> <span class="n">davfs</span> <span class="n">user</span><span class="p">,</span><span class="n">rw</span><span class="p">,</span><span class="n">auto</span> <span class="mi">0</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</li>
+<li><p>Test deretter at den monteres og godkjennes ved å kjøre følgende kommando. Hvis du konfigurerer det riktig, trenger du ikke root-tillatelser:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mount</span> <span class="o">~/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</li>
+<li><p>Du bør også kunne avmontere den:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">umount</span> <span class="o">~/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Nå, hver gang du logger inn på Linux-systemet ditt, skal Nextcloud-delingen automatisk monteres via WebDAV i katalogen ’’~/nextcloud’’. Hvis du foretrekker å montere den manuelt, endrer du ’’auto’’ til ’’noauto’’ i ’’/etc/fstab’’.</p>
+</section>
+<section id="known-issues">
+<h2>Kjente problemstillinger<a class="headerlink" href="#known-issues" title="Link to this heading"></a></h2>
+<section id="problem">
+<h3>Problem<a class="headerlink" href="#problem" title="Link to this heading"></a></h3>
+<p>Ressurs midlertidig utilgjengelig</p>
+</section>
+<section id="solution">
+<h3>Løsning<a class="headerlink" href="#solution" title="Link to this heading"></a></h3>
+<p>Hvis du opplever problemer når du oppretter en fil i katalogen, rediger ’’/etc/davfs2/davfs2.conf’’ og legg til:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">use_locks</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>Problem<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>Sertifikatadvarsler</p>
+</section>
+<section id="id2">
+<h3>Løsning<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>Hvis du bruker et selvsignert sertifikat, får du en advarsel. For å endre dette, må du konfigurere ’’davfs2’’ for å gjenkjenne sertifikatet ditt. Kopier ’’mycertificate.pem’’ til ’’/etc/davfs2/certs/’’. Deretter rediger ’’/etc/davfs2/davfs2.conf’’ og gjør linjen ’’servercert’’ aktiv. Legg nå til banen til sertifikatet ditt som i dette eksemplet:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">servercert</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">davfs2</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">mycertificate</span><span class="o">.</span><span class="n">pem</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="accessing-files-using-macos">
+<h2>Tilgang til filer ved hjelp av macOS<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Obs</p>
+<p>macOS Finder lider av en ’serie implementeringsproblemer &lt;<a class="reference external" href="http://sabre.io/dav/clients/finder/">http://sabre.io/dav/clients/finder/</a>&gt;’_ og bør bare brukes hvis Nextcloud-serveren kjører på <strong>Apache</strong> og <strong>mod_php</strong>, eller <strong>Nginx 1.3.8+</strong>. Alternative macOS-kompatible klienter som kan få tilgang til WebDAV-ressurser, inkluderer åpen kildekode-apper som ’Cyberduck &lt;<a class="reference external" href="https://cyberduck.io/">https://cyberduck.io/</a>&gt;’_ (se instruksjonene ’her &lt;<a class="reference external" href="https://docs.nextcloud.com/server/latest/user_manual/files/access_webdav.html#accessing-files-using-cyberduck">https://docs.nextcloud.com/server/latest/user_manual/files/access_webdav.html#accessing-files-using-cyberduck</a>&gt;’_) og ’Filezilla &lt;<a class="reference external" href="https://filezilla-project.org">https://filezilla-project.org</a>&gt;’_. Kommersielle klienter inkluderer ’Mountain Duck &lt;<a class="reference external" href="https://mountainduck.io/">https://mountainduck.io/</a>&gt;’_, ’Forklift &lt;<a class="reference external" href="https://binarynights.com/">https://binarynights.com/</a>&gt;’_, ’Transmit &lt;<a class="reference external" href="https://panic.com/">https://panic.com/</a>&gt;’_ og ’Commander One &lt;<a class="reference external" href="https://mac.eltima.com/">https://mac.eltima.com/</a>&gt;’_.</p>
+</div>
+<p>Slik får du tilgang til filer via macOS Finder:</p>
+<ol class="arabic">
+<li><p>Fra Finders øverste menylinje velger du <strong>Gå &gt; Koble til tjener…</strong>:</p>
+<img alt="Skjermbilde av å skrive inn Nextcloud-serveradressen din på macOS" src="../../_images/osx_webdav1.png" />
+</li>
+<li><p>Når vinduet <strong>Koble til server…</strong> åpnes, skriver du inn Nextcloud-serverens WebDAV-adresse i <strong>Serveradresse:</strong>-feltet, eks.,:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">YOURDOMAIN</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<img alt="Skjermbilde: Skriv inn Nextcloud-serveradressen i &quot;Koble til server ...&quot; dialogboks" src="../../_images/osx_webdav2.png" />
+</li>
+<li><p>Klikk på <strong>Koble til</strong>. WebDAV-serveren skal vises på skrivebordet som en delt diskstasjon.</p></li>
+</ol>
+</section>
+<section id="accessing-files-using-microsoft-windows">
+<h2>Tilgang til filer ved hjelp av Microsoft Windows<a class="headerlink" href="#accessing-files-using-microsoft-windows" title="Link to this heading"></a></h2>
+<p>Hvis du bruker den opprinnelige Windows-implementeringen av WebDAV, kan du tilordne Nextcloud til en ny stasjon ved hjelp av Windows Utforsker. Tilknytning til en stasjon lar deg bla gjennom filer som er lagret på en Nextcloud-server på samme måte som du ville bla gjennom filer som er lagret i en tilordnet nettverksstasjon.</p>
+<p>Bruk av denne funksjonen krever nettverkstilkobling. Hvis du vil lagre filene dine i frakoblet modus, bruk skrivebordsklienten til å synkronisere alle filene på Nextcloud til en eller flere kataloger på din lokale harddisk.</p>
+<div class="admonition note">
+<p class="admonition-title">Obs</p>
+<p>Windows 10 tillater nå som standard enkel godkjenning hvis HTTPS er aktivert før du tilordner stasjonen.</p>
+<p>På eldre versjoner av Windows må du tillate bruk av enkel godkjenning i Windows-registeret:</p>
+<ul class="simple">
+<li><p>start ’’regedit’’ og naviger til ’’ HKEY_LOCAL_MACHINESYSTEMCurrentControlSetServicesWebClientParameters ’’.</p></li>
+<li><p>Opprett eller rediger verdien ’’BasicAuthLevel’’ (Windows Vista, 7 og 8), eller ’’UseBasicAuth’’ (Windows XP og Windows Server 2003), ’’DWORD’’ og sett verdidataene til ’’1’’ for SSL-tilkoblinger. En verdi på ’’0’’ betyr at enkel godkjenning er deaktivert, og en verdi på ’’2’’ tillater både SSL- og ikke-SSL-tilkoblinger (anbefales ikke).</p></li>
+<li><p>Avslutt deretter Registerredigering, og start datamaskinen på nytt.</p></li>
+</ul>
+</div>
+<section id="mapping-drives-with-the-command-line">
+<h3>Tilordne stasjoner med kommandolinjen<a class="headerlink" href="#mapping-drives-with-the-command-line" title="Link to this heading"></a></h3>
+<p>Følgende eksempel viser hvordan du tilordner en stasjon ved hjelp av kommandolinjen. Slik tilordner du stasjonen:</p>
+<ol class="arabic">
+<li><p>Åpne en ledetekst i Windows.</p></li>
+<li><p>Skriv inn følgende linje i ledeteksten for å tilordne til datamaskinen Z-stasjon:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">drive_path</span><span class="o">&gt;/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span> <span class="n">yourpassword</span>
+</pre></div>
+</div>
+<p>med &lt;drive_path&gt; som URL-en til din Nextcloud-server. For eksempel:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span> <span class="n">yourpassword</span>
+</pre></div>
+</div>
+<p>Datamaskinen tilordner filene til Nextcloud-kontoen din til stasjonsbokstaven Z.</p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Obs</p>
+<p>Hvis du får følgende feil: ’’Systemfeil 67 har oppstått. Nettverksnavnet blir ikke funnet.’’, åpner du <strong>Services</strong>-appen og kontrollerer at tjenesten ’’WebClient’’ kjører og startes automatisk ved oppstart.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Obs</p>
+<p>Selv om det ikke anbefales, kan du også montere Nextcloud-serveren ved hjelp av HTTP, slik at tilkoblingen ikke er kryptert.</p>
+<blockquote>
+<div><p>Hvis du planlegger å bruke HTTP-tilkoblinger på enheter mens du er på et offentlig sted, anbefaler vi på det sterkeste å bruke en VPN-tunnel for å gi den nødvendige sikkerheten.</p>
+</div></blockquote>
+<p>En alternativ kommandosyntaks er:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> \\<span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="nd">@ssl</span>\<span class="n">nextcloud</span>\<span class="n">remote</span><span class="o">.</span><span class="n">php</span>\<span class="n">dav</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span>
+<span class="n">yourpassword</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mapping-drives-with-windows-explorer">
+<h3>Tilordne stasjoner med Windows Utforsker<a class="headerlink" href="#mapping-drives-with-windows-explorer" title="Link to this heading"></a></h3>
+<p>Slik tilordner du en stasjon ved å bruke Microsoft Windows Utforsker:</p>
+<ol class="arabic">
+<li><p>Åpne Windows Utforsker på din MS Windows datamaskin.</p></li>
+<li><p>Høyreklikk på <strong>Min datamaskin»-oppføringen og velg **Tilordne nettverksstasjon…</strong> fra rullegardinmenyen.</p></li>
+<li><p>Velg en lokal nettverksstasjon du vil tilordne Nextcloud til.</p></li>
+<li><p>Spesifiser adressen til Nextcloud-forekomsten, etterfulgt av <strong>/remote.php/dav/files/USERNAME/</strong>.</p>
+<p>For eksempel:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Obs</p>
+<p>For SSL-beskyttede servere, kryss av <strong>Koble til på nytt ved pålogging</strong> for å sikre at tilordningen er vedvarende ved påfølgende omstart. Hvis du vil koble til Nextcloud-serveren som en annen bruker, sjekk <a href="#id1"><span class="problematic" id="id2">**</span></a>Koble til med annen legitimasjon <a href="#id3"><span class="problematic" id="id4">**</span></a>.</p>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="Skjermbilde av tilordning av WebDAV i Windows Utforsker" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" /></a>
+</figure>
+</li>
+</ol>
+<ol class="arabic simple" start="5">
+<li><p>Klikk «Ferdig»-knappen.</p></li>
+</ol>
+<p>Windows Utforsker tilordner nettverksstasjonen, noe som gjør Nextcloud-forekomsten tilgjengelig.</p>
+</section>
+</section>
+<section id="accessing-files-using-cyberduck">
+<h2>Tilgang til filer ved hjelp av Cyberduck<a class="headerlink" href="#accessing-files-using-cyberduck" title="Link to this heading"></a></h2>
+<p>’Cyberduck &lt;<a class="reference external" href="https://cyberduck.io/">https://cyberduck.io/</a>&gt;’_ er en åpen kildekode FTP, SFTP, WebDAV, OpenStack Swift og Amazon S3 nettleser designet for filoverføringer på macOS og Windows.</p>
+<div class="admonition note">
+<p class="admonition-title">Obs</p>
+<p>Dette eksempelet bruker Cyberduck-versjon 4.2.1.</p>
+</div>
+<p>For å bruke Cyberduck:</p>
+<ol class="arabic">
+<li><p>Angi en server uten innledende protokollinformasjon.</p>
+<p>For eksempel: «example.com»</p>
+</li>
+<li><p>Angi riktig port.</p>
+<p>Porten du velger, avhenger av om Nextcloud-serveren din støtter SSL eller ikke. Cyberduck krever at du velger en annen tilkoblingstype hvis du planlegger å bruke SSL.</p>
+<dl class="simple">
+<dt>For eksempel:</dt><dd><ul class="simple">
+<li><p>«80» for ikke kryptert WebDAV</p></li>
+<li><p>«443» for sikker WebDAV (HTTPS/SSL)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Bruk rullegardinmenyen ’Flere alternativer’ for å legge til resten av WebDAV-URL-en i ’Bane’-feltet.</p>
+<p>For eksempel: «remote.php/dav/files/USERNAME/»</p>
+</li>
+</ol>
+<p>Nå gir Cyberduck filtilgang til Nextcloud-serveren.</p>
+</section>
+<section id="accessing-public-shares-over-webdav">
+<h2>Tilgang til offentlige delinger over WebDAV<a class="headerlink" href="#accessing-public-shares-over-webdav" title="Link to this heading"></a></h2>
+<p>Nextcloud gir muligheten til å få tilgang til offentlige delinger anonymt over WebDAV.</p>
+<p>For å få tilgang til den offentlige delingen, åpne:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">public</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">webdav</span>
+</pre></div>
+</div>
+<p>i en WebDAV-klient bruker du delingstokenet som brukernavn og det (valgfrie) delingspassordet som passord. For eksempel, med en delingskobling <a class="reference external" href="https://example.com/s/kFy9Lek5sm928xP">https://example.com/s/kFy9Lek5sm928xP</a>, vil ’’kFy9Lek5sm928xP’’ være brukernavnet.</p>
+<div class="admonition note">
+<p class="admonition-title">Obs</p>
+<p><strong>Innstillinger</strong> → <strong>Administrasjon</strong> → <strong>Deling</strong> → <strong>Tillat brukere på denne serveren å sende delinger til andre servere</strong>. Dette alternativet gir også WebDAV-tilgang til delte fellesressurser og må aktiveres for at denne funksjonen skal fungere, bortsett fra hvis cURL brukes (se nedenfor).</p>
+</div>
+</section>
+<section id="known-problems">
+<h2>Kjente problemer<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
+<section id="id4">
+<h3>Problem<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>Windows kobler seg ikke til ved hjelp av HTTPS.</p>
+</section>
+<section id="solution-1">
+<h3>Løsning 1<a class="headerlink" href="#solution-1" title="Link to this heading"></a></h3>
+<p>Windows WebDAV-klienten støtter kanskje ikke Server Name Indication (SNI) på krypterte tilkoblinger. Hvis du støter på en feil under montering av en SSL-kryptert Nextcloud-forekomst, kan du kontakte leverandøren din om å tilordne en dedikert IP-adresse for din SSL-baserte server.</p>
+</section>
+<section id="solution-2">
+<h3>Løsning 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
+<p>Windows WebDAV-klienten støtter kanskje ikke TLSv1.1- og TLSv1.2-tilkoblinger. Hvis du har begrenset serverkonfigurasjonen til bare å levere TLSv1.1 og nyere, kan tilkoblingen til serveren mislykkes. Se dokumentasjonen for <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> for ytterligere informasjon.</p>
+</section>
+<section id="id5">
+<h3>Problem<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>Du får følgende feilmelding: <strong>Feil 0x800700DF: Filstørrelsen overskrider den tillatte grensen og kan ikke lagres.</strong></p>
+</section>
+<section id="id6">
+<h3>Løsning<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p>Windows begrenser den maksimale størrelsen en fil som overføres fra eller til en delt WebDAV-ressurs, kan ha. Du kan øke verdien <strong>FileSizeLimitInBytes</strong> i <strong>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters</strong> ved å klikke på <strong>Endre</strong>.</p>
+<p>Hvis du vil øke grensen til maksimumsverdien på 4 GB, velger du Desimal**, skriver inn verdien <strong>4294967295</strong> og starter Windows på nytt eller starter WebClient**-tjenesten på nytt.</p>
+</section>
+<section id="id7">
+<h3>Problem<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<p>Hvis du legger til en WebDAV-stasjon på Windows via trinnene ovenfor, vises ikke riktig størrelse på tilgjengelig plass i Nextcloud, og viser i stedet størrelsen på C:-stasjonen med ledig plass.</p>
+</section>
+<section id="answer">
+<h3>Svar<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
+<p>Dessverre er dette en begrensning av WebDAV selv, fordi det ikke gir en måte for klienten å få informasjon om ledig ledig plass fra serveren. Windows faller automatisk tilbake for å vise størrelsen på C:-stasjonen med dens ledig plass i stedet. Så dessverre er det ingen reell løsning på dette problemet.</p>
+</section>
+<section id="id8">
+<h3>Problem<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<p>Tilgang til filene dine fra Microsoft Office via WebDAV mislykkes.</p>
+</section>
+<section id="id9">
+<h3>Løsning<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<p>Kjente problemer og deres løsninger er dokumentert i <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a> artikkelen.</p>
+</section>
+<section id="id10">
+<h3>Problem<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>Kan ikke tilordne Nextcloud som en WebDAV-stasjon i Windows ved hjelp av et selvsignert sertifikat.</p>
+</section>
+<section id="id11">
+<h3>Løsning<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Tilgang til Nextcloud-forekomsten din via favorittnettleseren din.</p></li>
+<li><p>Klikk deg gjennom til du kommer til sertifikatfeilen i nettleserens statuslinje.</p></li>
+<li><p>View the certificate, then from the Details tab, select ’Copy to File’.</p></li>
+<li><p>Lagre filen på skrivebordet med et vilkårlig navn, for eksempel ’’myNextcloud.pem’’.</p></li>
+<li><p>Go to Start menu &gt; Run, type MMC, and click ’OK’ to open Microsoft Management
+Console.</p></li>
+<li><p>Gå til Fil &gt; Legg til / fjern snapin-modul.</p></li>
+<li><p>Select Certificates, Click ’Add’, choose ’My User Account’, then ’Finish’, and
+finally ’OK’.</p></li>
+<li><p>Grav deg ned til Trust Root sertifiseringsinstanser, sertifikater.</p></li>
+<li><p>Høyreklikk Sertifikat, velg Alle oppgaver og importer.</p></li>
+<li><p>Velg det lagrede sertifikatet fra skrivebordet.</p></li>
+<li><p>Velg Plasser alle sertifikater i følgende lager, og klikk bla gjennom.</p></li>
+<li><p>Check the Box that says Show Physical Stores, expand out Trusted Root
+Certification Authorities, select Local Computer there, click ’OK’, and
+Complete the Import.</p></li>
+<li><p>Sjekk listen for å sikre at sertifikatet vises. Du må sannsynligvis oppdatere før du ser den.</p></li>
+<li><p>Avslutt MMC.</p></li>
+</ol>
+<p>For brukere av Firefox:</p>
+<ol class="arabic simple">
+<li><p>Start nettleseren din, gå til applikasjonsmenyen &gt; Historikk &gt; Tøm nylig historikk…</p></li>
+<li><p>Velg «Alt» i rullegardinmenyen «Tidsintervall for å tømme»</p></li>
+<li><p>Merk av for «Aktive pålogginger»</p></li>
+<li><p>Klikk knappen «Tøm nå»</p></li>
+<li><p>Lukk nettleseren, åpne den på nytt og test.</p></li>
+</ol>
+<p>For brukere av Chrome-baserte nettlesere (Chrome, Chromium, Microsoft Edge):</p>
+<ol class="arabic simple">
+<li><p>Åpne Windows kontrollpanel, naviger ned til alternativer for Internett</p></li>
+<li><p>I fanen Innhold klikker du på Tøm SSL-tilstand-knappen.</p></li>
+<li><p>Lukk nettleseren, åpne den på nytt og test.</p></li>
+</ol>
+</section>
+</section>
+<section id="accessing-files-using-curl">
+<h2>Tilgang til filer ved hjelp av cURL<a class="headerlink" href="#accessing-files-using-curl" title="Link to this heading"></a></h2>
+<p>Siden WebDAV er en utvidelse av HTTP, kan cURL brukes til å skripte filoperasjoner.</p>
+<div class="admonition note">
+<p class="admonition-title">Obs</p>
+<p><strong>Innstillinger</strong> → <strong>Administrasjon</strong> → <strong>Deling</strong> → <strong>Tillat brukere på denne serveren å sende delinger til andre servere</strong>. Hvis dette alternativet er deaktivert, må alternativet ’’-header «X-Requested-With: XMLHttpRequest»’’ sendes til cURL.</p>
+</div>
+<p>Slik oppretter du en mappe med gjeldende dato som navn:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MKCOL<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>Slik laster du opp en fil ’’error.log’’ til den katalogen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-T<span class="w"> </span>error.log<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">/error.log&quot;</span>
+</pre></div>
+</div>
+<p>Slik flytter du en fil:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MOVE<span class="w"> </span>--header<span class="w"> </span><span class="s1">&#39;Destination: https://example.com/nextcloud/remote.php/dav/files/USERNAME/target.jpg&#39;</span><span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/source.jpg
+</pre></div>
+</div>
+<p>Slik henter du egenskapene til filer i rotmappen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>PROPFIND<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Depth: 1&quot;</span><span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/<span class="w"> </span><span class="p">|</span><span class="w"> </span>xml_pp
+<span class="w">    </span>&lt;?xml<span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="w"> </span><span class="nv">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>?&gt;
+&lt;d:multistatus<span class="w"> </span>xmlns:d<span class="o">=</span><span class="s2">&quot;DAV:&quot;</span><span class="w"> </span>xmlns:oc<span class="o">=</span><span class="s2">&quot;http://nextcloud.org/ns&quot;</span><span class="w"> </span>xmlns:s<span class="o">=</span><span class="s2">&quot;http://sabredav.org/ns&quot;</span>&gt;
+<span class="w">  </span>&lt;d:response&gt;
+<span class="w">    </span>&lt;d:href&gt;/nextcloud/remote.php/dav/files/USERNAME/&lt;/d:href&gt;
+<span class="w">    </span>&lt;d:propstat&gt;
+<span class="w">      </span>&lt;d:prop&gt;
+<span class="w">        </span>&lt;d:getlastmodified&gt;Tue,<span class="w"> </span><span class="m">13</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2015</span><span class="w"> </span><span class="m">17</span>:07:45<span class="w"> </span>GMT&lt;/d:getlastmodified&gt;
+<span class="w">        </span>&lt;d:resourcetype&gt;
+<span class="w">          </span>&lt;d:collection/&gt;
+<span class="w">        </span>&lt;/d:resourcetype&gt;
+<span class="w">        </span>&lt;d:quota-used-bytes&gt;163&lt;/d:quota-used-bytes&gt;
+<span class="w">        </span>&lt;d:quota-available-bytes&gt;11802275840&lt;/d:quota-available-bytes&gt;
+<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">&quot;561d3a6139d05&quot;</span>&lt;/d:getetag&gt;
+<span class="w">      </span>&lt;/d:prop&gt;
+<span class="w">      </span>&lt;d:status&gt;HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK&lt;/d:status&gt;
+<span class="w">    </span>&lt;/d:propstat&gt;
+<span class="w">  </span>&lt;/d:response&gt;
+<span class="w">  </span>&lt;d:response&gt;
+<span class="w">    </span>&lt;d:href&gt;/nextcloud/remote.php/dav/files/USERNAME/welcome.txt&lt;/d:href&gt;
+<span class="w">    </span>&lt;d:propstat&gt;
+<span class="w">      </span>&lt;d:prop&gt;
+<span class="w">        </span>&lt;d:getlastmodified&gt;Tue,<span class="w"> </span><span class="m">13</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2015</span><span class="w"> </span><span class="m">17</span>:07:35<span class="w"> </span>GMT&lt;/d:getlastmodified&gt;
+<span class="w">        </span>&lt;d:getcontentlength&gt;163&lt;/d:getcontentlength&gt;
+<span class="w">        </span>&lt;d:resourcetype/&gt;
+<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">&quot;47465fae667b2d0fee154f5e17d1f0f1&quot;</span>&lt;/d:getetag&gt;
+<span class="w">        </span>&lt;d:getcontenttype&gt;text/plain&lt;/d:getcontenttype&gt;
+<span class="w">      </span>&lt;/d:prop&gt;
+<span class="w">      </span>&lt;d:status&gt;HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK&lt;/d:status&gt;
+<span class="w">    </span>&lt;/d:propstat&gt;
+<span class="w">  </span>&lt;/d:response&gt;
+&lt;/d:multistatus&gt;
+</pre></div>
+</div>
+</section>
+<section id="accessing-files-using-winscp">
+<h2>Tilgang til filer ved hjelp av WinSCP<a class="headerlink" href="#accessing-files-using-winscp" title="Link to this heading"></a></h2>
+<p>’WinSCP &lt;<a class="reference external" href="https://winscp.net/eng/docs/introduction/">https://winscp.net/eng/docs/introduction/</a>&gt;’_ er en åpen kildekode gratis SFTP-, FTP-, WebDAV-, S3- og SCP-klient for Windows. Hovedfunksjonen er filoverføring mellom en lokal og en ekstern datamaskin. Utover dette tilbyr WinSCP skripting og grunnleggende filhåndteringsfunksjonalitet.</p>
+<p>Du kan laste ned &lt;<a class="reference external" href="https://winscp.net/eng/downloads.php/">https://winscp.net/eng/downloads.php/</a>&gt;’_ den bærbare versjonen av WinSCP og kjøre den på Linux gjennom ’Wine &lt;<a class="reference external" href="https://wiki.winehq.org/Main_Page/">https://wiki.winehq.org/Main_Page/</a>&gt;’_.</p>
+<p>For å kjøre WinSCP på Linux, last ned wine gjennom distribusjonens pakkebehandler, og kjør den deretter med kommandoen: ’’wine WinSCP.exe’’.</p>
+<p>For å koble til Nextcloud:</p>
+<ul class="simple">
+<li><p>Start WinSCP</p></li>
+<li><p>Trykk ’Økt’ i menyen</p></li>
+<li><p>Trykk menyalternativet ’Ny økt’</p></li>
+<li><p>Sett rullegardinmenyen ’Filprotokoll’ til WebDAV</p></li>
+<li><p>Sett rullegardinmenyen ’Kryptering’ til TLS/SSL Implisitt kryptering</p></li>
+<li><p>Fyll ut vertsnavnfeltet: «eksempel.com»</p></li>
+<li><p>Fyll ut brukernavnfeltet: «NEXTCLOUDBRUKERNAVN»</p></li>
+<li><p>Fyll ut passordfeltet: «NEXTCLOUDPASSORD»</p></li>
+<li><p>Trykk knappen ’Avansert’</p></li>
+<li><p>Naviger til ’Miljø’, ’Kataloger’ på venstre siden</p></li>
+<li><p>Fyll ut feltet ’Ekstern katalog’ med følgende: ’’/nextcloud/remote.php/dav/files/NEXTCLOUDBRUKERNAVN/’’</p></li>
+<li><p>Trykk knappen ’OK’</p></li>
+<li><p>Trykk knappen ’Lagre’</p></li>
+<li><p>Velg de ønskede alternativene og trykk på ’OK’-knappen</p></li>
+<li><p>Trykk på ’Logg inn’-knappen for å koble til Nextcloud</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Obs</p>
+<p>It is recommended to use an app password for the password if you use TOTP as WinSCP does not understand TOTP with Nextcloud at the time of writing (2022-11-07).</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="access_webgui.html" class="btn btn-neutral float-left" title="Få tilgang til filene dine ved hjelp av Nextcloud-nettgrensesnittet" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="deleted_file_management.html" class="btn btn-neutral float-right" title="Administrere slettede filer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/af/">af</a></dd>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/el_GR/">el_GR</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/eo/">eo</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/eu/">eu</a></dd>
+<dd><a href="/server/latest/user_manual/fi_FI/">fi_FI</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/hr/">hr</a></dd>
+<dd><a href="/server/latest/user_manual/hu/">hu</a></dd>
+<dd><a href="/server/latest/user_manual/hu_HU/">hu_HU</a></dd>
+<dd><a href="/server/latest/user_manual/id/">id</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/ja_JP/">ja_JP</a></dd>
+<dd><a href="/server/latest/user_manual/ko/">ko</a></dd>
+<dd><a href="/server/latest/user_manual/mn/">mn</a></dd>
+<dd><a href="/server/latest/user_manual/nb_NO/">nb_NO</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/nn/">nn</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/pt_PT/">pt_PT</a></dd>
+<dd><a href="/server/latest/user_manual/ro/">ro</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/si/">si</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sq/">sq</a></dd>
+<dd><a href="/server/latest/user_manual/sr/">sr</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/ta/">ta</a></dd>
+<dd><a href="/server/latest/user_manual/th/">th</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/uk/">uk</a></dd>
+<dd><a href="/server/latest/user_manual/uz/">uz</a></dd>
+<dd><a href="/server/latest/user_manual/vi/">vi</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+<dd><a href="/server/latest/user_manual/zh_TW/">zh_TW</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/user_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/user_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/28/user_manual">28</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

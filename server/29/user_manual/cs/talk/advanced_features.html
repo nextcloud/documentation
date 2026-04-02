@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="cs" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pokročilé funkce Talk &mdash; Dokumentace pro Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=3fc2a9b2"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/translations.js?v=0275affc"></script>
+        <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Připojení se k hovoru nebo chatu jako host" href="join_a_call_or_chat_as_guest.html" />
+    <link rel="prev" title="Základy Nextcloud Talk" href="talk_basics.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Úvod do uživatelské příručky k Nextcloud verze latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Novinky pro uživatele v Nextcloud verze latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Webové rozhraní Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Soubory a synchronizace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Software pro podporu spolupráce</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Talk</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="talk_basics.html">Základy Nextcloud Talk</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Pokročilé funkce Talk</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#matterbridge">Matterbridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lobby">Čekárna</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#commands">Příkazy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#talk-from-files">Talk ze Souborů</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-tasks-from-chat-or-share-tasks-in-chat">Vytváření úkolů z chatu nebo sdílení úkolů v chatu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#breakout-rooms">Přestávkové místnosti</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configure-breakout-rooms">Nastavování přestávkových místností</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#manage-breakout-rooms">Správa přestávkových místností</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#call-recording">Call recording</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#manage-a-recording">Manage a recording</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#recording-consent">Recording consent</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#federated-conversation">Federated conversation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#send-and-accept-invites">Send and accept invites</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="join_a_call_or_chat_as_guest.html">Připojení se k hovoru nebo chatu jako host</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Nastavení vašich předvoleb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Zpřístupnění pro všechny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Používání dvoufázového ověřování se</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Správa připojených prohlížečů a zařízení</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Externí úložiště</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Talk</a></li>
+      <li class="breadcrumb-item active">Pokročilé funkce Talk</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/talk/advanced_features.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="advanced-talk-features">
+<h1>Pokročilé funkce Talk<a class="headerlink" href="#advanced-talk-features" title="Link to this heading"></a></h1>
+<p>Nextcloud Talk disponuje mnoha pokročilými funkcemi, které se uživatelům mohou hodit.</p>
+<section id="matterbridge">
+<h2>Matterbridge<a class="headerlink" href="#matterbridge" title="Link to this heading"></a></h2>
+<p>Napojení na Matterbridge v Nextcloud Talk umožňuje vytvářet „mosty“ mezi konverzacemi v Talk a na ostatních chatovacích službách, jako je MS Teams, Discord, Matrix a dalších. Seznam podporovaných protokolů naleznete <a class="reference external" href="https://github.com/42wim/matterbridge#features">na GitHub stránce Matterbridge.</a></p>
+<p>Moderátor může přidat Matterbridge napojení v nastavení daného chatu.</p>
+<img alt="../../_images/matterbridge-settings.png" src="../../_images/matterbridge-settings.png" />
+<p>Každý z mostů má své vlastní potřeby ohledně nastavení. Informace pro většinu z nich jsou k dispozici na wiki stránkách Matterbridge, na které se dostanete přes volbu <code class="docutils literal notranslate"><span class="pre">další</span> <span class="pre">informace</span></code> z nabídky <code class="docutils literal notranslate"><span class="pre">…</span></code> . Nebo <a class="reference external" href="https://github.com/42wim/matterbridge/wiki">jděte na wiki přímo</a></p>
+</section>
+<section id="lobby">
+<h2>Čekárna<a class="headerlink" href="#lobby" title="Link to this heading"></a></h2>
+<p>Funkce čekárny umožňuje zobrazovat hostům čekací obrazovku, dokud hovor nezačne. To je ideální například pro webináře s účastníky zvenčí.</p>
+<img alt="../../_images/lobby-in-talk.png" src="../../_images/lobby-in-talk.png" />
+<p>Je možné zvolit, že účastníkům umožníte se připojit do hovoru v konkrétní čas, nebo když čekárnu zavřete ručně.</p>
+</section>
+<section id="commands">
+<h2>Příkazy<a class="headerlink" href="#commands" title="Link to this heading"></a></h2>
+<p>Nextcloud umožňuje uživatelům vykonávat akce pomocí příkazů. Příkaz typicky vypadá jako:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">/wiki</span> <span class="pre">letadla</span></code></p>
+</div></blockquote>
+<p>Správci mohou nastavovat, zapínat a vypínat příkazy. Uživatelé mohou pomocí příkazu <code class="docutils literal notranslate"><span class="pre">help</span></code> (nápověda) zjišťovat, jaké příkazy jsou k dispozici.</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">/help</span></code></p>
+</div></blockquote>
+<img alt="../../_images/command-help.png" src="../../_images/command-help.png" />
+<p>Další informace naleznete v <a class="reference external" href="https://nextcloud-talk.readthedocs.io/en/stable/commands/">dokumentaci pro správce Talk.</a></p>
+</section>
+<section id="talk-from-files">
+<h2>Talk ze Souborů<a class="headerlink" href="#talk-from-files" title="Link to this heading"></a></h2>
+<p>V aplikaci Soubory je možné v postranním panelu chatovat o souborech a dokonce si volat v průběhu jejich upravování. Nejprve je ale třeba se připojit do chatu.</p>
+<img alt="../../_images/join-chat.png" src="../../_images/join-chat.png" />
+<img alt="../../_images/sidebar-chat.png" src="../../_images/sidebar-chat.png" />
+<p>Chatovat nebo volat s ostatními účastníky můžete i poté, co soubor začnete upravovat.</p>
+<img alt="../../_images/text-and-talk.png" src="../../_images/text-and-talk.png" />
+<p>V Talk bude vytvořena konverzace pro soubor. Odtud je možné chatovat, nebo přejít zpět na soubor pomocí nabídky <code class="docutils literal notranslate"><span class="pre">…</span></code> vpravo nahoře.</p>
+<img alt="../../_images/file-room.png" src="../../_images/file-room.png" />
+</section>
+<section id="create-tasks-from-chat-or-share-tasks-in-chat">
+<h2>Vytváření úkolů z chatu nebo sdílení úkolů v chatu<a class="headerlink" href="#create-tasks-from-chat-or-share-tasks-in-chat" title="Link to this heading"></a></h2>
+<p>Pokud je nainstalovaný Deck, je možné použít nabídku <code class="docutils literal notranslate"><span class="pre">…</span></code> zprávy v chatu a vytvořit ze zprávy úkol v Deck.</p>
+<img alt="../../_images/deck-talk-create-card-menu.png" src="../../_images/deck-talk-create-card-menu.png" />
+<img alt="../../_images/deck-talk-create-card-dialog.png" src="../../_images/deck-talk-create-card-dialog.png" />
+<p>Z Deck je možné sdílet úkoly do konverzace v chatu.</p>
+<img alt="../../_images/deck-talk-share-card-to-chat-menu.png" src="../../_images/deck-talk-share-card-to-chat-menu.png" />
+<img alt="../../_images/deck-talk-share-card-to-chat-in-talk.png" src="../../_images/deck-talk-share-card-to-chat-in-talk.png" />
+</section>
+<section id="breakout-rooms">
+<h2>Přestávkové místnosti<a class="headerlink" href="#breakout-rooms" title="Link to this heading"></a></h2>
+<p>Přestávkové místnosti vám umožňují rozdělit hovor v Nextcloud Talk do menších skupin a docílit tak diskuzí lépe zaměřených na témata. Moderátor hovoru může vytvořit vícero přestávkových místností a do každé z nich přiřadit účastníky.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Breakout rooms are currently not available in conversations that are joinable by guests (public conversations).</p>
+</div>
+<section id="configure-breakout-rooms">
+<h3>Nastavování přestávkových místností<a class="headerlink" href="#configure-breakout-rooms" title="Link to this heading"></a></h3>
+<p>Abyste mohli vytvářet přestávkové místnosti, je třeba být ve skupinové konverzaci moderátorem. Klikněte pak na nabídku v horní liště a dále na „Nastavit přestávkové místnosti“.</p>
+<img alt="../../_images/talk-breakout-rooms-setup.png" src="../../_images/talk-breakout-rooms-setup.png" />
+<p>Otevře se dialog, ve kterém je možné zadat počet místností, které chcete vytvořit a způsob přiřazování účastníků. Obdržíte tři možnosti:</p>
+<ul class="simple">
+<li><p><strong>Automaticky přiiřadit účastníky</strong>: Talk automaticky přiřadí účastníky do místností.</p></li>
+<li><p><strong>Ručně přiřadit účastníky</strong>: Projdete editorem účastníků, ve kterém přiřadíte účastníky do místností.</p></li>
+<li><p><strong>Umožnit účastníkům zvolit si</strong>: Účastníci se budou moci přidávat do přestávkových místností sami.</p></li>
+</ul>
+<img alt="../../_images/talk-breakout-rooms-setup-dialog.png" src="../../_images/talk-breakout-rooms-setup-dialog.png" />
+</section>
+<section id="manage-breakout-rooms">
+<h3>Správa přestávkových místností<a class="headerlink" href="#manage-breakout-rooms" title="Link to this heading"></a></h3>
+<p>Jakmile jsou přestávkové místnosti vytvořené, uvidíte je v postranním panelu.</p>
+<img alt="../../_images/talk-breakout-rooms-sidebar.png" src="../../_images/talk-breakout-rooms-sidebar.png" />
+<p>Ze záhlaví postranního panelu</p>
+<ul class="simple">
+<li><p><strong>Otevřít a zavřít přestávkové místnosti</strong>: toto přesune veškeré uživatele v nadřazené konverzaci do jejich přestávkových místností.</p></li>
+<li><p><strong>Odeslat zprávy do všech místností</strong>: toto odešle zprávu do všech místností naráz.</p></li>
+<li><p><strong>Změnit přiřazení účastníků</strong>: toto otevře editor účastníků, ve kterém je možné změnit kteří účastníci jsou přiřazení do kterých přestávkových místností. Z tohoto dialogu je také možné mazat přestávkové místnosti.</p></li>
+</ul>
+<img alt="../../_images/talk-breakout-rooms-sidebar-header.png" src="../../_images/talk-breakout-rooms-sidebar-header.png" />
+<p>Z prvku přestávkové místnosti (v postranním pruhu) je možné se také přidat do konkrétní přestávkové místnosti nebo do ní poslat zprávu.</p>
+<img alt="../../_images/talk-breakout-rooms-sidebar-item.png" src="../../_images/talk-breakout-rooms-sidebar-item.png" />
+</section>
+</section>
+<section id="call-recording">
+<h2>Call recording<a class="headerlink" href="#call-recording" title="Link to this heading"></a></h2>
+<p>The recording feature provides users with an opportunity to:</p>
+<ul class="simple">
+<li><p>Start and stop recordings during a call.</p></li>
+<li><p>Record the video and audio stream of the speaker, as well as screen share.</p></li>
+<li><p>Access, share and download recorded files for future reference or distribution.</p></li>
+</ul>
+<p>Enabling this feature requires the recording server to be set up by the system administration.</p>
+<section id="manage-a-recording">
+<h3>Manage a recording<a class="headerlink" href="#manage-a-recording" title="Link to this heading"></a></h3>
+<p>The moderator of the conversation can start a recording together with a call start or anytime during a call:</p>
+<ul class="simple">
+<li><p><strong>Before the call</strong>: tick the checkbox „Start recording immediately with the call“ in „Media settings“, then click on „Start call“.</p></li>
+<li><p><strong>During the call</strong>: click on the top-bar menu, then click „Start recording“.</p></li>
+</ul>
+<img alt="../../_images/start-recording-before-call.png" src="../../_images/start-recording-before-call.png" />
+<img alt="../../_images/start-recording-in-call.png" src="../../_images/start-recording-in-call.png" />
+<p>The recording will start shortly, and you will see a red indicator next to the call time. You can stop the recording at any time while the call is still ongoing by clicking on that indicator and selecting „Stop recording“, or by using the same action in the top-bar menu. If you do not manually stop the recording, it will end automatically when the call ends.</p>
+<img alt="../../_images/stop-recording.png" src="../../_images/stop-recording.png" />
+<p>After stopping a recording, the server will take some time to prepare and save the recorded file. The moderator, who started the recording, receives a notification when the file is uploaded. From there, it can be shared in the chat.</p>
+<img alt="../../_images/share-recording-notification.png" src="../../_images/share-recording-notification.png" />
+<img alt="../../_images/shared-recordings.png" src="../../_images/shared-recordings.png" />
+</section>
+<section id="recording-consent">
+<h3>Recording consent<a class="headerlink" href="#recording-consent" title="Link to this heading"></a></h3>
+<p>For compliance reasons with various privacy rights, it is possible to ask participants for consent to be recorded before joining the call. The system administration has the flexibility to utilize this feature in several ways:</p>
+<ul class="simple">
+<li><p>Disable consent completely.</p></li>
+<li><p>Enable mandatory consent system-wide, requiring consent for all conversations.</p></li>
+<li><p>Allow moderators to configure this option on a conversation level. In such cases, moderators can access the conversation settings to configure this option accordingly:</p></li>
+</ul>
+<img alt="../../_images/enable-recording-consent.png" src="../../_images/enable-recording-consent.png" />
+<p>If recording consent is enabled, every participant, including moderators, will see a highlighted section in the „Media settings“ before joining a call.
+This section informs participants that the call may be recorded. To give explicit consent for recording, participants must check the box. If they do not give consent, they will not be allowed to join the call.</p>
+<img alt="../../_images/give-recording-consent.png" src="../../_images/give-recording-consent.png" />
+<img alt="../../_images/give-recording-consent-checked.png" src="../../_images/give-recording-consent-checked.png" />
+</section>
+</section>
+<section id="federated-conversation">
+<h2>Federated conversation<a class="headerlink" href="#federated-conversation" title="Link to this heading"></a></h2>
+<p>With Federation feature, users can create conversations across different federated Talk instances and use Talk features as if they were on a same server.</p>
+<p><strong>Important</strong> Under current development. Basic chat features are available, more to come in the future!</p>
+<p>Feature is required to be set up by the system administration.</p>
+<section id="send-and-accept-invites">
+<h3>Send and accept invites<a class="headerlink" href="#send-and-accept-invites" title="Link to this heading"></a></h3>
+<p>The moderator of the conversation can send an invite to participant on a different server:</p>
+<img alt="../../_images/federation-invite-send.png" src="../../_images/federation-invite-send.png" />
+<p>When receiving a notification, user will see a counter of pending invites above the conversations list.</p>
+<a class="reference internal image-reference" href="../../_images/federation-invite-pending.png"><img alt="../../_images/federation-invite-pending.png" src="../../_images/federation-invite-pending.png" style="width: 450px;" /></a>
+<p>Upon clicking it, more information will be provided about inviting party, and user can either accept or decline the invitation.</p>
+<a class="reference internal image-reference" href="../../_images/federation-invite-dialog.png"><img alt="../../_images/federation-invite-dialog.png" src="../../_images/federation-invite-dialog.png" style="width: 450px;" /></a>
+<p>By accepting the invite, conversation will appear in the list as any other one.</p>
+<a class="reference internal image-reference" href="../../_images/federation-conversations-list.png"><img alt="../../_images/federation-conversations-list.png" src="../../_images/federation-conversations-list.png" style="width: 450px;" /></a>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="talk_basics.html" class="btn btn-neutral float-left" title="Základy Nextcloud Talk" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="join_a_call_or_chat_as_guest.html" class="btn btn-neutral float-right" title="Připojení se k hovoru nebo chatu jako host" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/af/">af</a></dd>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/el_GR/">el_GR</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/eo/">eo</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/eu/">eu</a></dd>
+<dd><a href="/server/latest/user_manual/fi_FI/">fi_FI</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/hr/">hr</a></dd>
+<dd><a href="/server/latest/user_manual/hu/">hu</a></dd>
+<dd><a href="/server/latest/user_manual/hu_HU/">hu_HU</a></dd>
+<dd><a href="/server/latest/user_manual/id/">id</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/ja_JP/">ja_JP</a></dd>
+<dd><a href="/server/latest/user_manual/ko/">ko</a></dd>
+<dd><a href="/server/latest/user_manual/mn/">mn</a></dd>
+<dd><a href="/server/latest/user_manual/nb_NO/">nb_NO</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/nn/">nn</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/pt_PT/">pt_PT</a></dd>
+<dd><a href="/server/latest/user_manual/ro/">ro</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/si/">si</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sq/">sq</a></dd>
+<dd><a href="/server/latest/user_manual/sr/">sr</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/ta/">ta</a></dd>
+<dd><a href="/server/latest/user_manual/th/">th</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/uk/">uk</a></dd>
+<dd><a href="/server/latest/user_manual/uz/">uz</a></dd>
+<dd><a href="/server/latest/user_manual/vi/">vi</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+<dd><a href="/server/latest/user_manual/zh_TW/">zh_TW</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Verze</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/user_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/user_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/28/user_manual">28</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Stahování</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Na službě Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Domovská stránka projektu</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Sestavení</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

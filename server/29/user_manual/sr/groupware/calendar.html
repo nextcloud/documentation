@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="sr" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Употреба апликације Календар &mdash; документација Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=8a86fe08"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/translations.js?v=3c3b4542"></script>
+        <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Индекс" href="../genindex.html" />
+    <link rel="search" title="Претрага" href="../search.html" />
+    <link rel="next" title="Употреба апликације Пошта" href="mail.html" />
+    <link rel="prev" title="Употреба апликације Контакти" href="contacts.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Увод у корисничко упутство за Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Шта је ново за кориснике у Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud веб интерфејс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Фајлови и синхронизација</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Употреба апликације Контакти</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Употреба апликације Календар</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#managing-your-calendars">Управљање вашим календарима</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-calendar">Креирање новог календара</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-a-calendar">Увоз календара</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-export-or-delete-a-calendar">Уређивање, извоз или брисање календара</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing-calendars">Дељење календара</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#publishing-a-calendar">Објављивање календара</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-widget">Calendar Widget</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subscribe-to-a-calendar">Претплата на календар</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subscribe-to-a-holiday-calendar">Претплати се на Календар празника</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-events">Управљање догађајима</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-event">Креирање новог догађаја</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-duplicate-or-delete-an-event">Уређивање, дуплирање или брисање догађаја</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#invite-attendees-to-an-event">Позивање учесника у догађај</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#assign-rooms-and-resources-to-an-event">Додела соба и ресурса догађају</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-attachments-to-events">Додавање прилога догађајима</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-up-reminders">Постављање подсетника</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-recurring-options">Додавање опција понављања</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trash-bin">Корпа за отпатке</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automated-user-status">Automated User Status</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#responding-to-invitations">Одговарање на позивнице</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#availability-working-hours">Доступност (радни сати)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#birthday-calendar">Календар рођендана</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#appointments">Састанци</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-an-appointment-configuration">Креирање конфигурације састанка</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#booking-an-appointment">Заказивање састанка</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#working-with-the-booked-appointment">Рад са заказаним састанком</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-talk-room-for-booked-appointments">Крерање Talk соба за заказане састанке</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mail.html">Употреба апликације Пошта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">Setting out-of-office messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Синхронизација са Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">Синхронизација са iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">Синхронизација са macOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Синхронизација са Thunderbird</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Синхронизација са KDE Kontact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Сихронизација са GNOME десктопом</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Синхронизација са Windows 10</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Постављање ваших подешавања</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Универзални приступ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Употреба двофактоске аутентификације</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Управљање повезаним прегледачима и уређајима</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Спољно складиште</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Groupware</a></li>
+      <li class="breadcrumb-item active">Употреба апликације Календар</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/calendar.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-calendar-app">
+<span id="calendar-app"></span><h1>Употреба апликације Календар<a class="headerlink" href="#using-the-calendar-app" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>Апликација Календар је подразумевано инсталирана у Nextcloud Hub, али може да се искључи. Молимо вас да се за то обратите свом Администратору.</p>
+</div>
+<p>Апликација Nextcloud Календар функционише слично као и остале апликације календара са којима можете да синхронизујете своје Nextcloud календаре и догађаје.</p>
+<p>Када апликацији Календар приступите по први пут, креираће вам се први подразумевани календар.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_application.png" src="../../_images/calendar_application.png" />
+</figure>
+<section id="managing-your-calendars">
+<h2>Управљање вашим календарима<a class="headerlink" href="#managing-your-calendars" title="Link to this heading"></a></h2>
+<section id="create-a-new-calendar">
+<h3>Креирање новог календара<a class="headerlink" href="#create-a-new-calendar" title="Link to this heading"></a></h3>
+<p>Ако планирате да подесите нови календар и да у њега не пренесете било какве старе податке из претходног календара, креирање новог календара је прави начин за вас.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_create_1.png"><img alt="../../_images/calendar_create_1.png" src="../../_images/calendar_create_1.png" style="width: 349.6px; height: 407.20000000000005px;" /></a>
+</figure>
+<ol class="arabic simple">
+<li><p>Кликните на <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Нови</span> <span class="pre">календар</span></code> у левој бочној траци.</p></li>
+<li><p>Унесите назив свог новог календара, нпр. „Посао”, „Кућа” или „Планирање маркетинга”.</p></li>
+<li><p>Након што кликнете на знак штиклирања, ваш нови календар се креира и може да се синхронизује по свим вашим уређајима, испуни са новим догађајима и подели са вашим пријатељима и колегама.</p></li>
+</ol>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_create_2.png"><img alt="../../_images/calendar_create_2.png" src="../../_images/calendar_create_2.png" style="width: 349.6px; height: 419.20000000000005px;" /></a>
+</figure>
+</section>
+<section id="import-a-calendar">
+<h3>Увоз календара<a class="headerlink" href="#import-a-calendar" title="Link to this heading"></a></h3>
+<p>Ако желите да на вашу Nextcloud инстанцу пренесете свој календар и његове одговарајуће догађаје, онда је увоз прави начин да то урадите.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_settings.png"><img alt="../../_images/calendar_settings.png" src="../../_images/calendar_settings.png" style="width: 245.60000000000002px; height: 288.8px;" /></a>
+</figure>
+<ol class="arabic simple">
+<li><p>Кликните на икону подешавања обележену са <code class="docutils literal notranslate"><span class="pre">Подешавања</span> <span class="pre">&amp;</span> <span class="pre">увоз</span></code> у доњем левом углу.</p></li>
+<li><p>Након што кликнете на <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Увези</span> <span class="pre">календар</span></code> можете да изаберете један или више фајлова календара са свог локалног уређаја које желите да отпремите.</p></li>
+<li><p>Отпремање може да потраје и то зависи од величине календара који се увози.</p></li>
+<li><p>A blue progress bar will appear below „Calendar Settings”.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>Апликација Nextcloud Календар подржава само iCalendar-компатибилне <code class="docutils literal notranslate"><span class="pre">.ics</span></code>-фајлове, дефинисане у RFC 5545.</p>
+</div>
+</section>
+<section id="edit-export-or-delete-a-calendar">
+<h3>Уређивање, извоз или брисање календара<a class="headerlink" href="#edit-export-or-delete-a-calendar" title="Link to this heading"></a></h3>
+<p>Понекад можете да пожелите да промените боју или комплетни назив раније увезеног или креираног календара. Такође можете пожелети да га извезете на свој локални хард диск или да га заувек избришете.</p>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>Молимо вас да имате на уму да је брисање календара радња која не може да се поништи. Након брисања, више не постоји начин да се календар врати, осим у случају када имате локалну резервну копију.</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/calendar_dropdown.png" src="../../_images/calendar_dropdown.png" />
+</figure>
+<ol class="arabic simple">
+<li><p>Кликните на мени-три-тачке одговарајућег календара.</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/calendar_editing.png" src="../../_images/calendar_editing.png" />
+</figure>
+<ol class="arabic simple" start="2">
+<li><p>Кликните на <em>Уреди назив</em>, <em>Уреди боју</em>, <em>Извези</em> или <em>Обриши</em>.</p></li>
+</ol>
+</section>
+<section id="sharing-calendars">
+<h3>Дељење календара<a class="headerlink" href="#sharing-calendars" title="Link to this heading"></a></h3>
+<p>Ваш календар можете да делите са осталим корисницима или са групама. Календари могу да се деле са правом уписа или као само-за-читање. Када се календар дели са правом уписа, корисници са којима је календар подељен ће моћи да креирају нове догађаје у календару, као и да уреде или обришу постојеће.</p>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>Calendar shares currently cannot be accepted or rejected. If you want to stop having a calendar that someone shared with you, you can click on the 3-dot menu next to the calendar in the calendar list and click on „Unshare from me”. To restore a share, the calendar can be reshared again, either for the whole group, resetting all unshares, or for a single user.</p>
+</div>
+</section>
+<section id="publishing-a-calendar">
+<h3>Објављивање календара<a class="headerlink" href="#publishing-a-calendar" title="Link to this heading"></a></h3>
+<p>Календари могу да се објаве путем јавног линка тако да спољни корисници могу да их прегледају (само-за-читање). Лавни линк можете да направите тако што ћете да отворите мени дељења за календар и да кликнете на  « + » поред « Дели линк ». Када се креира, јавни линк можете да копирате у свој клипборд или да га пошаљете и-мејлом.</p>
+<p>Постоји и « кôд за уградњу » који обезбеђује HTML iframe за уградњу вашег календара у јавне странице.</p>
+<p>Више календара може заједно да се дели тако што се надовежу њихови јединствени жетони на крај линка за уграђивање. Појединачни жетони могу да се нађу на крају јавног линка сваког календара. Комплетна адреса ће изгледати овако <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/index.php/apps/calendar/embed/&lt;token1&gt;-&lt;token2&gt;-&lt;token3&gt;</span></code></p>
+<p>To change the default view or date of an embedded calendar, you need to provide a URL that looks like <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/index.php/apps/calendar/embed/&lt;token&gt;/&lt;view&gt;/&lt;date&gt;</span></code>.
+In this url you need to replace the following variables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;token&gt;</span></code> са жетоном календара,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;view&gt;</span></code> са једним од <code class="docutils literal notranslate"><span class="pre">dayGridMonth</span></code>, <code class="docutils literal notranslate"><span class="pre">timeGridWeek</span></code>, <code class="docutils literal notranslate"><span class="pre">timeGridDay</span></code>, <code class="docutils literal notranslate"><span class="pre">listMonth</span></code>, <code class="docutils literal notranslate"><span class="pre">listWeek</span></code>, <code class="docutils literal notranslate"><span class="pre">listDay</span></code>. Подразумевани поглед је <code class="docutils literal notranslate"><span class="pre">dayGridMonth</span></code> а листа која се обично користи је <code class="docutils literal notranslate"><span class="pre">listMonth</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;date&gt;</span></code> са <code class="docutils literal notranslate"><span class="pre">now</span></code> или било којим датумом у следећем формату <code class="docutils literal notranslate"><span class="pre">&lt;year&gt;-&lt;month&gt;-&lt;day&gt;</span></code> (нпр. <code class="docutils literal notranslate"><span class="pre">2019-12-28</span></code>).</p></li>
+</ul>
+<p>На јавној страници, корисници могу да пронађу линк за претплату на календар и да директно извезу комплетан календар.</p>
+</section>
+<section id="calendar-widget">
+<h3>Calendar Widget<a class="headerlink" href="#calendar-widget" title="Link to this heading"></a></h3>
+<p>You can embed your calendars into supported apps like <code class="docutils literal notranslate"><span class="pre">Talk</span></code>, <code class="docutils literal notranslate"><span class="pre">Notes</span></code>, etc…
+by either sharing the public link to make the embed viewable (read-only) to all users
+or by using the internal link to make it private.</p>
+</section>
+<section id="subscribe-to-a-calendar">
+<h3>Претплата на календар<a class="headerlink" href="#subscribe-to-a-calendar" title="Link to this heading"></a></h3>
+<p>На iCal календаре можете да се претплатите директно из свог Nextcloud. Тиме што подржавамо овај распрострањени стандард (RFC 5545) учинили смо да Nextcloud календар буде компатибилан са Google Calendar, Apple iCloud и са многим другим серверима календара са којима можете да размењујете своје календаре, заједно са линковима за претплату из календара обављених на другим Nextcloud инстанцама, као што је описано изнад.</p>
+<ol class="arabic simple">
+<li><p>Кликните на <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Нови</span> <span class="pre">календар</span></code> у левој бочној траци</p></li>
+<li><p>Кликните на <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Нова</span> <span class="pre">претплата</span> <span class="pre">из</span> <span class="pre">линка</span> <span class="pre">(само-за-читање)</span></code></p></li>
+<li><p>Унесите или налепите линк дељеног календара на који желите да се претплатите.</p></li>
+</ol>
+<p>Готово. Ваше претплате на календаре ће се редовно ажурирати.</p>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>Подразумевано се претплате ажурирају сваке недеље. Можда је ваш администратор изменио ово подешавање.</p>
+</div>
+</section>
+<section id="subscribe-to-a-holiday-calendar">
+<h3>Претплати се на Календар празника<a class="headerlink" href="#subscribe-to-a-holiday-calendar" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Додато у верзији 4.4.</span></p>
+</div>
+<p>Можете да се претплатите на календар празника који може само да се чита, а обезбеђује га <a class="reference external" href="https://www.thunderbird.net/calendar/holidays/">Thunderbird</a>.</p>
+<ol class="arabic simple">
+<li><p>Кликните на <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Нови</span> <span class="pre">календар</span></code> у левој бочној траци</p></li>
+<li><p>Кликните на <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Додај</span> <span class="pre">календар</span> <span class="pre">празника</span></code></p></li>
+<li><p>Пронађите своју земљу или регион и кликните на <code class="docutils literal notranslate"><span class="pre">Претплати</span> <span class="pre">се</span></code></p></li>
+</ol>
+</section>
+</section>
+<section id="managing-events">
+<h2>Управљање догађајима<a class="headerlink" href="#managing-events" title="Link to this heading"></a></h2>
+<section id="create-a-new-event">
+<h3>Креирање новог догађаја<a class="headerlink" href="#create-a-new-event" title="Link to this heading"></a></h3>
+<p>Догађаји могу да се креирају тако што се кликне на површину која одговара времену када се догађај заказује. У погледима дан и недеља календара једноставно кликнете, повучете и отпустите свој курсор преко површине која одговара времену када се догађај дешава.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_new-event_week.png" src="../../_images/calendar_new-event_week.png" />
+</figure>
+<p>У погледу месец је потребан само један клик у површину која одговара дану у којем се догађај дешава.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_new-event_month.png" src="../../_images/calendar_new-event_month.png" />
+</figure>
+<p>Након тога треба да откуцате назив догађаја (нпр. <strong>Састанак са Луком</strong>), изаберете календар у који желите да сачувате догађај (нпр. <strong>Лични</strong>, <strong>Пословни</strong>), проверите и конкретизујете временски опсег, или поставите да је догађај целодневни. Није обавезно да поставите место и опис.</p>
+<p>Ако желите да уредите напредне детаље као што су <strong>Учесници</strong> или <strong>Подсетници</strong>, или ако желите да поставите да се догађај понавља, кликните на дугме <code class="docutils literal notranslate"><span class="pre">Још</span></code> да отворите напредни едитор у бочној траци.</p>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>Ако увек желите да се уместо једноставног едитора у искачућем прозору отвори напредни едитор у бочној траци, штиклирајте <code class="docutils literal notranslate"><span class="pre">Прескочи</span> <span class="pre">једноставни</span> <span class="pre">едитор</span> <span class="pre">догађаја</span></code> у одељку <code class="docutils literal notranslate"><span class="pre">Подешавања</span> <span class="pre">&amp;</span> <span class="pre">увоз</span></code> апликације</p>
+</div>
+<p>Клик на плаво дугме <code class="docutils literal notranslate"><span class="pre">Креирај</span></code> ће коначно да креира догађај.</p>
+</section>
+<section id="edit-duplicate-or-delete-an-event">
+<h3>Уређивање, дуплирање или брисање догађаја<a class="headerlink" href="#edit-duplicate-or-delete-an-event" title="Link to this heading"></a></h3>
+<p>Ако желите да уредите, дуплирате или обришете одређени догађај, најпре морате да кликнете на догађај.</p>
+<p>Након тога ћете моћи поново да поставите све детаље догађаја и да отворите напредни едитор у бочној траци кликом на <code class="docutils literal notranslate"><span class="pre">Још</span></code>.</p>
+<p>Клик на дугме <code class="docutils literal notranslate"><span class="pre">Ажурирај</span></code> ће да ажурира догађај. Ако желите да одбаците урађене измене, кликните на икону за затварање која се налази у горњем десном углу искачућег прозора или едитора у бочној траци.</p>
+<p>Ако отворите поглед бочне траке и кликнете на мени три тачке поред назива догађаја, имаћете опцију да догађај извезете као <code class="docutils literal notranslate"><span class="pre">.ics</span></code> фајл, или да догађај обришете из календара.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_event_menu.png" src="../../_images/calendar_event_menu.png" />
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Савет</p>
+<p>Ако обришете догађаје, они иду у вашу <a class="reference internal" href="#calendar-trash-bin"><span class="std std-ref">trash bin</span></a>. Тамо можете да вратите догађаје који су грешком обрисани.</p>
+</div>
+<p>Догађај можете да извезете, дуплирате или обришете и из основног едитора.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_event_menu_modal.png" src="../../_images/calendar_event_menu_modal.png" />
+</figure>
+</section>
+<section id="invite-attendees-to-an-event">
+<span id="calendar-attendees"></span><h3>Позивање учесника у догађај<a class="headerlink" href="#invite-attendees-to-an-event" title="Link to this heading"></a></h3>
+<p>Можете да додате учеснике у догађај тако да се обавесте да су позвани. Примиће и-мејл позивницу и моћи ће да потврде или да откажу своје учешће у догађају. Учесници могу бити остали корисници ваше Nextcloud инстанце, контакти из вашег адресара и директне и-мејл адресе. Такође можете и да промените ниво учешћа сваког од учесника или да за одређеног учесника искључите и-мејл обавештење.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_invitation_level.png"><img alt="../../_images/calendar_event_invitation_level.png" src="../../_images/calendar_event_invitation_level.png" style="width: 406.40000000000003px; height: 437.6px;" /></a>
+</figure>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Измењено у верзији 25: </span>Линкови у и-мејлу одговора учесника више не нуде уносе за додавање коментара или позивање још гостију на догађај.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Савет</p>
+<p>Када се као учесници догађаја додају остали Nextcloud корисници, ако је доступна, имаћете приступ њиховој информацији о доступности. То вам помаже да одредите најбоље време за термин вашег догађаја. Поставите своје <a class="reference internal" href="#calendar-working-hours"><span class="std std-ref">working hours</span></a> да би остали знали када сте доступни. Информација о доступности је видљива само корисницима на истој Nextcloud инстанци.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Пажња</p>
+<p>Позивнице може да шаље само власник календара. Особе којима је календар подељен не могу то да ураде, без обзира на то да ли имају или немају право уписа у календар догађаја о коме се ради.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Пажња</p>
+<p>Администрација сервера мора да подеси и-мејл сервера у картици <code class="docutils literal notranslate"><span class="pre">Основна</span> <span class="pre">подешавања</span></code>, јер ће се овај мејл користити за слање позивница.</p>
+</div>
+</section>
+<section id="assign-rooms-and-resources-to-an-event">
+<h3>Додела соба и ресурса догађају<a class="headerlink" href="#assign-rooms-and-resources-to-an-event" title="Link to this heading"></a></h3>
+<p>Слично као са учесницима, имате могућност да догађају доделите собе и ресурсе. Систем ће се постарати да се свака соба или ресурс заузме без конфилкта. Када корисник први пут у догађај дода собу или ресурс, приказаће се као прихваћено. Сви наредни догађаји у време које се поклапа ће приказати собу или ресурс као одбијен.</p>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>Собама и ресурсима не управља сам Nextcloud и апликација Календар вам неће дозволити да додате или да измените ресурс. Ваш администратор може да инсталира и по могућству подеси позадинске механизме ресурса пре него што можете почети да их корисите као корисник.</p>
+</div>
+</section>
+<section id="add-attachments-to-events">
+<h3>Додавање прилога догађајима<a class="headerlink" href="#add-attachments-to-events" title="Link to this heading"></a></h3>
+<p>У своје догађаје можете да увезете прилоге било да их отпремите било да их додате из Фајлова</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_adding_attachments.png"><img alt="../../_images/calendar_adding_attachments.png" src="../../_images/calendar_adding_attachments.png" style="width: 316.8px; height: 589.6px;" /></a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>Прилози могу да се додају током креирања нових догађаја или уређивањем постојећих. Нови фајлови који се отпреме ће подразумевано да се сместе у calendar фолдер у кореном фолдеру.</p>
+</div>
+<p>Фолдер прилога можете да измените ако одете на <code class="docutils literal notranslate"><span class="pre">Подешавања</span> <span class="pre">календара</span></code> у доњем левом углу и промените <code class="docutils literal notranslate"><span class="pre">подразумевана</span> <span class="pre">локација</span> <span class="pre">прилога</span></code>.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_attachments_location.png"><img alt="../../_images/calendar_attachments_location.png" src="../../_images/calendar_attachments_location.png" style="width: 348.0px; height: 426.0px;" /></a>
+</figure>
+</section>
+<section id="set-up-reminders">
+<h3>Постављање подсетника<a class="headerlink" href="#set-up-reminders" title="Link to this heading"></a></h3>
+<p>Да бисте били обавештени пре почетка догађаја, имате могућност да поставите подсетнике. Тренутно се подржавају следеће методе за обавештавање:</p>
+<ul class="simple">
+<li><p>И-мејл обавештења</p></li>
+<li><p>Nextcloud обавештења</p></li>
+</ul>
+<p>Подсетнике можете да поставите као време релативно у односу на догађај или на одређени датум.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_reminders.png"><img alt="../../_images/calendar_event_reminders.png" src="../../_images/calendar_event_reminders.png" style="width: 386.40000000000003px; height: 498.40000000000003px;" /></a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>Обавештења ће да добију само власник календара и особе или групе са којима је календар подељен уз право уписа. Ако не примате никаква обавештења, а сматрате да би требало, можда је ваш Администратор искључио ову могућност на серверу.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>Ако ваш календар синхронизујете са мобилним уређајима или осталим клијентима треће стране, можда ће се и на њима појављивати обавештења.</p>
+</div>
+</section>
+<section id="add-recurring-options">
+<h3>Додавање опција понављања<a class="headerlink" href="#add-recurring-options" title="Link to this heading"></a></h3>
+<p>Догађај може да се постави као „понављајући”, тако да се дешава сваког дана, недеље, месеца или године. Могу да се додају посебна правила за постављање дана у недељи у којима се дешава догађај, или још сложенија правила, као што је свака четврта среда сваког месеца.</p>
+<p>Такође можете да наведете када престаје понављање.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_repeat.png"><img alt="../../_images/calendar_event_repeat.png" src="../../_images/calendar_event_repeat.png" style="width: 392.8px; height: 368.8px;" /></a>
+</figure>
+</section>
+<section id="trash-bin">
+<span id="calendar-trash-bin"></span><h3>Корпа за отпатке<a class="headerlink" href="#trash-bin" title="Link to this heading"></a></h3>
+<p>Ако у апликацији Календар обршете догађаје, задатке или календар, ваши подаци се још увек не губе. Они се смештају у <em>корпу за орпарке</em>. На тај начин имате могућност да поништите брисање. Након подразумеваног перода од 30 дана (ваша администрација је можда променила ово подешавање), те ставке ће се обрисати за стално. Ако то желите, ставке и раније можете да обришете за стално.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_trash_bin.png" src="../../_images/calendar_trash_bin.png" />
+</figure>
+<p>Дугмад <code class="docutils literal notranslate"><span class="pre">Испразни</span> <span class="pre">корпу</span> <span class="pre">за</span> <span class="pre">отпатке</span></code> ће у једном кораку да обрише комплетан садржај корпе за отпатке.</p>
+<div class="admonition tip">
+<p class="admonition-title">Савет</p>
+<p>Корпи за отпатке може да се приступи само из апликације Календар. Било која повезана апликација неће моћи да прикаже њен садржај. Међутим, догађаји, задаци и календари који су обрисани у повезаној апликацији ће такође да заврше у корпи за отпатке.</p>
+</div>
+</section>
+<section id="automated-user-status">
+<span id="calendar-working-hours"></span><h3>Automated User Status<a class="headerlink" href="#automated-user-status" title="Link to this heading"></a></h3>
+<p>When you have a calendar event scheduled that has a „BUSY” status, your user status will be automatically set to „In a meeting” unless you have set yourself to „Do Not Disturb” or „Invisible”.
+You can overwrite the status with a custom message any time, or set your calendar events to „FREE”.
+Calendars that are transparent will be ignored.</p>
+</section>
+</section>
+<section id="responding-to-invitations">
+<h2>Одговарање на позивнице<a class="headerlink" href="#responding-to-invitations" title="Link to this heading"></a></h2>
+<p>Унутар апликације можете директно да одговорите на позивнице. Кликните на догађај и изаберите свој статус учешћа. На позивницу можете да одговорите прихватањем, одбијањем или условним прихватањем.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_accept_simple_editor.png"><img alt="../../_images/calendar_accept_simple_editor.png" src="../../_images/calendar_accept_simple_editor.png" style="width: 580.0px; height: 400.8px;" /></a>
+</figure>
+<p>На позивницу можете да одговорите и из бочне траке.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_accept_sidebar_editor.png"><img alt="../../_images/calendar_accept_sidebar_editor.png" src="../../_images/calendar_accept_sidebar_editor.png" style="width: 407.20000000000005px; height: 664.0px;" /></a>
+</figure>
+</section>
+<section id="availability-working-hours">
+<h2>Доступност (радни сати)<a class="headerlink" href="#availability-working-hours" title="Link to this heading"></a></h2>
+<p>Општа доступност, која не зависи од заказаних догађаја, може да се постави у groupware подешавањима Nextcloud система, Ова подешавања ће се осликати у погледу слободан-заузет када у апликацији Календар <a class="reference internal" href="#calendar-attendees"><span class="std std-ref">schedule a meeting with other people</span></a>. Неки повезани клијенти, као што је Thunderbird ће такође да прикажу ове податке.</p>
+<figure class="align-default">
+<img alt="../../_images/caldav_availability.png" src="../../_images/caldav_availability.png" />
+</figure>
+<p>You can configure one-time absences on top of your regular availability in the <a class="reference internal" href="absence.html#groupware-absence"><span class="std std-ref">Absence settings section</span></a>.</p>
+</section>
+<section id="birthday-calendar">
+<h2>Календар рођендана<a class="headerlink" href="#birthday-calendar" title="Link to this heading"></a></h2>
+<p>Календар рођендана је аутоматски креиран календар који ће сам да прибави рођендане из ваших контаката. Једини начин да се уреди овај календар је да се попуне датуми рођендана ваших контаката. У апликацији календара не можете директно да уређујете овај календар.</p>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>Ако не видите календар рођендана, можда је ваш Администратор искључио ову могућност на серверу.</p>
+</div>
+</section>
+<section id="appointments">
+<h2>Састанци<a class="headerlink" href="#appointments" title="Link to this heading"></a></h2>
+<p>Почевши од верзије 3 апликације Календар могуће је генерисање термина састанака које могу да резервишу остали Nextcloud корисници, али и особе без налога на инстанци. Састанци омогућавају фину контролу времена у којем можете да се састанете са неким. То може да елиминише потребу за слањем мејлова тамо-овамо све док се не усагласе датум и време.</p>
+<p>У овом одељку ћемо користити појам <em>организатор</em> за особу која је власник календара и која подешава термине за састанке. <em>Учесник</em> је особа која резервише један од термина.</p>
+<section id="creating-an-appointment-configuration">
+<h3>Креирање конфигурације састанка<a class="headerlink" href="#creating-an-appointment-configuration" title="Link to this heading"></a></h3>
+<p>Као организатор састанака, отворите главни веб кориснички интерфејс апликације Календар. У левој бочној траци ћете пронаћи одељак за састанке у којем можете да отворите дијалог којим креирате нови састанак.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_new.png" src="../../_images/appointment_new.png" />
+</figure>
+<p>Једна од основних информација сваког састанка је наслов који описује шта је тема састанка (нпр. „Један-на-један” када организатор жели да колегама понуди могућност за лични позив), место на којем се састанак одржава и детаљнији опис садржаја састанка.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_basics.png" src="../../_images/appointment_config_basics.png" />
+</figure>
+<p>Трајање састанка може да се изабере из претходно дефинисане листе. Затим, можете да подесите жељено време између почетака. То је интервал постављања почетака доступних термина. На пример, могли бисте да имате термине дужине један сат, али да им се почеци постављају на сваких пола сата, тако да учесник може да закаже у 9:00 али исто тако и у 9:30. Необавезне информације о локацији и опис пружају учеснику мало контекста. Сваки заказани састанак ће се уписати у један од ваших календара, тако да можете одлучити који ће то календар да буде. Састанци могу бити <em>јавни</em> или <em>приватни</em>. Јавни састанци могу са се открију са профилне странице Nextcloud корисника. Приватним састанцима могу да приступе само особе које приме тајни URL.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_calendar_settings.png" src="../../_images/appointment_config_calendar_settings.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>Учесницима ће се приказати само они термини који нису у конфликту са постојећим догађајима у вашим календарима.</p>
+</div>
+<p>Организатор састанка може да наведе времена током недеље у којима је у општем случају могуће заказивање термина. То могу да буду радни сати, али и било који произвољни распоред.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_booking_hours.png" src="../../_images/appointment_config_booking_hours.png" />
+</figure>
+<p>За неке састанке је неопходно време за прирпрему, нпр. када је потребно да се одвезете до места састајања. Организатор може изабрати временски период који мора бити слободан. Биће доступни само они термини који нису у конфликту са осталим догађајима у током времена припреме. Уз то, постоји и опција да се наведе време након сваког састанка које мора да буде слободно. Да би се спречило да учесник закаже термин који долази кратко време након самог заказивања, могуће је да се подеси колико времена мора да прође пре него што може да се закаже наредни састанак. Постављање максималног броја термина у једном дану може да ограничи укупан број могућих термина које учесници могу да закажу.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_limits.png" src="../../_images/appointment_config_limits.png" />
+</figure>
+<p>Тада ће подешени састанак да се прикаже на листи у левој бочној траци. Помоћу менија три тачке можете да прегледате састанак. Можете да копирате линк састанка и да га поделите са учесницима, или да оставите њима да открију ваш јавни састанак на профилној страници. Такође можете да уредите или обришете конфигурацију састанка.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_options.png" src="../../_images/appointment_config_options.png" />
+</figure>
+</section>
+<section id="booking-an-appointment">
+<h3>Заказивање састанка<a class="headerlink" href="#booking-an-appointment" title="Link to this heading"></a></h3>
+<p>Страница за заказивање учеснику приказује назив, место, опис и дужину састанка. За изабрани дан може да постоји и листа могућих термина. У данима када нема доступних термина, када постоји превише конфиката или када је већ достигнуто дневно ограничење већ заказаних састанака, листа може да буде и празна.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_1.png" src="../../_images/appointment_booking_1.png" />
+</figure>
+<p>Да би заказали, учесници морају да унесу своје име и и-мејл адресу. Могу да додају и коментар ако то желе.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_2.png" src="../../_images/appointment_booking_2.png" />
+</figure>
+<p>Када је заказивање било успешно, учеснику ће се приказати дијалог за потврду.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_3.png" src="../../_images/appointment_booking_3.png" />
+</figure>
+<p>Да би се проверило да ли је и-мејл адреса учесника исправна, послаће им се и-мејл за потврду.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_confirmation_email.png" src="../../_images/appointment_booking_confirmation_email.png" />
+</figure>
+<p>Тека када учесник кликне на линк за потврду у и-мејлу који прими, заказивање састанка ће се прихватити и проследити организатору.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_confirmation_dialogue.png" src="../../_images/appointment_booking_confirmation_dialogue.png" />
+</figure>
+<p>Учесник ће да прими још један и-мејл који потврђује детаље састанка.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_email_2.png" src="../../_images/appointment_booking_email_2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>Ако термин није био потрвђен, он ће се још увек приказивати као доступан. Термин би до тад могао да закаже неко други који раније потврди своје заказивање. Систем ће да открије конфликт и понудиће избор новог термина.</p>
+</div>
+</section>
+<section id="working-with-the-booked-appointment">
+<h3>Рад са заказаним састанком<a class="headerlink" href="#working-with-the-booked-appointment" title="Link to this heading"></a></h3>
+<p>Када се одради заказивање, организатор ће у свом календару моћи да пронађе догађај са детаљима састанка и <a class="reference internal" href="#calendar-attendees"><span class="std std-ref">attendee</span></a>.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_calendar_event.png" src="../../_images/appointment_calendar_event.png" />
+</figure>
+<p>Ако је за састанак укључено подешавање „Додај време пре догађаја” или „Додај време након догађаја”, та времена ће се приказати као посебни догађаји у календару организатора.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_calendar_prep.png" src="../../_images/appointment_calendar_prep.png" />
+</figure>
+<p>Као и са било којим другим догађајем који има учеснике, измене и отказивања ће да окину обавештење које се шаље на и-мејл учесника.</p>
+<p>Ако учесници желе да откажу састанак, потребно је да се обрате организатору, тако да он може да откаже или чак и да обрише догађај.</p>
+</section>
+<section id="create-talk-room-for-booked-appointments">
+<h3>Крерање Talk соба за заказане састанке<a class="headerlink" href="#create-talk-room-for-booked-appointments" title="Link to this heading"></a></h3>
+<p>Talk собу за заказани састанак можете директно да креирате из апликације календара. Опција може да се пронађе у модалном дијалогу ’Креирај састанак’. За сваки заказани састанак ће се креирати јединствени линк и послаће се и-мејлом за потврду када штиклирате ову опцију.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="contacts.html" class="btn btn-neutral float-left" title="Употреба апликације Контакти" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mail.html" class="btn btn-neutral float-right" title="Употреба апликације Пошта" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/af/">af</a></dd>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/el_GR/">el_GR</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/eo/">eo</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/eu/">eu</a></dd>
+<dd><a href="/server/latest/user_manual/fi_FI/">fi_FI</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/hr/">hr</a></dd>
+<dd><a href="/server/latest/user_manual/hu/">hu</a></dd>
+<dd><a href="/server/latest/user_manual/hu_HU/">hu_HU</a></dd>
+<dd><a href="/server/latest/user_manual/id/">id</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/ja_JP/">ja_JP</a></dd>
+<dd><a href="/server/latest/user_manual/ko/">ko</a></dd>
+<dd><a href="/server/latest/user_manual/mn/">mn</a></dd>
+<dd><a href="/server/latest/user_manual/nb_NO/">nb_NO</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/nn/">nn</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/pt_PT/">pt_PT</a></dd>
+<dd><a href="/server/latest/user_manual/ro/">ro</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/si/">si</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sq/">sq</a></dd>
+<dd><a href="/server/latest/user_manual/sr/">sr</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/ta/">ta</a></dd>
+<dd><a href="/server/latest/user_manual/th/">th</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/uk/">uk</a></dd>
+<dd><a href="/server/latest/user_manual/uz/">uz</a></dd>
+<dd><a href="/server/latest/user_manual/vi/">vi</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+<dd><a href="/server/latest/user_manual/zh_TW/">zh_TW</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Верзије</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/user_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/user_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/28/user_manual">28</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Преузимања</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>На прочитај документацију</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Почетна страница пројекта</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Изградње</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atomic components &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="HTML/CSS guidelines" href="../html_css_design/index.html" />
+    <link rel="prev" title="Layout components" href="layoutcomponents.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Interface &amp; interaction design</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="foundations.html">Foundations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layout.html">Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layoutcomponents.html">Layout components</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Atomic components</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#buttons">Buttons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#action-menu">Action menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#input-fields">Input fields</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#text-input">Text input</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dropdowns">Dropdowns</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checkboxes-and-radio-buttons">Checkboxes and radio buttons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pickers">Pickers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#datetime-picker">Datetime picker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#color-picker">Color picker</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tags">Tags</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modal">Modal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avatar">Avatar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#progress-bars-and-meters">Progress bars and meters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-bubbles">User bubbles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#counter-bubbles">Counter bubbles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#empty-content">Empty content</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#skeleton-screens">Skeleton screens</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Interface &amp; interaction design</a></li>
+      <li class="breadcrumb-item active">Atomic components</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/design/atomiccomponents.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="atomic-components">
+<h1>Atomic components<a class="headerlink" href="#atomic-components" title="Link to this heading"></a></h1>
+<section id="buttons">
+<span id="id1"></span><h2>Buttons<a class="headerlink" href="#buttons" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcButton">Buttons Vue component</a>.
+<a class="reference external" href="https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&amp;section=interactions&amp;index=0&amp;share-id=11fde340-21f4-802e-8002-8d8d305e7ab5">Penpot buttons</a></p>
+<p>Buttons are used to initiate actions in your app. This may be a primary action, or it may be used to confirm an action in a dialog, or simply be used for any major action in your app.</p>
+<p>There are generally different types of buttons for different purposes:</p>
+<img alt="Primary button &quot;Move&quot; and secondary button &quot;Copy&quot; in Files" src="../_images/button-primary-secondary.png" />
+<ul class="simple">
+<li><p>Primary buttons are used to indicate the main action (“Start call” button in Talk, “Move” in Files). The primary buttons are stylized in Nextcloud blue by default or the theming color when themed. These should only be used sparingly and ideally only for 1 visible action at a time.</p></li>
+<li><p>Secondary buttons are used for actions that have lesser weight than the primary action (“Today” button in Calendar, “Copy” in Files)</p></li>
+</ul>
+<img alt="Tertiary button &quot;Mark as read&quot; in desktop tray menu" src="../_images/button-tertiary.png" />
+<ul class="simple">
+<li><p>Tertiary buttons, which are the buttons without a background, can be used for other actions in your app which are important, but not the main focus. These buttons are usually combined with a primary or secondary button. For example, “Mark as read” is a tertiary button used alongside a secondary button</p></li>
+</ul>
+<img alt="Mute, video, screenshare and 3-dot buttons in Talk video call" src="../_images/button-icon-only.png" />
+<ul class="simple">
+<li><p>The icon-only buttons can be used if the action is frequently used and the icon is easily recognizable, and therefore does not require any text to support it (mute/video/screenshare actions in Talk, and the 3-dot menu icon)</p></li>
+</ul>
+<img alt="Success button &quot;Join call&quot; in Talk" src="../_images/button-success.png" />
+<ul class="simple">
+<li><p>Success buttons are used for a positive action (“Join call” button in Talk)</p></li>
+</ul>
+<img alt="Danger button &quot;Remove email&quot; in Mail" src="../_images/button-danger.png" />
+<ul class="simple">
+<li><p>Danger buttons are used to signify a potentially dangerous or negative action (“Remove account” button in the confirmation dialog when you want to remove an account in Mail, or “Delete conversation” in Talk conversation settings)</p></li>
+</ul>
+</section>
+<section id="action-menu">
+<span id="id2"></span><h2>Action menu<a class="headerlink" href="#action-menu" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcActions">Action menu Vue component</a>.
+<a class="reference external" href="https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&amp;section=interactions&amp;index=4&amp;share-id=11fde340-21f4-802e-8002-8d8d305e7ab5">Penpot action menu</a></p>
+<img alt="Files action menu" src="../_images/action-menu.png" />
+<p>The action menu contains commonly used actions associated with an item. Each entry in the action menu has some text accompanied by a suitable icon. In some cases, the action menu may also contain:</p>
+<img alt="Checkbox in action menu in Mail" src="../_images/action-menu-checkbox.png" />
+<ul class="simple">
+<li><p>checkboxes to quickly toggle a state, like in Mail</p></li>
+</ul>
+<img alt="Radio button in action menu in Files link sharing" src="../_images/action-menu-radio-button.gif" />
+<ul class="simple">
+<li><p>radio buttons to select from a few options, like chat notifications in Talk</p></li>
+</ul>
+<img alt="Add new mailbox in Mail action menu" src="../_images/action-menu-new-item.gif" />
+<ul class="simple">
+<li><p>new entry elements to quickly add items, like add a new mailbox in Mail</p></li>
+</ul>
+<img alt="Second level of actions in action menu to configure custom permissions for link shares in Files" src="../_images/action-menu-second-level.gif" />
+<ul class="simple">
+<li><p>a second level of actions, like to configure custom permissions for link shares in Files</p></li>
+</ul>
+<p>Some commonly used actions in the action menu are favoriting, renaming, downloading and deleting. Delete should always be at the last position as to not be confused with other actions.</p>
+<p>It is important to keep the action menu simple and its length at a minimum. Too many entries in the action menu can lead to confusion and people not finding what they are looking for.</p>
+<img alt="Action menu with a paperclip icon for attachments in Talk" src="../_images/action-menu-icon.png" />
+<p>In most cases the action menu is accessed through a 3-dot menu. In certain cases, it is better to use a specific icon instead of the generic 3-dot icon. For example in Talk a paperclip icon is used for accessing the action menu for attaching an item, and a heading icon is used in Text formatting bar for heading level selection.</p>
+<p>For Android and iOS, the action menu is generally opened as a bottom sheet.</p>
+</section>
+<section id="input-fields">
+<span id="id3"></span><h2>Input fields<a class="headerlink" href="#input-fields" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcFields?id=ncinputfield">Input field Vue component</a>.
+<a class="reference external" href="https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&amp;section=interactions&amp;index=2&amp;share-id=11fde340-21f4-802e-8002-8d8d305e7ab5">Penpot text fields</a></p>
+<section id="text-input">
+<span id="id4"></span><h3>Text input<a class="headerlink" href="#text-input" title="Link to this heading"></a></h3>
+<img alt="Talk text input" src="../_images/talk-text-input.png" />
+<img alt="Text input with label in settings" src="../_images/text-input-label.png" />
+<p>Text inputs are usually used for free-form inputs. Make sure that the label for a text input field is simple and clear. It may also be a good idea to use placeholder text in the field.</p>
+</section>
+<section id="dropdowns">
+<span id="id5"></span><h3>Dropdowns<a class="headerlink" href="#dropdowns" title="Link to this heading"></a></h3>
+<p><a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcSelect">Dropdown Vue component</a>.
+<a class="reference external" href="https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&amp;section=interactions&amp;index=1&amp;share-id=11fde340-21f4-802e-8002-8d8d305e7ab5">Penpot dropdowns</a></p>
+<img alt="Dropdown menu in Files sharing" src="../_images/dropdown-find-as-you-type.gif" />
+<p>Dropdowns allow the user to select one or more items from a list. Dropdowns can have predefined options from which the user can select one or more items, as seen in Contacts for selecting the type of a phone number. If there are not too many entries, you may also think about using a set of <a class="reference internal" href="#checkboxes-and-radio-buttons"><span class="std std-ref">Checkboxes and radio buttons</span></a> instead.</p>
+<p>Although not always necessary, it is generally a good idea to have a default item already selected, especially when a dropdown menu is a key element which will be used a lot. This can be decided by a number of factors such as most selected item for that user, most recently selected item, etc. For example, when you add a new phone number in Contacts, the type “Home” is automatically set in the dropdown.</p>
+<p>Another variation of the dropdown allows the user to find their preferred option by typing it in, like in Mail where the “To” field in the composer allows you to type an email address, and as you type it shows a dropdown with the results matching the input. This kind of dropdown is useful for when there are many options and the user would already know what they are looking for. It can also be a good idea to allow new inputs if there are no matches.</p>
+</section>
+<section id="checkboxes-and-radio-buttons">
+<span id="id6"></span><h3>Checkboxes and radio buttons<a class="headerlink" href="#checkboxes-and-radio-buttons" title="Link to this heading"></a></h3>
+<p><a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcCheckboxRadioSwitch">Checkbox and radio button Vue components</a>.
+<a class="reference external" href="https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&amp;section=interactions&amp;index=5&amp;share-id=11fde340-21f4-802e-8002-8d8d305e7ab5">Penpot checkboxes and radio buttons</a></p>
+<img alt="Checkbox in Talk settings" src="../_images/checkboxes-settings.png" />
+<img alt="Radio buttons in Mail settings" src="../_images/radiobuttons-settings.png" />
+<p>Checkboxes and radio buttons are very common input methods. They are most commonly used in the <a class="reference internal" href="#action-menu"><span class="std std-ref">Action menu</span></a>, <a class="reference internal" href="layoutcomponents.html#sidebar"><span class="std std-ref">Sidebar</span></a> and <a class="reference internal" href="layoutcomponents.html#settings"><span class="std std-ref">Settings</span></a>.</p>
+<p>They should have a concise label, especially if they are inside an action menu. If more explanation is needed, you can also add a subline.</p>
+</section>
+</section>
+<section id="pickers">
+<h2>Pickers<a class="headerlink" href="#pickers" title="Link to this heading"></a></h2>
+<section id="datetime-picker">
+<span id="id7"></span><h3>Datetime picker<a class="headerlink" href="#datetime-picker" title="Link to this heading"></a></h3>
+<p><a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcPickers?id=ncdatetimepicker">Datetime picker Vue component</a>.</p>
+<img alt="Files date picker" src="../_images/files-date-picker.png" />
+<p>A user can quickly select dates, times and date ranges using the datetime picker. Use good default dates relevant to the task at hand. For example, in the case of setting an expiration date, unless the server has something enforced as default, 1 week is a good default.</p>
+</section>
+<section id="color-picker">
+<span id="id8"></span><h3>Color picker<a class="headerlink" href="#color-picker" title="Link to this heading"></a></h3>
+<p><a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcPickers?id=nccolorpicker">Color picker Vue component</a>.</p>
+<img alt="Deck color picker" src="../_images/colour-picker.gif" />
+<p>For certain elements of your UI you might want to allow people to set colors. This can easily be achieved using a color picker with some predefined colors. Be cautious about using different colors in the UI. In most Nextcloud apps like Deck and Calendar, user defined colors for UI elements are used sparingly and shown as a circle next to the element they refer to.</p>
+<p>In addition to these 2 pickers, there is also the <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcPickers?id=ncemojipicker">emoji picker</a> and the <a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcPickers?id=nctimezonepicker">timezone picker</a> which can be also be used in your app.</p>
+</section>
+</section>
+<section id="tags">
+<span id="id9"></span><h2>Tags<a class="headerlink" href="#tags" title="Link to this heading"></a></h2>
+<img alt="Mail tags" src="../_images/mail-tags.png" />
+<p>Tags are used by users to manage their items. They can be colored for easy identification, but make sure to use subtle colors if colored tags are a main part of the UI, as seen in Mail.</p>
+</section>
+<section id="modal">
+<span id="id10"></span><h2>Modal<a class="headerlink" href="#modal" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcModal">Modal Vue component</a>.
+<a class="reference external" href="https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&amp;section=interactions&amp;index=12&amp;share-id=11fde340-21f4-802e-8002-8d8d305e7ab5">Penpot modals</a></p>
+<img alt="Deck card modal" src="../_images/deck-card-modal.png" />
+<p>A modal is an element on top of the main UI, and interaction with the main element is disabled.</p>
+<p>The modal is used when there is a specific task or information that the user needs to focus on. Modals are a good idea if the showing some information on the main UI would clutter the UI too much, and the information does not necessarily depend on the UI. Modals are also used for confirmation when performing dangerous tasks such as permanent deletion.</p>
+<p>Examples of modals are:</p>
+<ul class="simple">
+<li><p>Settings modal found in Talk and Mail</p></li>
+<li><p>the modal view for a card in Deck</p></li>
+<li><p>Move or copy dialog in Files</p></li>
+<li><p>the file picker in Mail and Talk</p></li>
+</ul>
+<p>On Android and iOS, content which is in a modal would usually be shown as a full-screen overlay, like for example composing a new mail in <a class="reference external" href="https://developer.apple.com/documentation/messageui/mfmailcomposeviewcontroller">iOS Mail</a>.</p>
+</section>
+<section id="avatar">
+<span id="id11"></span><h2>Avatar<a class="headerlink" href="#avatar" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcAvatar">Avatar Vue component</a>.
+<a class="reference external" href="https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&amp;section=interactions&amp;index=3&amp;share-id=11fde340-21f4-802e-8002-8d8d305e7ab5">Penpot avatars</a></p>
+<img alt="Avatars in Talk" src="../_images/avatar-talk.gif" />
+<p>An avatar is used when referring to any user and displays their photo or initials. The avatar component also shows a menu for that user when clicked.</p>
+<p>When using an avatar it is usually accompanied by the name of the user as well, and sometimes it can also show the status of the user, although not always necessary. Statuses can be useful when the user is interacting with another user and is expecting a response, for example when &#64;mentioning someone else in Talk, or in any sharing view.</p>
+<p>When multiple people are working on or are assigned to the same element, like in Text, Office, a Deck card, or in the Files list for sharing, they are shown as overlapped.</p>
+</section>
+<section id="progress-bars-and-meters">
+<span id="id12"></span><h2>Progress bars and meters<a class="headerlink" href="#progress-bars-and-meters" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcProgressBar">Progress bar Vue component</a>.</p>
+<img alt="Desktop syncing progress bar" src="../_images/progress-bar.png" />
+<p>Progress bars shows progress for a potentially lengthy process such as uploading, downloading, or syncing. When using a progress bar it can also be a good idea to have a text-based indication of the progress, such as percentage or time remaining, and make sure to provide feedback when the process has been completed.</p>
+<img alt="Meter in Files for storage quota" src="../_images/meter-settings.png" />
+<p>The progress bar component is also sometimes used as a meter to visualize data as seen in the settings for Files to show the quota.</p>
+</section>
+<section id="user-bubbles">
+<span id="id13"></span><h2>User bubbles<a class="headerlink" href="#user-bubbles" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcUserBubble">User bubble Vue component</a>.
+<a class="reference external" href="https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&amp;section=interactions&amp;index=6&amp;share-id=11fde340-21f4-802e-8002-8d8d305e7ab5">Penpot user bubbles</a></p>
+<img alt="Talk user bubble" src="../_images/talk-user-bubble.png" />
+<p>When referring to a user inline in your app, a user bubble element can be used. In Talk and Comments, user bubbles are used in the content when someone mentions a user. In Mail, it is used in the header for the recipients of the message.</p>
+</section>
+<section id="counter-bubbles">
+<span id="id14"></span><h2>Counter bubbles<a class="headerlink" href="#counter-bubbles" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcCounterBubble">Counter bubble Vue component</a>.
+<a class="reference external" href="https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&amp;section=interactions&amp;index=7&amp;share-id=11fde340-21f4-802e-8002-8d8d305e7ab5">Penpot counter bubbles</a></p>
+<img alt="Talk counter bubble" src="../_images/talk-counter-bubble.png" />
+<p>In Talk, it is used for showing which chats are unread and if you or your group is mentioned.</p>
+</section>
+<section id="empty-content">
+<span id="id15"></span><h2>Empty content<a class="headerlink" href="#empty-content" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcEmptyContent">Empty content component</a>.
+<a class="reference external" href="https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab157b6bd27&amp;section=interactions&amp;index=10&amp;share-id=11fde340-21f4-802e-8002-8d8d305e7ab5">Penpot empty content</a></p>
+<img alt="Bookmarks empty content" src="../_images/empty-content.png" />
+<p>The empty content state provides feedback that a view is empty, e.g. a new folder. This is to differentiate it from the state of loading, or having loaded and showing data.</p>
+<p>Make sure that empty content views only show when the view is really empty, and not while it is loading – otherwise people will be shocked as to where their data is gone. The wording on the empty content view should be friendly and helping people out of the situation, for example in the Bookmarks app.</p>
+</section>
+<section id="skeleton-screens">
+<span id="id16"></span><h2>Skeleton screens<a class="headerlink" href="#skeleton-screens" title="Link to this heading"></a></h2>
+<img alt="Talk skeleton screen :scale: 50%" src="../_images/skeleton-screen-talk.png" />
+<p>While the app is loading, it is best to show a skeleton view of the apps probable contents as loading feedback. A good example for this is Talk on web as well as Files and Talk on Android.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="layoutcomponents.html" class="btn btn-neutral float-left" title="Layout components" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../html_css_design/index.html" class="btn btn-neutral float-right" title="HTML/CSS guidelines" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/developer_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/developer_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/28/developer_manual">28</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

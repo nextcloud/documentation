@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="tr" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nextcloud dosyalarınızı sunucuda şifrelemek &mdash; Nextcloud latest User Manual latest belgelendirmesi</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=278d5dfc"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/translations.js?v=34f4c3a9"></script>
+        <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Dizin" href="../genindex.html" />
+    <link rel="search" title="Ara" href="../search.html" />
+    <link rel="next" title="Dosya paylaşımı" href="sharing.html" />
+    <link rel="prev" title="Masaüstü ve mobil eşitleme" href="desktop_mobile_sync.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Belgeleri arayın" aria-label="Belgeleri arayın" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest kullanıcı rehberi giriş</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Nextcloud latest sürümündeki yenilikler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud site arayüzü</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Dosyalar ve eşitleme</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Nextcloud site arayüzünü kullanarak dosyalarınıza erişmek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">WebDAV kullanarak Nextcloud dosyalarına erişmek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Silinmiş dosyaları yönetmek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Masaüstü ve mobil eşitleme</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Nextcloud dosyalarınızı sunucuda şifrelemek</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#encryption-faq">Şifreleme ile ilgili sık sorulan sorular</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-can-encryption-be-disabled">Şifreleme nasıl devre dışı bırakılabilir?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-possible-to-disable-encryption-with-the-recovery-key">Kurtarma anahtarıyla şifreleme devre dışı bırakılabilir mi?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#can-encryption-be-disabled-without-the-user-s-password">Şifreleme, kullanıcının şifresi olmadan devre dışı bırakılabilir mi?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">Bunun bir sonraki kullanıcı oturum açma işlemine ya da bir arka plan işlemine taşınması planlanıyor mu?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-group-sharing-possible-with-the-recovery-key">Kurtarma anahtarıyla grup paylaşımı yapılabilir mi?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-encryption">Şifrelemeyi kullanmak</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-encrypted-files">Şifrelenmiş dosyaları paylaşmak</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#recovery-key-password">Kurtarma anahtarı parolası</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#files-not-encrypted">Şifrelenmeyen dosyalar</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#change-private-key-password">Kişisel anahtar parolasını değiştirmek</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Dosya paylaşımı</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Birleşik paylaşımlar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Anonim yüklemeler yapma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Büyük dosya yüklemeleri</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Depolama kotası</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Sürüm denetimi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projeler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Sahiplik aktarma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Birleşik paylaşımları kullanmak</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Kullanıcı ayarları</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Evrensel erişim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">İki aşamalı kimlik doğrulamasını kullanmak</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Bağlı tarayıcı ve aygıtların yönetimi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Dış Depolama</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Dosyalar ve eşitleme</a></li>
+      <li class="breadcrumb-item active">Nextcloud dosyalarınızı sunucuda şifrelemek</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/encrypting_files.rst" class="fa fa-github"> GitHub'da Düzenle</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="encrypting-your-nextcloud-files-on-the-server">
+<h1>Nextcloud dosyalarınızı sunucuda şifrelemek<a class="headerlink" href="#encrypting-your-nextcloud-files-on-the-server" title="Link to this heading"></a></h1>
+<p>Nextcloud üzerinde bir sunucu tarafı şifreleme uygulaması bulunur. Bu uygulama Nextcloud yöneticiniz tarafından etkinleştirildiğinde, tüm Nextcloud veri dosyalarınız sunucu tarafında otomatik olarak şifrelenir. Şifreleme tüm sunucuya uygulandığından,  bir kez etkinleştirildiğinde dosyalarınızı şifrelenmemiş olarak tutmayı seçemezsiniz. Eşsiz kişisel şifreleme anahtarınız için parola olarak Nextcloud oturum açma bilgileriniz kullanıldığından özel bir şey yapmanız gerekmez. Yalnızca oturumunuzu kapatıp açın. Dosyalarınızı normal olarak yaptığınız gibi yönetin ve paylaşın. Parolanızı istediğiniz zaman değiştirebilirsiniz.</p>
+<p>Ana amacı, Nextcloud sunucunuza bağlı uzak depolama hizmetlerindeki dosyaları şifrelemektir. Böylece, uzak depolamadaki dosyalarınız kolay ve sorunsuz olarak korunabilir. Normal durumda uzak dosyalarınızı Nextcloud üzerinden paylaşabilirsiniz. Ancak şifrelenmiş dosyalarınızı doğrudan kullandığınız uzak hizmet üzerinden paylaşamazsınız çünkü şifreleme anahtarları Nextcloud sunucunuzda bulunur ve asla dış hizmet sağlayıcılara iletilmez.</p>
+<p>Nextcloud sunucunuz herhangi bir uzak depolama hizmetine bağlı değilse, dosya düzeyi veya tüm disk şifrelemesi gibi başka bir şifreleme yöntemi kullanmak daha iyidir. Anahtarlar Nextcloud sunucunuzda tutulduğundan, Nextcloud yöneticiniz dosyalarınıza göz atabilir. Sunucu ele geçirilirse kötü niyetli bir kullanıcı dosyalarınıza erişebilir. (Ayrıntılı bilgi almak için <a class="reference external" href="https://nextcloud.com/blog/encryption-in-nextcloud/">Nextcloud üzerinde şifreleme</a> bölümünü okuyabilirsiniz.)</p>
+<section id="encryption-faq">
+<h2>Şifreleme ile ilgili sık sorulan sorular<a class="headerlink" href="#encryption-faq" title="Link to this heading"></a></h2>
+<section id="how-can-encryption-be-disabled">
+<h3>Şifreleme nasıl devre dışı bırakılabilir?<a class="headerlink" href="#how-can-encryption-be-disabled" title="Link to this heading"></a></h3>
+<p>Şifrelemeyi devre dışı bırakmanın tek yolu, tüm dosyaların şifresini çözen <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label">“decrypt all”</a> komut dosyasını çalıştırmaktır. Bu komut tüm dosyaların şifresini çözer ve şifrelemeyi devre dışı bırakır.</p>
+</section>
+<section id="is-it-possible-to-disable-encryption-with-the-recovery-key">
+<h3>Kurtarma anahtarıyla şifreleme devre dışı bırakılabilir mi?<a class="headerlink" href="#is-it-possible-to-disable-encryption-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>Evet, <em>eğer</em> her kullanıcı <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">dosya kurtarma anahtarını</a> kullanıyorsa, ` “decrypt all” &lt;<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label">https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label</a>&gt;`_ komutu tüm dosyaların şifresini çözmek için bu anahtarı kullanır.</p>
+</section>
+<section id="can-encryption-be-disabled-without-the-user-s-password">
+<h3>Şifreleme, kullanıcının şifresi olmadan devre dışı bırakılabilir mi?<a class="headerlink" href="#can-encryption-be-disabled-without-the-user-s-password" title="Link to this heading"></a></h3>
+<p>Kullanıcı parolanız veya <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">dosya kurtarma anahtarınız</a> yoksa, o zaman tüm dosyaların şifresini çözmenin bir yolu yoktur. Ayrıca, oturum açarken çalıştırmak da tehlikeli olur çünkü büyük olasılıkla zaman aşımı sorunlarıyla karşılaşırsınız.</p>
+</section>
+<section id="is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">
+<h3>Bunun bir sonraki kullanıcı oturum açma işlemine ya da bir arka plan işlemine taşınması planlanıyor mu?<a class="headerlink" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job" title="Link to this heading"></a></h3>
+<p>Bunu yaparsak, oturum açma parolanızı veritabanında tutmamız gerekir. Bu bir güvenlik sorunu olarak görülebilir. Bu nedenle böyle bir şey planlanmamıştır.</p>
+</section>
+<section id="is-group-sharing-possible-with-the-recovery-key">
+<h3>Kurtarma anahtarıyla grup paylaşımı yapılabilir mi?<a class="headerlink" href="#is-group-sharing-possible-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>Gruplara kullanıcı eklemeyi ve sihirli bir şekilde çalışmasını mı kastediyorsunuz? Hayır. Bu yalnızca ana anahtarla çalışır.</p>
+</section>
+</section>
+<section id="using-encryption">
+<h2>Şifrelemeyi kullanmak<a class="headerlink" href="#using-encryption" title="Link to this heading"></a></h2>
+<p>Nextcloud şifrelemesi hemen hemen ayarla ve unut yapısındadır. Ancak ayarlayabileceğiniz birkaç seçenek bulunuyor.</p>
+<p>Nextcloud yöneticiniz şifrelemeyi ilk kez etkinleştirdiğinde, şifreleme anahtarlarınızın oluşturulması ve dosyalarınızın şifrelenmesi için oturumunuzu kapatıp yeniden açmanız gerekir. Nextcloud sunucunuzda şifreleme etkinleştirildiğinde, Dosyalar sayfanızda oturumunuzu kapatıp yeniden açmanızı söyleyen sarı bir başlık bildirimi göreceksiniz:</p>
+<figure class="align-default">
+<img alt="../../_images/encryption1.png" src="../../_images/encryption1.png" />
+</figure>
+<p>Yeniden oturum açtığınızda, dosya sayınıza bağlı olarak işlemin tamamlanması birkaç dakika sürer. Ardından varsayılan Nextcloud sayfanıza dönersiniz.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption2.png" src="../../_images/encryption2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Dosyalarınıza erişiminizi kaybetmenize yol açacağından Nextcloud parolanızı asla kaybetmemelisiniz. Nextcloud yöneticinizin etkinleştirebileceği isteğe bağlı bir kurtarma seçeneği olsa da; bu konuda ayrıntılı bilgi almak için kurtarma anahtarı parolası bölümüne (aşağıda) bakın.</p>
+</div>
+</section>
+<section id="sharing-encrypted-files">
+<h2>Şifrelenmiş dosyaları paylaşmak<a class="headerlink" href="#sharing-encrypted-files" title="Link to this heading"></a></h2>
+<p>Yalnızca kişisel şifreleme anahtarlarına sahip kullanıcılar, paylaşılan şifreli dosya ve klasörlere erişebilir. Kişisel şifreleme anahtarlarını henüz oluşturmamış olan kullanıcılar, şifrelenmiş paylaşılan dosyalara erişemez. Klasörleri ve dosya adlarını görebilir, ancak dosyaları açamaz ya da indiremez. “Şifreleme uygulaması etkin ancak anahtarlarınız hazırlanmamış. Lütfen oturumunuzu kapatıp yeniden açın.” yazan sarı bir uyarı bildirimi görürler.</p>
+<p>Şifreleme etkinleştirildikten sonra, paylaşım sahiplerinin dosyaları yeniden paylaşması gerekebilir. Paylaşıma erişmeye çalışan kullanıcılar, paylaşım sahibinden dosyayı kendileriyle yeniden paylaşmasını istemelerini öneren bir ileti görürler. Bireysel paylaşımlar için, dosyanın paylaşımını kaldırın ve yeniden paylaşın. Grup paylaşımları için, paylaşıma erişemeyen kişilerle yeniden paylaşın. Bu işlem şifrelemeyi günceller ve ardından paylaşım sahibi tek tek paylaşımları kaldırabilir.</p>
+<section id="recovery-key-password">
+<h3>Kurtarma anahtarı parolası<a class="headerlink" href="#recovery-key-password" title="Link to this heading"></a></h3>
+<p>Nextcloud yöneticiniz kurtarma anahtarı özelliğini etkinleştirdiyse, hesabınız için bu özelliği kullanmayı seçebilirsiniz. “Parola kurtarma” özelliğini etkinleştirirseniz, yönetici verilerinizi özel bir parola ile okuyabilir. Bu özellik, Nextcloud parolanızı kaybetmeniz durumunda yöneticinin dosyalarınızı kurtarmasını sağlar. Kurtarma anahtarı etkinleştirilmemişse ve oturum açma parolanızı kaybederseniz dosyalarınızı geri almanın bir yolu yoktur.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption3.png" src="../../_images/encryption3.png" />
+</figure>
+</section>
+</section>
+<section id="files-not-encrypted">
+<h2>Şifrelenmeyen dosyalar<a class="headerlink" href="#files-not-encrypted" title="Link to this heading"></a></h2>
+<p>Dosya adları veya klasör yapıları değil, yalnızca dosyaların içindeki veriler şifrelenir. Şu dosyalar asla şifrelenmez:</p>
+<ul class="simple">
+<li><p>Çöp kutusundaki eski dosyalar.</p></li>
+<li><p>Galeri uygulamasındaki küçük görseller.</p></li>
+<li><p>Dosyalar uygulamasındaki ön izlemeler.</p></li>
+<li><p>Tam metin arama uygulamasının arama dizini.</p></li>
+<li><p>Üçüncü taraf uygulama verileri</p></li>
+</ul>
+<p>Yalnızca üçüncü taraf depolama sağlayıcılarıyla paylaşılan dosyalar şifrelenebilir, geri kalan dosyalar şifrelenmeyebilir.</p>
+<section id="change-private-key-password">
+<h3>Kişisel anahtar parolasını değiştirmek<a class="headerlink" href="#change-private-key-password" title="Link to this heading"></a></h3>
+<p>Bu seçenek, yalnızca şifreleme parolası yönetici tarafından değiştirilmediyse, yalnızca oturum açma parolası değiştirildiyse kullanılabilir. Bu sorun, Nextcloud hizmeti sağlayıcınız bir dış kullanıcı arka ucu (LDAP gibi) kullanıyorsa ve bu arka uç yapılandırmasını kullanarak oturum açma parolanızı değiştirirse ortaya çıkabilir. Bu durumda eski ve yeni oturum açma parolanızı yazarak şifreleme şifrenizi yeni oturum açma şifreniz olacak şekilde ayarlayabilirsiniz. Şifreleme uygulaması, yalnızca oturum açma parolanız ile şifreleme parolanız aynı olduğunda çalışır.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-left" title="Masaüstü ve mobil eşitleme" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Önceki</a>
+        <a href="sharing.html" class="btn btn-neutral float-right" title="Dosya paylaşımı" accesskey="n" rel="next">Sonraki <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/af/">af</a></dd>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/el_GR/">el_GR</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/eo/">eo</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/eu/">eu</a></dd>
+<dd><a href="/server/latest/user_manual/fi_FI/">fi_FI</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/hr/">hr</a></dd>
+<dd><a href="/server/latest/user_manual/hu/">hu</a></dd>
+<dd><a href="/server/latest/user_manual/hu_HU/">hu_HU</a></dd>
+<dd><a href="/server/latest/user_manual/id/">id</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/ja_JP/">ja_JP</a></dd>
+<dd><a href="/server/latest/user_manual/ko/">ko</a></dd>
+<dd><a href="/server/latest/user_manual/mn/">mn</a></dd>
+<dd><a href="/server/latest/user_manual/nb_NO/">nb_NO</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/nn/">nn</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/pt_PT/">pt_PT</a></dd>
+<dd><a href="/server/latest/user_manual/ro/">ro</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/si/">si</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sq/">sq</a></dd>
+<dd><a href="/server/latest/user_manual/sr/">sr</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/ta/">ta</a></dd>
+<dd><a href="/server/latest/user_manual/th/">th</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/uk/">uk</a></dd>
+<dd><a href="/server/latest/user_manual/uz/">uz</a></dd>
+<dd><a href="/server/latest/user_manual/vi/">vi</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+<dd><a href="/server/latest/user_manual/zh_TW/">zh_TW</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Sürümler</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/user_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/user_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/28/user_manual">28</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>İndirmeler</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Okunacak Belgeler</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Proje Ana Sayfası</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Yapımlar</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

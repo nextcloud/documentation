@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Release Automation &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="App upgrade guide" href="app_upgrade_guide/index.html" />
+    <link rel="prev" title="Code signing" href="code_signing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">App publishing and maintenance</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="maintainer.html">Maintainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_process.html">Release process</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://nextcloudappstore.readthedocs.io/en/latest/developer.html">Publishing App on the App Store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publishing.html">The Nextcloud app store rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code_signing.html">Code signing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Release Automation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#github-actions">GitHub Actions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#makefile-changes-for-code-signing">Makefile changes for code signing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-process">The process</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="app_upgrade_guide/index.html">App upgrade guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">App publishing and maintenance</a></li>
+      <li class="breadcrumb-item active">Release Automation</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/app_publishing_maintenance/release_automation.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="release-automation">
+<h1>Release Automation<a class="headerlink" href="#release-automation" title="Link to this heading"></a></h1>
+<p>Automation is a great thing, it prevents mistakes and makes your life easier, which gives you more time to work on all those features you wanted to implement.</p>
+<section id="github-actions">
+<h2>GitHub Actions<a class="headerlink" href="#github-actions" title="Link to this heading"></a></h2>
+<p>If your application’s repository lives on GitHub, as many Nextcloud applications do, GitHub Actions is a great way to automate the release of your app from the git repository into the Nextcloud App Store.</p>
+<p>One easy way to get you started is to use <a class="reference external" href="https://github.com/R0Wi/nextcloud-appstore-push-action">https://github.com/R0Wi/nextcloud-appstore-push-action</a> in your repository together with a few other actions. You can automatically build your app and publish it to the App Store. It supports pre-releases and code signing.
+To get started you create a new yaml file in the <code class="docutils literal notranslate"><span class="pre">.github/workflows</span></code> directory.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build and publish app release</span>
+
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">release</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">types</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">published</span><span class="p p-Indicator">]</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">APP_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">news</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build_and_publish</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">release</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Release:</span><span class="nv"> </span><span class="s">build,</span><span class="nv"> </span><span class="s">sign</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">upload</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">app&quot;</span>
+<span class="w">    </span><span class="nt">strategy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">matrix</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">php-versions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;7.4&#39;</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">nextcloud</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;stable21&#39;</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;sqlite&#39;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Setup PHP</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shivammathur/setup-php@afefcaf556d98dc7896cca380e181decb609ca44</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">php-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ matrix.php-versions }}</span>
+<span class="w">          </span><span class="nt">extensions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pdo_sqlite,pdo_mysql,pdo_pgsql,gd,zip</span>
+<span class="w">          </span><span class="nt">coverage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up server non MySQL</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SMillerDev/nextcloud-actions/setup-nextcloud@fae87e29aa7cdf1ea0b8033c67f60e75b10be2cd</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">          </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ matrix.nextcloud }}</span>
+<span class="w">          </span><span class="nt">database-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ matrix.database }}</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prime app build</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">make</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure server with app</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SMillerDev/nextcloud-actions/setup-nextcloud-app@fae87e29aa7cdf1ea0b8033c67f60e75b10be2cd</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ env.APP_NAME }}</span>
+<span class="w">          </span><span class="nt">check-code</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create signed release archive</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">cd ../server/apps/${{ env.APP_NAME }} &amp;&amp; make appstore</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">app_private_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.APP_PRIVATE_KEY }}</span>
+<span class="w">          </span><span class="nt">app_public_crt</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.APP_PUBLIC_CRT }}</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upload app tarball to release</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">svenstaro/upload-release-action@483c1e56f95e88835747b1c7c60581215016cbf2</span>
+<span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attach_to_release</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">repo_token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span>
+<span class="w">          </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../server/apps/${{ env.APP_NAME }}/build/artifacts/appstore/${{ env.APP_NAME }}.tar.gz</span>
+<span class="w">          </span><span class="nt">asset_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ env.APP_NAME }}.tar.gz</span>
+<span class="w">          </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ github.ref }}</span>
+<span class="w">          </span><span class="nt">overwrite</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upload app to Nextcloud appstore</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">R0Wi/nextcloud-appstore-push-action@a011fe619bcf6e77ddebc96f9908e1af4071b9c1</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">app_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ env.APP_NAME }}</span>
+<span class="w">          </span><span class="nt">appstore_token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.APPSTORE_TOKEN }}</span>
+<span class="w">          </span><span class="nt">download_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.attach_to_release.outputs.browser_download_url }}</span>
+<span class="w">          </span><span class="nt">app_private_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.APP_PRIVATE_KEY }}</span>
+<span class="w">          </span><span class="nt">nightly</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ github.event.release.prerelease }}</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Delete crt and key from local storage</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm -f ~/.nextcloud/certificates/*</span>
+</pre></div>
+</div>
+<p>Make sure to check the used actions for useful updates, as they are pinned to a specific sha1 to prevent unnoticed harmful changes.</p>
+<p>For this workflow to work we need to provide a few variables.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">APP_NAME</span></code> set the name of your app, directly in the yaml</p></li>
+</ul>
+<p>Then we have a few secrets make sure to handle them with care.
+If your repository lives within the nextcloud organization you need to use an environment.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build_and_publish</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">release</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+</pre></div>
+</div>
+<p>In this example we use the “release” environment, open the settings of your repository and open the “Envionments” tab, add a new environment with the name “release”, make sure to activate “Required reviewers” only add the people you trust, they will be able to approve a release.
+Save your rules and at the bottom add the following envionment secrets.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">APP_PRIVATE_KEY</span></code> your apps private key</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">APP_PUBLIC_CRT</span></code> your apps certificate, this one could be public but for easy usage we add it as a secret</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">APPSTORE_TOKEN</span></code> you get this from the App Store as a registered developer <a class="reference external" href="https://apps.nextcloud.com/account/token">https://apps.nextcloud.com/account/token</a></p></li>
+</ul>
+<p>If your app does not live in the Nextcloud organization you may also add the secrets above to the “Secrets” section but be careful everyone with write access to your repository will be able to create releases. Make also sure to delete the environment statement.</p>
+<p>If you don’t use code signing for your app you can delete the following section in your yaml.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">env</span><span class="p">:</span>
+<span class="nt">app_private_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.APP_PRIVATE_KEY }}</span>
+<span class="nt">app_public_cert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.APP_PUBLIC_CERT }}</span>
+</pre></div>
+</div>
+<p>Also make sure to remove <code class="docutils literal notranslate"><span class="pre">environment:</span> <span class="pre">release</span></code> .</p>
+<section id="makefile-changes-for-code-signing">
+<h3>Makefile changes for code signing<a class="headerlink" href="#makefile-changes-for-code-signing" title="Link to this heading"></a></h3>
+<p>As your certificate and your private key now are stored in environment variables you need somehow covert them to a file.
+One example you may use is provided by the news app.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">#!/usr/bin/env php</span>
+<span class="o">&lt;?</span><span class="nx">php</span>
+<span class="sd">/**</span>
+<span class="sd">* Nextcloud - News</span>
+<span class="sd">*</span>
+<span class="sd">* This file is licensed under the Affero General Public License version 3 or</span>
+<span class="sd">* later. See the COPYING file.</span>
+<span class="sd">*</span>
+<span class="sd">* @author Benjamin Brahmer &lt;info@b-brahmer.de&gt;</span>
+<span class="sd">* @copyright Benjamin Brahmer 2020</span>
+<span class="sd">*/</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$argc</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;This script expects two parameters:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">&quot;./file_from_env.php ENV_VAR PATH_TO_FILE</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1"># Read environment variable</span>
+<span class="nv">$content</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$content</span><span class="p">){</span>
+    <span class="k">echo</span> <span class="s2">&quot;Variable was empty</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nb">file_put_contents</span><span class="p">(</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nv">$content</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">&quot;Done...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>It’s a very simple php script that takes an environment variable and a filepath and dumps whatever it finds in the variable into the file.
+After storing that script somewhere in your repository, you can use it in your Makefile.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">cert_dir</span><span class="o">=</span><span class="k">$(</span>HOME<span class="k">)</span>/.nextcloud/certificates
+<span class="o">[</span>...<span class="o">]</span>
+appstore:
+<span class="o">[</span>...<span class="o">]</span>
+<span class="c1"># export the key and cert to a file</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="k">$(</span>cert_dir<span class="k">)</span>
+php<span class="w"> </span>./bin/tools/file_from_env.php<span class="w"> </span><span class="s2">&quot;app_private_key&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>cert_dir<span class="k">)</span><span class="s2">/</span><span class="k">$(</span>app_name<span class="k">)</span><span class="s2">.key&quot;</span>
+php<span class="w"> </span>./bin/tools/file_from_env.php<span class="w"> </span><span class="s2">&quot;app_public_crt&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>cert_dir<span class="k">)</span><span class="s2">/</span><span class="k">$(</span>app_name<span class="k">)</span><span class="s2">.crt&quot;</span>
+<span class="o">[</span>...<span class="o">]</span>
+</pre></div>
+</div>
+<p>Also make sure that these files are used when signing your app, in the Makefile.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>@if<span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="k">$(</span>cert_dir<span class="k">)</span>/<span class="k">$(</span>app_name<span class="k">)</span>.key<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Signing app files…&quot;</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>php<span class="w"> </span>../../occ<span class="w"> </span>integrity:sign-app<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--privateKey<span class="o">=</span><span class="k">$(</span>cert_dir<span class="k">)</span>/<span class="k">$(</span>app_name<span class="k">)</span>.key<span class="se">\</span>
+<span class="w">    </span>--certificate<span class="o">=</span><span class="k">$(</span>cert_dir<span class="k">)</span>/<span class="k">$(</span>app_name<span class="k">)</span>.crt<span class="se">\</span>
+<span class="w">    </span>--path<span class="o">=</span><span class="k">$(</span>appstore_sign_dir<span class="k">)</span>/<span class="k">$(</span>app_name<span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Signing app files ... done&quot;</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
+<p>And that’s basically everything you need to do, you can use the key and cert while you sign the app.</p>
+</section>
+<section id="the-process">
+<h3>The process<a class="headerlink" href="#the-process" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Create a new release via GitHub, put whatever information you usually put.</p></li>
+<li><p>Decide if this should be a normal or a pre-release, pre-releases will be uploaded as nightly version to the App Store.</p></li>
+<li><p>When you are done, publish the release and wait a few minutes, you will see a request to approve the release, in Actions or your notifications.</p></li>
+<li><p>If everything worked you find a <code class="docutils literal notranslate"><span class="pre">appname.tar.gz</span></code> as an attachment of the release.</p></li>
+<li><p>Check the App Store for your newly released version, congratulations on your first automatically released app.</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="code_signing.html" class="btn btn-neutral float-left" title="Code signing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="app_upgrade_guide/index.html" class="btn btn-neutral float-right" title="App upgrade guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/developer_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/developer_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/28/developer_manual">28</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

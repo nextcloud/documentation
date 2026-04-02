@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ar" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الوصول إلى ملفاتك باستخدام واجهة ويب نكست كلاود &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=d25d3ab2"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/translations.js?v=271dbd9e"></script>
+        <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="بحث" href="../search.html" />
+    <link rel="next" title="الوصول إلى ملفات نكست كلاود باستعمال WebDAV" href="access_webdav.html" />
+    <link rel="prev" title="الملفات &amp; التزامن" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">نكست كلاود nextcloud الإصدار latest دليل المستخدم - المُقدِّمة</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">ماهو الجديد لمستخدمين نكست كلاود latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">واجهة وب نكست كلاود The Nextcloud Web interface</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">الملفات &amp; التزامن</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">الوصول إلى ملفاتك باستخدام واجهة ويب نكست كلاود</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tagging-files">وضع السِّمَات tags على الملفات</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comments">التعليقات</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#video-player">مُشغِّل الفيديو Video player</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-controls">تحكُّمَات الملف</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#previewing-files">معاينة الملفات</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#navigating-inside-your-nextcloud">التنقل داخل نكست كلاود خاصّتك</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-status-icons">أيقونات مشاركة الحالة</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-or-uploading-files-and-directories">إنشاء و رفع الملفات و المجلدات</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#selecting-files-or-folders">تحديد الملفات و المجلدات</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filtering-the-files-view">فلترة عرض الملفات</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#moving-files">نقل الملفات</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-or-connecting-to-a-federation-share-link">إنشاء أو الربط مع رابط مشاركة اتحادية Federation Share link</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">الوصول إلى ملفات نكست كلاود باستعمال WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">إدارة الملفات المحذوفة</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">المُزامَنة مع سطح المكتب و الهواتف</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">تشفير ملفاتك على خادوم نكست كلاود</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">مشاركة الملفات</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">مشاركات اتحادية</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">تمكين عمليات رفع مجهولة</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">رفع ملفات كبيرة</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">الحصة التخزينية Storage quota</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">إدارة النُّسَخ Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">المشاريع Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">نقل المِلْكِيَّة</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">إستعمال المشاركات الاتحادية Federated Shares</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">أدوات العمل التعاوني Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">&quot;المحادثة&quot; Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">تعيين تفضيلاتك</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">&quot;الوصول للجميع&quot; universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">استخدام التحقُّق المُثنَّى من الهُوِيَّة  two-factor authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">إدارة المتصفحات والأجهزة المتصلة</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">التخزين الخارجي</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">الملفات &amp; التزامن</a></li>
+      <li class="breadcrumb-item active">الوصول إلى ملفاتك باستخدام واجهة ويب نكست كلاود</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webgui.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="accessing-your-files-using-the-nextcloud-web-interface">
+<h1>الوصول إلى ملفاتك باستخدام واجهة ويب نكست كلاود<a class="headerlink" href="#accessing-your-files-using-the-nextcloud-web-interface" title="Link to this heading"></a></h1>
+<p>يمكنك الوصول إلى ملفاتك على نكست كلاود باستخدام واجهة وب نكست كلاود، و إنشاء الملفات و معاينتها و تحريرها و حذفها و مشاركتها و إعادة مشاركتها. يمتلك مشرف نكست كلاود خيار تعطيل هذه الميزات. لذلك إذا لم تجد أيّاً منها على نظامك، فاسأل مشرف الخادوم عندك.</p>
+<figure class="align-default">
+<img alt="شاشة عرض الملفات." src="../../_images/users-files.png" />
+</figure>
+<section id="tagging-files">
+<h2>وضع السِّمَات tags على الملفات<a class="headerlink" href="#tagging-files" title="Link to this heading"></a></h2>
+<p>يمكنك تعيين سِمَات للملفات tags. لإنشاء السِّمَات، إفتَح ملفاً لعرض التفاصيل. ثم اكتب السمات الخاصة بك. لإدخال أكثر من سِمَةٍ، إضغَط على مفتاح العودة بعد إنشاء كل سمة. جميع السمات هي سمات نظامية system tags، وتتم مشاركتها من قبل جميع المستخدمين على خادوم نكست كلاود خاصّتك.</p>
+<figure class="align-default">
+<img alt="إنشاء سمات الملف" src="../../_images/files_page-7.png" />
+</figure>
+<p>بعدها إستعمِل فلتر السمات Tags filter على الشريط الجانبي لفلترة الملفات بحسب السمات:</p>
+<figure class="align-default">
+<img alt="عرض سِمَات الملف" src="../../_images/files_page-8.png" />
+</figure>
+</section>
+<section id="comments">
+<h2>التعليقات<a class="headerlink" href="#comments" title="Link to this heading"></a></h2>
+<p>إستعمل عرض التفاصيل لإضافة و قراءة التعليقات على أي ملف أو مجلد. التعليقات مرئية لكل من لديه حق الوصول إلى الملف:</p>
+<figure class="align-default">
+<img alt="إنشاء و عرض التعليقات" src="../../_images/file_menu_comments_2.png" />
+</figure>
+</section>
+<section id="video-player">
+<h2>مُشغِّل الفيديو Video player<a class="headerlink" href="#video-player" title="Link to this heading"></a></h2>
+<p>يمكنك تشغيل مقاطع الفيديو في نكست كلاود باستخدام تطبيق &quot;مُشغِّل الفيديو&quot; Video Player بمجرد النقر فوق الملف. يعتمد تدفق الفيديو بواسطة مشغل فيديو نكست كلاود الخاص على نوع متصفحك و تنسيق الفيديو. إذا قام مشرف نكست كلاود عندك بتمكين دفق الفيديو، و لم يعمل في متصفحك، فقد تكون المشكلة في المتصفح. راجع تنسيقات الوسائط المتعددة المدعومة في متصفحات الويب في: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility">https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility</a> .</p>
+<figure class="align-default">
+<img alt="مُشاهدة فِلْم" src="../../_images/video_player_2.png" />
+</figure>
+</section>
+<section id="file-controls">
+<h2>تحكُّمَات الملف<a class="headerlink" href="#file-controls" title="Link to this heading"></a></h2>
+<p>يمكن لنكست كلاود عرض معاينات الصور المصغرة لملفات الصور و أغلفة MP3 و الملفات النصية، إذا قام مشرف الخادوم بتمكين ذلك، قم بتمرير المؤشر فوق الملف أو المجلد لعرض عناصر التحكم للعمليات التالية:</p>
+<dl>
+<dt>المفضلة</dt><dd><p>أنقُر النجمة بجانب أيقونة الملف لتمييزه كـ&quot;مُفَضَّلَة&quot;</p>
+<figure class="align-default">
+<img alt="تمييز الملفات المفضلة." src="../../_images/files_page-1.png" />
+</figure>
+<p>كما يمكنك بسهولة إيجاد مفضلاتك من خلال فلتر المفضلة Favorites filter على الشريط الجانبي.</p>
+</dd>
+<dt>قائمة &quot;الأخرى&quot; Overflow Menu</dt><dd><p>قائمة &quot;الأخرى&quot; Overflow Menu  (الثلاث نقط) تعرض تفاصيل الملف و تسمح لك بتغيير التسمية و التنزيل و حذف الملفات:</p>
+<figure class="align-default">
+<img alt="قائمة &quot;الأخرى&quot; Overflow Menu." src="../../_images/files_page-3.png" />
+</figure>
+<p>يعرض صندوق &quot;التفاصيل&quot; معلومات الحركات و المشاركات و النُّسَخ:</p>
+</dd>
+</dl>
+<figure class="align-default">
+<img alt="شاشة التفاصيل." src="../../_images/files_page-4.png" />
+</figure>
+<p>تتيح لك <strong>الإعدادات Settings</strong> أي رمز الترس في الأسفل إظهار أو إخفاء الملفات المخفية في واجهة ويب نكست كلاود. و تسمى هذه أيضًا ملفات dotfiles لأن أسماءها تكون مسبوقةَ بنقطةٍ. على سبيل المثال <a href="#id1"><span class="problematic" id="id2">``</span></a>.mailfile''. تخبر النقطة نظام التشغيل عندك بإخفاء هذه الملفات في مستعرضات الملفات إلّا إذا اخترت أنت عرضها. عادةً ما تكون هذه ملفات تهيئة؛ لذا ينصح بإبقائها مخفية تفادياً لحذفها أو تعديلها عرضاً و كذلك تفادياً لازدحام الشاشة.</p>
+<figure class="align-default">
+<img alt="إخفاء و إظهار الملفات المخفية." src="../../_images/hidden_files.png" />
+</figure>
+</section>
+<section id="previewing-files">
+<h2>معاينة الملفات<a class="headerlink" href="#previewing-files" title="Link to this heading"></a></h2>
+<p>يمكنك عرض الملفات النصية غير المضغوطة و ملفات OpenDocument و مقاطع الفيديو و ملفات الصور باستعمال عارضات نكست كلاود المُضَمَّنَة من خلال النقر على اسم الملف. قد تكون هنالك أنواع ملفات أخرى يمكنك معاينتها إذا قام مشرف نكست كلاود بتمكين ذلك. إذا تعذّر على نكست كلاود عرض ملفٍ ما، فإنه يقوم بتنزيل الملف على حاسوبك.</p>
+</section>
+<section id="navigating-inside-your-nextcloud">
+<h2>التنقل داخل نكست كلاود خاصّتك<a class="headerlink" href="#navigating-inside-your-nextcloud" title="Link to this heading"></a></h2>
+<p>يعد التنقل عبر المجلدات في نكست كلاود أمراً سهلاً مثل النقر على مجلد لفتحه و استعمال زر الرجوع في متصفحك للانتقال إلى مستوىً سابقٍ. يُوفّر نكست كلاود أيضًا شريط تنقل أعلى حقل الملفات للتنقل السريع.</p>
+</section>
+<section id="sharing-status-icons">
+<h2>أيقونات مشاركة الحالة<a class="headerlink" href="#sharing-status-icons" title="Link to this heading"></a></h2>
+<p>يتم تمييز أي مجلد تمّت مشاركته بأيقونة <a href="#id1"><span class="problematic" id="id2">``</span></a>المشاركة Shared'' المتراكبة. يتم تمييز مشاركات الارتباط العام برابط في شكل سلسلة. بينما أُبقِيَت المجلدات غير المشتركة بدون علامات:</p>
+<figure class="align-default">
+<img alt="أيقونات مشاركة الحالة" src="../../_images/files_page-5.png" />
+</figure>
+</section>
+<section id="creating-or-uploading-files-and-directories">
+<h2>إنشاء و رفع الملفات و المجلدات<a class="headerlink" href="#creating-or-uploading-files-and-directories" title="Link to this heading"></a></h2>
+<p>قم برفع أو إنشاء ملفات أو مجلدات جديدة مباشرة في مجلد نكست كلاود بالنقر فوق الزر <em>جديد New</em> في تطبيق الملفات:</p>
+<figure class="align-default">
+<img alt="قائمة رفع/إنشاء ملف/مجلد." src="../../_images/files_page-6.png" />
+</figure>
+<p>زر &quot;جديد New&quot; يُوفِر الخيارات التالية:</p>
+<dl class="simple">
+<dt>سهم للأعلى</dt><dd><p>قم بتحميل الملفات من حاسوبك إلى نكست كلاود. يمكنك أيضًا تحميل الملفات عن طريق سحبها و إفلاتها من مدير ملفاتك.</p>
+</dd>
+<dt>ملف نصِّي</dt><dd><p>تُنشِيءُ ملفّاً جديداً و تضيفه إلى مُجلّدك الحالي.</p>
+</dd>
+<dt>مُجلّد</dt><dd><p>تُنشِيءُ مجلّداً جديداً في المُجلّد الحالي.</p>
+</dd>
+</dl>
+</section>
+<section id="selecting-files-or-folders">
+<h2>تحديد الملفات و المجلدات<a class="headerlink" href="#selecting-files-or-folders" title="Link to this heading"></a></h2>
+<p>يمكنك تحديد ملف أو مجلد واحد أو أكثر من خلال النقر على مربعات الاختيار الخاصة بهم. لتحديد جميع الملفات في الدليل الحالي، انقر فوق مربع الاختيار الموجود أعلى قائمة الملفات.</p>
+<p>عند تحديد ملفات متعددة، يمكنك حذفها جميعًا، أو تنزيلها كملف مضغوط باستتعمال أزرار <code class="docutils literal notranslate"><span class="pre">حذف</span> <span class="pre">Delete</span></code> أو <code class="docutils literal notranslate"><span class="pre">تنزيل</span> <span class="pre">Download</span></code> التي تظهر في الأعلى.</p>
+<div class="admonition note">
+<p class="admonition-title">ملاحظة</p>
+<p>إذا كان زر <code class="docutils literal notranslate"><span class="pre">تنزيل</span> <span class="pre">Download</span></code> غير مرئي، فهذا يعني أن المشرف قد قام بتعطيل هذه الميزة.</p>
+</div>
+</section>
+<section id="filtering-the-files-view">
+<h2>فلترة عرض الملفات<a class="headerlink" href="#filtering-the-files-view" title="Link to this heading"></a></h2>
+<p>يحتوي الشريط الجانبي الأيسر في صفحة الملفات على عدة عوامل تصفية لفرز ملفاتك وإدارتها بسرعة.</p>
+<dl class="simple">
+<dt>كل الملفات</dt><dd><p>العرض الافتراضي؛ يعرض جميع الملفات التي لديك حق الوصول إليها.</p>
+</dd>
+<dt>المفضلة</dt><dd><p>ملفات و مجلدات مميزة بالنجمة الصفراء.</p>
+</dd>
+<dt>مُشارَكٌ معك</dt><dd><p>يعرض جميع الملفات التي تمّت مشاركتها معك من قِبَل مستخدمين آخرين أو مجموعات أخرى.</p>
+</dd>
+<dt>مُشارَكٌ مع آخرين</dt><dd><p>يعرض كل الملفات التي قمت أنت بمشاركتها مع أشخاص آخرين أو مجموعات أخرى.</p>
+</dd>
+<dt>مشاركات بروابط</dt><dd><p>يعرض كل الملفات التي تمّت مشاركتها من خلال روابط عامة public link.</p>
+</dd>
+<dt>وحدات تخزين خارجية (إختيارية)</dt><dd><p>الملفات التي عندك حق في الوصول إليها و مخزنة على وحدات تخزين خارجية أو خدمات مثل: أمازون S3، و SMB/CIFS، و SMB/CIFS، و FTP ...</p>
+</dd>
+</dl>
+</section>
+<section id="moving-files">
+<h2>نقل الملفات<a class="headerlink" href="#moving-files" title="Link to this heading"></a></h2>
+<p>يمكنك نقل الملفات و المجلدات بسحبها و إفلاتها drag and drop في أي دليل.</p>
+</section>
+<section id="creating-or-connecting-to-a-federation-share-link">
+<h2>إنشاء أو الربط مع رابط مشاركة اتحادية Federation Share link<a class="headerlink" href="#creating-or-connecting-to-a-federation-share-link" title="Link to this heading"></a></h2>
+<p>تتيح لك ميزة &quot;المشاركة السحابية الاتحادية&quot; Federated Cloud Sharing تحميل مشاركات الملفات من خوادم نكست كلاود القصيّة remote و إدارتها تمامًا مثلها مثل المشاركة المحلية. للتعرف على كيفية إنشاء &quot;مشاركات السحابة الاتحادية&quot; الجديدة و الاتصال بها راجع: <a class="reference internal" href="federated_cloud_sharing.html"><span class="doc">إستعمال المشاركات الاتحادية Federated Shares</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="الملفات &amp; التزامن" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="access_webdav.html" class="btn btn-neutral float-right" title="الوصول إلى ملفات نكست كلاود باستعمال WebDAV" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/af/">af</a></dd>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/el_GR/">el_GR</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/eo/">eo</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/eu/">eu</a></dd>
+<dd><a href="/server/latest/user_manual/fi_FI/">fi_FI</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/hr/">hr</a></dd>
+<dd><a href="/server/latest/user_manual/hu/">hu</a></dd>
+<dd><a href="/server/latest/user_manual/hu_HU/">hu_HU</a></dd>
+<dd><a href="/server/latest/user_manual/id/">id</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/ja_JP/">ja_JP</a></dd>
+<dd><a href="/server/latest/user_manual/ko/">ko</a></dd>
+<dd><a href="/server/latest/user_manual/mn/">mn</a></dd>
+<dd><a href="/server/latest/user_manual/nb_NO/">nb_NO</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/nn/">nn</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/pt_PT/">pt_PT</a></dd>
+<dd><a href="/server/latest/user_manual/ro/">ro</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/si/">si</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sq/">sq</a></dd>
+<dd><a href="/server/latest/user_manual/sr/">sr</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/ta/">ta</a></dd>
+<dd><a href="/server/latest/user_manual/th/">th</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/uk/">uk</a></dd>
+<dd><a href="/server/latest/user_manual/uz/">uz</a></dd>
+<dd><a href="/server/latest/user_manual/vi/">vi</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+<dd><a href="/server/latest/user_manual/zh_TW/">zh_TW</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>الإصدارات</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/user_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/user_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/28/user_manual">28</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>التحميل</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>قراءة دليل الارشادات</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">الصفحة الرئيسية للمشروع</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">الملفات التنفيذية المبنية builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

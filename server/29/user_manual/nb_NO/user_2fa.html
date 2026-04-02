@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="nb-NO" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bruker tofaktorautentisering &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=99743aa2"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/translations.js?v=5610e7d7"></script>
+        <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Søk" href="search.html" />
+    <link rel="next" title="Administrer tilkoblede nettlesere og enheter" href="session_management.html" />
+    <link rel="prev" title="Universal access" href="universal_access.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Nextcloud |versjon| brukerhåndbok introduksjon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whats_new.html">Hva er nytt for brukere i Nextcloud |versjon|</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webinterface.html">Nextcloud-nettgrensesnittet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files/index.html">Filer og synkronisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Angir preferansene dine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="universal_access.html">Universal access</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Bruker tofaktorautentisering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-two-factor-authentication">Konfigurer tofaktorautentisering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-in-case-you-lost-your-2nd-factor">Gjenopprettingskoder i tilfelle du mistet din 2. faktor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logging-in-with-two-factor-authentication">Logget inn med tofaktorautentisering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-two-factor-authentication-with-hardware-tokens">Bruke tofaktorautentisering med maskinvaretokener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-client-applications-with-two-factor-authentication">Bruke klientapplikasjoner med tofaktorautentisering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#considerations">Hensyn</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="session_management.html">Administrer tilkoblede nettlesere og enheter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/index.html">Ekstern Lagring</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="contents.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Bruker tofaktorautentisering</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/user_2fa.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-two-factor-authentication">
+<h1>Bruker tofaktorautentisering<a class="headerlink" href="#using-two-factor-authentication" title="Link to this heading"></a></h1>
+<p>Tofaktorautentisering (2FA) er en måte å beskytte Nextcloud-kontoen din mot uautorisert tilgang. Det fungerer ved å kreve to forskjellige «bevis» på identiteten din. For eksempel, <em>noe du vet</em> (som et passord) og <em>noe du har</em> som en fysisk nøkkel. Vanligvis er den første faktoren et passord som du allerede har, og den andre kan være en tekstmelding du mottar eller en kode du genererer på telefonen eller en annen enhet (<em>noe du har</em>). Nextcloud støtter en rekke andre faktorer, og flere kan legges til.</p>
+<p>Når en tofaktorautentiseringsapp er aktivert av administratoren din, kan du aktivere og konfigurere den i :d oc:’userpreferences’. Nedenfor kan du se hvordan.</p>
+<section id="configuring-two-factor-authentication">
+<h2>Konfigurer tofaktorautentisering<a class="headerlink" href="#configuring-two-factor-authentication" title="Link to this heading"></a></h2>
+<p>I dine personlige innstillinger slår du opp innstillingen for tofaktorautentisering. I dette eksemplet er dette TOTP, en Google Authenticator-kompatibel tidsbasert kode:</p>
+<figure class="align-default">
+<img alt="TOTP-konfigurasjon." src="../_images/totp_enable.png" />
+</figure>
+<p>Du vil se hemmeligheten din og en QR-kode som kan skannes av TOTP-appen på telefonen din (eller en annen enhet). Avhengig av appen eller verktøyet, skriv inn koden eller skann QR-en, og enheten din vil vise en påloggingskode som endres hvert 30. sekund.</p>
+</section>
+<section id="recovery-codes-in-case-you-lost-your-2nd-factor">
+<h2>Gjenopprettingskoder i tilfelle du mistet din 2. faktor<a class="headerlink" href="#recovery-codes-in-case-you-lost-your-2nd-factor" title="Link to this heading"></a></h2>
+<p>Du bør alltid generere sikkerhetskopikoder for 2FA. Hvis 2. faktor-enheten din blir stjålet eller ikke fungerer, vil du kunne bruke en av disse kodene for å låse opp kontoen din. Den fungerer effektivt som en sikkerhetskopi 2. faktor. For å få sikkerhetskopikodene, gå til dine personlige innstillinger og se under Andre-faktor Auth-innstillinger. Velg <em>Generer reservekoder</em>:</p>
+<figure class="align-default">
+<img alt="2FA reserve kode generator" src="../_images/2fa_backupcode_1.png" />
+</figure>
+<p>Du vil da bli presentert med en liste over engangs-reservekoder:</p>
+<figure class="align-default">
+<img alt="2FA-reservekoder" src="../_images/2fa_backupcode_2.png" />
+</figure>
+<p>Du bør legge disse kodene på et trygt sted, et sted du kan finne dem. Ikke sett dem sammen med din 2. faktor som mobiltelefonen din, men sørg for at hvis du mister den ene, har du fortsatt den andre. Å holde dem hjemme er sannsynligvis den beste tingen å gjøre.</p>
+</section>
+<section id="logging-in-with-two-factor-authentication">
+<h2>Logget inn med tofaktorautentisering<a class="headerlink" href="#logging-in-with-two-factor-authentication" title="Link to this heading"></a></h2>
+<p>Etter at du har logget ut og må logge på igjen, vil du se en forespørsel om å oppgi TOTP-koden i nettleseren din. Hvis du ikke bare aktiverer TOTP-faktoren, men en annen, vil du se et valgskjermbilde der du kan velge tofaktormetode for denne påloggingen. Velg TOTP:</p>
+<figure class="align-default">
+<img alt="Velge en tofaktorautentiseringsmetode." src="../_images/totp_login_1.png" />
+</figure>
+<p>Nå, bare legg til koden din:</p>
+<figure class="align-default">
+<img alt="Angi TOTP-kode ved innlogging." src="../_images/totp_login_2.png" />
+</figure>
+<p>Hvis koden var riktig, blir du omdirigert til Nextcloud-kontoen din.</p>
+<div class="admonition note">
+<p class="admonition-title">Obs</p>
+<p>Siden koden er tidsbasert, er det viktig at serverens og smarttelefonens klokke er nesten synkronisert. En tidsdrift på noen sekunder vil ikke være noe problem.</p>
+</div>
+</section>
+<section id="using-two-factor-authentication-with-hardware-tokens">
+<h2>Bruke tofaktorautentisering med maskinvaretokener<a class="headerlink" href="#using-two-factor-authentication-with-hardware-tokens" title="Link to this heading"></a></h2>
+<p>Du kan bruke tofaktorautentisering basert på maskinvaretokener. Følgende enheter er kjent for å fungere:</p>
+<ul class="simple">
+<li><p>TOTP-basert:</p>
+<ul>
+<li><p><a class="reference external" href="https://shop.nitrokey.com/shop/product/nitrokey-pro-2-3">Nitrokey Pro</a></p></li>
+<li><p><a class="reference external" href="https://shop.nitrokey.com/shop">Nitrokey Storage</a></p></li>
+</ul>
+</li>
+<li><p>FIDO U2F-basert:</p>
+<ul>
+<li><p><a class="reference external" href="https://shop.nitrokey.com/shop/product/nitrokey-fido-u2f-20">Nitrokey FIDO U2F</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="using-client-applications-with-two-factor-authentication">
+<h2>Bruke klientapplikasjoner med tofaktorautentisering<a class="headerlink" href="#using-client-applications-with-two-factor-authentication" title="Link to this heading"></a></h2>
+<p>Når du har aktivert 2FA, vil ikke klientene dine lenger kunne koble til med bare passordet ditt med mindre de også har støtte for tofaktorautentisering. For å løse dette bør du generere enhetsspesifikke passord for dem. Se <a class="reference internal" href="session_management.html"><span class="doc">Administrer tilkoblede nettlesere og enheter</span></a> for mer informasjon om hvordan du gjør dette.</p>
+</section>
+<section id="considerations">
+<h2>Hensyn<a class="headerlink" href="#considerations" title="Link to this heading"></a></h2>
+<p>Hvis du bruker WebAuthn til å logge på Nextcloud, pass på at du ikke bruker samme token for 2FA. Da dette ville bety at du igjen bare bruker en enkelt faktor.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="universal_access.html" class="btn btn-neutral float-left" title="Universal access" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="session_management.html" class="btn btn-neutral float-right" title="Administrer tilkoblede nettlesere og enheter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/af/">af</a></dd>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/el_GR/">el_GR</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/eo/">eo</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/eu/">eu</a></dd>
+<dd><a href="/server/latest/user_manual/fi_FI/">fi_FI</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/hr/">hr</a></dd>
+<dd><a href="/server/latest/user_manual/hu/">hu</a></dd>
+<dd><a href="/server/latest/user_manual/hu_HU/">hu_HU</a></dd>
+<dd><a href="/server/latest/user_manual/id/">id</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/ja_JP/">ja_JP</a></dd>
+<dd><a href="/server/latest/user_manual/ko/">ko</a></dd>
+<dd><a href="/server/latest/user_manual/mn/">mn</a></dd>
+<dd><a href="/server/latest/user_manual/nb_NO/">nb_NO</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/nn/">nn</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/pt_PT/">pt_PT</a></dd>
+<dd><a href="/server/latest/user_manual/ro/">ro</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/si/">si</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sq/">sq</a></dd>
+<dd><a href="/server/latest/user_manual/sr/">sr</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/ta/">ta</a></dd>
+<dd><a href="/server/latest/user_manual/th/">th</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/uk/">uk</a></dd>
+<dd><a href="/server/latest/user_manual/uz/">uz</a></dd>
+<dd><a href="/server/latest/user_manual/vi/">vi</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+<dd><a href="/server/latest/user_manual/zh_TW/">zh_TW</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/user_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/user_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/28/user_manual">28</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
