@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>App store publishing &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Release Automation" href="release_automation.html" />
+    <link rel="prev" title="Code signing" href="code_signing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">App publishing and maintenance</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="code_signing.html">Code signing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">App store publishing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-nextcloud-app-store">The Nextcloud app store</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-an-app-approved">Getting an app approved</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#losing-a-rating">Losing a rating</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#app-guidelines">App guidelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#legal-and-security">Legal and security</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#be-technically-sound">Be technically sound</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#respect-the-users">Respect the users</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#moving-your-repo-to-the-nextcloud-organization">Moving your repo to the Nextcloud organization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#benefits">Benefits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-move">How to move</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="release_automation.html">Release Automation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade-guide.html">App upgrade guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">App publishing and maintenance</a></li>
+      <li class="breadcrumb-item active">App store publishing</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/app_publishing_maintenance/publishing.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="app-store-publishing">
+<h1>App store publishing<a class="headerlink" href="#app-store-publishing" title="Link to this heading"></a></h1>
+<section id="the-nextcloud-app-store">
+<h2>The Nextcloud app store<a class="headerlink" href="#the-nextcloud-app-store" title="Link to this heading"></a></h2>
+<p>The Nextcloud app store is built into Nextcloud to allow you to get your apps to users as easily and safely as possible. The app store and the process of publishing apps aims to be:</p>
+<ul class="simple">
+<li><p>secure</p></li>
+<li><p>transparent</p></li>
+<li><p>welcoming</p></li>
+<li><p>fair</p></li>
+<li><p>easy to maintain</p></li>
+</ul>
+</section>
+<section id="getting-an-app-approved">
+<h2>Getting an app approved<a class="headerlink" href="#getting-an-app-approved" title="Link to this heading"></a></h2>
+<p>You can find documentation on getting apps in our app store <a class="reference external" href="https://nextcloudappstore.readthedocs.io/en/latest/developer.html#publishing-apps-on-the-app-store">here.</a></p>
+<section id="losing-a-rating">
+<h3>Losing a rating<a class="headerlink" href="#losing-a-rating" title="Link to this heading"></a></h3>
+<p>Apps can lose their rating when:</p>
+<ul class="simple">
+<li><p>they are found to no longer satisfy the requirements</p></li>
+<li><p>when security/malicious intent issues are found</p></li>
+<li><p>when a developer requests so</p></li>
+</ul>
+</section>
+</section>
+<section id="app-guidelines">
+<h2>App guidelines<a class="headerlink" href="#app-guidelines" title="Link to this heading"></a></h2>
+<p>These are the app guidelines an app has to comply with to have a chance to be approved.</p>
+<section id="legal-and-security">
+<h3>Legal and security<a class="headerlink" href="#legal-and-security" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Apps must be licensed under AGPLv3+ or any compatible license.</p></li>
+<li><p>Apps must not use ‘Nextcloud’ in their name.</p></li>
+<li><p>Irregular and unannounced security audits of all apps can and will take place.</p></li>
+<li><dl class="simple">
+<dt>If any indication of malicious intent or bad faith is found the developer(s) in question can count on a minimum 2 year ban from any Nextcloud infrastructure.</dt><dd><ul>
+<li><p>Malicious intent includes deliberate spying on users by leaking user data to a third party system or adding a back door (like a hard-coded user account) to Nextcloud. An unintentional security bug that gets fixed in time won’t be considered bad faith.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Apps do not violate any laws; it has to comply with copyright- and trademark law.</p></li>
+<li><p>App authors have to respond timely to security concerns and not make Nextcloud more vulnerable to attacks.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Distributing malicious or illegal applications can have legal consequences including, but not limited to Nextcloud or affected users taking legal action.</p>
+</div>
+</section>
+<section id="be-technically-sound">
+<h3>Be technically sound<a class="headerlink" href="#be-technically-sound" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Apps can only use the public Nextcloud API.</p></li>
+<li><p>At time of the release of an app it can only be configured to be compatible with the latest Nextcloud release +1.</p></li>
+<li><p>Apps should not cause Nextcloud to break, consume excessive memory or slow Nextcloud down.</p></li>
+<li><p>Apps should not hamper functionality of Nextcloud unless that is explicitly the goal of the app.</p></li>
+</ul>
+</section>
+<section id="respect-the-users">
+<h3>Respect the users<a class="headerlink" href="#respect-the-users" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Apps have to follow design and <a class="reference external" href="../app/css.html">HTML/CSS layout guidelines</a>.</p></li>
+<li><p>Apps correctly clean up after themselves on uninstall and correctly handle up- and downgrades.</p></li>
+<li><p>Apps clearly communicate their intended purpose and active features, including features introduced through updates.</p></li>
+<li><p>Apps respect the users’ choices and do not make unexpected changes, or limit users’ ability to revert them. For example, they do not remove other apps or disable settings.</p></li>
+<li><p>Apps must respect user privacy. IF user data is sent anywhere, this must be clearly explained and be kept to a minimum for the functioning of an app. Use proper security measures when needed.</p></li>
+<li><p>App authors must provide means to contact them, be it through a bug tracker, forum or mail.</p></li>
+</ul>
+<p>Apps which break the guidelines will lose their ‘approved’ or ‘official’ state; and might be blocked from the app store altogether. This also has repercussions for the author, especially in case of security concerns, they might find themselves blocked from submitting applications.</p>
+</section>
+</section>
+<section id="moving-your-repo-to-the-nextcloud-organization">
+<h2>Moving your repo to the Nextcloud organization<a class="headerlink" href="#moving-your-repo-to-the-nextcloud-organization" title="Link to this heading"></a></h2>
+<p>We’re always delighted to hear app developers are interested in moving their app to the Nextcloud organization at <a class="reference external" href="https://github.com/nextcloud">github.com/nextcloud</a>! There are benefits for users and developers in being there. However, it comes with some requirements as well.</p>
+<section id="benefits">
+<h3>Benefits<a class="headerlink" href="#benefits" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>You can use the tools and bots we have set up, including translations and such</p></li>
+<li><p>Everybody in the Nextcloud organization can contribute more easily</p></li>
+<li><p>Your visibility to app developers increases</p></li>
+<li><p>Users can expect apps in our project to be better maintained</p></li>
+</ul>
+</section>
+<section id="requirements">
+<h3>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h3>
+<p>To deliver on the promises above, we have two simple rules.</p>
+<ul class="simple">
+<li><p>You work and communicate according to the values of our <a class="reference external" href="../general/code-of-conduct.html">Code of Conduct</a></p></li>
+<li><p>When you are no longer active, our admins can decide to hand over maintainership to another contributor</p></li>
+</ul>
+<p>We want to make sure that when you find other things in life which are more urgent or otherwise are unable to help your project anymore, it does not become ‘dead code’ as long as there are people who want to keep it alive. This is not fair to users, who would be forced to remove the app and install another.</p>
+<p>Please note that the role of a maintainer is not to be the most active or prolific contributor to a project! Being friendly, welcoming and responsive are what it takes to be a successful maintainer. Not being the most brilliant developer ever, or spending nights and weekends coding!</p>
+<p>The goal of these rules is simple: help your project be more successful. We also suggest you watch this talk by <a class="reference external" href="https://www.youtube.com/watch?v=UtAoRIKVpW4">Jan about building a great community.</a></p>
+</section>
+<section id="how-to-move">
+<h3>How to move<a class="headerlink" href="#how-to-move" title="Link to this heading"></a></h3>
+<p>To move your repository to our Github organization, just ask any of our contributors, <a class="reference external" href="https://github.com/orgs/nextcloud/people?utf8=%E2%9C%93&amp;query=+role%3Aowner">especially those who are admin.</a> They will be happy to help!</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="code_signing.html" class="btn btn-neutral float-left" title="Code signing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="release_automation.html" class="btn btn-neutral float-right" title="Release Automation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/developer_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/20/developer_manual">20</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/21/developer_manual">21</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

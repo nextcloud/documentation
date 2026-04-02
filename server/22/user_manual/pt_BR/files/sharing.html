@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compartilhando Arquivos &mdash; documentação Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=a3f23d37"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=000972dd"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="next" title="Fazer uploads anônimos" href="file_drop.html" />
+    <link rel="prev" title="Criptografar seus arquivos Nextcloud no servidor" href="encrypting_files.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Pesquisar documentos" aria-label="Pesquisar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introdução ao manual do usuário do Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">O que há de novo para usuários no Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">A interface Web Nextcloud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Arquivos &amp; sincronização</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Acessando seus arquivos utilizando a interface Web Nextcloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Acessando arquivos Nextcloud usando o WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Gerenciar arquivos excluídos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Sincronização de desktop e móvel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Criptografar seus arquivos Nextcloud no servidor</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Compartilhando Arquivos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#public-link-shares">Compartilhamentos por link público</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#internal-shares-with-users-and-groups">Compartilhamento interno com usuários e grupos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#others-with-access">Outros com acesso</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#federated-shares">Compartilhamentos Federados</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-new-federation-share">Criação de um novo Compartilhamento de Federação</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-public-share-to-your-nextcloud">Adicionando um compartilhamento público ao seu Nextcloud</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Fazer uploads anônimos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Uploads de arquivos grandes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Cota de armazenamento</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Controle de versão</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projetos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Transferir Propriedade</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pim/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Configurando suas preferências</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Acesso universal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Usando autenticação de dois fatores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gerenciar navegadores e dispositivos conectados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Armazenamento externo</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Menu de navegação móvel" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Navegação da página">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Arquivos &amp; sincronização</a></li>
+      <li class="breadcrumb-item active">Compartilhando Arquivos</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/sharing.rst" class="fa fa-github"> Editar no GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-sharing">
+<h1>Compartilhando Arquivos<a class="headerlink" href="#file-sharing" title="Link to this heading"></a></h1>
+<p>Os usuários do Nextcloud podem compartilhar arquivos e pastas. Os alvos possíveis são:</p>
+<ul class="simple">
+<li><p>links públicos</p></li>
+<li><p>usuários</p></li>
+<li><p>grupos</p></li>
+<li><p>círculos</p></li>
+<li><p>bate-papo conversas</p></li>
+<li><p>usuários ou grupos em servidores federados Nextcloud</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Algumas opções podem não estar disponíveis devido à configuração administrativa. Ver <span class="xref std std-doc">admin documentação</span> para detalhes.</p>
+</div>
+<section id="public-link-shares">
+<h2>Compartilhamentos por link público<a class="headerlink" href="#public-link-shares" title="Link to this heading"></a></h2>
+<p>Você pode compartilhar arquivos e pastas por meio de links públicos.</p>
+<p>Um token aleatório de 15 dígitos será criado. O link será semelhante a <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/s/yxcFKRWBJqYYzp4</span></code>.</p>
+<p>Várias opções estão disponíveis para compartilhamentos de <em>pastas</em> públicas:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_public_folder.png" src="../../_images/sharing_public_folder.png" />
+</figure>
+<ul class="simple">
+<li><p><strong>Somente leitura</strong> para permitir a visualização e o download</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">**</span></a>Permitir envio e edição **</p></li>
+<li><p>Com <strong>File drop</strong>, o sharee só pode fazer upload de arquivos para uma pasta sem ver os arquivos que já estão nessa pasta.</p></li>
+<li><p><strong>Hide download</strong> hides the download buttons and the default browser right-click options in order to make downloading for the sharee harder</p></li>
+<li><p><strong>Protegido por senha</strong></p></li>
+<li><p><strong>Definir data de validade</strong> irá desativar automaticamente o compartilhamento</p></li>
+<li><p><strong>Nota para o destinatário</strong></p></li>
+<li><p><strong>Cancele o Compartilhamento</strong> para reverter o compartilhamento</p></li>
+<li><p><strong>Adicione outro link</strong> para criar vários links públicos com direitos diferentes</p></li>
+</ul>
+<p>Para compartilhamentos públicos de <em>arquivos</em>, você pode permitir a edição do arquivo com uma das soluções de edição colaborativa do Nextcloud:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_public_file.png" src="../../_images/sharing_public_file.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>A proteção por senha, bem como a expiração de arquivo, não são propagadas usando o Compartilhamento de Arquivos Federado nas versões atuais do Nextcloud. Isso será ajustado no Nextcloud 22.</p>
+</div>
+</section>
+<section id="internal-shares-with-users-and-groups">
+<h2>Compartilhamento interno com usuários e grupos<a class="headerlink" href="#internal-shares-with-users-and-groups" title="Link to this heading"></a></h2>
+<p>Ao compartilhar com usuários, grupos, círculos ou membros de uma conversa do Talk, os direitos para os arquivos ou conteúdos da pasta são ajustáveis:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_internal.png" src="../../_images/sharing_internal.png" />
+</figure>
+<p>Como um sharee, você pode configurar se deseja aceitar automaticamente todos os compartilhamentos recebidos e adicioná-los à sua pasta raiz ou se deseja ser perguntado a cada vez se deseja aceitar ou recusar o compartilhamento.</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_internal_acceptNotification.png" src="../../_images/sharing_internal_acceptNotification.png" />
+</figure>
+<p>Para ajustar a configuração de aceitação, vá para <strong>Configurações</strong>&gt; <strong>Pessoal</strong>&gt; <strong>Compartilhamento</strong>:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_autoAcceptSetting.png" src="../../_images/sharing_autoAcceptSetting.png" />
+</figure>
+</section>
+<section id="others-with-access">
+<h2>Outros com acesso<a class="headerlink" href="#others-with-access" title="Link to this heading"></a></h2>
+<p>Para descobrir se um arquivo ou pasta está acessível a outras pessoas por meio do compartilhamento de um nível de hierarquia de pasta superior, clique em <strong>Outros com acesso</strong> na guia de compartilhamento:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_others-with-access__collapsed.png" src="../../_images/sharing_others-with-access__collapsed.png" />
+</figure>
+<p>A lista mostra todos os usuários, grupos, chats etc. aos quais o objeto atual teve acesso por meio do compartilhamento de uma pasta superior na hierarquia:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_others-with-access__details.png" src="../../_images/sharing_others-with-access__details.png" />
+</figure>
+<p>Clique nos três pontos para:</p>
+<ul class="simple">
+<li><p>veja quem iniciou o compartilhamento</p></li>
+<li><p>veja onde o compartilhamento foi iniciado (clique para navegar até a pasta, na medida em que você tiver acesso lá)</p></li>
+<li><p>cancelar o compartilhamento inicial (acessível apenas para o proprietário do compartilhamento)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Essas informações são visíveis apenas para o proprietário de um arquivo/pasta ou compartilhamentos com direitos de compartilhamento.</p>
+</div>
+</section>
+</section>
+<section id="federated-shares">
+<h1>Compartilhamentos Federados<a class="headerlink" href="#federated-shares" title="Link to this heading"></a></h1>
+<p>O Compartilhamento de Federação permite que você monte compartilhamentos de arquivos de servidores Nextcloud remotos, criando com efeito sua própria nuvem de Nextclouds. Você pode criar links de compartilhamento direto com usuários em outros servidores Nextcloud.</p>
+<section id="creating-a-new-federation-share">
+<h2>Criação de um novo Compartilhamento de Federação<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
+<p>O compartilhamento de federação é habilitado por padrão. Siga estas etapas para criar um novo compartilhamento com outros servidores Nextcloud ou ownCloud:</p>
+<p>Vá para a página <code class="docutils literal notranslate"><span class="pre">Arquivos</span></code> e clique no ícone Compartilhar no arquivo ou diretório que deseja compartilhar. Na barra lateral, digite o nome de usuário e a URL do usuário remoto neste formato: <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code>. Neste exemplo, isso é <code class="docutils literal notranslate"><span class="pre">bob&#64;cloud.example.com</span></code>:</p>
+<figure class="align-default">
+<img alt="../../_images/share-federation-1.png" src="../../_images/share-federation-1.png" />
+</figure>
+<p>O sharee está recebendo uma notificação em seu Nextcloud, permitindo-lhes aceitar ou recusar o compartilhamento de entrada:</p>
+<figure class="align-default">
+<img alt="../../_images/share-federation-2-notification.png" src="../../_images/share-federation-2-notification.png" />
+</figure>
+</section>
+<section id="adding-a-public-share-to-your-nextcloud">
+<h2>Adicionando um compartilhamento público ao seu Nextcloud<a class="headerlink" href="#adding-a-public-share-to-your-nextcloud" title="Link to this heading"></a></h2>
+<p>As páginas de compartilhamento de link público Nextcloud oferecem uma opção para adicionar esse arquivo ou pasta como um compartilhamento federado em sua própria instância Nextcloud. Basta inserir <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code> exatamente como mostrado para compartilhamentos de saída acima:</p>
+<figure class="align-default">
+<img alt="../../_images/share-federation-3-public.png" src="../../_images/share-federation-3-public.png" />
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Rodapé">
+        <a href="encrypting_files.html" class="btn btn-neutral float-left" title="Criptografar seus arquivos Nextcloud no servidor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="file_drop.html" class="btn btn-neutral float-right" title="Fazer uploads anônimos" accesskey="n" rel="next">Próximo <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Direitos autorais 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versões</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/user_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/20/user_manual">20</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/21/user_manual">21</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Em Leia os Documentos </dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Projeto Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Использование приложения Календарь &mdash; документация Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=9a65ad85"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=29b1f277"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Синхронизация с Android" href="sync_android.html" />
+    <link rel="prev" title="Использование приложения Контакты" href="contacts.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Логотип"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest руководство пользователя. Введение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Что нового для пользователей в Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Веб-интерфейс Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Файлы и синхронизация</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Коллективная работа</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Использование приложения Контакты</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Использование приложения Календарь</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#managing-your-calendars">Управление вашими календарями</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#import-a-calendar">Импортировать календарь</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-calendar">Создать новый календарь</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-download-or-delete-a-calendar">Редактировать, скачать или удалить календарь</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing-calendars">Совместное использование календарей</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#publishing-a-calendar">Публикация календаря</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subscribe-to-a-calendar">Подписаться на календарь</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-events">Управление событиями</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-event">Создать новое событие</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-or-delete-an-event">Изменить или удалить событие</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#invite-attendees-to-an-event">Пригласите участников на мероприятие</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#assign-rooms-and-resources-to-an-event">Assign rooms and resources to an event</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setup-reminders">Настройка напоминаний</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-recurring-options">Добавить повторяющиеся события</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trash-bin">Trash bin</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#birthday-calendar">Календарь Дней рождения</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Синхронизация с Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">Синхронизация с iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">Синхронизация с macOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Синхронизация с Thunderbird</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Синхронизация с KDE Kontact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Синхронизация с рабочим столом GNOME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Синхронизация с Windows 10</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Персональные настройки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Использование двухфакторной аутентификации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Управление подключенными браузерами и устройствами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Внешнее хранилище</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Коллективная работа</a></li>
+      <li class="breadcrumb-item active">Использование приложения Календарь</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/pim/calendar.rst" class="fa fa-github"> Редактировать на GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-calendar-app">
+<h1>Использование приложения Календарь<a class="headerlink" href="#using-the-calendar-app" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Приложение календаря не включено по умолчанию и должно быть установлено отдельно из нашего магазина приложений. Пожалуйста, попросите вашего администратора для этого.</p>
+</div>
+<p>Приложение Nextcloud Calendar работает аналогично другим календарным приложениям, с которыми вы можете синхронизировать календари и события Nextcloud.</p>
+<p>Когда вы впервые получаете доступ к приложению Календарь, первый календарь по умолчанию будет создан для вас.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_application.png" src="../../_images/calendar_application.png" />
+</figure>
+<section id="managing-your-calendars">
+<h2>Управление вашими календарями<a class="headerlink" href="#managing-your-calendars" title="Link to this heading"></a></h2>
+<section id="import-a-calendar">
+<h3>Импортировать календарь<a class="headerlink" href="#import-a-calendar" title="Link to this heading"></a></h3>
+<p>Если вы хотите перенести календарь и соответствующие события в ваш экземпляр Nextcloud, лучшим способом для этого будет импорт.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_settings.png"><img alt="../../_images/calendar_settings.png" src="../../_images/calendar_settings.png" style="width: 250.0px; height: 299.0px;" /></a>
+</figure>
+<ol class="arabic simple">
+<li><p>Нажмите на значок настроек, помеченный <code class="docutils literal notranslate"><span class="pre">Настройки</span> <span class="pre">и</span> <span class="pre">импорт</span></code> слева внизу.</p></li>
+<li><p>После нажатия на <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Импортировать</span> <span class="pre">календарь</span></code> вы можете выбрать один или несколько файлов календаря с локального устройства для загрузки.</p></li>
+<li><p>Загрузка может занять некоторое время и зависит от размера импортируемого вами календаря.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Приложение Nextcloud Calendar поддерживает только файлы <code class="docutils literal notranslate"><span class="pre">.ics</span></code>, совместимые с iCalendar, определенные в RFC 5545.</p>
+</div>
+</section>
+<section id="create-a-new-calendar">
+<h3>Создать новый календарь<a class="headerlink" href="#create-a-new-calendar" title="Link to this heading"></a></h3>
+<p>Если вы планируете настроить новый календарь без переноса каких-либо старых данных из предыдущего, создание нового календаря - это то, что вам нужно.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_create.gif" src="../../_images/calendar_create.gif" />
+</figure>
+<ol class="arabic simple">
+<li><p>Нажмите на <code class="docutils literal notranslate"><span class="pre">+Новый</span> <span class="pre">календарь</span></code> на левой боковой панели.</p></li>
+<li><p>Введите имя для нового календаря, например, «Работа», «Дом» или «Учеба».</p></li>
+<li><p>После нажатия на галочку, ваш новый календарь будет создан и может быть синхронизирован с вашими устройствами, заполнен новыми событиями и доступен для ваших друзей и коллег.</p></li>
+</ol>
+</section>
+<section id="edit-download-or-delete-a-calendar">
+<h3>Редактировать, скачать или удалить календарь<a class="headerlink" href="#edit-download-or-delete-a-calendar" title="Link to this heading"></a></h3>
+<p>Иногда вы можете захотеть изменить цвет или полное имя предыдущего импортированного или созданного календаря. Вы также можете экспортировать его на локальный жесткий диск или удалить его навсегда.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Помните, что удаление календаря является необратимым действием. После удаления невозможно восстановить календарь, если у вас нет локальной резервной копии.</p>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_dropdown.png"><img alt="../../_images/calendar_dropdown.png" src="../../_images/calendar_dropdown.png" style="width: 250.0px; height: 243.0px;" /></a>
+</figure>
+<ol class="arabic simple">
+<li><p>Нажмите на трехточечное меню соответствующего календаря.</p></li>
+</ol>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_editing.png"><img alt="../../_images/calendar_editing.png" src="../../_images/calendar_editing.png" style="width: 250.0px; height: 75.0px;" /></a>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p>Нажмите «Редактировать», «Скачать» или «Удалить».</p></li>
+</ol>
+</section>
+<section id="sharing-calendars">
+<h3>Совместное использование календарей<a class="headerlink" href="#sharing-calendars" title="Link to this heading"></a></h3>
+<p>Вы можете поделиться своим календарем с другими пользователями или группами. Календари могут использоваться совместно с доступом для записи или только для чтения. При совместном использовании календаря с доступом для записи пользователи, которым предоставлен общий доступ к календарю, смогут создавать новые события в календаре, а также редактировать и удалять существующие.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Общие Календари в настоящее время не могут быть приняты или отклонены. Если вы хотите прекратить использование календаря, которым кто-то поделился с вами, вы можете щелкнуть по 3-точечному меню рядом с календарем в списке календарей и нажать «Отменить обмен от меня».</p>
+</div>
+</section>
+<section id="publishing-a-calendar">
+<h3>Публикация календаря<a class="headerlink" href="#publishing-a-calendar" title="Link to this heading"></a></h3>
+<p>Календари можно публиковать через открытую ссылку, чтобы сделать их видимыми (только для чтения) для внешних пользователей. Вы можете создать общедоступную ссылку, открыв меню общего доступа для календаря и нажав « + » рядом с « Поделиться ссылкой ». После создания вы можете скопировать общедоступную ссылку в буфер обмена или отправить ее по электронной почте.</p>
+<p>Также есть « код для встраивания », который предоставляет HTML-фрейм для встраивания вашего календаря в общедоступные страницы.</p>
+<p>Multiple calendars can be shared together by adding their unique tokens to the end of an embed link. Individual tokens can be found at the end of each calendar’s public link. The full address will look like
+<code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/index.php/apps/calendar/embed/&lt;token1&gt;-&lt;token2&gt;-&lt;token3&gt;</span></code></p>
+<p>To change the default view or date of an embedded calendar, you need to provide an url that look like <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/index.php/apps/calendar/embed/&lt;token&gt;/&lt;view&gt;/&lt;date&gt;</span></code>.
+In this url you need to replace the following variables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;token&gt;</span></code> with the calendar’s token.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;view&gt;</span></code> with one of <code class="docutils literal notranslate"><span class="pre">month</span></code>, <code class="docutils literal notranslate"><span class="pre">week</span></code>, <code class="docutils literal notranslate"><span class="pre">day</span></code>, <code class="docutils literal notranslate"><span class="pre">listMonth</span></code>, <code class="docutils literal notranslate"><span class="pre">listWeek</span></code>, <code class="docutils literal notranslate"><span class="pre">listDay</span></code>. The default view is <code class="docutils literal notranslate"><span class="pre">month</span></code> and the normally used list is <code class="docutils literal notranslate"><span class="pre">listMonth</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;date&gt;</span></code> with <code class="docutils literal notranslate"><span class="pre">now</span></code> or any date with the following format <code class="docutils literal notranslate"><span class="pre">&lt;year&gt;-&lt;month&gt;-&lt;day&gt;</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">2019-12-28</span></code>).</p></li>
+</ul>
+<p>На общедоступной странице пользователи могут получить ссылку для подписки на календарь и загрузить весь календарь напрямую.</p>
+</section>
+<section id="subscribe-to-a-calendar">
+<h3>Подписаться на календарь<a class="headerlink" href="#subscribe-to-a-calendar" title="Link to this heading"></a></h3>
+<p>You can subscribe to iCal calendars directly inside of your Nextcloud. By
+supporting this interoperable standard (RFC 5545) we made Nextcloud calendar
+compatible to Google Calendar, Apple iCloud and many other calendar-servers
+you can exchange your calendars with, including subscription links from calendar published on other Nextcloud instances, as described above.</p>
+<ol class="arabic simple">
+<li><p>Нажмите на <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Новая</span> <span class="pre">подписка</span></code> на левой боковой панели.</p></li>
+<li><p>Введите или вставьте ссылку общего календаря, на который вы хотите подписаться.</p></li>
+</ol>
+<p>Ваши подписки на календарь будут регулярно обновляться.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Подписки обновляются каждую неделю по умолчанию. Возможно, ваш админ изменил этот параметр.</p>
+</div>
+</section>
+</section>
+<section id="managing-events">
+<h2>Управление событиями<a class="headerlink" href="#managing-events" title="Link to this heading"></a></h2>
+<section id="create-a-new-event">
+<h3>Создать новое событие<a class="headerlink" href="#create-a-new-event" title="Link to this heading"></a></h3>
+<p>События могут быть созданы, кликом в области, на которое вы хотите запланировать событие. В дневном и недельном обзоре календаря вы просто кликаете и тянете, помечая область, когда происходит событие.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_new-event_week.gif" src="../../_images/calendar_new-event_week.gif" />
+</figure>
+<p>Для просмотра месяца требуется только один клик в области определенного дня.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_new-event_month.gif" src="../../_images/calendar_new-event_month.gif" />
+</figure>
+<p>After that, you can type in the event’s name (e.g. <strong>Meeting with Lukas</strong>), choose
+the calendar in which you want to choose the event (e.g. <strong>Personal</strong>, <strong>Work</strong>),
+check and concretize the time span or set the event as all-day event.</p>
+<p>Если вы хотите отредактировать расширенную информацию, такую как <strong>Местоположение</strong>, <strong>Описание</strong>, <strong>Участники</strong>, <strong>Напоминания</strong> или установить событие как повторяющееся событие, нажмите на кнопку <code class="docutils literal notranslate"><span class="pre">Больше</span></code>, чтобы открыть расширенный боковой редактор.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Если вы всегда хотите открывать расширенный редактор боковых панелей вместо всплывающего окна простого редактора событий, вы можете установить флажок «Пропустить простой редактор событий» в разделе «Настройки и импорт» приложения.</p>
+</div>
+<p>Нажав на синюю кнопку <code class="docutils literal notranslate"><span class="pre">Создать</span></code>, вы, наконец, создадите событие.</p>
+</section>
+<section id="edit-or-delete-an-event">
+<h3>Изменить или удалить событие<a class="headerlink" href="#edit-or-delete-an-event" title="Link to this heading"></a></h3>
+<p>If you want to edit or delete a specific event, you just need to click on it.
+After that you will be able to re-set all event details and open the
+advanced sidebar-editor by clicking on <code class="docutils literal notranslate"><span class="pre">More</span></code>.</p>
+<p>Нажав на кнопку <code class="docutils literal notranslate"><span class="pre">Обновить</span></code>, вы обновите событие. Чтобы отменить изменения, нажмите значок закрытия в правом верхнем углу всплывающего окна или редактора боковой панели.</p>
+<p>Если вы откроете боковую панель и выберете трехточечное меню рядом с именем события, у вас будет возможность экспортировать событие в виде файла <code class="docutils literal notranslate"><span class="pre">.ics</span></code> или удалить событие из календаря.</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="../../_images/calendar_event_menu.png" src="../../_images/calendar_event_menu.png" />
+</figure>
+</div></blockquote>
+</section>
+<section id="invite-attendees-to-an-event">
+<h3>Пригласите участников на мероприятие<a class="headerlink" href="#invite-attendees-to-an-event" title="Link to this heading"></a></h3>
+<p>Вы можете добавить участников к событию, чтобы они знали, что они приглашены. Они получат подтверждение по электронной почте и смогут подтвердить или отменить свое участие в мероприятии. Участниками могут быть другие пользователи в ваших экземплярах Nextcloud, контакты в ваших адресных книгах и прямые адреса электронной почты. Вы также можете изменить уровень участия участников или отключить подтверждение по электронной почте для конкретного участника.</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="../../_images/calendar_event_invitation_level.png" src="../../_images/calendar_event_invitation_level.png" />
+</figure>
+</div></blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Совет</p>
+<p>Добавляя других пользователей Nextcloud в качестве участников мероприятия, вы можете получить доступ к их информации о свободном времени, если она доступна, что поможет вам определить, когда для вашего мероприятия лучше всего подходит временной интервал.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Внимание</p>
+<p>Только владелец календаря может разослать приглашения, общие ресурсы не могут этого сделать, независимо от того, имеют ли они доступ для записи в календарь событий или нет.</p>
+</div>
+</section>
+<section id="assign-rooms-and-resources-to-an-event">
+<h3>Assign rooms and resources to an event<a class="headerlink" href="#assign-rooms-and-resources-to-an-event" title="Link to this heading"></a></h3>
+<p>Similar to attendees you can add rooms and resources to your events. The system will make sure that each room and resource is booked without conflict. The first time a user adds the room or resource to an event, it will show as accepted. Any further events at overlapping times will show the room or resource as rejected.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Rooms and resources are not managed by Nextcloud itself and the Calendar app will not allow you to add or change a resource. Your Administrator has to install and possibly configure resource back ends before you can use them as a user.</p>
+</div>
+</section>
+<section id="setup-reminders">
+<h3>Настройка напоминаний<a class="headerlink" href="#setup-reminders" title="Link to this heading"></a></h3>
+<p>Вы можете настроить напоминания, чтобы получать уведомления до наступления события. В настоящее время поддерживаются следующие способы уведомления :</p>
+<ul class="simple">
+<li><p>Уведомления по электронной почте</p></li>
+<li><p>Nextcloud уведомления</p></li>
+</ul>
+<p>Вы можете установить напоминания по времени относительно события или на определенную дату.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_event_reminders.png" src="../../_images/calendar_event_reminders.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Только владелец календаря и люди или группы, которым он предоставлен для доступа к записи, получат уведомления. Если вы не получаете никаких уведомлений, но думаете, что должны, ваш администратор также мог отключить это для вашего сервера.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Если вы синхронизируете свой календарь с мобильными устройствами или другими сторонними клиентами, там также могут отображаться уведомления.</p>
+</div>
+</section>
+<section id="add-recurring-options">
+<h3>Добавить повторяющиеся события<a class="headerlink" href="#add-recurring-options" title="Link to this heading"></a></h3>
+<p>Событие может быть установлено как «повторяющееся», чтобы оно могло происходить каждый день, неделю, месяц или год. Можно добавить определенные правила, чтобы указать, в какой день недели происходит событие или более сложные правила, например каждую четвертую среду каждого месяца.</p>
+<p>Вы также можете указать, когда повторение закончится.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_event_repeat.png" src="../../_images/calendar_event_repeat.png" />
+</figure>
+</section>
+<section id="trash-bin">
+<h3>Trash bin<a class="headerlink" href="#trash-bin" title="Link to this heading"></a></h3>
+<p>If you delete events, tasks or a calendar in Calendar, your data is not gone yet. Instead, those items will be collected in a <em>trash bin</em>. This offers you to undo a deletion. After a period which defaults to 30 days (your administration may have changed this setting), those items will be deleted permanently. You can also permanently delete items earlier if you wish.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_trash_bin.png" src="../../_images/calendar_trash_bin.png" />
+</figure>
+<p>The <code class="docutils literal notranslate"><span class="pre">Empty</span> <span class="pre">trash</span> <span class="pre">bin</span></code> buttons will wipe all trash bin contents in one step.</p>
+<div class="admonition tip">
+<p class="admonition-title">Совет</p>
+<p>The trash bin is only accessible from the Calendar app. Any connected application or app won’t be able to display its contents. However, events, tasks and calendars deleted in connected applications or app will also end up in the trash bin.</p>
+</div>
+</section>
+</section>
+<section id="birthday-calendar">
+<h2>Календарь Дней рождения<a class="headerlink" href="#birthday-calendar" title="Link to this heading"></a></h2>
+<p>Календарь Дней рождения - это автоматически сгенерированный календарь, который автоматически выбирает дни рождения из ваших контактов. Единственный способ отредактировать этот календарь - заполнить Дни рождения контактов. Вы не можете напрямую редактировать этот календарь из календаря-приложения.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Если вы не видите календарь Дней рождения, возможно, ваш администратор отключил это для вашего сервера.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="contacts.html" class="btn btn-neutral float-left" title="Использование приложения Контакты" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="sync_android.html" class="btn btn-neutral float-right" title="Синхронизация с Android" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2026 Nextcloud GmbH. </p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Версии</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/user_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/20/user_manual">20</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/21/user_manual">21</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Загрузки</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Читать на Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">В начало</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Сборка</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
