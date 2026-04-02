@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profiler &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dark_mode_css/general.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dark_mode_css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Deadlocks" href="deadlock.html" />
+    <link rel="prev" title="User migration" href="user_migration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="continuous_integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files-metadata.html">Files Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html">HTTP Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psr.html">PSR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_apis.html">REST APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speech-to-text.html">Speech-To-Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talk.html">Talk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translation.html">Machine Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_processing.html">Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text2image.html">Text-To-Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard.html">Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">Reference providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupware/index.html">Groupware integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_host_metadata.html">Web Host Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status.html">User Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile.html">Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">User migration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Profiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-the-app">Get the app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enable-the-app">Enable the app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disable-the-app">Disable the app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-app">Using the app</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-general-request-and-response-view">The General Request and Response View</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-database-queries-view">The Database Queries View</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-ldap-view">The LDAP View</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-event-view">The Event View</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-cache-view">The Cache View</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#contributing">Contributing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deadlock.html">Deadlocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonenumberutil.html">Phone number util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="out_of_office.html">Out-of-office periods</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Digging deeper</a></li>
+      <li class="breadcrumb-item active">Profiler</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/profiler.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="profiler">
+<h1>Profiler<a class="headerlink" href="#profiler" title="Link to this heading"></a></h1>
+<p>Nextcloud offers a built-in profiler that can help you identifying performance issues
+with your Nextcloud application. This feature is available starting from Nextcloud 24.</p>
+<section id="get-the-app">
+<h2>Get the app<a class="headerlink" href="#get-the-app" title="Link to this heading"></a></h2>
+<p>The profiler application is available on <a class="reference external" href="https://github.com/nextcloud/profiler">GitHub</a>
+you need to clone the stableX branch if you are using Nextcloud X or master if you are
+using the latest development version of Nextcloud.</p>
+</section>
+<section id="enable-the-app">
+<h2>Enable the app<a class="headerlink" href="#enable-the-app" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not run this application on production. This will slow down considerably your server
+as collection profiling information consume a lot of CPU and memory.</p>
+</div>
+<p>To enable the app, you can run the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>ci<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>build
+occ<span class="w"> </span>app:enable<span class="w"> </span>profiler
+occ<span class="w"> </span>profiler:enable<span class="w"> </span><span class="c1"># This will also enable the debug mode if not already enabled</span>
+</pre></div>
+</div>
+</section>
+<section id="disable-the-app">
+<h2>Disable the app<a class="headerlink" href="#disable-the-app" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>occ<span class="w"> </span>profiler:disable
+occ<span class="w"> </span>config:system:set<span class="w"> </span>debug<span class="w"> </span>--value<span class="w"> </span><span class="nb">false</span><span class="w"> </span>--type<span class="w"> </span>bool<span class="w"> </span><span class="c1"># to also disable the debug mode</span>
+</pre></div>
+</div>
+</section>
+<section id="using-the-app">
+<h2>Using the app<a class="headerlink" href="#using-the-app" title="Link to this heading"></a></h2>
+<p>When enabled, the profiler application will inject a toolbar at the bottom of the screen.
+This toolbar provides you information about the current HTTP request, the time it took to
+run, how many database and LDAP requests it did, how often did the cache hit and also
+the toolbar track the XHR requests created by the JavaScript frontend.</p>
+<img alt="../_images/profiler-toolbar.png" src="../_images/profiler-toolbar.png" />
+<p>You can hover on top of the toolbar information to show more detailed information and also
+click on the toolbar to show all the information collected.</p>
+<p>There is for the moment 5 views:</p>
+<ol class="arabic simple">
+<li><p>The general request and response view</p></li>
+<li><p>The database queries view</p></li>
+<li><p>The event view</p></li>
+<li><p>The LDAP queries view</p></li>
+<li><p>The cache view</p></li>
+</ol>
+<section id="the-general-request-and-response-view">
+<h3>The General Request and Response View<a class="headerlink" href="#the-general-request-and-response-view" title="Link to this heading"></a></h3>
+<img alt="../_images/profiler-request.png" src="../_images/profiler-request.png" />
+<p>This view gives you general information about the request. For example,
+which Controller and method was used, what where the response headers, the
+request parameters, …</p>
+</section>
+<section id="the-database-queries-view">
+<h3>The Database Queries View<a class="headerlink" href="#the-database-queries-view" title="Link to this heading"></a></h3>
+<p>This view gives you a list of all the database queries done for your request and
+how much time it took for the database to execute. Additionally you can also explain
+the query to see if an index was used and also see the backtrace to better understand
+why the query was executed.</p>
+<img alt="../_images/profiler-database.png" src="../_images/profiler-database.png" />
+<p>It’s important to keep the number of queries executed to a minimum since the database
+is often a limiting factor in a Nextcloud installation. In particular try to avoid the
+<a class="reference external" href="https://stackoverflow.com/questions/97197/what-is-the-n1-selects-problem-in-orm-object-relational-mapping">N+1 problem</a> as this can be really slow on big Nextcloud instance and make sure that
+your queries are using Database indexes when possible.</p>
+</section>
+<section id="the-ldap-view">
+<h3>The LDAP View<a class="headerlink" href="#the-ldap-view" title="Link to this heading"></a></h3>
+<p>This view is very similar to the database queries view and display all the database
+queries.</p>
+</section>
+<section id="the-event-view">
+<h3>The Event View<a class="headerlink" href="#the-event-view" title="Link to this heading"></a></h3>
+<p>This view display all the logged events and allow you to determine in which part of the
+programe the more time is spent.</p>
+<img alt="../_images/profiler-event.png" src="../_images/profiler-event.png" />
+</section>
+<section id="the-cache-view">
+<h3>The Cache View<a class="headerlink" href="#the-cache-view" title="Link to this heading"></a></h3>
+<p>This view display all the access to the cache. It allows to detect cache hits and miss
+as well as getting an idea of the time spent on Redis.</p>
+<img alt="../_images/profiler-cache.png" src="../_images/profiler-cache.png" />
+</section>
+</section>
+<section id="contributing">
+<h2>Contributing<a class="headerlink" href="#contributing" title="Link to this heading"></a></h2>
+<p>Contribution to improve the profiler are always welcome. Some future work could include
+a way to display Redis queries and not only give a statistic of them. And more type of data
+could be collected, e.g. HTTP requests to external APIs, IMAP call for the mail app, usage of
+the mailer service, …</p>
+<p>To extend the profiler app, you will need to provide your own <cite>DataCollector</cite>.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\DataCollector</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OC\AppFramework\Http\Request</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\Response</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\DataCollector\AbstractDataCollector</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MyAppDataCollector</span> <span class="k">extends</span> <span class="nx">AbstractDataCollector</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;myappcollector&#39;</span><span class="p">;</span> <span class="c1">// default to the class&#39; name</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">collect</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="nx">Response</span> <span class="nv">$response</span><span class="p">,</span> <span class="nx">\Throwable</span> <span class="nv">$exception</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span> <span class="o">=</span> <span class="p">[</span>
+             <span class="s1">&#39;mydata&#39;</span> <span class="o">=&gt;</span> <span class="mi">42</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You also need to register the <cite>DataCollector</cite> in your app <cite>boot</cite> method:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">(</span><span class="nx">IBootContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="nv">$server</span> <span class="o">=</span> <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">getServerContainer</span><span class="p">();</span>
+
+        <span class="sd">/** @var IProfiler $profiler */</span>
+        <span class="nv">$profiler</span> <span class="o">=</span> <span class="nv">$server</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">IProfiler</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nv">$profiler</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">MyAppDataCollector</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>You can find some examples in the <a class="reference external" href="https://github.com/nextcloud/profiler/tree/master/lib/DataCollector">profiler app git repo</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="user_migration.html" class="btn btn-neutral float-left" title="User migration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="deadlock.html" class="btn btn-neutral float-right" title="Deadlocks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/25/developer_manual">25</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/developer_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/developer_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

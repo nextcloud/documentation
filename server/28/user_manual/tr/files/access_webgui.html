@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="tr" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nextcloud site arayüzünü kullanarak dosyalarınıza erişmek &mdash; Nextcloud latest User Manual latest belgelendirmesi</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/dark_mode_css/general.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/dark_mode_css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=278d5dfc"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/translations.js?v=34f4c3a9"></script>
+        <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Dizin" href="../genindex.html" />
+    <link rel="search" title="Ara" href="../search.html" />
+    <link rel="next" title="WebDAV kullanarak Nextcloud dosyalarına erişmek" href="access_webdav.html" />
+    <link rel="prev" title="Dosyalar ve eşitleme" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Belgeleri arayın" aria-label="Belgeleri arayın" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest kullanıcı rehberi giriş</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Nextcloud latest sürümündeki yenilikler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud site arayüzü</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Dosyalar ve eşitleme</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Nextcloud site arayüzünü kullanarak dosyalarınıza erişmek</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tagging-files">Dosyaları etiketlemek</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comments">Açıklamalar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#video-player">Görüntü oynatıcı</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-controls">Dosya denetimleri</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#previewing-files">Dosyaları ön izlemek</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#navigating-inside-your-nextcloud">Nextcloud içinde gezinmek</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-status-icons">Durum simgelerini paylaşmak</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-or-uploading-files-and-directories">Dosya ve klasör oluşturmak ya da yüklemek</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#selecting-files-or-folders">Dosya ya da klasörleri seçmek</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filtering-the-files-view">Dosya görünümünü süzmek</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#moving-files">Dosyaları taşımak</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-or-connecting-to-a-federation-share-link">Birleşik paylaşım bağlantısı oluşturma veya bağlantı kurma</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">WebDAV kullanarak Nextcloud dosyalarına erişmek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Silinmiş dosyaları yönetmek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Masaüstü ve mobil eşitleme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Nextcloud dosyalarınızı sunucuda şifrelemek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Dosya paylaşımı</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Birleşik paylaşımlar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Anonim yüklemeler yapma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Büyük dosya yüklemeleri</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Depolama kotası</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Sürüm denetimi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projeler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Sahiplik aktarma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Birleşik paylaşımları kullanmak</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Kullanıcı ayarları</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Evrensel erişim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">İki aşamalı kimlik doğrulamasını kullanmak</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Bağlı tarayıcı ve aygıtların yönetimi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Dış Depolama</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Dosyalar ve eşitleme</a></li>
+      <li class="breadcrumb-item active">Nextcloud site arayüzünü kullanarak dosyalarınıza erişmek</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webgui.rst" class="fa fa-github"> GitHub'da Düzenle</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="accessing-your-files-using-the-nextcloud-web-interface">
+<h1>Nextcloud site arayüzünü kullanarak dosyalarınıza erişmek<a class="headerlink" href="#accessing-your-files-using-the-nextcloud-web-interface" title="Link to this heading"></a></h1>
+<p>Nextcloud dosyalarınıza Nextcloud site arayüzünden erişerek, dosyaları oluşturabilir, ön izleyebilir, düzenleyebilir, silebilir, paylaşabilir ve yeniden paylaşabilirsiniz. Nextcloud yöneticiniz bu özellikleri devre dışı bırakabilir. Bu nedenle sisteminizde bunlardan herhangi biri eksikse sunucu yöneticinizle görüşün.</p>
+<figure class="align-default">
+<img alt="Dosyalar görünümü ekranı." src="../../_images/users-files.png" />
+</figure>
+<section id="tagging-files">
+<h2>Dosyaları etiketlemek<a class="headerlink" href="#tagging-files" title="Link to this heading"></a></h2>
+<p>Dosyalara etiketler atayabilirsiniz. Etiketler oluşturmak için bir dosyanın ayrıntılar görünümünü açın. Ardından etiketlerinizi yazın. Birden fazla etiket yazmak için her etiketten sonra Enter tuşuna basın. Tüm etiketler sistem etiketleridir ve Nextcloud sunucunuzdaki tüm kullanıcılar tarafından paylaşılır.</p>
+<figure class="align-default">
+<img alt="Dosya etiketleri oluşturmak." src="../../_images/files_page-7.png" />
+</figure>
+<p>Ardından, dosyaları etiketlere göre süzmek için sol yan çubuktaki etiketler süzgecini kullanın:</p>
+<figure class="align-default">
+<img alt="Dosya etiketlerini görüntülemek." src="../../_images/files_page-8.png" />
+</figure>
+</section>
+<section id="comments">
+<h2>Açıklamalar<a class="headerlink" href="#comments" title="Link to this heading"></a></h2>
+<p>Herhangi bir dosya veya klasöre açıklama yazmak ve bunları okumak için ayrıntılar görünümünü kullanın. Açıklamalar, dosyaya erişimi olan herkes tarafından görülebilir:</p>
+<figure class="align-default">
+<img alt="Yorum eklemek ve görüntülemek." src="../../_images/file_menu_comments_2.png" />
+</figure>
+</section>
+<section id="video-player">
+<h2>Görüntü oynatıcı<a class="headerlink" href="#video-player" title="Link to this heading"></a></h2>
+<p>Nextcloud üzerinde görüntü dosyalarını tıklayarak görüntü oynatıcı uygulamasıyla izleyebilirsiniz. Yerel Nextcloud görüntü oynatıcının sağlayacağı görüntü akışı, tarayıcınıza ve görüntünün biçimine bağlıdır. Nextcloud yöneticiniz görüntü akışını etkinleştirdiyse ve tarayıcınızda çalışmıyorsa, bu bir tarayıcı sorunu olabilir. Tarayıcılarda desteklenen çoklu ortam biçimleri için <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_complete">https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_complete</a> adresine bakabilirsiniz.</p>
+<figure class="align-default">
+<img alt="Bir film seyretmek." src="../../_images/video_player_2.png" />
+</figure>
+</section>
+<section id="file-controls">
+<h2>Dosya denetimleri<a class="headerlink" href="#file-controls" title="Link to this heading"></a></h2>
+<p>Nextcloud üzerinde, sunucu yöneticiniz tarafından etkinleştirildiyse, görsel dosyalarını, MP3 kapaklarını ve metin dosyalarını ön izleyebilirsiniz. Şu işlemlerin denetimleri görmek için imleci bir dosya veya klasörün üzerine getirin:</p>
+<dl>
+<dt>Sık kullanılanlar</dt><dd><p>Sık kullanılan olarak işaretlemek için dosya simgesinin solundaki yıldıza tıklayın:</p>
+<figure class="align-default">
+<img alt="Sık kullanılan dosyaları işaretlemek." src="../../_images/files_page-1.png" />
+</figure>
+<p>Ayrıca sol yan çubuktaki sık kullanılanlar süzgeciyle tüm sık kullanılanlarınızı hızlıca bulabilirsiniz.</p>
+</dd>
+<dt>Taşma menüsü</dt><dd><p>Taşma menüsü (üç nokta) dosya ayrıntılarını görüntüler ve dosyaları yeniden adlandırmanızı, indirmenizi ya da silmenizi sağlar:</p>
+<figure class="align-default">
+<img alt="Taşma menüsü." src="../../_images/files_page-3.png" />
+</figure>
+<p>Ayrıntılar görünümü etkinlikler, paylaşım ve sürüm bilgilerini görüntüler:</p>
+</dd>
+</dl>
+<figure class="align-default">
+<img alt="Ayrıntılar ekranı." src="../../_images/files_page-4.png" />
+</figure>
+<p>Sol alttaki <strong>Ayarlar</strong> dişli simgesi, Nextcloud site arayüzünde gizli dosyaların görüntülenmesini ya da gizlenmesini sağlar. Bunlara nokta dosyaları da denir, çünkü <code class="docutils literal notranslate"><span class="pre">.mailfile</span></code> örneğindeki gibi adlarının önünde bir nokta bulunur. Nokta karakteri, işletim sistemine, siz görüntülemeyi seçmediğiniz sürece bu dosyaları dosya tarayıcılarında gizlemesini söyler. Bunlar genellikle yapılandırma dosyalarıdır, bu nedenle bunları gizleme seçeneğinin olması dağınıklığı azaltır.</p>
+<figure class="align-default">
+<img alt="Gizli dosyaları gizlemek ve görüntülemek." src="../../_images/hidden_files.png" />
+</figure>
+</section>
+<section id="previewing-files">
+<h2>Dosyaları ön izlemek<a class="headerlink" href="#previewing-files" title="Link to this heading"></a></h2>
+<p>Dosya adına tıklayarak, sıkıştırılmamış metin dosyalarına, OpenDocument dosyalarına, görüntü ve görsel dosyalarına iç Nextcloud görüntüleyicilerinde bakabilirsiniz. Nextcloud yöneticiniz bunları etkinleştirmişse, ön izlemelerine bakabileceğiniz başka dosya türleri de olabilir. Nextcloud bir dosyayı görüntüleyemediğinde, bir indirme işlemi başlatarak dosyayı bilgisayarınıza indirir.</p>
+</section>
+<section id="navigating-inside-your-nextcloud">
+<h2>Nextcloud içinde gezinmek<a class="headerlink" href="#navigating-inside-your-nextcloud" title="Link to this heading"></a></h2>
+<p>Nextcloud üzerinde klasörler arasında gezinirken, bir klasörü açmak için üzerine tıklayabilir, bir önceki düzeye dönmek için tarayıcınızdaki geri düğmesini kullanabilirsiniz. Ayrıca hızlı gezinme için dosyalar alanının üst kısmında bir gezinme çubuğu bulunur.</p>
+</section>
+<section id="sharing-status-icons">
+<h2>Durum simgelerini paylaşmak<a class="headerlink" href="#sharing-status-icons" title="Link to this heading"></a></h2>
+<p>Paylaşılmış herhangi bir klasör <code class="docutils literal notranslate"><span class="pre">Paylaşılmış</span></code> kaplama simgesiyle işaretlenir. Herkese açık bağlantı paylaşımları bir zincir bağlantısı ile işaretlenir. Paylaşılmayan klasörler işaretlenmez:</p>
+<figure class="align-default">
+<img alt="Durum simgelerini paylaşmak." src="../../_images/files_page-5.png" />
+</figure>
+</section>
+<section id="creating-or-uploading-files-and-directories">
+<h2>Dosya ve klasör oluşturmak ya da yüklemek<a class="headerlink" href="#creating-or-uploading-files-and-directories" title="Link to this heading"></a></h2>
+<p>Dosyalar uygulamasındaki <em>Yeni</em> düğmesine tıklayarak doğrudan bir Nextcloud klasörü içine yeni dosyalar veya klasörler yükleyin veya oluşturun:</p>
+<figure class="align-default">
+<img alt="Yeni dosya/klasör/yükleme menüsü." src="../../_images/files_page-6.png" />
+</figure>
+<p><em>Yeni</em> düğmesinde şu seçenekler bulunur:</p>
+<dl class="simple">
+<dt>Yukarı ok</dt><dd><p>Dosyaları bilgisayarınızdan Nextcloud üzerine yükler. Dosyaları dosya yöneticinizden sürükleyip bırakarak da yükleyebilirsiniz.</p>
+</dd>
+<dt>Metin dosyası</dt><dd><p>Yeni bir metin dosyası oluşturur ve dosyayı geçerli klasörünüze ekler.</p>
+</dd>
+<dt>Klasör</dt><dd><p>Geçerli klasörde yeni bir klasör oluşturur.</p>
+</dd>
+</dl>
+</section>
+<section id="selecting-files-or-folders">
+<h2>Dosya ya da klasörleri seçmek<a class="headerlink" href="#selecting-files-or-folders" title="Link to this heading"></a></h2>
+<p>İşaret kutularına tıklayarak bir ya da birkaç dosya veya klasör seçebilirsiniz. Geçerli klasördeki tüm dosyaları seçmek için, dosya listesinin en üstünde bulunan işaret kutusuna tıklayın.</p>
+<p>Birkaç dosya seçtiğinizde hepsini silebilir ya da üstte görünen <code class="docutils literal notranslate"><span class="pre">Sil</span></code> ya da <code class="docutils literal notranslate"><span class="pre">İndir</span></code> düğmelerini kullanarak ZIP dosyası biçiminde indirebilirsiniz.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p><code class="docutils literal notranslate"><span class="pre">İndir</span></code> düğmesi görüntülenmiyorsa, yöneticiniz bu özelliği devre dışı bırakmıştır.</p>
+</div>
+</section>
+<section id="filtering-the-files-view">
+<h2>Dosya görünümünü süzmek<a class="headerlink" href="#filtering-the-files-view" title="Link to this heading"></a></h2>
+<p>Dosyalar sayfasındaki sol yan çubukta, dosyalarınızı hızla sıralamak ve yönetmek için çeşitli süzgeçler bulunur.</p>
+<dl class="simple">
+<dt>Tüm dosyalar</dt><dd><p>Varsayılan görünüm; erişiminiz olan tüm dosyaları görüntüler.</p>
+</dd>
+<dt>Sık kullanılanlar</dt><dd><p>Sarı yıldızla işaretlenmiş dosya veya klasörler.</p>
+</dd>
+<dt>Sizinle paylaşılan</dt><dd><p>Başka kullanıcılar veya gruplar tarafından sizinle paylaşılan tüm dosyaları görüntüler.</p>
+</dd>
+<dt>Diğerleri ile paylaşılan</dt><dd><p>Başka kullanıcılar veya gruplarla paylaştığınız tüm dosyaları görüntüler.</p>
+</dd>
+<dt>Bağlantı ile paylaşılan</dt><dd><p>Herkese açık bağlantı ile paylaştığınız tüm dosyaları görüntüler.</p>
+</dd>
+<dt>Dış depolama (isteğe bağlı)</dt><dd><p>Amazon S3, SMB/CIFS, FTP gibi dış depolama aygıt ve hizmetlerinde erişiminiz olan dosyalar…</p>
+</dd>
+</dl>
+</section>
+<section id="moving-files">
+<h2>Dosyaları taşımak<a class="headerlink" href="#moving-files" title="Link to this heading"></a></h2>
+<p>Dosya ve klasörleri sürükleyip herhangi bir klasöre bırakarak taşıyabilirsiniz.</p>
+</section>
+<section id="creating-or-connecting-to-a-federation-share-link">
+<h2>Birleşik paylaşım bağlantısı oluşturma veya bağlantı kurma<a class="headerlink" href="#creating-or-connecting-to-a-federation-share-link" title="Link to this heading"></a></h2>
+<p>Birleşik bulut paylaşımı, uzak Nextcloud sunucularından dosya paylaşımları ile bağlantı kurmanızı ve bunları tıpkı bir yerel paylaşım gibi yönetmenizi sağlar. Yeni birleşik bulut paylaşımlarının nasıl oluşturulacağı ve bunlarla nasıl bağlantı kurulacağı hakkında ayrıntılı bilgi almak için <a class="reference internal" href="federated_cloud_sharing.html"><span class="doc">Birleşik paylaşımları kullanmak</span></a> bölümüne bakabilirsiniz.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Dosyalar ve eşitleme" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Önceki</a>
+        <a href="access_webdav.html" class="btn btn-neutral float-right" title="WebDAV kullanarak Nextcloud dosyalarına erişmek" accesskey="n" rel="next">Sonraki <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/af/">af</a></dd>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/el_GR/">el_GR</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/eo/">eo</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/eu/">eu</a></dd>
+<dd><a href="/server/latest/user_manual/fi_FI/">fi_FI</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/hr/">hr</a></dd>
+<dd><a href="/server/latest/user_manual/hu/">hu</a></dd>
+<dd><a href="/server/latest/user_manual/hu_HU/">hu_HU</a></dd>
+<dd><a href="/server/latest/user_manual/id/">id</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/ja_JP/">ja_JP</a></dd>
+<dd><a href="/server/latest/user_manual/ko/">ko</a></dd>
+<dd><a href="/server/latest/user_manual/mn/">mn</a></dd>
+<dd><a href="/server/latest/user_manual/nb_NO/">nb_NO</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/nn/">nn</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/pt_PT/">pt_PT</a></dd>
+<dd><a href="/server/latest/user_manual/ro/">ro</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/si/">si</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sq/">sq</a></dd>
+<dd><a href="/server/latest/user_manual/sr/">sr</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/ta/">ta</a></dd>
+<dd><a href="/server/latest/user_manual/th/">th</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/uk/">uk</a></dd>
+<dd><a href="/server/latest/user_manual/uz/">uz</a></dd>
+<dd><a href="/server/latest/user_manual/vi/">vi</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+<dd><a href="/server/latest/user_manual/zh_TW/">zh_TW</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Sürümler</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/25/user_manual">25</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/user_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/user_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>İndirmeler</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Okunacak Belgeler</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Proje Ana Sayfası</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Yapımlar</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

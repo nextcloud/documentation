@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Translation &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dark_mode_css/general.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dark_mode_css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Text Processing" href="text_processing.html" />
+    <link rel="prev" title="Talk Integration" href="talk.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="continuous_integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files-metadata.html">Files Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html">HTTP Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psr.html">PSR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_apis.html">REST APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speech-to-text.html">Speech-To-Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talk.html">Talk Integration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Machine Translation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#consuming-the-translation-api">Consuming the Translation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implementing-a-translation-provider">Implementing a Translation provider</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#providing-language-detection">Providing language detection</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#provider-registration">Provider registration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="text_processing.html">Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text2image.html">Text-To-Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard.html">Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">Reference providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupware/index.html">Groupware integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_host_metadata.html">Web Host Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status.html">User Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile.html">Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">User migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiler.html">Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deadlock.html">Deadlocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonenumberutil.html">Phone number util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="out_of_office.html">Out-of-office periods</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Digging deeper</a></li>
+      <li class="breadcrumb-item active">Machine Translation</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/translation.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="machine-translation">
+<span id="translation"></span><h1>Machine Translation<a class="headerlink" href="#machine-translation" title="Link to this heading"></a></h1>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 26.</span></p>
+</div>
+<p>Nextcloud offers a <strong>Translation</strong> API. The overall idea is that there is a central OCP API that apps can use to request machine translations of text. To be technology agnostic any app can provide this Translation functionality by registering a Translation provider.</p>
+<section id="consuming-the-translation-api">
+<h2>Consuming the Translation API<a class="headerlink" href="#consuming-the-translation-api" title="Link to this heading"></a></h2>
+<p>To consume the Translation API, you will need to <a class="reference internal" href="../basics/dependency_injection.html#id2"><span class="std std-ref">inject</span></a> <code class="docutils literal notranslate"><span class="pre">\OCP\Translation\ITranslationManager</span></code>. This manager offers the following methods:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hasProviders()</span></code> This method returns a boolean which indicates if any providers have been registered. If this is false you cannot use the Translation feature.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getLanguages()</span></code> This method returns a list of <code class="docutils literal notranslate"><span class="pre">OCP\Translation\LanguageTuple</span></code> Objects which indicate which langauge pairs are currently supported for translation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">translate(string</span> <span class="pre">$text,</span> <span class="pre">?string</span> <span class="pre">$fromLanguage,</span> <span class="pre">string</span> <span class="pre">$toLanguage)</span></code> This method provides the actual translation functionality. Note that, depending on the length of the text you want to translate, this may take longer than the HTTP request timeout or the PHP execution time limit.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">canDetectLanguage()</span></code> This method returns a boolean indicating whether language auto-detection is possible. If this is true, you can pass <code class="docutils literal notranslate"><span class="pre">null</span></code> as a <code class="docutils literal notranslate"><span class="pre">$fromLanguage</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">translate</span></code> and it will automatically figure out the source language.</p></li>
+</ul>
+</div></blockquote>
+<p>If you would like to use the translation functionality in a client, there are also OCS endpoints available for this: <a class="reference internal" href="../client_apis/OCS/ocs-translation-api.html#ocs-translation-api"><span class="std std-ref">OCS Translation API</span></a></p>
+</section>
+<section id="implementing-a-translation-provider">
+<h2>Implementing a Translation provider<a class="headerlink" href="#implementing-a-translation-provider" title="Link to this heading"></a></h2>
+<p>A <strong>Translation provider</strong> is a class that implements the interface <code class="docutils literal notranslate"><span class="pre">OCP\Translation\ITranslationProvider</span></code>.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Translation</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\AppInfo\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Files\File</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Translation\ITranslationProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IL10N</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Provider</span> <span class="k">implements</span> <span class="nx">ITranslationProvider</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">IL10N</span> <span class="nv">$l</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;My awesome translation provider&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getAvailableLanguages</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="c1">// Return an array of OCP\Translation\LanguageTuple objects here</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">translate</span><span class="p">(</span><span class="o">?</span><span class="nx">string</span> <span class="nv">$fromLanguage</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$toLanguage</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$text</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="c1">// Do some fancy machine translation and return translated string</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The method <code class="docutils literal notranslate"><span class="pre">getName</span></code> returns a string to identify the registered provider in the user interface.</p>
+<p>The method <code class="docutils literal notranslate"><span class="pre">translate</span></code> translates the passed string and returns the translation. The two language parameters will be language codes that were returned by <code class="docutils literal notranslate"><span class="pre">getAvailableLanguages</span></code> of your provider. In case translation fails, you should throw a <code class="docutils literal notranslate"><span class="pre">RuntimeException</span></code> with an explanatory error message.</p>
+<p>The class would typically be saved into a file in <code class="docutils literal notranslate"><span class="pre">lib/Translation</span></code> of your app but you are free to put it elsewhere as long as it’s loadable by Nextcloud’s <a class="reference internal" href="../basics/dependency_injection.html#id2"><span class="std std-ref">dependency injection container</span></a>.</p>
+<section id="providing-language-detection">
+<h3>Providing language detection<a class="headerlink" href="#providing-language-detection" title="Link to this heading"></a></h3>
+<p>There is also an <code class="docutils literal notranslate"><span class="pre">IDetectLanguageProvider</span></code> interface that allows specifying that your provider can auto-detect languages from text input. You can use this as follows:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Translation</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\AppInfo\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Files\File</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Translation\ITranslationProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Translation\IDetectLanguageProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IL10N</span><span class="p">;</span>
+
+<span class="hll"><span class="k">class</span> <span class="nc">Provider</span> <span class="k">implements</span> <span class="nx">ITranslationProvider</span><span class="p">,</span> <span class="nx">IDetectLanguageProvider</span> <span class="p">{</span>
+</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">IL10N</span> <span class="nv">$l</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;My awesome translation provider&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getAvailableLanguages</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="c1">// Return an array of OCP\Translation\LanguageTuple objects here</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">translate</span><span class="p">(</span><span class="o">?</span><span class="nx">string</span> <span class="nv">$fromLanguage</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$toLanguage</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$text</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="c1">// Do some fancy machine translation and return translated string</span>
+    <span class="p">}</span>
+
+<span class="hll">    <span class="k">public</span> <span class="k">function</span> <span class="nf">detectLanguage</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$text</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="nx">string</span> <span class="p">{</span>
+</span><span class="hll">        <span class="c1">// Detect the language of $text</span>
+</span><span class="hll">    <span class="p">}</span>
+</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The method <code class="docutils literal notranslate"><span class="pre">detectLanguage</span></code> takes a text in some language and outputs the code of that language, or <code class="docutils literal notranslate"><span class="pre">null</span></code> in case detection wasn’t successful. The language code that this method returns should be one of the languages returned in <code class="docutils literal notranslate"><span class="pre">getAvailableLanguages</span></code>.</p>
+</section>
+</section>
+<section id="provider-registration">
+<h2>Provider registration<a class="headerlink" href="#provider-registration" title="Link to this heading"></a></h2>
+<p>The provider class is registered via the <a class="reference internal" href="../app_development/bootstrap.html#bootstrapping"><span class="std std-ref">bootstrap mechanism</span></a> of the <code class="docutils literal notranslate"><span class="pre">Application</span></code> class.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\AppInfo</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\Translation\Provider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\App</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IBootContext</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IBootstrap</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IRegistrationContext</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+<span class="hll">        <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerTranslationProvider</span><span class="p">(</span><span class="nx">Provider</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span>    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">(</span><span class="nx">IBootContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="talk.html" class="btn btn-neutral float-left" title="Talk Integration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="text_processing.html" class="btn btn-neutral float-right" title="Text Processing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/25/developer_manual">25</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/developer_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/developer_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

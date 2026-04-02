@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usando o aplicativo Mail &mdash; documentação Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/dark_mode_css/general.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/dark_mode_css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=a3f23d37"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/translations.js?v=000972dd"></script>
+        <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="next" title="Setting out-of-office messages" href="absence.html" />
+    <link rel="prev" title="Usando o aplicativo Calendar" href="calendar.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Pesquisar documentos" aria-label="Pesquisar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introdução ao manual do usuário do Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">O que há de novo para usuários no Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">A interface Web Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Arquivos &amp; sincronização</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Usando o aplicativo Contatos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Usando o aplicativo Calendar</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Usando o aplicativo Mail</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#managing-your-mail-account">Gerenciando sua conta de e-mail</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#switch-layout">Switch layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-new-mail-account">Adicionar uma nova conta de e-mail</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#change-sort-order">Change sort order</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scheduled-messages">Mensagens agendadas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#priority-inbox">Caixa prioritária</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#all-inboxes">Todas as caixas de entrada</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#account-settings">Configurações de Conta</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#move-messages-to-junk-folder">Mover mensagens para a pasta Lixo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enable-mail-body-search">Enable mail body search</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#account-delegation">Delegação de conta</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automatic-trash-deletion">Exclusão automática da lixeira</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#compose-messages">Escrever mensagens</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#minimize-the-composer-modal">Minimizar o modal do compositor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#outbox">Outbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mailbox-actions">Ações da caixa de correio</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-mailbox">Adicionar uma caixa de correio</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-submailbox">Adicionar uma subcaixa de correio</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shared-mailbox">Caixa de correio compartilhada</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#envelope-actions">Ações com envelope</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-an-event">Criar um evento</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-task">Criar uma tarefa</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-tags">Crie um evento para uma determinada mensagem/tópico diretamente via aplicativo de e-mail 1. Abra o menu de ação de um envelope 2. Clique em <em>mais ações</em> 3. Clique em <em>criar evento</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#message-actions">Ações de mensagem</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#unsubscribe-from-a-mailing-list">Cancelar inscrição em uma lista de e-mails</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#snooze">Soneca</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#smart-replies">Smart replies</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#filtering-and-autoresponder">Filtering and autoresponder</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autoresponders">Autoresponders</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">Setting out-of-office messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Sincronizando com Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">Sincronizando com iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">Sincronizando com macOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Sincronizando com Thunderbird</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Sincronizando com o KDE Kontact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Sincronizando com a área de trabalho GNOME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Sincronizando com Windows 10</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Conversar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Configurando suas preferências</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Acesso universal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Usando autenticação de dois fatores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gerenciar navegadores e dispositivos conectados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Armazenamento externo</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Menu de navegação móvel" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Navegação da página">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Groupware</a></li>
+      <li class="breadcrumb-item active">Usando o aplicativo Mail</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/mail.rst" class="fa fa-github"> Editar no GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-mail-app">
+<h1>Usando o aplicativo Mail<a class="headerlink" href="#using-the-mail-app" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>O aplicativo Mail vem instalado com o Nextcloud Hub por padrão, mas pode ser desativado. Peça-o ao seu administrador.</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/mail.png" src="../../_images/mail.png" />
+</figure>
+<section id="managing-your-mail-account">
+<h2>Gerenciando sua conta de e-mail<a class="headerlink" href="#managing-your-mail-account" title="Link to this heading"></a></h2>
+<section id="switch-layout">
+<h3>Switch layout<a class="headerlink" href="#switch-layout" title="Link to this heading"></a></h3>
+<blockquote>
+<div><div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.6.</span></p>
+</div>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>Visit mail settings</p></li>
+<li><p>Choose between <em>List</em>, <em>Vertical split</em> and <em>Horizontal split</em></p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/mail_layout.png" src="../../_images/mail_layout.png" />
+</figure>
+</section>
+<section id="add-a-new-mail-account">
+<h3>Adicionar uma nova conta de e-mail<a class="headerlink" href="#add-a-new-mail-account" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Ativar aplicativo de e-mail nos aplicativos</p></li>
+<li><p>Clique no ícone de e-mail no cabeçalho</p></li>
+<li><p>Preencha o formulário de login (automático ou manual)</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/new-mail-account.png" src="../../_images/new-mail-account.png" />
+</figure>
+</section>
+<section id="change-sort-order">
+<h3>Change sort order<a class="headerlink" href="#change-sort-order" title="Link to this heading"></a></h3>
+<blockquote>
+<div><div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.5.</span></p>
+</div>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>Visit mail settings</p></li>
+<li><p>Go to <em>Sorting</em></p></li>
+<li><p>You can choose <em>Oldest</em> or <em>Newest</em> mail first</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>This change will apply across all your accounts and mailboxes</p>
+</div>
+</section>
+<section id="scheduled-messages">
+<span id="mail-scheduled-messages"></span><h3>Mensagens agendadas<a class="headerlink" href="#scheduled-messages" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Clique no botão de nova mensagem no canto superior esquerdo da tela</p></li>
+<li><p>Clique no menu de ação (…) no compositor modal</p></li>
+<li><p>Clique em <em>enviar depois</em></p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/scheduled-msg.png" src="../../_images/scheduled-msg.png" />
+</figure>
+</section>
+<section id="priority-inbox">
+<h3>Caixa prioritária<a class="headerlink" href="#priority-inbox" title="Link to this heading"></a></h3>
+<p>A caixa de entrada prioritária tem 2 seções <em>Importantes</em> e <em>Outros</em>. As mensagens serão marcadas automaticamente como importantes com base nas mensagens com as quais você interagiu ou marcou como importantes. No começo, você pode ter que alterar manualmente a importância de ensinar o sistema, mas isso melhorará com o tempo.</p>
+<figure class="align-default">
+<img alt="../../_images/priority-inbox.png" src="../../_images/priority-inbox.png" />
+</figure>
+</section>
+<section id="all-inboxes">
+<h3>Todas as caixas de entrada<a class="headerlink" href="#all-inboxes" title="Link to this heading"></a></h3>
+<p>Todas as mensagens de todas as contas nas quais você fez login serão mostradas aqui em ordem cronológica.</p>
+</section>
+<section id="account-settings">
+<span id="mail-account-settings"></span><h3>Configurações de Conta<a class="headerlink" href="#account-settings" title="Link to this heading"></a></h3>
+<p>As configurações da sua conta, como:</p>
+<ol class="arabic simple">
+<li><p>Apelido</p></li>
+<li><p>Assinatura</p></li>
+<li><p>Pastas Padrão</p></li>
+<li><p>Resposta automática</p></li>
+<li><p>Remetentes confiáveis</p></li>
+<li><p>..e mais</p></li>
+</ol>
+<p>Pode ser encontrado no menu de ação de uma conta de e-mail. Lá você pode editar, adicionar ou remover configurações dependendo da sua necessidade.</p>
+</section>
+<section id="move-messages-to-junk-folder">
+<h3>Mover mensagens para a pasta Lixo<a class="headerlink" href="#move-messages-to-junk-folder" title="Link to this heading"></a></h3>
+<blockquote>
+<div><div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.4.</span></p>
+</div>
+</div></blockquote>
+<p>O Mail pode mover uma mensagem para uma pasta diferente quando ela é marcada como lixo.</p>
+<ol class="arabic">
+<li><p>Visite as configurações da conta</p></li>
+<li><p>Vá para as pastas padrão</p></li>
+<li><p>Verifique se uma pasta está selecionada para as mensagens indesejadas</p></li>
+<li><p>Vá para as configurações de lixo eletrônico</p></li>
+<li><p>Clique em Mover mensagens para a pasta Lixo</p>
+<figure class="align-default">
+<img alt="../../_images/mail_move-message-to-junk-folder.png" src="../../_images/mail_move-message-to-junk-folder.png" />
+</figure>
+</li>
+</ol>
+</section>
+<section id="enable-mail-body-search">
+<h3>Enable mail body search<a class="headerlink" href="#enable-mail-body-search" title="Link to this heading"></a></h3>
+<blockquote>
+<div><div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.5.</span></p>
+</div>
+</div></blockquote>
+<p>Mail bodies can now be searched, this feature is opt-in because of potential performance issues.</p>
+<p>To enable it:</p>
+<ol class="arabic simple">
+<li><p>Visite as configurações da conta</p></li>
+<li><p>Go to Mailbox search</p></li>
+<li><p>Enable mail body search</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Aviso</p>
+<p>If you want to also enable it for unified mailboxes you have to do so in Mail settings</p>
+</div>
+<p>By enabling it the main search box will now search in both subjects and mail bodies, and a sperate <em>Body</em> option
+will appear in advanced search.</p>
+</section>
+<section id="account-delegation">
+<h3>Delegação de conta<a class="headerlink" href="#account-delegation" title="Link to this heading"></a></h3>
+<p>O aplicativo permite a delegação de contas para que um usuário possa enviar e-mails do endereço de outro.</p>
+<ol class="arabic simple">
+<li><p>A delegação deve ser configurada no servidor de correio por um administrador</p></li>
+<li><p>Adicione o outro endereço de e-mail como um alias para sua própria conta de e-mail</p></li>
+<li><p>Ao enviar um e-mail, selecione o alias como remetente</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Aviso</p>
+<p>O e-mail enviado pode não estar visível para a conta original se estiver armazenado em sua caixa de correio pessoal <em>Enviado</em>.</p>
+</div>
+</section>
+<section id="automatic-trash-deletion">
+<h3>Exclusão automática da lixeira<a class="headerlink" href="#automatic-trash-deletion" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.4.</span></p>
+</div>
+<p>O aplicativo Mail pode excluir automaticamente mensagens da pasta de lixo após um determinado número de dias.</p>
+<ol class="arabic simple">
+<li><p>Visite as configurações da conta</p></li>
+<li><p>Vá para exclusão automática da lixeira</p></li>
+<li><p>Insira o número de dias após os quais as mensagens devem ser excluídas</p></li>
+</ol>
+<p>Desative a retenção de lixo deixando o campo vazio ou configurando-o como 0.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Somente e-mails excluídos após ativar a retenção de lixo serão processados.</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/mail_trash_retention_settings.png" src="../../_images/mail_trash_retention_settings.png" />
+</figure>
+</section>
+</section>
+<section id="compose-messages">
+<h2>Escrever mensagens<a class="headerlink" href="#compose-messages" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Clique em nova mensagem no canto superior esquerdo da tela</p></li>
+<li><p>Comece a escrever sua mensagem</p></li>
+</ol>
+<section id="minimize-the-composer-modal">
+<h3>Minimizar o modal do compositor<a class="headerlink" href="#minimize-the-composer-modal" title="Link to this heading"></a></h3>
+<blockquote>
+<div><div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.2.</span></p>
+</div>
+</div></blockquote>
+<p>O modal do compositor pode ser minimizado ao escrever uma nova mensagem, editar um rascunho existente ou editar uma mensagem da caixa de saída. Basta clicar no botão minimizar no canto superior direito do modal ou clicar em qualquer lugar fora do modal.</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="../../_images/mail-minimize-composer.png" src="../../_images/mail-minimize-composer.png" />
+</figure>
+</div></blockquote>
+<p>Você pode retomar sua mensagem minimizada clicando em qualquer lugar no indicador no canto inferior direito da tela.</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="../../_images/mail-composer-indicator.png" src="../../_images/mail-composer-indicator.png" />
+</figure>
+</div></blockquote>
+<p>Pressione o botão fechar no modal ou o indicador no canto inferior direito para interromper a edição de uma mensagem. Um rascunho será salvo automaticamente em sua caixa de correio de rascunho.</p>
+</section>
+</section>
+<section id="outbox">
+<h2>Outbox<a class="headerlink" href="#outbox" title="Link to this heading"></a></h2>
+<p>When a message has been composed and the “Send” button was clicked, the message is added to the outbox which can be found in the bottom left corner of the left sidebar.</p>
+<p>You can also set the date and time for the send operation to a point in the future (see <a class="reference internal" href="#mail-scheduled-messages"><span class="std std-ref">Scheduled messages</span></a>)- the message will be kept in the outbox until your choosen date and time arrives, then it will be sent automatically.</p>
+<p>The outbox is only visible when there is a message waiting to be handled by the outbox.</p>
+<p>You can re- open the composer for a message in the outbox any time before the “send”- operation is triggered.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>When an error occurs during sending, three error messages are possible:</p>
+<dl class="simple">
+<dt>Could not copy to “Sent” mailbox</dt><dd><p>The mail was sent but couldn’t be copied to the “Sent” mailbox. This error will be handled by the outbox and the copy operation will be tried again.</p>
+</dd>
+<dt>Mail server error</dt><dd><p>Sending was unsuccessful with a state than can be retried (ex: the SMTP server couldn’t be reached). The outbox will retry sending the message.</p>
+</dd>
+<dt>Message could not be sent</dt><dd><p>Sending might or might not have failed. The mail server can’t tell us the state of the message. Since the Mail app has no way to determine the state of the message (sent or unsent) the message will stay in the outbox and the account user has to decide how to proceed.</p>
+</dd>
+</dl>
+</div>
+</section>
+<section id="mailbox-actions">
+<h2>Ações da caixa de correio<a class="headerlink" href="#mailbox-actions" title="Link to this heading"></a></h2>
+<section id="add-a-mailbox">
+<h3>Adicionar uma caixa de correio<a class="headerlink" href="#add-a-mailbox" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Abra o menu de ação de uma conta</p></li>
+<li><p>Clique em adicionar caixa de correio</p></li>
+</ol>
+</section>
+<section id="add-a-submailbox">
+<h3>Adicionar uma subcaixa de correio<a class="headerlink" href="#add-a-submailbox" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Abra o menu de ação de uma caixa de correio</p></li>
+<li><p>Clique em adicionar submailbox</p></li>
+</ol>
+</section>
+<section id="shared-mailbox">
+<h3>Caixa de correio compartilhada<a class="headerlink" href="#shared-mailbox" title="Link to this heading"></a></h3>
+<p>Se uma caixa de correio foi compartilhada com você com alguns direitos específicos, essa caixa de correio aparecerá como uma nova caixa de correio com um ícone compartilhado conforme abaixo:</p>
+<figure class="align-default">
+<img alt="../../_images/shared-mailbox-icon.png" src="../../_images/shared-mailbox-icon.png" />
+</figure>
+</section>
+</section>
+<section id="envelope-actions">
+<h2>Ações com envelope<a class="headerlink" href="#envelope-actions" title="Link to this heading"></a></h2>
+<section id="create-an-event">
+<h3>Criar um evento<a class="headerlink" href="#create-an-event" title="Link to this heading"></a></h3>
+<p>Create an event for a certain message/thread directly via mail app</p>
+<ol class="arabic simple">
+<li><p>Abra o menu de ação de um envelope</p></li>
+<li><p>Click <em>more actions</em></p></li>
+<li><p>Click <em>create event</em></p></li>
+</ol>
+</section>
+<section id="create-a-task">
+<h3>Criar uma tarefa<a class="headerlink" href="#create-a-task" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.2.</span></p>
+</div>
+<p>Create an task for a certain message/thread directly via mail app</p>
+<ol class="arabic simple">
+<li><p>Abra o menu de ação de um envelope</p></li>
+<li><p>Click <em>more actions</em></p></li>
+<li><p>Click <em>create task</em></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>As tarefas são armazenadas em calendários compatíveis. Se não houver um calendário compatível, você pode criar um novo com o <a class="reference internal" href="calendar.html#calendar-app"><span class="std std-ref">aplicativo de calendário</span></a>.</p>
+</div>
+</section>
+<section id="edit-tags">
+<h3>Crie um evento para uma determinada mensagem/tópico diretamente via aplicativo de e-mail 1. Abra o menu de ação de um envelope 2. Clique em <em>mais ações</em> 3. Clique em <em>criar evento</em><a class="headerlink" href="#edit-tags" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Abra o menu de ação de um envelope</p></li>
+<li><p>Clique em <em>Editar tags</em></p></li>
+<li><p>No modal de etiquetas, definir/desativar etiquetas</p></li>
+</ol>
+</section>
+</section>
+<section id="message-actions">
+<h2>Ações de mensagem<a class="headerlink" href="#message-actions" title="Link to this heading"></a></h2>
+<section id="unsubscribe-from-a-mailing-list">
+<h3>Cancelar inscrição em uma lista de e-mails<a class="headerlink" href="#unsubscribe-from-a-mailing-list" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.1.</span></p>
+</div>
+<p>Algumas listas de discussão e newsletters permitem cancelar a assinatura facilmente. Se o aplicativo Mail detectar mensagens de tal remetente, ele mostrará um botão <em>Cancelar inscrição</em> ao lado das informações do remetente. Clique e confirme para cancelar a inscrição na lista.</p>
+</section>
+<section id="snooze">
+<h3>Soneca<a class="headerlink" href="#snooze" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.4.</span></p>
+</div>
+<p>Adiar uma mensagem ou encadeamento a move para uma caixa de correio dedicada até que a data de adiamento selecionada seja atingida e a mensagem ou encadeamento seja movida de volta para a caixa de correio original.</p>
+<ol class="arabic simple">
+<li><p>Abra o menu de ação de um envelope ou linha</p></li>
+<li><p>Clique em <em>Adiar</em></p></li>
+<li><p>Selecione por quanto tempo a mensagem ou tópico deve ser adiado</p></li>
+</ol>
+</section>
+<section id="smart-replies">
+<h3>Smart replies<a class="headerlink" href="#smart-replies" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.6.</span></p>
+</div>
+<p>When you open a message in the Mail app, it proposes AI-generated replies. By simply clicking on a suggested reply, the composer opens with the response pre-filled.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Please note that the feature has to be enabled by the administrator</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Supported languages depend on the used large language model</p>
+</div>
+</section>
+</section>
+<section id="filtering-and-autoresponder">
+<h2>Filtering and autoresponder<a class="headerlink" href="#filtering-and-autoresponder" title="Link to this heading"></a></h2>
+<p>The Mail app has a simple editor for Sieve scripts and an interface to configure autoresponders. Sieve has to be enabled in the <a class="reference internal" href="#mail-account-settings"><span class="std std-ref">account settings</span></a>.</p>
+<section id="autoresponders">
+<h3>Autoresponders<a class="headerlink" href="#autoresponders" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.5: </span>Autoresponder can follow system settings.</p>
+</div>
+<p>The autoresponder is off by default. It can be set manually, or follow the system settings. Following system settings means that the long absence message entered on the <a class="reference internal" href="absence.html#groupware-absence"><span class="std std-ref">Absence settings section</span></a> is applied automatically.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Rodapé">
+        <a href="calendar.html" class="btn btn-neutral float-left" title="Usando o aplicativo Calendar" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="absence.html" class="btn btn-neutral float-right" title="Setting out-of-office messages" accesskey="n" rel="next">Próximo <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Direitos autorais 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/af/">af</a></dd>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/el_GR/">el_GR</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/eo/">eo</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/eu/">eu</a></dd>
+<dd><a href="/server/latest/user_manual/fi_FI/">fi_FI</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/hr/">hr</a></dd>
+<dd><a href="/server/latest/user_manual/hu/">hu</a></dd>
+<dd><a href="/server/latest/user_manual/hu_HU/">hu_HU</a></dd>
+<dd><a href="/server/latest/user_manual/id/">id</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/ja_JP/">ja_JP</a></dd>
+<dd><a href="/server/latest/user_manual/ko/">ko</a></dd>
+<dd><a href="/server/latest/user_manual/mn/">mn</a></dd>
+<dd><a href="/server/latest/user_manual/nb_NO/">nb_NO</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/nn/">nn</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/pt_PT/">pt_PT</a></dd>
+<dd><a href="/server/latest/user_manual/ro/">ro</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/si/">si</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sq/">sq</a></dd>
+<dd><a href="/server/latest/user_manual/sr/">sr</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/ta/">ta</a></dd>
+<dd><a href="/server/latest/user_manual/th/">th</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/uk/">uk</a></dd>
+<dd><a href="/server/latest/user_manual/uz/">uz</a></dd>
+<dd><a href="/server/latest/user_manual/vi/">vi</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+<dd><a href="/server/latest/user_manual/zh_TW/">zh_TW</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versões</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/25/user_manual">25</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/user_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/user_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Em Leia os Documentos </dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Projeto Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

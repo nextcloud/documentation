@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Examples &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/dark_mode_css/general.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/dark_mode_css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Files" href="../files.html" />
+    <link rel="prev" title="Library installation" href="library_installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Clients and Client APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../general.html">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../activity-api.html">Activity</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Android</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="index.html#android-nextcloud-client-development">Android Nextcloud client development</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#nextcloud-android-library">Nextcloud Android library</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="library_installation.html">Library installation</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LoginFlow/index.html">Login Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../OCS/index.html">OCS API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../RemoteWipe/index.html">Remote wipe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WebDAV/index.html">Webdav</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Clients and Client APIs</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Android</a></li>
+      <li class="breadcrumb-item active">Examples</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/client_apis/android_library/examples.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h1>
+<section id="init-the-library">
+<h2>Init the library<a class="headerlink" href="#init-the-library" title="Link to this heading"></a></h2>
+<p>Start using the library; it is needed to init the object mClient that will be
+in charge of keeping the communication with the server.</p>
+<section id="code-example">
+<h3>Code example<a class="headerlink" href="#code-example" title="Link to this heading"></a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MainActivity</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Activity</span>
+<span class="w">                          </span><span class="kd">implements</span><span class="w">  </span><span class="n">OnRemoteOperationListener</span><span class="p">,</span>
+<span class="w">                                      </span><span class="n">OnDatatransferProgressListener</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">private</span><span class="w"> </span><span class="n">OwnCloudClient</span><span class="w"> </span><span class="n">mClient</span><span class="p">;</span>
+<span class="kd">private</span><span class="w"> </span><span class="n">Handler</span><span class="w"> </span><span class="n">mHandler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Handler</span><span class="p">();</span>
+
+<span class="p">...</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span><span class="w"> </span><span class="n">savedInstanceState</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="p">...</span>
+
+<span class="c1">// Parse URI to the base URL of the Nextcloud server</span>
+<span class="n">Uri</span><span class="w"> </span><span class="n">serverUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Uri</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">getString</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">string</span><span class="p">.</span><span class="na">server_base_url</span><span class="p">));</span>
+
+<span class="c1">// Create client object to perform remote operations</span>
+<span class="n">mClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OwnCloudClientFactory</span><span class="p">.</span><span class="na">createOwnCloudClient</span><span class="p">(</span>
+<span class="w">            </span><span class="n">serverUri</span><span class="p">,</span>
+<span class="w">            </span><span class="k">this</span><span class="p">,</span>
+<span class="w">            </span><span class="c1">// Activity or Service context</span>
+<span class="w">            </span><span class="kc">true</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="set-credentials">
+<h2>Set credentials<a class="headerlink" href="#set-credentials" title="Link to this heading"></a></h2>
+<p>Authentication on the app is possible by 3 different methods:</p>
+<ul class="simple">
+<li><p>Basic authentication, user name and password</p></li>
+<li><p>Bearer access token (oAuth2)</p></li>
+<li><p>Cookie (SAML-based single-sign-on)</p></li>
+</ul>
+<section id="id1">
+<h3>Code example<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nn">com.owncloud.android.lib.common</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OwnCloudClient</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">HttpClient</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">...</span>
+<span class="w">  </span><span class="c1">// Set basic credentials</span>
+<span class="w">  </span><span class="n">client</span><span class="p">.</span><span class="na">setCredentials</span><span class="p">(</span>
+<span class="w">      </span><span class="n">NextcloudCredentialsFactory</span><span class="p">.</span><span class="na">newBasicCredentials</span><span class="p">(</span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">)</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Set bearer access token</span>
+<span class="w">  </span><span class="n">client</span><span class="p">.</span><span class="na">setCredentials</span><span class="p">(</span>
+<span class="w">      </span><span class="n">NextcloudCredentialsFactory</span><span class="p">.</span><span class="na">newBearerCredentials</span><span class="p">(</span><span class="n">accessToken</span><span class="p">)</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Set SAML2 session token</span>
+<span class="w">  </span><span class="n">client</span><span class="p">.</span><span class="na">setCredentials</span><span class="p">(</span>
+<span class="w">      </span><span class="n">NextcloudCredentialsFactory</span><span class="p">.</span><span class="na">newSamlSsoCredentials</span><span class="p">(</span><span class="n">cookie</span><span class="p">)</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="create-a-folder">
+<h2>Create a folder<a class="headerlink" href="#create-a-folder" title="Link to this heading"></a></h2>
+<p>Create a new folder on the cloud server, the info needed to be sent is the path
+of the new folder.</p>
+<section id="id2">
+<h3>Code example<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">startFolderCreation</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">newFolderPath</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">CreateRemoteFolderOperation</span><span class="w"> </span><span class="n">createOperation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CreateRemoteFolderOperation</span><span class="p">(</span><span class="n">newFolderPath</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span>
+<span class="w">  </span><span class="n">createOperation</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">mClient</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">mHandler</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nd">@Override</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onRemoteOperationFinish</span><span class="p">(</span><span class="n">RemoteOperation</span><span class="w"> </span><span class="n">operation</span><span class="p">,</span><span class="w"> </span><span class="n">RemoteOperationResult</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">operation</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">CreateRemoteFolderOperation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="na">isSuccess</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// do your stuff here</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="c1">// …</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="read-folder">
+<h2>Read folder<a class="headerlink" href="#read-folder" title="Link to this heading"></a></h2>
+<p>Get the content of an existing folder on the cloud server, the info needed to
+be sent is the path of the folder, in the example shown it has been asked the
+content of the root folder.  As answer of this method, it will be received an
+array with all the files and folders stored in the selected folder.</p>
+<section id="id3">
+<h3>Code example<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">startReadRootFolder</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">ReadRemoteFolderOperation</span><span class="w"> </span><span class="n">refreshOperation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ReadRemoteFolderOperation</span><span class="p">(</span><span class="n">FileUtils</span><span class="p">.</span><span class="na">PATH_SEPARATOR</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// root folder</span>
+<span class="w">  </span><span class="n">refreshOperation</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">mClient</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">mHandler</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="nd">@Override</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onRemoteOperationFinish</span><span class="p">(</span><span class="n">RemoteOperation</span><span class="w"> </span><span class="n">operation</span><span class="p">,</span><span class="w"> </span><span class="n">RemoteOperationResult</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">operation</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">ReadRemoteFolderOperation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="na">isSuccess</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">List</span><span class="o">&lt;</span><span class="w"> </span><span class="n">RemoteFile</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="na">getData</span><span class="p">();</span>
+<span class="w">      </span><span class="c1">// do your stuff here</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="c1">// …</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="read-file">
+<h2>Read file<a class="headerlink" href="#read-file" title="Link to this heading"></a></h2>
+<p>Get information related to a certain file or folder, information obtained is:
+<code class="docutils literal notranslate"><span class="pre">filePath</span></code>, <code class="docutils literal notranslate"><span class="pre">filename</span></code>, <code class="docutils literal notranslate"><span class="pre">isDirectory</span></code>, <code class="docutils literal notranslate"><span class="pre">size</span></code> and <code class="docutils literal notranslate"><span class="pre">date</span></code>.</p>
+<section id="id4">
+<h3>Code example<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">startReadFileProperties</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">filePath</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">ReadRemoteFileOperation</span><span class="w"> </span><span class="n">readOperation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ReadRemoteFileOperation</span><span class="p">(</span><span class="n">filePath</span><span class="p">);</span>
+<span class="w">  </span><span class="n">readOperation</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">mClient</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">mHandler</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nd">@Override</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onRemoteOperationFinish</span><span class="p">(</span><span class="n">RemoteOperation</span><span class="w"> </span><span class="n">operation</span><span class="p">,</span><span class="w"> </span><span class="n">RemoteOperationResult</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">operation</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">ReadRemoteFileOperation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="na">isSuccess</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">RemoteFile</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="na">getData</span><span class="p">()</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span>
+<span class="w">      </span><span class="c1">// do your stuff here</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="c1">// …</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="delete-file-or-folder">
+<h2>Delete file or folder<a class="headerlink" href="#delete-file-or-folder" title="Link to this heading"></a></h2>
+<p>Delete a file or folder on the cloud server. The info needed is the path of
+folder/file to be deleted.</p>
+<section id="id5">
+<h3>Code example<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">startRemoveFile</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">filePath</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">RemoveRemoteFileOperation</span><span class="w"> </span><span class="n">removeOperation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RemoveRemoteFileOperation</span><span class="p">(</span><span class="n">remotePath</span><span class="p">);</span>
+<span class="w">  </span><span class="n">removeOperation</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">mClient</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">mHandler</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nd">@Override</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onRemoteOperationFinish</span><span class="p">(</span><span class="n">RemoteOperation</span><span class="w"> </span><span class="n">operation</span><span class="p">,</span><span class="w"> </span><span class="n">RemoteOperationResult</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">operation</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">RemoveRemoteFileOperation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="na">isSuccess</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// do your stuff here</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="c1">// …</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="download-a-file">
+<h2>Download a file<a class="headerlink" href="#download-a-file" title="Link to this heading"></a></h2>
+<p>Download an existing file on the cloud server. The info needed is path of the
+file on the server and targetDirectory, path where the file will be stored on
+the device.</p>
+<section id="id6">
+<h3>Code example<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">startDownload</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">filePath</span><span class="p">,</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">targetDirectory</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">DownloadRemoteFileOperation</span><span class="w"> </span><span class="n">downloadOperation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DownloadRemoteFileOperation</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span><span class="w"> </span><span class="n">targetDirectory</span><span class="p">.</span><span class="na">getAbsolutePath</span><span class="p">());</span>
+<span class="w">  </span><span class="n">downloadOperation</span><span class="p">.</span><span class="na">addDatatransferProgressListener</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="w">  </span><span class="n">downloadOperation</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="w"> </span><span class="n">mClient</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">mHandler</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nd">@Override</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onRemoteOperationFinish</span><span class="p">(</span><span class="n">RemoteOperation</span><span class="w"> </span><span class="n">operation</span><span class="p">,</span><span class="w"> </span><span class="n">RemoteOperationResult</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">operation</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">DownloadRemoteFileOperation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="na">isSuccess</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// do your stuff here</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nd">@Override</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onTransferProgress</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="n">progressRate</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">totalTransferredSoFar</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">totalToTransfer</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">fileName</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="n">mHandler</span><span class="p">.</span><span class="na">post</span><span class="p">(</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Runnable</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nd">@Override</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// do your UI updates about progress here</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="upload-a-file">
+<h2>Upload a file<a class="headerlink" href="#upload-a-file" title="Link to this heading"></a></h2>
+<p>Upload a new file to the cloud server. The info needed is fileToUpload, path
+where the file is stored on the device, remotePath, path where the file will be
+stored on the server and mimeType.</p>
+<section id="id7">
+<h3>Code example<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">startUpload</span><span class="p">(</span><span class="n">File</span><span class="w"> </span><span class="n">fileToUpload</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">remotePath</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">mimeType</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">UploadRemoteFileOperation</span><span class="w"> </span><span class="n">uploadOperation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UploadRemoteFileOperation</span><span class="p">(</span><span class="n">fileToUpload</span><span class="p">.</span><span class="na">getAbsolutePath</span><span class="p">(),</span><span class="w"> </span><span class="n">remotePath</span><span class="p">,</span><span class="w"> </span><span class="n">mimeType</span><span class="p">);</span>
+<span class="w">  </span><span class="n">uploadOperation</span><span class="p">.</span><span class="na">addDatatransferProgressListener</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="w">  </span><span class="n">uploadOperation</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">mClient</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">mHandler</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nd">@Override</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onRemoteOperationFinish</span><span class="p">(</span><span class="n">RemoteOperation</span><span class="w"> </span><span class="n">operation</span><span class="p">,</span><span class="w"> </span><span class="n">RemoteOperationResult</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">operation</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">UploadRemoteFileOperation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="na">isSuccess</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// do your stuff here</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nd">@Override</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onTransferProgress</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="n">progressRate</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">totalTransferredSoFar</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">totalToTransfer</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">fileName</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">mHandler</span><span class="p">.</span><span class="na">post</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Runnable</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// do your UI updates about progress here</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="move-a-file-or-folder">
+<h2>Move a file or folder<a class="headerlink" href="#move-a-file-or-folder" title="Link to this heading"></a></h2>
+<p>Move an existing file or folder to a different location in the Nextcloud server. Parameters needed are the path
+to the file or folder to move, and the new path desired for it. The parent folder of the new path must exist in
+the server.</p>
+<p>When the parameter ‘overwrite’ is set to ‘true’, the file or folder is moved even if the new path is already
+used by a different file or folder. This one will be replaced by the former.</p>
+<section id="id8">
+<h3>Code example<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">startFileMove</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">filePath</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">newFilePath</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">overwrite</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">MoveRemoteFileOperation</span><span class="w"> </span><span class="n">moveOperation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MoveRemoteFileOperation</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span><span class="w"> </span><span class="n">newFilePath</span><span class="p">,</span><span class="w"> </span><span class="n">overwrite</span><span class="p">);</span>
+<span class="w">  </span><span class="n">moveOperation</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">mClient</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">mHandler</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nd">@Override</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onRemoteOperationFinish</span><span class="p">(</span><span class="n">RemoteOperation</span><span class="w"> </span><span class="n">operation</span><span class="p">,</span><span class="w"> </span><span class="n">RemoteOperationResult</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">operation</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">MoveRemoteFileOperation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="na">isSuccess</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// do your stuff here</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="c1">// …</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="read-shared-items-by-link">
+<h2>Read shared items by link<a class="headerlink" href="#read-shared-items-by-link" title="Link to this heading"></a></h2>
+<p>Get information about what files and folder are shared by link (the object
+mClient contains the information about the server URL and account).</p>
+<section id="id9">
+<h3>Code example<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">startAllSharesRetrieval</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">GetRemoteSharesOperation</span><span class="w"> </span><span class="n">getSharesOp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GetRemoteSharesOperation</span><span class="p">();</span>
+<span class="w">  </span><span class="n">getSharesOp</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">mClient</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">mHandler</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nd">@Override</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onRemoteOperationFinish</span><span class="p">(</span><span class="n">RemoteOperation</span><span class="w"> </span><span class="n">operation</span><span class="p">,</span><span class="w"> </span><span class="n">RemoteOperationResult</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">operation</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">GetRemoteSharesOperation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="na">isSuccess</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="w"> </span><span class="n">OCShare</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">shares</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="w"> </span><span class="n">OCShare</span><span class="w"> </span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">obj</span><span class="p">:</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="na">getData</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">shares</span><span class="p">.</span><span class="na">add</span><span class="p">((</span><span class="n">OCShare</span><span class="p">)</span><span class="w"> </span><span class="n">obj</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="c1">// do your stuff here</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="get-the-share-resources-for-a-given-file-or-folder">
+<h2>Get the share resources for a given file or folder<a class="headerlink" href="#get-the-share-resources-for-a-given-file-or-folder" title="Link to this heading"></a></h2>
+<p>Get information about what files and folder are shared by link on a certain
+folder. The info needed is filePath, path of the file/folder on the server, the
+Boolean variable, getReshares, come from the Sharing api, from the moment it is
+not in use within the Nextcloud Android library.</p>
+<section id="id10">
+<h3>Code example<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">startSharesRetrievalForFileOrFolder</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">filePath</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">getReshares</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">GeteRemoteSharesForFileOperation</span><span class="w"> </span><span class="n">operation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GetRemoteSharesForFileOperation</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span><span class="w"> </span><span class="n">getReshares</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span>
+<span class="w">  </span><span class="n">operation</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">mClient</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">mHandler</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">startSharesRetrievalForFilesInFolder</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">folderPath</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">getReshares</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">GetRemoteSharesForFileOperation</span><span class="w"> </span><span class="n">operation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GetRemoteSharesForFileOperation</span><span class="p">(</span><span class="n">folderPath</span><span class="p">,</span><span class="w"> </span><span class="n">getReshares</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
+<span class="w">  </span><span class="n">operation</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">mClient</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">mHandler</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nd">@Override</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onRemoteOperationFinish</span><span class="p">(</span><span class="n">RemoteOperation</span><span class="w"> </span><span class="n">operation</span><span class="p">,</span><span class="w"> </span><span class="n">RemoteOperationResult</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">operation</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">GetRemoteSharesForFileOperation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="na">isSuccess</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="w"> </span><span class="n">OCShare</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">shares</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="w"> </span><span class="n">OCShare</span><span class="w"> </span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">obj</span><span class="p">:</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="na">getData</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">shares</span><span class="p">.</span><span class="na">add</span><span class="p">((</span><span class="n">OCShare</span><span class="p">)</span><span class="w"> </span><span class="n">obj</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="c1">// do your stuff here</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="share-link-of-file-or-folder">
+<h2>Share link of file or folder<a class="headerlink" href="#share-link-of-file-or-folder" title="Link to this heading"></a></h2>
+<p>Share a file or a folder from your cloud server by link.</p>
+<p>The info needed is filePath, the path of the item that you want to share and
+Password, this comes from the Sharing api, from the moment it is not in use
+within the Nextcloud Android library.</p>
+<section id="id11">
+<h3>Code example<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">startCreationOfPublicShareForFile</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">filePath</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">password</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">CreateRemoteShareOperation</span><span class="w"> </span><span class="n">operation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CreateRemoteShareOperation</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span><span class="w"> </span><span class="n">ShareType</span><span class="p">.</span><span class="na">PUBLIC_LINK</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">  </span><span class="n">operation</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">mClient</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">mHandler</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">startCreationOfGroupShareForFile</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">filePath</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">groupId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">CreateRemoteShareOperation</span><span class="w"> </span><span class="n">operation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CreateRemoteShareOperation</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span><span class="w"> </span><span class="n">ShareType</span><span class="p">.</span><span class="na">GROUP</span><span class="p">,</span><span class="w"> </span><span class="n">groupId</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">31</span><span class="p">);</span>
+<span class="w">  </span><span class="n">operation</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">mClient</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">mHandler</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">startCreationOfUserShareForFile</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">filePath</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">userId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">CreateRemoteShareOperation</span><span class="w"> </span><span class="n">operation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CreateRemoteShareOperation</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span><span class="w"> </span><span class="n">ShareType</span><span class="p">.</span><span class="na">USER</span><span class="p">,</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">31</span><span class="p">);</span>
+<span class="w">  </span><span class="n">operation</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">mClient</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">mHandler</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nd">@Override</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onRemoteOperationFinish</span><span class="p">(</span><span class="n">RemoteOperation</span><span class="w"> </span><span class="n">operation</span><span class="p">,</span><span class="w"> </span><span class="n">RemoteOperationResult</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">operation</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">CreateRemoteShareOperation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="na">isSuccess</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">OCShare</span><span class="w"> </span><span class="n">share</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">OCShare</span><span class="p">)</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="na">getData</span><span class="p">().</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">      </span><span class="c1">// do your stuff here</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="delete-a-share-resource">
+<h2>Delete a share resource<a class="headerlink" href="#delete-a-share-resource" title="Link to this heading"></a></h2>
+<p>Stop sharing by link a file or a folder from your cloud server.</p>
+<p>The info needed is the object OCShare that you want to stop sharing by link.</p>
+<section id="id12">
+<h3>Code example<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">startShareRemoval</span><span class="p">(</span><span class="n">OCShare</span><span class="w"> </span><span class="n">share</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">RemoveRemoteShareOperation</span><span class="w"> </span><span class="n">operation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RemoveRemoteShareOperation</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="n">share</span><span class="p">.</span><span class="na">getIdRemoteShared</span><span class="p">());</span>
+<span class="w">  </span><span class="n">operation</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span><span class="n">mClient</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">mHandler</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nd">@Override</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onRemoteOperationFinish</span><span class="p">(</span><span class="n">RemoteOperation</span><span class="w"> </span><span class="n">operation</span><span class="p">,</span><span class="w"> </span><span class="n">RemoteOperationResult</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">operation</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">RemoveRemoteShareOperation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="na">isSuccess</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// do your stuff here</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="tips">
+<h2>Tips<a class="headerlink" href="#tips" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Credentials must be set before calling any method</p></li>
+<li><p>Paths must not be on URL Encoding</p></li>
+<li><p>Correct path: <code class="docutils literal notranslate"><span class="pre">https://example.com/nextcloud/remote.php/dav/PopMusic</span></code></p></li>
+<li><p>Wrong path: <code class="docutils literal notranslate"><span class="pre">https://example.com/nextcloud/remote.php/dav/Pop%20Music/</span></code></p></li>
+<li><p>There are some forbidden characters to be used in folder and file names on the server, same on the Nextcloud Android Library “&quot;,”/”,”&lt;”,”&gt;”,”:”,”””,”|”,”?”,”*”</p></li>
+<li><p>Upload and download actions may be cancelled thanks to the objects uploadOperation.cancel(), downloadOperation.cancel()</p></li>
+<li><p>Unit tests, before launching unit tests you have to enter your account information (server URL, user and password) on TestActivity.java</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="library_installation.html" class="btn btn-neutral float-left" title="Library installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../files.html" class="btn btn-neutral float-right" title="Files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/25/developer_manual">25</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/developer_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/developer_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="de" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Erweitere Talk-Funktionen &mdash; Nextcloud latest User Manual latest Dokumentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/dark_mode_css/general.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/dark_mode_css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=7178e243"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/translations.js?v=70a09b52"></script>
+        <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="search" title="Suche" href="../search.html" />
+    <link rel="next" title="Einem Anruf oder Chat als Gast beitreten" href="join_a_call_or_chat_as_guest.html" />
+    <link rel="prev" title="Grundlagen von Nextcloud Talk" href="talk_basics.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Dokumentation durchsuchen" aria-label="Dokumentation durchsuchen" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest - Einführung zur Benutzeranleitung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Was gibt es Neues für Benutzer in Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Die Weboberfläche von Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Dateien &amp; Synchronisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Talk</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="talk_basics.html">Grundlagen von Nextcloud Talk</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Erweitere Talk-Funktionen</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#matterbridge">Matterbridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lobby">Lobby</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#commands">Befehle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#talk-from-files">Talk und Dateien</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-tasks-from-chat-or-share-tasks-in-chat">Aufgaben im Chat erstellen oder Aufgaben im Chat teilen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#breakout-rooms">Breakout-Räume</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configure-breakout-rooms">Breakout-Räume konfigurieren</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#manage-breakout-rooms">Breakout-Räume verwalten</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#call-recording">Call recording</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#manage-a-recording">Manage a recording</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#recording-consent">Recording consent</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="join_a_call_or_chat_as_guest.html">Einem Anruf oder Chat als Gast beitreten</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Einstellungen vornehmen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universeller Zugriff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Verwendung der Zwei-Faktor-Authentifizierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Verwalten Sie verbundene Browser und Geräte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Externer Speicher</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Talk</a></li>
+      <li class="breadcrumb-item active">Erweitere Talk-Funktionen</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/talk/advanced_features.rst" class="fa fa-github"> Auf GitHub bearbeiten</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="advanced-talk-features">
+<h1>Erweitere Talk-Funktionen<a class="headerlink" href="#advanced-talk-features" title="Link to this heading"></a></h1>
+<p>Nextcloud Talk verfügt über eine Reihe von erweiterten Funktionen, die Benutzer möglicherweise nützlich finden.</p>
+<section id="matterbridge">
+<h2>Matterbridge<a class="headerlink" href="#matterbridge" title="Link to this heading"></a></h2>
+<p>Die Matterbridge-Integration in Nextcloud Talk macht es möglich, „Brücken“ zwischen Talk-Unterhaltungen und Unterhaltungen auf anderen Chat-Diensten wie MS Teams, Discord, Matrix und anderen zu erstellen. Eine Liste der unterstützten Protokolle finden Sie auf der Github-Seite von Matterbridge. &lt;<a class="reference external" href="https://github.com/42wim/matterbridge#features">https://github.com/42wim/matterbridge#features</a>&gt;`_</p>
+<p>Ein Moderator kann in den Chat-Unterhaltungs-Einstellungen eine Matterbridge-Verbindung hinzufügen.</p>
+<img alt="../../_images/matterbridge-settings.png" src="../../_images/matterbridge-settings.png" />
+<p>Jede der Brücken benötigt eine eigene Konfiguration. Informationen für die meisten sind im Matterbridge-Wiki verfügbar und können über das Menü <code class="docutils literal notranslate"><span class="pre">Mehr</span> <span class="pre">Informationen</span></code> im <code class="docutils literal notranslate"><span class="pre">...</span></code> Menü aufgerufen werden. Sie können auch direkt <a class="reference external" href="https://github.com/42wim/matterbridge/wiki">auf das Wiki zugreifen.</a></p>
+</section>
+<section id="lobby">
+<h2>Lobby<a class="headerlink" href="#lobby" title="Link to this heading"></a></h2>
+<p>Mit der Lobby-Funktion können Sie den Gästen einen Wartebildschirm zeigen, bis der Anruf beginnt. Dies ist z. B. ideal für Webinare mit externen Teilnehmern.</p>
+<img alt="../../_images/lobby-in-talk.png" src="../../_images/lobby-in-talk.png" />
+<p>Sie können festlegen, dass die Teilnehmer dem Anruf zu einem bestimmten Zeitpunkt beitreten, oder wenn Sie die Lobby manuell schließen.</p>
+</section>
+<section id="commands">
+<h2>Befehle<a class="headerlink" href="#commands" title="Link to this heading"></a></h2>
+<p>Nextcloud ermöglicht es Benutzern, Aktionen mit Hilfe von Befehlen auszuführen. Ein Befehl sieht typischerweise so aus:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">/wiki</span> <span class="pre">airplanes</span></code></p>
+</div></blockquote>
+<p>Administratoren können Befehle konfigurieren, aktivieren und deaktivieren. Benutzer können den Befehl <code class="docutils literal notranslate"><span class="pre">help</span></code> verwenden, um herauszufinden, welche Befehle verfügbar sind.</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">/help</span></code></p>
+</div></blockquote>
+<img alt="../../_images/command-help.png" src="../../_images/command-help.png" />
+<p>Weitere Informationen finden Sie in der Administrations-Dokumentation für Talk. &lt;<a class="reference external" href="https://nextcloud-talk.readthedocs.io/en/stable/commands/">https://nextcloud-talk.readthedocs.io/en/stable/commands/</a>&gt;`_</p>
+</section>
+<section id="talk-from-files">
+<h2>Talk und Dateien<a class="headerlink" href="#talk-from-files" title="Link to this heading"></a></h2>
+<p>In der Dateien-App können Sie in der Seitenleiste über Dateien chatten und sogar während der Bearbeitung ein Gespräch führen. Sie müssen zuerst dem Chat beitreten.</p>
+<img alt="../../_images/join-chat.png" src="../../_images/join-chat.png" />
+<img alt="../../_images/sidebar-chat.png" src="../../_images/sidebar-chat.png" />
+<p>Sie können dann mit anderen Teilnehmern chatten oder telefonieren, auch wenn Sie mit der Bearbeitung der Datei beginnen.</p>
+<img alt="../../_images/text-and-talk.png" src="../../_images/text-and-talk.png" />
+<p>In Talk wird eine Unterhaltung für die Datei erstellt. Sie können von dort aus chatten oder über das Menü <code class="docutils literal notranslate"><span class="pre">...</span></code> oben rechts zu der Datei zurückkehren.</p>
+<img alt="../../_images/file-room.png" src="../../_images/file-room.png" />
+</section>
+<section id="create-tasks-from-chat-or-share-tasks-in-chat">
+<h2>Aufgaben im Chat erstellen oder Aufgaben im Chat teilen<a class="headerlink" href="#create-tasks-from-chat-or-share-tasks-in-chat" title="Link to this heading"></a></h2>
+<p>Wenn Deck installiert ist, können Sie das <code class="docutils literal notranslate"><span class="pre">...</span></code>-Menü einer Chat-Nachricht verwenden und die Nachricht in eine Deck-Aufgabe verwandeln.</p>
+<img alt="../../_images/deck-talk-create-card-menu.png" src="../../_images/deck-talk-create-card-menu.png" />
+<img alt="../../_images/deck-talk-create-card-dialog.png" src="../../_images/deck-talk-create-card-dialog.png" />
+<p>Von Deck aus können Sie Aufgaben in Chat-Gesprächen teilen.</p>
+<img alt="../../_images/deck-talk-share-card-to-chat-menu.png" src="../../_images/deck-talk-share-card-to-chat-menu.png" />
+<img alt="../../_images/deck-talk-share-card-to-chat-in-talk.png" src="../../_images/deck-talk-share-card-to-chat-in-talk.png" />
+</section>
+<section id="breakout-rooms">
+<h2>Breakout-Räume<a class="headerlink" href="#breakout-rooms" title="Link to this heading"></a></h2>
+<p>MIt Breakout-Räumen können Sie einen Nextcloud Talk-Anruf für gezieltere Diskussionen in kleinere Gruppen aufteilen. Der Moderator des Anrufs kann mehrere Breakout-Räume erstellen und jedem Raum Teilnehmer zuweisen.</p>
+<section id="configure-breakout-rooms">
+<h3>Breakout-Räume konfigurieren<a class="headerlink" href="#configure-breakout-rooms" title="Link to this heading"></a></h3>
+<p>Um Breakout-Räume zu erstellen, müssen Sie Moderator einer Gruppenunterhaltung sein. Klicken Sie auf das Menü in der oberen Leiste und dann auf „Breakout-Räume einrichten“.</p>
+<img alt="../../_images/talk-breakout-rooms-setup.png" src="../../_images/talk-breakout-rooms-setup.png" />
+<p>Es öffnet sich ein Dialog, in dem Sie die Anzahl der Räume, die Sie erstellen möchten, und die Zuweisungsmethode der Teilnehmer angeben können. Hier werden Ihnen 3 Optionen angezeigt:</p>
+<ul class="simple">
+<li><p><strong>Teilnehmer automatisch zuweisen</strong>: Talk weist den Räumen automatisch Teilnehmer zu.</p></li>
+<li><p><strong>Teilnehmer manuell zuweisen</strong>: Sie durchlaufen einen Teilnehmereditor, in dem Sie Teilnehmer Räumen zuweisen können.</p></li>
+<li><p><strong>Teilnehmern die Wahl lassen</strong>: Die Teilnehmer können den Breakout-Räumen selbst beitreten.</p></li>
+</ul>
+<img alt="../../_images/talk-breakout-rooms-setup-dialog.png" src="../../_images/talk-breakout-rooms-setup-dialog.png" />
+</section>
+<section id="manage-breakout-rooms">
+<h3>Breakout-Räume verwalten<a class="headerlink" href="#manage-breakout-rooms" title="Link to this heading"></a></h3>
+<p>Sobald die Breakout-Räume erstellt wurden, können Sie sie in der Seitenleiste sehen.</p>
+<img alt="../../_images/talk-breakout-rooms-sidebar.png" src="../../_images/talk-breakout-rooms-sidebar.png" />
+<p>Von der Kopfzeile der Seitenleiste</p>
+<ul class="simple">
+<li><p><strong>Breakout-Räume starten und stoppen</strong>: Dadurch werden alle Benutzer in der übergeordneten Konversation in ihre jeweiligen Breakout-Räume verschoben.</p></li>
+<li><p><strong>Nachricht an alle Räume senden</strong>: Damit wird gleichzeitig eine Nachricht an alle Räume gesendet.</p></li>
+<li><p><strong>Änderungen an den zugewiesenen Teilnehmern vornehmen</strong>: Dadurch wird der Teilnehmer-Editor geöffnet, in dem Sie ändern können, welche Teilnehmer welchem Breakout-Raum zugewiesen werden. Von diesem Dialog aus ist es auch möglich, die Breakout-Räume zu löschen.</p></li>
+</ul>
+<img alt="../../_images/talk-breakout-rooms-sidebar-header.png" src="../../_images/talk-breakout-rooms-sidebar-header.png" />
+<p>Über das Breakout-Raum-Element in der Seitenleiste können Sie auch einem bestimmten Breakout-Raum beitreten oder eine Nachricht an einen bestimmten Raum senden.</p>
+<img alt="../../_images/talk-breakout-rooms-sidebar-item.png" src="../../_images/talk-breakout-rooms-sidebar-item.png" />
+</section>
+</section>
+<section id="call-recording">
+<h2>Call recording<a class="headerlink" href="#call-recording" title="Link to this heading"></a></h2>
+<p>The recording feature provides users with an opportunity to:</p>
+<ul class="simple">
+<li><p>Start and stop recordings during a call.</p></li>
+<li><p>Record the video and audio stream of the speaker, as well as screen share.</p></li>
+<li><p>Access, share and download recorded files for future reference or distribution.</p></li>
+</ul>
+<p>Enabling this feature requires the recording server to be set up by the system administration.</p>
+<section id="manage-a-recording">
+<h3>Manage a recording<a class="headerlink" href="#manage-a-recording" title="Link to this heading"></a></h3>
+<p>The moderator of the conversation can start a recording together with a call start or anytime during a call:</p>
+<ul class="simple">
+<li><p><strong>Before the call</strong>: tick the checkbox „Start recording immediately with the call“ in „Media settings“, then click on „Start call“.</p></li>
+<li><p><strong>During the call</strong>: click on the top-bar menu, then click „Start recording“.</p></li>
+</ul>
+<img alt="../../_images/start-recording-before-call.png" src="../../_images/start-recording-before-call.png" />
+<img alt="../../_images/start-recording-in-call.png" src="../../_images/start-recording-in-call.png" />
+<p>The recording will start shortly, and you will see a red indicator next to the call time. You can stop the recording at any time while the call is still ongoing by clicking on that indicator and selecting „Stop recording“, or by using the same action in the top-bar menu. If you do not manually stop the recording, it will end automatically when the call ends.</p>
+<img alt="../../_images/stop-recording.png" src="../../_images/stop-recording.png" />
+<p>After stopping a recording, the server will take some time to prepare and save the recorded file. The moderator, who started the recording, receives a notification when the file is uploaded. From there, it can be shared in the chat.</p>
+<img alt="../../_images/share-recording-notification.png" src="../../_images/share-recording-notification.png" />
+<img alt="../../_images/shared-recordings.png" src="../../_images/shared-recordings.png" />
+</section>
+<section id="recording-consent">
+<h3>Recording consent<a class="headerlink" href="#recording-consent" title="Link to this heading"></a></h3>
+<p>For compliance reasons with various privacy rights, it is possible to ask participants for consent to be recorded before joining the call. The system administration has the flexibility to utilize this feature in several ways:</p>
+<ul class="simple">
+<li><p>Disable consent completely.</p></li>
+<li><p>Enable mandatory consent system-wide, requiring consent for all conversations.</p></li>
+<li><p>Allow moderators to configure this option on a conversation level. In such cases, moderators can access the conversation settings to configure this option accordingly:</p></li>
+</ul>
+<img alt="../../_images/enable-recording-consent.png" src="../../_images/enable-recording-consent.png" />
+<p>If recording consent is enabled, every participant, including moderators, will see a highlighted section in the „Media settings“ before joining a call.
+This section informs participants that the call may be recorded. To give explicit consent for recording, participants must check the box. If they do not give consent, they will not be allowed to join the call.</p>
+<img alt="../../_images/give-recording-consent.png" src="../../_images/give-recording-consent.png" />
+<img alt="../../_images/give-recording-consent-checked.png" src="../../_images/give-recording-consent-checked.png" />
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="talk_basics.html" class="btn btn-neutral float-left" title="Grundlagen von Nextcloud Talk" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Zurück</a>
+        <a href="join_a_call_or_chat_as_guest.html" class="btn btn-neutral float-right" title="Einem Anruf oder Chat als Gast beitreten" accesskey="n" rel="next">Weiter <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/af/">af</a></dd>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/el_GR/">el_GR</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/eo/">eo</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/eu/">eu</a></dd>
+<dd><a href="/server/latest/user_manual/fi_FI/">fi_FI</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/hr/">hr</a></dd>
+<dd><a href="/server/latest/user_manual/hu/">hu</a></dd>
+<dd><a href="/server/latest/user_manual/hu_HU/">hu_HU</a></dd>
+<dd><a href="/server/latest/user_manual/id/">id</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/ja_JP/">ja_JP</a></dd>
+<dd><a href="/server/latest/user_manual/ko/">ko</a></dd>
+<dd><a href="/server/latest/user_manual/mn/">mn</a></dd>
+<dd><a href="/server/latest/user_manual/nb_NO/">nb_NO</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/nn/">nn</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/pt_PT/">pt_PT</a></dd>
+<dd><a href="/server/latest/user_manual/ro/">ro</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/si/">si</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sq/">sq</a></dd>
+<dd><a href="/server/latest/user_manual/sr/">sr</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/ta/">ta</a></dd>
+<dd><a href="/server/latest/user_manual/th/">th</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/uk/">uk</a></dd>
+<dd><a href="/server/latest/user_manual/uz/">uz</a></dd>
+<dd><a href="/server/latest/user_manual/vi/">vi</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+<dd><a href="/server/latest/user_manual/zh_TW/">zh_TW</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versionen</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/25/user_manual">25</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/user_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/user_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Auf "Read the docs"</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Projekt Startseite</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

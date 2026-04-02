@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artificial Intelligence &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dark_mode_css/general.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dark_mode_css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Database configuration" href="../configuration_database/index.html" />
+    <link rel="prev" title="The Smart Picker" href="../reference/smart_picker.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Artificial Intelligence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview-of-ai-features">Overview of AI features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ethical-ai-rating">Ethical AI Rating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#features-used-by-other-apps">Features used by other apps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#machine-translation">Machine translation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#implementing-apps">Implementing apps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#speech-to-text">Speech-To-Text</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Implementing apps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#text-processing">Text processing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Implementing apps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#image-generation">Image generation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id12">Implementing apps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#context-chat-tech-preview">Context Chat (Tech preview)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id13">Implementing apps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Artificial Intelligence</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/ai/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="artificial-intelligence">
+<h1>Artificial Intelligence<a class="headerlink" href="#artificial-intelligence" title="Link to this heading"></a></h1>
+<p>We strive to bring Artificial Intelligence features to Nextcloud. This section highlights these features, how they work and where to find them.
+All of these features are completely optional and need to be installed via separate Nextcloud Apps.</p>
+<section id="overview-of-ai-features">
+<h2>Overview of AI features<a class="headerlink" href="#overview-of-ai-features" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>App</p></th>
+<th class="head"><p>Rating</p></th>
+<th class="head"><p>Open source</p></th>
+<th class="head"><p>Freely available model</p></th>
+<th class="head"><p>Freely available training data</p></th>
+<th class="head"><p>Privacy: Keeps data on premises</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Smart inbox</p></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/mail">Mail</a></p></td>
+<td><p>Green</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Image object recognition</p></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/recognize">Recognize</a></p></td>
+<td><p>Green</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p>Image face recognition</p></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/recognize">Recognize</a></p></td>
+<td><p>Green</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Video action recognition</p></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/recognize">Recognize</a></p></td>
+<td><p>Green</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p>Audio music genre recognition</p></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/recognize">Recognize</a></p></td>
+<td><p>Green</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Suspicious login detection</p></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/suspicious_login">Suspicious Login</a></p></td>
+<td><p>Green</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p>Related resources</p></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/related_resources">Related Resources</a></p></td>
+<td><p>Green</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Recommended files</p></td>
+<td><p>recommended_files</p></td>
+<td><p>Green</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p>Machine translation</p></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/translate">Translate</a></p></td>
+<td><p>Green</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes - Opus models by University Helsinki</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/integration_libretranslate">LibreTranslate integration</a></p></td>
+<td><p>Green</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes - OpenNMT models</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/integration_deepl">DeepL integration</a></p></td>
+<td><p>Red</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/integration_openai">OpenAI and LocalAI integration (via OpenAI API)</a></p></td>
+<td><p>Red</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/integration_openai">OpenAI and LocalAI integration (via LocalAI)</a></p></td>
+<td><p>Green</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Speech-To-Text</p></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/stt_whisper">Whisper Speech-To-Text</a></p></td>
+<td><p>Yellow</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes - Whisper models by OpenAI</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/integration_openai">OpenAI and LocalAI integration</a></p></td>
+<td><p>Yellow</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes - Whisper models by OpenAI</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/integration_replicate">Replicate integration</a></p></td>
+<td><p>Yellow</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes - Whisper models by OpenAI</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>Image generation</p></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/text2image_stablediffusion">Local Stable Diffusion</a></p></td>
+<td><p>Yellow</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes - StableDiffusion XL model by StabilityAI</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/integration_openai">OpenAI and LocalAI integration (via OpenAI API)</a></p></td>
+<td><p>Red</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/integration_openai">OpenAI and LocalAI integration (via LocalAI)</a></p></td>
+<td><p>Yellow</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes - StableDiffusion models by StabilityAI</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/integration_replicate">Replicate integration</a></p></td>
+<td><p>Yellow</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes - StableDiffusion models by StabilityAI</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>Text generation</p></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/llm">Local large language model (via GPT4all Falcon)</a></p></td>
+<td><p>Green</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/llm">Local large language model (via Llama 2)</a></p></td>
+<td><p>Yellow</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/integration_openai">OpenAI and LocalAI integration (via OpenAI API)</a></p></td>
+<td><p>Red</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/integration_openai">OpenAI and LocalAI integration (via LocalAI)</a></p></td>
+<td><p>Green</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p>Context Chat</p></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/context_chat">Nextcloud Assistant Context Chat</a></p></td>
+<td><p>Yellow</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference external" href="https://apps.nextcloud.com/apps/context_chat_backend">Nextcloud Assistant Context Chat (Backend)</a></p></td>
+<td><p>Yellow</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ethical-ai-rating">
+<h2>Ethical AI Rating<a class="headerlink" href="#ethical-ai-rating" title="Link to this heading"></a></h2>
+<p>Until Hub 3, we succeeded in offering features without relying on proprietary blobs or third party services. Yet, while there is a large community developing ethical, safe and privacy-respecting technologies, there are many other relevant technologies users might want to use. We want to provide users with these cutting-edge technologies – but also be transparent. For some use cases, ChatGPT might be a reasonable solution, while for more private, professional or sensitive data, it is paramount to have a local, on-prem, open solution. To differentiate these, we developed an Ethical AI Rating.</p>
+<dl class="simple">
+<dt>The rating has four levels:</dt><dd><ul class="simple">
+<li><p>Red</p></li>
+<li><p>Orange</p></li>
+<li><p>Yellow</p></li>
+<li><p>Green</p></li>
+</ul>
+</dd>
+<dt>It is based on points from these factors:</dt><dd><ul class="simple">
+<li><p>Is the software (both for inferencing and training) under a free and open source license?</p></li>
+<li><p>Is the trained model freely available for self-hosting?</p></li>
+<li><p>Is the training data available and free to use?</p></li>
+</ul>
+</dd>
+</dl>
+<p>If all of these points are met, we give a Green label. If none are met, it is Red. If 1 condition is met, it is Orange and if 2 conditions are met, Yellow.</p>
+</section>
+<section id="features-used-by-other-apps">
+<h2>Features used by other apps<a class="headerlink" href="#features-used-by-other-apps" title="Link to this heading"></a></h2>
+<p>Some of our AI features are realized as generic APIs that any app can use and any app can provide an implementation for by registering a provider. So far, these are
+Machine translation, Speech-To-Text and Text processing.</p>
+<section id="machine-translation">
+<h3>Machine translation<a class="headerlink" href="#machine-translation" title="Link to this heading"></a></h3>
+<p>As you can see in the table above we have multiple apps offering machine translation capabilities. Each app brings its own set of supported languages.
+In downstream apps like the Text app, users can use the translation functionality regardless of which app implements it behind the scenes.</p>
+<section id="implementing-apps">
+<h4>Implementing apps<a class="headerlink" href="#implementing-apps" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><em>Text</em> for offering the translation menu</p></li>
+<li><p><a class="reference external" href="https://apps.nextcloud.com/apps/analytics">Analytics</a> for translating graph labels</p></li>
+</ul>
+</section>
+</section>
+<section id="speech-to-text">
+<h3>Speech-To-Text<a class="headerlink" href="#speech-to-text" title="Link to this heading"></a></h3>
+<p>As you can see in the table above we have multiple apps offering Speech-To-Text capabilities. In downstream apps like the Talk app, users can use the transcription functionality regardless of which app implements it behind the scenes.</p>
+<section id="id9">
+<h4>Implementing apps<a class="headerlink" href="#id9" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://apps.nextcloud.com/apps/stt_helper">Speech-to-Text Helper</a> for providing a Speech-To-Text smart picker</p></li>
+<li><p><a class="reference external" href="https://apps.nextcloud.com/apps/spreed">Talk</a> for transcribing calls (see <a class="reference external" href="https://nextcloud-talk.readthedocs.io/en/latest/settings/#app-configuration">Nextcloud Talk docs</a> for how to enable this)</p></li>
+</ul>
+</section>
+</section>
+<section id="text-processing">
+<h3>Text processing<a class="headerlink" href="#text-processing" title="Link to this heading"></a></h3>
+<p>As you can see in the table above we have multiple apps offering Text processing capabilities. In downstream apps like the Nextcloud Assistant app, users can use the text processing functionality regardless of which app implements it behind the scenes.</p>
+<section id="id10">
+<h4>Implementing apps<a class="headerlink" href="#id10" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://apps.nextcloud.com/apps/assistant">Assistant</a> for various tasks</p></li>
+<li><p><a class="reference external" href="https://apps.nextcloud.com/apps/mail">Mail</a> for summarizing mail threads (see <a class="reference internal" href="../groupware/mail.html#mail-thread-summary"><span class="std std-ref">the Nextcloud Mail docs</span></a> for how to enable this)</p></li>
+</ul>
+</section>
+</section>
+<section id="image-generation">
+<h3>Image generation<a class="headerlink" href="#image-generation" title="Link to this heading"></a></h3>
+<p>As you can see in the table above we have multiple apps offering Image generation capabilities. In downstream apps like the Text-to-Image helper app, users can use the image generation functionality regardless of which app implements it behind the scenes.</p>
+<section id="id12">
+<h4>Implementing apps<a class="headerlink" href="#id12" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://apps.nextcloud.com/apps/stt_helper">Text-to-Image Helper</a> for providing a Text-to-Image smart picker</p></li>
+</ul>
+</section>
+</section>
+<section id="context-chat-tech-preview">
+<h3>Context Chat (Tech preview)<a class="headerlink" href="#context-chat-tech-preview" title="Link to this heading"></a></h3>
+<p>Our Context Chat feature was introduced in Nextcloud Hub 7 (v28). It allows asking questions to the assistant related to your documents in Nextcloud. You will need to install both the context_chat app as well as the context_chat_backend External App. Be prepared that things might break or be a little rough around the edges. We look forward to your feedback!</p>
+<section id="id13">
+<h4>Implementing apps<a class="headerlink" href="#id13" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://apps.nextcloud.com/apps/assistant">Assistant</a> for the context chat task</p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../reference/smart_picker.html" class="btn btn-neutral float-left" title="The Smart Picker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../configuration_database/index.html" class="btn btn-neutral float-right" title="Database configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/25/admin_manual">25</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/admin_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/admin_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/admin_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/admin_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

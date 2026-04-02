@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ar" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الوصول إلى ملفات نكست كلاود باستعمال WebDAV &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/dark_mode_css/general.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/dark_mode_css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=d25d3ab2"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/translations.js?v=271dbd9e"></script>
+        <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="بحث" href="../search.html" />
+    <link rel="next" title="إدارة الملفات المحذوفة" href="deleted_file_management.html" />
+    <link rel="prev" title="الوصول إلى ملفاتك باستخدام واجهة ويب نكست كلاود" href="access_webgui.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">نكست كلاود nextcloud الإصدار latest دليل المستخدم - المُقدِّمة</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">ماهو الجديد لمستخدمين نكست كلاود latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">واجهة وب نكست كلاود The Nextcloud Web interface</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">الملفات &amp; التزامن</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">الوصول إلى ملفاتك باستخدام واجهة ويب نكست كلاود</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">الوصول إلى ملفات نكست كلاود باستعمال WebDAV</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#official-nextcloud-desktop-and-mobile-clients">تطبيقات عملاء clients نكست كلاود الرسمية لسطح المكتب والأجهزة المحمولة</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#third-party-webdav-clients">عملاء WebDAV من طرف ثالث</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-linux">الوصول للملفات باستعمال لينكس</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nautilus-file-manager">مدير الملفات &quot;ناوتيلس&quot; Nautilus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-with-kde-and-dolphin-file-manager">الوصول إلى الملفات باستعمال مدير ملفات KDE و Dolphin</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">إنشاء ارتباطات mounts لـ WebDAV باستعمال سطر الأوامر في لينكس</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues">إشكالات معروفة</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#problem">مشكلة</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution">الحل</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">مشكلة</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">الحل</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-macos">الوصول للملفات باستخدام macOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-microsoft-windows">الوصول إلى الملفات باستعمال مايكروسوفت وندوز</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-the-command-line">تعيين mapping محركات الأقراص باستخدام سطر الأوامر</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-windows-explorer">تعيين الأقراص باستعمال متصفح وندوز إكبسلورير</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-cyberduck">الوصول إلى الملفات باستعمال Cyberduck</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-public-shares-over-webdav">الوصول إلى المشاركات العامة عبر WebDAV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-problems">إشكاليّات معروفة</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">مشكلة</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-1">الحل 1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-2">الحل 2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">مشكلة</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">الحل</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">مشكلة</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#answer">الجواب</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">مشكلة</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">الحل</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">مشكلة</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">الحل</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-curl">الوصول إلى الملفات باستعمال cURL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-winscp">الوصول إلى الملفات باستعمال WinSCP</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">إدارة الملفات المحذوفة</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">المُزامَنة مع سطح المكتب و الهواتف</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">تشفير ملفاتك على خادوم نكست كلاود</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">مشاركة الملفات</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">مشاركات اتحادية</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">تمكين عمليات رفع مجهولة</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">رفع ملفات كبيرة</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">الحصة التخزينية Storage quota</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">إدارة النُّسَخ Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">المشاريع Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">نقل المِلْكِيَّة</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">إستعمال المشاركات الاتحادية Federated Shares</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">أدوات العمل التعاوني Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">&quot;المحادثة&quot; Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">تعيين تفضيلاتك</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">&quot;الوصول للجميع&quot; universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">استخدام التحقُّق المُثنَّى من الهُوِيَّة  two-factor authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">إدارة المتصفحات والأجهزة المتصلة</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">التخزين الخارجي</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">الملفات &amp; التزامن</a></li>
+      <li class="breadcrumb-item active">الوصول إلى ملفات نكست كلاود باستعمال WebDAV</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webdav.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="accessing-nextcloud-files-using-webdav">
+<h1>الوصول إلى ملفات نكست كلاود باستعمال WebDAV<a class="headerlink" href="#accessing-nextcloud-files-using-webdav" title="Link to this heading"></a></h1>
+<p>يدعم نكست كلاود بروتوكول WebDAV بشكل كامل، و يمكنك الاتصال و المزامنة مع ملفات نكست كلاود عبر WebDAV. في هذا الفصل، ستتعلم كيفية توصيل Linux و macOS و Windows والأجهزة المحمولة بخادوم نكست كلاود خاصّتك.</p>
+<p>WebDAV stands for Distributed Authoring and Versioning. It is an HTTP extension
+that makes it easy to create, read, and edit files hosted on remote Web servers. With
+a WebDAV client, you can access your Nextcloud Files (including shares) on Linux,
+macOS and Windows in a similar way as any remote network share, and stay synchronized.</p>
+<p>قبل أن ندخل في تكوين WebDAV، دعنا نُلقي نظرة سريعة على الطريقة الموصى بها لتوصيل أجهزة العميل client بنكست كلاود.</p>
+<section id="official-nextcloud-desktop-and-mobile-clients">
+<h2>تطبيقات عملاء clients نكست كلاود الرسمية لسطح المكتب والأجهزة المحمولة<a class="headerlink" href="#official-nextcloud-desktop-and-mobile-clients" title="Link to this heading"></a></h2>
+<p>الطريقة الموصى بها لمزامنة جهازك مع خادوم نكست كلاود هي باستعمال <a href="#id1"><span class="problematic" id="id2">``</span></a>عملاء مزامنة  نكست كلاود الرسميين &lt;<a class="reference external" href="https://nextcloud.com/install/#install-clients">https://nextcloud.com/install/#install-clients</a>&gt; <a href="#id3"><span class="problematic" id="id4">`</span></a>_. يمكنك تكوين العميل لحفظ الملفات في أي دليل محلي و يمكنك اختيار الأدلة الموجودة على خادوم نكست كلاود للمزامنة معها. يعرض العميل حالة الاتصال الحالية و يسجل جميع الأنشطة، بحيث تعرف دائمًا الملفات القصية  remote التي تم تنزيلها على جهازك. و بالمقابل، يمكنك معرفة الملفات التي تم إنشاؤها أو تحديثها على جهازك و هل هي متزامنة بشكل صحيح مع الخادوم.</p>
+<p>الطريقة الموصى بها لمزامنة أجهزة Android و Apple iOS هي <a class="reference external" href="https://nextcloud.com/install/">استعمال التطبيقات الرسمية لنكست كلاود على الهاتف النقال</a>.</p>
+<p>لتوصيل تطبيقات نكست كلاود الرسمية بخادوم نكست كلاود، استخدم نفس عنوان URL الذي تستخدمه للوصول إلى نسكت كلاود من متصفحك على  الويب. على سبيل المثال:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span> <span class="p">(</span><span class="k">if</span> <span class="n">Nextcloud</span> <span class="ow">is</span> <span class="n">installed</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">subdirectory</span> <span class="n">called</span> <span class="s2">&quot;nextcloud&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="third-party-webdav-clients">
+<h2>عملاء WebDAV من طرف ثالث<a class="headerlink" href="#third-party-webdav-clients" title="Link to this heading"></a></h2>
+<p>إذا كنت تفضل ذلك، يمكنك أيضًا توصيل حاسوبك بخادوم نكست كلاود خاصّتك باستخدام أي عميل تابع لجهة خارجية يدعم بروتوكول WebDAV (بما في ذلك ما قد يكون مضمنًا في نظام التشغيل الخاص بك).</p>
+<p>يمكنك أيضًا استخدام تطبيقات WebDAV من جهات خارجية لتوصيل جهازك المحمول بـنكست كلاود.</p>
+<p>عند استخدام عملاء من طرف ثالث، ضع في اعتبارك أنه قد لا يتم تحسينها للاستخدام مع نكست كلاود أو تنفيذ الإمكانات التي تعتبرها مهمة لحالة الاستخدام الخاصة بك.</p>
+<p>يشمل عملاء الأجهزة المحمولة الذين أبلغ أعضاء مجتمع نكست كلاود عن استخدامهم ما يلي:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://foldersync.io/">FolderSync (أندرويد)</a></p></li>
+<li><p><a class="reference external" href="https://apps.apple.com/us/app/webdav-navigator/id382551345">WebDAV Navigator (آيفون)</a></p></li>
+</ul>
+<p>عنوان URL المراد استخدامه عند تكوين تطبيقات الطرف الثالث للاتصال بنكست كلاود أطول قليلاً من عنوان العملاء الرسميين:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="p">(</span><span class="k">if</span> <span class="n">Nextcloud</span> <span class="ow">is</span> <span class="n">installed</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">subdirectory</span> <span class="n">called</span> <span class="s2">&quot;nextcloud&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">ملاحظة</p>
+<p>When using a third-party WebDAV client (including your operating system's
+built-in client), you should use an application password for login rather than your
+regular password. In addition improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
+configure an application password, log into the Nextcloud Web interface, click on the avatar
+in the top right and choose <em>Personal settings</em>. Then choose <em>Security</em> in the left
+sidebar and scroll to the very bottom. There you can create an app password (which can
+also be revoked in the future without changing your main user password).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">ملاحظة</p>
+<p>في الأمثلة التالية، يجب استبدال <strong>example.com/nextcloud</strong> بعنوان URL لخادوم نكست كلاود خاصتك (حذف جزء الدليل إذا كان التنصيب في جذر نطاقك)، و <strong>USERNAME</strong> باسم المستخدم المتصل.</p>
+<p>شاهد عنوان WebDAV URL (في الإعدادات في الأسفل) على نكست كلاود خاصتك.</p>
+</div>
+</section>
+<section id="accessing-files-using-linux">
+<h2>الوصول للملفات باستعمال لينكس<a class="headerlink" href="#accessing-files-using-linux" title="Link to this heading"></a></h2>
+<p>يمكنك الوصول للملفات في نظام التشغيل لينكس باستعمال الطرق التالية.</p>
+<section id="nautilus-file-manager">
+<h3>مدير الملفات &quot;ناوتيلس&quot; Nautilus<a class="headerlink" href="#nautilus-file-manager" title="Link to this heading"></a></h3>
+<p><strong>عند تكوين حساب نكست كلاود الخاص بك في **`GNOME Control Center &lt;../ groupware / sync_gnome.html&gt;`_ ،**سيتم تحميل ملفاتك تلقائيًا بواسطة مدير الملفات &quot;ناوتيلس&quot; Nautilus كمشاركة WebDAV، ما لم تقم بإلغاء تحديد الوصول إلى الملف</strong>.</p>
+<p>يمكنك أيضًا تحميل ملفات نكست كلاود يدويًا. إستخدِم بروتوكول <code class="docutils literal notranslate"><span class="pre">davs://</span></code> لتوصيل مدير الملفات &quot;ناوتيلس&quot; Nautilus بمشاركتك على نكست كلاود:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">davs</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">ملاحظة</p>
+<p>إذا لم يكن اتصال خادومك مؤمنًا باستخدام HTTPS، فاستعمل <code class="docutils literal notranslate"><span class="pre">dav://</span></code> بدلاً عن <code class="docutils literal notranslate"><span class="pre">davs://</span></code>:</p>
+</div>
+<img alt="لقطة شاشة لتهيئة مدير الملفات &quot;ناوتيلس&quot; Nautilus لاستعمال WebDAV" src="../../_images/webdav_gnome3_nautilus.png" />
+<div class="admonition note">
+<p class="admonition-title">ملاحظة</p>
+<p>نفس الطريقة يمكن أن تُطبَّق في حالة تطبيقات إدارة الملفات الأخرى التي تستعمل GVFS مثل MATE's Caja و Cinnamon's Nemo.</p>
+</div>
+</section>
+<section id="accessing-files-with-kde-and-dolphin-file-manager">
+<h3>الوصول إلى الملفات باستعمال مدير ملفات KDE و Dolphin<a class="headerlink" href="#accessing-files-with-kde-and-dolphin-file-manager" title="Link to this heading"></a></h3>
+<p>للوصول إلى ملفاتك على نكست كلاود باستخدام مدير الملفات &quot;دولفين&quot; Dolphin في KDE ، إستخدِم بروتوكول <code class="docutils literal notranslate"><span class="pre">webdav://</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">webdav</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<img alt="لقطة شاشة لتهيئة مدير ملفات Dolphin لاستعمال WebDAV" src="../../_images/webdav_dolphin.png" />
+<p>يمكنك إنشاء رابط دائم لخادوم نكست كلاود خاصتك:</p>
+<ol class="arabic simple">
+<li><p>إفتَح Dolphin و انقر على &quot;الشبكة Network&quot; في عمود &quot;الأماكن Places&quot; الجانبي.</p></li>
+<li><p>انقر فوق الرمز المسمى <strong>إضافة مجلد شبكة Add a Network Folder</strong>. يجب أن يظهر مربع الحوار الناتج مع تحديد WebDAV بالفعل.</p></li>
+<li><p>إذا لم تكن WebDAV قد سبق تحديدها، فحدِّدها</p></li>
+<li><p>إضغط <strong>التالي Next</strong>.</p></li>
+<li><p>أدخِل الإعدادات التالية:</p>
+<ul class="simple">
+<li><p>الاسم: الاسم الذي تريد رؤيته في إشارة مرجعية <strong>الأماكن Places</strong>. على سبيل المثال: نكست كلاود.</p></li>
+<li><p>المستخدم: اسم مستخدم نكست كلاود الذي استخدمته لتسجيل الدخول.</p></li>
+<li><p>الخادوم: اسم نطاق نكست كلاود. على سبيل المثال، <strong>example.com</strong> (بدون <strong>http://</strong> في البداية و لا الأدلة بعد ذلك).</p></li>
+<li><p>المجلد - أدخل المسار <code class="docutils literal notranslate"><span class="pre">nextcloud/remote.php/dav/files/USERNAME/</span></code>.</p></li>
+</ul>
+</li>
+<li><p>(اختياري) حدد مربع الاختيار &quot;إنشاء أيقونه Create Icon&quot; حتى تظهر إشارة مرجعية في عمود &quot;الأماكن&quot;.</p></li>
+<li><p>(اختياري) قدِّم أيّ إعدادات خاصة أو شهادة SSL في مربع الاختيار &quot;المنفذ والتشفير Port &amp; Encrypted&quot;.</p></li>
+</ol>
+</section>
+</section>
+<section id="creating-webdav-mounts-on-the-linux-command-line">
+<h2>إنشاء ارتباطات mounts لـ WebDAV باستعمال سطر الأوامر في لينكس<a class="headerlink" href="#creating-webdav-mounts-on-the-linux-command-line" title="Link to this heading"></a></h2>
+<p>يمكنك إنشاء ارتباطات mounts لـ WebDAV من سطر أوامر لينكس. يكون هذا مفيدًا إذا كنت تفضل الوصول إلى نكست كلاود بنفس طريقة تكوين ارتباط لنظام ملفات قصيّ آخر remote filesystem mount. يوضح المثال التالي كيفية إنشاء ارتباط شخصي personal mount و تشبيكه mount تلقائيًا في كل مرة تقوم فيها بتسجيل الدخول إلى حاسوبك.</p>
+<ol class="arabic">
+<li><p>قم بتثبيت برنامج <code class="docutils literal notranslate"><span class="pre">davfs2</span></code> لتشغيل نظام ملفات WebDAV، و الذي يسمح لك بتشبيك mount مشاركات WebDAV تمامًا مثل أي نظام ملفات قَصِيٍّ آخر. إستعمل هذا الأمر لتثبيته على Debian/Ubuntu</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>إستعمِل هذا الأمر لتنصيبه على CentOS و Fedora و openSUSE</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>أضِف نفسك إلى المجموعة <code class="docutils literal notranslate"><span class="pre">davfs2</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usermod</span> <span class="o">-</span><span class="n">aG</span> <span class="n">davfs2</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>ثم قم بإنشاء دليل `` nextcloud '' في الدليل الرئيسي الخاص بك لنقطة التشبيك mount point، و <code class="docutils literal notranslate"><span class="pre">davfs2/</span></code> لملف التكوين الشخصي الخاص بك</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">~/</span><span class="n">nextcloud</span>
+<span class="n">mkdir</span> <span class="o">~/.</span><span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>إنسَخ``/etc/davfs2/secrets`` إلى <code class="docutils literal notranslate"><span class="pre">~/.davfs2</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span>  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+</pre></div>
+</div>
+</li>
+<li><p>عيّن نفسك كمالك و اجعَل الأذونات للقراءة والكتابة للمالك فقط read-write owner only:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chown</span> <span class="o">&lt;</span><span class="n">linux_username</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">linux_username</span><span class="o">&gt;</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+<span class="n">chmod</span> <span class="mi">600</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+</pre></div>
+</div>
+</li>
+<li><p>أضف بيانات اعتماد تسجيل الدخول إلى نكست كلاود إلى نهاية ملف <code class="docutils literal notranslate"><span class="pre">secrets</span></code>، باستخدام عنوان URL لخادوم نكست كلاود و اسم المستخدم و كلمة المرور الخاصة بنكست كلاود:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/ &lt;username&gt; &lt;password&gt;
+or
+$PathToMountPoint $USERNAME $PASSWORD
+for example
+/home/user/nextcloud john 1234
+</pre></div>
+</div>
+</li>
+<li><p>أضِف معلومات التشبيك mount إلى <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">linux_username</span><span class="o">&gt;/</span><span class="n">nextcloud</span> <span class="n">davfs</span> <span class="n">user</span><span class="p">,</span><span class="n">rw</span><span class="p">,</span><span class="n">auto</span> <span class="mi">0</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</li>
+<li><p>ثم اختبر التشبيك mount و المصادقة authentication عن طريق تشغيل الأمر التالي. إذا قمت بإعداده بشكل صحيح، فلن تحتاج إلى أذونات الجذر:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mount</span> <span class="o">~/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</li>
+<li><p>و يجب أن تكون قادراً على فك تشبيكه unmount:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">umount</span> <span class="o">~/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>الآن في كل مرة تقوم فيها بتسجيل الدخول إلى نظام لينكس الخاص بك، يجب أن يتم تشبيك mount مشاركة نكست كلاود تلقائيًا عبر WebDAV في دليل <code class="docutils literal notranslate"><span class="pre">~/nextcloud</span></code>. إذا كنت تفضل تنصيبه يدويّاً  فقم بتغيير ''تلقائي auto'' إلى ''غير تلقائي noauto '' في <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code>.</p>
+</section>
+<section id="known-issues">
+<h2>إشكالات معروفة<a class="headerlink" href="#known-issues" title="Link to this heading"></a></h2>
+<section id="problem">
+<h3>مشكلة<a class="headerlink" href="#problem" title="Link to this heading"></a></h3>
+<p>المصدر غير متاحٍ بشكل مؤقت</p>
+</section>
+<section id="solution">
+<h3>الحل<a class="headerlink" href="#solution" title="Link to this heading"></a></h3>
+<p>إذا واجهت مشكلة عند إنشاء ملف في الدليل، فقم بتحرير <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/davfs2.conf</span></code> و أضِفه</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">use_locks</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>مشكلة<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>تحذيرات الشهادة</p>
+</section>
+<section id="id2">
+<h3>الحل<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>إذا كنت تستخدم شهادة موقعة ذاتيّاً، فستتلقى تحذيراً. لتغيير هذا، تحتاج إلى تكوين <code class="docutils literal notranslate"><span class="pre">davfs2</span></code> للتعرف على شهادتك. إنسَخ <code class="docutils literal notranslate"><span class="pre">mycertificate.pem</span></code> إلى <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/certs/</span></code>. ثم قم بتحرير <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/davfs2.conf</span></code> و أزل التعليق عن السطر <a href="#id1"><span class="problematic" id="id2">``</span></a>servercert''. أضِف الآن مسار شهادتك كما في هذا المثال:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">servercert</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">davfs2</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">mycertificate</span><span class="o">.</span><span class="n">pem</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="accessing-files-using-macos">
+<h2>الوصول للملفات باستخدام macOS<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">ملاحظة</p>
+<p>يعاني macOS Finder من سلسلة من مشكلات التنفيذ &lt;<a class="reference external" href="http://sabre.io/dav/clients/finder/">http://sabre.io/dav/clients/finder/</a>&gt; <a class="reference external" href="https://cyberduck.io/">_ ويجب استخدامه فقط إذا كان خادوم نكست كلاود يعمل على **Apache** و **mod_php** أو **Nginx 1.3.8 +**. تشمل البرامج البديلة المتوافقة مع macOS و القادرة على الوصول إلى مشاركات WebDAV تطبيقات مفتوحة المصدر مثل  `Cyberduck</a> (راجع الإرشادات` <a class="reference external" href="https://docs.nextcloud.com/server/latest/user_manual/files/access_webdav.html#accessing-files-using-cyberduck">هنا</a>) و <a class="reference external" href="https://filezilla-project.org">Filezilla</a>.  بينما تشمل البرامج التجارية التالي: <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Transmit</a>, و <a class="reference external" href="https://mac.eltima.com/">Commander One</a>.</p>
+</div>
+<p>للوصول إلى الملفات من خلال macOS Finder:</p>
+<ol class="arabic">
+<li><p>من شريط القائمة العلوي لـ Finder ، اختر <strong>Go &gt; Connect to Server…</strong>:</p>
+<img alt="لقطة شاشة لإدخال عنوان خادوم نكست كلاود خاصّتك على macOS" src="../../_images/osx_webdav1.png" />
+</li>
+<li><p>عندما تفتح نافذة <strong>إتَّصِل بالخادوم ... Connect to Server</strong>، أدخِل عنوان WebDAV لخادوم نكست كلاود في الحقل <strong>عنوان الخادوم : Server Address</strong>، أي</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">YOURDOMAIN</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<img alt="لقطة الشاشة: أدخل عنوان خادوم نكست كلاود في مربع الحوار &quot;الاتصال بالخادوم ... Connext to Server&quot;" src="../../_images/osx_webdav2.png" />
+</li>
+<li><p>أنقُر فوق <strong>إتّصِل Connect</strong>. يجب أن يظهر خادوم WebDAV على سطح المكتب كمحرك أقراص مشترك.</p></li>
+</ol>
+</section>
+<section id="accessing-files-using-microsoft-windows">
+<h2>الوصول إلى الملفات باستعمال مايكروسوفت وندوز<a class="headerlink" href="#accessing-files-using-microsoft-windows" title="Link to this heading"></a></h2>
+<p>إذا كنت تستخدم تطبيق Windows الأصلي لـ WebDAV، فيمكنك تعيين map نكست كلاود إلى محرك أقراص جديد باستخدام مستكشف Windows. يتيح لك التعيين إلى محرك أقراص استعراض الملفات المخزنة على خادوم نكست كلاود بالطريقة التي تتصفح بها الملفات المخزنة في محرك أقراص الشبكة المعين.</p>
+<p>يتطلب استخدام هذه الميزة اتصالاً بالشبكة. إذا كنت تريد تخزين ملفاتك في وضع عدم الاتصال offline، فاستخدم &quot;عميل سطح المكتب&quot; Desktop Client لمزامنة جميع الملفات الموجودة على نكست كلاود إلى دليل واحد أو أكثر من محرك الأقراص الثابتة المحلي.</p>
+<div class="admonition note">
+<p class="admonition-title">ملاحظة</p>
+<p>في Windows 10 يتم افتراضيًا تعيين السماح بالمصادقة الأساسية إذا تمّ تمكين HTTPS قبل تعيين محرك أقراصك.</p>
+<p>في إصدارات Windows قبل الإصدار 10، يجب أن تسمح باستخدام المصادقة الأساسية في سجل Windows:</p>
+<ul class="simple">
+<li><p>شغِّل <code class="docutils literal notranslate"><span class="pre">regedit</span></code> ثم انتقِل إلى <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters</span></code>.</p></li>
+<li><p>قُم بإنشاء أو تحرير <code class="docutils literal notranslate"><span class="pre">BasicAuthLevel</span></code> (في حالة Windows Vista و 7 و 8)، أو <code class="docutils literal notranslate"><span class="pre">UseBasicAuth</span></code> (في حالة Windows XP و Windows Server 2003). قيمة <code class="docutils literal notranslate"><span class="pre">DWORD</span></code> و ضبط بيانات القيمة الخاصة بها على <code class="docutils literal notranslate"><span class="pre">1</span></code> لاتصالات SSL. تعني القيمة ` <cite>0`</cite> أن المصادقة الأساسية معطلة، وقيمة <code class="docutils literal notranslate"><span class="pre">2</span></code> تسمح باتصالات SSL وغير SSL (غير مستحسن).</p></li>
+<li><p>ثم اخرُج من محرر السجلات Registry Editor و أعد تشغيل الحاسوب.</p></li>
+</ul>
+</div>
+<section id="mapping-drives-with-the-command-line">
+<h3>تعيين mapping محركات الأقراص باستخدام سطر الأوامر<a class="headerlink" href="#mapping-drives-with-the-command-line" title="Link to this heading"></a></h3>
+<p>يوضح المثال التالي كيفية تعيين map محرك أقراص باستخدام سطر الأوامر. لتعيين محرك الأقراص:</p>
+<ol class="arabic">
+<li><p>إفتح مَحَثَّ الأوامر command prompt في وندوز</p></li>
+<li><p>أدخِل السطر التالي في مَحَثَّ الأوامر للتعيين إلى القرص Z</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">drive_path</span><span class="o">&gt;/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span> <span class="n">yourpassword</span>
+</pre></div>
+</div>
+<p>باعتبار أن &lt;drive_path&gt; هو عنوان URL لخادومك نكست كلاود. على سبيل المثال:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span> <span class="n">yourpassword</span>
+</pre></div>
+</div>
+<p>يقوم الحاسوب بتعيين map حسابك على نكست كلاود إلى حرف محرك الأقراص Z.</p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">ملاحظة</p>
+<p>إذا ظهر لك هذا الخطأ  <code class="docutils literal notranslate"><span class="pre">حدث</span> <span class="pre">خطأ</span> <span class="pre">رقم</span> <span class="pre">67.</span> <span class="pre">يتعذّر</span> <span class="pre">إيجاد</span> <span class="pre">الشبكة</span> <span class="pre">System</span> <span class="pre">error</span> <span class="pre">67</span> <span class="pre">has</span> <span class="pre">occurred.</span> <span class="pre">The</span> <span class="pre">network</span> <span class="pre">name</span> <span class="pre">cannot</span> <span class="pre">found.</span></code>، فقم بفتح تطبيق <strong>الخدمات Services</strong> و تأكد من أن خدمة <code class="docutils literal notranslate"><span class="pre">عميل</span> <span class="pre">الوب</span> <span class="pre">WebClient</span></code> تعمل و أنها مهيأة لتعمل تلقائياً عند بدء عمل الحاسوب started automatically at startup.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">ملاحظة</p>
+<p>على الرغم من أنه لا يوصى بذلك، يمكنك أيضًا تحميل خادوم نكست كلاود باستعمال HTTP، مع ترك الاتصال غير مُشفّر.</p>
+<blockquote>
+<div><p>إذا كنت تخطط لاستخدام اتصالات HTTP على الأجهزة أثناء التواجد في مكان عام، فإننا نوصي بشدة باستخدام نفق VPN لتوفير الأمان اللازم.</p>
+</div></blockquote>
+<p>صيغة الأمر البديلة هي:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> \\<span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="nd">@ssl</span>\<span class="n">nextcloud</span>\<span class="n">remote</span><span class="o">.</span><span class="n">php</span>\<span class="n">dav</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span>
+<span class="n">yourpassword</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mapping-drives-with-windows-explorer">
+<h3>تعيين الأقراص باستعمال متصفح وندوز إكبسلورير<a class="headerlink" href="#mapping-drives-with-windows-explorer" title="Link to this heading"></a></h3>
+<p>لتعيين قرص باستعمال وندوز إكبسلورير</p>
+<ol class="arabic">
+<li><p>فتح مستشكف وندوز إكسبلورير في الحاسوب وندوز خاصتك.</p></li>
+<li><p>أنقُر بزر الماوس الأيمن على خانة <strong>الحاسوب Computer</strong> و حدِّد <strong>تعيين محرك شبكي .... Map network drive</strong> من القائمة المنسدلة.</p></li>
+<li><p>إختَر المحرك الشبكي المحلي الذي ترغب في تعيين نكست كلاود إليه.</p></li>
+<li><p>حدِّد عنوان خادوم نكست كلاود خاصّتك، متبوعاً بـ <strong>/remote.php/dav/files/USERNAME/</strong>.</p>
+<p>على سبيل المثال:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">ملاحظة</p>
+<p>بالنسبة للخوادم المحمية بطبقة المقابس الآمنة SSL، تحقَّق من <strong>.إعادة الاتصال عند تسجيل الدخول Reconnect at sign-in</strong> للتأكد من استمرار التعيين عند عمليات إعادة التشغيل اللاحقة. إذا كنت تريد الاتصال بخادوم نكست كلاود كمستخدم مختلف.، فحدِّد <strong>.الاتصال باستخدام حيثيّات دخول مختلفة Connect using different credentials</strong></p>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="لقطة شاشة لتعيين WebDAV على وندوز إكسبلورير" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" /></a>
+</figure>
+</li>
+</ol>
+<ol class="arabic simple" start="5">
+<li><p>إضغَط على زر  <code class="docutils literal notranslate"><span class="pre">أكمِل</span> <span class="pre">Finish</span></code>.</p></li>
+</ol>
+<p>يقوم وندوز إكسبلورير بتعيين محرك أقراص الشبكة؛ مما يجعل خادوم نكست كلاود خاصتك متاحًا.</p>
+</section>
+</section>
+<section id="accessing-files-using-cyberduck">
+<h2>الوصول إلى الملفات باستعمال Cyberduck<a class="headerlink" href="#accessing-files-using-cyberduck" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://cyberduck.io/">Cyberduck</a> هو متصفح FTP و SFTP و WebDAV و OpenStack Swift و Amazon S3 مفتوح المصدر مصمم لنقل الملفات على macOS و Windows.</p>
+<div class="admonition note">
+<p class="admonition-title">ملاحظة</p>
+<p>هذا المثال يستعمل Cyberduck الإصدار 4.2.1.</p>
+</div>
+<p>لاستعمال Cyberduck:</p>
+<ol class="arabic">
+<li><p>حدد خادوماً بدون أي معلومات مسبقة عن البروتوكول.</p>
+<p>على سبيل المثال <code class="docutils literal notranslate"><span class="pre">example.com</span></code></p>
+</li>
+<li><p>حدّد المنفذ port المناسب.</p>
+<p>يعتمد المنفذ الذي تختاره على ما إذا كان خادوم نكست كلاود يدعم SSL أم لا. يتطلب Cyberduck تحديد نوع اتصال مختلف إذا كنت تخطط لاستخدام SSL.</p>
+<dl class="simple">
+<dt>على سبيل المثال:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">80</span></code> لـ WebDAV غير المُشفّر</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">443</span></code> لـ WebDAV المشفر (HTTPS/SSL)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>إستعمل القائمة المنسدلة &quot;مزيد من الخيارات More Options&quot; لإضافة بقية عنوان URL الخاص بـ WebDAV إلى حقل &quot;المسار path&quot;.</p>
+<p>على سبيل المثال: <code class="docutils literal notranslate"><span class="pre">remote.php/dav/files/USERNAME/</span></code></p>
+</li>
+</ol>
+<p>تسمح Cyberduck الآن بالوصول إلى الملفات على خادوم نكست كلاود.</p>
+</section>
+<section id="accessing-public-shares-over-webdav">
+<h2>الوصول إلى المشاركات العامة عبر WebDAV<a class="headerlink" href="#accessing-public-shares-over-webdav" title="Link to this heading"></a></h2>
+<p>تسمح نكست كلاود إختياريّاً بالوصول إلى المشاركات العامة دون التصريح بالهُوِيَّة anonymously عبر WebDAV.</p>
+<p>للوصول إلى مشاركة عامة، إفتَح:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">public</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">webdav</span>
+</pre></div>
+</div>
+<p>في عميل WebDAV، إستعمِل أَمَارَة المُشارَكة share token كاسم مستخدم و كلمة مرور المشاركة (إختيارية) ككلمة المرور. على سبيل المثال، باستخدام رابط المشاركة <a class="reference external" href="https://example.com/s/kFy9Lek5sm928xP">https://example.com/s/kFy9Lek5sm928xP</a> ، سيكون <code class="docutils literal notranslate"><span class="pre">kFy9Lek5sm928xP</span></code> هو اسم المستخدم.</p>
+<div class="admonition note">
+<p class="admonition-title">ملاحظة</p>
+<p><strong>Settings</strong> → <strong>Administration</strong> → <strong>Sharing</strong> → <strong>Allow users on this server to send shares to other servers</strong>. يتيح هذا الخيار أيضًا وصول WebDAV إلى المشاركات العامة ويلزم تمكينه لجعل هذه الميزة تعمل، إلّا إذا تم استخدام cURL (انظر أدناه).</p>
+</div>
+</section>
+<section id="known-problems">
+<h2>إشكاليّات معروفة<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
+<section id="id4">
+<h3>مشكلة<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>وندوز لا تستطيع الربط باستعمال HTTPS.</p>
+</section>
+<section id="solution-1">
+<h3>الحل 1<a class="headerlink" href="#solution-1" title="Link to this heading"></a></h3>
+<p>قد لا يدعم عميل WebDAV في وندوز &quot;مؤشر اسم الخادوم&quot; (SNI) في حالة الاتصالات المُشفّرة. إذا واجهت خطأ أثناء عمل ارتباط mounting لخادوم نكست كلاود المشفر بواسطة SSL، فاتصل بمزودك بشأن تعيين عنوان IP مخصص للخادوم المستند إلى SSL.</p>
+</section>
+<section id="solution-2">
+<h3>الحل 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
+<p>قد لا يدعم عميل WebDAV في وندوز اتصالات TLSv1.1 و TLSv1.2. إذا قمت بتقييد تكوين خادومك لتوفير TLSv1.1 فقط و ما فوقها، فقد يفشل الاتصال بالخادوم. يُرجى الرجوع إلى وثائق <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> للحصول على مزيد من المعلومات.</p>
+</section>
+<section id="id5">
+<h3>مشكلة<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>أنت تتلقى رسالة الخطأ التالية: <strong>خطأ 0x800700DF: حجم الملف يتجاوز الحد المسموح به ولا يمكن حفظه.</strong></p>
+</section>
+<section id="id6">
+<h3>الحل<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p>تُقيِّد وندوز الحجم الأقصى للملف المنقول من أو إلى مشاركة WebDAV. يمكنك زيادة القيمة <strong>FileSizeLimitInBytes ** في **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters</strong>  بالنقر فوق <strong>تعديل</strong>.</p>
+<p>لزيادة الحد الأقصى إلى القيمة 4 غيغابايت، حدد <strong>عشري Decimal</strong>، أدخِل قيمة <strong>4294967295</strong>، و أعِد تشغيل وندوز أو أعِد تشغيل خدمة <strong>WebClient</strong>.</p>
+</section>
+<section id="id7">
+<h3>مشكلة<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<p>لا تؤدي إضافة محرك WebDAV على نظام التشغيل وندوز عبر الخطوات الموضحة أعلاه إلى عرض الحجم الصحيح للمساحة المتوفرة في نكست كلاود، و بدلاً من ذلك تُظهِر حجم محرك الأقراص :C مع المساحة المتوفرة به.</p>
+</section>
+<section id="answer">
+<h3>الجواب<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
+<p>لسوء الحظ، يعد هذا تقييدًا لـ WebDAV نفسه، لأنه لا يوفر طريقةً للعميل للحصول على المساحة الخالية المتوفرة له على الخادوم. يعود وندوز تلقائيّاً لإظهار حجم محرك الأقراص :C بمساحته المتوفرة بدلاً من ذلك. لذلك للأسف لا يوجد حل حقيقي لهذه المشكلة.</p>
+</section>
+<section id="id8">
+<h3>مشكلة<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<p>فشل الوصول إلى ملفاتك من مايكروسوف أوفيس MS Office عبر WebDAV.</p>
+</section>
+<section id="id9">
+<h3>الحل<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<p>إشكاليات معروفة و حلولها موثقة في المقال <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a>.</p>
+</section>
+<section id="id10">
+<h3>مشكلة<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>يتعذّر تعيين map نكست كلاود كمحرك اقراص WebDAV في وندوز باستعمال شهادة ذاتية التوقيع.</p>
+</section>
+<section id="id11">
+<h3>الحل<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>الوصول إلى خادوم نكست كلاود عبر متصفح الوب المفضل عندك.</p></li>
+<li><p>أنقُر حتى تصل إلى خطأ الشهادة certificate error في سطر حالة المتصفح browser status line.</p></li>
+<li><p>View the certificate, then from the Details tab, select 'Copy to File'.</p></li>
+<li><p>إحفَظ الملف إلى سطح مكتبك بأيّ اسم مؤقت؛ على سبيل المثال: <code class="docutils literal notranslate"><span class="pre">myNextcloud.pem</span></code>.</p></li>
+<li><p>Go to Start menu &gt; Run, type MMC, and click 'OK' to open Microsoft Management
+Console.</p></li>
+<li><p>إذهَب إلى File &gt; Add/Remove Snap-In.</p></li>
+<li><p>Select Certificates, Click 'Add', choose 'My User Account', then 'Finish', and
+finally 'OK'.</p></li>
+<li><p>البحث نزولاً في تفاصيل شهادات &quot;تصديق سلطات جذر الثقة&quot; Trust Root Certification Authorities.</p></li>
+<li><p>الضغط بزر الفارة الأيمن على &quot;الشهادة&quot; ثم تحديد &quot;كل المهام&quot; ثم الضغط على &quot;إستيرَاد&quot; Import.</p></li>
+<li><p>إختر الشهادات المحفوظة على سطح المكتب.</p></li>
+<li><p>إختَر &quot;وضع كل الشهادات في المتجر التالي&quot; Place all Certificates in the following Store، و اضغَط &quot;إستعراض&quot; Browse.</p></li>
+<li><p>Check the Box that says Show Physical Stores, expand out Trusted Root
+Certification Authorities, select Local Computer there, click 'OK', and
+Complete the Import.</p></li>
+<li><p>راجع القائمة للتأكد من ظهور الشهادة فيها. ربما تحتاج إلى تحديث الصفحة لتراها.</p></li>
+<li><p>أخرُج من MMC.</p></li>
+</ol>
+<p>لمستعملي فايرفوكس:</p>
+<ol class="arabic simple">
+<li><p>شغّل متصفحك و إذهب إلى Application menu &gt; History &gt; Clear recent history...</p></li>
+<li><p>إختّر 'كل شيء Everything' في القائمة المنسدلة 'الفترة الزمنية المطلوب محوها Time range to clear'</p></li>
+<li><p>إختَر مربع الحوار 'الدخولات النشطة Active Logins'</p></li>
+<li><p>إضغَط على الزر 'إمْحِ الآن Clear now'</p></li>
+<li><p>أغلِق المتصفح ثم أعِد فتحه ثم جرّب.</p></li>
+</ol>
+<p>لمستعملي المتصفحات المبنية على كروم (Chrome, Chromium, Microsoft Edge):</p>
+<ol class="arabic simple">
+<li><p>إفتَح &quot;لوحة التحكم&quot; Contyrol Panel في وندوز ثم انتقل إلى &quot;خيارات الإنترنت&quot; Internet Options</p></li>
+<li><p>في تبويبة &quot;المحتوى&quot; Conent، إضغَط على زر &quot;إمح حالة SSL&quot;ـ Clear SSL State.</p></li>
+<li><p>أغلِق المتصفح ثم أعِد فتحه ثم جرّب.</p></li>
+</ol>
+</section>
+</section>
+<section id="accessing-files-using-curl">
+<h2>الوصول إلى الملفات باستعمال cURL<a class="headerlink" href="#accessing-files-using-curl" title="Link to this heading"></a></h2>
+<p>نظرًا لأن WebDAV هو امتداد لـ HTTP، يمكن استخدام cURL لبرمجة سكربتات لتنفيذ عمليات على الملفات.</p>
+<div class="admonition note">
+<p class="admonition-title">ملاحظة</p>
+<p><strong>Settings</strong> → <strong>Administration</strong> → <strong>Sharing</strong> → <strong>Allow users on this server to send shares to other servers</strong>. إذا كان هذا الخيار معطلاً، عندها يلزم تمرير الخيار <code class="docutils literal notranslate"><span class="pre">--header</span> <span class="pre">&quot;X-Requested-With:</span> <span class="pre">XMLHttpRequest&quot;</span></code> إلى cURL.</p>
+</div>
+<p>لإنشاء ملف اسمه هو تاريخ اليوم:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MKCOL<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>لرفع ملف <code class="docutils literal notranslate"><span class="pre">error.log</span></code> في ذلك الدليل:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-T<span class="w"> </span>error.log<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">/error.log&quot;</span>
+</pre></div>
+</div>
+<p>لنقل ملف:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MOVE<span class="w"> </span>--header<span class="w"> </span><span class="s1">&#39;Destination: https://example.com/nextcloud/remote.php/dav/files/USERNAME/target.jpg&#39;</span><span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/source.jpg
+</pre></div>
+</div>
+<p>للحصول على خصائص الملفات  properties of files في the root folder الدليل الجذري:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>PROPFIND<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Depth: 1&quot;</span><span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/<span class="w"> </span><span class="p">|</span><span class="w"> </span>xml_pp
+<span class="w">    </span>&lt;?xml<span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="w"> </span><span class="nv">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>?&gt;
+&lt;d:multistatus<span class="w"> </span>xmlns:d<span class="o">=</span><span class="s2">&quot;DAV:&quot;</span><span class="w"> </span>xmlns:oc<span class="o">=</span><span class="s2">&quot;http://nextcloud.org/ns&quot;</span><span class="w"> </span>xmlns:s<span class="o">=</span><span class="s2">&quot;http://sabredav.org/ns&quot;</span>&gt;
+<span class="w">  </span>&lt;d:response&gt;
+<span class="w">    </span>&lt;d:href&gt;/nextcloud/remote.php/dav/files/USERNAME/&lt;/d:href&gt;
+<span class="w">    </span>&lt;d:propstat&gt;
+<span class="w">      </span>&lt;d:prop&gt;
+<span class="w">        </span>&lt;d:getlastmodified&gt;Tue,<span class="w"> </span><span class="m">13</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2015</span><span class="w"> </span><span class="m">17</span>:07:45<span class="w"> </span>GMT&lt;/d:getlastmodified&gt;
+<span class="w">        </span>&lt;d:resourcetype&gt;
+<span class="w">          </span>&lt;d:collection/&gt;
+<span class="w">        </span>&lt;/d:resourcetype&gt;
+<span class="w">        </span>&lt;d:quota-used-bytes&gt;163&lt;/d:quota-used-bytes&gt;
+<span class="w">        </span>&lt;d:quota-available-bytes&gt;11802275840&lt;/d:quota-available-bytes&gt;
+<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">&quot;561d3a6139d05&quot;</span>&lt;/d:getetag&gt;
+<span class="w">      </span>&lt;/d:prop&gt;
+<span class="w">      </span>&lt;d:status&gt;HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK&lt;/d:status&gt;
+<span class="w">    </span>&lt;/d:propstat&gt;
+<span class="w">  </span>&lt;/d:response&gt;
+<span class="w">  </span>&lt;d:response&gt;
+<span class="w">    </span>&lt;d:href&gt;/nextcloud/remote.php/dav/files/USERNAME/welcome.txt&lt;/d:href&gt;
+<span class="w">    </span>&lt;d:propstat&gt;
+<span class="w">      </span>&lt;d:prop&gt;
+<span class="w">        </span>&lt;d:getlastmodified&gt;Tue,<span class="w"> </span><span class="m">13</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2015</span><span class="w"> </span><span class="m">17</span>:07:35<span class="w"> </span>GMT&lt;/d:getlastmodified&gt;
+<span class="w">        </span>&lt;d:getcontentlength&gt;163&lt;/d:getcontentlength&gt;
+<span class="w">        </span>&lt;d:resourcetype/&gt;
+<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">&quot;47465fae667b2d0fee154f5e17d1f0f1&quot;</span>&lt;/d:getetag&gt;
+<span class="w">        </span>&lt;d:getcontenttype&gt;text/plain&lt;/d:getcontenttype&gt;
+<span class="w">      </span>&lt;/d:prop&gt;
+<span class="w">      </span>&lt;d:status&gt;HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK&lt;/d:status&gt;
+<span class="w">    </span>&lt;/d:propstat&gt;
+<span class="w">  </span>&lt;/d:response&gt;
+&lt;/d:multistatus&gt;
+</pre></div>
+</div>
+</section>
+<section id="accessing-files-using-winscp">
+<h2>الوصول إلى الملفات باستعمال WinSCP<a class="headerlink" href="#accessing-files-using-winscp" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://winscp.net/eng/docs/introduction/">WinSCP</a> هو تطبيق عميل مفتوح المصدر في نظام وندوز لـ SFTP, و FTP, و WebDAV, و S3, و SCP. وظيفته الرئيسية هي نقل الملفات بين حاسوب محلي و حاسوب قصي. علاوة على ذلك، يُوفّر WinSCP وظائف البرمجة النصية و وظائف إدارة الملفات الأساسية.</p>
+<p>بإمكانك تنزيل النسخة المحمولة من WinSCP من <a class="reference external" href="https://winscp.net/eng/downloads.php/">download</a> و تشغيلها على لينكس عبر  <a class="reference external" href="https://wiki.winehq.org/Main_Page/">Wine</a>.</p>
+<p>لتشغيل WinSCP على Linux.، قم بتنزيل wine من خلال مدير حزم التوزيع الخاص بك، ثم قم بتشغيله باستخدام الأمر:  <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code>.</p>
+<p>للتوصيل مع نكست كلاود:</p>
+<ul class="simple">
+<li><p>إبدأ WinSCP</p></li>
+<li><p>إضغَط  'جلسة Session' في القائمة</p></li>
+<li><p>إضغَط خيار القائمة  'جلسة جديدة New Session'</p></li>
+<li><p>عيّن القائمة المنسدلة 'بروتوكول الملفات File protocol' لـ WebDAV</p></li>
+<li><p>تعيين القائمة المنسدلة 'التشفير Encryption' إلى &quot;تشفير ضمني TLS/SSL Implicit encryption&quot;</p></li>
+<li><p>إملأ حقل host name اسم المضيف: <code class="docutils literal notranslate"><span class="pre">example.com</span></code></p></li>
+<li><p>إملأ حقل اسم المستخدم: <code class="docutils literal notranslate"><span class="pre">NEXTCLOUDUSERNAME</span></code></p></li>
+<li><p>إملأ حقل كلمة المرور: <code class="docutils literal notranslate"><span class="pre">NEXTCLOUDPASSWORD</span></code></p></li>
+<li><p>إضغَط زر 'مُتقدّم Advanced.'</p></li>
+<li><p>إنتقل إلى 'البيئة Environment' و 'الأدلة Directories' على الجانب</p></li>
+<li><p>إملأ حقل 'الدليل القَصِي Remote directory' بالتالي: <code class="docutils literal notranslate"><span class="pre">/nextcloud/remote.php/dav/files/NEXTCLOUDUSERNAME/</span></code></p></li>
+<li><p>إضغَط زر  'OK'</p></li>
+<li><p>إضغَط زر 'حفظ Save'</p></li>
+<li><p>حدّد الخيارات المطلوبة و اضغَط على زر  'OK'</p></li>
+<li><p>إضغَط على زر 'الدخول Login' للاتصال بنكست كلاود</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">ملاحظة</p>
+<p>It is recommended to use an app password for the password if you use TOTP as WinSCP does not understand TOTP with Nextcloud at the time of writing (2022-11-07).</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="access_webgui.html" class="btn btn-neutral float-left" title="الوصول إلى ملفاتك باستخدام واجهة ويب نكست كلاود" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="deleted_file_management.html" class="btn btn-neutral float-right" title="إدارة الملفات المحذوفة" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/af/">af</a></dd>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/el_GR/">el_GR</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/eo/">eo</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/eu/">eu</a></dd>
+<dd><a href="/server/latest/user_manual/fi_FI/">fi_FI</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/hr/">hr</a></dd>
+<dd><a href="/server/latest/user_manual/hu/">hu</a></dd>
+<dd><a href="/server/latest/user_manual/hu_HU/">hu_HU</a></dd>
+<dd><a href="/server/latest/user_manual/id/">id</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/ja_JP/">ja_JP</a></dd>
+<dd><a href="/server/latest/user_manual/ko/">ko</a></dd>
+<dd><a href="/server/latest/user_manual/mn/">mn</a></dd>
+<dd><a href="/server/latest/user_manual/nb_NO/">nb_NO</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/nn/">nn</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/pt_PT/">pt_PT</a></dd>
+<dd><a href="/server/latest/user_manual/ro/">ro</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/si/">si</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sq/">sq</a></dd>
+<dd><a href="/server/latest/user_manual/sr/">sr</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/ta/">ta</a></dd>
+<dd><a href="/server/latest/user_manual/th/">th</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/uk/">uk</a></dd>
+<dd><a href="/server/latest/user_manual/uz/">uz</a></dd>
+<dd><a href="/server/latest/user_manual/vi/">vi</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+<dd><a href="/server/latest/user_manual/zh_TW/">zh_TW</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>الإصدارات</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/25/user_manual">25</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/user_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/user_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>التحميل</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>قراءة دليل الارشادات</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">الصفحة الرئيسية للمشروع</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">الملفات التنفيذية المبنية builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
