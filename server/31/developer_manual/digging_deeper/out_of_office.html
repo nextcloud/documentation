@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Out-of-office periods &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Performance considerations" href="performance.html" />
+    <link rel="prev" title="Notifications" href="notifications.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/index.html">Config &amp; Preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="continuous_integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard.html">Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deadlock.html">Deadlocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files-metadata.html">Files Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupware/index.html">Groupware integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html">HTTP Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translation.html">Machine Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Out-of-office periods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#access-data-from-within-a-nextcloud-app-via-ocp">Access data from within a Nextcloud App via OCP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#listening-to-events">Listening to events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-data-structure">Common data structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonenumberutil.html">Phone number util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psr.html">PSR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile.html">Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiler.html">Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">Reference providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_apis.html">REST APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_checks.html">Setup checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speech-to-text.html">Speech-To-Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talk.html">Talk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task_processing.html">Task Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_processing.html">Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text2image.html">Text-To-Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status.html">User Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">User migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_host_metadata.html">Web Host Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html">Working with time</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Digging deeper</a></li>
+      <li class="breadcrumb-item active">Out-of-office periods</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/out_of_office.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="out-of-office-periods">
+<h1>Out-of-office periods<a class="headerlink" href="#out-of-office-periods" title="Link to this heading"></a></h1>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.0.</span></p>
+</div>
+<p>Since Nextcloud 28, users may set their out-of-office periods in their personal settings. The data
+can be accessed and modified by Nextcloud Apps via OCP and by clients via OCS. Nextcloud Apps can
+also listen to events emitted by the out-of-office feature.</p>
+<p>The OCS API is documented in the <a class="reference internal" href="../client_apis/OCS/ocs-out-of-office-api.html#ocs-out-of-office-api"><span class="std std-ref">client section</span></a>.</p>
+<section id="access-data-from-within-a-nextcloud-app-via-ocp">
+<h2>Access data from within a Nextcloud App via OCP<a class="headerlink" href="#access-data-from-within-a-nextcloud-app-via-ocp" title="Link to this heading"></a></h2>
+<p>The out-of-office data can be accessed through the <cite>OCP\User\IAvailabilityCoordinator</cite>
+interface. It provides the following methods:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * Check if the feature is enabled on this instance</span>
+<span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">isEnabled</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * Get the user&#39;s ongoing out-of-office data, if any</span>
+<span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">getCurrentOutOfOfficeData</span><span class="p">(</span><span class="nx">IUser</span> <span class="nv">$user</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="nx">IOutOfOfficeData</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * Reset the absence cache to null</span>
+<span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">clearCache</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$userId</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * Is the absence in effect at this moment</span>
+<span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">isInEffect</span><span class="p">(</span><span class="nx">IOutOfOfficeData</span> <span class="nv">$data</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="listening-to-events">
+<h2>Listening to events<a class="headerlink" href="#listening-to-events" title="Link to this heading"></a></h2>
+<p>All events have one common method to retrieve data about the  affected out-of-office period.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">getData</span><span class="p">()</span><span class="o">:</span> <span class="nx">IOutOfOfficeData</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The following events are emitted by the out-of-office feature:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\OutOfOfficeScheduledEvent</span></code> If a new out-of-office period is scheduled for a
+user. This event is only emitted once when there was no out-of-office period before.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\OutOfOfficeChangedEvent</span></code> If the out-of-office data of a user is changed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\OutOfOfficeDeletedEvent</span></code> If the out-of-office period of a user is deleted.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\OutOfOfficeStartedEvent</span></code> If an out-of-office period starts. This event is only
+emitted once and not if a period starting in the past is created.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\OutOfOfficeEndedEvent</span></code> If an out-of-office period ends. This event is only
+emitted once and not if a period ending in the past is created.</p></li>
+</ul>
+</section>
+<section id="common-data-structure">
+<h2>Common data structure<a class="headerlink" href="#common-data-structure" title="Link to this heading"></a></h2>
+<p>The OCP API and emitted events share a common data structure <cite>OCP\User\IOutOfOfficeData</cite>. The
+start and end dates are represented as UNIX timestamps.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">interface</span> <span class="nx">IOutOfOfficeData</span> <span class="k">extends</span> <span class="nx">JsonSerializable</span> <span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Get the unique token assigned to the current out-of-office event</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getId</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getUser</span><span class="p">()</span><span class="o">:</span> <span class="nx">IUser</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Get the accurate out-of-office start date</span>
+<span class="sd">     *</span>
+<span class="sd">     * This event is not guaranteed to be emitted exactly at start date</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getStartDate</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Get the (preliminary) out-of-office end date</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getEndDate</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Get the short summary text displayed in the user status and similar</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getShortMessage</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Get the long out-of-office message for auto responders and similar</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getMessage</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Get the replacement user id for auto responders and similar</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getReplacementUserId</span><span class="p">()</span><span class="o">:</span> <span class="o">?</span><span class="nx">string</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Get the replacement user displayName for auto responders and similar</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getReplacementUserDisplayName</span><span class="p">()</span><span class="o">:</span> <span class="o">?</span><span class="nx">string</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>It can be serialized to a JSON object with the following structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+    <span class="n">userId</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+    <span class="n">startDate</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">endDate</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">shortMessage</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+    <span class="n">message</span><span class="p">:</span> <span class="n">string</span><span class="p">,</span>
+    <span class="n">replacementUserId</span><span class="p">:</span> <span class="n">string</span><span class="o">|</span><span class="n">null</span><span class="p">,</span>
+    <span class="n">replacementUserDisplayName</span><span class="p">:</span> <span class="n">string</span><span class="o">|</span><span class="n">null</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="notifications.html" class="btn btn-neutral float-left" title="Notifications" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="performance.html" class="btn btn-neutral float-right" title="Performance considerations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/developer_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/28/developer_manual"
+             
+          >
+            28
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

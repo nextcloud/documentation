@@ -1,0 +1,1203 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="tr" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Takvim uygulamasını kullanmak &mdash; Nextcloud latest User Manual latest belgelendirmesi</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=9f991a48"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=b0f24d8d"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Dizin" href="../genindex.html" />
+    <link rel="search" title="Ara" href="../search.html" />
+    <link rel="next" title="E-posta uygulamasını kullanmak" href="mail.html" />
+    <link rel="prev" title="Kişiler uygulamasını kullanmak" href="contacts.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Belgeleri arayın" aria-label="Belgeleri arayın" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest kullanıcı rehberi giriş</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Nextcloud latest sürümündeki yenilikler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud site arayüzü</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Dosyalar ve eşitleme</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Kişiler uygulamasını kullanmak</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Takvim uygulamasını kullanmak</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#managing-your-calendars">Takvimleri yönetmek</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-calendar">Yeni bir takvim oluşturmak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-a-calendar">Bir takvimi içe aktarmak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-export-or-delete-a-calendar">Bir takvimi düzenlemek, dışa aktarmak ve silmek</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-transparency">Calendar Transparency</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing-calendars">Takvimleri paylaşmak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#publishing-a-calendar">Bir takvimi yayınlamak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-widget">Calendar Widget</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subscribe-to-a-calendar">Bir takvime abone olmak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subscribe-to-a-holiday-calendar">Bir tatil takvimi üzerine tıklayın</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-events">Etkinlikleri yönetmek</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-event">Yeni bir etkinlik oluşturmak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-talk-conversation">Add Talk conversation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-duplicate-or-delete-an-event">Bir etkinliği düzenlemek, kopyalamak ya da silmek</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#invite-attendees-to-an-event">Bir etkinliğe katılımcılar çağırmak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checking-attendees-busy-times">Checking attendees’ busy times</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#assign-rooms-and-resources-to-an-event">Bir etkinlik için oda ve kaynak ayırtmak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#room-availability">Room availability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-attachments-to-events">Etkinliklere dosya eklemek</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-up-reminders">Anımsatıcıları kurmak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-recurring-options">Yineleme seçenekleri eklemek</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trash-bin">Çöp kutusu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automated-user-status">Automated User Status</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#responding-to-invitations">Çağrılara yanıt vermek</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#availability-working-hours">Uygunluk (çalışma saatleri)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#birthday-calendar">Doğum günü takvimi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#appointments">Randevular</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-an-appointment-configuration">Bir randevu yapılandırması oluşturmak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#booking-an-appointment">Randevu almak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#working-with-the-booked-appointment">Alınmış randevu üzerinde çalışmak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-talk-room-for-booked-appointments">Alınmış randevular için Talk odası oluşturmak</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mail.html">E-posta uygulamasını kullanmak</a></li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">Setting out-of-office messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Android ile eşitlemek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">iOS ile eşitlemek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">macOS ile eşitlemek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Thunderbird ile eşitlemek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">KDE Kontact ile eşitlemek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">GNOME masaüstü ile eşitleme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Windows 10 ile eşitlemek</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Kullanıcı ayarları</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Evrensel erişim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">İki aşamalı kimlik doğrulamasını kullanmak</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Bağlı tarayıcı ve aygıtların yönetimi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Dış Depolama</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Groupware</a></li>
+      <li class="breadcrumb-item active">Takvim uygulamasını kullanmak</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/calendar.rst" class="fa fa-github"> GitHub'da Düzenle</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-calendar-app">
+<span id="calendar-app"></span><h1>Takvim uygulamasını kullanmak<a class="headerlink" href="#using-the-calendar-app" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Takvim uygulaması, varsayılan olarak Nextcloud Hub ile kurulmuş olarak gelir, ancak devre dışı bırakılabilir. Lütfen bunu yöneticinize sorun.</p>
+</div>
+<p>Nextcloud Takvim uygulaması, Nextcloud takvimlerinizi ve etkinliklerinizi eşitleyebileceğiniz diğer takvim uygulamalarına benzer şekilde çalışır.</p>
+<p>Takvim uygulamasını ilk kez açtığınızda, sizin için bir varsayılan takvim oluşturulur.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_application.png" src="../../_images/calendar_application.png" />
+</figure>
+<section id="managing-your-calendars">
+<h2>Takvimleri yönetmek<a class="headerlink" href="#managing-your-calendars" title="Link to this heading"></a></h2>
+<section id="create-a-new-calendar">
+<h3>Yeni bir takvim oluşturmak<a class="headerlink" href="#create-a-new-calendar" title="Link to this heading"></a></h3>
+<p>Önceki takviminizden herhangi bir eski veri aktarmadan yeni bir takvim kullanmak istiyorsanız, yapmanız gereken yeni bir takvim oluşturmaktır.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_create_1.png"><img alt="../../_images/calendar_create_1.png" src="../../_images/calendar_create_1.png" style="width: 348.0px; height: 403.20000000000005px;" />
+</a>
+</figure>
+<ol class="arabic simple">
+<li><p>Sol yan çubuktan <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Yeni</span> <span class="pre">takvim</span></code> üzerine tıklayın.</p></li>
+<li><p>Yeni takviminiz için bir ad yazın, ör. “İş”, “Ev” ya da “Pazarlama planlaması”.</p></li>
+<li><p>Onay işaretine tıkladıktan sonra, yeni takviminiz oluşturulur, aygıtlarınız arasında eşitlenebilir, yeni etkinliklerle doldurulabilir ve arkadaşlarınız ya da iş arkadaşlarınızla paylaşılabilir.</p></li>
+</ol>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_create_2.png"><img alt="../../_images/calendar_create_2.png" src="../../_images/calendar_create_2.png" style="width: 362.40000000000003px; height: 393.6px;" />
+</a>
+</figure>
+</section>
+<section id="import-a-calendar">
+<h3>Bir takvimi içe aktarmak<a class="headerlink" href="#import-a-calendar" title="Link to this heading"></a></h3>
+<p>Takviminizi ve ilgili etkinliklerini Nextcloud kopyanıza aktarmak istiyorsanız, içe aktarmak bunu yapmanın en iyi yoludur.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_settings_sidebar.png"><img alt="../../_images/calendar_settings_sidebar.png" src="../../_images/calendar_settings_sidebar.png" style="width: 246.4px; height: 284.0px;" />
+</a>
+</figure>
+<ol class="arabic simple">
+<li><p>Sol alttaki <code class="docutils literal notranslate"><span class="pre">Ayarlar</span> <span class="pre">ve</span> <span class="pre">içe</span> <span class="pre">aktarma</span></code> etiketli ayarlar simgesine tıklayın.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Takvimi</span> <span class="pre">içe</span> <span class="pre">aktar</span></code> üzerine tıkladıktan sonra, yüklemek için yerel aygıtınızdan bir ya da daha fazla takvim dosyası seçebilirsiniz.</p></li>
+<li><p>Yükleme işlemi biraz zaman alabilir ve içe aktardığınız takvimin büyüklüğüne bağlıdır.</p></li>
+<li><p>A blue progress bar will appear below “Calendar Settings”.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Nextcloud Takvim uygulaması yalnızca, RFC 5545 standardında tanımlanmış iCalendar uyumlu “.ics” dosyalarını destekler.</p>
+</div>
+</section>
+<section id="edit-export-or-delete-a-calendar">
+<h3>Bir takvimi düzenlemek, dışa aktarmak ve silmek<a class="headerlink" href="#edit-export-or-delete-a-calendar" title="Link to this heading"></a></h3>
+<p>Bazen, daha önce içe aktarılmış ya da oluşturulmuş bir takvimin rengini ya da tam adını değiştirmek isteyebilirsiniz. Takvimi yerel sabit sürücünüze aktarmak ya da kalıcı olarak silmek de isteyebilirsiniz.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Lütfen bir takvimi silmenin geri alınamaz bir işlem olduğunu unutmayın. Silme işleminden sonra, yerel bir yedeğiniz olmadıkça takvimi geri yüklemenin bir yolu yoktur.</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/calendar_dropdown.png" src="../../_images/calendar_dropdown.png" />
+</figure>
+<p>Click on the “pen” icon of the respective calendar. You will see a new popup that will allow you to change
+the calendar name and color, and buttons to delete or export the calendar.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_settings.png" src="../../_images/calendar_settings.png" />
+</figure>
+</section>
+<section id="calendar-transparency">
+<h3>Calendar Transparency<a class="headerlink" href="#calendar-transparency" title="Link to this heading"></a></h3>
+<p>You can toggle the checkbox “Never show me as busy (set calendar to transparent)” to influence if this calendars’ events
+are taken into account in Free/Busy calculations. If checked, no events in this calendar will be taken into account, your schedule will
+always be free, regardless of an events’ settings.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_transparency.png" src="../../_images/calendar_transparency.png" />
+</figure>
+</section>
+<section id="sharing-calendars">
+<h3>Takvimleri paylaşmak<a class="headerlink" href="#sharing-calendars" title="Link to this heading"></a></h3>
+<p>You may share your calendar with other users or groups.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_sharing_1.png" src="../../_images/calendar_sharing_1.png" />
+</figure>
+<p>Calendars may be shared with write access or read-only. When sharing a calendar with write access, users with whom the calendar is shared will be able to create new events into the calendar as well as edit and delete existing ones.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_sharing_2.png" src="../../_images/calendar_sharing_2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Calendar shares currently cannot be accepted or rejected. If you want to stop having a calendar that someone shared with you, you can click on the 3-dot menu next to the calendar in the calendar list and click on “Unshare from me”. To restore a share, the calendar can be reshared again, either for the whole group, resetting all unshares, or for a single user.</p>
+</div>
+</section>
+<section id="publishing-a-calendar">
+<h3>Bir takvimi yayınlamak<a class="headerlink" href="#publishing-a-calendar" title="Link to this heading"></a></h3>
+<p>Takvimler, herkese açık bir bağlantı üzerinden dış kullanıcılara da görüntülenebilir (salt okunur). Bir takvimin paylaşım menüsünü açıp « Bağlantıyı paylaş » yanındaki « + » ögesine tıklayarak herkese açık bir bağlantı oluşturabilirsiniz. Oluşturulan herkese açık bağlantıyı kopyalayıp yapıştırarak ya da e-posta ile başkalarına gönderebilirsiniz.</p>
+<p>Ayrıca takvimin herkese açık sayfalara HTML iframe olarak eklenmesini sağlayan « yerleştirme kodu » seçeneğini de kullanabilirsiniz.</p>
+<p>Bir yerleştirme bağlantısının sonuna benzersiz kodlar eklenerek birden çok takvim birlikte paylaşılabilir. Bireysel kodları takvimlerin herkese açık bağlantısının sonunda bulabilirsiniz. Tam adres <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/index.php/apps/calendar/embed/&lt;token1&gt;-&lt;token2&gt;-&lt;token3&gt;</span></code> gibi görünecektir.</p>
+<p>To change the default view or date of an embedded calendar, you need to provide a URL that looks like <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/index.php/apps/calendar/embed/&lt;token&gt;/&lt;view&gt;/&lt;date&gt;</span></code>.
+In this url you need to replace the following variables:</p>
+<ul class="simple">
+<li><p>Takvimin kodu ile <code class="docutils literal notranslate"><span class="pre">&lt;token&gt;</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dayGridMonth</span></code>, <code class="docutils literal notranslate"><span class="pre">timeGridWeek</span></code>, <code class="docutils literal notranslate"><span class="pre">timeGridDay</span></code>, <code class="docutils literal notranslate"><span class="pre">listMonth</span></code>, <code class="docutils literal notranslate"><span class="pre">listWeek</span></code>, <code class="docutils literal notranslate"><span class="pre">listDay</span></code> kodlarından biri ile <code class="docutils literal notranslate"><span class="pre">&lt;view&gt;</span></code>. Varsayılan görünüm <code class="docutils literal notranslate"><span class="pre">dayGridMonth</span></code> ve normal olarak kullanılan liste <code class="docutils literal notranslate"><span class="pre">listMonth</span></code> şeklindedir,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">now</span></code> ya da tarih ile <code class="docutils literal notranslate"><span class="pre">&lt;date&gt;</span></code>. Tarih biçimi <code class="docutils literal notranslate"><span class="pre">&lt;year&gt;-&lt;month&gt;-&lt;day&gt;</span></code> (<code class="docutils literal notranslate"><span class="pre">2019-12-28</span></code> gibi) şeklinde olmalıdır.</p></li>
+</ul>
+<p>Herkese açık sayfada, kullanıcılar takvime abone olma bağlantısını kullanabilir ve tüm takvimi doğrudan dışa aktarabilir.</p>
+</section>
+<section id="calendar-widget">
+<h3>Calendar Widget<a class="headerlink" href="#calendar-widget" title="Link to this heading"></a></h3>
+<p>You can embed your calendars into supported apps like <code class="docutils literal notranslate"><span class="pre">Talk</span></code>, <code class="docutils literal notranslate"><span class="pre">Notes</span></code>, etc…
+by either sharing the public link to make the embed viewable (read-only) to all users
+or by using the internal link to make it private.</p>
+</section>
+<section id="subscribe-to-a-calendar">
+<h3>Bir takvime abone olmak<a class="headerlink" href="#subscribe-to-a-calendar" title="Link to this heading"></a></h3>
+<p>iCal takvimlerine doğrudan Nextcloud içinden abone olabilirsiniz. Nextcloud takvimi birlikte çalışma standardına (RFC 5545) uygun olarak geliştirildiği için, Google Calendar, Apple iCloud ve yukarıda açıklandığı gibi diğer Nextcloud kopyaları gibi birçok takvim sunucusu ile uyumludur.  Yayınlanan takvimlerin içeriği, abonelik bağlantılarıyla birlikte karşılıklı eşitlenebilir.</p>
+<ol class="arabic simple">
+<li><p>Sol yan çubuktan <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Yeni</span> <span class="pre">takvim</span></code> üzerine tıklayın</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Bağlantıdan</span> <span class="pre">yeni</span> <span class="pre">abonelik</span> <span class="pre">(salt</span> <span class="pre">okunur)</span></code> üzerine tıklayın</p></li>
+<li><p>Abone olmak istediğiniz paylaşılan takvimin bağlantısını yazın ya da yapıştırın.</p></li>
+</ol>
+<p>Bu kadar. Abone olduğunuz takvimler düzenli olarak güncellenir.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Abonelikler varsayılan olarak her hafta yenilenir. Yöneticiniz bu ayarı değiştirmiş olabilir.</p>
+</div>
+</section>
+<section id="subscribe-to-a-holiday-calendar">
+<h3>Bir tatil takvimi üzerine tıklayın<a class="headerlink" href="#subscribe-to-a-holiday-calendar" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.4.</span></p>
+</div>
+<p><a class="reference external" href="https://www.thunderbird.net/calendar/holidays/">Thunderbird</a> tarafından sağlanan salt okunur bir tatil takvimine abone olabilirsiniz.</p>
+<ol class="arabic simple">
+<li><p>Sol yan çubuktan <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Yeni</span> <span class="pre">takvim</span></code> üzerine tıklayın</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Tatil</span> <span class="pre">takvimi</span> <span class="pre">ekle</span></code> üzerine tıklayın</p></li>
+<li><p>Ülke ve bölgenizi bulup <code class="docutils literal notranslate"><span class="pre">Abone</span> <span class="pre">ol</span></code> üzerine tıklayın</p></li>
+</ol>
+</section>
+</section>
+<section id="managing-events">
+<h2>Etkinlikleri yönetmek<a class="headerlink" href="#managing-events" title="Link to this heading"></a></h2>
+<section id="create-a-new-event">
+<h3>Yeni bir etkinlik oluşturmak<a class="headerlink" href="#create-a-new-event" title="Link to this heading"></a></h3>
+<p>Etkinlikler, yapılacağı zaman üzerine tıklanarak oluşturulabilir. Takvimin gün ve hafta görünümünde, imleci etkinlik zamanının üzerine getirdikten sonra tıklayıp zamana göre sürükleyin ve bırakın.</p>
+<p>Clicking on the globe button brings up the timezone selector. You are able to choose different timezones for the start and end of your event. This is useful when travelling.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_new-event_week.png" src="../../_images/calendar_new-event_week.png" />
+</figure>
+<p>Ay görünümünde, hedef gün bölgesine tek tıklama yeterlidir.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_new-event_month.png" src="../../_images/calendar_new-event_month.png" />
+</figure>
+<p>After that, you can type in the event’s name (e.g. <strong>Meeting with Linus</strong>), choose
+the calendar in which you want to save the event to (e.g. <strong>Personal</strong>, <strong>Community Events</strong>),
+check and concretize the time span or set the event as an all-day event. Optionally
+you can specify a location and a description.</p>
+<p>If you want to edit advanced details such as the <strong>Attendees</strong> or <strong>Reminders</strong>, or if you
+want to set the event as a repeating event, click on the <code class="docutils literal notranslate"><span class="pre">More</span></code> button to open the advanced editor.</p>
+</section>
+<section id="add-talk-conversation">
+<h3>Add Talk conversation<a class="headerlink" href="#add-talk-conversation" title="Link to this heading"></a></h3>
+<p>You can include an existing Talk conversation in your event by clicking “Add Talk conversation”. To view the list of existing Talk conversations, ensure the Talk app is enabled. If you’d like to create a new Talk conversation, you can do so directly from the same modal.</p>
+<figure class="align-default">
+<img alt="../../_images/add-talk-room.png" src="../../_images/add-talk-room.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>If you always want to open the advanced editor instead of the
+simple event editor popup, you uncheck the option
+<code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">simplified</span> <span class="pre">editor</span></code> in the <code class="docutils literal notranslate"><span class="pre">Settings</span></code> section of the app.</p>
+</div>
+<p>Mavi <code class="docutils literal notranslate"><span class="pre">Ekle</span></code> düğmesine tıkladığınızda etkinlik oluşturulur.</p>
+</section>
+<section id="edit-duplicate-or-delete-an-event">
+<h3>Bir etkinliği düzenlemek, kopyalamak ya da silmek<a class="headerlink" href="#edit-duplicate-or-delete-an-event" title="Link to this heading"></a></h3>
+<p>Belirli bir etkinliği düzenlemek, kopyalamak ya da silmek istiyorsanız, üzerine tıklamanız yeterlidir.</p>
+<p>After that you will be able to re-set all event details and open the
+advanced editor by clicking on <code class="docutils literal notranslate"><span class="pre">More</span></code>.</p>
+<p>Clicking on the <code class="docutils literal notranslate"><span class="pre">Update</span></code> button will update the event. To cancel your changes, click on the close icon on top right of the popup or advanced editor.</p>
+<p>If you open the advanced view and click the three dot menu next to the event name, you have an option to export the event as an <code class="docutils literal notranslate"><span class="pre">.ics</span></code> file or remove the event from your calendar.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_event_menu.png" src="../../_images/calendar_event_menu.png" />
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tüyo</p>
+<p>Sildiğiniz etkinlikler <a class="reference internal" href="#calendar-trash-bin"><span class="std std-ref">çöp kutusuna</span></a> atılır. Kazara silinmiş etkinlikler çöpten çıkarılabilir.</p>
+</div>
+<p>Ayrıca, bir etkinliği temel düzenleyiciden dışa aktarabilir, kopyalabilir ya da silebilirsiniz.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_event_menu_modal.png" src="../../_images/calendar_event_menu_modal.png" />
+</figure>
+</section>
+<section id="invite-attendees-to-an-event">
+<span id="calendar-attendees"></span><h3>Bir etkinliğe katılımcılar çağırmak<a class="headerlink" href="#invite-attendees-to-an-event" title="Link to this heading"></a></h3>
+<p>Bir etkinliğe katılımcılar çağırarak ekleyebilirsiniz. Katılımcılara bir çağrı e-postası gönderilir ve etkinliğe katılacaklarını onaylayabilir ya da red edebilirler. Katılımcılar, Nextcloud kopyalarınızdaki diğer kullanıcılar, adres defterlerinizdeki ve doğrudan e-posta adreslerinizdeki kişiler olabilir. Ayrıca, her katılımcı için katılım düzeyini değiştirebilir veya belirli bir katılımcı için e-posta bildirimini devre dışı bırakabilirsiniz.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_invitation_level.png"><img alt="../../_images/calendar_event_invitation_level.png" src="../../_images/calendar_event_invitation_level.png" style="width: 811.2px; height: 380.8px;" />
+</a>
+</figure>
+<div class="versionchanged">
+<p><span class="versionmodified changed">25 sürümünde değişti: </span>Katılımcı e-posta yanıtı bağlantılarında, artık yorum eklemek veya etkinliğe başka konuklar çağırmak için girdi sağlanmıyor.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tüyo</p>
+<p>Diğer Nextcloud kullanıcılarını bir etkinliğe katılımcı olarak eklerken, varsa onların serbest ya da meşgul olduğu bilgisine erişebilir ve etkinliğiniz için en iyi zaman aralığını seçebilirsiniz. Uygun zamanlarınızın başkaları tarafından görülebilmesi için <a class="reference internal" href="#calendar-working-hours"><span class="std std-ref">çalışma saatlerinizi</span></a> ayarlayın. Serbest ya da meşgul olunduğu bilgisi yalnızca aynı Nextcloud kopyasında bulunan kullanıcılar tarafından görülebilir.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Dikkat</p>
+<p>Bu e-posta çağrıları göndermek için kullanılacağından, sunucu yöneticisi tarafından e-posta sunucusunun <code class="docutils literal notranslate"><span class="pre">Temel</span> <span class="pre">ayarlar</span></code> sekmesinden ayarlanması gerekir.</p>
+</div>
+</section>
+<section id="checking-attendees-busy-times">
+<h3>Checking attendees’ busy times<a class="headerlink" href="#checking-attendees-busy-times" title="Link to this heading"></a></h3>
+<p>After adding attendees to an event you can click on <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">a</span> <span class="pre">time</span></code> to bring up the “Free / Busy” modal. It allows you to see when each attendee has other events, and can help you decide on a time when everyone is free.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_free_busy_modal.png"><img alt="../../_images/calendar_free_busy_modal.png" src="../../_images/calendar_free_busy_modal.png" style="width: 987.2px; height: 800.8000000000001px;" />
+</a>
+</figure>
+<p>Your own busy blocks will be shown in the same color as your personal calendar, your out of office times will be shown in gray, and other attendees’ busy times will have the same color as their avatar shown in the advanced editor.</p>
+<p>You can select a time slot for the event directly on the calendar.</p>
+</section>
+<section id="assign-rooms-and-resources-to-an-event">
+<h3>Bir etkinlik için oda ve kaynak ayırtmak<a class="headerlink" href="#assign-rooms-and-resources-to-an-event" title="Link to this heading"></a></h3>
+<p>Katılımcılara benzer şekilde, etkinliklerinize oda ve kaynak ekleyebilirsiniz. Sistem, her oda ve kaynağın çakışma olmadan ayırtılmasını sağlar. Bir kullanıcı, bir etkinliğe ilk sırada eklediği bir oda veya kaynak onaylanmış olarak görünür. Oda veya kaynak, çakışan zamanlardaki diğer etkinliklere reddedilmiş olarak görünür.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Odalar ve kaynaklar Nextcloud tarafından yönetilmez. Takvim uygulaması bir kaynak eklemenize veya değiştirmenize izin vermez. Bunları bir kullanıcı olarak seçebilmeniz için yöneticinizin kaynak yönetimi uygulamalarını kurması ve yapılandırması gerekir.</p>
+</div>
+</section>
+<section id="room-availability">
+<h3>Room availability<a class="headerlink" href="#room-availability" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.0.</span></p>
+</div>
+<p>If the “Calendar Rooms and Resources” app is installed on your instance, you can now find <code class="docutils literal notranslate"><span class="pre">Room</span> <span class="pre">availability</span></code>  the <code class="docutils literal notranslate"><span class="pre">Resources</span></code> section. It lists all the existing rooms. You can check the availability of each room in a manner similar to checking the free/busy status of event attendees.</p>
+<figure class="align-default">
+<img alt="../../_images/room_availability.png" src="../../_images/room_availability.png" />
+</figure>
+</section>
+<section id="add-attachments-to-events">
+<h3>Etkinliklere dosya eklemek<a class="headerlink" href="#add-attachments-to-events" title="Link to this heading"></a></h3>
+<p>Yükleyerek ya da dosyalardan ekleyerek, ek dosyaları etkinlikler içine aktarabilirsiniz</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_adding_attachments.png"><img alt="../../_images/calendar_adding_attachments.png" src="../../_images/calendar_adding_attachments.png" style="width: 790.4000000000001px; height: 382.40000000000003px;" />
+</a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Dosyalar, yeni etkinlikler oluşturulurken ya da var olan etkinlikler düzenlenirken eklenebilir. Yeni yüklenen dosyalar, varsayılan olarak kök klasördeki calendar klasörüne kaydedilir.</p>
+</div>
+<p>Sol alt köşedeki “Takvim ayarları” bölümüne gidip “varsayılan ek dosya konumu” seçeneğini değiştirerek ek dosyalar klasörünü değiştirebilirsiniz.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_attachments_location.png"><img alt="../../_images/calendar_attachments_location.png" src="../../_images/calendar_attachments_location.png" style="width: 184.2px; height: 208.79999999999998px;" />
+</a>
+</figure>
+</section>
+<section id="set-up-reminders">
+<h3>Anımsatıcıları kurmak<a class="headerlink" href="#set-up-reminders" title="Link to this heading"></a></h3>
+<p>Bir etkinlik gerçekleşmeden önce bilgilendirilmek için anımsatıcıları ayarlayabilirsiniz. Şu anda desteklenen bildirim yöntemleri şunlardır:</p>
+<ul class="simple">
+<li><p>E-posta bildirimleri</p></li>
+<li><p>Nextcloud bildirimleri</p></li>
+</ul>
+<p>Etkinlikle ilgili bir zaman ya da belirli bir tarih için anımsatıcılar ayarlayabilirsiniz.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_reminders.png"><img alt="../../_images/calendar_event_reminders.png" src="../../_images/calendar_event_reminders.png" style="width: 507.20000000000005px; height: 284.0px;" />
+</a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Yalnızca takvim sahibi ile takvimin yazma erişimiyle paylaşıldığı kişi veya gruplar bildirim alır. Bir bildirim almanız gerektiğini düşündüğünüz halde almıyorsanız, BT yöneticiniz sunucunuzda bu özelliği devre dışı bırakmış olabilir.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Takviminizi mobil aygıtlar veya diğer 3. taraf istemcilerle eşitlerseniz, bildirimler orada da görüntülenebilir.</p>
+</div>
+</section>
+<section id="add-recurring-options">
+<h3>Yineleme seçenekleri eklemek<a class="headerlink" href="#add-recurring-options" title="Link to this heading"></a></h3>
+<p>Bir etkinlik her gün, hafta, ay veya yılda “yinelenecek” şekilde ayarlanabilir. Yineleme için, etkinliğin haftanın belirli bir gününde veya her ayın dördüncü Çarşambası gününde gerçekleşeceği gibi karmaşık yineleme  kuralları eklenebilir.</p>
+<p>Yinelemenin ne zaman sona ereceğini de ayarlayabilirsiniz.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_repeat.png"><img alt="../../_images/calendar_event_repeat.png" src="../../_images/calendar_event_repeat.png" style="width: 519.2px; height: 557.6px;" />
+</a>
+</figure>
+</section>
+<section id="trash-bin">
+<span id="calendar-trash-bin"></span><h3>Çöp kutusu<a class="headerlink" href="#trash-bin" title="Link to this heading"></a></h3>
+<p>Takvim üzerinde bir etkinlik, görev ya da bir takvim sildiğinizde verileriniz hemen kaybolmaz. Bunun yerine, bu ögeler bir <em>çöp kutusuna</em> atılır. Böylece bir silme işlemini geri alabilirsiniz. Varsayılan olarak 30 gün sonra (yöneticiniz bu ayarı değiştirmiş olabilir), bu ögeler kalıcı olarak silinir. Ayrıca isterseniz ögeleri daha önce de kalıcı olarak silebilirsiniz.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_trash_bin.png" src="../../_images/calendar_trash_bin.png" />
+</figure>
+<p><code class="docutils literal notranslate"><span class="pre">Çöpü</span> <span class="pre">boşalt</span></code> düğmesi çöp kutusundaki tüm ögeleri kalıcı olarak siler..</p>
+<div class="admonition tip">
+<p class="admonition-title">Tüyo</p>
+<p>Çöp kutusuna yalnızca Takvim uygulamasından erişilebilir. Bağlı herhangi bir uygulama, çöp kutusunun içeriğini görüntüleyemez. Bununla birlikte, bağlı uygulamalarda silinen etkinlikler, görevler ve takvimler de çöp kutusuna atılır.</p>
+</div>
+</section>
+<section id="automated-user-status">
+<span id="calendar-working-hours"></span><h3>Automated User Status<a class="headerlink" href="#automated-user-status" title="Link to this heading"></a></h3>
+<p>When you have a calendar event scheduled that has a “BUSY” status, your user status will be automatically set to “In a meeting” unless you have set yourself to “Do Not Disturb” or “Invisible”.
+You can overwrite the status with a custom message any time, or set your calendar events to “FREE”.
+Calendars that are transparent will be ignored.</p>
+</section>
+</section>
+<section id="responding-to-invitations">
+<h2>Çağrılara yanıt vermek<a class="headerlink" href="#responding-to-invitations" title="Link to this heading"></a></h2>
+<p>Çağrılara doğrudan uygulama içinden yanıt verebilirsiniz. Etkinlik üzerine tıklayın ve katılım durumunuzu seçin. Bir çağrıyı yanıtlarken belirsiz olarak kabul edebilir, reddedebilir ya da kabul edebilirsiniz.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_accept_simple_editor.png"><img alt="../../_images/calendar_accept_simple_editor.png" src="../../_images/calendar_accept_simple_editor.png" style="width: 595.2px; height: 309.6px;" />
+</a>
+</figure>
+<p>You can respond to an invitation from the advanced editor too.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_accept_advanced_editor.png"><img alt="../../_images/calendar_accept_advanced_editor.png" src="../../_images/calendar_accept_advanced_editor.png" style="width: 800.0px; height: 160.8px;" />
+</a>
+</figure>
+</section>
+<section id="availability-working-hours">
+<h2>Uygunluk (çalışma saatleri)<a class="headerlink" href="#availability-working-hours" title="Link to this heading"></a></h2>
+<p>Zamanlanmış etkinliklerden bağımsız olarak genel kullanılabilirlik, Nextcloud groupware ayarlarından yapılabilir. Bu ayarlar, takvimde <a class="reference internal" href="#calendar-attendees"><span class="std std-ref">diğer kişilerle bir toplantı zamanladığınızda</span></a> serbest-meşgul görünümüne yansıtılır. Thunderbird gibi bazı bağlı istemciler de bu verileri görüntüler.</p>
+<figure class="align-default">
+<img alt="../../_images/caldav_availability.png" src="../../_images/caldav_availability.png" />
+</figure>
+<p>You can configure one-time absences on top of your regular availability in the <a class="reference internal" href="absence.html#groupware-absence"><span class="std std-ref">Absence settings section</span></a>.</p>
+</section>
+<section id="birthday-calendar">
+<h2>Doğum günü takvimi<a class="headerlink" href="#birthday-calendar" title="Link to this heading"></a></h2>
+<p>Doğum günü takvimi, doğum günlerini kişilerinizden alan, otomatik olarak oluşturulmuş bir takvimdir. Bu takvimi düzenlemenin tek yolu, kişi kayıtlarınıza doğum günlerini yazmaktır. Bu takvimi doğrudan takvim uygulamasından düzenleyemezsiniz.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Doğum günü takvimini görmüyorsanız, BT yöneticiniz sunucunuzda bu özelliği devre dışı bırakmış olabilir.</p>
+</div>
+</section>
+<section id="appointments">
+<h2>Randevular<a class="headerlink" href="#appointments" title="Link to this heading"></a></h2>
+<p>As of Calendar v3 the app can generate appointment slots which other Nextcloud users but also people without an account on the instance can book. Appointments offer fine-granular control over when you are possibly free to meet up. This can eliminate the need to send emails back and forth to settle on a date and time.</p>
+<p>Bu bölümde, takvimin sahibi olan ve randevu alanlarını ayarlayan kişi için <em>Düzenleyici</em> terimini kullanacağız. <em>Katılımcı</em> ise, aralıklardan birini ayırtan kişidir.</p>
+<section id="creating-an-appointment-configuration">
+<h3>Bir randevu yapılandırması oluşturmak<a class="headerlink" href="#creating-an-appointment-configuration" title="Link to this heading"></a></h3>
+<p>Randevu düzenleyicisi olarak ana takvim site kullanıcı arayüzünü açarsınız. Sol yan çubukta randevular için bir bölüm bulacaksınız. Yeni bir randevu oluşturma penceresini açabildiniz mi?</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_new.png" src="../../_images/appointment_new.png" />
+</figure>
+<p>Her randevunun temel bilgileri, randevunun ne hakkında olduğunu açıklayan bir başlık (örneğin, bir organizatör bir meslektaşıyla kişisel bir görüşme yapmak istediğinde “Bire bir”), randevunun nerede yapılacağı ve bu randevunun ne hakkında olduğu ile ilgili açıklamadır.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_basics.png" src="../../_images/appointment_config_basics.png" />
+</figure>
+<p>Randevunun süresi bir listeden hazır olarak seçilebilir. Ardından, istediğiniz artışı ayarlayabilirsiniz. Artış, olası zaman aralıklarına göre belirlenir. Örneğin, bir saatlik zaman aralıklarınız olabilir, ancak bunları 30 dakikalık artışlarla dağıtabilirsiniz. Böylece bir katılımcı sabah 9:00 ve sabah 9:30 için rezervasyon yapabilir. Konum ve açıklama hakkında isteğe bağlı bilgiler, katılımcılar için biraz daha fazla bağlam sağlar. Alınan her randevu, takvimlerinizden birine yazılacağından, hangi takvime yazılacağını seçebilirsiniz. Randevular <em>herkese açık</em> ya da <em>kişisel</em> olabilir. Herkese açık randevular, bir Nextcloud kullanıcısının profil sayfasından görülebilir. Kişisel randevulara yalnızca gizli adresi almış kişiler erişebilir.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_calendar_settings.png" src="../../_images/appointment_config_calendar_settings.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Katılımcılara yalnızca takvimlerinizde var olan etkinliklerle çakışmayan zaman aralıkları görüntülenir.</p>
+</div>
+<p>Randevu düzenleyicisi, genellikle haftanın hangi saatlerinde yer ayırtılabileceğini belirleyebilir. Bu zamanlar, çalışma saatleri olabileceği gibi başka herhangi bir özelleştirilmiş program da olabilir.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_booking_hours.png" src="../../_images/appointment_config_booking_hours.png" />
+</figure>
+<p>Bazı randevuların hazırlanması için zaman gerekir (bir mekanda buluşmanız ve oraya arabayla gitmeniz gerektiğinde gibi). Düzenleyici, serbest olması gereken bir süreyi seçebilir. Yalnızca hazırlık süresi boyunca diğer etkinliklerle çakışmayan zaman aralıkları kullanılabilir olur. Ayrıca, her randevudan sonra serbest olması gereken bir zaman belirleme seçeneği de vardır. Bir katılımcının çok yakın zamana rezervasyon yapmasını önlemek için bir sonraki olası randevunun ne kadar erken gerçekleşeceği yapılandırılabilir. Günlük en fazla zaman aralığı belirlenerek, katılımcılar tarafından alınabilecek randevu sayısını sınırlanabilir.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_limits.png" src="../../_images/appointment_config_limits.png" />
+</figure>
+<p>Yapılandırılmış randevu daha sonra sol yan çubukta listelenir. Üç noktalı menüden randevu ön izlemesini görüntüleyebilirsiniz. Randevu bağlantısını kopyalayıp hedef kitlenizle paylaşabilir ya da profil sayfanızdan herkese açık randevunuzu bulmalarını sağlayabilirsiniz. Ayrıca randevu yapılandırmasını düzenleyebilir ya da silebilirsiniz.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_options.png" src="../../_images/appointment_config_options.png" />
+</figure>
+</section>
+<section id="booking-an-appointment">
+<h3>Randevu almak<a class="headerlink" href="#booking-an-appointment" title="Link to this heading"></a></h3>
+<p>Randevu alma sayfası, bir katılımcıya randevunun başlığını, konumunu, açıklamasını ve süresini gösterir. Listede seçilmiş gün için tüm olası zaman aralıkları bulunur. Uygun zamanın olmadığı, çok fazla çakışmanın olduğu veya günlük en fazla alınabilecek randevu sınırına ulaşılmış olan günlerde liste boş görünebilir.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/appointment_booking_1.png"><img alt="../../_images/appointment_booking_1.png" src="../../_images/appointment_booking_1.png" style="width: 673.6px; height: 450.40000000000003px;" />
+</a>
+</figure>
+<p>Randevu almak için katılımcıların bir ad ve bir e-posta adresi yazması gerekir. İsteğe bağlı olarak bir açıklama da ekleyebilirler.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/appointment_booking_2.png"><img alt="../../_images/appointment_booking_2.png" src="../../_images/appointment_booking_2.png" style="width: 588.0px; height: 358.40000000000003px;" />
+</a>
+</figure>
+<p>Rezervasyon yapıldığında, katılımcıya bir onay penceresi görüntülenir.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_3.png" src="../../_images/appointment_booking_3.png" />
+</figure>
+<p>E-posta adresinin geçerli olduğunu doğrulamak için katılımcıya bir onay e-postası gönderilir.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_confirmation_email.png" src="../../_images/appointment_booking_confirmation_email.png" />
+</figure>
+<p>Katılımcı yalnızca onay e-postasındaki bağlantıya tıkladıktan sonra randevu yapılacak ve düzenleyiciye iletilecektir.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_confirmation_dialogue.png" src="../../_images/appointment_booking_confirmation_dialogue.png" />
+</figure>
+<p>Katılımcıya, randevu bilgilerini onaylayan başka bir e-posta gönderilir.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_email_2.png" src="../../_images/appointment_booking_email_2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Bir zaman aralığı onaylanmamışsa, yine de ayırtılabilir olarak görüntülenir. O zamana kadar zaman aralığı, randevusunu daha önce onaylayan başka bir kullanıcı tarafından da ayırtılabilir. Sistem çakışmayı algılar ve yeni bir zaman aralığı seçilmesini önerir.</p>
+</div>
+</section>
+<section id="working-with-the-booked-appointment">
+<h3>Alınmış randevu üzerinde çalışmak<a class="headerlink" href="#working-with-the-booked-appointment" title="Link to this heading"></a></h3>
+<p>Randevu verildiğinde, düzenleyicinin takvimine randevu bilgilerini ve <a class="reference internal" href="#calendar-attendees"><span class="std std-ref">attendee</span></a> ile bir etkinlik eklenir.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_calendar_event.png" src="../../_images/appointment_calendar_event.png" />
+</figure>
+<p>Randevunun “Etkinlik öncesi zaman ekle” ya da “Etkinlik sonrası zaman ekle” seçeneği etkinse, bu zamanlar düzenleyici için takviminde ayrı etkinlikler olarak görünür.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_calendar_prep.png" src="../../_images/appointment_calendar_prep.png" />
+</figure>
+<p>Katılımcılı tüm etkinliklerde olduğu gibi, değişiklik ve iptal bildirimleri katılımcının e-posta adresine gönderilir.</p>
+<p>Katılımcı randevuyu iptal etmek isterse, düzenleyicinin etkinliği iptal edebilmesi ve hatta silebilmesi için düzenleyici ile görüşmelidir.</p>
+</section>
+<section id="create-talk-room-for-booked-appointments">
+<h3>Alınmış randevular için Talk odası oluşturmak<a class="headerlink" href="#create-talk-room-for-booked-appointments" title="Link to this heading"></a></h3>
+<p>Alınmış bir randevu için doğrudan takvim uygulamasından bir Talk odası oluşturabilirsiniz. Seçenek ‘Randevu oluştur’ penceresinde bulunabilir. Bu seçeneği işaretlediğinizde, alınan her randevu için benzersiz bir bağlantı oluşturulur ve bir onay e-postası gönderilir.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="contacts.html" class="btn btn-neutral float-left" title="Kişiler uygulamasını kullanmak" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Önceki</a>
+        <a href="mail.html" class="btn btn-neutral float-right" title="E-posta uygulamasını kullanmak" accesskey="n" rel="next">Sonraki <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Here go the languages -->
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐
+      
+      
+      Turkish
+      
+      <span class="fa fa-caret-down"></span>
+
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Languages</dt>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/af/"
+                 
+              >
+                
+                Afrikaans
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ar/"
+                 
+              >
+                
+                Arabic
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/br/"
+                 
+              >
+                
+                Breton
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ca/"
+                 
+              >
+                
+                Catalan
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/cs/"
+                 
+              >
+                
+                Czech
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/da/"
+                 
+              >
+                
+                Danish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/de/"
+                 
+              >
+                
+                German
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el/"
+                 
+              >
+                
+                Greek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el_GR/"
+                 
+              >
+                
+                el_GR
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/en/"
+                 
+              >
+                
+                English
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eo/"
+                 
+              >
+                
+                Esperanto
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/es/"
+                 
+              >
+                
+                Spanish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eu/"
+                 
+              >
+                
+                eu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fi_FI/"
+                 
+              >
+                
+                Finnish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fr/"
+                 
+              >
+                
+                French
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ga/"
+                 
+              >
+                
+                Irish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/gl/"
+                 
+              >
+                
+                Glacian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hr/"
+                 
+              >
+                
+                Croatian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu/"
+                 
+              >
+                
+                hu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu_HU/"
+                 
+              >
+                
+                Hungarian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/id/"
+                 
+              >
+                
+                Indonesian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/it/"
+                 
+              >
+                
+                Italian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ja_JP/"
+                 
+              >
+                
+                Japanese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ko/"
+                 
+              >
+                
+                Korean
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/mn/"
+                 
+              >
+                
+                Mongolian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nb_NO/"
+                 
+              >
+                
+                Norwegian (NB)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nl/"
+                 
+              >
+                
+                Dutch
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nn/"
+                 
+              >
+                
+                Norwegian (NN)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pl/"
+                 
+              >
+                
+                Polish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_BR/"
+                 
+              >
+                
+                Portuguese (BR)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_PT/"
+                 
+              >
+                
+                Portuguese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ro/"
+                 
+              >
+                
+                Romanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ru/"
+                 
+              >
+                
+                Russian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/si/"
+                 
+              >
+                
+                Sinhala
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sk_SK/"
+                 
+              >
+                
+                Slovakian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sq/"
+                 
+              >
+                
+                Albanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sr/"
+                 
+              >
+                
+                Slovenian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sv/"
+                 
+              >
+                
+                Swedish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ta/"
+                 
+              >
+                
+                Tamil
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/th/"
+                 
+              >
+                
+                th
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/tr/"
+                 
+                 style="color: var(--dark-link-color);"
+                 
+              >
+                
+                Turkish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk/"
+                 
+              >
+                
+                Ukrainian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uz/"
+                 
+              >
+                
+                Uzbek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/vi/"
+                 
+              >
+                
+                Vietnamese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_CN/"
+                 
+              >
+                
+                Chinese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_HK/"
+                 
+              >
+                
+                Chinese (HK)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_TW/"
+                 
+              >
+                
+                Chinese (TW)
+                
+              </a>
+            </dd>
+          
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Sürümler</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/30/user_manual"
+               
+            >
+              30
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/29/user_manual"
+               
+            >
+              29
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/28/user_manual"
+               
+            >
+              28
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>İndirmeler</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Okunacak Belgeler</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Proje Ana Sayfası</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Yapımlar</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

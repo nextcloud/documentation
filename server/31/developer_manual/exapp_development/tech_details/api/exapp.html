@@ -1,0 +1,329 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ExApp &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <script src="../../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Routes" href="routes.html" />
+    <link rel="prev" title="Preferences" href="preferences.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app_development/index.html">App development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">ExApp development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../Introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../DevSetup.html">Setting up dev environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../development_overview/index.html">Development overview</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Technical details</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../InstallationFlow.html">App Installation Flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Deployment.html">Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Authentication.html">Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Translations.html">Translations</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">AppAPI Nextcloud APIs</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="appconfig.html">AppConfig</a></li>
+<li class="toctree-l4"><a class="reference internal" href="preferences.html">Preferences</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">ExApp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="routes.html">Routes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="utils.html">Miscellaneous OCS APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fileactionsmenu.html">File Actions Menu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="topmenu.html">Top Menu Entry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="settings.html">Declarative Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="events_listener.html">Events Listener</a></li>
+<li class="toctree-l4"><a class="reference internal" href="occ_command.html">OCC Command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="talkbots.html">Talk bots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="other_ocs.html">Other OCS APIs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../faq/index.html">Frequently Asked Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">ExApp development</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Technical details</a></li>
+          <li class="breadcrumb-item"><a href="index.html">AppAPI Nextcloud APIs</a></li>
+      <li class="breadcrumb-item active">ExApp</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/exapp_development/tech_details/api/exapp.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="exapp">
+<h1>ExApp<a class="headerlink" href="#exapp" title="Link to this heading"></a></h1>
+<p>OCS APIs for ExApp actions.</p>
+<section id="get-exapps-list">
+<h2>Get ExApps list<a class="headerlink" href="#get-exapps-list" title="Link to this heading"></a></h2>
+<p>Get list of installed ExApps.</p>
+<p>OCS endpoint: <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/apps/app_api/api/v1/ex-app/{list}</span></code></p>
+<p>There are two <code class="docutils literal notranslate"><span class="pre">list</span></code> options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">enabled</span></code>: list only enabled ExApps</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">all</span></code>: list all ExApps</p></li>
+</ul>
+<section id="response-data">
+<h3>Response data<a class="headerlink" href="#response-data" title="Link to this heading"></a></h3>
+<p>The response data is a JSON array of ExApp objects with the following attributes:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;appid of the ExApp&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;name of the ExApp&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;version of the ExApp&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true/false flag&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;last_check_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;timestamp of last successful Nextcloud-&gt;ExApp connection check&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="set-exapp-init-progress">
+<h2>Set ExApp init progress<a class="headerlink" href="#set-exapp-init-progress" title="Link to this heading"></a></h2>
+<p>Used during ExApp <a class="reference internal" href="../../development_overview/ExAppLifecycle.html#ex-app-lifecycle-init"><span class="std std-ref">initialization step</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>AppAPIAuth required.</p>
+</div>
+<p>OCS endpoint: <code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/apps/app_api/ex-app/status</span></code></p>
+<section id="request-data">
+<h3>Request data<a class="headerlink" href="#request-data" title="Link to this heading"></a></h3>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;progress&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;progress value&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;optional, error string message&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>Response data<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>Returns HTTP 200 on success, HTTP 404 on error.</p>
+</section>
+</section>
+<section id="get-nextcloud-url">
+<h2>Get Nextcloud URL<a class="headerlink" href="#get-nextcloud-url" title="Link to this heading"></a></h2>
+<p>It might be necessary for the ExApp to know (or update) the Nextcloud URL.</p>
+<p>OCS endpoint: <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/apps/app_api/api/v1/info/nextcloud_url</span></code></p>
+<section id="id2">
+<h3>Response data<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>Returns the base URL of the Nextcloud instance:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;base_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http(s)://nextcloud.example.com&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="make-requests-to-exapps">
+<h2>Make Requests to ExApps<a class="headerlink" href="#make-requests-to-exapps" title="Link to this heading"></a></h2>
+<p>There are two endpoints for making requests to ExApps:</p>
+<ol class="arabic simple">
+<li><p>Synchronous request: <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/apps/app_api/api/v1/ex-app/request/{appid}</span></code></p></li>
+<li><p>Synchronous request with ExApp user setup: <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/apps/app_api/api/v1/ex-app/request/{appid}/{userId}</span></code></p></li>
+</ol>
+<section id="id3">
+<h3>Request data<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>The request data params are the same as in <code class="docutils literal notranslate"><span class="pre">lib/PublicFunction.php</span></code>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;route&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;relative route to ExApp API endpoint&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GET/POST/PUT/DELETE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">    </span><span class="nt">&quot;options&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">userId</span></code> and <code class="docutils literal notranslate"><span class="pre">appId</span></code> is taken from url params</p>
+</div>
+</section>
+<section id="id4">
+<h3>Response data<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>Successful request to ExApp OCS data response structure is the following:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;status_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HTTP status code&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;response data from ExApp&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;response headers from ExApp&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If there is an error, the response object will have only an <code class="docutils literal notranslate"><span class="pre">error</span></code> attribute with the error message.</p>
+</section>
+</section>
+<section id="get-exapp-enabled-status">
+<h2>Get ExApp enabled status<a class="headerlink" href="#get-exapp-enabled-status" title="Link to this heading"></a></h2>
+<p>Return the enabled status of the authenticated ExApp.</p>
+<p>OCS endpoint: <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/apps/app_api/api/v1/ex-app/state</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This endpoint can be called by ExApp even if it is disabled on the Nextcloud side,
+and requires <a class="reference internal" href="../Authentication.html"><span class="doc">AppAPIAuth</span></a>.</p>
+</div>
+<section id="id5">
+<h3>Response data<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>Returns 1 if the ExApp is enabled, 0 if it is disabled.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="preferences.html" class="btn btn-neutral float-left" title="Preferences" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="routes.html" class="btn btn-neutral float-right" title="Routes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/developer_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/28/developer_manual"
+             
+          >
+            28
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

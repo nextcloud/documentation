@@ -1,0 +1,396 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Release process &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Monetizing your app" href="monetizing.html" />
+    <link rel="prev" title="Maintainers" href="maintainer.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">App publishing and maintenance</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="maintainer.html">Maintainers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Release process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#before-the-release">Before the release</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#change-tracking">Change tracking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#versioning">Versioning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#change-log">Change log</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pre-releases">Pre-releases</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nightly-releases">Nightly releases</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#the-release">The release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#after-the-release">After the release</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#branch-off">Branch off</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prepare-follow-up-releases">Prepare follow-up releases</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#shipped-apps">Shipped Apps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#git-branch-management">Git branch management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Versioning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hybrid-distribution">Hybrid Distribution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference external" href="https://nextcloudappstore.readthedocs.io/en/latest/developer.html">Publishing App on the App Store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monetizing.html">Monetizing your app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publishing.html">The Nextcloud app store rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code_signing.html">Code signing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_automation.html">Release Automation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_upgrade_guide/index.html">App upgrade guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">App publishing and maintenance</a></li>
+      <li class="breadcrumb-item active">Release process</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/app_publishing_maintenance/release_process.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="release-process">
+<span id="app-release-process"></span><h1>Release process<a class="headerlink" href="#release-process" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>This page documents the overall process and tasks of releasing a Nextcloud app to the public, as well as preparation and follow-up tasks.</p>
+<p>Not all of the described steps will apply to all apps. Some require fewer steps, for others there is some additional work to do. Adjust the process accordingly.</p>
+</section>
+<section id="before-the-release">
+<h2>Before the release<a class="headerlink" href="#before-the-release" title="Link to this heading"></a></h2>
+<section id="change-tracking">
+<h3>Change tracking<a class="headerlink" href="#change-tracking" title="Link to this heading"></a></h3>
+<p>If the app uses some sort of tracking like Github milestones, projects or similar, make sure that app scheduled changes have been merged into the target branch.</p>
+<p>At this point you can probably assign a release date (if not set already) on the milestone and close it.</p>
+</section>
+<section id="versioning">
+<span id="app-versioning"></span><h3>Versioning<a class="headerlink" href="#versioning" title="Link to this heading"></a></h3>
+<p>Each update of an app needs a new, higher version number. Before preparing a specific release, the maintainer has to decide what version number the new release will get.</p>
+<p>It is highly recommended that apps follow <a class="reference external" href="https://semver.org/">semantic versioning</a> (semver). This schema allows admins and users to better understand what type of change they can expect when an app update is available.</p>
+<p>Applying semver on Nextcloud apps gives three types of updates: major, minor and patch.</p>
+<section id="patch-updates">
+<h4>Patch updates<a class="headerlink" href="#patch-updates" title="Link to this heading"></a></h4>
+<p>Increment the patch version number when</p>
+<ul class="simple">
+<li><p>A bug gets fixed</p></li>
+<li><p>Translations are added or fixed, but <strong>not</strong> removed</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Example: the app is at version 3.7.2. The next patch version will be 3.7.3.</p>
+</div>
+</section>
+<section id="minor-updates">
+<h4>Minor updates<a class="headerlink" href="#minor-updates" title="Link to this heading"></a></h4>
+<p>Increment the minor version number when</p>
+<ul class="simple">
+<li><p>There is a new feature</p></li>
+<li><p>A new major version of Nextcloud will be supported</p></li>
+<li><p>A new major or minor version of PHP will be supported</p></li>
+<li><p>An additional database type is supported</p></li>
+<li><p>A Nextcloud version that has reached EOL is dropped, e.g. when Nextcloud 19 is removed</p></li>
+<li><p>A PHP version that has reached EOL is dropped, e.g. when PHP 7.3 is removed</p></li>
+<li><p>Any other change that keeps the app compatible with previously compatible environments (forward compatibility)</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Example: the app is at version 3.7.2. The next minor version will be 3.8.0.</p>
+</div>
+</section>
+<section id="major-update">
+<h4>Major update<a class="headerlink" href="#major-update" title="Link to this heading"></a></h4>
+<p>Increment the major version number when</p>
+<ul class="simple">
+<li><p>The app drops support for a major version of Nextcloud that hasn’t reached EOL, e.g. when Nextcloud 23 support is removed and the app now requires Nextcloud 24 or newer</p></li>
+<li><p>The app drops support for a major or minor version of PHP that hasn’t rached EOL, e.g. when PHP 8.0 is removed and the app now requires PHP 8.1 or newer</p></li>
+<li><p>A database type is no longer supported, e.g. when the maintainer decides to stop SQLite support</p></li>
+<li><p>Any other change that makes the app incompatible with a previously compatible environment (breaking change)</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Example: the app is at version 3.7.2. The next major version will be 4.0.0.</p>
+</div>
+</section>
+</section>
+<section id="change-log">
+<h3>Change log<a class="headerlink" href="#change-log" title="Link to this heading"></a></h3>
+<p>If the app <a class="reference external" href="https://keepachangelog.com/en/1.0.0/">keeps a change log</a> (e.g. CHANGELOG.md in the project root) it’s time to update it with all <strong>added</strong>, <strong>changed</strong> and <strong>fixed</strong> items.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">v3.7.1..HEAD</span> <span class="pre">--pretty=oneline</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-v</span> <span class="pre">tx-robot</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-v</span> <span class="pre">&quot;Merge</span> <span class="pre">&quot;</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-v</span> <span class="pre">&quot;Bump</span> <span class="pre">&quot;</span></code> on the target release branch to get a compact list of all changes since the v3.7.1 release. Adjust this to your previous release version number.</p>
+</div>
+</section>
+<section id="pre-releases">
+<h3>Pre-releases<a class="headerlink" href="#pre-releases" title="Link to this heading"></a></h3>
+<p>Optionally maintainers may chose to pre-release their apps on the app store for early adopters and testers. The precise periodization is up to the maintainer. Common periods include <strong>alpha</strong>, <strong>beta</strong> and <strong>rc</strong> (release candidate) epochs.</p>
+<p>The release process is identical to the one of a final release, only the version number has a suffix.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Example: the app will be released as version 3.7.2. Therefore there might be a <strong>v3.7.2-alpha.1</strong>, <strong>v3.7.2-beta.1</strong>, <strong>v3.7.2-rc.1</strong>, <strong>v3.7.2-rc.2</strong> and the final <strong>v3.7.2</strong>.</p>
+</div>
+<p>The updater channel defines if pre-releases are installed by the server. This setting can be found in the admin setting or in the <code class="docutils literal notranslate"><span class="pre">config/config.php</span></code> file. The server will install pre-releases if its update channel is set <code class="docutils literal notranslate"><span class="pre">beta</span></code>, <code class="docutils literal notranslate"><span class="pre">daily</span></code>, or <code class="docutils literal notranslate"><span class="pre">git</span></code>. For all other settings, pre-releases will not be installed.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Don’t publish the pre-releases as nightly version on the app store or Nextcloud installations won’t be able to update. Releasing with any (alphanumeric) suffix is sufficient to mark the release as not production ready and instances are still able to update to it.</p>
+</div>
+</section>
+<section id="nightly-releases">
+<h3>Nightly releases<a class="headerlink" href="#nightly-releases" title="Link to this heading"></a></h3>
+<p>Additionally to publishing pre-releases, the maintainers can release nightly releases. These are considered even less stable than pre-releases. In the app store, such nightly releases are marked separately.</p>
+<p>Nightly releases will be automatically installed by servers if the update channels is set to <code class="docutils literal notranslate"><span class="pre">daily</span></code> or <code class="docutils literal notranslate"><span class="pre">git</span></code>. Any other setting will make the server ignore nightly releases.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The server uses internally the PHP function <code class="docutils literal notranslate"><span class="pre">version_compare</span></code>. Consider the version number of a nightly version carefully, so that newly published (pre-) releases are considered newer than the nightly ones.</p>
+</div>
+</section>
+</section>
+<section id="the-release">
+<h2>The release<a class="headerlink" href="#the-release" title="Link to this heading"></a></h2>
+<p>From an abstract point of view the main part of doing a release is transforming the source code into an installable software component.</p>
+<p>This part is typically scripted and highly depends on the type of app. The following list is incomplete but should give a rough idea of what steps a release script should contain:</p>
+<ul class="simple">
+<li><p>Switch to your target branch and pull the latest changes</p></li>
+<li><p>Tag the release in Git and push your local changes, if any</p></li>
+<li><dl class="simple">
+<dt>Install all <a class="reference internal" href="../app_development/dependency_management.html#app-dependencies"><span class="std std-ref">dependencies</span></a></dt><dd><ul>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">composer</span> <span class="pre">i</span> <span class="pre">--no-dev</span></code> if the app uses <a class="reference internal" href="../app_development/dependency_management.html#app-composer"><span class="std std-ref">Composer</span></a></p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">ci</span></code> if the app uses <a class="reference internal" href="../digging_deeper/npm.html#app-npm"><span class="std std-ref">npm</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Build compiled artifacts</dt><dd><ul>
+<li><p><a class="reference internal" href="../digging_deeper/npm.html#app-npm-build"><span class="std std-ref">Build production scripts for the front-end</span></a></p></li>
+<li><p>Run any code generation (e.g. through a <a class="reference internal" href="../app_development/dependency_management.html#app-composer"><span class="std std-ref">Composer script</span></a>)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Remove development files</dt><dd><ul>
+<li><p>Remove any kind of configuration files (<code class="docutils literal notranslate"><span class="pre">composer.*</span></code>, <code class="docutils literal notranslate"><span class="pre">package.json</span></code>, <code class="docutils literal notranslate"><span class="pre">package-lock.json</span></code>, <code class="docutils literal notranslate"><span class="pre">.babelrc</span></code>, and so on) that are not required in production</p></li>
+<li><p>Remove source code that is not required in production, e.g. JavaScript that is compiled into a bundle</p></li>
+<li><p>Remove tests</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><a class="reference internal" href="code_signing.html#app-code-signing"><span class="std std-ref">Sign the release files</span></a> to generate an appinfo/signature.json</p></li>
+<li><p>Package the rest into a <cite>.tar.gz</cite> tarball</p></li>
+<li><p>Upload the tarball for distribution, e.g. as a Github release artifact or a dedicated download server</p></li>
+<li><p><a class="reference internal" href="publishing.html#app-store-publishing"><span class="std std-ref">Publish</span></a> on the app store</p></li>
+</ul>
+</section>
+<section id="after-the-release">
+<h2>After the release<a class="headerlink" href="#after-the-release" title="Link to this heading"></a></h2>
+<section id="branch-off">
+<h3>Branch off<a class="headerlink" href="#branch-off" title="Link to this heading"></a></h3>
+<p>If the maintainer of the app keeps stable branches to which bug fixes are backported, any major or minor release requires a branching off the current main branch.</p>
+</section>
+<section id="prepare-follow-up-releases">
+<h3>Prepare follow-up releases<a class="headerlink" href="#prepare-follow-up-releases" title="Link to this heading"></a></h3>
+<p>The target milestone was closed in the release preparation. Now it’s time to create a new milestone for the next release(s).</p>
+</section>
+</section>
+<section id="shipped-apps">
+<h2>Shipped Apps<a class="headerlink" href="#shipped-apps" title="Link to this heading"></a></h2>
+<p>The majority of apps is distributed via the Nextcloud app store. A few apps are bundled and shipped with Nextcloud. There are a few things to keep in mind for them.</p>
+<section id="git-branch-management">
+<h3>Git branch management<a class="headerlink" href="#git-branch-management" title="Link to this heading"></a></h3>
+<p>The release script simply git-clones app repositories. Repositories of shipped apps need branches to correspond to the branches in the <a class="reference external" href="https://github.com/nextcloud/server">Nextcloud server repository</a>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">master</span></code> branch is used to create the daily builds of Nextcloud</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stable*</span></code> branches are used to build stable releases, e.g. <code class="docutils literal notranslate"><span class="pre">stable24</span></code> for Nextcloud 24.x.y.</p></li>
+</ul>
+<p>Because apps are just cloned, it is not possible to have a build step for shipped apps. Shipped apps have to <em>vendor</em> all their release artifacts.</p>
+<p>Example:</p>
+<ul class="simple">
+<li><p>App uses <code class="docutils literal notranslate"><span class="pre">composer</span></code> dependencies: commit all production dependencies in the <code class="docutils literal notranslate"><span class="pre">vendor</span></code> directory</p></li>
+<li><p>App uses <code class="docutils literal notranslate"><span class="pre">npm</span></code> dependencies and front-end build tools: commit all front-end artifacts in the <code class="docutils literal notranslate"><span class="pre">js</span></code> directory</p></li>
+</ul>
+</section>
+<section id="id1">
+<h3>Versioning<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>Since every <code class="docutils literal notranslate"><span class="pre">stable*</span></code> branch targets only one major version of Nextcloud and drops the previous one, it’s best to have one major version of the app per stable branch. See <a class="reference internal" href="#app-versioning"><span class="std std-ref">app versioning</span></a> for details.</p>
+<p>Example:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">master</span></code>: Version 8.0.0, targeting Nextcloud 27</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stable26</span></code>: Version 7.0.0, targeting Nextcloud 26</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stable25</span></code>: Version 6.0.0, targeting Nextcloud 25</p></li>
+</ul>
+<p>Backported fixes increase the patch version on a stable branch. Backported features increase the minor version.</p>
+</section>
+<section id="hybrid-distribution">
+<h3>Hybrid Distribution<a class="headerlink" href="#hybrid-distribution" title="Link to this heading"></a></h3>
+<p>In very rare situations apps can be shipped <strong>and</strong> distributed via the app store. In those cases it is important to ensure the shipped version is equal or higher than the app store version to prevent a downgrade during the update of Nextcloud.</p>
+<p>Hybrid distribution is not recommended.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="maintainer.html" class="btn btn-neutral float-left" title="Maintainers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="monetizing.html" class="btn btn-neutral float-right" title="Monetizing your app" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/developer_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/28/developer_manual"
+             
+          >
+            28
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

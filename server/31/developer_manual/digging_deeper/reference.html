@@ -1,0 +1,1103 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reference providers &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Repair steps" href="repair.html" />
+    <link rel="prev" title="Public Pages" href="publicpage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/index.html">Config &amp; Preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="continuous_integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard.html">Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deadlock.html">Deadlocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files-metadata.html">Files Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupware/index.html">Groupware integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html">HTTP Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translation.html">Machine Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="out_of_office.html">Out-of-office periods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonenumberutil.html">Phone number util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psr.html">PSR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile.html">Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiler.html">Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Reference providers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#display-link-previews">Display link previews</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ncrichtext">NcRichText</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ncreferencewidget">NcReferenceWidget</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#api-to-resolve-links">API to resolve links</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#render-link-previews-in-clients">Render link previews in clients</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#use-the-smart-picker-in-your-app">Use the Smart Picker in your app</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ncrichcontenteditable">NcRichContenteditable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ncreferencepickermodal">NcReferencePickerModal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getlinkwithpicker">getLinkWithPicker</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#use-the-smart-picker-in-clients">Use the Smart Picker in clients</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#get-the-provider-list">Get the provider list</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#use-the-unified-search-api">Use the Unified Search API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update-a-provider-last-usage-date">Update a provider last usage date</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#register-a-reference-provider">Register a reference provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extend-link-preview-support">Extend link preview support</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#match-links">Match links</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resolving-links">Resolving links</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interactive-widgets">Interactive widgets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#provide-generic-data-for-clients">Provide generic data for clients</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#extend-the-smart-picker">Extend the Smart Picker</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#declare-supported-unified-search-providers">Declare supported Unified Search providers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#register-a-custom-picker-component">Register a custom picker component</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_apis.html">REST APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_checks.html">Setup checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speech-to-text.html">Speech-To-Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talk.html">Talk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task_processing.html">Task Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_processing.html">Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text2image.html">Text-To-Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status.html">User Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">User migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_host_metadata.html">Web Host Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html">Working with time</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Digging deeper</a></li>
+      <li class="breadcrumb-item active">Reference providers</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/reference.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="reference-providers">
+<span id="id1"></span><h1>Reference providers<a class="headerlink" href="#reference-providers" title="Link to this heading"></a></h1>
+<p>Reference providers are related with two Nextcloud features:</p>
+<ul class="simple">
+<li><p>Link previews</p></li>
+<li><p>The Smart Picker</p></li>
+</ul>
+<p>Link previews were introduced in Nextcloud 25.
+Apps can register a reference provider to add preview support for some HTTP links.
+To provide link previews, a reference provider needs to:</p>
+<ul class="simple">
+<li><p>Resolve the links (get information about the links)</p></li>
+<li><p>Render links (show this information in the user interface)</p></li>
+</ul>
+<p>The Smart Picker was introduced in Nextcloud 26. This is a user interface component
+allowing users to search or generate links from various places in Nextcloud like Text,
+Talk, Collectives, Notes, Mail…
+Reference providers can be implemented so they appear in the Smart Picker’s provider list.
+The Smart Picker can use 2 types of providers:</p>
+<ul class="simple">
+<li><p>the ones to search (using existing Unified Search providers)</p></li>
+<li><p>the ones implementing their own custom picker component</p></li>
+</ul>
+<p>In summary, reference providers can be registered by apps to</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>add support for new kinds of HTTP links</dt><dd><ul>
+<li><p>resolve the links, get information on the link targets</p></li>
+<li><p>optionally provide their own reference widgets to have a custom preview rendering</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>extend the Smart Picker</dt><dd><ul>
+<li><p>use existing Unified Search providers</p></li>
+<li><p>or optionally register custom picker components to have a specific user interface</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>This documentation explains how to</p>
+<ul class="simple">
+<li><p>Display link previews in your app</p></li>
+<li><p>Use the Smart Picker in your app</p></li>
+<li><p>Extend the reference system add preview support for more links</p></li>
+<li><p>Extend the Smart Picker with your app’s capabilities</p></li>
+</ul>
+<section id="display-link-previews">
+<h2>Display link previews<a class="headerlink" href="#display-link-previews" title="Link to this heading"></a></h2>
+<p>If you just want to display links previews in your app without extending the reference system,
+you need to make sure the <code class="docutils literal notranslate"><span class="pre">OCP\Collaboration\Reference\RenderReferenceEvent</span></code> is dispatched
+before you load the page where you want to display link previews.</p>
+<p>For example, you can place this before returning your TemplateResponse in your controller:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">eventDispatcher</span><span class="o">-&gt;</span><span class="na">dispatchTyped</span><span class="p">(</span><span class="k">new</span> <span class="nx">OCP\Collaboration\Reference\RenderReferenceEvent</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>This is done in
+<a class="reference external" href="https://github.com/nextcloud/text/blob/8a17046aa440df841fe9182205d80ce937068c1a/lib/Listeners/LoadViewerListener.php#L52">Text</a>
+and
+<a class="reference external" href="https://github.com/nextcloud/spreed/blob/1f1acbd95943e6184e29de8044cd9d8e775ac7c5/lib/Controller/PageController.php#L280">Talk</a>
+if you need more examples.</p>
+<p>On the frontend side, there are 3 ways to display link previews (also named reference widgets):</p>
+<ul class="simple">
+<li><p>use the NcRichText Vue component</p></li>
+<li><p>use the NcReferenceWidget Vue component</p></li>
+<li><p>access the reference API directly and manually render the previews</p></li>
+</ul>
+<section id="ncrichtext">
+<h3>NcRichText<a class="headerlink" href="#ncrichtext" title="Link to this heading"></a></h3>
+<p>Link previews will be automatically rendered for links in the content of the <code class="docutils literal notranslate"><span class="pre">&lt;NcRichText&gt;</span></code> Vue component.
+This component will take care of resolving the links itself.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">NcRichText</span> <span class="na">:text</span><span class="o">=</span><span class="s">&quot;message&quot;</span>
+    <span class="na">:arguments</span><span class="o">=</span><span class="s">&quot;richParameters&quot;</span>
+    <span class="na">:autolink</span><span class="o">=</span><span class="s">&quot;true&quot;</span>
+    <span class="na">:reference-limit</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="p">/&gt;</span>
+</pre></div>
+</div>
+<p>NcRichText can be imported like this:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="nx">NcRichText</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/vue/dist/Components/NcRichText.js&#39;</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcRichText?id=ncrichtext-1">NcRichText component documentation</a></p>
+</section>
+<section id="ncreferencewidget">
+<h3>NcReferenceWidget<a class="headerlink" href="#ncreferencewidget" title="Link to this heading"></a></h3>
+<p>You can display a preview for a specific link by using the <code class="docutils literal notranslate"><span class="pre">&lt;NcReferenceWidget&gt;</span></code> component.
+You need to ask the server to resolve the link to get a reference object that you can then give as a property
+to NcReferenceWidget.</p>
+<p>To resolve a link:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">myLink</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;https://github.com&#39;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">requestOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">params</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">reference</span><span class="o">:</span><span class="w"> </span><span class="nx">myLink</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="p">}</span>
+<span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">generateOcsUrl</span><span class="p">(</span><span class="s1">&#39;references/resolve&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">),</span><span class="w"> </span><span class="nx">requestOptions</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">reference</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">ocs</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">references</span><span class="p">[</span><span class="nx">myLink</span><span class="p">]</span>
+<span class="w">    </span><span class="p">})</span>
+</pre></div>
+</div>
+<p>Then you can use the reference object you got:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">NcReferenceWidget</span> <span class="na">:reference</span><span class="o">=</span><span class="s">&quot;reference&quot;</span> <span class="p">/&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="api-to-resolve-links">
+<h3>API to resolve links<a class="headerlink" href="#api-to-resolve-links" title="Link to this heading"></a></h3>
+<p>Accessing the API directly can be useful if you want to:</p>
+<ul class="simple">
+<li><p>resolve links from outside Nextcloud, in a client for example</p></li>
+<li><p>manually resolve and render links instead of using the Vue components</p></li>
+</ul>
+<p>Endpoints to resolve links:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>GET /ocs/v2.php/references/resolve (authenticated)</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">reference</span></code> parameter with the link to resolve</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>GET /ocs/v2.php/references/resolvePublic</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">reference</span></code> parameter with the link to resolve</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sharingToken</span></code> parameter with the public share token</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>POST /ocs/v2.php/references/resolve</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">references</span></code> parameter with an array of links to resolve</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">limit</span></code> parameter with the maximum number of links to resolve</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>POST /ocs/v2.php/references/resolve</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">references</span></code> parameter with an array of links to resolve</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sharingToken</span></code> parameter with the public share token</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">limit</span></code> parameter with the maximum number of links to resolve</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<section id="request-examples">
+<h4>Request examples<a class="headerlink" href="#request-examples" title="Link to this heading"></a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>USER:PASSWD<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Accept: application/json&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;ocs-apirequest: true&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">&quot;https://my.nextcloud.org/ocs/v2.php/references/resolve?reference=https://github.com&quot;</span>
+</pre></div>
+</div>
+<p>will return an OCS response with that data:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;ocs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;statuscode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OK&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;references&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;https://github.com&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;richObjectType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;open-graph&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;richObject&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GitHub: Let’s build from here&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GitHub is where over 100 million developers shape the future of software, together. Contribute to the open source community, manage your Git repositories, review code like a pro, track bugs and fea...&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;thumb&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://my.nextcloud.org/core/references/preview/3097fca9b1ec8942c4305e550ef1b50a&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;openGraphObject&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GitHub: Let’s build from here&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GitHub is where over 100 million developers shape the future of software, together. Contribute to the open source community, manage your Git repositories, review code like a pro, track bugs and fea...&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;thumb&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://my.nextcloud.org/core/references/preview/3097fca9b1ec8942c4305e550ef1b50a&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;accessible&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The link might be supported by a reference provider that also provides more information in a rich object.
+The generic openGraphObject is still returned. It contains a title, description and image URL if the matching reference
+provider defined those correctly.
+For example, resolving <code class="docutils literal notranslate"><span class="pre">https://www.themoviedb.org/movie/70981</span></code> if the <code class="docutils literal notranslate"><span class="pre">integration_tmdb</span></code> app is installed will return:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;references&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;https://www.themoviedb.org/movie/70981&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;richObjectType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integration_tmdb_movie&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;richObject&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;adult&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;budget&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">130000000</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;genres&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">878</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Science Fiction&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Adventure&quot;</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9648</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mystery&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;homepage&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.20thcenturystudios.com/movies/prometheus&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">70981</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;imdb_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tt1446714&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;original_language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;original_title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Prometheus&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;overview&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A team of explorers discover a clue to the origins of mankind on Earth, leading them on a journey to the darkest corners of the universe. There, they must fight a terrifying battle to save the future of the human race.&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;popularity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">68.389</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;release_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-05-30&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;revenue&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">403354469</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;runtime&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">124</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;openGraphObject&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.themoviedb.org/movie/70981&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Prometheus&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;30 mai 2012 - A team of explorers discover a clue to the origins of mankind on Earth, leading them on a journey to the darkest corners of the universe. There, they must fight a terrifying battle to save the future of the human race.&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;thumb&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://my.nextcloud.org/apps/integration_tmdb/t/p/w500/qsYQflQhOuhDpQ0W2aOcwqgDAeI.jpg?fallbackName=???&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.themoviedb.org/movie/70981&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;accessible&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="render-link-previews-in-clients">
+<h3>Render link previews in clients<a class="headerlink" href="#render-link-previews-in-clients" title="Link to this heading"></a></h3>
+<p>Clients can choose to support some rich objects types.
+Developers can follow the rich object formatting recommendations to provide generic information in some cases.
+The rich object type is not used to predict the data structure.
+We rather recommend to set rich object attributes respecting a strict format for some common use cases.</p>
+<p>More details can be found in <a class="reference internal" href="#data-for-clients"><span class="std std-ref">Interactive widgets</span></a></p>
+</section>
+</section>
+<section id="use-the-smart-picker-in-your-app">
+<h2>Use the Smart Picker in your app<a class="headerlink" href="#use-the-smart-picker-in-your-app" title="Link to this heading"></a></h2>
+<p>There are 3 ways to make the Smart Picker appear in your app:</p>
+<ul class="simple">
+<li><p>use the <code class="docutils literal notranslate"><span class="pre">NcRichContenteditable</span></code> component</p></li>
+<li><p>use the <code class="docutils literal notranslate"><span class="pre">NcReferencePickerModal</span></code> component</p></li>
+<li><p>use the <code class="docutils literal notranslate"><span class="pre">getLinkWithPicker</span></code> helper function</p></li>
+</ul>
+<p>Just like for the link previews, you need to dispatch the <code class="docutils literal notranslate"><span class="pre">OCP\Collaboration\Reference\RenderReferenceEvent</span></code> event
+before loading the page in which you want to show the Smart Picker.</p>
+<section id="ncrichcontenteditable">
+<h3>NcRichContenteditable<a class="headerlink" href="#ncrichcontenteditable" title="Link to this heading"></a></h3>
+<p>The Smart Picker is integrated in the NcRichContenteditable Vue component. It is enabled by default
+but can be disabled by setting the <code class="docutils literal notranslate"><span class="pre">linkAutocomplete</span></code> prop to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<p>The picker provider list opens when the user types the “/” character.
+The picker result then gets directly inserted in the content.</p>
+<p><a class="reference external" href="https://nextcloud-vue-components.netlify.app/#/Components/NcRichContenteditable">NcRichContenteditable component documentation</a></p>
+</section>
+<section id="ncreferencepickermodal">
+<h3>NcReferencePickerModal<a class="headerlink" href="#ncreferencepickermodal" title="Link to this heading"></a></h3>
+<p>You display the Smart Picker by using the NcReferencePickerModal Vue component. It is available in the Nextcloud Vue library.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">NcReferencePickerModal</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/vue/dist/Components/NcRichText.js&#39;</span>
+</pre></div>
+</div>
+<p>Available props:</p>
+<ul class="simple">
+<li><p>initialProvider (optional): If a reference provider object is passed, skip the provider selection and directly show this provider</p></li>
+<li><p>focusOnCreate (optional, default: true): Focus on the main input element on creation</p></li>
+<li><p>isInsideViewer (optional, default: false): Set this to true if NcReferencePickerModal is used inside the Viewer. This tells the Viewer to deal with the focus trap.</p></li>
+</ul>
+</section>
+<section id="getlinkwithpicker">
+<h3>getLinkWithPicker<a class="headerlink" href="#getlinkwithpicker" title="Link to this heading"></a></h3>
+<p>To display the Smart Picker outside Vue, you can use the getLinkWithPicker helper function.
+It takes 2 parameters:</p>
+<ul class="simple">
+<li><p>providerId (optional, default: null): The provider to select in the picker. If null, the provider selection is displayed first.</p></li>
+<li><p>isInsideViewer (optional): This will be passed internally to NcReferencePickerModal as the isInsideViewer prop.</p></li>
+</ul>
+<p>This function returns a promise that resolves with the picker result. This promise is rejected if the user closes
+the Smart Picker.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">getLinkWithPicker</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/vue/dist/Components/NcRichText.js&#39;</span>
+
+<span class="nx">getLinkWithPicker</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">result</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">&#39;Smart Picker result&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">)</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Smart Picker promise rejected&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">)</span>
+<span class="w">    </span><span class="p">})</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="use-the-smart-picker-in-clients">
+<h2>Use the Smart Picker in clients<a class="headerlink" href="#use-the-smart-picker-in-clients" title="Link to this heading"></a></h2>
+<p>Clients can partially support the Smart Picker features.</p>
+<p>There are 2 types of Smart Picker providers:</p>
+<ul class="simple">
+<li><p>The ones with a custom picker component</p></li>
+<li><p>The ones that support one or multiple unified search providers</p></li>
+</ul>
+<p>As the custom picker components are web components, clients might not be able (or want) to render them.
+So we are mostly interested in the second type here: The ones using unified search providers.</p>
+<p>In Nextcloud’s web UI, those providers are rendered with a
+<a class="reference external" href="https://github.com/nextcloud/nextcloud-vue/blob/master/src/components/NcRichText/NcReferencePicker/NcSearch.vue">generic search Vue component</a>
+which shows a search input, lists the search result in a dropdown menu and directly submits the URL of the selected result.
+The search is done by directly querying the Unified Search OCS API. This is described later.</p>
+<p>To implement something similar to the Smart Picker in a client, it is required to know how to:</p>
+<ul class="simple">
+<li><p>Get the provider list</p></li>
+<li><p>Use the Unified Search OCS API</p></li>
+<li><p>Update the providers last usage date</p></li>
+</ul>
+<section id="get-the-provider-list">
+<h3>Get the provider list<a class="headerlink" href="#get-the-provider-list" title="Link to this heading"></a></h3>
+<p>The list of Smart Picker providers can be obtained via an OCS endpoint.
+Each provider object contains the list of supported unified search providers.</p>
+<p>Here is the server endpoint to list the smart picker providers:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>USER:PASSWD<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Accept: application/json&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;ocs-apirequest: true&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">&quot;https://my.nextcloud.org/ocs/v2.php/references/providers&quot;</span>
+</pre></div>
+</div>
+<p>and an example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;ocs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;statuscode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OK&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;github-issue-pr&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GitHub issues, pull requests and comments&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;icon_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://my.nextcloud.org/apps/integration_github/img/app-dark.svg&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;search_providers_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="s2">&quot;github-search-issues&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;github-search-repos&quot;</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openstreetmap-point&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Map location (by OpenStreetMap)&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;icon_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://my.nextcloud.org/apps/integration_openstreetmap/img/app-dark.svg&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;search_providers_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="s2">&quot;openstreetmap-search-location&quot;</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;files&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Files&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;icon_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://my.nextcloud.org/apps/files/img/folder.svg&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this example, the “files” Smart Picker provider does not support any unified search provider
+but the “github-issue-pr” one supports 2 of them and the “openstreetmap-point” support one.</p>
+</section>
+<section id="use-the-unified-search-api">
+<h3>Use the Unified Search API<a class="headerlink" href="#use-the-unified-search-api" title="Link to this heading"></a></h3>
+<p>More details in the <a class="reference internal" href="search.html#unified-search"><span class="std std-ref">Unified Search</span></a> documentation.</p>
+<p>Here is how to search using the Unified Search OCS API:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>USER:PASSWD<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Accept: application/json&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;ocs-apirequest: true&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">&quot;https://my.nextcloud.org/ocs/v2.php/search/providers/PROVIDER_ID/search?term=QUERY&amp;limit=LIMIT&quot;</span>
+
+<span class="c1"># with a cursor (paginated search)</span>
+curl<span class="w"> </span>-u<span class="w"> </span>USER:PASSWD<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Accept: application/json&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;ocs-apirequest: true&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">&quot;https://my.nextcloud.org/ocs/v2.php/search/providers/PROVIDER_ID/search?term=QUERY&amp;limit=LIMIT&amp;cursor=CURSOR&quot;</span>
+
+<span class="c1"># search a github issue with the query &quot;bug&quot;</span>
+curl<span class="w"> </span>-u<span class="w"> </span>USER:PASSWD<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Accept: application/json&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;ocs-apirequest: true&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">&quot;https://my.nextcloud.org/ocs/v2.php/search/providers/github-search-issues/search?term=bug&amp;limit=2&quot;</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;ocs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;statuscode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OK&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GitHub issues and pull requests&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;isPaginated&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;entries&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;thumbnailUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://my.nextcloud.org/apps/integration_github/avatar/Daily-DAYO&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; [bug] Change Trim bugs&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;subline&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;⑁ DAYO_Android#409&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;resourceUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/Daily-DAYO/DAYO_Android/pull/409&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;rounded&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;thumbnailUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://my.nextcloud.org/apps/integration_github/avatar/walinejs&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; [Bug]:  || [Bug]:&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;subline&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;⦿ waline#2014&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;resourceUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/walinejs/waline/issues/2014&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;rounded&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;cursor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="update-a-provider-last-usage-date">
+<h3>Update a provider last usage date<a class="headerlink" href="#update-a-provider-last-usage-date" title="Link to this heading"></a></h3>
+<p>In Nextcloud’s web UI, the order in which the providers are listed to the users depends on the last
+date they were used. The most recently used providers are displayed first.</p>
+<p>In a client, once a provider has been used, a request to this endpoint should be done:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>USER:PASSWD<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Accept: application/json&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;ocs-apirequest: true&quot;</span><span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">&quot;https://my.nextcloud.org/ocs/v2.php/search/provider/PROVIDER_ID&quot;</span>
+</pre></div>
+</div>
+<p>A <code class="docutils literal notranslate"><span class="pre">timestamp</span></code> optional request parameter can be passed. The last usage date will be set to “now” by default.</p>
+</section>
+</section>
+<section id="register-a-reference-provider">
+<h2>Register a reference provider<a class="headerlink" href="#register-a-reference-provider" title="Link to this heading"></a></h2>
+<p>A reference provider is a class implementing the <code class="docutils literal notranslate"><span class="pre">OCP\Collaboration\Reference\IReferenceProvider</span></code> interface.
+If you just want to resolve links, simply implement the <code class="docutils literal notranslate"><span class="pre">IReferenceProvider</span></code> interface.
+This is described in the “Resolving links” section.</p>
+<p>To support resolving links from public shares, the <code class="docutils literal notranslate"><span class="pre">OCP\Collaboration\Reference\IPublicReferenceProvider</span></code> interface
+needs to be implemented as well.</p>
+<p>If you want your reference provider to be used by the Smart Picker, you need to extend the
+<code class="docutils literal notranslate"><span class="pre">OCP\Collaboration\Reference\ADiscoverableReferenceProvider</span></code> class to declare all required information.</p>
+<p>There are 2 ways to make your provider appear in the smart picker, in other words, 2 types of providers:</p>
+<ul class="simple">
+<li><p>Either your reference provider implements the <code class="docutils literal notranslate"><span class="pre">OCP\Collaboration\Reference\ISearchableReferenceProvider</span></code> interface and you declare a list of unified search providers that will be used by the Smart Picker</p></li>
+<li><p>Or you don’t implement this <code class="docutils literal notranslate"><span class="pre">ISearchableReferenceProvider</span></code> interface and make sure you register a custom picker component in the frontend. This is described later in this documentation.</p></li>
+</ul>
+</section>
+<section id="extend-link-preview-support">
+<h2>Extend link preview support<a class="headerlink" href="#extend-link-preview-support" title="Link to this heading"></a></h2>
+<p>This section is focusing on the methods of the <code class="docutils literal notranslate"><span class="pre">IReferenceProvider</span></code> interface.</p>
+<p>Links that are not matched by any reference provider will always be handled by the server’s OpenGraph provider as a fallback.
+This provider will try to get the information declared in the target page’s meta tag. The link preview will be rendered with the
+default widget.</p>
+<p>For your provider to properly handle some links, you need to implement the <code class="docutils literal notranslate"><span class="pre">matchReference</span></code> and <code class="docutils literal notranslate"><span class="pre">resolve</span></code>
+methods of <code class="docutils literal notranslate"><span class="pre">IReferenceProvider</span></code>.</p>
+<p>In order to resolve links from a public share, <code class="docutils literal notranslate"><span class="pre">resolvePublic</span></code> from <code class="docutils literal notranslate"><span class="pre">IPublicReferenceProvider</span></code> has to be implemented
+additionally.</p>
+<section id="match-links">
+<h3>Match links<a class="headerlink" href="#match-links" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">matchReference</span></code> method of <code class="docutils literal notranslate"><span class="pre">IReferenceProvider</span></code> tells the reference manager if a provider supports a link or not.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">matchReference</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$referenceText</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span> <span class="p">{</span>
+    <span class="c1">// support all URLs starting with https://my.website.org/</span>
+    <span class="k">return</span> <span class="nb">str_starts_with</span><span class="p">(</span><span class="nv">$referenceText</span><span class="p">,</span> <span class="s1">&#39;https://my.website.org/&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="resolving-links">
+<h3>Resolving links<a class="headerlink" href="#resolving-links" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">resolve</span></code> method of <code class="docutils literal notranslate"><span class="pre">IReferenceProvider</span></code> is used to get information about a link and return it as a
+<code class="docutils literal notranslate"><span class="pre">OCP\Collaboration\Reference\Reference</span></code> object.</p>
+<p>Respectively the <code class="docutils literal notranslate"><span class="pre">resolvePublic</span></code> method of <code class="docutils literal notranslate"><span class="pre">IPublicReferenceProvider</span></code> is used to get information about a
+link from a public share (available since Nextcloud 30).</p>
+<section id="using-the-default-widget">
+<h4>Using the default widget<a class="headerlink" href="#using-the-default-widget" title="Link to this heading"></a></h4>
+<p>If you are fine with the default widget rendering (image on the left, text and subtext on the right),
+then you just need to provide a title, a description and optionally an image.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">resolveReference</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$referenceText</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="nx">IReference</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">matchReference</span><span class="p">(</span><span class="nv">$referenceText</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$title</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">myAwesomeService</span><span class="o">-&gt;</span><span class="na">getLinkTitle</span><span class="p">(</span><span class="nv">$referenceText</span><span class="p">);</span>
+        <span class="nv">$description</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">myAwesomeService</span><span class="o">-&gt;</span><span class="na">getLinkDescription</span><span class="p">(</span><span class="nv">$referenceText</span><span class="p">);</span>
+        <span class="nv">$imageUrl</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">myAwesomeService</span><span class="o">-&gt;</span><span class="na">getImageUrl</span><span class="p">(</span><span class="nv">$referenceText</span><span class="p">);</span>
+
+        <span class="nv">$reference</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Reference</span><span class="p">(</span><span class="nv">$referenceText</span><span class="p">);</span>
+        <span class="nv">$reference</span><span class="o">-&gt;</span><span class="na">setTitle</span><span class="p">(</span><span class="nv">$title</span><span class="p">);</span>
+        <span class="nv">$reference</span><span class="o">-&gt;</span><span class="na">setDescription</span><span class="p">(</span><span class="nv">$description</span><span class="p">);</span>
+        <span class="nv">$reference</span><span class="o">-&gt;</span><span class="na">setImageUrl</span><span class="p">(</span><span class="nv">$imageUrl</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$reference</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">resolveReferencePublic</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$referenceText</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$shareToken</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="nx">IReference</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">checkShareToken</span><span class="p">()</span> <span class="o">===</span> <span class="nv">$shareToken</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">resolveReference</span><span class="p">(</span><span class="nv">$referenceText</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="using-custom-reference-widgets">
+<h4>Using custom reference widgets<a class="headerlink" href="#using-custom-reference-widgets" title="Link to this heading"></a></h4>
+<p>You can customize the rendering of the links you support with your provider.</p>
+<p>On the provider side, you need to pass all the information needed by your
+custom reference widget component by setting the “rich object” of the <code class="docutils literal notranslate"><span class="pre">Reference</span></code>
+object returned by the <code class="docutils literal notranslate"><span class="pre">resolve</span></code> method.</p>
+<p>It is recommended to still set the title, description and image URL on the reference object
+in case it is used by a client or in a context where the custom reference widgets can’t be used.
+This way we make sure any generic rendering of link previews still shows some information.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">resolveReference</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$referenceText</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="nx">IReference</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">matchReference</span><span class="p">(</span><span class="nv">$referenceText</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$title</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">myAwesomeService</span><span class="o">-&gt;</span><span class="na">getLinkTitle</span><span class="p">(</span><span class="nv">$referenceText</span><span class="p">);</span>
+        <span class="nv">$description</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">myAwesomeService</span><span class="o">-&gt;</span><span class="na">getLinkDescription</span><span class="p">(</span><span class="nv">$referenceText</span><span class="p">);</span>
+        <span class="nv">$imageUrl</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">myAwesomeService</span><span class="o">-&gt;</span><span class="na">getImageUrl</span><span class="p">(</span><span class="nv">$referenceText</span><span class="p">);</span>
+        <span class="nv">$extraInformation</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">myAwesomeService</span><span class="o">-&gt;</span><span class="na">getExtraInformation</span><span class="p">(</span><span class="nv">$referenceText</span><span class="p">);</span>
+
+        <span class="nv">$reference</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Reference</span><span class="p">(</span><span class="nv">$referenceText</span><span class="p">);</span>
+        <span class="nv">$reference</span><span class="o">-&gt;</span><span class="na">setTitle</span><span class="p">(</span><span class="nv">$title</span><span class="p">);</span>
+        <span class="nv">$reference</span><span class="o">-&gt;</span><span class="na">setDescription</span><span class="p">(</span><span class="nv">$description</span><span class="p">);</span>
+        <span class="nv">$reference</span><span class="o">-&gt;</span><span class="na">setImageUrl</span><span class="p">(</span><span class="nv">$imageUrl</span><span class="p">);</span>
+        <span class="nv">$reference</span><span class="o">-&gt;</span><span class="na">setRichObject</span><span class="p">(</span>
+            <span class="s1">&#39;my_rich_object_type&#39;</span><span class="p">,</span>
+            <span class="p">[</span>
+                <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="nv">$title</span><span class="p">,</span>
+                <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="nv">$description</span><span class="p">,</span>
+                <span class="s1">&#39;image_url&#39;</span> <span class="o">=&gt;</span> <span class="nv">$imageUrl</span><span class="p">,</span>
+                <span class="s1">&#39;extra_info&#39;</span> <span class="o">=&gt;</span> <span class="nv">$extraInformation</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$reference</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="nf">resolveReferencePublic</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$referenceText</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$shareToken</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="nx">IReference</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">checkShareToken</span><span class="p">()</span> <span class="o">===</span> <span class="nv">$shareToken</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">resolveReference</span><span class="p">(</span><span class="nv">$referenceText</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>On the frontend side you need to implement and register your custom component. Here is a component example:</p>
+<p>You need to react to the <code class="docutils literal notranslate"><span class="pre">OCP\Collaboration\Reference\RenderReferenceEvent</span></code>
+event to inject a script that will actually register the widget component when needed.
+For example, in your <code class="docutils literal notranslate"><span class="pre">lib/AppInfo/Application.php</span></code> file:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerEventListener</span><span class="p">(</span><span class="nx">OCP\Collaboration\Reference\RenderReferenceEvent</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">MyReferenceListener</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The corresponding <code class="docutils literal notranslate"><span class="pre">MyReferenceListener</span></code> class can look like:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Listener</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\AppInfo\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Collaboration\Reference\RenderReferenceEvent</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\IEventListener</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Util</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MyReferenceListener</span> <span class="k">implements</span> <span class="nx">IEventListener</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$event</span> <span class="nx">instanceof</span> <span class="nx">RenderReferenceEvent</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nx">Util</span><span class="o">::</span><span class="na">addScript</span><span class="p">(</span><span class="nx">Application</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">,</span> <span class="s1">&#39;myapp-reference&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">myapp-reference.js</span></code> file contains the widget registration:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">registerWidget</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/vue/dist/Components/NcRichText.js&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Vue</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;vue&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">MyCustomWidgetComponent</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./MyCustomWidgetComponent.vue&#39;</span>
+
+<span class="nx">Vue</span><span class="p">.</span><span class="nx">mixin</span><span class="p">({</span><span class="w"> </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">})</span>
+
+<span class="c1">// here we register the MyCustomWidgetComponent to handle rich objects which type is &#39;my_rich_object_type&#39;</span>
+<span class="nx">registerWidget</span><span class="p">(</span><span class="s1">&#39;my_rich_object_type&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">el</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">richObjectType</span><span class="p">,</span><span class="w"> </span><span class="nx">richObject</span><span class="p">,</span><span class="w"> </span><span class="nx">accessible</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">Widget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Vue</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">MyCustomWidgetComponent</span><span class="p">)</span>
+<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">Widget</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">propsData</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">richObjectType</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">richObject</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">accessible</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">    </span><span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>And last but not least, the MyCustomWidgetComponent Vue component in which you can render the link preview
+in a custom fashion:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;richObject&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>
+                {{ t(&#39;myapp&#39;, &#39;Title&#39; }}
+            <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>
+                {{ richObject.title }}
+            <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>
+                {{ t(&#39;myapp&#39;, &#39;Extra info&#39; }}
+            <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>
+                {{ richObject.extra_info }}
+            <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;MyCustomWidgetComponent&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">props</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">richObjectType</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">            </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">richObject</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">Object</span><span class="p">,</span>
+<span class="w">            </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">accessible</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">Boolean</span><span class="p">,</span>
+<span class="w">            </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="interactive-widgets">
+<span id="data-for-clients"></span><h3>Interactive widgets<a class="headerlink" href="#interactive-widgets" title="Link to this heading"></a></h3>
+<p>If you want to provide a custom widget that is interactive you can use the <code class="docutils literal notranslate"><span class="pre">interactive</span></code> attribute that is passed along the <code class="docutils literal notranslate"><span class="pre">registerWidget</span></code> function.</p>
+<p>Apps will determine if they can render the interactive widget or not.</p>
+<p>When writing a custom widget make sure properly handle different restrictions to ensure that the widget is usable in any integrating app.</p>
+<ul class="simple">
+<li><p>The width of the widget should be flexible and not exceed the width of the parent element.</p></li>
+<li><p>The height can be flexible but might be limited by the parent element, so ensure that the widget can be scrolled if necessary</p></li>
+<li><p>Your script will be loaded on every page that uses widget rendering so make sure to keep the script size as small as possible and use lazy loading for any additional resources</p></li>
+</ul>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">registerCustomPickerElement</span><span class="p">,</span><span class="w"> </span><span class="nx">registerWidget</span><span class="p">,</span><span class="w"> </span><span class="nx">NcCustomPickerRenderResult</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/vue/dist/Functions/registerReference.js&#39;</span>
+
+<span class="nx">registerWidget</span><span class="p">(</span><span class="s1">&#39;my_rich_object_type&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">el</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">richObjectType</span><span class="p">,</span><span class="w"> </span><span class="nx">richObject</span><span class="p">,</span><span class="w"> </span><span class="nx">accessible</span><span class="p">,</span><span class="w"> </span><span class="nx">interactive</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="nx">Vue</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s1">&#39;vue&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="nx">MyWidget</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">import</span><span class="p">(</span><span class="s1">&#39;./views/MyWidget.vue&#39;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">Widget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Vue</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">MyWidget</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">vueElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Widget</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">propsData</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">richObjectType</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">richObject</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">accessible</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">interactive</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">    </span><span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">NcCustomPickerRenderResult</span><span class="p">(</span><span class="nx">vueElement</span><span class="p">.</span><span class="nx">$el</span><span class="p">,</span><span class="w"> </span><span class="nx">vueElement</span><span class="p">)</span>
+<span class="p">},</span><span class="w"> </span><span class="p">(</span><span class="nx">el</span><span class="p">,</span><span class="w"> </span><span class="nx">renderResult</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">renderResult</span><span class="p">.</span><span class="nx">object</span><span class="p">.</span><span class="nx">$destroy</span><span class="p">()</span>
+<span class="p">},</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="provide-generic-data-for-clients">
+<h3>Provide generic data for clients<a class="headerlink" href="#provide-generic-data-for-clients" title="Link to this heading"></a></h3>
+<p>In the web interface, the links that your app resolves are rendered with the OpenGraph widget
+or the custom reference widget you implemented. So you have complete freedom on which data format you put in your rich objects
+because you also control the web rendering implementation.</p>
+<p>But as the web UI components cannot be used by desktop or mobile clients, they have to specifically support some rich objects
+that are properly formatted.</p>
+<p>Here are some formatting suggestions for a few use cases. Use them if you want your resolved links to be rendered in clients.
+The idea is to add a generic attribute in your rich objects, regardless of the rich object type.</p>
+<section id="version-control-issue">
+<h4>Version control issue<a class="headerlink" href="#version-control-issue" title="Link to this heading"></a></h4>
+<p>Set the rich object’s <code class="docutils literal notranslate"><span class="pre">vcs_issue</span></code> attribute to an object which contains those attributes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>: The issue ID (number)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">url</span></code>: The issue page URL</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">title</span></code>: The issue title</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">comment_count</span></code>: The number of comments in the issue</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">state</span></code>: The issue state (‘open’ or ‘closed’)</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">labels</span></code>: An array of labels. A label is an object with those attributes:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">color</span></code>: Hexadecimal color code</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: The label name</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">created_at</span></code>: The creation timestamp</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">author</span></code>: The user ID or name of the issue creator</p></li>
+</ul>
+<p>Example implementation: <a class="reference external" href="https://github.com/nextcloud/integration_github/blob/e6792ea0aadef4f5b8faaaaa163a0cf473d86157/lib/Reference/GithubIssuePrReferenceProvider.php#L135">GitHub integration issue link preview</a></p>
+</section>
+<section id="version-control-pull-request">
+<h4>Version control pull request<a class="headerlink" href="#version-control-pull-request" title="Link to this heading"></a></h4>
+<p>Set the rich object’s <code class="docutils literal notranslate"><span class="pre">vcs_pull_request</span></code> attribute to an object which contains the same attributes as in <code class="docutils literal notranslate"><span class="pre">vcs_issue</span></code> plus these ones:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">merged</span></code>: Is it merged? (boolean)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">draft</span></code>: Is it a draft? (boolean)</p></li>
+</ul>
+<p>Example implementation: <a class="reference external" href="https://github.com/nextcloud/integration_github/blob/e6792ea0aadef4f5b8faaaaa163a0cf473d86157/lib/Reference/GithubIssuePrReferenceProvider.php#L162">GitHub integration pull request link preview</a></p>
+</section>
+<section id="version-control-issue-or-pull-request-comment">
+<h4>Version control issue or pull request comment<a class="headerlink" href="#version-control-issue-or-pull-request-comment" title="Link to this heading"></a></h4>
+<p>Set the rich object’s <code class="docutils literal notranslate"><span class="pre">vcs_comment</span></code> attribute to an object which contains those attributes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">url</span></code>: A direct link/permalink to the comment</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">body</span></code>: The comment content in plain text or markdown</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">author</span></code>: The user ID or name of the comment author</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">created_at</span></code>: The creation timestamp</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">updated_at</span></code>: The last edition timestamp</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">vcs_comment</span></code> can be set in addition to <code class="docutils literal notranslate"><span class="pre">vcs_issue</span></code> or <code class="docutils literal notranslate"><span class="pre">vcs_pull_request</span></code>.</p>
+</section>
+<section id="images">
+<h4>Images<a class="headerlink" href="#images" title="Link to this heading"></a></h4>
+<p>Set the rich object’s <code class="docutils literal notranslate"><span class="pre">image_TYPE</span></code> attribute to <code class="docutils literal notranslate"><span class="pre">true</span></code>. The clients will then know they can render this as an image
+using the reference title, description and image URL that you have set.</p>
+<p>Type can be <code class="docutils literal notranslate"><span class="pre">gif</span></code>, <code class="docutils literal notranslate"><span class="pre">jpeg</span></code>, <code class="docutils literal notranslate"><span class="pre">png</span></code> etc…</p>
+<p>Example implementation: <a class="reference external" href="https://github.com/nextcloud/integration_giphy/blob/6c07af9c99014599bd3582a26e4fd99678b275ef/lib/Reference/GiphyReferenceProvider.php#L114-L124">Giphy integration</a></p>
+</section>
+</section>
+</section>
+<section id="extend-the-smart-picker">
+<h2>Extend the Smart Picker<a class="headerlink" href="#extend-the-smart-picker" title="Link to this heading"></a></h2>
+<p>If you want your reference provider to appear in the Smart Picker to search/get links,
+it needs to be discoverable
+(extend the <code class="docutils literal notranslate"><span class="pre">OCP\Collaboration\Reference\ADiscoverableReferenceProvider</span></code> abstract class)
+and either</p>
+<ul class="simple">
+<li><p>support one or multiple Unified Search providers</p></li>
+<li><p>or register a custom picker component</p></li>
+</ul>
+<p>This is an exclusive choice. You can’t support search providers AND register a custom picker component.
+If you still want to mix both approaches, you can register a custom picker component which includes a custom search feature.</p>
+<p>Extending <code class="docutils literal notranslate"><span class="pre">ADiscoverableReferenceProvider</span></code> implies defining those methods:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">getId</span></code>: returns an ID which will be used by the Smart Picker to identify this provider</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getTitle</span></code>: returns a (ideally translated) provider title visible in the Smart Picker provider list</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getOrder</span></code>: returns an integer to help sorting the providers. The sort order is later superseded by last usage timestamp</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getIconUrl</span></code>: returns the URL of the provider icon, same as the title, the icon will be visible in the provider list</p></li>
+</ul>
+<section id="declare-supported-unified-search-providers">
+<h3>Declare supported Unified Search providers<a class="headerlink" href="#declare-supported-unified-search-providers" title="Link to this heading"></a></h3>
+<p>If you want your reference provider to let users pick links from unified search results, your reference provider must
+implement <code class="docutils literal notranslate"><span class="pre">OCP\Collaboration\Reference\ISearchableReferenceProvider</span></code> and define the <code class="docutils literal notranslate"><span class="pre">getSupportedSearchProviderIds</span></code>
+method which return a list of supported search provider IDs.</p>
+<p>Once this provider is selected in the Smart Picker, users will see a generic search interface giving results from
+all the search providers you declared as supported. Once a result is selected, the Smart Picker will return
+the associated resource URL.</p>
+</section>
+<section id="register-a-custom-picker-component">
+<h3>Register a custom picker component<a class="headerlink" href="#register-a-custom-picker-component" title="Link to this heading"></a></h3>
+<p>On the backend side, in your <code class="docutils literal notranslate"><span class="pre">lib/AppInfo/Application.php</span></code>, you should listen to the
+<code class="docutils literal notranslate"><span class="pre">OCP\Collaboration\Reference\RenderReferenceEvent</span></code>. In the corresponding listener, you should load
+the scripts that will register custom picker components.</p>
+<p>In other words, when the <code class="docutils literal notranslate"><span class="pre">RenderReferenceEvent</span></code> event is dispatched,
+the Smart Picker will potentially by used in the frontend so you need to load the related scripts from your app.</p>
+<p>You can define your own picker user interface for your provider by registering a custom picker component.
+This can be done with the
+<code class="docutils literal notranslate"><span class="pre">registerCustomPickerElement</span></code> function from <code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/vue/dist/Components/NcRichText.js</span></code>.
+This function takes 3 parameters:</p>
+<ul class="simple">
+<li><p>The reference provider ID for which you register the custom picker component</p></li>
+<li><p>The callback function to create and mount your component</p></li>
+<li><p>The callback function to delete/destroy your component</p></li>
+</ul>
+<p>The creation callback must return a <code class="docutils literal notranslate"><span class="pre">NcCustomPickerRenderResult</span></code> object to which you have to give the DOM element
+you just created and optionally an object (the Vue instance for example).
+This render result will be then be passed to the destroy callback to let you properly clean and delete your custom component.</p>
+<p>To register a Vue component as a custom picker component:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">registerCustomPickerElement</span><span class="p">,</span><span class="w"> </span><span class="nx">NcCustomPickerRenderResult</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/vue/dist/Components/NcRichText.js&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Vue</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;vue&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">MyCustomPickerElement</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./MyCustomPickerElement.vue&#39;</span>
+
+<span class="nx">registerCustomPickerElement</span><span class="p">(</span><span class="s1">&#39;REFERENCE_PROVIDER_ID&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">el</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">providerId</span><span class="p">,</span><span class="w"> </span><span class="nx">accessible</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">Element</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Vue</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">MyCustomPickerElement</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">vueElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Element</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">propsData</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">providerId</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">accessible</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">    </span><span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">NcCustomPickerRenderResult</span><span class="p">(</span><span class="nx">vueElement</span><span class="p">.</span><span class="nx">$el</span><span class="p">,</span><span class="w"> </span><span class="nx">vueElement</span><span class="p">)</span>
+<span class="p">},</span><span class="w"> </span><span class="p">(</span><span class="nx">el</span><span class="p">,</span><span class="w"> </span><span class="nx">renderResult</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// call the $destroy method on your custom element&#39;s Vue instance</span>
+<span class="w">    </span><span class="nx">renderResult</span><span class="p">.</span><span class="nx">object</span><span class="p">.</span><span class="nx">$destroy</span><span class="p">()</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>To register anything else:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">registerCustomPickerElement</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">NcCustomPickerRenderResult</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/vue/dist/Components/NcRichText.js&#39;</span>
+
+<span class="nx">registerCustomPickerElement</span><span class="p">(</span><span class="s1">&#39;REFERENCE_PROVIDER_ID&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">el</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">providerId</span><span class="p">,</span><span class="w"> </span><span class="nx">accessible</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">paragraph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">paragraph</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;click this button to return a link&#39;</span>
+<span class="w">    </span><span class="nx">el</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">paragraph</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">button</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">button</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;I am a button&#39;</span>
+<span class="w">    </span><span class="nx">button</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CustomEvent</span><span class="p">(</span>
+<span class="w">            </span><span class="s1">&#39;submit&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">bubbles</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">detail</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;https://nextcloud.com&#39;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">        </span><span class="nx">el</span><span class="p">.</span><span class="nx">dispatchEvent</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="nx">el</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">button</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">NcCustomPickerRenderResult</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span>
+<span class="p">},</span><span class="w"> </span><span class="p">(</span><span class="nx">el</span><span class="p">,</span><span class="w"> </span><span class="nx">renderResult</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">renderResult</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>In your custom component, just emit the <code class="docutils literal notranslate"><span class="pre">submit</span></code> event with the result as the event’s data to pass it back to the Smart Picker.
+You can also emit the <code class="docutils literal notranslate"><span class="pre">cancel</span></code> event to abort and go back.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="publicpage.html" class="btn btn-neutral float-left" title="Public Pages" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="repair.html" class="btn btn-neutral float-right" title="Repair steps" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/developer_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/28/developer_manual"
+             
+          >
+            28
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

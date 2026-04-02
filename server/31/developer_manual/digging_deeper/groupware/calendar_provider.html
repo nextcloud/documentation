@@ -1,0 +1,876 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Integration of custom calendar providers &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Contacts Menu" href="contacts_menu.html" />
+    <link rel="prev" title="Calendar integration" href="calendar.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config/index.html">Config &amp; Preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../continuous_integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dashboard.html">Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deadlock.html">Deadlocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../email.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../files-metadata.html">Files Metadata</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Groupware integration</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="calendar.html">Calendar integration</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Integration of custom calendar providers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#registering-the-calendar-with-the-nextcloud-api-interface">Registering the calendar with the Nextcloud API interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#legacy-access-to-the-sabre-classes">Legacy access to the Sabre classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-calendar-object-class">The calendar object class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-calendar-class">The calendar class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-calendar-plugin-class">The calendar plugin class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#register-the-calendar-provider">Register the calendar provider</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="contacts_menu.html">Contacts Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mail_provider.html">Mail Provider Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../http_client.html">HTTP Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../translation.html">Machine Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../out_of_office.html">Out-of-office periods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phonenumberutil.html">Phone number util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../psr.html">PSR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../profile.html">Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../profiler.html">Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference.html">Reference providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rest_apis.html">REST APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security.html">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup_checks.html">Setup checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../speech-to-text.html">Speech-To-Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../talk.html">Talk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../task_processing.html">Task Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../text_processing.html">Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../text2image.html">Text-To-Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../status.html">User Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_migration.html">User migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../web_host_metadata.html">Web Host Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../time.html">Working with time</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Digging deeper</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Groupware integration</a></li>
+      <li class="breadcrumb-item active">Integration of custom calendar providers</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/groupware/calendar_provider.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="integration-of-custom-calendar-providers">
+<span id="calendar-providers"></span><h1>Integration of custom calendar providers<a class="headerlink" href="#integration-of-custom-calendar-providers" title="Link to this heading"></a></h1>
+<p>Nextcloud apps can register calendars in addition to the internal calendars of the Nextcloud CalDAV back end. Calendars are only loaded on demand, therefore a lazy provider mechanism is used.</p>
+<p>The access to the calendars is possible in two ways: the legacy way uses the classes of the DAV app directly to interact with Sabre. In order to simplify access, the Nextcloud team has started some effort to include the Sabre interface in an embedded interface in Nextcloud. However, there are a few shortcomings here that are not not yet finished.</p>
+<p>If you work on a new app and want to provide a calendar, check if the embedded code suits your requirements. If it does, it might be simpler to use it than to use the legacy Sabre interface.</p>
+<p>All snippets are prefixed by <code class="docutils literal notranslate"><span class="pre">&lt;?php</span></code> to make you aware that this is still php code (and enable the code styling in this document). Of course, you do not need to repeat the opening tags.</p>
+<section id="registering-the-calendar-with-the-nextcloud-api-interface">
+<h2>Registering the calendar with the Nextcloud API interface<a class="headerlink" href="#registering-the-calendar-with-the-nextcloud-api-interface" title="Link to this heading"></a></h2>
+<p>At the time of writing, the support by the Nextcloud calendar to provide a custom app is limited. Read-only calendars are possible while writable calendars require a bit more work on your side.</p>
+<section id="read-only-support">
+<h3>Read-only support<a class="headerlink" href="#read-only-support" title="Link to this heading"></a></h3>
+<p>To provide calendar(s) you have to write a class that implements the <code class="docutils literal notranslate"><span class="pre">OCP\Calendar\ICalendarProvider</span></code> interface.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">OCP\Calendar\ICalendarProvider</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">CalendarProvider</span> <span class="k">implements</span> <span class="nx">ICalendarProvider</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getCalendars</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$principalUri</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$calendarUris</span> <span class="o">=</span> <span class="p">[])</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="nv">$calendars</span> <span class="o">=</span> <span class="p">[];</span>
+        <span class="c1">// TODO: Run app specific logic to find calendars that belong to</span>
+        <span class="c1">//       $principalUri and fill $calendars</span>
+
+        <span class="c1">// The provider can simple return an empty array if there is not</span>
+        <span class="c1">// a single calendar for the principal URI</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$calendars</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">[];</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Return instances of \OCP\Calendar\ICalendar</span>
+        <span class="k">return</span> <span class="nv">$calendars</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This <code class="docutils literal notranslate"><span class="pre">CalendarProvider</span></code> class is then registered in the <a class="reference internal" href="../../app_development/bootstrap.html#bootstrapping"><span class="std std-ref">register method of your Application class</span></a> with <code class="docutils literal notranslate"><span class="pre">$context-&gt;registerCalendarProvider(CalendarProvider::class);</span></code>.</p>
+</section>
+<section id="write-support">
+<h3>Write support<a class="headerlink" href="#write-support" title="Link to this heading"></a></h3>
+<p>Calendars that only return <cite>ICalendar</cite> are implicitly read-only. If your app’s calendars can be written to, you may implement the <code class="docutils literal notranslate"><span class="pre">ICreateFromString</span></code> interface. It will allow other apps to write calendar objects to the calendar by passing the raw iCalendar data as string.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">OCP\Calendar\ICreateFromString</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">CalendarReadWrite</span> <span class="k">implements</span> <span class="nx">ICreateFromString</span> <span class="p">{</span>
+
+    <span class="c1">// ... other methods from ICalendar still have to be implemented ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">createFromString</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$calendarData</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="c1">// Write data to your calendar representation</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="handling-imip-data">
+<h3>Handling iMIP data<a class="headerlink" href="#handling-imip-data" title="Link to this heading"></a></h3>
+<p>You may implement the <code class="docutils literal notranslate"><span class="pre">IHandleIMipMessage</span></code> interface to process iMIP data you receive in a client and want to pass on for processing to the backend.</p>
+<p>Please be aware that there are some security considerations to take into account. You can find more information on these and the conditions that have to be fulfilled for iMIP data to be processed in the <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc6047">RFC</a></p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">OCP\Calendar\IHandleIMipMessage</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">HandleIMipMessage</span> <span class="k">implements</span> <span class="nx">IHandleIMipMessage</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">handleIMipMessage</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$calendarData</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="c1">// Validation and write to your calendar representation</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="access-through-caldav">
+<h3>Access through CalDAV<a class="headerlink" href="#access-through-caldav" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 27.</span></p>
+</div>
+<p>As with the built-in calendars, calendars provided by <code class="docutils literal notranslate"><span class="pre">ICalendarProvider</span></code> can be accessed using CalDAV. Therefore, permissions of the <code class="docutils literal notranslate"><span class="pre">ICalendar</span></code> are automatically mapped to the DAV object.
+Write support is also supported. Please note that deleting entities is currently implemented by setting the entity to the canceled state and passing it to the <code class="docutils literal notranslate"><span class="pre">createFromString</span></code> method.</p>
+</section>
+</section>
+<section id="legacy-access-to-the-sabre-classes">
+<h2>Legacy access to the Sabre classes<a class="headerlink" href="#legacy-access-to-the-sabre-classes" title="Link to this heading"></a></h2>
+<p>In order to allow an app to publish calendar entries, they have to interact with the Sabre WebDAV server integrated with the core. This dictates a well-defined structure for the app to use as an interface:</p>
+<p>There are classes and interfaces to connect with the WebDAV server. To combine the required interfaces, there are abstract classes prepared by the DAV app that centralizes these access requests. For an app to provide a custom calendar that means that in fact three classes need to be defined and all inherited methods need to be implemented:</p>
+<ol class="arabic simple">
+<li><p>A <em>calendar object</em> class provides access to single elements in a calendar like appointments/events or tasks/todos.</p></li>
+<li><p>A <em>calendar</em> class provides access to a single calendar that contains all the corresponding <em>calendar objects</em>.</p></li>
+<li><p>An <em>plugin</em> class that registers the calendar with the rest of the CalDAV system.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please be aware that this section uses the classes in <code class="docutils literal notranslate"><span class="pre">\OCA\DAV</span></code> which is by definition no public interface. Once there is a central solution presented, this should be updated.</p>
+</div>
+<p>Please note that CalDAV bases on WebDAV. WebDAV is a standardized way to access files over a network connection. Thus, the same notions are applied when handling calendars (and contacts). A calendar is mapped to a folder while an event in a calendar is mapped to a (relative) file. Keeping this in mind will allow you to get the principles of the API faster.</p>
+<p>In the following sections, all these parts are considered separately. As there are quite some methods to be implemented, first the general structure of the classes are presented without implementing the abstract methods. Then, the methods are handled in groups to simplify reading.</p>
+</section>
+<section id="the-calendar-object-class">
+<h2>The calendar object class<a class="headerlink" href="#the-calendar-object-class" title="Link to this heading"></a></h2>
+<p>There needs to be a class that represents a single entry in a calendar. The naming of said class is arbitrary, it must however implement the interfaces <code class="docutils literal notranslate"><span class="pre">\Sabre\CalDAV\ICalendarObject</span></code> and <code class="docutils literal notranslate"><span class="pre">\Sabre\CalDAV\IACL</span></code>. The basic structure looks like this:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\YourAppName\DAV</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">CalendarObject</span> <span class="k">implements</span> <span class="nx">\Sabre\CalDAV\ICalendarObject</span><span class="p">,</span> <span class="nx">\Sabre\DAVACL\IACL</span> <span class="p">{</span>
+    <span class="sd">/** @var Calendar */</span>
+    <span class="k">private</span> <span class="nv">$calendar</span><span class="p">;</span>
+    <span class="sd">/** @var string */</span>
+    <span class="k">private</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">    * CalendarObject constructor.</span>
+<span class="sd">    *</span>
+<span class="sd">    * @param Calendar $calendar</span>
+<span class="sd">    * @param string $name</span>
+<span class="sd">    */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">Calendar</span> <span class="nv">$calendar</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">calendar</span> <span class="o">=</span> <span class="nv">$calendar</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Implement all remaining functions here ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Calendar</span></code> class is the class as defined in the next section representing a complete calendar.</p>
+<p>The calendar object as well as the name of the entry is given as arguments of the constructor by the calendar class. For now, they are saved into attributes for later usage.</p>
+<section id="basic-event-information-inode">
+<h3>Basic event information – INode<a class="headerlink" href="#basic-event-information-inode" title="Link to this heading"></a></h3>
+<p>There are some basic methods that need to be implemented on each calendar object instance. These are defined <code class="docutils literal notranslate"><span class="pre">\Sabre\DAV\INode</span></code>.</p>
+<section id="removal-of-entries">
+<h4>Removal of entries<a class="headerlink" href="#removal-of-entries" title="Link to this heading"></a></h4>
+<p>Removal of calendar events is not allowed in this example. Otherwise, the backend needs to be updated.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">delete</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Sabre\DAV\Exception\Forbidden</span><span class="p">(</span><span class="s1">&#39;This calendar-object is read-only&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="fetching-the-name-of-an-event">
+<h4>Fetching the name of an event<a class="headerlink" href="#fetching-the-name-of-an-event" title="Link to this heading"></a></h4>
+<p>The name of the event can be obtained using the <code class="docutils literal notranslate"><span class="pre">getName</span></code> method. Here, the saved name in the attributes is just returned.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="updating-the-name-of-an-event">
+<h4>Updating the name of an event<a class="headerlink" href="#updating-the-name-of-an-event" title="Link to this heading"></a></h4>
+<p>Updating the name is not considered a good idea, thus it will be cancelled by a Exception. One could also update the backend if this should be possible.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">setName</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Sabre\DAV\Exception\Forbidden</span><span class="p">(</span><span class="s1">&#39;This calendar-object is read-only&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="getting-the-last-modification-time-stamp">
+<h4>Getting the last modification time stamp<a class="headerlink" href="#getting-the-last-modification-time-stamp" title="Link to this heading"></a></h4>
+<p>The method <code class="docutils literal notranslate"><span class="pre">getLastModified</span></code> must return a unix timestamp that represents the modification date of the event. This can be used by the client to selectively update whatever structure.</p>
+<p>Returning <code class="docutils literal notranslate"><span class="pre">null</span></code> is allowed to indicate that no modification time stamp can be obtained.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">getLastModified</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">time</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="event-data-ifile">
+<h3>Event data – IFile<a class="headerlink" href="#event-data-ifile" title="Link to this heading"></a></h3>
+<p>The main data of a calendar object is stored in the <code class="docutils literal notranslate"><span class="pre">\Sabre\DAV\IFile</span></code> interface. There are a few additional methods that help during the usage.</p>
+<section id="content-size-of-the-event">
+<h4>Content size of the event<a class="headerlink" href="#content-size-of-the-event" title="Link to this heading"></a></h4>
+<p>One helper function is the <code class="docutils literal notranslate"><span class="pre">getSize</span></code> method to get the number of bytes that represent this calendar entry’s representation. Nothing fancy is done in this method.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">getSize</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="get-a-unique-tag-for-one-event-version">
+<h4>Get a unique tag for one event version<a class="headerlink" href="#get-a-unique-tag-for-one-event-version" title="Link to this heading"></a></h4>
+<p>The calculation of an E-Tag can be calculated using the <code class="docutils literal notranslate"><span class="pre">getETag</span></code> method. Note, that the returned E-Tag must have the double quotes as part of the returned string.</p>
+<p>One can also return <code class="docutils literal notranslate"><span class="pre">null</span></code> to indicate that the E-Tag cannot be calculated effectively.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">getETag</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">&#39;&quot;&#39;</span> <span class="o">.</span> <span class="nb">md5</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">())</span> <span class="o">.</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="returning-the-content-type">
+<span id="calendar-provider-content-type"></span><h4>Returning the content type<a class="headerlink" href="#returning-the-content-type" title="Link to this heading"></a></h4>
+<p>The content type of the calendar entry must be provided as well.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">getContentType</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">&#39;text/calendar; charset=utf-8&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="get-content-of-a-calendar-event">
+<h4>Get content of a calendar event<a class="headerlink" href="#get-content-of-a-calendar-event" title="Link to this heading"></a></h4>
+<p>The actual calendar entry can be obtained by the <code class="docutils literal notranslate"><span class="pre">get</span></code> method. This must for sure match the <a class="reference internal" href="#calendar-provider-content-type"><span class="std std-ref">content type</span></a> declared. See the <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc5545">official documentation</a> on vcal calendars on the possible format as well.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">get</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nv">$name</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">();</span>
+    <span class="k">return</span> <span class="s">&lt;&lt;&lt;</span><span class="dl">EOF</span>
+<span class="s">BEGIN:VCALENDAR</span>
+<span class="s">VERSION:2.0</span>
+<span class="s">PRODID:-//Nextcloud/DavCalendarDemo//NONSGML v1.0//EN</span>
+<span class="s">BEGIN:VEVENT</span>
+<span class="s">UID:$name@example.com</span>
+<span class="s">DTSTAMP:20200101T170000Z</span>
+<span class="s">DTSTART:20200130T170000Z</span>
+<span class="s">DTEND:20200130T180000Z</span>
+<span class="s">SUMMARY:Example $name</span>
+<span class="s">END:VEVENT</span>
+<span class="s">END:VCALENDAR</span>
+<span class="dl">EOF</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="updating-the-content-of-a-calendar-event">
+<h4>Updating the content of a calendar event<a class="headerlink" href="#updating-the-content-of-a-calendar-event" title="Link to this heading"></a></h4>
+<p>It is possible that the client tries to update the event with the <code class="docutils literal notranslate"><span class="pre">put</span></code> method.</p>
+<p>In this example, we consider the event read-only, so we throw an exception if a client tries to update it. If you are planning to allow clients to update events, you need to implement the parsing, validation and saving of data.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">put</span><span class="p">(</span><span class="nv">$data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Sabre\DAV\Exception\Forbidden</span><span class="p">(</span><span class="s1">&#39;This calendar-object is read-only&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="access-restrictions-iacl">
+<h3>Access restrictions – IACL<a class="headerlink" href="#access-restrictions-iacl" title="Link to this heading"></a></h3>
+<p>The calendar entities are completed by a set of access rules. These allow a client to know if certain actions are to be allowed or not.</p>
+<section id="ownership">
+<h4>Ownership<a class="headerlink" href="#ownership" title="Link to this heading"></a></h4>
+<p>The owner and corresponding groups of the calendar entry can be specified as uris. If no owner or group is present, a <code class="docutils literal notranslate"><span class="pre">null</span></code> value should be returned.</p>
+<p>As typically the calendar belongs to a user and the individual entries to the calendar, the entries do not need a dedicated user set in our example. For more complex approaches see the official documentation of CalDAV.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">getOwner</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">getGroup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="providing-privileges-individually">
+<h4>Providing privileges individually<a class="headerlink" href="#providing-privileges-individually" title="Link to this heading"></a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">getSupportedPrivilegeSet</span></code> method can be used to query for the privileges to query the entry for dedicated privileges. When a <code class="docutils literal notranslate"><span class="pre">null</span></code> is returned, the default privileges set is assumed.</p>
+<p>For the example here and most other cases, <code class="docutils literal notranslate"><span class="pre">null</span></code> is a good choice.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">getSupportedPrivilegeSet</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="obtaining-the-currently-installed-acls">
+<h4>Obtaining the currently installed ACLs<a class="headerlink" href="#obtaining-the-currently-installed-acls" title="Link to this heading"></a></h4>
+<p>The real access rules can be obtained by <code class="docutils literal notranslate"><span class="pre">getACL</span></code>. In this example, we assume that the ACLs are inherited from the calendar. Thus, we delegate the calculation to the calendar class.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">getACL</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">calendar</span><span class="o">-&gt;</span><span class="na">getACL</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="updating-the-calendar-acls">
+<h4>Updating the calendar ACLs<a class="headerlink" href="#updating-the-calendar-acls" title="Link to this heading"></a></h4>
+<p>Updating the ACLs could be handled with the <code class="docutils literal notranslate"><span class="pre">setACL</span></code> method. This example assumes constant ACLs, so it will be rejected with an exception been thrown.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">setACL</span><span class="p">(</span><span class="k">array</span> <span class="nv">$acl</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Sabre\DAV\Exception\Forbidden</span><span class="p">(</span><span class="s1">&#39;Setting ACL is not supported on this node&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="the-calendar-class">
+<h2>The calendar class<a class="headerlink" href="#the-calendar-class" title="Link to this heading"></a></h2>
+<p>A single calendar needs to be represented as its own class. As with the calendar entity class, you can choose any name for your class. Extend the <code class="docutils literal notranslate"><span class="pre">OCA\DAV\CalDAV\Integration\ExternalCalendar</span></code> class:</p>
+<p>The basic constructor for the class and some attributes that are stored is shown below. We store some provided uris internally for later use.</p>
+<p>The parent constructor needs the name of the app as the first parameter. It is thus called explicitly in the first line of the constructor with the correct app name (<code class="docutils literal notranslate"><span class="pre">yourappname</span></code> in this example).</p>
+<p>Some of the methods that need to be implemented are similar to the ones above for the calendar entity class. However, there are different implementations required, so all methods are revisited once in the next paragraphs.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\YourAppName\DAV</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\DAV\CalDAV\Integration\ExternalCalendar</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCA\DAV\CalDAV\Plugin</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sabre\CalDAV\Xml\Property\SupportedCalendarComponentSet</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Sabre\DAV\PropPatch</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Calendar</span> <span class="k">extends</span> <span class="nx">ExternalCalendar</span> <span class="p">{</span>
+    <span class="sd">/** @var string */</span>
+    <span class="k">private</span> <span class="nv">$principalUri</span><span class="p">;</span>
+    <span class="sd">/** @var string */</span>
+    <span class="k">private</span> <span class="nv">$calendarUri</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">    * Calendar constructor.</span>
+<span class="sd">    *</span>
+<span class="sd">    * @param string $principalUri</span>
+<span class="sd">    * @param string $calendarUri</span>
+<span class="sd">    */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$principalUri</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$calendarUri</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;yourappname&#39;</span><span class="p">,</span> <span class="nv">$calendarUri</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">principalUri</span> <span class="o">=</span> <span class="nv">$principalUri</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">calendarUri</span> <span class="o">=</span> <span class="nv">$calendarUri</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// The other methods come here ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="basic-calendar-information-inode">
+<h3>Basic Calendar information – INode<a class="headerlink" href="#basic-calendar-information-inode" title="Link to this heading"></a></h3>
+<p>The interface <code class="docutils literal notranslate"><span class="pre">\Sabre\DAV\INode</span></code> has two methods that need to be implemented by the app’s code. The other methods in the interface are already implemented in the <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\CalDAV\Integration\ExternalCalendar</span></code> class.</p>
+<section id="removal-of-calendars">
+<h4>Removal of calendars<a class="headerlink" href="#removal-of-calendars" title="Link to this heading"></a></h4>
+<p>The calendar should not be removed by means of the CalDAV interface. Thus, nothing is done here.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">delete</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="getting-the-modification-timestamp">
+<h4>Getting the modification timestamp<a class="headerlink" href="#getting-the-modification-timestamp" title="Link to this heading"></a></h4>
+<p>The last time the calendar is modified allows clients to optimize their requests. This method should return the corresponding unix timestamp.</p>
+<p>A fallback is to provide the value <code class="docutils literal notranslate"><span class="pre">null</span></code> as return value. This tells that the last modification time is not known at the moment.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">getLastModified</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">time</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="entries-in-the-calendar-icollection">
+<h3>Entries in the calendar – ICollection<a class="headerlink" href="#entries-in-the-calendar-icollection" title="Link to this heading"></a></h3>
+<p>The interface <code class="docutils literal notranslate"><span class="pre">\Sabre\DAV\ICollection</span></code> defines methods to access children of the current node. For calendars, the children are in fact the events stored within the calendar. Again, some methods are already covered, so here only the required methods are implemented.</p>
+<p>All calendar entries do have a unique name. This is just a plain string. Typically these are named as <code class="docutils literal notranslate"><span class="pre">.ics</span></code> files. The methods covered in this section need this name as a parameter to identify the event to operate upon.</p>
+<section id="creating-new-calendar-events">
+<h4>Creating new calendar events<a class="headerlink" href="#creating-new-calendar-events" title="Link to this heading"></a></h4>
+<p>The method <code class="docutils literal notranslate"><span class="pre">createFile</span></code> is used to store new events to the calendar. One could return return an ETag of the calendar event as a string that contains double quotes as sketched in the comment.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">createFile</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$data</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+    <span class="c1">// return &quot;\&quot;$etag\&quot;&quot;;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="checking-for-existence-of-events">
+<h4>Checking for existence of events<a class="headerlink" href="#checking-for-existence-of-events" title="Link to this heading"></a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">childExists</span></code> method checks if a certain element is present in the calendar.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">childExists</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Check if the value of $name represents a valid calendar entry name.</span>
+    <span class="c1">// You can check your backend(s) for the child</span>
+    <span class="c1">// then return a boolean</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="fetching-a-calendar-entry">
+<h4>Fetching a calendar entry<a class="headerlink" href="#fetching-a-calendar-entry" title="Link to this heading"></a></h4>
+<p>The method <code class="docutils literal notranslate"><span class="pre">getChild</span></code> will pack an calendar entry into its own object as described earlier.</p>
+<p>The method allows to request a specific entry and extract it from the calendar.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">getChild</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">childExists</span><span class="p">(</span><span class="nv">$name</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">CalendarObject</span><span class="p">(</span><span class="nv">$this</span><span class="p">,</span> <span class="nv">$name</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="fetching-all-calendar-entries">
+<h4>Fetching all calendar entries<a class="headerlink" href="#fetching-all-calendar-entries" title="Link to this heading"></a></h4>
+<p>Finally, there is the method <code class="docutils literal notranslate"><span class="pre">getChildren</span></code> to fetch all events of a calendar.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the sake of simplicity, here only a static array is used. One could however query a database or the file system for a variable number of entries in the calendar.</p>
+</div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">getChildren</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Get the list of calendar entries</span>
+    <span class="nv">$children</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;test.ics&#39;</span><span class="p">];</span>
+
+    <span class="c1">// Obtain the calendar objects for each of them</span>
+    <span class="nv">$children</span> <span class="o">=</span> <span class="nb">array_map</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$childName</span><span class="p">)</span> <span class="nx">using</span> <span class="p">(</span><span class="nv">$this</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getChild</span><span class="p">(</span><span class="nv">$childName</span><span class="p">);</span> <span class="p">});</span>
+
+    <span class="k">return</span> <span class="nv">$children</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="querying-the-calendar-icalendarobjectcontainer">
+<h3>Querying the calendar – ICalendarObjectContainer<a class="headerlink" href="#querying-the-calendar-icalendarobjectcontainer" title="Link to this heading"></a></h3>
+<p>It would be very resource intensive to request all events of a calendar only to then discard most of them during filtering. Instead, the client requests a certain set of objects (like the last 90 days) and the server will do the filtering. This can be achieved by the <code class="docutils literal notranslate"><span class="pre">\Sabre\CalDAV\ICalendarObjectContainer</span></code> interface.</p>
+<p>Its sole method will return a list of entries. In contrast to the <code class="docutils literal notranslate"><span class="pre">getChildren()</span></code> method, the entries are not packed into their own objects. The client is responsible to do this by means of <code class="docutils literal notranslate"><span class="pre">getChild()</span></code> in a separate process.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">calendarQuery</span><span class="p">(</span><span class="k">array</span> <span class="nv">$filters</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// In a real implementation this should actually filter</span>
+    <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;test.ics&#39;</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="managing-the-access-to-the-calendar-iacl">
+<h3>Managing the access to the calendar – IACL<a class="headerlink" href="#managing-the-access-to-the-calendar-iacl" title="Link to this heading"></a></h3>
+<p>The CalDAV defines some security relevant properties. These are implemented by means of <code class="docutils literal notranslate"><span class="pre">\Sabre\DAVACL\IACL</span></code>. The ACLs define who (in terms of principal uris) is allowed to do what on the calendar.</p>
+<section id="getting-the-owner-of-a-calendar">
+<h4>Getting the owner of a calendar<a class="headerlink" href="#getting-the-owner-of-a-calendar" title="Link to this heading"></a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">getOwner</span></code> method gets the principal’s uri. Here the stored value provided in the constructor is used.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">getOwner</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">principalUri</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="get-groups-of-calendar">
+<h4>Get groups of calendar<a class="headerlink" href="#get-groups-of-calendar" title="Link to this heading"></a></h4>
+<p>Return all groups uris of the user, there is the <code class="docutils literal notranslate"><span class="pre">getGroups</span></code> method. Here, no groups are assumed.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">getGroup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="fetching-the-access-rules-of-the-calendar">
+<h4>Fetching the access rules of the calendar<a class="headerlink" href="#fetching-the-access-rules-of-the-calendar" title="Link to this heading"></a></h4>
+<p>The ACL defined for this calendar must be returned by the method <code class="docutils literal notranslate"><span class="pre">getACL</span></code>. For the exact definitions, see the documentation of Sabre. At the time of writing this was:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>entry</p></th>
+<th class="head"><p>values</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">principal</span></code></p></td>
+<td><p>uri of principal</p></td>
+<td><p>The role or person trying to access the calendar</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">privilege</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{DAV:}read</span></code>, <code class="docutils literal notranslate"><span class="pre">{DAV:}write</span></code></p></td>
+<td><p>Is the role allowed to read or to write</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">protected</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>if <code class="docutils literal notranslate"><span class="pre">true</span></code>, this rule is not allowed to change</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">getACL</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="p">[</span>
+            <span class="s1">&#39;privilege&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;{DAV:}read&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;principal&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getOwner</span><span class="p">(),</span>
+            <span class="s1">&#39;protected&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="s1">&#39;privilege&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;{DAV:}read&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;principal&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getOwner</span><span class="p">()</span> <span class="o">.</span> <span class="s1">&#39;/calendar-proxy-write&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;protected&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="s1">&#39;privilege&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;{DAV:}read&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;principal&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getOwner</span><span class="p">()</span> <span class="o">.</span> <span class="s1">&#39;/calendar-proxy-read&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;protected&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="setting-the-access-rules-of-the-calendar">
+<h4>Setting the access rules of the calendar<a class="headerlink" href="#setting-the-access-rules-of-the-calendar" title="Link to this heading"></a></h4>
+<p>In this example, no updates of the ACL rules are allowed. Thus, an exception is thrown if the client tries to do so using the method <code class="docutils literal notranslate"><span class="pre">setACL</span></code>.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">setACL</span><span class="p">(</span><span class="k">array</span> <span class="nv">$acl</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Sabre\DAV\Exception\Forbidden</span><span class="p">(</span><span class="s1">&#39;Setting ACL is not supported on this node&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="getting-the-privileges-associated-with-the-calendar">
+<h4>Getting the privileges associated with the calendar<a class="headerlink" href="#getting-the-privileges-associated-with-the-calendar" title="Link to this heading"></a></h4>
+<p>The supported privileges can be overwritten by implementing the method <code class="docutils literal notranslate"><span class="pre">getSupportedPrivileges</span></code>. When returning <code class="docutils literal notranslate"><span class="pre">null</span></code>, the Sabre default is used which is fine for many tasks. Please also take a look at the [Sabre Documentation](<a class="reference external" href="https://sabre.io/dav/acl/">https://sabre.io/dav/acl/</a>) for more information.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">getSupportedPrivilegeSet</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="properties-of-the-external-calendar-iproperties">
+<h3>Properties of the external calendar – IProperties<a class="headerlink" href="#properties-of-the-external-calendar-iproperties" title="Link to this heading"></a></h3>
+<p>You will be able to specify some calendar properties. The CalDAV interface allows for a rather generic interface. You will have to check the details of the CalDAV standard on what properties make sense for you.</p>
+<section id="getting-the-properties">
+<h4>Getting the properties<a class="headerlink" href="#getting-the-properties" title="Link to this heading"></a></h4>
+<p>The properties are fetched with the method <code class="docutils literal notranslate"><span class="pre">getProperties</span></code>.</p>
+<p>Here a basic stub of calendar properties are provided. It is a basic name, a color and the setting to allow both events (<code class="docutils literal notranslate"><span class="pre">VEVENT</span></code>) and tasks (<code class="docutils literal notranslate"><span class="pre">VTODO</span></code>) in the calendar.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">getProperties</span><span class="p">(</span><span class="nv">$properties</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// A backend should provide at least minimum properties</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="s1">&#39;{DAV:}displayname&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Dav Example Calendar: &#39;</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">calendarUri</span><span class="p">,</span>
+        <span class="s1">&#39;{http://apple.com/ns/ical/}calendar-color&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;#565656&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;{&#39;</span> <span class="o">.</span> <span class="nx">Plugin</span><span class="o">::</span><span class="na">NS_CALDAV</span> <span class="o">.</span> <span class="s1">&#39;}supported-calendar-component-set&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">SupportedCalendarComponentSet</span><span class="p">([</span><span class="s1">&#39;VTODO&#39;</span><span class="p">,</span> <span class="s1">&#39;VEVENT&#39;</span><span class="p">]),</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="updating-the-properties">
+<h4>Updating the properties<a class="headerlink" href="#updating-the-properties" title="Link to this heading"></a></h4>
+<p>This method needs implementation to satisfy PHP but can be left empty as the core handles this most probably.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">propPatch</span><span class="p">(</span><span class="nx">PropPatch</span> <span class="nv">$propPatch</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// We can just return here and let oc_properties handle everything</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="the-calendar-plugin-class">
+<h2>The calendar plugin class<a class="headerlink" href="#the-calendar-plugin-class" title="Link to this heading"></a></h2>
+<p>The last class that needs to be implemented is the <em>plugin</em> class.</p>
+<p>The calendar plugin class needs to implement the interface <code class="docutils literal notranslate"><span class="pre">\OCA\DAV\CalDAV\Integration\ICalendarProvider</span></code> that defines some methods to query the list of calendars an app can provide.</p>
+<p>The method <code class="docutils literal notranslate"><span class="pre">getAppId</span></code> returns the name of the app.</p>
+<p>The method <code class="docutils literal notranslate"><span class="pre">fetchAllForCalendarHome</span></code> returns a list of all <cite>Calendars</cite>  that the app knows of.</p>
+<p>Note  that the <code class="docutils literal notranslate"><span class="pre">principalUri</span></code> is passed by the caller, while the <code class="docutils literal notranslate"><span class="pre">calendarUri</span></code> in the constructor of the calendar instance is a (relative) uri (string) that identifies the calendar uniquely. The uri can then be used in the calendar class to extract the appropriate entries that should be present in the calendar.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">hasCalendarInCalendarHome</span></code> checks if a certain combination of <code class="docutils literal notranslate"><span class="pre">principalUri</span></code> and <code class="docutils literal notranslate"><span class="pre">calendarUri</span></code> exist. Here, it is just hard-coded to exactly one calendar, but in your own implementation you should do more stringent checks.</p>
+<p>Finally, there is a function to query for a single calendar instance using <code class="docutils literal notranslate"><span class="pre">getCalendarInCalendarHome</span></code>. It returns a single calendar instance or <code class="docutils literal notranslate"><span class="pre">null</span></code> if no matching calendar is found.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\YourAppName\DAV</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\DAV\CalDAV\Integration\ExternalCalendar</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCA\DAV\CalDAV\Integration\ICalendarProvider</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">CalendarPlugin</span> <span class="k">implements</span> <span class="nx">ICalendarProvider</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getAppId</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;yourappname&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">fetchAllForCalendarHome</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$principalUri</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="k">new</span> <span class="nx">Calendar</span><span class="p">(</span><span class="nv">$principalUri</span><span class="p">,</span> <span class="s1">&#39;my-calendar-1234&#39;</span><span class="p">),</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">hasCalendarInCalendarHome</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$principalUri</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$calendarUri</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$calendarUri</span> <span class="o">===</span> <span class="s1">&#39;my-calendar-1234&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getCalendarInCalendarHome</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$principalUri</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$calendarUri</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="nx">ExternalCalendar</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasCalendarInCalendarHome</span><span class="p">(</span><span class="nv">$principalUri</span><span class="p">,</span> <span class="nv">$calendarUri</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">Calendar</span><span class="p">(</span><span class="nv">$principalUri</span><span class="p">,</span> <span class="nv">$calendarUri</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="register-the-calendar-provider">
+<h2>Register the calendar provider<a class="headerlink" href="#register-the-calendar-provider" title="Link to this heading"></a></h2>
+<p>As a last step, you must register the calendar provider in your <code class="docutils literal notranslate"><span class="pre">info.xml</span></code>. With all these steps done, you should be able to see the calendar(s) in the calendar app and the CalDAV interface of the core.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;sabre&gt;</span>
+<span class="w">    </span><span class="nt">&lt;calendar-plugins&gt;</span>
+<span class="w">        </span><span class="nt">&lt;plugin&gt;</span>OCA\YourAppName\DAV\CalendarPlugin<span class="nt">&lt;/plugin&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/calendar-plugins&gt;</span>
+<span class="nt">&lt;/sabre&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="calendar.html" class="btn btn-neutral float-left" title="Calendar integration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="contacts_menu.html" class="btn btn-neutral float-right" title="Contacts Menu" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/developer_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/28/developer_manual"
+             
+          >
+            28
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

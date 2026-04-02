@@ -1,0 +1,319 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>External API &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Nextcloud architecture" href="architecture/index.html" />
+    <link rel="prev" title="Unit-Testing" href="unit-testing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Server development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="code-front-end.html">Front-end code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code-back-end.html">Back-end code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static-analysis.html">Static analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">External API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#registering-methods">Registering methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#returning-data">Returning data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#authentication-basics">Authentication &amp; basics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#output">Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#statuscodes">Statuscodes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#changing-api-and-backwards-compatibility">Changing API and backwards compatibility</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="architecture/index.html">Nextcloud architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how_to/index.html">How to test …</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Server development</a></li>
+      <li class="breadcrumb-item active">External API</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/server/externalapi.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="external-api">
+<h1>External API<a class="headerlink" href="#external-api" title="Link to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>The external API inside Nextcloud allows third party developers to access data
+provided by Nextcloud apps. Nextcloud follows the <a class="reference external" href="https://open-collaboration-services.org">Open Collaboration Services
+specification</a>.</p>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<section id="registering-methods">
+<h3>Registering methods<a class="headerlink" href="#registering-methods" title="Link to this heading"></a></h3>
+<p>Methods are registered inside the <code class="file docutils literal notranslate"><span class="pre">appinfo/routes.php</span></code> by returning an
+array holding the endpoint meta data.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">return</span> <span class="p">[</span>
+  <span class="s1">&#39;ocs&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="c1">// Apps</span>
+    <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Bar#getFoo&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/foobar&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">],</span>
+  <span class="p">],</span>
+<span class="p">];</span>
+</pre></div>
+</div>
+</section>
+<section id="returning-data">
+<h3>Returning data<a class="headerlink" href="#returning-data" title="Link to this heading"></a></h3>
+<p>Once the API backend has matched your URL, your callable function as defined in
+<strong>BarController::getFoo</strong> will be executed. The AppFramework will make sure that
+send parameters are provided to the method based on its declaration.</p>
+<p>Be sure to extend the <code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\OCSController</span></code> from the AppFramework.
+Your functions then should returns a <code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\Http\DataResponse</span></code>. The
+AppFramework will then take care formatting the response properly.</p>
+</section>
+<section id="exceptions">
+<h3>Exceptions<a class="headerlink" href="#exceptions" title="Link to this heading"></a></h3>
+<p>To throw an exception to the user in the OCS response. You can throw an
+<code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\OCS\OCSException</span></code>. You can set the message and code.</p>
+<p>There are 3 commonly used exceptions already available:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCSBadRequestException</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCSForbiddenException</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCSNotFoundException</span></code></p></li>
+</ul>
+</section>
+<section id="authentication-basics">
+<h3>Authentication &amp; basics<a class="headerlink" href="#authentication-basics" title="Link to this heading"></a></h3>
+<p>The requests to the OCS endpoint often have to be authenticated.</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">-u</span> <span class="pre">user:password</span> <span class="pre">https://example.com/ocs/v2.php/apps/yourapp/foobar</span></code></p>
+</div></blockquote>
+</section>
+<section id="output">
+<h3>Output<a class="headerlink" href="#output" title="Link to this heading"></a></h3>
+<p>The output defaults to XML. If you want to get JSON append this to the URL:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>?format=json
+</pre></div>
+</div>
+<p>Or set the proper Accept header:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>Output from the application is wrapped inside a <strong>data</strong> element:</p>
+<p><strong>XML</strong>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w"> </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">  </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">  </span><span class="nt">&lt;statuscode&gt;</span>200<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">  </span><span class="nt">&lt;message/&gt;</span>
+<span class="w"> </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w"> </span><span class="nt">&lt;data&gt;</span>
+<span class="w">   </span><span class="cm">&lt;!-- data here --&gt;</span>
+<span class="w"> </span><span class="nt">&lt;/data&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+<p><strong>JSON</strong>:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;ocs&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;meta&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;status&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;statuscode&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;message&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;data&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// data here</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="statuscodes">
+<h3>Statuscodes<a class="headerlink" href="#statuscodes" title="Link to this heading"></a></h3>
+<p>The statuscode can be any of the following numbers:</p>
+<ul class="simple">
+<li><p><strong>200</strong> - successful</p></li>
+<li><p><strong>996</strong> - server error</p></li>
+<li><p><strong>401</strong> - not authorized</p></li>
+<li><p><strong>404</strong> - not found</p></li>
+<li><p><strong>999</strong> - unknown error</p></li>
+</ul>
+</section>
+<section id="changing-api-and-backwards-compatibility">
+<h3>Changing API and backwards compatibility<a class="headerlink" href="#changing-api-and-backwards-compatibility" title="Link to this heading"></a></h3>
+<p>We aim to keep our API as stable as possible to avoid breaking third-party apps.
+Before an API is allowed to be removed, it should be marked as deprecated for at
+least 3 years (9 Nextcloud releases) before it gets removed.</p>
+<p>Changing the API <a class="reference external" href="https://github.com/nextcloud/server/issues">should be discussed in a github issue in our server repo</a>. A pull request is most welcome.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="unit-testing.html" class="btn btn-neutral float-left" title="Unit-Testing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="architecture/index.html" class="btn btn-neutral float-right" title="Nextcloud architecture" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/developer_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/28/developer_manual"
+             
+          >
+            28
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

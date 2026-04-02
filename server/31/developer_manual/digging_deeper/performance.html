@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Performance considerations &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Phone number util" href="phonenumberutil.html" />
+    <link rel="prev" title="Out-of-office periods" href="out_of_office.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/index.html">Config &amp; Preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="continuous_integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard.html">Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deadlock.html">Deadlocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files-metadata.html">Files Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupware/index.html">Groupware integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html">HTTP Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translation.html">Machine Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="out_of_office.html">Out-of-office periods</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Performance considerations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#php-performance">PHP Performance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#database-performance">Database performance</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#writing-scalable-transactions">Writing scalable transactions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#measuring-performance">Measuring performance</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cached-data">Cached data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-help">Getting help</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="phonenumberutil.html">Phone number util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psr.html">PSR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile.html">Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiler.html">Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">Reference providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_apis.html">REST APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_checks.html">Setup checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speech-to-text.html">Speech-To-Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talk.html">Talk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task_processing.html">Task Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_processing.html">Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text2image.html">Text-To-Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status.html">User Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">User migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_host_metadata.html">Web Host Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html">Working with time</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Digging deeper</a></li>
+      <li class="breadcrumb-item active">Performance considerations</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/performance.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="performance-considerations">
+<h1>Performance considerations<a class="headerlink" href="#performance-considerations" title="Link to this heading"></a></h1>
+<p>This document introduces some common considerations and tips on improving performance of Nextcloud. Speed of Nextcloud is important - nobody likes to wait and often, what is <em>just slow</em> for a small amount of data will become <em>unusable</em> with a large amount of data. Please keep these tips in mind when developing for Nextcloud and consider reviewing your app to make it faster.</p>
+<section id="php-performance">
+<h2>PHP Performance<a class="headerlink" href="#php-performance" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Autoloader: Consider using an <a class="reference internal" href="classloader.html#app-custom-classloader"><span class="std std-ref">optimized class loader</span></a>. The application code does not have to change for this optimization.</p></li>
+<li><p>Heavy background jobs: Consider marking <a class="reference internal" href="../basics/backgroundjobs.html#app-backgroundjobs"><span class="std std-ref">background jobs</span></a> as <a class="reference internal" href="../basics/backgroundjobs.html#app-backgroundjobs-time-sensitivity"><span class="std std-ref">time insensitive</span></a> if they can be run at off-peak times with lower system load, e.g. at night.</p></li>
+</ul>
+</section>
+<section id="database-performance">
+<h2>Database performance<a class="headerlink" href="#database-performance" title="Link to this heading"></a></h2>
+<p>The database plays an important role in Nextcloud performance. The general rule is: database queries are very bad and should be avoided if possible. The reasons for that are:</p>
+<ul class="simple">
+<li><p>Roundtrips: Bigger Nextcloud installations have the database not installed on the application server but on a remote dedicated database server. The problem is that database queries then go over the network. These roundtrips can add up significantly if you have a lot of queries.</p></li>
+<li><p>Speed. A lot of people think that databases are fast. This is not always true if you compare it with handling data internally in PHP or in the filesystem or even using key/value based storages. So every developer should always double check if the database is really the best place for the data.</p></li>
+<li><p>Scalability. If you have a big Nextcloud cluster setup you usually have several Nextcloud/Web servers in parallel and a central database and a central storage. This means that everything that happens on the Nextcloud/PHP side can parallelize and can be scaled. Stuff that is happening in the database and in the storage is critical because it only exists once and can’t be scaled so easily.</p></li>
+</ul>
+<p>We can reduce the load on the database by:</p>
+<ol class="arabic simple">
+<li><p>Making sure that every query uses an index.</p></li>
+<li><p>Reducing the overall number of queries.</p></li>
+<li><p>If you are familiar with cache invalidation you can try caching query results in PHP.</p></li>
+</ol>
+<p>There a several ways to monitor which queries are actually executed on the database.</p>
+<p>With MySQL it is very easy with just a bit of configuration:</p>
+<ol class="arabic simple">
+<li><p>Slow query log.</p></li>
+</ol>
+<p>If you put this into your my.cnf file, every query that takes longer than one second is logged to a logfile:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">slow_query_log</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">slow_query_log_file</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">mysql</span><span class="o">-</span><span class="n">slow</span><span class="o">.</span><span class="n">log</span>
+<span class="n">long_query_time</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>If a query takes more than a second we have a serious problem of course. You can watch it with <cite>tail -f /var/log/mysql/mysql-slow.log</cite> while using Nextcloud.</p>
+<ol class="arabic simple" start="2">
+<li><p>log all queries.</p></li>
+</ol>
+<p>If you reduce the long_query_time to zero then every statement is logged. This is super helpful to see what is going on. Just do a <cite>tail -f</cite> on the logfile and click around in the interface or access the WebDAV interface:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">slow_query_log</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">slow_query_log_file</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">mysql</span><span class="o">-</span><span class="n">slow</span><span class="o">.</span><span class="n">log</span>
+<span class="n">long_query_time</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>log queries without an index.</p></li>
+</ol>
+<p>If you increase the long_query_time to 100 and add log-queries-not-using-indexes, all the queries that are not using an index are logged. Every query should always use an index. So ideally there should be no output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log</span><span class="o">-</span><span class="n">queries</span><span class="o">-</span><span class="ow">not</span><span class="o">-</span><span class="n">using</span><span class="o">-</span><span class="n">indexes</span>
+<span class="n">slow_query_log</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">slow_query_log_file</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">mysql</span><span class="o">-</span><span class="n">slow</span><span class="o">.</span><span class="n">log</span>
+<span class="n">long_query_time</span><span class="o">=</span><span class="mi">100</span>
+</pre></div>
+</div>
+<section id="writing-scalable-transactions">
+<h3>Writing scalable transactions<a class="headerlink" href="#writing-scalable-transactions" title="Link to this heading"></a></h3>
+<p>Database queries and transactions have to work efficiently no matter the size of the Nextcloud installations. They have to work with simple SQLite, a single node Postgres and a MariaDB Galera cluster to give some examples.</p>
+<section id="database-clusters">
+<h4>Database clusters<a class="headerlink" href="#database-clusters" title="Link to this heading"></a></h4>
+<p>Single instance database offer strong consistency. Clusters can offer it too, but it comes with a performance penalty and admins occasionally choose to relax these guarantees to increase throughput. One of these allowed inconsistencies can happen on read/write split clusters, where some nodes handle only read (SELECT) operations while other can handle read and write (SELECT, INSERT, UPDATE and DELETE). Keeping replica nodes in sync with primary nodes is expensive. Allowing a few milliseconds of delay for the data to propagate from primary to replica allows the primary to process more queries.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 29: </span>Nextcloud installations can have a primary connection and a number of replica connections. The database abstraction will automatically split read and write operations. Reads go to a replica, unless they happen in a transaction. Writes always go to the primary. As soon as a table has been written to, subsequent reads go to the primary too.</p>
+</div>
+<p>Other installations do this split inside the cluster or with a database load balancer that sends queries to one or another node based on criteria, round robin, etc. This means that Nextcloud can’t always influence where queries are executed.</p>
+<p>It is important for Nextcloud developers to keep this in mind when writing database queries, especially when it is a series of queries. The next sections cover common anti-patterns and solutions.</p>
+</section>
+<section id="reading-data-that-has-just-been-written">
+<h4>Reading data that has just been written<a class="headerlink" href="#reading-data-that-has-just-been-written" title="Link to this heading"></a></h4>
+<p>A common pattern that works fine with small databases but falls apart on overloaded clusters are causal reads. These happen when a Nextcloud process INSERTs new data and reads that data right away. This can be obvious to spot in the code, but sometimes this is also obfuscated because of event listeners that react on new data.</p>
+<p>There are two patterns to avoid the “dirty” read:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><strong>Wrap the write+read operation in a transaction</strong>. Nextcloud’s read/write split, but also other database cluster load balancers will ensure that the queries of a transactions go to one single database node of a cluster. That ensures that data written is instantly available to be read back. This approach guarantees consistency, but puts additional load on the primary node because it has to execute the read operation too. This is best used in contained code blocks. Do not span transactions for event listeners because their execution might lead to <a class="reference internal" href="#performance-long-transactions"><span class="std std-ref">long transactions</span></a> and locking issues.</p></li>
+<li><p><strong>Avoid the read operation</strong>. If the code allows it, avoid the read operation all together. You should know what was just written. If you need the auto increment ID, use the database’s <em>last insert ID</em> feature. Proceed with this data, pass it to event listeners, etc. This approach guarantees consistency, too, but also improves overall performance.</p></li>
+</ol>
+</div></blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Nextcloud can help you identify read after write without the need to set up a cluster for your development environment. If you change the loglevel to 0 (debug), dirty reads will trigger a log entry. Monitor the log when testing your code.</p>
+<p>Look out for messages like <code class="docutils literal notranslate"><span class="pre">dirty</span> <span class="pre">table</span> <span class="pre">reads:</span> <span class="pre">SELECT</span> <span class="pre">`id`</span> <span class="pre">FROM</span> <span class="pre">`*PREFIX*jobs`</span> <span class="pre">WHERE</span> <span class="pre">(`class`</span> <span class="pre">=</span> <span class="pre">:dcValue1)</span> <span class="pre">AND</span> <span class="pre">(`argument_hash`</span> <span class="pre">=</span> <span class="pre">:dcValue2)</span> <span class="pre">LIMIT</span> <span class="pre">1</span></code>. Use the log entry’s <em>trace</em> to locate the code that executed the query.</p>
+<p>Be aware that the dirty read detection is not perfect and might wrongly log a dirty read when you write and read unrelated data. As an example, you may read user <em>alice</em>, update her data, and then read <em>bob</em>’s data and do the same. Even if the database replicates slow, you will not read data that doesn’t exist yet. Since Nextcloud tracks on a table level, it still warns.</p>
+</div>
+</section>
+<section id="long-transactions">
+<span id="performance-long-transactions"></span><h4>Long transactions<a class="headerlink" href="#long-transactions" title="Link to this heading"></a></h4>
+<p>Transactions are crucial for changes that belong together but they can cause problems under load. That’s because the longer the transaction is open, the more other queries may have to wait for a lock to be released. This can lead to contention, timing out requests and deadlocks. So use transaction wisely and try to keep them as short as possible. Don’t mix them database operations with file system operations, for example.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Nextcloud can help you identify slow transactions. If you change the loglevel to 0 (debug), slow transaction will cause a log message at commit/rollback.</p>
+<p>Look out for messages like <code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">took</span> <span class="pre">longer</span> <span class="pre">than</span> <span class="pre">1s:</span> <span class="pre">7.1270351409912</span></code> and <code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">rollback</span> <span class="pre">took</span> <span class="pre">longer</span> <span class="pre">than</span> <span class="pre">1s:</span> <span class="pre">1.2153599501</span></code>.</p>
+</div>
+</section>
+</section>
+<section id="measuring-performance">
+<h3>Measuring performance<a class="headerlink" href="#measuring-performance" title="Link to this heading"></a></h3>
+<p>If you do bigger changes in the architecture or the database structure you should always double check the positive or negative performance impact.</p>
+<p>The recommendation is to automatically do 10000 PROPFINDs or file uploads, measure the time and compare the time before and after the change.</p>
+</section>
+</section>
+<section id="cached-data">
+<h2>Cached data<a class="headerlink" href="#cached-data" title="Link to this heading"></a></h2>
+<p>Starting from Nextcloud 26, user and group display names now are cached. Use the <code class="docutils literal notranslate"><span class="pre">IUserManager::getDisplayName</span></code> or <code class="docutils literal notranslate"><span class="pre">IGroupManager::getDisplayName</span></code> functions to avoid roundtrips to the database.</p>
+</section>
+<section id="getting-help">
+<h2>Getting help<a class="headerlink" href="#getting-help" title="Link to this heading"></a></h2>
+<p>If you need help with performance or other issues please ask on our <a class="reference external" href="https://help.nextcloud.com">forums</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="out_of_office.html" class="btn btn-neutral float-left" title="Out-of-office periods" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="phonenumberutil.html" class="btn btn-neutral float-right" title="Phone number util" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/developer_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/28/developer_manual"
+             
+          >
+            28
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

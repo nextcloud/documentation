@@ -1,0 +1,436 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OCS APIs overview &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="OCS Share API" href="ocs-share-api.html" />
+    <link rel="prev" title="OCS OpenAPI tutorial" href="ocs-openapi.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Clients and Client APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../general.html">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../activity-api.html">Activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../android_library/index.html">Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LoginFlow/index.html">Login Flow</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">OCS API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ocs-openapi.html">OCS OpenAPI tutorial</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">OCS APIs overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#authentication">Authentication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing-requests-with-curl">Testing requests with curl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user-metadata">User metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user-metadata-list-user-ids">User metadata - List user IDs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#capabilities-api">Capabilities API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#theming-capabilities">Theming capabilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#direct-download">Direct Download</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notifications">Notifications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#auto-complete-and-user-search">Auto-complete and user search</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#force-language-for-a-given-call">Force language for a given call</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-sharee-api.html">OCS Sharee API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-status-api.html">OCS Status API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-recommendations-api.html">OCS Recommendations API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-user-preferences-api.html">OCS user preferences API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-translation-api.html">OCS Translation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-textprocessing-api.html">OCS TextProcessing API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-text2image-api.html">OCS Text-To-Image API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-taskprocessing-api.html">OCS TaskProcessing API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-out-of-office-api.html">OCS Out-of-office API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-fulltextsearch-collections-api.html">OCS FullTextSearch Collection API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../RemoteWipe/index.html">Remote wipe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WebDAV/index.html">Webdav</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Clients and Client APIs</a></li>
+          <li class="breadcrumb-item"><a href="index.html">OCS API</a></li>
+      <li class="breadcrumb-item active">OCS APIs overview</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/client_apis/OCS/ocs-api-overview.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ocs-apis-overview">
+<h1>OCS APIs overview<a class="headerlink" href="#ocs-apis-overview" title="Link to this heading"></a></h1>
+<p>This document provides a quick overview of the OCS API endpoints supported in Nextcloud.</p>
+<p>All requests need to provide authentication information, either as a Basic Auth header or by passing a set of valid session cookies, if not stated otherwise.</p>
+<section id="authentication">
+<h2>Authentication<a class="headerlink" href="#authentication" title="Link to this heading"></a></h2>
+<p>Authentication can happen either via username / password (or app token) or with OIDC tokens, see the examples below:</p>
+<p>Username/Password:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>username:password<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;https://cloud.example.com/ocs/v1.php/...&#39;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;OCS-APIRequest: true&quot;</span>
+</pre></div>
+</div>
+<p>OIDC Token:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;https://cloud.example.com/ocs/v1.php/...&#39;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;OCS-APIRequest: true&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer ID_TOKEN&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="testing-requests-with-curl">
+<h2>Testing requests with curl<a class="headerlink" href="#testing-requests-with-curl" title="Link to this heading"></a></h2>
+<p>All OCS requests can be easily tested out using <code class="code docutils literal notranslate"><span class="pre">curl</span></code> by specifying the request method (<code class="code docutils literal notranslate"><span class="pre">GET</span></code>, <code class="code docutils literal notranslate"><span class="pre">PUT</span></code>, etc) and setting a request body where needed.</p>
+<p>For example: you can perform a <code class="code docutils literal notranslate"><span class="pre">GET</span></code> request to get information about a user:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>username:password<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;https://cloud.example.com/ocs/v1.php/...&#39;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;OCS-APIRequest: true&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="user-metadata">
+<h2>User metadata<a class="headerlink" href="#user-metadata" title="Link to this heading"></a></h2>
+<p>Since: 11.0.2, 12.0.0</p>
+<p>This request returns the available metadata of a user. Admin users can see the information of all users, while a default user only can access their own metadata.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">ocs</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">cloud</span><span class="o">/</span><span class="n">users</span><span class="o">/</span><span class="n">USERID</span>
+</pre></div>
+</div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w">    </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">        </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">        </span><span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">        </span><span class="nt">&lt;message&gt;</span>OK<span class="nt">&lt;/message&gt;</span>
+<span class="w">        </span><span class="nt">&lt;totalitems&gt;&lt;/totalitems&gt;</span>
+<span class="w">        </span><span class="nt">&lt;itemsperpage&gt;&lt;/itemsperpage&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w">    </span><span class="nt">&lt;data&gt;</span>
+<span class="w">        </span><span class="nt">&lt;enabled&gt;</span>1<span class="nt">&lt;/enabled&gt;</span>
+<span class="w">        </span><span class="nt">&lt;storageLocation&gt;</span>/path/to/storage/location/userid<span class="nt">&lt;/storageLocation&gt;</span>
+<span class="w">        </span><span class="nt">&lt;id&gt;</span>userid<span class="nt">&lt;/id&gt;</span>
+<span class="w">        </span><span class="nt">&lt;lastLogin&gt;</span>1578283711000<span class="nt">&lt;/lastLogin&gt;</span>
+<span class="w">        </span><span class="nt">&lt;backend&gt;</span>Database<span class="nt">&lt;/database&gt;</span>
+<span class="w">        </span><span class="nt">&lt;subadmin/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;quota&gt;</span>
+<span class="w">            </span><span class="nt">&lt;free&gt;</span>20632824998<span class="nt">&lt;/free&gt;</span>
+<span class="w">            </span><span class="nt">&lt;used&gt;</span>842011482<span class="nt">&lt;/used&gt;</span>
+<span class="w">            </span><span class="nt">&lt;total&gt;</span>21474836480<span class="nt">&lt;/total&gt;</span>
+<span class="w">            </span><span class="nt">&lt;relative&gt;</span>3.92<span class="nt">&lt;/relative&gt;</span>
+<span class="w">            </span><span class="nt">&lt;quota&gt;</span>21474836480<span class="nt">&lt;/quota&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/quota&gt;</span>
+<span class="w">        </span><span class="nt">&lt;email&gt;</span>user@foo.de<span class="nt">&lt;/email&gt;</span>
+<span class="w">        </span><span class="nt">&lt;displayname&gt;</span>John<span class="w"> </span>Doe<span class="nt">&lt;/displayname&gt;</span>
+<span class="w">        </span><span class="nt">&lt;display-name&gt;</span>John<span class="w"> </span>Doe<span class="nt">&lt;/display-name&gt;</span>
+<span class="w">        </span><span class="nt">&lt;phone&gt;&lt;/phone&gt;</span>
+<span class="w">        </span><span class="nt">&lt;address&gt;&lt;/address&gt;</span>
+<span class="w">        </span><span class="nt">&lt;website&gt;</span>https://example.com<span class="nt">&lt;/website&gt;</span>
+<span class="w">        </span><span class="nt">&lt;twitter&gt;&lt;/twitter&gt;</span>
+<span class="w">        </span><span class="nt">&lt;groups&gt;</span>
+<span class="w">            </span><span class="nt">&lt;element&gt;</span>1st<span class="w"> </span>group<span class="nt">&lt;/element&gt;</span>
+<span class="w">            </span><span class="nt">&lt;element&gt;</span>2nd<span class="w"> </span>group<span class="nt">&lt;/element&gt;</span>
+<span class="w">            </span><span class="nt">&lt;element&gt;</span>3rd<span class="w"> </span>group<span class="nt">&lt;/element&gt;</span>
+<span class="w">            </span><span class="nt">&lt;element&gt;</span>...<span class="w"> </span>group<span class="nt">&lt;/element&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/groups&gt;</span>
+<span class="w">        </span><span class="nt">&lt;language&gt;</span>de<span class="nt">&lt;/language&gt;</span>
+<span class="w">        </span><span class="nt">&lt;locale&gt;</span>de_DE<span class="nt">&lt;/locale&gt;</span>
+<span class="w">        </span><span class="nt">&lt;backendCapabilities&gt;</span>
+<span class="w">            </span><span class="nt">&lt;setDisplayName&gt;</span>1<span class="nt">&lt;/setDisplayName&gt;</span>
+<span class="w">            </span><span class="nt">&lt;setPassword&gt;</span>1<span class="nt">&lt;/setPassword&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/backendCapabilities&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/data&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="user-metadata-list-user-ids">
+<h2>User metadata - List user IDs<a class="headerlink" href="#user-metadata-list-user-ids" title="Link to this heading"></a></h2>
+<p>This request returns a list containing all user IDs. Only admin users can query the list.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">ocs</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">cloud</span><span class="o">/</span><span class="n">users</span>
+</pre></div>
+</div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w">    </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">        </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">        </span><span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">        </span><span class="nt">&lt;message&gt;</span>OK<span class="nt">&lt;/message&gt;</span>
+<span class="w">        </span><span class="nt">&lt;totalitems&gt;&lt;/totalitems&gt;</span>
+<span class="w">        </span><span class="nt">&lt;itemsperpage&gt;&lt;/itemsperpage&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w">    </span><span class="nt">&lt;data&gt;</span>
+<span class="w">        </span><span class="nt">&lt;users&gt;</span>
+<span class="w">            </span><span class="nt">&lt;element&gt;</span>1st_user<span class="nt">&lt;/element&gt;</span>
+<span class="w">            </span><span class="nt">&lt;element&gt;</span>2nd_user<span class="nt">&lt;/element&gt;</span>
+<span class="w">            </span><span class="nt">&lt;element&gt;</span>3rd_user<span class="nt">&lt;/element&gt;</span>
+<span class="w">            </span><span class="nt">&lt;element&gt;</span>..._user<span class="nt">&lt;/element&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/users&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/data&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="capabilities-api">
+<h2>Capabilities API<a class="headerlink" href="#capabilities-api" title="Link to this heading"></a></h2>
+<p>Clients can obtain capabilities provided by the Nextcloud server and its apps via the capabilities OCS API.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">ocs</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">cloud</span><span class="o">/</span><span class="n">capabilities</span>
+</pre></div>
+</div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+<span class="w">    </span><span class="nt">&lt;meta&gt;</span>
+<span class="w">        </span><span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+<span class="w">        </span><span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+<span class="w">        </span><span class="nt">&lt;message&gt;</span>OK<span class="nt">&lt;/message&gt;</span>
+<span class="w">        </span><span class="nt">&lt;totalitems&gt;&lt;/totalitems&gt;</span>
+<span class="w">        </span><span class="nt">&lt;itemsperpage&gt;&lt;/itemsperpage&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/meta&gt;</span>
+<span class="w">    </span><span class="nt">&lt;data&gt;</span>
+<span class="w">        </span><span class="nt">&lt;version&gt;</span>
+<span class="w">            </span><span class="nt">&lt;major&gt;</span>17<span class="nt">&lt;/major&gt;</span>
+<span class="w">            </span><span class="nt">&lt;minor&gt;</span>0<span class="nt">&lt;/minor&gt;</span>
+<span class="w">            </span><span class="nt">&lt;micro&gt;</span>2<span class="nt">&lt;/micro&gt;</span>
+<span class="w">            </span><span class="nt">&lt;string&gt;</span>17.0.2<span class="nt">&lt;/string&gt;</span>
+<span class="w">            </span><span class="nt">&lt;edition&gt;&lt;/edition&gt;</span>
+<span class="w">            </span><span class="nt">&lt;extendedSupport&gt;&lt;/extendedSupport&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/version&gt;</span>
+<span class="w">        </span><span class="nt">&lt;capabilities&gt;</span>
+<span class="w">            </span><span class="nt">&lt;core&gt;</span>
+<span class="w">                </span><span class="nt">&lt;pollinterval&gt;</span>60<span class="nt">&lt;/pollinterval&gt;</span>
+<span class="w">                </span><span class="nt">&lt;webdav-root&gt;</span>remote.php/webdav<span class="nt">&lt;/webdav-root&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/core&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/capabilities&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/data&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="theming-capabilities">
+<h2>Theming capabilities<a class="headerlink" href="#theming-capabilities" title="Link to this heading"></a></h2>
+<p>Values of the theming app are exposed through the capabilities API, allowing client developers to adjust the look of clients to the theming of different Nextcloud instances.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;theming&gt;</span>
+<span class="w">    </span><span class="nt">&lt;name&gt;</span>Nextcloud<span class="nt">&lt;/name&gt;</span>
+<span class="w">    </span><span class="nt">&lt;url&gt;</span>https://nextcloud.com<span class="nt">&lt;/url&gt;</span>
+<span class="w">    </span><span class="nt">&lt;slogan&gt;</span>A<span class="w"> </span>safe<span class="w"> </span>home<span class="w"> </span>for<span class="w"> </span>all<span class="w"> </span>your<span class="w"> </span>data<span class="nt">&lt;/slogan&gt;</span>
+<span class="w">    </span><span class="nt">&lt;color&gt;</span>#0082c9<span class="nt">&lt;/color&gt;</span>
+<span class="w">    </span><span class="nt">&lt;color-text&gt;</span>#ffffff<span class="nt">&lt;/color-text&gt;</span>
+<span class="w">    </span><span class="nt">&lt;color-element&gt;</span>#0082c9<span class="nt">&lt;/color-element&gt;</span>
+<span class="w">    </span><span class="nt">&lt;color-element-bright&gt;</span>#aaaaaa<span class="nt">&lt;/color-element-bright&gt;</span>
+<span class="w">    </span><span class="nt">&lt;color-element-dark&gt;</span>#555555<span class="nt">&lt;/color-element-dark&gt;</span>
+<span class="w">    </span><span class="nt">&lt;logo&gt;</span>http://cloud.example.com/index.php/apps/theming/logo?v=1<span class="nt">&lt;/logo&gt;</span>
+<span class="w">    </span><span class="nt">&lt;background&gt;</span>http://cloud.example.com/index.php/apps/theming/logo?v=1<span class="nt">&lt;/background&gt;</span>
+<span class="w">    </span><span class="nt">&lt;background-plain&gt;&lt;/background-plain&gt;</span>
+<span class="w">    </span><span class="nt">&lt;background-default&gt;&lt;/background-default&gt;</span>
+<span class="nt">&lt;/theming&gt;</span>
+</pre></div>
+</div>
+<p>For elements like radio buttons, input borders and more, instead of the primary <code class="docutils literal notranslate"><span class="pre">color</span></code> value, the <code class="docutils literal notranslate"><span class="pre">color-element-bright</span></code> should be used on bright background and <code class="docutils literal notranslate"><span class="pre">color-element-dark</span></code> on dark background.
+This when the primary color is e.g. set to <code class="docutils literal notranslate"><span class="pre">#000000</span></code> the <code class="docutils literal notranslate"><span class="pre">color-elemenet-dark</span></code> will be set to <code class="docutils literal notranslate"><span class="pre">#555555</span></code> so items are still visible. In the Nextcloud web UI only the top header uses <code class="docutils literal notranslate"><span class="pre">color</span></code>, everything else uses <code class="docutils literal notranslate"><span class="pre">color-element-*</span></code>.
+Text and icons on these elements should use <code class="docutils literal notranslate"><span class="pre">color-text</span></code>.</p>
+<p>The background value can either be a URL to the background image or a hex color value.</p>
+</section>
+<section id="direct-download">
+<h2>Direct Download<a class="headerlink" href="#direct-download" title="Link to this heading"></a></h2>
+<p>It might be required to give a 3rd party access to a file however you do not
+want to hand over credentials to the 3rd party. An example of this is playing
+files in an external media player on mobile devices.</p>
+<p>To solve this issue there is a way to request a unique public link to a single file.
+This link will be valid for 8 hours afterwards it will be removed.</p>
+<p>To obtain a direct link:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">ocs</span><span class="o">/</span><span class="n">v2</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">direct</span>
+</pre></div>
+</div>
+<p>With the <code class="code docutils literal notranslate"><span class="pre">fileId</span></code> in the body (so <code class="code docutils literal notranslate"><span class="pre">fileId=42</span></code> for example).
+This will then return you the link to use to obtain the file.</p>
+</section>
+<section id="notifications">
+<h2>Notifications<a class="headerlink" href="#notifications" title="Link to this heading"></a></h2>
+<p>There is also the <a class="reference external" href="https://github.com/nextcloud/notifications/blob/master/docs/ocs-endpoint-v2.md">Notifications API</a>
+As well as documentation on how to <a class="reference external" href="https://github.com/nextcloud/notifications/blob/5a2d3607952bad675e4057620a9c7de8a7f84f0b/docs/push-v3.md">Register a device for push notifications</a></p>
+</section>
+<section id="auto-complete-and-user-search">
+<h2>Auto-complete and user search<a class="headerlink" href="#auto-complete-and-user-search" title="Link to this heading"></a></h2>
+<p>It is possible to search for users using the auto-complete API, used to auto-complete usernames in comments, chat or to find guest accounts. The code <a class="reference external" href="https://github.com/nextcloud/server/blob/master/core/Controller/AutoCompleteController.php#L69">can be found here</a></p>
+<p>An example curl command would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">u</span> <span class="n">master</span> <span class="o">-</span><span class="n">X</span> <span class="n">GET</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;OCS-APIRequest: true&quot;</span> <span class="s1">&#39;https://my.nextcloud/ocs/v2.php/core/autocomplete/get?search=JOANNE</span><span class="si">%40E</span><span class="s1">MAIL.ISP&amp;itemType=%20&amp;itemId=%20&amp;shareTypes[]=8&amp;limit=2&#39;</span>
+</pre></div>
+</div>
+<p>That would look for <a class="reference external" href="mailto:JOANNE&#37;&#52;&#48;EMAIL&#46;ISP">JOANNE<span>&#64;</span>EMAIL<span>&#46;</span>ISP</a> as guest user. Maximum 2 results to be returned for a regular user, the
+shareTypes array would carry only “8”. <code class="docutils literal notranslate"><span class="pre">itemType</span></code> and <code class="docutils literal notranslate"><span class="pre">itemId</span></code> are left out (set to a white space),
+essentially they are to give context about the use case, so sorters can do their work (like who commented last).
+It can be an option for filtering on a later stage but you can also leave them out as per the below example.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">u</span> <span class="n">master</span> <span class="o">-</span><span class="n">X</span> <span class="n">GET</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;OCS-APIRequest: true&quot;</span> <span class="s1">&#39;https://my.nextcloud/ocs/v2.php/core/autocomplete/get?search=JOANNE</span><span class="si">%40E</span><span class="s1">MAIL.ISP&amp;shareTypes[]=8&amp;limit=2&#39;</span>
+</pre></div>
+</div>
+<p>The shareType defaults to regular users if you left it out), the limit defaults to 10.</p>
+<section id="filtering-the-auto-complete-results">
+<h3>Filtering the auto-complete results<a class="headerlink" href="#filtering-the-auto-complete-results" title="Link to this heading"></a></h3>
+<p>In case needed, you can also further filter the auto-complete results on the PHP side using the
+<code class="docutils literal notranslate"><span class="pre">OCP\Collaboration\AutoComplete\AutoCompleteEvent</span></code> event. The event gives you access to the current
+result set, the item and share types and some more information that you can use to e.g. limit the autocomplete
+results to users that are actually in the current chat conversation.</p>
+</section>
+</section>
+<section id="force-language-for-a-given-call">
+<span id="api-force-language"></span><h2>Force language for a given call<a class="headerlink" href="#force-language-for-a-given-call" title="Link to this heading"></a></h2>
+<p>All Nextcloud API calls support forcing the language using the query parameter <code class="docutils literal notranslate"><span class="pre">forceLanguage</span></code>. It will override any user setting for the given call.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-u<span class="w"> </span>username:password<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s1">&#39;https://cloud.example.com/ocs/v1.php/...?forceLanguage=en&#39;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;OCS-APIRequest: true&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ocs-openapi.html" class="btn btn-neutral float-left" title="OCS OpenAPI tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ocs-share-api.html" class="btn btn-neutral float-right" title="OCS Share API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/developer_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/28/developer_manual"
+             
+          >
+            28
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

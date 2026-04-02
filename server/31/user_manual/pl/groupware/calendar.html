@@ -1,0 +1,1213 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pl" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Korzystanie z aplikacji Calendar (Kalendarz) &mdash; Nextcloud latest User Manual latest - dokumentacja</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=65274618"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=4c397337"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Indeks" href="../genindex.html" />
+    <link rel="search" title="Szukaj" href="../search.html" />
+    <link rel="next" title="Using the Mail app" href="mail.html" />
+    <link rel="prev" title="Korzystanie z aplikacji Contact (Kontakty)" href="contacts.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Szukaj" aria-label="Szukaj" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest wprowadzenie do instrukcji obsługi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Co nowego dla użytkowników w Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Interfejs sieciowy Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Pliki i synchronizacja</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Oprogramowanie do pracy grupowej</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Korzystanie z aplikacji Contact (Kontakty)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Korzystanie z aplikacji Calendar (Kalendarz)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#managing-your-calendars">Zarządzanie kalendarzami</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-calendar">Utworzenie nowego kalendarza</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-a-calendar">Import kalendarza</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-export-or-delete-a-calendar">Edycja, eksportowanie lub usuwanie kalendarza</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-transparency">Calendar Transparency</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing-calendars">Udostępnianie kalendarzy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#publishing-a-calendar">Publikowanie kalendarza</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-widget">Calendar Widget</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subscribe-to-a-calendar">Subskrypcja kalendarza</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subscribe-to-a-holiday-calendar">Subscribe to a Holiday Calendar</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-events">Zarządzanie wydarzeniami</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-event">Utworzenie nowego wydarzenia</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-talk-conversation">Add Talk conversation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-duplicate-or-delete-an-event">Edit, duplicate or delete an event</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#invite-attendees-to-an-event">Zapraszanie uczestników na wydarzenie</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checking-attendees-busy-times">Checking attendees» busy times</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#assign-rooms-and-resources-to-an-event">Przypisz pokoje i zasoby do wydarzenia</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#room-availability">Room availability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-attachments-to-events">Add attachments to events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-up-reminders">Skonfiguruj przypomnienia</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-recurring-options">Dodawanie opcji cyklicznych</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trash-bin">Kosz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automated-user-status">Automated User Status</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#responding-to-invitations">Odpowiadanie na zaproszenia</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#availability-working-hours">Dostępność (godziny pracy)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#birthday-calendar">Kalendarz urodzinowy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#appointments">Spotkania</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-an-appointment-configuration">Tworzenie konfiguracji spotkania</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#booking-an-appointment">Rezerwacja spotkania</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#working-with-the-booked-appointment">Praca z zarezerwowanym terminem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-talk-room-for-booked-appointments">Create Talk room for booked appointments</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mail.html">Using the Mail app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">Setting out-of-office messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Synchronizacja z systemem Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">Synchronizacja z iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">Synchronizacja z macOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Synchronizacja z Thunderbirdem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Synchronizacja z KDE Kontact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Synchronizacja z pulpitem GNOME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Synchronizacja z systemem Windows 10</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Ustawianie preferencji</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Uniwersalny dostęp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Korzystanie z uwierzytelniania dwuskładnikowego</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Zarządzaj połączonymi przeglądarkami i urządzeniami</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Pamięć zewnętrzna</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Oprogramowanie do pracy grupowej</a></li>
+      <li class="breadcrumb-item active">Korzystanie z aplikacji Calendar (Kalendarz)</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/calendar.rst" class="fa fa-github"> Edytuj na GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-calendar-app">
+<span id="calendar-app"></span><h1>Korzystanie z aplikacji Calendar (Kalendarz)<a class="headerlink" href="#using-the-calendar-app" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Informacja</p>
+<p>Aplikacja Calendar (Kalendarz) jest domyślnie instalowana z Nextcloud Hub, ale można ją wyłączyć. Poproś o to swojego administratora.</p>
+</div>
+<p>Aplikacja Nextcloud Calendar (Kalendarz) działa podobnie, jak inne aplikacje kalendarza, z którymi możesz synchronizować kalendarze i wydarzenia Nextcloud.</p>
+<p>Gdy po raz pierwszy uzyskasz dostęp do aplikacji Calendar (Kalendarz), zostanie dla Ciebie utworzony domyślny pierwszy kalendarz.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_application.png" src="../../_images/calendar_application.png" />
+</figure>
+<section id="managing-your-calendars">
+<h2>Zarządzanie kalendarzami<a class="headerlink" href="#managing-your-calendars" title="Link to this heading"></a></h2>
+<section id="create-a-new-calendar">
+<h3>Utworzenie nowego kalendarza<a class="headerlink" href="#create-a-new-calendar" title="Link to this heading"></a></h3>
+<p>Jeśli planujesz skonfigurować nowy kalendarz bez przenoszenia starych danych z poprzedniego kalendarza, utworzenie nowego kalendarza jest dobrym rozwiązaniem.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_create_1.png"><img alt="../../_images/calendar_create_1.png" src="../../_images/calendar_create_1.png" style="width: 348.0px; height: 403.20000000000005px;" />
+</a>
+</figure>
+<ol class="arabic simple">
+<li><p>Kliknij <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Nowy</span> <span class="pre">kalendarz</span></code> na lewym pasku bocznym.</p></li>
+<li><p>Wpisz nazwę nowego kalendarza, np. „Praca”, „Dom” lub „Planowanie marketingowe”.</p></li>
+<li><p>Po kliknięciu znacznika wyboru zostanie utworzony nowy kalendarz, który można zsynchronizować na wszystkich urządzeniach, wypełnić nowymi wydarzeniami i udostępnić znajomym i współpracownikom.</p></li>
+</ol>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_create_2.png"><img alt="../../_images/calendar_create_2.png" src="../../_images/calendar_create_2.png" style="width: 362.40000000000003px; height: 393.6px;" />
+</a>
+</figure>
+</section>
+<section id="import-a-calendar">
+<h3>Import kalendarza<a class="headerlink" href="#import-a-calendar" title="Link to this heading"></a></h3>
+<p>Jeśli chcesz przenieść swój kalendarz i powiązane z nim wydarzenia do instancji Nextcloud, najlepszym sposobem na to jest importowanie:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_settings_sidebar.png"><img alt="../../_images/calendar_settings_sidebar.png" src="../../_images/calendar_settings_sidebar.png" style="width: 246.4px; height: 284.0px;" />
+</a>
+</figure>
+<ol class="arabic simple">
+<li><p>Kliknij ikonę ustawień oznaczoną jako <code class="docutils literal notranslate"><span class="pre">Ustawienia</span> <span class="pre">i</span> <span class="pre">import</span></code> w lewym dolnym rogu.</p></li>
+<li><p>Po kliknięciu <code class="docutils literal notranslate"><span class="pre">Importuj</span> <span class="pre">kalendarz</span></code> możesz wybrać jeden lub więcej plików kalendarza z urządzenia lokalnego do przesłania.</p></li>
+<li><p>Przesyłanie może zająć trochę czasu i zależy od wielkości importowanego kalendarza.</p></li>
+<li><p>A blue progress bar will appear below „Calendar Settings”.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Informacja</p>
+<p>Aplikacja Nextcloud Calendar (Kalendarz) obsługuje tylko pliki <code class="docutils literal notranslate"><span class="pre">.ics</span></code> zgodne z iCalendar, zdefiniowane w dokumencie RFC 5545.</p>
+</div>
+</section>
+<section id="edit-export-or-delete-a-calendar">
+<h3>Edycja, eksportowanie lub usuwanie kalendarza<a class="headerlink" href="#edit-export-or-delete-a-calendar" title="Link to this heading"></a></h3>
+<p>Czasami możesz chcieć zmienić kolor lub całą nazwę poprzedniego zaimportowanego lub utworzonego kalendarza. Możesz również wyeksportować go na lokalny dysk twardy lub usunąć na zawsze:</p>
+<div class="admonition note">
+<p class="admonition-title">Informacja</p>
+<p>Pamiętaj, że usunięcie kalendarza jest nieodwracalnym działaniem. Po usunięciu nie ma możliwości przywrócenia kalendarza, chyba że masz lokalną kopię zapasową.</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/calendar_dropdown.png" src="../../_images/calendar_dropdown.png" />
+</figure>
+<p>Click on the „pen” icon of the respective calendar. You will see a new popup that will allow you to change
+the calendar name and color, and buttons to delete or export the calendar.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_settings.png" src="../../_images/calendar_settings.png" />
+</figure>
+</section>
+<section id="calendar-transparency">
+<h3>Calendar Transparency<a class="headerlink" href="#calendar-transparency" title="Link to this heading"></a></h3>
+<p>You can toggle the checkbox „Never show me as busy (set calendar to transparent)” to influence if this calendars» events
+are taken into account in Free/Busy calculations. If checked, no events in this calendar will be taken into account, your schedule will
+always be free, regardless of an events» settings.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_transparency.png" src="../../_images/calendar_transparency.png" />
+</figure>
+</section>
+<section id="sharing-calendars">
+<h3>Udostępnianie kalendarzy<a class="headerlink" href="#sharing-calendars" title="Link to this heading"></a></h3>
+<p>You may share your calendar with other users or groups.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_sharing_1.png" src="../../_images/calendar_sharing_1.png" />
+</figure>
+<p>Calendars may be shared with write access or read-only. When sharing a calendar with write access, users with whom the calendar is shared will be able to create new events into the calendar as well as edit and delete existing ones.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_sharing_2.png" src="../../_images/calendar_sharing_2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Informacja</p>
+<p>Calendar shares currently cannot be accepted or rejected. If you want to stop having a calendar that someone shared with you, you can click on the 3-dot menu next to the calendar in the calendar list and click on „Unshare from me”. To restore a share, the calendar can be reshared again, either for the whole group, resetting all unshares, or for a single user.</p>
+</div>
+</section>
+<section id="publishing-a-calendar">
+<h3>Publikowanie kalendarza<a class="headerlink" href="#publishing-a-calendar" title="Link to this heading"></a></h3>
+<p>Kalendarze można publikować za pośrednictwem linku publicznego, aby były widoczne (tylko do odczytu) dla użytkowników zewnętrznych. Możesz utworzyć link publiczny, otwierając menu udostępniania kalendarza i klikając « + » obok « Udostępnij link ». Po utworzeniu możesz skopiować link publiczny do schowka lub wysłać go e-mailem.</p>
+<p>Możliwe jest również skopiowanie kodu osadzania, klikając opcję « Kopiuj kod osadzania », który zapewnia element iframe HTML do osadzenia kalendarza na stronach publicznych.</p>
+<p>Wiele kalendarzy można udostępniać razem, dodając ich unikalne tokeny na końcu linku do umieszczania. Poszczególne tokeny można znaleźć na końcu linku publicznego każdego kalendarza. Pełny adres będzie wyglądał następująco: <code class="docutils literal notranslate"><span class="pre">https://chmura.przyklad.com/index.php/apps/calendar/embed/&lt;token1&gt;-&lt;token2&gt;-&lt;token3&gt;</span></code>.</p>
+<p>To change the default view or date of an embedded calendar, you need to provide a URL that looks like <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/index.php/apps/calendar/embed/&lt;token&gt;/&lt;view&gt;/&lt;date&gt;</span></code>.
+In this url you need to replace the following variables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;token&gt;</span></code> z tokenem kalendarza,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;view&gt;</span></code> z jednym z <code class="docutils literal notranslate"><span class="pre">dayGridMonth</span></code>, <code class="docutils literal notranslate"><span class="pre">timeGridWeek</span></code>, <code class="docutils literal notranslate"><span class="pre">timeGridDay</span></code>, <code class="docutils literal notranslate"><span class="pre">listMonth</span></code>, <code class="docutils literal notranslate"><span class="pre">listWeek</span></code>, <code class="docutils literal notranslate"><span class="pre">listDay</span></code>. Domyślnym widokiem jest <code class="docutils literal notranslate"><span class="pre">dayGridMonth</span></code> a zwykle używana lista to <code class="docutils literal notranslate"><span class="pre">listMonth</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;date&gt;</span></code> z <code class="docutils literal notranslate"><span class="pre">now</span></code> lub dowolną datę w następującym formacie <code class="docutils literal notranslate"><span class="pre">&lt;year&gt;-&lt;month&gt;-&lt;day&gt;</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">2019-12-28</span></code>).</p></li>
+</ul>
+<p>Na stronie publicznej użytkownicy mogą uzyskać link subskrypcji kalendarza i bezpośrednio wyeksportować cały kalendarz.</p>
+</section>
+<section id="calendar-widget">
+<h3>Calendar Widget<a class="headerlink" href="#calendar-widget" title="Link to this heading"></a></h3>
+<p>You can embed your calendars into supported apps like <code class="docutils literal notranslate"><span class="pre">Talk</span></code>, <code class="docutils literal notranslate"><span class="pre">Notes</span></code>, etc…
+by either sharing the public link to make the embed viewable (read-only) to all users
+or by using the internal link to make it private.</p>
+</section>
+<section id="subscribe-to-a-calendar">
+<h3>Subskrypcja kalendarza<a class="headerlink" href="#subscribe-to-a-calendar" title="Link to this heading"></a></h3>
+<p>Możesz subskrybować kalendarze iCal bezpośrednio w swoim Nextcloud. Wspierając ten kompatybilny standard (RFC 5545), sprawiliśmy, że kalendarz Nextcloud jest kompatybilny z Google Calendar, Apple iCloud i wieloma innymi serwerami kalendarzy, z którymi możesz wymieniać swoje kalendarze, w tym linki subskrypcji z kalendarza opublikowanego w innych instancjach Nextcloud, jak opisano powyżej.</p>
+<ol class="arabic simple">
+<li><p>Click on <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">New</span> <span class="pre">calendar</span></code> in the left sidebar</p></li>
+<li><p>Click on <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">New</span> <span class="pre">subscription</span> <span class="pre">from</span> <span class="pre">link</span> <span class="pre">(read-only)</span></code></p></li>
+<li><p>Wpisz lub wklej link do kalendarza udostępnionego, który chcesz subskrybować.</p></li>
+</ol>
+<p>Gotowe. Twoje subskrypcje kalendarza będą regularnie aktualizowane.</p>
+<div class="admonition note">
+<p class="admonition-title">Informacja</p>
+<p>Subskrypcje są domyślnie odświeżane co tydzień. Twój administrator może zmienić to ustawienie.</p>
+</div>
+</section>
+<section id="subscribe-to-a-holiday-calendar">
+<h3>Subscribe to a Holiday Calendar<a class="headerlink" href="#subscribe-to-a-holiday-calendar" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.4.</span></p>
+</div>
+<p>You can subscribe to a read-only holiday calendar provided by <a class="reference external" href="https://www.thunderbird.net/calendar/holidays/">Thunderbird</a>.</p>
+<ol class="arabic simple">
+<li><p>Click on <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">New</span> <span class="pre">calendar</span></code> in the left sidebar</p></li>
+<li><p>Click on <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Add</span> <span class="pre">holiday</span> <span class="pre">calendar</span></code></p></li>
+<li><p>Find your country or region and click <code class="docutils literal notranslate"><span class="pre">Subscribe</span></code></p></li>
+</ol>
+</section>
+</section>
+<section id="managing-events">
+<h2>Zarządzanie wydarzeniami<a class="headerlink" href="#managing-events" title="Link to this heading"></a></h2>
+<section id="create-a-new-event">
+<h3>Utworzenie nowego wydarzenia<a class="headerlink" href="#create-a-new-event" title="Link to this heading"></a></h3>
+<p>Wydarzenia można tworzyć, klikając obszar, w którym zaplanowano wydarzenie. W widoku dziennym i tygodniowym kalendarza wystarczy kliknąć, przeciągnąć i zwolnić kursor nad obszarem, w którym odbywa się wydarzenie.</p>
+<p>Clicking on the globe button brings up the timezone selector. You are able to choose different timezones for the start and end of your event. This is useful when travelling.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_new-event_week.png" src="../../_images/calendar_new-event_week.png" />
+</figure>
+<p>Widok miesiąca wymaga tylko jednego kliknięcia w obszar docelowego dnia.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_new-event_month.png" src="../../_images/calendar_new-event_month.png" />
+</figure>
+<p>After that, you can type in the event’s name (e.g. <strong>Meeting with Linus</strong>), choose
+the calendar in which you want to save the event to (e.g. <strong>Personal</strong>, <strong>Community Events</strong>),
+check and concretize the time span or set the event as an all-day event. Optionally
+you can specify a location and a description.</p>
+<p>If you want to edit advanced details such as the <strong>Attendees</strong> or <strong>Reminders</strong>, or if you
+want to set the event as a repeating event, click on the <code class="docutils literal notranslate"><span class="pre">More</span></code> button to open the advanced editor.</p>
+</section>
+<section id="add-talk-conversation">
+<h3>Add Talk conversation<a class="headerlink" href="#add-talk-conversation" title="Link to this heading"></a></h3>
+<p>You can include an existing Talk conversation in your event by clicking „Add Talk conversation”. To view the list of existing Talk conversations, ensure the Talk app is enabled. If you’d like to create a new Talk conversation, you can do so directly from the same modal.</p>
+<figure class="align-default">
+<img alt="../../_images/add-talk-room.png" src="../../_images/add-talk-room.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Informacja</p>
+<p>If you always want to open the advanced editor instead of the
+simple event editor popup, you uncheck the option
+<code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">simplified</span> <span class="pre">editor</span></code> in the <code class="docutils literal notranslate"><span class="pre">Settings</span></code> section of the app.</p>
+</div>
+<p>Kliknięcie przycisku <code class="docutils literal notranslate"><span class="pre">Zapisz</span></code> ostatecznie utworzy wydarzenie.</p>
+</section>
+<section id="edit-duplicate-or-delete-an-event">
+<h3>Edit, duplicate or delete an event<a class="headerlink" href="#edit-duplicate-or-delete-an-event" title="Link to this heading"></a></h3>
+<p>If you want to edit, duplicate or delete a specific event, you first need to click on the event.</p>
+<p>After that you will be able to re-set all event details and open the
+advanced editor by clicking on <code class="docutils literal notranslate"><span class="pre">More</span></code>.</p>
+<p>Clicking on the <code class="docutils literal notranslate"><span class="pre">Update</span></code> button will update the event. To cancel your changes, click on the close icon on top right of the popup or advanced editor.</p>
+<p>If you open the advanced view and click the three dot menu next to the event name, you have an option to export the event as an <code class="docutils literal notranslate"><span class="pre">.ics</span></code> file or remove the event from your calendar.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_event_menu.png" src="../../_images/calendar_event_menu.png" />
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Wskazówka</p>
+<p>Jeśli usuniesz wydarzenia, trafią one do Twojego <a class="reference internal" href="#calendar-trash-bin"><span class="std std-ref">kosza na śmieci</span></a>. Możesz tam przywrócić przypadkowo usunięte wydarzenia.</p>
+</div>
+<p>You can also export, duplicate or delete an event from the basic editor.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_event_menu_modal.png" src="../../_images/calendar_event_menu_modal.png" />
+</figure>
+</section>
+<section id="invite-attendees-to-an-event">
+<span id="calendar-attendees"></span><h3>Zapraszanie uczestników na wydarzenie<a class="headerlink" href="#invite-attendees-to-an-event" title="Link to this heading"></a></h3>
+<p>Możesz dodać uczestników do wydarzenia, aby poinformować ich, że zostali zaproszeni. Otrzymają zaproszenie e-mailem i będą mogli potwierdzić lub anulować swój udział w wydarzeniu. Uczestnikami mogą być inni użytkownicy Twoich instancji Nextcloud z kontaktów z Twoich książek adresowych i bezpośrednich adresów e-mail. Możesz również zmienić poziom uczestnictwa dla uczestników lub wyłączyć informacje e-mail dla określonego uczestnika.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_invitation_level.png"><img alt="../../_images/calendar_event_invitation_level.png" src="../../_images/calendar_event_invitation_level.png" style="width: 811.2px; height: 380.8px;" />
+</a>
+</figure>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Zmienione w wersji 25: </span>Attendee email response links no longer offer inputs to add a comment or invite additional guests to the event.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Wskazówka</p>
+<p>Dodając innych użytkowników Nextcloud jako uczestników wydarzenia, możesz uzyskać dostęp do ich informacji o czasie wolnym, jeśli są one dostępne, co pomoże Tobie określić, kiedy jest najlepszy przedział czasowy na wydarzenie. Ustaw swoje <a class="reference internal" href="#calendar-working-hours"><span class="std std-ref">godziny pracy</span></a>, aby poinformować innych, kiedy będziesz dostępny. Informacje o czasie wolnym są dostępne tylko dla innych użytkowników tej samej instancji Nextcloud.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Uwaga</p>
+<p>Administracja serwera musi skonfigurować serwer pocztowy w zakładce <code class="docutils literal notranslate"><span class="pre">Ustawienia</span> <span class="pre">podstawowe</span></code>, ponieważ ta poczta będzie używana do wysyłania zaproszeń.</p>
+</div>
+</section>
+<section id="checking-attendees-busy-times">
+<h3>Checking attendees» busy times<a class="headerlink" href="#checking-attendees-busy-times" title="Link to this heading"></a></h3>
+<p>After adding attendees to an event you can click on <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">a</span> <span class="pre">time</span></code> to bring up the „Free / Busy” modal. It allows you to see when each attendee has other events, and can help you decide on a time when everyone is free.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_free_busy_modal.png"><img alt="../../_images/calendar_free_busy_modal.png" src="../../_images/calendar_free_busy_modal.png" style="width: 987.2px; height: 800.8000000000001px;" />
+</a>
+</figure>
+<p>Your own busy blocks will be shown in the same color as your personal calendar, your out of office times will be shown in gray, and other attendees» busy times will have the same color as their avatar shown in the advanced editor.</p>
+<p>You can select a time slot for the event directly on the calendar.</p>
+</section>
+<section id="assign-rooms-and-resources-to-an-event">
+<h3>Przypisz pokoje i zasoby do wydarzenia<a class="headerlink" href="#assign-rooms-and-resources-to-an-event" title="Link to this heading"></a></h3>
+<p>Podobnie jak uczestnicy, do wydarzeń możesz dodawać pokoje i zasoby. System upewni się, że każda sala i zasób są zarezerwowane bez konfliktów. Gdy użytkownik po raz pierwszy doda salę lub zasób do wydarzenia, zostanie on wyświetlony jako zaakceptowany. W przypadku kolejnych wydarzeń w nakładających się godzinach sala lub zasób będą odrzucone.</p>
+<div class="admonition note">
+<p class="admonition-title">Informacja</p>
+<p>Pokoje i zasoby nie są zarządzane przez samą usługę Nextcloud, a aplikacja Calendar (Kalendarz) nie pozwala na dodawanie ani zmienianie zasobu. Administrator musi zainstalować i ewentualnie skonfigurować zaplecza zasobów, zanim będziesz mógł ich używać jako użytkownik.</p>
+</div>
+</section>
+<section id="room-availability">
+<h3>Room availability<a class="headerlink" href="#room-availability" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.0.</span></p>
+</div>
+<p>If the „Calendar Rooms and Resources” app is installed on your instance, you can now find <code class="docutils literal notranslate"><span class="pre">Room</span> <span class="pre">availability</span></code>  the <code class="docutils literal notranslate"><span class="pre">Resources</span></code> section. It lists all the existing rooms. You can check the availability of each room in a manner similar to checking the free/busy status of event attendees.</p>
+<figure class="align-default">
+<img alt="../../_images/room_availability.png" src="../../_images/room_availability.png" />
+</figure>
+</section>
+<section id="add-attachments-to-events">
+<h3>Add attachments to events<a class="headerlink" href="#add-attachments-to-events" title="Link to this heading"></a></h3>
+<p>You can import attachments to your events either by uploading them or adding them from files</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_adding_attachments.png"><img alt="../../_images/calendar_adding_attachments.png" src="../../_images/calendar_adding_attachments.png" style="width: 790.4000000000001px; height: 382.40000000000003px;" />
+</a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Informacja</p>
+<p>Attachments can be added while creating new events or editing existent ones.
+Newly uploaded files will be saved in files by default in the calendar folder in the root directory.</p>
+</div>
+<p>You can change the attachment folder by going to <code class="docutils literal notranslate"><span class="pre">Calendar</span> <span class="pre">settings</span></code> in the bottom left corner and changing <code class="docutils literal notranslate"><span class="pre">default</span> <span class="pre">attachments</span> <span class="pre">location</span></code>.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_attachments_location.png"><img alt="../../_images/calendar_attachments_location.png" src="../../_images/calendar_attachments_location.png" style="width: 184.2px; height: 208.79999999999998px;" />
+</a>
+</figure>
+</section>
+<section id="set-up-reminders">
+<h3>Skonfiguruj przypomnienia<a class="headerlink" href="#set-up-reminders" title="Link to this heading"></a></h3>
+<p>Możesz skonfigurować przypomnienia, aby otrzymywać powiadomienia przed wystąpieniem zdarzenia. Obecnie obsługiwane metody powiadamiania to:</p>
+<ul class="simple">
+<li><p>Powiadomienia e-mailem</p></li>
+<li><p>Powiadomienia Nextcloud</p></li>
+</ul>
+<p>Możesz ustawić przypomnienia w czasie związanym z wydarzeniem lub w określonym dniu:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_reminders.png"><img alt="../../_images/calendar_event_reminders.png" src="../../_images/calendar_event_reminders.png" style="width: 507.20000000000005px; height: 284.0px;" />
+</a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Informacja</p>
+<p>Tylko właściciel kalendarza i osoby lub grupy, którym udostępniono kalendarz z prawem do zapisu, otrzymają powiadomienia. Jeśli nie otrzymujesz żadnych powiadomień, ale uważasz, że powinieneś, najwidoczniej Twój administrator mógł wyłączyć to dla Twojego serwera.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Informacja</p>
+<p>Jeśli synchronizujesz kalendarz z urządzeniami przenośnymi lub innymi klientami, mogą się również pojawiać na nich powiadomienia.</p>
+</div>
+</section>
+<section id="add-recurring-options">
+<h3>Dodawanie opcji cyklicznych<a class="headerlink" href="#add-recurring-options" title="Link to this heading"></a></h3>
+<p>Wydarzenie można ustawić jako „cykliczne”, aby mogło się wydarzyć codziennie, co tydzień, co miesiąc lub co roku. Można dodać szczegółowe reguły, aby określić, w którym dniu tygodnia ma miejsce wydarzenie, lub bardziej złożone reguły, takie jak każda czwarta środa każdego miesiąca.</p>
+<p>Możesz także stwierdzić, kiedy cykl się kończy:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_repeat.png"><img alt="../../_images/calendar_event_repeat.png" src="../../_images/calendar_event_repeat.png" style="width: 519.2px; height: 557.6px;" />
+</a>
+</figure>
+</section>
+<section id="trash-bin">
+<span id="calendar-trash-bin"></span><h3>Kosz<a class="headerlink" href="#trash-bin" title="Link to this heading"></a></h3>
+<p>Jeśli usuniesz wydarzenia, zadania lub kalendarz w Calendar (Kalendarz), Twoje dane jeszcze nie znikną. Zamiast tego te elementy zostaną zebrane w <em>koszu</em>. To umożliwia cofnięcie usunięcia. Po okresie, który domyślnie wynosi 30 dni (administracja mogła zmienić to ustawienie), elementy te zostaną trwale usunięte. Jeśli chcesz, możesz również trwale usunąć elementy wcześniej.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_trash_bin.png" src="../../_images/calendar_trash_bin.png" />
+</figure>
+<p>Przyciski <code class="docutils literal notranslate"><span class="pre">Opróżnij</span> <span class="pre">kosz</span></code> wyczyszczą całą zawartość kosza w jednym kroku.</p>
+<div class="admonition tip">
+<p class="admonition-title">Wskazówka</p>
+<p>Kosz jest dostępny tylko z aplikacji Calendar (Kalendarz). Żadna połączona aplikacja lub sama aplikacja nie będzie mogła wyświetlić swojej zawartości. Jednak wydarzenia, zadania i kalendarze usunięte z połączonych aplikacji lub z samej aplikacji również trafią do kosza.</p>
+</div>
+</section>
+<section id="automated-user-status">
+<span id="calendar-working-hours"></span><h3>Automated User Status<a class="headerlink" href="#automated-user-status" title="Link to this heading"></a></h3>
+<p>When you have a calendar event scheduled that has a „BUSY” status, your user status will be automatically set to „In a meeting” unless you have set yourself to „Do Not Disturb” or „Invisible”.
+You can overwrite the status with a custom message any time, or set your calendar events to „FREE”.
+Calendars that are transparent will be ignored.</p>
+</section>
+</section>
+<section id="responding-to-invitations">
+<h2>Odpowiadanie na zaproszenia<a class="headerlink" href="#responding-to-invitations" title="Link to this heading"></a></h2>
+<p>Możesz bezpośrednio odpowiadać na zaproszenia w aplikacji. Kliknij wydarzenie i wybierz swój status uczestnictwa. Możesz odpowiedzieć na zaproszenie, akceptując, odrzucając lub akceptując wstępnie.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_accept_simple_editor.png"><img alt="../../_images/calendar_accept_simple_editor.png" src="../../_images/calendar_accept_simple_editor.png" style="width: 595.2px; height: 309.6px;" />
+</a>
+</figure>
+<p>You can respond to an invitation from the advanced editor too.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_accept_advanced_editor.png"><img alt="../../_images/calendar_accept_advanced_editor.png" src="../../_images/calendar_accept_advanced_editor.png" style="width: 800.0px; height: 160.8px;" />
+</a>
+</figure>
+</section>
+<section id="availability-working-hours">
+<h2>Dostępność (godziny pracy)<a class="headerlink" href="#availability-working-hours" title="Link to this heading"></a></h2>
+<p>Ogólną dostępność niezależnie od zaplanowanych wydarzeń można ustawić w ustawieniach oprogramowania do pracy grupowej w Nextcloud. Te ustawienia zostaną odzwierciedlone w widoku wolny/zajęty, gdy <a class="reference internal" href="#calendar-attendees"><span class="std std-ref">zaplanujesz spotkanie z innymi osobami</span></a> w Calendar (Kalendarz). Niektóre połączone klienty, takie jak Thunderbird, również pokażą te dane.</p>
+<figure class="align-default">
+<img alt="../../_images/caldav_availability.png" src="../../_images/caldav_availability.png" />
+</figure>
+<p>You can configure one-time absences on top of your regular availability in the <a class="reference internal" href="absence.html#groupware-absence"><span class="std std-ref">Absence settings section</span></a>.</p>
+</section>
+<section id="birthday-calendar">
+<h2>Kalendarz urodzinowy<a class="headerlink" href="#birthday-calendar" title="Link to this heading"></a></h2>
+<p>Kalendarz urodzinowy to automatycznie generowany kalendarz, który bezpośrednio pobierze daty urodzin z Twoich kontaktów. Jedynym sposobem edycji tego kalendarza jest wypełnienie daty urodzin w kontaktach. Nie możesz bezpośrednio edytować tego kalendarza z poziomu aplikacji kalendarza.</p>
+<div class="admonition note">
+<p class="admonition-title">Informacja</p>
+<p>Jeśli nie widzisz kalendarza urodzinowego, być może administrator wyłączył to dla Twojego serwera.</p>
+</div>
+</section>
+<section id="appointments">
+<h2>Spotkania<a class="headerlink" href="#appointments" title="Link to this heading"></a></h2>
+<p>Począwszy od Calendar (Kalendarz) v3 aplikacja może generować terminy spotkań, które mogą rezerwować inni użytkownicy Nextcloud, ale także osoby bez konta na instancji. Spotkania zapewniają szczegółową kontrolę nad tym, kiedy możesz się spotkać. Może to wyeliminować potrzebę wysyłania e-maili tam i z powrotem w celu ustalenia daty i godziny.</p>
+<p>W tej sekcji będziemy używać terminu <em>organizator</em> dla osoby, która jest właścicielem kalendarza i konfiguruje terminy spotkań. <em>Uczestnik</em> to osoba, która rezerwuje jedno z wolnych terminów.</p>
+<section id="creating-an-appointment-configuration">
+<h3>Tworzenie konfiguracji spotkania<a class="headerlink" href="#creating-an-appointment-configuration" title="Link to this heading"></a></h3>
+<p>Jako organizator spotkań otwierasz główny internetowy interfejs użytkownika Calendar (Kalendarz). Na lewym pasku bocznym znajdziesz sekcję spotkań, w której możesz otworzyć okno dialogowe, aby utworzyć nowe.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_new.png" src="../../_images/appointment_new.png" />
+</figure>
+<p>One of the basic infos of every appointment is a title describing what the appointment is about (e.g. „One-on-one” when an organizer wants to offer colleagues a personal call), where an
+appointment will take place and a more detailed description of what this appointment is about.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_basics.png" src="../../_images/appointment_config_basics.png" />
+</figure>
+<p>The duration of the appointment can be picked from a predefined list. Next, you can set the desired increment. The increment is the rate at which possible slots are available.
+For example, you could have one hour long slots, but you give them away at 30 minute increments so an attendee can book at 9:00AM but also at 9:30AM.
+Optional infos about location and a description give the attendees some more context.Every booked appointment will be written into one of your calendars, so you can chose which one that should be. Appointments can be <em>public</em> or <em>private</em>.
+Public appointments can be discovered through the profile page of a Nextcloud user. Private appointments are only accessible to the people who receive the secret URL.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_calendar_settings.png" src="../../_images/appointment_config_calendar_settings.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Informacja</p>
+<p>Only slots that do not conflict with existing events in your calendars will be shown to attendees.</p>
+</div>
+<p>Organizator spotkania może określić, o jakich porach tygodnia generalnie można zarezerwować czas. Mogą to być godziny pracy, ale także dowolny inny dostosowany harmonogram.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_booking_hours.png" src="../../_images/appointment_config_booking_hours.png" />
+</figure>
+<p>Some appointments require time to prepare, e.g. when you meet at a venue and you have to drive there.
+The organizer can chose to select a time duration that must be free. Only slots that do not conflict with other events during the preparation time will be available. Moreover there is the option to specify a time after each appointment that has to be free.
+To prevent an attendee from booking too short notice it’s possible to configure how soon the next possible appointment might take place.
+Setting a maximum number of slots per day can limit how many appointments are possibly booked by attendees.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_limits.png" src="../../_images/appointment_config_limits.png" />
+</figure>
+<p>The configured appointment will then be listed in the left sidebar. Via the three dot menu, you can preview the appointment. You can copy the link to the appointment and share it with your target attendees,
+or let them discover your public appointment via the profile page. You can also edit or delete the appointment configuration.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_options.png" src="../../_images/appointment_config_options.png" />
+</figure>
+</section>
+<section id="booking-an-appointment">
+<h3>Rezerwacja spotkania<a class="headerlink" href="#booking-an-appointment" title="Link to this heading"></a></h3>
+<p>Strona rezerwacji pokazuje uczestnikowi tytuł, lokalizację, opis i długość spotkania. Dla wybranego dnia pojawi się lista ze wszystkimi możliwymi przedziałami czasowymi. W dni, w których nie ma wolnych terminów, zbyt wiele konfliktów lub osiągnięto dzienny maksymalny limit już zarezerwowanych spotkań, lista może być pusta.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/appointment_booking_1.png"><img alt="../../_images/appointment_booking_1.png" src="../../_images/appointment_booking_1.png" style="width: 673.6px; height: 450.40000000000003px;" />
+</a>
+</figure>
+<p>For the booking, attendees have to enter a name and an email address. Optionally they can also add a comment.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/appointment_booking_2.png"><img alt="../../_images/appointment_booking_2.png" src="../../_images/appointment_booking_2.png" style="width: 588.0px; height: 358.40000000000003px;" />
+</a>
+</figure>
+<p>When the booking was successful, a confirmation dialogue will be shown to the attendee.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_3.png" src="../../_images/appointment_booking_3.png" />
+</figure>
+<p>To verify that the attendee email address is valid, a confirmation email will be sent to them.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_confirmation_email.png" src="../../_images/appointment_booking_confirmation_email.png" />
+</figure>
+<p>Only after the attendee clicks the confirmation link from the email the appointment booking will be accepted and forwarded to the organizer.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_confirmation_dialogue.png" src="../../_images/appointment_booking_confirmation_dialogue.png" />
+</figure>
+<p>The attendee will receive another email confirming the details of their appointment.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_email_2.png" src="../../_images/appointment_booking_email_2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Informacja</p>
+<p>If a slot has not been confirmed, it will still show up as bookable. Until then the time slot might also be booked by another user who confirms their booking earlier.
+The system will detect the conflict and offer to pick a new time slot.</p>
+</div>
+</section>
+<section id="working-with-the-booked-appointment">
+<h3>Praca z zarezerwowanym terminem<a class="headerlink" href="#working-with-the-booked-appointment" title="Link to this heading"></a></h3>
+<p>Once the booking is done, the organizer will find an event in their calendar with the appointment details and the <a class="reference internal" href="#calendar-attendees"><span class="std std-ref">attendee</span></a>.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_calendar_event.png" src="../../_images/appointment_calendar_event.png" />
+</figure>
+<p>If the appointment has the setting „Add time before event” or „Add time after the event” enabled, they will show up as separate events in the calendar for the organizer.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_calendar_prep.png" src="../../_images/appointment_calendar_prep.png" />
+</figure>
+<p>As with any other event that has attendees, changes and cancellations will trigger a notification to the attendee’s email.</p>
+<p>Jeśli uczestnicy chcą anulować spotkanie, muszą skontaktować się z organizatorem, aby organizator mógł anulować lub nawet usunąć wydarzenie.</p>
+</section>
+<section id="create-talk-room-for-booked-appointments">
+<h3>Create Talk room for booked appointments<a class="headerlink" href="#create-talk-room-for-booked-appointments" title="Link to this heading"></a></h3>
+<p>You can create a Talk room directly from the calendar app for a booked appointment. The option can be found on the «Create appointment» modal. A unique link will be generated for every booked appointment and sent via the confirmation email when you check this option.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="contacts.html" class="btn btn-neutral float-left" title="Korzystanie z aplikacji Contact (Kontakty)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Poprzedni</a>
+        <a href="mail.html" class="btn btn-neutral float-right" title="Using the Mail app" accesskey="n" rel="next">Następny <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Prawa zastrzeżone 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Here go the languages -->
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐
+      
+      
+      Polish
+      
+      <span class="fa fa-caret-down"></span>
+
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Languages</dt>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/af/"
+                 
+              >
+                
+                Afrikaans
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ar/"
+                 
+              >
+                
+                Arabic
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/br/"
+                 
+              >
+                
+                Breton
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ca/"
+                 
+              >
+                
+                Catalan
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/cs/"
+                 
+              >
+                
+                Czech
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/da/"
+                 
+              >
+                
+                Danish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/de/"
+                 
+              >
+                
+                German
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el/"
+                 
+              >
+                
+                Greek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el_GR/"
+                 
+              >
+                
+                el_GR
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/en/"
+                 
+              >
+                
+                English
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eo/"
+                 
+              >
+                
+                Esperanto
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/es/"
+                 
+              >
+                
+                Spanish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eu/"
+                 
+              >
+                
+                eu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fi_FI/"
+                 
+              >
+                
+                Finnish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fr/"
+                 
+              >
+                
+                French
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ga/"
+                 
+              >
+                
+                Irish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/gl/"
+                 
+              >
+                
+                Glacian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hr/"
+                 
+              >
+                
+                Croatian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu/"
+                 
+              >
+                
+                hu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu_HU/"
+                 
+              >
+                
+                Hungarian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/id/"
+                 
+              >
+                
+                Indonesian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/it/"
+                 
+              >
+                
+                Italian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ja_JP/"
+                 
+              >
+                
+                Japanese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ko/"
+                 
+              >
+                
+                Korean
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/mn/"
+                 
+              >
+                
+                Mongolian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nb_NO/"
+                 
+              >
+                
+                Norwegian (NB)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nl/"
+                 
+              >
+                
+                Dutch
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nn/"
+                 
+              >
+                
+                Norwegian (NN)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pl/"
+                 
+                 style="color: var(--dark-link-color);"
+                 
+              >
+                
+                Polish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_BR/"
+                 
+              >
+                
+                Portuguese (BR)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_PT/"
+                 
+              >
+                
+                Portuguese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ro/"
+                 
+              >
+                
+                Romanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ru/"
+                 
+              >
+                
+                Russian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/si/"
+                 
+              >
+                
+                Sinhala
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sk_SK/"
+                 
+              >
+                
+                Slovakian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sq/"
+                 
+              >
+                
+                Albanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sr/"
+                 
+              >
+                
+                Slovenian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sv/"
+                 
+              >
+                
+                Swedish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ta/"
+                 
+              >
+                
+                Tamil
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/th/"
+                 
+              >
+                
+                th
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/tr/"
+                 
+              >
+                
+                Turkish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk/"
+                 
+              >
+                
+                Ukrainian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uz/"
+                 
+              >
+                
+                Uzbek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/vi/"
+                 
+              >
+                
+                Vietnamese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_CN/"
+                 
+              >
+                
+                Chinese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_HK/"
+                 
+              >
+                
+                Chinese (HK)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_TW/"
+                 
+              >
+                
+                Chinese (TW)
+                
+              </a>
+            </dd>
+          
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Wersje</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/30/user_manual"
+               
+            >
+              30
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/29/user_manual"
+               
+            >
+              29
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/28/user_manual"
+               
+            >
+              28
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Pliki do pobrania</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Przeczytaj dokumentację</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Strona główna projektu</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Wydania</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

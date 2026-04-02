@@ -1,0 +1,889 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ca" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accedint als vostres fitxer fent servir la interfície Web de Nextcloud &mdash; Nextcloud latest User Manual latest documentació</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=89fb3067"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=31977383"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Índex" href="../genindex.html" />
+    <link rel="search" title="Cerca" href="../search.html" />
+    <link rel="next" title="Accessing Nextcloud files using WebDAV" href="access_webdav.html" />
+    <link rel="prev" title="Files &amp; synchronization" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest user manual introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Novetats per als usuaris a Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">La interfície web de Nextcloud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Files &amp; synchronization</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Accedint als vostres fitxer fent servir la interfície Web de Nextcloud</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tagging-files">Etiquetant fitxers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comments">Comentaris</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#video-player">Reproductor de vídeo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-controls">Controls de fitxers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#previewing-files">Previsualització de fitxers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#navigating-inside-your-nextcloud">Navegant dins del vostre Nextcloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-status-icons">Icones d’estat de compartició</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-or-uploading-files-and-directories">Creació o càrrega de fitxers i directoris</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#selecting-files-or-folders">Selecció de fitxers o carpetes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filtering-the-files-view">Filtrat de la vista de fitxers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#moving-files">S’estan movent els fitxers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-or-connecting-to-a-federation-share-link">Creació o connexió a un enllaç de compartició federativa</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Accessing Nextcloud files using WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Gestionar arxius esborrats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Sincronització entre escriptori i mòbil</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Encrypting your Nextcloud files on the server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">File Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Federated Shares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Making anonymous uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Large file uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Storage quota</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Version control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Transfer Ownership</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Using Federation Shares</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting your preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage connected browsers and devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Emmagatzematge extern</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Files &amp; synchronization</a></li>
+      <li class="breadcrumb-item active">Accedint als vostres fitxer fent servir la interfície Web de Nextcloud</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webgui.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="accessing-your-files-using-the-nextcloud-web-interface">
+<h1>Accedint als vostres fitxer fent servir la interfície Web de Nextcloud<a class="headerlink" href="#accessing-your-files-using-the-nextcloud-web-interface" title="Enllaça amb aquesta capçalera"></a></h1>
+<p>Podeu accedir als vostres fitxers a Nextcloud amb la interfície web de Nextcloud i crear, previsualitzar, editar, eliminar, compartir i re-distribuir fitxers. El vostre administrador de Nextcloud té la opció d’inhabilitar aquestes característiques, per tant, si algunes no apareixen al vostre sistema pregunteu al vostre administrador.</p>
+<figure class="align-default">
+<img alt="La pantalla de visualització de fitxers." src="../../_images/users-files.png" />
+</figure>
+<section id="tagging-files">
+<h2>Etiquetant fitxers<a class="headerlink" href="#tagging-files" title="Enllaça amb aquesta capçalera"></a></h2>
+<p>Podeu assignar etiquetes als fitxers. Per a crear etiquetes, obriu la vista de Detalls d’un fitxer. Llavors escriviu les vostres etiquetes. Per a introduir més d’una etiqueta, premeu la tecla enter després de crear-ne cada una. Totes les etiquetes són etiquetes de sistema i son compartides per totes les usuàries al vostre servidor Nextcloud.</p>
+<figure class="align-default">
+<img alt="Creació d'etiquetes de fitxers." src="../../_images/files_page-7.png" />
+</figure>
+<p>A continuació, utilitzeu el filtre Etiquetes a la barra lateral esquerra per filtrar fitxers per etiquetes:</p>
+<figure class="align-default">
+<img alt="Visualització d'etiquetes de fitxers." src="../../_images/files_page-8.png" />
+</figure>
+</section>
+<section id="comments">
+<h2>Comentaris<a class="headerlink" href="#comments" title="Enllaça amb aquesta capçalera"></a></h2>
+<p>Utilitzeu la vista Detalls per afegir i llegir comentaris a qualsevol fitxer o carpeta. Els comentaris són visibles per a tothom que tingui accés al fitxer:</p>
+<figure class="align-default">
+<img alt="Creació i visualització de comentaris." src="../../_images/file_menu_comments_2.png" />
+</figure>
+</section>
+<section id="video-player">
+<h2>Reproductor de vídeo<a class="headerlink" href="#video-player" title="Enllaça amb aquesta capçalera"></a></h2>
+<p>Podeu reproduir vídeos a Nextcloud amb l’aplicació Video Player fent clic al fitxer. La transmissió de vídeo del reproductor de vídeo natiu Nextcloud depèn del vostre navegador web i del format de vídeo. Si el vostre administrador de Nextcloud ha habilitat la transmissió de vídeo i no funciona al vostre navegador web, pot ser que sigui un problema amb el navegador. Vegeu <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility">https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility</a> per als formats multimèdia admesos als navegadors web.</p>
+<figure class="align-default">
+<img alt="Mirant una pel·lícula." src="../../_images/video_player_2.png" />
+</figure>
+</section>
+<section id="file-controls">
+<h2>Controls de fitxers<a class="headerlink" href="#file-controls" title="Enllaça amb aquesta capçalera"></a></h2>
+<p>Nextcloud can display thumbnail previews for various file types, such as images, audio files, and text files.
+The specific types supported are up to the server administrator.
+Hover your cursor over a file or folder to expose the controls for the following operations:</p>
+<dl>
+<dt>Favorits</dt><dd><p>Feu clic a l’estrella a l’esquerra de la icona del fitxer per marcar-lo com a preferit:</p>
+<figure class="align-default">
+<img alt="Marcar fitxers preferits." src="../../_images/files_page-1.png" />
+</figure>
+<p>També podeu trobar ràpidament tots els vostres preferits amb el filtre Preferits a la barra lateral esquerra.</p>
+</dd>
+<dt>Menú d’eines addicionals</dt><dd><p>El menú d’eines addicionals (tres punts) mostra els detalls dels fitxers i us permet canviar el nom, descarregar-los o suprimir fitxers:</p>
+<figure class="align-default">
+<img alt="Menú d'eines addicionals." src="../../_images/files_page-3.png" />
+</figure>
+<p>La vista Detalls mostra informació sobre activitats, ús compartit i versions:</p>
+</dd>
+</dl>
+<figure class="align-default">
+<img alt="Pantalla de detalls." src="../../_images/files_page-4.png" />
+</figure>
+<p>La icona d’engranatge <strong>Configuració</strong> a la part inferior esquerra us permet mostrar o amagar fitxers ocults a la vostra interfície web de Nextcloud. Aquests també s’anomenen fitxers de punts, perquè tenen el prefix d’un punt, p. <code class="docutils literal notranslate"><span class="pre">.mailfile</span></code>. El punt indica al vostre sistema operatiu que amagui aquests fitxers als vostres navegadors de fitxers, tret que trieu mostrar-los. Normalment aquests són fitxers de configuració, de manera que tenir l’opció d’amagar-los redueix el desordre.</p>
+<figure class="align-default">
+<img alt="Ocultar o mostrar fitxers ocults." src="../../_images/hidden_files.png" />
+</figure>
+</section>
+<section id="previewing-files">
+<h2>Previsualització de fitxers<a class="headerlink" href="#previewing-files" title="Enllaça amb aquesta capçalera"></a></h2>
+<p>Podeu mostrar fitxers de text sense comprimir, fitxers OpenDocument, vídeos i fitxers d’imatge als visualitzadors incrustats de Nextcloud fent clic al nom del fitxer. Pot haver-hi altres tipus de fitxers que podeu previsualitzar si el vostre administrador de Nextcloud els ha habilitat. Si Nextcloud no pot mostrar un fitxer, iniciarà un procés de descàrrega i baixarà el fitxer al vostre ordinador.</p>
+</section>
+<section id="navigating-inside-your-nextcloud">
+<h2>Navegant dins del vostre Nextcloud<a class="headerlink" href="#navigating-inside-your-nextcloud" title="Enllaça amb aquesta capçalera"></a></h2>
+<p>Navegar per carpetes a Nextcloud és tan senzill com fer clic a una carpeta per obrir-la i utilitzar el botó enrere del navegador per passar a un nivell anterior. Nextcloud també ofereix una barra de navegació a la part superior del camp Fitxers per a una navegació ràpida.</p>
+</section>
+<section id="sharing-status-icons">
+<h2>Icones d’estat de compartició<a class="headerlink" href="#sharing-status-icons" title="Enllaça amb aquesta capçalera"></a></h2>
+<p>Qualsevol carpeta que s’hagi compartit està marcada amb la icona de superposició <code class="docutils literal notranslate"><span class="pre">Compartida</span></code>. Els enllaços públics compartits es marquen amb un enllaç de cadena. Les carpetes no compartides no estan marcades:</p>
+<figure class="align-default">
+<img alt="Icones d'estat de compartició." src="../../_images/files_page-5.png" />
+</figure>
+</section>
+<section id="creating-or-uploading-files-and-directories">
+<h2>Creació o càrrega de fitxers i directoris<a class="headerlink" href="#creating-or-uploading-files-and-directories" title="Enllaça amb aquesta capçalera"></a></h2>
+<p>Carregueu o creeu fitxers o carpetes nous directament en una carpeta Nextcloud fent clic al botó <em>Nou</em> de l’aplicació Fitxers:</p>
+<figure class="align-default">
+<img alt="El menú Nou fitxer/carpeta/pujada." src="../../_images/files_page-6.png" />
+</figure>
+<p>El botó <em>Nou</em> ofereix les opcions següents:</p>
+<dl class="simple">
+<dt>Fletxa amunt</dt><dd><p>Pujada de fitxers des del vostre ordinador a Nextcloud. També podeu pujar fitxers arrossegant-los i deixant-los anar des del vostre gestor de fitxers.</p>
+</dd>
+<dt>Fitxer de text</dt><dd><p>Crea un fitxer de text nou i afegeix el fitxer a la carpeta actual.</p>
+</dd>
+<dt>Carpeta</dt><dd><p>Crea una nova carpeta a la carpeta actual.</p>
+</dd>
+</dl>
+</section>
+<section id="selecting-files-or-folders">
+<h2>Selecció de fitxers o carpetes<a class="headerlink" href="#selecting-files-or-folders" title="Enllaça amb aquesta capçalera"></a></h2>
+<p>Podeu seleccionar un o més fitxers o carpetes fent clic a les seves caselles de selecció. Per seleccionar tots els fitxers del directori actual, feu clic a la casella de selecció situada a la part superior de la llista de fitxers.</p>
+<p>Quan seleccioneu diversos fitxers, podeu suprimir-los tots o descarregar-los com a fitxer ZIP utilitzant els botons <code class="docutils literal notranslate"><span class="pre">Suprimeix</span></code> o <code class="docutils literal notranslate"><span class="pre">Baixada</span></code> que apareixen a la part superior.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Si el botó <code class="docutils literal notranslate"><span class="pre">Baixada</span></code> no és visible, l’administrador ha desactivat aquesta funció.</p>
+</div>
+</section>
+<section id="filtering-the-files-view">
+<h2>Filtrat de la vista de fitxers<a class="headerlink" href="#filtering-the-files-view" title="Enllaça amb aquesta capçalera"></a></h2>
+<p>La barra lateral esquerra de la pàgina Fitxers conté diversos filtres per ordenar i gestionar ràpidament els fitxers.</p>
+<dl class="simple">
+<dt>Tots els fitxers</dt><dd><p>La vista predeterminada; mostra tots els fitxers als quals teniu accés.</p>
+</dd>
+<dt>Favorits</dt><dd><p>Fitxers o carpetes marcats amb l’estrella groga.</p>
+</dd>
+<dt>Us han compartit</dt><dd><p>Mostra tots els fitxers compartits amb tu per un altre usuari o grup.</p>
+</dd>
+<dt>Heu compartit amb altres</dt><dd><p>Mostra tots els fitxers que heu compartit amb altres usuaris o grups.</p>
+</dd>
+<dt>Compartit amb enllaç</dt><dd><p>Mostra tots els fitxers que compartiu mitjançant un enllaç públic.</p>
+</dd>
+<dt>Emmagatzematge extern (opcional)</dt><dd><p>Fitxers als quals teniu accés en dispositius i serveis d’emmagatzematge externs com Amazon S3, SMB/CIFS, FTP…</p>
+</dd>
+</dl>
+</section>
+<section id="moving-files">
+<h2>S’estan movent els fitxers<a class="headerlink" href="#moving-files" title="Enllaça amb aquesta capçalera"></a></h2>
+<p>Podeu moure fitxers i carpetes arrossegant-los i deixant-los anar a qualsevol directori.</p>
+</section>
+<section id="creating-or-connecting-to-a-federation-share-link">
+<h2>Creació o connexió a un enllaç de compartició federativa<a class="headerlink" href="#creating-or-connecting-to-a-federation-share-link" title="Enllaça amb aquesta capçalera"></a></h2>
+<p>Compartició núvol federat us permet muntar fitxers compartits des de servidors remots de Nextcloud i gestionar-los com si fos un local compartit. Consulteu <a class="reference internal" href="federated_cloud_sharing.html"><span class="doc">Using Federation Shares</span></a> per aprendre a crear i connectar-vos a nous recursos compartits de núvol federat.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Files &amp; synchronization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="access_webdav.html" class="btn btn-neutral float-right" title="Accessing Nextcloud files using WebDAV" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Here go the languages -->
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐
+      
+      
+      ca
+      
+      <span class="fa fa-caret-down"></span>
+
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Languages</dt>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/af/"
+                 
+              >
+                
+                Afrikaans
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ar/"
+                 
+              >
+                
+                Arabic
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/br/"
+                 
+              >
+                
+                Breton
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ca/"
+                 
+                 style="color: var(--dark-link-color);"
+                 
+              >
+                
+                Catalan
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/cs/"
+                 
+              >
+                
+                Czech
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/da/"
+                 
+              >
+                
+                Danish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/de/"
+                 
+              >
+                
+                German
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el/"
+                 
+              >
+                
+                Greek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el_GR/"
+                 
+              >
+                
+                el_GR
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/en/"
+                 
+              >
+                
+                English
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eo/"
+                 
+              >
+                
+                Esperanto
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/es/"
+                 
+              >
+                
+                Spanish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eu/"
+                 
+              >
+                
+                eu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fi_FI/"
+                 
+              >
+                
+                Finnish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fr/"
+                 
+              >
+                
+                French
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ga/"
+                 
+              >
+                
+                Irish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/gl/"
+                 
+              >
+                
+                Glacian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hr/"
+                 
+              >
+                
+                Croatian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu/"
+                 
+              >
+                
+                hu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu_HU/"
+                 
+              >
+                
+                Hungarian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/id/"
+                 
+              >
+                
+                Indonesian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/it/"
+                 
+              >
+                
+                Italian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ja_JP/"
+                 
+              >
+                
+                Japanese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ko/"
+                 
+              >
+                
+                Korean
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/mn/"
+                 
+              >
+                
+                Mongolian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nb_NO/"
+                 
+              >
+                
+                Norwegian (NB)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nl/"
+                 
+              >
+                
+                Dutch
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nn/"
+                 
+              >
+                
+                Norwegian (NN)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pl/"
+                 
+              >
+                
+                Polish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_BR/"
+                 
+              >
+                
+                Portuguese (BR)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_PT/"
+                 
+              >
+                
+                Portuguese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ro/"
+                 
+              >
+                
+                Romanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ru/"
+                 
+              >
+                
+                Russian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/si/"
+                 
+              >
+                
+                Sinhala
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sk_SK/"
+                 
+              >
+                
+                Slovakian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sq/"
+                 
+              >
+                
+                Albanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sr/"
+                 
+              >
+                
+                Slovenian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sv/"
+                 
+              >
+                
+                Swedish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ta/"
+                 
+              >
+                
+                Tamil
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/th/"
+                 
+              >
+                
+                th
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/tr/"
+                 
+              >
+                
+                Turkish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk/"
+                 
+              >
+                
+                Ukrainian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uz/"
+                 
+              >
+                
+                Uzbek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/vi/"
+                 
+              >
+                
+                Vietnamese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_CN/"
+                 
+              >
+                
+                Chinese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_HK/"
+                 
+              >
+                
+                Chinese (HK)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_TW/"
+                 
+              >
+                
+                Chinese (TW)
+                
+              </a>
+            </dd>
+          
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/30/user_manual"
+               
+            >
+              30
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/29/user_manual"
+               
+            >
+              29
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/28/user_manual"
+               
+            >
+              28
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Descàrregues</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Sobre la documentació</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Pàgina principal del projecte</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Versions compilades</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

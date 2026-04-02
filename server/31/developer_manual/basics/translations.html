@@ -1,0 +1,534 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Translations &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Background jobs (Cron)" href="backgroundjobs.html" />
+    <link rel="prev" title="Theming support" href="front-end/theming.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Basic concepts</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="request_lifecycle.html">Request lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routing.html">Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependency_injection.html">Dependency injection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="middlewares.html">Middlewares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="front-end/index.html">Front-end</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Translations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#php-backend">PHP Backend</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#language-of-other-users">Language of other users</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#php-templates">PHP Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#javascript-typescript-vue">JavaScript / TypeScript / Vue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#guidelines">Guidelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dos-and-don-ts">Dos and Don’ts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#correct-plurals">Correct plurals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#improving-your-translations">Improving your translations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#provide-context-hints-for-translators">Provide context hints for translators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-translations">Adding translations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-translations">Testing translations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setting.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storage/index.html">Storage and database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="public_share_template.html">Public share template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Basic concepts</a></li>
+      <li class="breadcrumb-item active">Translations</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/basics/translations.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="translations">
+<span id="id1"></span><h1>Translations<a class="headerlink" href="#translations" title="Link to this heading"></a></h1>
+<p>Nextcloud provides mechanisms for internationalization (make an application translatable) and localization (add translations for specific languages). This section provides detailed instructions for both aspects.
+In order to make your app translatable (internationalization), you should use Nextcloud’s methods for translating strings. They are available for both the server-side (PHP, Templates) as well as for the client-side (JavaScript).</p>
+<section id="php-backend">
+<h2>PHP Backend<a class="headerlink" href="#php-backend" title="Link to this heading"></a></h2>
+<p>If localized strings are used in the backend code, simply inject the <code class="docutils literal notranslate"><span class="pre">\OCP\IL10N</span></code> class into your service via type hinting it in the constructor. You will automatically get the language object containing the translations of your app:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">class</span> <span class="nc">AuthorService</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">\OCP\IL10N</span> <span class="nv">$l</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="nx">…</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Strings can then be translated in the following way:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">class</span> <span class="nc">AuthorService</span> <span class="p">{</span>
+
+    <span class="nx">…</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getLanguageCode</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Get the language code of the current language</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">getLanguageCode</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nx">sayHello</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Simple string</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getAuthorName</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// String using a parameter</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Getting author %1$s&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nv">$name</span><span class="p">]);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getAuthors</span><span class="p">(</span><span class="nv">$count</span><span class="p">,</span> <span class="nv">$city</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Translation with plural</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">n</span><span class="p">(</span>
+            <span class="s1">&#39;%n author is currently in the city %1$s&#39;</span><span class="p">,</span> <span class="c1">// singular string</span>
+            <span class="s1">&#39;%n authors are currently in the city %1$s&#39;</span><span class="p">,</span> <span class="c1">// plural string</span>
+            <span class="nv">$count</span><span class="p">,</span> <span class="c1">// number to decide which plural to use</span>
+            <span class="p">[</span><span class="nv">$city</span><span class="p">]</span> <span class="c1">// further parameters are possible</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="language-of-other-users">
+<h3>Language of other users<a class="headerlink" href="#language-of-other-users" title="Link to this heading"></a></h3>
+<p>If you need to get the language of another user, e.g. to send them an email or inside a background job, there are also
+the <code class="docutils literal notranslate"><span class="pre">force_language</span></code> and <code class="docutils literal notranslate"><span class="pre">default_language</span></code> configuration options to consider. To make this easier, the
+<code class="docutils literal notranslate"><span class="pre">OCP\L10N\IFactory</span></code> class comes with a <code class="docutils literal notranslate"><span class="pre">getUserLanguage</span></code> method:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">class</span> <span class="nc">SendEmail</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">\OCP\L10N\IFactory</span> <span class="nv">$l10nFactory</span><span class="p">,</span>
+     <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">send</span><span class="p">(</span><span class="nx">IUser</span> <span class="nv">$user</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="nv">$lang</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10nFactory</span><span class="o">-&gt;</span><span class="na">getUserLanguage</span><span class="p">(</span><span class="nv">$user</span><span class="p">);</span>
+        <span class="nv">$l</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10nFactory</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="nv">$lang</span><span class="p">);</span>
+
+        <span class="c1">// …</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="php-templates">
+<h2>PHP Templates<a class="headerlink" href="#php-templates" title="Link to this heading"></a></h2>
+<p>In every template the global variable <code class="docutils literal notranslate"><span class="pre">$l</span></code> can be used to translate the strings using its methods <code class="docutils literal notranslate"><span class="pre">t()</span></code> and <code class="docutils literal notranslate"><span class="pre">n()</span></code>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// Simple text string</span>
+<span class="o">&lt;</span><span class="nx">button</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Hide&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;/button&gt;</span>
+
+<span class="x">// Text with a placeholder</span>
+<span class="x">&lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Show files of %1$s&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nv">$user</span><span class="p">]));</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+
+<span class="x">// Date string</span>
+<span class="x">&lt;em&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">l</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()));</span> <span class="cp">?&gt;</span><span class="x">&lt;/em&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="javascript-typescript-vue">
+<h2>JavaScript / TypeScript / Vue<a class="headerlink" href="#javascript-typescript-vue" title="Link to this heading"></a></h2>
+<p>There are global functions <code class="docutils literal notranslate"><span class="pre">t()</span></code> and <code class="docutils literal notranslate"><span class="pre">n()</span></code> available for translating strings in javascript code.
+If your app is build, you can import the translation functions from the <a class="reference external" href="https://github.com/nextcloud-libraries/nextcloud-l10n">&#64;nextcloud/l10n package</a>.
+They differ a bit in terms of usage compared to php:</p>
+<ul class="simple">
+<li><p>First argument is the appId e.g. <code class="docutils literal notranslate"><span class="pre">'myapp'</span></code></p></li>
+<li><p>Placeholders (apart from the count in plurals) use single-mustache brackets with meaning-full descriptors.</p></li>
+<li><p>The parameter list is an object with the descriptors as key.</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">t</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Hello World!&#39;</span><span class="p">);</span>
+<span class="nx">t</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;{name} is available. Get {linkstart}more information{linkend}&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Nextcloud 16&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">linkstart</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&lt;a href=&quot;...&quot;&gt;&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">linkend</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&lt;/a&gt;&#39;</span><span class="p">});</span>
+<span class="nx">n</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Import %n calendar into {collection}&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Import %n calendars into {collection}&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">selectionLength</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">collection</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Nextcloud&#39;</span><span class="p">});</span>
+</pre></div>
+</div>
+</section>
+<section id="guidelines">
+<h2>Guidelines<a class="headerlink" href="#guidelines" title="Link to this heading"></a></h2>
+<p>Please also look through the following hints to improve your strings and make them better translatable by the community
+and therefore improving the experience for non-english users.</p>
+<section id="dos-and-don-ts">
+<h3>Dos and Don’ts<a class="headerlink" href="#dos-and-don-ts" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Bad</p></th>
+<th class="head"><p>Good</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">´</span></code> or <code class="docutils literal notranslate"><span class="pre">’</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'</span></code></p></td>
+<td><p>Use ascii single quote</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Loading...</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Loading</span> <span class="pre">…</span></code></p></td>
+<td><div class="line-block">
+<div class="line">Use unicode triple-dot character.</div>
+<div class="line">Add a space before the triple-dot when trimming a sentence instead of a word.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Don’t</p></td>
+<td><p>Do not</p></td>
+<td><p>Using the spelled out version is easier to understand and makes translating easier.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Won’t</p></td>
+<td><p>Will not</p></td>
+<td><p>Using the spelled out version is easier to understand and makes translating easier.</p></td>
+</tr>
+<tr class="row-even"><td><p>Can not</p></td>
+<td><p>Cannot</p></td>
+<td><p>Using the combined version is easier to understand and makes translating easier.</p></td>
+</tr>
+<tr class="row-odd"><td><p>id</p></td>
+<td><p>ID</p></td>
+<td><p>Full uppercase for shortcutting “identifier”</p></td>
+</tr>
+<tr class="row-even"><td><p>Users</p></td>
+<td><p>Accounts / People</p></td>
+<td><p>Use <strong>accounts</strong> when you refer to a profile/entity. Use <strong>people</strong> when referring to humans.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Admin / Administrator</p></td>
+<td><p>Administration</p></td>
+<td><div class="line-block">
+<div class="line">Refer to administration as a non-human organizational entity</div>
+<div class="line">instead of a single or multiple persons.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Headline</p></td>
+<td><p>Headline:</p></td>
+<td><p>Include colons <code class="docutils literal notranslate"><span class="pre">:</span></code> in the translations as some languages add a space before the colon.</p></td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">“ Leading space”</div>
+<div class="line">“Trailing space “</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">“No leading space”</div>
+<div class="line">“No trailing space”</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Leading or trailing spaces mostly indicate that strings are concatenated.</div>
+<div class="line">For translators it is often helpful to have all the content in a single translation,</div>
+<div class="line">as order and references between words and sentences might get lost otherwise.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>“Error:” $error</p></td>
+<td><p>“Error: %s”</p></td>
+<td><p>Instead of concatenating errors or part messages, make them a proper placeholder</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="correct-plurals">
+<h3>Correct plurals<a class="headerlink" href="#correct-plurals" title="Link to this heading"></a></h3>
+<p>If you use a plural, you <strong>must</strong> also use the <code class="docutils literal notranslate"><span class="pre">%n</span></code> placeholder. The placeholder defines the plural and the word without the number preceding is wrong. If you don’t know/have a number for your translation, e.g. because you don’t know how many items are going to be selected, just use an undefined plural. They exist in every language and have one form. They do not follow the normal plural pattern.</p>
+<p>PHP Example:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// BAD: Plural without count</span>
+<span class="nv">$title</span> <span class="o">=</span> <span class="nv">$l</span><span class="o">-&gt;</span><span class="na">n</span><span class="p">(</span><span class="s1">&#39;Import calendar&#39;</span><span class="p">,</span> <span class="s1">&#39;Import calendars&#39;</span><span class="p">,</span> <span class="nv">$selectionLength</span><span class="p">)</span>
+<span class="c1">// BETTER: Plural has count, but disrupting to read and unnecessary information</span>
+<span class="nv">$title</span> <span class="o">=</span> <span class="nv">$l</span><span class="o">-&gt;</span><span class="na">n</span><span class="p">(</span><span class="s1">&#39;Import %n calendar&#39;</span><span class="p">,</span> <span class="s1">&#39;Import %n calendars&#39;</span><span class="p">,</span> <span class="nv">$selectionLength</span><span class="p">)</span>
+<span class="c1">// BEST: Simple string with undefined plural not using any number in the string</span>
+<span class="nv">$title</span> <span class="o">=</span> <span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Import calendars&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Opposed to the normal placeholders in javascript, the plural number also uses the <code class="docutils literal notranslate"><span class="pre">%n</span></code> syntax:</p>
+<p>JS Example:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="cm">/* BAD: Plural without count */</span>
+<span class="nx">n</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Import calendar&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Import calendars&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">selected</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
+<span class="cm">/* BETTER: Plural has count, but disrupting to read and unnecessary information */</span>
+<span class="nx">n</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Import %n calendar&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Import %n calendars&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">selected</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
+<span class="cm">/* BEST: Simple string with undefined plural not using any number in the string */</span>
+<span class="nx">t</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Import calendars&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="improving-your-translations">
+<h3>Improving your translations<a class="headerlink" href="#improving-your-translations" title="Link to this heading"></a></h3>
+<p>Starting with the following example, improving it step by step:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Select file from&#39;</span><span class="p">))</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;a href=&#39;#&#39; id=&quot;browselink&quot;&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;local filesystem&#39;</span><span class="p">));</span><span class="cp">?&gt;</span><span class="x">&lt;/a&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39; or &#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;a href=&#39;#&#39; id=&quot;cloudlink&quot;&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;cloud&#39;</span><span class="p">));</span><span class="cp">?&gt;</span><span class="x">&lt;/a&gt;</span>
+</pre></div>
+</div>
+<section id="step-1-string-split">
+<h4>Step 1: String split<a class="headerlink" href="#step-1-string-split" title="Link to this heading"></a></h4>
+<p>You shall <strong>never split</strong> sentences and <strong>never concatenate</strong> two translations (e.g. “Enable” and “dark mode” can not be combined to “Enable dark mode”, because languages might have to use different cases)! Translators lose the context and they have no chance to possibly re-arrange words/parts as needed.</p>
+<p>Translators will translate:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">file</span> <span class="pre">from</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">local</span> <span class="pre">filesystem</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">or</span></code> (with leading and trailing whitespace)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cloud</span></code></p></li>
+</ul>
+<p>Translating these individual strings results in  <code class="docutils literal notranslate"><span class="pre">local</span> <span class="pre">filesystem</span></code> and <code class="docutils literal notranslate"><span class="pre">cloud</span></code> losing case. The two white spaces surrounding <code class="docutils literal notranslate"><span class="pre">or</span></code> will get lost while translating as well. For languages that have a different grammatical order it prevents the translators from reordering the sentence components.</p>
+<p>So the following code is a bit better, but suffers from another issue:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Select file from &lt;a href=&quot;#&quot; id=&quot;browselink&quot;&gt;local filesystem&lt;/a&gt; or &lt;a href=&quot;#&quot; id=&quot;cloudlink&quot;&gt;cloud&lt;/a&gt;&#39;</span><span class="p">));</span><span class="cp">?&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="step-2-html-markup">
+<h4>Step 2: HTML Markup<a class="headerlink" href="#step-2-html-markup" title="Link to this heading"></a></h4>
+<p>In this case the translators can re-arrange as they like, but have to deal with your markup and can mess it up easily. It is better to <strong>keep the markup out</strong> of your code, so the following translation is even better:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Select file from %slocal filesystem%s or %scloud%s&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;&lt;a href=&quot;#&quot; id=&quot;browselink&quot;&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;/a&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;a href=&quot;#&quot; id=&quot;cloudlink&quot;&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;/a&gt;&#39;</span><span class="p">]));</span><span class="cp">?&gt;</span>
+</pre></div>
+</div>
+<p>But there is one last problem with this.</p>
+</section>
+<section id="step-3-placeholders">
+<h4>Step 3: Placeholders<a class="headerlink" href="#step-3-placeholders" title="Link to this heading"></a></h4>
+<p>In case the language has to turn things around, your code will still insert the parameters in the given order and they can not re-order them. To prevent this last hurdle simply <strong>use positioned placeholders</strong> like <code class="docutils literal notranslate"><span class="pre">%1$s</span></code>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Select file from %1$slocal filesystem%2$s or %3$scloud%4$s&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;&lt;a href=&quot;#&quot; id=&quot;browselink&quot;&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;/a&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;a href=&quot;#&quot; id=&quot;cloudlink&quot;&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;/a&gt;&#39;</span><span class="p">]));</span><span class="cp">?&gt;</span>
+</pre></div>
+</div>
+<p>This allows translators to have the cloudlink before the browselink in case the language is e.g. right-to-left.</p>
+</section>
+</section>
+<section id="provide-context-hints-for-translators">
+<span id="hints"></span><h3>Provide context hints for translators<a class="headerlink" href="#provide-context-hints-for-translators" title="Link to this heading"></a></h3>
+<p>In case some translation strings may be translated wrongly because they have multiple meanings.
+Especially translations strings that only contain a single word often result in problems.
+The most famous example in the Nextcloud code base is <code class="docutils literal notranslate"><span class="pre">Share</span></code> which can which can be the verb and action <code class="docutils literal notranslate"><span class="pre">To</span> <span class="pre">share</span> <span class="pre">something</span></code> or the noun <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">share</span></code>.
+The added hints will be shown in the Transifex web-interface:</p>
+<section id="php">
+<h4>PHP<a class="headerlink" href="#php" title="Link to this heading"></a></h4>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">ul</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;translations&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;add-new&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;?</span><span class="nx">php</span>
+            <span class="c1">// TRANSLATORS Will be shown inside a popup and asks the user to add a new file</span>
+            <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Add new file&#39;</span><span class="p">));</span>
+        <span class="cp">?&gt;</span>
+<span class="x">    &lt;/li&gt;</span>
+<span class="x">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="javascript-typescript">
+<h4>JavaScript / TypeScript<a class="headerlink" href="#javascript-typescript" title="Link to this heading"></a></h4>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// TRANSLATORS name that is appended to copied files with the same name, will be put in parenthesis and appended with a number if it is the second+ copy</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">copyNameLocalized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">t</span><span class="p">(</span><span class="s1">&#39;files&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;copy&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="vue">
+<h4>Vue<a class="headerlink" href="#vue" title="Link to this heading"></a></h4>
+<p>This covers vue html templates in vue sfc components.
+For vue js code, see the javascript section.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">NcActionCheckbox</span> <span class="na">:checked</span><span class="o">=</span><span class="s">&quot;isRequired&quot;</span><span class="p">&gt;</span>
+    <span class="cm">&lt;!-- TRANSLATORS Making this question necessary to be answered when submitting to a form --&gt;</span>
+    {{ t(&#39;forms&#39;, &#39;Required&#39;) }}
+<span class="p">&lt;/</span><span class="nt">NcActionCheckbox</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="c-qt-desktop-client">
+<h4>C++ (Qt) / Desktop client<a class="headerlink" href="#c-qt-desktop-client" title="Link to this heading"></a></h4>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">//: Example text: &quot;Progress of sync process. Shows the currently synced filename&quot;</span>
+<span class="n">fileProgressString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tr</span><span class="p">(</span><span class="s">&quot;Syncing %1&quot;</span><span class="p">).</span><span class="n">arg</span><span class="p">(</span><span class="n">allFilenames</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="android">
+<h4>Android<a class="headerlink" href="#android" title="Link to this heading"></a></h4>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- TRANSLATORS List of deck boards --&gt;</span>
+<span class="nt">&lt;string</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;simple_boards&quot;</span><span class="nt">&gt;</span>Boards<span class="nt">&lt;/string&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="ios">
+<h4>iOS<a class="headerlink" href="#ios" title="Link to this heading"></a></h4>
+<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="cm">/* The title on the navigation bar of the Scanning screen. */</span>
+<span class="s">&quot;wescan.scanning.title&quot;</span><span class="w">             </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Scanning&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="adding-translations">
+<h2>Adding translations<a class="headerlink" href="#adding-translations" title="Link to this heading"></a></h2>
+<p>The steps how to set up translations for an app have been moved to it’s own page in the “App development” chapter: <a class="reference internal" href="../app_development/translation_setup.html#translation-setup"><span class="std std-ref">Translation setup</span></a></p>
+</section>
+<section id="testing-translations">
+<h2>Testing translations<a class="headerlink" href="#testing-translations" title="Link to this heading"></a></h2>
+<p>You can use the query parameter <code class="docutils literal notranslate"><span class="pre">forceLanguage</span></code> to force a specific language for a web request (API or frontend). See <a class="reference internal" href="../client_apis/OCS/ocs-api-overview.html#api-force-language"><span class="std std-ref">Forcing language for a given call</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="front-end/theming.html" class="btn btn-neutral float-left" title="Theming support" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="backgroundjobs.html" class="btn btn-neutral float-right" title="Background jobs (Cron)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/developer_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/28/developer_manual"
+             
+          >
+            28
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

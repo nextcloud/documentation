@@ -1,0 +1,336 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Continuous Integration &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bad88653" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Dashboard" href="dashboard.html" />
+    <link rel="prev" title="Classloader" href="classloader.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/index.html">Config &amp; Preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Continuous Integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#linting">Linting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#info-xml">info.xml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#php">php</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#php-cs">php-cs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#static-analysis">Static analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard.html">Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deadlock.html">Deadlocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files-metadata.html">Files Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupware/index.html">Groupware integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html">HTTP Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translation.html">Machine Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="out_of_office.html">Out-of-office periods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonenumberutil.html">Phone number util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psr.html">PSR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile.html">Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiler.html">Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">Reference providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_apis.html">REST APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_checks.html">Setup checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speech-to-text.html">Speech-To-Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talk.html">Talk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task_processing.html">Task Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_processing.html">Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text2image.html">Text-To-Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status.html">User Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">User migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_host_metadata.html">Web Host Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html">Working with time</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Digging deeper</a></li>
+      <li class="breadcrumb-item active">Continuous Integration</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/continuous_integration.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="continuous-integration">
+<span id="app-ci"></span><h1>Continuous Integration<a class="headerlink" href="#continuous-integration" title="Link to this heading"></a></h1>
+<p>We highly recommend setting up automated tests for your app, so that every change has to pass a defined procedure before it’s accepted into the main branch of your repository. Continuous integration typically includes</p>
+<ul class="simple">
+<li><p>Linting: check the syntax of source files, e.g. of all php scripts</p></li>
+<li><p>Static analysis: have tools check the types in your app for type soundness, mostly used for php</p></li>
+<li><p>Unit testing: run unit tests for front-end and back-end where individual classes and components are tested in isolation</p></li>
+<li><p>Integration testing: test components when they are combined</p></li>
+</ul>
+<p>You can find a list of available github workflow templates in our <a class="reference external" href="https://github.com/nextcloud/.github">nextcloud template repository</a>.</p>
+<section id="linting">
+<h2>Linting<a class="headerlink" href="#linting" title="Link to this heading"></a></h2>
+<section id="info-xml">
+<h3>info.xml<a class="headerlink" href="#info-xml" title="Link to this heading"></a></h3>
+<p>You can validate the <code class="docutils literal notranslate"><span class="pre">info.xml</span></code> <a class="reference internal" href="../app_development/info.html#app-metadata"><span class="std std-ref">app metadata</span></a> file of an app with a
+<a class="reference external" href="https://github.com/nextcloud/.github/blob/master/workflow-templates/lint-info-xml.yml">simple github action</a>.
+Please refer to our <a class="reference external" href="https://github.com/nextcloud/.github">nextcloud template repository</a> for an up to date template.</p>
+</section>
+<section id="php">
+<h3>php<a class="headerlink" href="#php" title="Link to this heading"></a></h3>
+<p>A lint of all php source files can find syntax errors that could crash the application in production. You can find the github actions in our <a class="reference external" href="https://github.com/nextcloud/.github">nextcloud template repository</a>.
+You will also require the following lint script in your <code class="docutils literal notranslate"><span class="pre">composer.json</span></code>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;lint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;find . -name \\*.php -not -path &#39;./vendor/*&#39; -print0 | xargs -0 -n1 php -l&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="php-cs">
+<h3>php-cs<a class="headerlink" href="#php-cs" title="Link to this heading"></a></h3>
+<p>We encourage the usage of php-cs linting. You can find some documentation on how to set this up in the
+<a class="reference external" href="https://github.com/nextcloud/coding-standard">nextcloud coding-standard repository</a> as well as the
+relevant github actions in our <a class="reference external" href="https://github.com/nextcloud/.github">nextcloud template repository</a>.</p>
+</section>
+</section>
+<section id="static-analysis">
+<span id="app-static-analysis"></span><h2>Static analysis<a class="headerlink" href="#static-analysis" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://psalm.dev/docs/">Psalm</a> is a static analysis tool that can check if your app code uses all types correctly, like if classes and methods exist.
+For the basic setup see the <a class="reference external" href="https://psalm.dev/docs/">Psalm</a> website. In order to let Psalm know about Nextcloud interfaces (the OCP namespace),
+you can install the <a class="reference external" href="https://packagist.org/packages/nextcloud/ocp">API package</a>.
+Afterwards you’ll be able to check the app with the following <code class="docutils literal notranslate"><span class="pre">psalm.xml</span></code> that should be put into the root of the app.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;psalm</span>
+<span class="w">    </span><span class="na">totallyTyped=</span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="na">errorLevel=</span><span class="s">&quot;5&quot;</span>
+<span class="w">    </span><span class="na">resolveFromConfigFile=</span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<span class="w">    </span><span class="na">xmlns=</span><span class="s">&quot;https://getpsalm.org/schema/config&quot;</span>
+<span class="w">    </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd&quot;</span>
+<span class="w">    </span><span class="na">errorBaseline=</span><span class="s">&quot;tests/psalm-baseline.xml&quot;</span>
+<span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;projectFiles&gt;</span>
+<span class="w">        </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;lib&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ignoreFiles&gt;</span>
+<span class="w">            </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vendor&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;lib/Vendor&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ignoreFiles&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/projectFiles&gt;</span>
+<span class="w">    </span><span class="nt">&lt;extraFiles&gt;</span>
+<span class="w">        </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vendor&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ignoreFiles&gt;</span>
+<span class="w">            </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vendor/phpunit/php-code-coverage&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/ignoreFiles&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/extraFiles&gt;</span>
+<span class="w">    </span><span class="nt">&lt;issueHandlers&gt;</span>
+<span class="w">        </span><span class="nt">&lt;UndefinedClass&gt;</span>
+<span class="w">            </span><span class="nt">&lt;errorLevel</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;suppress&quot;</span><span class="nt">&gt;</span>
+<span class="w">                </span><span class="nt">&lt;referencedClass</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;OC&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/errorLevel&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/UndefinedClass&gt;</span>
+<span class="w">        </span><span class="nt">&lt;UndefinedDocblockClass&gt;</span>
+<span class="w">            </span><span class="nt">&lt;errorLevel</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;suppress&quot;</span><span class="nt">&gt;</span>
+<span class="w">                </span><span class="nt">&lt;referencedClass</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Doctrine\DBAL\Schema\Schema&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;referencedClass</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Doctrine\DBAL\Schema\SchemaException&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;referencedClass</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Doctrine\DBAL\Driver\Statement&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">                </span><span class="nt">&lt;referencedClass</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Doctrine\DBAL\Schema\Table&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/errorLevel&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/UndefinedDocblockClass&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/issueHandlers&gt;</span>
+<span class="nt">&lt;/psalm&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The definition suppresses usages of the global and static class <code class="docutils literal notranslate"><span class="pre">OC</span></code> like <code class="docutils literal notranslate"><span class="pre">\OC::$server</span></code>, which is
+discouraged but still found in some apps. The doctrine suppression is currently necessary as the database mappers
+and schema abstractions leak some of the 3rd party libraries of Nextcloud that are not known to Psalm.</p>
+</div>
+<p>You can put this process into a GitHub Action that is run for every pull request.
+Check our <a class="reference external" href="https://github.com/nextcloud/.github/blob/master/workflow-templates/psalm.yml">psalm github action</a> from
+our <a class="reference external" href="https://github.com/nextcloud/.github">nextcloud template repository</a>.</p>
+<p>If you want to support multiple versions of Nextcloud server with a single app version, checkout this slightly
+<a class="reference external" href="https://github.com/nextcloud/.github/blob/master/workflow-templates/psalm-matrix.yml">more complex action</a>.
+This creates a matrix, where the app is tested against <code class="docutils literal notranslate"><span class="pre">dev-master</span></code>, the latest version of <code class="docutils literal notranslate"><span class="pre">OCP</span></code> found in the master
+branch of Nextcloud server, as well as other currently supported stable branches. Adjust this to your needs.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="classloader.html" class="btn btn-neutral float-left" title="Classloader" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dashboard.html" class="btn btn-neutral float-right" title="Dashboard" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/developer_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/28/developer_manual"
+             
+          >
+            28
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
