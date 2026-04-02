@@ -139,6 +139,18 @@ Which returns::
           escalating severity levels (debug → info → warning → error → fatal)
           depending on how far over they run.
 
+.. note:: Some background jobs are not safe to run as multiple instances at the
+          same time (for example, a job that rebuilds a search index).  Nextcloud
+          supports this via the ``IParallelAwareJob`` interface.  When a job
+          class sets ``setAllowParallelRuns(false)``, the job scheduler will
+          automatically skip picking up a second instance of that job class if
+          one is already reserved and running in another ``cron.php`` process.
+
+          This is handled internally and requires no administrator configuration.
+          However, if you see log messages such as *"Skipping <JobClass> because
+          another job with the same class is already running"*, this is normal
+          and expected behavior — not an error.
+
 .. _easyCron: https://www.easycron.com/
 
 systemd
