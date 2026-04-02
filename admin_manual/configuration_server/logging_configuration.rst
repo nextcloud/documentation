@@ -445,4 +445,4 @@ To disable workflow logging entirely, redirect the output to ``/dev/null``:
 Temporary overrides
 -------------------
 
-You can run override the config.php log level of ``occ`` commands with as :ref:`documented here<occ_debugging>`.
+You can override the config.php log level for ``occ`` commands as :ref:`documented here<occ_debugging>`.
