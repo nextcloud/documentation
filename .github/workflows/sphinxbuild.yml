@@ -138,6 +138,7 @@ jobs:
       with:
         ref: gh-pages
         fetch-depth: 0
+        token: ${{ secrets.COMMAND_BOT_PAT }}
 
     - name: Download all ${{ needs.build.outputs.branch_name }} artifacts
       uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
@@ -225,13 +226,15 @@ jobs:
 
     - name: Commit ${{ steps.branch.outputs.branch_name }} documentation and push to gh-pages
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config --local user.email "nextcloud-command@users.noreply.github.com"
+        git config --local user.name "nextcloud-command"
         git add .
         git diff --staged --quiet || git commit -m "chore: deploy documentation for ${{ steps.branch.outputs.branch_name }}"
         # Ensure we are up to date with the remote gh-pages branch
         git pull --rebase origin gh-pages || true
         git push origin gh-pages || echo "Nothing to push (expected if no changes)"
+      env:
+        GH_TOKEN: ${{ secrets.COMMAND_BOT_PAT }}
 
   summary:
     needs: build

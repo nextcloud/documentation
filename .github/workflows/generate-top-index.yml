@@ -30,6 +30,7 @@ jobs:
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       with:
         fetch-depth: 0
+        token: ${{ secrets.COMMAND_BOT_PAT }}
 
     - name: Get stable branches
       id: branch
@@ -57,8 +58,8 @@ jobs:
       run: |
         git fetch origin gh-pages
         git checkout gh-pages
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config --local user.email "nextcloud-command@users.noreply.github.com"
+        git config --local user.name "nextcloud-command"
     
     - name: Commit and push changes
       if: github.event_name == 'push'
@@ -70,3 +71,5 @@ jobs:
         git add index.html static/
         git commit -m "chore: update index.html for documentation" || echo "No changes to commit"
         git push origin gh-pages || echo "Nothing to push (expected if no changes)"
+      env:
+        GH_TOKEN: ${{ secrets.COMMAND_BOT_PAT }}
