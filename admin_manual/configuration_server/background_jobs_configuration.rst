@@ -1,6 +1,7 @@
 ===============
 Background jobs
 ===============
+
 A system like Nextcloud sometimes requires tasks to be done on a regular basis
 without the need for user interaction or hindering Nextcloud performance. For
 that purpose, as a system administrator, you can define background jobs (for
@@ -150,6 +151,32 @@ Which returns::
           However, if you see log messages such as *"Skipping <JobClass> because
           another job with the same class is already running"*, this is normal
           and expected behavior — not an error.
+
+Command line options
+""""""""""""""""""""
+
+When running ``cron.php`` from the command line, additional options are
+available for debugging and selective execution::
+
+  php -f /var/www/nextcloud/cron.php -- [-h] [--verbose] [<job-classes>...]
+
+``-h``, ``--help``
+  Display the built-in help message and exit.
+
+``-v``, ``--verbose``
+  Output detailed progress information for each job as it starts and
+  finishes, including timing and memory usage.
+
+``<job-classes>``
+  One or more fully-qualified PHP class names of background jobs to run.
+  When specific classes are provided, **only** those jobs will be executed and
+  the ``maintenance_window_start`` time-sensitivity restriction is bypassed.
+  This is useful for debugging a single job::
+
+    sudo -u www-data php -f /var/www/nextcloud/cron.php -- --verbose 'OCA\Files\BackgroundJob\ScanFiles'
+
+.. note:: The ``--`` separator before the options is required so that ``php``
+          does not interpret the flags itself.
 
 .. _easyCron: https://www.easycron.com/
 
