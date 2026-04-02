@@ -178,6 +178,35 @@ available for debugging and selective execution::
 .. note:: The ``--`` separator before the options is required so that ``php``
           does not interpret the flags itself.
 
+Troubleshooting: Admin panel warnings
+""""""""""""""""""""""""""""""""""""""
+
+The **Background jobs** section of the Nextcloud admin panel
+(``Settings → Administration → Basic settings``) displays status messages based
+on the following thresholds:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 15 20 65
+
+   * - Severity
+     - Condition
+     - Message meaning
+   * - **Error**
+     - Last cron run was more than **10 minutes** ago
+     - ``cron.php`` is not being triggered at all, or is failing before it can
+       record a successful run.  Check your crontab or systemd timer.
+   * - **Warning** (non-cron modes)
+     - Oldest unexecuted job is more than **12 hours** old
+     - Jobs are backing up.  Consider switching to system cron.
+   * - **Warning** (cron mode)
+     - Oldest unexecuted job is more than **24 hours** old
+     - Even with system cron, some jobs haven't run in a day.  Consider
+       increasing the execution frequency or investigating long-running jobs.
+   * - **Success**
+     - None of the above
+     - Background jobs are running normally.
+
 .. _easyCron: https://www.easycron.com/
 
 systemd
