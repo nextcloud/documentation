@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="cs" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Používání aplikace Kalendář &mdash; Dokumentace pro Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=3fc2a9b2"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=0275affc"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Synchronizace se systémem Android" href="sync_android.html" />
+    <link rel="prev" title="Používání aplikace Kontakty" href="contacts.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Úvod do příručky pro uživatele k Nextcloud verze latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Co je pro uživatele nového v Nextcloud verze latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Webové rozhraní Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Soubory a synchronizace</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Software pro podporu spolupráce</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Používání aplikace Kontakty</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Používání aplikace Kalendář</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#managing-your-calendars">Správa kalendářů</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#import-a-calendar">Import kalendáře</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-calendar">Vytvoření nového kalendáře</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-download-or-delete-a-calendar">Úprava, stažení nebo smazání kalendáře</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing-calendars">Sdílení kalendářů</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#publishing-a-calendar">Zveřejnění kalendáře</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subscribe-to-a-calendar">Přihlásit se k odběru z kalendáře</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-events">Správa událostí</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-event">Vytvoření nové události</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-or-delete-an-event">Úprava nebo smazání události</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#invite-attendees-to-an-event">Pozvat účastníky na událost</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setup-reminders">Nastavení připomínek</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-recurring-options">Volby přidání opakovaného</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#birthday-calendar">Kalendář s narozeninami</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Synchronizace se systémem Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">Synchronizace se systémem iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">Synchronizace se systémem macOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Synchronizuji s aplikací Thunderbird</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Synchronizace s aplikací KDE Kontact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Synchronizace s GNOME desktopem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Synchronizace se systémem Windows 10</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Nastavení vašich předvoleb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Používání dvoufázového ověřování se</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Správu připojených prohlížečů a zařízení</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Externí úložiště</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Software pro podporu spolupráce</a></li>
+      <li class="breadcrumb-item active">Používání aplikace Kalendář</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/pim/calendar.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-calendar-app">
+<h1>Používání aplikace Kalendář<a class="headerlink" href="#using-the-calendar-app" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Aplikace Kalendář není ve výchozím stavu zapnuta a je třeba ji nainstalovat zvlášť z katalogu aplikací. Obraťte se s tím na svého správce.</p>
+</div>
+<p>Aplikace Nextcloud Kalendář funguje podobně jako ostatní aplikace pro správu kalendářů, se kterými můžete synchronizovat své kalendáře a události v Nextcloud.</p>
+<p>Při prvním přístupu do aplikace Kalendář, pro vás bude předvytvořen výchozí první kalendář.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_application.png" src="../../_images/calendar_application.png" />
+</figure>
+<section id="managing-your-calendars">
+<h2>Správa kalendářů<a class="headerlink" href="#managing-your-calendars" title="Link to this heading"></a></h2>
+<section id="import-a-calendar">
+<h3>Import kalendáře<a class="headerlink" href="#import-a-calendar" title="Link to this heading"></a></h3>
+<p>Pokud chcete přenést svůj kalendář a v něm se nacházející se události do vámi využívané instance Nextcloud, import je nejlepší způsob, jak to udělat.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_settings.png"><img alt="../../_images/calendar_settings.png" src="../../_images/calendar_settings.png" style="width: 250.0px; height: 299.0px;" /></a>
+</figure>
+<ol class="arabic simple">
+<li><p>Klikněte na ikonu nastavení označenou jako <code class="docutils literal notranslate"><span class="pre">Nastavení</span> <span class="pre">a</span> <span class="pre">import</span></code> vlevo dole.</p></li>
+<li><p>Po kliknutí na <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Naimportovat</span> <span class="pre">kalendář</span></code> můžete vybrat jeden či více souborů s kalendáři ze svého místního zařízení k nahrání.</p></li>
+<li><p>Nahrávání může nějakou chvíli trvat, v závislosti na tom, jak rozsáhlý je kalendář, který importujete.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Aplikace Nextcloud Kalendář podporuje pouze s iCalendar kompatibilní <code class="docutils literal notranslate"><span class="pre">.ics</span></code> soubory, definované v normě RFC 5545.</p>
+</div>
+</section>
+<section id="create-a-new-calendar">
+<h3>Vytvoření nového kalendáře<a class="headerlink" href="#create-a-new-calendar" title="Link to this heading"></a></h3>
+<p>Pokud zamýšlíte vytvořit nový kalendář bez přenesení jakýchkoli dat z předchozího kalendáře, vytvoření nového kalendáře je cesta, kterou byste se měli vydat.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_create.gif" src="../../_images/calendar_create.gif" />
+</figure>
+<ol class="arabic simple">
+<li><p>V levém postranním panelu klikněte na <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Nový</span> <span class="pre">kalendář</span></code>.</p></li>
+<li><p>Zadejte název pro nový kalendář, např.  „Práce“, „Doma“ nebo „Studium“.</p></li>
+<li><p>Po kliknutí na zaškrtávátko bude váš nový kalendář vytvořen a bude synchronizován napříč vašimi zařízeními, naplněný novými událostmi a sdílen s vašimi přáteli a kolegy.</p></li>
+</ol>
+</section>
+<section id="edit-download-or-delete-a-calendar">
+<h3>Úprava, stažení nebo smazání kalendáře<a class="headerlink" href="#edit-download-or-delete-a-calendar" title="Link to this heading"></a></h3>
+<p>Občas můžete chtít změnit barvu nebo celý název předtím naimportovaného nebo vytvořeného kalendáře. Můžete také chtít si ho exportovat na úložiště svého počítače nebo ho navždy smazat.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Mějte na paměti, že smazání kalendáře nelze vzít zpět. Po smazání není způsob jak ho obnovit, pokud nemáte jeho lokální zálohu.</p>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_dropdown.png"><img alt="../../_images/calendar_dropdown.png" src="../../_images/calendar_dropdown.png" style="width: 250.0px; height: 243.0px;" /></a>
+</figure>
+<ol class="arabic simple">
+<li><p>Klikněte na nabídku „tři tečky“ příslušného kalendáře.</p></li>
+</ol>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_editing.png"><img alt="../../_images/calendar_editing.png" src="../../_images/calendar_editing.png" style="width: 250.0px; height: 75.0px;" /></a>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p>Klikněte na <code class="docutils literal notranslate"><span class="pre">Upravit</span></code>, <code class="docutils literal notranslate"><span class="pre">Stáhnout</span></code> nebo <code class="docutils literal notranslate"><span class="pre">Smazat</span></code>.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Mějte na paměti, že smazání kalendáře nelze vzít zpět. Po smazání není způsob jak ho obnovit, pokud nemáte jeho lokální zálohu.</p>
+</div>
+</section>
+<section id="sharing-calendars">
+<h3>Sdílení kalendářů<a class="headerlink" href="#sharing-calendars" title="Link to this heading"></a></h3>
+<p>Své kalendáře můžete sdílet s ostatními uživateli či skupinami. Kalendáře je možné sdílet s přístupem k zápisu nebo pouze pro čtení. Při sdílení kalendáře, zpřístupněného pro zápis, uživatelé, kterým je kalendář nasdílený, budou moci vytvářet nové události v kalendáři, stejně tak upravovat a mazat ty existující.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Sdílení kalendáře v současnosti není možné přijímat či odmítat. Pokud chcete přestat mít připojený kalendář, který vám někdo nasdílel, je možné kliknout na nabídku pod třemi tečkami vedle kalendáře (v seznamu kalendářů) a kliknout na „Zrušit sdílení se mnou“.</p>
+</div>
+</section>
+<section id="publishing-a-calendar">
+<h3>Zveřejnění kalendáře<a class="headerlink" href="#publishing-a-calendar" title="Link to this heading"></a></h3>
+<p>Kalendáře je možné zveřejňovat prostřednictvím veřejného odkazu a zpřístupnit je tak (pouze pro čtení) externím uživatelům. Veřejný odkaz je možné vytvořit otevřením nabídky sdílení pro kalendáře a kliknutím na « + » vedle « Odkaz sdílení ». Jakmile je vytvořeno, můžete veřejný odkaz zkopírovat do schránky nebo ho poslat e-mailem.</p>
+<p>Je zde také « embedding code » který poskytuje HTML iframe, pro zabudování vašeho kalendáře do veřejných stránek.</p>
+<p>Multiple calendars can be shared together by adding their unique tokens to the end of an embed link. Individual tokens can be found at the end of each calendar’s public link. The full address will look like
+<code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/index.php/apps/calendar/embed/&lt;token1&gt;-&lt;token2&gt;-&lt;token3&gt;</span></code></p>
+<p>To change the default view or date of an embedded calendar, you need to provide an url that look like <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/index.php/apps/calendar/embed/&lt;token&gt;/&lt;view&gt;/&lt;date&gt;</span></code>.
+In this url you need to replace the following variables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;token&gt;</span></code> with the calendar’s token.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;view&gt;</span></code> with one of <code class="docutils literal notranslate"><span class="pre">month</span></code>, <code class="docutils literal notranslate"><span class="pre">week</span></code>, <code class="docutils literal notranslate"><span class="pre">day</span></code>, <code class="docutils literal notranslate"><span class="pre">listMonth</span></code>, <code class="docutils literal notranslate"><span class="pre">listWeek</span></code>, <code class="docutils literal notranslate"><span class="pre">listDay</span></code>. The default view is <code class="docutils literal notranslate"><span class="pre">month</span></code> and the normally used list is <code class="docutils literal notranslate"><span class="pre">listMonth</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;date&gt;</span></code> with <code class="docutils literal notranslate"><span class="pre">now</span></code> or any date with the following format <code class="docutils literal notranslate"><span class="pre">&lt;year&gt;-&lt;month&gt;-&lt;day&gt;</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">2019-12-28</span></code>).</p></li>
+</ul>
+<p>Na veřejné stránce, uživatelé mohou obdržet odkaz pro přidání kalendáře a přímé stažení si kalendáře.</p>
+</section>
+<section id="subscribe-to-a-calendar">
+<h3>Přihlásit se k odběru z kalendáře<a class="headerlink" href="#subscribe-to-a-calendar" title="Link to this heading"></a></h3>
+<p>K odběru z iCal kalendářů se můžete přihlásit přímo ze svého Nextcloud. Podporou tohoto interoparabilního standardu (RFC 5545) jsme Nextcloud kalendář učinili kompatibilním s Google kalendářem, Apple iCloud a mnoha dalšími kalendářovými servery, se kterými si můžete vyměňovat své kalendáře, včetně odkazů k odběru z kalendářů publikovaných na ostatních Nextcloud instancích, jak je popsáno výše.</p>
+<ol class="arabic simple">
+<li><p>V postranním panelu vlevo klikněte na <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Nové</span> <span class="pre">přihlášení</span> <span class="pre">se</span> <span class="pre">k</span> <span class="pre">odběru</span></code>.</p></li>
+<li><p>Zadejte nebo vložte odkaz na sdílený kalendář, k odběru kterého se chcete přihlásit.</p></li>
+</ol>
+<p>Dokončeno. Vaše přihlášení se k odběru budou pravidelně aktualizována.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Ve výchozím stavu jsou napojení načítána znovu každý týden. Správce vámi využívané instance toto nastavení mohl upravit.</p>
+</div>
+</section>
+</section>
+<section id="managing-events">
+<h2>Správa událostí<a class="headerlink" href="#managing-events" title="Link to this heading"></a></h2>
+<section id="create-a-new-event">
+<h3>Vytvoření nové události<a class="headerlink" href="#create-a-new-event" title="Link to this heading"></a></h3>
+<p>Událost je možné vytvářet kliknutím do oblasti, ve které je událost plánována. V denním a týdenním pohledu na kalendář stačí kliknout, držet a natáhnout kurzorem přes oblast, po kterou se událost má dít.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_new-event_week.gif" src="../../_images/calendar_new-event_week.gif" />
+</figure>
+<p>Měsíční pohled vyžaduje pouze jednotlivý klik do oblasti daného dne.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_new-event_month.gif" src="../../_images/calendar_new-event_month.gif" />
+</figure>
+<p>After that, you can type in the event’s name (e.g. <strong>Meeting with Lukas</strong>), choose
+the calendar in which you want to choose the event (e.g. <strong>Personal</strong>, <strong>Work</strong>),
+check and concretize the time span or set the event as all-day event.</p>
+<p>Pokud chcete upravit pokročilé podrobnosti, jako například <strong>Umístění</strong>, <strong>Popis</strong>, <strong>Účastníci</strong>, <strong>Připomínky</strong> nebo nastavit událost jako opakující se, klikněte na <code class="docutils literal notranslate"><span class="pre">Další…</span></code> a v postranním panelu se otevře se pokročilý editor.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Pokud chcete vždy otevírat pokročilý editor v postranním panelu namísto toho jednoduchého ve vyskakovacím okně, je možné v sekci aplikace <code class="docutils literal notranslate"><span class="pre">Nastavení</span> <span class="pre">a</span> <span class="pre">import</span></code> zaškrtnout <code class="docutils literal notranslate"><span class="pre">Přeskočit</span> <span class="pre">zjednodušený</span> <span class="pre">editor</span> <span class="pre">událostí</span></code>.</p>
+</div>
+<p>Kliknutím na modré <code class="docutils literal notranslate"><span class="pre">Vytvořit</span></code> bude událost vytvořena.</p>
+</section>
+<section id="edit-or-delete-an-event">
+<h3>Úprava nebo smazání události<a class="headerlink" href="#edit-or-delete-an-event" title="Link to this heading"></a></h3>
+<p>If you want to edit or delete a specific event, you just need to click on it.
+After that you will be able to re-set all event details and open the
+advanced sidebar-editor by clicking on <code class="docutils literal notranslate"><span class="pre">More</span></code>.</p>
+<p>Clicking on the <code class="docutils literal notranslate"><span class="pre">Update</span></code>-button will update the event. To cancel your changes, click on the close icon on top right of the popup or sidebar editor.</p>
+<p>Pokud otevřete postranní pohled a kliknete na nabídku pod třemi tečkami vedle názvu události, obdržíte volbu exportovat událost jako <code class="docutils literal notranslate"><span class="pre">.ics</span></code> soubor nebo událost odebrat z kalendáře.</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="../../_images/calendar_event_menu.png" src="../../_images/calendar_event_menu.png" />
+</figure>
+</div></blockquote>
+</section>
+<section id="invite-attendees-to-an-event">
+<h3>Pozvat účastníky na událost<a class="headerlink" href="#invite-attendees-to-an-event" title="Link to this heading"></a></h3>
+<p>Do události můžete přidat účastníky a dát jim tak vědět, že jsou pozvaní. Obdrží e-mailové potvrzení a budou moci potvrdit nebo zrušit svou účast na události. Účastníci mohou být ostatní uživatelé na vámi využívané instanci Nextcloud, kontakty ve vašem adresáři nebo přímo e-mailové adresy. Také je možné změnit stupeň účasti pro jednotlivé účastníky, nebo pro konkrétního účastníka vypnout potvrzování e-mailem.</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="../../_images/calendar_event_invitation_level.png" src="../../_images/calendar_event_invitation_level.png" />
+</figure>
+</div></blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Při přidávání ostatních uživatelů Nextcloud jako účastníky do události, můžete přistupovat k jejich informaci volno/zaneprázdněn(a), pokud je k dispozici. To vám pomůže zjistit kdy je nejpříhodnější časové okno pro vaši událost.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Výstraha</p>
+<p>Pouze vlastník kalendáře může poslat pozvánku. Ti, kterým bylo nasdíleno toto nemohou, ať už mají právo zapisovat do události či nikoli.</p>
+</div>
+</section>
+<section id="setup-reminders">
+<h3>Nastavení připomínek<a class="headerlink" href="#setup-reminders" title="Link to this heading"></a></h3>
+<p>Je možné nastavit připomínky kterými upozornit před výskytem událost. V tuto chvíli jsou podporovány tyto metody upozorňování :</p>
+<ul class="simple">
+<li><p>Upozornění E-mailem</p></li>
+<li><p>Oznamování z Nextcloud</p></li>
+</ul>
+<p>Připomínky je možné nastavit na čas vtažený k události nebo konkrétnímu datu.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_event_reminders.png" src="../../_images/calendar_event_reminders.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Upozornění obdrží pouze vlastník kalendáře a lidé nebo skupiny, kterým je kalendář nasdílen s právem k zápisu. Pokud jste nedostali žádné upozornění, ale myslíte si, že byste měli, správce vámi využívané instance toto také mohl pro tento server vypnout.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Pokud svůj kalendář synchronizujete s mobilními zařízeními nebo jinými klienty třetích stran, upozornění se mohou objevit i zde.</p>
+</div>
+</section>
+<section id="add-recurring-options">
+<h3>Volby přidání opakovaného<a class="headerlink" href="#add-recurring-options" title="Link to this heading"></a></h3>
+<p>Událost je možné nastavit jako „opakující se“, takže se může dít každý den, týden, měsíc nebo rok. Je možné přidat konkrétní pravidla a nastavit tak, který den v týdnu se událost odehrává nebo komplexnější pravidla, jako například každou čtvrtou středu každého měsíce.</p>
+<p>Také je možné zadat, kdy opakování skončí.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_event_repeat.png" src="../../_images/calendar_event_repeat.png" />
+</figure>
+</section>
+</section>
+<section id="birthday-calendar">
+<h2>Kalendář s narozeninami<a class="headerlink" href="#birthday-calendar" title="Link to this heading"></a></h2>
+<p>Narozeninový kalendář je automaticky vytvářený kalendář, který automaticky stahuje data narozenin z vašich kontaktů. Jediný způsob, jak tento kalendář upravovat je přes data narození u jednotlivých kontaktů. Tento kalendář není možné upravovat přímo z aplikace pro správu kalendáře.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Pokud nevidíte kalendář s narozeninami, váš správce ho mohl pro tento server vypnout.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="contacts.html" class="btn btn-neutral float-left" title="Používání aplikace Kontakty" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sync_android.html" class="btn btn-neutral float-right" title="Synchronizace se systémem Android" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Verze</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/user_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/user_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/user_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/20/user_manual">20</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Stahování</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Na službě Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Domovská stránka projektu</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Sestavení</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

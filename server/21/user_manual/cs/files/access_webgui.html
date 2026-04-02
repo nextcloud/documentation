@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="cs" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Přístup k souborům pomocí webového rozhraní Nextcloud &mdash; Dokumentace pro Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=3fc2a9b2"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=0275affc"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Přístup k souborům v Nextcloud prostřednictvím protokolu WebDAV" href="access_webdav.html" />
+    <link rel="prev" title="Soubory a synchronizace" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Úvod do příručky pro uživatele k Nextcloud verze latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Co je pro uživatele nového v Nextcloud verze latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Webové rozhraní Nextcloud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Soubory a synchronizace</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Přístup k souborům pomocí webového rozhraní Nextcloud</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tagging-files">Opatřování souborů štítky</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comments">Komentáře</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#video-player">Přehrávač videí</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-controls">Ovládací prvky souborů</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#previewing-files">Náhledy obsahu souborů</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#navigating-inside-your-nextcloud">Pohyb po Nextcloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-status-icons">Ikony stavu sdílení</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-or-uploading-files-and-directories">Vytváření nebo nahrávání souborů a složek</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#selecting-files-or-folders">Vybírání souborů či složek</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filtering-the-files-view">Filtrování zobrazení souborů</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#moving-files">Přesouvání souborů</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-or-connecting-to-a-federation-share-link">Vytváření nebo připojování k odkazu federovaného sdílení</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Přístup k souborům v Nextcloud prostřednictvím protokolu WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Správa smazaných souborů</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Synchronizace s desktopovými a mobilními platformami</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Šifrování souborů v Nextcloud na serveru</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Sdílení souborů</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Federovaná sdílení</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Vytváření anonymních nahrání</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Nahrávání velkých souborů</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Kvóta úložiště</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Správa verzí</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projekty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Přenesení vlastnictví</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pim/index.html">Software pro podporu spolupráce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Nastavení vašich předvoleb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Používání dvoufázového ověřování se</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Správu připojených prohlížečů a zařízení</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Externí úložiště</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Soubory a synchronizace</a></li>
+      <li class="breadcrumb-item active">Přístup k souborům pomocí webového rozhraní Nextcloud</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webgui.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="accessing-your-files-using-the-nextcloud-web-interface">
+<h1>Přístup k souborům pomocí webového rozhraní Nextcloud<a class="headerlink" href="#accessing-your-files-using-the-nextcloud-web-interface" title="Link to this heading"></a></h1>
+<p>K Nextcloud Soubory je možné přistupovat prostřednictvím webového rozhraní a vytvářet, vytvářet náhledy, upravovat, mazat, sdílet a sdílet dál dalším soubory. Správce vámi používané instance Nextcloud tyto funkce může vypnout, takže pokud vám chybí, obraťte se na něj.</p>
+<figure class="align-default">
+<img alt="The Files view screen." src="../../_images/users-files.png" />
+</figure>
+<section id="tagging-files">
+<h2>Opatřování souborů štítky<a class="headerlink" href="#tagging-files" title="Link to this heading"></a></h2>
+<p>Souborům je možné přiřazovat štítky. Pro vytvoření štítků, otevřete soubor na pohled Podrobnosti. Pak zadejte své štítky. Pro zadání více než jednoho štítku stiskněte za každým ze štítků klávesu Enter. Všechny štítky jsou systémové a jsou sdílené všemi uživateli daného Nextcloud serveru.</p>
+<figure class="align-default">
+<img alt="Creating file tags." src="../../_images/files_page-7.png" />
+</figure>
+<p>Then use the Tags filter on the left sidebar to filter files by tags:</p>
+<figure class="align-default">
+<img alt="Viewing file tags." src="../../_images/files_page-8.png" />
+</figure>
+</section>
+<section id="comments">
+<h2>Komentáře<a class="headerlink" href="#comments" title="Link to this heading"></a></h2>
+<p>Use the Details view to add and read comments on any file or folder. Comments
+are visible to everyone who has access to the file:</p>
+<figure class="align-default">
+<img alt="Creating and viewing comments." src="../../_images/file_menu_comments_2.png" />
+</figure>
+</section>
+<section id="video-player">
+<h2>Přehrávač videí<a class="headerlink" href="#video-player" title="Link to this heading"></a></h2>
+<p>Videa je možné přímo v Nexcloud přehrávat aplikací Přehrávač videa a to pouhým kliknutím na soubor. Možnost přehrání závisí na použitém webovém prohlížeči a formátu videa. Pokud správce vámi využívané instance Nexcloud zapnul proudové vysílání videa, a přesto to ve vámi používaném webovém prohlížeči nefunguje, může se jednat o problém s prohlížečem. Které formáty multimédií jsou ve webových prohlížečích podporované, naleznete na <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility">https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility</a>.</p>
+<figure class="align-default">
+<img alt="Watching a movie." src="../../_images/video_player_2.png" />
+</figure>
+</section>
+<section id="file-controls">
+<h2>Ovládací prvky souborů<a class="headerlink" href="#file-controls" title="Link to this heading"></a></h2>
+<p>Nextcloud umí zobrazovat náhledy pro soubory s obrázky, obaly alb v MP3 souborech, textových souborů – pokud je toto zapnuto správcem serveru. Najeďte ukazatelem na soubor nebo složku a zobrazí se ovládací prvky pro následující operace:</p>
+<dl>
+<dt>Oblítené</dt><dd><p>Click the star to the left of the file icon to mark it as a favorite:</p>
+<figure class="align-default">
+<img alt="Marking Favorite files." src="../../_images/files_page-1.png" />
+</figure>
+<p>You can also quickly find all of your favorites with the Favorites filter on the left
+sidebar.</p>
+</dd>
+<dt>Přetékací nabídka</dt><dd><p>The Overflow menu (three dots) displays file details, and allows you to
+rename, download, or delete files:</p>
+<figure class="align-default">
+<img alt="Overflow menu." src="../../_images/files_page-3.png" />
+</figure>
+<p>The Details view shows Activities, Sharing, and Versions information:</p>
+</dd>
+</dl>
+<figure class="align-default">
+<img alt="Details screen." src="../../_images/files_page-4.png" />
+</figure>
+<p>Ikona ozubeného kolečka <strong>Nastavení</strong> níže vlevo umožňuje zobrazovat nebo skrývat soubory ve webovém rozhraní Nextloud. Říká se jim také tečkové soubory, protože jejich názvy začínají na tečku, např:. <code class="docutils literal notranslate"><span class="pre">.mailfile</span></code>. Tečka operačnímu systému sděluje, že v prohlížečích souborového systému má tyto soubory skrýt – tedy pokud nezvolíte, že mají být zobrazovány. Obvykle se jedná o soubory s nastaveními, takže je možnost je skrýt a nemít tak nepořádek.</p>
+<figure class="align-default">
+<img alt="Hiding or displaying hidden files." src="../../_images/hidden_files.png" />
+</figure>
+</section>
+<section id="previewing-files">
+<h2>Náhledy obsahu souborů<a class="headerlink" href="#previewing-files" title="Link to this heading"></a></h2>
+<p>Ve v Nextcloud vestavěných prohlížečích je možné zobrazit si nekomprimované textové soubory, soubory formátu OpenDocument, videa a obrázky a to kliknutím na název souboru. Mohou zde být i ostatní typy souborů, u kterých si je možné si zobrazit náhled, pokud to správce Nextcloud zapnul. Pokud Nextcloud nemůže soubor zobrazit, zahájí proces stahování a ten se stáhne na váš stroj.</p>
+</section>
+<section id="navigating-inside-your-nextcloud">
+<h2>Pohyb po Nextcloud<a class="headerlink" href="#navigating-inside-your-nextcloud" title="Link to this heading"></a></h2>
+<p>Pro pohyb po složkách v Nextcloud stačí jednoduše kliknout na složku a otevřít ji tak a pak pomocí tlačítka zpět vámi používaného webového prohlížeče přejít zpět na předchozí úroveň. Nextcloud také poskytuje lištu s prvky pro navigaci v horní části kolonky Soubory.</p>
+</section>
+<section id="sharing-status-icons">
+<h2>Ikony stavu sdílení<a class="headerlink" href="#sharing-status-icons" title="Link to this heading"></a></h2>
+<p>Any folder that has been shared is marked with the <code class="docutils literal notranslate"><span class="pre">Shared</span></code> overlay icon.
+Public link shares are marked with a chain link. Unshared folders are not marked:</p>
+<figure class="align-default">
+<img alt="Share status icons." src="../../_images/files_page-5.png" />
+</figure>
+</section>
+<section id="creating-or-uploading-files-and-directories">
+<h2>Vytváření nebo nahrávání souborů a složek<a class="headerlink" href="#creating-or-uploading-files-and-directories" title="Link to this heading"></a></h2>
+<p>Upload or create new files or folders directly in a Nextcloud folder by clicking
+on the <em>New</em> button in the Files app:</p>
+<figure class="align-default">
+<img alt="The New file/folder/upload menu." src="../../_images/files_page-6.png" />
+</figure>
+<p>Tlačítko <em>Nové</em> poskytuje následující možnosti:</p>
+<dl class="simple">
+<dt>Šipka nahoru</dt><dd><p>Nahrajte soubory ze svého počítače do Nextcloud. Toto je možné udělat také jejich přetažením ze správce souborů, který používáte.</p>
+</dd>
+<dt>Textový soubor</dt><dd><p>Vytváří nový textový soubor a přidává soubor do složky, ve které se právě nacházíte.</p>
+</dd>
+<dt>Složka</dt><dd><p>Vytvoří novou složku ve složce, ve které se právě nacházíte.</p>
+</dd>
+</dl>
+</section>
+<section id="selecting-files-or-folders">
+<h2>Vybírání souborů či složek<a class="headerlink" href="#selecting-files-or-folders" title="Link to this heading"></a></h2>
+<p>Soubor/složku (či soubory/složky) je možné vybírat klikáním na jejich zaškrtávací kolonky. Pro výběr všech souborů ve složce, ve které se právě nacházíte, klikněte na zaškrtávací kolonku nacházející se  na začátku výpisu souborů.</p>
+<p>Když vyberete vícero souborů, můžete je smazat všechny, nebo si je stáhnout jako ZIP soubor pomocí tlačítek <code class="docutils literal notranslate"><span class="pre">Smazat</span></code> nebo <code class="docutils literal notranslate"><span class="pre">Stáhnout</span></code> nahoře.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Pokud tlačítko <code class="docutils literal notranslate"><span class="pre">Stáhnout</span></code> není viditelné, správce tuto funkci vypnul.</p>
+</div>
+</section>
+<section id="filtering-the-files-view">
+<h2>Filtrování zobrazení souborů<a class="headerlink" href="#filtering-the-files-view" title="Link to this heading"></a></h2>
+<p>Levý boční panel na stránce Soubory obsahuje několik filtrů pro rychlé řazení a správu vašich souborů.</p>
+<dl class="simple">
+<dt>Všechny soubory</dt><dd><p>Výchozí zobrazení; zobrazuje všechny soubory, ke kterým máte přístup.</p>
+</dd>
+<dt>Oblítené</dt><dd><p>Soubory nebo složky označené žlutou hvězdou.</p>
+</dd>
+<dt>Sdíleno vám</dt><dd><p>Zobrazí všechny soubory, sdílené vám jiným uživatelem či skupinou.</p>
+</dd>
+<dt>Sdíleno ostatním</dt><dd><p>Zobrazuje všechny souborů, které jste sdíleli ostatním uživatelům či skupinám.</p>
+</dd>
+<dt>Sdíleno odkazem</dt><dd><p>Zobrazuje všechny soubory, které sdílíte prostřednictvím veřejného odkazu.</p>
+</dd>
+<dt>Externí úložiště (volitelné)</dt><dd><p>Files that you have access to on external storage devices and services such
+as Amazon S3, SMB/CIFS, FTP…</p>
+</dd>
+</dl>
+</section>
+<section id="moving-files">
+<h2>Přesouvání souborů<a class="headerlink" href="#moving-files" title="Link to this heading"></a></h2>
+<p>Soubory a složky je možné přesouvat do libovolné složky pomocí přetahování.</p>
+</section>
+<section id="creating-or-connecting-to-a-federation-share-link">
+<h2>Vytváření nebo připojování k odkazu federovaného sdílení<a class="headerlink" href="#creating-or-connecting-to-a-federation-share-link" title="Link to this heading"></a></h2>
+<p>Federované cloudové sdílení umožňuje připojovat si (mount) sdílení souborů z ostatních Nextcloud serverů a spravovat je stejně jako místní sdílení.. O tom, jak vytvářet a připojovat se k novým sdílením na federovaném cloudu pojednává <a class="reference internal" href="federated_cloud_sharing.html"><span class="doc">Používání federovaných sdílení</span></a> .</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Soubory a synchronizace" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="access_webdav.html" class="btn btn-neutral float-right" title="Přístup k souborům v Nextcloud prostřednictvím protokolu WebDAV" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Verze</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/user_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/user_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/user_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/20/user_manual">20</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Stahování</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Na službě Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Domovská stránka projektu</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Sestavení</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
