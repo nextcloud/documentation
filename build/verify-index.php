@@ -6,10 +6,15 @@
  * - Template placeholders are replaced
  * - Version sections exist
  * - Links are properly formatted
- * - External links are accessible
+ * - Relative documentation links point to existing files
+ * 
+ * Environment Variables:
+ * - VERIFY_DOCS_BASE_URL: Base URL for documentation files (default: https://docs.nextcloud.com)
+ *   Set to empty string to skip file existence checks
  */
 
 $html_file = 'build/index.html';
+$base_url = getenv('VERIFY_DOCS_BASE_URL') ?: 'https://docs.nextcloud.com';
 
 if (!file_exists($html_file)) {
 	fwrite(STDERR, "⚠️  $html_file not found\n");
@@ -50,12 +55,15 @@ if (!preg_match('/<h2>Nextcloud \d+/', $content)) {
 $version_count = preg_match_all('/<h2>Nextcloud (\d+)/', $content, $versions);
 fprintf(STDERR, "✓ Found %d version sections: %s\n", $version_count, implode(', ', $versions[1]));
 
-// Validate documentation links format (should be /server/VERSION/)
-$docs_links = array_filter($external_links, fn($l) => preg_match('~docs\.[^/]+/server/~', $l));
+// Validate documentation links format (should be server/VERSION/)
+// Check both relative links (server/latest, server/stable, etc.) and external docs links
+$relative_docs_links = array_filter($relative_links, fn($l) => preg_match('~^server/(latest|stable|\d+)/~', $l));
+$external_docs_links = array_filter($external_links, fn($l) => preg_match('~docs\.[^/]+/server/~', $l));
+$all_docs_links = array_merge($relative_docs_links, $external_docs_links);
 
-if (!empty($docs_links)) {
-	$invalid_docs = array_filter($docs_links, fn($l) => 
-		!preg_match('~/server/(latest|stable|\d+)/~', $l)
+if (!empty($all_docs_links)) {
+	$invalid_docs = array_filter($all_docs_links, fn($l) => 
+		!preg_match('~(server|/server)/(latest|stable|\d+)/~', $l)
 	);
 	
 	if (!empty($invalid_docs)) {
@@ -64,7 +72,7 @@ if (!empty($docs_links)) {
 			fprintf(STDERR, "    - %s\n", $link);
 		}
 	} else {
-		fprintf(STDERR, "✓ All %d documentation links are properly formatted\n", count($docs_links));
+		fprintf(STDERR, "✓ All %d documentation links are properly formatted\n", count($all_docs_links));
 	}
 }
 
@@ -104,6 +112,63 @@ foreach ($external_sample as $link) {
 if (count($unreachable) >= 3) {
 	fprintf(STDERR, "\n❌ ERROR: %d links are unreachable!\n", count($unreachable));
 	exit(1);
+}
+
+// Test documentation file existence on deployed site (if base URL is configured)
+if ($base_url) {
+	fprintf(STDERR, "\nVerifying documentation files on %s...\n", $base_url);
+	
+	$relative_docs = array_filter($relative_links, fn($l) => preg_match('~^server/(latest|stable|\d+)/~', $l));
+	
+	if (!empty($relative_docs)) {
+		$missing_files = [];
+		$timeout_files = [];
+		
+		foreach ($relative_docs as $relative_path) {
+			$full_url = rtrim($base_url, '/') . '/' . $relative_path;
+			
+			$context = stream_context_create([
+				'http' => [
+					'method' => 'HEAD',
+					'timeout' => 5,
+					'ignore_errors' => true,
+					'user_agent' => 'Mozilla/5.0'
+				]
+			]);
+			
+			$response = @get_headers($full_url, true, $context);
+			
+			if ($response === false) {
+				$timeout_files[] = $relative_path;
+				fprintf(STDERR, "  ⚠️  %s - timeout/offline\n", $relative_path);
+			} else {
+				$status_line = $response[0] ?? '';
+				if (preg_match('/\d{3}/', $status_line, $match)) {
+					$status = (int)$match[0];
+					if ($status === 404) {
+						$missing_files[] = $relative_path;
+						fprintf(STDERR, "  ✗ %s - 404 Not Found\n", $relative_path);
+					} else if ($status >= 400) {
+						fprintf(STDERR, "  ⚠️  %s - HTTP %d\n", $relative_path, $status);
+					} else if ($status === 200 || $status === 301 || $status === 302) {
+						fprintf(STDERR, "  ✓ %s\n", $relative_path);
+					}
+				}
+			}
+		}
+		
+		if (!empty($missing_files)) {
+			fprintf(STDERR, "\n❌ ERROR: %d documentation files not found:\n", count($missing_files));
+			foreach ($missing_files as $file) {
+				fprintf(STDERR, "  - %s\n", $file);
+			}
+			exit(1);
+		}
+		
+		if (count($timeout_files) >= count($relative_docs) / 2) {
+			fprintf(STDERR, "\n⚠️  WARNING: %d/%d files timed out (site may be offline)\n", count($timeout_files), count($relative_docs));
+		}
+	}
 }
 
 fprintf(STDERR, "\n✓ index.html validation passed\n");
