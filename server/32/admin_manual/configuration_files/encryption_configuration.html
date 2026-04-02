@@ -1,0 +1,727 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Server-side Encryption &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Server-side encryption details" href="encryption_details.html" />
+    <link rel="prev" title="External Storage authentication mechanisms" href="external_storage/auth_mechanisms.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Critical changes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Files</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">File sharing and management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="file_sharing_configuration.html">File Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing_configuration.html">Configuring Federation Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="big_file_upload_configuration.html">Uploading big files &gt; 512MB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="default_files_configuration.html">Providing default files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="primary_storage.html">Configuring Object Storage as Primary Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_storage_configuration_gui.html">Configuring External Storage (GUI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_storage/auth_mechanisms.html">External Storage authentication mechanisms</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Server-side Encryption</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#definitions">Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#encryption-method-comparison">Encryption Method Comparison</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#key-points-limitations">Key Points &amp; Limitations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#before-you-enable-encryption">Before You Enable Encryption</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#key-management-modes">Key Management Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enabling-encryption-step-by-step">Enabling Encryption (Step-by-Step)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backups">Backups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#encrypting-external-mountpoints-and-team-folders">Encrypting External Mountpoints and Team Folders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-encryption-via-occ-commands">Managing Encryption via occ Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#encrypting-all-files">Encrypting All Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#decrypting-files-disabling-encryption">Decrypting Files / Disabling Encryption</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-not-encrypted">Data Not Encrypted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-keys-sharing-recovery">User Keys: Sharing &amp; Recovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ldap-and-external-user-backends">LDAP and External User Backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#invalid-private-key-for-encryption-app">Invalid private key for encryption app</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bad-signature-error">Bad signature error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#encryption-key-cannot-be-found">Encryption key cannot be found</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#encryption-key-cannot-be-found-with-external-storage-or-group-folders">Encryption key cannot be found with external storage or group folders</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#further-reading">Further Reading</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="encryption_details.html">Server-side encryption details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encryption_migration.html">Server-side encryption migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files_locking_transactional.html">Transactional file locking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="previews_configuration.html">Previews configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_versioning.html">Controlling file versions and aging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trashbin_configuration.html">Deleted Items (trash bin)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_conversion.html">File conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows_compatible_filenames.html">Windows compatible filenames</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Groupware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Office</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/">Community Help Forum</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">User Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">Developer Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/install/">Download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://apps.nextcloud.com">App Store</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/t/translation-knowledge-valid-for-the-entire-nextcloud-project-wiki/51550">Translations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Supported versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud Enterprise</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/blob/master/COPYING-README">License</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/">Nextcloud GmbH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">File sharing and management</a></li>
+      <li class="breadcrumb-item active">Server-side Encryption</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_files/encryption_configuration.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="server-side-encryption">
+<h1>Server-side Encryption<a class="headerlink" href="#server-side-encryption" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>Nextcloud provides several encryption methods to protect your data. These work at
+different layers of the system and address different security needs. This guide
+focuses on Nextcloud’s built-in Server-Side Encryption (SSE).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Encryption and risk management is a complex and nuanced topic. Unless you are
+already an expert, it is recommended to consult a professional or perform a
+deep dive to ensure your approach targets your specific concerns.
+You may also find this Nextcloud Blog post helpful:
+<a class="reference external" href="https://nextcloud.com/blog/encryption-in-nextcloud/">Data encryption methods in Nextcloud</a>.
+It provides a solid high-level overview of the different approaches commonly
+considered when using Nextcloud.</p>
+</div>
+</section>
+<section id="definitions">
+<h2>Definitions<a class="headerlink" href="#definitions" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Server-Side Encryption (SSE):</strong> Performed by the Nextcloud server, protecting
+files at rest on local and external storage. Encryption keys are stored on the server.</p></li>
+<li><p><strong>End-to-End Encryption (E2EE):</strong> Performed by Nextcloud desktop or mobile clients
+before uploading files. Only the client can decrypt, making data inaccessible to
+server administrators and external storage providers.</p></li>
+<li><p><strong>Master Key:</strong> A central key controlled by the server, used to encrypt all files.</p></li>
+<li><p><strong>User Keys:</strong> Each user has their own key, protected by their password, to encrypt
+their files.</p></li>
+<li><p><strong>Recovery Key:</strong> An admin-defined key to recover files if users lose their passwords.</p></li>
+<li><p><strong>Disk/Block Device Encryption:</strong> A method of securing all data stored on a physical
+storage device by encrypting it at the hardware or filesystem level - typically using
+tools such as LUKS on Linux - so that data is only accessible after the device is
+unlocked with the correct key or password.</p></li>
+</ul>
+</section>
+<section id="encryption-method-comparison">
+<h2>Encryption Method Comparison<a class="headerlink" href="#encryption-method-comparison" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 25.0%" />
+<col style="width: 35.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Encryption Location</p></th>
+<th class="head"><p>Who Can Decrypt?</p></th>
+<th class="head"><p>Protects Against</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SSE (Master Key)</p></td>
+<td><p>Server</p></td>
+<td><p>Admins &amp; users</p></td>
+<td><p>External storage providers</p></td>
+</tr>
+<tr class="row-odd"><td><p>SSE (User Keys)</p></td>
+<td><p>Server</p></td>
+<td><p>Users &amp; malicious admins</p></td>
+<td><p>External storage providers</p></td>
+</tr>
+<tr class="row-even"><td><p>SSE (User Keys w/ Recovery)</p></td>
+<td><p>Server</p></td>
+<td><p>Users &amp; admins with recovery key</p></td>
+<td><p>External storage providers</p></td>
+</tr>
+<tr class="row-odd"><td><p>E2EE</p></td>
+<td><p>Client</p></td>
+<td><p>Users only</p></td>
+<td><p>Admins, external storage providers</p></td>
+</tr>
+<tr class="row-even"><td><p>Disk/Block Encryption</p></td>
+<td><p>Server</p></td>
+<td><p>OS admin</p></td>
+<td><p>Physical tampering, theft</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="key-points-limitations">
+<h2>Key Points &amp; Limitations<a class="headerlink" href="#key-points-limitations" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Encryption methods are not interchangeable; each is designed for specific risks.</p></li>
+<li><p><strong>Server-Side Encryption (SSE)</strong> is mainly for protecting files on external, third-party storage.</p></li>
+<li><p><strong>End-to-End Encryption (E2EE)</strong> is for scenarios where server administrators must not access data.</p></li>
+<li><p>SSE does <strong>not</strong> encrypt filenames or folder structures, only file contents.</p></li>
+<li><p>SSE does not protect data from a compromised Nextcloud server or malicious administrator.
+Use E2EE for this threat.</p></li>
+<li><p>SSE cannot be reversed via the Nextcloud Web interface.</p></li>
+<li><p>Troubleshooting SSE generally requires <code class="docutils literal notranslate"><span class="pre">occ</span></code> command access. Make sure you have
+this before enabling SSE!</p></li>
+<li><p>Losing encryption keys or your instance secret results in permanent data loss.</p></li>
+<li><p>Nextcloud quotas are based on unencrypted file size; files encrypted with SSE may be ~1% larger
+(was 35% before Nextcloud 25).</p></li>
+<li><p>SSL/TLS (HTTPS) terminates before files are encrypted, so files may be exposed in memory
+between SSL/TLS and Nextcloud’s SSE encryption code.</p></li>
+<li><p>When files on external storage are encrypted with SSE, you cannot share them directly
+from the external storage provider; sharing is only possible via Nextcloud, since the
+decryption key never leaves the Nextcloud server.</p></li>
+<li><p>For local storage, it may be better to use other encryption tools, such as disk/block device
+encryption (e.g., LUKS) provided by your operating system. This protects against other concerns,
+such as theft of your physical server, which is not SSE’s goal.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>SSE does <strong>not</strong> encrypt filenames or folder structures, only file contents.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Don’t confuse Nextcloud’s SSE with S3 SSE-C (also supported).</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 9.0.0: </span>Nextcloud (since v9.0.0) supports Authenticated Encryption for all newly encrypted files.
+See <a class="reference external" href="https://hackerone.com/reports/108082">https://hackerone.com/reports/108082</a> for technical details.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For maximum security, configure external storage with “Check for changes: Never”.
+This causes Nextcloud to ignore new files not added via Nextcloud, preventing unauthorized
+additions by external storage admins. Do not use this if your storage is subject to legitimate
+external changes.</p>
+</div>
+</section>
+<section id="before-you-enable-encryption">
+<h2>Before You Enable Encryption<a class="headerlink" href="#before-you-enable-encryption" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Read this guide fully and understand the risks.</p></li>
+<li><p>Back up your instance configuration and all encryption keys in a safe location before proceeding.</p></li>
+<li><p>Decide which key management mode suits your needs (see below).</p></li>
+</ol>
+</section>
+<section id="key-management-modes">
+<h2>Key Management Modes<a class="headerlink" href="#key-management-modes" title="Link to this heading"></a></h2>
+<p><strong>Master Key (default):</strong></p>
+<ul class="simple">
+<li><p>All files are encrypted with a central server-controlled key.</p></li>
+<li><p>Admins can decrypt any user’s files.</p></li>
+<li><p>Offers better performance and compatibility with more login/authentication modes.</p></li>
+<li><p>Best for organizations that need to recover files if users forget their passwords.</p></li>
+</ul>
+<p><strong>User Keys:</strong></p>
+<ul class="simple">
+<li><p>Each user’s files are encrypted with a password-protected key.</p></li>
+<li><p>Admins cannot (readily) decrypt files without the user’s password, unless a recovery key is defined.</p></li>
+<li><p>If a user forgets their password and no recovery key exists, their files are lost.</p></li>
+</ul>
+<p><strong>How to choose:</strong></p>
+<ul class="simple">
+<li><p>If you trust your server administrators, use master key mode.</p></li>
+<li><p>If you need to prevent admins from accessing files, use E2EE.</p></li>
+<li><p>User key mode offers some protection against malicious server administrators, but has limitations.</p></li>
+</ul>
+<p><strong>To select user key mode:</strong></p>
+<p>Run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>occ<span class="w"> </span>encryption:disable-master-key
+</pre></div>
+</div>
+<p>before enabling encryption.</p>
+</section>
+<section id="enabling-encryption-step-by-step">
+<h2>Enabling Encryption (Step-by-Step)<a class="headerlink" href="#enabling-encryption-step-by-step" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Go to the <strong>Server-side encryption</strong> section of your Admin page.</p></li>
+<li><p>Check <strong>Enable server-side encryption</strong>.</p></li>
+<li><p>You’ll see a message: “No encryption module loaded.”
+Go to your Apps page and enable the Nextcloud Default Encryption Module.</p></li>
+<li><p>Return to your Admin page. The module will appear and be auto-selected.</p></li>
+<li><p>Log out and log back in to initialize your encryption keys.</p></li>
+<li><p>Optional: Un-check the box for encrypting home storage if you wish to keep local files unencrypted.</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../_images/encryption3.png" src="../_images/encryption3.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/encryption14.png" src="../_images/encryption14.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/encryption15.png" src="../_images/encryption15.png" />
+</figure>
+</section>
+<section id="backups">
+<h2>Backups<a class="headerlink" href="#backups" title="Link to this heading"></a></h2>
+<p>Encryption keys are stored in:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data/&lt;user&gt;/files_encryption</span></code> (per-user keys)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data/files_encryption</span></code> (system-wide/external storage keys)</p></li>
+</ul>
+</section>
+<section id="encrypting-external-mountpoints-and-team-folders">
+<h2>Encrypting External Mountpoints and Team Folders<a class="headerlink" href="#encrypting-external-mountpoints-and-team-folders" title="Link to this heading"></a></h2>
+<ul>
+<li><p>You and your users can encrypt external mountpoints.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Set encryption options in the mount configuration for each external storage.</p></li>
+<li><p>See <a class="reference internal" href="external_storage_configuration_gui.html#external-storage-mount-options-label"><span class="std std-ref">Mount options</span></a> in <a class="reference internal" href="external_storage_configuration_gui.html"><span class="doc">Configuring External Storage (GUI)</span></a>.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>To encrypt Team Folders, run:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>occ<span class="w"> </span>config:app:set<span class="w"> </span>groupfolders<span class="w"> </span>enable_encryption<span class="w"> </span>--value<span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only new or updated files in team folders will be encrypted.</p>
+</div>
+</section>
+<section id="managing-encryption-via-occ-commands">
+<h2>Managing Encryption via occ Commands<a class="headerlink" href="#managing-encryption-via-occ-commands" title="Link to this heading"></a></h2>
+<p>Here is a reference table for common occ commands:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35.0%" />
+<col style="width: 65.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>occ encryption:status</p></td>
+<td><p>Show encryption status and module</p></td>
+</tr>
+<tr class="row-odd"><td><p>occ encryption:enable</p></td>
+<td><p>Enable server-side encryption</p></td>
+</tr>
+<tr class="row-even"><td><p>occ encryption:list-modules</p></td>
+<td><p>List available encryption modules</p></td>
+</tr>
+<tr class="row-odd"><td><p>occ encryption:set-default-module [Module ID]</p></td>
+<td><p>Select default encryption module</p></td>
+</tr>
+<tr class="row-even"><td><p>occ encryption:encrypt-all</p></td>
+<td><p>Encrypt all files for all users</p></td>
+</tr>
+<tr class="row-odd"><td><p>occ encryption:decrypt-all [user]</p></td>
+<td><p>Decrypt all files (or for one user)</p></td>
+</tr>
+<tr class="row-even"><td><p>occ encryption:show-key-storage-root</p></td>
+<td><p>Show key storage location</p></td>
+</tr>
+<tr class="row-odd"><td><p>occ encryption:change-key-storage-root [dir]</p></td>
+<td><p>Move key storage directory</p></td>
+</tr>
+<tr class="row-even"><td><p>occ encryption:enable-master-key</p></td>
+<td><p>Enable master key mode</p></td>
+</tr>
+<tr class="row-odd"><td><p>occ encryption:disable-master-key</p></td>
+<td><p>Enable user key mode</p></td>
+</tr>
+<tr class="row-even"><td><p>occ encryption:fix-encrypted-version</p></td>
+<td><p>Fix bad signature errors</p></td>
+</tr>
+<tr class="row-odd"><td><p>occ encryption:fix-key-location [user]</p></td>
+<td><p>Fix key not found errors</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>See the <a class="reference internal" href="../occ_command.html#encryption-label"><span class="std std-ref">Encryption</span></a> section of the <code class="docutils literal notranslate"><span class="pre">occ</span></code> reference guide for further <code class="docutils literal notranslate"><span class="pre">encryption</span></code> command examples and details.</p>
+</div>
+<p><strong>Example: Move keys to a new directory (Ubuntu Linux):</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/your/nextcloud/data
+mkdir<span class="w"> </span>keys
+chown<span class="w"> </span>-R<span class="w"> </span>root:www-data<span class="w"> </span>keys
+chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">0770</span><span class="w"> </span>keys
+occ<span class="w"> </span>encryption:change-key-storage-root<span class="w"> </span>keys
+</pre></div>
+</div>
+</section>
+<section id="encrypting-all-files">
+<h2>Encrypting All Files<a class="headerlink" href="#encrypting-all-files" title="Link to this heading"></a></h2>
+<p>By default, only new and changed files are encrypted when you enable SSE.
+To encrypt all files for all users run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>occ<span class="w"> </span>encryption:encrypt-all
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Make sure you have backups before running.</strong></p></li>
+<li><p>The command creates a key pair for each user and encrypts their files.</p></li>
+<li><p>Progress is displayed until all files are encrypted.</p></li>
+<li><p><strong>Make sure no users access files during this process.</strong></p></li>
+</ul>
+</section>
+<section id="decrypting-files-disabling-encryption">
+<span id="occ-disable-encryption-label"></span><h2>Decrypting Files / Disabling Encryption<a class="headerlink" href="#decrypting-files-disabling-encryption" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Only possible via occ.</p></li>
+<li><p>First, decrypt all files:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>occ<span class="w"> </span>encryption:decrypt-all
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Make sure you have backups before running.</strong></p></li>
+<li><p>Server enters maintenance mode. If interrupted, rerun until complete.</p></li>
+<li><p>If some files remain encrypted, rerun the command after resolving issues.</p></li>
+<li><p><strong>Warning:</strong> Disabling encryption without decrypting all files will cause unpredictable errors.</p></li>
+</ul>
+<p>You can decrypt for individual users:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>occ<span class="w"> </span>encryption:decrypt-all<span class="w"> </span>&lt;user-id&gt;
+</pre></div>
+</div>
+</section>
+<section id="data-not-encrypted">
+<h2>Data Not Encrypted<a class="headerlink" href="#data-not-encrypted" title="Link to this heading"></a></h2>
+<p>Only file contents are encrypted. The following are <strong>not</strong> encrypted:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Not Encrypted</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Filenames and folder structures</p></td>
+</tr>
+<tr class="row-odd"><td><p>Existing trash bin files</p></td>
+</tr>
+<tr class="row-even"><td><p>Existing historical file versions</p></td>
+</tr>
+<tr class="row-odd"><td><p>Image thumbnails</p></td>
+</tr>
+<tr class="row-even"><td><p>Image previews</p></td>
+</tr>
+<tr class="row-odd"><td><p>Full text search index</p></td>
+</tr>
+<tr class="row-even"><td><p>Application data that isn’t file-based (e.g., Deck, Tables)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="user-keys-sharing-recovery">
+<h2>User Keys: Sharing &amp; Recovery<a class="headerlink" href="#user-keys-sharing-recovery" title="Link to this heading"></a></h2>
+<p><strong>Sharing encrypted files:</strong></p>
+<ul class="simple">
+<li><p>After enabling user key mode, users must log out and log in to generate keys.</p></li>
+<li><p>Users who see “Encryption App is enabled but your keys are not initialized…” must log out and back in.</p></li>
+<li><dl class="simple">
+<dt>Shared files may need to be re-shared after encryption is enabled.</dt><dd><ul>
+<li><p>For individual shares: un-share and re-share the file.</p></li>
+<li><p>For group shares: share with any individuals who cannot access the share, then remove their individual shares.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/encryption9.png" src="../_images/encryption9.png" />
+</figure>
+<p><strong>Enabling file recovery keys:</strong></p>
+<ul class="simple">
+<li><p>If you lose your Nextcloud password, you lose access to your encrypted files.</p></li>
+<li><p>If a user loses their password, their files are unrecoverable unless a recovery key is enabled.</p></li>
+<li><p>To enable recovery, go to Encryption in Admin page and set a recovery key password.</p></li>
+<li><p>Users must enable password recovery in their Personal settings for the Recovery Key to work.</p></li>
+<li><p>For users who have enabled password recovery, admins can reset passwords and recover files using the Recovery Key.</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/encryption10.png" src="../_images/encryption10.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/encryption7.png" src="../_images/encryption7.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/encryption8.png" src="../_images/encryption8.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/encryption12.png" src="../_images/encryption12.png" />
+</figure>
+</section>
+<section id="ldap-and-external-user-backends">
+<h2>LDAP and External User Backends<a class="headerlink" href="#ldap-and-external-user-backends" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>If using LDAP/Samba and changing passwords on the backend, users will need both their old and new passwords on next login.</p></li>
+<li><p>If recovery key is enabled, admins can reset the password via Nextcloud and notify users.</p></li>
+</ul>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<section id="invalid-private-key-for-encryption-app">
+<h3>Invalid private key for encryption app<a class="headerlink" href="#invalid-private-key-for-encryption-app" title="Link to this heading"></a></h3>
+<p>See <a class="reference external" href="https://github.com/nextcloud/server/issues/8546">GitHub Issue #8546</a> and
+<a class="reference external" href="https://github.com/nextcloud/server/issues/8546#issuecomment-514139714">workaround</a>.</p>
+</section>
+<section id="bad-signature-error">
+<h3>Bad signature error<a class="headerlink" href="#bad-signature-error" title="Link to this heading"></a></h3>
+<p>In some rare cases, encrypted files cannot be downloaded and return a “500 Internal Server Error.” If the Nextcloud log contains an error about “Bad Signature,” run the following command to repair affected files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">fix</span><span class="o">-</span><span class="n">encrypted</span><span class="o">-</span><span class="n">version</span> <span class="n">userId</span> <span class="o">--</span><span class="n">path</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">broken</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Replace “userId” and the path accordingly.
+The command will perform a test decryption for all files and automatically repair those with a signature error.</p>
+</section>
+<section id="encryption-key-cannot-be-found">
+<span id="troubleshooting-encryption-key-not-found"></span><h3>Encryption key cannot be found<a class="headerlink" href="#encryption-key-cannot-be-found" title="Link to this heading"></a></h3>
+<p>If the logs contain an error stating that the encryption key cannot be found, you can manually search the data directory for a folder that has the same name as the file name.
+For example, if a file “example.md” cannot be decrypted, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">datadir</span> <span class="o">-</span><span class="n">name</span> <span class="n">example</span><span class="o">.</span><span class="n">md</span> <span class="o">-</span><span class="nb">type</span> <span class="n">d</span>
+</pre></div>
+</div>
+<p>Then check the results located in the <code class="docutils literal notranslate"><span class="pre">files_encryption</span></code> folder.
+If the key folder is in the wrong location, move it to the correct folder and try again.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">data/files_encryption</span></code> folder contains encryption keys for group folders and system-wide external storages,
+while <code class="docutils literal notranslate"><span class="pre">data/$userid/files_encryption</span></code> contains the keys for specific user storage files.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This can happen if encryption was disabled at some point but the <a class="reference internal" href="#occ-disable-encryption-label"><span class="std std-ref">occ command for decrypt-all</span></a> was not run.
+If someone then moved the files to another location, the keys did not get moved.</p>
+</div>
+</section>
+<section id="encryption-key-cannot-be-found-with-external-storage-or-group-folders">
+<h3>Encryption key cannot be found with external storage or group folders<a class="headerlink" href="#encryption-key-cannot-be-found-with-external-storage-or-group-folders" title="Link to this heading"></a></h3>
+<p>To resolve this issue, run the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">fix</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="n">location</span> <span class="o">&lt;</span><span class="n">user</span><span class="o">-</span><span class="nb">id</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>This will attempt to recover keys that were not moved properly.</p>
+<p>If this doesn’t resolve the problem, refer to the section <a class="reference internal" href="#troubleshooting-encryption-key-not-found"><span class="std std-ref">Encryption key cannot be found</span></a> for a manual procedure.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There were two known issues where:</p>
+<ul class="simple">
+<li><p>moving files between an encrypted and non-encrypted storage like external storage or group folder <a class="reference external" href="https://github.com/nextcloud/groupfolders/issues/1896">would not move the keys with the files</a>.</p></li>
+<li><p>putting files on system-wide external storage would store the keys in the <a class="reference external" href="https://github.com/nextcloud/server/pull/32690">wrong location</a>.</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="further-reading">
+<h2>Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../occ_command.html#encryption-label"><span class="std std-ref">occ Command Reference: Encryption</span></a></p></li>
+<li><p><a class="reference external" href="https://nextcloud.com/blog/encryption-in-nextcloud/">How Nextcloud uses encryption to protect your data</a></p></li>
+<li><p><a class="reference external" href="https://hackerone.com/reports/108082">Technical impact of Authenticated Encryption</a></p></li>
+<li><p><a class="reference external" href="encryption_details.html">Nextcloud SSE Implementation Details</a></p></li>
+<li><p><a class="reference external" href="https://github.com/nextcloud/encryption-recovery-tools">Nextcloud Encryption (SSE &amp; E2EE) Recovery Tools</a></p></li>
+<li><p><a class="reference external" href="https://github.com/nextcloud/end_to_end_encryption/">Nextcloud E2EE Server API App (required for E2EE usage)</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="external_storage/auth_mechanisms.html" class="btn btn-neutral float-left" title="External Storage authentication mechanisms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="encryption_details.html" class="btn btn-neutral float-right" title="Server-side encryption details" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/admin_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/admin_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/admin_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

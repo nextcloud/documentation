@@ -1,0 +1,728 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digging deeper &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="API reference" href="api.html" />
+    <link rel="prev" title="How to test …" href="../how_to/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Digging deeper</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/index.html">Config &amp; Preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="context_chat.html">Context Chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="continuous_integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard.html">Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deadlock.html">Deadlocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files-metadata.html">Files Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupware/index.html">Groupware integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html">HTTP Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translation.html">Machine Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oidc.html">OpenID Connect (Oidc)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="out_of_office.html">Out-of-office periods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonenumberutil.html">Phone number util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psr.html">PSR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile.html">Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiler.html">Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">Reference providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_apis.html">REST APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_checks.html">Setup checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speech-to-text.html">Speech-To-Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talk.html">Talk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task_processing.html">Task Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_processing.html">Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text2image.html">Text-To-Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status.html">User Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">User migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_host_metadata.html">Web Host Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webdav_collection_preload.html">WebDAV collection preload events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html">Working with time</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Digging deeper</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="digging-deeper">
+<h1>Digging deeper<a class="headerlink" href="#digging-deeper" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#php-public-api">PHP public API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#consumable-listenable-and-catchable"><code class="docutils literal notranslate"><span class="pre">Consumable</span></code>, <code class="docutils literal notranslate"><span class="pre">Listenable</span></code> and <code class="docutils literal notranslate"><span class="pre">Catchable</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#implementable-dispatchable-and-throwable"><code class="docutils literal notranslate"><span class="pre">Implementable</span></code>, <code class="docutils literal notranslate"><span class="pre">Dispatchable</span></code> and <code class="docutils literal notranslate"><span class="pre">Throwable</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#php-unstable-api">PHP unstable API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="config/index.html">Config &amp; Preferences</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="config/appconfig.html">AppConfig</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config/appconfig.html#appframework">AppFramework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config/appconfig.html#concept-overview">Concept overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config/appconfig.html#consuming-the-appconfig-api">Consuming the AppConfig API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config/userconfig.html">UserConfig</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config/userconfig.html#concept-overview">Concept overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config/userconfig.html#consuming-the-userconfig-api">Consuming the UserConfig API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classloader.html">Classloader</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html#server-autoloading">Server autoloading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html#app-autoloading">App autoloading</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classloader.html#replacing-nextcloud-s-autoloader">Replacing Nextcloud’s autoloader</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="context_chat.html">Context Chat</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="context_chat.html#implementing-a-content-provider-for-context-chat">Implementing a content provider for Context Chat</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="context_chat.html#the-icontentprovider-interface">The IContentProvider interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="context_chat.html#using-the-icontentmanager-service">Using the IContentManager service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="context_chat.html#implementing-the-contentproviderregisterevent-event">Implementing the ContentProviderRegisterEvent event</a></li>
+<li class="toctree-l3"><a class="reference internal" href="context_chat.html#submitting-contentitem-data">Submitting ContentItem data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="continuous_integration.html">Continuous Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="continuous_integration.html#linting">Linting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="continuous_integration.html#info-xml">info.xml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="continuous_integration.html#php">php</a></li>
+<li class="toctree-l3"><a class="reference internal" href="continuous_integration.html#php-cs">php-cs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="continuous_integration.html#static-analysis">Static analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dashboard.html">Dashboard</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dashboard.html#register-a-dashboard-widget">Register a dashboard widget</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dashboard.html#the-iconditionalwidget-interface">The IConditionalWidget interface</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard.html#provide-a-user-interface">Provide a user interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard.html#dashboard-api">Dashboard API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dashboard.html#render-dashboard-widgets-using-the-api">Render dashboard widgets using the API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dashboard.html#providing-widgets-to-clients">Providing widgets to clients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dashboard.html#the-ibuttonwidget-interface">The IButtonWidget interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dashboard.html#the-iiconwidget-interface">The IIconWidget interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dashboard.html#the-ioptionwidget-interface">The IOptionWidget interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dashboard.html#the-iapiwidget-interface">The IAPIWidget interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dashboard.html#the-iapiwidgetv2-interface">The IAPIWidgetV2 interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dashboard.html#the-ireloadablewidget-interface">The IReloadableWidget interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dashboard.html#use-the-api">Use the API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deadlock.html">Deadlocks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deadlock.html#understanding-the-locking-situation">Understanding the locking situation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deadlock.html#mitigations">Mitigations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deadlock.html#ignoring-deadlocks">Ignoring deadlocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deadlock.html#retrying-deadlocks">Retrying deadlocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deadlock.html#avoiding-deadlocks">Avoiding deadlocks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deadlock.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#debug-mode">Debug mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#identifying-errors">Identifying errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#debugging-variables">Debugging variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#using-a-php-debugger-xdebug">Using a PHP debugger (XDebug)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#debugging-javascript">Debugging JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#debugging-html-and-templates">Debugging HTML and templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#debugging-sql-queries">Debugging SQL queries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="debugging.html#debugging-mariadb-queries">Debugging MariaDB queries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#using-alternative-app-directories">Using alternative app directories</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="email.html">Email</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="email.html#basic-usage">Basic usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html#inline-attachments">Inline attachments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="files-metadata.html">Files Metadata</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="files-metadata.html#concept-overview">Concept overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files-metadata.html#consuming-the-files-metadata-api">Consuming the Files Metadata API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files-metadata.html#live-background-events">Live &amp; Background Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files-metadata.html#read-metadata-using-occ-command">Read metadata using occ command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files-metadata.html#update-metadata-using-proppatch">Update metadata using PROPPATCH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files-metadata.html#delete-metadata-using-proppatch">Delete metadata using PROPPATCH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files-metadata.html#retrieve-metadata-using-propfind">Retrieve metadata using PROPFIND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files-metadata.html#webdav-search-based-on-metadata">WebDAV SEARCH based on metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files-metadata.html#metadata-query-helper">Metadata Query Helper</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Groupware integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="groupware/calendar.html">Calendar integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="groupware/calendar.html#access-calendars-and-events">Access calendars and events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="groupware/calendar.html#create-calendar-events">Create calendar events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="groupware/calendar.html#calendar-providers">Calendar providers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="groupware/calendar.html#resources">Resources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="groupware/calendar.html#rooms">Rooms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="groupware/calendar_provider.html">Integration of custom calendar providers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="groupware/calendar_provider.html#registering-the-calendar-with-the-nextcloud-api-interface">Registering the calendar with the Nextcloud API interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="groupware/calendar_provider.html#legacy-access-to-the-sabre-classes">Legacy access to the Sabre classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="groupware/calendar_provider.html#the-calendar-object-class">The calendar object class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="groupware/calendar_provider.html#the-calendar-class">The calendar class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="groupware/calendar_provider.html#the-calendar-plugin-class">The calendar plugin class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="groupware/calendar_provider.html#register-the-calendar-provider">Register the calendar provider</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="groupware/contacts_menu.html">Contacts Menu</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="groupware/contacts_menu.html#accessing-contact-info">Accessing contact info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="groupware/contacts_menu.html#actions">Actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="groupware/contacts_menu.html#user-status">User status</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="groupware/mail_provider.html">Mail Provider Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="groupware/mail_provider.html#terminology">Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="groupware/mail_provider.html#consuming-a-mail-service">Consuming a Mail Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="groupware/mail_provider.html#providing-a-mail-service">Providing a Mail Service</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http_client.html">HTTP Client</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html#acquiring-a-http-client">Acquiring a HTTP Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html#head-request">HEAD request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html#get-request">GET request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html#post-request">POST request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html#put-request">PUT request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html#delete-request">DELETE request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html#options-request">OPTIONS request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html#error-handling">Error handling</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="javascript-apis.html">JavaScript APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="javascript-apis.html#npm-packages">npm packages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="javascript-apis.html#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="javascript-apis.html#compatibility">Compatibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="javascript-apis.html#development">Development</a></li>
+<li class="toctree-l3"><a class="reference internal" href="javascript-apis.html#packages-in-detail">Packages in detail</a></li>
+<li class="toctree-l3"><a class="reference internal" href="javascript-apis.html#nextcloud-auth"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/auth</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="javascript-apis.html#nextcloud-axios"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/axios</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="javascript-apis.html#nextcloud-event-bus"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/event-bus</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="javascript-apis.html#nextcloud-dialogs"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/dialogs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="javascript-apis.html#nextcloud-files"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/files</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="javascript-apis.html#nextcloud-initial-state"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/initial-state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="javascript-apis.html#nextcloud-l10n"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/l10n</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="javascript-apis.html#nextcloud-logger"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/logger</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="javascript-apis.html#nextcloud-moment"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/moment</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="javascript-apis.html#nextcloud-password-confirmation"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/password-confirmation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="javascript-apis.html#nextcloud-paths"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/paths</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="javascript-apis.html#nextcloud-router"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/router</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="javascript-apis.html#nextcloud-sharing"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/sharing</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="javascript-apis.html#nextcloud-vue"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/vue</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="javascript-apis.html#events">Events</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="javascript-apis.html#network-state-changes">Network state changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="javascript-apis.html#global-variables">Global variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="javascript-apis.html#oc-internal-apis">OC – internal APIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="javascript-apis.html#oca-app-apis">OCA – App APIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="javascript-apis.html#ocp-public-apis">OCP – Public APIs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="translation.html">Machine Translation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="translation.html#consuming-the-translation-api">Consuming the Translation API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translation.html#implementing-a-translation-provider">Implementing a Translation provider</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="translation.html#provider-with-user-context">Provider with user context</a></li>
+<li class="toctree-l3"><a class="reference internal" href="translation.html#providing-language-detection">Providing language detection</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="translation.html#provider-registration">Provider registration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="flow.html">Nextcloud Flow</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="flow.html#entities">Entities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flow.html#operations">Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flow.html#configuration-component">Configuration Component</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="npm.html">NPM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="npm.html#npm-build">npm build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html#npm-run-dev-npm-run-watch">npm run dev, npm run watch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html#npm-test">npm test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html#npm-run-lint-optional">npm run lint (optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oidc.html">OpenID Connect (Oidc)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="oidc.html#getting-the-login-token">Getting the login token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oidc.html#token-exchange">Token exchange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oidc.html#generating-a-token-if-nextcloud-is-the-provider">Generating a token if Nextcloud is the provider</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="out_of_office.html">Out-of-office periods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="out_of_office.html#access-data-from-within-a-nextcloud-app-via-ocp">Access data from within a Nextcloud App via OCP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="out_of_office.html#listening-to-events">Listening to events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="out_of_office.html#common-data-structure">Common data structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="performance.html">Performance considerations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#php-performance">PHP Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#database-performance">Database performance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#writing-scalable-transactions">Writing scalable transactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="performance.html#measuring-performance">Measuring performance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#cached-data">Cached data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#getting-help">Getting help</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="phonenumberutil.html">Phone number util</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="phonenumberutil.html#convert-input-into-standard-format">Convert input into standard format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonenumberutil.html#get-the-country-code-for-a-region">Get the country code for a region</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="psr.html">PSR</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="psr.html#psr-0-autoloading">PSR-0: Autoloading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psr.html#psr-3-logger-interface">PSR-3: Logger Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psr.html#psr-4-autoloading">PSR-4: Autoloading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psr.html#psr-11-container-interface">PSR-11: Container Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psr.html#psr-20-clock">PSR-20: Clock</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="profile.html">Profile</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="profile.html#register-a-profile-action">Register a profile action</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="profiler.html">Profiler</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="profiler.html#get-the-app">Get the app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiler.html#enable-the-app">Enable the app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiler.html#disable-the-app">Disable the app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiler.html#using-the-app">Using the app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="profiler.html#the-general-request-and-response-view">The General Request and Response View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="profiler.html#the-database-queries-view">The Database Queries View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="profiler.html#the-ldap-view">The LDAP View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="profiler.html#the-event-view">The Event View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="profiler.html#the-cache-view">The Cache View</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="profiler.html#contributing">Contributing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Projects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="projects.html#register-a-resource-provider">Register a resource provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html#provide-a-user-interface">Provide a user interface</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="publicpage.html">Public Pages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html#concept">Concept</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html#implementing-an-api-called-from-a-public-share-page">Implementing an API called from a public share page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html#implementing-an-authenticated-public-page">Implementing an authenticated public page</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Reference providers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#display-link-previews">Display link previews</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#ncrichtext">NcRichText</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#ncreferencewidget">NcReferenceWidget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#api-to-resolve-links">API to resolve links</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#render-link-previews-in-clients">Render link previews in clients</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#use-the-smart-picker-in-your-app">Use the Smart Picker in your app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#ncrichcontenteditable">NcRichContenteditable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#ncreferencepickermodal">NcReferencePickerModal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#getlinkwithpicker">getLinkWithPicker</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#use-the-smart-picker-in-clients">Use the Smart Picker in clients</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#get-the-provider-list">Get the provider list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#use-the-unified-search-api">Use the Unified Search API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#update-a-provider-last-usage-date">Update a provider last usage date</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#register-a-reference-provider">Register a reference provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#extend-link-preview-support">Extend link preview support</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#match-links">Match links</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#resolving-links">Resolving links</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#interactive-widgets">Interactive widgets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#provide-generic-data-for-clients">Provide generic data for clients</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#extend-the-smart-picker">Extend the Smart Picker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#declare-supported-unified-search-providers">Declare supported Unified Search providers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#register-a-custom-picker-component">Register a custom picker component</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="repair.html">Repair steps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="repair.html#creating-a-repair-step">Creating a repair step</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="repair.html#outputting-information">Outputting information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html#register-a-repair-step">Register a repair-step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html#repair-step-types">Repair-step types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rest_apis.html">REST APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rest_apis.html#modifying-the-cors-headers">Modifying the CORS headers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="search.html">Search</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="search.html#concept-overview">Concept overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="search.html#fetching-provider-ids">Fetching provider IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search.html#fetching-individual-search-results">Fetching individual search results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="search.html#simple-search-providers">Simple search providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html#advanced-search-provider">Advanced search provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html#external-search-provider">External search provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html#provider-registration">Provider registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html#handling-search-requests">Handling search requests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="search.html#pagination">Pagination</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search.html#optional-attributes">Optional attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="search.html#declare-in-app-search">Declare in-app search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html#privacy">Privacy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="security.html#rate-limiting">Rate Limiting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#remote-host-validation">Remote Host Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#trusted-domain">Trusted domain</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="declarative_settings.html">Declarative settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="declarative_settings.html#registering-settings-schema">Registering settings schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declarative_settings.html#class-based-schema-registration">Class-based schema registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declarative_settings.html#event-based-schema-registration">Event-based schema registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declarative_settings.html#handling-settings-storage">Handling settings storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="declarative_settings.html#schema-field-types">Schema field types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html#settings-form">Settings form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html#section">Section</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html#registering-settings-and-sections">Registering Settings and Sections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="setup_checks.html">Setup checks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="setup_checks.html#register-a-setup-check">Register a setup check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_checks.html#define-a-setup-check">Define a setup check</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="setup_checks.html#running-http-requests-against-the-server">Running HTTP requests against the server</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="speech-to-text.html">Speech-To-Text</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="speech-to-text.html#consuming-the-speech-to-text-api">Consuming the Speech-To-Text API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="speech-to-text.html#listening-to-the-transcription-events">Listening to the transcription events</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="speech-to-text.html#implementing-a-speech-to-text-provider">Implementing a Speech-To-Text provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speech-to-text.html#provider-with-user-context">Provider with user context</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speech-to-text.html#provider-registration">Provider registration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="talk.html">Talk Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="talk.html#check-for-talk-existence">Check for Talk existence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talk.html#create-a-conversation">Create a conversation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="talk.html#customize-the-conversation">Customize the conversation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="talk.html#delete-a-conversation">Delete a conversation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="task_processing.html">Task Processing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="task_processing.html#consuming-the-task-processing-api">Consuming the Task Processing API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="task_processing.html#tasks-types">Tasks types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_processing.html#tasks">Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_processing.html#task-statuses">Task statuses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_processing.html#listening-to-the-task-processing-events">Listening to the task processing events</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="task_processing.html#implementing-a-taskprocessing-provider">Implementing a TaskProcessing provider</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="task_processing.html#providing-additional-inputs-and-outputs">Providing additional inputs and outputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_processing.html#providing-input-defaults">Providing input defaults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_processing.html#working-with-enum-shape-types">Working with Enum shape types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_processing.html#providing-more-task-types">Providing more task types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="task_processing.html#provider-and-task-type-registration">Provider and task type registration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="text_processing.html">Text Processing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="text_processing.html#consuming-the-text-processing-api">Consuming the Text Processing API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="text_processing.html#tasks-types">Tasks types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="text_processing.html#tasks">Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="text_processing.html#task-statuses">Task statuses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="text_processing.html#listening-to-the-text-processing-events">Listening to the text processing events</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="text_processing.html#implementing-a-textprocessing-provider">Implementing a TextProcessing provider</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="text_processing.html#processing-tasks-in-the-context-of-a-user">Processing tasks in the context of a user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="text_processing.html#streamlining-processing-for-fast-providers">Streamlining processing for fast providers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="text_processing.html#providing-more-task-types">Providing more task types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="text_processing.html#provider-registration">Provider registration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="text2image.html">Text-To-Image</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="text2image.html#consuming-the-text-to-image-api">Consuming the Text-To-Image API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="text2image.html#tasks">Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="text2image.html#task-statuses">Task statuses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="text2image.html#listening-to-the-image-generation-events">Listening to the image generation events</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="text2image.html#implementing-a-text-to-image-provider">Implementing a Text-To-Image provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text2image.html#provider-registration">Provider registration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html#implementing-a-simple-two-factor-auth-provider">Implementing a simple two-factor auth provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html#register-the-provider-state">Register the provider state</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html#registering-a-two-factor-auth-provider">Registering a two-factor auth provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html#providing-an-icon-optional">Providing an icon (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html#provide-personal-settings-optional">Provide personal settings (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html#make-a-provider-activatable-by-the-admin-optional">Make a provider activatable by the admin (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html#make-a-provider-deactivatable-by-the-admin-optional">Make a provider deactivatable by the admin (optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="status.html">User Status</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="status.html#query-status">Query Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status.html#updating-the-status-programmatically">Updating the status programmatically</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_migration.html">User migration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html#register-a-migrator">Register a migrator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">User management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="users.html#creating-users">Creating users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#modifying-users">Modifying users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#user-session-information">User session information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#user-objects">User objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="users.html#user-managers">User managers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="web_host_metadata.html">Web Host Metadata</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="web_host_metadata.html#writing-a-handler">Writing a handler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="web_host_metadata.html#example-generic-handler">Example generic handler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="web_host_metadata.html#example-webfinger-handler">Example webfinger handler</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="web_host_metadata.html#handler-registration">Handler registration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="webdav_collection_preload.html">WebDAV collection preload events</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="webdav_collection_preload.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webdav_collection_preload.html#when-the-event-is-emitted">When the event is emitted</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webdav_collection_preload.html#subscribing-to-the-event-in-a-plugin">Subscribing to the event in a plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webdav_collection_preload.html#built-in-examples">Built-in examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webdav_collection_preload.html#best-practices">Best practices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Working with time</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="time.html#methods">Methods</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../how_to/index.html" class="btn btn-neutral float-left" title="How to test …" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api.html" class="btn btn-neutral float-right" title="API reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/developer_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

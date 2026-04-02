@@ -1,0 +1,681 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Declarative settings &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Setup checks" href="setup_checks.html" />
+    <link rel="prev" title="Settings" href="settings.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/index.html">Config &amp; Preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="context_chat.html">Context Chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="continuous_integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard.html">Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deadlock.html">Deadlocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files-metadata.html">Files Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupware/index.html">Groupware integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html">HTTP Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translation.html">Machine Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oidc.html">OpenID Connect (Oidc)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="out_of_office.html">Out-of-office periods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonenumberutil.html">Phone number util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psr.html">PSR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile.html">Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiler.html">Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">Reference providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_apis.html">REST APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="settings.html">Settings</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Declarative settings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#registering-settings-schema">Registering settings schema</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-based-schema-registration">Class-based schema registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#event-based-schema-registration">Event-based schema registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#handling-settings-storage">Handling settings storage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#schema-field-types">Schema field types</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="settings.html#settings-form">Settings form</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings.html#section">Section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings.html#registering-settings-and-sections">Registering Settings and Sections</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="setup_checks.html">Setup checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speech-to-text.html">Speech-To-Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talk.html">Talk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task_processing.html">Task Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_processing.html">Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text2image.html">Text-To-Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status.html">User Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">User migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_host_metadata.html">Web Host Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webdav_collection_preload.html">WebDAV collection preload events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html">Working with time</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Digging deeper</a></li>
+          <li class="breadcrumb-item"><a href="settings.html">Settings</a></li>
+      <li class="breadcrumb-item active">Declarative settings</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/declarative_settings.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="declarative-settings">
+<span id="declarative-settings-section"></span><h1>Declarative settings<a class="headerlink" href="#declarative-settings" title="Link to this heading"></a></h1>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 29.0.0.</span></p>
+</div>
+<p>With Nextcloud 29 there is a new way to define app settings in a declarative way.
+This means that you can just register your settings schema
+without writing a custom settings handling front-end and back-end code
+(except when more complex settings logic or design is required).</p>
+<section id="registering-settings-schema">
+<h2>Registering settings schema<a class="headerlink" href="#registering-settings-schema" title="Link to this heading"></a></h2>
+<p>There are two ways to register a declarative settings schema:</p>
+<ol class="arabic simple">
+<li><p>Class-based using <code class="docutils literal notranslate"><span class="pre">OCP\Settings\IDeclarativeSettingsForm</span></code> interface</p></li>
+<li><p>By using an event listener for the <code class="docutils literal notranslate"><span class="pre">OCP\Settings\Events\DeclarativeSettingsRegisterFormEvent</span></code></p></li>
+</ol>
+<p>Additionally, you can register multiple declarative parameter schemes per application.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Form fields ids (configkeys) must be unique within an app.</p>
+</div>
+</section>
+<section id="class-based-schema-registration">
+<h2>Class-based schema registration<a class="headerlink" href="#class-based-schema-registration" title="Link to this heading"></a></h2>
+<p>To register a declarative settings schema using a class, you need to create a class that implements the <code class="docutils literal notranslate"><span class="pre">OCP\Settings\IDeclarativeSettingsForm</span></code> interface:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\DeclarativeSettings</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\Settings\DeclarativeSettingsTypes</span><span class="p">;</span>
+<span class="hll"><span class="k">use</span> <span class="nx">OCP\Settings\IDeclarativeSettingsForm</span><span class="p">;</span>
+</span>
+<span class="k">class</span> <span class="nc">MyDeclarativeSettingsForm</span> <span class="k">implements</span> <span class="nx">IDeclarativeSettingsForm</span> <span class="p">{</span>
+<span class="hll">    <span class="k">public</span> <span class="k">function</span> <span class="nf">getSchema</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+</span>        <span class="k">return</span> <span class="p">[</span>
+            <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my_declarative_settings_form&#39;</span><span class="p">,</span> <span class="c1">// unique form id</span>
+            <span class="s1">&#39;priority&#39;</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span> <span class="c1">// declarative section priority (ordering)</span>
+            <span class="s1">&#39;section_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">SECTION_TYPE_ADMIN</span><span class="p">,</span> <span class="c1">// admin, personal</span>
+            <span class="s1">&#39;section_id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my_section_id&#39;</span><span class="p">,</span> <span class="c1">// existing section id or your custom section id</span>
+            <span class="s1">&#39;storage_type&#39;</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">STORAGE_TYPE_INTERNAL</span><span class="p">,</span> <span class="c1">// external, internal (handled by core to store in appconfig and preferences)</span>
+            <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;MyApp settings title&#39;</span><span class="p">,</span> <span class="c1">// NcSettingsSection name</span>
+            <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;My app settings section description&#39;</span><span class="p">,</span> <span class="c1">// NcSettingsSection description</span>
+            <span class="s1">&#39;doc_url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="c1">// NcSettingsSection doc_url for documentation or help page, empty string if not needed</span>
+            <span class="s1">&#39;fields&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="p">[</span>
+                    <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my_field_key&#39;</span><span class="p">,</span> <span class="c1">// configkey</span>
+                    <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Field title&#39;</span><span class="p">,</span> <span class="c1">// name or label</span>
+                    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Additional setting hint or description&#39;</span><span class="p">,</span> <span class="c1">// hint</span>
+                    <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">MULTI_SELECT</span><span class="p">,</span>
+                    <span class="s1">&#39;options&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;placeholder&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Select some multiple options&#39;</span><span class="p">,</span> <span class="c1">// input placeholder</span>
+                    <span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">],</span>
+                <span class="p">],</span>
+            <span class="p">]</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">OCP\Settings\IDeclarativeSettingsForm</span></code> interface has only one method <code class="docutils literal notranslate"><span class="pre">getSchema</span></code> that should return an array with the settings schema.</p>
+<p>After that, you can register schema class using <code class="docutils literal notranslate"><span class="pre">IRegistrationContext-&gt;registerDeclarativeSettings</span></code> method:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\AppInfo</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\App</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IRegistrationContext</span><span class="p">;</span>
+<span class="hll"><span class="k">use</span> <span class="nx">OCA\MyApp\DeclarativeSettings\MyDeclarativeSettingsForm</span><span class="p">;</span>
+</span>
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$urlParams</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;my_app&#39;</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+<span class="hll">        <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerDeclarativeSettings</span><span class="p">(</span><span class="nx">MyDeclarativeSettingsForm</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="event-based-schema-registration">
+<h2>Event-based schema registration<a class="headerlink" href="#event-based-schema-registration" title="Link to this heading"></a></h2>
+<p>To register a declarative settings schema using an event system you need to implement event listener for <code class="docutils literal notranslate"><span class="pre">OCP\Settings\Events\DeclarativeSettingsRegisterFormEvent</span></code>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Listener</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\IEventListener</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Settings\DeclarativeSettingsTypes</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Settings\Events\DeclarativeSettingsRegisterFormEvent</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">RegisterDeclarativeSettingsListener</span> <span class="k">implements</span> <span class="nx">IEventListener</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nv">$event</span> <span class="nx">instanceof</span> <span class="nx">DeclarativeSettingsRegisterFormEvent</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">registerSchema</span><span class="p">(</span><span class="s1">&#39;my_app&#39;</span><span class="p">,</span> <span class="p">[</span>
+            <span class="c1">// your declarative settings schema here</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>And register the event listener as usually in your <code class="docutils literal notranslate"><span class="pre">AppInfo/Application.php</span></code> registration context:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\AppInfo</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\App</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IRegistrationContext</span><span class="p">;</span>
+<span class="hll"><span class="k">use</span> <span class="nx">OCP\Settings\Events\DeclarativeSettingsRegisterFormEvent</span><span class="p">;</span>
+</span><span class="hll"><span class="k">use</span> <span class="nx">OCA\MyApp\Listener\RegisterDeclarativeSettingsListener</span><span class="p">;</span>
+</span>
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$urlParams</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;my_app&#39;</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+<span class="hll">        <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerEventListener</span><span class="p">(</span><span class="nx">DeclarativeSettingsRegisterFormEvent</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">RegisterDeclarativeSettingsListener</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="handling-settings-storage">
+<h2>Handling settings storage<a class="headerlink" href="#handling-settings-storage" title="Link to this heading"></a></h2>
+<p>There are two types of schema <code class="docutils literal notranslate"><span class="pre">storage_type</span></code> supported:</p>
+<p>1. internal <code class="docutils literal notranslate"><span class="pre">OCP\Settings\DeclarativeSettingsTypes::STORAGE_TYPE_INTERNAL</span></code> - settings values changes handled by core
+1. external <code class="docutils literal notranslate"><span class="pre">OCP\Settings\DeclarativeSettingsTypes::STORAGE_TYPE_EXTERNAL</span></code> - settings values changes handled by your app handlers (event listeners).</p>
+<section id="internal-storage-type">
+<h3>Internal storage type<a class="headerlink" href="#internal-storage-type" title="Link to this heading"></a></h3>
+<p>Internal (<code class="docutils literal notranslate"><span class="pre">storage_type='internal'</span></code>) storage type is handled by core, you don’t have to implement additional handlers for that.</p>
+<section id="section-type-admin">
+<h4>Section type admin<a class="headerlink" href="#section-type-admin" title="Link to this heading"></a></h4>
+<p>For declarative settings schema with <code class="docutils literal notranslate"><span class="pre">section_type</span></code> set to <code class="docutils literal notranslate"><span class="pre">DeclarativeSettingsTypes::SECTION_TYPE_ADMIN</span></code> - settings values
+are stored in <code class="docutils literal notranslate"><span class="pre">appconfig</span></code> table.</p>
+<p>Accessible via <code class="docutils literal notranslate"><span class="pre">OCP\IConfig-&gt;getAppValue</span></code> interface.</p>
+</section>
+<section id="section-type-personal">
+<h4>Section type personal<a class="headerlink" href="#section-type-personal" title="Link to this heading"></a></h4>
+<p>For declarative settings schema with <code class="docutils literal notranslate"><span class="pre">section_type</span></code> set to <code class="docutils literal notranslate"><span class="pre">DeclarativeSettingsTypes::SECTION_TYPE_PERSONAL</span></code> - settings values
+are user specific and stored in <code class="docutils literal notranslate"><span class="pre">preferences</span></code> table.</p>
+<p>Accessible via <code class="docutils literal notranslate"><span class="pre">OCP\IConfig-&gt;getUserValue</span></code> interface.</p>
+</section>
+</section>
+<section id="external-storage-type">
+<h3>External storage type<a class="headerlink" href="#external-storage-type" title="Link to this heading"></a></h3>
+<p>Handling of an external (<code class="docutils literal notranslate"><span class="pre">storage_type='external'</span></code>) storage type is always done via listening to the following events:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Settings\Events\DeclarativeSettingsGetValueEvent</span></code> - to return the declarative setting value from your storage</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Settings\Events\DeclarativeSettingsSetValueEvent</span></code> - to save the declarative setting value where you want to</p></li>
+</ol>
+<p>Example of DeclarativeSettingsGetValueEvent event listener:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Listener</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\IEventListener</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IConfig</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Settings\Events\DeclarativeSettingsGetValueEvent</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">GetDeclarativeSettingsValueListener</span> <span class="k">implements</span> <span class="nx">IEventListener</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">IConfig</span> <span class="nv">$config</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$event</span> <span class="nx">instanceof</span> <span class="nx">DeclarativeSettingsGetValueEvent</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Always check if the event is related to your app declarative settings</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getApp</span><span class="p">()</span> <span class="o">!==</span> <span class="s1">&#39;my_app&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+<span class="hll">        <span class="nv">$value</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">config</span><span class="o">-&gt;</span><span class="na">getUserValue</span><span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getUser</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getUID</span><span class="p">(),</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getApp</span><span class="p">(),</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getFieldId</span><span class="p">());</span>
+</span><span class="hll">        <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">setValue</span><span class="p">(</span><span class="nv">$value</span><span class="p">);</span>
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Example of DeclarativeSettingsSetValueEvent event listener:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Listener</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\IEventListener</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IConfig</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Settings\Events\DeclarativeSettingsSetValueEvent</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">SetDeclarativeSettingsValueListener</span> <span class="k">implements</span> <span class="nx">IEventListener</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">IConfig</span> <span class="nv">$config</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$event</span> <span class="nx">instanceof</span> <span class="nx">DeclarativeSettingsSetValueEvent</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Always check if the event is related to your app declarative settings</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getApp</span><span class="p">()</span> <span class="o">!==</span> <span class="s1">&#39;my_app&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+<span class="hll">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">config</span><span class="o">-&gt;</span><span class="na">setUserValue</span><span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getUser</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getUID</span><span class="p">(),</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getApp</span><span class="p">(),</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getFieldId</span><span class="p">(),</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getValue</span><span class="p">());</span>
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="register-get-set-listeners">
+<h3>Register get/set listeners<a class="headerlink" href="#register-get-set-listeners" title="Link to this heading"></a></h3>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\AppInfo</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\App</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IRegistrationContext</span><span class="p">;</span>
+<span class="hll"><span class="k">use</span> <span class="nx">OCP\Settings\Events\DeclarativeSettingsGetValueEvent</span><span class="p">;</span>
+</span><span class="hll"><span class="k">use</span> <span class="nx">OCP\Settings\Events\DeclarativeSettingsSetValueEvent</span><span class="p">;</span>
+</span><span class="hll"><span class="k">use</span> <span class="nx">OCA\MyApp\Listener\GetDeclarativeSettingsValueListener</span><span class="p">;</span>
+</span><span class="hll"><span class="k">use</span> <span class="nx">OCA\MyApp\Listener\SetDeclarativeSettingsValueListener</span><span class="p">;</span>
+</span>
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$urlParams</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;my_app&#39;</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+<span class="hll">        <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerEventListener</span><span class="p">(</span><span class="nx">DeclarativeSettingsGetValueEvent</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">GetDeclarativeSettingsValueListener</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span><span class="hll">        <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerEventListener</span><span class="p">(</span><span class="nx">DeclarativeSettingsSetValueEvent</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">SetDeclarativeSettingsValueListener</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="schema-field-types">
+<h2>Schema field types<a class="headerlink" href="#schema-field-types" title="Link to this heading"></a></h2>
+<p>Supported field types are declared in  <code class="docutils literal notranslate"><span class="pre">OCP\Settings\DeclarativeSettingsTypes</span></code> class:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DeclarativeSettingsTypes::TEXT</span></code> - input type text</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DeclarativeSettingsTypes::PASSWORD</span></code>- input type password</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DeclarativeSettingsTypes::EMAIL</span></code> - input type email</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DeclarativeSettingsTypes::TEL</span></code> - input type tel</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DeclarativeSettingsTypes::URL</span></code> - input type url</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DeclarativeSettingsTypes::NUMBER</span></code> - input type number</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DeclarativeSettingsTypes::CHECKBOX</span></code> - input type checkbox</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DeclarativeSettingsTypes::MULTI_CHECKBOX</span></code> - multiple checkboxes representing one setting with multiple options</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DeclarativeSettingsTypes::RADIO</span></code> - input type radio for setting with single option</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DeclarativeSettingsTypes::SELECT</span></code> - input type select for setting with single option</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DeclarativeSettingsTypes::MULTI_SELECT</span></code> - input type select for setting with multiple options</p></li>
+</ul>
+<p>The examples of each field type are listed below.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Field order is the same as in the schema array.</p>
+</div>
+<section id="basic-input-types">
+<h3>Basic input types<a class="headerlink" href="#basic-input-types" title="Link to this heading"></a></h3>
+<p>For text, password, email, tel, url, number schema is similar:</p>
+<figure class="align-default">
+<img alt="Declarative settings input fields (text, password, email, tel, url, number)" src="../_images/declarative_settings_input_fields.png" />
+</figure>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my_field_unique_id&#39;</span><span class="p">,</span> <span class="c1">// configkey</span>
+    <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Default text field&#39;</span><span class="p">,</span> <span class="c1">// label</span>
+    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Set some simple text setting&#39;</span><span class="p">,</span> <span class="c1">// hint</span>
+    <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">TEXT</span><span class="p">,</span> <span class="c1">// text, password, email, tel, url, number</span>
+    <span class="s1">&#39;placeholder&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Enter text setting&#39;</span><span class="p">,</span> <span class="c1">// placeholder</span>
+    <span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+</section>
+<section id="checkbox-and-multi-checkbox">
+<h3>Checkbox and Multi-checkbox<a class="headerlink" href="#checkbox-and-multi-checkbox" title="Link to this heading"></a></h3>
+<figure class="align-default">
+<img alt="checkbox and multi-checkbox field types" src="../_images/declarative_settings_checkboxes.png" />
+</figure>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my_checkbox_field&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Toggle something&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Select checkbox option setting&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">CHECKBOX</span><span class="p">,</span> <span class="c1">// checkbox, multiple-checkbox</span>
+    <span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Verify something if enabled&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+<span class="p">],</span>
+<span class="p">[</span>
+    <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my_multicheckbox_field&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Multiple checkbox toggles, describing one setting, checked options are saved as an JSON object {foo: true, bar: false}&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Select checkbox option setting&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">MULTI_CHECKBOX</span><span class="p">,</span> <span class="c1">// checkbox, multi-checkbox</span>
+    <span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">],</span>
+    <span class="s1">&#39;options&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="p">[</span>
+            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Foo&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="c1">// multiple-checkbox configkey</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Bar&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Baz&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;baz&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Qux&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;qux&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">],</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+</section>
+<section id="radio">
+<h3>Radio<a class="headerlink" href="#radio" title="Link to this heading"></a></h3>
+<figure class="align-default">
+<img alt="radio field type" src="../_images/declarative_settings_radio.png" />
+</figure>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my_radio_field&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Radio toggles, describing one setting like single select&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Select radio option setting&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">RADIO</span><span class="p">,</span> <span class="c1">// radio (NcCheckboxRadioSwitch type radio)</span>
+    <span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Select single toggle&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;options&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="p">[</span>
+            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;First radio&#39;</span><span class="p">,</span> <span class="c1">// NcCheckboxRadioSwitch display name</span>
+            <span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;foo&#39;</span> <span class="c1">// NcCheckboxRadioSwitch value</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Second radio&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;bar&#39;</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Third radio&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;baz&#39;</span>
+        <span class="p">],</span>
+    <span class="p">],</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+</section>
+<section id="select-and-multi-select">
+<h3>Select and Multi-select<a class="headerlink" href="#select-and-multi-select" title="Link to this heading"></a></h3>
+<figure class="align-default">
+<img alt="select field type" src="../_images/declarative_settings_select.png" />
+</figure>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my_select_field&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Selection&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Select some option setting&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">SELECT</span><span class="p">,</span> <span class="c1">// select, radio, multi-select</span>
+    <span class="s1">&#39;options&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;placeholder&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Select some option setting&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="multi-select field type" src="../_images/declarative_settings_multi_select.png" />
+</figure>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my_multi_select_field&#39;</span><span class="p">,</span> <span class="c1">// configkey</span>
+    <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Multi-selection&#39;</span><span class="p">,</span> <span class="c1">// name or label</span>
+    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Select some option setting&#39;</span><span class="p">,</span> <span class="c1">// hint</span>
+    <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">MULTI_SELECT</span><span class="p">,</span> <span class="c1">// select, radio, multi-select</span>
+    <span class="s1">&#39;options&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">],</span> <span class="c1">// simple options for select, radio, multi-select</span>
+    <span class="s1">&#39;placeholder&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Select some multiple options&#39;</span><span class="p">,</span> <span class="c1">// input placeholder</span>
+    <span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">],</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+</section>
+<section id="sensitive-field-type">
+<h3>Sensitive field type<a class="headerlink" href="#sensitive-field-type" title="Link to this heading"></a></h3>
+<p>Since Nextcloud 32 there is a new field attribute <code class="docutils literal notranslate"><span class="pre">sensitive:</span> <span class="pre">true/false</span></code> available for <code class="docutils literal notranslate"><span class="pre">DeclarativeSettingsTypes::TEXT</span></code>, <code class="docutils literal notranslate"><span class="pre">DeclarativeSettingsTypes::PASSWORD</span></code> types.
+The values of such fields are stored in an encrypted form in the database and are not exposed to the UI.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;test_sensitive_field&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Sensitive text field&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Set some secure value setting that is stored encrypted&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">TEXT</span><span class="p">,</span>
+    <span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Sensitive field&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;placeholder&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Set secure value&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sensitive&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span> <span class="c1">// only for TEXT, PASSWORD types</span>
+<span class="p">],</span>
+<span class="p">[</span>
+    <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;test_sensitive_field_2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Sensitive password field&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Set some password setting that is stored encrypted&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="nx">DeclarativeSettingsTypes</span><span class="o">::</span><span class="na">PASSWORD</span><span class="p">,</span>
+    <span class="s1">&#39;label&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Sensitive field&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;placeholder&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Set secure value&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;default&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sensitive&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span> <span class="c1">// only for TEXT, PASSWORD types</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="sensitive fields" src="../_images/declarative_settings_sensitive.png" />
+</figure>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="settings.html" class="btn btn-neutral float-left" title="Settings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="setup_checks.html" class="btn btn-neutral float-right" title="Setup checks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/developer_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

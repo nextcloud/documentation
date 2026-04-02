@@ -1,0 +1,844 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="cs" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Používání synchronizačního klienta &mdash; Dokumentace pro Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=672a239f"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=22e1c300"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Klient virtuálních souborů pro macOS" href="macosvfs.html" />
+    <link rel="prev" title="Instalace" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Úvod do uživatelské příručky k Nextcloud verze latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Webové rozhraní Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Soubory a synchronizace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Software pro podporu spolupráce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Klienti pro desktop</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Instalace</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Používání synchronizačního klienta</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#systray-icon">Ikona v oznamovací oblasti systémového panelu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-nextcloud-account-settings">Nastavování Nextcloud účtu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-new-accounts">Přidávání nových účtů</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-manager-overlay-icons">Překryvné ikony správce souborů</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-the-user-status">Nastavit stav uživatele</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-from-your-desktop">Sdílení z vašeho desktopu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general-window">Obecné okno</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-network-window">Použití okna Síť</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-ignored-files-editor">Používání editoru seznamu souborů k ignorování</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="macosvfs.html">Klient virtuálních souborů pro macOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoupdate.html">Nástroj pro automatickou aktualizaci</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Kanály aktualizací</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conflicts.html">Kolize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">Často kladené dotazy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Nastavení vašich předvoleb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Zpřístupnění pro všechny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Používání dvoufázového ověřování se</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Správa připojených prohlížečů a zařízení</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Externí úložiště</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Klienti pro desktop</a></li>
+      <li class="breadcrumb-item active">Používání synchronizačního klienta</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/usage.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-synchronization-client">
+<h1>Používání synchronizačního klienta<a class="headerlink" href="#using-the-synchronization-client" title="Link to this heading"></a></h1>
+<p>Nextcloud klient pro počítač zůstane spuštěný na pozadí a je viditelný jako ikona v oznamovací oblasti systémového panelu (Windows, KDE), pruhu nabídky (macOS), nebo oblasti pro upozornění (ostatní linuxová prostředí).</p>
+<figure class="align-default">
+<img alt="Stavová ikona – zelený kruh a bílé zatržítko" src="../../_images/icon.png" />
+</figure>
+<p>Indikátor stavu používá ikony, které značí stávající stav synchronizace. Zelený kruh s bílým zatržítkem sděluje, že synchronizace je aktuální a jste připojeni k Nextcloud serveru.</p>
+<figure class="align-default">
+<img alt="Stavová ikona – modrý kruh a bílé skoro-kruhy" src="../../_images/icon-syncing.png" />
+</figure>
+<p>Modrá ikona s bílými něco jako kruhy znamená, že synchronizace probíhá.</p>
+<figure class="align-default">
+<img alt="Stavová ikona – šedý kruh a svislé rovnoběžné čáry" src="../../_images/icon-paused.png" />
+</figure>
+<p>Šedá ikona s rovnoběžnými čárami sděluje, že synchronizace byla pozastavena (nejspíš vámi).</p>
+<figure class="align-default">
+<img alt="Stavová ikona – šedý kruh a tři vodorovné bílé tečky" src="../../_images/icon-offline.png" />
+</figure>
+<p>Šedá ikona se třemi bílými tečkami znamená, že synchronizační klient ztratil spojení s Nextcloud serverem.</p>
+<figure class="align-default">
+<img alt="Stavová ikona – znak „!“ ve žlutém kruhu" src="../../_images/icon-information.png" />
+</figure>
+<p>Když uvidíte žlutý kruh se znakem „!“, který je informační ikonou, klikněte na něj a dozvíte se, co vám sděluje.</p>
+<figure class="align-default">
+<img alt="Stavová ikona – červený kruh a bílé x" src="../../_images/icon-error.png" />
+</figure>
+<p>červený kroužek s bílým „x“ značí chybu v nastavení, jako například nesprávné přihlašovací údaje nebo URL serveru.</p>
+<section id="systray-icon">
+<h2>Ikona v oznamovací oblasti systémového panelu<a class="headerlink" href="#systray-icon" title="Link to this heading"></a></h2>
+<p>Kliknutí pravým tlačítkem na ikonu v oznamovací oblasti otevře nabídku pro rychlý přístup k vícero operacím.</p>
+<figure class="align-default">
+<img alt="nabídka pod pravým tlačítkem myši v synchronizačním klientovi" src="../../_images/traymenu.png" />
+</figure>
+<p>Tato nabídka poskytuje následující možnosti:</p>
+<ul class="simple">
+<li><p>Otevření hlavní dialogu</p></li>
+<li><p>Pozastavit synchronizaci / pokračovat v synchronizaci</p></li>
+<li><p>Nastavení</p></li>
+<li><p>Ukončení Nextcloud, odhlášení a zavření klienta</p></li>
+</ul>
+<p>Kliknutí levým tlačítkem na ikonu v oznamovací oblasti systémového panelu otevře hlavní dialog klienta pro počítač.</p>
+<figure class="align-default">
+<img alt="Hlavní dialog" src="../../_images/main_dialog.png" />
+</figure>
+<p>Hlavní dialog zobrazuje nedávné aktivity, chyby a upozornění ze serveru.</p>
+<p>Při kliknutí na hlavní dialog a poté kliknutí na zástupný obrázek uživatele, je možné otevřít Nastavení.</p>
+</section>
+<section id="configuring-nextcloud-account-settings">
+<h2>Nastavování Nextcloud účtu<a class="headerlink" href="#configuring-nextcloud-account-settings" title="Link to this heading"></a></h2>
+<figure class="align-default">
+<img alt="Hlavní dialog" src="../../_images/settingsdialog.png" />
+</figure>
+<p>V horní části okna jsou karty pro každý z nastavených synchronizačních účtů a dva další pro Obecná a Síťová nastavení. Na kartách svých účtů máte následující funkce:</p>
+<ul class="simple">
+<li><p>Stav spojení, zobrazující ke kterému Nextcloud serveru jste připojení a vaše uživatelské jméno na něm.</p></li>
+<li><p>Prostor na serveru využitý a ještě dostupný.</p></li>
+<li><p>Stávající stav synchronizace.</p></li>
+<li><p>Tlačítko <strong>Přidat spojení synchronizace složky</strong>.</p></li>
+</ul>
+<p>Malé tlačítko s třemi tečkami („přetékající“ nabídka), které se nachází napravo od pruhu stavu synchronizace, nabízí další možnosti:</p>
+<ul class="simple">
+<li><p>Otevřít složku</p></li>
+<li><p>Zvolit co synchronizovat (toto se objeví pouze pokud je strom souborů sbalený a při použití ho rozbalí)</p></li>
+<li><p>Pozast./pokračovat v synchronizaci</p></li>
+<li><p>Odebrání spojení synchronizace složky</p></li>
+<li><p>Dostupnost (k dispozici pouze pokud je zapnutá podpora pro virtuální soubory)</p></li>
+<li><p>Zapnutí/vypnutí podpory virtuálních souborů</p></li>
+</ul>
+<p><strong>Otevřít složku</strong> otevře vaší lokální Nextcloud synchronizační složku.</p>
+<p><strong>Pozastavit synchronizaci</strong> pozastaví operace synchronizace, ale neudělá žádné změny ve vašem účtu. Bude pokračovat v aktualizaci seznamů souborů a složek, jen je nebude stahovat či aktualizovat. Pokud chcete zastavit veškerou synchronizační aktivitu, použijte <strong>Odebrat spojení synchronizace složky</strong>.</p>
+<figure class="align-default">
+<img alt="Další předvolby pro operace synchronizace" src="../../_images/general_settings_folder_context_menu.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Nextcloud nezachovává mtime (čas změny) složek, ačkoli ho aktualizuje u souborů. Viz diskuze u <a class="reference external" href="https://github.com/owncloud/core/issues/7009">Nesprávné datum složky při synchronizování</a>.</p>
+</div>
+</section>
+<section id="adding-new-accounts">
+<h2>Přidávání nových účtů<a class="headerlink" href="#adding-new-accounts" title="Link to this heading"></a></h2>
+<p>V klientovi synchronizace pro počítač je možné nastavit vícero Nextlcoud účtů. Stačí kliknout na tlačítko <strong>Účet</strong> &gt; <strong>Přidat nový</strong> na kartě libovolného účtu a přidat nový účet a poté následovat průvodce vytvořením účtu. Nový účet se zobrazí jako nový panel v dialogu nastavení, kde můžete kdykoli uzpůsobit jeho nastavení. Účet smažete pomocí <strong>Účet</strong> &gt; <strong>Odebrat</strong>.</p>
+</section>
+<section id="file-manager-overlay-icons">
+<h2>Překryvné ikony správce souborů<a class="headerlink" href="#file-manager-overlay-icons" title="Link to this heading"></a></h2>
+<p>Nextcloud synchronizační klient poskytuje překryvné ikony – dodatek k normálním typům ikon, pro systémového správce souborů (Průzkumník na Windows, Finder na macOS a Nautilus na Linuxu) k označení stavu synchronizace vašich souborů s Nextcloud.</p>
+<p>Překryvné ikony jsou podobné ikonám v oznamovací oblasti systémového panelu, uvedené výše. Chovají se jinak v případě souborů a složek, podle stavu synchronizace a chyb.</p>
+<p>Překryvná ikona jednotlivého souboru značí stávající stav jeho synchronizace. Pokud je soubor synchronní s verzí na serveru, zobrazuje se zelené zatržítko.</p>
+<p>Pokud je soubor ignorován ze synchronizace, například protože se nachází na seznamu vyloučených, nebo protože se jedná o symbolický odkaz, zobrazí ikonu varování.</p>
+<p>Pokud dojde k chybě synchronizace, nebo je soubor zařazen na seznam vyloučených, zobrazí se zrak upoutávající červené X.</p>
+<p>Pokud soubor čeká na synchronizaci, nebo je v tuto chvíli synchronizován, zobrazí se překryvná ikona modré otáčející se ikony.</p>
+<p>Když klient nemá připojení, nejsou zobrazovány žádné ikony, což odráží stav, že složka není synchronizována a žádné ze změn nejsou synchronizovány na server.</p>
+<p>Překryvná ikona synchronizované složky značí stav souborů v ní. V případě výskytu jakýchkoli chyb synchronizace je složka označena ikonou varování.</p>
+<p>Pokud složka obsahuje ignorované soubory, které jsou označené ikonami varování, tak to nemění stav nadřazených složek.</p>
+</section>
+<section id="set-the-user-status">
+<h2>Nastavit stav uživatele<a class="headerlink" href="#set-the-user-status" title="Link to this heading"></a></h2>
+<p>Pokud je na vámi využívaném Nextcloud serveru nainstalovaná aplikace stav uživatele, je možné si nastavit svůj stav z klienta pro počítač. Dělá se to otevření hlavního dialogu. Poté kliknete na váš zástupný obrázek a poté kliknete na tři tečky. V nabídce, která se otevře klikněte na <strong>Nastavit stav</strong>.</p>
+<figure class="align-default">
+<img alt="Otevřete dialog stavu uživatele z hlavního dialogu." src="../../_images/user_status_selector_main_dialog.png" />
+</figure>
+<p>V dialogu, který se otevře, je možné si nastavit svůj vlastní stav online a to kliknutím na buď <strong>Online</strong>, <strong>Pryč</strong>, <strong>Nerušit</strong> nebo <strong>Neviditelný</strong>. Je také možné si nastavit uživatelsky určenou stavovou zprávu pomocí níže uvedené textové kolonky nebo zvolit jednu z přednastavených zpráv. Je také možné nastavit si uživatelsky určenou emotikonu a to kliknutím na tlačítko s emotikonou vedle kolonky pro zadání textu. Poslední věc, kterou byste si mohli chtít nastavit je kdy má být váš uživatelský stav vyčištěn. Je možné zvolit období, po kterém bude stav uživatele vyčištěn a to kliknutím na tlačítko na lévé straně textu <strong>Vyčistit stavovou zprávu po uplynutí</strong>.</p>
+<figure class="align-default">
+<img alt="Dialog pro nastavení stavu uživatele." src="../../_images/user_status-selector_dialog.png" />
+</figure>
+<p>Pokud jste spokojení se stavem, který jste vytvořili, je možné tento stav zapnout pomocí tlačítka <strong>Nastavit stavovou zprávu</strong>. Pokud už jste měli stav nastavený, je možné ho vyčistit kliknutím na tlačítko <strong>Vyčistit stavovou zprávu</strong>.</p>
+</section>
+<section id="sharing-from-your-desktop">
+<h2>Sdílení z vašeho desktopu<a class="headerlink" href="#sharing-from-your-desktop" title="Link to this heading"></a></h2>
+<p>Nextcloud klient synchronizace pro počítač se včlení do správce souborů v systému – Finderu v macOS a Průzkumníka ve Windows. Uživatelé Linuxu nainstalují dodatečný balíček v závislosti na jimi používaném správci souborů. K dispozici jsou např. <code class="docutils literal notranslate"><span class="pre">nautilus-nextcloud</span></code> (Ubuntu/Debian), <code class="docutils literal notranslate"><span class="pre">dolphin-nextcloud</span></code> (Kubuntu), <code class="docutils literal notranslate"><span class="pre">nemo-nextcloud</span></code> a <code class="docutils literal notranslate"><span class="pre">caja-nextcloud</span></code>. Je možné vytvářet odkazy na sdílení a sdílet s interními uživateli v Nextcloud stejným způsobem, jako ve webovém rozhraní vámi využívané instance Nextcloud.</p>
+<p>Ve správci souborů klikněte na soubor a v kontextové nabídce jděte na <strong>Nextcloud</strong> a pak klikněte na <strong>Předvolby sdílení</strong> pro vyvolání dialogu Sdílení.</p>
+<figure class="align-default">
+<img alt="Sdílení z Průzkumníka Windows." src="../../_images/share_context_menu.png" />
+</figure>
+<p>Z tohoto dialogu je možné nasdílet soubor.</p>
+<figure class="align-default">
+<img alt="Dialog sdílení" src="../../_images/share_dialog.png" />
+</figure>
+</section>
+<section id="general-window">
+<h2>Obecné okno<a class="headerlink" href="#general-window" title="Link to this heading"></a></h2>
+<p>Okno Obecné obsahuje předvolby nastavení jako např. <strong>Spouštět při startu systému</strong>, <strong>Používat monochromatické ikony</strong>, a <strong>Zobrazovat upozornění ze serveru</strong>. Toto je, kde naleznete tlačítko <strong>Upravit ignorované soubory</strong> pro spuštění editoru seznamů ignorovaných souborů, a <strong>Zeptat se na potvrzení před stahování složek větších, než [velikost složky]</strong>.</p>
+<figure class="align-default">
+<img alt="Obecné okno obsahující předvolby nastavení." src="../../_images/settings_general.png" />
+</figure>
+</section>
+<section id="using-the-network-window">
+<h2>Použití okna Síť<a class="headerlink" href="#using-the-network-window" title="Link to this heading"></a></h2>
+<p id="index-0">Okno nastavení sítě umožňuje zadat nastavení pro síťovou proxy a také stanovit, jak velkou část z přenosové kapacity sítě využívat pro stahování a nahrávání.</p>
+<figure class="align-default">
+<img alt="../../_images/settings_network.png" src="../../_images/settings_network.png" />
+</figure>
+</section>
+<section id="using-the-ignored-files-editor">
+<span id="usingignoredfileseditor-label"></span><h2>Používání editoru seznamu souborů k ignorování<a class="headerlink" href="#using-the-ignored-files-editor" title="Link to this heading"></a></h2>
+<p id="index-1">Může být, že máte některé místní soubory či složky, které nechcete zálohovat a uchovávat na serveru. Pro identifikaci a vynechání těchto souborů nebo složek je možné použít <em>Editor ignorovaných souborů</em> (záložka Obecné).</p>
+<figure class="align-default">
+<img alt="../../_images/ignored_files_editor.png" src="../../_images/ignored_files_editor.png" />
+</figure>
+<p>Pro vaše pohodlí je editor předvyplněn výchozím seznamem vzorů typicky ignorovaného. Tyto vzory jsou obsažené v systémovém souboru (typicky <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code>), nacházejícím se ve složce aplikace Nextcloud klient. Tyto vzory nelze měnit přímo z editoru. Nicméně, pokud je to třeba, je možné najet ukazatelem na jakýkoli vzor v seznamu a zobrazí se popis umístění a název souboru, ze kterého pochází. Přejděte k němu a upravte přímo soubor <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Změna souboru s globálními definicemi pro vynechávání může vést k tomu, že klient nebude použitelný nebo jeho nezamýšlenému chování.</p>
+</div>
+<p>Každý řádek v editoru obsahuje řetězec vzoru ignorovaného. Při vytváření uživatelsky určených vzorů, krom možnosti používání běžných znaků pro definování vzoru ignorovaného, je možné použít zástupné znaky pro odpovídající hodnoty. Jako příklad je možné použít hvězdičku (<code class="docutils literal notranslate"><span class="pre">*</span></code>) pro identifikaci libovolného množství znaků nebo otazník (<code class="docutils literal notranslate"><span class="pre">?</span></code>) pro identifikaci jednotlivého znaku.</p>
+<p>Vzory, které končí na znak dopředné lomítko (<code class="docutils literal notranslate"><span class="pre">/</span></code>) jsou uplatňovány pouze na tu část kontrolovaného popisu umístění, která se týká složky.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Uživatelsky určené položky v tuto chvíli nejsou editorem ověřovány ohledně syntaktické správnosti, takže neuvidíte žádná varování ohledně nesprávné syntaxe. Pokud synchronizace nefunguje tak, jak očekáváte, zkontrolujte syntaxi.</p>
+</div>
+<p>Každý řetězec vzoru v seznamu je následován zaškrtávací kolonkou. Když zaškrtávací kolonka obsahuje zatržítko, pak kromě ignorování součásti souboru či složky, shodující se se vzorem, jakékoli shodující se soubory jsou také považovány za „pomíjivá metadata“ a klientem odebrána.</p>
+<p>Krom vynechávání souborů a složek, které používá vzory, definované v tomto seznamu:</p>
+<ul class="simple">
+<li><p>Nexcloud klient vždy vynechává soubory, jejichž názvy obsahují znaky, které není možné synchronizovat na ostatní souborové systémy.</p></li>
+<li><p>Ty soubory, které způsobí jednotlivé chyby třikrát v průběhu jedné synchronizace, jsou odebrány. Nicméně, klient poskytuje možnost pokusit se u problematických souborů o další pokus (opět s limitem třech neúspěchů).</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Instalace" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="macosvfs.html" class="btn btn-neutral float-right" title="Klient virtuálních souborů pro macOS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Here go the languages -->
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐
+      
+      
+      Czech
+      
+      <span class="fa fa-caret-down"></span>
+
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Jazyky</dt>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ar/"
+                 
+              >
+                
+                Arabic
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/br/"
+                 
+              >
+                
+                Breton
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ca/"
+                 
+              >
+                
+                Catalan
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/cs/"
+                 
+                 style="color: var(--dark-link-color);"
+                 
+              >
+                
+                Czech
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/da/"
+                 
+              >
+                
+                Danish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/de/"
+                 
+              >
+                
+                German
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el/"
+                 
+              >
+                
+                Greek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/en/"
+                 
+              >
+                
+                English
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/es/"
+                 
+              >
+                
+                Spanish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eu/"
+                 
+              >
+                
+                eu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fi_FI/"
+                 
+              >
+                
+                Finnish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fr/"
+                 
+              >
+                
+                French
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ga/"
+                 
+              >
+                
+                Irish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/gl/"
+                 
+              >
+                
+                Glacian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu_HU/"
+                 
+              >
+                
+                Hungarian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/id/"
+                 
+              >
+                
+                Indonesian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/it/"
+                 
+              >
+                
+                Italian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ja_JP/"
+                 
+              >
+                
+                Japanese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ko/"
+                 
+              >
+                
+                Korean
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/mn/"
+                 
+              >
+                
+                Mongolian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nb_NO/"
+                 
+              >
+                
+                Norwegian (NB)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nl/"
+                 
+              >
+                
+                Dutch
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nn/"
+                 
+              >
+                
+                Norwegian (NN)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pl/"
+                 
+              >
+                
+                Polish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_BR/"
+                 
+              >
+                
+                Portuguese (BR)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_PT/"
+                 
+              >
+                
+                Portuguese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ro/"
+                 
+              >
+                
+                Romanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ru/"
+                 
+              >
+                
+                Russian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/si/"
+                 
+              >
+                
+                Sinhala
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sk_SK/"
+                 
+              >
+                
+                Slovakian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sr/"
+                 
+              >
+                
+                Slovenian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sv/"
+                 
+              >
+                
+                Swedish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ta/"
+                 
+              >
+                
+                Tamil
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/tr/"
+                 
+              >
+                
+                Turkish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk/"
+                 
+              >
+                
+                Ukrainian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk_UA/"
+                 
+              >
+                
+                uk_UA
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uz/"
+                 
+              >
+                
+                Uzbek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/vi/"
+                 
+              >
+                
+                Vietnamese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_CN/"
+                 
+              >
+                
+                Chinese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_HK/"
+                 
+              >
+                
+                Chinese (HK)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_TW/"
+                 
+              >
+                
+                Chinese (TW)
+                
+              </a>
+            </dd>
+          
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Verze</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/30/user_manual"
+               
+            >
+              30
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/29/user_manual"
+               
+            >
+              29
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Stahování</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Na službě Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Domovská stránka projektu</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Sestavení</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

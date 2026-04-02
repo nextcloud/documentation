@@ -1,0 +1,936 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="uk-UA" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Розширені функції розмови &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=e691f3da"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=0958edf7"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Індекс" href="../genindex.html" />
+    <link rel="search" title="Пошук" href="../search.html" />
+    <link rel="next" title="Приєднуйтесь до дзвінка або чату як гість" href="join_a_call_or_chat_as_guest.html" />
+    <link rel="prev" title="Загальні поняття Nextcloud Talk" href="talk_basics.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Вступ до посібника користувача Nextcloud (latest)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Інтерфейс веб-версії Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Файли та синхронізація</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Програмне забезпечення для групової роботи</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Розмови</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="talk_basics.html">Загальні поняття Nextcloud Talk</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Розширені функції розмови</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#notifications-and-privacy">Notifications and privacy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#matterbridge">Маттербрідж</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lobby">Вестибюль</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#commands">Команди</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#talk-from-files">Розмова з файлів</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-tasks-from-chat-or-share-tasks-in-chat">Створюйте завдання з чату або діліться завданнями в чаті</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meetings-and-events">Meetings and events</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#schedule-from-calendar">Schedule from Calendar</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#breakout-rooms">Секційні кімнати</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configure-breakout-rooms">Налаштування секційних кімнат</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#manage-breakout-rooms">Керуйте секційними кімнатами</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#call-recording">Запис розмови</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#manage-a-recording">Керування записом</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#recording-consent">Запис згоди</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#federated-conversation">Федеративна розмова</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#send-and-accept-invites">Надсилайте та приймайте запрошення</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#chat-summary">Chat summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#call-live-transcription">Call live transcription</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="join_a_call_or_chat_as_guest.html">Приєднуйтесь до дзвінка або чату як гість</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Десктопні клієнти</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Налаштуйте ваші вподобання</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Універсальний доступ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Використання двофакторної аутентифікації</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Керуйте підключеними браузерами та пристроями</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Зовнішнє сховище</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Розмови</a></li>
+      <li class="breadcrumb-item active">Розширені функції розмови</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/talk/advanced_features.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="advanced-talk-features">
+<h1>Розширені функції розмови<a class="headerlink" href="#advanced-talk-features" title="Link to this heading"></a></h1>
+<p>Nextcloud Talk має ряд розширених функцій, які можуть бути корисними для користувачів.</p>
+<section id="notifications-and-privacy">
+<h2>Notifications and privacy<a class="headerlink" href="#notifications-and-privacy" title="Link to this heading"></a></h2>
+<p>By default, Nextcloud Talk will notify you about:</p>
+<ul class="simple">
+<li><p>New messages in private conversations;</p></li>
+<li><p>Replies to messages you sent;</p></li>
+<li><p>Messages mentioning you or group/team you are member of;</p></li>
+<li><p>Started calls in conversations you are part of.</p></li>
+</ul>
+<p>You can change this behavior in the conversation settings. Additionally, you can configure:</p>
+<ul class="simple">
+<li><p><strong>Important conversations</strong>: you will be always notificed about new messages, even if you are in «Do Not Disturb» mode;</p></li>
+<li><p><strong>Sensitive conversations</strong>: content of messages will not be shown in the conversation list and obscured from notifications.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/conversation-notifications.png"><img alt="../../_images/conversation-notifications.png" src="../../_images/conversation-notifications.png" style="width: 300px;" />
+</a>
+<p>To have more control over your privacy, you can also configure the visibility of your typing and read indicators in <code class="docutils literal notranslate"><span class="pre">Talk</span> <span class="pre">settings</span></code>:</p>
+<a class="reference internal image-reference" href="../../_images/privacy-settings.png"><img alt="../../_images/privacy-settings.png" src="../../_images/privacy-settings.png" style="width: 400px;" />
+</a>
+</section>
+<section id="matterbridge">
+<h2>Маттербрідж<a class="headerlink" href="#matterbridge" title="Link to this heading"></a></h2>
+<p>Інтеграція Matterbridge в Nextcloud Talk дозволяє створювати «мости» між розмовами в Talk і розмовами в інших чат-сервісах, таких як MS Teams, Discord, Matrix та інших. Список підтримуваних протоколів можна знайти на сторінці Matterbridge на github. &amp;lt;https://github.com/42wim/matterbridge#features&amp;gt;`_.</p>
+<p>Модератор може додати з’єднання з Matterbridge у налаштуваннях чату.</p>
+<a class="reference internal image-reference" href="../../_images/matterbridge-settings.png"><img alt="../../_images/matterbridge-settings.png" src="../../_images/matterbridge-settings.png" style="width: 700px;" />
+</a>
+<p>Кожен з мостів має свої власні потреби в плані конфігурації. Інформація про більшість з них доступна на вікі-сторінці Matterbridge, доступ до якої можна отримати за пунктом <code class="docutils literal notranslate"><span class="pre">додаткова</span> <span class="pre">інформація</span></code> у меню <code class="docutils literal notranslate"><span class="pre">...</span></code>. Ви також можете <a href="#id1"><span class="problematic" id="id2">``</span></a>доступитися до вікі безпосередньо. &amp;lt;https://github.com/42wim/matterbridge/wiki&amp;gt; <a href="#id3"><span class="problematic" id="id4">`</span></a>_</p>
+</section>
+<section id="lobby">
+<h2>Вестибюль<a class="headerlink" href="#lobby" title="Link to this heading"></a></h2>
+<p>Функція лобі дозволяє показувати гостям екран очікування до початку дзвінка. Це ідеально підходить, наприклад, для вебінарів із зовнішніми учасниками.</p>
+<a class="reference internal image-reference" href="../../_images/lobby-in-talk.png"><img alt="../../_images/lobby-in-talk.png" src="../../_images/lobby-in-talk.png" style="width: 600px;" />
+</a>
+<p>Ви можете дозволити учасникам приєднатися до дзвінка в певний час або коли ви закриєте лобі вручну.</p>
+</section>
+<section id="commands">
+<h2>Команди<a class="headerlink" href="#commands" title="Link to this heading"></a></h2>
+<p>Nextcloud дозволяє користувачам виконувати дії за допомогою команд. Команда зазвичай має такий вигляд:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">/wiki</span> <span class="pre">літаків</span></code>.</p>
+</div></blockquote>
+<p>Адміністратори можуть налаштовувати, вмикати та вимикати команди. Користувачі можуть скористатися командою <code class="docutils literal notranslate"><span class="pre">help</span></code>, щоб дізнатися, які команди доступні.</p>
+<blockquote>
+<div><p>Допоможіть.</p>
+</div></blockquote>
+<a class="reference internal image-reference" href="../../_images/command-help.png"><img alt="../../_images/command-help.png" src="../../_images/command-help.png" style="width: 600px;" />
+</a>
+<p>Додаткову інформацію можна знайти в <a href="#id1"><span class="problematic" id="id2">`</span></a>адміністративній документації до Talk. &amp;lt;https://nextcloud-talk.readthedocs.io/en/stable/commands/&amp;gt; <a href="#id3"><span class="problematic" id="id4">`</span></a>_</p>
+</section>
+<section id="talk-from-files">
+<h2>Розмова з файлів<a class="headerlink" href="#talk-from-files" title="Link to this heading"></a></h2>
+<p>У програмі «Файли» ви можете спілкуватися в чаті про файли на бічній панелі і навіть приймати дзвінки під час їх редагування. Спочатку вам потрібно приєднатися до чату.</p>
+<a class="reference internal image-reference" href="../../_images/join-chat.png"><img alt="../../_images/join-chat.png" src="../../_images/join-chat.png" style="width: 500px;" />
+</a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/sidebar-chat.png"><img alt="../../_images/sidebar-chat.png" src="../../_images/sidebar-chat.png" style="width: 500px;" />
+</a>
+<p>Після цього ви можете спілкуватися в чаті або телефонувати з іншими учасниками, навіть коли ви починаєте редагувати файл.</p>
+<a class="reference internal image-reference" href="../../_images/text-and-talk.png"><img alt="../../_images/text-and-talk.png" src="../../_images/text-and-talk.png" style="width: 700px;" />
+</a>
+<p>У розділі Розмова буде створено розмову для цього файлу. Ви можете приєднатися до бесіди звідти або повернутися до файлу за допомогою меню <code class="docutils literal notranslate"><span class="pre">...</span></code> у верхньому правому куті.</p>
+<a class="reference internal image-reference" href="../../_images/file-room.png"><img alt="../../_images/file-room.png" src="../../_images/file-room.png" style="width: 400px;" />
+</a>
+</section>
+<section id="create-tasks-from-chat-or-share-tasks-in-chat">
+<h2>Створюйте завдання з чату або діліться завданнями в чаті<a class="headerlink" href="#create-tasks-from-chat-or-share-tasks-in-chat" title="Link to this heading"></a></h2>
+<p>Якщо Deck встановлено, ви можете скористатися меню <code class="docutils literal notranslate"><span class="pre">...</span></code> повідомлення чату і перетворити його на завдання Deck.</p>
+<a class="reference internal image-reference" href="../../_images/deck-talk-create-card-menu.png"><img alt="../../_images/deck-talk-create-card-menu.png" src="../../_images/deck-talk-create-card-menu.png" style="width: 500px;" />
+</a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/deck-talk-create-card-dialog.png"><img alt="../../_images/deck-talk-create-card-dialog.png" src="../../_images/deck-talk-create-card-dialog.png" style="width: 400px;" />
+</a>
+<p>У Deck ви можете ділитися завданнями в чаті.</p>
+<a class="reference internal image-reference" href="../../_images/deck-talk-share-card-to-chat-menu.png"><img alt="../../_images/deck-talk-share-card-to-chat-menu.png" src="../../_images/deck-talk-share-card-to-chat-menu.png" style="width: 400px;" />
+</a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/deck-talk-share-card-to-chat-in-talk.png"><img alt="../../_images/deck-talk-share-card-to-chat-in-talk.png" src="../../_images/deck-talk-share-card-to-chat-in-talk.png" style="width: 600px;" />
+</a>
+</section>
+<section id="meetings-and-events">
+<h2>Meetings and events<a class="headerlink" href="#meetings-and-events" title="Link to this heading"></a></h2>
+<p>If calendar events have a Talk conversation set as event location, you will see an information about upcoming events inside of this conversation.
+That way you can stay informed about scheduled meetings or activities directly within your chat.
+If Calendar app is enabled, you can click on an event to view details.</p>
+<a class="reference internal image-reference" href="../../_images/events-upcoming.png"><img alt="../../_images/events-upcoming.png" src="../../_images/events-upcoming.png" style="width: 400px;" />
+</a>
+<p>It is possible to schedule a meeting directly from a conversation. In the dialog, you can set meeting details such as title, date, time and description.
+You can also choose to invite all participants including email guests, or select specific ones.</p>
+<a class="reference internal image-reference" href="../../_images/talk-schedule-meeting.png"><img alt="../../_images/talk-schedule-meeting.png" src="../../_images/talk-schedule-meeting.png" style="width: 400px;" />
+</a>
+<section id="schedule-from-calendar">
+<h3>Schedule from Calendar<a class="headerlink" href="#schedule-from-calendar" title="Link to this heading"></a></h3>
+<p>When creating a new event in Calendar, you can set a Talk conversation as event location. This will create a new conversation if one does not exist yet.</p>
+<a class="reference internal image-reference" href="../../_images/calendar-create-event.png"><img alt="../../_images/calendar-create-event.png" src="../../_images/calendar-create-event.png" style="width: 600px;" />
+</a>
+<p>When the event is created, you will see a link to the conversation in the event details. Conversation will also show up in the list of conversations (discoverable by <code class="docutils literal notranslate"><span class="pre">Events</span></code> filter).</p>
+<a class="reference internal image-reference" href="../../_images/event-conversation-list.png"><img alt="../../_images/event-conversation-list.png" src="../../_images/event-conversation-list.png" style="width: 300px;" />
+</a>
+<p>Like instant meetings, event conversations will be automatically deleted after configured period of inactivity (by default 28 days).</p>
+</section>
+</section>
+<section id="breakout-rooms">
+<h2>Секційні кімнати<a class="headerlink" href="#breakout-rooms" title="Link to this heading"></a></h2>
+<p>Окремі кімнати дозволяють розділити конференцію Nextcloud Talk на менші групи для більш цілеспрямованого обговорення. Модератор виклику може створити кілька секційних кімнат і призначити учасників до кожної з них.</p>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Наразі кімнати для переговорів, до яких можуть приєднатися гості (публічні розмови), недоступні.</p>
+</div>
+<section id="configure-breakout-rooms">
+<h3>Налаштування секційних кімнат<a class="headerlink" href="#configure-breakout-rooms" title="Link to this heading"></a></h3>
+<p>Щоб створити окремі кімнати, вам потрібно бути модератором у груповій розмові. Натисніть на меню у верхній панелі і виберіть «Налаштування секційних кімнат».</p>
+<a class="reference internal image-reference" href="../../_images/talk-breakout-rooms-setup.png"><img alt="../../_images/talk-breakout-rooms-setup.png" src="../../_images/talk-breakout-rooms-setup.png" style="width: 400px;" />
+</a>
+<p>Відкриється діалогове вікно, де ви можете вказати кількість кімнат, які ви хочете створити, і метод призначення учасників. Тут вам буде запропоновано 3 варіанти:</p>
+<ul class="simple">
+<li><p><strong>Автоматично призначити учасників</strong>: Talk автоматично розподіляє учасників по кімнатах.</p></li>
+<li><p><strong>Призначити учасників вручну</strong>: Ви перейдете до редактора учасників, де зможете призначити учасників до кімнат.</p></li>
+<li><p><strong>Дозвольте учасникам обирати</strong>: Учасники зможуть самостійно приєднатися до секційних засідань.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/talk-breakout-rooms-setup-dialog.png"><img alt="../../_images/talk-breakout-rooms-setup-dialog.png" src="../../_images/talk-breakout-rooms-setup-dialog.png" style="width: 500px;" />
+</a>
+</section>
+<section id="manage-breakout-rooms">
+<h3>Керуйте секційними кімнатами<a class="headerlink" href="#manage-breakout-rooms" title="Link to this heading"></a></h3>
+<p>Після створення секційних кімнат ви зможете побачити їх на бічній панелі.</p>
+<a class="reference internal image-reference" href="../../_images/talk-breakout-rooms-sidebar.png"><img alt="../../_images/talk-breakout-rooms-sidebar.png" src="../../_images/talk-breakout-rooms-sidebar.png" style="width: 500px;" />
+</a>
+<p>Із заголовка бічної панелі</p>
+<ul class="simple">
+<li><p><strong>Запустити і зупинити окремі кімнати</strong>: це перемістить всіх користувачів у батьківській бесіді до відповідних окремих кімнат.</p></li>
+<li><p><strong>Передати повідомлення на всі номери</strong>: повідомлення буде надіслано на всі номери одночасно.</p></li>
+<li><p><strong>Внести зміни до призначених учасників</strong>: це відкриє редактор учасників, де ви можете змінити, які учасники призначені до яких секційних кімнат. З цього діалогового вікна також можна видалити секції.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/talk-breakout-rooms-sidebar-header.png"><img alt="../../_images/talk-breakout-rooms-sidebar-header.png" src="../../_images/talk-breakout-rooms-sidebar-header.png" style="width: 400px;" />
+</a>
+<p>За допомогою елемента «Секційна кімната» на бічній панелі ви також можете приєднатися до певної секції або надіслати повідомлення до певної кімнати.</p>
+<a class="reference internal image-reference" href="../../_images/talk-breakout-rooms-sidebar-item.png"><img alt="../../_images/talk-breakout-rooms-sidebar-item.png" src="../../_images/talk-breakout-rooms-sidebar-item.png" style="width: 400px;" />
+</a>
+</section>
+</section>
+<section id="call-recording">
+<h2>Запис розмови<a class="headerlink" href="#call-recording" title="Link to this heading"></a></h2>
+<p>Функція запису надає користувачам можливість:</p>
+<ul class="simple">
+<li><p>Вмикайте та вимикайте запис під час розмови.</p></li>
+<li><p>Записуйте відео- та аудіопотік доповідача, а також спільний доступ до екрану.</p></li>
+<li><p>Отримуйте доступ, діліться та завантажуйте записані файли для подальшого використання або розповсюдження.</p></li>
+</ul>
+<p>Щоб увімкнути цю функцію, потрібно, щоб сервер запису був налаштований адміністрацією системи.</p>
+<section id="manage-a-recording">
+<h3>Керування записом<a class="headerlink" href="#manage-a-recording" title="Link to this heading"></a></h3>
+<p>Модератор розмови може почати запис разом з початком дзвінка або в будь-який момент під час розмови:</p>
+<ul class="simple">
+<li><p><strong>Перед дзвінком</strong>: встановіть галочку «Почати запис одразу з дзвінком» в «Налаштуваннях медіа», а потім натисніть «Почати дзвінок».</p></li>
+<li><p><strong>Під час розмови</strong>: натисніть на меню у верхній панелі, потім натисніть «Почати запис».</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/start-recording-before-call.png"><img alt="../../_images/start-recording-before-call.png" src="../../_images/start-recording-before-call.png" style="width: 400px;" />
+</a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/start-recording-in-call.png"><img alt="../../_images/start-recording-in-call.png" src="../../_images/start-recording-in-call.png" style="width: 300px;" />
+</a>
+<p>Запис почнеться незабаром, і ви побачите червоний індикатор поруч із часом дзвінка. Ви можете зупинити запис у будь-який момент під час розмови, натиснувши на цей індикатор і вибравши «Зупинити запис», або виконавши ту саму дію в меню у верхній панелі. Якщо ви не зупините запис вручну, він завершиться автоматично, коли закінчиться дзвінок.</p>
+<a class="reference internal image-reference" href="../../_images/stop-recording.png"><img alt="../../_images/stop-recording.png" src="../../_images/stop-recording.png" style="width: 500px;" />
+</a>
+<p>Після зупинки запису серверу потрібен деякий час, щоб підготувати і зберегти записаний файл. Модератор, який розпочав запис, отримує сповіщення, коли файл буде завантажено. Після цього він може поділитися ним у чаті.</p>
+<a class="reference internal image-reference" href="../../_images/share-recording-notification.png"><img alt="../../_images/share-recording-notification.png" src="../../_images/share-recording-notification.png" style="width: 300px;" />
+</a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/shared-recordings.png"><img alt="../../_images/shared-recordings.png" src="../../_images/shared-recordings.png" style="width: 400px;" />
+</a>
+</section>
+<section id="recording-consent">
+<h3>Запис згоди<a class="headerlink" href="#recording-consent" title="Link to this heading"></a></h3>
+<p>З міркувань дотримання різних прав на приватність можна попросити учасників дати згоду на запис перед тим, як приєднатися до дзвінка. Адміністрація системи може гнучко використовувати цю функцію кількома способами:</p>
+<ul class="simple">
+<li><p>Повністю вимкніть згоду.</p></li>
+<li><p>Увімкнути обов’язкову згоду по всій системі, вимагаючи згоди на всі розмови.</p></li>
+<li><p>Дозволити модераторам налаштовувати цю опцію на рівні розмови. У таких випадках модератори можуть отримати доступ до налаштувань бесіди, щоб налаштувати цю опцію відповідним чином:</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/enable-recording-consent.png"><img alt="../../_images/enable-recording-consent.png" src="../../_images/enable-recording-consent.png" style="width: 500px;" />
+</a>
+<p>Якщо дозвіл на запис увімкнено, кожен учасник, включно з модераторами, перед тим, як приєднатися до дзвінка, побачить виділений розділ у «Налаштуваннях медіа». Цей розділ інформує учасників про те, що дзвінок може бути записаний. Щоб дати явну згоду на запис, учасники повинні встановити відповідний прапорець. Якщо вони не дадуть згоди, їм не буде дозволено приєднатися до дзвінка.</p>
+<a class="reference internal image-reference" href="../../_images/give-recording-consent-checked.png"><img alt="../../_images/give-recording-consent-checked.png" src="../../_images/give-recording-consent-checked.png" style="width: 500px;" />
+</a>
+</section>
+</section>
+<section id="federated-conversation">
+<h2>Федеративна розмова<a class="headerlink" href="#federated-conversation" title="Link to this heading"></a></h2>
+<p>Завдяки функції федерації користувачі можуть створювати розмови між різними об’єднаними екземплярами Talk і використовувати функції Talk так, ніби вони знаходяться на одному сервері.</p>
+<p>Функція потребує налаштування адміністрацією системи.</p>
+<section id="send-and-accept-invites">
+<h3>Надсилайте та приймайте запрошення<a class="headerlink" href="#send-and-accept-invites" title="Link to this heading"></a></h3>
+<p>Модератор розмови може надіслати запрошення учаснику на іншому сервері:</p>
+<a class="reference internal image-reference" href="../../_images/federation-invite-send.png"><img alt="../../_images/federation-invite-send.png" src="../../_images/federation-invite-send.png" style="width: 400px;" />
+</a>
+<p>Отримавши сповіщення, користувач побачить лічильник очікуваних запрошень над списком розмов.</p>
+<a class="reference internal image-reference" href="../../_images/federation-invite-pending.png"><img alt="../../_images/federation-invite-pending.png" src="../../_images/federation-invite-pending.png" style="width: 400px;" />
+</a>
+<p>Після натискання на нього буде надано більше інформації про запрошуючу сторону, і користувач може прийняти або відхилити запрошення.</p>
+<a class="reference internal image-reference" href="../../_images/federation-invite-dialog.png"><img alt="../../_images/federation-invite-dialog.png" src="../../_images/federation-invite-dialog.png" style="width: 500px;" />
+</a>
+<p>Прийнявши запрошення, розмова з’явиться у списку як будь-яка інша.</p>
+<a class="reference internal image-reference" href="../../_images/federation-conversations-list.png"><img alt="../../_images/federation-conversations-list.png" src="../../_images/federation-conversations-list.png" style="width: 400px;" />
+</a>
+<p>You can use it further to chat with participants from other federated servers, join calls and use other available Talk features.</p>
+</section>
+</section>
+<section id="chat-summary">
+<h2>Chat summary<a class="headerlink" href="#chat-summary" title="Link to this heading"></a></h2>
+<p>When AI assistant is enabled, a summary can be generated if there are more than 100 unread messages.
+You can generate it by pressing the button that is visible in chat above the first unread messages.</p>
+<a class="reference internal image-reference" href="../../_images/chat-summary-button.png"><img alt="../../_images/chat-summary-button.png" src="../../_images/chat-summary-button.png" style="width: 500px;" />
+</a>
+<a class="reference internal image-reference" href="../../_images/chat-summary-text.png"><img alt="../../_images/chat-summary-text.png" src="../../_images/chat-summary-text.png" style="width: 500px;" />
+</a>
+</section>
+<section id="call-live-transcription">
+<h2>Call live transcription<a class="headerlink" href="#call-live-transcription" title="Link to this heading"></a></h2>
+<p>Call live transcription allows to transcribe the speech in real-time during a call. It is set up by the system administration (High-performance backend and <a class="reference external" href="https://apps.nextcloud.com/apps/live_transcription">Live Transcription App</a> are required).
+Moderators need to set the language of the transcription in the conversation settings. All participants then can enable or disable the transcription for themselves in the call bottom bar.
+When enabled, the transcription will appear in the bottom and will be updated in real-time.</p>
+<a class="reference internal image-reference" href="../../_images/call-transcription.png"><img alt="../../_images/call-transcription.png" src="../../_images/call-transcription.png" style="width: 500px;" />
+</a>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="talk_basics.html" class="btn btn-neutral float-left" title="Загальні поняття Nextcloud Talk" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="join_a_call_or_chat_as_guest.html" class="btn btn-neutral float-right" title="Приєднуйтесь до дзвінка або чату як гість" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Here go the languages -->
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐
+      
+      
+      uk-UA
+      
+      <span class="fa fa-caret-down"></span>
+
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Мови</dt>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ar/"
+                 
+              >
+                
+                Arabic
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/br/"
+                 
+              >
+                
+                Breton
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ca/"
+                 
+              >
+                
+                Catalan
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/cs/"
+                 
+              >
+                
+                Czech
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/da/"
+                 
+              >
+                
+                Danish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/de/"
+                 
+              >
+                
+                German
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el/"
+                 
+              >
+                
+                Greek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/en/"
+                 
+              >
+                
+                English
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/es/"
+                 
+              >
+                
+                Spanish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eu/"
+                 
+              >
+                
+                eu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fi_FI/"
+                 
+              >
+                
+                Finnish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fr/"
+                 
+              >
+                
+                French
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ga/"
+                 
+              >
+                
+                Irish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/gl/"
+                 
+              >
+                
+                Glacian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu_HU/"
+                 
+              >
+                
+                Hungarian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/id/"
+                 
+              >
+                
+                Indonesian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/it/"
+                 
+              >
+                
+                Italian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ja_JP/"
+                 
+              >
+                
+                Japanese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ko/"
+                 
+              >
+                
+                Korean
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/mn/"
+                 
+              >
+                
+                Mongolian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nb_NO/"
+                 
+              >
+                
+                Norwegian (NB)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nl/"
+                 
+              >
+                
+                Dutch
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nn/"
+                 
+              >
+                
+                Norwegian (NN)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pl/"
+                 
+              >
+                
+                Polish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_BR/"
+                 
+              >
+                
+                Portuguese (BR)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_PT/"
+                 
+              >
+                
+                Portuguese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ro/"
+                 
+              >
+                
+                Romanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ru/"
+                 
+              >
+                
+                Russian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/si/"
+                 
+              >
+                
+                Sinhala
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sk_SK/"
+                 
+              >
+                
+                Slovakian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sr/"
+                 
+              >
+                
+                Slovenian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sv/"
+                 
+              >
+                
+                Swedish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ta/"
+                 
+              >
+                
+                Tamil
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/tr/"
+                 
+              >
+                
+                Turkish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk/"
+                 
+              >
+                
+                Ukrainian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk_UA/"
+                 
+              >
+                
+                uk_UA
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uz/"
+                 
+              >
+                
+                Uzbek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/vi/"
+                 
+              >
+                
+                Vietnamese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_CN/"
+                 
+              >
+                
+                Chinese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_HK/"
+                 
+              >
+                
+                Chinese (HK)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_TW/"
+                 
+              >
+                
+                Chinese (TW)
+                
+              </a>
+            </dd>
+          
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Версії</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/30/user_manual"
+               
+            >
+              30
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/29/user_manual"
+               
+            >
+              29
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Завантаження</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Прочитайте документацію</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Головна Проєкту</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Побудови</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

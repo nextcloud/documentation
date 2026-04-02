@@ -1,0 +1,1221 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-HK" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>使用日曆應用程式 &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=05269ba6"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=11dc2623"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="使用郵件應用程式" href="mail.html" />
+    <link rel="prev" title="Using the Contacts app" href="contacts.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest 用戶手冊介紹</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud Web 介面</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">檔案與同步</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Using the Contacts app</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">使用日曆應用程式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#managing-your-calendars">管理您的日曆</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-calendar">創建新日曆</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-a-calendar">導入日曆</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-an-event-add-ics-event">Import an Event/Add .ics Event</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-export-or-delete-a-calendar">編輯、導出或刪除日曆</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-transparency">日曆透明度</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing-calendars">共享日曆</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#publishing-a-calendar">發布日曆</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-widget">日曆小部件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subscribe-to-a-calendar">訂閱日曆</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subscribe-to-a-holiday-calendar">訂閱假日日曆</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-events">管理事件</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-event">創建新事件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-talk-conversation">添加 Talk 對話</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-duplicate-or-delete-an-event">編輯、複製或刪除事件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#invite-attendees-to-an-event">邀請參加者參加事件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checking-attendees-busy-times">檢查與會者的忙碌時間</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#assign-rooms-and-resources-to-an-event">為事件分配房間和資源</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#room-availability">房間可用性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-attachments-to-events">為事件添加附件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-up-reminders">設置提醒</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-recurring-options">添加重複選項</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trash-bin">垃圾桶</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automated-user-status">自動用戶狀態</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#responding-to-invitations">回應邀請</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#availability-working-hours">可用性（工作時間）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#birthday-calendar">生日日曆</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#appointments">預約</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-an-appointment-configuration">創建預約配置</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#booking-an-appointment">預訂預約</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#working-with-the-booked-appointment">處理已預訂的預約</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-talk-room-for-booked-appointments">為預訂的預約創建會議室</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#proposals">Proposals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#managing-proposals">Managing proposals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-proposal">Creating a proposal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#editing-a-proposal">Editing a proposal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#viewing-a-proposal-progress">Viewing a proposal progress</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notifications-for-a-proposed-meeting">Notifications for a proposed meeting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#responding-to-a-proposed-meeting">Responding to a proposed meeting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mail.html">使用郵件應用程式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">設置離開辦公室的消息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">與 Android 同步</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">與 iOS 同步</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">與 macOS 同步</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">與 Thunderbird 同步</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">與 KDE Kontact 同步</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">與 GNOME 桌面同步</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">與 Windows 10 同步</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">桌面客戶端</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">設置您的偏好</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">普遍存取</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">使用雙重身份驗證</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">管理已連接的瀏覽器和裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">外置儲存</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Groupware</a></li>
+      <li class="breadcrumb-item active">使用日曆應用程式</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/calendar.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-calendar-app">
+<span id="calendar-app"></span><h1>使用日曆應用程式<a class="headerlink" href="#using-the-calendar-app" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>日曆應用程式默認情況下與 Nextcloud Hub 一起安裝，但可以停用。請向您的管理員詢問。</p>
+</div>
+<p>Nextcloud 日曆應用程式的運作類似於其他可以與您的 Nextcloud 日曆和事件同步的日曆應用程式。</p>
+<p>當您首次存取日曆應用程式時，將為您創建一個預設的第一個日曆。</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_application.png" src="../../_images/calendar_application.png" />
+</figure>
+<section id="managing-your-calendars">
+<h2>管理您的日曆<a class="headerlink" href="#managing-your-calendars" title="Link to this heading"></a></h2>
+<section id="create-a-new-calendar">
+<h3>創建新日曆<a class="headerlink" href="#create-a-new-calendar" title="Link to this heading"></a></h3>
+<p>如果您打算設置一個新日曆，而不從之前的日曆中轉移任何舊數據，則應該創建一個新日曆。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_create_1.png"><img alt="../../_images/calendar_create_1.png" src="../../_images/calendar_create_1.png" style="width: 604.0px; height: 480.8px;" />
+</a>
+</figure>
+<ol class="arabic simple">
+<li><p>在左側邊欄中點擊 <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">新日曆</span></code>。</p></li>
+<li><p>為您的新日曆輸入名稱，例如 &quot;工作&quot;、&quot;家&quot; 或 &quot;市場規劃&quot;。</p></li>
+<li><p>點擊勾選後，您的新日曆將被創建，可以在您的設備之間同步，並填充新事件，與朋友和同事共享。</p></li>
+</ol>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_create_2.png"><img alt="../../_images/calendar_create_2.png" src="../../_images/calendar_create_2.png" style="width: 603.2px; height: 478.40000000000003px;" />
+</a>
+</figure>
+</section>
+<section id="import-a-calendar">
+<h3>導入日曆<a class="headerlink" href="#import-a-calendar" title="Link to this heading"></a></h3>
+<p>如果您想將日曆及其相應的事件轉移到您的 Nextcloud 實例，導入是最佳方式。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_settings_sidebar.png"><img alt="../../_images/calendar_settings_sidebar.png" src="../../_images/calendar_settings_sidebar.png" style="width: 604.0px; height: 446.40000000000003px;" />
+</a>
+</figure>
+<ol class="arabic simple">
+<li><p>Click on the settings-icon labeled with <code class="docutils literal notranslate"><span class="pre">Calendar</span> <span class="pre">settings</span></code> at the bottom-left.</p></li>
+<li><p>After clicking on <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">Calendar</span></code> you can select one or more calendar files
+from your local device to upload.</p></li>
+<li><p>Select a <code class="docutils literal notranslate"><span class="pre">Calendar</span> <span class="pre">to</span> <span class="pre">import</span> <span class="pre">into</span></code>.</p></li>
+<li><p>The upload can take some time and depends on how big the calendar you import
+is. A blue progress bar will appear below &quot;Calendar Settings&quot;.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Nextcloud 日曆應用程式僅支持符合 iCalendar 的 <code class="docutils literal notranslate"><span class="pre">.ics</span></code> 檔案，定義在 RFC 5545 中。</p>
+</div>
+</section>
+<section id="import-an-event-add-ics-event">
+<h3>Import an Event/Add .ics Event<a class="headerlink" href="#import-an-event-add-ics-event" title="Link to this heading"></a></h3>
+<p>In many places, you can download event details as an .ics file, or via a button saying &quot;ical&quot;, &quot;Apple Calendar&quot; or &quot;Outlook&quot;.</p>
+<ol class="arabic simple">
+<li><p>Click on the settings-icon labeled with <code class="docutils literal notranslate"><span class="pre">Calendar</span> <span class="pre">settings</span></code> at the bottom-left.</p></li>
+<li><p>After clicking on <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">calendar</span></code> you can select one or more calendar files
+from your local device to upload.</p></li>
+<li><p>Select a <code class="docutils literal notranslate"><span class="pre">Calendar</span> <span class="pre">to</span> <span class="pre">import</span> <span class="pre">into</span></code>.</p></li>
+<li><p>The upload can take some time and depends on how big the calendar/event you import
+is. A blue progress bar will appear below &quot;Calendar Settings&quot;.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Nextcloud 日曆應用程式僅支持符合 iCalendar 的 <code class="docutils literal notranslate"><span class="pre">.ics</span></code> 檔案，定義在 RFC 5545 中。</p>
+</div>
+</section>
+<section id="edit-export-or-delete-a-calendar">
+<h3>編輯、導出或刪除日曆<a class="headerlink" href="#edit-export-or-delete-a-calendar" title="Link to this heading"></a></h3>
+<p>有時，您可能想要更改先前導入或創建的日曆的顏色或整個名稱。您也可能想將其導出到本地硬碟或永久刪除。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>請記住，刪除日曆是不可逆的操作。刪除後，無法恢復日曆，除非您有本地備份。</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/calendar_dropdown.png" src="../../_images/calendar_dropdown.png" />
+</figure>
+<p>點擊相應日曆的「筆」圖標。您將看到一個新彈窗，可以更改日曆名稱和顏色，以及刪除或導出日曆的按鈕。</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_settings.png" src="../../_images/calendar_settings.png" />
+</figure>
+</section>
+<section id="calendar-transparency">
+<h3>日曆透明度<a class="headerlink" href="#calendar-transparency" title="Link to this heading"></a></h3>
+<p>您可以切換「從不顯示我為忙碌（將日曆設置為透明）」的選框，以影響此日曆的事件是否被考慮在空閒/忙碌計算中。如果勾選，則不會考慮此日曆中的任何事件，您的日程將始終顯示為空閒，無論事件的設置如何。</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_transparency.png" src="../../_images/calendar_transparency.png" />
+</figure>
+</section>
+<section id="sharing-calendars">
+<h3>共享日曆<a class="headerlink" href="#sharing-calendars" title="Link to this heading"></a></h3>
+<p>You may share your calendar with local users, groups or read-only with remote users on federated
+servers.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_sharing_1.png" src="../../_images/calendar_sharing_1.png" />
+</figure>
+<p>日曆可以以寫入訪問或只讀的方式共享。在以寫入訪問共享日曆時，與該日曆共享的用戶將能夠在日曆中創建新事件，以及編輯和刪除現有事件。</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_sharing_2.png" src="../../_images/calendar_sharing_2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>目前無法接受或拒絕日曆共享。如果您想停止擁有某人與您共享的日曆，可以點擊日曆列表中該日曆旁的三點菜單，然後點擊「取消分享」。要恢復共享，可以再次共享該日曆，無論是對整個群組重新共享以重置所有取消共享，還是對單個用戶共享。</p>
+</div>
+</section>
+<section id="publishing-a-calendar">
+<h3>發布日曆<a class="headerlink" href="#publishing-a-calendar" title="Link to this heading"></a></h3>
+<p>日曆可以通過公共連結發布，以便外部用戶可以查看（只讀）。您可以通過打開日曆的共享選項單並點擊「 + 」來創建公共連結，然後在「共享連結」旁邊。創建後，您可以將公共連結複製到剪貼板或通過電子郵件發送。</p>
+<p>還有一個「嵌入代碼」，提供 HTML iframe 將您的日曆嵌入公共頁面。</p>
+<p>多個日曆可以通過將其唯一權杖添加到嵌入連結的末尾來一起共享。每個日曆的公共連結末尾可以找到各自的權杖。完整地址將如下所示 <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/index.php/apps/calendar/embed/&lt;token1&gt;-&lt;token2&gt;-&lt;token3&gt;</span></code></p>
+<p>要更改嵌入日曆的默認視圖或日期，您需要提供一個類似於 <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/index.php/apps/calendar/embed/&lt;token&gt;/&lt;view&gt;/&lt;date&gt;</span></code> 的 URL。在此 URL 中，您需要替換以下變量：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;token&gt;</span></code> 為日曆的權杖，</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;view&gt;</span></code> 為 <code class="docutils literal notranslate"><span class="pre">dayGridMonth</span></code>、<code class="docutils literal notranslate"><span class="pre">timeGridWeek</span></code>、<code class="docutils literal notranslate"><span class="pre">timeGridDay</span></code>、<code class="docutils literal notranslate"><span class="pre">listMonth</span></code>、<code class="docutils literal notranslate"><span class="pre">listWeek</span></code>、<code class="docutils literal notranslate"><span class="pre">listDay</span></code> 之一。默認視圖為 <code class="docutils literal notranslate"><span class="pre">dayGridMonth</span></code>，通常使用的列表為 <code class="docutils literal notranslate"><span class="pre">listMonth</span></code>，</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;date&gt;</span></code> 為 <code class="docutils literal notranslate"><span class="pre">now</span></code> 或任何日期，格式為 <code class="docutils literal notranslate"><span class="pre">&lt;year&gt;-&lt;month&gt;-&lt;day&gt;``（例如</span> <span class="pre">``2019-12-28</span></code>）。</p></li>
+</ul>
+<p>在公共頁面上，用戶能夠獲取日曆的訂閱連結並直接導出整個日曆。</p>
+</section>
+<section id="calendar-widget">
+<h3>日曆小部件<a class="headerlink" href="#calendar-widget" title="Link to this heading"></a></h3>
+<p>您可以將日曆嵌入到支持的應用程序中，例如 <code class="docutils literal notranslate"><span class="pre">Talk</span></code>, <code class="docutils literal notranslate"><span class="pre">Notes</span></code> 等，方法是共享公共鏈接，以使嵌入可供所有用戶查看（只讀），或使用內部鏈接使其私有。</p>
+</section>
+<section id="subscribe-to-a-calendar">
+<h3>訂閱日曆<a class="headerlink" href="#subscribe-to-a-calendar" title="Link to this heading"></a></h3>
+<p>您可以直接在 Nextcloud 中訂閱 iCal 日曆。通過支持這一互操作標準（RFC 5545），我們使 Nextcloud 日曆與 Google 日曆、Apple iCloud 及其他許多日曆伺服器兼容，您可以與之交換日曆，包括從其他 Nextcloud 實例上發布的日曆的訂閱連結，如上所述。</p>
+<ol class="arabic simple">
+<li><p>在左側邊欄中點擊 <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">新日曆</span></code></p></li>
+<li><p>點擊 <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">從連結訂閱（只讀）</span></code></p></li>
+<li><p>輸入或粘貼您想訂閱的共享日曆的連結。</p></li>
+</ol>
+<p>完成。您的日曆訂閱將定期更新。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>訂閱默認每週刷新一次。您的管理員可能已更改此設置。</p>
+</div>
+</section>
+<section id="subscribe-to-a-holiday-calendar">
+<h3>訂閱假日日曆<a class="headerlink" href="#subscribe-to-a-holiday-calendar" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.4.</span></p>
+</div>
+<p>您可以訂閱 <a class="reference external" href="https://www.thunderbird.net/calendar/holidays/">Thunderbird</a> 提供的只讀假日日曆。</p>
+<ol class="arabic simple">
+<li><p>在左側邊欄中點擊 <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">新日曆</span></code></p></li>
+<li><p>點擊 <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">添加假日日曆</span></code></p></li>
+<li><p>找到您的國家或地區，然後點擊 <code class="docutils literal notranslate"><span class="pre">訂閱</span></code></p></li>
+</ol>
+</section>
+</section>
+<section id="managing-events">
+<h2>管理事件<a class="headerlink" href="#managing-events" title="Link to this heading"></a></h2>
+<section id="create-a-new-event">
+<h3>創建新事件<a class="headerlink" href="#create-a-new-event" title="Link to this heading"></a></h3>
+<p>可以通過在事件安排的區域點擊來創建事件。在日視圖和週視圖中，您只需在事件發生的區域點擊、拖動並釋放光標。</p>
+<p>點擊地球按鈕將顯示時區選擇器。您可以為事件的開始和結束選擇不同的時區。這在旅行時非常有用。</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_new-event_week.png" src="../../_images/calendar_new-event_week.png" />
+</figure>
+<p>月視圖只需在目標日期的區域單擊一次。</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_new-event_month.png" src="../../_images/calendar_new-event_month.png" />
+</figure>
+<p>之後，您可以輸入事件的名稱（例如 <strong>與 Linus 的會議</strong>），選擇要保存事件的日曆（例如 <strong>個人</strong>、<strong>社區活動</strong>），檢查並具體化時間範圍或將事件設置為全天事件。您還可以選擇指定位置和描述。</p>
+<p>If you want to edit advanced details such as the <strong>Attendees</strong> or <strong>Reminders</strong>, or if you
+want to set the event as a repeating event, click on the <code class="docutils literal notranslate"><span class="pre">More</span></code> button to open the advanced editor.</p>
+</section>
+<section id="add-talk-conversation">
+<h3>添加 Talk 對話<a class="headerlink" href="#add-talk-conversation" title="Link to this heading"></a></h3>
+<p>您可以通過點擊「添加 Talk 對話」將現有的 Talk 對話包含在您的事件中。要查看現有 Talk 對話的列表，請確保已啟用 Talk 應用。如果您想創建新的 Talk 對話，可以直接從同一模態中創建。</p>
+<figure class="align-default">
+<img alt="../../_images/add-talk-room.png" src="../../_images/add-talk-room.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you always want to open the advanced editor instead of the
+simple event editor popup, you uncheck the option
+<code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">simplified</span> <span class="pre">editor</span></code> in the <code class="docutils literal notranslate"><span class="pre">Settings</span></code> section of the app.</p>
+</div>
+<p>點擊藍色的 <code class="docutils literal notranslate"><span class="pre">創建</span></code> 按鈕將最終創建事件。</p>
+</section>
+<section id="edit-duplicate-or-delete-an-event">
+<h3>編輯、複製或刪除事件<a class="headerlink" href="#edit-duplicate-or-delete-an-event" title="Link to this heading"></a></h3>
+<p>如果您想編輯、複製或刪除特定事件，您需要先點擊該事件。</p>
+<p>After that you will be able to re-set all event details and open the
+advanced editor by clicking on <code class="docutils literal notranslate"><span class="pre">More</span></code>.</p>
+<p>Clicking on the <code class="docutils literal notranslate"><span class="pre">Update</span></code> button will update the event. To cancel your changes, click on the close icon on top right of the popup or advanced editor.</p>
+<p>If you open the advanced view and click the three dot menu next to the event name, you have an option to export the event as an <code class="docutils literal notranslate"><span class="pre">.ics</span></code> file or remove the event from your calendar.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_event_menu.png" src="../../_images/calendar_event_menu.png" />
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>如果您刪除事件，它們將進入您的 <a class="reference internal" href="#calendar-trash-bin"><span class="std std-ref">垃圾桶</span></a>。您可以在那裡恢復意外刪除的事件。</p>
+</div>
+<p>您還可以從基本編輯器中導出、複製或刪除事件。</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_event_menu_modal.png" src="../../_images/calendar_event_menu_modal.png" />
+</figure>
+</section>
+<section id="invite-attendees-to-an-event">
+<span id="calendar-attendees"></span><h3>邀請參加者參加事件<a class="headerlink" href="#invite-attendees-to-an-event" title="Link to this heading"></a></h3>
+<p>您可以將參加者添加到事件中，以讓他們知道自己受到邀請。他們將收到電子郵件邀請，並能夠確認或取消參加事件。參加者可以是您 Nextcloud 實例上的其他用戶、地址簿中的聯繫人以及直接的電子郵件地址。您還可以根據參加者更改參與級別，或禁用特定參加者的電子郵件信息。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_invitation_level.png"><img alt="../../_images/calendar_event_invitation_level.png" src="../../_images/calendar_event_invitation_level.png" style="width: 811.2px; height: 380.8px;" />
+</a>
+</figure>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 25: </span>參加者電子郵件回覆連結不再提供添加評論或邀請其他賓客參加事件的輸入。</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>當將其他 Nextcloud 用戶添加為事件參加者時，您可以存取他們的空閒忙碌信息（如果可用），幫助您確定事件的最佳時間段。設置您的 <a class="reference internal" href="#calendar-working-hours"><span class="std std-ref">工作時間</span></a> 以讓其他人知道您何時可用。空閒忙碌信息僅對同一 Nextcloud 實例的其他用戶可用。</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>伺服器管理員需要在 <code class="docutils literal notranslate"><span class="pre">基本設置</span></code> 標籤中設置電子郵件伺服器，因為這封郵件將用於發送邀請。</p>
+</div>
+<p>Invitation status legend (as an attendee):</p>
+<ul class="simple">
+<li><p><strong>Filled in event</strong>: You accepted</p></li>
+<li><p><strong>Strikethrough</strong>: You declined</p></li>
+<li><p><strong>Stripes</strong>: Tentative</p></li>
+<li><p><strong>Empty event</strong>: You haven't responded yet</p></li>
+</ul>
+<p>If you are the organizer and all your attendees declined, the event will be empty with a warning symbol.</p>
+</section>
+<section id="checking-attendees-busy-times">
+<h3>檢查與會者的忙碌時間<a class="headerlink" href="#checking-attendees-busy-times" title="Link to this heading"></a></h3>
+<p>在向事件添加與會者後，您可以點擊 <code class="docutils literal notranslate"><span class="pre">查找時間</span></code> 來打開「空閒 / 忙碌」模態。它允許您查看每位與會者何時有其他事件，並可以幫助您決定每個人都空閒的時間。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_free_busy_modal.png"><img alt="../../_images/calendar_free_busy_modal.png" src="../../_images/calendar_free_busy_modal.png" style="width: 942.0px; height: 752.4px;" />
+</a>
+</figure>
+<p>Your own busy blocks will be shown in the same color as your personal calendar, your out of office times will be shown in gray, and other attendees' busy times will have the same color as their avatar shown in the advanced editor.</p>
+<p>You can select a time slot for the event directly on the calendar.</p>
+</section>
+<section id="assign-rooms-and-resources-to-an-event">
+<h3>為事件分配房間和資源<a class="headerlink" href="#assign-rooms-and-resources-to-an-event" title="Link to this heading"></a></h3>
+<p>與參加者類似，您可以為事件添加房間和資源。系統將確保每個房間和資源的預訂不會衝突。用戶第一次將房間或資源添加到事件時，將顯示為接受。任何在重疊時間的進一步事件將顯示該房間或資源為拒絕。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>房間和資源不由 Nextcloud 本身管理，日曆應用程式不允許您添加或更改資源。您的管理員必須安裝並可能配置資源後端，然後您才能作為用戶使用它們。</p>
+</div>
+</section>
+<section id="room-availability">
+<h3>房間可用性<a class="headerlink" href="#room-availability" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.0.</span></p>
+</div>
+<p>如果您的實例中安裝了「日曆房間和資源」應用，您現在可以在「資源」部分找到「房間可用性」。它列出了所有現有的房間。您可以以類似檢查事件與會者的空閒/忙碌狀態的方式檢查每個房間的可用性。</p>
+<figure class="align-default">
+<img alt="../../_images/room_availability.png" src="../../_images/room_availability.png" />
+</figure>
+</section>
+<section id="add-attachments-to-events">
+<h3>為事件添加附件<a class="headerlink" href="#add-attachments-to-events" title="Link to this heading"></a></h3>
+<p>您可以通過上傳附件或從檔案中添加附件來導入附件到您的事件</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_adding_attachments.png"><img alt="../../_images/calendar_adding_attachments.png" src="../../_images/calendar_adding_attachments.png" style="width: 790.4000000000001px; height: 382.40000000000003px;" />
+</a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>在創建新事件或編輯現有事件時，可以添加附件。新上傳的檔案默認將保存在根目錄的日曆資料夾中的檔案中。</p>
+</div>
+<p>您可以通過轉到左下角的 <code class="docutils literal notranslate"><span class="pre">日曆設置</span></code> 並更改 <code class="docutils literal notranslate"><span class="pre">默認附件位置</span></code> 來更改附件資料夾。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_attachments_location.png"><img alt="../../_images/calendar_attachments_location.png" src="../../_images/calendar_attachments_location.png" style="width: 389.4px; height: 357.0px;" />
+</a>
+</figure>
+</section>
+<section id="set-up-reminders">
+<h3>設置提醒<a class="headerlink" href="#set-up-reminders" title="Link to this heading"></a></h3>
+<p>您可以設置提醒，以在事件發生之前通知您。目前支持的通知方法有：</p>
+<ul class="simple">
+<li><p>電子郵件通知</p></li>
+<li><p>Nextcloud 通知</p></li>
+</ul>
+<p>您可以在事件前的某個時間或在特定日期設置提醒。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_reminders.png"><img alt="../../_images/calendar_event_reminders.png" src="../../_images/calendar_event_reminders.png" style="width: 507.20000000000005px; height: 284.0px;" />
+</a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>只有日曆擁有者和與其共享寫入權限的人或組才能收到通知。如果您沒有收到任何通知但認為應該收到，您的管理員可能已為您的伺服器禁用此功能。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果您將日曆與移動設備或其他第三方客戶端同步，通知也可能會顯示在那裡。</p>
+</div>
+</section>
+<section id="add-recurring-options">
+<h3>添加重複選項<a class="headerlink" href="#add-recurring-options" title="Link to this heading"></a></h3>
+<p>事件可以設置為「重複」，使其可以每天、每週、每月或每年發生。可以添加具體規則以設置事件發生的星期幾或更複雜的規則，例如每月的第四個星期三。</p>
+<p>您還可以設置重複的結束時間。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_repeat.png"><img alt="../../_images/calendar_event_repeat.png" src="../../_images/calendar_event_repeat.png" style="width: 519.2px; height: 557.6px;" />
+</a>
+</figure>
+</section>
+<section id="trash-bin">
+<span id="calendar-trash-bin"></span><h3>垃圾桶<a class="headerlink" href="#trash-bin" title="Link to this heading"></a></h3>
+<p>如果您在日曆中刪除事件、任務或日曆，您的數據仍然存在。相反，這些項目將被收集到 <em>垃圾桶</em> 中。這提供了撤銷刪除的選項。在默認為 30 天的期間後（您的管理員可能已更改此設置），這些項目將被永久刪除。如果您願意，還可以提前永久刪除項目。</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_trash_bin.png" src="../../_images/calendar_trash_bin.png" />
+</figure>
+<p><code class="docutils literal notranslate"><span class="pre">清空垃圾桶</span></code> 按鈕將一次性刪除所有垃圾桶內容。</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>垃圾桶僅能從日曆應用程式存取。任何連接的應用程序或應用都無法顯示其內容。但是，在連接的應用程序或應用中刪除的事件、任務和日曆也將最終進入垃圾桶。</p>
+</div>
+</section>
+<section id="automated-user-status">
+<span id="calendar-working-hours"></span><h3>自動用戶狀態<a class="headerlink" href="#automated-user-status" title="Link to this heading"></a></h3>
+<p>當您安排的日曆事件具有「忙碌」狀態時，您的用戶狀態將自動設置為「在會議中」，除非您將自己設置為「請勿打擾」或「隱身」。您可以隨時用自定義消息覆蓋該狀態，或將您的日曆事件設置為「空閒」。透明的日曆將被忽略。</p>
+</section>
+</section>
+<section id="responding-to-invitations">
+<h2>回應邀請<a class="headerlink" href="#responding-to-invitations" title="Link to this heading"></a></h2>
+<p>您可以在應用中直接回應邀請。點擊事件並選擇您的參與狀態。您可以通過接受、拒絕或暫時接受來回應邀請。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_accept_simple_editor.png"><img alt="../../_images/calendar_accept_simple_editor.png" src="../../_images/calendar_accept_simple_editor.png" style="width: 663.2px; height: 477.6px;" />
+</a>
+</figure>
+<p>You can respond to an invitation from the advanced editor too.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_accept_advanced_editor.png"><img alt="../../_images/calendar_accept_advanced_editor.png" src="../../_images/calendar_accept_advanced_editor.png" style="width: 800.0px; height: 160.8px;" />
+</a>
+</figure>
+</section>
+<section id="availability-working-hours">
+<h2>可用性（工作時間）<a class="headerlink" href="#availability-working-hours" title="Link to this heading"></a></h2>
+<p>獨立於安排事件的一般可用性可以在 Nextcloud 的組件設置中設置。這些設置將在您 <a class="reference internal" href="#calendar-attendees"><span class="std std-ref">與其他人安排會議</span></a> 時反映在忙閒視圖中。一些連接的客戶端，如 Thunderbird，也會顯示這些數據。</p>
+<figure class="align-default">
+<img alt="../../_images/caldav_availability.png" src="../../_images/caldav_availability.png" />
+</figure>
+<p>您可以在常規可用性之上，在 <a class="reference internal" href="absence.html#groupware-absence"><span class="std std-ref">缺席設置部分</span></a> 中配置一次性缺席。</p>
+</section>
+<section id="birthday-calendar">
+<h2>生日日曆<a class="headerlink" href="#birthday-calendar" title="Link to this heading"></a></h2>
+<p>生日日曆是一個自動生成的日曆，將自動從您的聯繫人中提取生日。編輯此日曆的唯一方法是為您的聯繫人填寫生日日期。您不能直接從日曆應用程序編輯此日曆。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果您未看到生日日曆，您的管理員可能已為您的伺服器禁用此功能。</p>
+</div>
+</section>
+<section id="appointments">
+<h2>預約<a class="headerlink" href="#appointments" title="Link to this heading"></a></h2>
+<p>從日曆 v3 開始，該應用程序可以生成預約時段，其他 Nextcloud 用戶以及沒有帳戶的人都可以預訂。預約提供了對您可能有空會面的時間的細粒度控制。這可以消除來回發送電子郵件以確定日期和時間的需要。</p>
+<p>在本節中，我們將使用術語 <em>組織者</em> 來指代擁有日曆並設置預約時段的人。<em>參加者</em> 是預訂其中一個時段的人。</p>
+<section id="creating-an-appointment-configuration">
+<h3>創建預約配置<a class="headerlink" href="#creating-an-appointment-configuration" title="Link to this heading"></a></h3>
+<p>作為預約的組織者，您可以打開主日曆網頁介面。在左側邊欄中，您將找到一個預約部分，您可以在此打開對話框以創建新的預約。</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_new.png" src="../../_images/appointment_new.png" />
+</figure>
+<p>每個預約的基本信息之一是描述預約內容的標題（例如「一對一」當組織者想為同事提供個人通話時），預約將在哪裡進行，以及關於此預約的更詳細描述。</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_basics.png" src="../../_images/appointment_config_basics.png" />
+</figure>
+<p>預約的持續時間可以從預定義的列表中選擇。接下來，您可以設置所需的增量。增量是可能可用時段的率。例如，您可以設置一小時的時段，但可以以 30 分鐘的增量提供，這樣參加者可以在上午 9:00 預訂，也可以在上午 9:30 預訂。位置和描述的可選信息為參加者提供了更多上下文。每個預訂的預約都將寫入您的其中一個日曆，因此您可以選擇應該是那個。預約可以是 <em>公共</em> 或 <em>私人</em>。公共預約可以通過 Nextcloud 用戶的個人資料頁面發現。私人預約僅對收到秘密 URL 的人可存取。</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_calendar_settings.png" src="../../_images/appointment_config_calendar_settings.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>僅顯示與您日曆中現有事件不衝突的時段給參加者。</p>
+</div>
+<p>預約的組織者可以指定每週的哪個時間通常可以預訂時段。這可以是工作時間，也可以是任何其他自定義時間表。</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_booking_hours.png" src="../../_images/appointment_config_booking_hours.png" />
+</figure>
+<p>有些預約需要準備時間，例如當您在場地見面時需要駕駛前往。組織者可以選擇必須空出的時間長度。只有在準備時間內不與其他事件衝突的時段才可用。此外，還可以指定每次預約後必須空出的時間。為了防止參加者在過短的通知下預訂，可以配置下一次可能的預約何時進行的最短時間。設置每天的最大時段數量可以限制參加者可能預訂的預約數量。</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_limits.png" src="../../_images/appointment_config_limits.png" />
+</figure>
+<p>配置的預約將在左側邊欄中列出。通過三點選項單，您可以預覽預約。您可以複製預約的連結並與目標參加者共享，或者讓他們通過個人資料頁面發現您的公共預約。您還可以編輯或刪除預約配置。</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_options.png" src="../../_images/appointment_config_options.png" />
+</figure>
+</section>
+<section id="booking-an-appointment">
+<h3>預訂預約<a class="headerlink" href="#booking-an-appointment" title="Link to this heading"></a></h3>
+<p>預訂頁面向參加者顯示預約的標題、位置、描述和長度。對於選定的日期，將有一個所有可能時段的列表。在沒有可用時段、衝突過多或達到每日已預訂預約的最大限制的日子，列表可能會為空。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/appointment_booking_1.png"><img alt="../../_images/appointment_booking_1.png" src="../../_images/appointment_booking_1.png" style="width: 926.4000000000001px; height: 592.0px;" />
+</a>
+</figure>
+<p>參加者在預訂時必須輸入姓名和電子郵件地址。可選地，他們還可以添加評論。</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/appointment_booking_2.png"><img alt="../../_images/appointment_booking_2.png" src="../../_images/appointment_booking_2.png" style="width: 745.6px; height: 463.20000000000005px;" />
+</a>
+</figure>
+<p>當預訂成功時，將顯示一個確認對話框給參加者。</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_3.png" src="../../_images/appointment_booking_3.png" />
+</figure>
+<p>為了驗證參加者的電子郵件地址是否有效，將向他們發送一封確認電子郵件。</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_confirmation_email.png" src="../../_images/appointment_booking_confirmation_email.png" />
+</figure>
+<p>只有在參加者點擊電子郵件中的確認連結後，預約預訂才會被接受並轉發給組織者。</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_confirmation_dialogue.png" src="../../_images/appointment_booking_confirmation_dialogue.png" />
+</figure>
+<p>參加者將收到另一封電子郵件，確認其預約的詳細信息。</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_email_2.png" src="../../_images/appointment_booking_email_2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果時段尚未確認，仍然會顯示為可預訂。直到那時，該時段可能也會被另一個提前確認預訂的用戶預訂。系統將檢測到衝突並提供選擇新時段的選項。</p>
+</div>
+</section>
+<section id="working-with-the-booked-appointment">
+<h3>處理已預訂的預約<a class="headerlink" href="#working-with-the-booked-appointment" title="Link to this heading"></a></h3>
+<p>預訂完成後，組織者將在其日曆中找到包含預約詳細信息和 <a class="reference internal" href="#calendar-attendees"><span class="std std-ref">參加者</span></a> 的事件。</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_calendar_event.png" src="../../_images/appointment_calendar_event.png" />
+</figure>
+<p>如果預約啟用了「事件前添加時間」或「事件後添加時間」的設置，則將在組織者的日曆中顯示為單獨的事件。</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_calendar_prep.png" src="../../_images/appointment_calendar_prep.png" />
+</figure>
+<p>與其他有參加者的事件一樣，變更和取消將觸發通知到參加者的電子郵件。</p>
+<p>如果參加者希望取消預約，他們必須與組織者聯繫，以便組織者可以取消或甚至刪除該事件。</p>
+</section>
+<section id="create-talk-room-for-booked-appointments">
+<h3>為預訂的預約創建會議室<a class="headerlink" href="#create-talk-room-for-booked-appointments" title="Link to this heading"></a></h3>
+<p>您可以直接在日曆應用程式中為預訂的預約創建會議室。該選項可以在「創建預約」對話框中找到。每個預訂的預約將生成一個唯一連結，並在您勾選此選項時通過確認電子郵件發送。</p>
+</section>
+</section>
+<section id="proposals">
+<h2>Proposals<a class="headerlink" href="#proposals" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 6.0.0.</span></p>
+</div>
+<p>Finding a meeting time for a group of participants can be challenging. As of Calendar v6, a new feature was introduced that allows users to create proposals for meeting times.
+This means that instead of just booking a time, or searching for a available time in the free busy view, participants can vote on a set of proposed times for a meeting.
+The organizer can then review the participants' preferences and choose the most suitable time for the meeting.</p>
+<section id="managing-proposals">
+<h3>Managing proposals<a class="headerlink" href="#managing-proposals" title="Link to this heading"></a></h3>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_list.png" src="../../_images/calendar_proposal_list.png" />
+</figure>
+<p>The proposal list in the left sidebar shows all the proposals that the user has created. The list shows the title of the proposal, the number of responded participants and a status of whether all participants have responded.</p>
+<p>The user can click on the three dot menu next to a proposal item to edit, delete or view an existing proposal.</p>
+</section>
+<section id="creating-a-proposal">
+<h3>Creating a proposal<a class="headerlink" href="#creating-a-proposal" title="Link to this heading"></a></h3>
+<p>To create a new proposal a user can click on the plus icon next to the &quot;Meeting Proposals&quot; header at the top of the proposal list. This will open a modal where the user can enter all the relevant details for the proposed meeting.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_create.png" src="../../_images/calendar_proposal_create.png" />
+</figure>
+<p>The proposal editor has some basic fields that are similar to the event editor, such as title, description, location, duration and participants selection, that the user can fill out. These details are then used to inform the participants about the proposed meeting and times.</p>
+<p>The key difference is the &quot;Proposed times&quot; selection, where the user can select multiple time slots for a meeting. The user can add as many time slots as they want, and each time slot can be edited or removed as needed.</p>
+<p>Once the user has filled out all the required details, title, duration, participants and selected the proposed times, they can click the &quot;Create&quot; button to create the proposal. This will save the proposal and send notifications to all the selected participants.</p>
+</section>
+<section id="editing-a-proposal">
+<h3>Editing a proposal<a class="headerlink" href="#editing-a-proposal" title="Link to this heading"></a></h3>
+<p>A user can edit an existing proposal by clicking on the three dot menu next to a proposal item in the proposal list and selecting &quot;Edit&quot;. This will open the same modal as when creating a new proposal, but with all the existing details filled out.</p>
+<p>After making any necessary changes, the user can click the &quot;Update&quot; button to save the changes. This will also send notifications to all the participants about the updated proposal.</p>
+</section>
+<section id="viewing-a-proposal-progress">
+<h3>Viewing a proposal progress<a class="headerlink" href="#viewing-a-proposal-progress" title="Link to this heading"></a></h3>
+<p>Users can view the progress of a proposal by clicking on the proposal item in the proposal list or clicking &quot;View&quot; in the three dot menu. This will open a detailed view of the proposal, with all details and a times and participants matrix, showing all the proposed times and participants' responses.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_view.png" src="../../_images/calendar_proposal_view.png" />
+</figure>
+<p>In this view, the user can see which participants have responded to the proposal and their preferences for each proposed time. The user can also see the total number of votes for each proposed time, which can help them decide on the best time for the meeting.</p>
+<p>Once the user has reviewed the participants' responses, they can select the most popular time for the meeting by clicking on the &quot;Create&quot; button at the end of the date/participant matrix. This will create a new event in the user's calendar and send notifications to all participants about the confirmed meeting time.</p>
+</section>
+<section id="notifications-for-a-proposed-meeting">
+<h3>Notifications for a proposed meeting<a class="headerlink" href="#notifications-for-a-proposed-meeting" title="Link to this heading"></a></h3>
+<p>Users will receive email notifications for various events related to a proposed meeting, including:</p>
+<ul class="simple">
+<li><p>When a new proposal is created</p></li>
+<li><p>When a proposal is updated</p></li>
+<li><p>When a proposal is deleted</p></li>
+<li><p>When the final meeting time is confirmed</p></li>
+</ul>
+<p>These notifications help all participants stay informed and engaged throughout the proposal process.</p>
+<p>The notification emails contain the basic details for the proposed meeting, like title, description, location, duration, and proposed times. They also include a link to the response page, where participants can see all the details and respond to the proposed times.</p>
+</section>
+<section id="responding-to-a-proposed-meeting">
+<h3>Responding to a proposed meeting<a class="headerlink" href="#responding-to-a-proposed-meeting" title="Link to this heading"></a></h3>
+<p>Participants can respond to a proposed meeting by clicking on the link in the notification email. This will open the detailed view of the proposed meeting, where they can see all the proposed times, other participants' and their responses, and select their availability/preferences for each proposed time.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_respond.png" src="../../_images/calendar_proposal_respond.png" />
+</figure>
+<p>Participants can select their availability for each proposed time by selecting their preference on the corresponding line in the times and participants matrix. They can choose from three options: &quot;Yes&quot;, &quot;No&quot;, or &quot;Maybe&quot;. Once they have made their selections, they can click the &quot;Submit&quot; button to save their responses.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="contacts.html" class="btn btn-neutral float-left" title="Using the Contacts app" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mail.html" class="btn btn-neutral float-right" title="使用郵件應用程式" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Here go the languages -->
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐
+      
+      
+      zh-HK
+      
+      <span class="fa fa-caret-down"></span>
+
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 語言</dt>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ar/"
+                 
+              >
+                
+                Arabic
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/br/"
+                 
+              >
+                
+                Breton
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ca/"
+                 
+              >
+                
+                Catalan
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/cs/"
+                 
+              >
+                
+                Czech
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/da/"
+                 
+              >
+                
+                Danish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/de/"
+                 
+              >
+                
+                German
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el/"
+                 
+              >
+                
+                Greek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/en/"
+                 
+              >
+                
+                English
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/es/"
+                 
+              >
+                
+                Spanish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eu/"
+                 
+              >
+                
+                eu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fi_FI/"
+                 
+              >
+                
+                Finnish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fr/"
+                 
+              >
+                
+                French
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ga/"
+                 
+              >
+                
+                Irish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/gl/"
+                 
+              >
+                
+                Glacian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu_HU/"
+                 
+              >
+                
+                Hungarian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/id/"
+                 
+              >
+                
+                Indonesian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/it/"
+                 
+              >
+                
+                Italian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ja_JP/"
+                 
+              >
+                
+                Japanese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ko/"
+                 
+              >
+                
+                Korean
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/mn/"
+                 
+              >
+                
+                Mongolian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nb_NO/"
+                 
+              >
+                
+                Norwegian (NB)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nl/"
+                 
+              >
+                
+                Dutch
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nn/"
+                 
+              >
+                
+                Norwegian (NN)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pl/"
+                 
+              >
+                
+                Polish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_BR/"
+                 
+              >
+                
+                Portuguese (BR)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_PT/"
+                 
+              >
+                
+                Portuguese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ro/"
+                 
+              >
+                
+                Romanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ru/"
+                 
+              >
+                
+                Russian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/si/"
+                 
+              >
+                
+                Sinhala
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sk_SK/"
+                 
+              >
+                
+                Slovakian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sr/"
+                 
+              >
+                
+                Slovenian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sv/"
+                 
+              >
+                
+                Swedish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ta/"
+                 
+              >
+                
+                Tamil
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/tr/"
+                 
+              >
+                
+                Turkish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk/"
+                 
+              >
+                
+                Ukrainian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk_UA/"
+                 
+              >
+                
+                uk_UA
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uz/"
+                 
+              >
+                
+                Uzbek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/vi/"
+                 
+              >
+                
+                Vietnamese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_CN/"
+                 
+              >
+                
+                Chinese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_HK/"
+                 
+              >
+                
+                Chinese (HK)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_TW/"
+                 
+              >
+                
+                Chinese (TW)
+                
+              </a>
+            </dd>
+          
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ 版本</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/30/user_manual"
+               
+            >
+              30
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/29/user_manual"
+               
+            >
+              29
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>下載</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>於 Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">項目主頁</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

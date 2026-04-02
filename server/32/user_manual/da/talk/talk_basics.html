@@ -1,0 +1,1087 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="da" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basics of Nextcloud Talk &mdash; Nextcloud latest User Manual latest dokumentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=e5d0820d"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=da48383d"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Indeks" href="../genindex.html" />
+    <link rel="search" title="Søg" href="../search.html" />
+    <link rel="next" title="Advanced Talk features" href="advanced_features.html" />
+    <link rel="prev" title="Talk" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Søg i dokumentation" aria-label="Søg i dokumentation" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest brugermanual introduktion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextclouds brugerflade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Filer og synkronisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Talk</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Basics of Nextcloud Talk</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#getting-started">Getting started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#private-one-to-one-conversations">1. Private (one-to-one) conversations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#group-conversations">2. Group conversations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#note-to-self">3. Note to self</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#disposable-conversations">4. Disposable conversations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#talk-dashboard">Talk Dashboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-chat">Creating a chat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#view-all-open-conversations">View all open conversations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filter-your-conversations">Filter your conversations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#archive-conversations">Archive conversations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-files-in-a-chat">Sharing files in a chat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inserting-emoji">Inserting emoji</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#smart-picker">Smart Picker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#editing-messages">Editing messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-markdown">Using Markdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#polls-in-chat">Polls in chat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-reminder-on-messages">Setting reminder on messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#replying-to-messages-and-more">Replying to messages and more</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#silent-messages">Silent messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-a-conversation">Managing a conversation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ban-participants">Ban participants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#messages-expiration">Messages expiration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#starting-a-call">Starting a call</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#starting-a-screen-share">Starting a screen share</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#changing-view-in-a-call">Changing view in a call</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#download-call-participants-list">Download call participants list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compact-view-of-conversations-list">Compact view of conversations list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#messages-search-in-a-conversation">Messages search in a conversation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#threaded-messages">Threaded messages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="advanced_features.html">Advanced Talk features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="join_a_call_or_chat_as_guest.html">Join a call or chat as guest</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting your preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Administrer tilsluttede browsere og enheder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Ekstern lagring</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobil navigation" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Talk</a></li>
+      <li class="breadcrumb-item active">Basics of Nextcloud Talk</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/talk/talk_basics.rst" class="fa fa-github"> Ret på GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="basics-of-nextcloud-talk">
+<h1>Basics of Nextcloud Talk<a class="headerlink" href="#basics-of-nextcloud-talk" title="Link to this heading"></a></h1>
+<p>Nextcloud Talk lets you chat and have video calls on your own server.</p>
+<section id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h2>
+<p>Chats and calls take place in conversations. You can create any number of conversations. There are different types of conversations:</p>
+<section id="private-one-to-one-conversations">
+<h3>1. Private (one-to-one) conversations<a class="headerlink" href="#private-one-to-one-conversations" title="Link to this heading"></a></h3>
+<p>This is where you have a private chat or call with another Talk user.</p>
+<p>In content sidebar, you can find additional information about the person you are chatting with, such as their email address, phone number, or other details they have shared in their profile.</p>
+<a class="reference internal image-reference" href="../../_images/one-to-one-right-sidebar.png"><img alt="../../_images/one-to-one-right-sidebar.png" src="../../_images/one-to-one-right-sidebar.png" style="width: 300px;" />
+</a>
+<p>Nobody except you and the other person can see this conversation or join a call in it.
+You can extend an ongoing call to a new group conversation by adding more people. Call will be continued there without interruption.</p>
+<a class="reference internal image-reference" href="../../_images/one-to-one-extend.png"><img alt="../../_images/one-to-one-extend.png" src="../../_images/one-to-one-extend.png" style="width: 300px;" />
+</a>
+<p>If a user becomes unavailable and set an <strong>out-of-office</strong> status in <code class="docutils literal notranslate"><span class="pre">Personal</span> <span class="pre">settings</span> <span class="pre">&gt;</span> <span class="pre">Availability</span></code>, you will find additional information in this conversation, such as provided description, absence date, or their replacement person.</p>
+<a class="reference internal image-reference" href="../../_images/one-to-one-out-of-office.png"><img alt="../../_images/one-to-one-out-of-office.png" src="../../_images/one-to-one-out-of-office.png" style="width: 500px;" />
+</a>
+</section>
+<section id="group-conversations">
+<h3>2. Group conversations<a class="headerlink" href="#group-conversations" title="Link to this heading"></a></h3>
+<p>A group conversation can have any number of people in it.
+You can add internal users, email guests, groups or teams to a group conversation upon creation, or when it already exists, via the <code class="docutils literal notranslate"><span class="pre">Participants</span></code> tab.</p>
+<p>A group conversation can be shared with a public link, so guests can join a chat and a call.
+It can also be opened to registered users (or users from ›Guests‹ app), so they can discover and join this conversation.</p>
+<a class="reference internal image-reference" href="../../_images/group-public-settings.png"><img alt="../../_images/group-public-settings.png" src="../../_images/group-public-settings.png" style="width: 400px;" />
+</a>
+</section>
+<section id="note-to-self">
+<h3>3. Note to self<a class="headerlink" href="#note-to-self" title="Link to this heading"></a></h3>
+<p>This is a special conversation with yourself. Messages here do not have a limit for editing or deletion. You can use it to:</p>
+<ul class="simple">
+<li><p><strong>Take notes</strong>: write down ideas, reminders, or important information you want to keep handy.</p></li>
+<li><p><strong>Create to-do lists</strong>: use Markdown syntax to create checklists for tasks you need to complete.</p></li>
+<li><p><strong>Forward messages from other chat</strong>: use the message menu to forward important messages from other conversations to your Note to self.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/note-to-self.png"><img alt="../../_images/note-to-self.png" src="../../_images/note-to-self.png" style="width: 500px;" />
+</a>
+</section>
+<section id="disposable-conversations">
+<h3>4. Disposable conversations<a class="headerlink" href="#disposable-conversations" title="Link to this heading"></a></h3>
+<p>These conversations cover some special cases and exist for a limited period of time. Retention period can be configured by an instance administration:</p>
+<ul class="simple">
+<li><p><strong>Instant meetings</strong>: these conversations can be created for quick, ad-hoc meetings. They can be started instantly from the Talk Dashboard.</p></li>
+<li><p><strong>Event conversations</strong>: these are created when set as an event location by Calendar app.</p></li>
+<li><p><strong>Phone conversations</strong>: these are dedicated for SIP dial-in &amp; dial-out phone calls (requires a SIP gateway).</p></li>
+<li><p><strong>Video verification</strong>: these are created, when someone tries to access a public link, protected by password with video verification (deleted instantly after call ends).</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/instant-meeting-dispose.png"><img alt="../../_images/instant-meeting-dispose.png" src="../../_images/instant-meeting-dispose.png" style="width: 500px;" />
+</a>
+</section>
+</section>
+<section id="talk-dashboard">
+<h2>Talk Dashboard<a class="headerlink" href="#talk-dashboard" title="Link to this heading"></a></h2>
+<p>The Talk Dashboard is your central hub for managing and accessing your conversations. It provides an overview of your:</p>
+<ul class="simple">
+<li><p>Unread mentions and messages in private chats;</p></li>
+<li><p>Message reminders, scheduled to be tackled on later;</p></li>
+<li><p>Scheduled meetings, with event details and shortcut buttons to join them;</p></li>
+<li><p>Shortcut actions to create new conversations, join open ones, or quickly check your media devices.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/talk-dashboard.png"><img alt="../../_images/talk-dashboard.png" src="../../_images/talk-dashboard.png" style="width: 600px;" />
+</a>
+</section>
+<section id="creating-a-chat">
+<h2>Creating a chat<a class="headerlink" href="#creating-a-chat" title="Link to this heading"></a></h2>
+<p>You can create a private (one-to-one) chat by searching for the name of a user, a group or a team and clicking it. For a single user, a conversation is immediately created and you can start your chat. For a group or circle you get to pick a name and settings before you create the conversation and add the participants.</p>
+<a class="reference internal image-reference" href="../../_images/chat-with-one-user.png"><img alt="../../_images/chat-with-one-user.png" src="../../_images/chat-with-one-user.png" style="width: 400px;" />
+</a>
+<p>If you want to create a custom group conversation, click the button next to the search field and filters button and then on <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">a</span> <span class="pre">new</span> <span class="pre">conversation</span></code>.</p>
+<a class="reference internal image-reference" href="../../_images/create-new-conversation.png"><img alt="../../_images/create-new-conversation.png" src="../../_images/create-new-conversation.png" style="width: 400px;" />
+</a>
+<p>You can then pick a name for the conversation, put a description, and set up an avatar for it (with uploaded photo or emoji), and select if the conversation should be open to external users and if other users on the server can see and join the conversation.</p>
+<a class="reference internal image-reference" href="../../_images/creating-open-conversation.png"><img alt="../../_images/creating-open-conversation.png" src="../../_images/creating-open-conversation.png" style="width: 500px;" />
+</a>
+<p>In the second step, you get to add participants and finalize the creation of the conversation.</p>
+<a class="reference internal image-reference" href="../../_images/add-participants.png"><img alt="../../_images/add-participants.png" src="../../_images/add-participants.png" style="width: 500px;" />
+</a>
+<p>After confirmation you will be redirected to the new conversation and can start communicating right away.</p>
+<a class="reference internal image-reference" href="../../_images/new-room.png"><img alt="../../_images/new-room.png" src="../../_images/new-room.png" style="width: 700px;" />
+</a>
+</section>
+<section id="view-all-open-conversations">
+<h2>View all open conversations<a class="headerlink" href="#view-all-open-conversations" title="Link to this heading"></a></h2>
+<p>You can view all the conversations that you can join by clicking the button next to the search field and filters button and then on <code class="docutils literal notranslate"><span class="pre">Join</span> <span class="pre">open</span> <span class="pre">conversations.</span></code></p>
+<a class="reference internal image-reference" href="../../_images/join-open-conversations.png"><img alt="../../_images/join-open-conversations.png" src="../../_images/join-open-conversations.png" style="width: 400px;" />
+</a>
+</section>
+<section id="filter-your-conversations">
+<h2>Filter your conversations<a class="headerlink" href="#filter-your-conversations" title="Link to this heading"></a></h2>
+<p>You can filter your conversations using the filter button next to the search field. There are several options for filtering:
+1. <strong>Unread mentions</strong>: view unread private conversations, or group conversations, where you have been mentioned.
+2. <strong>Unread messages</strong>: view unread messages in all conversations you are a part of.
+2. <strong>Event conversations</strong>: view all conversations, created for upcoming or past events.</p>
+<a class="reference internal image-reference" href="../../_images/filters-menu.png"><img alt="../../_images/filters-menu.png" src="../../_images/filters-menu.png" style="width: 400px;" />
+</a>
+<p>You can then clear the filter from the filters menu.</p>
+<a class="reference internal image-reference" href="../../_images/clear-filter.png"><img alt="../../_images/clear-filter.png" src="../../_images/clear-filter.png" style="width: 400px;" />
+</a>
+</section>
+<section id="archive-conversations">
+<h2>Archive conversations<a class="headerlink" href="#archive-conversations" title="Link to this heading"></a></h2>
+<p>You can archive conversations that you no longer need to see in your main conversation list. When a conversation is archived, it will be moved to the <code class="docutils literal notranslate"><span class="pre">Archived</span> <span class="pre">conversations</span></code> section.
+An archived conversation will not appear in your main conversation list, but it will still align with notification level set in its settings.</p>
+<a class="reference internal image-reference" href="../../_images/archived-conversations-list.png"><img alt="../../_images/archived-conversations-list.png" src="../../_images/archived-conversations-list.png" style="width: 400px;" />
+</a>
+<p>The list is accessible from the button at the bottom of the navigation bar.</p>
+<a class="reference internal image-reference" href="../../_images/archived-conversations-button.png"><img alt="../../_images/archived-conversations-button.png" src="../../_images/archived-conversations-button.png" style="width: 400px;" />
+</a>
+</section>
+<section id="sharing-files-in-a-chat">
+<h2>Sharing files in a chat<a class="headerlink" href="#sharing-files-in-a-chat" title="Link to this heading"></a></h2>
+<p>You can share files in a chat in 3 ways.</p>
+<p>First, you can simply drag’n’drop them on the chat.</p>
+<a class="reference internal image-reference" href="../../_images/drag-and-drop.png"><img alt="../../_images/drag-and-drop.png" src="../../_images/drag-and-drop.png" style="width: 600px;" />
+</a>
+<p>Second, you can select a file from your Nextcloud Files or a file manager by choosing the little paperclip and selecting where you’d like to pick the file from.</p>
+<a class="reference internal image-reference" href="../../_images/share-files-in-chat.png"><img alt="../../_images/share-files-in-chat.png" src="../../_images/share-files-in-chat.png" style="width: 500px;" />
+</a>
+<a class="reference internal image-reference" href="../../_images/share-files-in-chat-selection.png"><img alt="../../_images/share-files-in-chat-selection.png" src="../../_images/share-files-in-chat-selection.png" style="width: 600px;" />
+</a>
+<p>You can add more files until you are done and decide to share the files. You can also add a text caption to your shared files, providing a brief description or context.</p>
+<a class="reference internal image-reference" href="../../_images/talk-upload-files.png"><img alt="../../_images/talk-upload-files.png" src="../../_images/talk-upload-files.png" style="width: 500px;" />
+</a>
+<p>All users will be able to click the files to view, edit or download them, irrespective of them having a user account. Users with an account will have the file automatically shared with them while external guest users will get them shared as a public link.</p>
+<a class="reference internal image-reference" href="../../_images/editing-document-in-chat-room.png"><img alt="../../_images/editing-document-in-chat-room.png" src="../../_images/editing-document-in-chat-room.png" style="width: 600px;" />
+</a>
+</section>
+<section id="inserting-emoji">
+<h2>Inserting emoji<a class="headerlink" href="#inserting-emoji" title="Link to this heading"></a></h2>
+<p>You can add emoji using the picker on the left of the text input field.</p>
+<a class="reference internal image-reference" href="../../_images/emoji-picker.png"><img alt="../../_images/emoji-picker.png" src="../../_images/emoji-picker.png" style="width: 400px;" />
+</a>
+</section>
+<section id="smart-picker">
+<h2>Smart Picker<a class="headerlink" href="#smart-picker" title="Link to this heading"></a></h2>
+<p>Smart picker shortcut makes it easier to insert links, files, or other content into your conversations.
+Just choose the type of content you want to insert (files, Talk conversations, Deck cards, GIFs, etc.)
+You can also type <cite>/</cite> in the chat input to open the selector.</p>
+<a class="reference internal image-reference" href="../../_images/smart-picker.png"><img alt="../../_images/smart-picker.png" src="../../_images/smart-picker.png" style="width: 400px;" />
+</a>
+</section>
+<section id="editing-messages">
+<h2>Editing messages<a class="headerlink" href="#editing-messages" title="Link to this heading"></a></h2>
+<p>You can edit messages and captions to file shares up to 6 hours after sending.</p>
+<a class="reference internal image-reference" href="../../_images/message-editing.png"><img alt="../../_images/message-editing.png" src="../../_images/message-editing.png" style="width: 600px;" />
+</a>
+</section>
+<section id="using-markdown">
+<h2>Using Markdown<a class="headerlink" href="#using-markdown" title="Link to this heading"></a></h2>
+<p>You can enhance your messages with a markdown syntax support. See list for usage:</p>
+<p><strong>Headings and dividers</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
+
+Heading
+===
+Normal text
+***
+Normal text
+</pre></div>
+</div>
+<p><strong>Inline decorations</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>**bold text** __bold text__
+*italicized text* _italicized text_
+`inline code` ``inline code``
+```
+.code-block {
+  display: pre;
+}
+```
+</pre></div>
+</div>
+<p><strong>Lists</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. Ordered list
+2. Ordered list
+
+* Unordered list
+- Unordered list
++ Unordered list
+</pre></div>
+</div>
+<p><strong>Quotes</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; blockquote
+second line of blockquote
+</pre></div>
+</div>
+<p><strong>Task lists</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- [ ] task to be done
+- [x] completed task
+</pre></div>
+</div>
+<p><strong>Tables</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Column A | Column B
+-- | --
+Data A | Data B
+</pre></div>
+</div>
+</section>
+<section id="polls-in-chat">
+<h2>Polls in chat<a class="headerlink" href="#polls-in-chat" title="Link to this heading"></a></h2>
+<p>You can create a poll in groups chats from the new message additional actions.</p>
+<a class="reference internal image-reference" href="../../_images/create-new-poll.png"><img alt="../../_images/create-new-poll.png" src="../../_images/create-new-poll.png" style="width: 400px;" />
+</a>
+<p>A poll has two settings:</p>
+<ul class="simple">
+<li><p><strong>Anonymous polls</strong>: Participants cannot see who voted for which option.</p></li>
+<li><p><strong>Allow multiple choices</strong>: Participants can select more than one option.</p></li>
+</ul>
+<p>You can also import polls for auto-fill and export polls as JSON files to save it locally.</p>
+<a class="reference internal image-reference" href="../../_images/import-poll.png"><img alt="../../_images/import-poll.png" src="../../_images/import-poll.png" style="width: 400px;" />
+</a>
+<p>Closing poll is possible from the poll dialog.</p>
+<a class="reference internal image-reference" href="../../_images/close-poll.png"><img alt="../../_images/close-poll.png" src="../../_images/close-poll.png" style="width: 400px;" />
+</a>
+<p>As a moderator, you can create the poll directly or you can save it as a draft to edit it later.</p>
+<a class="reference internal image-reference" href="../../_images/save-poll-draft.png"><img alt="../../_images/save-poll-draft.png" src="../../_images/save-poll-draft.png" style="width: 400px;" />
+</a>
+<p>You can find poll drafts in <code class="docutils literal notranslate"><span class="pre">Shared</span> <span class="pre">items</span></code> tab or next to the poll title input field.</p>
+<a class="reference internal image-reference" href="../../_images/poll-drafts-list.png"><img alt="../../_images/poll-drafts-list.png" src="../../_images/poll-drafts-list.png" style="width: 400px;" />
+</a>
+</section>
+<section id="setting-reminder-on-messages">
+<h2>Setting reminder on messages<a class="headerlink" href="#setting-reminder-on-messages" title="Link to this heading"></a></h2>
+<p>You can set reminders on specific messages. If there’s an important message you want to be notified about later, simply hover over it and click on the reminder icon.</p>
+<a class="reference internal image-reference" href="../../_images/set-message-reminder.png"><img alt="../../_images/set-message-reminder.png" src="../../_images/set-message-reminder.png" style="width: 400px;" />
+</a>
+<p>In the submenu, you can select an appropriate time to receive a notification later.</p>
+<a class="reference internal image-reference" href="../../_images/configure-message-reminder.png"><img alt="../../_images/configure-message-reminder.png" src="../../_images/configure-message-reminder.png" style="width: 400px;" />
+</a>
+</section>
+<section id="replying-to-messages-and-more">
+<h2>Replying to messages and more<a class="headerlink" href="#replying-to-messages-and-more" title="Link to this heading"></a></h2>
+<p>You can reply to a message using the arrow that appears when you hover a message.</p>
+<a class="reference internal image-reference" href="../../_images/reply.png"><img alt="../../_images/reply.png" src="../../_images/reply.png" style="width: 600px;" />
+</a>
+<p>In the <code class="docutils literal notranslate"><span class="pre">...</span></code> menu you can also choose to reply privately. This will open a one-to-one chat.</p>
+<a class="reference internal image-reference" href="../../_images/chat-message-menu.png"><img alt="../../_images/chat-message-menu.png" src="../../_images/chat-message-menu.png" style="width: 600px;" />
+</a>
+<p>Here you can also create a direct link to the message or mark it unread so you will scroll back there next time you enter the chat. When it is a file, you can view the file in Files.</p>
+</section>
+<section id="silent-messages">
+<h2>Silent messages<a class="headerlink" href="#silent-messages" title="Link to this heading"></a></h2>
+<p>If you don’t want to disturb anyone in the middle of the night, there is a silent mode for chatting.
+While it is enabled, other participants will not receive notifications from your messages.</p>
+<a class="reference internal image-reference" href="../../_images/message-silent.png"><img alt="../../_images/message-silent.png" src="../../_images/message-silent.png" style="width: 600px;" />
+</a>
+</section>
+<section id="managing-a-conversation">
+<h2>Managing a conversation<a class="headerlink" href="#managing-a-conversation" title="Link to this heading"></a></h2>
+<p>You are always moderator in your new conversation. In the participant list you can promote other participants to moderators using the <code class="docutils literal notranslate"><span class="pre">...</span></code> menu to the right of their user name, assign them custom permissions or remove them from the conversation.</p>
+<p>Changing permissions of a user that joined a public conversation will also permanently add them to the conversation.</p>
+<a class="reference internal image-reference" href="../../_images/participant-menu.png"><img alt="../../_images/participant-menu.png" src="../../_images/participant-menu.png" style="width: 400px;" />
+</a>
+<p>Moderators can configure the conversation. Select <code class="docutils literal notranslate"><span class="pre">Conversation</span> <span class="pre">settings</span></code> from the <code class="docutils literal notranslate"><span class="pre">...</span></code> menu of the conversation on the top to access the settings.</p>
+<a class="reference internal image-reference" href="../../_images/open-settings.png"><img alt="../../_images/open-settings.png" src="../../_images/open-settings.png" style="width: 400px;" />
+</a>
+<p>Here you can configure the description, guest access, if the conversation is visible to others on the server and more.</p>
+<a class="reference internal image-reference" href="../../_images/conversation-settings-dialog.png"><img alt="../../_images/conversation-settings-dialog.png" src="../../_images/conversation-settings-dialog.png" style="width: 600px;" />
+</a>
+</section>
+<section id="ban-participants">
+<h2>Ban participants<a class="headerlink" href="#ban-participants" title="Link to this heading"></a></h2>
+<p>To help keep discussions safe and under control, moderators can ban participants from conversations.
+It could be internal users or guests (in this case their IP-addresse will additionally be banned).</p>
+<p>In the participants list, select the user or guest you, and click <code class="docutils literal notranslate"><span class="pre">Remove</span> <span class="pre">participant</span></code>.</p>
+<a class="reference internal image-reference" href="../../_images/ban-participant.png"><img alt="../../_images/ban-participant.png" src="../../_images/ban-participant.png" style="width: 300px;" />
+</a>
+<p>There, toggle checkbox <code class="docutils literal notranslate"><span class="pre">Also</span> <span class="pre">ban</span> <span class="pre">from</span> <span class="pre">this</span> <span class="pre">conversation</span></code> and provide a reason for the ban. The banned user will be removed and prevented from rejoining.</p>
+<a class="reference internal image-reference" href="../../_images/ban-participant-dialog.png"><img alt="../../_images/ban-participant-dialog.png" src="../../_images/ban-participant-dialog.png" style="width: 400px;" />
+</a>
+<p>You can later find the list of banned users in the <code class="docutils literal notranslate"><span class="pre">Moderation</span></code> section of conversation settings.
+Here, you can see the reason for the ban and revert it if needed.</p>
+<a class="reference internal image-reference" href="../../_images/ban-participant-list.png"><img alt="../../_images/ban-participant-list.png" src="../../_images/ban-participant-list.png" style="width: 400px;" />
+</a>
+</section>
+<section id="messages-expiration">
+<h2>Messages expiration<a class="headerlink" href="#messages-expiration" title="Link to this heading"></a></h2>
+<p>A moderator can configure message expiration under the <code class="docutils literal notranslate"><span class="pre">Conversation</span> <span class="pre">settings</span></code> within the <code class="docutils literal notranslate"><span class="pre">Moderation</span></code> section. Once a message reaches its expiration time, it is automatically removed from the conversation.
+The available expiration durations are 1 hour, 8 hours, 1 day, 1 week, 4 weeks, or never (which is the default setting).</p>
+<a class="reference internal image-reference" href="../../_images/messages-expiration.png"><img alt="../../_images/messages-expiration.png" src="../../_images/messages-expiration.png" style="width: 500px;" />
+</a>
+</section>
+<section id="starting-a-call">
+<h2>Starting a call<a class="headerlink" href="#starting-a-call" title="Link to this heading"></a></h2>
+<p>When you’re in a conversation, you can start a call any time with the <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">call</span></code> button. Other participants will get notified and can join the call.</p>
+<a class="reference internal image-reference" href="../../_images/device-settings-before-call.png"><img alt="../../_images/device-settings-before-call.png" src="../../_images/device-settings-before-call.png" style="width: 600px;" />
+</a>
+<p>If somebody else has started a call already, the button will change in a green <code class="docutils literal notranslate"><span class="pre">Join</span> <span class="pre">call</span></code> button.</p>
+<a class="reference internal image-reference" href="../../_images/join-call.png"><img alt="../../_images/join-call.png" src="../../_images/join-call.png" style="width: 600px;" />
+</a>
+<p>During a call, you can mute your microphone and disable your video with the buttons on the right side of the top bar, or using the shortcuts <code class="docutils literal notranslate"><span class="pre">M</span></code> to mute audio and <code class="docutils literal notranslate"><span class="pre">V</span></code> to disable video. You can also use the space bar to toggle mute. When you are muted, pressing space will unmute you so you can speak until you let go of the space bar. If you are unmuted, pressing space will mute you until you let go.</p>
+<p>You can hide your video (useful during a screen share) with the little arrow just above the video stream. Bring it back with the little arrow again.</p>
+<p>You can access your settings and choose a different webcam, microphone and other settings in the <code class="docutils literal notranslate"><span class="pre">...</span></code> menu in the top bar.</p>
+<a class="reference internal image-reference" href="../../_images/media-settings.png"><img alt="../../_images/media-settings.png" src="../../_images/media-settings.png" style="width: 300px;" />
+</a>
+<p>From media settings dialog, you can also change the background of your video.</p>
+<a class="reference internal image-reference" href="../../_images/background-settings-in-call.png"><img alt="../../_images/background-settings-in-call.png" src="../../_images/background-settings-in-call.png" style="width: 400px;" />
+</a>
+<p>All these settings are also available as direct actions in the bottom bar.</p>
+<a class="reference internal image-reference" href="../../_images/call-bottom-bar.png"><img alt="../../_images/call-bottom-bar.png" src="../../_images/call-bottom-bar.png" style="width: 300px;" />
+</a>
+<p>You can change other settings in the <code class="docutils literal notranslate"><span class="pre">Talk</span> <span class="pre">settings</span></code> dialog.</p>
+<a class="reference internal image-reference" href="../../_images/talk-settings.png"><img alt="../../_images/talk-settings.png" src="../../_images/talk-settings.png" style="width: 600px;" />
+</a>
+</section>
+<section id="starting-a-screen-share">
+<h2>Starting a screen share<a class="headerlink" href="#starting-a-screen-share" title="Link to this heading"></a></h2>
+<p>You can click the monitor icon on your video stream to share your screen. Depending on your browser, you will get the option to share a monitor, an application window or a single browser tab.
+If video from your camera is also available, other participants will see it in a small presenter view next to the screen share.</p>
+<a class="reference internal image-reference" href="../../_images/share-screen-with-camera.png"><img alt="../../_images/share-screen-with-camera.png" src="../../_images/share-screen-with-camera.png" style="width: 700px;" />
+</a>
+<p>You can zoom in and out of the shared screen with mouse wheel, double click or touchpad gestures.</p>
+</section>
+<section id="changing-view-in-a-call">
+<h2>Changing view in a call<a class="headerlink" href="#changing-view-in-a-call" title="Link to this heading"></a></h2>
+<p>You can switch the view in a call in the bottom bar between promoted view and grid view.</p>
+<a class="reference internal image-reference" href="../../_images/call-view-toggle-button.png"><img alt="../../_images/call-view-toggle-button.png" src="../../_images/call-view-toggle-button.png" style="width: 300px;" />
+</a>
+<p>The grid view will show as many people as the screen can fit, allowing navigation with buttons on the left and right.</p>
+<a class="reference internal image-reference" href="../../_images/talk-grid-view.png"><img alt="../../_images/talk-grid-view.png" src="../../_images/talk-grid-view.png" style="width: 700px;" />
+</a>
+<p>The promoted view shows the speaker large and others in a row below. If the people do not fit on the screen, buttons will appear on the left and right that let you navigate.</p>
+<a class="reference internal image-reference" href="../../_images/talk-promoted-view.png"><img alt="../../_images/talk-promoted-view.png" src="../../_images/talk-promoted-view.png" style="width: 700px;" />
+</a>
+</section>
+<section id="download-call-participants-list">
+<h2>Download call participants list<a class="headerlink" href="#download-call-participants-list" title="Link to this heading"></a></h2>
+<p>You can download the list of participants in a call from the <code class="docutils literal notranslate"><span class="pre">...</span></code> menu in the top bar. This will download a CSV file with the names and email addresses of all participants in the call.</p>
+<a class="reference internal image-reference" href="../../_images/download-participants-list.png"><img alt="../../_images/download-participants-list.png" src="../../_images/download-participants-list.png" style="width: 400px;" />
+</a>
+<p>The table in the CSV file contains the following columns:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: The name of the participant.</p></li>
+<li><p><strong>Email</strong>: The email address of the participant.</p></li>
+<li><p><strong>Type</strong>: Indicates whether the participant is a registered user or a guest.</p></li>
+<li><p><strong>Identifier</strong>: Unique identifier for the participant.</p></li>
+</ul>
+</section>
+<section id="compact-view-of-conversations-list">
+<h2>Compact view of conversations list<a class="headerlink" href="#compact-view-of-conversations-list" title="Link to this heading"></a></h2>
+<p>Compact view allows to hide last message preview in the conversation list, providing a more focused interface.
+You can enable it from the <code class="docutils literal notranslate"><span class="pre">Talk</span> <span class="pre">settings</span></code> dialog  in <code class="docutils literal notranslate"><span class="pre">Appearance</span></code> section.</p>
+<a class="reference internal image-reference" href="../../_images/talk-compact-view.png"><img alt="../../_images/talk-compact-view.png" src="../../_images/talk-compact-view.png" style="width: 200px;" />
+</a>
+</section>
+<section id="messages-search-in-a-conversation">
+<h2>Messages search in a conversation<a class="headerlink" href="#messages-search-in-a-conversation" title="Link to this heading"></a></h2>
+<p>In addition to global unified search, you can search for messages within a specific conversation. In the content sidebar of a conversation, click the search icon to open the search tab.</p>
+<a class="reference internal image-reference" href="../../_images/chat-search-messages.png"><img alt="../../_images/chat-search-messages.png" src="../../_images/chat-search-messages.png" style="width: 500px;" />
+</a>
+<p>You can narrow down your search by using filters such as date range, and sender.</p>
+<a class="reference internal image-reference" href="../../_images/chat-search-messages-tab.png"><img alt="../../_images/chat-search-messages-tab.png" src="../../_images/chat-search-messages-tab.png" style="width: 500px;" />
+</a>
+</section>
+<section id="threaded-messages">
+<h2>Threaded messages<a class="headerlink" href="#threaded-messages" title="Link to this heading"></a></h2>
+<p>You can create threads in conversations to keep discussions organized. The thread creation option is available in the new message additional actions.</p>
+<a class="reference internal image-reference" href="../../_images/thread-create-action.png"><img alt="../../_images/thread-create-action.png" src="../../_images/thread-create-action.png" style="width: 500px;" />
+</a>
+<p>Then, you can add a title and description for the thread and start the discussion.</p>
+<a class="reference internal image-reference" href="../../_images/thread-example.png"><img alt="../../_images/thread-example.png" src="../../_images/thread-example.png" style="width: 500px;" />
+</a>
+<p>You can view all replies in a thread either from the replies button on the message or from <code class="docutils literal notranslate"><span class="pre">Shared</span> <span class="pre">items</span></code> tab in the content sidebar.</p>
+<a class="reference internal image-reference" href="../../_images/threads-list-shared-items.png"><img alt="../../_images/threads-list-shared-items.png" src="../../_images/threads-list-shared-items.png" style="width: 500px;" />
+</a>
+<p>You can subscribe to a thread to receive notifications about new replies. It is possible to subscribe from the thread itself or from the sidebar.</p>
+<a class="reference internal image-reference" href="../../_images/thread-notifications.png"><img alt="../../_images/thread-notifications.png" src="../../_images/thread-notifications.png" style="width: 500px;" />
+</a>
+<p>Subscribed threads are easily accessible from the navigation bar in <code class="docutils literal notranslate"><span class="pre">Threads</span></code> navigation.</p>
+<a class="reference internal image-reference" href="../../_images/threads-followed.png"><img alt="../../_images/threads-followed.png" src="../../_images/threads-followed.png" style="width: 500px;" />
+</a>
+<p>Editing thread title is possible from the thread itself or from the sidebars.</p>
+<a class="reference internal image-reference" href="../../_images/thread-edit-title.png"><img alt="../../_images/thread-edit-title.png" src="../../_images/thread-edit-title.png" style="width: 500px;" />
+</a>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Sidefod">
+        <a href="index.html" class="btn btn-neutral float-left" title="Talk" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Forrige</a>
+        <a href="advanced_features.html" class="btn btn-neutral float-right" title="Advanced Talk features" accesskey="n" rel="next">Næste <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Here go the languages -->
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐
+      
+      
+      Danish
+      
+      <span class="fa fa-caret-down"></span>
+
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Languages</dt>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ar/"
+                 
+              >
+                
+                Arabic
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/br/"
+                 
+              >
+                
+                Breton
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ca/"
+                 
+              >
+                
+                Catalan
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/cs/"
+                 
+              >
+                
+                Czech
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/da/"
+                 
+                 style="color: var(--dark-link-color);"
+                 
+              >
+                
+                Danish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/de/"
+                 
+              >
+                
+                German
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el/"
+                 
+              >
+                
+                Greek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/en/"
+                 
+              >
+                
+                English
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/es/"
+                 
+              >
+                
+                Spanish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eu/"
+                 
+              >
+                
+                eu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fi_FI/"
+                 
+              >
+                
+                Finnish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fr/"
+                 
+              >
+                
+                French
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ga/"
+                 
+              >
+                
+                Irish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/gl/"
+                 
+              >
+                
+                Glacian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu_HU/"
+                 
+              >
+                
+                Hungarian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/id/"
+                 
+              >
+                
+                Indonesian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/it/"
+                 
+              >
+                
+                Italian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ja_JP/"
+                 
+              >
+                
+                Japanese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ko/"
+                 
+              >
+                
+                Korean
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/mn/"
+                 
+              >
+                
+                Mongolian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nb_NO/"
+                 
+              >
+                
+                Norwegian (NB)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nl/"
+                 
+              >
+                
+                Dutch
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nn/"
+                 
+              >
+                
+                Norwegian (NN)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pl/"
+                 
+              >
+                
+                Polish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_BR/"
+                 
+              >
+                
+                Portuguese (BR)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_PT/"
+                 
+              >
+                
+                Portuguese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ro/"
+                 
+              >
+                
+                Romanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ru/"
+                 
+              >
+                
+                Russian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/si/"
+                 
+              >
+                
+                Sinhala
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sk_SK/"
+                 
+              >
+                
+                Slovakian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sr/"
+                 
+              >
+                
+                Slovenian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sv/"
+                 
+              >
+                
+                Swedish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ta/"
+                 
+              >
+                
+                Tamil
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/tr/"
+                 
+              >
+                
+                Turkish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk/"
+                 
+              >
+                
+                Ukrainian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk_UA/"
+                 
+              >
+                
+                uk_UA
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uz/"
+                 
+              >
+                
+                Uzbek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/vi/"
+                 
+              >
+                
+                Vietnamese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_CN/"
+                 
+              >
+                
+                Chinese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_HK/"
+                 
+              >
+                
+                Chinese (HK)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_TW/"
+                 
+              >
+                
+                Chinese (TW)
+                
+              </a>
+            </dd>
+          
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versioner</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/30/user_manual"
+               
+            >
+              30
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/29/user_manual"
+               
+            >
+              29
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>På Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Projektets startside</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,390 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OCS API &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="OCS OpenAPI tutorial" href="ocs-openapi.html" />
+    <link rel="prev" title="Login Flow" href="../LoginFlow/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Clients and Client APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../general.html">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../activity-api.html">Activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../android_library/index.html">Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LoginFlow/index.html">Login Flow</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">OCS API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocs-openapi.html">OCS OpenAPI tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-api-overview.html">OCS APIs overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-sharee-api.html">OCS Sharee API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-status-api.html">OCS Status API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-recommendations-api.html">OCS Recommendations API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-user-preferences-api.html">OCS user preferences API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-translation-api.html">OCS Translation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-textprocessing-api.html">OCS TextProcessing API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-text2image-api.html">OCS Text-To-Image API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-taskprocessing-api.html">OCS TaskProcessing API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-out-of-office-api.html">OCS Out-of-office API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-fulltextsearch-collections-api.html">OCS FullTextSearch Collection API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../RemoteWipe/index.html">Remote wipe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WebDAV/index.html">Webdav</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Clients and Client APIs</a></li>
+      <li class="breadcrumb-item active">OCS API</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/client_apis/OCS/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ocs-api">
+<span id="ocsapiindex"></span><h1>OCS API<a class="headerlink" href="#ocs-api" title="Link to this heading"></a></h1>
+<p>To browse the new OCS API documentation please go <a class="reference external" href="../../_static/openapi.html">here</a>.</p>
+<p>The old documentation is still kept as it provides some additional documentation that is not completely covered in the new documentation:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ocs-openapi.html">OCS OpenAPI tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ocs-openapi.html#requirements-and-prerequisites">Requirements and prerequisites</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocs-openapi.html#app-supports-at-least-nextcloud-28">App supports at least Nextcloud 28</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-openapi.html#psalm-is-setup-and-configured">Psalm is setup and configured</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-openapi.html#tips-and-tricks">Tips and tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-openapi.html#best-practices">Best practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocs-openapi.html#prefer-to-expose-your-apis-using-ocs">PREFER to expose your APIs using OCS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-openapi.html#do-type-controller-and-helper-methods-as-explicit-as-possible">DO type controller and helper methods as explicit as possible</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-openapi.html#prefer-to-use-null-to-represent-empty-data">PREFER to use <code class="docutils literal notranslate"><span class="pre">null</span></code> to represent empty data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-openapi.html#do-not-throw-non-ocs-exceptions">DO NOT throw non-OCS*Exceptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-openapi.html#do-use-the-same-data-structures-for-the-same-group-of-responses">DO use the same data structures for the same group of responses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-openapi.html#do-not-use-the-addheader-method-for-setting-headers-for-your-responses">DO NOT use the <code class="docutils literal notranslate"><span class="pre">addHeader</span></code> method for setting headers for your responses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-openapi.html#consider-how-your-api-will-be-used">CONSIDER how your API will be used</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-openapi.html#do-set-all-descriptions-for-parameters-and-methods">DO set all descriptions for parameters and methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-openapi.html#how-to-add-openapi-support-to-your-ocs-api">How to add OpenAPI support to your OCS API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-openapi.html#how-to-add-response-definitions-to-share-type-definitions">How to add response definitions to share type definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-openapi.html#how-to-handle-exceptions">How to handle exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-openapi.html#how-to-ignore-certain-endpoints">How to ignore certain endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-openapi.html#how-to-expose-capabilities">How to expose Capabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-openapi.html#scopes">Scopes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocs-openapi.html#tags">Tags</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-openapi.html#how-to-generate-the-specification">How to generate the specification</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ocs-api-overview.html">OCS APIs overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ocs-api-overview.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-api-overview.html#testing-requests-with-curl">Testing requests with curl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-api-overview.html#user-metadata">User metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-api-overview.html#user-metadata-list-user-ids">User metadata - List user IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-api-overview.html#capabilities-api">Capabilities API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-api-overview.html#theming-capabilities">Theming capabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-api-overview.html#direct-download">Direct Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-api-overview.html#notifications">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-api-overview.html#auto-complete-and-user-search">Auto-complete and user search</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocs-api-overview.html#filtering-the-auto-complete-results">Filtering the auto-complete results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-api-overview.html#force-language-for-a-given-call">Force language for a given call</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ocs-share-api.html">OCS Share API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ocs-share-api.html#local-shares">Local Shares</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocs-share-api.html#get-all-shares">Get all Shares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-share-api.html#get-shares-from-a-specific-file-or-folder">Get Shares from a specific file or folder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-share-api.html#get-information-about-a-known-share">Get information about a known Share</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-share-api.html#create-a-new-share">Create a new Share</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-share-api.html#delete-share">Delete Share</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-share-api.html#update-share">Update Share</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-share-api.html#share-attributes">Share attributes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ocs-share-api.html#download-permission">Download permission</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ocs-share-api.html#file-request">File request</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-share-api.html#send-email">Send email</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-share-api.html#federated-cloud-shares">Federated Cloud Shares</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocs-share-api.html#create-a-new-federated-cloud-share">Create a new Federated Cloud Share</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-share-api.html#list-accepted-federated-cloud-shares">List accepted Federated Cloud Shares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-share-api.html#get-information-about-a-known-federated-cloud-share">Get information about a known Federated Cloud Share</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-share-api.html#delete-an-accepted-federated-cloud-share">Delete an accepted Federated Cloud Share</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-share-api.html#list-pending-federated-cloud-shares">List pending Federated Cloud Shares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-share-api.html#accept-a-pending-federated-cloud-share">Accept a pending Federated Cloud Share</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-share-api.html#decline-a-pending-federated-cloud-share">Decline a pending Federated Cloud Share</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ocs-sharee-api.html">OCS Sharee API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ocs-sharee-api.html#search">Search</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocs-sharee-api.html#search-sharees">Search sharees</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-sharee-api.html#recommendation">Recommendation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocs-sharee-api.html#sharee-recommendations">Sharee recommendations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ocs-status-api.html">OCS Status API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ocs-status-api.html#user-status-status-manipulation">User Status - Status Manipulation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocs-status-api.html#fetch-your-own-status">Fetch your own status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-status-api.html#set-your-own-status">Set your own status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-status-api.html#set-a-custom-message-predefined">Set a custom message (predefined)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-status-api.html#set-a-custom-message-user-defined">Set a custom message (user-defined)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-status-api.html#clear-message">Clear message</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-status-api.html#user-status-predefined-statuses">User Status - Predefined statuses</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocs-status-api.html#fetch-the-list-of-predefined-statuses">Fetch the list of predefined statuses</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-status-api.html#user-status-retrieve-statuses">User Status - Retrieve statuses</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocs-status-api.html#fetch-a-list-of-all-set-user-statuses">Fetch a list of all set user-statuses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-status-api.html#fetch-a-specific-user-s-status">Fetch a specific user’s status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-status-api.html#fetch-a-user-s-backup-status">Fetch a user’s backup status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-status-api.html#files-sharing">Files Sharing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-status-api.html#user-status-restore-backup">User status - Restore backup</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ocs-recommendations-api.html">OCS Recommendations API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ocs-recommendations-api.html#recommendations-retrieval">Recommendations - Retrieval</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocs-recommendations-api.html#fetch-user-controlled-recommendations">Fetch user-controlled recommendations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-recommendations-api.html#fetch-user-setting-and-recommendations">Fetch user setting and recommendations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ocs-user-preferences-api.html">OCS user preferences API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ocs-user-preferences-api.html#setting-a-preference">Setting a preference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-user-preferences-api.html#setting-multiple-preference">Setting multiple preference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-user-preferences-api.html#deleting-a-preference">Deleting a preference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-user-preferences-api.html#deleting-multiple-preference">Deleting multiple preference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ocs-translation-api.html">OCS Translation API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ocs-translation-api.html#get-available-translation-options">Get available translation options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocs-translation-api.html#language-tuple-structure">Language tuple structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-translation-api.html#translate-a-string">Translate a string</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ocs-textprocessing-api.html">OCS TextProcessing API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ocs-textprocessing-api.html#get-available-task-types">Get available task types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-textprocessing-api.html#schedule-a-task">Schedule a task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-textprocessing-api.html#fetch-a-task-by-id">Fetch a task by ID</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ocs-text2image-api.html">OCS Text-To-Image API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ocs-text2image-api.html#check-availability">Check availability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-text2image-api.html#schedule-a-task">Schedule a task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-text2image-api.html#fetch-a-task-by-id">Fetch a task by ID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-text2image-api.html#fetch-a-result-image">Fetch a result image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-text2image-api.html#delete-a-task">Delete a task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-text2image-api.html#list-tasks-by-app">List tasks by App</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ocs-taskprocessing-api.html">OCS TaskProcessing API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ocs-out-of-office-api.html">OCS Out-of-office API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ocs-out-of-office-api.html#fetch-ongoing-data">Fetch ongoing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-out-of-office-api.html#fetch-upcoming-or-ongoing-data">Fetch upcoming or ongoing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-out-of-office-api.html#modify-out-of-office-data">Modify out-of-office data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-out-of-office-api.html#clear-data-and-disable-out-of-office">Clear data and disable out-of-office</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ocs-fulltextsearch-collections-api.html">OCS FullTextSearch Collection API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ocs-fulltextsearch-collections-api.html#concept-overview">Concept overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-fulltextsearch-collections-api.html#first-steps">First steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocs-fulltextsearch-collections-api.html#installing-the-apps">Installing the apps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-fulltextsearch-collections-api.html#initializing-the-collection">Initializing the collection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-fulltextsearch-collections-api.html#linking-a-collection-to-a-user-account">Linking a collection to a user account</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ocs-fulltextsearch-collections-api.html#using-the-collection-ocs-api">Using the collection OCS API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ocs-fulltextsearch-collections-api.html#retrieving-the-list-of-document-to-be-re-indexed">Retrieving the list of document to be (re-)indexed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-fulltextsearch-collections-api.html#get-data-and-metadata-from-a-document">Get data and metadata from a document</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-fulltextsearch-collections-api.html#set-document-as-indexed">Set document as indexed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-fulltextsearch-collections-api.html#reset-collection">Reset collection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../LoginFlow/index.html" class="btn btn-neutral float-left" title="Login Flow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ocs-openapi.html" class="btn btn-neutral float-right" title="OCS OpenAPI tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/developer_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ExApp lifecycle &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+      <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+      <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Technical details" href="../tech_details/index.html" />
+    <link rel="prev" title="ExApp overview" href="ExAppOverview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">ExApp development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DevSetup.html">Setting up dev environment</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Development overview</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ExAppDevelopmentSteps.html">ExApp development</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ExAppOverview.html">ExApp overview</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ExApp lifecycle</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#exapp-lifecycle-methods">ExApp lifecycle methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exapp-lifecycle-scheme">ExApp lifecycle scheme</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-side-exapp-lifecycle-methods">Nextcloud-side ExApp lifecycle methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#appapi-authentication">AppAPI Authentication</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tech_details/index.html">Technical details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/index.html">Frequently Asked Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">ExApp development</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Development overview</a></li>
+      <li class="breadcrumb-item active">ExApp lifecycle</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/exapp_development/development_overview/ExAppLifecycle.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="exapp-lifecycle">
+<span id="ex-app-lifecycle"></span><h1>ExApp lifecycle<a class="headerlink" href="#exapp-lifecycle" title="Link to this heading"></a></h1>
+<p>The ExApp lifecycle is a set of communication rules (or protocols) between Nextcloud and the ExApp.
+They are required as for the microservice architecture of ExApp.
+This section is an overview, more details on that here: <a class="reference internal" href="../tech_details/InstallationFlow.html#app-installation-flow"><span class="std std-ref">App Installation Flow</span></a>, <a class="reference internal" href="../tech_details/Deployment.html#app-deployment"><span class="std std-ref">Deployment</span></a>.</p>
+<section id="exapp-lifecycle-methods">
+<span id="ex-app-lifecycle-methods"></span><h2>ExApp lifecycle methods<a class="headerlink" href="#exapp-lifecycle-methods" title="Link to this heading"></a></h2>
+<p>When the ExApp is being installed in Nextcloud, there are several lifecycle steps happening.
+The ExApp lifecycle requires the following API endpoint handlers (in order):</p>
+<blockquote>
+<div><ol class="arabic simple" start="0">
+<li><p><code class="docutils literal notranslate"><span class="pre">healthcheck</span></code>: Docker container healthcheck</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/heartbeat</span></code>: <strong>[required]</strong> ExApp heartbeat handler</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/init</span></code>: <strong>[optional]</strong> ExApp initialization handler</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/enabled</span></code>: <strong>[required]</strong> ExApp enable/disable handler</p></li>
+</ol>
+</div></blockquote>
+<section id="healthcheck">
+<h3>Healthcheck<a class="headerlink" href="#healthcheck" title="Link to this heading"></a></h3>
+<p>Docker allows you to define a custom healthcheck script for your container (specified in the Dockerfile).
+You can define any custom container startup logic here if needed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The AppAPI healthcheck timeout is 15 minutes.</p>
+</div>
+</section>
+<section id="heartbeat">
+<h3>Heartbeat<a class="headerlink" href="#heartbeat" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/heartbeat</span></code> method is called periodically by Nextcloud to check the ExApp health status,
+i.e. if its webserver is running and receiving requests.</p>
+<p>URL: <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">http://localhost:2345/heartbeat</span></code></p>
+<p>AppAPI expects a response with HTTP status 200.
+This step fails if the ExApp does not respond within 10 minutes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This endpoint should be available <strong>without AppAPIAuth authentication</strong>.
+There is a 10 minute timeout for the ExApp to startup and respond to the <code class="docutils literal notranslate"><span class="pre">/heartbeat</span></code> request.</p>
+</div>
+</section>
+<section id="init">
+<span id="ex-app-lifecycle-init"></span><h3>Init<a class="headerlink" href="#init" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/init</span></code> endpoint is called after the ExApp is enabled in Nextcloud.
+This is a trigger for the ExApp to start its initialization process, e.g. downloading models, starter data, etc.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The default init timeout (<code class="docutils literal notranslate"><span class="pre">init_timeout</span></code>) is 40 minutes. It can be changed in the AppAPI admin settings
+or via the command <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">config:app:set</span> <span class="pre">app_api</span> <span class="pre">init_timeout</span> <span class="pre">--value</span> <span class="pre">40</span> <span class="pre">--type</span> <span class="pre">mixed</span></code>.</p>
+</div>
+<p>URL: <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">http://localhost:2345/init</span></code></p>
+<p>AppAPI expects a response with HTTP status 200.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Even if the ExApp does not not implement <code class="docutils literal notranslate"><span class="pre">/init</span></code> endpoint and AppAPI receives a <code class="docutils literal notranslate"><span class="pre">HTTP</span> <span class="pre">501</span> <span class="pre">NOT</span> <span class="pre">IMPLEMENTED</span></code> or <code class="docutils literal notranslate"><span class="pre">HTTP</span> <span class="pre">404</span> <span class="pre">NOT</span> <span class="pre">FOUND</span></code> response,
+AppAPI can still enable the ExApp.</p>
+</div>
+<p>The ExApp should update the init progress via the <code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/ocs/v2.php/apps/app_api/ex-app/status</span></code> API request
+containing a <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;progress&quot;:</span> <span class="pre">&lt;number&gt;</span> <span class="pre">}</span></code> payload.</p>
+</section>
+<section id="enabled">
+<h3>Enabled<a class="headerlink" href="#enabled" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/enabled?enabled=1|0</span></code> method is called when the ExApp is enabled or disabled in Nextcloud.
+The <code class="docutils literal notranslate"><span class="pre">enabled</span></code> query parameter is used to determine the ExApp state: 1 - enabled, 0 - disabled.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">http://localhost:2345/enabled?enabled=1</span></code> - enable ExApp, during this call ExApp should register all needed APIs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">http://localhost:2345/enabled?enabled=0</span></code> - disable ExApp, during this call ExApp should unregister all APIs</p></li>
+</ul>
+<p>AppAPI expects a response with HTTP status 200. Any other status code will be considered as an error.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The AppAPI timeout for the <code class="docutils literal notranslate"><span class="pre">enabled</span></code> handler is 30 seconds.</p>
+</div>
+</section>
+</section>
+<section id="exapp-lifecycle-scheme">
+<h2>ExApp lifecycle scheme<a class="headerlink" href="#exapp-lifecycle-scheme" title="Link to this heading"></a></h2>
+<p>Let’s review a simple ExApp lifecycle scheme:</p>
+<pre  class="mermaid">
+        sequenceDiagram
+    participant Nextcloud
+    participant ExApp
+    loop Heartbeat
+        Nextcloud-&gt;&gt;ExApp: HTTP GET /heartbeat
+        ExApp--&gt;&gt;Nextcloud: /heartbeat HTTP 200
+    end
+    Nextcloud-&gt;&gt;ExApp: HTTP POST /init
+    ExApp-&gt;&gt;Nextcloud: /init HTTP OK 200
+    loop Init
+        ExApp-&gt;&gt;ExApp: Download models, starter data, etc.
+        ExApp--&gt;&gt;Nextcloud: PUT /ocs/v2.php/apps/app_api/ex-app/status { &quot;progress&quot;: 50 }
+    end
+    Nextcloud-&gt;&gt;ExApp: HTTP PUT /enabled?enabled=1
+    ExApp--&gt;&gt;Nextcloud: Register all needed APIs via OCS API
+    ExApp-&gt;&gt;Nextcloud: /enabled HTTP 200
+    Nextcloud-&gt;&gt;ExApp: HTTP PUT /enabled?enabled=0
+    ExApp--&gt;&gt;Nextcloud: Unregister all APIs via OCS API
+    ExApp-&gt;&gt;Nextcloud: /enabled HTTP 200
+    </pre></section>
+<section id="nextcloud-side-exapp-lifecycle-methods">
+<h2>Nextcloud-side ExApp lifecycle methods<a class="headerlink" href="#nextcloud-side-exapp-lifecycle-methods" title="Link to this heading"></a></h2>
+<p>The Nextcloud-side ExApp lifecycle methods are the OCS APIs.
+You can find available AppAPI Nextcloud OCS APIs <a class="reference internal" href="../tech_details/api/index.html#app-api-nextcloud-apis"><span class="std std-ref">here</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The ExApp should register all needed APIs during the <code class="docutils literal notranslate"><span class="pre">enabled</span></code> method call,
+such as the UI (<a class="reference internal" href="../tech_details/api/topmenu.html#top-menu-section"><span class="std std-ref">top-menu</span></a>, <a class="reference internal" href="../tech_details/api/fileactionsmenu.html#file-actions-menu-section"><span class="std std-ref">filesactionmenu</span></a>), <a class="reference internal" href="../tech_details/api/occ_command.html#occ-command"><span class="std std-ref">occ commands</span></a>, etc.</p>
+</div>
+</section>
+<section id="appapi-authentication">
+<h2>AppAPI Authentication<a class="headerlink" href="#appapi-authentication" title="Link to this heading"></a></h2>
+<p>Nextcloud requests to the ExApp are secured with <a class="reference internal" href="../tech_details/Authentication.html"><span class="doc">AppAPIAuth</span></a>.
+The ExApp should validate the authentication using the same algorithm as AppAPI does.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Is it up to the developer to apply rate limits, bruteforce protection, and other security measures
+to the ExApp API endpoints.</p>
+</div>
+<section id="cookies">
+<h3>Cookies<a class="headerlink" href="#cookies" title="Link to this heading"></a></h3>
+<p>Along with the AppAPIAuth, ExApp can utilize the Nextcloud cookies of the authenticated user,
+who made the request to the ExApp.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ExAppOverview.html" class="btn btn-neutral float-left" title="ExApp overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../tech_details/index.html" class="btn btn-neutral float-right" title="Technical details" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/developer_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

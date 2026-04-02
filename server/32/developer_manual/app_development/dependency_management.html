@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dependency management &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Extending the DAV server" href="dav_extension.html" />
+    <link rel="prev" title="Navigation and pre-app configuration" href="init.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">App development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bootstrap.html">Bootstrapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html">App metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Dependency management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#composer">Composer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#remove-unneeded-files-from-packages">Remove unneeded files from packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dependency-hell">Dependency hell</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#development-tools">Development tools</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dav_extension.html">Extending the DAV server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translation_setup.html">Translation setup</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">App development</a></li>
+      <li class="breadcrumb-item active">Dependency management</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/app_development/dependency_management.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dependency-management">
+<span id="app-dependencies"></span><h1>Dependency management<a class="headerlink" href="#dependency-management" title="Link to this heading"></a></h1>
+<p>You can leverage existing software packages to build a Nextcloud app.</p>
+<section id="composer">
+<span id="app-composer"></span><h2>Composer<a class="headerlink" href="#composer" title="Link to this heading"></a></h2>
+<p>You can add 3rd party php packages with <a class="reference external" href="https://getcomposer.org/">Composer</a>. Composer will download the specified packages to a directory of your choice, typically to <code class="docutils literal notranslate"><span class="pre">/vendor</span></code>. In order to benefit from Composer’s autoloader, you’ll want to add a <code class="docutils literal notranslate"><span class="pre">require_once</span></code> to the <code class="docutils literal notranslate"><span class="pre">register</span></code> method of your <code class="docutils literal notranslate"><span class="pre">Application</span></code> class in the <a class="reference internal" href="bootstrap.html#bootstrapping"><span class="std std-ref">bootstrapping</span></a> code of your app.</p>
+<section id="remove-unneeded-files-from-packages">
+<h3>Remove unneeded files from packages<a class="headerlink" href="#remove-unneeded-files-from-packages" title="Link to this heading"></a></h3>
+<p>It is heavily recommended to remove files that are not required in production from the final packages.
+This especially, but not exclusively, refers to:</p>
+<ul class="simple">
+<li><p>Developer files, e.g. <code class="docutils literal notranslate"><span class="pre">/Makefile</span></code></p></li>
+<li><p>CI workflows, e.g. <code class="docutils literal notranslate"><span class="pre">/.github</span></code></p></li>
+<li><p>Test assets, e.g. <code class="docutils literal notranslate"><span class="pre">/tests</span></code></p></li>
+<li><p>Configuration of development tools, e.g. <code class="docutils literal notranslate"><span class="pre">/phpunit.xml</span></code>, <code class="docutils literal notranslate"><span class="pre">/psalm.xml</span></code></p></li>
+<li><p>Git or other version control code, e.g. <code class="docutils literal notranslate"><span class="pre">/.git</span></code></p></li>
+</ul>
+<p>You can check the <a class="reference external" href="https://github.com/nextcloud/3rdparty/blob/master/.gitignore">Server’s .gitignore</a> file for more inspiration.</p>
+</section>
+<section id="dependency-hell">
+<span id="app-composer-dependency-hell"></span><h3>Dependency hell<a class="headerlink" href="#dependency-hell" title="Link to this heading"></a></h3>
+<p>Be careful with which packages you add to an app. PHP can not load two version of the same class twice, hence there can be conflicts between Nextcloud Server and an app or between two or more apps if they require the same package. So try to keep the number of production dependencies to a minimum and see <a class="reference internal" href="#app-composer-bin-tools"><span class="std std-ref">Development tools</span></a>.</p>
+<p>Alternatively you can use [composer-bin-plugin](<a class="reference external" href="https://github.com/bamarni/composer-bin-plugin">https://github.com/bamarni/composer-bin-plugin</a>) to avoid dependency conflicts between apps.</p>
+<ol class="arabic">
+<li><p>Install composer-bin-plugin according to their docs.</p>
+<blockquote>
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>composer<span class="w"> </span>require<span class="w"> </span>--dev<span class="w"> </span>bamarni/composer-bin-plugin
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Install the tools you need in the vendor-bin directory.</p>
+<blockquote>
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>composer<span class="w"> </span>bin<span class="w"> </span>psalm<span class="w"> </span>require<span class="w"> </span>--dev<span class="w"> </span>psalm/phar
+composer<span class="w"> </span>bin<span class="w"> </span>psalm<span class="w"> </span>require<span class="w"> </span>--dev<span class="w"> </span>nextcloud/ocp:dev-master
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><dl>
+<dt>Adjust some config (see below)</dt><dd><ul class="simple">
+<li><p>Add in <cite>composer.json</cite>:</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">composer.json</span><a class="headerlink" href="#id2" title="Link to this code"></a></div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;extra&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;bamarni-bin&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;bin-links&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;forward-command&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Add in <cite>composer.json</cite>:</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">composer.json</span><a class="headerlink" href="#id3" title="Link to this code"></a></div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;post-install-cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;[ $COMPOSER_DEV_MODE -eq 0 ] || composer bin all install --ansi&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;post-update-cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;[ $COMPOSER_DEV_MODE -eq 0 ] || composer bin all update --ansi&quot;</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<ul>
+<li><dl>
+<dt>Adjust <cite>psalm.xml</cite>:</dt><dd><ul class="simple">
+<li><p>Ensure the schemaLocation is correct:</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">psalm.xml</span><a class="headerlink" href="#id4" title="Link to this code"></a></div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>xsi:schemaLocation=&quot;https://getpsalm.org/schema/config<span class="w"> </span>vendor-bin/psalm/vendor/vimeo/psalm/config.xsd&quot;
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Ensure it has something like this:</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">psalm.xml</span><a class="headerlink" href="#id5" title="Link to this code"></a></div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;projectFiles&gt;</span>
+<span class="w">    </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;lib&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ignoreFiles&gt;</span>
+<span class="w">        </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vendor&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vendor-bin&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/ignoreFiles&gt;</span>
+<span class="nt">&lt;/projectFiles&gt;</span>
+<span class="nt">&lt;extraFiles&gt;</span>
+<span class="w">    </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vendor&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vendor-bin/psalm/vendor&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/extraFiles&gt;</span>
+</pre></div>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>Adjust <cite>.php-cs-fixer.dist.php</cite></p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">.php-cs-fixer.dist.php</span><a class="headerlink" href="#id6" title="Link to this code"></a></div>
+<div class="highlight-PHP notranslate"><div class="highlight"><pre><span></span><span class="x">require_once __DIR__ . &#39;/vendor-bin/cs-fixer/vendor/autoload.php&#39;;</span>
+</pre></div>
+</div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+<section id="conflict-example">
+<h4>Conflict example<a class="headerlink" href="#conflict-example" title="Link to this heading"></a></h4>
+<p>To illustrate the problem imagine app <em>A</em> depends on package <em>foo</em> in version 1, app <em>B</em> depends on package <em>foo</em> in version 2. The package <em>foo</em> had a breaking change to which app <em>B</em> has been adjusted, <em>A</em> uses the old API.</p>
+<p>Both apps ship a Composer autoloader that autoloads the <em>foo</em> functions and classes. There is a race between the two autoloaders. If <em>A</em>’s autoloader is asked to load the class first, then v1 will be used. If <em>B</em>’s autoloader loads functions and classes first it will be v2. In some scenarios there might be classes of v1 and v2 when autoloaders are invoked without a defined order.</p>
+<p>Depending on which functions and classes are loaded, app <em>A</em> might work or break. The same applies to <em>B</em>.</p>
+</section>
+</section>
+<section id="development-tools">
+<span id="app-composer-bin-tools"></span><h3>Development tools<a class="headerlink" href="#development-tools" title="Link to this heading"></a></h3>
+<p>It is very common for an app to use CLI tools for syntax checks, testing and building. Since many tools depend on common Composer packages like <code class="docutils literal notranslate"><span class="pre">psr/*</span></code> and <code class="docutils literal notranslate"><span class="pre">symfony/console</span></code>, it is likely that apps produce a <a class="reference internal" href="#app-composer-dependency-hell"><span class="std std-ref">dependency hell</span></a> on development environments.</p>
+<p>The dependency hell for CLI tools can be avoided by using the <em>Composer bin plugin</em>. It’s a composer plugin that puts development dependencies into sub directorory with a dedicated autoloader. That autoloader is only used if the CLI tool is used. For Nextcloud apps this means two apps can use conflicting versions of one tool. Moreover dependency conflicts between the tools of one app are no longer an issue.</p>
+<p>Tools known to be problematic that should be moved into bin plugin directories include</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">friendsofphp/php-cs-fixer</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">phpunit/phpunit</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vimeo/psalm</span></code></p></li>
+</ul>
+<p>Please see the <a class="reference external" href="https://packagist.org/packages/bamarni/composer-bin-plugin">package page</a> for up-to-date installation instructions.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="init.html" class="btn btn-neutral float-left" title="Navigation and pre-app configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dav_extension.html" class="btn btn-neutral float-right" title="Extending the DAV server" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/developer_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,525 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upgrade to Nextcloud 30 &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Upgrade to Nextcloud 29" href="upgrade_to_29.html" />
+    <link rel="prev" title="Upgrade to Nextcloud 31" href="upgrade_to_31.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">App publishing and maintenance</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../maintainer.html">Maintainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release_process.html">Release process</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://nextcloudappstore.readthedocs.io/en/latest/developer.html">Publishing App on the App Store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monetizing.html">Monetizing your app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing.html">The Nextcloud app store rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_signing.html">Code signing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release_automation.html">Release Automation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">App upgrade guide</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_32.html">Upgrade to Nextcloud 32</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_31.html">Upgrade to Nextcloud 31</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Upgrade to Nextcloud 30</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general">General</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#capabilities">Capabilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#front-end-changes">Front-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#back-end-changes">Back-end changes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_29.html">Upgrade to Nextcloud 29</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_28.html">Upgrade to Nextcloud 28</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_27.html">Upgrade to Nextcloud 27</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_26.html">Upgrade to Nextcloud 26</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_25.html">Upgrade to Nextcloud 25</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_24.html">Upgrade to Nextcloud 24</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_23.html">Upgrade to Nextcloud 23</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_22.html">Upgrade to Nextcloud 22</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_21.html">Upgrade to Nextcloud 21</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_20.html">Upgrade to Nextcloud 20</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_19.html">Upgrade to Nextcloud 19</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_18.html">Upgrade to Nextcloud 18</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_17.html">Upgrade to Nextcloud 17</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_16.html">Upgrade to Nextcloud 16</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_15.html">Upgrade to Nextcloud 15</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_14.html">Upgrade to Nextcloud 14</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">App publishing and maintenance</a></li>
+          <li class="breadcrumb-item"><a href="index.html">App upgrade guide</a></li>
+      <li class="breadcrumb-item active">Upgrade to Nextcloud 30</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/app_publishing_maintenance/app_upgrade_guide/upgrade_to_30.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="upgrade-to-nextcloud-30">
+<h1>Upgrade to Nextcloud 30<a class="headerlink" href="#upgrade-to-nextcloud-30" title="Link to this heading"></a></h1>
+<section id="general">
+<h2>General<a class="headerlink" href="#general" title="Link to this heading"></a></h2>
+<p>A new dependency type <code class="docutils literal notranslate"><span class="pre">backend</span></code> was added to info.xml.
+If your app requires or makes use of the CalDAV backend in server, please add the backend
+<code class="docutils literal notranslate"><span class="pre">caldav</span></code> to the dependencies of your app.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dependencies&gt;</span>
+<span class="w">    </span><span class="nt">&lt;backend&gt;</span>caldav<span class="nt">&lt;/backend&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span>
+</pre></div>
+</div>
+<p>If no app is requiring the CalDAV backend, the CalDAV section in the admin settings will be hidden.
+Currently, there is no other effect but that might change in the future.</p>
+</section>
+<section id="capabilities">
+<h2>Capabilities<a class="headerlink" href="#capabilities" title="Link to this heading"></a></h2>
+<section id="files">
+<h3><code class="docutils literal notranslate"><span class="pre">files</span></code><a class="headerlink" href="#files" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">blacklist_files_regex</span></code> is deprecated now use <code class="docutils literal notranslate"><span class="pre">forbidden_filenames</span></code> instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">forbidden_filename_characters</span></code> was added to provide a list of characters not allowed within filenames</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">forbidden_filename_extensions</span></code> was added to provide a list of extensions (suffixes) not allowed for filenames</p></li>
+</ul>
+</section>
+</section>
+<section id="front-end-changes">
+<h2>Front-end changes<a class="headerlink" href="#front-end-changes" title="Link to this heading"></a></h2>
+<p>The overall design was changed to be less round and more compact,
+as a part of this some CSS variables were added and other deprecated with Nextcloud 30, see <a class="reference internal" href="../../html_css_design/css.html#cssvars"><span class="std std-ref">CSS variables</span></a>.</p>
+<section id="clickable-area">
+<h3>Clickable area<a class="headerlink" href="#clickable-area" title="Link to this heading"></a></h3>
+<p>The size of the CSS variable <code class="docutils literal notranslate"><span class="pre">--default-clickable-area</span></code> variable has shrunk from <code class="docutils literal notranslate"><span class="pre">44px</span></code> to <code class="docutils literal notranslate"><span class="pre">34px</span></code>.
+This will result in several regressions and paper-cuts in your app that will need to be manually fixed.
+It’s recommended to:</p>
+<ol class="arabic simple">
+<li><p>Link the <code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/vue</span></code> current master to your app (pull often cause fixes are getting in there too);</p></li>
+<li><p>Do a codebase-wide search of <cite>44px</cite> and replace with the variable <cite>–default-clickable-area</cite> if appropriate;</p></li>
+<li><p>Check for regressions and visual bugs;</p></li>
+<li><p>Report the regression of your app in this issue (you can create a heading with the name of your own app);</p></li>
+<li><p>Also report <code class="docutils literal notranslate"><span class="pre">&#64;nextlcoud/vue</span></code> library regressions if they’re not reported already in their list;</p></li>
+<li><p>Fix regression in your app (only the ones that are unrelated to the <code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/vue</span></code> components);</p></li>
+</ol>
+<p>Moreover for different use cases also two new variables were added:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--clickable-area-large</span></code> for main UI elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--clickable-area-small</span></code> representing the smallest possible size of interactive elements, used by tertiary actions like filter chips.</p></li>
+</ul>
+</section>
+<section id="line-height">
+<h3>Line height<a class="headerlink" href="#line-height" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">--default-line-height</span></code> variable has changed from <code class="docutils literal notranslate"><span class="pre">24px`</span></code> to <code class="docutils literal notranslate"><span class="pre">1.5</span></code> for the <code class="docutils literal notranslate"><span class="pre">--default-font-size</span></code> this
+means that the actual value in pixel will go from 24 to 22.5. Although this is a slight change, it’s recommended
+to check for visual regressions in your app.</p>
+</section>
+<section id="font-sizes">
+<h3>Font sizes<a class="headerlink" href="#font-sizes" title="Link to this heading"></a></h3>
+<p>Nextcloud now provides meaningful default styles for heading elements.
+This can cause visual regressions if your code does not explicitly set font size and weight.
+If you need to use heading elements outside of text content, you might need to adjust their styles.</p>
+</section>
+<section id="border-radius">
+<h3>Border radius<a class="headerlink" href="#border-radius" title="Link to this heading"></a></h3>
+<p>The border radius CSS variables have been refactored:</p>
+<ul class="simple">
+<li><p>Added</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">--border-radius-small</span></code> was added for smaller elements like chips.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--border-radius-container</span></code> was added for smaller containers like action menus.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--border-radius-container-large</span></code> was added for larger containers like body or modals.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--border-radius-element</span></code> was added for interactive elements such as buttons, input, navigation and list items.</p></li>
+</ul>
+</li>
+<li><p>Deprecated</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">--border-radius</span></code> is deprecated now in favor of <code class="docutils literal notranslate"><span class="pre">--border-radius-small</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--border-radius-large</span></code> is deprecated now in favor of <code class="docutils literal notranslate"><span class="pre">--border-radius-element</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--border-radius-pill</span></code> is deprecated now in favor of <code class="docutils literal notranslate"><span class="pre">--border-radius-element</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--border-radius-rounded</span></code> is deprecated now in favor of <code class="docutils literal notranslate"><span class="pre">--border-radius-container</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="csp-nonce">
+<h3>CSP Nonce<a class="headerlink" href="#csp-nonce" title="Link to this heading"></a></h3>
+<p>A bug was fixed that prevented Nextcloud form using the <code class="docutils literal notranslate"><span class="pre">CSP_NONCE</span></code> environment variable,
+this now means that the CSP nonce for JavaScript assets is no longer (guaranteed to be) based on the CSRF token.
+Instead administrators can choose to use a differently generated token.
+When using JavaScript modules this does not make a difference, as they are imported and the nonce has only to be set on the root module (done by Nextcloud),
+but if you are using Webpack or otherwise dynamically load scripts, you now need adjust the CSP nonce handling.</p>
+<p>Get the CSP nonce:</p>
+<ul class="simple">
+<li><p>Either use <code class="docutils literal notranslate"><span class="pre">getCSPNonce</span></code> from the <code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/auth</span></code> <a class="reference internal" href="../../digging_deeper/javascript-apis.html#js-library-nextcloud-auth"><span class="std std-ref">package</span></a>, which is also backwards compatible.</p></li>
+<li><p>Or directly read the nonce from the <code class="docutils literal notranslate"><span class="pre">&lt;meta</span> <span class="pre">name=&quot;csp-nonce&quot;</span> <span class="pre">/&gt;</span></code> tag.</p></li>
+</ul>
+<p>When using Webpack:</p>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span><span class="gd">- import { getRequestToken } from &#39;@nextcloud/auth&#39;</span>
+<span class="gd">- __webpack_nonce__ = btoa(getRequestToken())</span>
+<span class="gi">+ import { getCSPNonce } from &#39;@nextcloud/auth&#39;</span>
+<span class="gi">+ __webpack_nonce__ = getCSPNonce()</span>
+</pre></div>
+</div>
+</section>
+<section id="deprecated-apis">
+<h3>Deprecated APIs<a class="headerlink" href="#deprecated-apis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.config.blacklist_files_regex</span></code> is deprecated now, use the <code class="docutils literal notranslate"><span class="pre">files</span></code> capabilities instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.config.forbidden_filename_characters</span></code> is deprecated now, use the <code class="docutils literal notranslate"><span class="pre">files</span></code> capabilities instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.dialogs.fileexists</span></code> was already deprecated in Nextcloud 29, but is now also marked as such.
+Use <code class="docutils literal notranslate"><span class="pre">openConflictPicker</span></code> from <a class="reference external" href="https://nextcloud-libraries.github.io/nextcloud-upload/functions/openConflictPicker.html">&#64;nextcloud/upload</a> instead.</p></li>
+<li><p>Most <code class="docutils literal notranslate"><span class="pre">OC.dialogs</span></code> API is now deprecated and will be removed in the future. For generic dialogs use the <code class="docutils literal notranslate"><span class="pre">DialogBuilder</span></code> from the <a class="reference internal" href="../../digging_deeper/javascript-apis.html#js-library-nextcloud-dialogs"><span class="std std-ref">&#64;nextcloud/dialogs</span></a>.
+A list of the now deprecated methods:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.dialogs.alert</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.dialogs.info</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.dialogs.confirm</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.dialogs.confirmDestructive</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.dialogs.confirmHtml</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.dialogs.prompt</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.dialogs.message</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="back-end-changes">
+<h2>Back-end changes<a class="headerlink" href="#back-end-changes" title="Link to this heading"></a></h2>
+<section id="support-for-php-8-0-removed">
+<h3>Support for PHP 8.0 removed<a class="headerlink" href="#support-for-php-8-0-removed" title="Link to this heading"></a></h3>
+<p>In this release support for PHP 8.0 was removed. Follow the steps below to make your app compatible.</p>
+<ol class="arabic simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">appinfo/info.xml</span></code> has a dependency specification for PHP, increase the <code class="docutils literal notranslate"><span class="pre">min-version</span></code> to 8.1.</p></li>
+</ol>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dependencies&gt;</span>
+<span class="w">  </span><span class="nt">&lt;php</span><span class="w"> </span><span class="na">min-version=</span><span class="s">&quot;8.1&quot;</span><span class="w"> </span><span class="na">max-version=</span><span class="s">&quot;8.3&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;nextcloud</span><span class="w"> </span><span class="na">min-version=</span><span class="s">&quot;27&quot;</span><span class="w"> </span><span class="na">max-version=</span><span class="s">&quot;30&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>If your app has a <code class="docutils literal notranslate"><span class="pre">composer.json</span></code> and the file contains the PHP restrictions from <code class="docutils literal notranslate"><span class="pre">info.xml</span></code>, adjust it as well.</p></li>
+</ol>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;require&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;php&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&gt;=8.1 &lt;=8.3&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>If you have <a class="reference internal" href="../../digging_deeper/continuous_integration.html#app-ci"><span class="std std-ref">continuous integration</span></a> set up, remove PHP 8.0 from the matrices of tests and linters.</p></li>
+</ol>
+</section>
+<section id="added-apis">
+<h3>Added APIs<a class="headerlink" href="#added-apis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Activity\Exceptions\FilterNotFoundException</span></code> is thrown by <code class="docutils literal notranslate"><span class="pre">OCP\Activity\IManager::getFilterById()</span></code> when no filter with the given identifier registered</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Activity\Exceptions\IncompleteActivityException</span></code> is thrown by <code class="docutils literal notranslate"><span class="pre">OCP\Activity\IManager::publish()</span></code> when not all required fields have been set on the <code class="docutils literal notranslate"><span class="pre">OCP\Activity\IEvent</span></code> object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Activity\Exceptions\InvalidValueException</span></code> is thrown by <code class="docutils literal notranslate"><span class="pre">OCP\Activity\IEvent::set*()</span></code> when the value did not match the required criteria</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Activity\Exceptions\SettingNotFoundException</span></code> is thrown by <code class="docutils literal notranslate"><span class="pre">OCP\Activity\IManager::getSettingById()</span></code> when no setting with the given identifier registered</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Activity\Exceptions\UnknownActivityException</span></code> should be thrown by <code class="docutils literal notranslate"><span class="pre">OCP\Activity\IProvider::parse()</span></code> when they didn’t handle the event</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\Db\QbMapper::yieldEntities()</span></code> was added to allow iterating over entities by returning a <code class="docutils literal notranslate"><span class="pre">Generator</span></code> without loading all of them into memory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Authentication\Token\IToken::SCOPE_FILESYSTEM</span></code> and <code class="docutils literal notranslate"><span class="pre">OCP\Authentication\Token\IToken::SCOPE_SKIP_PASSWORD_VALIDATION</span></code> constants were introduced as constants for token scopes. Previously, the value of <code class="docutils literal notranslate"><span class="pre">SCOPE_FILESYSTEM</span></code> was hardcoded.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Notification\IncompleteNotificationException</span></code> is thrown by <code class="docutils literal notranslate"><span class="pre">OCP\Notification\IManager::notify()</span></code> when not all required fields have been set on the <code class="docutils literal notranslate"><span class="pre">OCP\Notification\INotification</span></code> object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Notification\IncompleteParsedNotificationException</span></code> is thrown by <code class="docutils literal notranslate"><span class="pre">OCP\Notification\IManager::prepare()</span></code> when no <code class="docutils literal notranslate"><span class="pre">OCP\Notification\INotifier</span></code> handled the <code class="docutils literal notranslate"><span class="pre">OCP\Notification\INotification</span></code> object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Notification\InvalidValueException</span></code> is thrown by <code class="docutils literal notranslate"><span class="pre">OCP\Notification\IAction::set*()</span></code> and <code class="docutils literal notranslate"><span class="pre">OCP\Notification\INotification::set*()</span></code> when the value did not match the required criteria</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Notification\UnknownNotificationException</span></code> should be thrown by <code class="docutils literal notranslate"><span class="pre">OCP\Notification\INotifier::prepare()</span></code> when they didn’t handle the notification</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCA\Files_Trashbin\Trash\ITrashItem::getDeletedBy()</span></code> should return the user who deleted the item or null if unknown</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\IUser::getPasswordHash()</span></code> should return the password hash of the user</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\IUser::setPasswordHash()</span></code> should set the password hash of the user</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\Http\Attribute\OpenAPI::SCOPE_EX_APP</span></code> attribute for scoping APIs only to be used by ExApps.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\Http\Attribute\ExAppRequired</span></code> attribute for restricting controller methods to be only accessible by ExApps.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Collaboration\Reference\IPublicReferenceProvider</span></code> added for reference providers that support reference lookups from public shares.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\IFilenameValidator</span></code> was added to allow storage independent filename validation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\Storage\IStorage::setOwner()</span></code> was added to allow setting the owner of a storage so it can be handled independently from the current session user. This is especially useful for storages that have a shared ownership like groupfolders, external storages where the storage owner needs to be set to the user that is initializing the storage through their personal mountpoint.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ShareAPIController::sendShareEmail()</span></code> was added and is accessible via ocs <code class="docutils literal notranslate"><span class="pre">/api/v1/shares/{shareId}/send-email</span></code>. See <a class="reference internal" href="../../client_apis/OCS/ocs-share-api.html#send-email"><span class="std std-ref">send-email</span></a> documentation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Calendar\Room\IManager::update()</span></code> was added to update all rooms from all backends right now.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Calendar\Resource\IManager::update()</span></code> was added to update all resources from all backends right now.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\App\IAppManager::BACKEND_CALDAV</span></code> was added to represent the caldav backend dependency for <code class="docutils literal notranslate"><span class="pre">isBackendRequired()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\App\IAppManager::isBackendRequired()</span></code> was added to check if at least one app requires a specific backend (currently only <code class="docutils literal notranslate"><span class="pre">caldav</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Accounts\IAccountManager::PROPERTY_BIRTHDATE</span></code> was added to allow users to configure their date of birth in their profiles.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing`</span></code> was added to unify task processing of AI tasks and other types of tasks. See <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\Bootstrap\IRegistrationContext::registerTaskProcessingProvider()</span></code> was added to allow registering task processing providers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\Bootstrap\IRegistrationContext::registerTaskProcessingTaskType()</span></code> was added to allow registering task processing task types</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\IRootFolder::getAppDataDirectoryName()</span></code> was added to allow getting the name of the app data directory</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Console\ReservedOptions</span></code> was added and contains constants for options reserved for occ core features. <code class="docutils literal notranslate"><span class="pre">--debug-log</span></code> and <code class="docutils literal notranslate"><span class="pre">--debug-log-level</span></code> are now reserved by occ as they allow to show debug information to the output on any occ command.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Security\IHasher::validate()</span></code> should return true if the passed string is a valid hash generated by <code class="docutils literal notranslate"><span class="pre">OCP\Security\IHasher::hash()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\Http\JSONResponse()</span></code> constructor now supports passing additional <code class="docutils literal notranslate"><span class="pre">json_encode</span></code> flags, see <a class="reference external" href="https://www.php.net/manual/en/function.json-encode.php">https://www.php.net/manual/en/function.json-encode.php</a> for details</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\EventDispatcher\IWebhookCompatibleEvent</span></code> is a new interface for events compatible with webhooks (<a class="reference external" href="https://docs.nextcloud.com/server/32/admin_manual/webhook_listeners/index.html">see webhook_listeners documentation</a>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\EventDispatcher\JsonSerializer</span></code> is a new public helper for serializing users and fileinfos to json (ie for webhook events)</p></li>
+</ul>
+</section>
+<section id="changed-apis">
+<h3>Changed APIs<a class="headerlink" href="#changed-apis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Activity\IEvent::set*()</span></code> (all setters) throw <code class="docutils literal notranslate"><span class="pre">OCP\Activity\Exceptions\InvalidValueException</span></code> instead of <code class="docutils literal notranslate"><span class="pre">\InvalidArgumentException</span></code> when the value does not match the required criteria.</p></li>
+<li><p>Calling <code class="docutils literal notranslate"><span class="pre">OCP\Activity\IEvent::setIcon()</span></code> with a relative URL is deprecated and will throw <code class="docutils literal notranslate"><span class="pre">OCP\Activity\Exceptions\InvalidValueException</span></code> in a future version.</p></li>
+<li><p>Calling <code class="docutils literal notranslate"><span class="pre">OCP\Activity\IEvent::setLink()</span></code> with a relative URL is deprecated and will throw <code class="docutils literal notranslate"><span class="pre">OCP\Activity\Exceptions\InvalidValueException</span></code> in a future version.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Activity\IManager::publish()</span></code> throws <code class="docutils literal notranslate"><span class="pre">OCP\Activity\Exceptions\IncompleteActivityException</span></code> instead of <code class="docutils literal notranslate"><span class="pre">\InvalidArgumentException</span></code> when a required field is not set before publishing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Activity\IProvider::parse()</span></code> should no longer throw <code class="docutils literal notranslate"><span class="pre">\InvalidArgumentException</span></code>. <code class="docutils literal notranslate"><span class="pre">OCP\Activity\Exceptions\UnknownActivityException</span></code> should be thrown when the provider does not want to handle the event. <code class="docutils literal notranslate"><span class="pre">\InvalidArgumentException</span></code> are logged as debug for now and will be logged as error in the future to help developers find issues from code that unintentionally threw <code class="docutils literal notranslate"><span class="pre">\InvalidArgumentException</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Dashboard\IIconWidget::getIconUrl()</span></code> clarification: The URL must be an absolute URL. The served icon should be dark. The icon will be inverted automatically in mobile clients and when using dark mode.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Dashboard\IWidget::getId()</span></code> clarification: Implementations should only return <code class="docutils literal notranslate"><span class="pre">a-z</span></code>, <code class="docutils literal notranslate"><span class="pre">0-9</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code> and <code class="docutils literal notranslate"><span class="pre">_</span></code> based strings starting with a letter, as the identifier is used in CSS classes and that is otherwise invalid</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Dashboard\IWidget::getIconClass()</span></code> clarification: The returned CSS class should render a dark icon. The icon will be inverted automatically in mobile clients and when using dark mode. Therefore, it is NOT recommended to use a css class that sets the background with <code class="docutils literal notranslate"><span class="pre">var(--icon-…)`</span></code> as those will adapt to dark/bright mode in the web and still be inverted resulting in a dark icon on dark background.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\Lock\ILockManager::registerLazyLockProvider()</span></code> was added to replace <code class="docutils literal notranslate"><span class="pre">registerLockProvider</span></code> and allows to register a lock provider that is only loaded when needed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Notification\IAction::set*()</span></code> (all setters) throw <code class="docutils literal notranslate"><span class="pre">OCP\Notification\InvalidValueException</span></code> instead of <code class="docutils literal notranslate"><span class="pre">\InvalidArgumentException</span></code> when the value does not match the required criteria.</p></li>
+<li><p>Calling <code class="docutils literal notranslate"><span class="pre">OCP\Notification\IAction::setLink()</span></code> with a relative URL is deprecated and will throw <code class="docutils literal notranslate"><span class="pre">OCP\Notification\InvalidValueException</span></code> in a future version.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Notification\IApp::notify()</span></code> throws <code class="docutils literal notranslate"><span class="pre">OCP\Notification\IncompleteNotificationException</span></code> instead of <code class="docutils literal notranslate"><span class="pre">\InvalidArgumentException</span></code> when a required field is not set before notifying.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Notification\IManager::prepare()</span></code> throws <code class="docutils literal notranslate"><span class="pre">OCP\Notification\IncompleteParsedNotificationException</span></code> instead of <code class="docutils literal notranslate"><span class="pre">\InvalidArgumentException</span></code> when a required field is not set after preparing a notification.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Notification\INotification::set*()</span></code> (all setters) throw <code class="docutils literal notranslate"><span class="pre">OCP\Notification\InvalidValueException</span></code> instead of <code class="docutils literal notranslate"><span class="pre">\InvalidArgumentException</span></code> when the value does not match the required criteria.</p></li>
+<li><p>Calling <code class="docutils literal notranslate"><span class="pre">OCP\Notification\INotification::setLink()</span></code> with a relative URL is deprecated and will throw <code class="docutils literal notranslate"><span class="pre">OCP\Notification\InvalidValueException</span></code> in a future version.</p></li>
+<li><p>Calling <code class="docutils literal notranslate"><span class="pre">OCP\Notification\INotification::setIcon()</span></code> with a relative URL is deprecated and will throw <code class="docutils literal notranslate"><span class="pre">OCP\Notification\InvalidValueException</span></code> in a future version.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Notification\INotifier::prepare()</span></code> should no longer throw <code class="docutils literal notranslate"><span class="pre">\InvalidArgumentException</span></code>. <code class="docutils literal notranslate"><span class="pre">OCP\Notification\UnknownNotificationException</span></code> should be thrown when the notifier does not want to handle the notification. <code class="docutils literal notranslate"><span class="pre">\InvalidArgumentException</span></code> are logged as debug for now and will be logged as error in the future to help developers find issues from code that unintentionally threw <code class="docutils literal notranslate"><span class="pre">\InvalidArgumentException</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\IGroupManager::isAdmin()</span></code> should be used instead of checking is current user is part of admin group manually.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IAttributes</span></code> <code class="docutils literal notranslate"><span class="pre">enabled</span></code> key have bee renamed to <code class="docutils literal notranslate"><span class="pre">value</span></code> and supports more than boolean.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\DB\Exception</span></code> uses the reason code <code class="docutils literal notranslate"><span class="pre">REASON_LOCK_WAIT_TIMEOUT</span></code> now, instead of <code class="docutils literal notranslate"><span class="pre">REASON_SERVER</span></code> for a LockWaitTimeoutException.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Share\IShare::setNoExpirationDate()</span></code> now sets an overwrite flag for falsy expiry date values, this flag is used to determine whether the system should overwrite falsy expiry date values before creating a share.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Share\IShare::getNoExpirationDate()</span></code> retrieves the value of the <code class="docutils literal notranslate"><span class="pre">noExpirationDate</span></code> flag.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\IUserManager::getDisabledUsers</span></code> now has a third parameter for a search string.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\User\Backend\IProvideEnabledStateBackend::getDisabledUserList</span></code> now has a third parameter for a search string.</p></li>
+<li><p>Legacy class <code class="docutils literal notranslate"><span class="pre">OC_EventSource</span></code> was moved to <code class="docutils literal notranslate"><span class="pre">OC</span></code> namespace with the <code class="docutils literal notranslate"><span class="pre">OC_</span></code> prefix. It should not change anything if you already correctly use the <code class="docutils literal notranslate"><span class="pre">OCP\IEventSourceFactory</span></code> to create these objects.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\AbstractNodeEvent</span></code> and <code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\AbstractNodesEvent</span></code> now implements <code class="docutils literal notranslate"><span class="pre">OCP\EventDispatcher\IWebhookCompatibleEvent</span></code> so that all file/folder related events are available for webhooks (<a class="reference external" href="https://docs.nextcloud.com/server/32/admin_manual/webhook_listeners/index.html">see webhook_listeners documentation</a>).</p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>Deprecated APIs<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">&#64;PasswordConfirmationRequired</span></code> annotation is deprecated and the <code class="docutils literal notranslate"><span class="pre">#[OCP\AppFramework\Http\Attribute\PasswordConfirmationRequired]</span></code> attribute should be used instead.</p></li>
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">&#64;CORS</span></code> annotation is deprecated and the <code class="docutils literal notranslate"><span class="pre">#[OCP\AppFramework\Http\Attribute\CORS]</span></code> attribute should be used instead.</p></li>
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">&#64;PublicPage</span></code> annotation is deprecated and the <code class="docutils literal notranslate"><span class="pre">#[OCP\AppFramework\Http\Attribute\PublicPage]</span></code> attribute should be used instead.</p></li>
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">&#64;ExAppRequired</span></code> annotation is deprecated and the <code class="docutils literal notranslate"><span class="pre">#[OCP\AppFramework\Http\Attribute\ExAppRequired]</span></code> attribute should be used instead.</p></li>
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">&#64;AuthorizedAdminSetting</span></code> annotation is deprecated and the <code class="docutils literal notranslate"><span class="pre">#[OCP\AppFramework\Http\Attribute\AuthorizedAdminSetting]</span></code> attribute should be used instead.</p></li>
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">&#64;SubAdminRequired</span></code> annotation is deprecated and the <code class="docutils literal notranslate"><span class="pre">#[OCP\AppFramework\Http\Attribute\SubAdminRequired]</span></code> attribute should be used instead.</p></li>
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">&#64;NoAdminRequired</span></code> annotation is deprecated and the <code class="docutils literal notranslate"><span class="pre">#[OCP\AppFramework\Http\Attribute\NoAdminRequired]</span></code> attribute should be used instead.</p></li>
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">&#64;StrictCookieRequired</span></code> annotation is deprecated and the <code class="docutils literal notranslate"><span class="pre">#[OCP\AppFramework\Http\Attribute\StrictCookiesRequired]</span></code> attribute should be used instead.</p></li>
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">&#64;NoCSRFRequired</span></code> annotation is deprecated and the <code class="docutils literal notranslate"><span class="pre">#[OCP\AppFramework\Http\Attribute\NoCSRFRequired]</span></code> attribute should be used instead.</p></li>
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">OCP\Group\Backend\ICreateGroupBackend</span></code> interface is now deprecated and the <code class="docutils literal notranslate"><span class="pre">OCP\Group\Backend\ICreateNamedGroupBackend</span></code> interface should be used instead.</p></li>
+<li><p>Calling <code class="docutils literal notranslate"><span class="pre">OCP\DB\QueryBuilder\IExpressionBuilder::andX()</span></code> without arguments is deprecated and will throw an exception in a future version as the underlying library is removing the functionality.</p></li>
+<li><p>Calling <code class="docutils literal notranslate"><span class="pre">OCP\DB\QueryBuilder\IExpressionBuilder::orX()</span></code> without arguments is deprecated and will throw an exception in a future version as the underlying library is removing the functionality.</p></li>
+<li><p>Calling <code class="docutils literal notranslate"><span class="pre">OCP\DB\QueryBuilder\IQueryBuilder::delete()</span></code> with <code class="docutils literal notranslate"><span class="pre">$alias</span></code> is deprecated and will throw an exception in a future version as the underlying library is removing the functionality.</p></li>
+<li><p>Calling <code class="docutils literal notranslate"><span class="pre">OCP\DB\QueryBuilder\IQueryBuilder::getQueryPart()</span></code> is deprecated and will throw an exception in a future version as the underlying library is removing the functionality.</p></li>
+<li><p>Calling <code class="docutils literal notranslate"><span class="pre">OCP\DB\QueryBuilder\IQueryBuilder::getQueryParts()</span></code> is deprecated and will throw an exception in a future version as the underlying library is removing the functionality.</p></li>
+<li><p>Calling <code class="docutils literal notranslate"><span class="pre">OCP\DB\QueryBuilder\IQueryBuilder::getState()</span></code> is deprecated and will throw an exception in a future version as the underlying library is removing the functionality.</p></li>
+<li><p>Calling <code class="docutils literal notranslate"><span class="pre">OCP\DB\QueryBuilder\IQueryBuilder::resetQueryPart()</span></code> is deprecated and will throw an exception in a future version as the underlying library is removing the functionality. Create a new query builder object instead.</p></li>
+<li><p>Calling <code class="docutils literal notranslate"><span class="pre">OCP\DB\QueryBuilder\IQueryBuilder::resetQueryParts()</span></code> is deprecated and will throw an exception in a future version as the underlying library is removing the functionality. Create a new query builder object instead.</p></li>
+<li><p>Calling <code class="docutils literal notranslate"><span class="pre">OCP\DB\QueryBuilder\IQueryBuilder::update()</span></code> with <code class="docutils literal notranslate"><span class="pre">$alias</span></code> is deprecated and will throw an exception in a future version as the underlying library is removing the functionality.</p></li>
+<li><p>Calling <code class="docutils literal notranslate"><span class="pre">OCP\IDBConnection::getDatabasePlatform()</span></code> is deprecated and will throw an exception in a future version as the underlying library is renaming and removing platforms which breaks the backwards-compatibility. Use <code class="docutils literal notranslate"><span class="pre">getDatabaseProvider()</span></code> instead.</p></li>
+<li><p>Calling <code class="docutils literal notranslate"><span class="pre">OCP\Files\Lock\ILockManager::registerLockProvider()</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">registerLazyLockProvider()</span></code> instead.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\Translation</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>).</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\Translation\CouldNotTranslateException</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>).</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\Translation\IDetectLanguageProvider</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>).</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\Translation\ITranslationManager</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>).</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\Translation\ITranslationProvider</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>).</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\Translation\ITranslationProviderWithId</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>).</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\Translation\ITranslationProviderWithUserId</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>).</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\Translation\LanguageTuple</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>).</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\SpeechToText</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">SpeechToText</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\SpeechToText\Events\AbstractTranscriptionEvent</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">SpeechToText</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\SpeechToText\Events\TranscriptionFailedEvent</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">SpeechToText</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\SpeechToText\Events\TranscriptionSuccessfulEvent</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">SpeechToText</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\SpeechToText\ISpeechToTextManager</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">SpeechToText</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\SpeechToText\ISpeechToTextProvider</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">SpeechToText</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\SpeechToText\ISpeechToTextProviderWithId</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">SpeechToText</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\SpeechToText\ISpeechToTextProviderWithUserId</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">SpeechToText</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextToImage</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextToImage</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextToImage\Task</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextToImage</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextToImage\IProviderWithUserId</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextToImage</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextToImage\IProvider</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextToImage</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextToImage\IManager</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextToImage</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextToImage\Exception\TextToImageException</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextToImage</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextToImage\Exception\TaskNotFoundException</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextToImage</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextToImage\Exception\TaskFailureException</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextToImage</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextToImage\Events\TaskSuccessfulEvent</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextToImage</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextToImage\Events\TaskFailedEvent</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextToImage</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextToImage\Events\AbstractTextToImageEvent</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextToImage</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextProcessing</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextProcessing</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextProcessing\Events\AbstractTextProcessingEvent</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextProcessing</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextProcessing\Events\TaskFailedEvent</span></code> is deprecated and will be removed in the future.Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextProcessing</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextProcessing\Events\TaskSuccessfulEvent</span></code> is deprecated and will be removed in the future.Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextProcessing</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextProcessing\Exception\TaskFailureException</span></code> is deprecated and will be removed in the future.Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextProcessing</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextProcessing\FreePromptTaskType</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextProcessing</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextProcessing\HeadlineTaskType</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextProcessing</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextProcessing\IManager</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextProcessing</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextProcessing\IProvider</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextProcessing</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextProcessing\IProviderWithExpectedRuntime</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextProcessing</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextProcessing\IProviderWithId</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextProcessing</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextProcessing\IProviderWithUserId</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextProcessing</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextProcessing\ITaskType</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextProcessing</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextProcessing\SummaryTaskType</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextProcessing</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextProcessing\Task</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextProcessing</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\TextProcessing\TopicsTaskType</span></code> is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing</span></code> instead (see <a class="reference internal" href="../../digging_deeper/task_processing.html#task-processing"><span class="std std-ref">Task Processing</span></a>). Existing <code class="docutils literal notranslate"><span class="pre">TextProcessing</span></code> providers will continue to work with the TaskProcessing API until then.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">OCP\Group\Backend\ICreateGroupBackend</span></code> interface is deprecated and will be removed in the future. Use <code class="docutils literal notranslate"><span class="pre">OCP\Group\Backend\ICreateNamedGroupBackend</span></code> instead.</p></li>
+</ul>
+</section>
+<section id="removed-apis">
+<h3>Removed APIs<a class="headerlink" href="#removed-apis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Util::isValidFileName</span></code> was deprecated in 8.1.0 and is now removed, use either <code class="docutils literal notranslate"><span class="pre">OCP\Files\Storage\IStorage::verifyPath</span></code> or the new <code class="docutils literal notranslate"><span class="pre">OCP\Files\IFilenameValidator</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Util::getForbiddenFileNameChars</span></code> was removed, use either <code class="docutils literal notranslate"><span class="pre">OCP\Files\Storage\IStorage::verifyPath</span></code> or the new <code class="docutils literal notranslate"><span class="pre">OCP\Files\IFilenameValidator</span></code> for filename validation.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="upgrade_to_31.html" class="btn btn-neutral float-left" title="Upgrade to Nextcloud 31" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="upgrade_to_29.html" class="btn btn-neutral float-right" title="Upgrade to Nextcloud 29" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/developer_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

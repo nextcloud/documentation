@@ -1,0 +1,656 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Database access &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Configuration" href="configuration.html" />
+    <link rel="prev" title="Migrations" href="migrations.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Basic concepts</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../request_lifecycle.html">Request lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../routing.html">Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dependency_injection.html">Dependency injection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../middlewares.html">Middlewares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../front-end/index.html">Front-end</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../translations.html">Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../caching.html">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setting.html">Settings</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Storage and database</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="migrations.html">Migrations</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Database access</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#transactions">Transactions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mappers">Mappers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entities">Entities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#table-management-tips">Table management tips</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#querying-the-database-provider">Querying the database provider</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#supporting-more-databases">Supporting more databases</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filesystem.html">Nextcloud filesystem API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appdata.html">AppData</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../public_share_template.html">Public share template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing.html">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Basic concepts</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Storage and database</a></li>
+      <li class="breadcrumb-item active">Database access</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/basics/storage/database.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="database-access">
+<h1>Database access<a class="headerlink" href="#database-access" title="Link to this heading"></a></h1>
+<p>The basic way to run a database query is to use the database connection provided by <strong>OCP\IDBConnection</strong>.</p>
+<p>Inside your database layer class you can now start running queries like:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">lib/Db/AuthorDAO.php</span><a class="headerlink" href="#id1" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Db</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\DB\QueryBuilder\IQueryBuilder</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IDBConnection</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AuthorDAO</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$db</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IDBConnection</span> <span class="nv">$db</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span> <span class="o">=</span> <span class="nv">$db</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$qb</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">getQueryBuilder</span><span class="p">();</span>
+
+        <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
+           <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="s1">&#39;myapp_authors&#39;</span><span class="p">)</span>
+           <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span>
+               <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">expr</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">eq</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">createNamedParameter</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nx">IQueryBuilder</span><span class="o">::</span><span class="na">PARAM_INT</span><span class="p">))</span>
+           <span class="p">);</span>
+
+        <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">();</span>
+        <span class="nv">$row</span> <span class="o">=</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">fetchAssociative</span><span class="p">();</span>
+        <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">closeCursor</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$row</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<section id="transactions">
+<h2>Transactions<a class="headerlink" href="#transactions" title="Link to this heading"></a></h2>
+<p>Database operations can be run in a transaction to commit or roll back a group of changes in an atomic fashion.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">beginTransaction</span><span class="p">();</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="c1">// DB operations</span>
+
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">commit</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Throwable</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Optional: handle the error</span>
+
+    <span class="c1">// Important: roll back (or commit) your changes when an error</span>
+    <span class="c1">//            happens, so this transaction ends</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">rollBack</span><span class="p">();</span>
+
+    <span class="k">throw</span> <span class="nv">$e</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Omitting the error handling for transactions will lead to unexpected behavior as any database operations that come after your error will still run in your transaction and due to the lack of a commit PDO will automatically roll-back all changes at the end of the script.</p>
+</div>
+<p>In the context of a class you can use the <code class="docutils literal notranslate"><span class="pre">TTransactional</span></code> trait and move the unit of work into a closure.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Db\TTransactional</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IDBConnection</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MyService</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">use</span> <span class="nx">TTransactional</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="nx">IDBConnection</span> <span class="nv">$db</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IDBConnection</span> <span class="nv">$db</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span> <span class="o">=</span> <span class="nv">$db</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">doSomeWork</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">atomic</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="c1">// $this-&gt;db-&gt;...</span>
+            <span class="c1">// $this-&gt;db-&gt;...</span>
+            <span class="c1">// $this-&gt;db-&gt;...</span>
+        <span class="p">},</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * It&#39;s also possible to get a result out of the closure</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">doSomeWorkWithResults</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">atomic</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="c1">// $this-&gt;db-&gt;...</span>
+            <span class="c1">// $this-&gt;db-&gt;...</span>
+            <span class="c1">// $this-&gt;db-&gt;...</span>
+
+            <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">},</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="mappers">
+<h2>Mappers<a class="headerlink" href="#mappers" title="Link to this heading"></a></h2>
+<p>The aforementioned example is the most basic way to write a simple database query but the more queries amass, the more code has to be written and the harder it will become to maintain it.</p>
+<p>To generalize and simplify the problem, split code into resources and create an <strong>Entity</strong> and a <strong>Mapper</strong> class for it. The mapper class provides a way to run SQL queries and maps the result onto the related entities.</p>
+<p>To create a mapper, inherit from the mapper base class and call the parent constructor with the following parameters:</p>
+<ul class="simple">
+<li><p>Database connection</p></li>
+<li><p>Table name</p></li>
+<li><p><strong>Optional</strong>: Entity class name, defaults to \OCA\MyApp\Db\Author in the example below</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">lib/Db/AuthorMapper.php</span><a class="headerlink" href="#id2" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Db</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\DB\QueryBuilder\IQueryBuilder</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IDBConnection</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Db\QBMapper</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AuthorMapper</span> <span class="k">extends</span> <span class="nx">QBMapper</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IDBConnection</span> <span class="nv">$db</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$db</span><span class="p">,</span> <span class="s1">&#39;myapp_authors&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+
+    <span class="sd">/**</span>
+<span class="sd">     * @throws \OCP\AppFramework\Db\DoesNotExistException if not found</span>
+<span class="sd">     * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException if more than one result</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$qb</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">getQueryBuilder</span><span class="p">();</span>
+
+        <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
+           <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="s1">&#39;myapp_authors&#39;</span><span class="p">)</span>
+           <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span>
+               <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">expr</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">eq</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">createNamedParameter</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nx">IQueryBuilder</span><span class="o">::</span><span class="na">PARAM_INT</span><span class="p">))</span>
+           <span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">findEntity</span><span class="p">(</span><span class="nv">$qb</span><span class="p">);</span>
+    <span class="p">}</span>
+
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">findAll</span><span class="p">(</span><span class="nv">$limit</span><span class="o">=</span><span class="k">null</span><span class="p">,</span> <span class="nv">$offset</span><span class="o">=</span><span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$qb</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">getQueryBuilder</span><span class="p">();</span>
+
+        <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
+           <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="s1">&#39;myapp_authors&#39;</span><span class="p">)</span>
+           <span class="o">-&gt;</span><span class="na">setMaxResults</span><span class="p">(</span><span class="nv">$limit</span><span class="p">)</span>
+           <span class="o">-&gt;</span><span class="na">setFirstResult</span><span class="p">(</span><span class="nv">$offset</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">findEntities</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+    <span class="p">}</span>
+
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">authorNameCount</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$qb</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">getQueryBuilder</span><span class="p">();</span>
+
+        <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">selectAlias</span><span class="p">(</span><span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">createFunction</span><span class="p">(</span><span class="s1">&#39;COUNT(*)&#39;</span><span class="p">),</span> <span class="s1">&#39;count&#39;</span><span class="p">)</span>
+           <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="s1">&#39;myapp_authors&#39;</span><span class="p">)</span>
+           <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span>
+               <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">expr</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">eq</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">createNamedParameter</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nx">IQueryBuilder</span><span class="o">::</span><span class="na">PARAM_STR</span><span class="p">))</span>
+           <span class="p">);</span>
+
+        <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">();</span>
+        <span class="nv">$row</span> <span class="o">=</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">fetchAssociative</span><span class="p">();</span>
+        <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">closeCursor</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">];</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The cursor is closed automatically for all <strong>INSERT</strong>, <strong>DELETE</strong>, <strong>UPDATE</strong> queries and when calling the methods <strong>findOneQuery</strong>, <strong>findEntities</strong>, <strong>findEntity</strong>, <strong>delete</strong>, <strong>insert</strong> and <strong>update</strong>. For custom calls using execute you should always close the cursor after you are done with the fetching to prevent database lock problems on SQLite</p>
+</div>
+<p>Every mapper also implements default methods for deleting and updating an entity based on its id:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$authorMapper-&gt;delete($entity);
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$authorMapper-&gt;update($entity);
+</pre></div>
+</div>
+</section>
+<section id="entities">
+<h2>Entities<a class="headerlink" href="#entities" title="Link to this heading"></a></h2>
+<p>Entities are data objects that carry all the table’s information for one row.
+Every Entity has an <strong>id</strong> field by default that is set to the integer type.
+Table rows are mapped from lower case and underscore separated names to <em>lowerCamelCase</em> attributes:</p>
+<ul class="simple">
+<li><p><strong>Table column name</strong>: phone_number</p></li>
+<li><p><strong>Property name</strong>: phoneNumber</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">lib/Db/Author.php</span><a class="headerlink" href="#id3" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Db</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Db\Entity</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\DB\Types</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Author</span> <span class="k">extends</span> <span class="nx">Entity</span> <span class="p">{</span>
+
+    <span class="k">protected</span> <span class="nv">$stars</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$phoneNumber</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// add types in constructor</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addType</span><span class="p">(</span><span class="s1">&#39;stars&#39;</span><span class="p">,</span> <span class="nx">Types</span><span class="o">::</span><span class="na">INTEGER</span><span class="p">);</span>
+        <span class="c1">// other fields are implicitly `Types::STRING`</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<section id="types">
+<h3>Types<a class="headerlink" href="#types" title="Link to this heading"></a></h3>
+<p>The following properties should be annotated by types, to not only assure that the types are converted correctly for storing them in the database
+(e.g. PHP casts false to the empty string which fails on PostgreSQL) but also for casting them when they are retrieved from the database.</p>
+<p>The following types (as part of <code class="docutils literal notranslate"><span class="pre">OCP\DB\Types</span></code>) can be added for a field:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Types::INTEGER</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Types::FLOAT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Types::BOOLEAN</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Types::STRING</span></code> - For text and string columns</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Types::BLOB</span></code> - For binary data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Types::JSON</span></code> - JSON data is automatically decoded on reading</p></li>
+<li><p>For time and/or dates, provided as <code class="docutils literal notranslate"><span class="pre">\DateTimeImmutable</span></code> objects, the following types can be used:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Types::DATE_IMMUTABLE</span></code> - only the date is stored (without timezone)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Types::TIME_IMMUTABLE</span></code> - only the time is stored (without timezone)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Types::DATETIME_IMMUTABLE</span></code> - date and time are stored, but without timezone</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Types::DATETIME_TZ_IMMUTABLE</span></code> - date and time are stored with timezone information</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Types::DATE</span></code>, <code class="docutils literal notranslate"><span class="pre">Types::TIME</span></code>, <code class="docutils literal notranslate"><span class="pre">Types::DATETIME</span></code>, <code class="docutils literal notranslate"><span class="pre">Types::DATETIME_TZ</span></code> - similar as the immutable variants, but these will be provided as <code class="docutils literal notranslate"><span class="pre">\DateTime</span></code> objects.
+It is recommended to use the immutable variants as the internal state tracking of the <code class="docutils literal notranslate"><span class="pre">Entity</span></code> class only work with re-assignments,
+so any changes on this mutable types will not be tracked and the update method will not write back the changes to the database.</p></li>
+</ul>
+</section>
+<section id="accessing-attributes">
+<span id="database-entity-attribute-access"></span><h3>Accessing attributes<a class="headerlink" href="#accessing-attributes" title="Link to this heading"></a></h3>
+<p>Since all attributes should be protected, getters and setters are automatically generated for you:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">:</span><span class="nx">caption</span><span class="o">:</span> <span class="nx">lib</span><span class="o">/</span><span class="nx">Db</span><span class="o">/</span><span class="nx">Author</span><span class="o">.</span><span class="nx">php</span>
+
+<span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Db</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Db\Entity</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Author</span> <span class="k">extends</span> <span class="nx">Entity</span> <span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$stars</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$phoneNumber</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nv">$author</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Author</span><span class="p">();</span>
+<span class="nv">$author</span><span class="o">-&gt;</span><span class="na">setId</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="nv">$author</span><span class="o">-&gt;</span><span class="na">getPhoneNumber</span><span class="p">()</span>  <span class="c1">// null</span>
+</pre></div>
+</div>
+</section>
+<section id="custom-attribute-to-database-column-mapping">
+<h3>Custom attribute to database column mapping<a class="headerlink" href="#custom-attribute-to-database-column-mapping" title="Link to this heading"></a></h3>
+<p>By default each attribute will be mapped to a database column by a certain convention, e.g. <strong>phoneNumber</strong>
+will be mapped to the column <strong>phone_number</strong> and vice versa. Sometimes it is needed though to map attributes to
+different columns because of backwards compatibility. To define a custom
+mapping, simply override the <strong>columnToProperty</strong> and <strong>propertyToColumn</strong> methods of the entity in question:</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">lib/Db/Author.php</span><a class="headerlink" href="#id4" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Db</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Db\Entity</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Author</span> <span class="k">extends</span> <span class="nx">Entity</span> <span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$stars</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$phoneNumber</span><span class="p">;</span>
+
+    <span class="c1">// map attribute phoneNumber to the database column phonenumber</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">columnToProperty</span><span class="p">(</span><span class="nv">$column</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$column</span> <span class="o">===</span> <span class="s1">&#39;phonenumber&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s1">&#39;phoneNumber&#39;</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">parent</span><span class="o">::</span><span class="na">columnToProperty</span><span class="p">(</span><span class="nv">$column</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">propertyToColumn</span><span class="p">(</span><span class="nv">$property</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$property</span> <span class="o">===</span> <span class="s1">&#39;phoneNumber&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s1">&#39;phonenumber&#39;</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">parent</span><span class="o">::</span><span class="na">propertyToColumn</span><span class="p">(</span><span class="nv">$property</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="transient-attributes">
+<span id="database-entity-slugs"></span><h3>Transient attributes<a class="headerlink" href="#transient-attributes" title="Link to this heading"></a></h3>
+<p>You can add attributes to an entity class that do not map to a database column. These are called <em>transient</em> because they are neither loaded from database rows nor are their values persisted.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">lib/Db/User.php</span><a class="headerlink" href="#id5" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Db</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Db\Entity</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">User</span> <span class="k">extends</span> <span class="nx">Entity</span> <span class="p">{</span>
+    <span class="k">protected</span> <span class="nx">string</span> <span class="nv">$uid</span><span class="p">;</span>       <span class="c1">// Exists in the database</span>
+    <span class="k">protected</span> <span class="nv">$lastLogin</span><span class="p">;</span> <span class="c1">// Does not exist in the database</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getLastLogin</span><span class="p">()</span><span class="o">:</span> <span class="o">?</span><span class="nx">int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">lastLogin</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setLastLogin</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$lastLogin</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">lastLogin</span> <span class="o">=</span> <span class="nv">$lastLogin</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>It is important to define getters and setters for any transient attributes.
+Do not use the <a class="reference internal" href="#database-entity-attribute-access"><span class="std std-ref">magic getters and setters</span></a> of attributes that map to database columns.</p>
+</section>
+<section id="slugs">
+<h3>Slugs<a class="headerlink" href="#slugs" title="Link to this heading"></a></h3>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 24.</span></p>
+</div>
+<p>Slugs are used to identify resources in the URL by a string rather than integer id.
+Since the URL allows only certain values, the entity base class provides a slugify method for it:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="nv">$author</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Author</span><span class="p">();</span>
+<span class="nv">$author</span><span class="o">-&gt;</span><span class="na">setName</span><span class="p">(</span><span class="s1">&#39;Some*thing&#39;</span><span class="p">);</span>
+<span class="nv">$author</span><span class="o">-&gt;</span><span class="na">slugify</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">);</span>  <span class="c1">// Some-thing</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="table-management-tips">
+<h2>Table management tips<a class="headerlink" href="#table-management-tips" title="Link to this heading"></a></h2>
+<p>It makes sense to apply some general tips from the beginning, so you don’t have to migrate your data and schema later on.</p>
+<ol class="arabic">
+<li><p>Don’t use table name longer than 23 characters. As Oracle is limited to 30 chars and we need 3 more for <code class="docutils literal notranslate"><span class="pre">oc_</span></code> at the beginning and 5 for the primary key suffix <code class="docutils literal notranslate"><span class="pre">_pkey</span></code>.</p></li>
+<li><p>Add an auto-incremented <code class="docutils literal notranslate"><span class="pre">id</span></code> column. This will ease the use of <code class="docutils literal notranslate"><span class="pre">QBMapper</span></code> + <code class="docutils literal notranslate"><span class="pre">Entity</span></code> approach:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://github.com/nextcloud/server/blob/master/lib/public/AppFramework/Db/QBMapper.php">https://github.com/nextcloud/server/blob/master/lib/public/AppFramework/Db/QBMapper.php</a></p></li>
+<li><p><a class="reference external" href="https://github.com/nextcloud/server/blob/master/lib/public/AppFramework/Db/Entity.php">https://github.com/nextcloud/server/blob/master/lib/public/AppFramework/Db/Entity.php</a></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="nv">$table</span><span class="o">-&gt;</span><span class="na">addColumn</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nx">Types</span><span class="o">::</span><span class="na">BIGINT</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">&#39;autoincrement&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+    <span class="s1">&#39;notnull&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+    <span class="s1">&#39;length&#39;</span> <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="s1">&#39;unsigned&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<span class="p">]);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Set a primary key to prevent errors in clustered setups. You can use the <cite>id</cite> field for that.</p></li>
+</ol>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="nv">$table</span><span class="o">-&gt;</span><span class="na">setPrimaryKey</span><span class="p">([</span><span class="s1">&#39;id&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Manually set the name of your indexes. It will help you to manipulate them if needed in the future. Note that the names of the index are “global” database wide in some database platforms so having generic names can create conflicts. Since Nextcloud 28 uniqueness across all tables is ensured at installation time and during updates. This happens <em>regardless of the in-use database platform</em> to maintain broad compatibility and consistency.</p></li>
+</ol>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="nv">$table</span><span class="o">-&gt;</span><span class="na">addUniqueIndex</span><span class="p">([</span><span class="s1">&#39;your&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">,</span> <span class="s1">&#39;names&#39;</span><span class="p">,</span> <span class="s1">&#39;...&#39;</span><span class="p">],</span> <span class="s1">&#39;table_name_uniq_feature&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="querying-the-database-provider">
+<h2>Querying the database provider<a class="headerlink" href="#querying-the-database-provider" title="Link to this heading"></a></h2>
+<p>If you would like to find out which database your app is running on, use the <code class="docutils literal notranslate"><span class="pre">IDBConnection::getDatabaseProvider</span></code> method.
+This can be helpful in cases where specific databases have their own
+requirements, such as Oracle limiting <code class="docutils literal notranslate"><span class="pre">IN</span></code>- queries to 1000 expressions.</p>
+</section>
+<section id="supporting-more-databases">
+<h2>Supporting more databases<a class="headerlink" href="#supporting-more-databases" title="Link to this heading"></a></h2>
+<p>Most queries should run fine on all supported databases, but if scaling is required and a database is split into a cluster and for some special database types more rules apply.
+You can specify your supported databases in the <code class="docutils literal notranslate"><span class="pre">appinfo/info.xml</span></code> of your app in the dependencies section:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;database&gt;</span>pgsql<span class="nt">&lt;/database&gt;</span>
+<span class="nt">&lt;database&gt;</span>sqlite<span class="nt">&lt;/database&gt;</span>
+<span class="nt">&lt;database&gt;</span>mysql<span class="nt">&lt;/database&gt;</span>
+</pre></div>
+</div>
+<p>When Oracle (<code class="docutils literal notranslate"><span class="pre">oci</span></code>) is supported (also when you don’t list any databases), Nextcloud performs some additional tests on the schema which apply to databases in this case:</p>
+<ul class="simple">
+<li><p>Table names can not be longer than 27 characters (including the <code class="docutils literal notranslate"><span class="pre">oc_</span></code> prefix)</p></li>
+<li><p>Primary keys must have a custom index name when the table name is longer than 23 characters</p></li>
+<li><p>Column names can not be longer than 30 characters</p></li>
+<li><p>Index names can not be longer than 30 characters</p></li>
+<li><p>Foreign key names can not be longer than 30 characters</p></li>
+<li><p>Sequence names can not be longer than 30 characters</p></li>
+<li><p>String columns can not be NotNull and have an empty string as default value when being added in a later migration</p></li>
+<li><p>String columns can not have a length longer than 4.000 characters, use text instead</p></li>
+<li><p>Boolean columns can not be NotNull</p></li>
+</ul>
+<p>Additionally we assume that Oracle support means you are interested in scaling and therefore check additional restrictions of other databases in clustered setups:</p>
+<ul class="simple">
+<li><p>Galera Cluster: All tables must have a primary key</p></li>
+</ul>
+<p>On top of that there are some configs which influence the queries you can run. Known problems are:</p>
+<ul class="simple">
+<li><p>MySQL deleting lot of entries - Use a <code class="docutils literal notranslate"><span class="pre">LIMIT</span></code> on the delete (not supported on other databases), see this <a class="reference external" href="https://github.com/nextcloud/activity/blob/master/lib/Data.php#L385-L397">sample of the activity app</a></p></li>
+<li><p>MySQL <code class="docutils literal notranslate"><span class="pre">ONLY_FULL_GROUP_BY</span></code> - All values selected in a query with a <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> need to be aggregated as per <a class="reference external" href="https://dev.mysql.com/doc/refman/8.0/en/sql-mode.html#sqlmode_only_full_group_by">MySQL manual</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="migrations.html" class="btn btn-neutral float-left" title="Migrations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="configuration.html" class="btn btn-neutral float-right" title="Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/developer_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

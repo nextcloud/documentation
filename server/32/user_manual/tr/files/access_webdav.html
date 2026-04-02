@@ -1,0 +1,1191 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="tr" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebDAV kullanarak Nextcloud dosyalarına erişmek &mdash; Nextcloud latest User Manual latest belgelendirmesi</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=9f991a48"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=b0f24d8d"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Dizin" href="../genindex.html" />
+    <link rel="search" title="Ara" href="../search.html" />
+    <link rel="next" title="Silinmiş dosyaları yönetmek" href="deleted_file_management.html" />
+    <link rel="prev" title="Nextcloud site arayüzünü kullanarak dosyalarınıza erişmek" href="access_webgui.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Belgeleri arayın" aria-label="Belgeleri arayın" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest kullanıcı rehberi giriş</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud site arayüzü</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Dosyalar ve eşitleme</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Nextcloud site arayüzünü kullanarak dosyalarınıza erişmek</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">WebDAV kullanarak Nextcloud dosyalarına erişmek</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#official-nextcloud-desktop-and-mobile-clients">Resmi Nextcloud bilgisayar ve mobil istemcileri</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#third-party-webdav-clients">Üçüncü taraf WebDAV istemcileri</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-linux">Linux kullanarak dosyalara erişmek</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nautilus-file-manager">Nautilus dosya yöneticisi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-with-kde-and-dolphin-file-manager">KDE ve Dolphin dosya yöneticisi ile dosyalara erişmek</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">Linux komut satırından WebDAV bağlantıları oluşturmak</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues">Bilinen sorunlar</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#problem">Sorun</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution">Çözüm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Sorun</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Çözüm</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-macos">macOS kullanarak dosyalara erişmek</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-microsoft-windows">Dosyalara Microsoft Windows üzerinden erişmek</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-the-command-line">Komut satırından sürücüleri eşleme</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-windows-explorer">Dosya Gezgini ile sürücüleri eşlemek</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-cyberduck">Cyberduck kullanarak dosyalara erişmek</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-public-shares-over-webdav">WebDAV üzerinden herkese açık paylaşımlara erişmek</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-problems">Bilinen sorunlar</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Sorun</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-1">1. çözüm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-2">2. çözüm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Sorun</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Çözüm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Sorun</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#answer">Yanıt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Sorun</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Çözüm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Sorun</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Çözüm</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-curl">cURL kullanarak dosyalara erişmek</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-winscp">WinSCP kullanarak dosyalara erişmek</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Silinmiş dosyaları yönetmek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Bilgisayar ve mobil eşitleme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Nextcloud dosyalarınızı sunucuda şifrelemek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Dosya paylaşımı</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Birleşik paylaşımlar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Anonim yüklemeler yapma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Büyük dosya yüklemeleri</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Depolama alanı kotası</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Sürüm denetimi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projeler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Sahiplik aktarma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Birleşik paylaşımları kullanmak</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Konuş</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Bilgisayar istemcileri</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Kullanıcı ayarları</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Evrensel erişim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">İki adımlı doğrulamayı kullanmak</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Bağlı tarayıcı ve aygıtların yönetimi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Dış depolama alanı</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Dosyalar ve eşitleme</a></li>
+      <li class="breadcrumb-item active">WebDAV kullanarak Nextcloud dosyalarına erişmek</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webdav.rst" class="fa fa-github"> GitHub'da Düzenle</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="accessing-nextcloud-files-using-webdav">
+<h1>WebDAV kullanarak Nextcloud dosyalarına erişmek<a class="headerlink" href="#accessing-nextcloud-files-using-webdav" title="Link to this heading"></a></h1>
+<p>Nextcloud, WebDAV iletişim kuralını tam olarak destekler ve Nextcloud Dosyalar uygulamasına WebDAV üzerinden bağlanıp eşitlemenizi sağlar. Bu bölümde Linux, macOS, Windows ve mobil aygıtları WebDAV aracılığıyla Nextcloud sunucunuza nasıl bağlayacağınızı öğreneceksiniz.</p>
+<p>WebDAV, dağıtılmış yazma ve sürüm oluşturma anlamına gelir. Uzak internet sunucularında barındırılan dosyaları oluşturmayı, okumayı ve düzenlemeyi kolaylaştıran bir HTTP eklentisidir. Bir WebDAV istemcisi ile Linux, macOS ve Windows üzerinden Nextcloud dosyalarınıza (paylaşımlar ile birlikte) herhangi bir uzak ağ paylaşımına benzer şekilde erişebilir ve eşitleyebilirsiniz.</p>
+<p>WebDAV yapılandırmasına başlamadan önce, istemci aygıtları Nextcloud sunucularınıza bağlamanın önerilen yoluna hızlı bir göz atalım.</p>
+<section id="official-nextcloud-desktop-and-mobile-clients">
+<h2>Resmi Nextcloud bilgisayar ve mobil istemcileri<a class="headerlink" href="#official-nextcloud-desktop-and-mobile-clients" title="Link to this heading"></a></h2>
+<p>Bir bilgisayarı bir Nextcloud sunucusuyla eşitlemenin önerilen yolu, <a class="reference external" href="https://nextcloud.com/install/#install-clients">Resmi Nextcloud eşitleme istemcilerini</a> kullanmaktır. İstemciyi dosyaları herhangi bir yerel klasöre kaydedecek şekilde yapılandırabilir ve Nextcloud sunucusunda hangi klasörlerle eşitleneceğini seçebilirsiniz. İstemci var olan bağlantı durumunu görüntüler ve yapılan tüm işlemleri günlüğe kaydeder. Böylece her zaman bilgisayarınıza hangi uzak dosyaların indirildiğini bilirsiniz ve yerel bilgisayarınızda oluşturulan ve güncellenen dosyaların sunucu ile düzgün bir şekilde eşitlendiğini doğrulayabilirsiniz.</p>
+<p>Android ve Apple iOS aygıtlarını eşitlemenin önerilen yolu, <a class="reference external" href="https://nextcloud.com/install/">resmi Nextcloud mobil uygulamalarını</a> kullanmaktır.</p>
+<p>Resmi Nextcloud uygulamalarını bir Nextcloud sunucusuna bağlamak için, tarayıcınızdan Nextcloud kopyanıza erişmek için kullandığınız adresi kullanın. Örnek:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+</div>
+<p>Nextcloud “nextcloud” adlı bir alt klasöre kurulmuşsa:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</section>
+<section id="third-party-webdav-clients">
+<h2>Üçüncü taraf WebDAV istemcileri<a class="headerlink" href="#third-party-webdav-clients" title="Link to this heading"></a></h2>
+<p>İsterseniz, bilgisayarınızla Nextcloud sunucunuz arasında bağlantı kurmak için WebDAV iletişim kuralını (işletim sisteminizde yerleşik olanlar ile birlikte) destekleyen herhangi bir üçüncü taraf istemci kullanabilirsiniz.</p>
+<p>Mobil aygıtnızla Nextcloud bağlantısı kurmak için üçüncü taraf WebDAV özellikli uygulamaları da kullanabilirsiniz.</p>
+<p>Üçüncü taraf istemcileri kullanırken, bunların Nextcloud ile kullanılmak için ayarlanmamış olabileceğini ya da kullanımınız için önemli olduğunu düşündüğünüz özelliklerin bulunmayabileceğini unutmayın.</p>
+<p>Nextcloud topluluk üyelerinin kullandıklarını bildirdiği mobil istemciler şunlardır:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://foldersync.io/">FolderSync (Android)</a></p></li>
+<li><p><a class="reference external" href="https://apps.apple.com/us/app/webdav-navigator/id382551345">WebDAV Navigator (iPhone)</a></p></li>
+</ul>
+<p>Üçüncü taraf uygulamalar ile Nextcloud bağlantısı yapılandırılırken kullanılacak adres, resmi istemcilere göre biraz daha uzundur:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Nextcloud “nextcloud” adlı bir alt klasöre kurulmuşsa:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Üçüncü taraf bir WebDAV istemcisi kullanırken (işletim sisteminizin yerleşik istemcisi ile birlikte), oturum açmak için normal parolanız yerine bir uygulama parolası kullanmalısınız. Gelişmiş güvenliğin yanında, bu özellik “başarımı önemli ölçüde artırır &lt;<a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151</a>&gt;_”. Bir uygulama parolası yapılandırmak için Nextcloud internet arayüzünde oturum açın. Sağ üstteki avatara tıklayın ve <em>Kişisel ayarlar</em> ögesini seçin. Ardından sol kenar çubuğunda <em>Güvenlik</em>’ üzerine tıklayın ve en alta kaydırın. Oradan bir uygulama parolası oluşturabilirsiniz (bu parola gelecekte ana kullanıcı parolanızı değiştirmeden iptal edilebilir).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Aşağıdaki örneklerde, <strong>ornek.com/nextcloud</strong> yerine Nextcloud sunucunuzun adresini (kurulumunuz etki alanınızın kök klasöründeyse klasör bölümünü atlayın) ve <strong>KULLANICI ADI</strong> yerine bağlantı kuran kullanıcının kullanıcı adını yazmalısınız.</p>
+<p>See the WebDAV URL, to be found in Files Settings -&gt; WebDAV in the Files on your Nextcloud account.</p>
+<img alt="Screenshot of the Files settings showing the personal WebDAV link" src="../../_images/webdav_link.png" />
+</div>
+</section>
+<section id="accessing-files-using-linux">
+<h2>Linux kullanarak dosyalara erişmek<a class="headerlink" href="#accessing-files-using-linux" title="Link to this heading"></a></h2>
+<p>Linux işletim sistemlerindeki dosyalara aşağıdaki yöntemleri kullanarak erişebilirsiniz.</p>
+<section id="nautilus-file-manager">
+<h3>Nautilus dosya yöneticisi<a class="headerlink" href="#nautilus-file-manager" title="Link to this heading"></a></h3>
+<p><strong>Nextcloud hesabınızı `GNOME Control Center &lt;../groupware/sync_gnome.html&gt;`_ içinden yapılandırdığınızda, **dosya erişimi seçeneğini kaldırmadığınızda, dosyalarınız Nautilus tarafından otomatik olarak bir WebDAV paylaşımı olarak eklenir</strong>.</p>
+<p>Ayrıca Nextcloud dosyalarınızı el ile de ekleyebilirsiniz. Nautilus dosya yöneticisini Nextcloud paylaşımınıza bağlamak için <code class="docutils literal notranslate"><span class="pre">davs://</span></code> iletişim kuralını kullanın:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">davs</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Sunucu bağlantınızın HTTPS ile güvenliği sağlanmamışsa, <code class="docutils literal notranslate"><span class="pre">davs://</span></code> yerine <code class="docutils literal notranslate"><span class="pre">dav://</span></code> kullanın:</p>
+</div>
+<img alt="Nautilus dosya yöneticisini WebDAV kullanacak şekilde yapılandırma ekran görüntüsü" src="../../_images/webdav_gnome3_nautilus.png" />
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Aynı yöntem, MATE Caja ve Cinnamon Nepo gibi GVFS kullanan diğer dosya yöneticileri için de geçerlidir.</p>
+</div>
+</section>
+<section id="accessing-files-with-kde-and-dolphin-file-manager">
+<h3>KDE ve Dolphin dosya yöneticisi ile dosyalara erişmek<a class="headerlink" href="#accessing-files-with-kde-and-dolphin-file-manager" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Sistem ayarları -&gt; Ağ -&gt; Çevrim içi hesaplar bölümüne gidin</p></li>
+<li><p>“Hesap ekle…” üzerine tıklayın</p></li>
+<li><p>Nextcloud üzerine tıklayın</p></li>
+<li><p>Sunucunuzun adresini yazın</p></li>
+<li><p>Oturum açmak için ekrandaki yönergeleri izleyin</p></li>
+<li><p>Oturum açtıktan sonra, “Bu hesabı şunun için kullanılsın” bölümünde “Depolama” seçeneğini seçtiğinizden emin olun</p></li>
+<li><p>Artık Dolphin dosyalarınıza kenar çubuğundaki “Ağ” altından erişebilirsiniz</p></li>
+<li><p>(İsteğe bağlı) Bunu kenar çubuğuna kısayol olarak eklemek için “Nextcloud Depolama” üzerine sağ tıklayın ve ardından “Konumlara ekle” üzerine tıklayın.</p></li>
+<li><p>(İsteğe bağlı) Kısayolu özelleştirmek için kenar çubuğundaki kısayola sağ tıklayın. Ardından “Düzenle…” üzerine tıklayın ve simge ile etiketi istediğiniz gibi özelleştirin</p></li>
+</ol>
+</section>
+</section>
+<section id="creating-webdav-mounts-on-the-linux-command-line">
+<h2>Linux komut satırından WebDAV bağlantıları oluşturmak<a class="headerlink" href="#creating-webdav-mounts-on-the-linux-command-line" title="Link to this heading"></a></h2>
+<p>Linux komut satırından da WebDAV bağlantıları oluşturabilirsiniz. Nextcloud üzerine diğer herhangi bir uzak dosya sistemi bağlamasıyla aynı şekilde erişmeyi yeğliyorsanız bu kullanım daha uygun olabilir. Aşağıdaki örnek, kişisel bir bağlamanın nasıl oluşturulacağını ve Linux bilgisayarınızda her oturum açtığınızda otomatik bağlanmayı gösterir.</p>
+<ol class="arabic">
+<li><p>WebDAV paylaşımlarını diğer herhangi bir uzak dosya sistemi gibi bağlamanızı sağlayan <code class="docutils literal notranslate"><span class="pre">davfs2</span></code> WebDAV dosya sistemi sürücüsünü yükleyin. Debian/Ubuntu üzerine kurmak için şu komutu kullanın:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>CentOS, Fedora ve openSUSE üzerine kurmak için şu komutu kullanın:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Kendinizi <code class="docutils literal notranslate"><span class="pre">davfs2</span></code> grubuna ekleyin:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usermod</span> <span class="o">-</span><span class="n">aG</span> <span class="n">davfs2</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Ardından, bağlama noktası için ana klasörünüzde bir <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code> klasörü ve kişisel yapılandırma dosyanız için de <code class="docutils literal notranslate"><span class="pre">.davfs2/</span></code> klasörü oluşturun:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">~/</span><span class="n">nextcloud</span>
+<span class="n">mkdir</span> <span class="o">~/.</span><span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/etc/davfs2/secrets</span></code> dosyasını <code class="docutils literal notranslate"><span class="pre">~/.davfs2</span></code> klasörüne kopyalayın:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span>  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+</pre></div>
+</div>
+</li>
+<li><p>Dosyanın sahibi olarak kendinizi ayarlayın ve yalnızca sahip için okuma ve yazma izinleri verin:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chown</span> <span class="o">&lt;</span><span class="n">linux_username</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">linux_username</span><span class="o">&gt;</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+<span class="n">chmod</span> <span class="mi">600</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+</pre></div>
+</div>
+</li>
+<li><p>Nextcloud oturum açma kimlik doğrulama bilgileriniz olan Nextcloud sunucu adresinizi, kullanıcı adınızı ve parolanızı <code class="docutils literal notranslate"><span class="pre">secrets</span></code> dosyasının sonuna ekleyin:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/ &lt;username&gt; &lt;password&gt;
+or
+$PathToMountPoint $USERNAME $PASSWORD
+for example
+/home/user/nextcloud john 1234
+</pre></div>
+</div>
+</li>
+<li><p>Bağlama bilgilerini <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code> dosyasına ekleyin:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">linux_username</span><span class="o">&gt;/</span><span class="n">nextcloud</span> <span class="n">davfs</span> <span class="n">user</span><span class="p">,</span><span class="n">rw</span><span class="p">,</span><span class="n">auto</span> <span class="mi">0</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</li>
+<li><p>Ardından, aşağıdaki komutu yürüterek bağlanmanın gerçekleştiğini ve kimliğin doğrulandığından emin olun. Doğru ayarlarsanız, root izinlerine gerek duyulmaz:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mount</span> <span class="o">~/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</li>
+<li><p>Ayrıca bağlanmayı sonlandırabilmelisiniz:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">umount</span> <span class="o">~/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Artık Linux sisteminizde her oturum açtığınızda, Nextcloud paylaşımınız WebDAV aracılığıyla otomatik olarak <code class="docutils literal notranslate"><span class="pre">~/nextcloud</span></code> klasörünüze bağlanmalıdır. El ile bağlamayı yeğlerseniz, <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code> içindeki <code class="docutils literal notranslate"><span class="pre">auto</span></code> ögesini <code class="docutils literal notranslate"><span class="pre">noauto</span></code> olarak değiştirin.</p>
+</section>
+<section id="known-issues">
+<h2>Bilinen sorunlar<a class="headerlink" href="#known-issues" title="Link to this heading"></a></h2>
+<section id="problem">
+<h3>Sorun<a class="headerlink" href="#problem" title="Link to this heading"></a></h3>
+<p>Kaynağa geçici olarak erişilemiyor</p>
+</section>
+<section id="solution">
+<h3>Çözüm<a class="headerlink" href="#solution" title="Link to this heading"></a></h3>
+<p>Klasörde bir dosya oluştururken sorun yaşarsanız, <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/davfs2.conf</span></code> dosyasını düzenleyin ve şunu ekleyin:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">use_locks</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>Sorun<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>Sertifika uyarıları</p>
+</section>
+<section id="id2">
+<h3>Çözüm<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>Kendinden imzalı bir sertifika kullanırsanız bir uyarı alırsınız. Bu durumu değiştirmek için <code class="docutils literal notranslate"><span class="pre">davfs2</span></code> yapılandırmanızı sertifikanızı tanıyacak şekilde değiştirmeniz gerekir. <code class="docutils literal notranslate"><span class="pre">mycertificate.pem</span></code> dosyasını <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/certs/</span></code> klasörüne kopyalayın. Ardından <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/davfs2.conf</span></code> dosyasını düzenleyin ve <code class="docutils literal notranslate"><span class="pre">servercert</span></code> satırının başındaki yorum işaretini kaldırın. Şimdi bu örnekte olduğu gibi sertifikanızın yolunu ekleyin:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">servercert</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">davfs2</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">mycertificate</span><span class="o">.</span><span class="n">pem</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="accessing-files-using-macos">
+<h2>macOS kullanarak dosyalara erişmek<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>The macOS Finder suffers from a <a class="reference external" href="http://sabre.io/dav/clients/finder/">series of implementation problems</a> and should only be used if the Nextcloud server runs on <strong>Apache</strong> and <strong>mod_php</strong>, or <strong>Nginx 1.3.8+</strong>. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> (see instructions <a class="reference external" href="https://docs.nextcloud.com/server/32/user_manual/files/access_webdav.html#accessing-files-using-cyberduck">here</a>) and <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. Commercial clients include <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Transmit</a>, and <a class="reference external" href="https://mac.eltima.com/">Commander One</a>.</p>
+</div>
+<p>Dosyalara macOS Finder üzerinden erişmek:</p>
+<ol class="arabic">
+<li><p>Finder üst menü çubuğundan <strong>Git &gt; Sunucuya Bağlan…</strong>’ komutunu seçin:</p>
+<img alt="macOS üzerinde Nextcloud sunucu adresinizi yazma ekran görüntüsü" src="../../_images/osx_webdav1.png" />
+</li>
+<li><p><strong>Sunucuya Bağlan…</strong> penceresi açıldığında, <strong>Sunucu Adresi:</strong> alanına Nextcloud sunucunuzun WebDAV adresini yazın. Yani:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">YOURDOMAIN</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<img alt="Ekran görüntüsü: &quot;Sunucu ile bağlantı kur…&quot; penceresine Nextcloud sunucu adresini yazın" src="../../_images/osx_webdav2.png" />
+</li>
+<li><p><strong>Bağlan</strong>’ üzerine tıklayın. WebDAV sunucunuz bilgisayarda paylaşılan bir disk sürücüsü olarak görünmelidir.</p></li>
+</ol>
+</section>
+<section id="accessing-files-using-microsoft-windows">
+<h2>Dosyalara Microsoft Windows üzerinden erişmek<a class="headerlink" href="#accessing-files-using-microsoft-windows" title="Link to this heading"></a></h2>
+<p>Yerel Windows WebDAV uygulamasını kullanıyorsanız, Dosya Gezginini kullanarak Nextcloud sunucunuzu yeni bir sürücü olarak eşleyebilirsiniz. Bir sürücü eşlemek, bir Nextcloud sunucusunda depolanan dosyalara, eşlenmiş bir ağ sürücüsünde bulunan dosyalara yaptığınız gibi göz atabilmenizi sağlar.</p>
+<p>Bu özelliğin kullanılması için ağ bağlantısı gereklidir. Dosyalarınızı çevrim dışı olarak depolamak istiyorsanız, Nextcloud hesabınızdaki tüm dosyaları yerel sabit sürücünüzdeki bir ya da birkaç klasörle eşitlemek için bilgisayar istemcisini kullanın.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Sürücünüz eşleştirilmeden önce HTTPS kullanıma alındıysa, Windows 10 varsayılan olarak temel kimlik doğrulama kullanmaya izin verecek şekilde ayarlanmıştır.</p>
+<p>Daha eski Windows sürümlerinde, Windows kayıt defterini açarak temel kimlik doğrulamasının kullanılmasına izin vermelisiniz:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">regedit</span></code> uygulamasını açarak <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters</span></code> anahtarını bulun.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BasicAuthLevel</span></code> (Windows Vista, 7 ve 8) ya da <code class="docutils literal notranslate"><span class="pre">UseBasicAuth</span></code> (Windows XP ve Windows Server 2003), <code class="docutils literal notranslate"><span class="pre">DWORD</span></code> değerini yoksa oluşturun veya varsa düzenleyin ve değer verisini <code class="docutils literal notranslate"><span class="pre">1</span></code> olarak ayarlayın. SSL bağlantıları için. <code class="docutils literal notranslate"><span class="pre">0</span></code> değeri, Temel kimlik doğrulamasının kullanımdan kaldırıldığı anlamına gelir ve <code class="docutils literal notranslate"><span class="pre">2</span></code> değeri, hem SSL hem de SSL olmayan bağlantılara izin verir (önerilmez).</p></li>
+<li><p>Kayıt defteri uygulamasından çıkıp bilgisayarı yeniden başlatın.</p></li>
+</ul>
+</div>
+<section id="mapping-drives-with-the-command-line">
+<h3>Komut satırından sürücüleri eşleme<a class="headerlink" href="#mapping-drives-with-the-command-line" title="Link to this heading"></a></h3>
+<p>Aşağıdaki örnek, bir sürücünün komut satırı kullanılarak nasıl eşleneceğini gösterir. Sürücüyü eşlemek için:</p>
+<ol class="arabic">
+<li><p>Windows komut istemini açın.</p></li>
+<li><p>Bilgisayarı Z sürücüsüyle eşlemek için komut istemine aşağıdaki satırı yazın:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">drive_path</span><span class="o">&gt;/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span> <span class="n">yourpassword</span>
+</pre></div>
+</div>
+<p>Nextcloud sunucunuzun adresi olarak &lt;drive_path&gt; ile. Örneğin:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span> <span class="n">yourpassword</span>
+</pre></div>
+</div>
+<p>Bilgisayar, Nextcloud hesabınızın dosyalarını Z sürücü harfiyle eşler.</p>
+</li>
+</ol>
+<div class="admonition error">
+<p class="admonition-title">Hata</p>
+<p><code class="docutils literal notranslate"><span class="pre">Sistem</span> <span class="pre">hatası</span> <span class="pre">67</span> <span class="pre">oluştu.</span> <span class="pre">Ağ</span> <span class="pre">adı</span> <span class="pre">bulunamadı</span></code> iletisini görürseniz ya da bağlantı sık sık kesiliyorsa, <strong>Hizmetler</strong> uygulamasını açın ve <code class="docutils literal notranslate"><span class="pre">WebClient</span></code> hizmetinin çalıştığından ve başlangıçta otomatik olarak çalıştırıldığından emin olun.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Önerilmese de, Nextcloud sunucusunu HTTP kullanarak da bağlayabilir ve bağlantıyı şifrelenmemiş olarak bırakabilirsiniz.</p>
+<blockquote>
+<div><p>Herkese açık alanlardaki aygıtlarla HTTP bağlantıları kullanmayı planlıyorsanız, kesinlikle gerekli güvenliği sağlamak için bir VPN tüneli kullanmanızı öneririz.</p>
+</div></blockquote>
+<p>Alternatif komut sözdizimi:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> \\<span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="nd">@ssl</span>\<span class="n">nextcloud</span>\<span class="n">remote</span><span class="o">.</span><span class="n">php</span>\<span class="n">dav</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span>
+<span class="n">yourpassword</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mapping-drives-with-windows-explorer">
+<h3>Dosya Gezgini ile sürücüleri eşlemek<a class="headerlink" href="#mapping-drives-with-windows-explorer" title="Link to this heading"></a></h3>
+<p>Microsoft Dosya Gezginini kullanarak bir sürücüyü eşlemek için:</p>
+<ol class="arabic">
+<li><p>Windows bilgisayarınızdaki Dosya Gezgini uygulamasını açın.</p></li>
+<li><p><strong>Bu bilgisayar</strong> simgesine sağ tıklayın ve açılır menüden <strong>Ağ sürücüsüne bağlan…</strong> ögesini seçin.</p></li>
+<li><p>Nextcloud eşlemesi için istediğiniz yerel ağ sürücüsünü seçin.</p></li>
+<li><p>Nextcloud bulut sunucunuzun adresini yazın ve sonuna <strong>/remote.php/dav/files/KULLANICIADI/</strong> bölümünü ekleyin.</p>
+<p>Örnek:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>SSL ile korunan sunucular için, sonraki yeniden başlatmalarda eşlemenin kalıcı olacağından emin olmak için <strong>Oturum açıldığında yeniden bağlan</strong> seçeneğini işaretleyin. Nextcloud sunucusuna farklı bir kullanıcı olarak oturum açmak istiyorsanız, <strong>Farklı kimlik bilgileri kullanarak bağlan</strong> seçeneğini işaretleyin.</p>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="Windows dosya gezgininde WebDAV eşleme ekran görüntüsü" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" />
+</a>
+</figure>
+</li>
+</ol>
+<ol class="arabic simple" start="5">
+<li><p><code class="docutils literal notranslate"><span class="pre">Son</span></code> düğmesine tıklayın.</p></li>
+</ol>
+<p>Dosya Gezgini, ağ sürücüsünü eşleyerek Nextcloud kopyanızı kullanmanızı sağlar.</p>
+</section>
+</section>
+<section id="accessing-files-using-cyberduck">
+<h2>Cyberduck kullanarak dosyalara erişmek<a class="headerlink" href="#accessing-files-using-cyberduck" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://cyberduck.io/">Cyberduck</a> macOS ve Windows üzerinde dosya aktarımları için tasarlanmış açık kaynaklı bir FTP, SFTP, WebDAV, OpenStack Swift ve Amazon S3 tarayıcısıdır.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Bu örnekte, Cyberduck 4.2.1 sürümü kullanılmıştır.</p>
+</div>
+<p>Cyberduck kullanmak için:</p>
+<ol class="arabic">
+<li><p>Önünde bir iletişim kuralı bilgisi olmadan bir sunucu belirtin.</p>
+<p>Örneğin: <cite>òrnek.com`</cite></p>
+</li>
+<li><p>Uygun bağlantı noktasını belirtin.</p>
+<p>Seçtiğiniz bağlantı noktası, Nextcloud sunucunuzun SSL destekleyip desteklemediğine bağlı olarak değişir. Cyberduck, SSL kullanmayı planlıyorsanız farklı bir bağlantı türü seçmenizi gerektirir. Örneğin:</p>
+<dl class="simple">
+<dt>Örneğin:</dt><dd><ul class="simple">
+<li><p>Şifrelenmemiş WebDAV için <code class="docutils literal notranslate"><span class="pre">80</span></code></p></li>
+<li><p>Güvenli WebDAV için <code class="docutils literal notranslate"><span class="pre">443</span></code> (HTTPS/SSL)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>WebDAV adresinizin kalanını ‘Yol’ alanına eklemek için ‘Diğer Seçenekler’ açılır menüsünü kullanın.</p>
+<p>Örneğin: <code class="docutils literal notranslate"><span class="pre">remote.php/dav/files/KULLANICIADI/</span></code></p>
+</li>
+</ol>
+<p>Böylece Cyberduck, Nextcloud sunucusundaki dosyalara erişmiş olur.</p>
+</section>
+<section id="accessing-public-shares-over-webdav">
+<h2>WebDAV üzerinden herkese açık paylaşımlara erişmek<a class="headerlink" href="#accessing-public-shares-over-webdav" title="Link to this heading"></a></h2>
+<p>Nextcloud, WebDAV üzerinden herkese açık paylaşımlara anonim olarak erişme olanağı sağlar.</p>
+<p>Herkese açık paylaşıma erişmek için şunu açın:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">public</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span>
+</pre></div>
+</div>
+<p>bir WebDAV istemcisinde, paylaşım belirtecini kullanıcı adı olarak ve (isteğe bağlı) paylaşım parolasını parola olarak kullanın. Örneğin, <a class="reference external" href="https://example.co/s/kFy9Lek5sm928xP">https://example.co/s/kFy9Lek5sm928xP</a> paylaşım adresinde parola <code class="docutils literal notranslate"><span class="pre">kFy9Lek5sm928xP</span></code> olur.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p><strong>Ayarlar</strong> → <strong>Yönetim</strong> → <strong>Paylaşım</strong> → <strong>Bu sunucudaki kullanıcılar diğer sunuculara paylaşım gönderebilsin</strong> seçeneğini açın. Bu seçenek cURL kullanılması dışında (aşağıya bakın), WebDAV tarafından herkese açık paylaşımlara erişilebilmesini de sağlar ve bu özelliğin çalışması için açılmalıdır.</p>
+</div>
+</section>
+<section id="known-problems">
+<h2>Bilinen sorunlar<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
+<section id="id4">
+<h3>Sorun<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>Windows, HTTPS kullanarak bağlantı kuramıyor.</p>
+</section>
+<section id="solution-1">
+<h3>1. çözüm<a class="headerlink" href="#solution-1" title="Link to this heading"></a></h3>
+<p>Windows WebDAV İstemcisi, şifrelenmiş bağlantılarda sunucu adı gösterimini (SNI) desteklemeyebilir. SSL ile şifrelenmiş bir Nextcloud kopyası kurarken bir hatayla karşılaşırsanız, SSL tabanlı sunucunuza bir sabit IP adresi ataması için hizmet sağlayıcınızla görüşün.</p>
+</section>
+<section id="solution-2">
+<h3>2. çözüm<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
+<p>Windows WebDAV İstemcisi, TLSv1.1 ve TLSv1.2 bağlantılarını desteklemeyebilir. Sunucu yapılandırmanızı yalnızca TLSv1.1 ve üzerini sunacak şekilde kısıtladıysanız, sunucunuzla bağlantı kurulamayabilir. Ayrıntılı bilgi almak için <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> belgelerine bakabilirsiniz.</p>
+</section>
+<section id="id5">
+<h3>Sorun<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>Şu hata iletisini görüyorsunuz: <strong>Hata 0x800700DF: Dosya boyutu izin verilen sınırı aşıyor ve kaydedilemiyor.</strong></p>
+</section>
+<section id="id6">
+<h3>Çözüm<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p>Windows, WebDAV paylaşımı ile alınabilecek ya da gönderilebilecek bir dosyanın en büyük boyutunu sınırlar. <strong>Değiştir</strong> üzerine tıklayarak <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code> altındaki <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> değerini artırabilirsiniz.</p>
+<p>Sınırı olabilecek en büyük 4 GB değerine çıkarmak için <strong>Ondalık</strong> olarak seçin, <code class="docutils literal notranslate"><span class="pre">4294967295</span></code> değerini yazın ve Windows ya da <strong>WebClient</strong> hizmetini yeniden başlatın.</p>
+</section>
+<section id="id7">
+<h3>Sorun<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<p>Yukarıda açıklanan adımlarla Windows üzerinde bir WebDAV sürücüsü eklemek, Nextcloud kullanılabilir alanının doğru boyutunu göstermez. Kullanılabilecek alan olarak C: sürücüsünün boyutunu görüntüler.</p>
+</section>
+<section id="answer">
+<h3>Yanıt<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
+<p>Ne yazık ki bu, WebDAV tarafından kaynaklanan bir sınırlamadır, çünkü istemcinin sunucudan kullanılabilir boş alanı almasının bir yolu yoktur. Windows, bunun yerine otomatik olarak C: sürücüsünün boyutunu kullanılabilir alanla birlikte görüntüler. Yani ne yazık ki bu sorunun gerçek bir çözümü yok.</p>
+</section>
+<section id="id8">
+<h3>Sorun<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<p>Dosyalarınıza WebDAV aracılığıyla Microsoft Office üzerinden erişilemiyor.</p>
+</section>
+<section id="id9">
+<h3>Çözüm<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<p>Bilinen sorunlara ve çözümlerine <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a> makalesinde değinilmiştir.</p>
+</section>
+<section id="id10">
+<h3>Sorun<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>Nextcloud bir kendinden imzalı sertifika kullanıyorken Windows üzerinde bir WebDAV sürücüsü olarak eşlenemiyor.</p>
+</section>
+<section id="id11">
+<h3>Çözüm<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Alışık olduğunuz tarayıcı ile Nextcloud kopyanıza erişin.</p></li>
+<li><p>Tarayıcı durum satırında sertifika hatasına ulaşana kadar tıklayın.</p></li>
+<li><p>Sertifikayı görüntüleyin, Ayrıntılar sekmesinden ‘Dosyaya kopyala’ üzerine tıklayın.</p></li>
+<li><p>Masaüstüne <code class="docutils literal notranslate"><span class="pre">NextcloudSertifikam.pem</span></code> gibi rastgele bir adla kaydedin.</p></li>
+<li><p>Başlat menüsü &gt; Çalıştır yolundan, MMC yazın ve Microsoft Yönetim Konsolu uygulamasını açmak için ‘Tamam’ üzerine tıklayın.</p></li>
+<li><p>Dosya &gt; Ek Bileşen Ekle/Kaldır üzerine tıklayın.</p></li>
+<li><p>Sertifikalar bölümünü seçin, sırasıyla ‘Ekle’, ‘Kullanıcı hesabım’, ‘Bitir’ ve ‘Tamam’ üzerine tıklayın.</p></li>
+<li><p>Güvenilen Kök Sertifika Yetkilileri, Sertifikalar bölümüne gidin.</p></li>
+<li><p>Sertifikaya sağ tıklayın, Tüm Görevleri Seç ve İçe Aktar üzerine tıklayın.</p></li>
+<li><p>Masaüstüne kaydettiğiniz sertifika dosyasını seçin.</p></li>
+<li><p>Tüm Sertifikaları Aşağıdaki Mağazaya Yerleştir komutunu seçin ve Göz at üzerine tıklayın.</p></li>
+<li><p>Fiziksel Mağazaları Göster kutusunu işaretleyin, Güvenilir Kök Sertifika Yetkililerini genişletin ve oradan Yerel Bilgisayar seçin, içe aktarmayı tamamlamak içn ‘Tamam’ üzerine tıklayın.</p></li>
+<li><p>Yeni sertifikanın göründüğünden emin olmak için listeye bakın. Büyük olasılıkla sertifikanın listede görüntülenmesi için görünümü yenilemeniz gerekecek.</p></li>
+<li><p>Exit MMC.</p></li>
+</ol>
+<p>Firefox kullanıcıları için:</p>
+<ol class="arabic simple">
+<li><p>Tarayıcınızı açın, Uygulama menüsü &gt; Geçmiş &gt; Yakın geçmişi temizle… üzerine tıklayın.</p></li>
+<li><p>‘Temnizlenecek zaman aralığı’ açılan kutusunu ‘Her şey’ olarak ayarlayın</p></li>
+<li><p>‘Etkin oturumlar’ kutusunu işaretleyin</p></li>
+<li><p>‘Şimdi temizle’ düğmesine tıklayın</p></li>
+<li><p>Tarayıcıyı kapatın ve denemek için yeniden başlatın.</p></li>
+</ol>
+<p>Chrome temelli tarayıcı kullanıcıları için (Chrome, Chromium, Microsoft Edge):</p>
+<ol class="arabic simple">
+<li><p>Windows Denetim Masasını açıp İnternet Seçenekleri bölümüne gidin</p></li>
+<li><p>İçerik sekmesinden SSL Durumunu Temizle düğmesine tıklayın.</p></li>
+<li><p>Tarayıcıyı kapatın ve denemek için yeniden başlatın.</p></li>
+</ol>
+</section>
+</section>
+<section id="accessing-files-using-curl">
+<h2>cURL kullanarak dosyalara erişmek<a class="headerlink" href="#accessing-files-using-curl" title="Link to this heading"></a></h2>
+<p>WebDAV bir HTTP uzantısı olduğundan, cURL betik dosyası işlemleri için kullanılabilir.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p><strong>Ayarlar</strong> → <strong>Yönetim</strong> → <strong>Paylaşım</strong> → <strong>Bu sunucudaki kullanıcılar diğer sunuculara paylaşım gönderebilsin</strong> seçeneğini açın. Bu seçenek <code class="docutils literal notranslate"><span class="pre">--header</span> <span class="pre">&quot;X-Requested-With:</span> <span class="pre">XMLHttpRequest&quot;</span></code> seçeneğini kapatıyorsa cURL üzerine aktarılması gerekir.</p>
+</div>
+<p>Adı geçerli tarih olan bir klasör oluşturmak için:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MKCOL<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>Bu klasöre <code class="docutils literal notranslate"><span class="pre">error.log</span></code> dosyasını yüklemek için:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-T<span class="w"> </span>error.log<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">/error.log&quot;</span>
+</pre></div>
+</div>
+<p>Bir dosyayı taşımak için:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MOVE<span class="w"> </span>--header<span class="w"> </span><span class="s1">&#39;Destination: https://example.com/nextcloud/remote.php/dav/files/USERNAME/target.jpg&#39;</span><span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/source.jpg
+</pre></div>
+</div>
+<p>Kök klasördeki dosyaların özelliklerini almak için:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>PROPFIND<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Depth: 1&quot;</span><span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/<span class="w"> </span><span class="p">|</span><span class="w"> </span>xml_pp
+<span class="w">    </span>&lt;?xml<span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="w"> </span><span class="nv">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>?&gt;
+&lt;d:multistatus<span class="w"> </span>xmlns:d<span class="o">=</span><span class="s2">&quot;DAV:&quot;</span><span class="w"> </span>xmlns:oc<span class="o">=</span><span class="s2">&quot;http://nextcloud.org/ns&quot;</span><span class="w"> </span>xmlns:s<span class="o">=</span><span class="s2">&quot;http://sabredav.org/ns&quot;</span>&gt;
+<span class="w">  </span>&lt;d:response&gt;
+<span class="w">    </span>&lt;d:href&gt;/nextcloud/remote.php/dav/files/USERNAME/&lt;/d:href&gt;
+<span class="w">    </span>&lt;d:propstat&gt;
+<span class="w">      </span>&lt;d:prop&gt;
+<span class="w">        </span>&lt;d:getlastmodified&gt;Tue,<span class="w"> </span><span class="m">13</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2015</span><span class="w"> </span><span class="m">17</span>:07:45<span class="w"> </span>GMT&lt;/d:getlastmodified&gt;
+<span class="w">        </span>&lt;d:resourcetype&gt;
+<span class="w">          </span>&lt;d:collection/&gt;
+<span class="w">        </span>&lt;/d:resourcetype&gt;
+<span class="w">        </span>&lt;d:quota-used-bytes&gt;163&lt;/d:quota-used-bytes&gt;
+<span class="w">        </span>&lt;d:quota-available-bytes&gt;11802275840&lt;/d:quota-available-bytes&gt;
+<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">&quot;561d3a6139d05&quot;</span>&lt;/d:getetag&gt;
+<span class="w">      </span>&lt;/d:prop&gt;
+<span class="w">      </span>&lt;d:status&gt;HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK&lt;/d:status&gt;
+<span class="w">    </span>&lt;/d:propstat&gt;
+<span class="w">  </span>&lt;/d:response&gt;
+<span class="w">  </span>&lt;d:response&gt;
+<span class="w">    </span>&lt;d:href&gt;/nextcloud/remote.php/dav/files/USERNAME/welcome.txt&lt;/d:href&gt;
+<span class="w">    </span>&lt;d:propstat&gt;
+<span class="w">      </span>&lt;d:prop&gt;
+<span class="w">        </span>&lt;d:getlastmodified&gt;Tue,<span class="w"> </span><span class="m">13</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2015</span><span class="w"> </span><span class="m">17</span>:07:35<span class="w"> </span>GMT&lt;/d:getlastmodified&gt;
+<span class="w">        </span>&lt;d:getcontentlength&gt;163&lt;/d:getcontentlength&gt;
+<span class="w">        </span>&lt;d:resourcetype/&gt;
+<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">&quot;47465fae667b2d0fee154f5e17d1f0f1&quot;</span>&lt;/d:getetag&gt;
+<span class="w">        </span>&lt;d:getcontenttype&gt;text/plain&lt;/d:getcontenttype&gt;
+<span class="w">      </span>&lt;/d:prop&gt;
+<span class="w">      </span>&lt;d:status&gt;HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK&lt;/d:status&gt;
+<span class="w">    </span>&lt;/d:propstat&gt;
+<span class="w">  </span>&lt;/d:response&gt;
+&lt;/d:multistatus&gt;
+</pre></div>
+</div>
+</section>
+<section id="accessing-files-using-winscp">
+<h2>WinSCP kullanarak dosyalara erişmek<a class="headerlink" href="#accessing-files-using-winscp" title="Link to this heading"></a></h2>
+<p><cite>WinSCP &lt;https://winscp.net/eng/docs/introduction/&gt;</cite>, Windows için açık kaynaklı, ücretsiz bir SFTP, FTP, WebDAV, S3 ve SCP istemcisidir. Ana işlevi, yerel ve uzak bilgisayar arasında dosya aktarımı yapmaktır. Bunun ötesinde WinSCP, betik çalıştırma ve temel dosya yönetimi işlevleri sunar.</p>
+<p>Portable WinSCP sürümünü &lt;<a class="reference external" href="https://winscp.net/eng/downloads.php/">https://winscp.net/eng/downloads.php/</a>&gt;’ indirebilir ve <a class="reference external" href="https://wiki.winehq.org/Main_Page/">Wine</a> ile Linux üzerinde çalıştırabilirsiniz.</p>
+<p>WinSCP uygulamasını Linux üzerinde çalıştırmak için, dağıtımınızın paket yöneticisinden wine uygulamasını indirin. Ardından şu komutla çalıştırın: <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code>.</p>
+<p>Nextcloud bağlantısı kurmak için:</p>
+<ul class="simple">
+<li><p>WinSCP uygulamasını başlatın</p></li>
+<li><p>Menüden ‘Oturum’ seçin</p></li>
+<li><p>‘Yeni oturum’ üzerine tıklayın</p></li>
+<li><p>‘Dosya iletişim kuralı’ seçeneğini WebDAV olarak ayarlayın</p></li>
+<li><p>‘Şifreleme’ seçeneğini TLS/SSL örtülü şifreleme olarak ayarlayın</p></li>
+<li><p>Sunucu adı alanını doldurun: <code class="docutils literal notranslate"><span class="pre">ornek.com</span></code></p></li>
+<li><p>Kullanıcı adı alanını doldurun: <code class="docutils literal notranslate"><span class="pre">NEXTCLOUDKULLANICIADI</span></code></p></li>
+<li><p>Parola alanını doldurun: <code class="docutils literal notranslate"><span class="pre">NEXTCLOUDPAROLASI</span></code></p></li>
+<li><p>‘Gelişmiş…’ düğmesine tıklayın</p></li>
+<li><p>Sol taraftan ‘Ortam’, ‘Klasörler’ bölümüne gidin</p></li>
+<li><p>‘Uzak klasör’ alanını şu şekilde doldurun: <code class="docutils literal notranslate"><span class="pre">/nextcloud/remote.php/dav/files/NEXTCLOUDKULLANICIADI/</span></code></p></li>
+<li><p>‘Tamam’ düğmesine tıklayın</p></li>
+<li><p>‘Kaydet’ düğmesine tıklayın</p></li>
+<li><p>İstediğiniz seçenekleri ayarlayın ve ‘Tamam’ düğmesine tıklayın</p></li>
+<li><p>Nextcloud bağlantısı kurmak için ‘Oturum aç’ düğmesine tıklayın</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Tek kullanımlık parola kullanıyorsanız, parola olarak bir uygulama parolası kullanmanız önerilir, çünkü WinSCP, bu yazıyı yazarken (2022-11-07) Nextcloud üzerindeki tek kullanımlık parola uygulamasını anlamıyor.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="access_webgui.html" class="btn btn-neutral float-left" title="Nextcloud site arayüzünü kullanarak dosyalarınıza erişmek" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Önceki</a>
+        <a href="deleted_file_management.html" class="btn btn-neutral float-right" title="Silinmiş dosyaları yönetmek" accesskey="n" rel="next">Sonraki <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Here go the languages -->
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐
+      
+      
+      Turkish
+      
+      <span class="fa fa-caret-down"></span>
+
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Diller</dt>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ar/"
+                 
+              >
+                
+                Arabic
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/br/"
+                 
+              >
+                
+                Breton
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ca/"
+                 
+              >
+                
+                Catalan
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/cs/"
+                 
+              >
+                
+                Czech
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/da/"
+                 
+              >
+                
+                Danish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/de/"
+                 
+              >
+                
+                German
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el/"
+                 
+              >
+                
+                Greek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/en/"
+                 
+              >
+                
+                English
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/es/"
+                 
+              >
+                
+                Spanish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eu/"
+                 
+              >
+                
+                eu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fi_FI/"
+                 
+              >
+                
+                Finnish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fr/"
+                 
+              >
+                
+                French
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ga/"
+                 
+              >
+                
+                Irish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/gl/"
+                 
+              >
+                
+                Glacian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu_HU/"
+                 
+              >
+                
+                Hungarian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/id/"
+                 
+              >
+                
+                Indonesian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/it/"
+                 
+              >
+                
+                Italian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ja_JP/"
+                 
+              >
+                
+                Japanese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ko/"
+                 
+              >
+                
+                Korean
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/mn/"
+                 
+              >
+                
+                Mongolian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nb_NO/"
+                 
+              >
+                
+                Norwegian (NB)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nl/"
+                 
+              >
+                
+                Dutch
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nn/"
+                 
+              >
+                
+                Norwegian (NN)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pl/"
+                 
+              >
+                
+                Polish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_BR/"
+                 
+              >
+                
+                Portuguese (BR)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_PT/"
+                 
+              >
+                
+                Portuguese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ro/"
+                 
+              >
+                
+                Romanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ru/"
+                 
+              >
+                
+                Russian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/si/"
+                 
+              >
+                
+                Sinhala
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sk_SK/"
+                 
+              >
+                
+                Slovakian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sr/"
+                 
+              >
+                
+                Slovenian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sv/"
+                 
+              >
+                
+                Swedish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ta/"
+                 
+              >
+                
+                Tamil
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/tr/"
+                 
+                 style="color: var(--dark-link-color);"
+                 
+              >
+                
+                Turkish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk/"
+                 
+              >
+                
+                Ukrainian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk_UA/"
+                 
+              >
+                
+                uk_UA
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uz/"
+                 
+              >
+                
+                Uzbek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/vi/"
+                 
+              >
+                
+                Vietnamese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_CN/"
+                 
+              >
+                
+                Chinese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_HK/"
+                 
+              >
+                
+                Chinese (HK)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_TW/"
+                 
+              >
+                
+                Chinese (TW)
+                
+              </a>
+            </dd>
+          
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Sürümler</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/30/user_manual"
+               
+            >
+              30
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/29/user_manual"
+               
+            >
+              29
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>İndirmeler</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Okunacak Belgeler</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Proje Ana Sayfası</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Yapımlar</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,318 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ExApp development &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="ExApp overview" href="ExAppOverview.html" />
+    <link rel="prev" title="Development overview" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">ExApp development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DevSetup.html">Setting up dev environment</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Development overview</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ExApp development</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#setting-up-the-development-environment">0. Setting up the development environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#starting-from-template">1. Starting from template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#development">3. Development</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#packaging">4. Packaging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#appstore-publishing">5. AppStore publishing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing">6. Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ExAppOverview.html">ExApp overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ExAppLifecycle.html">ExApp lifecycle</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tech_details/index.html">Technical details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/index.html">Frequently Asked Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">ExApp development</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Development overview</a></li>
+      <li class="breadcrumb-item active">ExApp development</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/exapp_development/development_overview/ExAppDevelopmentSteps.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="exapp-development">
+<span id="exappdevelopment"></span><h1>ExApp development<a class="headerlink" href="#exapp-development" title="Link to this heading"></a></h1>
+<p>The ExApp development process is similar to that of a regular Nextcloud (PHP) app,
+and should follow the same guidelines in terms of security, design and coding style (see <a class="reference internal" href="../../getting_started/development_process.html"><span class="doc">Development process</span></a> for details)
+based on your programming language standards.</p>
+<p>Despite the fact, that ExApp can be developed in any language, it’s still recommended to have the understanding
+of the Nextcloud <a class="reference internal" href="../../basics/request_lifecycle.html"><span class="doc">PHP request lifecycle</span></a> and other basic concepts,
+as they are usually similar to the ExApp backend to which Nextcloud communicates.</p>
+<p>You can think of each ExApp as a microservice (Docker container)
+that runs separately from Nextcloud on the Deploy daemon, which can be remote or local.
+The communication between Nextcloud and ExApp is done via network secured with <a class="reference internal" href="../tech_details/Authentication.html"><span class="doc">AppAPIAuth</span></a>.</p>
+<p>Let’s go through the ExApp development steps briefly.</p>
+<section id="setting-up-the-development-environment">
+<h2>0. Setting up the development environment<a class="headerlink" href="#setting-up-the-development-environment" title="Link to this heading"></a></h2>
+<p>First, you need to have a Nextcloud dev setup, refer to <a class="reference internal" href="../DevSetup.html"><span class="doc">Setting up dev environment</span></a> for more details.</p>
+</section>
+<section id="starting-from-template">
+<h2>1. Starting from template<a class="headerlink" href="#starting-from-template" title="Link to this heading"></a></h2>
+<p>Next is to setup the ExApp skeleton.
+There are several ExApp examples available so you can have a look at them and start from.
+The ExApp template and examples:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[Python]</span></code> <a class="reference external" href="https://github.com/nextcloud/app-skeleton-python">App Skeleton</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[Python]</span></code> <a class="reference external" href="https://github.com/nextcloud/ui_example">UI Example Skeleton</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[Python]</span></code> <a class="reference external" href="https://github.com/cloud-py-api/visionatrix">More complex ExApp UI example with 3rd-party service</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[GoLang]</span></code> <a class="reference external" href="https://github.com/nextcloud/file_to_text_example">Go Lang ExApp example</a></p></li>
+<li><p>etc.</p></li>
+</ul>
+</div></blockquote>
+<p>They contain the basic structure of the ExApp, including:</p>
+<ul class="simple">
+<li><p>Dockerfile</p></li>
+<li><p>ExApp backend</p></li>
+<li><p>ExApp frontend</p></li>
+<li><p>Manual translations tools setup and example script to convert translation files to Nextcloud l10n format and for your programming language</p></li>
+<li><p>Some necessary GitHub workflows (e.g. <a class="reference external" href="https://github.com/cloud-py-api/visionatrix/tree/main/.github/workflows">Docker image build workflows</a>)</p></li>
+</ul>
+<p>More details are available in the <a class="reference internal" href="ExAppOverview.html#exappoverview"><span class="std std-ref">ExApp overview</span></a> section.</p>
+</section>
+<section id="development">
+<h2>3. Development<a class="headerlink" href="#development" title="Link to this heading"></a></h2>
+<p>The basic development process contains from the following steps:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Implement the ExApp &lt;-&gt; Nextcloud <a class="reference internal" href="ExAppLifecycle.html#ex-app-lifecycle-methods"><span class="std std-ref">lifecycle methods</span></a>:</dt><dd><ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/heartbeat</span></code>: ExApp heartbeat method</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/init</span></code>: ExApp initialization method</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/enabled</span></code>: ExApp enable/disable method</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><p>Implement the ExApp backend API and logic</p></li>
+<li><p>Implement the ExApp frontend (Nextcloud Vue.js app) [optional]</p></li>
+</ul>
+</section>
+<section id="packaging">
+<h2>4. Packaging<a class="headerlink" href="#packaging" title="Link to this heading"></a></h2>
+<p>The ExApp packaging can be done manually or via GitHub actions.
+It is recommended to use GitHub actions for packaging,
+as it will automate the process of building the Docker image and pushing it to the Docker registry.
+The GitHub action workflow for building Docker images can be found in the <a class="reference external" href="https://github.com/cloud-py-api/visionatrix">3rdparty service example</a>.</p>
+<section id="hardware-acceleration">
+<h3>4.1 Hardware acceleration<a class="headerlink" href="#hardware-acceleration" title="Link to this heading"></a></h3>
+<p>If your ExApp work with GPUs, you should consider building different Docker images for each compute device.
+Currently, there are 3 main compute devices to target with custom Docker images:</p>
+<ul class="simple">
+<li><p>CPU (default, no specific tag)</p></li>
+<li><p>GPU: CUDA (NVIDIA) (<code class="docutils literal notranslate"><span class="pre">&lt;image_name&gt;:&lt;version&gt;-cuda</span></code>)</p></li>
+<li><p>GPU: ROCm (AMD) (<code class="docutils literal notranslate"><span class="pre">&lt;image_name&gt;:&lt;version&gt;-rocm</span></code>)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the Deploy daemon configured with the GPU compute device,
+AppAPI will try to pull the Docker image with the GPU support first (<code class="docutils literal notranslate"><span class="pre">&lt;image_name&gt;:&lt;version&gt;-&lt;cuda|rocm&gt;</span></code>, <a class="reference external" href="https://github.com/nextcloud/app_api/pull/340">ref PR</a>).
+If the image is not found, AppAPI will try to pull the base (CPU) image (<code class="docutils literal notranslate"><span class="pre">&lt;image_name&gt;:&lt;version&gt;</span></code>).</p>
+</div>
+</section>
+<section id="dockerfile">
+<h3>Dockerfile<a class="headerlink" href="#dockerfile" title="Link to this heading"></a></h3>
+<p>The Dockerfile is required to build the Docker image for the ExApp.
+The guidelines for writing the Dockerfile can be found in the <a class="reference external" href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">Dockerfile best practices</a>.</p>
+<p>Short recommendations:</p>
+<ol class="arabic simple">
+<li><p>Keep the Dockerfile as small as possible.</p></li>
+<li><p>Use minimal base images to keep the image size small.</p></li>
+<li><p>Place rarely changing instructions at the top of the Dockerfile to take advantage of Docker’s caching mechanism.</p></li>
+</ol>
+</section>
+<section id="logging">
+<h3>Logging<a class="headerlink" href="#logging" title="Link to this heading"></a></h3>
+<p>The Docker container logs are shown in the standard output and error streams.
+For the admin to be able to see the important logs from the ExApp container,
+you should consider redirecting the logs to the standard output and standard error streams.
+For more info, see <a class="reference external" href="https://docs.docker.com/config/containers/logging/">the official docs for logging</a>.</p>
+</section>
+</section>
+<section id="appstore-publishing">
+<h2>5. AppStore publishing<a class="headerlink" href="#appstore-publishing" title="Link to this heading"></a></h2>
+<p>Once the ExApp is ready, and the Docker image is available in the Docker registry,
+you can follow <a class="reference external" href="https://nextcloudappstore.readthedocs.io/en/latest/developer.html">the AppStore publishing process</a>.
+It’s the same as for the regular Nextcloud app, but with the requirement of <a class="reference internal" href="ExAppOverview.html#ex-app-info-xml-metadata"><span class="std std-ref">the ExApp specific fields</span></a> in the <code class="docutils literal notranslate"><span class="pre">appinfo/info.xml</span></code> file.</p>
+</section>
+<section id="testing">
+<h2>6. Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h2>
+<p>It is important to ensure that your ExApp works as expected.
+We recommend having different types of dev setup configurations to test all of them.
+While the main development is done locally via <code class="docutils literal notranslate"><span class="pre">manual_install</span></code>, you must also ensure that
+the ExApp works correctly in a Docker container with Docker Socket Proxy (HTTP and HTTPS).</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Development overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ExAppOverview.html" class="btn btn-neutral float-right" title="ExApp overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/developer_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

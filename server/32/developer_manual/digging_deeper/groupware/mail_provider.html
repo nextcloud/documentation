@@ -1,0 +1,461 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mail Provider Interface &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="HTTP Client" href="../http_client.html" />
+    <link rel="prev" title="Contacts Menu" href="contacts_menu.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config/index.html">Config &amp; Preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../context_chat.html">Context Chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../continuous_integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dashboard.html">Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deadlock.html">Deadlocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../email.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../files-metadata.html">Files Metadata</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Groupware integration</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="calendar.html">Calendar integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="calendar_provider.html">Integration of custom calendar providers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contacts_menu.html">Contacts Menu</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Mail Provider Interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#terminology">Terminology</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#consuming-a-mail-service">Consuming a Mail Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#providing-a-mail-service">Providing a Mail Service</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../http_client.html">HTTP Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../translation.html">Machine Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../oidc.html">OpenID Connect (Oidc)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../out_of_office.html">Out-of-office periods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phonenumberutil.html">Phone number util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../psr.html">PSR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../profile.html">Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../profiler.html">Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference.html">Reference providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rest_apis.html">REST APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security.html">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup_checks.html">Setup checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../speech-to-text.html">Speech-To-Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../talk.html">Talk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../task_processing.html">Task Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../text_processing.html">Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../text2image.html">Text-To-Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../status.html">User Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_migration.html">User migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../web_host_metadata.html">Web Host Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../webdav_collection_preload.html">WebDAV collection preload events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../time.html">Working with time</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Digging deeper</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Groupware integration</a></li>
+      <li class="breadcrumb-item active">Mail Provider Interface</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/groupware/mail_provider.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mail-provider-interface">
+<span id="mail-providers"></span><h1>Mail Provider Interface<a class="headerlink" href="#mail-provider-interface" title="Link to this heading"></a></h1>
+<p>Nextcloud apps can use, and register the mail provider interface, to provide or consume mail service functionality to and from other apps.</p>
+<p>Access to mail services from another app is provided by the Mail Manager class. Using this class your app can find available mail providers and services. Please see the appropriate section below for more details.</p>
+<p>The reverse is also possible, one can register an app to supply mail services to other apps. This is accomplished by implementing a custom Mail Provider class and Mail Service class then registering your provider with the system. Please see the appropriate section below for more details.</p>
+<section id="terminology">
+<span id="mail-provider-terminology"></span><h2>Terminology<a class="headerlink" href="#terminology" title="Link to this heading"></a></h2>
+<p>For clarification this is a reference of terminology used.</p>
+<ol class="arabic simple">
+<li><p><em>Provider</em> - this is the app that provides mail services e.g. “BigHostingApp”, this can be an app for a specific protocol</p></li>
+<li><p><em>Service</em> - this is a configured mail service account e.g. “Big Email Hosting Co”. Each mail provider may have multiple mail services configured for a user.</p></li>
+</ol>
+</section>
+<section id="consuming-a-mail-service">
+<span id="mail-provider-consume"></span><h2>Consuming a Mail Service<a class="headerlink" href="#consuming-a-mail-service" title="Link to this heading"></a></h2>
+<p>To use mail as a service provided by another app, your app needs to instantiate the mail manager class, then use the built in methods to list or find an appropriate provider and service.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">OCP\Mail\Provider\IManager</span> <span class="k">as</span> <span class="nx">IMailManager</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Mail\Provider\Address</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Mail\Provider\Attachment</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MyTestService</span> <span class="p">{</span>
+
+    <span class="c1">// Instance the mail manager using dependency injection</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IMailManager</span> <span class="nv">$mailManager</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">private</span> <span class="nx">IMailManager</span> <span class="nv">$mailManager</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">acquireMailProvider</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+
+        <span class="c1">// determine if any providers are available</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mailManager</span><span class="o">-&gt;</span><span class="na">has</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// retrieve types of providers available (array of id&#39;s and labels)</span>
+        <span class="nv">$types</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mailManager</span><span class="o">-&gt;</span><span class="na">types</span><span class="p">();</span>
+
+        <span class="c1">// retrieve all providers available (array of provider objects)</span>
+        <span class="nv">$providers</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mailManager</span><span class="o">-&gt;</span><span class="na">providers</span><span class="p">();</span>
+
+        <span class="c1">// retrieve a single provider (provider objects)</span>
+        <span class="nv">$provider</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mailManager</span><span class="o">-&gt;</span><span class="na">findProviderById</span><span class="p">(</span><span class="s1">&#39;provider1&#39;</span><span class="p">);</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">acquireMailService</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+
+        <span class="c1">// determine if any providers are available</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mailManager</span><span class="o">-&gt;</span><span class="na">has</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// retrieve services available for a user (array of service objects)</span>
+        <span class="nv">$services</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mailManager</span><span class="o">-&gt;</span><span class="na">services</span><span class="p">(</span><span class="s1">&#39;user1&#39;</span><span class="p">);</span>
+
+        <span class="c1">// retrieve a single service with a specific mail address (service objects)</span>
+        <span class="nv">$service</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mailManager</span><span class="o">-&gt;</span><span class="na">findServiceByAddress</span><span class="p">(</span><span class="s1">&#39;user@testing.com&#39;</span><span class="p">);</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">sendMessage</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+
+        <span class="c1">// determine if any providers are available</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mailManager</span><span class="o">-&gt;</span><span class="na">has</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// retrieve a single service with a specific mail address (service objects)</span>
+        <span class="nv">$service</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mailManager</span><span class="o">-&gt;</span><span class="na">findServiceByAddress</span><span class="p">(</span><span class="s1">&#39;user@testing.com&#39;</span><span class="p">);</span>
+
+        <span class="c1">// construct mail message and set required parameters</span>
+        <span class="nv">$message</span> <span class="o">=</span> <span class="nv">$service</span><span class="o">-&gt;</span><span class="na">initiateMessage</span><span class="p">();</span>
+        <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">setFrom</span><span class="p">(</span><span class="k">new</span> <span class="nx">Address</span><span class="p">(</span><span class="s1">&#39;user1@testing.com&#39;</span><span class="p">,</span> <span class="s1">&#39;User One&#39;</span><span class="p">));</span>
+        <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">setTo</span><span class="p">(</span><span class="k">new</span> <span class="nx">Address</span><span class="p">(</span><span class="s1">&#39;user2@testing.com&#39;</span><span class="p">,</span> <span class="s1">&#39;User Two&#39;</span><span class="p">));</span>
+        <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">setSubject</span><span class="p">(</span><span class="s1">&#39;Our Great Plan&#39;</span><span class="p">);</span>
+        <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">setBodyPlain</span><span class="p">(</span><span class="s1">&#39;See the attached itinerary for our great plan&#39;</span><span class="p">);</span>
+        <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">setBodyHtml</span><span class="p">(</span><span class="s1">&#39;&lt;html&gt;See the attached itinerary for our great plan&lt;/html&gt;&#39;</span><span class="p">);</span>
+        <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">setAttachments</span><span class="p">(</span><span class="k">new</span> <span class="nx">Attachment</span><span class="p">(</span>
+            <span class="s1">&#39;Our great plan itinerary&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;theplan.txt&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;text/plain&#39;</span>
+        <span class="p">));</span>
+        <span class="c1">// send message</span>
+        <span class="nv">$service</span><span class="o">-&gt;</span><span class="na">sendMessage</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For more detailed information of methods available, parameters and returns please see the mail providers directory in the server repository. (lib/public/Mail/Provider)</p>
+</section>
+<section id="providing-a-mail-service">
+<span id="mail-provider-provide"></span><h2>Providing a Mail Service<a class="headerlink" href="#providing-a-mail-service" title="Link to this heading"></a></h2>
+<p>For your app to provide mail service to other apps, your app needs to implement two main interfaces plus interfaces for the supported functionality.</p>
+<section id="step-1-create-a-mail-provider-class">
+<h3>Step 1: Create a Mail Provider Class<a class="headerlink" href="#step-1-create-a-mail-provider-class" title="Link to this heading"></a></h3>
+<p>The mail provider class is the main class that the mail manager uses to retrieve available services from your app. Each mail provider can have multiple mail services configured for a user.</p>
+<p>This class needs to implement the <cite>IProvider</cite> interface and have all the required methods defined.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nx">OCA\BigHostingApp\Provider</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\Mail\Provider\IProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Mail\Provider\IService</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MailProvider</span> <span class="k">implements</span> <span class="nx">IProvider</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">id</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;big-hosting-app&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">label</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;Big Hosting App&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">hasServices</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$userId</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span> <span class="p">{</span>
+        <span class="c1">// app specific code to check for available services</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">listServices</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$userId</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="c1">// app specific code to list all available services</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">findServiceById</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$userId</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$serviceId</span><span class="p">)</span><span class="o">:</span> <span class="nx">IService</span> <span class="o">|</span> <span class="k">null</span> <span class="p">{</span>
+        <span class="c1">// app specific code to find a specific services</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">findServiceByAddress</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$userId</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$address</span><span class="p">)</span><span class="o">:</span> <span class="nx">IService</span> <span class="o">|</span> <span class="k">null</span> <span class="p">{</span>
+        <span class="c1">// app specific code to find a service with a specific email address</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="step-2-create-a-mail-service-class">
+<h3>Step 2: Create a Mail Service Class<a class="headerlink" href="#step-2-create-a-mail-service-class" title="Link to this heading"></a></h3>
+<p>The mail service class is the main class that other apps use to access mail functionality in your app. This class is also returned by the mail provider class.</p>
+<p>This class needs to implement the <cite>IService</cite> interface and have all the required methods defined. Because functionality varies between protocols this class also needs to be extended with the appropriate supported function interfaces like ‘IMessageSend’ which provides mail sending capabilities.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nx">OCA\BigHostingApp\Provider</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\Mail\Provider\Address</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Mail\Provider\IAddress</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Mail\Provider\IMessage</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Mail\Provider\IMessageSend</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Mail\Provider\IService</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Mail\Provider\Message</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MailService</span> <span class="k">implements</span> <span class="nx">IService</span><span class="p">,</span> <span class="nx">IMessageSend</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">id</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;1 or service1 or anything else&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">capable</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$value</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span> <span class="p">{</span>
+        <span class="c1">// app specific code to check if a service is capable of perform a specific function e.g. Sending a Message</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">capabilities</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="c1">// app specific code to retrieve a list of capabilities</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getLabel</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="c1">// app specific code to retrieve the label/description/name of the service</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getPrimaryAddress</span><span class="p">()</span><span class="o">:</span> <span class="nx">IAddress</span> <span class="p">{</span>
+        <span class="c1">// app specific code to retrieve the primary email address of the service</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getSecondaryAddresses</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="c1">// app specific code to retrieve the secondary email addresses (aliases) of the service</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initiateMessage</span><span class="p">()</span><span class="o">:</span> <span class="nx">IMessage</span> <span class="p">{</span>
+        <span class="c1">// app specific code to create a fresh message e.g message object to send a message or save a message in drafts</span>
+    <span class="p">}</span>
+
+    <span class="c1">// this function is the extended capabilities added to this class from IMessageSend</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">sendMessage</span><span class="p">(</span><span class="nx">IMessage</span> <span class="nv">$message</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$option</span> <span class="o">=</span> <span class="p">[])</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="c1">// app specific code to send a message</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-register-the-mail-provider">
+<h3>Step 3: Register the Mail Provider<a class="headerlink" href="#step-3-register-the-mail-provider" title="Link to this heading"></a></h3>
+<p>The registration is performed at the initial stages of your app being loaded by the Nextcloud system, inside the ‘AppInfo/Application.php’ file</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nx">OCA\BigHostingApp\AppInfo</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\BigHostingApp\Provider\MailProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\App</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IRegistrationContext</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">const</span> <span class="no">APP_ID</span> <span class="o">=</span> <span class="s1">&#39;BigHostingApp&#39;</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$urlParams</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+
+        <span class="c1">// Tip: If your app spans multiple version of Nextcloud, we recommend to make sure the method exists with &#39;method_exists()&#39;</span>
+        <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerMailProvider</span><span class="p">(</span><span class="nx">MailProvider</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="contacts_menu.html" class="btn btn-neutral float-left" title="Contacts Menu" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../http_client.html" class="btn btn-neutral float-right" title="HTTP Client" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/developer_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

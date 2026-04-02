@@ -1,0 +1,803 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deployment configurations &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+      <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+      <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Managing Deploy Daemons" href="ManagingDeployDaemons.html" />
+    <link rel="prev" title="AppAPI and External Apps" href="AppAPIAndExternalApps.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Critical changes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Files</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apps</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">ExApps management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="AppAPIAndExternalApps.html">AppAPI and External Apps</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Deployment configurations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#docker-deploy-daemon">Docker Deploy Daemon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docker-deploy-daemon-harp">Docker Deploy Daemon (HaRP)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-and-docker-on-the-same-host-with-nextcloud-bare-metal">Nextcloud and Docker on the same host - with Nextcloud bare metal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-and-docker-on-the-same-host-with-nextcloud-in-docker">Nextcloud and Docker on the same host - with Nextcloud in Docker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker-on-a-remote-host-with-harp-container-on-the-local-host">Docker on a remote host - with HaRP container on the local host</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#docker-deploy-daemon-docker-socket-proxy">Docker Deploy Daemon (Docker Socket Proxy)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nc-docker-on-the-same-host">NC &amp; Docker on the Same-Host</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker-on-a-remote-host">Docker on a remote host</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nc-exapps-in-the-same-docker">NC &amp; ExApps in the same Docker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-in-docker-aio-all-in-one">Nextcloud in Docker AIO (all-in-one)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#nc-to-exapp-communication">NC to ExApp Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ManagingDeployDaemons.html">Managing Deploy Daemons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TestDeploy.html">Test Deploy Daemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ManagingExApps.html">Managing ExApps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AdvancedDeployOptions.html">Advanced Deploy Options</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Groupware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Office</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/">Community Help Forum</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">User Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">Developer Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/install/">Download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://apps.nextcloud.com">App Store</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/t/translation-knowledge-valid-for-the-entire-nextcloud-project-wiki/51550">Translations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Supported versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud Enterprise</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/blob/master/COPYING-README">License</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/">Nextcloud GmbH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">ExApps management</a></li>
+      <li class="breadcrumb-item active">Deployment configurations</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/exapps_management/DeployConfigurations.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="deployment-configurations">
+<span id="deploy-configs"></span><h1>Deployment configurations<a class="headerlink" href="#deployment-configurations" title="Link to this heading"></a></h1>
+<dl class="simple">
+<dt>Currently, two kinds of application deployments are supported:</dt><dd><ul class="simple">
+<li><p><a class="reference internal" href="#ai-app-api-ddd-dsp"><span class="std std-ref">Docker Deploy Daemon (Docker Socket Proxy)</span></a></p></li>
+<li><p><a class="reference internal" href="#ai-app-api-ddd-harp"><span class="std std-ref">Docker Deploy Daemon (HaRP)</span></a></p></li>
+</ul>
+</dd>
+</dl>
+<section id="docker-deploy-daemon">
+<h2>Docker Deploy Daemon<a class="headerlink" href="#docker-deploy-daemon" title="Link to this heading"></a></h2>
+<p>Orchestrates the deployment of applications as Docker containers.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<div class="line-block">
+<div class="line">The administrator is responsible for the security actions taken to configure the Docker daemon connected to the Nextcloud instance.</div>
+<div class="line">These schemes are only examples of possible configurations.</div>
+</div>
+<div class="line-block">
+<div class="line">For Docker Deploy Daemon (HaRP), <a class="reference external" href="https://github.com/nextcloud/harp">AppAPI HaRP</a> is required.</div>
+<div class="line">For Docker Deploy Daemon (Docker Socket Proxy), we recommend that you use the <a class="reference external" href="https://github.com/nextcloud/docker-socket-proxy">AppAPI Docker Socket Proxy</a> or <a class="reference external" href="#nextcloud-in-docker-aio-all-in-one">AIO Docker Socket Proxy</a> container for Nextcloud AIO.</div>
+</div>
+</div>
+<p>There are several Docker Daemon Deploy configurations (example schemes):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Nextcloud and Docker on the <strong>same host</strong> (via socket, DockerSocketProxy, or HaRP)</p></li>
+<li><p>Nextcloud on the host and Docker on a <strong>remote</strong> host (via DockerSocketProxy with HTTPS, or HaRP)</p></li>
+<li><p>Nextcloud and <strong>ExApps</strong> in the <strong>same Docker network</strong> (via DockerSocketProxy, or HaRP)</p></li>
+<li><p>Nextcloud in AIO Docker and <strong>ExApps</strong> in the <strong>same Docker network</strong> (via AIO DockerSocketProxy)</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="docker-deploy-daemon-harp">
+<span id="ai-app-api-ddd-harp"></span><h2>Docker Deploy Daemon (HaRP)<a class="headerlink" href="#docker-deploy-daemon-harp" title="Link to this heading"></a></h2>
+<div class="line-block">
+<div class="line">With HaRP, the ExApps initiate the connection for tunneling to the Nextcloud instance and the HaRP container so there is no need to expose any ports or open any firewall rules.</div>
+<div class="line">See the diagrams of the respective configurations in the <a class="reference internal" href="#ai-app-api-ddd-dsp"><span class="std std-ref">Docker Deploy Daemon (Docker Socket Proxy)</span></a> section below.</div>
+</div>
+<p>A little introduction to the default ports of the HaRP container is given below. More about it can be found in the <a class="reference external" href="https://github.com/nextcloud/harp?tab=readme-ov-file#environment-variables">HaRP’s readme</a>.</p>
+<ul class="simple">
+<li><p>Port <code class="docutils literal notranslate"><span class="pre">8780</span></code> is the HTTP communication port used where Nextcloud connects to the HaRP container.</p></li>
+<li><p>Port <code class="docutils literal notranslate"><span class="pre">8781</span></code> is the HTTPS communication port when setup.</p></li>
+<li><p>Port <code class="docutils literal notranslate"><span class="pre">8782</span></code> is the FRP tunnel port used by ExApps to connect to the HaRP container.</p></li>
+</ul>
+<p>In any of the cases, the following connections should succeed:</p>
+<ul class="simple">
+<li><p>Nextcloud -&gt; HaRP container (on port 8780/8781)</p></li>
+<li><p>HaRP container -&gt; Nextcloud (through proxy or directly as the NC_INSTANCE_URL env var dictates)</p></li>
+<li><p>ExApp -&gt; HaRP container (on port 8782)</p></li>
+<li><p>ExApp -&gt; Nextcloud (through proxy or directly as the <code class="docutils literal notranslate"><span class="pre">Nextcloud</span> <span class="pre">URL</span></code> in the daemon config dictates)</p></li>
+</ul>
+<section id="nextcloud-and-docker-on-the-same-host-with-nextcloud-bare-metal">
+<span id="ai-app-api-nc-harp-baremetal"></span><h3>Nextcloud and Docker on the same host - with Nextcloud bare metal<a class="headerlink" href="#nextcloud-and-docker-on-the-same-host-with-nextcloud-bare-metal" title="Link to this heading"></a></h3>
+<p>The simplest configuration is when Nextcloud is installed on the host and docker is on the same host and applications are deployed to it.</p>
+<p>Create a HaRP container with either <code class="docutils literal notranslate"><span class="pre">--network</span> <span class="pre">host</span></code> option or expose the ports <code class="docutils literal notranslate"><span class="pre">8780</span></code> and <code class="docutils literal notranslate"><span class="pre">8782</span></code> to the host.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">HP_SHARED_KEY</span><span class="o">=</span><span class="s2">&quot;some_very_secure_password&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">NC_INSTANCE_URL</span><span class="o">=</span><span class="s2">&quot;https://127.0.0.1:8080&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/certs:/certs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--name<span class="w"> </span>appapi-harp<span class="w"> </span>-h<span class="w"> </span>appapi-harp<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--restart<span class="w"> </span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-p<span class="w"> </span><span class="m">8780</span>:8780<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-p<span class="w"> </span><span class="m">8782</span>:8782<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span>ghcr.io/nextcloud/nextcloud-appapi-harp:release
+</pre></div>
+</div>
+<p>Go to AppAPI admin settings and register a <code class="docutils literal notranslate"><span class="pre">HaRP</span> <span class="pre">Proxy</span> <span class="pre">(Host)</span></code> daemon.</p>
+<img alt="../_images/harp_host.png" src="../_images/harp_host.png" />
+<p>Finally, test the whole setup with “Test deploy” in the 3-dots menu of the deploy daemon.</p>
+</section>
+<section id="nextcloud-and-docker-on-the-same-host-with-nextcloud-in-docker">
+<h3>Nextcloud and Docker on the same host - with Nextcloud in Docker<a class="headerlink" href="#nextcloud-and-docker-on-the-same-host-with-nextcloud-in-docker" title="Link to this heading"></a></h3>
+<p>When Nextcloud is installed in Docker, the HaRP container can be created in the same docker network as the Nextcloud instance.</p>
+<p>Create a HaRP container with <code class="docutils literal notranslate"><span class="pre">--network</span> <span class="pre">&lt;nextcloud_docker_network_name&gt;</span></code> option, where <code class="docutils literal notranslate"><span class="pre">&lt;nextcloud_docker_network_name&gt;</span></code> is the name of the Docker network in which Nextcloud is accessible.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">HP_SHARED_KEY</span><span class="o">=</span><span class="s2">&quot;some_very_secure_password&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">NC_INSTANCE_URL</span><span class="o">=</span><span class="s2">&quot;https://nextcloud.tld&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/certs:/certs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--name<span class="w"> </span>appapi-harp<span class="w"> </span>-h<span class="w"> </span>appapi-harp<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--restart<span class="w"> </span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--net<span class="w"> </span>&lt;nextcloud_docker_network_name&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span>ghcr.io/nextcloud/nextcloud-appapi-harp:release
+</pre></div>
+</div>
+<p>Go to AppAPI admin settings and register a <code class="docutils literal notranslate"><span class="pre">HaRP</span> <span class="pre">Proxy</span> <span class="pre">(Docker)</span></code> daemon. Take note of the <code class="docutils literal notranslate"><span class="pre">&lt;nextcloud_docker_network_name&gt;</span></code> value in the <code class="docutils literal notranslate"><span class="pre">Docker</span> <span class="pre">network</span></code> field.</p>
+<img alt="../_images/harp_docker.png" src="../_images/harp_docker.png" />
+<p>Finally, test the whole setup with “Test deploy” in the 3-dots menu of the deploy daemon.</p>
+</section>
+<section id="docker-on-a-remote-host-with-harp-container-on-the-local-host">
+<h3>Docker on a remote host - with HaRP container on the local host<a class="headerlink" href="#docker-on-a-remote-host-with-harp-container-on-the-local-host" title="Link to this heading"></a></h3>
+<p>This configuration is suited for deployments that want to offload the heavy lifting of the ExApps to a remote host, especially when using GPUs as compute devices. There can be multiple deploy daemons that can be used to deploy ExApps on different remote hosts for different compute capabilities.
+Here the HaRP container is deployed on the local host and the remote host tunnels the remote host’s docker socket to the local host over the <a class="reference external" href="https://github.com/fatedier/frp">FRP</a> secure tunnel. The ExApps are deployed on the remote host.
+A setup with the HaRP container itself on the remote is not supported.</p>
+<ol class="arabic simple">
+<li><p>Create a HaRP container in the local host following <a class="reference internal" href="#ai-app-api-nc-harp-baremetal"><span class="std std-ref">the above examples</span></a> but without the docker socket mount.</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">HP_SHARED_KEY</span><span class="o">=</span><span class="s2">&quot;some_very_secure_password&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">NC_INSTANCE_URL</span><span class="o">=</span><span class="s2">&quot;https://127.0.0.1:8080&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/certs:/certs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--name<span class="w"> </span>appapi-harp<span class="w"> </span>-h<span class="w"> </span>appapi-harp<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--restart<span class="w"> </span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-p<span class="w"> </span><span class="m">8780</span>:8780<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-p<span class="w"> </span><span class="m">8782</span>:8782<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span>ghcr.io/nextcloud/nextcloud-appapi-harp:release
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Create a matching deploy daemon with <code class="docutils literal notranslate"><span class="pre">Docker</span> <span class="pre">socket</span> <span class="pre">proxy</span> <span class="pre">port</span></code> set to <code class="docutils literal notranslate"><span class="pre">24001</span></code>.</p></li>
+</ol>
+<blockquote>
+<div><img alt="../_images/harp_remote_24001.png" src="../_images/harp_remote_24001.png" />
+</div></blockquote>
+<ol class="arabic" start="3">
+<li><p>The FRP generated client certificates should be present in the <code class="docutils literal notranslate"><span class="pre">certs</span></code> folder locally. Copy the files <code class="docutils literal notranslate"><span class="pre">client.crt</span></code>, <code class="docutils literal notranslate"><span class="pre">client.key</span></code> and <code class="docutils literal notranslate"><span class="pre">ca.crt</span></code> inside the <code class="docutils literal notranslate"><span class="pre">certs</span></code> folder to the remote host.</p></li>
+<li><p>Create a folder structure on the remote host: <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">certs/frp</span></code> and copy the files <code class="docutils literal notranslate"><span class="pre">client.crt</span></code>, <code class="docutils literal notranslate"><span class="pre">client.key</span></code> and <code class="docutils literal notranslate"><span class="pre">ca.crt</span></code> to the <code class="docutils literal notranslate"><span class="pre">certs/frp</span></code> folder.</p></li>
+<li><p>Create a new file <code class="docutils literal notranslate"><span class="pre">frpc.toml</span></code> with the following contents.</p>
+<blockquote>
+<div><div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="c1"># frpc.toml</span>
+<span class="n">serverAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;your.harp.server.address&quot;</span><span class="w">          </span><span class="c1"># Replace with your HP_FRP_ADDRESS host</span>
+<span class="n">serverPort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8782</span><span class="w">                                </span><span class="c1"># Default port for FRP or the port your reverse proxy listens on</span>
+<span class="n">loginFailExit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">                            </span><span class="c1"># If the FRP (HaRP) server is unavailable, continue trying to log in.</span>
+
+<span class="n">transport</span><span class="p">.</span><span class="n">tls</span><span class="p">.</span><span class="n">certFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;certs/frp/client.crt&quot;</span>
+<span class="n">transport</span><span class="p">.</span><span class="n">tls</span><span class="p">.</span><span class="n">keyFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;certs/frp/client.key&quot;</span>
+<span class="n">transport</span><span class="p">.</span><span class="n">tls</span><span class="p">.</span><span class="n">trustedCaFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;certs/frp/ca.crt&quot;</span>
+<span class="n">transport</span><span class="p">.</span><span class="n">tls</span><span class="p">.</span><span class="n">serverName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;harp.nc&quot;</span><span class="w">             </span><span class="c1"># DO NOT CHANGE THIS VALUE</span>
+
+<span class="n">metadatas</span><span class="p">.</span><span class="n">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;some_very_secure_password&quot;</span><span class="w">    </span><span class="c1"># HP_SHARED_KEY in quotes</span>
+
+<span class="k">[[proxies]]</span>
+<span class="n">remotePort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">24001</span><span class="w">                               </span><span class="c1"># Unique remotePort for each Docker Engine (range: 24001-24099)</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;deploy-daemon-1&quot;</span><span class="w">                         </span><span class="c1"># Unique name for each Docker Engine</span>
+<span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;tcp&quot;</span>
+<span class="k">[proxies.plugin]</span>
+<span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unix_domain_socket&quot;</span>
+<span class="n">unixPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/var/run/docker.sock&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Make sure to replace the <code class="docutils literal notranslate"><span class="pre">your.harp.server.address</span></code> with the actual address of the local host where the HaRP container is running.</div>
+<div class="line">You might want to open the port <code class="docutils literal notranslate"><span class="pre">8782</span></code> on the local host firewall to allow the remote host to connect to it,</div>
+<div class="line">or use a reverse proxy to forward the requests to the HaRP container. An example with nginx is given below. Feel free to adjust the port you want to listen on. The FRP client will connect to this port exposed port.</div>
+<div class="line">With the reverse proxy config below, the whole setup would only need the main Nextcloud proxy to be exposed and reachable from the outside world, simplifying the network setup.</div>
+</div>
+<blockquote>
+<div><div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="k">stream</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="mi">8782</span><span class="p">;</span><span class="w">  </span><span class="c1"># Replace with the port you want to listen on</span>
+<span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">8782</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_protocol</span><span class="w"> </span><span class="no">off</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_connect_timeout</span><span class="w"> </span><span class="s">10s</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_timeout</span><span class="w"> </span><span class="s">300s</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Download a release of the FRP client from <a class="reference external" href="https://github.com/fatedier/frp/releases/latest">the official releases</a> or <a class="reference external" href="https://github.com/nextcloud/HaRP/tree/main/exapps_dev">our snapshot from here</a>.</p></li>
+<li><p>Extract and copy the <code class="docutils literal notranslate"><span class="pre">frpc</span></code> binary to an appropriate location on the remote host, e.g. <code class="docutils literal notranslate"><span class="pre">/usr/local/bin</span></code>.</p></li>
+<li><p>Make it executable: <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">/usr/local/bin/frpc</span></code>.</p></li>
+<li><p>Start the FRP client with the command: <code class="docutils literal notranslate"><span class="pre">frpc</span> <span class="pre">-c</span> <span class="pre">/path/to/frpc.toml</span></code>.</p></li>
+<li><p>Finally, test the whole setup with “Test deploy” in the 3-dots menu of the deploy daemon.</p></li>
+</ol>
+</section>
+</section>
+<section id="docker-deploy-daemon-docker-socket-proxy">
+<span id="ai-app-api-ddd-dsp"></span><h2>Docker Deploy Daemon (Docker Socket Proxy)<a class="headerlink" href="#docker-deploy-daemon-docker-socket-proxy" title="Link to this heading"></a></h2>
+<section id="nc-docker-on-the-same-host">
+<h3>NC &amp; Docker on the Same-Host<a class="headerlink" href="#nc-docker-on-the-same-host" title="Link to this heading"></a></h3>
+<p>The simplest configuration is when Nextcloud is installed on the host and Docker is on the same host and applications are deployed to it.</p>
+<pre  class="mermaid">
+        stateDiagram-v2
+        classDef docker fill: #1f97ee, color: white, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
+        classDef nextcloud fill: #006aa3, color: white, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/nextcloud.svg) no-repeat center center / contain
+        classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
+
+        Host
+
+        state Host {
+                Nextcloud --&gt; Daemon : /var/run/docker.sock
+                Daemon --&gt; Containers
+
+                state Containers {
+                        ExApp1
+                        --
+                        ExApp2
+                        --
+                        ExApp3
+                }
+        }
+
+        class Nextcloud nextcloud
+        class Daemon docker
+        class ExApp1 python
+        class ExApp2 python
+        class ExApp3 python
+    </pre><dl class="simple">
+<dt>Suggested config values(template <em>Custom default</em>):</dt><dd><ol class="arabic simple">
+<li><p>Daemon host: <code class="docutils literal notranslate"><span class="pre">/var/run/docker.sock</span></code></p></li>
+<li><p>HTTPS checkbox: <em>not supported using docker socket</em></p></li>
+<li><p>Network: <code class="docutils literal notranslate"><span class="pre">host</span></code></p></li>
+<li><p>HaProxy password: <strong>not supported using raw docker socket, should be empty</strong></p></li>
+</ol>
+</dd>
+</dl>
+<p>—</p>
+<p>Suggested way to communicate with Docker via <a class="reference external" href="https://github.com/nextcloud/docker-socket-proxy">Docker Socket Proxy container</a>.</p>
+<pre  class="mermaid">
+        stateDiagram-v2
+        classDef docker fill: #1f97ee, color: white, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
+        classDef nextcloud fill: #006aa3, color: white, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/nextcloud.svg) no-repeat center center / contain
+        classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
+
+        Host
+
+        state Host {
+                Nextcloud --&gt; DockerSocketProxy: by port
+                Docker --&gt; Containers
+                Docker --&gt; DockerSocketProxy : /var/run/docker.sock
+
+                state Containers {
+                        DockerSocketProxy --&gt; ExApp1
+                        DockerSocketProxy --&gt; ExApp2
+                        DockerSocketProxy --&gt; ExApp3
+                }
+        }
+
+        class Nextcloud nextcloud
+        class Docker docker
+        class ExApp1 python
+        class ExApp2 python
+        class ExApp3 python
+    </pre><dl class="simple">
+<dt>Suggested config values(template <em>Docker Socket Proxy</em>):</dt><dd><ol class="arabic simple">
+<li><dl class="simple">
+<dt>Daemon host: <code class="docutils literal notranslate"><span class="pre">localhost:2375</span></code></dt><dd><dl class="simple">
+<dt>Choose <strong>A</strong> or <strong>B</strong> option:</dt><dd><ol class="upperalpha simple">
+<li><p>Docker Socket Proxy should be deployed with <code class="docutils literal notranslate"><span class="pre">network=host</span></code> and <code class="docutils literal notranslate"><span class="pre">BIND_ADDRESS=127.0.0.1</span></code></p></li>
+<li><p>Docker Socket Proxy should be deployed with <code class="docutils literal notranslate"><span class="pre">network=bridge</span></code> and it’s port should be published to host’s 127.0.0.1(e.g. <strong>-p 127.0.0.1:2375:2375</strong>)</p></li>
+</ol>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><p>HTTPS checkbox: <strong>disabled</strong></p></li>
+<li><p>Network: <code class="docutils literal notranslate"><span class="pre">host</span></code></p></li>
+<li><p>HaProxy password: <strong>should not be empty</strong></p></li>
+</ol>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Be careful with option <code class="docutils literal notranslate"><span class="pre">A</span></code>, by default <strong>Docker Socket Proxy</strong> binds to <code class="docutils literal notranslate"><span class="pre">*</span></code> if <code class="docutils literal notranslate"><span class="pre">BIND_ADDRESS</span></code> is not specified during container creation.
+Check opened ports after finishing configuration.</p>
+</div>
+</section>
+<section id="docker-on-a-remote-host">
+<h3>Docker on a remote host<a class="headerlink" href="#docker-on-a-remote-host" title="Link to this heading"></a></h3>
+<p>Distributed configuration occurs when Nextcloud is installed on one host and Docker is located on a remote host, resulting in the deployment of applications on the remote host.</p>
+<p>Benefit: no performance impact on Nextcloud host.</p>
+<p>In this case, the AppAPI uses a Docker Socket Proxy deployed on remote host to access docker socket and ExApps.</p>
+<pre  class="mermaid">
+        stateDiagram-v2
+        classDef docker fill: #1f97ee, color: white, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
+        classDef nextcloud fill: #006aa3, color: white, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/nextcloud.svg) no-repeat center center / contain
+        classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
+
+        Direction LR
+
+                Host1 --&gt; Host2 : by port
+
+        state Host1 {
+                Nextcloud
+        }
+
+        state Host2 {
+                [*] --&gt; DockerSocketProxy : by port
+                Daemon --&gt; Containers
+
+                state Containers {
+                        [*] --&gt; DockerSocketProxy : /var/run/docker.sock
+                        DockerSocketProxy --&gt; ExApp1
+                        DockerSocketProxy --&gt; ExApp2
+                        DockerSocketProxy --&gt; ExApp3
+                }
+        }
+
+        class Nextcloud nextcloud
+        class Daemon docker
+        class ExApp1 python
+        class ExApp2 python
+        class ExApp3 python
+    </pre><dl class="simple">
+<dt>Suggested config values(template <em>Docker Socket Proxy</em>):</dt><dd><ol class="arabic simple">
+<li><p>Daemon host: ADDRESS_OF_REMOTE_MACHINE (e.g. <strong>server_name.com:2375</strong>)</p></li>
+<li><p>HTTPS checkbox: <code class="docutils literal notranslate"><span class="pre">enabled</span></code></p></li>
+<li><p>Network: <code class="docutils literal notranslate"><span class="pre">host</span></code></p></li>
+<li><p>HaProxy password: <strong>should not be empty</strong></p></li>
+</ol>
+</dd>
+</dl>
+</section>
+<section id="nc-exapps-in-the-same-docker">
+<h3>NC &amp; ExApps in the same Docker<a class="headerlink" href="#nc-exapps-in-the-same-docker" title="Link to this heading"></a></h3>
+<p>Applications are deployed in the same Docker where Nextcloud resides.</p>
+<p>Suggested way to communicate with Docker: via <code class="docutils literal notranslate"><span class="pre">docker-socket-proxy</span></code>.</p>
+<pre  class="mermaid">
+        stateDiagram-v2
+        classDef docker fill: #1f97ee, color: white, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
+        classDef nextcloud fill: #006aa3, color: white, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/nextcloud.svg) no-repeat center center / contain
+        classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
+
+        Host
+
+        state Host {
+                Daemon --&gt; Containers
+
+                state Containers {
+                        [*] --&gt; DockerSocketProxy : /var/run/docker.sock
+                        Nextcloud --&gt; DockerSocketProxy: by port
+                        --
+                        DockerSocketProxy --&gt; ExApp1
+                        DockerSocketProxy --&gt; ExApp2
+                }
+        }
+
+        class Nextcloud nextcloud
+        class Daemon docker
+        class ExApp1 python
+        class ExApp2 python
+        class ExApp3 python
+    </pre><dl class="simple">
+<dt>Suggested config values(template <em>Docker Socket Proxy</em>):</dt><dd><ol class="arabic simple">
+<li><p>Daemon host: nextcloud-appapi-dsp:2375</p></li>
+<li><p>HTTPS checkbox: <code class="docutils literal notranslate"><span class="pre">disabled</span></code></p></li>
+<li><p>Network: <a class="reference external" href="https://docs.docker.com/network/#user-defined-networks">user defined network</a></p></li>
+<li><p>HaProxy password: <strong>should not be empty</strong></p></li>
+</ol>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Network <strong>should not be the default docker’s bridge</strong> as it does not support DNS resolving by container names.</p>
+<p>This means that <strong>Docker Socket Proxy</strong>, <strong>Nextcloud</strong> and <strong>ExApps</strong> containers should all be in the same docker network, different from the default <strong>bridge</strong>.</p>
+</div>
+</section>
+<section id="nextcloud-in-docker-aio-all-in-one">
+<span id="id1"></span><h3>Nextcloud in Docker AIO (all-in-one)<a class="headerlink" href="#nextcloud-in-docker-aio-all-in-one" title="Link to this heading"></a></h3>
+<p>In the case of AppAPI in Docker AIO setup (installed in Nextcloud container).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>AIO Docker Socket Proxy container must be enabled.</p>
+</div>
+<pre  class="mermaid">
+        stateDiagram-v2
+        classDef docker fill: #1f97ee, color: white, font-size: 34px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
+        classDef docker2 fill: #1f97ee, color: white, font-size: 20px, stroke: #364c53, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/docker.png) no-repeat center center / contain
+        classDef nextcloud fill: #006aa3, color: white, font-size: 34px, stroke: #045987, stroke-width: 1px, background: url(https://raw.githubusercontent.com/nextcloud/documentation/master/admin_manual/exapps_management/img/nextcloud.svg) no-repeat center center / contain
+        classDef python fill: #1e415f, color: white, stroke: #364c53, stroke-width: 1px
+
+        Host
+
+        state Host {
+                Daemon --&gt; Containers
+
+                state Containers {
+                        [*] --&gt; NextcloudAIOMasterContainer : /var/run/docker.sock
+                        [*] --&gt; DockerSocketProxy : /var/run/docker.sock
+                        NextcloudAIOMasterContainer --&gt; Nextcloud
+                        AppAPI --&gt; Nextcloud : installed in
+                        Nextcloud --&gt; DockerSocketProxy
+                        DockerSocketProxy --&gt; ExApp1
+                        DockerSocketProxy --&gt; ExApp2
+                        DockerSocketProxy --&gt; ExApp3
+                }
+        }
+
+        class Nextcloud nextcloud
+        class Daemon docker
+        class Daemon2 docker2
+        class ExApp1 python
+        class ExApp2 python
+        class ExApp3 python
+    </pre><p>AppAPI will automatically create the default DaemonConfig for AIO Docker Socket Proxy in order to use it as an orchestrator to create ExApp containers.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Default DaemonConfig will be created only if the default DaemonConfig is not already registered.</p>
+</div>
+<section id="default-aio-deploy-daemon-docker-socket-proxy">
+<h4>Default AIO Deploy Daemon (Docker Socket Proxy)<a class="headerlink" href="#default-aio-deploy-daemon-docker-socket-proxy" title="Link to this heading"></a></h4>
+<p>Nextcloud AIO has a specifically created Docker Socket Proxy container to be used as the Deploy Daemon in AppAPI.
+It has <a class="reference external" href="https://github.com/nextcloud/app_api/blob/main/lib/DeployActions/AIODockerActions.php#L52-L74)">fixed parameters</a>:</p>
+<ul class="simple">
+<li><p>Name: <code class="docutils literal notranslate"><span class="pre">docker_aio</span></code></p></li>
+<li><p>Display name: <code class="docutils literal notranslate"><span class="pre">AIO</span> <span class="pre">Docker</span> <span class="pre">Socket</span> <span class="pre">Proxy</span></code></p></li>
+<li><p>Accepts Deploy ID: <code class="docutils literal notranslate"><span class="pre">docker-install</span></code></p></li>
+<li><p>Protocol: <code class="docutils literal notranslate"><span class="pre">http</span></code></p></li>
+<li><p>Host: <code class="docutils literal notranslate"><span class="pre">nextcloud-aio-docker-socket-proxy:2375</span></code></p></li>
+<li><p>Compute device: <code class="docutils literal notranslate"><span class="pre">CPU</span></code></p></li>
+<li><p>Network: <code class="docutils literal notranslate"><span class="pre">nextcloud-aio</span></code></p></li>
+<li><p>Nextcloud URL (passed to ExApps): <code class="docutils literal notranslate"><span class="pre">https://$NC_DOMAIN</span></code></p></li>
+</ul>
+</section>
+<section id="docker-socket-proxy-security">
+<h4>Docker Socket Proxy security<a class="headerlink" href="#docker-socket-proxy-security" title="Link to this heading"></a></h4>
+<p>AIO Docker Socket Proxy has strictly limited access to the Docker APIs described in <a class="reference external" href="https://github.com/nextcloud/all-in-one/blob/main/Containers/docker-socket-proxy/haproxy.cfg">HAProxy configuration</a>.</p>
+</section>
+</section>
+</section>
+<section id="nc-to-exapp-communication">
+<h2>NC to ExApp Communication<a class="headerlink" href="#nc-to-exapp-communication" title="Link to this heading"></a></h2>
+<p>Communications between Nextcloud and ExApps are done via the AppAPI.
+With Docker Socket Proxy, the requests are sent to the ExApp container directly.
+For HaRP, the communication goes through the main Nextcloud proxy and the HaRP container.</p>
+<p>Each type of DeployDaemon necessarily implements the <code class="docutils literal notranslate"><span class="pre">resolveExAppUrl</span></code> function.</p>
+<p>It has the prototype:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">public function resolveExAppUrl(</span>
+<span class="x">        string $appId, string $protocol, string $host, array $deployConfig, int $port, array &amp;$auth</span>
+<span class="x">) {}</span>
+</pre></div>
+</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><strong>protocol</strong> is daemon protocol value</p></li>
+<li><p><strong>host</strong> is daemon host value, <em>can be DNS:port or IP:PORT or even path to docker socket</em>.</p></li>
+<li><p><strong>port</strong> is an integer with ExApp port</p></li>
+<li><p><strong>deployConfig</strong> can be custom for each Daemon type</p></li>
+<li><p><strong>auth</strong> is an optional array, with <em>Basic Authentication</em> data if needed to access ExApp</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Applies only to Docker Socket Proxy.</p>
+<p>The optional additional parameter <em>OVERRIDE_APP_HOST</em> can be used to
+override the host that will be used for ExApp binding.</p>
+<p>It can be <code class="docutils literal notranslate"><span class="pre">0.0.0.0</span></code> in some specific configurations, when VPN is used
+or both Nextcloud instance and ExApps are one the same physical machine but different virtual environments.</p>
+<p>Also you can specify something like <code class="docutils literal notranslate"><span class="pre">10.10.2.5</span></code> and in this case <code class="docutils literal notranslate"><span class="pre">ExApp</span></code> will try to bind to that address and
+AppAPI will try to send request s directly to this address assuming that ExApp itself bound on it.</p>
+</div>
+<p>The simplest implementation is in the <strong>Manual-Install</strong> deploy type:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">public function resolveExAppUrl(</span>
+<span class="x">        string $appId, string $protocol, string $host, array $deployConfig, int $port, array &amp;$auth</span>
+<span class="x">): string {</span>
+<span class="x">        if (boolval($deployConfig[&#39;harp&#39;] ?? false)) {</span>
+<span class="x">                $url = rtrim($deployConfig[&#39;nextcloud_url&#39;], &#39;/&#39;);</span>
+<span class="x">                if (str_ends_with($url, &#39;/index.php&#39;)) {</span>
+<span class="x">                        $url = substr($url, 0, -10);</span>
+<span class="x">                }</span>
+<span class="x">                return sprintf(&#39;%s/exapps/%s&#39;, $url, $appId);</span>
+<span class="x">        }</span>
+
+<span class="x">        $auth = [];</span>
+<span class="x">        if (isset($deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;]) &amp;&amp;</span>
+<span class="x">                $deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;] !== &#39;&#39;</span>
+<span class="x">        ) {</span>
+<span class="x">                $wideNetworkAddresses = [&#39;0.0.0.0&#39;, &#39;127.0.0.1&#39;, &#39;::&#39;, &#39;::1&#39;];</span>
+<span class="x">                if (!in_array($deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;], $wideNetworkAddresses)) {</span>
+<span class="x">                        $host = $deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;];</span>
+<span class="x">                }</span>
+<span class="x">        }</span>
+<span class="x">        return sprintf(&#39;%s://%s:%s&#39;, $protocol, $host, $port);</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Here we see that AppAPI sends requests to the <strong>host</strong>:<strong>port</strong> specified during daemon creation for manual-install without HaRP.</div>
+<div class="line">But it exclusively uses the <code class="docutils literal notranslate"><span class="pre">http(s)://nextcloud.example.tld/exapps/</span></code> route for manual deployments using the HaRP proxy. <code class="docutils literal notranslate"><span class="pre">http(s)://nextcloud.example.tld</span></code> is the Nextcloud URL specified in the daemon config. Take care to configure the <code class="docutils literal notranslate"><span class="pre">/exapps/</span></code> route in your reverse proxy accordingly if your Nextcloud instance is on a subpath <code class="docutils literal notranslate"><span class="pre">https://nextcloud.example.tld/nextcloud</span></code>. See <a class="reference external" href="https://github.com/nextcloud/harp?tab=readme-ov-file#configuring-your-reverse-proxy">Configuring Your Reverse Proxy</a> in the HaRP readme for examples.</div>
+</div>
+<p>Now, let’s take a look at the Docker Daemon implementation of <code class="docutils literal notranslate"><span class="pre">resolveExAppUrl</span></code>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">public function resolveExAppUrl(</span>
+<span class="x">        string $appId, string $protocol, string $host, array $deployConfig, int $port, array &amp;$auth</span>
+<span class="x">): string {</span>
+<span class="x">        if (boolval($deployConfig[&#39;harp&#39;] ?? false)) {</span>
+<span class="x">                $url = rtrim($deployConfig[&#39;nextcloud_url&#39;], &#39;/&#39;);</span>
+<span class="x">                if (str_ends_with($url, &#39;/index.php&#39;)) {</span>
+<span class="x">                        $url = substr($url, 0, -10);</span>
+<span class="x">                }</span>
+<span class="x">                return sprintf(&#39;%s/exapps/%s&#39;, $url, $appId);</span>
+<span class="x">        }</span>
+
+<span class="x">        $auth = [];</span>
+<span class="x">        if (isset($deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;]) &amp;&amp;</span>
+<span class="x">                $deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;] !== &#39;&#39;</span>
+<span class="x">        ) {</span>
+<span class="x">                $wideNetworkAddresses = [&#39;0.0.0.0&#39;, &#39;127.0.0.1&#39;, &#39;::&#39;, &#39;::1&#39;];</span>
+<span class="x">                if (!in_array($deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;], $wideNetworkAddresses)) {</span>
+<span class="x">                        return sprintf(</span>
+<span class="x">                                &#39;%s://%s:%s&#39;, $protocol, $deployConfig[&#39;additional_options&#39;][&#39;OVERRIDE_APP_HOST&#39;], $port</span>
+<span class="x">                        );</span>
+<span class="x">                }</span>
+<span class="x">        }</span>
+<span class="x">        $host = explode(&#39;:&#39;, $host)[0];</span>
+<span class="x">        if ($protocol == &#39;https&#39;) {</span>
+<span class="x">                $exAppHost = $host;</span>
+<span class="x">        } elseif (isset($deployConfig[&#39;net&#39;]) &amp;&amp; $deployConfig[&#39;net&#39;] === &#39;host&#39;) {</span>
+<span class="x">                $exAppHost = &#39;localhost&#39;;</span>
+<span class="x">        } else {</span>
+<span class="x">                $exAppHost = $appId;</span>
+<span class="x">        }</span>
+<span class="x">        if ($protocol == &#39;https&#39; &amp;&amp; isset($deployConfig[&#39;haproxy_password&#39;]) &amp;&amp; $deployConfig[&#39;haproxy_password&#39;] !== &#39;&#39;) {</span>
+<span class="x">                // we only set haproxy auth for remote installations, when all requests come through HaProxy.</span>
+<span class="x">                $haproxyPass = $this-&gt;crypto-&gt;decrypt($deployConfig[&#39;haproxy_password&#39;]);</span>
+<span class="x">                $auth = [self::APP_API_HAPROXY_USER, $haproxyPass];</span>
+<span class="x">        }</span>
+<span class="x">        return sprintf(&#39;%s://%s:%s&#39;, $protocol, $exAppHost, $port);</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>The route for HaRP setups remain the same here as in the previous example. All the requests are sent to the Nextcloud URL with the <code class="docutils literal notranslate"><span class="pre">/exapps/</span></code> route.</p>
+<p>For Docker Socket Proxy, however, we have much more complex algorithm of detecting to where requests should be send.</p>
+<p>First of all, if the protocol is set to <code class="docutils literal notranslate"><span class="pre">https</span></code>, AppAPI always sends requests to the daemon host,
+and in this case, it is a HaProxy that will forward requests to ExApps that will be listening on <code class="docutils literal notranslate"><span class="pre">localhost</span></code>.</p>
+<p>Briefly, it will look like this (<em>haproxy_host==daemon host value</em>):</p>
+<p>NC –&gt; <em>https</em> –&gt; <code class="docutils literal notranslate"><span class="pre">haproxy_host:ex_app_port</span></code> –&gt; <em>http</em> –&gt; <code class="docutils literal notranslate"><span class="pre">localhost:ex_app_port</span></code></p>
+<p>When the protocol is not <code class="docutils literal notranslate"><span class="pre">https</span></code> but <code class="docutils literal notranslate"><span class="pre">http</span></code>, then what will be the endpoint where to send requests is determined by <code class="docutils literal notranslate"><span class="pre">$deployConfig['net']</span></code> value.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">net</span></code> is defined and equal to <code class="docutils literal notranslate"><span class="pre">host</span></code>, then AppAPI assumes that ExApp is installed somewhere in the current host network and will be available on <code class="docutils literal notranslate"><span class="pre">localhost</span></code> loop-back adapter.</p>
+<p>NC –&gt; <em>http</em> –&gt; <code class="docutils literal notranslate"><span class="pre">localhost:ex_app_port</span></code></p>
+<p>In all other cases, the ExApp should be available by it’s name: e.g. when using docker <strong>custom bridge</strong> network all containers available by DNS.</p>
+<p>NC –&gt; <em>http</em> –&gt; <code class="docutils literal notranslate"><span class="pre">app_container_name:ex_app_port</span></code></p>
+<p>These three different types of communication cover most popular configurations.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="AppAPIAndExternalApps.html" class="btn btn-neutral float-left" title="AppAPI and External Apps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ManagingDeployDaemons.html" class="btn btn-neutral float-right" title="Managing Deploy Daemons" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/admin_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/admin_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/admin_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

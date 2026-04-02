@@ -1,0 +1,1216 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="uk-UA" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Використання програми «Календар &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=e691f3da"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=0958edf7"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Індекс" href="../genindex.html" />
+    <link rel="search" title="Пошук" href="../search.html" />
+    <link rel="next" title="Використання програми «Пошта" href="mail.html" />
+    <link rel="prev" title="Використання програми «Контакти" href="contacts.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Вступ до посібника користувача Nextcloud (latest)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Інтерфейс веб-версії Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Файли та синхронізація</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Програмне забезпечення для групової роботи</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Використання програми «Контакти</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Використання програми «Календар</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#managing-your-calendars">Керування календарями</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-calendar">Створіть новий календар</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-a-calendar">Імпорт календаря</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-an-event-add-ics-event">Імпорт події/Додавання події .ics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-export-or-delete-a-calendar">Редагування, експорт або видалення календаря</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-transparency">Прозорість календаря</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing-calendars">Спільний доступ до календарів</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#publishing-a-calendar">Публікація календаря</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-widget">Віджет календаря</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subscribe-to-a-calendar">Підпишіться на календар</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subscribe-to-a-holiday-calendar">Підпишіться на святковий календар</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-events">Керування подіями</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-event">Створіть нову подію</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-talk-conversation">Додати розмову Розмова</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-duplicate-or-delete-an-event">Редагування, дублювання або видалення події</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#invite-attendees-to-an-event">Запросіть відвідувачів на подію</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checking-attendees-busy-times">Перевірка зайнятості відвідувачів</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#assign-rooms-and-resources-to-an-event">Призначайте приміщення та ресурси для події</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#room-availability">Наявність номерів</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-attachments-to-events">Додавання вкладень до подій</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-up-reminders">Налаштування нагадувань</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-recurring-options">Додайте повторювані опції</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trash-bin">Сміттєвий бак</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automated-user-status">Автоматизований статус користувача</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#responding-to-invitations">Відповідь на запрошення</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#availability-working-hours">Доступність (робочий час)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#birthday-calendar">Календар днів народження</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#appointments">Зустрічі</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-an-appointment-configuration">Створення конфігурації зустрічі</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#booking-an-appointment">Запис на прийом</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#working-with-the-booked-appointment">Робота з заброньованою зустріччю</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-talk-room-for-booked-appointments">Створіть розмовну кімнату для заброньованих зустрічей</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#proposals">Proposals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#managing-proposals">Managing proposals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-proposal">Creating a proposal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#editing-a-proposal">Editing a proposal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#viewing-a-proposal-progress">Viewing a proposal progress</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notifications-for-a-proposed-meeting">Notifications for a proposed meeting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#responding-to-a-proposed-meeting">Responding to a proposed meeting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mail.html">Використання програми «Пошта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">Налаштування повідомлень поза офісом</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Синхронізація з Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">Синхронізація з iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">Синхронізація з MacOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Синхронізація з Thunderbird</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Синхронізація з KDE Kontact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Синхронізація з робочим столом GNOME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Синхронізація з Windows 10</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Розмови</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Десктопні клієнти</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Налаштуйте ваші вподобання</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Універсальний доступ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Використання двофакторної аутентифікації</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Керуйте підключеними браузерами та пристроями</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Зовнішнє сховище</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Програмне забезпечення для групової роботи</a></li>
+      <li class="breadcrumb-item active">Використання програми «Календар</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/calendar.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-calendar-app">
+<span id="calendar-app"></span><h1>Використання програми «Календар<a class="headerlink" href="#using-the-calendar-app" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Додаток «Календар» за замовчуванням встановлюється з Nextcloud Hub, але його можна вимкнути. Будь ласка, запитайте про це у вашого адміністратора.</p>
+</div>
+<p>Додаток «Календар Nextcloud» працює так само, як і інші програми-календарі, з якими ви можете синхронізувати свої календарі та події у Nextcloud.</p>
+<p>Коли ви вперше заходите в додаток Календар, для вас буде створено перший календар за замовчуванням.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_application.png" src="../../_images/calendar_application.png" />
+</figure>
+<section id="managing-your-calendars">
+<h2>Керування календарями<a class="headerlink" href="#managing-your-calendars" title="Link to this heading"></a></h2>
+<section id="create-a-new-calendar">
+<h3>Створіть новий календар<a class="headerlink" href="#create-a-new-calendar" title="Link to this heading"></a></h3>
+<p>Якщо ви плануєте налаштувати новий календар без перенесення старих даних з попереднього календаря, створення нового календаря - це найкращий спосіб.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_create_1.png"><img alt="../../_images/calendar_create_1.png" src="../../_images/calendar_create_1.png" style="width: 604.0px; height: 480.8px;" />
+</a>
+</figure>
+<ol class="arabic simple">
+<li><p>Натисніть на «+ Новий календар» на лівій бічній панелі.</p></li>
+<li><p>Введіть назву нового календаря, наприклад, «Робота», «Дім» або «Маркетингове планування».</p></li>
+<li><p>Після натискання на галочку ваш новий календар буде створено, його можна буде синхронізувати на всіх ваших пристроях, наповнювати новими подіями та ділитися ним з друзями і колегами.</p></li>
+</ol>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_create_2.png"><img alt="../../_images/calendar_create_2.png" src="../../_images/calendar_create_2.png" style="width: 603.2px; height: 478.40000000000003px;" />
+</a>
+</figure>
+</section>
+<section id="import-a-calendar">
+<h3>Імпорт календаря<a class="headerlink" href="#import-a-calendar" title="Link to this heading"></a></h3>
+<p>Якщо ви хочете перенести свій календар і відповідні події до вашого екземпляра Nextcloud, імпорт - найкращий спосіб зробити це.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_settings_sidebar.png"><img alt="../../_images/calendar_settings_sidebar.png" src="../../_images/calendar_settings_sidebar.png" style="width: 604.0px; height: 446.40000000000003px;" />
+</a>
+</figure>
+<ol class="arabic simple">
+<li><p>Натисніть на іконку налаштувань з написом «Налаштування календаря» внизу ліворуч.</p></li>
+<li><p>Після натискання кнопки «Імпортувати календар» ви можете вибрати один або декілька файлів календаря з вашого локального пристрою для завантаження.</p></li>
+<li><p>Виберіть <code class="docutils literal notranslate"><span class="pre">Календар</span> <span class="pre">для</span> <span class="pre">імпорту</span></code>.</p></li>
+<li><p>Завантаження може зайняти деякий час і залежить від розміру календаря, який ви імпортуєте. Під «Налаштуваннями календаря» з’явиться синій індикатор виконання.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Додаток Nextcloud Calendar підтримує лише сумісні з iCalendar <code class="docutils literal notranslate"><span class="pre">.ics</span></code>-файли, визначені в RFC 5545.</p>
+</div>
+</section>
+<section id="import-an-event-add-ics-event">
+<h3>Імпорт події/Додавання події .ics<a class="headerlink" href="#import-an-event-add-ics-event" title="Link to this heading"></a></h3>
+<p>У багатьох місцях ви можете завантажити інформацію про подію у вигляді файлу .ics або за допомогою кнопки з написом «ical», «Apple Calendar» або «Outlook».</p>
+<ol class="arabic simple">
+<li><p>Натисніть на іконку налаштувань з написом «Налаштування календаря» внизу ліворуч.</p></li>
+<li><p>Після натискання кнопки «Імпортувати календар» ви можете вибрати один або декілька файлів календаря з вашого локального пристрою для завантаження.</p></li>
+<li><p>Виберіть <code class="docutils literal notranslate"><span class="pre">Календар</span> <span class="pre">для</span> <span class="pre">імпорту</span></code>.</p></li>
+<li><p>Завантаження може зайняти деякий час і залежить від розміру календаря/події, яку ви імпортуєте. Під «Налаштуваннями календаря» з’явиться синій індикатор виконання.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Додаток Nextcloud Calendar підтримує лише сумісні з iCalendar <code class="docutils literal notranslate"><span class="pre">.ics</span></code>-файли, визначені в RFC 5545.</p>
+</div>
+</section>
+<section id="edit-export-or-delete-a-calendar">
+<h3>Редагування, експорт або видалення календаря<a class="headerlink" href="#edit-export-or-delete-a-calendar" title="Link to this heading"></a></h3>
+<p>Іноді вам може знадобитися змінити колір або назву попередньо імпортованого або створеного календаря. Ви також можете експортувати його на локальний жорсткий диск або видалити назавжди.</p>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Будь ласка, майте на увазі, що видалення календаря є незворотною дією. Після видалення календар неможливо відновити, якщо тільки у вас немає локальної резервної копії.</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/calendar_dropdown.png" src="../../_images/calendar_dropdown.png" />
+</figure>
+<p>Натисніть на іконку «ручка» відповідного календаря. Ви побачите нове спливаюче вікно, яке дозволить вам змінити назву і колір календаря, а також кнопки для видалення або експорту календаря.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_settings.png" src="../../_images/calendar_settings.png" />
+</figure>
+</section>
+<section id="calendar-transparency">
+<h3>Прозорість календаря<a class="headerlink" href="#calendar-transparency" title="Link to this heading"></a></h3>
+<p>Ви можете встановити прапорець «Ніколи не показувати мене як зайнятого (зробити календар прозорим)», щоб вплинути на те, чи будуть враховуватися події цього календаря при підрахунку вільних/зайнятих. Якщо галочка встановлена, жодні події в цьому календарі не будуть враховані, ваш розклад завжди буде вільним, незалежно від налаштувань подій.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_transparency.png" src="../../_images/calendar_transparency.png" />
+</figure>
+</section>
+<section id="sharing-calendars">
+<h3>Спільний доступ до календарів<a class="headerlink" href="#sharing-calendars" title="Link to this heading"></a></h3>
+<p>You may share your calendar with local users, groups or read-only with remote users on federated
+servers.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_sharing_1.png" src="../../_images/calendar_sharing_1.png" />
+</figure>
+<p>До календарів можна надавати доступ на запис або тільки на читання. Якщо ви надаєте доступ до календаря з правом на запис, користувачі, яким надано доступ до календаря, зможуть створювати нові події в календарі, а також редагувати і видаляти вже існуючі.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_sharing_2.png" src="../../_images/calendar_sharing_2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Наразі неможливо прийняти або відхилити спільний доступ до календаря. Якщо ви хочете закрити доступ до календаря, яким хтось поділився з вами, ви можете натиснути на меню з трьома крапками поруч з календарем у списку календарів і вибрати пункт «Забрати доступ у мене». Щоб відновити спільний доступ, календар можна надати знову, або для всієї групи, скинувши всі відмови, або для одного користувача.</p>
+</div>
+</section>
+<section id="publishing-a-calendar">
+<h3>Публікація календаря<a class="headerlink" href="#publishing-a-calendar" title="Link to this heading"></a></h3>
+<p>Календарі можна публікувати за допомогою загальнодоступного посилання, щоб зробити їх доступними для перегляду (тільки для читання) зовнішнім користувачам. Ви можете створити публічне посилання, відкривши меню «Поділитися» для календаря і натиснувши «+» поруч з «Поділитися посиланням». Після створення ви можете скопіювати публічне посилання в буфер обміну або надіслати його електронною поштою.</p>
+<p>Існує також «код вбудовування», який надає HTML-іфрейм для вбудовування вашого календаря в загальнодоступні сторінки.</p>
+<p>Кількома календарями можна ділитися разом, додавши їхні унікальні токени в кінці посилання для вбудовування. Індивідуальні токени можна знайти в кінці публічного посилання кожного календаря. Повна адреса буде виглядати так: <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/index.php/apps/calendar/embed/&lt;token1&gt;-&lt;token2&gt;-&lt;token3&gt;</span></code>.</p>
+<p>Щоб змінити вигляд або дату вбудованого календаря за замовчуванням, потрібно вказати URL-адресу, яка має вигляд <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/index.php/apps/calendar/embed/&lt;token&gt;/&lt;view&gt;/&lt;date&gt;</span></code>. У цьому URL-адресі потрібно замінити наступні змінні:</p>
+<ul class="simple">
+<li><p>&lt;token&gt; з токеном календаря,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;view&gt;</span></code> з одним з <code class="docutils literal notranslate"><span class="pre">dayGridMonth</span></code>, <code class="docutils literal notranslate"><span class="pre">timeGridWeek</span></code>, <code class="docutils literal notranslate"><span class="pre">timeGridDay</span></code>, <code class="docutils literal notranslate"><span class="pre">listMonth</span></code>, <code class="docutils literal notranslate"><span class="pre">listWeek</span></code>, <code class="docutils literal notranslate"><span class="pre">listDay</span></code>. Типовим поданням за замовчуванням є <code class="docutils literal notranslate"><span class="pre">dayGridMonth</span></code>, а типовим списком є <code class="docutils literal notranslate"><span class="pre">listMonth</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;date&gt;</span></code> з <code class="docutils literal notranslate"><span class="pre">тепер</span></code> або будь-якою датою у форматі <code class="docutils literal notranslate"><span class="pre">&lt;year&gt;-&lt;month&gt;-&lt;day&gt;</span></code> (наприклад, <code class="docutils literal notranslate"><span class="pre">2019-12-28</span></code>).</p></li>
+</ul>
+<p>На публічній сторінці користувачі можуть отримати посилання на підписку на календар і безпосередньо експортувати весь календар.</p>
+</section>
+<section id="calendar-widget">
+<h3>Віджет календаря<a class="headerlink" href="#calendar-widget" title="Link to this heading"></a></h3>
+<p>Ви можете вбудовувати свої календарі в підтримувані програми, такі як <code class="docutils literal notranslate"><span class="pre">Talk</span></code>, <code class="docutils literal notranslate"><span class="pre">Notes</span></code> тощо… або публікуючи загальнодоступне посилання, щоб зробити вбудову доступною для перегляду (тільки для читання) для всіх користувачів, або використовуючи внутрішнє посилання, щоб зробити її приватною.</p>
+</section>
+<section id="subscribe-to-a-calendar">
+<h3>Підпишіться на календар<a class="headerlink" href="#subscribe-to-a-calendar" title="Link to this heading"></a></h3>
+<p>Ви можете підписатися на календарі iCal безпосередньо в Nextcloud. Завдяки підтримці цього стандарту сумісності (RFC 5545) ми зробили календар Nextcloud сумісним з Google Calendar, Apple iCloud та багатьма іншими календарними серверами, з якими ви можете обмінюватися календарями, включно з посиланнями на підписку з календарів, опублікованих на інших екземплярах Nextcloud, як описано вище.</p>
+<ol class="arabic simple">
+<li><p>Натисніть на <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Новий</span> <span class="pre">календар</span></code> на лівій бічній панелі</p></li>
+<li><p>Натисніть на <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Нова</span> <span class="pre">підписка</span> <span class="pre">за</span> <span class="pre">посиланням</span> <span class="pre">(тільки</span> <span class="pre">для</span> <span class="pre">читання)</span></code>.</p></li>
+<li><p>Введіть або вставте посилання на спільний календар, на який ви хочете підписатися.</p></li>
+</ol>
+<p>Готово. Ваші підписки на календар будуть регулярно оновлюватися.</p>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>За замовчуванням підписки оновлюються щотижня. Можливо, ваш адміністратор змінив це налаштування.</p>
+</div>
+</section>
+<section id="subscribe-to-a-holiday-calendar">
+<h3>Підпишіться на святковий календар<a class="headerlink" href="#subscribe-to-a-holiday-calendar" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.4.</span></p>
+</div>
+<p>Ви можете підписатися на календар свят лише для читання, що надається <a href="#id1"><span class="problematic" id="id2">`Thunderbird &amp;lt;https://www.thunderbird.net/calendar/holidays/&amp;gt;`_</span></a>.</p>
+<ol class="arabic simple">
+<li><p>Натисніть на <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Новий</span> <span class="pre">календар</span></code> на лівій бічній панелі</p></li>
+<li><p>Натисніть на <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Додати</span> <span class="pre">календар</span> <span class="pre">свят</span></code>.</p></li>
+<li><p>Знайдіть свою країну або регіон і натисніть «Підписатися</p></li>
+</ol>
+</section>
+</section>
+<section id="managing-events">
+<h2>Керування подіями<a class="headerlink" href="#managing-events" title="Link to this heading"></a></h2>
+<section id="create-a-new-event">
+<h3>Створіть нову подію<a class="headerlink" href="#create-a-new-event" title="Link to this heading"></a></h3>
+<p>Події можна створювати, натиснувши на область, де запланована подія. У режимі перегляду календаря на день або на тиждень просто натисніть, потягніть і відпустіть курсор над областю, де відбувається подія.</p>
+<p>Натиснувши на кнопку з глобусом, ви побачите перемикач часових поясів. Ви можете вибрати різні часові пояси для початку і закінчення вашого заходу. Це корисно під час подорожей.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_new-event_week.png" src="../../_images/calendar_new-event_week.png" />
+</figure>
+<p>Для перегляду за місяць потрібно лише один раз клацнути в області цільового дня.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_new-event_month.png" src="../../_images/calendar_new-event_month.png" />
+</figure>
+<p>Після цього ви можете ввести назву події (наприклад, <strong>Зустріч з Лайнусом</strong>), вибрати календар, в якому ви хочете зберегти подію (наприклад, <strong>Особисті</strong>, <strong>Події спільноти</strong>), перевірити і конкретизувати часовий проміжок або встановити подію як подію на цілий день. За бажанням ви можете вказати місце розташування та опис.</p>
+<p>If you want to edit advanced details such as the <strong>Attendees</strong> or <strong>Reminders</strong>, or if you
+want to set the event as a repeating event, click on the <code class="docutils literal notranslate"><span class="pre">More</span></code> button to open the advanced editor.</p>
+</section>
+<section id="add-talk-conversation">
+<h3>Додати розмову Розмова<a class="headerlink" href="#add-talk-conversation" title="Link to this heading"></a></h3>
+<p>Ви можете додати існуючу бесіду в чаті до події, натиснувши «Додати бесіду в чаті». Щоб переглянути список існуючих бесід, переконайтеся, що додаток Talk увімкнено. Якщо ви хочете створити нову бесіду, ви можете зробити це безпосередньо з того ж модального вікна.</p>
+<figure class="align-default">
+<img alt="../../_images/add-talk-room.png" src="../../_images/add-talk-room.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>If you always want to open the advanced editor instead of the
+simple event editor popup, you uncheck the option
+<code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">simplified</span> <span class="pre">editor</span></code> in the <code class="docutils literal notranslate"><span class="pre">Settings</span></code> section of the app.</p>
+</div>
+<p>Натискання синьої кнопки «Створити» остаточно створить подію.</p>
+</section>
+<section id="edit-duplicate-or-delete-an-event">
+<h3>Редагування, дублювання або видалення події<a class="headerlink" href="#edit-duplicate-or-delete-an-event" title="Link to this heading"></a></h3>
+<p>Якщо ви хочете відредагувати, продублювати або видалити певну подію, вам потрібно спочатку натиснути на неї.</p>
+<p>Після цього ви зможете переналаштувати всі деталі події та відкрити розширений редактор, натиснувши на <code class="docutils literal notranslate"><span class="pre">Більше</span></code>.</p>
+<p>Натиснувши кнопку <code class="docutils literal notranslate"><span class="pre">Оновити</span></code>, ви оновите подію. Щоб скасувати зміни, натисніть на значок закриття у верхньому правому куті спливаючого вікна або розширеного редактора.</p>
+<p>Якщо ви відкриєте розширений вигляд і натиснете на меню з трьома крапками поруч із назвою події, ви зможете експортувати подію як файл <code class="docutils literal notranslate"><span class="pre">.ics</span></code> або видалити її з календаря.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_event_menu.png" src="../../_images/calendar_event_menu.png" />
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Порада</p>
+<p>Якщо ви видалите події, вони потраплять до вашого <a class="reference internal" href="#calendar-trash-bin"><span class="std std-ref">смітника</span></a>. Ви можете відновити випадково видалені події звідти.</p>
+</div>
+<p>Ви також можете експортувати, дублювати або видаляти події з основного редактора.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_event_menu_modal.png" src="../../_images/calendar_event_menu_modal.png" />
+</figure>
+</section>
+<section id="invite-attendees-to-an-event">
+<span id="calendar-attendees"></span><h3>Запросіть відвідувачів на подію<a class="headerlink" href="#invite-attendees-to-an-event" title="Link to this heading"></a></h3>
+<p>Ви можете додати учасників до події, щоб повідомити їм, що вони запрошені. Вони отримають запрошення на електронну пошту і зможуть підтвердити або скасувати свою участь у заході. Відвідувачами можуть бути інші користувачі ваших екземплярів Nextcloud, контакти в адресних книгах і прямі адреси електронної пошти. Ви також можете змінити рівень участі для кожного учасника або вимкнути інформацію про електронну пошту для конкретного учасника.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_invitation_level.png"><img alt="../../_images/calendar_event_invitation_level.png" src="../../_images/calendar_event_invitation_level.png" style="width: 811.2px; height: 380.8px;" />
+</a>
+</figure>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Змінено в версії 25: </span>Посилання для відповіді на електронну пошту учасника більше не пропонують можливості додати коментар або запросити додаткових гостей на подію.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Порада</p>
+<p>Додаючи інших користувачів Nextcloud як відвідувачів до події, ви можете отримати доступ до інформації про їхню зайнятість, якщо вона доступна, що допоможе вам визначити найкращий часовий проміжок для вашої події. Встановіть свій <a class="reference internal" href="#calendar-working-hours"><span class="std std-ref">робочий час</span></a>, щоб інші знали, коли ви доступні. Інформація про вільні години доступна лише для інших користувачів того самого екземпляра Nextcloud.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Увага</p>
+<p>Адміністрація сервера повинна налаштувати сервер електронної пошти у вкладці <code class="docutils literal notranslate"><span class="pre">Основні</span> <span class="pre">налаштування</span></code>, оскільки ця пошта буде використовуватися для надсилання запрошень.</p>
+</div>
+<p>Легенда статусу запрошення (як учасника):</p>
+<ul class="simple">
+<li><p><strong>Заповнена подія</strong>: Ви прийняли</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">**</span></a>Закреслено: Ви відмовилися.</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">**</span></a>Смуги: Попередні.</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">**</span></a>Порожній захід: Ви ще не відповіли</p></li>
+</ul>
+<p>Якщо ви організатор і всі ваші учасники відмовилися, подія буде порожньою з попереджувальним символом.</p>
+</section>
+<section id="checking-attendees-busy-times">
+<h3>Перевірка зайнятості відвідувачів<a class="headerlink" href="#checking-attendees-busy-times" title="Link to this heading"></a></h3>
+<p>Після додавання учасників до події ви можете натиснути на кнопку «Знайти час», щоб відкрити модальне вікно «Вільний/Зайнятий». Він дозволяє побачити, коли кожен учасник має інші події, і може допомогти вам вибрати час, коли всі будуть вільні.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_free_busy_modal.png"><img alt="../../_images/calendar_free_busy_modal.png" src="../../_images/calendar_free_busy_modal.png" style="width: 942.0px; height: 752.4px;" />
+</a>
+</figure>
+<p>Ваші власні зайняті блоки будуть відображатися тим самим кольором, що і ваш особистий календар, час вашої відсутності на роботі буде відображатися сірим кольором, а зайнятий час інших учасників буде мати той самий колір, що і їх аватар, показаний у розширеному редакторі.</p>
+<p>Ви можете вибрати час проведення заходу безпосередньо в календарі.</p>
+</section>
+<section id="assign-rooms-and-resources-to-an-event">
+<h3>Призначайте приміщення та ресурси для події<a class="headerlink" href="#assign-rooms-and-resources-to-an-event" title="Link to this heading"></a></h3>
+<p>Так само, як і учасники, ви можете додавати приміщення та ресурси до своїх подій. Система подбає про те, щоб кожне приміщення і ресурс були заброньовані без конфліктів. Коли користувач вперше додає приміщення або ресурс до події, воно буде показано як прийняте. Будь-які наступні події, що перетинаються в часі, покажуть приміщення або ресурс як відхилені.</p>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Кімнати та ресурси не управляються безпосередньо Nextcloud, і додаток Календар не дозволить вам додавати або змінювати ресурси. Ваш адміністратор повинен встановити і, можливо, налаштувати серверну частину ресурсів, перш ніж ви зможете використовувати їх як користувач.</p>
+</div>
+</section>
+<section id="room-availability">
+<h3>Наявність номерів<a class="headerlink" href="#room-availability" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.0.</span></p>
+</div>
+<p>Якщо на вашому комп’ютері встановлено додаток «Календар кімнат і ресурсів», ви можете знайти розділ «Доступність кімнат» у розділі «Ресурси». У ньому перелічено всі наявні кімнати. Ви можете перевірити доступність кожної кімнати так само, як і статус вільних/зайнятих учасників заходу.</p>
+<figure class="align-default">
+<img alt="../../_images/room_availability.png" src="../../_images/room_availability.png" />
+</figure>
+</section>
+<section id="add-attachments-to-events">
+<h3>Додавання вкладень до подій<a class="headerlink" href="#add-attachments-to-events" title="Link to this heading"></a></h3>
+<p>Ви можете імпортувати вкладення до подій, завантаживши їх або додавши з файлів</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_adding_attachments.png"><img alt="../../_images/calendar_adding_attachments.png" src="../../_images/calendar_adding_attachments.png" style="width: 790.4000000000001px; height: 382.40000000000003px;" />
+</a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Вкладення можна додавати під час створення нових подій або редагування існуючих. Щойно завантажені файли за замовчуванням будуть збережені у файлах у папці календаря в кореневому каталозі.</p>
+</div>
+<p>Ви можете змінити папку вкладень, перейшовши до «Налаштувань календаря» в лівому нижньому кутку і змінивши «Розташування вкладень за замовчуванням».</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_attachments_location.png"><img alt="../../_images/calendar_attachments_location.png" src="../../_images/calendar_attachments_location.png" style="width: 389.4px; height: 357.0px;" />
+</a>
+</figure>
+</section>
+<section id="set-up-reminders">
+<h3>Налаштування нагадувань<a class="headerlink" href="#set-up-reminders" title="Link to this heading"></a></h3>
+<p>Ви можете налаштувати нагадування, щоб отримувати сповіщення до настання події. Наразі підтримуються такі способи сповіщення:</p>
+<ul class="simple">
+<li><p>Сповіщення електронною поштою</p></li>
+<li><p>Сповіщення Nextcloud</p></li>
+</ul>
+<p>Ви можете налаштувати нагадування на час, пов’язаний з подією, або на певну дату.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_reminders.png"><img alt="../../_images/calendar_event_reminders.png" src="../../_images/calendar_event_reminders.png" style="width: 507.20000000000005px; height: 284.0px;" />
+</a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Сповіщення отримуватиме лише власник календаря, а також люди або групи, які мають доступ до календаря з правами на запис. Якщо ви не отримуєте жодних сповіщень, але вважаєте, що мали б, ваш адміністратор міг вимкнути цю функцію на вашому сервері.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Якщо ви синхронізуєте календар з мобільними пристроями або іншими сторонніми клієнтами, сповіщення також можуть з’являтися там.</p>
+</div>
+</section>
+<section id="add-recurring-options">
+<h3>Додайте повторювані опції<a class="headerlink" href="#add-recurring-options" title="Link to this heading"></a></h3>
+<p>Подію можна встановити як «повторювану», щоб вона відбувалася щодня, щотижня, щомісяця або щороку. Можна додати конкретні правила, щоб визначити, в який день тижня відбувається подія, або більш складні правила, наприклад, кожну четверту середу кожного місяця.</p>
+<p>Ви також можете визначити, коли рецидив закінчиться.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_repeat.png"><img alt="../../_images/calendar_event_repeat.png" src="../../_images/calendar_event_repeat.png" style="width: 519.2px; height: 557.6px;" />
+</a>
+</figure>
+</section>
+<section id="trash-bin">
+<span id="calendar-trash-bin"></span><h3>Сміттєвий бак<a class="headerlink" href="#trash-bin" title="Link to this heading"></a></h3>
+<p>Якщо ви видалите події, завдання або календар у Календарі, ваші дані ще не зникнуть. Натомість, ці елементи будуть зібрані у <em>смітник</em>. Тут ви можете скасувати видалення. Після періоду, який за замовчуванням становить 30 днів (ваша адміністрація може змінити цей параметр), ці елементи будуть видалені назавжди. Ви також можете видалити елементи раніше, якщо бажаєте.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_trash_bin.png" src="../../_images/calendar_trash_bin.png" />
+</figure>
+<p>Кнопка «Очистити кошик» очистить весь вміст кошика за один крок.</p>
+<div class="admonition tip">
+<p class="admonition-title">Порада</p>
+<p>Кошик доступний лише з програми Календар. Будь-яка підключена програма або додаток не зможе відображати його вміст. Однак події, завдання і календарі, видалені в підключених програмах або додатках, також потрапляють до кошика.</p>
+</div>
+</section>
+<section id="automated-user-status">
+<span id="calendar-working-hours"></span><h3>Автоматизований статус користувача<a class="headerlink" href="#automated-user-status" title="Link to this heading"></a></h3>
+<p>Коли у вас в календарі запланована подія зі статусом «Зайнято», ваш статус користувача буде автоматично встановлений на «На зустрічі», якщо ви не встановили для себе статус «Не турбувати» або «Невидимий». Ви можете будь-коли замінити статус користувацьким повідомленням або встановити для подій календаря значення «ВІЛЬНИЙ». Прозорі календарі будуть ігноруватися.</p>
+</section>
+</section>
+<section id="responding-to-invitations">
+<h2>Відповідь на запрошення<a class="headerlink" href="#responding-to-invitations" title="Link to this heading"></a></h2>
+<p>Ви можете безпосередньо відповідати на запрошення в додатку. Натисніть на подію і виберіть свій статус участі. Ви можете відповісти на запрошення, прийнявши його, відхиливши або прийнявши попередньо.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_accept_simple_editor.png"><img alt="../../_images/calendar_accept_simple_editor.png" src="../../_images/calendar_accept_simple_editor.png" style="width: 663.2px; height: 477.6px;" />
+</a>
+</figure>
+<p>Ви також можете відповісти на запрошення з розширеного редактора.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_accept_advanced_editor.png"><img alt="../../_images/calendar_accept_advanced_editor.png" src="../../_images/calendar_accept_advanced_editor.png" style="width: 800.0px; height: 160.8px;" />
+</a>
+</figure>
+</section>
+<section id="availability-working-hours">
+<h2>Доступність (робочий час)<a class="headerlink" href="#availability-working-hours" title="Link to this heading"></a></h2>
+<p>Загальну доступність, незалежну від запланованих подій, можна встановити в налаштуваннях групової роботи Nextcloud. Ці налаштування відображатимуться у поданні «вільний», коли ви <a class="reference internal" href="#calendar-attendees"><span class="std std-ref">заплануєте зустріч з іншими людьми</span></a> у Календарі. Деякі підключені клієнти, такі як Thunderbird, також покажуть ці дані.</p>
+<figure class="align-default">
+<img alt="../../_images/caldav_availability.png" src="../../_images/caldav_availability.png" />
+</figure>
+<p>Ви можете налаштувати одноразові відсутності на додаток до вашої постійної доступності в розділі <a class="reference internal" href="absence.html#groupware-absence"><span class="std std-ref">Налаштування відсутності</span></a>.</p>
+</section>
+<section id="birthday-calendar">
+<h2>Календар днів народження<a class="headerlink" href="#birthday-calendar" title="Link to this heading"></a></h2>
+<p>Календар днів народження - це автоматично згенерований календар, який автоматично вибирає дні народження з ваших контактів. Єдиний спосіб редагування цього календаря - це додавання дат днів народження до контактів. Ви не можете безпосередньо редагувати цей календар з програми-календаря.</p>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Якщо ви не бачите календар днів народження, можливо, ваш адміністратор вимкнув цю функцію на вашому сервері.</p>
+</div>
+</section>
+<section id="appointments">
+<h2>Зустрічі<a class="headerlink" href="#appointments" title="Link to this heading"></a></h2>
+<p>Починаючи з версії 3 Календаря, додаток може генерувати слоти для зустрічей, які можуть бронювати інші користувачі Nextcloud, а також люди, які не мають облікового запису в цьому екземплярі. Зустрічі пропонують тонкий контроль над тим, коли ви можете зустрітися, коли ви можете бути вільні. Це може усунути необхідність надсилати електронні листи туди-сюди, щоб узгодити дату і час.</p>
+<p>У цьому розділі ми будемо використовувати термін <em>організатор</em> для позначення особи, яка володіє календарем і створює слоти для зустрічей. Відвідувач - це особа, яка бронює один із слотів.</p>
+<section id="creating-an-appointment-configuration">
+<h3>Створення конфігурації зустрічі<a class="headerlink" href="#creating-an-appointment-configuration" title="Link to this heading"></a></h3>
+<p>Як організатор зустрічей ви відкриваєте головний веб-інтерфейс Календаря. У лівій бічній панелі ви знайдете розділ для зустрічей, де ви можете відкрити діалог для створення нової зустрічі.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_new.png" src="../../_images/appointment_new.png" />
+</figure>
+<p>Однією з основних відомостей про кожну зустріч є назва, яка описує, для чого вона призначена (наприклад, «Один на один», коли організатор хоче запропонувати колегам особистий дзвінок), місце, де відбудеться зустріч, а також більш детальний опис того, про що ця зустріч буде.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_basics.png" src="../../_images/appointment_config_basics.png" />
+</figure>
+<p>Тривалість зустрічі можна вибрати із заздалегідь визначеного списку. Далі ви можете встановити бажаний крок. Крок - це швидкість, з якою доступні можливі слоти. Наприклад, у вас може бути одна година, але ви роздаєте їх з кроком в 30 хвилин, щоб відвідувач міг забронювати зустріч на 9:00 ранку, але також і на 9:30 ранку. Додаткова інформація про місцезнаходження та опис дають відвідувачам більше контексту. Кожна заброньована зустріч буде записана в один з ваших календарів, тому ви можете вибрати, в якому саме календарі вона має бути. Зустрічі можуть бути <em>публічними</em> або <em>приватними</em>. Публічні зустрічі можна знайти на сторінці профілю користувача Nextcloud. Приватні зустрічі доступні лише тим, хто отримає секретну URL-адресу.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_calendar_settings.png" src="../../_images/appointment_config_calendar_settings.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Відвідувачам будуть показані лише ті слоти, які не конфліктують з існуючими подіями у вашому календарі.</p>
+</div>
+<p>Організатор зустрічі може вказати, в який час тижня зазвичай можна забронювати час. Це можуть бути як робочі години, так і будь-який інший індивідуальний графік.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_booking_hours.png" src="../../_images/appointment_config_booking_hours.png" />
+</figure>
+<p>Деякі зустрічі вимагають часу на підготовку, наприклад, коли ви зустрічаєтесь у місці, куди ви повинні доїхати на машині. Організатор може вибрати час, який повинен бути вільним. Будуть доступні лише ті слоти, які не конфліктують з іншими подіями під час підготовки. Крім того, є можливість вказати час після кожної зустрічі, який має бути вільним. Щоб запобігти надто швидкому бронюванню, можна вказати, як скоро може відбутися наступна можлива зустріч. Встановлення максимальної кількості слотів на день може обмежити кількість зустрічей, які можуть бути заброньовані відвідувачами.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_limits.png" src="../../_images/appointment_config_limits.png" />
+</figure>
+<p>Налаштована зустріч з’явиться у списку на лівій бічній панелі. За допомогою меню з трьома крапками ви можете переглянути зустріч. Ви можете скопіювати посилання на зустріч і поділитися ним з цільовими відвідувачами або дозволити їм знайти вашу публічну зустріч на сторінці профілю. Ви також можете редагувати або видаляти конфігурацію зустрічі.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_options.png" src="../../_images/appointment_config_options.png" />
+</figure>
+</section>
+<section id="booking-an-appointment">
+<h3>Запис на прийом<a class="headerlink" href="#booking-an-appointment" title="Link to this heading"></a></h3>
+<p>На сторінці бронювання відвідувач бачить назву, місце, опис і тривалість зустрічі. Для обраного дня буде показано список з усіма можливими часовими інтервалами. У дні, коли немає вільних слотів, занадто багато конфліктів або досягнуто максимального денного ліміту вже заброньованих зустрічей, список може бути порожнім.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/appointment_booking_1.png"><img alt="../../_images/appointment_booking_1.png" src="../../_images/appointment_booking_1.png" style="width: 926.4000000000001px; height: 592.0px;" />
+</a>
+</figure>
+<p>Для бронювання учасники повинні ввести ім’я та адресу електронної пошти. За бажанням вони також можуть додати коментар.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/appointment_booking_2.png"><img alt="../../_images/appointment_booking_2.png" src="../../_images/appointment_booking_2.png" style="width: 745.6px; height: 463.20000000000005px;" />
+</a>
+</figure>
+<p>Якщо бронювання було успішним, учаснику буде показано діалог підтвердження.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_3.png" src="../../_images/appointment_booking_3.png" />
+</figure>
+<p>Щоб переконатися, що адреса електронної пошти учасника дійсна, на неї буде надіслано лист із підтвердженням.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_confirmation_email.png" src="../../_images/appointment_booking_confirmation_email.png" />
+</figure>
+<p>Тільки після того, як учасник перейде за посиланням підтвердження з електронного листа, бронювання зустрічі буде прийнято і передано організатору.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_confirmation_dialogue.png" src="../../_images/appointment_booking_confirmation_dialogue.png" />
+</figure>
+<p>Учасник отримає ще одне повідомлення на електронну пошту з підтвердженням деталей зустрічі.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_email_2.png" src="../../_images/appointment_booking_email_2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Якщо слот не був підтверджений, він все одно буде відображатися як доступний для бронювання. До цього часу часовий інтервал може бути заброньований іншим користувачем, який підтвердив своє бронювання раніше. Система виявить конфлікт і запропонує вибрати новий часовий інтервал.</p>
+</div>
+</section>
+<section id="working-with-the-booked-appointment">
+<h3>Робота з заброньованою зустріччю<a class="headerlink" href="#working-with-the-booked-appointment" title="Link to this heading"></a></h3>
+<p>Після завершення бронювання організатор знайде подію у своєму календарі з деталями зустрічі та <a class="reference internal" href="#calendar-attendees"><span class="std std-ref">attendee</span></a>.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_calendar_event.png" src="../../_images/appointment_calendar_event.png" />
+</figure>
+<p>Якщо зустріч має налаштування «Додати час до події» або «Додати час після події», вони відображатимуться як окремі події в календарі для організатора.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_calendar_prep.png" src="../../_images/appointment_calendar_prep.png" />
+</figure>
+<p>Як і у випадку з будь-якою іншою подією, що має відвідувачів, зміни та скасування спричинять сповіщення на електронну пошту учасника.</p>
+<p>Якщо учасники хочуть скасувати зустріч, вони повинні зв’язатися з організатором, щоб організатор міг скасувати або навіть видалити подію.</p>
+</section>
+<section id="create-talk-room-for-booked-appointments">
+<h3>Створіть розмовну кімнату для заброньованих зустрічей<a class="headerlink" href="#create-talk-room-for-booked-appointments" title="Link to this heading"></a></h3>
+<p>Ви можете створити кімнату для розмов безпосередньо з програми календаря для заброньованої зустрічі. Ця опція доступна в модальному вікні «Створити зустріч». Коли ви позначите цю опцію, для кожної заброньованої зустрічі буде згенеровано унікальне посилання, яке буде надіслано на електронну пошту з підтвердженням.</p>
+</section>
+</section>
+<section id="proposals">
+<h2>Proposals<a class="headerlink" href="#proposals" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 6.0.0.</span></p>
+</div>
+<p>Finding a meeting time for a group of participants can be challenging. As of Calendar v6, a new feature was introduced that allows users to create proposals for meeting times.
+This means that instead of just booking a time, or searching for a available time in the free busy view, participants can vote on a set of proposed times for a meeting.
+The organizer can then review the participants“ preferences and choose the most suitable time for the meeting.</p>
+<section id="managing-proposals">
+<h3>Managing proposals<a class="headerlink" href="#managing-proposals" title="Link to this heading"></a></h3>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_list.png" src="../../_images/calendar_proposal_list.png" />
+</figure>
+<p>The proposal list in the left sidebar shows all the proposals that the user has created. The list shows the title of the proposal, the number of responded participants and a status of whether all participants have responded.</p>
+<p>The user can click on the three dot menu next to a proposal item to edit, delete or view an existing proposal.</p>
+</section>
+<section id="creating-a-proposal">
+<h3>Creating a proposal<a class="headerlink" href="#creating-a-proposal" title="Link to this heading"></a></h3>
+<p>To create a new proposal a user can click on the plus icon next to the «Meeting Proposals» header at the top of the proposal list. This will open a modal where the user can enter all the relevant details for the proposed meeting.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_create.png" src="../../_images/calendar_proposal_create.png" />
+</figure>
+<p>The proposal editor has some basic fields that are similar to the event editor, such as title, description, location, duration and participants selection, that the user can fill out. These details are then used to inform the participants about the proposed meeting and times.</p>
+<p>The key difference is the «Proposed times» selection, where the user can select multiple time slots for a meeting. The user can add as many time slots as they want, and each time slot can be edited or removed as needed.</p>
+<p>Once the user has filled out all the required details, title, duration, participants and selected the proposed times, they can click the «Create» button to create the proposal. This will save the proposal and send notifications to all the selected participants.</p>
+</section>
+<section id="editing-a-proposal">
+<h3>Editing a proposal<a class="headerlink" href="#editing-a-proposal" title="Link to this heading"></a></h3>
+<p>A user can edit an existing proposal by clicking on the three dot menu next to a proposal item in the proposal list and selecting «Edit». This will open the same modal as when creating a new proposal, but with all the existing details filled out.</p>
+<p>After making any necessary changes, the user can click the «Update» button to save the changes. This will also send notifications to all the participants about the updated proposal.</p>
+</section>
+<section id="viewing-a-proposal-progress">
+<h3>Viewing a proposal progress<a class="headerlink" href="#viewing-a-proposal-progress" title="Link to this heading"></a></h3>
+<p>Users can view the progress of a proposal by clicking on the proposal item in the proposal list or clicking «View» in the three dot menu. This will open a detailed view of the proposal, with all details and a times and participants matrix, showing all the proposed times and participants“ responses.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_view.png" src="../../_images/calendar_proposal_view.png" />
+</figure>
+<p>In this view, the user can see which participants have responded to the proposal and their preferences for each proposed time. The user can also see the total number of votes for each proposed time, which can help them decide on the best time for the meeting.</p>
+<p>Once the user has reviewed the participants“ responses, they can select the most popular time for the meeting by clicking on the «Create» button at the end of the date/participant matrix. This will create a new event in the user’s calendar and send notifications to all participants about the confirmed meeting time.</p>
+</section>
+<section id="notifications-for-a-proposed-meeting">
+<h3>Notifications for a proposed meeting<a class="headerlink" href="#notifications-for-a-proposed-meeting" title="Link to this heading"></a></h3>
+<p>Users will receive email notifications for various events related to a proposed meeting, including:</p>
+<ul class="simple">
+<li><p>When a new proposal is created</p></li>
+<li><p>When a proposal is updated</p></li>
+<li><p>When a proposal is deleted</p></li>
+<li><p>When the final meeting time is confirmed</p></li>
+</ul>
+<p>These notifications help all participants stay informed and engaged throughout the proposal process.</p>
+<p>The notification emails contain the basic details for the proposed meeting, like title, description, location, duration, and proposed times. They also include a link to the response page, where participants can see all the details and respond to the proposed times.</p>
+</section>
+<section id="responding-to-a-proposed-meeting">
+<h3>Responding to a proposed meeting<a class="headerlink" href="#responding-to-a-proposed-meeting" title="Link to this heading"></a></h3>
+<p>Participants can respond to a proposed meeting by clicking on the link in the notification email. This will open the detailed view of the proposed meeting, where they can see all the proposed times, other participants“ and their responses, and select their availability/preferences for each proposed time.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_respond.png" src="../../_images/calendar_proposal_respond.png" />
+</figure>
+<p>Participants can select their availability for each proposed time by selecting their preference on the corresponding line in the times and participants matrix. They can choose from three options: «Yes», «No», or «Maybe». Once they have made their selections, they can click the «Submit» button to save their responses.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="contacts.html" class="btn btn-neutral float-left" title="Використання програми «Контакти" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mail.html" class="btn btn-neutral float-right" title="Використання програми «Пошта" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Here go the languages -->
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐
+      
+      
+      uk-UA
+      
+      <span class="fa fa-caret-down"></span>
+
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Мови</dt>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ar/"
+                 
+              >
+                
+                Arabic
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/br/"
+                 
+              >
+                
+                Breton
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ca/"
+                 
+              >
+                
+                Catalan
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/cs/"
+                 
+              >
+                
+                Czech
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/da/"
+                 
+              >
+                
+                Danish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/de/"
+                 
+              >
+                
+                German
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el/"
+                 
+              >
+                
+                Greek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/en/"
+                 
+              >
+                
+                English
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/es/"
+                 
+              >
+                
+                Spanish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eu/"
+                 
+              >
+                
+                eu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fi_FI/"
+                 
+              >
+                
+                Finnish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fr/"
+                 
+              >
+                
+                French
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ga/"
+                 
+              >
+                
+                Irish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/gl/"
+                 
+              >
+                
+                Glacian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu_HU/"
+                 
+              >
+                
+                Hungarian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/id/"
+                 
+              >
+                
+                Indonesian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/it/"
+                 
+              >
+                
+                Italian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ja_JP/"
+                 
+              >
+                
+                Japanese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ko/"
+                 
+              >
+                
+                Korean
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/mn/"
+                 
+              >
+                
+                Mongolian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nb_NO/"
+                 
+              >
+                
+                Norwegian (NB)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nl/"
+                 
+              >
+                
+                Dutch
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nn/"
+                 
+              >
+                
+                Norwegian (NN)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pl/"
+                 
+              >
+                
+                Polish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_BR/"
+                 
+              >
+                
+                Portuguese (BR)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_PT/"
+                 
+              >
+                
+                Portuguese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ro/"
+                 
+              >
+                
+                Romanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ru/"
+                 
+              >
+                
+                Russian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/si/"
+                 
+              >
+                
+                Sinhala
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sk_SK/"
+                 
+              >
+                
+                Slovakian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sr/"
+                 
+              >
+                
+                Slovenian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sv/"
+                 
+              >
+                
+                Swedish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ta/"
+                 
+              >
+                
+                Tamil
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/tr/"
+                 
+              >
+                
+                Turkish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk/"
+                 
+              >
+                
+                Ukrainian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk_UA/"
+                 
+              >
+                
+                uk_UA
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uz/"
+                 
+              >
+                
+                Uzbek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/vi/"
+                 
+              >
+                
+                Vietnamese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_CN/"
+                 
+              >
+                
+                Chinese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_HK/"
+                 
+              >
+                
+                Chinese (HK)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_TW/"
+                 
+              >
+                
+                Chinese (TW)
+                
+              </a>
+            </dd>
+          
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Версії</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/30/user_manual"
+               
+            >
+              30
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/29/user_manual"
+               
+            >
+              29
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Завантаження</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Прочитайте документацію</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Головна Проєкту</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Побудови</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

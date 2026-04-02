@@ -1,0 +1,370 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Context Chat &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Continuous Integration" href="continuous_integration.html" />
+    <link rel="prev" title="Classloader" href="classloader.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/index.html">Config &amp; Preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Context Chat</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#implementing-a-content-provider-for-context-chat">Implementing a content provider for Context Chat</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-icontentprovider-interface">The IContentProvider interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-the-icontentmanager-service">Using the IContentManager service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implementing-the-contentproviderregisterevent-event">Implementing the ContentProviderRegisterEvent event</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#submitting-contentitem-data">Submitting ContentItem data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="continuous_integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard.html">Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deadlock.html">Deadlocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files-metadata.html">Files Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupware/index.html">Groupware integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html">HTTP Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translation.html">Machine Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oidc.html">OpenID Connect (Oidc)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="out_of_office.html">Out-of-office periods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonenumberutil.html">Phone number util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psr.html">PSR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile.html">Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiler.html">Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">Reference providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_apis.html">REST APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_checks.html">Setup checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speech-to-text.html">Speech-To-Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talk.html">Talk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task_processing.html">Task Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_processing.html">Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text2image.html">Text-To-Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status.html">User Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">User migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_host_metadata.html">Web Host Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webdav_collection_preload.html">WebDAV collection preload events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html">Working with time</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Digging deeper</a></li>
+      <li class="breadcrumb-item active">Context Chat</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/context_chat.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="context-chat">
+<span id="id1"></span><h1>Context Chat<a class="headerlink" href="#context-chat" title="Link to this heading"></a></h1>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 32.0.0.</span></p>
+</div>
+<p>Nextcloud offers a <strong>Context Chat</strong> API which allows apps like files to submit data
+to the <a class="reference external" href="https://docs.nextcloud.com/server/32/admin_manual/ai/app_context_chat.html">Nextcloud Assistant Context Chat</a>,
+thereby enabling <a class="reference external" href="https://docs.nextcloud.com/server/32/admin_manual/ai/app_assistant.html">Nextcloud Assistant</a>
+to answer questions, provide insights and search results based on the submitted data and natural language queries.</p>
+<section id="implementing-a-content-provider-for-context-chat">
+<h2>Implementing a content provider for Context Chat<a class="headerlink" href="#implementing-a-content-provider-for-context-chat" title="Link to this heading"></a></h2>
+<section id="the-icontentprovider-interface">
+<h3>The IContentProvider interface<a class="headerlink" href="#the-icontentprovider-interface" title="Link to this heading"></a></h3>
+<p>A content provider for Context Chat needs to implement the <code class="docutils literal notranslate"><span class="pre">\OCP\ContextChat\IContentProvider</span></code> interface:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * This interface defines methods to implement a content provider</span>
+<span class="sd"> * @since 32.0.0</span>
+<span class="sd"> */</span>
+<span class="k">interface</span> <span class="nx">IContentProvider</span> <span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * The ID of the provider</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return string</span>
+<span class="sd">     * @since 32.0.0</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getId</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * The ID of the app making the provider available</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return string</span>
+<span class="sd">     * @since 32.0.0</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getAppId</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * The absolute URL to the content item</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param string $id</span>
+<span class="sd">     * @return string</span>
+<span class="sd">     * @since 32.0.0</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getItemUrl</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Starts the initial import of content items into context chat</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return void</span>
+<span class="sd">     * @since 32.0.0</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">triggerInitialImport</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">triggerInitialImport</span></code> method is called when Context Chat is first set up
+and allows your app to import all existing content into Context Chat in one bulk.
+Any other items that are created afterwards will need to be added on demand.</p>
+</section>
+<section id="using-the-icontentmanager-service">
+<h3>Using the IContentManager service<a class="headerlink" href="#using-the-icontentmanager-service" title="Link to this heading"></a></h3>
+<p>To add content and register your provider implementation you will need to use the <code class="docutils literal notranslate"><span class="pre">\OCP\ContextChat\IContentManager</span></code> service.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">IContentManager</span></code> class has the following methods:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">isContextChatAvailable()</span></code>: Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the Context Chat app is enabled, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">registerContentProvider(string</span> <span class="pre">$providerClass)</span></code>: Register a new content provider.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">submitContent(string</span> <span class="pre">$appId,</span> <span class="pre">array</span> <span class="pre">$items)</span></code>: Providers can use this to submit content for indexing in Context Chat.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">updateAccess(string</span> <span class="pre">$appId,</span> <span class="pre">string</span> <span class="pre">$providerId,</span> <span class="pre">string</span> <span class="pre">$itemId,</span> <span class="pre">string</span> <span class="pre">$op,</span> <span class="pre">array</span> <span class="pre">$userIds)</span></code>: Update the access rights for a content item. Use <code class="docutils literal notranslate"><span class="pre">\OCP\ContextChat\Type\UpdateAccessOp</span></code> constants for the <code class="docutils literal notranslate"><span class="pre">$op</span></code> value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">updateAccessProvider(string</span> <span class="pre">$appId,</span> <span class="pre">string</span> <span class="pre">$providerId,</span> <span class="pre">string</span> <span class="pre">$op,</span> <span class="pre">array</span> <span class="pre">$userIds)</span></code>: Update the access rights for all content items from a provider. Use <code class="docutils literal notranslate"><span class="pre">\OCP\ContextChat\Type\UpdateAccessOp</span></code> constants for the <code class="docutils literal notranslate"><span class="pre">$op</span></code> value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">updateAccessDeclarative(string</span> <span class="pre">$appId,</span> <span class="pre">string</span> <span class="pre">$providerId,</span> <span class="pre">string</span> <span class="pre">$itemId,</span> <span class="pre">array</span> <span class="pre">$userIds)</span></code>: Update the access rights for a content item. This method is declarative and will replace the current access rights with the provided ones.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">deleteProvider(string</span> <span class="pre">$appId,</span> <span class="pre">string</span> <span class="pre">$providerId)</span></code>: Remove all content items of a provider from the knowledge base of Context Chat.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">deleteContent(string</span> <span class="pre">$appId,</span> <span class="pre">string</span> <span class="pre">$providerId,</span> <span class="pre">array</span> <span class="pre">$itemIds)</span></code>: Remove specific content items from the knowledge base of Context Chat.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="implementing-the-contentproviderregisterevent-event">
+<h3>Implementing the ContentProviderRegisterEvent event<a class="headerlink" href="#implementing-the-contentproviderregisterevent-event" title="Link to this heading"></a></h3>
+<p>To register your content provider,
+your app needs to listen to the <code class="docutils literal notranslate"><span class="pre">OCP\ContextChat\Events\ContentProviderRegisterEvent</span></code> event
+and call the <code class="docutils literal notranslate"><span class="pre">registerContentProvider</span></code> method in the event for every provider you want to register.</p>
+<p>Some partial implementations of <code class="docutils literal notranslate"><span class="pre">Application.php</span></code> and a <code class="docutils literal notranslate"><span class="pre">ContentProvider</span></code> for reference:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">OCA\MyApp\ContextChat\ContentProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\ContextChat\Events\ContentProviderRegisterEvent</span><span class="p">;</span>
+<span class="c1">// ...</span>
+<span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerEventListener</span><span class="p">(</span><span class="nx">ContentProviderRegisterEvent</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">ContentProvider</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ContentProvider</span> <span class="k">implements</span> <span class="nx">IContentProvider</span> <span class="p">{</span>
+<span class="c1">// ...</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$event</span> <span class="nx">instanceof</span> <span class="nx">ContentProviderRegisterEvent</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">registerContentProvider</span><span class="p">(</span><span class="s1">&#39;***appId***&#39;</span><span class="p">,</span> <span class="s1">&#39;***providerId***&#39;</span><span class="p">,</span> <span class="nx">ContentProvider</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Any interaction with the content manager using the ContentManager’s methods
+or listing the providers in the Assistant should automatically register the provider.</p>
+<p>You may call the <code class="docutils literal notranslate"><span class="pre">registerContentProvider</span></code> method explicitly
+if you want to trigger an initial import of content items.</p>
+</section>
+<section id="submitting-contentitem-data">
+<h3>Submitting ContentItem data<a class="headerlink" href="#submitting-contentitem-data" title="Link to this heading"></a></h3>
+<p>Before submitting, you should check that the Context Chat app is enabled first
+by calling the <code class="docutils literal notranslate"><span class="pre">isContextChatAvailable()</span></code> method.</p>
+<p>Then, to submit content, wrap it in a list of <code class="docutils literal notranslate"><span class="pre">\OCP\ContextChat\ContentItem</span></code> objects:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">new</span> <span class="nx">ContentItem</span><span class="p">(</span>
+        <span class="nx">string</span> <span class="nv">$itemId</span><span class="p">,</span>
+        <span class="nx">string</span> <span class="nv">$providerId</span><span class="p">,</span>
+        <span class="nx">string</span> <span class="nv">$title</span><span class="p">,</span>
+        <span class="nx">string</span> <span class="nv">$content</span><span class="p">,</span>
+        <span class="nx">string</span> <span class="nv">$documentType</span><span class="p">,</span>
+        <span class="nx">\DateTime</span> <span class="nv">$lastModified</span><span class="p">,</span>
+        <span class="k">array</span> <span class="nv">$users</span><span class="p">,</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>Ensure that item IDs are unique across all users for a given provider.</p></li>
+<li><p>The app ID and provider ID both cannot contain double underscores, spaces, or colons.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">documentType</span></code> is a natural language term for your document type in English, e.g. <code class="docutils literal notranslate"><span class="pre">E-Mail</span></code> or <code class="docutils literal notranslate"><span class="pre">Bookmark</span></code>.</p></li>
+</ol>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="classloader.html" class="btn btn-neutral float-left" title="Classloader" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="continuous_integration.html" class="btn btn-neutral float-right" title="Continuous Integration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/developer_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

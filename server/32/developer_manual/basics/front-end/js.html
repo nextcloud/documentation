@@ -1,0 +1,421 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="CSS" href="css.html" />
+    <link rel="prev" title="Templates" href="templates.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Basic concepts</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../request_lifecycle.html">Request lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../routing.html">Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dependency_injection.html">Dependency injection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../middlewares.html">Middlewares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../events.html">Events</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Front-end</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="templates.html">Templates</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">JavaScript</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sending-the-csrf-token">Sending the CSRF token</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generating-urls">Generating URLs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extending-core-parts">Extending core parts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#loading-initial-state">Loading initial state</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#keyboard-shortcuts">Keyboard shortcuts</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="css.html">CSS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theming.html">Theming support</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../translations.html">Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../caching.html">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setting.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../storage/index.html">Storage and database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../public_share_template.html">Public share template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing.html">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Basic concepts</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Front-end</a></li>
+      <li class="breadcrumb-item active">JavaScript</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/basics/front-end/js.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="javascript">
+<span id="applicationjs"></span><h1>JavaScript<a class="headerlink" href="#javascript" title="Link to this heading"></a></h1>
+<p>The JavaScript files reside in the <strong>js/</strong> folder and should be included
+in the appropriate controller. There are two methods to inject your JavaScript files.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Util::addScript</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Util::addInitScript</span></code></p></li>
+</ol>
+</div></blockquote>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * Add a javascript file</span>
+<span class="sd"> *</span>
+<span class="sd"> * @param string $application Your application ID, e.g. &#39;your_app&#39;</span>
+<span class="sd"> * @param string $file Your script name, e.g. &#39;main&#39;</span>
+<span class="sd"> * @param string $afterAppId Optional, the script will be loaded after this app</span>
+<span class="sd"> * @param bool $prepend Optional, if true the script will be prepended to this app scripts list</span>
+<span class="sd"> */</span>
+ <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">addScript</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$application</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$file</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$afterAppId</span> <span class="o">=</span> <span class="s1">&#39;core&#39;</span><span class="p">,</span> <span class="nx">bool</span> <span class="nv">$prepend</span> <span class="o">=</span> <span class="k">false</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Add a standalone init js file that is loaded for initialization.</span>
+<span class="sd"> * Be careful loading scripts using this method as they are loaded early</span>
+<span class="sd"> * and block the initial page rendering. They should not have dependencies</span>
+<span class="sd"> * on any other scripts than core-common and core-main.</span>
+<span class="sd"> *</span>
+<span class="sd"> * @param string $application Your application ID, e.g. &#39;your_app&#39;</span>
+<span class="sd"> * @param string $file Your script name, e.g. &#39;main&#39;</span>
+<span class="sd"> */</span>
+ <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">addInitScript</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$application</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$file</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If your script is only needed after a specific event, e.g. after the Files app is loaded,
+you will have to register a Listener in your app <code class="docutils literal notranslate"><span class="pre">Appinfo/Application.php</span></code>.</p>
+</div>
+<p>Here is an example for the Files app (which emits the <code class="docutils literal notranslate"><span class="pre">LoadAdditionalScriptsEvent</span></code>).
+For more information about app bootstrapping, see the <a class="reference internal" href="../../app_development/bootstrap.html#application-php"><span class="std std-ref">The Application class</span></a> section.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nx">OCA\YourApp\AppInfo</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\Files\Event\LoadAdditionalScriptsEvent</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCA\YourApp\Listener\LoadAdditionalListener</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\App</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IBootContext</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IBootstrap</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IRegistrationContext</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * @package OCA\YourApp\AppInfo</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBackendProvider</span><span class="p">,</span> <span class="nx">IAuthMechanismProvider</span><span class="p">,</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
+  <span class="k">public</span> <span class="k">const</span> <span class="no">APP_ID</span> <span class="o">=</span> <span class="s1">&#39;your_app&#39;</span><span class="p">;</span>
+
+  <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$urlParams</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
+    <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+    <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerEventListener</span><span class="p">(</span><span class="nx">LoadAdditionalScriptsEvent</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">LoadAdditionalListener</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">(</span><span class="nx">IBootContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{}</span>
+</pre></div>
+</div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nx">OCA\YourApp\Listener</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\YourApp\AppInfo\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCA\Files\Event\LoadAdditionalScriptsEvent</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\IEventListener</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Util</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">LoadAdditionalListener</span> <span class="k">implements</span> <span class="nx">IEventListener</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nv">$event</span> <span class="nx">instanceof</span> <span class="nx">LoadAdditionalScriptsEvent</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nx">Util</span><span class="o">::</span><span class="na">addInitScript</span><span class="p">(</span><span class="nx">Application</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">,</span> <span class="s1">&#39;init&#39;</span><span class="p">);</span>
+        <span class="nx">Util</span><span class="o">::</span><span class="na">addScript</span><span class="p">(</span><span class="nx">Application</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">,</span> <span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="s1">&#39;files&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="sending-the-csrf-token">
+<h2>Sending the CSRF token<a class="headerlink" href="#sending-the-csrf-token" title="Link to this heading"></a></h2>
+<p>If any other JavaScript request library than jQuery is being used, the requests need to send the CSRF token as an HTTP header named <strong>requesttoken</strong>. The token is available in the global variable <strong>OC.requestToken</strong>.</p>
+<p>For AngularJS the following lines would need to be added:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;MyApp&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[]).</span><span class="nx">config</span><span class="p">([</span><span class="s1">&#39;$httpProvider&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">$httpProvider</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">$httpProvider</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">common</span><span class="p">.</span><span class="nx">requesttoken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">OC</span><span class="p">.</span><span class="nx">requestToken</span><span class="p">;</span>
+<span class="p">}]);</span>
+</pre></div>
+</div>
+</section>
+<section id="generating-urls">
+<h2>Generating URLs<a class="headerlink" href="#generating-urls" title="Link to this heading"></a></h2>
+<p>To send requests to Nextcloud the base URL where Nextcloud is currently running is needed. To get the base URL use:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">baseUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">OC</span><span class="p">.</span><span class="nx">generateUrl</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Full URLs can be generated by using:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">authorUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">OC</span><span class="p">.</span><span class="nx">generateUrl</span><span class="p">(</span><span class="s1">&#39;/apps/myapp/authors/1&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="extending-core-parts">
+<h2>Extending core parts<a class="headerlink" href="#extending-core-parts" title="Link to this heading"></a></h2>
+<p>It is possible to extend components of the core web UI. The following examples
+should show how this is possible.</p>
+<section id="extending-the-new-menu-in-the-files-app">
+<h3>Extending the “new” menu in the files app<a class="headerlink" href="#extending-the-new-menu-in-the-files-app" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 9.0.</span></p>
+</div>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">myFileMenuPlugin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">attach</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">menu</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">menu</span><span class="p">.</span><span class="nx">addMenuEntry</span><span class="p">({</span>
+<span class="w">            </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;abc&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">displayName</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Menu display name&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">templateName</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;templateName.ext&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">iconClass</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;icon-filetype-text&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">fileType</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;file&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">actionHandler</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;do something here&#39;</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+<span class="nx">OC</span><span class="p">.</span><span class="nx">Plugins</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s1">&#39;OCA.Files.NewFileMenu&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">myFileMenuPlugin</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This will register a new menu entry in the “New” menu of the files app. The
+method <code class="docutils literal notranslate"><span class="pre">attach()</span></code> is called once the menu is built. This usually happens right
+after the click on the button.</p>
+</section>
+</section>
+<section id="loading-initial-state">
+<h2>Loading initial state<a class="headerlink" href="#loading-initial-state" title="Link to this heading"></a></h2>
+<p>Often apps have some kind of initial state. Often the first thing a script does
+is querying an endpoint to obtain this initial state. This makes the user
+experience sub optimal as they have to wait for yet another request to finish
+loading.</p>
+<p>To provide the initial state in a standardized way quickly to the javascript
+Nextcloud provides an API. The API consists of a PHP part (that supplies the state)
+and a JS part (that fetches and parses the state).</p>
+<section id="providing-the-initial-state-with-php">
+<h3>Providing the initial state with PHP<a class="headerlink" href="#providing-the-initial-state-with-php" title="Link to this heading"></a></h3>
+<p>Providing state in PHP is done via the <code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\Services\IInitialState</span></code>. This service
+has two methods you can use to provide the initial state. They will automatically be scoped
+to your app, so you don’t have to provide your app id anymore.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">provideInitialState(string</span> <span class="pre">$key,</span> <span class="pre">$data)</span></code>:
+If you know for sure your state will be used. For example on the settings page of your app.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">provideLazyInitialState(string</span> <span class="pre">$key,</span> <span class="pre">Closure</span> <span class="pre">$closure)</span></code>:
+If you want to inject your state on a general page. For example the initial state of the notifications app. The callback will be invoked if and only if a template is rendered.</p></li>
+</ul>
+<p>You call both methods with the name of your app and a key. This is to scope
+the states properly. You will need both when retrieving the initial state in
+javascript.</p>
+<p>The data for the initial state is converted to JSON. So be sure that the
+data you provide (either in $data or as a return from the $closure) can be converted
+to JSON.</p>
+</section>
+<section id="obtaining-the-initial-state-in-javascript">
+<h3>Obtaining the initial state in JavaScript<a class="headerlink" href="#obtaining-the-initial-state-in-javascript" title="Link to this heading"></a></h3>
+<p>To obtain the initial state in your JavaScript you have to only call one
+function</p>
+<ul class="simple">
+<li><p>Vue way with <a class="reference external" href="https://github.com/nextcloud/nextcloud-initial-state">&#64;nextcloud/initial-state</a>:</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">loadState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/initial-state&#39;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">loadState</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user_preference&#39;</span><span class="p">)</span>
+
+<span class="c1">// Provide a fallback value to return when the state is not found</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">valWithFallback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">loadState</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user_preference&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;no_preference&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Legacy way:</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">OCP</span><span class="p">.</span><span class="nx">InitialState</span><span class="p">.</span><span class="nx">loadState</span><span class="p">(</span><span class="s1">&#39;MyApp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;MyState&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Now state will contain the provided state which you can use as any variable. It
+is as simple as that.</p>
+</section>
+</section>
+<section id="keyboard-shortcuts">
+<span id="basics-frontend-javascript-keyboard-shortcuts"></span><h2>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Link to this heading"></a></h2>
+<p>In case you want to improve your user experience with keyboard shortcuts, make sure
+to not overwrite browser, operating system and other Nextcloud wide shortcuts.
+Also there is an accessibility setting for users to opt-out of <strong>any</strong> keyboard shortcuts
+Nextcloud wide. You can check the setting with the following function which returns a boolean
+(available in Nextcloud 25 and later):</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">OCP</span><span class="p">.</span><span class="nx">Accessibility</span><span class="p">.</span><span class="nx">disableKeyboardShortcuts</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>If that is the case, no additional shortcuts shall be registered by any app. Only <code class="docutils literal notranslate"><span class="pre">space</span></code>
+to toggle checkboxes and <code class="docutils literal notranslate"><span class="pre">enter</span></code> to submit the currently active buttons or links are okay,
+as any other shortcut might interfere with screenreaders and other accessibility tools.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="templates.html" class="btn btn-neutral float-left" title="Templates" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="css.html" class="btn btn-neutral float-right" title="CSS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/developer_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

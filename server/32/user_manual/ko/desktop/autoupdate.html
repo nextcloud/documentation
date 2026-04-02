@@ -1,0 +1,768 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ko" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>자동 업데이터 &mdash; Nextcloud latest User Manual latest 문서</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=73c6b8bf"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=afa94a99"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="색인" href="../genindex.html" />
+    <link rel="search" title="검색" href="../search.html" />
+    <link rel="next" title="Update channels" href="updatechannel.html" />
+    <link rel="prev" title="macOS 가상 파일 클라이언트" href="macosvfs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest 사용자 매뉴얼 머리말</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud 웹 인터페이스</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">파일 및 동기화</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">데스크톱 클라이언트</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">설치</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html">동기화 클라이언트 사용하기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macosvfs.html">macOS 가상 파일 클라이언트</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">자동 업데이터</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-workflow">기본 워크플로</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#windows">윈도우즈</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#macos">macOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linux">리눅스</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#preventing-automatic-updates">자동 업데이트 중지</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#preventing-automatic-updates-in-windows-environments">윈도우즈 환경에서 자동 업데이트 중지</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preventing-automatic-updates-in-linux-environments">Linux 환경에서 자동 업데이트 막기</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Update channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conflicts.html">충돌</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting your preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage connected browsers and devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">외부 저장소</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">데스크톱 클라이언트</a></li>
+      <li class="breadcrumb-item active">자동 업데이터</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/autoupdate.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-automatic-updater">
+<h1>자동 업데이터<a class="headerlink" href="#the-automatic-updater" title="Link to this heading"></a></h1>
+<p>자동 업데이터는 Nextcloud 동기화 클라이언트에 대하여 항상 마지막 기능과 버그 수정을 받아볼 수 있도록 해줍니다.</p>
+<p>자동 업데이터는 macOS 혹은 윈도우즈 컴퓨터에 대해서만 동작합니다; 리눅스 사용자는 사용중인 일반 패키지 관리자를 사용해야 합니다. 하지만 리눅스 시스템에서 업데이터는 업데이트를 검사하고 새 버전을 사용할 수 있는 경우 알려줍니다.</p>
+<section id="basic-workflow">
+<h2>기본 워크플로<a class="headerlink" href="#basic-workflow" title="Link to this heading"></a></h2>
+<p>다음 섹션은 서로 다른 운영체제에서 자동 업데이터를 어떻게 사용하는지에 대하여 설명합니다.</p>
+<section id="windows">
+<h3>윈도우즈<a class="headerlink" href="#windows" title="Link to this heading"></a></h3>
+<p>Nextcloud 클라이언트는 업데이트를 검사하고 업데이트가 가능한 경우 다운로드합니다. 업데이트 상태는 Nextcloud 클라이언트의 <code class="docutils literal notranslate"><span class="pre">설정</span> <span class="pre">-&gt;</span> <span class="pre">일반</span> <span class="pre">-&gt;</span> <span class="pre">업데이트</span></code> 에서 확인할 수 있습니다.</p>
+<p>업데이트가 가능하고, 성공적으로 다운로드한 경우, Nextcloud 클라이언트는 다음 실행 전에 자동 업데이트를 시작하고, 자체를 재시작합니다. 자동 업데이트가 실패하면 클라이언트는 수동 다운로드를 제공합니다.</p>
+<div class="admonition note">
+<p class="admonition-title">참고</p>
+<p>업데이트 수행을 위해서 관리자 권한이 필요합니다.</p>
+</div>
+</section>
+<section id="macos">
+<h3>macOS<a class="headerlink" href="#macos" title="Link to this heading"></a></h3>
+<p>macOS 클라이언트는 Sparkle 프레임워크를 사용하는 자동 업데이터를 가지고 있습니다. 이 자동 업데이터는 클라이언트 앱 번들에 포함되어 시작 시 업데이트를 검사하고, 업데이트가 가능한 경우 알려줍니다. 이것은 팝업으로 표시되어 마지막 클라이언트 업데이트를 원클릭으로 자동적으로 다운로드하고 설치할 수 있게 해줍니다.</p>
+<p>Sparkle 기반 자동 업데이터가 포함되지 않은 버전의 클라이언트는 업데이트가 가능할 때 클릭 가능한 알림이 표시됩니다. 해당 알림을 클릭하면 클라이언트의 마지막 버전에 대한 다운로드 페이지가 시스템 웹 브라우저에서 열립니다.</p>
+<p>다른 시스템과 같이 업데이트 상태를 Nextcloud 클라이언트의 <code class="docutils literal notranslate"><span class="pre">설정</span> <span class="pre">-&gt;</span> <span class="pre">일반</span> <span class="pre">-&gt;</span> <span class="pre">업데이트</span></code> 에서 확인할 수 있습니다.</p>
+</section>
+<section id="linux">
+<h3>리눅스<a class="headerlink" href="#linux" title="Link to this heading"></a></h3>
+<p>리눅스 배포판은 자신 고유의 업데이트 툴을 제공해서 리눅스 운영체제를 사용하는 Nextcloud 클라이언트는 자체적으로 업데이트를 수행하지 않습니다. 클라이언트는 업데이트가 있을 때 알려줄 것입니다 (<code class="docutils literal notranslate"><span class="pre">설정</span> <span class="pre">-&gt;</span> <span class="pre">일반</span> <span class="pre">-&gt;</span> <span class="pre">업데이트</span></code>) .</p>
+</section>
+</section>
+<section id="preventing-automatic-updates">
+<h2>자동 업데이트 중지<a class="headerlink" href="#preventing-automatic-updates" title="Link to this heading"></a></h2>
+<p>회사나 대학과 같은 제한된 환경에서는 제어된 배포 도구와 정책에 맞지 않을 수 있기때문에 자동 업데이트 방식을 활성화하는 것을 원하지 않을 수 있습니다. 이런 경우에 자동 업데이터를 완전히 끄는 것이 가능합니다. 다음 섹션에서 서로 다른 운영 체제에서 자동 업데이트 방식을 비활성화하는 방법에 대해서 설명합니다.</p>
+<section id="preventing-automatic-updates-in-windows-environments">
+<h3>윈도우즈 환경에서 자동 업데이트 중지<a class="headerlink" href="#preventing-automatic-updates-in-windows-environments" title="Link to this heading"></a></h3>
+<p>사용자는 자신의 <code class="docutils literal notranslate"><span class="pre">nextcloud.cfg</span></code> 파일의 [일반] 섹션에 이 라인을 추가하는 것으로 자동 업데이트를 끌 수 있습니다:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">skipUpdateCheck</span><span class="o">=</span><span class="n">true</span>
+</pre></div>
+</div>
+<p>윈도우즈 관리자는 자동 업데이트를 막는 더 많은 옵션을 가지고 있는데, 윈도우 환경에서 두가지 방법 중 하나를 사용할 수 있습니다. 첫번째 방법은 자동 업데이트 검사 방식을 재정의할 수 있지만, 두번째 방법은 직접 재정의를 막습니다.</p>
+<p>자동 업데이트는 막지만, 직접 재정의를 허용하는 경우:</p>
+<ol class="arabic">
+<li><p>이 레지스트리 키를 편집하십시오:</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>(32비트 윈도우) <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Nextcloud\Nextcloud</span></code></p></li>
+<li><p>(64비트 윈도우) <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Wow6432Node\Nextcloud\Nextcloud</span></code></p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">skipUpdateCheck</span></code> (DWORD 타입) 키를 추가하십시오.</p></li>
+<li><p>장치에 값 <code class="docutils literal notranslate"><span class="pre">1</span></code> 로 지정합니다.</p></li>
+</ol>
+<p>이 키를 직접 재정의하려면 <code class="docutils literal notranslate"><span class="pre">HKEY_CURRENT_USER</span></code> 에서 같은 값을 사용하십시오.</p>
+<p>자동 업데이트를 막고 직접 재정의를 허용하지 않으려면:</p>
+<div class="admonition note">
+<p class="admonition-title">참고</p>
+<p>이것은 그룹 정책을 사용하여 업데이터 동작을 제어하는 데 선호되는 방법입니다.</p>
+</div>
+<ol class="arabic">
+<li><p>이 레지스트리 키를 편집하십시오:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Policies\Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code></p>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">skipUpdateCheck</span></code> (DWORD 타입) 키를 추가하십시오.</p></li>
+<li><p>장치에 값 <code class="docutils literal notranslate"><span class="pre">1</span></code> 로 지정합니다.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">참고</p>
+<p>브랜드화된 클라이언트는 다른 키 이름을 가집니다</p>
+</div>
+</section>
+<section id="preventing-automatic-updates-in-linux-environments">
+<h3>Linux 환경에서 자동 업데이트 막기<a class="headerlink" href="#preventing-automatic-updates-in-linux-environments" title="Link to this heading"></a></h3>
+<p>리눅스 클라이언트는 자동 업데이트 기능을 제공하지 않기 때문에, 자동 업데이트 검사를 제거할 필요가 없습니다. 하지만 비활성화하기를 원한다면 <code class="docutils literal notranslate"><span class="pre">$HOME/.config/Nextcloud/nextcloud.cfg</span></code> 의 데스크탑 클라이언트 설정 파일을 수정하십시오. [일반] 섹션에 다음 줄을 추가하십시오:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">skipUpdateCheck</span><span class="o">=</span><span class="n">true</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="macosvfs.html" class="btn btn-neutral float-left" title="macOS 가상 파일 클라이언트" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="updatechannel.html" class="btn btn-neutral float-right" title="Update channels" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Here go the languages -->
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐
+      
+      
+      Korean
+      
+      <span class="fa fa-caret-down"></span>
+
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Languages</dt>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ar/"
+                 
+              >
+                
+                Arabic
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/br/"
+                 
+              >
+                
+                Breton
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ca/"
+                 
+              >
+                
+                Catalan
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/cs/"
+                 
+              >
+                
+                Czech
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/da/"
+                 
+              >
+                
+                Danish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/de/"
+                 
+              >
+                
+                German
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el/"
+                 
+              >
+                
+                Greek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/en/"
+                 
+              >
+                
+                English
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/es/"
+                 
+              >
+                
+                Spanish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eu/"
+                 
+              >
+                
+                eu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fi_FI/"
+                 
+              >
+                
+                Finnish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fr/"
+                 
+              >
+                
+                French
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ga/"
+                 
+              >
+                
+                Irish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/gl/"
+                 
+              >
+                
+                Glacian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu_HU/"
+                 
+              >
+                
+                Hungarian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/id/"
+                 
+              >
+                
+                Indonesian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/it/"
+                 
+              >
+                
+                Italian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ja_JP/"
+                 
+              >
+                
+                Japanese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ko/"
+                 
+                 style="color: var(--dark-link-color);"
+                 
+              >
+                
+                Korean
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/mn/"
+                 
+              >
+                
+                Mongolian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nb_NO/"
+                 
+              >
+                
+                Norwegian (NB)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nl/"
+                 
+              >
+                
+                Dutch
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nn/"
+                 
+              >
+                
+                Norwegian (NN)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pl/"
+                 
+              >
+                
+                Polish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_BR/"
+                 
+              >
+                
+                Portuguese (BR)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_PT/"
+                 
+              >
+                
+                Portuguese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ro/"
+                 
+              >
+                
+                Romanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ru/"
+                 
+              >
+                
+                Russian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/si/"
+                 
+              >
+                
+                Sinhala
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sk_SK/"
+                 
+              >
+                
+                Slovakian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sr/"
+                 
+              >
+                
+                Slovenian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sv/"
+                 
+              >
+                
+                Swedish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ta/"
+                 
+              >
+                
+                Tamil
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/tr/"
+                 
+              >
+                
+                Turkish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk/"
+                 
+              >
+                
+                Ukrainian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk_UA/"
+                 
+              >
+                
+                uk_UA
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uz/"
+                 
+              >
+                
+                Uzbek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/vi/"
+                 
+              >
+                
+                Vietnamese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_CN/"
+                 
+              >
+                
+                Chinese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_HK/"
+                 
+              >
+                
+                Chinese (HK)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_TW/"
+                 
+              >
+                
+                Chinese (TW)
+                
+              </a>
+            </dd>
+          
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/30/user_manual"
+               
+            >
+              30
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/29/user_manual"
+               
+            >
+              29
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

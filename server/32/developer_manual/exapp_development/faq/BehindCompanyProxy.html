@@ -1,0 +1,348 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Corporate Proxy - Permanent Settings for PHP CLI &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Troubleshooting" href="Troubleshooting.html" />
+    <link rel="prev" title="Scaling" href="Scaling.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">ExApp development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DevSetup.html">Setting up dev environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development_overview/index.html">Development overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tech_details/index.html">Technical details</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Frequently Asked Questions</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="DockerContainerRegistry.html">Docker Container Registry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DockerSocketProxy.html">Docker Socket Proxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="GpuSupport.html">GPU support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Scaling.html">Scaling</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Corporate Proxy - Permanent Settings for PHP CLI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#symptoms">Symptoms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cause">Cause</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#permanent-solution">Permanent Solution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contact-support">Contact Support</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">ExApp development</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Frequently Asked Questions</a></li>
+      <li class="breadcrumb-item active">Corporate Proxy - Permanent Settings for PHP CLI</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/exapp_development/faq/BehindCompanyProxy.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="corporate-proxy-permanent-settings-for-php-cli">
+<h1>Corporate Proxy - Permanent Settings for PHP CLI<a class="headerlink" href="#corporate-proxy-permanent-settings-for-php-cli" title="Link to this heading"></a></h1>
+<p>If you’re using our application within a corporate network that requires proxy settings, you might encounter issues when running PHP CLI commands that attempt to access the Internet.</p>
+<p>To resolve this, you need to configure permanent proxy settings for the PHP CLI environment.</p>
+<section id="symptoms">
+<h2>Symptoms<a class="headerlink" href="#symptoms" title="Link to this heading"></a></h2>
+<p>When running the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>app_api:app:register<span class="w"> </span>test-deploy<span class="w"> </span>docker_socket_proxy<span class="w"> </span>--info-xml<span class="w"> </span>https://raw.githubusercontent.com/nextcloud/test-deploy/main/appinfo/info.xml<span class="w"> </span>--test-deploy-mode<span class="w"> </span>--no-ansi<span class="w"> </span>--no-warnings
+</pre></div>
+</div>
+<p>You may receive an error similar to:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>file_get_contents(https://raw.githubusercontent.com/nextcloud/test-deploy/main/appinfo/info.xml): Failed to open stream: Connection timed out at /var/www/html/custom_apps/app_api/lib/Service/ExAppService.php#277
+</pre></div>
+</div>
+</section>
+<section id="cause">
+<h2>Cause<a class="headerlink" href="#cause" title="Link to this heading"></a></h2>
+<p>This issue occurs because the PHP CLI environment does not have the proxy settings configured, unlike the web PHP environment which may already be using proxy settings specified in your web server configuration.</p>
+</section>
+<section id="permanent-solution">
+<h2>Permanent Solution<a class="headerlink" href="#permanent-solution" title="Link to this heading"></a></h2>
+<p>To permanently configure proxy settings for PHP CLI, you can either modify the PHP CLI <code class="docutils literal notranslate"><span class="pre">php.ini</span></code> file or set environment variables system-wide.</p>
+<section id="method-1-edit-php-cli-php-ini-file">
+<h3>Method 1: Edit PHP CLI php.ini File<a class="headerlink" href="#method-1-edit-php-cli-php-ini-file" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>Locate the PHP CLI php.ini File</strong></p>
+<p>Run the following command to find the loaded configuration file for PHP CLI:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>php<span class="w"> </span>--ini
+</pre></div>
+</div>
+<p>Look for the line:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Loaded Configuration File: /path/to/php.ini
+</pre></div>
+</div>
+</li>
+<li><p><strong>Edit the php.ini File</strong></p>
+<p>Open the <code class="docutils literal notranslate"><span class="pre">php.ini</span></code> file in a text editor with the appropriate permissions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>nano<span class="w"> </span>/path/to/php.ini
+</pre></div>
+</div>
+</li>
+<li><p><strong>Add Proxy Settings</strong></p>
+<p>Add the following lines to configure the proxy settings:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[HTTP]</span>
+<span class="c1">; Proxy settings for HTTP</span>
+<span class="na">http.proxy_host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proxy.example.com&quot;</span>
+<span class="na">http.proxy_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">8080</span>
+<span class="na">http.proxy_user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;username&quot;</span>
+<span class="na">http.proxy_password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;password&quot;</span>
+
+<span class="k">[HTTPS]</span>
+<span class="c1">; Proxy settings for HTTPS</span>
+<span class="na">https.proxy_host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proxy.example.com&quot;</span>
+<span class="na">https.proxy_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">8080</span>
+<span class="na">https.proxy_user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;username&quot;</span>
+<span class="na">https.proxy_password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;password&quot;</span>
+</pre></div>
+</div>
+<p>Replace the placeholders with your actual proxy server details:</p>
+<ul class="simple">
+<li><p><cite>proxy.example.com</cite>: Your proxy server address.</p></li>
+<li><p><cite>8080</cite>: Your proxy server port.</p></li>
+<li><p><cite>username</cite>: Your proxy username (if required).</p></li>
+<li><p><cite>password</cite>: Your proxy password (if required).</p></li>
+</ul>
+</li>
+<li><p><strong>Save and Close the File</strong></p>
+<p>Save the changes and exit the text editor.</p>
+</li>
+<li><p><strong>Verify the Configuration</strong></p>
+<p>Run the PHP CLI command again:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>occ<span class="w"> </span>app_api:app:register
+</pre></div>
+</div>
+<p>It should now be able to access the Internet through the proxy.</p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Not all PHP functions respect the proxy settings in <code class="docutils literal notranslate"><span class="pre">php.ini</span></code>.
+If issues persist, consider using system-wide environment variables.</p>
+</div>
+</section>
+<section id="method-2-set-system-wide-environment-variables">
+<h3>Method 2: Set System-Wide Environment Variables<a class="headerlink" href="#method-2-set-system-wide-environment-variables" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>Edit Shell Profile</strong></p>
+<p>For a permanent solution, add the proxy settings to the system-wide environment variables. Open the <code class="docutils literal notranslate"><span class="pre">/etc/environment</span></code> file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/environment
+</pre></div>
+</div>
+</li>
+<li><p><strong>Add Proxy Environment Variables</strong></p>
+<p>Add the following lines to the file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">http_proxy</span><span class="o">=</span><span class="s2">&quot;http://proxy.example.com:8080&quot;</span>
+<span class="nv">https_proxy</span><span class="o">=</span><span class="s2">&quot;http://proxy.example.com:8080&quot;</span>
+
+<span class="c1"># If your proxy requires authentication:</span>
+<span class="nv">http_proxy</span><span class="o">=</span><span class="s2">&quot;http://username:password@proxy.example.com:8080&quot;</span>
+<span class="nv">https_proxy</span><span class="o">=</span><span class="s2">&quot;http://username:password@proxy.example.com:8080&quot;</span>
+</pre></div>
+</div>
+<p>Replace the placeholders with your actual proxy details.</p>
+</li>
+<li><p><strong>Apply the Changes</strong></p>
+<p>Log out and log back in, or reboot the system to apply the changes.</p>
+</li>
+<li><p><strong>Verify the Configuration</strong></p>
+<p>Run the command again:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-E<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>test-deploy<span class="w"> </span>docker_socket_proxy<span class="w"> </span>--info-xml<span class="w"> </span>https://raw.githubusercontent.com/nextcloud/test-deploy/main/appinfo/info.xml<span class="w"> </span>--test-deploy-mode<span class="w"> </span>--no-ansi<span class="w"> </span>--no-warnings
+</pre></div>
+</div>
+<p>It should now work without connectivity issues.</p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method sets the proxy settings for all users and applications on the system.</p>
+</div>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<ul>
+<li><p><strong>Incorrect Proxy Details</strong></p>
+<p>Ensure all proxy details are correct. Incorrect hostnames, ports, or credentials will prevent connectivity.</p>
+</li>
+<li><p><strong>Environment Variables Not Loaded</strong></p>
+<p>Make sure the environment variables are correctly loaded. A system reboot or re-login may be necessary.</p>
+</li>
+<li><p><strong>Firewall Restrictions</strong></p>
+<p>Verify with your network administrator that your system is allowed to access the Internet through the proxy.</p>
+</li>
+</ul>
+</section>
+<section id="contact-support">
+<h2>Contact Support<a class="headerlink" href="#contact-support" title="Link to this heading"></a></h2>
+<p>If you’ve followed these steps and still experience issues, please contact our support team for further assistance.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Scaling.html" class="btn btn-neutral float-left" title="Scaling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Troubleshooting.html" class="btn btn-neutral float-right" title="Troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/developer_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

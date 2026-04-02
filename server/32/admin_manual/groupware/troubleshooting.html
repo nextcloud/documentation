@@ -1,0 +1,546 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Troubleshooting &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Office" href="../office/index.html" />
+    <link rel="prev" title="Out-of-office feature" href="out_of_office.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Critical changes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Files</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Groupware</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Calendar / CalDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Contacts / CardDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mail.html">Mail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="out_of_office.html">Out-of-office feature</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#calendar">Calendar</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#missing-shared-calendars">Missing Shared Calendars</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#contacts">Contacts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#unable-to-update-contacts-or-events">Unable to update contacts or events</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#mail">Mail</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autoconfig-for-your-mail-domain-fails">Autoconfig for your mail domain fails</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database-insert-problems-on-mysql">Database insert problems on MySQL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#export-threading-data">Export threading data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-account-ids">Get account IDs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#issues-connecting-to-outlook-com">Issues connecting to Outlook.com</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#logging-the-imap-smtp-sieve-connections">Logging the IMAP/SMTP/Sieve connections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#timeout-and-other-connectivity-issues">Timeout and other connectivity issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#manual-account-synchronization-and-threading">Manual account synchronization and threading</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Office</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/">Community Help Forum</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">User Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">Developer Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/install/">Download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://apps.nextcloud.com">App Store</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/t/translation-knowledge-valid-for-the-entire-nextcloud-project-wiki/51550">Translations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Supported versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud Enterprise</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/blob/master/COPYING-README">License</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/">Nextcloud GmbH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Groupware</a></li>
+      <li class="breadcrumb-item active">Troubleshooting</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/groupware/troubleshooting.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="troubleshooting">
+<span id="troubleshooting-groupware"></span><h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h1>
+<section id="calendar">
+<h2>Calendar<a class="headerlink" href="#calendar" title="Link to this heading"></a></h2>
+<section id="missing-shared-calendars">
+<h3>Missing Shared Calendars<a class="headerlink" href="#missing-shared-calendars" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt><strong>Problem:</strong></dt><dd><p>A user should have access to a shared calendar, but the calendar is not displayed in Nextcloud Calendar or other CalDAV clients (e.g., DAVx⁵ or Thunderbird).</p>
+</dd>
+<dt><strong>Affected Versions:</strong></dt><dd><ul class="simple">
+<li><p>Nextcloud Server 31.0.5 and below</p></li>
+<li><p>Nextcloud Server 30.0.11 and below</p></li>
+</ul>
+</dd>
+<dt><strong>Possible Reason:</strong></dt><dd><p>A bug in previous versions of Nextcloud Server could mistakenly add a calendar unshare instead of removing the share permission. For example, a user has read access through a group membership, and the owner grants permission to a single user to modify a calendar. When the modify permission is removed, an unshare record is incorrectly created.</p>
+</dd>
+</dl>
+<p><strong>Troubleshooting Steps:</strong></p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt><strong>Check for Hidden Calendars:</strong></dt><dd><p>It’s possible for a user to hide a calendar. Please check in Nextcloud Calendar if the missing calendar is listed in the “hidden” section. If it is, check the box in front of the calendar to enable it again.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>List Calendar Shares:</strong></dt><dd><p>Run the command <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">dav:list-calendar-shares</span> <span class="pre">&lt;uid&gt;</span></code> to list all shares for a user. Look for lines with the Calendar URI/Calendar Name of the missing calendar and Permissions = Unshare. If such a line exists, but the user should have access, you have three options:</p>
+</dd>
+</dl>
+</li>
+</ol>
+<ol class="upperalpha simple">
+<li><dl class="simple">
+<dt><strong>Create a User Share and Remove It Again:</strong></dt><dd><p>In most cases, sharing the calendar with the user again (as an individual/user share) will correct the state in the database.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Remove All Calendar Unshares for a User:</strong></dt><dd><p>Run <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">dav:clear-calendar-unshares</span> <span class="pre">&lt;uid&gt;</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Delete Specific Unshares:</strong></dt><dd><p>Some users may have many calendar unshares, so it might be easier to delete only the unwanted unshare. The <code class="docutils literal notranslate"><span class="pre">Share</span> <span class="pre">Id</span></code> refers to the ID of a row in the <code class="docutils literal notranslate"><span class="pre">oc_dav_shares</span></code> database table. Delete the row with the matching ID to remove the unshare.</p>
+</dd>
+</dl>
+</li>
+</ol>
+<dl class="simple">
+<dt><strong>Why isn’t there an automated migration to correct the problem?</strong></dt><dd><p>Unsharing a calendar is a feature, and with the given information, we cannot determine if a calendar was unshared intentionally or as a result of the bug.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="contacts">
+<h2>Contacts<a class="headerlink" href="#contacts" title="Link to this heading"></a></h2>
+<section id="unable-to-update-contacts-or-events">
+<h3>Unable to update contacts or events<a class="headerlink" href="#unable-to-update-contacts-or-events" title="Link to this heading"></a></h3>
+<p>If you get an error like:</p>
+<p><code class="docutils literal notranslate"><span class="pre">PATCH</span> <span class="pre">https://example.com/remote.php/dav</span> <span class="pre">HTTP/1.0</span> <span class="pre">501</span> <span class="pre">Not</span> <span class="pre">Implemented</span></code></p>
+<p>it is likely because of a misconfigured web server. Please refer to <a class="reference internal" href="../issues/general_troubleshooting.html#trouble-webdav-label"><span class="std std-ref">Troubleshooting WebDAV</span></a> for troubleshooting steps.</p>
+</section>
+</section>
+<section id="mail">
+<h2>Mail<a class="headerlink" href="#mail" title="Link to this heading"></a></h2>
+<section id="autoconfig-for-your-mail-domain-fails">
+<h3>Autoconfig for your mail domain fails<a class="headerlink" href="#autoconfig-for-your-mail-domain-fails" title="Link to this heading"></a></h3>
+<p>If autoconfiguration for your domain fails, you can create an autoconfig file and place it as <code class="docutils literal notranslate"><span class="pre">https://autoconfig.yourdomain.tld/mail/config-v1.1.xml</span></code>. For more information please refer to <a class="reference external" href="https://wiki.mozilla.org/Thunderbird:Autoconfiguration:ConfigFileFormat">Mozilla’s documentation</a>.</p>
+</section>
+<section id="database-insert-problems-on-mysql">
+<h3>Database insert problems on MySQL<a class="headerlink" href="#database-insert-problems-on-mysql" title="Link to this heading"></a></h3>
+<p>If the mail app fails to insert new rows for messages (<cite>oc_mail_messages</cite>), recipients (<cite>oc_mail_recipients</cite>) or similar tables, you are possibly not using the 4 byte support.</p>
+<p>See <a class="reference internal" href="../configuration_database/mysql_4byte_support.html"><span class="doc">Enabling MySQL 4-byte support</span></a> for how to update your database configuration.</p>
+</section>
+<section id="export-threading-data">
+<h3>Export threading data<a class="headerlink" href="#export-threading-data" title="Link to this heading"></a></h3>
+<p>If you encounter an issue with threading, e.g. messages that belong to the same conversation thread don’t show up as one, you can export the data the algorithm will use to build threads. We are dealing with sensitive data here, but the command will optionally redact the data with the <code class="docutils literal notranslate"><span class="pre">--redact</span></code> switch. The exported data will then only keep the original database IDs, the rest of the data is randomized. This format does not the export message details, it still contains metadata about how many messages you have and how they relate. Please consider this before posting the data online.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">mail</span><span class="p">:</span><span class="n">account</span><span class="p">:</span><span class="n">export</span><span class="o">-</span><span class="n">threads</span> <span class="mi">1393</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>1393 represents the <a class="reference internal" href="#mail-get-account-ids-groupware"><span class="std std-ref">account ID</span></a>.</p>
+</div>
+<p>The output will look similar to this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;subject&quot;</span><span class="p">:</span> <span class="s2">&quot;83379f9bc36915d5024de878386060b5@redacted&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;2def0f3597806ecb886da1d9cc323a7c@redacted&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;references&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s2">&quot;databaseId&quot;</span><span class="p">:</span> <span class="mi">261535</span>
+    <span class="p">},</span>
+        <span class="p">{</span>
+        <span class="s2">&quot;subject&quot;</span><span class="p">:</span> <span class="s2">&quot;Re: 1d4725ae1ac4e4798b541ca3f3cdce6e@redacted&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;ce9e248333c44a5a64ccad26f2550f95@redacted&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;references&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;bc95cbaff3abbed716e1d40bbdaa58a0@redacted&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;8651a9ac37674907606c936ced1333d7@redacted&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;4a87e94522a3cf26dba8977ae901094d@redacted&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;a3b30430b1ccb41089170eecbe315d3a@redacted&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;8e9f60369dce3d8b2b27430bd50ec46d@redacted&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;46cfa6e729ff329e6ede076853154113@redacted&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;079e7bc89d69792839a5e1831b1cbc80@redacted&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;079e7bc89d69792839a5e1831b1cbc80@redacted&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;databaseId&quot;</span><span class="p">:</span> <span class="mi">262086</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;subject&quot;</span><span class="p">:</span> <span class="s2">&quot;Re: 1d4725ae1ac4e4798b541ca3f3cdce6e@redacted&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;8dd0e0ef2f7ab100b75922489ff26306@redacted&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;references&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;bc95cbaff3abbed716e1d40bbdaa58a0@redacted&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;8651a9ac37674907606c936ced1333d7@redacted&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;4a87e94522a3cf26dba8977ae901094d@redacted&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;a3b30430b1ccb41089170eecbe315d3a@redacted&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;8e9f60369dce3d8b2b27430bd50ec46d@redacted&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;46cfa6e729ff329e6ede076853154113@redacted&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;079e7bc89d69792839a5e1831b1cbc80@redacted&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ce9e248333c44a5a64ccad26f2550f95@redacted&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ce9e248333c44a5a64ccad26f2550f95@redacted&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;databaseId&quot;</span><span class="p">:</span> <span class="mi">262087</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>It’s recommended practice to pipe the export into a file, which you can later share with the Mail app community and developers:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">mail</span><span class="p">:</span><span class="n">account</span><span class="p">:</span><span class="n">export</span><span class="o">-</span><span class="n">threads</span> <span class="mi">1393</span> <span class="o">|</span> <span class="n">gzip</span> <span class="o">-</span><span class="n">c</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">-</span><span class="n">mail</span><span class="o">-</span><span class="n">threads</span><span class="o">-</span><span class="mf">1393.</span><span class="n">json</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+</section>
+<section id="get-account-ids">
+<span id="mail-get-account-ids-groupware"></span><h3>Get account IDs<a class="headerlink" href="#get-account-ids" title="Link to this heading"></a></h3>
+<p>For many troubleshooting instructions you need to know the <cite>id</cite> of a mail account. You can acquire this through the database, but it’s also possible to utilize the account export command of <a class="reference internal" href="../occ_command.html"><span class="doc">occ</span></a> if you know the UID of the user utilizing the mail account:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">mail</span><span class="p">:</span><span class="n">account</span><span class="p">:</span><span class="n">export</span> <span class="n">user123</span>
+</pre></div>
+</div>
+<p>The output will look similar to this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Account</span> <span class="mi">1393</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">E</span><span class="o">-</span><span class="n">Mail</span><span class="p">:</span> <span class="n">christoph</span><span class="nd">@domain</span><span class="o">.</span><span class="n">com</span>
+<span class="o">-</span> <span class="n">Name</span><span class="p">:</span> <span class="n">Christoph</span> <span class="n">Wurst</span>
+<span class="o">-</span> <span class="n">IMAP</span> <span class="n">user</span><span class="p">:</span> <span class="n">christoph</span>
+<span class="o">-</span> <span class="n">IMAP</span> <span class="n">host</span><span class="p">:</span> <span class="n">mx</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="mi">993</span><span class="p">,</span> <span class="n">security</span><span class="p">:</span> <span class="n">ssl</span>
+<span class="o">-</span> <span class="n">SMTP</span> <span class="n">user</span><span class="p">:</span> <span class="n">christoph</span>
+<span class="o">-</span> <span class="n">SMTP</span> <span class="n">host</span><span class="p">:</span> <span class="n">mx</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="mi">587</span><span class="p">,</span> <span class="n">security</span><span class="p">:</span> <span class="n">tls</span>
+</pre></div>
+</div>
+<p>In this example, <code class="docutils literal notranslate"><span class="pre">1393</span></code> is the <cite>account ID</cite>.</p>
+</section>
+<section id="issues-connecting-to-outlook-com">
+<h3>Issues connecting to Outlook.com<a class="headerlink" href="#issues-connecting-to-outlook-com" title="Link to this heading"></a></h3>
+<p>If you can not access your Outlook.com account try to enable the <a class="reference external" href="https://account.live.com/proofs/Manage">Two-Factor Verification</a> and set up an <a class="reference external" href="https://account.live.com/proofs/AppPassword">app password</a>, which you then use for the Nextcloud Mail app.</p>
+</section>
+<section id="logging-the-imap-smtp-sieve-connections">
+<h3>Logging the IMAP/SMTP/Sieve connections<a class="headerlink" href="#logging-the-imap-smtp-sieve-connections" title="Link to this heading"></a></h3>
+<p>The Nextcloud Mail app offers an extensive logging system to make it easier identifying and tracking down bugs. As this may include sensitive data, be sure to remove or mask them before posting them publicly.</p>
+<section id="per-mail-account">
+<h4>Per mail account<a class="headerlink" href="#per-mail-account" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.1.0.</span></p>
+</div>
+<p>Starting with version 5.1.0 of the mail app, you can enable logging of outgoing IMAP/SMTP/Sieve connections limited to a specific mail account. As that saves a lot of resources on your system, this is the preferred method for debugging issues regarding IMAP/SMTP/Sieve connections.</p>
+<p>First, you need to get the accountId for the mail account you like to enable debug logging on. Please see <a class="reference internal" href="#mail-get-account-ids-groupware"><span class="std std-ref">Get account IDs</span></a> for more.</p>
+<p>Once you know the accountId of the mail account in question, you can use it to enable debug logging by running the following command on the server:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">mail</span><span class="p">:</span><span class="n">account</span><span class="p">:</span><span class="n">debug</span> <span class="o">&lt;</span><span class="n">accountId</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">on</span>
+</pre></div>
+</div>
+<p>All subsequent outgoing connections made by the mail app will then be written to the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory. The file naming follows the following format: <code class="docutils literal notranslate"><span class="pre">mail-{{userId}}-{{accountId}}-{{protocol}}.log</span></code> (e.g., <cite>mail-admin-49-imap.log</cite>).</p>
+<p>The debug logging for that specific account can be disabled once you’ve collected the necessary data by running the following command on the server:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">mail</span><span class="p">:</span><span class="n">account</span><span class="p">:</span><span class="n">debug</span> <span class="o">&lt;</span><span class="n">accountId</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">off</span>
+</pre></div>
+</div>
+</section>
+<section id="globally">
+<h4>Globally<a class="headerlink" href="#globally" title="Link to this heading"></a></h4>
+<p>This enables logging of the IMAP/SMTP/Sieve connections for <strong>all</strong> mail accounts configured on the server. This should be used with caution as it can put a lot of strain on large environments.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.1.0.</span></p>
+</div>
+<p>To enable the global debug logging on versions 5.1.0 and above, just run the following command on the server:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="nb">set</span> <span class="n">app</span><span class="o">.</span><span class="n">mail</span><span class="o">.</span><span class="n">debug</span> <span class="o">--</span><span class="n">value</span> <span class="n">true</span> <span class="o">--</span><span class="nb">type</span> <span class="nb">bool</span>
+</pre></div>
+</div>
+<p>All subsequent outgoing connections made by the mail app will then be written to the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory. The file naming follows the following format: <code class="docutils literal notranslate"><span class="pre">mail-{{userId}}-{{accountId}}-{{protocol}}.log</span></code> (e.g., <cite>mail-admin-49-imap.log</cite>).</p>
+<p>The global debug logging can be disabled once you’ve collected the necessary data by running the following command on the server:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="nb">set</span> <span class="n">app</span><span class="o">.</span><span class="n">mail</span><span class="o">.</span><span class="n">debug</span> <span class="o">--</span><span class="n">value</span> <span class="n">false</span> <span class="o">--</span><span class="nb">type</span> <span class="nb">bool</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following steps only apply to version 1.6.2 up to 5.0.8. Restrict logging of outgoing connections to a specific mail account is not available there.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 1.6.2.</span></p>
+</div>
+<p>To enable the global debug logging, it’s necessary to enable both the debug mode as well as debug logging for the whole nextcloud instance by running the following commands on the server:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="nb">set</span> <span class="n">debug</span> <span class="o">--</span><span class="n">value</span> <span class="n">true</span> <span class="o">--</span><span class="nb">type</span> <span class="nb">bool</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="nb">set</span> <span class="n">loglevel</span> <span class="o">--</span><span class="n">value</span> <span class="mi">0</span> <span class="o">--</span><span class="nb">type</span> <span class="nb">int</span>
+</pre></div>
+</div>
+<p>All subsequent outgoing connections made by the mail app will then be written to the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory. The file naming follows the following format: <code class="docutils literal notranslate"><span class="pre">horde_{{protocol}}.log</span></code> (e.g., <cite>horde_imap.log</cite>).</p>
+<p>Once you’ve collected the necessary data, it’s highly recommended to disable the debug mode as well as resetting the loglevel to the default value by running the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="nb">set</span> <span class="n">debug</span> <span class="o">--</span><span class="n">value</span> <span class="n">false</span> <span class="o">--</span><span class="nb">type</span> <span class="nb">bool</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="nb">set</span> <span class="n">loglevel</span> <span class="o">--</span><span class="n">value</span> <span class="mi">2</span> <span class="o">--</span><span class="nb">type</span> <span class="nb">int</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="timeout-and-other-connectivity-issues">
+<h3>Timeout and other connectivity issues<a class="headerlink" href="#timeout-and-other-connectivity-issues" title="Link to this heading"></a></h3>
+<p>You can use OpenSSL to test and benchmark the connection from your nextcloud host to the IMAP/SMTP host.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">openssl</span> <span class="n">s_time</span> <span class="o">-</span><span class="n">connect</span> <span class="n">imap</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">tld</span><span class="p">:</span><span class="mi">993</span>
+</pre></div>
+</div>
+<p>The output should look similar to this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Collecting</span> <span class="n">connection</span> <span class="n">statistics</span> <span class="k">for</span> <span class="mi">30</span> <span class="n">seconds</span>
+<span class="o">***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************</span>
+
+<span class="mi">483</span> <span class="n">connections</span> <span class="ow">in</span> <span class="mf">0.94</span><span class="n">s</span><span class="p">;</span> <span class="mf">513.83</span> <span class="n">connections</span><span class="o">/</span><span class="n">user</span> <span class="n">sec</span><span class="p">,</span> <span class="nb">bytes</span> <span class="n">read</span> <span class="mi">0</span>
+<span class="mi">483</span> <span class="n">connections</span> <span class="ow">in</span> <span class="mi">31</span> <span class="n">real</span> <span class="n">seconds</span><span class="p">,</span> <span class="mi">0</span> <span class="nb">bytes</span> <span class="n">read</span> <span class="n">per</span> <span class="n">connection</span>
+
+
+<span class="n">Now</span> <span class="n">timing</span> <span class="k">with</span> <span class="n">session</span> <span class="nb">id</span> <span class="n">reuse</span><span class="o">.</span>
+<span class="n">starting</span>
+<span class="o">*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************</span>
+
+<span class="mi">497</span> <span class="n">connections</span> <span class="ow">in</span> <span class="mf">0.97</span><span class="n">s</span><span class="p">;</span> <span class="mf">512.37</span> <span class="n">connections</span><span class="o">/</span><span class="n">user</span> <span class="n">sec</span><span class="p">,</span> <span class="nb">bytes</span> <span class="n">read</span> <span class="mi">0</span>
+<span class="mi">497</span> <span class="n">connections</span> <span class="ow">in</span> <span class="mi">31</span> <span class="n">real</span> <span class="n">seconds</span><span class="p">,</span> <span class="mi">0</span> <span class="nb">bytes</span> <span class="n">read</span> <span class="n">per</span> <span class="n">connection</span>
+</pre></div>
+</div>
+</section>
+<section id="manual-account-synchronization-and-threading">
+<h3>Manual account synchronization and threading<a class="headerlink" href="#manual-account-synchronization-and-threading" title="Link to this heading"></a></h3>
+<p>To troubleshoot synchronization or threading problems it’s helpful to run the sync from the command line while the user does not use the web interface (reduces chances of a conflict):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">mail</span><span class="p">:</span><span class="n">account</span><span class="p">:</span><span class="n">sync</span> <span class="o">-</span><span class="n">vvv</span> <span class="mi">1393</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>1393 represents the <a class="reference internal" href="#mail-get-account-ids-groupware"><span class="std std-ref">account ID</span></a>.</p>
+</div>
+<p>The command offers a <code class="docutils literal notranslate"><span class="pre">--force</span></code> option. Use it wisely as it doesn’t perform the same path a typical web triggered sync request would do.</p>
+<p>The output will look similar to this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">Skipping</span> <span class="n">mailbox</span> <span class="n">sync</span> <span class="k">for</span> <span class="n">Archive</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">Skipping</span> <span class="n">mailbox</span> <span class="n">sync</span> <span class="k">for</span> <span class="n">Archive</span><span class="mf">.2020</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">partial</span> <span class="n">sync</span> <span class="mi">1393</span><span class="p">:</span><span class="n">Drafts</span> <span class="o">-</span> <span class="n">get</span> <span class="nb">all</span> <span class="n">known</span> <span class="n">UIDs</span> <span class="n">took</span> <span class="mi">0</span><span class="n">s</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">partial</span> <span class="n">sync</span> <span class="mi">1393</span><span class="p">:</span><span class="n">Drafts</span> <span class="o">-</span> <span class="n">get</span> <span class="n">new</span> <span class="n">messages</span> <span class="n">via</span> <span class="n">Horde</span> <span class="n">took</span> <span class="mi">0</span><span class="n">s</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">partial</span> <span class="n">sync</span> <span class="mi">1393</span><span class="p">:</span><span class="n">Drafts</span> <span class="o">-</span> <span class="n">persist</span> <span class="n">new</span> <span class="n">messages</span> <span class="n">took</span> <span class="mi">0</span><span class="n">s</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">partial</span> <span class="n">sync</span> <span class="mi">1393</span><span class="p">:</span><span class="n">Drafts</span> <span class="o">-</span> <span class="n">get</span> <span class="n">changed</span> <span class="n">messages</span> <span class="n">via</span> <span class="n">Horde</span> <span class="n">took</span> <span class="mi">0</span><span class="n">s</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">partial</span> <span class="n">sync</span> <span class="mi">1393</span><span class="p">:</span><span class="n">Drafts</span> <span class="o">-</span> <span class="n">persist</span> <span class="n">changed</span> <span class="n">messages</span> <span class="n">took</span> <span class="mi">0</span><span class="n">s</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">partial</span> <span class="n">sync</span> <span class="mi">1393</span><span class="p">:</span><span class="n">Drafts</span> <span class="o">-</span> <span class="n">get</span> <span class="n">vanished</span> <span class="n">messages</span> <span class="n">via</span> <span class="n">Horde</span> <span class="n">took</span> <span class="mi">0</span><span class="n">s</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">partial</span> <span class="n">sync</span> <span class="mi">1393</span><span class="p">:</span><span class="n">Drafts</span> <span class="o">-</span> <span class="n">persist</span> <span class="n">new</span> <span class="n">messages</span> <span class="n">took</span> <span class="mi">0</span><span class="n">s</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">partial</span> <span class="n">sync</span> <span class="mi">1393</span><span class="p">:</span><span class="n">Drafts</span> <span class="n">took</span> <span class="mi">0</span><span class="n">s</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">partial</span> <span class="n">sync</span> <span class="mi">1393</span><span class="p">:</span><span class="n">INBOX</span> <span class="o">-</span> <span class="n">get</span> <span class="nb">all</span> <span class="n">known</span> <span class="n">UIDs</span> <span class="n">took</span> <span class="mi">0</span><span class="n">s</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">partial</span> <span class="n">sync</span> <span class="mi">1393</span><span class="p">:</span><span class="n">INBOX</span> <span class="o">-</span> <span class="n">get</span> <span class="n">new</span> <span class="n">messages</span> <span class="n">via</span> <span class="n">Horde</span> <span class="n">took</span> <span class="mi">0</span><span class="n">s</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">partial</span> <span class="n">sync</span> <span class="mi">1393</span><span class="p">:</span><span class="n">INBOX</span> <span class="o">-</span> <span class="n">classified</span> <span class="n">a</span> <span class="n">chunk</span> <span class="n">of</span> <span class="n">new</span> <span class="n">messages</span> <span class="n">took</span> <span class="mi">1</span><span class="n">s</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">partial</span> <span class="n">sync</span> <span class="mi">1393</span><span class="p">:</span><span class="n">INBOX</span> <span class="o">-</span> <span class="n">persist</span> <span class="n">new</span> <span class="n">messages</span> <span class="n">took</span> <span class="mi">0</span><span class="n">s</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">partial</span> <span class="n">sync</span> <span class="mi">1393</span><span class="p">:</span><span class="n">INBOX</span> <span class="o">-</span> <span class="n">get</span> <span class="n">changed</span> <span class="n">messages</span> <span class="n">via</span> <span class="n">Horde</span> <span class="n">took</span> <span class="mi">1</span><span class="n">s</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">partial</span> <span class="n">sync</span> <span class="mi">1393</span><span class="p">:</span><span class="n">INBOX</span> <span class="o">-</span> <span class="n">persist</span> <span class="n">changed</span> <span class="n">messages</span> <span class="n">took</span> <span class="mi">0</span><span class="n">s</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">partial</span> <span class="n">sync</span> <span class="mi">1393</span><span class="p">:</span><span class="n">INBOX</span> <span class="o">-</span> <span class="n">get</span> <span class="n">vanished</span> <span class="n">messages</span> <span class="n">via</span> <span class="n">Horde</span> <span class="n">took</span> <span class="mi">0</span><span class="n">s</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">partial</span> <span class="n">sync</span> <span class="mi">1393</span><span class="p">:</span><span class="n">INBOX</span> <span class="o">-</span> <span class="n">persist</span> <span class="n">new</span> <span class="n">messages</span> <span class="n">took</span> <span class="mi">0</span><span class="n">s</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">partial</span> <span class="n">sync</span> <span class="mi">1393</span><span class="p">:</span><span class="n">INBOX</span> <span class="n">took</span> <span class="mi">2</span><span class="n">s</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">Skipping</span> <span class="n">mailbox</span> <span class="n">sync</span> <span class="k">for</span> <span class="n">Sent</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">Skipping</span> <span class="n">mailbox</span> <span class="n">sync</span> <span class="k">for</span> <span class="n">Sentry</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">Skipping</span> <span class="n">mailbox</span> <span class="n">sync</span> <span class="k">for</span> <span class="n">Trash</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">Account</span> <span class="mi">1393</span> <span class="n">has</span> <span class="mi">19417</span> <span class="n">messages</span> <span class="k">for</span> <span class="n">threading</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">Threading</span> <span class="mi">19417</span> <span class="n">messages</span> <span class="o">-</span> <span class="n">build</span> <span class="n">ID</span> <span class="n">table</span> <span class="n">took</span> <span class="mi">1</span><span class="n">s</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">Threading</span> <span class="mi">19417</span> <span class="n">messages</span> <span class="o">-</span> <span class="n">build</span> <span class="n">root</span> <span class="n">container</span> <span class="n">took</span> <span class="mi">0</span><span class="n">s</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">Threading</span> <span class="mi">19417</span> <span class="n">messages</span> <span class="o">-</span> <span class="n">free</span> <span class="n">ID</span> <span class="n">table</span> <span class="n">took</span> <span class="mi">0</span><span class="n">s</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">Threading</span> <span class="mi">19417</span> <span class="n">messages</span> <span class="o">-</span> <span class="n">prune</span> <span class="n">containers</span> <span class="n">took</span> <span class="mi">0</span><span class="n">s</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">Threading</span> <span class="mi">19417</span> <span class="n">messages</span> <span class="o">-</span> <span class="n">group</span> <span class="n">by</span> <span class="n">subject</span> <span class="n">took</span> <span class="mi">0</span><span class="n">s</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">Threading</span> <span class="mi">19417</span> <span class="n">messages</span> <span class="n">took</span> <span class="mi">1</span><span class="n">s</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">Account</span> <span class="mi">1393</span> <span class="n">has</span> <span class="mi">9839</span> <span class="n">threads</span>
+<span class="p">[</span><span class="n">debug</span><span class="p">]</span> <span class="n">Account</span> <span class="mi">1393</span> <span class="n">has</span> <span class="mi">0</span> <span class="n">messages</span> <span class="k">with</span> <span class="n">a</span> <span class="n">new</span> <span class="n">thread</span> <span class="n">IDs</span>
+<span class="mi">62</span><span class="n">MB</span> <span class="n">of</span> <span class="n">memory</span> <span class="n">used</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="out_of_office.html" class="btn btn-neutral float-left" title="Out-of-office feature" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../office/index.html" class="btn btn-neutral float-right" title="Office" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/admin_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/30/admin_manual"
+             
+          >
+            30
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/admin_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

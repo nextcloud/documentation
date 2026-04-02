@@ -1,0 +1,843 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="uk-UA" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Використання Клієнта синхронізації &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=e691f3da"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=0958edf7"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Індекс" href="../genindex.html" />
+    <link rel="search" title="Пошук" href="../search.html" />
+    <link rel="next" title="Клієнт віртуальних файлів для macOS" href="macosvfs.html" />
+    <link rel="prev" title="Встановлення" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Вступ до посібника користувача Nextcloud (latest)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Інтерфейс веб-версії Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Файли та синхронізація</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Програмне забезпечення для групової роботи</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Розмови</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Десктопні клієнти</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Встановлення</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Використання Клієнта синхронізації</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#systray-icon">Значок системної скриньки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-nextcloud-account-settings">Налаштування параметрів облікового запису Nextcloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-new-accounts">Додавання нових облікових записів</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-manager-overlay-icons">Накладні значки файлового менеджера</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-the-user-status">Встановлення статусу користувача</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-from-your-desktop">Спільний доступ з робочого столу</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general-window">Головне вікно</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-network-window">Використання мережевого вікна</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-ignored-files-editor">Використання редактора ігнорованих файлів</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="macosvfs.html">Клієнт віртуальних файлів для macOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoupdate.html">Автоматичне оновлення</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Оновлення каналів</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conflicts.html">Конфлікти</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">ПОШИРЕНІ ЗАПИТАННЯ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Налаштуйте ваші вподобання</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Універсальний доступ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Використання двофакторної аутентифікації</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Керуйте підключеними браузерами та пристроями</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Зовнішнє сховище</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Десктопні клієнти</a></li>
+      <li class="breadcrumb-item active">Використання Клієнта синхронізації</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/usage.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-synchronization-client">
+<h1>Використання Клієнта синхронізації<a class="headerlink" href="#using-the-synchronization-client" title="Link to this heading"></a></h1>
+<p>Клієнт Nextcloud Desktop Client залишається у фоновому режимі і відображається у вигляді іконки в системному лотку (Windows, KDE), рядку меню (macOS) або області сповіщень (Linux).</p>
+<figure class="align-default">
+<img alt="Значок стану, зелене коло та біла галочка" src="../../_images/icon.png" />
+</figure>
+<p>Індикатор стану використовує піктограми для відображення поточного стану вашої синхронізації. Зелене коло з білою галочкою вказує на те, що синхронізація відбувається і ви підключені до сервера Nextcloud.</p>
+<figure class="align-default">
+<img alt="Значок стану, синє коло та білі півкола" src="../../_images/icon-syncing.png" />
+</figure>
+<p>Синя іконка з білими півколами означає, що йде синхронізація.</p>
+<figure class="align-default">
+<img alt="Status icon, grey circle and vertical parallel lines" src="../../_images/icon-paused.png" />
+</figure>
+<p>The grey icon with the parallel lines tells you your synchronization
+has been paused. (Most likely by you.)</p>
+<figure class="align-default">
+<img alt="Значок статусу, сіре коло і три горизонтальні білі крапки" src="../../_images/icon-offline.png" />
+</figure>
+<p>Сіра іконка з трьома білими крапками означає, що ваш клієнт синхронізації втратив зв’язок із сервером Nextcloud.</p>
+<figure class="align-default">
+<img alt="Значок стану, знак &quot;!&quot; у жовтому колі" src="../../_images/icon-information.png" />
+</figure>
+<p>Коли ви бачите жовте коло зі знаком «!» - це інформаційна піктограма, і ви повинні натиснути на неї, щоб побачити, що вона вам скаже.</p>
+<figure class="align-default">
+<img alt="Значок стану, червоне коло та білий х" src="../../_images/icon-error.png" />
+</figure>
+<p>Червоне коло з білим «x» вказує на помилку конфігурації, наприклад, неправильний логін або URL-адресу сервера.</p>
+<section id="systray-icon">
+<h2>Значок системної скриньки<a class="headerlink" href="#systray-icon" title="Link to this heading"></a></h2>
+<p>Клацання правою кнопкою миші на піктограмі системного лотка відкриває меню для швидкого доступу до різних операцій.</p>
+<figure class="align-default">
+<img alt="меню клієнта синхронізації правою кнопкою миші" src="../../_images/traymenu.png" />
+</figure>
+<p>Це меню містить наступні опції:</p>
+<ul class="simple">
+<li><p>Відкрийте головний діалог</p></li>
+<li><p>Призупинити синхронізацію/відновити синхронізацію</p></li>
+<li><p>Налаштування</p></li>
+<li><p>Вихід з Nextcloud, вихід з системи та закриття клієнта</p></li>
+</ul>
+<p>Клацніть лівою кнопкою миші на піктограмі системного лотка, щоб відкрити головний діалог десктопного клієнта.</p>
+<figure class="align-default">
+<img alt="Головний діалог" src="../../_images/main_dialog.png" />
+</figure>
+<p>Основні діалоги показують нещодавні дії, помилки та сповіщення сервера.</p>
+<p>При натисканні на головне діалогове вікно, а потім на аватарку користувача, можна відкрити Налаштування.</p>
+</section>
+<section id="configuring-nextcloud-account-settings">
+<h2>Налаштування параметрів облікового запису Nextcloud<a class="headerlink" href="#configuring-nextcloud-account-settings" title="Link to this heading"></a></h2>
+<figure class="align-default">
+<img alt="Головний діалог" src="../../_images/settingsdialog.png" />
+</figure>
+<p>У верхній частині вікна знаходяться вкладки для кожного налаштованого облікового запису синхронізації, а також дві інші - для загальних і мережевих налаштувань. На вкладках вашого облікового запису доступні такі функції:</p>
+<ul class="simple">
+<li><p>Статус з’єднання, який показує, до якого сервера Nextcloud ви підключені, і ваше ім’я користувача Nextcloud.</p></li>
+<li><p>Використане та доступне місце на сервері.</p></li>
+<li><p>Поточний стан синхронізації.</p></li>
+<li><p>Кнопка <strong>Додати підключення для синхронізації папок</strong>.</p></li>
+</ul>
+<p>Маленька кнопка з трьома крапками (меню переповнення), що знаходиться праворуч від рядка стану синхронізації, пропонує додаткові опції:</p>
+<ul class="simple">
+<li><p>Відкрити папку</p></li>
+<li><p>Виберіть «Що синхронізувати» (з’являється лише тоді, коли дерево файлів згорнуто, і розгортає дерево файлів)</p></li>
+<li><p>Призупинити синхронізацію / відновити синхронізацію</p></li>
+<li><p>Видалити підключення синхронізації папок</p></li>
+<li><p>Доступність (Доступно, якщо ввімкнено підтримку віртуальних файлів)</p></li>
+<li><p>Увімкнути підтримку віртуальних файлів/Вимкнути підтримку віртуальних файлів</p></li>
+</ul>
+<p><strong>Відкрити папку</strong> відкриває вашу локальну папку синхронізації Nextcloud.</p>
+<p><strong>Призупинити синхронізацію</strong> призупиняє операції синхронізації, не вносячи жодних змін до вашого облікового запису. Програма продовжить оновлювати списки файлів і папок, не завантажуючи та не оновлюючи файли. Щоб зупинити всі операції синхронізації, скористайтеся <strong>Видалити підключення до синхронізації папок</strong>.</p>
+<figure class="align-default">
+<img alt="Додаткові опції для операцій синхронізації" src="../../_images/general_settings_folder_context_menu.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Nextcloud не зберігає mtime (час модифікації) каталогів, хоча оновлює mtimes файлів. Дивіться розділ <a href="#id1"><span class="problematic" id="id2">`Неправильна дата теки при синхронізації &amp;lt;https://github.com/owncloud/core/issues/7009&amp;gt;`_</span></a> для обговорення цього питання.</p>
+</div>
+</section>
+<section id="adding-new-accounts">
+<h2>Додавання нових облікових записів<a class="headerlink" href="#adding-new-accounts" title="Link to this heading"></a></h2>
+<p>Ви можете налаштувати кілька облікових записів Nextcloud у клієнті синхронізації для настільних комп’ютерів. Просто натисніть кнопку <strong>Акаунт</strong> &amp;gt; <strong>Додати новий</strong> на будь-якій вкладці облікового запису, щоб додати новий обліковий запис, а потім дотримуйтесь вказівок майстра створення облікового запису. Новий обліковий запис з’явиться на новій вкладці в діалоговому вікні налаштувань, де ви зможете будь-коли змінити його параметри. Використовуйте <strong>Акаунт</strong> &amp;gt; <strong>Видалити</strong>, щоб видалити акаунти.</p>
+</section>
+<section id="file-manager-overlay-icons">
+<h2>Накладні значки файлового менеджера<a class="headerlink" href="#file-manager-overlay-icons" title="Link to this heading"></a></h2>
+<p>Клієнт синхронізації Nextcloud надає значки накладання, на додаток до звичайних значків типів файлів, для вашого системного файлового менеджера (Explorer у Windows, Finder у Mac і Nautilus у Linux), щоб показати стан синхронізації ваших файлів Nextcloud.</p>
+<p>Піктограми накладання схожі на піктограми системної панелі, описані вище. Вони поводяться по-різному для файлів і каталогів залежно від стану синхронізації та помилок.</p>
+<p>Значок накладання окремого файлу вказує на його поточний стан синхронізації. Якщо файл синхронізовано з версією сервера, він буде позначений зеленою галочкою.</p>
+<p>Якщо файл ігнорується при синхронізації, наприклад, через те, що він знаходиться у вашому списку виключень або є символічним посиланням, буде показано значок попередження.</p>
+<p>Якщо сталася помилка синхронізації або файл занесено до чорного списку, він буде позначений червоним хрестиком, що привертає увагу.</p>
+<p>Якщо файл очікує на синхронізацію або вже синхронізується, на піктограмі накладання відображається синя піктограма у вигляді кружечка.</p>
+<p>Коли клієнт перебуває в автономному режимі, жодні значки не відображаються, щоб показати, що папка не синхронізована, і жодні зміни не синхронізуються з сервером.</p>
+<p>Значок накладання синхронізованої теки вказує на стан файлів у ній. Якщо є помилки синхронізації, каталог буде позначено піктограмою з попередженням.</p>
+<p>Якщо каталог містить ігноровані файли, позначені попереджувальними піктограмами, це не змінює стан батьківських каталогів.</p>
+</section>
+<section id="set-the-user-status">
+<h2>Встановлення статусу користувача<a class="headerlink" href="#set-the-user-status" title="Link to this heading"></a></h2>
+<p>Якщо на вашому сервері Nextcloud встановлено додаток «Статус користувача», ви можете налаштувати свій статус користувача з десктопного клієнта. Для цього відкрийте головне діалогове вікно. Потім натисніть на свій аватар і натисніть на три крапки. У меню, що відкриється, натисніть на <strong>Встановити статус</strong>.</p>
+<figure class="align-default">
+<img alt="Відкрийте діалог статусу користувача з головного діалогу." src="../../_images/user_status_selector_main_dialog.png" />
+</figure>
+<p>У діалоговому вікні, що відкриється, ви можете встановити свій онлайн-статус, натиснувши на <strong>Онлайн</strong>, <strong>Відсутній</strong>, <strong>Не турбувати</strong> або <strong>Невидимий</strong>. Ви також можете встановити власне повідомлення про стан за допомогою текстового поля нижче або вибрати одне з попередньо визначених повідомлень про стан, наведених нижче. Ви також можете встановити власний смайлик, натиснувши на кнопку зі смайликом поруч з полем для введення тексту. Останнє, що ви можете налаштувати, це коли ваш статус користувача буде очищено. Ви можете вибрати період, через який статус користувача буде очищено, натиснувши на кнопку зліва від тексту <strong>Очистити повідомлення про статус після</strong>.</p>
+<figure class="align-default">
+<img alt="Діалогове вікно для встановлення статусу користувача." src="../../_images/user_status-selector_dialog.png" />
+</figure>
+<p>Якщо вас влаштовує створений вами статус, ви можете увімкнути його за допомогою кнопки <strong>Встановити повідомлення про статус</strong>. Якщо ви вже встановили статус, ви можете очистити його, натиснувши кнопку <strong>Очистити повідомлення про статус</strong>.</p>
+</section>
+<section id="sharing-from-your-desktop">
+<h2>Спільний доступ з робочого столу<a class="headerlink" href="#sharing-from-your-desktop" title="Link to this heading"></a></h2>
+<p>Клієнт синхронізації для настільних комп’ютерів Nextcloud інтегрується з вашим файловим менеджером. Finder на macOS та Провідник на Windows. Користувачі Linux повинні встановити додатковий пакунок залежно від використовуваного файлового менеджера. Доступні, наприклад, <code class="docutils literal notranslate"><span class="pre">nautilus-nextcloud</span></code> (Ubuntu/Debian), <code class="docutils literal notranslate"><span class="pre">dolphin-nextcloud</span></code> (Kubuntu), <code class="docutils literal notranslate"><span class="pre">nemo-nextcloud</span></code> і <code class="docutils literal notranslate"><span class="pre">caja-nextcloud</span></code>. Ви можете створювати посилання для спільного доступу і ділитися з внутрішніми користувачами Nextcloud так само, як і в веб-інтерфейсі Nextcloud.</p>
+<p>У файловому провіднику клацніть файл і в контекстному меню виберіть <strong>Nextcloud</strong>, а потім клацніть на <strong>Share options</strong>, щоб відкрити діалогове вікно «Поділитися».</p>
+<figure class="align-default">
+<img alt="Надання спільного доступу з Провідника Windows." src="../../_images/share_context_menu.png" />
+</figure>
+<p>За допомогою цього діалогового вікна ви можете надати спільний доступ до файлу.</p>
+<figure class="align-default">
+<img alt="Поділіться діалогом" src="../../_images/share_dialog.png" />
+</figure>
+</section>
+<section id="general-window">
+<h2>Головне вікно<a class="headerlink" href="#general-window" title="Link to this heading"></a></h2>
+<p>У вікні Загальні можна налаштувати такі параметри, як <strong>Запускати під час запуску системи</strong>, <strong>Використовувати монохромні піктограми</strong> і <strong>Показувати сповіщення сервера</strong>. Тут ви знайдете кнопку <strong>Редагувати ігноровані файли</strong>, щоб запустити редактор ігнорованих файлів, і <strong>Запитувати підтвердження перед завантаженням папок, розмір яких перевищує [розмір папки]</strong>.</p>
+<figure class="align-default">
+<img alt="Загальне вікно містить параметри конфігурації." src="../../_images/settings_general.png" />
+</figure>
+</section>
+<section id="using-the-network-window">
+<h2>Використання мережевого вікна<a class="headerlink" href="#using-the-network-window" title="Link to this heading"></a></h2>
+<p id="index-0">У вікні Налаштування мережі ви можете визначити налаштування мережевого проксі-сервера, а також обмежити пропускну здатність для завантаження і вивантаження.</p>
+<figure class="align-default">
+<img alt="../../_images/settings_network.png" src="../../_images/settings_network.png" />
+</figure>
+</section>
+<section id="using-the-ignored-files-editor">
+<span id="usingignoredfileseditor-label"></span><h2>Використання редактора ігнорованих файлів<a class="headerlink" href="#using-the-ignored-files-editor" title="Link to this heading"></a></h2>
+<p id="index-1">Можливо, у вас є локальні файли або каталоги, які ви не хочете створювати резервні копії та зберігати на сервері. Щоб визначити і виключити ці файли або каталоги, ви можете скористатися редактором <em>Ігнорованих файлів</em> (вкладка Загальні).</p>
+<figure class="align-default">
+<img alt="../../_images/ignored_files_editor.png" src="../../_images/ignored_files_editor.png" />
+</figure>
+<p>Для вашої зручності редактор попередньо заповнений списком типових шаблонів ігнорування за замовчуванням. Ці шаблони містяться в системному файлі (зазвичай <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code>), розташованому в каталозі програми Nextcloud Client. Ви не можете змінити ці попередньо заповнені шаблони безпосередньо з редактора. Однак, якщо необхідно, ви можете навести курсор на будь-який шаблон у списку, щоб побачити шлях і ім’я файлу, пов’язаного з цим шаблоном, знайти файл і відредагувати файл <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Зміна файлу визначення глобального виключення може зробити клієнт непрацездатним або призвести до небажаної поведінки.</p>
+</div>
+<p>Кожен рядок у редакторі містить рядок шаблону ігнорування. При створенні користувацьких шаблонів, окрім звичайних символів для визначення шаблону ігнорування, ви можете використовувати символи підстановки для значень, що збігаються.  Наприклад, ви можете використовувати зірочку (<code class="docutils literal notranslate"><span class="pre">*</span></code>) для позначення довільної кількості символів або знак питання (<code class="docutils literal notranslate"><span class="pre">?</span></code>) для позначення одного символу.</p>
+<p>Шаблони, які закінчуються косою рискою (<code class="docutils literal notranslate"><span class="pre">/</span></code>), застосовуються лише до компонентів каталогів шляху, що перевіряється.</p>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Користувацькі записи наразі не перевіряються редактором на синтаксичну правильність, тому ви не побачите жодних попереджень про неправильний синтаксис. Якщо синхронізація працює не так, як ви очікували, перевірте синтаксис.</p>
+</div>
+<p>Кожен рядок шаблону у списку супроводжується прапорцем. Якщо прапорець встановлено, крім ігнорування файлу або компонента каталогу, якому відповідає шаблон, усі знайдені файли також вважаються «швидкоплинними метаданими» і вилучаються клієнтом.</p>
+<p>Крім виключення файлів і каталогів, які використовують шаблони, визначені у цьому списку:</p>
+<ul class="simple">
+<li><p>Клієнт Nextcloud завжди виключає файли, що містять символи, які не можуть бути синхронізовані з іншими файловими системами.</p></li>
+<li><p>Файли, які спричиняють окремі помилки, видаляються тричі під час синхронізації. Однак клієнт надає можливість повторити спробу синхронізації ще три рази для файлів, які спричиняють помилки.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Встановлення" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="macosvfs.html" class="btn btn-neutral float-right" title="Клієнт віртуальних файлів для macOS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Here go the languages -->
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐
+      
+      
+      uk-UA
+      
+      <span class="fa fa-caret-down"></span>
+
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Мови</dt>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ar/"
+                 
+              >
+                
+                Arabic
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/br/"
+                 
+              >
+                
+                Breton
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ca/"
+                 
+              >
+                
+                Catalan
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/cs/"
+                 
+              >
+                
+                Czech
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/da/"
+                 
+              >
+                
+                Danish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/de/"
+                 
+              >
+                
+                German
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el/"
+                 
+              >
+                
+                Greek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/en/"
+                 
+              >
+                
+                English
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/es/"
+                 
+              >
+                
+                Spanish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eu/"
+                 
+              >
+                
+                eu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fi_FI/"
+                 
+              >
+                
+                Finnish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fr/"
+                 
+              >
+                
+                French
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ga/"
+                 
+              >
+                
+                Irish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/gl/"
+                 
+              >
+                
+                Glacian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu_HU/"
+                 
+              >
+                
+                Hungarian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/id/"
+                 
+              >
+                
+                Indonesian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/it/"
+                 
+              >
+                
+                Italian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ja_JP/"
+                 
+              >
+                
+                Japanese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ko/"
+                 
+              >
+                
+                Korean
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/mn/"
+                 
+              >
+                
+                Mongolian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nb_NO/"
+                 
+              >
+                
+                Norwegian (NB)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nl/"
+                 
+              >
+                
+                Dutch
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nn/"
+                 
+              >
+                
+                Norwegian (NN)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pl/"
+                 
+              >
+                
+                Polish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_BR/"
+                 
+              >
+                
+                Portuguese (BR)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_PT/"
+                 
+              >
+                
+                Portuguese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ro/"
+                 
+              >
+                
+                Romanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ru/"
+                 
+              >
+                
+                Russian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/si/"
+                 
+              >
+                
+                Sinhala
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sk_SK/"
+                 
+              >
+                
+                Slovakian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sr/"
+                 
+              >
+                
+                Slovenian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sv/"
+                 
+              >
+                
+                Swedish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ta/"
+                 
+              >
+                
+                Tamil
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/tr/"
+                 
+              >
+                
+                Turkish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk/"
+                 
+              >
+                
+                Ukrainian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk_UA/"
+                 
+              >
+                
+                uk_UA
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uz/"
+                 
+              >
+                
+                Uzbek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/vi/"
+                 
+              >
+                
+                Vietnamese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_CN/"
+                 
+              >
+                
+                Chinese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_HK/"
+                 
+              >
+                
+                Chinese (HK)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_TW/"
+                 
+              >
+                
+                Chinese (TW)
+                
+              </a>
+            </dd>
+          
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Версії</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/30/user_manual"
+               
+            >
+              30
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/29/user_manual"
+               
+            >
+              29
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Завантаження</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Прочитайте документацію</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Головна Проєкту</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Побудови</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
