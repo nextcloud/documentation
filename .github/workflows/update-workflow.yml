@@ -63,18 +63,15 @@ jobs:
           fi
         fi
     
-    - name: Commit and push changes
-      run: |
-        git add ${{ inputs.file_path }}
-        git diff --cached --quiet || git commit -sm "chore: update ${{ inputs.file_path }} from master branch"
-        
-        # Create a new branch for the PR
-        file_path_safe=$(echo "${{ inputs.file_path }}" | sed 's|/|-|g')
-        pr_branch="workflow/update-${file_path_safe}-${{ matrix.target_branch }}"
-        git checkout -b "$pr_branch"
-        git push origin "$pr_branch"
-        
-        # Create a pull request
-        gh pr create --base ${{ matrix.target_branch }} --head "$pr_branch" --title "chore: update ${{ inputs.file_path }} from master branch" --body "Automated update of ${{ inputs.file_path }} from master branch"
-      env:
-        GH_TOKEN: ${{ secrets.COMMAND_BOT_PAT }}
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
+      with:
+        token: ${{ secrets.COMMAND_BOT_PAT }}
+        commit-message: 'chore: update ${{ inputs.file_path }} from master branch'
+        committer: GitHub <noreply@github.com>
+        author: nextcloud-command <nextcloud-command@users.noreply.github.com>
+        signoff: true
+        branch: 'workflow/update-${{ inputs.file_path }}-${{ matrix.target_branch }}'
+        base: ${{ matrix.target_branch }}
+        title: 'chore: update ${{ inputs.file_path }} from master branch'
+        body: 'Automated update of ${{ inputs.file_path }} from master branch'
