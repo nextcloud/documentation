@@ -2,7 +2,7 @@
 Call layout
 ===========
 
-You can switch between promoted view and grid view using the toggle in the bottom bar.
+You can switch between grid view and speaker view using the toggle icon in the three-dot menu or the bottom bar.
 
 .. image:: images/call-view-toggle-button.png
     :width: 300px
@@ -10,15 +10,16 @@ You can switch between promoted view and grid view using the toggle in the botto
 Grid view
 ---------
 
-Grid view shows as many participants as the screen can fit. Use the navigation buttons on the left and right to scroll through participants when there are more than the screen can display.
+Grid view shows all participants as tiles. Use the navigation buttons on the left and right to scroll through participants when they do not all fit on the screen.
 
 .. image:: images/talk-grid-view.png
     :width: 700px
 
-Promoted view
+Speaker view
 -------------
 
-Promoted view shows the active speaker large, with other participants in a row below. Use the navigation buttons on the left and right to scroll through participants when the row overflows.
+Speaker view (also called promoted view) centres the active speaker in a large tile and places the other participants in a row below.
+Use the navigation buttons on the left and right to scroll through participants when the row overflows.
 
 .. image:: images/talk-promoted-view.png
     :width: 700px
