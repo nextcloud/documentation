@@ -50,12 +50,15 @@ if (!preg_match('/<h2>Nextcloud \d+/', $content)) {
 $version_count = preg_match_all('/<h2>Nextcloud (\d+)/', $content, $versions);
 fprintf(STDERR, "✓ Found %d version sections: %s\n", $version_count, implode(', ', $versions[1]));
 
-// Validate documentation links format (should be /server/VERSION/)
-$docs_links = array_filter($external_links, fn($l) => preg_match('~docs\.[^/]+/server/~', $l));
+// Validate documentation links format (should be server/VERSION/)
+// Check both relative links (server/latest, server/stable, etc.) and external docs links
+$relative_docs_links = array_filter($relative_links, fn($l) => preg_match('~^server/(latest|stable|\d+)/~', $l));
+$external_docs_links = array_filter($external_links, fn($l) => preg_match('~docs\.[^/]+/server/~', $l));
+$all_docs_links = array_merge($relative_docs_links, $external_docs_links);
 
-if (!empty($docs_links)) {
-	$invalid_docs = array_filter($docs_links, fn($l) => 
-		!preg_match('~/server/(latest|stable|\d+)/~', $l)
+if (!empty($all_docs_links)) {
+	$invalid_docs = array_filter($all_docs_links, fn($l) => 
+		!preg_match('~(server|/server)/(latest|stable|\d+)/~', $l)
 	);
 	
 	if (!empty($invalid_docs)) {
@@ -64,7 +67,7 @@ if (!empty($docs_links)) {
 			fprintf(STDERR, "    - %s\n", $link);
 		}
 	} else {
-		fprintf(STDERR, "✓ All %d documentation links are properly formatted\n", count($docs_links));
+		fprintf(STDERR, "✓ All %d documentation links are properly formatted\n", count($all_docs_links));
 	}
 }
 

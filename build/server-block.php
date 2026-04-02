@@ -21,7 +21,7 @@ function generate_section(string $version, ?int $index = null): string {
 	}
 
 	// We added the translation of the documentation in 20
-	$userManualUrl = "https://docs.skjnldsv.com/server/$label/user_manual/";
+	$userManualUrl = "server/$label/user_manual/";
 	if ($version >= 20) {
 		$userManualUrl .= 'en/';
 	}
@@ -32,10 +32,10 @@ function generate_section(string $version, ?int $index = null): string {
 			$note
 			<ul class="simple">
 				<li><a class="reference external" href="$userManualUrl">User Manual</a>
-					(<a class="reference external" href="https://docs.skjnldsv.com/server/$label/Nextcloud_User_Manual.pdf">Download PDF</a>)</li>
-				<li><a class="reference external" href="https://docs.skjnldsv.com/server/$label/admin_manual/">Administration Manual</a>
-					(<a class="reference external" href="https://docs.skjnldsv.com/server/$label/Nextcloud_Server_Administration_Manual.pdf">Download PDF</a>)</li>
-				<li><a class="reference external" href="https://docs.skjnldsv.com/server/$label/developer_manual/">Developer Manual</a></li>
+					(<a class="reference external" href="server/$label/Nextcloud_User_Manual.pdf">Download PDF</a>)</li>
+				<li><a class="reference external" href="server/$label/admin_manual/">Administration Manual</a>
+					(<a class="reference external" href="server/$label/Nextcloud_Server_Administration_Manual.pdf">Download PDF</a>)</li>
+				<li><a class="reference external" href="server/$label/developer_manual/">Developer Manual</a></li>
 			</ul>
 		</div>
 HTML;
