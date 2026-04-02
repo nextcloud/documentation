@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="sr" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Синхронизација са Thunderbird &mdash; документација Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=8a86fe08"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/translations.js?v=3c3b4542"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Индекс" href="../genindex.html" />
+    <link rel="search" title="Претрага" href="../search.html" />
+    <link rel="next" title="Синхронизација са KDE Kontact" href="sync_kde.html" />
+    <link rel="prev" title="Синхронизација са macOS" href="sync_osx.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Увод у корисничко упутство за Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Шта је ново за кориснике у Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud веб интерфејс</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Фајлови и синхронизација</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Употреба апликације Контакти</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Употреба апликације Календар</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mail.html">Употреба апликације Пошта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Синхронизација са Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">Синхронизација са iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">Синхронизација са macOS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Синхронизација са Thunderbird</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#recommended-method">Препоручена метода</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alternative-using-the-tbsync-addon">Алтернатива: употреба TbSync  додатка</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alternative-using-the-cardbook-add-on-contacts-only">Алтернатива: употреба CardBook додатка (само за контакте)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-old-method-manually-subscribing-to-calendars">Стара метода: ручна претплата на календаре</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Синхронизација са KDE Kontact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Сихронизација са GNOME десктопом</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Синхронизација са Windows 10</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Постављање ваших подешавања</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Универзални приступ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Употреба двофактоске аутентификације</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Управљање повезаним прегледачима и уређајима</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Спољно складиште</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Groupware</a></li>
+      <li class="breadcrumb-item active">Синхронизација са Thunderbird</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/sync_thunderbird.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="synchronizing-with-thunderbird">
+<h1>Синхронизација са Thunderbird<a class="headerlink" href="#synchronizing-with-thunderbird" title="Link to this heading"></a></h1>
+<p><a class="reference external" href="https://www.thunderbird.net">Thunderbird</a> је зрео мејл клијент који има доста могућности и који може да се претвори у комплетан PIM. Почевши од верзије 102, подржава синхронизацију адресара преко CardDAV и аутоматско откривање календара и адресара који су доступни на серверу.</p>
+<section id="recommended-method">
+<h2>Препоручена метода<a class="headerlink" href="#recommended-method" title="Link to this heading"></a></h2>
+<p>Почевши од Thunderbird верзије 102, постоји уграђена подршка за CardDAV протокол.</p>
+<p>Да бисте је укључили:</p>
+<ul class="simple">
+<li><p>У погледу адресара кликните на стрелицу надоле у близини „<strong>New Address Book</strong>” и изаберите „<strong>Add CardDAV Address Book</strong>”.</p></li>
+<li><p>У нередном прозору, откуцајте своје <strong>корисничко име</strong> и <strong>URL вашег сервера</strong>.</p></li>
+<li><p>Наредни прозор ће вас упитати за корисничко име и лозинку овог налога.</p></li>
+<li><p>Претходни прозор ће се освежити и питаће вас које адресаре желите да синхронизујете.</p></li>
+<li><p>Изаберите их па кликните <strong>Continue</strong>.</p></li>
+</ul>
+<p>Ако касније додате нови адресар можете поново да извршите све ове кораке и предложиће се синхронизација само оних адресара који се већ не синхронизују.</p>
+<p>И за календаре такође постоји уграђена подршка за CalDAV.</p>
+<p>Да бисте је укључили:</p>
+<ul class="simple">
+<li><p>Кликните на „<strong>+</strong>” у близини Agendas на страници агенди.</p></li>
+<li><p>У наредном прозиру изаберите „<strong>On the network</strong>”.</p></li>
+<li><p>Откуцајте „<strong>име корисника</strong>” и „<strong>Url сервера</strong>” па кликните на „Find Calendars.</p></li>
+<li><p>Изаберите агенде које желите  да додате, па кликните на  „<strong>Subscribe</strong>”.</p></li>
+</ul>
+<p>Овде је иста ствар, ако касније желите да додате још календара, једноставно поново извршите процедуру.</p>
+</section>
+<section id="alternative-using-the-tbsync-addon">
+<h2>Алтернатива: употреба TbSync  додатка<a class="headerlink" href="#alternative-using-the-tbsync-addon" title="Link to this heading"></a></h2>
+<p>За ову методу је потребно да инсталирате два додатка:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://addons.thunderbird.net/en/thunderbird/addon/tbsync/">TbSync</a>.</p></li>
+<li><p><a class="reference external" href="https://addons.thunderbird.net/en/thunderbird/addon/dav-4-tbsync/">TbSync provider for CalDAV and CardDAV</a>.</p></li>
+</ol>
+<p>Када се инсталирају, ако сте на Windows систему, идите на <strong>Extras</strong>/<strong>Synchronisation settings (TbSync)</strong> или <strong>Edit/Synchronisation settings (TbSync)</strong> ако сте на Linux систему, па онда:</p>
+<ul class="simple">
+<li><p>У менаџеру налога изаберите „<strong>Add account</strong> / <strong>CalDAV / CardDAV account</strong></p></li>
+<li><p>У наредном прозору оставите подразумевану вредност под називом <strong>Automatic configuration</strong> и кликните на <strong>next</strong></p></li>
+<li><p>Унесите <strong>назив налога</strong>, који можете слободно да изаберете, <strong>корисничко име</strong>, <strong>лозинку</strong> и <strong>URL сервера</strong> па кликните на <strong>next</strong></p></li>
+<li><p>У наредном прозору би TbSync требало аутоматски да открије CalDAV и CardDAV адресе. Када се то догоди, кликните на <strong>Finish</strong></p></li>
+<li><p>Сада штиклирајте поље <strong>Enable and synchronize this account</strong>. TbSync ће да открије све адресаре и календаре којима ваш налог може да приступи на серверу</p></li>
+<li><p>Штиклирајте поље поред сваког календара и адресара који желите да се синхронизује, и такође колико често желите да се синхронизују, па притисните дугме <strong>sychronize now</strong></p></li>
+<li><p>Након прве успешне синхронизације можете да затворите прозор. TbSync ће одсада да обавља посао уместо вас. Завршили сте и можете да пређете на наредне одељке (осим у случају да вам је потребан напреднији адресар)</p></li>
+</ul>
+</section>
+<section id="alternative-using-the-cardbook-add-on-contacts-only">
+<h2>Алтернатива: употреба CardBook додатка (само за контакте)<a class="headerlink" href="#alternative-using-the-cardbook-add-on-contacts-only" title="Link to this heading"></a></h2>
+<p>Додатак <a class="reference external" href="https://addons.thunderbird.net/en/thunderbird/addon/cardbook/">CardBook</a> је напредна алтернатива уграђеном Thunderbird адресару, који подржава CardDAV. Можете истовремено да имате инсталиране и TbSync и CardBook.</p>
+<ol class="arabic simple">
+<li><p>Кликните на CardBook икону у горњем десном углу Thunderbird прозора:</p></li>
+</ol>
+<img alt="../../_images/cardbook_icon.png" src="../../_images/cardbook_icon.png" />
+<ol class="arabic simple" start="2">
+<li><p>У CardBook:</p>
+<ul class="simple">
+<li><p>Address book &gt; New Address book <strong>Remote</strong> &gt; Next</p></li>
+<li><p>Изаберите <strong>CardDAV</strong>, попуните адресу вашег Nextcloud сервера, ваше корисничко име и лозинку</p></li>
+</ul>
+</li>
+</ol>
+<img alt="../../_images/new_addressbook.png" src="../../_images/new_addressbook.png" />
+<ol class="arabic simple" start="4">
+<li><p>Кликните на „Validate”, па на Next, а затим изаберите назив адресара и кликните поново на Next:</p></li>
+</ol>
+<img alt="../../_images/addressbook_name.png" src="../../_images/addressbook_name.png" />
+<ol class="arabic simple" start="5">
+<li><p>Када завршите, CardBook синхронизује ваше адресаре. Увек можете ручно да окинете синхронизацију кликом на „Synchronize” у горњем левом углу CardBook:</p></li>
+</ol>
+<img alt="../../_images/synchronize_cardbook.png" src="../../_images/synchronize_cardbook.png" />
+</section>
+<section id="the-old-method-manually-subscribing-to-calendars">
+<h2>Стара метода: ручна претплата на календаре<a class="headerlink" href="#the-old-method-manually-subscribing-to-calendars" title="Link to this heading"></a></h2>
+<p>Ова метода је потребна само ако не желите да инсталирате TBSync.</p>
+<ol class="arabic">
+<li><p>Идите на своју Nextcloud Календар апликацију и кликните на мени 3 тачке за календар који желите да се синхронизује. То ће приказати URL који изгледа овако некако:</p>
+<p><code class="docutils literal notranslate"><span class="pre">https://cloud.nextcloud.com/remote.php/dav/calendars/daniel/personal/</span></code></p>
+</li>
+<li><p>Идите на поглед календара у Thunderbird и извршите десни клик на мени календара са леве стране (тамо где се налазе имена календара) да додате <strong>New Calendar</strong>.</p></li>
+<li><p>Изаберите <strong>On the Network</strong>:</p></li>
+</ol>
+<img alt="../../_images/new_calendar.png" src="../../_images/new_calendar.png" />
+<ol class="arabic simple" start="4">
+<li><p>Изаберите <strong>CalDAV</strong> и попуните информације које недостају:</p></li>
+</ol>
+<img alt="../../_images/CalDAV_calendar.png" src="../../_images/CalDAV_calendar.png" />
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sync_osx.html" class="btn btn-neutral float-left" title="Синхронизација са macOS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sync_kde.html" class="btn btn-neutral float-right" title="Синхронизација са KDE Kontact" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/eu/">eu</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/id/">id</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/ja_JP/">ja_JP</a></dd>
+<dd><a href="/server/latest/user_manual/ko/">ko</a></dd>
+<dd><a href="/server/latest/user_manual/nb_NO/">nb_NO</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/nn/">nn</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/pt_PT/">pt_PT</a></dd>
+<dd><a href="/server/latest/user_manual/ro/">ro</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/si/">si</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sr/">sr</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/ta/">ta</a></dd>
+<dd><a href="/server/latest/user_manual/th/">th</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/uk/">uk</a></dd>
+<dd><a href="/server/latest/user_manual/vi/">vi</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+<dd><a href="/server/latest/user_manual/zh_TW/">zh_TW</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Верзије</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/25/user_manual">25</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/user_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/user_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Преузимања</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>На прочитај документацију</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Почетна страница пројекта</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Изградње</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

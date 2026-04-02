@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic APIs &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Search" href="search.html" />
+    <link rel="prev" title="Webdav" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Nextcloud design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Clients and Client APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../general.html">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../activity-api.html">Activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../android_library/index.html">Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LoginFlow/index.html">Login Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../OCS/index.html">OCS API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../RemoteWipe/index.html">Remote wipe</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Webdav</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Basic APIs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#webdav-basics">WebDAV basics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing-requests">Testing requests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#requesting-properties">Requesting properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#listing-folders-rfc4918">Listing folders (rfc4918)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#downloading-files">Downloading files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#uploading-files">Uploading files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-folders-rfc4918">Creating folders (rfc4918)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deleting-files-and-folders-rfc4918">Deleting files and folders (rfc4918)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moving-files-and-folders-rfc4918">Moving files and folders (rfc4918)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#copying-files-and-folders-rfc4918">Copying files and folders (rfc4918)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#settings-favorites">Settings favorites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#listing-favorites">Listing favorites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#special-headers">Special Headers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#response-headers">Response Headers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trashbin.html">Trashbin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="versions.html">Versions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chunking.html">Chunked file upload</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bulkupload.html">File bulk upload</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comments.html">Comments</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Clients and Client APIs</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Webdav</a></li>
+      <li class="breadcrumb-item active">Basic APIs</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/client_apis/WebDAV/basic.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="basic-apis">
+<span id="webdavindex"></span><h1>Basic APIs<a class="headerlink" href="#basic-apis" title="Link to this heading"></a></h1>
+<p>This document provides a quick overview of the WebDAV operations supported in Nextcloud, to keep things readable it won’t go into many details
+for each operation, further information for each operation can be found in the corresponding RFC where applicable.</p>
+<section id="webdav-basics">
+<h2>WebDAV basics<a class="headerlink" href="#webdav-basics" title="Link to this heading"></a></h2>
+<p>The base url for all WebDAV operations for a Nextcloud instance is <code class="code docutils literal notranslate"><span class="pre">/remote.php/dav</span></code>.</p>
+<p>All requests need to provide authentication information, either as a basic auth header or by passing a set of valid session cookies.</p>
+<p>If your Nextcloud installation uses an external auth provider (such as an OIDC server) you may have to create an app password. To do that, go to your personal security settings and create one. It will provide a username and password which you can use within the Basic Auth header.</p>
+</section>
+<section id="testing-requests">
+<h2>Testing requests<a class="headerlink" href="#testing-requests" title="Link to this heading"></a></h2>
+<section id="with-curl">
+<h3>With curl<a class="headerlink" href="#with-curl" title="Link to this heading"></a></h3>
+<p>All WebDAV requests can be easily tested out using <code class="code docutils literal notranslate"><span class="pre">curl</span></code> by specifying the request method (<code class="code docutils literal notranslate"><span class="pre">GET</span></code>, <code class="code docutils literal notranslate"><span class="pre">PROPFIND</span></code>, <code class="code docutils literal notranslate"><span class="pre">PUT</span></code>, …) and providing a request body where needed.</p>
+<p>For example: you can perform a <code class="code docutils literal notranslate"><span class="pre">PROPFIND</span></code> request to find files in a folder using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span><span class="s1">&#39;https://cloud.example.com/remote.php/dav/files/username/folder&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--user<span class="w"> </span>username:password<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--request<span class="w"> </span>PROPFIND<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--data<span class="w"> </span><span class="s1">&#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="s1">    &lt;d:propfind xmlns:d=&quot;DAV:&quot; xmlns:oc=&quot;http://owncloud.org/ns&quot; xmlns:nc=&quot;http://nextcloud.org/ns&quot;&gt;</span>
+<span class="s1">      &lt;d:prop&gt;</span>
+<span class="s1">        &lt;d:getlastmodified/&gt;</span>
+<span class="s1">        &lt;d:getcontentlength/&gt;</span>
+<span class="s1">        &lt;d:getcontenttype/&gt;</span>
+<span class="s1">        &lt;oc:permissions/&gt;</span>
+<span class="s1">        &lt;d:resourcetype/&gt;</span>
+<span class="s1">        &lt;d:getetag/&gt;</span>
+<span class="s1">      &lt;/d:prop&gt;</span>
+<span class="s1">    &lt;/d:propfind&gt;&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="making-requests-in-javascript">
+<h3>Making requests in JavaScript<a class="headerlink" href="#making-requests-in-javascript" title="Link to this heading"></a></h3>
+<p>Here is a JavaScript code sample to get you started:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createClient</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;webdav&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">generateRemoteUrl</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/router&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">getCurrentUser</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/auth&#39;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createClient</span><span class="p">(</span><span class="nx">generateRemoteUrl</span><span class="p">(</span><span class="s1">&#39;dav&#39;</span><span class="p">))</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">getDirectoryContents</span><span class="p">(</span><span class="sb">`/files/</span><span class="si">${</span><span class="nx">getCurrentUser</span><span class="p">()</span><span class="o">?</span><span class="p">.</span><span class="nx">uid</span><span class="si">}</span><span class="sb">/folder`</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">details</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="sb">`&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="sb">                &lt;d:propfind xmlns:d=&quot;DAV:&quot; xmlns:oc=&quot;http://owncloud.org/ns&quot; xmlns:nc=&quot;http://nextcloud.org/ns&quot;&gt;</span>
+<span class="sb">                        &lt;d:prop&gt;</span>
+<span class="sb">                                &lt;d:getlastmodified/&gt;</span>
+<span class="sb">                                &lt;d:getcontentlength/&gt;</span>
+<span class="sb">                                &lt;d:getcontenttype/&gt;</span>
+<span class="sb">                                &lt;oc:permissions/&gt;</span>
+<span class="sb">                                &lt;d:resourcetype/&gt;</span>
+<span class="sb">                                &lt;d:getetag/&gt;</span>
+<span class="sb">                        &lt;/d:prop&gt;</span>
+<span class="sb">                &lt;/d:propfind&gt;`</span><span class="p">,</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="requesting-properties">
+<h2>Requesting properties<a class="headerlink" href="#requesting-properties" title="Link to this heading"></a></h2>
+<p>By default, a <code class="code docutils literal notranslate"><span class="pre">PROPFIND</span></code> request will only return a small number of properties for each file: last modified date, file size, whether it’s a folder, etag and mime type.</p>
+<p>You can request additional properties by sending a request body with the <code class="code docutils literal notranslate"><span class="pre">PROPFIND</span></code> request that lists all requested properties.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;d:propfind</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="w"> </span><span class="na">xmlns:nc=</span><span class="s">&quot;http://nextcloud.org/ns&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;d:prop&gt;</span>
+<span class="w">        </span><span class="nt">&lt;d:getlastmodified</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;d:getetag</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;d:getcontenttype</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;d:resourcetype</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;oc:fileid</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;oc:permissions</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;oc:size</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;d:getcontentlength</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;nc:has-preview</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;oc:favorite</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;oc:comments-unread</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;oc:owner-display-name</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;oc:share-types</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;nc:contained-folder-count</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;nc:contained-file-count</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/d:prop&gt;</span>
+<span class="nt">&lt;/d:propfind&gt;</span>
+</pre></div>
+</div>
+<section id="a-note-about-namespaces-uri">
+<h3>A note about namespaces URI<a class="headerlink" href="#a-note-about-namespaces-uri" title="Link to this heading"></a></h3>
+<p>When building the body of your DAV request, you will request properties that are available under specific namespace URI.
+It is usual to declare prefixes for those namespace in the <code class="docutils literal notranslate"><span class="pre">d:propfind</span></code> element of the body.</p>
+<p>Here is the list of available namespace:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>URI</p></th>
+<th class="head"><p>Prefix</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>DAV:</p></td>
+<td><p>d</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="http://owncloud.org/ns">http://owncloud.org/ns</a></p></td>
+<td><p>oc</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="http://nextcloud.org/ns">http://nextcloud.org/ns</a></p></td>
+<td><p>nc</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="http://open-collaboration-services.org/ns">http://open-collaboration-services.org/ns</a></p></td>
+<td><p>ocs</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="http://open-cloud-mesh.org/ns">http://open-cloud-mesh.org/ns</a></p></td>
+<td><p>ocm</p></td>
+</tr>
+</tbody>
+</table>
+<p>And here is how it should look in your DAV request:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="w">        </span><span class="nt">&lt;d:propfind</span>
+<span class="w">                </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span>
+<span class="w">                </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span>
+<span class="w">                </span><span class="na">xmlns:nc=</span><span class="s">&quot;http://nextcloud.org/ns&quot;</span>
+<span class="w">                </span><span class="na">xmlns:ocs=</span><span class="s">&quot;http://open-collaboration-services.org/ns&quot;</span><span class="nt">&gt;</span>
+<span class="w">                </span>xmlns:ocm=&quot;http://open-cloud-mesh.org/ns&quot;&gt;
+<span class="w">        </span>...
+</pre></div>
+</div>
+</section>
+<section id="supported-properties">
+<h3>Supported properties<a class="headerlink" href="#supported-properties" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>&lt;d:creationdate /&gt;</p></td>
+<td><p>The creation date of the node.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1970-01-01T00:00:00+00:00</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;d:getlastmodified /&gt;</p></td>
+<td><p>The latest modification time.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Wed,</span> <span class="pre">20</span> <span class="pre">Jul</span> <span class="pre">2022</span> <span class="pre">05:12:23</span> <span class="pre">GMT</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;d:getetag /&gt;</p></td>
+<td><p>The file’s etag.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&amp;quot;6436d084d4805&amp;quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;d:getcontenttype /&gt;</p></td>
+<td><p>The mime type of the file.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">image/jpeg</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;d:resourcetype /&gt;</p></td>
+<td><p>Specifies the nature of the resource.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;d:collection</span> <span class="pre">/&gt;</span></code> for a folder</p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;d:getcontentlength /&gt;</p></td>
+<td><p>The size if it is a file in bytes.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3030237</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;d:getcontentlanguage /&gt;</p></td>
+<td><p>The language of the content.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">en</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;d:displayname /&gt;</p></td>
+<td><p>A name suitable for presentation.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">name</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;d:lockdiscovery /&gt;</p></td>
+<td><div class="line-block">
+<div class="line">Dummy endpoint for class 2 WebDAV support.</div>
+<div class="line">Should return the list of lock, but</div>
+<div class="line">always return an empty response.</div>
+</div>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;d:lockdiscovery</span> <span class="pre">/&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;d:quota-available-bytes /&gt;</p></td>
+<td><p>Amount of available bytes in the folder.</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">3950773</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">-1</span></code> Uncomputed free space.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">-2</span></code> Unknown free space.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">-3</span></code> Unlimited free space.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>&lt;d:quota-used-bytes /&gt;</p></td>
+<td><p>Amount of bytes used in the folder.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3950773</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;d:supportedlock /&gt;</p></td>
+<td><div class="line-block">
+<div class="line">Dummy endpoint for class 2 WebDAV support.</div>
+<div class="line">Always provide the same lock capabilities.</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;d:lockentry&gt;</span></code></div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;d:lockscope&gt;&lt;d:exclusive</span> <span class="pre">/&gt;&lt;/d:lockscope&gt;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;d:locktype&gt;&lt;d:write</span> <span class="pre">/&gt;&lt;/d:locktype&gt;&lt;/d:lockentry&gt;</span></code></div>
+</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;/d:lockentry&gt;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;d:lockentry&gt;</span></code></div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;d:lockscope&gt;&lt;d:shared</span> <span class="pre">/&gt;&lt;/d:lockscope&gt;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;d:locktype&gt;&lt;d:write</span> <span class="pre">/&gt;&lt;/d:locktype&gt;</span></code></div>
+</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;/d:lockentry&gt;</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>&lt;oc:id /&gt;</p></td>
+<td><div class="line-block">
+<div class="line">The fileid namespaced by the instance id.</div>
+<div class="line">Globally unique.</div>
+</div>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">00000007oc9l3j5ur4db</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;oc:fileid /&gt;</p></td>
+<td><p>The unique id for the file within the instance.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">7</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;oc:downloadURL /&gt;</p></td>
+<td><div class="line-block">
+<div class="line">A URL to directly download the file from a</div>
+<div class="line">storage. No storage implements that yet.</div>
+</div>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;oc:permissions /&gt;</p></td>
+<td><div class="line-block">
+<div class="line">The permissions that the user has over the</div>
+<div class="line">file. The value is a string containing</div>
+<div class="line">letters for all available permissions.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">S</span></code>: Shared</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">R</span></code>: Shareable</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">M</span></code>: Mounted</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">G</span></code>: Readable</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">D</span></code>: Deletable</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">NV</span></code>: Updateable, Renameable, Moveable</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">W</span></code>: Updateable (file)</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">CK</span></code>: Creatable</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>&lt;nc:creation_time /&gt;</p></td>
+<td><p>Same as <code class="docutils literal notranslate"><span class="pre">creationdate</span></code>, but as a timestamp.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1675789581</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;nc:mount-type /&gt;</p></td>
+<td><p>The type of mount.</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">''</span></code> = local</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">'shared'</span></code> = received share</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">'group'</span></code> = group folder</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">'external'</span></code> = external storage</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">'external-session'</span></code> = external storage</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>&lt;nc:is-encrypted /&gt;</p></td>
+<td><p>Whether the folder is end-to-end encrypted.</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">0</span></code> for <code class="docutils literal notranslate"><span class="pre">false</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">1</span></code> for <code class="docutils literal notranslate"><span class="pre">true</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>&lt;oc:tags /&gt;</p></td>
+<td><p>List of user specified tags.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;oc:tag&gt;test&lt;/oc:tag&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;oc:favorite /&gt;</p></td>
+<td><p>The favorite state.</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">0</span></code> for not favourited</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">1</span></code> for favourited</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>&lt;oc:comments-href /&gt;</p></td>
+<td><p>The DAV endpoint to fetch the comments.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/remote.php/dav/comments/files/{fileId}</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;oc:comments-count /&gt;</p></td>
+<td><p>The number of comments.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;oc:comments-unread /&gt;</p></td>
+<td><p>The number of unread comments.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;oc:owner-id /&gt;</p></td>
+<td><p>The user id of the owner of a shared file.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alice</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;oc:owner-display-name /&gt;</p></td>
+<td><p>The display name of the owner of a shared file.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Alice</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;oc:share-types /&gt;</p></td>
+<td><p>XML array of share types.</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;oc:share-type&gt;{shareTypeId}&lt;/oc:share-type&gt;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">0</span></code> = User</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">1</span></code> = Group</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">3</span></code> = Public link</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">4</span></code> = Email</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">6</span></code> = Federated cloud share</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">7</span></code> = Circle</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">8</span></code> = Guest</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">9</span></code> = Remote group</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">10</span></code> = Talk conversation</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">12</span></code> = Deck</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">15</span></code> = Science mesh</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>&lt;ocs:share-permissions /&gt;</p></td>
+<td><div class="line-block">
+<div class="line">The permissions that the</div>
+<div class="line">user has over the share.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">1</span></code> = Read</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">2</span></code> = Update</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">4</span></code> = Create</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">8</span></code> = Delete</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">16</span></code> = Share</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">31</span></code> = All</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>&lt;ocm:share-permissions /&gt;</p></td>
+<td><div class="line-block">
+<div class="line">The permissions that the user has</div>
+<div class="line">over the share as a JSON array.</div>
+</div>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[&quot;share&quot;,</span> <span class="pre">&quot;read&quot;,</span> <span class="pre">&quot;write&quot;]</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;nc:share-attributes /&gt;</p></td>
+<td><p>User set attributes as a JSON array.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[{</span> <span class="pre">&quot;scope&quot;</span> <span class="pre">=&gt;</span> <span class="pre">&lt;string&gt;,</span> <span class="pre">&quot;key&quot;</span> <span class="pre">=&gt;</span> <span class="pre">&lt;string&gt;,</span> <span class="pre">&quot;enabled&quot;</span> <span class="pre">=&gt;</span> <span class="pre">&lt;bool&gt;</span> <span class="pre">}]</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;nc:sharees /&gt;</p></td>
+<td><p>The list of share recipient.</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;nc:sharee&gt;</span></code></div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;nc:id&gt;alice&lt;/nc:id&gt;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;nc:display-name&gt;Alice&lt;/nc:display-name&gt;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;nc:type&gt;0&lt;/nc:type&gt;</span></code></div>
+</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;/nc:sharee&gt;</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>&lt;oc:checksums /&gt;</p></td>
+<td><p>An array of checksums.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;oc:checksum&gt;md5:04c36b75222cd9fd47f2607333029106&lt;/oc:checksum&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;nc:has-preview /&gt;</p></td>
+<td><p>Whether a preview of the file is available.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;oc:size /&gt;</p></td>
+<td><div class="line-block">
+<div class="line">Unlike <code class="docutils literal notranslate"><span class="pre">getcontentlength</span></code>, this property</div>
+<div class="line">also works for folders, reporting the size of</div>
+<div class="line">everything in the folder. Size is in bytes.</div>
+</div>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">127815235</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;nc:rich-workspace-file /&gt;</p></td>
+<td><p>The id of the workspace file.</p></td>
+<td><p><cite>3456</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;nc:rich-workspace /&gt;</p></td>
+<td><p>The content of the workspace file.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>&lt;nc:upload_time /&gt;</p></td>
+<td><p>Date this file was uploaded.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1675789581</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;nc:note /&gt;</p></td>
+<td><p>Share note.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>&lt;nc:contained-folder-count /&gt;</p></td>
+<td><div class="line-block">
+<div class="line">The number of folders directly contained</div>
+<div class="line">in the folder (not recursively).</div>
+</div>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;nc:contained-file-count /&gt;</p></td>
+<td><div class="line-block">
+<div class="line">The number of files directly contained</div>
+<div class="line">in the folder (not recursively).</div>
+</div>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>&lt;nc:data-fingerprint /&gt;</p></td>
+<td><div class="line-block">
+<div class="line">Used by the clients to find out</div>
+<div class="line">if a backup has been restored.</div>
+</div>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;nc:acl-enabled&gt;</p></td>
+<td><p>Whether ACL is enabled for this group folder.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;nc:acl-can-manage&gt;</p></td>
+<td><p>Wether the current user can manager ACL.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;nc:acl-list&gt;</p></td>
+<td><p>Array of ACL rules.</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;nc:acl&gt;</span></code></div>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;nc:acl-mapping-type&gt;group&lt;/nc:acl-mapping-type&gt;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;nc:acl-mapping-id&gt;admin&lt;/nc:acl-mapping-id&gt;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;nc:acl-mapping-display-name&gt;admin&lt;/nc:acl-mapping-display-name&gt;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;nc:acl-mask&gt;20&lt;/nc:acl-mask&gt;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;nc:acl-permissions&gt;15&lt;/nc:acl-permissions&gt;</span></code></div>
+</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;/nc:acl&gt;</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>&lt;nc:inherited-acl-list&gt;</p></td>
+<td><p>Array of ACL rules from the parents folders</p></td>
+<td><p>See &lt;nc:acl-list&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;nc:group-folder-id&gt;</p></td>
+<td><p>Numerical id of that group folder.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;nc:lock&gt;</p></td>
+<td><p>Wether the file is locked.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;nc:lock-owner-type&gt;</p></td>
+<td><p>Type of the owner of the lock.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> = User
+<code class="docutils literal notranslate"><span class="pre">1</span></code> = Office or Text
+<code class="docutils literal notranslate"><span class="pre">2</span></code> = WebDAV</p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;nc:lock-owner&gt;</p></td>
+<td><p>User id of the owner of the lock.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alice</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;nc:lock-owner-displayname&gt;</p></td>
+<td><p>Display name of the owner of the lock.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Alice</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;nc:lock-owner-editor&gt;</p></td>
+<td><p>App id of an app owned lock.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;nc:lock-time&gt;</p></td>
+<td><p>Date when the lock was created as a timestamp.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1675789581</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;nc:lock-timeout&gt;</p></td>
+<td><p>TTL of the lock in seconds staring from the
+creation time.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> = No timeout</p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;nc:lock-token&gt;</p></td>
+<td><p>The token of the lock.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">files_lock/0e53dfb6-61b4-46f0-b38e-d9a428292998</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;nc:file-metadata-size&gt;</p></td>
+<td><p>The pixel-size of an image.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{&amp;quot;width&amp;quot;:451,&amp;quot;height&amp;quot;:529}</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;nc:file-metadata-gps&gt;</p></td>
+<td><p>The GPS location of a file taken from EXIF data.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{&amp;quot;latitude&amp;quot;:52.52093727702034,&amp;quot;longitude&amp;quot;:13.397258069518614}</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="listing-folders-rfc4918">
+<h2>Listing folders (<a class="reference external" href="https://tools.ietf.org/html/rfc4918">rfc4918</a>)<a class="headerlink" href="#listing-folders-rfc4918" title="Link to this heading"></a></h2>
+<p>The contents of a folder can be listed by sending a <code class="code docutils literal notranslate"><span class="pre">PROPFIND</span></code> request to the folder.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PROPFIND</span> <span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">folder</span>
+</pre></div>
+</div>
+<section id="getting-properties-for-just-the-folder">
+<h3>Getting properties for just the folder<a class="headerlink" href="#getting-properties-for-just-the-folder" title="Link to this heading"></a></h3>
+<p>You can request properties of a folder without also getting the folder contents by adding a <code class="code docutils literal notranslate"><span class="pre">Depth:</span> <span class="pre">0</span></code> header to the request.</p>
+</section>
+</section>
+<section id="downloading-files">
+<h2>Downloading files<a class="headerlink" href="#downloading-files" title="Link to this heading"></a></h2>
+<p>A file can be downloaded by sending a <code class="code docutils literal notranslate"><span class="pre">GET</span></code> request to the WebDAV url of the file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span>
+</pre></div>
+</div>
+</section>
+<section id="uploading-files">
+<h2>Uploading files<a class="headerlink" href="#uploading-files" title="Link to this heading"></a></h2>
+<p>A file can be uploaded by sending a <code class="code docutils literal notranslate"><span class="pre">PUT</span></code> request to the file and sending the raw file contents as the request body.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PUT</span> <span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span>
+</pre></div>
+</div>
+<p>Any existing file will be overwritten by the request.</p>
+</section>
+<section id="creating-folders-rfc4918">
+<h2>Creating folders (<a class="reference external" href="https://tools.ietf.org/html/rfc4918">rfc4918</a>)<a class="headerlink" href="#creating-folders-rfc4918" title="Link to this heading"></a></h2>
+<p>A folder can be created by sending a <code class="code docutils literal notranslate"><span class="pre">MKCOL</span></code> request to the folder.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MKCOL</span> <span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">new</span><span class="o">/</span><span class="n">folder</span>
+</pre></div>
+</div>
+</section>
+<section id="deleting-files-and-folders-rfc4918">
+<h2>Deleting files and folders (<a class="reference external" href="https://tools.ietf.org/html/rfc4918">rfc4918</a>)<a class="headerlink" href="#deleting-files-and-folders-rfc4918" title="Link to this heading"></a></h2>
+<p>A file or folder can be deleted by sending a <code class="code docutils literal notranslate"><span class="pre">DELETE</span></code> request to the file or folder.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span>
+</pre></div>
+</div>
+<p>When deleting a folder, its contents will be deleted recursively.</p>
+</section>
+<section id="moving-files-and-folders-rfc4918">
+<h2>Moving files and folders (<a class="reference external" href="https://tools.ietf.org/html/rfc4918">rfc4918</a>)<a class="headerlink" href="#moving-files-and-folders-rfc4918" title="Link to this heading"></a></h2>
+<p>A file or folder can be moved by sending a <code class="code docutils literal notranslate"><span class="pre">MOVE</span></code> request to the file or folder and specifying the destination in the <code class="code docutils literal notranslate"><span class="pre">Destination</span></code> header as full url.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MOVE</span> <span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span>
+<span class="n">Destination</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">new</span><span class="o">/</span><span class="n">location</span>
+</pre></div>
+</div>
+<p>The overwrite behavior of the move can be controlled by setting the <code class="code docutils literal notranslate"><span class="pre">Overwrite</span></code> head to <code class="code docutils literal notranslate"><span class="pre">T</span></code> or <code class="code docutils literal notranslate"><span class="pre">F</span></code> to enable or disable overwriting respectively.</p>
+</section>
+<section id="copying-files-and-folders-rfc4918">
+<h2>Copying files and folders (<a class="reference external" href="https://tools.ietf.org/html/rfc4918">rfc4918</a>)<a class="headerlink" href="#copying-files-and-folders-rfc4918" title="Link to this heading"></a></h2>
+<p>A file or folder can be copied by sending a <code class="code docutils literal notranslate"><span class="pre">COPY</span></code> request to the file or folder and specifying the destination in the <code class="code docutils literal notranslate"><span class="pre">Destination</span></code> header as full url.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">COPY</span> <span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span>
+<span class="n">Destination</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">new</span><span class="o">/</span><span class="n">location</span>
+</pre></div>
+</div>
+<p>The overwrite behavior of the copy can be controlled by setting the <code class="code docutils literal notranslate"><span class="pre">Overwrite</span></code> head to <code class="code docutils literal notranslate"><span class="pre">T</span></code> or <code class="code docutils literal notranslate"><span class="pre">F</span></code> to enable or disable overwriting respectively.</p>
+</section>
+<section id="settings-favorites">
+<h2>Settings favorites<a class="headerlink" href="#settings-favorites" title="Link to this heading"></a></h2>
+<p>A file or folder can be marked as favorite by sending a <code class="code docutils literal notranslate"><span class="pre">PROPPATCH</span></code> request to the file or folder and setting the <code class="code docutils literal notranslate"><span class="pre">oc-favorite</span></code> property</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>PROPPATCH<span class="w"> </span>remote.php/dav/files/user/path/to/file
+<span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;d:propertyupdate</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;d:set&gt;</span>
+<span class="w">        </span><span class="nt">&lt;d:prop&gt;</span>
+<span class="w">          </span><span class="nt">&lt;oc:favorite&gt;</span>1<span class="nt">&lt;/oc:favorite&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/d:prop&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/d:set&gt;</span>
+<span class="nt">&lt;/d:propertyupdate&gt;</span>
+</pre></div>
+</div>
+<p>Setting the <code class="code docutils literal notranslate"><span class="pre">oc:favorite</span></code> property to <code class="docutils literal notranslate"><span class="pre">1</span></code> marks a file as favorite, setting it to <code class="docutils literal notranslate"><span class="pre">0</span></code> un-marks it as favorite.</p>
+</section>
+<section id="listing-favorites">
+<h2>Listing favorites<a class="headerlink" href="#listing-favorites" title="Link to this heading"></a></h2>
+<p>Favorites for a user can be retrieved by sending a <code class="code docutils literal notranslate"><span class="pre">REPORT</span></code> request and specifying <code class="code docutils literal notranslate"><span class="pre">oc:favorite</span></code> as a filter</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>REPORT<span class="w"> </span>remote.php/dav/files/user/path/to/folder
+<span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;oc:filter-files</span><span class="w">  </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="w"> </span><span class="na">xmlns:nc=</span><span class="s">&quot;http://nextcloud.org/ns&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;oc:filter-rules&gt;</span>
+<span class="w">                 </span><span class="nt">&lt;oc:favorite&gt;</span>1<span class="nt">&lt;/oc:favorite&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/oc:filter-rules&gt;</span>
+<span class="w"> </span><span class="nt">&lt;/oc:filter-files&gt;</span>
+</pre></div>
+</div>
+<p>File properties can be requested by adding a <code class="code docutils literal notranslate"><span class="pre">&lt;d:prop/&gt;</span></code> element to the request listing the requested properties in the same way as it would be done for a <code class="code docutils literal notranslate"><span class="pre">PROPFIND</span></code> request.</p>
+<p>When listing favorites, the request will find all favorites in the folder recursively, all favorites for a user can be found by sending the request to <code class="code docutils literal notranslate"><span class="pre">remote.php/dav/files/user</span></code></p>
+</section>
+<section id="special-headers">
+<h2>Special Headers<a class="headerlink" href="#special-headers" title="Link to this heading"></a></h2>
+<section id="request-headers">
+<h3>Request Headers<a class="headerlink" href="#request-headers" title="Link to this heading"></a></h3>
+<p>You can set some special headers that Nextcloud will interpret.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Header</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>X-OC-MTime</p></td>
+<td><div class="line-block">
+<div class="line">Allow to specify a modification time.</div>
+<div class="line">The response will contain the header <code class="docutils literal notranslate"><span class="pre">X-OC-MTime:</span> <span class="pre">accepted</span></code></div>
+<div class="line">if the mtime was accepted.</div>
+</div>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1675789581</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>X-OC-CTime</p></td>
+<td><div class="line-block">
+<div class="line">Allow to specify a creation time.</div>
+<div class="line">The response will contain the header <code class="docutils literal notranslate"><span class="pre">X-OC-CTime:</span> <span class="pre">accepted</span></code></div>
+<div class="line">if the mtime was accepted.</div>
+</div>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1675789581</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>OC-Checksum</p></td>
+<td><div class="line-block">
+<div class="line">A checksum that will be stored in the DB.</div>
+<div class="line">The server will not do any sort of  validation.</div>
+</div>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">md5:04c36b75222cd9fd47f2607333029106</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>X-Hash</p></td>
+<td><div class="line-block">
+<div class="line">Allow to request the file’s hash from the server.</div>
+<div class="line">The server will return the hash in a header named either:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">X-Hash-MD5</span></code>, <code class="docutils literal notranslate"><span class="pre">X-Hash-SHA1</span></code>, or <code class="docutils literal notranslate"><span class="pre">X-Hash-SHA256</span></code>.</div>
+</div>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">md5</span></code>, <code class="docutils literal notranslate"><span class="pre">sha1</span></code>, or <code class="docutils literal notranslate"><span class="pre">sha256</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>OC-Chunked</p></td>
+<td><p>Specify that the sent data is part of a chunk upload.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>OC-Total-Length</p></td>
+<td><div class="line-block">
+<div class="line">Contains the total size of the file during a chunk upload.</div>
+<div class="line">This allow the server to abort faster if the remaining</div>
+<div class="line">user’s quota is not enough.</div>
+</div>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">4052412</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="response-headers">
+<h2>Response Headers<a class="headerlink" href="#response-headers" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Header</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>OC-Etag</p></td>
+<td><div class="line-block">
+<div class="line">On creation, move and copy,</div>
+<div class="line">the response contain the etag of the file.</div>
+</div>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;50ef2eba7b74aa84feff013efee2a5ef&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>OC-FileId</p></td>
+<td><div class="line-block">
+<div class="line">On creation, move and copy,</div>
+<div class="line">the response contain the fileid of the file.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Format: <code class="docutils literal notranslate"><span class="pre">&lt;padded-id&gt;&lt;instance-id&gt;</span></code>.</div>
+<div class="line">Example: <code class="docutils literal notranslate"><span class="pre">00000259oczn5x60nrdu</span></code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Webdav" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="search.html" class="btn btn-neutral float-right" title="Search" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/25/developer_manual">25</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/developer_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/developer_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

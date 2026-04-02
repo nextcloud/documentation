@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bootstrapping &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="App metadata" href="info.html" />
+    <link rel="prev" title="Tutorial" href="tutorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">App development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Bootstrapping</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-application-class">The Application class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bootstrapping-process">Bootstrapping process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-20-and-later">Nextcloud 20 and later</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-19-and-older">Nextcloud 19 and older</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#app-php-deprecated">app.php (deprecated)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="info.html">App metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependency_management.html">Dependency management</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Nextcloud design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">App development</a></li>
+      <li class="breadcrumb-item active">Bootstrapping</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/app_development/bootstrap.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bootstrapping">
+<span id="id1"></span><h1>Bootstrapping<a class="headerlink" href="#bootstrapping" title="Link to this heading"></a></h1>
+<p>Every php process has a relatively short lifespan that lasts as long as the HTTP request or the invocation of the command
+line program. At the beginning of this lifespan, Nextcloud initializes its services. At the same time, any additional apps
+might want to register their services to Nextcloud as well. This event is called the <em>bootstrapping</em> and this chapter
+shall shed some light on how to hook into this with an app.</p>
+<section id="the-application-class">
+<span id="application-php"></span><h2>The Application class<a class="headerlink" href="#the-application-class" title="Link to this heading"></a></h2>
+<p>The <cite>Application</cite> class is the main entry point of an app. This class is optional but highly recommended if your app needs
+to register any services or run some code for every request.</p>
+<p>Nextcloud will try to autoload the class from the namespace <code class="docutils literal notranslate"><span class="pre">\OCA\&lt;App</span> <span class="pre">namespace&gt;\AppInfo\Application</span></code>, like
+<code class="docutils literal notranslate"><span class="pre">\OCA\MyApp\AppInfo\Application</span></code>, where <em>MyApp</em> would be the name of your app. The file will therefore have the location <code class="docutils literal notranslate"><span class="pre">myapp/lib/AppInfo/Application.php</span></code>.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\AppInfo</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\App</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+        <span class="nx">\OCP\Util</span><span class="o">::</span><span class="na">connectHook</span><span class="p">(</span><span class="s1">&#39;OC_User&#39;</span><span class="p">,</span> <span class="s1">&#39;pre_deleteUser&#39;</span><span class="p">,</span> <span class="s1">&#39;OCA\MyApp\Hooks\User&#39;</span><span class="p">,</span> <span class="s1">&#39;deleteUser&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The class <strong>must</strong> extend <code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\App</span></code> and may optionally implement <code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Bootstrap\IBootstrap</span></code>:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">lib/AppInfo/Application.php</span><a class="headerlink" href="#id2" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\AppInfo</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\Listeners\UserDeletedListener</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCA\MyApp\Notifications\Notifier</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\App</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IBootContext</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IBootstrap</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IRegistrationContext</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Notification\IManager</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\User\Events</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="c1">// ... registration logic goes here ...</span>
+
+        <span class="c1">// Register the composer autoloader for packages shipped by this app, if applicable</span>
+        <span class="k">include_once</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/../../vendor/autoload.php&#39;</span><span class="p">;</span>
+
+        <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerEventListener</span><span class="p">(</span>
+            <span class="nx">BeforeUserDeletedEvent</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+            <span class="nx">UserDeletedListener</span><span class="o">::</span><span class="na">class</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">(</span><span class="nx">IBootContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="c1">// ... boot logic goes here ...</span>
+
+        <span class="sd">/** @var IManager $manager */</span>
+        <span class="nv">$manager</span> <span class="o">=</span> <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">getAppContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nx">IManager</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">registerNotifierService</span><span class="p">(</span><span class="nx">Notifier</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Note that the context objects of the methods <code class="docutils literal notranslate"><span class="pre">register</span></code> and <code class="docutils literal notranslate"><span class="pre">boot</span></code> have different interfaces and thus have different capabilities appropriate for their stage.</p>
+</section>
+<section id="bootstrapping-process">
+<h2>Bootstrapping process<a class="headerlink" href="#bootstrapping-process" title="Link to this heading"></a></h2>
+<p>To give a better overview of <em>when</em> each of the bootstrapping stages are reached and how they app can interact with them,
+this section explains the changes done for Nextcloud 20.</p>
+<section id="nextcloud-20-and-later">
+<h3>Nextcloud 20 and later<a class="headerlink" href="#nextcloud-20-and-later" title="Link to this heading"></a></h3>
+<p>Nextcloud 20 is the first release with the interface <code class="docutils literal notranslate"><span class="pre">\OCP\AppFramework\Bootstrap\IBootstrap</span></code>. This interface can be
+implemented by your app’s <code class="docutils literal notranslate"><span class="pre">Application</span></code> class to signal that it wants to act on the bootstrapping stages. The major difference
+between this and the old process is that the bootstrapping is not performed in sequence, but apps register and boot
+interleaved. This should ensure that an app that <code class="docutils literal notranslate"><span class="pre">boot</span></code>s can rely on all other apps’ registration to be finished.</p>
+<p>The overall process is as follows:</p>
+<ol class="arabic simple">
+<li><p>In each installed and enabled app that has an <code class="docutils literal notranslate"><span class="pre">Application</span></code> class that also implements <code class="docutils literal notranslate"><span class="pre">IBootstrap</span></code>, the <code class="docutils literal notranslate"><span class="pre">register</span></code>
+method will be called. This method receives a context argument via which the app can prime the dependency injection
+container and register other services lazily, e.g. by calling <code class="docutils literal notranslate"><span class="pre">$context-&gt;registerService(...)</span></code>. The emphasis is on <strong>laziness</strong>. At this very early stage of the
+process lifetime, no other apps nor all of the server components are ready. Therefore the app <strong>must not</strong> try to use
+anything except the API provided by the context. That shall ensure that all apps can safely run their registration logic
+before any services are queried (instantiated) from the DI container or related code is run.</p></li>
+<li><p>Nextcloud will load groups of certain apps early, e.g. filesystem or session apps, and other later. For that purpose, their optional
+<a class="reference internal" href="#app-php"><span class="std std-ref">app.php (deprecated)</span></a> will be included. As <code class="docutils literal notranslate"><span class="pre">app.php</span></code> is deprecated, apps should try not to rely on this step.</p></li>
+<li><p>Nextcloud will query the app’s <code class="docutils literal notranslate"><span class="pre">Application</span></code> class (again), no matter whether it implements <code class="docutils literal notranslate"><span class="pre">IBootstrap</span></code> or not.</p></li>
+<li><p>Nextcloud will invoke the <a class="reference internal" href="#app-bootstrap-boot"><span class="std std-ref">boot</span></a> method of every <code class="docutils literal notranslate"><span class="pre">Application</span></code> instance that implements <code class="docutils literal notranslate"><span class="pre">IBootstrap</span></code>. At this stage
+you may assume that all registrations via <code class="docutils literal notranslate"><span class="pre">IBootstrap::register</span></code> have completed.</p></li>
+</ol>
+<section id="booting-an-app">
+<span id="app-bootstrap-boot"></span><h4>Booting an app<a class="headerlink" href="#booting-an-app" title="Link to this heading"></a></h4>
+<p>Any code that should run once for every Nextcloud process goes into the <code class="docutils literal notranslate"><span class="pre">boot</span></code> method of an app’s <code class="docutils literal notranslate"><span class="pre">Application</span></code> class. Use this mechanism carefully as it could have a negative effect on Nextcloud’s overall performance.</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">lib/AppInfo/Application.php</span><a class="headerlink" href="#id3" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{}</span>
+
+<span class="hll">    <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">(</span><span class="nx">IBootContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+</span><span class="hll">        <span class="sd">/** @var IFooManager $manager */</span>
+</span><span class="hll">        <span class="nv">$manager</span> <span class="o">=</span> <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">getAppContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nx">IFooManager</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span><span class="hll">        <span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">registerCustomFoo</span><span class="p">(</span><span class="nx">MyFooImpl</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span><span class="hll">    <span class="p">}</span>
+</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>The code above fetches a fictional <em>foo manager</em> to register an app class. The boot context object comes with a <code class="docutils literal notranslate"><span class="pre">injectFn</span></code> helper that eases dependency injection inside the <code class="docutils literal notranslate"><span class="pre">boot</span></code> method by injecting arguments of a callable:</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">lib/AppInfo/Application.php</span><a class="headerlink" href="#id4" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">(</span><span class="nx">IBootContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+<span class="hll">        <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">injectFn</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="nx">IFooManager</span> <span class="nv">$manager</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="hll">            <span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">registerCustomFoo</span><span class="p">(</span><span class="nx">MyFooImpl</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span><span class="hll">        <span class="p">});</span>
+</span>    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>With the help of <code class="docutils literal notranslate"><span class="pre">Closure::fromCallable</span></code> you can also delegate to other methods that get their arguments injected:</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">lib/AppInfo/Application.php</span><a class="headerlink" href="#id5" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">(</span><span class="nx">IBootContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+<span class="hll">        <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">injectFn</span><span class="p">(</span><span class="nx">Closure</span><span class="o">::</span><span class="na">fromCallable</span><span class="p">([</span><span class="nv">$this</span><span class="p">,</span> <span class="s1">&#39;registerFoo&#39;</span><span class="p">]));</span>
+</span>    <span class="p">}</span>
+
+<span class="hll">    <span class="k">protected</span> <span class="k">function</span> <span class="nf">registerFoo</span><span class="p">(</span><span class="nx">IFooManager</span> <span class="nv">$manager</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+</span><span class="hll">        <span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">registerCustomFoo</span><span class="p">(</span><span class="nx">MyFooImpl</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span><span class="hll">    <span class="p">}</span>
+</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="nextcloud-19-and-older">
+<h3>Nextcloud 19 and older<a class="headerlink" href="#nextcloud-19-and-older" title="Link to this heading"></a></h3>
+<p>Nextcloud will load groups of certain apps early, like filesystem or session apps, and other later. For this their optional
+<a class="reference internal" href="#app-php"><span class="std std-ref">app.php (deprecated)</span></a> will be included. The <code class="docutils literal notranslate"><span class="pre">Application</span></code> class is only queried for some requests, so there is no guarantee that
+it’s constructor will be invoked.</p>
+</section>
+</section>
+<section id="app-php-deprecated">
+<span id="app-php"></span><h2>app.php (deprecated)<a class="headerlink" href="#app-php-deprecated" title="Link to this heading"></a></h2>
+<p>Nextcloud will <code class="docutils literal notranslate"><span class="pre">require_once</span></code> every installed and enabled app’s <code class="docutils literal notranslate"><span class="pre">appinfo/app.php</span></code> file if it exists. The app can use
+this file to run registrations of autoloaders, services, event listeners and similar.</p>
+<p>To leverage the advantages of object-oriented programming, it’s recommended to put the logic into an <a class="reference internal" href="#application-php"><span class="std std-ref">Application</span></a>
+class and query an instance like</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">appinfo/app.php</span><a class="headerlink" href="#id6" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// Register the composer autoloader for packages shipped by this app, if applicable</span>
+<span class="k">include_once</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/../vendor/autoload.php&#39;</span><span class="p">;</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="nx">\OC</span><span class="o">::</span><span class="nv">$server</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nx">\OCA\MyApp\AppInfo\Application</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorial.html" class="btn btn-neutral float-left" title="Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="info.html" class="btn btn-neutral float-right" title="App metadata" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/25/developer_manual">25</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/developer_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/developer_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

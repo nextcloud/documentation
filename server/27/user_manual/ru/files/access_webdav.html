@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Доступ к файлам Nextcloud с помощью WebDAV &mdash; документация Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=9a65ad85"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/translations.js?v=29b1f277"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Управление удаленными файлами" href="deleted_file_management.html" />
+    <link rel="prev" title="Доступ к вашим файлам с помощью веб-интерфейса Nextcloud" href="access_webgui.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Логотип"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest руководство пользователя. Введение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Что нового для пользователей в Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Веб-интерфейс Nextcloud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Файлы и синхронизация</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Доступ к вашим файлам с помощью веб-интерфейса Nextcloud</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Доступ к файлам Nextcloud с помощью WebDAV</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nextcloud-desktop-and-mobile-clients">Nextcloud Desktop и мобильные клиенты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#webdav-configuration">Конфигурация WebDAV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-linux">Доступ к файлам с помощью Linux</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nautilus-file-manager">Файловый менеджер Наутилус</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-with-kde-and-dolphin-file-manager">Доступ к файлам с помощью KDE и файлового менеджера Dolphin</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">Монтирования WebDAV в командной строке Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues">Известные проблемы</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#problem">Проблема</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution">Решение</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Проблема</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Решение</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-macos">Доступ к файлам с помощью macOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-microsoft-windows">Доступ к файлам с помощью Microsoft Windows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-the-command-line">Сопоставление дисков с помощью командной строки</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-windows-explorer">Сопоставление дисков с помощью проводника Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-cyberduck">Доступ к файлам с помощью Cyberduck</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-public-shares-over-webdav">Доступ к общедоступным ресурсам через WebDAV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-problems">Известные проблемы</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Проблема</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-1">Решение 1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-2">Решение 2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Проблема</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Решение</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Проблема</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#answer">Answer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Проблема</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Решение</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Проблема</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Решение</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">Проблема</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">Решение</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-curl">Доступ к файлам с помощью cURL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-winscp">Accessing files using WinSCP</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Управление удаленными файлами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Синхронизация рабочего стола и мобильного телефона</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Шифрование ваших файлов Nextcloud на сервере</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Обмен файлами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Федеративный общий ресурс</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Создание анонимных загрузок</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Загрузка больших файлов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Квота хранилища</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Контроль версий</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Проекты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Передача прав</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Использование федеративного доступа</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Программное обеспечение для совместной работы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Персональные настройки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Использование двухфакторной аутентификации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Управление подключенными браузерами и устройствами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Внешнее хранилище</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Файлы и синхронизация</a></li>
+      <li class="breadcrumb-item active">Доступ к файлам Nextcloud с помощью WebDAV</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webdav.rst" class="fa fa-github"> Редактировать на GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="accessing-nextcloud-files-using-webdav">
+<h1>Доступ к файлам Nextcloud с помощью WebDAV<a class="headerlink" href="#accessing-nextcloud-files-using-webdav" title="Link to this heading"></a></h1>
+<p>Nextcloud полностью поддерживает протокол WebDAV, и вы можете подключаться и синхронизироваться с файлами Nextcloud через WebDAV. В этой главе вы узнаете, как подключить Linux, macOS, Windows и мобильные устройства к вашему серверу Nextcloud через WebDAV. Прежде чем приступить к настройке WebDAV, давайте кратко рассмотрим рекомендуемый способ подключения клиентских устройств к вашим серверам Nextcloud.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>В следующих примерах вы должны заменить <strong>example.com/nextcloud</strong> URL-адресом вашего сервера Nextcloud (пропустите часть каталога, если установка находится в корне вашего домена), а «USERNAME» - именем  подключающегося пользователя.</p>
+<p>См. адрес для подключения к WebDAV (снизу слева в меню настройки) на Вашей странице Nextcloud</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>В следующих примерах для входа Вам надо использовать пароль, который Вы можете создать в Настройках на вкладке Безопасность.</p>
+</div>
+<section id="nextcloud-desktop-and-mobile-clients">
+<h2>Nextcloud Desktop и мобильные клиенты<a class="headerlink" href="#nextcloud-desktop-and-mobile-clients" title="Link to this heading"></a></h2>
+<p>Рекомендуемый способ синхронизации настольного ПК с сервером Nextcloud заключается в использовании клиентов синхронизации <a class="reference external" href="https://nextcloud.com/install/#install-clients">Nextcloud/ownCloud</a>. Вы можете настроить клиент для сохранения файлов в любом локальном каталоге и выбрать, какие каталоги на сервере Nextcloud синхронизировать. Клиент отображает текущее состояние соединения и регистрирует все действия, поэтому вы всегда знаете, какие удаленные файлы были загружены на ваш компьютер, и вы можете проверить, правильно ли синхронизированы файлы, созданные и обновленные на вашем локальном ПК, с сервером.</p>
+<p>Рекомендуемый способ синхронизации сервера Nextcloud с устройствами Android и Apple iOS - использование <a class="reference external" href="https://nextcloud.com/install/">мобильных приложений</a>.</p>
+<p>Чтобы подключить мобильное приложение к серверу Nextcloud, используйте только базовый URL и папку:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+<p>В дополнение к мобильным приложениям, предоставляемым Nextcloud или ownCloud, вы можете использовать другие приложения для подключения к Nextcloud со своего мобильного устройства с помощью WebDAV. <a class="reference external" href="http://seanashton.net/webdav/">WebDAV Navigator</a> - хорошее (проприетарное) приложение для <a class="reference external" href="https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite">устройств Android</a> и <a class="reference external" href="https://itunes.apple.com/app/webdav-navigator/id382551345">iPhone</a>. URL для использования на них:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+</section>
+<section id="webdav-configuration">
+<h2>Конфигурация WebDAV<a class="headerlink" href="#webdav-configuration" title="Link to this heading"></a></h2>
+<p>При желании вы также можете подключить свой настольный ПК к серверу Nextcloud, используя протокол WebDAV, а не специальное клиентское приложение. Web Distributed Authoring and Versioning (WebDAV) - это расширение протокола передачи гипертекста (HTTP), которое позволяет легко создавать, читать и редактировать файлы на веб-серверах. С помощью WebDAV вы можете получать доступ к общим ресурсам Nextcloud в Linux, macOS и Windows так же, как и к любому удаленному сетевому ресурсу, и сохранять синхронизацию.</p>
+</section>
+<section id="accessing-files-using-linux">
+<h2>Доступ к файлам с помощью Linux<a class="headerlink" href="#accessing-files-using-linux" title="Link to this heading"></a></h2>
+<p>Вы можете получить доступ к файлам в операционных системах Linux, используя следующие методы.</p>
+<section id="nautilus-file-manager">
+<h3>Файловый менеджер Наутилус<a class="headerlink" href="#nautilus-file-manager" title="Link to this heading"></a></h3>
+<p><strong>Когда вы настраиваете свою сетевую учетную запись Nextcloud в</strong> <a class="reference external" href="../groupware/sync_gnome.html">Центре управления GNOME</a>, <strong>ваши файлы будут автоматически подключаться файловым менеджером Nautilus как общий ресурс WebDAV, если вы не отключите доступ к файлам.</strong></p>
+<p>Вы также можете смонтировать файлы Nextcloud вручную. Используйте протокол <code class="docutils literal notranslate"><span class="pre">davs://</span></code> для подключения файлового менеджера Nautilus к вашей папке Nextcloud:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">davs</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Если ваше соединение с сервером не защищено HTTPS, используйте <cite>dav://</cite> вместо <cite>davs://</cite>.</p>
+</div>
+<img alt="screenshot of configuring Nautilus file manager to use WebDAV" src="../../_images/webdav_gnome3_nautilus.png" />
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Тот же метод работает для других файловых менеджеров, которые используют GVfs, таких как Caja MATE и Nepomuk Cinnamon.</p>
+</div>
+</section>
+<section id="accessing-files-with-kde-and-dolphin-file-manager">
+<h3>Доступ к файлам с помощью KDE и файлового менеджера Dolphin<a class="headerlink" href="#accessing-files-with-kde-and-dolphin-file-manager" title="Link to this heading"></a></h3>
+<p>Чтобы получить доступ к файлам Nextcloud с помощью файлового менеджера Dolphin в KDE, используйте протокол <code class="docutils literal notranslate"><span class="pre">webdav://</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">webdav</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<img alt="screenshot of configuring Dolphin file manager to use WebDAV" src="../../_images/webdav_dolphin.png" />
+<p>Вы можете создать постоянную ссылку на свой сервер Nextcloud:</p>
+<ol class="arabic simple">
+<li><p>Откройте Dolphin и нажмите «Сеть» в левом столбце «Места».</p></li>
+<li><p>Нажмите на иконку с надписью <strong>Добавить сетевую папку</strong>. Результирующий диалог должен появиться с уже выбранным WebDAV.</p></li>
+<li><p>Если WebDAV не выбран, выберите его.</p></li>
+<li><p>Нажмите кнопку <strong>Далее</strong>.</p></li>
+<li><p>Введите следующие настройки:</p>
+<ul class="simple">
+<li><p>Имя: имя, которое вы хотите видеть в закладке <strong>Размещение</strong>, например Nextcloud.</p></li>
+<li><p>Пользователь: имя пользователя Nextcloud, которое вы использовали для входа, например, admin.</p></li>
+<li><p>Сервер: доменное имя Nextcloud, например <strong>example.com</strong> (без <strong>http://</strong> до каталогов).</p></li>
+<li><p>Папка - введите путь <code class="docutils literal notranslate"><span class="pre">nextcloud/remote.php/dav/files/USERNAME/</span></code>.</p></li>
+</ul>
+</li>
+<li><p>(Необязательно) Установите флажок «Создать значок», чтобы закладка появилась в столбце «Места».</p></li>
+<li><p>(Необязательно) Укажите любые специальные настройки или сертификат SSL в поле «Порт и шифрование».</p></li>
+</ol>
+</section>
+</section>
+<section id="creating-webdav-mounts-on-the-linux-command-line">
+<h2>Монтирования WebDAV в командной строке Linux<a class="headerlink" href="#creating-webdav-mounts-on-the-linux-command-line" title="Link to this heading"></a></h2>
+<p>Вы можете выполнить монтирование WebDAV из командной строки Linux. Это полезно, если вы предпочитаете получать доступ к Nextcloud так же, как и к любому другому удаленному подключенному ресурсу. В следующем примере показано, как создать персональное монтирование и автоматически монтировать его при каждом входе в систему на компьютере Linux.</p>
+<ol class="arabic">
+<li><p>Установите драйвер <code class="docutils literal notranslate"><span class="pre">davfs2</span></code> для файловой системы WebDAV, который позволяет вам монтировать общие ресурсы WebDAV, как и любую другую удаленную файловую систему. Используйте эту команду для установки в Debian/Ubuntu:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Используйте эту команду для установки на CentOS, Fedora и openSUSE:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Добавьте себя в группу <code class="docutils literal notranslate"><span class="pre">davfs2</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usermod</span> <span class="o">-</span><span class="n">aG</span> <span class="n">davfs2</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<ol class="arabic" start="3">
+<li><p>Затем создайте каталог <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code> в вашем домашнем каталоге для точки монтирования и <code class="docutils literal notranslate"><span class="pre">.davfs2/</span></code> для вашего личного файла конфигурации:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">~/</span><span class="n">nextcloud</span>
+<span class="n">mkdir</span> <span class="o">~/.</span><span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Скопируйте <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/secrets</span></code> в <code class="docutils literal notranslate"><span class="pre">~/.davfs2</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span>  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+</pre></div>
+</div>
+</li>
+<li><p>Установите себя в качестве владельца и сделайте права доступа для чтения и записи:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chown</span> <span class="o">&lt;</span><span class="n">linux_username</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">linux_username</span><span class="o">&gt;</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+<span class="n">chmod</span> <span class="mi">600</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+</pre></div>
+</div>
+</li>
+<li><p>Добавьте свои учетные данные для входа в Nextcloud в конец файла <code class="docutils literal notranslate"><span class="pre">secrets</span></code>, используя URL-адрес вашего сервера Nextcloud, а также имя пользователя и пароль для Nextcloud:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/ &lt;username&gt; &lt;password&gt;
+or
+$PathToMountPoint $USERNAME $PASSWORD
+for example
+/home/user/nextcloud john 1234
+</pre></div>
+</div>
+</li>
+<li><p>Добавьте информацию о монтировании в <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">linux_username</span><span class="o">&gt;/</span><span class="n">nextcloud</span> <span class="n">davfs</span> <span class="n">user</span><span class="p">,</span><span class="n">rw</span><span class="p">,</span><span class="n">auto</span> <span class="mi">0</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</li>
+<li><p>Затем проверьте, что он монтируется и аутентифицируется, выполнив следующую команду. Если вы установите его правильно, вам не понадобятся права root:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mount</span> <span class="o">~/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</li>
+<li><p>Вы также должны иметь возможность размонтировать его:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">umount</span> <span class="o">~/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Теперь каждый раз, когда вы входите в систему Linux, ваша папка Nextcloud должна автоматически монтироваться через WebDAV в вашем каталоге <code class="docutils literal notranslate"><span class="pre">~/nextcloud</span></code>. Если вы предпочитаете монтировать его вручную, измените <code class="docutils literal notranslate"><span class="pre">auto</span></code> на <code class="docutils literal notranslate"><span class="pre">noauto</span></code> в <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code>.</p>
+</section>
+<section id="known-issues">
+<h2>Известные проблемы<a class="headerlink" href="#known-issues" title="Link to this heading"></a></h2>
+<section id="problem">
+<h3>Проблема<a class="headerlink" href="#problem" title="Link to this heading"></a></h3>
+<p>Ресурс временно недоступен</p>
+</section>
+<section id="solution">
+<h3>Решение<a class="headerlink" href="#solution" title="Link to this heading"></a></h3>
+<p>Если при создании файла в каталоге возникают проблемы, отредактируйте файл <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/davfs2.conf</span></code> и добавьте:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">use_locks</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>Проблема<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>Сертификат, предупреждения</p>
+</section>
+<section id="id2">
+<h3>Решение<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>Если вы используете самоподписанный сертификат, вы получите предупреждение. Чтобы изменить это, вам нужно настроить <code class="docutils literal notranslate"><span class="pre">davfs2</span></code> для распознавания вашего сертификата. Скопируйте <code class="docutils literal notranslate"><span class="pre">mycertificate.pem</span></code> в <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/certs/</span></code>. Затем отредактируйте <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/davfs2.conf`</span></code> и раскомментируйте строку <code class="docutils literal notranslate"><span class="pre">servercert</span></code>. Теперь добавьте путь вашего сертификата, как в этом примере:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">servercert</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">davfs2</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">mycertificate</span><span class="o">.</span><span class="n">pem</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="accessing-files-using-macos">
+<h2>Доступ к файлам с помощью macOS<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>The macOS Finder suffers from a <a class="reference external" href="http://sabre.io/dav/clients/finder/">series of implementation problems</a> and should only be used if the Nextcloud server runs on <strong>Apache</strong> and <strong>mod_php</strong>, or <strong>Nginx 1.3.8+</strong>. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> (see instructions <a class="reference external" href="https://docs.nextcloud.com/server/27/user_manual/files/access_webdav.html#accessing-files-using-cyberduck">here</a>) and <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. Commercial clients include <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Transmit</a>, and <a class="reference external" href="https://mac.eltima.com/">Commander One</a>.</p>
+</div>
+<p>Чтобы получить доступ к файлам через macOS Finder:</p>
+<ol class="arabic simple">
+<li><p>В верхней строке меню Finder выберите <strong>Go &gt; Подключиться к серверу…</strong></p></li>
+</ol>
+<blockquote>
+<div><img alt="Screenshot of entering your Nextcloud server address on macOS" src="../../_images/osx_webdav1.png" />
+</div></blockquote>
+<ol class="arabic" start="2">
+<li><p>Когда откроется окно <strong>Подключиться к серверу..</strong>, введите адрес WebDAV вашего сервера Nextcloud в поле <strong>Адрес сервера:</strong>, т.е.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">YOURDOMAIN</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<blockquote>
+<div><img alt="Screenshot: Enter Nextcloud server address in “Connect to Server…” dialog box" src="../../_images/osx_webdav2.png" />
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Нажмите <strong>Подключить</strong>. Ваш сервер WebDAV должен появиться на рабочем столе как общий диск.</p></li>
+</ol>
+</section>
+<section id="accessing-files-using-microsoft-windows">
+<h2>Доступ к файлам с помощью Microsoft Windows<a class="headerlink" href="#accessing-files-using-microsoft-windows" title="Link to this heading"></a></h2>
+<p>Если вы используете собственную реализацию WebDAV в Windows, вы можете сопоставить Nextcloud с новым диском с помощью проводника Windows. Сопоставление с диском позволяет просматривать файлы, хранящиеся на сервере Nextcloud, так же, как и файлы, хранящиеся на сопоставленном сетевом диске.</p>
+<p>Использование этой функции требует подключения к сети. Если вы хотите хранить ваши файлы в автономном режиме, используйте Desktop Client для синхронизации всех файлов вашего Nextcloud с одним или несколькими каталогами вашего локального жесткого диска.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>В Windows 10 теперь по умолчанию разрешена базовая аутентификация, если HTTPS включён перед сопоставлением диска. В старых версиях Windows необходимо разрешить использование базовой аутентификации в реестре Windows: запустите <code class="docutils literal notranslate"><span class="pre">regedit</span></code> и перейдите к <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters</span></code>. Создайте или отредактируйте значение <code class="docutils literal notranslate"><span class="pre">DWORD</span></code> <code class="docutils literal notranslate"><span class="pre">BasicAuthLevel</span></code> (Windows Vista, 7 и 8) или <code class="docutils literal notranslate"><span class="pre">UseBasicAuth</span></code> (Windows XP и Windows Server 2003) и установите его значение <code class="docutils literal notranslate"><span class="pre">1</span></code> для SSL соединений. Значение <code class="docutils literal notranslate"><span class="pre">0</span></code> означает, что базовая аутентификация отключена, значение <code class="docutils literal notranslate"><span class="pre">2</span></code> разрешает как SSL, так и не-SSL соединения (не рекомендуется). Затем выйдите из Редактора реестра и перезагрузите компьютер.</p>
+</div>
+<section id="mapping-drives-with-the-command-line">
+<h3>Сопоставление дисков с помощью командной строки<a class="headerlink" href="#mapping-drives-with-the-command-line" title="Link to this heading"></a></h3>
+<p>В следующем примере показано, как подключить диск с помощью командной строки. Чтобы сопоставить диск:</p>
+<ol class="arabic">
+<li><p>Откройте командную строку Windows.</p></li>
+<li><p>Введите следующую строку в командной строке, чтобы сопоставить диск компьютера Z:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">drive_path</span><span class="o">&gt;/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span>
+<span class="n">yourpassword</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<blockquote>
+<div><p>где &lt;drive_path&gt;находится URL вашего сервера Nextcloud.</p>
+</div></blockquote>
+<p>Пример: <code class="docutils literal notranslate"><span class="pre">net</span> <span class="pre">use</span> <span class="pre">Z:</span> <span class="pre">https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span> <span class="pre">/user:youruser</span> <span class="pre">yourpassword</span></code></p>
+<blockquote>
+<div><p>Компьютер сопоставляет файлы вашей учетной записи Nextcloud с буквой диска Z.</p>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>If you get the following error
+<code class="docutils literal notranslate"><span class="pre">System</span> <span class="pre">error</span> <span class="pre">67</span> <span class="pre">has</span> <span class="pre">occurred.</span> <span class="pre">The</span> <span class="pre">network</span> <span class="pre">name</span> <span class="pre">cannot</span> <span class="pre">be</span> <span class="pre">found.</span></code>,
+open the <strong>Services</strong> app and make sure that the <code class="docutils literal notranslate"><span class="pre">WebClient</span></code>
+service is running and started automatically at startup.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Хотя это и не рекомендуется, вы также можете подключить сервер Nextcloud по протоколу HTTP, оставив соединение незашифрованным. Если вы планируете использовать HTTP-соединения на устройствах в общественных местах, мы настоятельно рекомендуем использовать VPN-туннель для обеспечения необходимой безопасности.</p>
+</div>
+<p>Альтернативный синтаксис команды:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> \\<span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="nd">@ssl</span>\<span class="n">nextcloud</span>\<span class="n">remote</span><span class="o">.</span><span class="n">php</span>\<span class="n">dav</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span>
+<span class="n">yourpassword</span>
+</pre></div>
+</div>
+</section>
+<section id="mapping-drives-with-windows-explorer">
+<h3>Сопоставление дисков с помощью проводника Windows<a class="headerlink" href="#mapping-drives-with-windows-explorer" title="Link to this heading"></a></h3>
+<p>Чтобы подключить диск с помощью Microsoft Windows Explorer:</p>
+<ol class="arabic simple">
+<li><p>Откройте Проводник Windows на компьютере под управлением MS Windows.</p></li>
+<li><p>Щелкните правой кнопкой мыши на элементе <strong>Компьютер</strong> и выберите <strong>Подключить сетевой диск…</strong> в раскрывающемся меню.</p></li>
+<li><p>Выберите локальный сетевой диск, к которому вы хотите подключить Nextcloud.</p></li>
+<li><p>Укажите адрес своего экземпляра Nextcloud, <strong>/remote.php/dav/files/USERNAME/</strong>.</p></li>
+</ol>
+<blockquote>
+<div><p>Пример:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Для серверов, защищённых SSL, отметьте <strong>Переподключаться при входе</strong>, чтобы сопоставление сохранялось при последующих перезагрузках. Если вы хотите подключиться к серверу Nextcloud от имени другого пользователя, отметьте <strong>Подключиться, используя другие учётные данные</strong>.</p>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="screenshot of mapping WebDAV on Windows Explorer" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" /></a>
+</figure>
+<ol class="arabic simple" start="5">
+<li><p>Нажмите кнопку <code class="docutils literal notranslate"><span class="pre">Готово</span></code>.</p></li>
+</ol>
+<blockquote>
+<div><p>Проводник Windows отображает сетевой диск, делая ваш экземпляр Nextcloud доступным.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="accessing-files-using-cyberduck">
+<h2>Доступ к файлам с помощью Cyberduck<a class="headerlink" href="#accessing-files-using-cyberduck" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://cyberduck.io/">Cyberduck</a> - это браузер с открытым исходным кодом для FTP и SFTP, WebDAV, OpenStack Swift и Amazon S3, предназначенный для передачи файлов в macOS и Windows.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>В этом примере используется Cyberduck версии 4.2.1.</p>
+</div>
+<p>Чтобы использовать Cyberduck:</p>
+<ol class="arabic simple">
+<li><p>Укажите сервер без какой-либо информации протокола. Например:</p></li>
+</ol>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">example.com</span></code></p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Укажите нужный порт.  Выбор порта зависит от того, поддерживает ли ваш сервер Nextcloud SSL. Cyberduck требует, чтобы вы выбрали другой тип подключения, если вы планируете использовать SSL. Например:</p></li>
+</ol>
+<blockquote>
+<div><p>80 (для WebDAV)</p>
+<p>443 (для WebDAV (HTTPS/SSL))</p>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Используйте раскрывающееся  меню «Дополнительные параметры», чтобы добавить оставшуюся часть URL-адреса WebDAV в поле «Путь». Например:</p></li>
+</ol>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">remote.php/dav/files/USERNAME/</span></code></p>
+</div></blockquote>
+<p>Теперь Cyberduck обеспечивает доступ к файлам на сервере Nextcloud.</p>
+</section>
+<section id="accessing-public-shares-over-webdav">
+<h2>Доступ к общедоступным ресурсам через WebDAV<a class="headerlink" href="#accessing-public-shares-over-webdav" title="Link to this heading"></a></h2>
+<p>Nextcloud provides the possibility to access public shares anonymously over WebDAV.</p>
+<p>Чтобы получить доступ к общедоступной папке, откройте:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">public</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">webdav</span>
+</pre></div>
+</div>
+<p>in a WebDAV client, use the share token as username and the (optional) share password
+as password. For example, with a share link <a class="reference external" href="https://example.com/s/kFy9Lek5sm928xP">https://example.com/s/kFy9Lek5sm928xP</a>, <code class="docutils literal notranslate"><span class="pre">kFy9Lek5sm928xP</span></code> will be the username.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p><strong>Настройки</strong> → <strong>Параметры сервера</strong> → <strong>Параметры публикации</strong> → <strong>Разрешить пользователям на этом сервере отправлять общие ресурсы на другие серверы</strong>. Этот параметр также разрешает доступ к общедоступным ресурсам с помощью WebDAV. Необходимо включить, чтобы эта функция работала, но не в случае если используется cURL (смотрите ниже).</p>
+</div>
+</section>
+<section id="known-problems">
+<h2>Известные проблемы<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
+<section id="id4">
+<h3>Проблема<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>Windows не подключается с использованием HTTPS.</p>
+</section>
+<section id="solution-1">
+<h3>Решение 1<a class="headerlink" href="#solution-1" title="Link to this heading"></a></h3>
+<p>Клиент Windows WebDAV может не поддерживать Индикацию имени сервера (SNI) для зашифрованных соединений. Если вы обнаружите ошибку при монтировании экземпляра Nextcloud с шифрованием SSL, обратитесь к своему провайдеру о назначении выделенного IP-адреса для вашего сервера на основе SSL.</p>
+</section>
+<section id="solution-2">
+<h3>Решение 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
+<p>Клиент Windows WebDAV может не поддерживать подключения TLSv1.1/TLSv1.2. Если вы ограничили конфигурацию своего сервера только предоставлением TLSv1.1 и выше, соединение с вашим сервером может завершиться ошибкой. Пожалуйста, обратитесь к документации <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> для получения дополнительной информации.</p>
+</section>
+<section id="id5">
+<h3>Проблема<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>Появляется следующее сообщение об ошибке: <strong>Ошибка 0x800700DF: размер файла превышает допустимый предел и не может быть сохранен.</strong></p>
+</section>
+<section id="id6">
+<h3>Решение<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p>Windows ограничивает максимальный размер файла, передаваемого из или в общий ресурс WebDAV. Вы можете увеличить значение <strong>FileSizeLimitInBytes</strong> в <strong>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\\Parameters</strong>, нажав на <strong>Modify</strong>.</p>
+<p>Чтобы увеличить ограничение до максимального значения 4 ГБ, выберите <strong>Десятичное число</strong>, введите значение <strong>4294967295</strong> и перезагрузите Windows или перезапустите службу <strong>WebClient</strong>.</p>
+</section>
+<section id="id7">
+<h3>Проблема<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<p>Adding a WebDAV drive on Windows via the above described steps does not display the correct size
+of in Nextcloud available space and instead shows the size of the C: drive with its available space.</p>
+</section>
+<section id="answer">
+<h3>Answer<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
+<p>Unfortunately is this a limitation of WebDAV itself, because it does not provide a way for the client
+to get the available free space from the server. Windows automatically falls back to show the size of
+the C: drive with its available space instead. So unfortunately there is no real solution to this problem.</p>
+</section>
+<section id="id8">
+<h3>Проблема<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<p>Не удается получить доступ к вашим файлам из Microsoft Office через WebDAV.</p>
+</section>
+<section id="id9">
+<h3>Решение<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<p>Известные проблемы и способы их решения описаны в статье <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a>.</p>
+</section>
+<section id="id10">
+<h3>Проблема<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>Невозможно сопоставить Nextcloud как диск WebDAV в Windows, используя самоподписаный сертификат.</p>
+</section>
+<section id="id11">
+<h3>Решение<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Перейдите к своему экземпляру Nextcloud через ваш любимый веб-браузер.</p></li>
+<li><p>Нажимайте, пока не дойдете до ошибки сертификата в строке состояния браузера.</p></li>
+<li><p>Просмотрите сертификат, затем на вкладке «Сведения» выберите «Копировать в файл».</p></li>
+<li><p>Сохраните на рабочий стол с произвольным именем, например <code class="docutils literal notranslate"><span class="pre">myNextcloud.pem</span></code>.</p></li>
+<li><p>Пуск, Выполнить, MMC.</p></li>
+<li><p>Файл, добавить/удалить оснастку.</p></li>
+<li><p>Выберите «Сертификаты», нажмите «Добавить», «Моя учетная запись», «Готово» и «ОК».</p></li>
+<li><p>Выберете доверенные корневые центры сертификации, сертификаты.</p></li>
+<li><p>Щелкните правой кнопкой мыши Сертификат, выберите Все задачи, Импорт.</p></li>
+<li><p>Выберите Сохранить сертификат на рабочем столе.</p></li>
+<li><p>Выберите «Поместить все сертификаты в следующее хранилище», нажмите «Обзор»,</p></li>
+<li><p>Установите флажок «Показать физические хранилища», «Развернуть доверенные корневые центры сертификации» и выберите «Локальный компьютер», нажмите «ОК», завершите импорт.</p></li>
+<li><p>Проверьте список, чтобы убедиться, что он добавлен. Вам, вероятно, нужно обновить, прежде чем вы увидите это. Выйдите из MMC.</p></li>
+<li><p>Откройте Браузер, выберите Инструменты, Удалить историю просмотров.</p></li>
+<li><p>Выберите все, кроме Приватной фильтрации данных, завершите.</p></li>
+<li><p>Перейдите в Свойства обозревателя, Вкладка содержимого, Очистить состояние SSL.</p></li>
+<li><p>Закройте браузер, затем снова откройте и протестируйте.</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id12">
+<h3>Проблема<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<p>Вы не можете загружать более 50 МБ или загружать большие файлы, если загрузка занимает более 30 минут с помощью веб-клиента в Windows 7.</p>
+</section>
+<section id="id13">
+<h3>Решение<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<p>Обходные пути описаны в статье <a class="reference external" href="https://web.archive.org/web/20211008025539/https://support.microsoft.com/en-us/topic/you-cannot-download-more-than-50-mb-or-upload-large-files-when-the-upload-takes-longer-than-30-minutes-using-web-client-in-windows-7-8709ae9d-e808-c5a0-95d0-9a7143c50b11">KB2668751</a>.</p>
+</section>
+</section>
+<section id="accessing-files-using-curl">
+<h2>Доступ к файлам с помощью cURL<a class="headerlink" href="#accessing-files-using-curl" title="Link to this heading"></a></h2>
+<p>Поскольку WebDAV является расширением протокола HTTP, cURL может использоваться при написании сценариев для работы с файлами.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p><strong>Настройки</strong> → <strong>Параметры сервера</strong> → <strong>Параметры публикации</strong> → <strong>Разрешить пользователям на этом сервере отправлять общие ресурсы на другие серверы</strong>. Если эта опция выключена, cURL нужно передать параметр <code class="docutils literal notranslate"><span class="pre">--header</span> <span class="pre">&quot;X-Requested-With:</span> <span class="pre">XMLHttpRequest&quot;</span></code></p>
+</div>
+<p>Чтобы создать папку с текущей датой в качестве имени:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MKCOL<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>Чтобы загрузить файл <code class="docutils literal notranslate"><span class="pre">error.log</span></code> в этот каталог:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-T<span class="w"> </span>error.log<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">/error.log&quot;</span>
+</pre></div>
+</div>
+<p>Чтобы переместить файл:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MOVE<span class="w"> </span>--header<span class="w"> </span><span class="s1">&#39;Destination: https://example.com/nextcloud/remote.php/dav/files/USERNAME/target.jpg&#39;</span><span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/source.jpg
+</pre></div>
+</div>
+<p>Чтобы получить свойства файлов в корневой папке:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>PROPFIND<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Depth: 1&quot;</span><span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/<span class="w"> </span><span class="p">|</span><span class="w"> </span>xml_pp
+<span class="w">    </span>&lt;?xml<span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="w"> </span><span class="nv">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>?&gt;
+&lt;d:multistatus<span class="w"> </span>xmlns:d<span class="o">=</span><span class="s2">&quot;DAV:&quot;</span><span class="w"> </span>xmlns:oc<span class="o">=</span><span class="s2">&quot;http://nextcloud.org/ns&quot;</span><span class="w"> </span>xmlns:s<span class="o">=</span><span class="s2">&quot;http://sabredav.org/ns&quot;</span>&gt;
+<span class="w">  </span>&lt;d:response&gt;
+<span class="w">    </span>&lt;d:href&gt;/nextcloud/remote.php/dav/files/USERNAME/&lt;/d:href&gt;
+<span class="w">    </span>&lt;d:propstat&gt;
+<span class="w">      </span>&lt;d:prop&gt;
+<span class="w">        </span>&lt;d:getlastmodified&gt;Tue,<span class="w"> </span><span class="m">13</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2015</span><span class="w"> </span><span class="m">17</span>:07:45<span class="w"> </span>GMT&lt;/d:getlastmodified&gt;
+<span class="w">        </span>&lt;d:resourcetype&gt;
+<span class="w">          </span>&lt;d:collection/&gt;
+<span class="w">        </span>&lt;/d:resourcetype&gt;
+<span class="w">        </span>&lt;d:quota-used-bytes&gt;163&lt;/d:quota-used-bytes&gt;
+<span class="w">        </span>&lt;d:quota-available-bytes&gt;11802275840&lt;/d:quota-available-bytes&gt;
+<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">&quot;561d3a6139d05&quot;</span>&lt;/d:getetag&gt;
+<span class="w">      </span>&lt;/d:prop&gt;
+<span class="w">      </span>&lt;d:status&gt;HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK&lt;/d:status&gt;
+<span class="w">    </span>&lt;/d:propstat&gt;
+<span class="w">  </span>&lt;/d:response&gt;
+<span class="w">  </span>&lt;d:response&gt;
+<span class="w">    </span>&lt;d:href&gt;/nextcloud/remote.php/dav/files/USERNAME/welcome.txt&lt;/d:href&gt;
+<span class="w">    </span>&lt;d:propstat&gt;
+<span class="w">      </span>&lt;d:prop&gt;
+<span class="w">        </span>&lt;d:getlastmodified&gt;Tue,<span class="w"> </span><span class="m">13</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2015</span><span class="w"> </span><span class="m">17</span>:07:35<span class="w"> </span>GMT&lt;/d:getlastmodified&gt;
+<span class="w">        </span>&lt;d:getcontentlength&gt;163&lt;/d:getcontentlength&gt;
+<span class="w">        </span>&lt;d:resourcetype/&gt;
+<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">&quot;47465fae667b2d0fee154f5e17d1f0f1&quot;</span>&lt;/d:getetag&gt;
+<span class="w">        </span>&lt;d:getcontenttype&gt;text/plain&lt;/d:getcontenttype&gt;
+<span class="w">      </span>&lt;/d:prop&gt;
+<span class="w">      </span>&lt;d:status&gt;HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK&lt;/d:status&gt;
+<span class="w">    </span>&lt;/d:propstat&gt;
+<span class="w">  </span>&lt;/d:response&gt;
+&lt;/d:multistatus&gt;
+</pre></div>
+</div>
+</section>
+<section id="accessing-files-using-winscp">
+<h2>Accessing files using WinSCP<a class="headerlink" href="#accessing-files-using-winscp" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://winscp.net/eng/docs/introduction/">WinSCP</a>  is an open source free SFTP client, FTP client, WebDAV client, S3 client and SCP client for Windows. Its main function is file transfer between a local and a remote computer. Beyond this, WinSCP offers scripting and basic file manager functionality.</p>
+<p>You can <a class="reference external" href="https://winscp.net/eng/downloads.php/">download</a> the portable version of WinSCP and run it on Linux through <a class="reference external" href="https://wiki.winehq.org/Main_Page/">Wine</a>.</p>
+<p>To run WinSCP on Linux, download wine through your distribution’s package manager, then run it via: wine WinSCP.exe.</p>
+<p>To connect to Nextcloud:</p>
+<ul class="simple">
+<li><p>Start WinSCP</p></li>
+<li><p>Press „Session“ in the menu</p></li>
+<li><p>Press the „New Session“ menu option</p></li>
+<li><p>Set the „File protocol“ dropdown to WebDAV</p></li>
+<li><p>Set the „Encryption“ dropdown to TSL/SSL Implicit encryption</p></li>
+<li><p>Fill in the hostname field: example.com</p></li>
+<li><p>Fill in the username field: NEXTCLOUDUSERNAME</p></li>
+<li><p>Fill in the password field: NEXTCLOUDPASSWORD</p></li>
+<li><p>Press the „Advanced…“ button</p></li>
+<li><p>Navigate to „Environment“, „Directories“ on the left side</p></li>
+<li><p>Fill in the „Remote directory“ field with the following: /nextcloud/remote.php/dav/files/NEXTCLOUDUSERNAME/</p></li>
+<li><p>Press the „OK“ button</p></li>
+<li><p>Press the „Save“ button</p></li>
+<li><p>Select the desired options and press the „OK“ button</p></li>
+<li><p>Press the „Login“ button to connect to Nextcloud</p></li>
+</ul>
+<p>Note: it is recommended to use an app password for the password if you use TOTP, as WinSCP does not understand TOTP in Nextcloud at the time of writing (2022-11-07).</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="access_webgui.html" class="btn btn-neutral float-left" title="Доступ к вашим файлам с помощью веб-интерфейса Nextcloud" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="deleted_file_management.html" class="btn btn-neutral float-right" title="Управление удаленными файлами" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2026 Nextcloud GmbH. </p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/eu/">eu</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/id/">id</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/ja_JP/">ja_JP</a></dd>
+<dd><a href="/server/latest/user_manual/ko/">ko</a></dd>
+<dd><a href="/server/latest/user_manual/nb_NO/">nb_NO</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/nn/">nn</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/pt_PT/">pt_PT</a></dd>
+<dd><a href="/server/latest/user_manual/ro/">ro</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/si/">si</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sr/">sr</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/ta/">ta</a></dd>
+<dd><a href="/server/latest/user_manual/th/">th</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/uk/">uk</a></dd>
+<dd><a href="/server/latest/user_manual/vi/">vi</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+<dd><a href="/server/latest/user_manual/zh_TW/">zh_TW</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Версии</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/25/user_manual">25</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/user_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/user_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Загрузки</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Читать на Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">В начало</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Сборка</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

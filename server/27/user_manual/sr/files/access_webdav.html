@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="sr" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Приступ Nextcloud фајловима преко WebDAV &mdash; документација Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=8a86fe08"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/translations.js?v=3c3b4542"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Индекс" href="../genindex.html" />
+    <link rel="search" title="Претрага" href="../search.html" />
+    <link rel="next" title="Управљање обрисаним фајловима" href="deleted_file_management.html" />
+    <link rel="prev" title="Приступ вашим фајловима употребом Nextcloud веб интерфејса" href="access_webgui.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Увод у корисничко упутство за Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Шта је ново за кориснике у Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud веб интерфејс</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Фајлови и синхронизација</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Приступ вашим фајловима употребом Nextcloud веб интерфејса</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Приступ Nextcloud фајловима преко WebDAV</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nextcloud-desktop-and-mobile-clients">Nextcloud Десктоп и мобилни клијенти</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#webdav-configuration">WebDAV конфигурација</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-linux">Приступ фајловима са Linux система</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nautilus-file-manager">Nautilus фајл менаџер</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-with-kde-and-dolphin-file-manager">Приступ фајловима са KDE и Dolphin фајл менаџером</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">Креирање WebDAV монтирања из Linux командне линије</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues">Познати проблеми</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#problem">Проблем</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution">Решење</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Проблем</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Решење</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-macos">Приступ фајловима са macOS система</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-microsoft-windows">Приступ фајловима из Microsoft Windows система</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-the-command-line">Мапирање драјвова из командне линије</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-windows-explorer">Мапирање драјвова програмом Windows Explorer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-cyberduck">Приступ фајловима употребом Cyberduck</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-public-shares-over-webdav">Приступ јавним дељењима преко WebDAV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-problems">Познати проблеми</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Проблем</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-1">Решење 1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-2">Решење 2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Проблем</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Решење</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Проблем</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#answer">Answer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Проблем</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Решење</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Проблем</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Решење</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">Проблем</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">Решење</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-curl">Приступ фајловима програмом cURL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-winscp">Приступ фајловима програмом WinSCP</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Управљање обрисаним фајловима</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Десктоп и мобилна синхронизација</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Шифровање ваших фајлова на Nextcloud серверу</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Дељење фајлова</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Заједничка дељења</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Вршење анонимних отпремања</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Отпремања великог фајла</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Квота складишта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Контрола верзија</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Пројекти</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Пренос власништва</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Употреба заједничких дељења</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Постављање ваших подешавања</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Универзални приступ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Употреба двофактоске аутентификације</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Управљање повезаним прегледачима и уређајима</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Спољно складиште</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Фајлови и синхронизација</a></li>
+      <li class="breadcrumb-item active">Приступ Nextcloud фајловима преко WebDAV</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webdav.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="accessing-nextcloud-files-using-webdav">
+<h1>Приступ Nextcloud фајловима преко WebDAV<a class="headerlink" href="#accessing-nextcloud-files-using-webdav" title="Link to this heading"></a></h1>
+<p>Nextcloud у потпуности подржава WebDAV протокол, тако да можете да се повежете на свој Nextcloud и синхронизујете своје фајлове преко WebDAV. У овом поглављу ћете научити како да повежете Linux, macOS, Windows, и мобилне уређаје са Nextcloud сервером преко WebDAV. Пре него што пређемо на конфигурисање WebDAV, погледајмо на брзину препоручени начин за повезивање клијентских уређаја са вашим Nextcloud серверима.</p>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>У следећим примерима би требало да замените <strong>example.com/nextcloud</strong> са URL адресом вашег Nextcloud сервера (изоставите део са директоријумом ако је инсталација у корену вашег домена), и „USERNAME” са корисничким именом корисника који се повезује.</p>
+<p>Погледајте WebDAV URL (доњи леви угао у подешавањима) на свом Nextcloud.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>У наредним примерима, за пријаву морате да користите лозинку апликације коју можете да генеришете у својим безбедносним подешавањима.</p>
+</div>
+<section id="nextcloud-desktop-and-mobile-clients">
+<h2>Nextcloud Десктоп и мобилни клијенти<a class="headerlink" href="#nextcloud-desktop-and-mobile-clients" title="Link to this heading"></a></h2>
+<p>Препоручени начин за синхронизацију десктоп PC компјутера са Nextcloud сервером је употребом <a class="reference external" href="https://nextcloud.com/install/#install-clients">Nextcloud/ownCloud клијената за синхронизацију</a>. Клијент можете да подесите тако да чува фајлове у било који локални доректоријум и можете да изаберете који директоријуми на Nextcloud серверу ће се синхронизовати. Клијент приказује статус текуће везе и записује све активности, тако да у сваком тренутку знате који удаљени фајлови су преузети на ваш PC и можете да проверите да су фајлове креирани и ажурирани на локалном PC компјутеру исправно синхронизовани са сервером.</p>
+<p>Препоручени начин за синхронизацију Nextcloud сервера са Android и Apple iOS уређајима је употребом <a class="reference external" href="https://nextcloud.com/install/">мобилних апликација</a>.</p>
+<p>Да бисте повезали мобилну апликацију на Nextcloud сервер употребите само базни URL и фолдер:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+<p>Уз мобилне апликације које обезбеђује Nextcloud или ownCloud, можете да користите и остале апликације да се повежете на Nextcloud са свог мобилног уређаја користећи WebDAV. <a class="reference external" href="http://seanashton.net/webdav/">WebDAV Navigator</a> је добра (власничка) апликацијаза <a class="reference external" href="https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite">Android уређаје</a> and <a class="reference external" href="https://itunes.apple.com/app/webdav-navigator/id382551345">iPhones</a>. URL за употребу на њима је:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+</section>
+<section id="webdav-configuration">
+<h2>WebDAV конфигурација<a class="headerlink" href="#webdav-configuration" title="Link to this heading"></a></h2>
+<p>Ако тако желите, ваш десктоп PC можете да повежете са Nextcloud сервером употребом WebDAV протокола уместо специјалне клијентске апликације. Web Distributed Authoring and Versioning (WebDAV) је проширење протокола Hypertext Transfer Protocol (HTTP) које олакшава креирање, читање и уређивање фајлована веб серверима. Уз помоћ WebDAV можете да приступите својим Nextcloud дељењима на Linux, macOS и Windows системима на исти начин као у случају било ког удаљеног мрежног дељења, и да останете синхронизовани.</p>
+</section>
+<section id="accessing-files-using-linux">
+<h2>Приступ фајловима са Linux система<a class="headerlink" href="#accessing-files-using-linux" title="Link to this heading"></a></h2>
+<p>У Linux оперативним системима можете да приступите фајловима употребом следећих метода.</p>
+<section id="nautilus-file-manager">
+<h3>Nautilus фајл менаџер<a class="headerlink" href="#nautilus-file-manager" title="Link to this heading"></a></h3>
+<p><strong>Када конфигуришете свој Nextcloud налог у</strong> <a class="reference external" href="../groupware/sync_gnome.html">GNOME Control Center</a>, <strong>Nautilus ће аутоматски да монтира ваше фајлове као WebDAV дељење, осим у случају да искључите приступ фајловима</strong>.</p>
+<p>Nextcloud фајлове можете и ручно да монтирате. Употребите <code class="docutils literal notranslate"><span class="pre">davs://</span></code> протокол да повежете Nautilus фајл менаџер са Nextcloud дељењем:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">davs</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>Ако веза са вашим сервером није HTTPS-обезбеђена, употребите <code class="docutils literal notranslate"><span class="pre">dav://</span></code> уместо <code class="docutils literal notranslate"><span class="pre">davs://</span></code>:</p>
+</div>
+<img alt="снимак екрана конфигурисања Nautilus фајл менаџера да користи WebDAV" src="../../_images/webdav_gnome3_nautilus.png" />
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>Иста метода функционише и са осталим фајл менаџерима који користе GVfs, као што су MATE Caja и Cinnamon Nepomuk.</p>
+</div>
+</section>
+<section id="accessing-files-with-kde-and-dolphin-file-manager">
+<h3>Приступ фајловима са KDE и Dolphin фајл менаџером<a class="headerlink" href="#accessing-files-with-kde-and-dolphin-file-manager" title="Link to this heading"></a></h3>
+<p>Ако желите да приступите својим Nextcloud фајловима из Dolphin фајл менаџера у KDE, употребите <code class="docutils literal notranslate"><span class="pre">webdav://</span></code> протокол:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">webdav</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<img alt="снимак екрана конфигурисања Dolphin фајл менаџера да користи WebDAV" src="../../_images/webdav_dolphin.png" />
+<p>Можете да креирате и стални линк на свој Nextcloud сервер:</p>
+<ol class="arabic simple">
+<li><p>Отворите Dolphin и кликните на „Network” у „Places” колони са леве стране.</p></li>
+<li><p>Кликните на икону означену са <strong>Add a Network Folder</strong>. Требало би да се појави дијалог у којем је већ изабран WebDAV.</p></li>
+<li><p>Ако WebDAV није изабран, изаберите га.</p></li>
+<li><p>Кликните на <strong>Next</strong>.</p></li>
+<li><p>Унесите следећа подешавања:</p>
+<ul class="simple">
+<li><p>Name: Назив који желите да видите у <strong>Places</strong> маркеру, на пример, Nextcloud.</p></li>
+<li><p>User: Nextcloud корисничко име које користите за пријаву, на пример, admin.</p></li>
+<li><p>Server: име домена Nextcloud сервера, на пример, <strong>example.com</strong> (без <strong>http://</strong> испред или директоријума иза).</p></li>
+<li><p>Folder – унесите путању <code class="docutils literal notranslate"><span class="pre">nextcloud/remote.php/dav/files/USERNAME/</span></code>.</p></li>
+</ul>
+</li>
+<li><p>(Није обавезно) Штиклирајте поље „Create icon” да би се у колони Places појавио маркер.</p></li>
+<li><p>(Није обавезно) Наведите било какво посебно подешавање или SSL сертификат у пољу за штиклирање „Port &amp; Encrypted”.</p></li>
+</ol>
+</section>
+</section>
+<section id="creating-webdav-mounts-on-the-linux-command-line">
+<h2>Креирање WebDAV монтирања из Linux командне линије<a class="headerlink" href="#creating-webdav-mounts-on-the-linux-command-line" title="Link to this heading"></a></h2>
+<p>WebDAV монтирања можете да креирате и из Linux командне линије. Ово је корисни ако више волите да приступате Nextcloud серверу на исти начин као и било ком другом монтираном удаљеном фајл систему. Следећи пример приказује како да креирате лично монтирање и подесите да се аутоматски монтира сваки пут када се пријавите на ваш Linux компјутер.</p>
+<ol class="arabic">
+<li><p>Инсталирајте <code class="docutils literal notranslate"><span class="pre">davfs2</span></code> WebDAV фајл систем драјвер који вам омогућава да монтирате WebDAV дељења на исти начин као било који други удаљени фајл систем. Употребите следећу команду да га инсталирате на Debian/Ubuntu:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Употребите следећу команду да га инсталирате на CentOS, Fedora, и openSUSE:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Додајте севе у <code class="docutils literal notranslate"><span class="pre">davfs2</span></code> групу:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usermod</span> <span class="o">-</span><span class="n">aG</span> <span class="n">davfs2</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<ol class="arabic" start="3">
+<li><p>Затим креирајте <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code> директоријум у свом почетном директоријуму који ће служити као тачка монтирања, и <code class="docutils literal notranslate"><span class="pre">.davfs2/</span></code> за свој лични конфигурациони фајл:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">~/</span><span class="n">nextcloud</span>
+<span class="n">mkdir</span> <span class="o">~/.</span><span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Копирајте <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/secrets</span></code> У <code class="docutils literal notranslate"><span class="pre">~/.davfs2</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span>  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+</pre></div>
+</div>
+</li>
+<li><p>Поставите сее као власника и подесите дозволе тако да само власник може да чита-пише:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chown</span> <span class="o">&lt;</span><span class="n">linux_username</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">linux_username</span><span class="o">&gt;</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+<span class="n">chmod</span> <span class="mi">600</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+</pre></div>
+</div>
+</li>
+<li><p>Додајте своје Nextcloud податке за пријаву на крај <code class="docutils literal notranslate"><span class="pre">secrets</span></code> фајла, користећи URL Nextcloud сервера и своје Nextcloud корисничко име и лозинку:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/ &lt;username&gt; &lt;password&gt;
+or
+$PathToMountPoint $USERNAME $PASSWORD
+for example
+/home/user/nextcloud john 1234
+</pre></div>
+</div>
+</li>
+<li><p>Додајте информације о монтирању у <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">linux_username</span><span class="o">&gt;/</span><span class="n">nextcloud</span> <span class="n">davfs</span> <span class="n">user</span><span class="p">,</span><span class="n">rw</span><span class="p">,</span><span class="n">auto</span> <span class="mi">0</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</li>
+<li><p>Затим тестирајте да ли се монтира и аутентификује тако што извршите следећу команду. Ако сте све подесили како треба, неће вам бити потребне администраторске дозволе:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mount</span> <span class="o">~/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</li>
+<li><p>Такође би требало да можете и да уклоните монтирање:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">umount</span> <span class="o">~/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Сада се сваки пут када се пријавеите на свој Linux систем Nextcloud дељење аутоматски монтира преко WebDAV у ваш директоријум <code class="docutils literal notranslate"><span class="pre">~/nextcloud</span></code>. Ако вам више одговара да га ручно монтирате, измените у <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code> вредност <code class="docutils literal notranslate"><span class="pre">auto</span></code> у <code class="docutils literal notranslate"><span class="pre">noauto</span></code>.</p>
+</section>
+<section id="known-issues">
+<h2>Познати проблеми<a class="headerlink" href="#known-issues" title="Link to this heading"></a></h2>
+<section id="problem">
+<h3>Проблем<a class="headerlink" href="#problem" title="Link to this heading"></a></h3>
+<p>Ресурс привремено није доступан</p>
+</section>
+<section id="solution">
+<h3>Решење<a class="headerlink" href="#solution" title="Link to this heading"></a></h3>
+<p>Ако имате проблема када креирате фајл у директоријуму, уредите <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/davfs2.conf</span></code> и додајте:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">use_locks</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>Проблем<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>Упозорења сертификата</p>
+</section>
+<section id="id2">
+<h3>Решење<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>Ако користите самопотписани сертификат, видећете упозорење. Да бисте ово променили, <code class="docutils literal notranslate"><span class="pre">davfs2</span></code> морате да конфигуришете тако да препозна ваш сертификат. Копирајте <code class="docutils literal notranslate"><span class="pre">mycertificate.pem</span></code> у <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/certs/</span></code>. Затим уредите <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/davfs2.conf</span></code> и уклоните коментар са линије <code class="docutils literal notranslate"><span class="pre">servercert</span></code>. Сада додајте путању до свог сервификата, као у следећем примеру:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">servercert</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">davfs2</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">mycertificate</span><span class="o">.</span><span class="n">pem</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="accessing-files-using-macos">
+<h2>Приступ фајловима са macOS система<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>The macOS Finder suffers from a <a class="reference external" href="http://sabre.io/dav/clients/finder/">series of implementation problems</a> and should only be used if the Nextcloud server runs on <strong>Apache</strong> and <strong>mod_php</strong>, or <strong>Nginx 1.3.8+</strong>. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> (see instructions <a class="reference external" href="https://docs.nextcloud.com/server/27/user_manual/files/access_webdav.html#accessing-files-using-cyberduck">here</a>) and <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. Commercial clients include <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Transmit</a>, and <a class="reference external" href="https://mac.eltima.com/">Commander One</a>.</p>
+</div>
+<p>Да бисте приступили фајловима из апликације macOS Finder:</p>
+<ol class="arabic simple">
+<li><p>Из мени линије на врху програма Finder, изаберите <strong>Go &gt; Connect to Server…</strong>:</p></li>
+</ol>
+<blockquote>
+<div><img alt="Снимак екрана уноса адресе вашег Nextcloud сервера на macOS систему" src="../../_images/osx_webdav1.png" />
+</div></blockquote>
+<ol class="arabic" start="2">
+<li><p>Када се отвори прозор <strong>Connect to Server…</strong>, унесите WebDAV адресу свог Nextcloud сервера у поље <strong>Server Address:</strong> нпр.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">YOURDOMAIN</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<blockquote>
+<div><img alt="Снимак екрана: унос адресе Nextcloud сервера у „Connect to Server…” дијалог" src="../../_images/osx_webdav2.png" />
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Кликните на <strong>Connect</strong>. Ваш WebDAV сервер би требало да се појави на Десктопу као дељени диск драјв.</p></li>
+</ol>
+</section>
+<section id="accessing-files-using-microsoft-windows">
+<h2>Приступ фајловима из Microsoft Windows система<a class="headerlink" href="#accessing-files-using-microsoft-windows" title="Link to this heading"></a></h2>
+<p>Ако користите уграђену Windows WebDAV имплементацију, можете да мапирате Nextcloud као нови драјв користећи Windows Explorer. Мапирање у драјв вам омогућава да прегледате фајлове смештене на Nextcloud сервер на исти начин као што то радите са фајловима који се налазе на мапираном мрежном драјву.</p>
+<p>Употреба ове могућности захтева везу са мрежом. Ако желите да чувате фајлове ван мреже, употребите Десктоп клијент који синхронизује све фајлове са Nextcloud у један или више директоријума на вашем локалном хард драјву.</p>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>Windows 10 сада подразумевано дозвољава Основну Аутентификацију ако је пре мапирања драјва укључен HTTPS. На старијим верзијама система Windows, морате да дозволите употребу Основне Аутентификације у Windows Регистратору: покрените <code class="docutils literal notranslate"><span class="pre">regedit</span></code> и поставите се на <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters</span></code>. Креирајте или уредите <code class="docutils literal notranslate"><span class="pre">DWORD</span></code> кључ <code class="docutils literal notranslate"><span class="pre">BasicAuthLevel</span></code> (Windows Vista, 7 и 8) или <code class="docutils literal notranslate"><span class="pre">UseBasicAuth</span></code> (Windows XP и Windows Server 2003) и поставите његову вредност на <code class="docutils literal notranslate"><span class="pre">1</span></code> за SSL везе. Вредност <code class="docutils literal notranslate"><span class="pre">0</span></code> значи да је Основна Аутентификација искључена, а вредност <code class="docutils literal notranslate"><span class="pre">2</span></code> омогућава и SSL и не-SSL везе (не препоручује се). Затим напустите Едитор Регистратора, и поново покрените компјутер.</p>
+</div>
+<section id="mapping-drives-with-the-command-line">
+<h3>Мапирање драјвова из командне линије<a class="headerlink" href="#mapping-drives-with-the-command-line" title="Link to this heading"></a></h3>
+<p>Следећи пример показује како да се мапира драјв из командне линије. Да бисте мапирали драјв:</p>
+<ol class="arabic">
+<li><p>Отворите командни одзив у Windows.</p></li>
+<li><p>Унесите следећу линију у командни одзив да мапирате на компутеров драјв Z:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">drive_path</span><span class="o">&gt;/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span>
+<span class="n">yourpassword</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<blockquote>
+<div><p>где је &lt;drive_path&gt; URL вашег Nextcloud сервера.</p>
+</div></blockquote>
+<p>На пример: <code class="docutils literal notranslate"><span class="pre">net</span> <span class="pre">use</span> <span class="pre">Z:</span> <span class="pre">https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span> <span class="pre">/user:youruser</span> <span class="pre">yourpassword</span></code></p>
+<blockquote>
+<div><p>Компјутер мапира фајлове на вашем Nextcloud налогу у драјв са словом Z.</p>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>If you get the following error
+<code class="docutils literal notranslate"><span class="pre">System</span> <span class="pre">error</span> <span class="pre">67</span> <span class="pre">has</span> <span class="pre">occurred.</span> <span class="pre">The</span> <span class="pre">network</span> <span class="pre">name</span> <span class="pre">cannot</span> <span class="pre">be</span> <span class="pre">found.</span></code>,
+open the <strong>Services</strong> app and make sure that the <code class="docutils literal notranslate"><span class="pre">WebClient</span></code>
+service is running and started automatically at startup.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>Мада се ро не препоручује, Nextcloud сервер такође можете да мапирате употребом HTTP, али тако веза није шифрована. Ако планирате да користите HTTP везе на уређајима док сте на јавном месту, снажно препоручујемо да употребите VPN тунел који обезбеђује неопходну безбедност.</p>
+</div>
+<p>Алтернативна синтакса команде је:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> \\<span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="nd">@ssl</span>\<span class="n">nextcloud</span>\<span class="n">remote</span><span class="o">.</span><span class="n">php</span>\<span class="n">dav</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span>
+<span class="n">yourpassword</span>
+</pre></div>
+</div>
+</section>
+<section id="mapping-drives-with-windows-explorer">
+<h3>Мапирање драјвова програмом Windows Explorer<a class="headerlink" href="#mapping-drives-with-windows-explorer" title="Link to this heading"></a></h3>
+<p>Да бисте мапирали драјв из програма Microsoft Windows Explorer:</p>
+<ol class="arabic simple">
+<li><p>Оворите Windows Explorer на MS Windows компјутеру.</p></li>
+<li><p>Извршите десни клик на ставку <strong>Computer</strong> и изаберите <strong>Map network drive…</strong> из падајућег менија.</p></li>
+<li><p>Изаберите локални мрежни драјв на који желите да мапирате Nextcloud.</p></li>
+<li><p>Наведите адресу своје Nextcloud инстанце, па затим надовежите <strong>/remote.php/dav/files/USERNAME/</strong>.</p></li>
+</ol>
+<blockquote>
+<div><p>На пример:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>За сервере заштићене са SSL, штиклирајте <strong>Reconnect at sign-in</strong> да бисте обезбедили да мапирање остане активно и након наредних поновних покретања система. Ако желите да се са Nextcloud сервером повежете као неки други корисник, штиклирајте <strong>Connect using different credentials</strong>.</p>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="снимак екрана мапирања WebDAV у Windows Explorer" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" /></a>
+</figure>
+<ol class="arabic simple" start="5">
+<li><p>Кликните на дугме <code class="docutils literal notranslate"><span class="pre">Finish</span></code>.</p></li>
+</ol>
+<blockquote>
+<div><p>Windows Explorer мапира мрежни драјв, тако да је вам је ваша Nextcloud инстанца доступна.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="accessing-files-using-cyberduck">
+<h2>Приступ фајловима употребом Cyberduck<a class="headerlink" href="#accessing-files-using-cyberduck" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://cyberduck.io/">Cyberduck</a> FTP и SFTP, WebDAV, OpenStack Swift, и Amazon S3 прегледач отвореног кода који је дизајниран за пренос фајлова на macOS и Windows системима.</p>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>Овај пример користи Cyberduck верзију 4.2.1.</p>
+</div>
+<p>Да бисте користили Cyberduck:</p>
+<ol class="arabic simple">
+<li><p>Наведите сервер без било каквих водећих информација о протоколу. На пример:</p></li>
+</ol>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">example.com</span></code></p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Наведите одговарајући порт. Порт који изаберете зависи од тоха да ли ваш Nextcloud сервер подржава SSL или не. Cyberduck захтева да изаберете другачију врсту везе ако планирате да користите SSL. На пример:</p></li>
+</ol>
+<blockquote>
+<div><p>80 (за WebDAV)</p>
+<p>443 (за WebDAV (HTTPS/SSL))</p>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Користите падајући мени ’More Options’ да додате остатак ваше WebDAV URL адресе у поље ’Path’. На пример:</p></li>
+</ol>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">remote.php/dav/files/USERNAME/</span></code></p>
+</div></blockquote>
+<p>Cyberduck сада омогућава приступ фајловима на Nextcloud серверу.</p>
+</section>
+<section id="accessing-public-shares-over-webdav">
+<h2>Приступ јавним дељењима преко WebDAV<a class="headerlink" href="#accessing-public-shares-over-webdav" title="Link to this heading"></a></h2>
+<p>Nextcloud обезбеђује могућност да се преко WebDAV анонимно приступи јавним дељењима.</p>
+<p>Да бисте приступили јавнм дељењу, отворите:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">public</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">webdav</span>
+</pre></div>
+</div>
+<p>у WebDAV клијену, као корисничко име употребите жетон дељења и (необавезну) лозинку дељења као лозинку. На пример, у линку дељења <a class="reference external" href="https://example.com/s/kFy9Lek5sm928xP">https://example.com/s/kFy9Lek5sm928xP</a>, <code class="docutils literal notranslate"><span class="pre">kFy9Lek5sm928xP</span></code> ће бити корисничко име.</p>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p><strong>Подешавања</strong> → <strong>Администрација</strong> → <strong>Дељење</strong> → <strong>Дозволи да корисници на овом серверу шаљу дељења на друге сервере</strong>. Ова опција такође дозвољава WebDAV приступ јавним дељењима, тако да мора да се укључу како би могућност радила, осим у случају када се користи cURL (погледајте испод).</p>
+</div>
+</section>
+<section id="known-problems">
+<h2>Познати проблеми<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
+<section id="id4">
+<h3>Проблем<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>Windows се не повезује преко HTTPS.</p>
+</section>
+<section id="solution-1">
+<h3>Решење 1<a class="headerlink" href="#solution-1" title="Link to this heading"></a></h3>
+<p>Windows WebDAV Клијент мођда не подржава Server Name Indication (SNI) преко шифрованих веза. Ако наиђете на грешку током монтирања SSL-шифроване Nextcloud инстанце, контактирајте свог пружаоца интернет услуге да вам додели статичку IP адресу за ваш SSL-базирани сервер.</p>
+</section>
+<section id="solution-2">
+<h3>Решење 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
+<p>Windows WebDAV Клијент можда не подржава TLSv1.1 и TLSv1.2 везе. Ако сте конфигурацијом свој сервер ограничили тако да нуди само TLSv1.1 и новије, веза са вашим сервером можда неће моћи да се успостави. Молимо вас да погледате <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> документацију за да бисте сазнали више о овоме.</p>
+</section>
+<section id="id5">
+<h3>Проблем<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>Добијате следећу поруку о грешки: <strong>Error 0x800700DF: The file size exceeds the limit allowed and cannot be saved.</strong></p>
+</section>
+<section id="id6">
+<h3>Решење<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p>Windows ограничава максималну величину фајла који може да се преноси на и са WebDAV дељења. Ту вредност можете да повећате тако што увећате вредност кључа <strong>FileSizeLimitInBytes</strong> у <strong>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters</strong> кликом на <strong>Modify</strong>.</p>
+<p>Ако желите да границу подигнете до максималне вредности од 4GB, Изаберите <strong>Decimal</strong>, па унесите вредност <strong>4294967295</strong>, и поново покрените Windows или поново покрените <strong>WebClient</strong> сервис.</p>
+</section>
+<section id="id7">
+<h3>Проблем<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<p>Adding a WebDAV drive on Windows via the above described steps does not display the correct size
+of in Nextcloud available space and instead shows the size of the C: drive with its available space.</p>
+</section>
+<section id="answer">
+<h3>Answer<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
+<p>Unfortunately is this a limitation of WebDAV itself, because it does not provide a way for the client
+to get the available free space from the server. Windows automatically falls back to show the size of
+the C: drive with its available space instead. So unfortunately there is no real solution to this problem.</p>
+</section>
+<section id="id8">
+<h3>Проблем<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<p>Приступ вашим фајловима из Microsoft Office преко WebDAV не успева.</p>
+</section>
+<section id="id9">
+<h3>Решење<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<p>Познати проблеми и њихова решења су документаовани у чланку <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a>.</p>
+</section>
+<section id="id10">
+<h3>Проблем<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>Nextcloud не може да се мапира као WebDAV драјв у Windows систему када се користи самопотписани сертификат.</p>
+</section>
+<section id="id11">
+<h3>Решење<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Идите на своју Nextcloud инстанцу користећи омиљени веб прегледач.</p></li>
+<li><p>Кликћите док се у статусној линији прегледача не појави грешка сертификата.</p></li>
+<li><p>Погледајте сертификат, пређите на картицу Details , па изаберите Copy to File.</p></li>
+<li><p>Сачувајте на десктор под произвољним именом, на пример <code class="docutils literal notranslate"><span class="pre">myNextcloud.pem</span></code>.</p></li>
+<li><p>Start, Run, MMC.</p></li>
+<li><p>File, Add/Remove Snap-In.</p></li>
+<li><p>Изаберите Certificates, Клините на Add, My User Account, затим Finish, па затим OK.</p></li>
+<li><p>Пронађите Trust Root Certification Authorities, Certificates.</p></li>
+<li><p>Извршите десни клик на Certificate, Select All Tasks, Import.</p></li>
+<li><p>Изаберите Save Cert from the Desktop.</p></li>
+<li><p>Изаберите Place all Certificates in the following Store, кликните на Browse.</p></li>
+<li><p>Штиклирајте поље под називом Show Physical Stores, проширите Trusted Root Certification Authorities, па тамо изаберите Local Computer, кликнит OK, Complete the Import.</p></li>
+<li><p>Погледајте листу и проверите да ли се тамо налази. Можда ћете морати да употребите Refresh пре него што се појави. Напустите MMC.</p></li>
+<li><p>Отворите прегледач, изаберите Tools, Delete Browsing History.</p></li>
+<li><p>Изаберите све осим In Private Filtering Data, готово.</p></li>
+<li><p>Идите на Internet Options, Content картицу, Clear SSL State.</p></li>
+<li><p>Затворите прегледач, затим га отворите поново и тестирајте.</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id12">
+<h3>Проблем<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<p>Када користите веб клијент у Windows 7, не можете да преузмете више од 50 MB или да отпремите велике фајлове када отпремање траје дуже од 30 минута.</p>
+</section>
+<section id="id13">
+<h3>Решење<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<p>Заобилажење проблема је документовано у чланку <a class="reference external" href="https://web.archive.org/web/20211008025539/https://support.microsoft.com/en-us/topic/you-cannot-download-more-than-50-mb-or-upload-large-files-when-the-upload-takes-longer-than-30-minutes-using-web-client-in-windows-7-8709ae9d-e808-c5a0-95d0-9a7143c50b11">KB2668751</a>.</p>
+</section>
+</section>
+<section id="accessing-files-using-curl">
+<h2>Приступ фајловима програмом cURL<a class="headerlink" href="#accessing-files-using-curl" title="Link to this heading"></a></h2>
+<p>Пошто је WebDAV проширење протокола HTTP, за скриптовање фајл операција може да се користи cURL.</p>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p><strong>Подешавања</strong> → <strong>Администрација</strong> → <strong>Дељење</strong> → <strong>Дозволи да корисници на овом серверу шаљу дељења на друге сервере</strong>. Ако је ова опција искључена програму cURL мора да се проследи опција <code class="docutils literal notranslate"><span class="pre">--header</span> <span class="pre">&quot;X-Requested-With:</span> <span class="pre">XMLHttpRequest&quot;</span></code>.</p>
+</div>
+<p>Да бисте креирали фолдер чије је име текући датум:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MKCOL<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>Да отпремите фајл <code class="docutils literal notranslate"><span class="pre">error.log</span></code> у тај директоријум:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-T<span class="w"> </span>error.log<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">/error.log&quot;</span>
+</pre></div>
+</div>
+<p>Да преместите фајл:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MOVE<span class="w"> </span>--header<span class="w"> </span><span class="s1">&#39;Destination: https://example.com/nextcloud/remote.php/dav/files/USERNAME/target.jpg&#39;</span><span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/source.jpg
+</pre></div>
+</div>
+<p>Да добијете особине фајлова у кореном фолдеру:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>PROPFIND<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Depth: 1&quot;</span><span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/<span class="w"> </span><span class="p">|</span><span class="w"> </span>xml_pp
+<span class="w">    </span>&lt;?xml<span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="w"> </span><span class="nv">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>?&gt;
+&lt;d:multistatus<span class="w"> </span>xmlns:d<span class="o">=</span><span class="s2">&quot;DAV:&quot;</span><span class="w"> </span>xmlns:oc<span class="o">=</span><span class="s2">&quot;http://nextcloud.org/ns&quot;</span><span class="w"> </span>xmlns:s<span class="o">=</span><span class="s2">&quot;http://sabredav.org/ns&quot;</span>&gt;
+<span class="w">  </span>&lt;d:response&gt;
+<span class="w">    </span>&lt;d:href&gt;/nextcloud/remote.php/dav/files/USERNAME/&lt;/d:href&gt;
+<span class="w">    </span>&lt;d:propstat&gt;
+<span class="w">      </span>&lt;d:prop&gt;
+<span class="w">        </span>&lt;d:getlastmodified&gt;Tue,<span class="w"> </span><span class="m">13</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2015</span><span class="w"> </span><span class="m">17</span>:07:45<span class="w"> </span>GMT&lt;/d:getlastmodified&gt;
+<span class="w">        </span>&lt;d:resourcetype&gt;
+<span class="w">          </span>&lt;d:collection/&gt;
+<span class="w">        </span>&lt;/d:resourcetype&gt;
+<span class="w">        </span>&lt;d:quota-used-bytes&gt;163&lt;/d:quota-used-bytes&gt;
+<span class="w">        </span>&lt;d:quota-available-bytes&gt;11802275840&lt;/d:quota-available-bytes&gt;
+<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">&quot;561d3a6139d05&quot;</span>&lt;/d:getetag&gt;
+<span class="w">      </span>&lt;/d:prop&gt;
+<span class="w">      </span>&lt;d:status&gt;HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK&lt;/d:status&gt;
+<span class="w">    </span>&lt;/d:propstat&gt;
+<span class="w">  </span>&lt;/d:response&gt;
+<span class="w">  </span>&lt;d:response&gt;
+<span class="w">    </span>&lt;d:href&gt;/nextcloud/remote.php/dav/files/USERNAME/welcome.txt&lt;/d:href&gt;
+<span class="w">    </span>&lt;d:propstat&gt;
+<span class="w">      </span>&lt;d:prop&gt;
+<span class="w">        </span>&lt;d:getlastmodified&gt;Tue,<span class="w"> </span><span class="m">13</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2015</span><span class="w"> </span><span class="m">17</span>:07:35<span class="w"> </span>GMT&lt;/d:getlastmodified&gt;
+<span class="w">        </span>&lt;d:getcontentlength&gt;163&lt;/d:getcontentlength&gt;
+<span class="w">        </span>&lt;d:resourcetype/&gt;
+<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">&quot;47465fae667b2d0fee154f5e17d1f0f1&quot;</span>&lt;/d:getetag&gt;
+<span class="w">        </span>&lt;d:getcontenttype&gt;text/plain&lt;/d:getcontenttype&gt;
+<span class="w">      </span>&lt;/d:prop&gt;
+<span class="w">      </span>&lt;d:status&gt;HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK&lt;/d:status&gt;
+<span class="w">    </span>&lt;/d:propstat&gt;
+<span class="w">  </span>&lt;/d:response&gt;
+&lt;/d:multistatus&gt;
+</pre></div>
+</div>
+</section>
+<section id="accessing-files-using-winscp">
+<h2>Приступ фајловима програмом WinSCP<a class="headerlink" href="#accessing-files-using-winscp" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://winscp.net/eng/docs/introduction/">WinSCP</a>  је бесплатан SFTP клијент, FTP клијент, WebDAV клијент, S3 клијент и SCP клијент отвореног кода за Windows. Његова главна функција је пренос фајлова између локалног и удаљеног компјутера. Уз то, WinSCP нуди скриптовање и основну функционалност фајл менаџера.</p>
+<p>Преносну верзију програма WinSCP  можете да <a class="reference external" href="https://winscp.net/eng/downloads.php/">преузмете</a> и да је помоћу <a class="reference external" href="https://wiki.winehq.org/Main_Page/">Wine</a> извршавате на Linux систему.</p>
+<p>Да бисте WinSCP извршавали на Linux систему, преузмите wine менаџером пакета дистрибуције, па га затим покрените са: wine WinSCP.exe.</p>
+<p>Да се повежете са Nextcloud:</p>
+<ul class="simple">
+<li><p>Покрените WinSCP</p></li>
+<li><p>Изаберите ’Session’ у менију</p></li>
+<li><p>Изаберите опцију менија ’New Session’</p></li>
+<li><p>Поставите вредност падајуће листе ’File protocol’ на WebDAV</p></li>
+<li><p>Поставите вредност падајуће листе ’Encryption’ на TSL/SSL Implicit encryption</p></li>
+<li><p>Попуните поље hostname: example.com</p></li>
+<li><p>Попуните поље username: NEXTCLOUDUSERNAME</p></li>
+<li><p>Попуните поље password: NEXTCLOUDPASSWORD</p></li>
+<li><p>Притисните дугме ’Advanced…’</p></li>
+<li><p>Поставите се на ’Environment’, ’Directories’ на левој страни</p></li>
+<li><p>Попуните поље ’Remote directory’ следећом вредности: /nextcloud/remote.php/dav/files/NEXTCLOUDUSERNAME/</p></li>
+<li><p>Притисните дугме ’OK’</p></li>
+<li><p>Притсните дугме ’Save’</p></li>
+<li><p>Изаберите жељене опције и притисните дугме ’OK’</p></li>
+<li><p>Притисните дугме ’Login’ да се повежете са Nextcloud</p></li>
+</ul>
+<p>Напомена: препоручује се да користите лозинку апликације као лозинку ако употребљавате TOTP, јер WinSCP не разуме TOTP у Nextcloud у време писања овог текста (07. 11. 2022.).</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="access_webgui.html" class="btn btn-neutral float-left" title="Приступ вашим фајловима употребом Nextcloud веб интерфејса" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="deleted_file_management.html" class="btn btn-neutral float-right" title="Управљање обрисаним фајловима" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/eu/">eu</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/id/">id</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/ja_JP/">ja_JP</a></dd>
+<dd><a href="/server/latest/user_manual/ko/">ko</a></dd>
+<dd><a href="/server/latest/user_manual/nb_NO/">nb_NO</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/nn/">nn</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/pt_PT/">pt_PT</a></dd>
+<dd><a href="/server/latest/user_manual/ro/">ro</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/si/">si</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sr/">sr</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/ta/">ta</a></dd>
+<dd><a href="/server/latest/user_manual/th/">th</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/uk/">uk</a></dd>
+<dd><a href="/server/latest/user_manual/vi/">vi</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+<dd><a href="/server/latest/user_manual/zh_TW/">zh_TW</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Верзије</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/25/user_manual">25</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/user_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/user_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Преузимања</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>На прочитај документацију</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Почетна страница пројекта</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Изградње</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calendar integration &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Contacts Menu" href="contacts_menu.html" />
+    <link rel="prev" title="Groupware integration" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Core development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../continuous_integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../email.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../http_client.html">HTTP Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../psr.html">PSR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rest_apis.html">REST APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../speech-to-text.html">Speech-To-Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../talk.html">Talk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../translation.html">Machine Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../text_processing.html">Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dashboard.html">Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference.html">Reference providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects.html">Projects</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Groupware integration</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Calendar integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#access-calendars-and-events">Access calendars and events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-providers">Calendar providers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resources">Resources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rooms">Rooms</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="contacts_menu.html">Contacts Menu</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../web_host_metadata.html">Web Host Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../status.html">User Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security.html">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../profile.html">Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_migration.html">User migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../profiler.html">Profiler</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Nextcloud design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Digging deeper</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Groupware integration</a></li>
+      <li class="breadcrumb-item active">Calendar integration</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/groupware/calendar.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="calendar-integration">
+<h1>Calendar integration<a class="headerlink" href="#calendar-integration" title="Link to this heading"></a></h1>
+<p>On this page you can learn more about integrating with the Nextcloud calendar services.</p>
+<section id="access-calendars-and-events">
+<h2>Access calendars and events<a class="headerlink" href="#access-calendars-and-events" title="Link to this heading"></a></h2>
+<section id="calendar-objects">
+<span id="calendar-search"></span><h3>Calendar objects<a class="headerlink" href="#calendar-objects" title="Link to this heading"></a></h3>
+<p>You can query the contents of calendars in the back end through the calendar manager service. Queries are always scoped to a principal (user) but may follow further search criteria like string matches or date ranges.</p>
+<p><a class="reference internal" href="../../basics/dependency_injection.html#id2"><span class="std std-ref">Inject</span></a> the calendar manager into your class. Then you can use <code class="docutils literal notranslate"><span class="pre">newQuery</span></code> and <code class="docutils literal notranslate"><span class="pre">searchForPrincipal</span></code> to build and execute a search query.</p>
+<p>In the following example you see a basic use case of the calendar query API where specific user’s calendar is searched for any events and tasks during a given duration.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">OCP\Calendar\IManager</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MyService</span> <span class="p">{</span>
+
+    <span class="sd">/** @var IManager */</span>
+    <span class="k">private</span> <span class="nv">$calendarManager</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IManager</span> <span class="nv">$calendarManager</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">calendarManager</span> <span class="o">=</span> <span class="nv">$calendarManager</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">searchInUserCalendar</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$uid</span><span class="p">,</span>
+                                         <span class="nx">string</span> <span class="nv">$calendarUri</span><span class="p">,</span>
+                                         <span class="nx">DateTimeImmutable</span> <span class="nv">$from</span><span class="p">,</span>
+                                         <span class="nx">DateTimeImmutable</span> <span class="nv">$to</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="nv">$principal</span> <span class="o">=</span> <span class="s1">&#39;principals/users/&#39;</span> <span class="o">.</span> <span class="nv">$uid</span><span class="p">;</span>
+
+        <span class="c1">// Prepare the query</span>
+        <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">calendarManager</span><span class="o">-&gt;</span><span class="na">newQuery</span><span class="p">(</span><span class="nv">$principal</span><span class="p">);</span>
+        <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">addSearchCalendar</span><span class="p">(</span><span class="nv">$uri</span><span class="p">);</span>
+        <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">setTimerangeStart</span><span class="p">(</span><span class="nv">$from</span><span class="p">);</span>
+        <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">setTimerangeEnd</span><span class="p">(</span><span class="nv">$to</span><span class="p">);</span>
+
+        <span class="c1">// Execute the query</span>
+        <span class="nv">$objects</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">calendarManager</span><span class="o">-&gt;</span><span class="na">searchForPrincipal</span><span class="p">(</span><span class="nv">$query</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Study the interface <code class="docutils literal notranslate"><span class="pre">\OCP\Calendar\ICalendarQuery</span></code> to learn more about other query options.</p>
+</section>
+<section id="calendars">
+<span id="calendar-access"></span><h3>Calendars<a class="headerlink" href="#calendars" title="Link to this heading"></a></h3>
+<p>You can access calendars through the <code class="docutils literal notranslate"><span class="pre">IManager</span></code>. <a class="reference internal" href="../../basics/dependency_injection.html#id2"><span class="std std-ref">Inject</span></a> the service, then use the <code class="docutils literal notranslate"><span class="pre">getCalendarsForPrincipal</span></code> method.</p>
+<p>You can either query all calendars of the principal if you omit the second argument, or look for specific calendars only. See the examples below.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">OCP\Calendar\IManager</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MyService</span> <span class="p">{</span>
+
+    <span class="sd">/** @var IManager */</span>
+    <span class="k">private</span> <span class="nv">$calendarManager</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IManager</span> <span class="nv">$calendarManager</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">calendarManager</span> <span class="o">=</span> <span class="nv">$calendarManager</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">processCalendarData</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$uid</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="nv">$principal</span> <span class="o">=</span> <span class="s1">&#39;principals/users/&#39;</span> <span class="o">.</span> <span class="nv">$uid</span><span class="p">;</span>
+
+        <span class="c1">// This will find all calendars of the principal</span>
+        <span class="nv">$calendars</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">calendarManager</span><span class="o">-&gt;</span><span class="na">getCalendarsForPrincipal</span><span class="p">(</span><span class="nv">$principal</span><span class="p">);</span>
+
+        <span class="c1">// Work with calendars</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">processCalendarData</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$uid</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$calendarUri</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="nv">$principal</span> <span class="o">=</span> <span class="s1">&#39;principals/users/&#39;</span> <span class="o">.</span> <span class="nv">$uid</span><span class="p">;</span>
+
+        <span class="c1">// This will only find specific calendars of the principal</span>
+        <span class="nv">$calendars</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">calendarManager</span><span class="o">-&gt;</span><span class="na">getCalendarsForPrincipal</span><span class="p">(</span>
+            <span class="nv">$principal</span><span class="p">,</span>
+            <span class="p">[</span><span class="nv">$calendarUri</span><span class="p">]</span>
+        <span class="p">);</span>
+
+        <span class="c1">// Check if the requested calendar was found and work with it</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The returned objects implement <code class="docutils literal notranslate"><span class="pre">\OCP\Calendar\ICalendar</span></code>. Study the interface methods to discover what data is available.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All calendars are by default only readable, therefore <code class="docutils literal notranslate"><span class="pre">ICalendar</span></code> does not offer methods for mutation. Some of the calendars are mutable, however, and they may further extend the interface <code class="docutils literal notranslate"><span class="pre">\OCP\Calendar\ICreateFromString</span></code>.</p>
+</div>
+</section>
+</section>
+<section id="calendar-providers">
+<span id="id1"></span><h2>Calendar providers<a class="headerlink" href="#calendar-providers" title="Link to this heading"></a></h2>
+<p>Nextcloud apps can register calendars in addition to the internal calendars of the Nextcloud CalDAV back end. Calendars are only loaded on demand, therefore a lazy provider mechanism is used.</p>
+<p>To provide calendar(s) you have to write a class that implements the <code class="docutils literal notranslate"><span class="pre">ICalendarProvider</span></code> interface.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">OCP\Calendar\ICalendarProvider</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">CalendarProvider</span> <span class="k">implements</span> <span class="nx">ICalendarProvider</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getCalendars</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$principalUri</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$calendarUris</span> <span class="o">=</span> <span class="p">[])</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="nv">$calendars</span> <span class="o">=</span> <span class="p">[];</span>
+        <span class="c1">// TODO: Run app specific logic to find calendars that belong to</span>
+        <span class="c1">//       $principalUri and fill $calendars</span>
+
+        <span class="c1">// The provider can simple return an empty array if there is not</span>
+        <span class="c1">// a single calendar for the principal URI</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$calendars</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">[];</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Return instances of \OCP\Calendar\ICalendar</span>
+        <span class="k">return</span> <span class="nv">$calendars</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This <code class="docutils literal notranslate"><span class="pre">CalendarProvider</span></code> class is then registered in the <a class="reference internal" href="../../app_development/bootstrap.html#bootstrapping"><span class="std std-ref">register method of your Application class</span></a> with <code class="docutils literal notranslate"><span class="pre">$context-&gt;registerCalendarProvider(CalendarProvider::class);</span></code>.</p>
+<section id="write-support">
+<h3>Write support<a class="headerlink" href="#write-support" title="Link to this heading"></a></h3>
+<p>Calendars that only return <cite>ICalendar</cite> are implicitly read-only. If your app’s calendars can be written to, you may implement the <code class="docutils literal notranslate"><span class="pre">ICreateFromString</span></code>. It will allow other apps to write calendar objects to the calendar by passing the raw iCalendar data as string.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">OCP\Calendar\ICreateFromString</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">CalendarReadWrite</span> <span class="k">implements</span> <span class="nx">ICreateFromString</span> <span class="p">{</span>
+
+    <span class="c1">// ... other methods from ICalendar still have to be implemented ...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">createFromString</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$calendarData</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="c1">// Write data to your calendar representation</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="handling-imip-data">
+<h3>Handling iMIP data<a class="headerlink" href="#handling-imip-data" title="Link to this heading"></a></h3>
+<p>You may implement the <code class="docutils literal notranslate"><span class="pre">IHandleIMipMessage</span></code> interface to process iMIP data you receive in a client and want to pass on for processing to the backend.</p>
+<p>Please be aware that there are some security considerations to take into account. You can find more infomation on these and the conditions that have to be fulfilled for iMIP data to be processed in the <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc6047">RFC</a></p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">OCP\Calendar\IHandleIMipMessage</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">HandleIMipMessage</span> <span class="k">implements</span> <span class="nx">IHandleIMipMessage</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">handleIMipMessage</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$calendarData</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="c1">// Validation and write to your calendar representation</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="access-through-caldav">
+<h3>Access through CalDAV<a class="headerlink" href="#access-through-caldav" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 27.</span></p>
+</div>
+<p>As with the built-in calendars, calendars provided by <code class="docutils literal notranslate"><span class="pre">ICalendarProvider</span></code> can be accessed using CalDAV. Therefore, permissions of the <code class="docutils literal notranslate"><span class="pre">ICalendar</span></code> are automatically mapped to the DAV object.
+Write support is also supported. Please note that deleting entities is currently implemented by setting the entity to the canceled state and passing it to the <code class="docutils literal notranslate"><span class="pre">createFromString</span></code> method.</p>
+</section>
+</section>
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Link to this heading"></a></h2>
+<p>Nextcloud apps can provide resource back ends for the CalDAV server in Nextcloud.</p>
+<p>To register a custom back end, create a class that implements <code class="docutils literal notranslate"><span class="pre">\OCP\Calendar\Resource\IBackend</span></code>.</p>
+<p>In the <a class="reference internal" href="../../app_development/bootstrap.html#bootstrapping"><span class="std std-ref">boot method of your Application class</span></a> you can fetch the <code class="docutils literal notranslate"><span class="pre">\OCP\Calendar\Resource\IManager</span></code> instance and pass the fully qualified class name of your custom back end to <code class="docutils literal notranslate"><span class="pre">registerBackend</span></code>.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">OCP\Calendar\Resource\IManager</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="c1">// ... registration logic goes here ...</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">(</span><span class="nx">IBootContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="sd">/** @var IManager $manager */</span>
+        <span class="nv">$resourceManager</span> <span class="o">=</span> <span class="nv">$serverContainer</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">IManager</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nv">$resourceManager</span><span class="o">-&gt;</span><span class="na">registerBackend</span><span class="p">(</span><span class="nx">\OCA\MyApp\ResourceBackend</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Nextcloud queries the registered back ends only periodically through a background job. If the resources do not show up in the front-end double check if cron jobs are run on your development instance.</p>
+</div>
+</section>
+<section id="rooms">
+<h2>Rooms<a class="headerlink" href="#rooms" title="Link to this heading"></a></h2>
+<p>Nextcloud apps can provide rooms back ends for the CalDAV server in Nextcloud.</p>
+<p>To register a custom back end, create a class that implements <code class="docutils literal notranslate"><span class="pre">\OCP\Calendar\Room\IBackend</span></code>.</p>
+<p>In the <a class="reference internal" href="../../app_development/bootstrap.html#bootstrapping"><span class="std std-ref">boot method of your Application class</span></a> you can fetch the <code class="docutils literal notranslate"><span class="pre">\OCP\Calendar\Room\IManager</span></code> instance and pass the fully qualified class name of your custom back end to <code class="docutils literal notranslate"><span class="pre">registerBackend</span></code>.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">OCP\Calendar\Room\IManager</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="c1">// ... registration logic goes here ...</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">(</span><span class="nx">IBootContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="sd">/** @var IManager $manager */</span>
+        <span class="nv">$resourceManager</span> <span class="o">=</span> <span class="nv">$serverContainer</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">IManager</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nv">$resourceManager</span><span class="o">-&gt;</span><span class="na">registerBackend</span><span class="p">(</span><span class="nx">\OCA\MyApp\RoomBackend</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Nextcloud queries the registered back ends only periodically through a background job. If the rooms do not show up in the front-end double check if cron jobs are run on your development instance.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Groupware integration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="contacts_menu.html" class="btn btn-neutral float-right" title="Contacts Menu" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/25/developer_manual">25</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/developer_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/developer_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compatibility with the app ecosystem &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Getting started" href="../getting_started/index.html" />
+    <link rel="prev" title="Security guidelines" href="security.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Prologue</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="code-of-conduct.html">Code of conduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="help_communication.html">Help and communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security guidelines</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Compatibility with the app ecosystem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#documentation-procedures-of-changes-that-affect-app-developers">Documentation procedures of changes that affect app developers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-documentation-requirements">Other documentation requirements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Nextcloud design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Prologue</a></li>
+      <li class="breadcrumb-item active">Compatibility with the app ecosystem</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/prologue/compatibility_app_ecosystem.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="compatibility-with-the-app-ecosystem">
+<h1>Compatibility with the app ecosystem<a class="headerlink" href="#compatibility-with-the-app-ecosystem" title="Link to this heading"></a></h1>
+<p>The Nextcloud app ecosystem consists of hundreds of apps and app maintainers.</p>
+<p>The development process may require changes that affect apps in this ecosystem. These changes may either be a change in standards or best practises, yet in more extreme cases the changes may also be breaking apps.</p>
+<p>While developers are expected to aim for limiting the number of changes that break apps, this cannot always be avoided or is not always reasonable to do to maintain an up-to-date technology stack.</p>
+<p>Informing app developers about any change that affect them is therefore key to a thriving ecosystem. This page describes the three procedures to document changes that are relevant to app developers.</p>
+<section id="documentation-procedures-of-changes-that-affect-app-developers">
+<h2>Documentation procedures of changes that affect app developers<a class="headerlink" href="#documentation-procedures-of-changes-that-affect-app-developers" title="Link to this heading"></a></h2>
+<p>There are three procedures in place to facilitate communication to app developers about changes that affect them:</p>
+<ol class="arabic simple">
+<li><p>The definition of <strong>Done</strong> of a pull request includes documentation.</p></li>
+</ol>
+<blockquote>
+<div><p>This means the development of your pull request cannot be considered done if you introduced changes (additions, removals or modifications) that affect app developers that you did not document.</p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>A change that affects app developers, has to be reported and documented by the author of the pull request in the <a class="reference internal" href="../app_publishing_maintenance/app_upgrade_guide/index.html#app-upgrade-guide"><span class="std std-ref">App Upgrade guide</span></a> section.</p></li>
+</ol>
+<blockquote>
+<div><p>The requirements for this documentation are:</p>
+<ul class="simple">
+<li><p>It should be written so that app developers understand how to work around the change for their app in a tutorial format</p></li>
+<li><p>The steps should be explicitly written, so the documentation shall not rely upon links to external resources for the steps. While it is encouraged to add an external links as additional reference, it is a hard requirement that the documentation is readable and actionable without browsing to this link.</p></li>
+<li><p>The change author’s name should be added to the section so readers can reach out to the author if they have questions or if something is unclear.</p></li>
+<li><p>Timeline: the documentation is required to be handed in when finalizing the pull request and should be merged timely close to the actual change.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="other-documentation-requirements">
+<h2>Other documentation requirements<a class="headerlink" href="#other-documentation-requirements" title="Link to this heading"></a></h2>
+<p>A change that affects administrators who upgrade their Nextcloud should be documented in the release notes section of the admin documentation of that release.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="security.html" class="btn btn-neutral float-left" title="Security guidelines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../getting_started/index.html" class="btn btn-neutral float-right" title="Getting started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/25/developer_manual">25</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/26/developer_manual">26</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/27/developer_manual">27</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
