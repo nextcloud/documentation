@@ -314,53 +314,113 @@ Admin audit log (Optional)
 
 .. _config-admin-audit:
 
-By enabling the **admin_audit** app, additional information about various events can be logged. Similar to the normal logging, the audit log can be provided to any of the existing logging mechanisms in :file:`config/config.php`. The default behavior, if no parameters are specified after the app is enabled, is ``file`` based logging to a file called ``audit.log`` stored in the ``datadirectory``.
+By enabling the **admin_audit** app, additional information about various
+events can be logged. The audit log supports all of the logging backends
+described above (file, syslog, systemd, errorlog).
 
-If you wish to override this and log to syslog instead the following would be one approach:
+.. note::
+	Detailed documentation on auditable events for enterprises can be found in the Nextcloud GmbH
+	`customer portal <https://portal.nextcloud.com/article/using-the-audit-log-44.html>`_.
+
+Default audit log location
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When using the default ``file`` backend, the audit log is written to
+**audit.log** inside the directory configured by ``datadirectory`` in
+:file:`config/config.php` (e.g. ``/var/www/html/data/audit.log``).
+
+You can override the path with the ``logfile_audit`` system config key:
 
 ::
 
-	"log_type_audit" => "syslog",
-	"syslog_tag_audit" => "Nextcloud",
-	"logfile_audit" => "",
+    'logfile_audit' => '/var/log/nextcloud/audit.log',
+
+Dedicated audit logging configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The audit log backend can be configured independently from the main
+Nextcloud log using three dedicated keys in :file:`config/config.php`:
+
+**log_type_audit**
+    The logging backend for audit events. Accepts the same values as
+    ``log_type``: ``file``, ``syslog``, ``systemd``, or ``errorlog``.
+
+    Defaults to ``file``.
+
+**logfile_audit**
+    Path to the audit log file (only used when ``log_type_audit`` is
+    ``file``). When empty, the default ``audit.log`` in the data directory
+    is used.
+
+**syslog_tag_audit**
+    The syslog identifier for audit messages (only used when
+    ``log_type_audit`` is ``syslog`` or ``systemd``). Defaults to the value
+    of ``syslog_tag``.
+
+Example – send audit events to syslog instead of a file:
+
+::
+
+    'log_type_audit' => 'syslog',
+    'syslog_tag_audit' => 'Nextcloud',
+    'logfile_audit' => '',
 
 Log level interaction
 ~~~~~~~~~~~~~~~~~~~~~
 
-If system ``loglevel`` in ``config.php`` is set to ``2`` or higher, audit logging needs to be triggered explicitly by adding the following setting to ``config.php``:
+The **admin_audit** app writes its messages at **INFO** level (``1``).
+Because the default system ``loglevel`` is **WARN** (``2``), audit messages
+are suppressed unless you explicitly lower the system log level or add a
+conditional override.
+
+The recommended approach is to add a ``log.condition`` entry that forces
+DEBUG-level logging for the ``admin_audit`` app context, without affecting
+other apps:
 
 ::
 
-	"log.condition" => [
-		"apps" => ["admin_audit"],
-	],
+    'log.condition' => [
+        'apps' => ['admin_audit'],
+    ],
 
-Find detailed documentation on auditable events for enterprises in our `customer portal <https://portal.nextcloud.com/article/using-the-audit-log-44.html>`_.
+This ensures audit events are always written regardless of the global
+``loglevel`` setting.
 
-Integrating into the Web Interface
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Integrating into the web interface
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The built-in NC ``logreader`` app (which is what provides the *Administration settings->Logging* interface) only accesses the file-based ``nextcloud.log``. The **admin_audit** app log output, however, can be integrated into the web interface by configuring it to *also* log to the ``nextcloud.log``.
+The built-in **logreader** app (which provides *Administration settings →
+Logging*) only reads the file-based ``nextcloud.log``. By default the
+audit log is written to a separate ``audit.log`` file, so audit entries
+will not appear in the web interface.
 
-Add the following to your ``config.php`` (adjusting the path to your own ``nextcloud.log`` path):
-
-::
-
-	'log.condition' => [
-		'apps' => [ 'admin_audit'],
-	],
-	'logfile_audit' => '/var/www/html/data/nextcloud.log',
-
-Configuring through admin_audit app settings
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Previously the audit logfile was defined in the app config. This config is still used when the system config is not provided, but is considered a legacy parameter.
+If you want audit events to appear in the logreader, point
+``logfile_audit`` at the same file as ``nextcloud.log``:
 
 ::
 
-	occ config:app:set admin_audit logfile --value=/var/log/nextcloud/audit.log
+    'log.condition' => [
+        'apps' => ['admin_audit'],
+    ],
+    'logfile_audit' => '/var/www/html/data/nextcloud.log',
 
-.. _PHP date function: http://www.php.net/manual/en/function.date.php
+.. note::
+
+    Adjust the path above to match your actual ``datadirectory`` location.
+    This merges audit entries into the main log file; the separate
+    ``audit.log`` will no longer be written.
+
+Configuring through admin_audit app settings (legacy)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Previously the audit log file was defined via app config. This setting is
+still read as a fallback when ``logfile_audit`` is not set in
+:file:`config/config.php`, but it is considered a **legacy** parameter.
+The system config key should be preferred for new installations.
+
+::
+
+    occ config:app:set admin_audit logfile --value=/var/log/nextcloud/audit.log
 
 Workflow log
 ------------
