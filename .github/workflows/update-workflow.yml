@@ -1,0 +1,72 @@
+name: Checkout File from Master
+
+on:
+  workflow_dispatch:
+    inputs:
+      file_path:
+        description: 'Path to the file to checkout from master'
+        required: true
+        type: string
+        default: .github/workflows/sphinxbuild.yml
+
+jobs:
+  checkout:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        target_branch:
+          - stable19
+          - stable20
+          - stable21
+          - stable22
+          - stable23
+          - stable24
+          - stable25
+          - stable26
+          - stable27
+          - stable28
+          - stable29
+          - stable30
+          - stable31
+          - stable32
+          - stable33
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      with:
+        fetch-depth: 0  # Fetch full history to access all branches
+        token: ${{ secrets.WORKFLOW_TOKEN }}
+        ref: ${{ matrix.target_branch }}
+    
+    - name: Configure Git
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+    
+    - name: Checkout file from master
+      run: |
+        echo "Checking out file: ${{ inputs.file_path }} from master branch"
+        git checkout origin/master -- ${{ inputs.file_path }}
+    
+    - name: Adjust Python version for older branches
+      run: |
+        # Extract version from branch name (e.g., stable32 -> 32)
+        VERSION=$(echo "${{ matrix.target_branch }}" | sed 's/stable//')
+        
+        # For branches stable19-stable31, use Python 3.10 instead of 3.12
+        if [ "$VERSION" -le 31 ]; then
+          if grep -q "3.12" "${{ inputs.file_path }}"; then
+            sed -i 's/3\.12/3.10/g' "${{ inputs.file_path }}"
+            echo "Updated Python version to 3.10 for stable$VERSION"
+          fi
+        fi
+    
+    - name: Commit and push changes
+      run: |
+        git add ${{ inputs.file_path }}
+        git diff --cached --quiet || git commit -sm "chore: update ${{ inputs.file_path }} from master branch"
+        
+        git push origin ${{ matrix.target_branch }}
