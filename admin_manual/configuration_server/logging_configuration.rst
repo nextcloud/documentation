@@ -292,18 +292,22 @@ Log field breakdown
 * **reqId** (request id): any log lines related to a single request have the same value
 * **level**: logged incident's level, always 1 in audit.log
 * **time**: date and time (format and timezone can be configured in config.php)
-* **remoteAddr**: the IP address of the user (if applicable  – empty for occ commands)
+* **remoteAddr**: the IP address of the user (if applicable – empty for occ commands)
 * **user**: acting user's id (if applicable)
 * **app**: affected app (always admin_audit in audit.log)
-* **method**: HTTP method, for example GET, POST, PROPFIND, etc.  – empty on occ calls
+* **method**: HTTP method, for example GET, POST, PROPFIND, etc. – empty on occ calls
 * **url**: request path (if applicable – empty on occ calls)
+* **scriptName**: the PHP script name that handled the request
 * **message**: event information message
 * **userAgent**: user agent (if applicable – empty on occ calls)
-* **exception**: Full exception with trace (if applicable)
-* **data** additional structured data (if applicable)
+* **exception**: full exception with trace (if applicable)
+* **data**: additional structured data (if applicable)
 * **version**: Nextcloud version at the time of request
+* **clientReqId**: value of the ``X-Request-Id`` HTTP header sent by the client (only present when the header is set)
+* **occ_command**: the occ command that was executed, as an array of up to two arguments (only present in CLI mode)
+* **backtrace**: full PHP backtrace (only present when ``log.backtrace`` is enabled in config.php)
 
-Empty value are written as two dashes: ``--``.
+Empty values are written as two dashes: ``--``.
 
 Admin audit log (Optional)
 --------------------------
