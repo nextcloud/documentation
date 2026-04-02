@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="nn" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kryptering av dine Nextcloud filer på tenaren &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=442c5515"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Fil Deling" href="sharing.html" />
+    <link rel="prev" title="Synkronisering på skrivebord og mobil" href="desktop_mobile_sync.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud |versjon| brukar manual introduksjon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Kva som er nytt for brukarar i Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud nettgernsesnitt</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Filer &amp; synkronisasjon</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Aksessere filene dine ved å bruke Nextcloud Web grensesnitt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Å få tilgang til Nextcloud filer ved å bruke WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Administrere sletta filer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Synkronisering på skrivebord og mobil</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Kryptering av dine Nextcloud filer på tenaren</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#encryption-faq">Kryptering FAQ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-can-encryption-be-disabled">Korleis kan kryptering bli deaktivert?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-possible-to-disable-encryption-with-the-recovery-key">Er det mogleg å deaktivere kryptering med gjenopprettings nøkkelen?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#can-encryption-be-disabled-without-the-user-s-password">Kan kryptering bli deaktivert utan brukaren sitt passord?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">Er det planlagt å flytte dette til den neste brukar innloggingen eller ein bakgrunns jobb?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-group-sharing-possible-with-the-recovery-key">Er gruppedeling mogleg med gjenopprettings nøkkelen?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-encryption">Bruk av kryptering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-encrypted-files">Deling av krypterte filer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#recovery-key-password">Gjenoppretting nøkkel passord</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#files-not-encrypted">Ikkje krypterte filer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#change-private-key-password">Endre privat nøkkel passord</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Fil Deling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Fødererte Delingar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Å lage anonyme opplastinger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Store fil opplastinger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Lagringskvote</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Versjonskontroll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Prosjekter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Overføre Eigarskap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Bruk av Føderale Delingar</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Snakk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Sette dine preferanser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal aksess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Bruk av to-stegs autentifisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Administrere tilkopla nettlesere og einingar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Ekstern lagring</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Filer &amp; synkronisasjon</a></li>
+      <li class="breadcrumb-item active">Kryptering av dine Nextcloud filer på tenaren</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/encrypting_files.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="encrypting-your-nextcloud-files-on-the-server">
+<h1>Kryptering av dine Nextcloud filer på tenaren<a class="headerlink" href="#encrypting-your-nextcloud-files-on-the-server" title="Link to this heading"></a></h1>
+<p>Nextcloud inkluderer ein Krypteringsapp på serversiden, og når den er aktivert av din Nextcloud administrator vil alle Nextcloud data filene dine bli automatisk kryptert på tenaren. Kryptering er tenar-vid, som tyder at når det er aktivert kan du ikkje velge å halde filene dine ukryptert. Du trenger ikkje gjere noko spesielt, sidan det nyttar din Nextcloud innlogg som passord til din unike private krypterings nøkkel. Berre logg inn og ut, administrer og del filene dine som du vanlegvis gjer, og du kan fortsatt endre passordet ditt når som helst.</p>
+<p>Hovedformålet er å kryptere filer på eksterne lagrings tenester som er tilkopla din Nextcloud tenar. Dette er ein enkel og sømlaus måte for å beskytte filene dine på ekstern lagring. Du kan dele dine eksterne filer gjennom Nextcloud den vanlege måten, men du kan ikkje dele dine krypterte filer direkte frå den eksterne lagringen som du nyttar. Grunnen til dette er at krypterings nøklene er lagret i din Nextcloud tenar, og er aldri eksponert til eksterne tjenesteleverandører.</p>
+<p>Om din Nextcloud tenar ikkje er kopla til nokon ekstern lagringsteneste, er det betre å nytte ei anna form for kryptering som fil-nivå eller full diskkryptering. Fordi nøklene er holdt på din Nextcloud tenar, er det mogleg for din Nextcloud administrator å snike i filene dine, og om tenaren er kompromittert kan inntrengeren få tilgang til filene dine. (Les  <a class="reference external" href="https://nextcloud.com/blog/encryption-in-nextcloud/">Kryptering i Nextcloud</a> for å lære meir.)</p>
+<section id="encryption-faq">
+<h2>Kryptering FAQ<a class="headerlink" href="#encryption-faq" title="Link to this heading"></a></h2>
+<section id="how-can-encryption-be-disabled">
+<h3>Korleis kan kryptering bli deaktivert?<a class="headerlink" href="#how-can-encryption-be-disabled" title="Link to this heading"></a></h3>
+<p>Den einaste måten å deaktivere kryptering på er ved å kjøre <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label">«dekryptere alle»</a> script, som dekrypterer alle filer og deaktiverer kryptering.</p>
+</section>
+<section id="is-it-possible-to-disable-encryption-with-the-recovery-key">
+<h3>Er det mogleg å deaktivere kryptering med gjenopprettings nøkkelen?<a class="headerlink" href="#is-it-possible-to-disable-encryption-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>Ja, <em>om</em> kvar brukar nyttar <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">fil gjenopprettings nøkkelen</a>, <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label">«dekryptere alle»</a> vil bruke det til å dekryptere alle filer.</p>
+</section>
+<section id="can-encryption-be-disabled-without-the-user-s-password">
+<h3>Kan kryptering bli deaktivert utan brukaren sitt passord?<a class="headerlink" href="#can-encryption-be-disabled-without-the-user-s-password" title="Link to this heading"></a></h3>
+<p>Om du ikkje har brukaren sitt passord eller <a href="#id3"><span class="problematic" id="id4">`fil gjenopprettings nøkkelen&lt;https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys&gt;`_</span></a>, så er det ingen måte å dekryptere alle filene på. Kva meir, å køyre det på innlogg vil være farleg, fordi du mest sannsynleg vil møte på tidsavbrot.</p>
+</section>
+<section id="is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">
+<h3>Er det planlagt å flytte dette til den neste brukar innloggingen eller ein bakgrunns jobb?<a class="headerlink" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job" title="Link to this heading"></a></h3>
+<p>Om me gjorde det, måtte me ha lagra innloggings passordet ditt i databasen. Dette kan bli sett på som eit sikkerheitsproblem, så ingenting som det er planlagt.</p>
+</section>
+<section id="is-group-sharing-possible-with-the-recovery-key">
+<h3>Er gruppedeling mogleg med gjenopprettings nøkkelen?<a class="headerlink" href="#is-group-sharing-possible-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>Om du meiner å legge til brukarar i grupper og få det til å fungere på magisk vis? Nei. Dette fungerer berre med hovednøkkelen.</p>
+</section>
+</section>
+<section id="using-encryption">
+<h2>Bruk av kryptering<a class="headerlink" href="#using-encryption" title="Link to this heading"></a></h2>
+<p>Nextcloud kryptering er så og sei sett det og gløymt det, men du har eit par andre alternativ du kan nytte.</p>
+<p>Når din Nextcloud administrator aktiverer kryptering for fyrste gong, må du logge av og deretter inn igjen for å skape dine krypterings nøkler og kryptere filene dine. Når kryptering har blitt aktivert på din Nextcloud tenar vil du kunne sjå ein gul banner på Fil siden din som varsler deg om å logge ut og så inn igjen:</p>
+<figure class="align-default">
+<img alt="../../_images/encryption1.png" src="../../_images/encryption1.png" />
+</figure>
+<p>Når du logger inn igjen tar det eit par minutter før det fungerer, avhengig av kor mange filer du har, og så  er du tilbake til din standard Nextcloud side.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption2.png" src="../../_images/encryption2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Du må aldri miste ditt Nextcloud passord, fordi då mister du tilgang til filene dine. Sjølv om det finnes eit alternativt gjenopprettings alternativ som din Nextcloud administrator kan aktivere; sjå Gjenopprettings Nøkkel Passord seksjon (nedanfor) for å lære om dette.</p>
+</div>
+</section>
+<section id="sharing-encrypted-files">
+<h2>Deling av krypterte filer<a class="headerlink" href="#sharing-encrypted-files" title="Link to this heading"></a></h2>
+<p>Berre brukarar som har private krypterings nøkler har tilgang til delte krypterte filer og mapper. Brukarar som ikkje endå har skapt deira private krypterings nøkler vil ikkje ha tilgang til krypterte delte filer; dei vil sjå mappene og fil namna, men ikkje kunne opne eller laste ned filer. Dei vil sjå ein gul varslings banner som seier «Kryptering Appen er aktivert men dine nøkler er ikkje initialisert, venleg logg ut og inn igjen.»</p>
+<p>Eigar av delte filer må kanskje dele på nytt filene etter at krypteringen er aktivert; brukarar som forsøker å aksessere delingen vil sjå ein melding som anbefaler dei å spørje fil eigaren om å dele filen på nytt med dei. For individuelle delinger, slutt å dele filen og deretter del den på nytt. For gruppe delinger, del med kva som helst individ som ikkje kan aksessere delingen. Dette oppdaterer krypteringen, og så kan dele eigaren fjerne dei individuelle delingene.</p>
+<section id="recovery-key-password">
+<h3>Gjenoppretting nøkkel passord<a class="headerlink" href="#recovery-key-password" title="Link to this heading"></a></h3>
+<p>Om din Nextcloud administrator har aktivert gjenoppretting nøkkel funksjonen, kan du velje å nytte denne funksjonen på din konto. Om du aktiverer «Passord gjenoppretting» vil administratoren kunne lese dine data med eit spesielt passord. Denne funksjonen gir administratoren mogelegheiten til å gjenopprette dine filer i tilfelle du mister ditt Nextcloud passord. Om gjenoppretting nøkkelen ikkje er aktivert, er det ingen måte å gjenopprette filene dine om du mister ditt innlogging passord.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption3.png" src="../../_images/encryption3.png" />
+</figure>
+</section>
+</section>
+<section id="files-not-encrypted">
+<h2>Ikkje krypterte filer<a class="headerlink" href="#files-not-encrypted" title="Link to this heading"></a></h2>
+<p>Kun dataene i filene dine er kryptert, og ikkje fil namna eller mappe strukturen. Desse filene er aldri kryptert:</p>
+<ul class="simple">
+<li><p>Gamle filer i papirkurven.</p></li>
+<li><p>Bilde miniatyrbilete frå Galleri appen.</p></li>
+<li><p>Førehandsvisningar frå Filer appen.</p></li>
+<li><p>Søkeindeksen frå den fulle tekst søke appen.</p></li>
+<li><p>Tredjepart applikasjon data</p></li>
+</ul>
+<p>Kun filer som er delt med tredjepart lagringsleverandører kan bli kryptert, resten av filene kan ikkje bli kryptert.</p>
+<section id="change-private-key-password">
+<h3>Endre privat nøkkel passord<a class="headerlink" href="#change-private-key-password" title="Link to this heading"></a></h3>
+<p>Dette alternativet er berre tilgjengeleg om kryptering passordet ikkje har blitt endra av administratoren, men berre innlogging passordet. Dette kan skje om din Nextcloud leverandør nytter ein ekstern brukar back-end (for eksempel, LDAP) og endret ditt innlogging passord ved å nytte back-end konfigureringen. I dette tilfellet, kan du sette ditt kryptering passord som ditt nye innlogging passord ved å gi ditt gamle innlogging passord og ditt nye. Kryptering appen fungerer berre om ditt innlogging passord og ditt kryptering passord er identisk.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-left" title="Synkronisering på skrivebord og mobil" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sharing.html" class="btn btn-neutral float-right" title="Fil Deling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/id/">id</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/nn/">nn</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/si/">si</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/ta/">ta</a></dd>
+<dd><a href="/server/latest/user_manual/th/">th</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/uk/">uk</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versjoner</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/22/user_manual">22</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/23/user_manual">23</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Nedlastinger</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>På Les Dokumentene</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Prosjekt Heima</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Bygger</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

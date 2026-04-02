@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usar la compartición de archivos en federación &mdash; documentación de Nextcloud latest User Manual - latest</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=ee01eba1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=efdbd0b9"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Software de trabajo en grupo" href="../groupware/index.html" />
+    <link rel="prev" title="Transferir la propiedad" href="transfer_ownership.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logotipo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introducción al manual de usuario de Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Novedades para los usuarios en Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">La interfaz web de Nextcloud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Archivos y sincronización</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Acceder a sus archivos utilizando la interfaz web de Nextcloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Acceder a los archivos de Nextcloud a través de WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Administrar archivos borrados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Sincronización de escritorio y móviles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Cifrar sus archivos de Nextcloud en el servidor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Compartir archivos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Compartir archivos mediante federación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Hacer subidas anónimas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Subidas de grandes archivos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Cuota de almacenamiento</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Control de versiones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Proyectos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Transferir la propiedad</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Usar la compartición de archivos en federación</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-new-federation-share">Crear una compartición de archivos en federación nueva</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-new-federated-cloud-share-via-email">Crear una compartición de archivos con federación vía correo electrónico</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Software de trabajo en grupo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Gestionar sus preferencias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Acceso universal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Usar la verificación en dos pasos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gestionar las conexiones entre navegadores y dispositivos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Almacenamiento Externo</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Archivos y sincronización</a></li>
+      <li class="breadcrumb-item active">Usar la compartición de archivos en federación</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/federated_cloud_sharing.rst" class="fa fa-github"> Editar en GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-federation-shares">
+<h1>Usar la compartición de archivos en federación<a class="headerlink" href="#using-federation-shares" title="Link to this heading"></a></h1>
+<p>La compartición de archivos en federación le permite montar archivos compartidos de otros servidores Nextcloud remotos, en efecto creando su propia nube de Nextclouds. Usted puede crear compartir archivos con usuarios en otros servidores Nextcloud.</p>
+<section id="creating-a-new-federation-share">
+<h2>Crear una compartición de archivos en federación nueva<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
+<p>La compartición de archivos en federación está activada en las instalaciones de Nextcloud por defecto, ya sean nuevas o actualizadas. Siga los siguientes pasos para crear una nueva compartición con otros servidores Nextcloud u ownCloud 9+:</p>
+<p>1. Go to your <code class="docutils literal notranslate"><span class="pre">Files</span></code> page and click the <strong>Share</strong> icon on the file or directory
+you want to share. In the sidebar enter the username and URL of the remote user
+in this form: <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;oc-server-url&gt;</span></code>. The form automatically confirms the address
+that you type and labels it as «remote». Click on the label.</p>
+<figure class="align-default">
+<img alt="../../_images/direct-share-1.png" src="../../_images/direct-share-1.png" />
+</figure>
+<p>2. When your local Nextcloud server makes a successful connection with the remote
+Nextcloud server you’ll see a confirmation. Your only share option is <strong>Can
+edit</strong>.</p>
+<p>Haga clic en el botón Compartir para ver los usuarios con los que ha compartido el fichero. Deje de compartir con enlace utilizando el icono de la papelera. Eso simplemente elimina el enlace, pero no borra ningún archivo.</p>
+</section>
+<section id="creating-a-new-federated-cloud-share-via-email">
+<h2>Crear una compartición de archivos con federación vía correo electrónico<a class="headerlink" href="#creating-a-new-federated-cloud-share-via-email" title="Link to this heading"></a></h2>
+<p>Utilice este método cuando está compartiendo con usuarios en ownCloud versión 8.x o anterior.</p>
+<p>¿Qué sucede si no conoce el usuario o la URL? Entonces, puede crear un enlace para compartir y enviarlo al receptor.</p>
+<figure class="align-default">
+<img alt="../../_images/create_public_share-6.png" src="../../_images/create_public_share-6.png" />
+</figure>
+<p>Cuando su receptor reciba su correo, tendrá que lleva a cabo una serie de pasos para completar la compartición. Primero, el receptor debe abrir el enlace que usted le envió en un navegador web y hacer clic en el botón <strong>Añadir a tu Nextcloud</strong>.</p>
+<figure class="align-default">
+<img alt="../../_images/create_public_share-8.png" src="../../_images/create_public_share-8.png" />
+</figure>
+<p>El botón <strong>Añadir a tu Nextcloud</strong> se convierte en un formulario, y el recipiente tiene que introducir la URL de su servidor Nextcloud u ownCloud en este campo, y pulsar la tecla de retorno o hacer clic en la flecha.</p>
+<figure class="align-default">
+<img alt="../../_images/create_public_share-9.png" src="../../_images/create_public_share-9.png" />
+</figure>
+<p>A continuación verán un diálogo que les solicita confirmación. Todo lo que queda por hacer es hacer clic en el botón <strong>Añadir como archivo compartido remoto</strong> y ya lo han conseguido.</p>
+<p>Elimine su compartición por enlace en cualquier momento, haciendo clic en el icono de la papelera. Esto solo borra el enlace de la compartición, y no borra ningún archivo.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="transfer_ownership.html" class="btn btn-neutral float-left" title="Transferir la propiedad" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="../groupware/index.html" class="btn btn-neutral float-right" title="Software de trabajo en grupo" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/id/">id</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/nn/">nn</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/si/">si</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/ta/">ta</a></dd>
+<dd><a href="/server/latest/user_manual/th/">th</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/uk/">uk</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versiones</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/22/user_manual">22</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/23/user_manual">23</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Descargas</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>En Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Página principal del proyecto</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Versiones compiladas</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

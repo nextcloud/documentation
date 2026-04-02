@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Шифрование ваших файлов Nextcloud на сервере &mdash; документация Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=9a65ad85"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=29b1f277"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Обмен файлами" href="sharing.html" />
+    <link rel="prev" title="Синхронизация рабочего стола и мобильного телефона" href="desktop_mobile_sync.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Логотип"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest руководство пользователя. Введение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Что нового для пользователей в Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Веб-интерфейс Nextcloud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Файлы и синхронизация</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Доступ к вашим файлам с помощью веб-интерфейса Nextcloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Доступ к файлам Nextcloud с помощью WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Управление удаленными файлами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Синхронизация рабочего стола и мобильного телефона</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Шифрование ваших файлов Nextcloud на сервере</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#encryption-faq">FAQ по шифрованию</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-can-encryption-be-disabled">Как можно отключить шифрование?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-possible-to-disable-encryption-with-the-recovery-key">Можно ли отключить шифрование с помощью ключа восстановления?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#can-encryption-be-disabled-without-the-user-s-password">Можно ли отключить шифрование без пароля пользователя?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">Планируется ли реализовать это позже?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-group-sharing-possible-with-the-recovery-key">Возможно ли совместное использование группы с помощью ключа восстановления?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-encryption">Использование шифрования</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-encrypted-files">Совместное использование зашифрованных файлов</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#recovery-key-password">Восстановления ключа шифрования</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#files-not-encrypted">Файлы не зашифрованы</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#change-private-key-password">Изменить пароль закрытого ключа</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Обмен файлами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Федеративный общий ресурс</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Создание анонимных загрузок</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Загрузка больших файлов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Квота хранилища</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Контроль версий</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Проекты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Передача прав</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Использование федеративного доступа</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Программное обеспечение для совместной работы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Персональные настройки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Использование двухфакторной аутентификации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Управление подключенными браузерами и устройствами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Внешнее хранилище</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Файлы и синхронизация</a></li>
+      <li class="breadcrumb-item active">Шифрование ваших файлов Nextcloud на сервере</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/encrypting_files.rst" class="fa fa-github"> Редактировать на GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="encrypting-your-nextcloud-files-on-the-server">
+<h1>Шифрование ваших файлов Nextcloud на сервере<a class="headerlink" href="#encrypting-your-nextcloud-files-on-the-server" title="Link to this heading"></a></h1>
+<p>Nextcloud включает в себя приложение шифрования на стороне сервера, и когда оно включено администратором Nextcloud, все ваши файлы данных Nextcloud автоматически шифруются на сервере. Шифрование распространяется на весь сервер, поэтому, когда оно включено, вы не можете оставить свои файлы незашифрованными. Вам не нужно делать ничего особенного, поскольку он использует ваш логин Nextcloud в качестве пароля для вашего уникального личного ключа шифрования. Просто войдите и выйдите из системы, управляйте своими файлами и делитесь ими, как обычно, и вы все равно сможете изменить свой пароль, когда захотите.</p>
+<p>Его основная цель - зашифровать файлы в службах удаленного хранения, которые подключены к серверу Nextcloud. Это простой и удобный способ защитить ваши файлы в удаленном хранилище. Вы можете поделиться удаленными файлами через Nextcloud обычным способом, однако вы не можете поделиться зашифрованными файлами напрямую с удаленной службы, которую вы используете, потому что ключи шифрования хранятся на вашем сервере Nextcloud и никогда не предоставляются сторонним поставщикам услуг.</p>
+<p>Если ваш сервер Nextcloud не подключён к каким-либо службам удалённого хранения, то лучше использовать другую форму шифрования, например шифрование на уровне файлов или всего диска. Поскольку ключи хранятся на сервере Nextcloud, администратор Nextcloud может подсмотреть ваши файлы, а если сервер взломан, злоумышленник может получить доступ к вашим файлам. (Прочитайте статью <a class="reference external" href="https://nextcloud.com/blog/encryption-in-nextcloud/">Шифрование в Nextcloud</a>, чтобы узнать больше).</p>
+<section id="encryption-faq">
+<h2>FAQ по шифрованию<a class="headerlink" href="#encryption-faq" title="Link to this heading"></a></h2>
+<section id="how-can-encryption-be-disabled">
+<h3>Как можно отключить шифрование?<a class="headerlink" href="#how-can-encryption-be-disabled" title="Link to this heading"></a></h3>
+<p>Единственный способ отключить шифрование - запустить скрипт <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label">«decrypt all»</a>, который расшифровывает все файлы и отключает шифрование.</p>
+</section>
+<section id="is-it-possible-to-disable-encryption-with-the-recovery-key">
+<h3>Можно ли отключить шифрование с помощью ключа восстановления?<a class="headerlink" href="#is-it-possible-to-disable-encryption-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>Да, <em>если</em> каждый пользователь использует ключ восстановления файла  &lt;<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys</a>&gt;`_, <a class="reference external" href="https://docs.nextcloud.org/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label">«расшифровать все»</a> будет использовать его для дешифрования всех файлов.</p>
+</section>
+<section id="can-encryption-be-disabled-without-the-user-s-password">
+<h3>Можно ли отключить шифрование без пароля пользователя?<a class="headerlink" href="#can-encryption-be-disabled-without-the-user-s-password" title="Link to this heading"></a></h3>
+<p>Если у вас нет пароля пользователя или <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">ключа восстановления файла</a>, тогда нет возможности расшифровать все файлы. Более того, запускать его при входе в систему было бы опасно, потому что вы, скорее всего, столкнулись бы с тайм-аутом.</p>
+</section>
+<section id="is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">
+<h3>Планируется ли реализовать это позже?<a class="headerlink" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job" title="Link to this heading"></a></h3>
+<p>Если мы это сделаем, то нам нужно будет сохранить ваш пароль для входа в базу данных. Это можно рассматривать как проблему безопасности, поэтому ничего подобного не планируется.</p>
+</section>
+<section id="is-group-sharing-possible-with-the-recovery-key">
+<h3>Возможно ли совместное использование группы с помощью ключа восстановления?<a class="headerlink" href="#is-group-sharing-possible-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>Если вы хотите добавить пользователей в группы и заставить их работать? Нет, это работает только с главным ключом.</p>
+</section>
+</section>
+<section id="using-encryption">
+<h2>Использование шифрования<a class="headerlink" href="#using-encryption" title="Link to this heading"></a></h2>
+<p>Шифрование Nextcloud в основном не требует настроек, но некоторые настройки вы можете менять.</p>
+<p>Когда администратор Nextcloud включает шифрование в первый раз, вы должны выйти из системы, а затем снова войти в неё, чтобы создать ключи шифрования и зашифровать файлы. После включения шифрования на сервере Nextcloud на странице «Файлы» появится жёлтый баннер, предупреждающий о необходимости выйти из системы, а затем снова войти:</p>
+<figure class="align-default">
+<img alt="../../_images/encryption1.png" src="../../_images/encryption1.png" />
+</figure>
+<p>При повторном входе в систему требуется несколько минут для шифрования, в зависимости от того, сколько у вас файлов, а затем вы возвращаетесь на страницу по умолчанию Nextcloud.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption2.png" src="../../_images/encryption2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Вы никогда не должны терять свой пароль Nextcloud, потому что вы потеряете доступ к своим файлам. Хотя есть дополнительная опция восстановления, которую может включить администратор Nextcloud; см. раздел «Пароль ключа восстановления» (ниже), чтобы узнать об этом.</p>
+</div>
+</section>
+<section id="sharing-encrypted-files">
+<h2>Совместное использование зашифрованных файлов<a class="headerlink" href="#sharing-encrypted-files" title="Link to this heading"></a></h2>
+<p>Только пользователи, которые имеют закрытые ключи шифрования, имеют доступ к общим зашифрованным файлам и папкам. Пользователи, которые еще не создали свои личные ключи шифрования, не будут иметь доступа к зашифрованным общим файлам; они будут видеть папки и имена файлов, но не смогут открывать или загружать файлы. Они увидят желтый предупреждающий баннер с надписью «Приложение шифрования включено, но ваши ключи не инициализированы, пожалуйста, выйдите из системы и войдите снова».</p>
+<p>Владельцам общего ресурса может потребоваться повторно предоставить общий доступ к файлам после включения шифрования; пользователи, пытающиеся получить доступ к общему ресурсу, увидят сообщение, предлагающее попросить владельца общего ресурса поделиться им с ним. Для отдельных общих ресурсов распакуйте и передайте общий доступ к файлу. Для групповых акций поделитесь с любыми людьми, которые не могут получить доступ к этой акции. Это обновляет шифрование, и затем владелец общего ресурса может удалить отдельные общие ресурсы.</p>
+<section id="recovery-key-password">
+<h3>Восстановления ключа шифрования<a class="headerlink" href="#recovery-key-password" title="Link to this heading"></a></h3>
+<p>Если администратор Nextcloud включил функцию ключа восстановления, вы можете использовать эту функцию для своей учетной записи. Если вы включите «Восстановление пароля», администратор может читать ваши данные с помощью специального пароля. Эта функция позволяет администратору восстановить ваши файлы в случае, если вы потеряете свой пароль Nextcloud. Если ключ восстановления не активирован, восстановление файлов невозможно, если вы потеряете пароль для входа.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption3.png" src="../../_images/encryption3.png" />
+</figure>
+</section>
+</section>
+<section id="files-not-encrypted">
+<h2>Файлы не зашифрованы<a class="headerlink" href="#files-not-encrypted" title="Link to this heading"></a></h2>
+<p>Зашифрованы только данные в ваших файлах, а не имена файлов или структуры папок. Эти файлы никогда не шифруются:</p>
+<ul class="simple">
+<li><p>Старые файлы в корзине.</p></li>
+<li><p>Миниатюры изображений из приложения Галерея.</p></li>
+<li><p>Миниатюры предварительного просмотра из приложения Файлы.</p></li>
+<li><p>Индекс поиска из приложения полнотекстового поиска.</p></li>
+<li><p>Данные сторонних приложений</p></li>
+</ul>
+<p>Только те файлы, которые используются сторонними поставщиками хранилищ, могут быть зашифрованы, остальные файлы могут быть не зашифрованы.</p>
+<section id="change-private-key-password">
+<h3>Изменить пароль закрытого ключа<a class="headerlink" href="#change-private-key-password" title="Link to this heading"></a></h3>
+<p>Эта опция доступна только в том случае, если пароль шифрования не был изменен администратором, а был изменен только пароль для входа в систему. Это может произойти, если ваш провайдер Nextcloud использует серверную часть внешнего пользователя (например, LDAP) и изменил ваш пароль для входа в систему, используя эту внутреннюю конфигурацию. В этом случае вы можете установить в качестве пароля шифрования новый пароль для входа, указав старый и новый пароль для входа. Приложение Encryption работает, только если ваш пароль для входа и пароль для шифрования идентичны.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-left" title="Синхронизация рабочего стола и мобильного телефона" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="sharing.html" class="btn btn-neutral float-right" title="Обмен файлами" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2026 Nextcloud GmbH. </p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/id/">id</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/nn/">nn</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/si/">si</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/ta/">ta</a></dd>
+<dd><a href="/server/latest/user_manual/th/">th</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/uk/">uk</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Версии</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/22/user_manual">22</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/23/user_manual">23</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Загрузки</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Читать на Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">В начало</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Сборка</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
