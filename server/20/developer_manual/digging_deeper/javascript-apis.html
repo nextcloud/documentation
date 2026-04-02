@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript APIs &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="NPM" href="npm.html" />
+    <link rel="prev" title="Nextcloud Flow" href="flow.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">JavaScript APIs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#npm-packages">npm packages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compatibility">Compatibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#development">Development</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#packages-in-detail">Packages in detail</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-auth"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/auth</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-axios"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/axios</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-event-bus"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/event-bus</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-dialogs"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/dialogs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-files"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/files</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-initial-state"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/initial-state</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-l10n"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/l10n</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-logger"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/logger</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-moment"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/moment</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-password-confirmation"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/password-confirmation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-paths"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/paths</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-router"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/router</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-vue"><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/vue</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#events">Events</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#network-state-changes">Network state changes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#global-variables">Global variables</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#oc-internal-apis">OC – internal APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#oca-app-apis">OCA – App APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ocp-public-apis">OCP – Public APIs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psr.html">PSR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_apis.html">REST APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard.html">Dashboard</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Digging deeper</a></li>
+      <li class="breadcrumb-item active">JavaScript APIs</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/javascript-apis.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="javascript-apis">
+<h1>JavaScript APIs<a class="headerlink" href="#javascript-apis" title="Permalink to this headline"></a></h1>
+<p>Nextcloud apps can use existing JavaScript APIs to ease the development of front-end components and simple scripts.</p>
+<p>The APIs used to be provided via global variables, available on most pages of Nextcloud. To smoothen the development experience with modern development tools, this method is in the process of being deprecated and removed. Existing APIs are being migrated to npm packages and new APIs will only be available that way. The bottom of the page covers the basics of the global variable method, if you want to develop an app for old versions of Nextcloud.</p>
+<section id="npm-packages">
+<h2>npm packages<a class="headerlink" href="#npm-packages" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://www.npmjs.com/org/nextcloud">&#64;nextcloud npm packages</a> provide the current front-end APIs for Nextcloud apps.</p>
+<section id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h3>
+<p>The idea is that apps install these packages via <cite>npm</cite> and bundle the code with tools like <a class="reference external" href="https://babeljs.io/">Babel</a>, <a class="reference external" href="https://webpack.js.org/">Webpack</a> or <a class="reference external" href="https://parceljs.org/">Parcel</a>. This ensures that an app runs the exact same code independent of the Nextcloud version and also reduces the chances of running into conflicts with other apps.</p>
+<p>For more details on the design considerations see <a class="reference external" href="https://github.com/nextcloud/server/issues/15932">the discussion on Github</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We highly recommend keeping packages up-to-date as they provide fixes and security patches. For apps with code hosted on Github we recommend the use of <a class="reference external" href="https://dependabot.com/">Dependabot</a>.</p>
+</div>
+</section>
+<section id="compatibility">
+<h3>Compatibility<a class="headerlink" href="#compatibility" title="Permalink to this headline"></a></h3>
+<p>The provided packages are aimed to be compatible with all <a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">supported Nextcloud releases</a>. However, we may have to change an API in a non-backwards compatible way in the future. Thus look out for major version bumps in the packages and read the changelogs.</p>
+</section>
+<section id="development">
+<h3>Development<a class="headerlink" href="#development" title="Permalink to this headline"></a></h3>
+<p>Most packages are written in TypeScript in order to generate better API docs automatically but also to ensure compatibility with Nextcloud server in a programmatic way. The server is typed in <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/typings">a dedicated npm package</a> that is used to check type soundness.</p>
+</section>
+<section id="packages-in-detail">
+<h3>Packages in detail<a class="headerlink" href="#packages-in-detail" title="Permalink to this headline"></a></h3>
+<p>The rest of this section will cover a rough overview of which packages are provided and what they are used for.</p>
+</section>
+<section id="nextcloud-auth">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/auth</span></code><a class="headerlink" href="#nextcloud-auth" title="Permalink to this headline"></a></h3>
+<p>This package provides information about the current user and session. Documentation: <a class="reference external" href="https://nextcloud.github.io/nextcloud-auth/">https://nextcloud.github.io/nextcloud-auth/</a></p>
+</section>
+<section id="nextcloud-axios">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/axios</span></code><a class="headerlink" href="#nextcloud-axios" title="Permalink to this headline"></a></h3>
+<p>This package provides an <a class="reference external" href="https://www.npmjs.com/package/axios">Axios</a> HTTP client instance, ready to send request to the Nextcloud server. If you use this instance you do not have to care about authentication and special headers. Documentation: <a class="reference external" href="https://nextcloud.github.io/nextcloud-axios/">https://nextcloud.github.io/nextcloud-axios/</a></p>
+</section>
+<section id="nextcloud-event-bus">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/event-bus</span></code><a class="headerlink" href="#nextcloud-event-bus" title="Permalink to this headline"></a></h3>
+<p>This package provides a simple event bus implementation that integrates with server and other apps. Thus it is one of the recommended ways of inter-app communication. Documentation: <a class="reference external" href="https://nextcloud.github.io/nextcloud-event-bus/">https://nextcloud.github.io/nextcloud-event-bus/</a></p>
+</section>
+<section id="nextcloud-dialogs">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/dialogs</span></code><a class="headerlink" href="#nextcloud-dialogs" title="Permalink to this headline"></a></h3>
+<p>This package provides access to UI dialogs in Nextcloud. Documentation: <a class="reference external" href="https://nextcloud.github.io/nextcloud-dialogs/">https://nextcloud.github.io/nextcloud-dialogs/</a></p>
+</section>
+<section id="nextcloud-files">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/files</span></code><a class="headerlink" href="#nextcloud-files" title="Permalink to this headline"></a></h3>
+<p>This package provides helper functions around the Files app. Documentation: <a class="reference external" href="https://nextcloud.github.io/nextcloud-files/">https://nextcloud.github.io/nextcloud-files/</a></p>
+</section>
+<section id="nextcloud-initial-state">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/initial-state</span></code><a class="headerlink" href="#nextcloud-initial-state" title="Permalink to this headline"></a></h3>
+<p>This package provides the counterpart for the <cite>\OCP\IInitialStateService</cite> on the back-end. Use it to retrieve your stored data on page load. Documentation: <a class="reference external" href="https://nextcloud.github.io/nextcloud-initial-state/">https://nextcloud.github.io/nextcloud-initial-state/</a></p>
+</section>
+<section id="nextcloud-l10n">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/l10n</span></code><a class="headerlink" href="#nextcloud-l10n" title="Permalink to this headline"></a></h3>
+<p>This package provides everything around localization, like access to the current user’s locale and translation helpers. Documentation: <a class="reference external" href="https://nextcloud.github.io/nextcloud-l10n/">https://nextcloud.github.io/nextcloud-l10n/</a></p>
+</section>
+<section id="nextcloud-logger">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/logger</span></code><a class="headerlink" href="#nextcloud-logger" title="Permalink to this headline"></a></h3>
+<p>This package provides a unified logging helper that adds app names, severity and other context to log messages. Use it to enhance the output of your app’s logs, useful for development and triaging bug reports. Documentation: <a class="reference external" href="https://nextcloud.github.io/nextcloud-logger/">https://nextcloud.github.io/nextcloud-logger/</a></p>
+</section>
+<section id="nextcloud-moment">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/moment</span></code><a class="headerlink" href="#nextcloud-moment" title="Permalink to this headline"></a></h3>
+<p>This package provides a modified version of <a class="reference external" href="https://momentjs.com/">moment.js</a> with the current user’s locale set. Documentation: <a class="reference external" href="https://nextcloud.github.io/nextcloud-moment/">https://nextcloud.github.io/nextcloud-moment/</a></p>
+</section>
+<section id="nextcloud-password-confirmation">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/password-confirmation</span></code><a class="headerlink" href="#nextcloud-password-confirmation" title="Permalink to this headline"></a></h3>
+<p>This package makes it possible to ask a user for confirmation on actions that have a <cite>&#64;PasswordConfirmationRequired</cite> set on the controller method. Use it for critical actions. Documentation: <a class="reference external" href="https://nextcloud.github.io/nextcloud-password-confirmation/">https://nextcloud.github.io/nextcloud-password-confirmation/</a></p>
+</section>
+<section id="nextcloud-paths">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/paths</span></code><a class="headerlink" href="#nextcloud-paths" title="Permalink to this headline"></a></h3>
+<p>This package provides various helpers for file and folder paths. Documentation: <a class="reference external" href="https://nextcloud.github.io/nextcloud-paths/">https://nextcloud.github.io/nextcloud-paths/</a></p>
+</section>
+<section id="nextcloud-router">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/router</span></code><a class="headerlink" href="#nextcloud-router" title="Permalink to this headline"></a></h3>
+<p>This package provides helpers to generate URLs, e.g. to access assets and REST APIs of your app or the Nextcloud server. Documentation: <a class="reference external" href="https://nextcloud.github.io/nextcloud-router/">https://nextcloud.github.io/nextcloud-router/</a></p>
+</section>
+<section id="nextcloud-vue">
+<h3><code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/vue</span></code><a class="headerlink" href="#nextcloud-vue" title="Permalink to this headline"></a></h3>
+<p>This package provides lots of nextcloud components allowing you to quickly build UIs. Documentation: <a class="reference external" href="https://nextcloud-vue-components.netlify.com/">https://nextcloud-vue-components.netlify.com/</a></p>
+</section>
+</section>
+<section id="events">
+<h2>Events<a class="headerlink" href="#events" title="Permalink to this headline"></a></h2>
+<section id="network-state-changes">
+<h3>Network state changes<a class="headerlink" href="#network-state-changes" title="Permalink to this headline"></a></h3>
+<p>Your app can react to lost network connectivity, e.g. to gracefully handle this state where no server interaction is possible. Since the communication with the server mostly requires a valid CSRF token, you might not want to send any request before the token was udpated. Nextcloud can notify you when this has happened. Use the <code class="docutils literal notranslate"><span class="pre">&#64;nextcloud/event-bus</span></code> to listen for the <code class="docutils literal notranslate"><span class="pre">networkOnline</span></code> and <code class="docutils literal notranslate"><span class="pre">networkOffline</span></code> events:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">subscribe</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nextcloud/event-bus&#39;</span>
+
+<span class="nx">subscribe</span><span class="p">(</span><span class="s1">&#39;networkOffline&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">&quot;we&#39;re offline&quot;</span><span class="p">))</span>
+<span class="nx">subscribe</span><span class="p">(</span><span class="s1">&#39;networkOnline&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">successful</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">&quot;we&#39;re back online, the token was updated&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">&quot;we&#39;re back online, but the token might not be up to date&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="global-variables">
+<h2>Global variables<a class="headerlink" href="#global-variables" title="Permalink to this headline"></a></h2>
+<p>There are also global variables that acted as APIs in the past. The use of these variables is discouraged, as they lead to script loading order problems and the dependency hell, making it hard for the server component to update libraries.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Be careful with accessing global variables as their availability depends on the order in which scripts are loaded. Thus they might not have been assigned yet when your script runs. Use the document <code class="docutils literal notranslate"><span class="pre">load</span></code> event to wait until all scripts have been loaded and executed.</p>
+</div>
+<section id="oc-internal-apis">
+<h3>OC – internal APIs<a class="headerlink" href="#oc-internal-apis" title="Permalink to this headline"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">OC</span></code> variable provides access to many internals of the Nextcloud server. It’s not intended for use by apps as the APIs may change any time.</p>
+</section>
+<section id="oca-app-apis">
+<h3>OCA – App APIs<a class="headerlink" href="#oca-app-apis" title="Permalink to this headline"></a></h3>
+<p>Some apps use the <code class="docutils literal notranslate"><span class="pre">OCA</span></code> variable as a place to register their types. Except for edge cases with inter-app communication, you should not assign anything to this variable.</p>
+</section>
+<section id="ocp-public-apis">
+<h3>OCP – Public APIs<a class="headerlink" href="#ocp-public-apis" title="Permalink to this headline"></a></h3>
+<p>Some more stable APIs are exposed in the <code class="docutils literal notranslate"><span class="pre">OCP</span></code> “namespace”. Since the release of the <a class="reference internal" href="#npm-packages">npm packages</a>, the got obsolete and thus will be deprecated.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="flow.html" class="btn btn-neutral float-left" title="Nextcloud Flow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="npm.html" class="btn btn-neutral float-right" title="NPM" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/developer_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/developer_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/developer_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="br" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tizhout restroù Nextcloud en ur implijout WebDAV &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Melestrañ ar restroù lamet" href="deleted_file_management.html" />
+    <link rel="prev" title="Tizhout ho restroù en ur implijout an etrefas Web Nextcloud" href="access_webgui.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Dornlevr ambroug an implijer evit Nextcloud |stumm|</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Petra nevez evit an implijourien e Nextcloud |stumm|</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Etrefas web Nextcloud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Restroù &amp; kemprenañ</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Tizhout ho restroù en ur implijout an etrefas Web Nextcloud</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tizhout restroù Nextcloud en ur implijout WebDAV</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nextcloud-desktop-and-mobile-clients">Burev Nextcloud ha kliant hezoug</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#webdav-configuration">Arventennoù WebDAV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-linux">Tizhout ar restr en ur implijout Linux</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nautilus-file-manager">Merour restroù Nautilus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-with-kde-and-dolphin-file-manager">Tizhout restroù gant KDE pe Dolphin file manager</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">Krouiñ sternioù WebDAV war al linenn urzh Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues">Kudennoù anavezet</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#problem">Kudenn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution">Diskoulm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Kudenn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Diskoulm</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-macos">O tizhout restroù en ur implijout macOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-microsoft-windows">Tizhout restroù en ur implijout Microsoft Windows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-the-command-line">Kenstagit ul lenner rouedad gant al linenn urzh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-windows-explorer">Kenstagañ al lenner gant Windows Explorer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-cyberduck">Tizhout ar restr en ur implijout Cyberduck</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-public-shares-over-webdav">Tizhout rannadennoù publik war WebDAV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-problems">Kudennoù anavezhet</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Kudenn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-1">Diskoulm 1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-2">Diskoulm 2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Kudenn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Diskoulm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Kudenn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Diskoulm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Kudenn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Diskoulm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Kudenn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">Diskoulm</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-curl">Tizhout ar restr en ur implijout cURL</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Melestrañ ar restroù lamet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Kempredañ Burev ha hezoug</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">O sifrañ ho restroù Nextcloud war ar servijour</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Rannañ restr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Ranadennoù Kevredet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Ober ur bellgasadenn dizanv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Pellkasadennoù restroù bras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Quota ar renkañ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Kontrol stumm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Raktresoù</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Treuskas perc'henniezh</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pim/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Stummañ ho dibaboù</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Implijout an dilesa daou-elfenn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Merañ kemprennadenn furcher ha ardivink</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Lec'h renkañ diavaez</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Restroù &amp; kemprenañ</a></li>
+      <li class="breadcrumb-item active">Tizhout restroù Nextcloud en ur implijout WebDAV</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webdav.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="accessing-nextcloud-files-using-webdav">
+<h1>Tizhout restroù Nextcloud en ur implijout WebDAV<a class="headerlink" href="#accessing-nextcloud-files-using-webdav" title="Permalink to this headline"></a></h1>
+<p>Douget e vez penn-da-benn ar protokol WebDAV gant Nextcloud, ha posupl eo deoc'h en em genstagañ ha kempredañ o restroù Nextcloud war WebDAV. Er pennad-mañ e vo desket ganeoc'h penaos kenstagañ Linux, macOS, Windows ha ardivinkoù hezoug d'ho servijer Nextcloud dre WebDAV. A-raok sellet ouzh penaos e vez stummet WebDAV, sellomp buan ouzh an doareoù kenstagañ aliet etre ar c'hliant hag ar servijour Nextcloud.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Er skouerioù-mañ eo ret deoc'h kemm <strong>example.com/nextcloud</strong> gant URL ho servijour Nextcloud (hep an tamm teuliad m'emañ ho staliadur e gwrizienn ho tomani), ha &quot;USERNAME&quot; gant anv-implijer an implijer oc'h en em kenstagañ.</p>
+<p>Sellit url webdav (en diaz a gleiz, arventennoù) en ho Nextcloud.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the following examples, you must use an app-password for login, which you can generate in your security settings.</p>
+</div>
+<section id="nextcloud-desktop-and-mobile-clients">
+<h2>Burev Nextcloud ha kliant hezoug<a class="headerlink" href="#nextcloud-desktop-and-mobile-clients" title="Permalink to this headline"></a></h2>
+<p>An doare aliet evit kempredañ ar burev PC d'ur servijour Nextcloud a zo graet en ur implijout <a class="reference external" href="https://nextcloud.com/install/#install-clients">Nextcloud/ownCloud sync clients</a>. Posupl eo deoc'h stummañ ar c'hliant evit enrollañ restroù war n'eus forzh peseurt teuliad diabarzh ha choaz peseurt teuliad er servijour Nextcloud kemprennañ. Diskouezet e vez gant ar c'hliant stad ar c'henstagadurioù hag enrollet pep oberiantiz, evit gouzout peseurt restr pell a zo bet pellgarget war ho PC ha posupl eo deoc'h gwiriañ m'az eo bet kempredet gant ar servijour ar restr a zo bet krouet.</p>
+<p>An doare aliet evit kempredañ ar servijour Nextcloud gant ardivinkoù Android hag Apple iOS a zo en ur implijout ar <a class="reference external" href="https://nextcloud.com/install/">mobile apps</a>.</p>
+<p>Evit kenstagañ meziantoù d'ho servijour Nextcloud implijit an URL hag an teuliad diazez nemetken:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+<p>Ouzhpenn ar meziantoù hezoug roet gant Nextcloud pe ownCloud, posupl eo deoc'h implijout meziantoù all evit kemprennañ Nextcloud diouzh ho ardivink hezoug en ur implijout WebDAV. <a class="reference external" href="http://seanashton.net/webdav/">WebDAV Navigator</a> a zo ur meziant (perc'henn) mat evit <a class="reference external" href="https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite">Android devices</a> ha <a class="reference external" href="https://itunes.apple.com/app/webdav-navigator/id382551345">iPhones</a>. An URL da implij a zo</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+</section>
+<section id="webdav-configuration">
+<h2>Arventennoù WebDAV<a class="headerlink" href="#webdav-configuration" title="Permalink to this headline"></a></h2>
+<p>Ma ez eo gwelloc'h deoc'h eo posupl kenstagañ ho burev PC d'ho servijour Nextcloud en ur implijout ar protokol WebDAV e lec'h ar meziant kliant ispisial. Web Distributed Authoring and Versioning (WebDAV) a zo un astenn eus Protokol Treuskas Hypertext (HTTP) a aesa ar c'hrouiñ, lenn hag embann ar restroù war ar servijourien Web. Gant WebDAV eo posupl deoc'h tizhout ar pez ho peus rannet gant Nextcloud war Linux, macOS ha Windows evel pep rann kenrouedad pell, ha chom kempredet.</p>
+</section>
+<section id="accessing-files-using-linux">
+<h2>Tizhout ar restr en ur implijout Linux<a class="headerlink" href="#accessing-files-using-linux" title="Permalink to this headline"></a></h2>
+<p>Posupl eo deoc'h tizhout restroù gant ur reizhiad korvoiñ Linux en ur implijout an doare-mañ.</p>
+<section id="nautilus-file-manager">
+<h3>Merour restroù Nautilus<a class="headerlink" href="#nautilus-file-manager" title="Permalink to this headline"></a></h3>
+<p><strong>Pa vez stummet ho kont Nextcloud e</strong> <a class="reference external" href="../pim/sync_gnome.html">GNOME Control Center</a>, <strong>, ho restroù a vez staliet en un doare otomatik gant Nautilis evel ur rannadenn WebDAV, ma ne dichoazit ket an tizhout restroù.</strong></p>
+<p>Posupl eo deoc'h staliañ ho restroù Nextcloud gant an dorn. Implijit ar protokol '<cite>davs://`</cite> evit kenstagañ ar merour restroù Nautilus d'ho rannadennoù Nextcloud</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">davs</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ma n'eo ket diogelet kenstagadenn ho servijour HTTPS, implijit <cite>dav://</cite> e-lec'h <cite>davs://</cite>.</p>
+</div>
+<img alt="screenshot of configuring Nautilus file manager to use WebDAV" src="../../_images/webdav_gnome3_nautilus.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ar memes doare a dro gant merourien restroù all hag implijout GVf, evel Caja MATE and Nepomuk Cinnamon.</p>
+</div>
+</section>
+<section id="accessing-files-with-kde-and-dolphin-file-manager">
+<h3>Tizhout restroù gant KDE pe Dolphin file manager<a class="headerlink" href="#accessing-files-with-kde-and-dolphin-file-manager" title="Permalink to this headline"></a></h3>
+<p>Evit tizhout ho restroù Nextcloud en ur implijout Dolphin file manager e KDE, implijit ar protokol <code class="docutils literal notranslate"><span class="pre">webdav://</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">webdav</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<img alt="screenshot of configuring Dolphin file manager to use WebDAV" src="../../_images/webdav_dolphin.png" />
+<p>Posupl eo deoc'h krouiñ ul liamm peurbadel d'ho servijour Nextcloud :</p>
+<ol class="arabic simple">
+<li><p>Digorit Dolphin ha pouezit war &quot;Kenrouedad&quot; er golonenn &quot;Places&quot; a-gleiz.</p></li>
+<li><p>Pouezit war ar skeudenn anvet <strong>Ouzhpennañ un teuliad kenrouedad</strong>. An diviz a zlefe dont war wel gant WebDAV dija choazet.</p></li>
+<li><p>Ma n'eo ket bet choazet WebDAV, choazit anezhañ.</p></li>
+<li><p>Pouezit war <strong>Da heul</strong></p></li>
+<li><p>Lakait an dibarzhioù-mañ :</p>
+<ul class="simple">
+<li><p>Anv : An anv ho peus c'hoant gwelout er merker-pajenn <strong>Lec'hioù</strong>, da skouer Nextcloud.</p></li>
+<li><p>Implijer : Anv implijer Nextcloud implijet evit mont-tre, da skouer merour.</p></li>
+<li><p>Servijour : Anv domani Nextcloud, da skouer <strong>exemple.com</strong> (hep <a class="reference external" href="http://**">http://**</a> a-raok pe teuliadoù goude).</p></li>
+<li><p>Teuliad - Lakait an hent <code class="docutils literal notranslate"><span class="pre">nextcloud/remote.php/dav/files/USERNAME/</span></code>.</p></li>
+</ul>
+</li>
+<li><p>(Optional) Check the &quot;Create icon&quot; checkbox for a bookmark to appear in the
+Places column.</p></li>
+<li><p>(Diret) Roit ur stumm ispisial pe ur sertikad SSL er checkbox &quot;Port &amp; Encrypted&quot;</p></li>
+</ol>
+</section>
+</section>
+<section id="creating-webdav-mounts-on-the-linux-command-line">
+<h2>Krouiñ sternioù WebDAV war al linenn urzh Linux<a class="headerlink" href="#creating-webdav-mounts-on-the-linux-command-line" title="Permalink to this headline"></a></h2>
+<p>Posupl eo deoc'h krouiñ sternioù diouzh linennoù urzh Linux. Aesaat a ra an tizhout Nextcloud m'ho peus c'hoant tizhout anezhañ evel n'eus forzh peseurt sistem-restroù sternioù pell. Ar skouerioù dindan a ziskouezo penaos krouiñ sternioù ha lakaat anezho en un doare otomatik bep wech ez it war hoc'h urzhiataer Linux.</p>
+<ol class="arabic">
+<li><p>Staliañ ar sturier sistem-restroù &quot;davfs2&quot; WebDAV, a aotre ac'hanoc'h da lakaat rannadennoù WebDAV evel n'eus forzh peseurt sistem-restroù pell. Implijit al linenn urzh evit staliañ Debian/Ubuntu:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Implijit al linenn urzh evit staliañ CentOS, Fedora, hag openSUSE:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Ouzhpennit ac'hanoc'h d'ar strollad &quot;davfs2&quot;:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usermod</span> <span class="o">-</span><span class="n">aG</span> <span class="n">davfs2</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<ol class="arabic" start="3">
+<li><p>Krouit neuze un teuliad &quot;nextcloud&quot; en ho teuliad home evit ar montpoint, ha &quot;.davfs2/&quot; evit ho restr stummañ personel:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">~/</span><span class="n">nextcloud</span>
+<span class="n">mkdir</span> <span class="o">~/.</span><span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Eilit &quot;/etc/davfs2/secrets&quot; da &quot;~/.davfs2&quot;:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span>  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+</pre></div>
+</div>
+</li>
+<li><p>Lakait ac'hanoc'h evel perc'henner ha lakait an aotre lenn-skrivañ d'ar perc'henner nemetken:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chown</span> <span class="o">&lt;</span><span class="n">linux_username</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">linux_username</span><span class="o">&gt;</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+<span class="n">chmod</span> <span class="mi">600</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+</pre></div>
+</div>
+</li>
+<li><p>Ouzhpennit ho hennadoù mont-tre Nextcloud e fin ar restr &quot;sekredoù&quot;, en ur implijout ho URL servijour Nextcloud ha ho anv implijour ha ger-tremen Nextcloud:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/ &lt;username&gt; &lt;password&gt;
+or
+$PathToMountPoint $USERNAME $PASSWORD
+for example
+/home/user/nextcloud john 1234
+</pre></div>
+</div>
+</li>
+<li><p>Ouzhpennañ an titouroù stern da <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">linux_username</span><span class="o">&gt;/</span><span class="n">nextcloud</span>
+<span class="n">davfs</span> <span class="n">user</span><span class="p">,</span><span class="n">rw</span><span class="p">,</span><span class="n">auto</span> <span class="mi">0</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</li>
+<li><p>Amprouit e ves stag ha dileset en ur implijout al linenn urzh-mañ. Ma eo bet staliet mat ne vo ket ezhomm eus un aotree gwrizienn:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mount</span> <span class="o">~/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</li>
+<li><p>Posupl a vo deoc'h distagañ anezhañ ivez:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">umount</span> <span class="o">~/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Bewech e hit tre war ho sistem Linux e zlefe ho rannadennoù Nextcloud en em stagañ en un doare otomatek dre WebDAV en ho teuliad <code class="docutils literal notranslate"><span class="pre">~/nextcloud</span></code>. Ma eo gweloc'h deoc'h stagañ anezhañ gant an dorn, cheñchit &quot;auto&quot; da &quot;noauto&quot; e <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code>.</p>
+</section>
+<section id="known-issues">
+<h2>Kudennoù anavezet<a class="headerlink" href="#known-issues" title="Permalink to this headline"></a></h2>
+<section id="problem">
+<h3>Kudenn<a class="headerlink" href="#problem" title="Permalink to this headline"></a></h3>
+<p>N'eo ket implijapl an dra evit ar poent</p>
+</section>
+<section id="solution">
+<h3>Diskoulm<a class="headerlink" href="#solution" title="Permalink to this headline"></a></h3>
+<p>Ma ho peus kudennoù pa vez krouet ur restr en teuliad, cheñchiit <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/davfs2.conf</span></code> hag ouzhpennit:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">use_locks</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>Kudenn<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<p>Diwall ar sertifikad</p>
+</section>
+<section id="id2">
+<h3>Diskoulm<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<p>Ma implijit ur sertifikad sinet-e-unan, ur gemennadenn diwall ho po. Evit cheñch se, ret eo deoc'h stummañ &quot;davfs2&quot; evit anavezout ar sertifikad. Eilit <code class="docutils literal notranslate"><span class="pre">mycertificate.pem</span></code> da <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/certs/</span></code>. Embannit goude <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/davfs2.conf</span></code> ha dizisplegit al linenn  <code class="docutils literal notranslate"><span class="pre">servercert</span></code>. Ouzhpennit hent ar sertifikad evel er skouer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">servercert</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">davfs2</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">mycertificate</span><span class="o">.</span><span class="n">pem</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="accessing-files-using-macos">
+<h2>O tizhout restroù en ur implijout macOS<a class="headerlink" href="#accessing-files-using-macos" title="Permalink to this headline"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>MacOs Finder en deus kudennoù abalamour da veur a staliadur gant kudennoù &lt;<a class="reference external" href="http://sabre.io/dav/clients/finder/">http://sabre.io/dav/clients/finder/</a>&gt;`_ ha ne rankfe bezañ implijet nemet ma vez lakaet da dreiñ gant Nextcloud <strong>Apache</strong> ha <strong>mod_php</strong>, pe  <strong>Nginx 1.3.8+</strong>. Ur c'hliant a drofe gant macOS a vefe gouest da dizhout rannadennoù WebDAV evel meziantoù opensource evel  <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> (sellit penaos <a class="reference external" href="https://docs.nextcloud.com/server/stable/user_manual/files/access_webdav.html#accessing-files-using-cyberduck">amañ</a>) ha <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. Ar c'hliantoù koñvers  a zo en o zouez <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Kasit</a>, ha`Commander One &lt;<a class="reference external" href="https://mac.eltima.com/">https://mac.eltima.com/</a>&gt;`_.</p>
+</div>
+<p>Evit tizhout restroù dre macOS Finder :</p>
+<ol class="arabic simple">
+<li><p>Dre ar varenn roll e krec'h Finder, dibabit ** go&gt; Kenstagañ d'ar servijour... **</p></li>
+</ol>
+<blockquote>
+<div><img alt="Screenshot of entering your Nextcloud server address on macOS" src="../../_images/osx_webdav1.png" />
+</div></blockquote>
+<ol class="arabic" start="2">
+<li><p>Pa zeu war wel ar prenestr <strong>Kenstagañ d'ar servijer ...</strong>, lakait chomlec'h WebDAV ho servijour Nextcloud ell lec'h <strong>Chomlec'h servijour</strong>, da lâret eo:</p>
+<blockquote>
+<div><p><a class="reference external" href="https://cloud.YOURDOMAIN.com/remote.php/dav/files/USERNAME/">https://cloud.YOURDOMAIN.com/remote.php/dav/files/USERNAME/</a></p>
+</div></blockquote>
+</li>
+</ol>
+<blockquote>
+<div><img alt="Screenshot: Enter Nextcloud server address in “Connect to Server...” dialog box" src="../../_images/osx_webdav2.png" />
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Pouezit war <strong>Kenstagañ</strong>. Ho servijour WebDAV a vo gwelet war ar burev evel ur gantenn rannet.</p></li>
+</ol>
+</section>
+<section id="accessing-files-using-microsoft-windows">
+<h2>Tizhout restroù en ur implijout Microsoft Windows<a class="headerlink" href="#accessing-files-using-microsoft-windows" title="Permalink to this headline"></a></h2>
+<p>If you use the native Windows implementation of WebDAV, you can map Nextcloud to a new
+drive using Windows Explorer. Mapping to a drive enables you to browse files stored on a
+Nextcloud server the way you would files stored in a mapped network drive.</p>
+<p>Evit implij ar perzh-mañ eo ret kaout ur genstagadenn gant ar c'henrouedad. Ma ho peus c'hoant enrollañ ho restroù hep bezañ kenstaget, implijit ar c'hliant burev evit kempredañ pep restr war ho Nextcloud en un teuliad pe vuioc'h eus ho kantenn diabarzh.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dre ziouer e aotre Windows 10 an dilesa diazez ma eo aotreet HTTPS a-raok staliañ al lenner. War stummoù koshoc'h Windows, ret eo deoc'h aotreañ implij an dilesa diazez e Windows Registry : lakit da dreiñ  „regedit“ ha kit da HKEY_LOCAL_MACHINESYSTEMCurrentControlSetServicesWebClientParameters. Krouiit pe embannit e DWORD ar stumm „BasicAuthLevel“ (Windows Vista, 7 and 8) pe „UseBasicAuth“ (Windows XP and Windows Server 2003) ha lakait an dalvoudegezh da 1 evit ar c'henstagadur SSL. Un dalvoudegezh 0 a dalv n'eo ket aotreet an dilesa diazez, ha 2 a aotre kenstagadurioù SSL ha nann-SSL (n'eo ket aliet). Kuitait Registery Editor hag adlañsit hoc'h urzhiataer.</p>
+</div>
+<section id="mapping-drives-with-the-command-line">
+<h3>Kenstagit ul lenner rouedad gant al linenn urzh<a class="headerlink" href="#mapping-drives-with-the-command-line" title="Permalink to this headline"></a></h3>
+<p>Ar skouer da heul a ziskouez penaos kenstagañ ul lenner rouedad gant ul linnen urzh. Evit kenstagañ al lenner :</p>
+<ol class="arabic">
+<li><p>Digeriñ an dermenell e Windows.</p></li>
+<li><p>Lakit al linenn urzh-mañ er c'hinnig urzh evit kenstagañ gant al lenner Z</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">drive_path</span><span class="o">&gt;/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span>
+<span class="n">yourpassword</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<blockquote>
+<div><p>lec'h ma 'z eo&lt;drive_path&gt; URL ho servijour Nextcloud.</p>
+</div></blockquote>
+<p>Da skouer <cite>net use Z: https://example.com/nextcloud/remote.php/dav/files/USERNAME/ /user:youruser yourpassword`</cite></p>
+<blockquote>
+<div><p>Kenstaget eo restroù ho kont Nextcloud d'al lenner Z.</p>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Memes ma n'eo ket aliet, posupl eo deoc'h kenstagañ ar servijour Nextcloud en ur implijout HTTP, o lezel ar c'henstagadur disifret. Ma 'z oc'h evit implijout ur c'henstagadur HTTP war un ardivink en ul lec'h publik, aliet eo deoc'h implijout ur riboul VPN evit kaout trawalc'h a surentez.</p>
+</div>
+<p>Un doare all evit skrivañ al linenn urzh</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> \\<span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="nd">@ssl</span>\<span class="n">nextcloud</span>\<span class="n">remote</span><span class="o">.</span><span class="n">php</span>\<span class="n">dav</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span>
+<span class="n">yourpassword</span>
+</pre></div>
+</div>
+</section>
+<section id="mapping-drives-with-windows-explorer">
+<h3>Kenstagañ al lenner gant Windows Explorer<a class="headerlink" href="#mapping-drives-with-windows-explorer" title="Permalink to this headline"></a></h3>
+<p>Evit kenstagañ ul lenner en ur implijout Microsoft Windows Explorer :</p>
+<ol class="arabic simple">
+<li><p>Divroañ d'ho urzhiataer e Windows Explorer.</p></li>
+<li><p>Klikit-dehou war <strong>Urzhiataer</strong> ha choazit <a href="#id1"><span class="problematic" id="id2">**</span></a>Kenstagañ ul lenner kenrouedad... ** er roll.</p></li>
+<li><p>Choazit ul lenner kenrouedad diabarzh ho peus c'hoant kenstagañ gant ho Nextcloud.</p></li>
+<li><p>Lakait chomlec'h ho azgoulenn Nextcloud, heuliet gant <strong>/remote.php/dav/files/USERNAME/</strong>.</p></li>
+</ol>
+<blockquote>
+<div><p>Da skouer :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For SSL protected servers, check <strong>Reconnect at sign-in</strong> to ensure
+that the mapping is persistent upon subsequent reboots. If you want to
+connect to the Nextcloud server as a different user, check <strong>Connect using
+different credentials</strong>.</p>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="screenshot of mapping WebDAV on Windows Explorer" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" /></a>
+</figure>
+<ol class="arabic simple" start="5">
+<li><p>Pouezit war ar bouton &quot;Echuiñ&quot;.</p></li>
+</ol>
+<blockquote>
+<div><p>Kenstagañ a ra Windows Explorer al lenner kenrouedad, oc'h aotreañ tizhout an azgoulenn Nextcloud.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="accessing-files-using-cyberduck">
+<h2>Tizhout ar restr en ur implijout Cyberduck<a class="headerlink" href="#accessing-files-using-cyberduck" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://cyberduck.io/">Cyberduck</a> a zo un FTP hag SFTP open source, WebDAV, OpenStack Swift, hag Amazon S3 stummet evit kas restroù war v/macOS ha Windows.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ar skouer-mañ a implij Cyberduck stumm 4.2.1</p>
+</div>
+<p>Evit implijout Cyberduck :</p>
+<ol class="arabic simple">
+<li><p>Lakaat ur servijour hep protokol resis. Da skouer :</p></li>
+</ol>
+<blockquote>
+<div><p>&quot;skouer.com&quot;</p>
+</div></blockquote>
+<p>2. Specify the appropriate port. The port you choose depends on whether or not
+your Nextcloud server supports SSL. Cyberduck requires that you select a
+different connection type if you plan to use SSL. For example:</p>
+<blockquote>
+<div><p>80 (evit WebDAV)</p>
+<p>443 (evit WebDAV (HTTPS/SSL))</p>
+</div></blockquote>
+<p>3. Use the 'More Options' drop-down menu to add the rest of your WebDAV URL into
+the 'Path' field. For example:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">remote.php/dav/files/USERNAME/</span></code></p>
+</div></blockquote>
+<p>Aotreañ a ra bremañ Cyberduck da tizhout restroù war ar servijour Nextcloud.</p>
+</section>
+<section id="accessing-public-shares-over-webdav">
+<h2>Tizhout rannadennoù publik war WebDAV<a class="headerlink" href="#accessing-public-shares-over-webdav" title="Permalink to this headline"></a></h2>
+<p>Gant Nextcloud eo posupl tizhout rannadennoù publik war WebDAV.</p>
+<p>Evit tizhout ar rannadennoù publik, digorit :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">public</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">webdav</span>
+</pre></div>
+</div>
+<p>en ur c'hliant WebDAV, implijit ar jedouer rannañ evel anv implijer hag ar ger-tremen rannet evel ger-tremen (diret).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>&quot;Arventennoù → Merañ → Rannañ → Aotreañ an implijourien war ar servijour da gas rannadennoù da servijourienn all. An dibab-mañ a aotre ivez WebDAV da dizout rannadennoù publik&quot; a zo ret bezhañ aotreet evit lakat ar gewestur-mañ da dreiñ.</p>
+</div>
+</section>
+<section id="known-problems">
+<h2>Kudennoù anavezhet<a class="headerlink" href="#known-problems" title="Permalink to this headline"></a></h2>
+<section id="id4">
+<h3>Kudenn<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<p>Ne genstag ket Windows en ur implijout HTTPS.</p>
+</section>
+<section id="solution-1">
+<h3>Diskoulm 1<a class="headerlink" href="#solution-1" title="Permalink to this headline"></a></h3>
+<p>Ar c'hliant WebDAV Windows na zoug marteze ket Server Name Indication (SNI) war genstagadurioù sifret. Ma 'z eus ur gudenn en ur stagañ un azgoulenn Nextloud SSL sifret, galvit ho pourvezer evit lakaat ur chomlec'h IP resis evit ho servijour diazezet war SSL.</p>
+</section>
+<section id="solution-2">
+<h3>Diskoulm 2<a class="headerlink" href="#solution-2" title="Permalink to this headline"></a></h3>
+<p>Ar c'hliant WebDAV Windows na zoug marteze ket kenstagadurioù TSLv1.1 / TSLv1.2. Ma ho peus ur stumm servijour bevennet ne ro nemet TLSv1.1 pe vuioc'h e c'hwito marteze ar c'henstagadur. Sellit ouzh <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> documentation evit muioc'h a ditouroù.</p>
+</section>
+<section id="id5">
+<h3>Kudenn<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<p>Ar gemennadenn fazi-mañ ho peus resevet : <strong>Error 0x800700DF : Re vras eo ar restr ha n'eo ket posupl enrollañ anezhañ.</strong></p>
+</section>
+<section id="id6">
+<h3>Diskoulm<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<p>Windows limits the maximum size a file transferred from or to a WebDAV share
+may have. You can increase the value <strong>FileSizeLimitInBytes</strong> in
+<strong>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters</strong>
+by clicking on <strong>Modify</strong>.</p>
+<p>Evit brasaat ar vevenn betek 4GB, choazit <strong>Decimal</strong>, lakait <strong>4294967295</strong>, hag adlañsit Windows hag ar servij <strong>WebClient</strong>.</p>
+</section>
+<section id="id7">
+<h3>Kudenn<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<p>Tizhout ho restroù Microsoft Office dre WebDAV c'hwitet.</p>
+</section>
+<section id="id8">
+<h3>Diskoulm<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<p>Kudennoù anavezet hag o ziskoulmoù a vez kavet er pennad <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a> .</p>
+</section>
+<section id="id9">
+<h3>Kudenn<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<p>N'eo ket posupl kenstagañ Nextcloud evel ul lenner WebDAV e Windows en ur implijout ur sertifikad sinet e-unan.</p>
+</section>
+<section id="id10">
+<h3>Diskoulm<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Kit war hoc'h azgoulenn Nextcloud en ur implijout ho furcher kenrouedad karetañ.</p></li>
+<li><p>Klikit betek m'ho po fazi ar sertifikad el linenn stad ho furcher.</p></li>
+<li><p>Sellit ouzh ar sertifikad, goude adalek ivinell ar munudoù, choazit Eilañ d'ur Restr.</p></li>
+<li><p>Enrollit er burev gant n'eus forzh peseurt anv, da skouer <code class="docutils literal notranslate"><span class="pre">myNextcloud.pem</span></code>.</p></li>
+<li><p>Loc'hit en dro, lakait da dreiñ, MMC</p></li>
+<li><p>Restr, Ouzhpennañ/Lemel, Labour aes.</p></li>
+<li><p>Choazit ar sertifikad, Klikit war Ouzhpennañ, Ma c'hont implijer, goude Echu, hag OK.</p></li>
+<li><p>Kit betek Trust Root Certification Authorities, Certificates.</p></li>
+<li><p>Klikit-dehoù war ar Sertifikad, Choazit Pep Oberenn, Emporzhiañ.</p></li>
+<li><p>Choazit ar sertifikad enrollet diouzh ar burev.</p></li>
+<li><p>Choazit Lakaat pep sertifikad er Stal-mañ, Klikit war Furcher,</p></li>
+<li><p>Gwiriit ar vouest a  ginnig Show Physical Stores, Expand out Trusted Root Certification Authorities, ha choazit Local Computer, klikit war OK, Echuiñ an emporzhiañ.</p></li>
+<li><p>Sellit ouzh ar roll evit bezañ sur e teu war wel. Marteze ho po ezhomm da nevesaat ar roll a-raok gwelout anezhañ Kuitait MMC.</p></li>
+<li><p>Digorit ar furcher, choazit ostilhoù, lamit istor ar furcher.</p></li>
+<li><p>Choazit pep tra estreget e Roadennoù Prevez Diabarzh Silet,  peurechuet.</p></li>
+<li><p>Kit d'an dibaboù Internet, Content Tab, skubit stad an SSl.</p></li>
+<li><p>Serrit ar furcher, digorit anezhañ en-dro hag amprouit.</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id11">
+<h3>Kudenn<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
+<p>You cannot download more than 50 MB or upload large files when the upload takes
+longer than 30 minutes using Web Client in Windows 7.</p>
+</section>
+<section id="id12">
+<h3>Diskoulm<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
+<p>Dielloù an doareoù all d'ober a zo er pennad <a class="reference external" href="https://support.microsoft.com/kb/2668751">KB2668751</a>.</p>
+</section>
+</section>
+<section id="accessing-files-using-curl">
+<h2>Tizhout ar restr en ur implijout cURL<a class="headerlink" href="#accessing-files-using-curl" title="Permalink to this headline"></a></h2>
+<p>Peogwir eo WebDAV un astenn HTTP cURL e c'hall bezañ implijet evit urzhiañ oberennoù restroù.</p>
+<p>Evit krouiñ un teuliad gant an deiziat evel anv :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MKCOL<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>Evit pellkas ur restr &quot;error.log&quot; en teuliad-mañ :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-T<span class="w"> </span>error.log<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">/error.log&quot;</span>
+</pre></div>
+</div>
+<p>Evit diblasañ ur restr :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MOVE<span class="w"> </span>--header<span class="w"> </span><span class="s1">&#39;Destination: https://example.com/nextcloud/remote.php/dav/files/USERNAME/target.jpg&#39;</span><span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/source.jpg
+</pre></div>
+</div>
+<p>Evit kaout perzhioù ar restroù en teuliad gwrizienn :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>PROPFIND<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Depth: 1&quot;</span><span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/<span class="w"> </span><span class="p">|</span><span class="w"> </span>xml_pp
+<span class="w">    </span>&lt;?xml<span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="w"> </span><span class="nv">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>?&gt;
+&lt;d:multistatus<span class="w"> </span>xmlns:d<span class="o">=</span><span class="s2">&quot;DAV:&quot;</span><span class="w"> </span>xmlns:oc<span class="o">=</span><span class="s2">&quot;http://nextcloud.org/ns&quot;</span><span class="w"> </span>xmlns:s<span class="o">=</span><span class="s2">&quot;http://sabredav.org/ns&quot;</span>&gt;
+<span class="w">  </span>&lt;d:response&gt;
+<span class="w">    </span>&lt;d:href&gt;/nextcloud/remote.php/dav/files/USERNAME/&lt;/d:href&gt;
+<span class="w">    </span>&lt;d:propstat&gt;
+<span class="w">      </span>&lt;d:prop&gt;
+<span class="w">        </span>&lt;d:getlastmodified&gt;Tue,<span class="w"> </span><span class="m">13</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2015</span><span class="w"> </span><span class="m">17</span>:07:45<span class="w"> </span>GMT&lt;/d:getlastmodified&gt;
+<span class="w">        </span>&lt;d:resourcetype&gt;
+<span class="w">          </span>&lt;d:collection/&gt;
+<span class="w">        </span>&lt;/d:resourcetype&gt;
+<span class="w">        </span>&lt;d:quota-used-bytes&gt;163&lt;/d:quota-used-bytes&gt;
+<span class="w">        </span>&lt;d:quota-available-bytes&gt;11802275840&lt;/d:quota-available-bytes&gt;
+<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">&quot;561d3a6139d05&quot;</span>&lt;/d:getetag&gt;
+<span class="w">      </span>&lt;/d:prop&gt;
+<span class="w">      </span>&lt;d:status&gt;HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK&lt;/d:status&gt;
+<span class="w">    </span>&lt;/d:propstat&gt;
+<span class="w">  </span>&lt;/d:response&gt;
+<span class="w">  </span>&lt;d:response&gt;
+<span class="w">    </span>&lt;d:href&gt;/nextcloud/remote.php/dav/files/USERNAME/welcome.txt&lt;/d:href&gt;
+<span class="w">    </span>&lt;d:propstat&gt;
+<span class="w">      </span>&lt;d:prop&gt;
+<span class="w">        </span>&lt;d:getlastmodified&gt;Tue,<span class="w"> </span><span class="m">13</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2015</span><span class="w"> </span><span class="m">17</span>:07:35<span class="w"> </span>GMT&lt;/d:getlastmodified&gt;
+<span class="w">        </span>&lt;d:getcontentlength&gt;163&lt;/d:getcontentlength&gt;
+<span class="w">        </span>&lt;d:resourcetype/&gt;
+<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">&quot;47465fae667b2d0fee154f5e17d1f0f1&quot;</span>&lt;/d:getetag&gt;
+<span class="w">        </span>&lt;d:getcontenttype&gt;text/plain&lt;/d:getcontenttype&gt;
+<span class="w">      </span>&lt;/d:prop&gt;
+<span class="w">      </span>&lt;d:status&gt;HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK&lt;/d:status&gt;
+<span class="w">    </span>&lt;/d:propstat&gt;
+<span class="w">  </span>&lt;/d:response&gt;
+&lt;/d:multistatus&gt;
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="access_webgui.html" class="btn btn-neutral float-left" title="Tizhout ho restroù en ur implijout an etrefas Web Nextcloud" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="deleted_file_management.html" class="btn btn-neutral float-right" title="Melestrañ ar restroù lamet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Stummoù</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/user_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/user_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/user_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Pelkargadennoù</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Dielloù war Lennet</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Ragtrress Ti</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Krouadennoù</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

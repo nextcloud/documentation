@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Синхронизация с Thunderbird &mdash; документация Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Синхронизация с KDE Kontact" href="sync_kde.html" />
+    <link rel="prev" title="Синхронизация с macOS" href="sync_osx.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Логотип"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest руководство пользователя. Введение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Что нового для пользователей в Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Веб-интерфейс Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Файлы и синхронизация</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Коллективная работа</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Использование приложения Контакты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Использование приложения Календарь</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Синхронизация с Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">Синхронизация с iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">Синхронизация с macOS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Синхронизация с Thunderbird</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#recommended-method">Рекомендуемый метод</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alternative-using-the-cardbook-add-on-contacts-only">Альтернатива: использование дополнения CardBook (только для контактов)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-old-method-manually-subscribing-to-calendars">Старый метод: подписка на календари вручную</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fix-for-thunderbird-60">Исправление для Thunderbird 60</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Синхронизация с KDE Kontact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Синхронизация с рабочим столом GNOME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Синхронизация с Windows 10</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Персональные настройки</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Использование двухфакторной аутентификации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Управление подключенными браузерами и устройствами</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Внешнее хранилище</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Коллективная работа</a></li>
+      <li class="breadcrumb-item active">Синхронизация с Thunderbird</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/pim/sync_thunderbird.rst" class="fa fa-github"> Редактировать на GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="synchronizing-with-thunderbird">
+<h1>Синхронизация с Thunderbird<a class="headerlink" href="#synchronizing-with-thunderbird" title="Ссылка на этот заголовок"></a></h1>
+<p><a class="reference external" href="https://www.thunderbird.net">Thunderbird</a> - это многофункциональный и современный почтовый клиент, который можно превратить в полноценный PIM. Однако в нем отсутствует поддержка синхронизации адресной книги через CardDAV, а также отсутствует возможность автоматического обнаружения календарей и адресных книг, доступных на сервере. Поэтому для синхронизации с Nextcloud требуются надстройки, которые можно легко установить через менеджер надстроек Thunderbird.</p>
+<section id="recommended-method">
+<h2>Рекомендуемый метод<a class="headerlink" href="#recommended-method" title="Ссылка на этот заголовок"></a></h2>
+<p>Для этого метода вам нужно установить три надстройки:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://addons.thunderbird.net/de/thunderbird/addon/lightning/">Lightning calendar</a></p></li>
+<li><p><a class="reference external" href="https://addons.thunderbird.net/de/thunderbird/addon/tbsync/">TBSync</a> и</p></li>
+<li><p><a class="reference external" href="https://addons.thunderbird.net/de/thunderbird/addon/dav-4-tbsync/">TBSync provider for CalDAV and CardDAV</a></p></li>
+</ol>
+<p>Когда они установлены, если вы работаете в Windows, перейдите к <strong>Доп. Функции</strong>/<strong>Настройки синхронизации (TBSync)</strong> или <strong>Редактирование/Настройки синхронизации (TBSync)</strong>, если в Linux</p>
+<ul class="simple">
+<li><p>В диспетчере аккаунта выберите «<strong>Добавить аккаунт</strong> / <strong>CalDAV/CardDAV</strong>»</p></li>
+<li><p>В следующем окне перейдите по умолчанию с <strong>Автоматическая настройка</strong> и нажмите <strong>Далее</strong></p></li>
+<li><p>Введите <strong>Имя учетной записи</strong>, <strong>Имя пользователя</strong>, <strong>Пароль</strong>, <strong>URL вашего сервера</strong> и нажмите <strong>Далее</strong></p></li>
+<li><p>В следующем окне TBSync должен автоматически обнаружить адреса CalDAV и CardDAV. Когда это произойдет, нажмите <strong>Готово</strong>.</p></li>
+<li><p>Теперь установите флажок <strong>Включить и синхронизировать этот аккаунт</strong>. TBSync обнаружит все адресные книги и календари, к которым ваша учетная запись имеет доступ на сервере.</p></li>
+<li><p>Установите флажок рядом с каждым календарем и адресной книгой, которую вы хотите синхронизировать, а также установите, как часто вы хотите, чтобы они были синхронизированы, и нажмите кнопку <strong>Синхронизировать сейчас</strong></p></li>
+<li><p>После первой успешной синхронизации вы можете закрыть окно. Отныне TBSync сделает всю работу за вас. Вы закончили и можете пропустить следующие разделы (если вам не нужна более продвинутая адресная книга)</p></li>
+</ul>
+</section>
+<section id="alternative-using-the-cardbook-add-on-contacts-only">
+<h2>Альтернатива: использование дополнения CardBook (только для контактов)<a class="headerlink" href="#alternative-using-the-cardbook-add-on-contacts-only" title="Ссылка на этот заголовок"></a></h2>
+<p><a class="reference external" href="https://addons.thunderbird.net/en/thunderbird/addon/cardbook/">CardBook</a> is an advanced alternative to Thunderbird’s address book, which supports CardDAV. You can have TBSync and CardBook installed in parallel.</p>
+<ol class="arabic simple">
+<li><p>Нажмите на иконку Cardbook в верхнем правом углу Thunderbird:</p></li>
+</ol>
+<img alt="../../_images/cardbook_icon.png" src="../../_images/cardbook_icon.png" />
+<ol class="arabic simple" start="2">
+<li><p>В Cardbook:</p>
+<ul class="simple">
+<li><p>«Адресная книга &gt; Новая адресная книга <strong>Удаленная</strong> &gt; Далее</p></li>
+<li><p>Выберите <strong>CardDAV</strong>, введите адрес вашего сервера Nextcloud, ваше имя пользователя и пароль</p></li>
+</ul>
+</li>
+</ol>
+<img alt="../../_images/new_addressbook.png" src="../../_images/new_addressbook.png" />
+<ol class="arabic simple" start="4">
+<li><p>Нажмите «Подтвердить», нажмите «Далее», затем выберите имя адресной книги и снова нажмите «Далее».</p></li>
+</ol>
+<img alt="../../_images/addressbook_name.png" src="../../_images/addressbook_name.png" />
+<ol class="arabic simple" start="5">
+<li><p>Когда вы закончите, CardBook синхронизирует ваши адресные книги. Вы всегда можете запустить синхронизацию вручную, нажав «Синхронизировать» в верхнем левом углу CardBook.</p></li>
+</ol>
+<img alt="../../_images/synchronize_cardbook.png" src="../../_images/synchronize_cardbook.png" />
+</section>
+<section id="the-old-method-manually-subscribing-to-calendars">
+<h2>Старый метод: подписка на календари вручную<a class="headerlink" href="#the-old-method-manually-subscribing-to-calendars" title="Ссылка на этот заголовок"></a></h2>
+<p>Этот метод необходим, только если вы не хотите устанавливать TBSync.</p>
+<p>1. Go to your Nextcloud Calendar and click on the 3 dotted menu for the calendar that you want to synchronize which will display and URL that looks something like this:
+<a class="reference external" href="https://cloud.nextcloud.com/remote.php/dav/calendars/daniel/personal/">https://cloud.nextcloud.com/remote.php/dav/calendars/daniel/personal/</a></p>
+<ol class="arabic simple" start="2">
+<li><p>Перейдите к представлению календаря в Thunderbird и щелкните правой кнопкой мыши в меню календаря слева (где находятся названия календарей), чтобы добавить <strong>Новый календарь</strong>.</p></li>
+<li><p>Выберите <strong>В сети</strong></p></li>
+</ol>
+<img alt="../../_images/new_calendar.png" src="../../_images/new_calendar.png" />
+<ol class="arabic simple" start="4">
+<li><p>Выберите <strong>CalDAV</strong> и заполните недостающую информацию:</p></li>
+</ol>
+<img alt="../../_images/CalDAV_calendar.png" src="../../_images/CalDAV_calendar.png" />
+</section>
+<section id="fix-for-thunderbird-60">
+<h2>Исправление для Thunderbird 60<a class="headerlink" href="#fix-for-thunderbird-60" title="Ссылка на этот заголовок"></a></h2>
+<p>Если вы все еще используете Thunderbird 60, вам нужно изменить параметр конфигурации, чтобы CalDAV/CardDAV работал с ошибкой Thunderbird <a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=1468912">#1468918</a> как описано <a class="reference external" href="https://help.nextcloud.com/t/thunderbird-60-problems-with-address-and-calendar-sync/35773">здесь</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="sync_osx.html" class="btn btn-neutral float-left" title="Синхронизация с macOS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="sync_kde.html" class="btn btn-neutral float-right" title="Синхронизация с KDE Kontact" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Версии</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/user_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/user_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/user_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Загрузки</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Читать на Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">В начало</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Сборка</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
