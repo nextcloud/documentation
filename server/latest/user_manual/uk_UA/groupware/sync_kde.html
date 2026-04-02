@@ -1,0 +1,669 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="uk-UA" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Синхронізація з KDE Kontact &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/groupware/sync_kde.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=e691f3da"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=0958edf7"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Індекс" href="../genindex.html" />
+    <link rel="search" title="Пошук" href="../search.html" />
+    <link rel="next" title="Синхронізація з робочим столом GNOME" href="sync_gnome.html" />
+    <link rel="prev" title="Синхронізація з Thunderbird" href="sync_thunderbird.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Вступ до посібника користувача Nextcloud (latest)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Інтерфейс веб-версії Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Файли та синхронізація</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Програмне забезпечення для групової роботи</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Використання програми «Контакти</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Використання програми «Календар</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mail.html">Використання програми «Пошта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">Налаштування повідомлень поза офісом</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Синхронізація з Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">Синхронізація з iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">Синхронізація з MacOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Синхронізація з Thunderbird</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Синхронізація з KDE Kontact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Синхронізація з робочим столом GNOME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Синхронізація з Windows 10</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Розмови</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Десктопні клієнти</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Налаштуйте ваші вподобання</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Універсальний доступ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Використання двофакторної аутентифікації</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Керуйте підключеними браузерами та пристроями</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Зовнішнє сховище</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Програмне забезпечення для групової роботи</a></li>
+      <li class="breadcrumb-item active">Синхронізація з KDE Kontact</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/sync_kde.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="synchronizing-with-kde-kontact">
+<h1>Синхронізація з KDE Kontact<a class="headerlink" href="#synchronizing-with-kde-kontact" title="Link to this heading"></a></h1>
+<p>KOrganizer, Календар та KAddressBook можуть синхронізувати ваш календар, контакти та завдання з сервером Nextcloud.</p>
+<p>Це можна зробити, виконавши ці кроки, залежно від того, чи використовуєте ви KOrganizer або Календар:</p>
+<p>У KOrganizer:</p>
+<ol class="arabic simple">
+<li><p>Відкрийте KOrganizer і у списку календарів (внизу ліворуч) клацніть правою кнопкою миші та виберіть «Додати календар»:</p></li>
+</ol>
+<img alt="../../_images/KOrganizer_add_calendar.png" src="../../_images/KOrganizer_add_calendar.png" />
+<ol class="arabic simple" start="2">
+<li><p>В отриманому списку ресурсів виберіть <code class="docutils literal notranslate"><span class="pre">ресурс</span> <span class="pre">групової</span> <span class="pre">роботи</span> <span class="pre">DAV</span></code>:</p></li>
+</ol>
+<img alt="../../_images/korganizer_resource_choice.png" src="../../_images/korganizer_resource_choice.png" />
+<p>У календарі:</p>
+<ol class="arabic simple">
+<li><p>Відкрийте «Календар» і в рядку меню відкрийте налаштування, а потім виберіть «Джерела календаря» -&amp;gt; «Додати календар»:</p></li>
+</ol>
+<img alt="../../_images/Kalendar_add_calendar.png" src="../../_images/Kalendar_add_calendar.png" />
+<ol class="arabic simple" start="2">
+<li><p>В отриманому списку ресурсів виберіть <code class="docutils literal notranslate"><span class="pre">ресурс</span> <span class="pre">групової</span> <span class="pre">роботи</span> <span class="pre">DAV</span></code>:</p></li>
+</ol>
+<img alt="../../_images/kalendar_resource_choice.png" src="../../_images/kalendar_resource_choice.png" />
+<p>У KOrganizer та Calendar:</p>
+<ol class="arabic simple" start="3">
+<li><p>Введіть своє ім’я користувача. В якості пароля вам потрібно згенерувати додаток-пароль/токен (<a href="#id1"><span class="problematic" id="id2">`Learn more &amp;lt;https://docs.nextcloud.com/server/latest/user_manual/en/session_management.html#managing-devices&amp;gt;`_</span></a>):</p></li>
+</ol>
+<img alt="../../_images/korganizer_credentials.png" src="../../_images/korganizer_credentials.png" />
+<ol class="arabic simple" start="4">
+<li><p>Виберіть <code class="docutils literal notranslate"><span class="pre">Nextcloud</span></code> в якості сервера групового програмного забезпечення:</p></li>
+</ol>
+<img alt="../../_images/KOrganizer_groupware_server.png" src="../../_images/KOrganizer_groupware_server.png" />
+<ol class="arabic simple" start="5">
+<li><p>Введіть URL-адресу сервера Nextcloud і, якщо потрібно, шлях до встановлення (все, що йде після першого /, наприклад, <code class="docutils literal notranslate"><span class="pre">mynextcloud</span></code> в <code class="docutils literal notranslate"><span class="pre">https://example.com/mynextcloud</span></code>). Потім натисніть «Далі»:</p></li>
+</ol>
+<img alt="../../_images/KOrganizer_server_address.png" src="../../_images/KOrganizer_server_address.png" />
+<ol class="arabic simple" start="6">
+<li><p>Тепер ви можете протестувати з’єднання, що може зайняти деякий час для початкового підключення. Якщо воно не працює, ви можете повернутися назад і спробувати виправити це за допомогою інших налаштувань:</p></li>
+</ol>
+<img alt="../../_images/KOrganizer_test1.png" src="../../_images/KOrganizer_test1.png" />
+<img alt="../../_images/KOrganizer_test2.png" src="../../_images/KOrganizer_test2.png" />
+<ol class="arabic simple" start="7">
+<li><p>Виберіть назву для цього ресурсу, наприклад, <code class="docutils literal notranslate"><span class="pre">Робота</span></code> або <code class="docutils literal notranslate"><span class="pre">Дім</span></code>. За замовчуванням синхронізуються CalDAV (Календар) і CardDAV (Контакти):</p></li>
+</ol>
+<img alt="../../_images/KOrganizer_pick_resources.png" src="../../_images/KOrganizer_pick_resources.png" />
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Ви можете вручну налаштувати частоту оновлення календаря та контактів. За замовчуванням цей параметр встановлений на 5 хвилин і має бути достатнім для більшості випадків використання. Коли ви створюєте нову зустріч, вона одразу ж синхронізується з Nextcloud. Можливо, ви захочете змінити це налаштування для економії електроенергії або мобільного зв’язку, щоб ви могли оновити запис, натиснувши правою кнопкою миші на елементі у списку календаря.</p>
+</div>
+<ol class="arabic simple" start="8">
+<li><p>За кілька секунд або хвилин, залежно від вашого підключення до Інтернету, ви побачите свої календарі та контакти у програмах KDE Kontact KOrganizer, Календар і KAddressBook, а також у аплеті календаря Плазми:</p></li>
+</ol>
+<img alt="../../_images/KOrganizer.png" src="../../_images/KOrganizer.png" />
+<img alt="../../_images/KDEPlasma.png" src="../../_images/KDEPlasma.png" />
+<img alt="../../_images/kalendar_month_view.png" src="../../_images/kalendar_month_view.png" />
+<img alt="../../_images/KAddressBook.png" src="../../_images/KAddressBook.png" />
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sync_thunderbird.html" class="btn btn-neutral float-left" title="Синхронізація з Thunderbird" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sync_gnome.html" class="btn btn-neutral float-right" title="Синхронізація з робочим столом GNOME" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 uk-UA
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Мови</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Версії</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Завантаження</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Прочитайте документацію</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Головна Проєкту</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Побудови</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

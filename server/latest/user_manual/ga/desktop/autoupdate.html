@@ -1,0 +1,702 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ga" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>An Nuashonrú Uathoibríoch &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/desktop/autoupdate.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=d9c2735f"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Nuashonraigh cainéil" href="updatechannel.html" />
+    <link rel="prev" title="macOS Virtual Files Client" href="macosvfs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest réamhrá lámhleabhar úsáideora</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Comhéadan Gréasáin Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Comhaid &amp; sioncronú</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Earraí grúpa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Caint</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Cliaint Deisce</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Suiteáil</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html">Ag baint úsáide as an gCliant Sioncrónaithe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macosvfs.html">macOS Virtual Files Client</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">An Nuashonrú Uathoibríoch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-workflow">Sreabhadh Oibre Bunúsach</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#windows">Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#macos">macOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linux">Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#preventing-automatic-updates">Nuashonruithe Uathoibríocha a Chosc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#preventing-automatic-updates-in-windows-environments">Cosc ar Nuashonruithe Uathoibríocha i Timpeallachtaí Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preventing-automatic-updates-in-linux-environments">Cosc ar Nuashonruithe Uathoibríocha i dTimpeallacht Linux</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Nuashonraigh cainéil</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conflicts.html">Coinbhleachtaí</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">CCanna</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Ag socrú do shainroghanna</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Rochtain uilíoch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Ag baint úsáide as fíordheimhniú dhá-fhachtóir</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Bainistigh brabhsálaithe agus gléasanna nasctha</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Stóráil Sheachtrach</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Cliaint Deisce</a></li>
+      <li class="breadcrumb-item active">An Nuashonrú Uathoibríoch</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/autoupdate.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-automatic-updater">
+<h1>An Nuashonrú Uathoibríoch<a class="headerlink" href="#the-automatic-updater" title="Link to this heading"></a></h1>
+<p>Cinntíonn an Updater Uathoibríoch go bhfuil na gnéithe is déanaí agus na socruithe fabht agat i gcónaí do do chliant sioncrónaithe Nextcloud.</p>
+<p>Ní dhéanann an Nuashonrú Uathoibríoch nuashonrú ach ar ríomhairí macOS agus Windows; Ní gá d'úsáideoirí Linux ach a ngnáthbhainisteoirí pacáiste a úsáid. Mar sin féin, ar chórais Linux seiceálfaidh an Updater le haghaidh nuashonruithe agus tabharfaidh sé fógra duit nuair a bheidh leagan nua ar fáil.</p>
+<section id="basic-workflow">
+<h2>Sreabhadh Oibre Bunúsach<a class="headerlink" href="#basic-workflow" title="Link to this heading"></a></h2>
+<p>Déanann na hailt seo a leanas cur síos ar conas an Nuashonrú Uathoibríoch a úsáid ar chórais oibriúcháin éagsúla.</p>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Link to this heading"></a></h3>
+<p>Seiceálann cliant Nextcloud nuashonruithe agus íoslódálacha iad nuair a bhíonn siad ar fáil. Is féidir leat an stádas nuashonraithe a fheiceáil faoi <code class="docutils literal notranslate"><span class="pre">Socruithe</span> <span class="pre">-&gt;</span> <span class="pre">Ginearálta</span> <span class="pre">-&gt;</span> <span class="pre">Nuashonruithe</span></code> sa chliant Nextcloud.</p>
+<p>Má tá nuashonrú ar fáil, agus má dhéantar é a íoslódáil go rathúil, tosaíonn an cliant Nextcloud nuashonrú ciúin roimh é a sheoladh agus ansin atosóidh sé é féin. Má theipeann ar an nuashonrú ciúin, tairgeann an cliant íoslódáil láimhe.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Tá pribhléidí riaracháin ag teastáil chun an nuashonrú a dhéanamh.</p>
+</div>
+</section>
+<section id="macos">
+<h3>macOS<a class="headerlink" href="#macos" title="Link to this heading"></a></h3>
+<p>Tá uath-nuashonróir ag cliant macOS a úsáideann an creat Sparkle. Tá an t-uath-nuashonróir seo cuachta isteach sa Chuach Aipeanna cliaint agus seiceálann sé le haghaidh nuashonruithe nuair a seoladh é, ag cur in iúl duit má tá nuashonrú ar fáil. Cuirfidh sé seo pop-up i láthair a ligfidh duit an nuashonrú cliant is déanaí a íoslódáil agus a shuiteáil go huathoibríoch le cliceáil amháin.</p>
+<p>I leaganacha den chliant nach bhfuil an t-uath-nuashonraí bunaithe ar Sparkle cuachta iontu, feicfear fógra inchliceáilte ag cur in iúl go bhfuil nuashonrú ar fáil. Nuair a chliceáiltear ar an bhfógra sin, osclófar an leathanach íoslódála don leagan is déanaí den chliant i mbrabhsálaí gréasáin an chórais.</p>
+<p>Cosúil le córais eile, is féidir leat an stádas nuashonraithe a fheiceáil faoi <code class="docutils literal notranslate"><span class="pre">Socruithe</span> <span class="pre">-&gt;</span> <span class="pre">Ginearálta</span> <span class="pre">-&gt;</span> <span class="pre">Nuashonruithe</span></code> sa chliant Nextcloud.</p>
+</section>
+<section id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Link to this heading"></a></h3>
+<p>Soláthraíonn dáiltí Linux a n-uirlisí nuashonraithe féin, mar sin ní dhéanann cliaint Nextcloud a úsáideann córas oibriúcháin Linux aon nuashonruithe ar a gcuid féin. Cuirfidh an cliant in iúl duit (<code class="docutils literal notranslate"><span class="pre">Socruithe</span> <span class="pre">-&gt;</span> <span class="pre">Ginearálta</span> <span class="pre">-&gt;</span> <span class="pre">Nuashonruithe</span></code>) nuair a bheidh nuashonrú ar fáil.</p>
+</section>
+</section>
+<section id="preventing-automatic-updates">
+<h2>Nuashonruithe Uathoibríocha a Chosc<a class="headerlink" href="#preventing-automatic-updates" title="Link to this heading"></a></h2>
+<p>I dtimpeallachtaí rialaithe, mar chuideachtaí nó ollscoileanna, b'fhéidir nach mbeadh tú ag iarraidh an mheicníocht uathoibríoch-nuashonraithe a chumasú, toisc go gcuireann sé isteach ar uirlisí agus ar bheartais imlonnaithe rialaithe. Chun aghaidh a thabhairt ar an gcás seo, is féidir an t-uath-nuashonraí a dhíchumasú go hiomlán. Déanann na hailt seo a leanas cur síos ar conas an mheicníocht uath-nuashonraithe do chórais oibriúcháin éagsúla a dhíchumasú.</p>
+<section id="preventing-automatic-updates-in-windows-environments">
+<h3>Cosc ar Nuashonruithe Uathoibríocha i Timpeallachtaí Windows<a class="headerlink" href="#preventing-automatic-updates-in-windows-environments" title="Link to this heading"></a></h3>
+<p>Is féidir le húsáideoirí nuashonruithe uathoibríocha a dhíchumasú tríd an líne seo a chur leis an gcuid [Ginearálta] dá gcomhaid <code class="docutils literal notranslate"><span class="pre">nextcloud.cfg</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">skipUpdateCheck</span><span class="o">=</span><span class="n">true</span>
+</pre></div>
+</div>
+<p>Tá níos mó roghanna ag riarthóirí Windows chun nuashonruithe uathoibríocha a chosc i dtimpeallachtaí Windows trí úsáid a bhaint as ceann amháin de dhá mhodh. Ligeann an chéad mhodh d’úsáideoirí an mheicníocht seiceála nuashonraithe uathoibríoch a shárú, ach cuireann an dara modh cosc ​​ar aon sáruithe láimhe.</p>
+<p>Chun nuashonruithe uathoibríocha a chosc, ach sáruithe láimhe a cheadú:</p>
+<ol class="arabic">
+<li><p>Cuir na heochracha Clárlainne seo in eagar:</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>(32-giotán-Windows) <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Nextcloud\Nextcloud</span></code></p></li>
+<li><p>(64-giotán-Windows) <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Wow6432Node\Nextcloud\Nextcloud</span></code></p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>Cuir leis an eochair <code class="docutils literal notranslate"><span class="pre">skipUpdateCheck</span></code> (den chineál DWORD).</p></li>
+<li><p>Sonraigh luach <code class="docutils literal notranslate"><span class="pre">1</span></code> don mheaisín.</p></li>
+</ol>
+<p>Chun an eochair seo a shárú de láimh, úsáid an luach céanna in <code class="docutils literal notranslate"><span class="pre">HKEY_CURRENT_USER</span></code>.</p>
+<p>Chun nuashonruithe uathoibríocha a chosc agus sáruithe láimhe a dhícheadú:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Is é seo an modh is fearr chun iompar an nuashonraithe a rialú trí úsáid a bhaint as Polasaithe an Ghrúpa.</p>
+</div>
+<ol class="arabic">
+<li><p>Cuir an eochair Chlárlainne seo in eagar:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Policies\Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code></p>
+</div></blockquote>
+</li>
+<li><p>Cuir leis an eochair <code class="docutils literal notranslate"><span class="pre">skipUpdateCheck</span></code> (den chineál DWORD).</p></li>
+<li><p>Sonraigh luach <code class="docutils literal notranslate"><span class="pre">1</span></code> don mheaisín.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>tá príomhainmneacha éagsúla ag cliaint brandáilte</p>
+</div>
+</section>
+<section id="preventing-automatic-updates-in-linux-environments">
+<h3>Cosc ar Nuashonruithe Uathoibríocha i dTimpeallacht Linux<a class="headerlink" href="#preventing-automatic-updates-in-linux-environments" title="Link to this heading"></a></h3>
+<p>Toisc nach soláthraíonn an cliant Linux feidhmiúlacht nuashonraithe uathoibríoch, ní gá an seiceáil nuashonraithe uathoibríoch a bhaint. Mar sin féin, más mian leat é a dhíchumasú cuir in eagar do chomhad cumraíochta cliant deisce, <code class="docutils literal notranslate"><span class="pre">$HOME/.config/Nextcloud/nextcloud.cfg</span></code>. Cuir an líne seo leis an roinn [Ginearálta]:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">skipUpdateCheck</span><span class="o">=</span><span class="n">true</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="macosvfs.html" class="btn btn-neutral float-left" title="macOS Virtual Files Client" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="updatechannel.html" class="btn btn-neutral float-right" title="Nuashonraigh cainéil" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 Irish
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Teangacha</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Leaganacha</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Íoslódálacha</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Ar Léigh na Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Tionscadal Baile</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Tógann</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

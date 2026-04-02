@@ -1,0 +1,758 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="cs" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Přístup k souborům prostřednictvím webového rozhraní Nextcloud &mdash; Dokumentace pro Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/files/access_webgui.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=672a239f"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=22e1c300"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Přístup k souborům v Nextcloud prostřednictvím protokolu WebDAV" href="access_webdav.html" />
+    <link rel="prev" title="Soubory a synchronizace" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Úvod do uživatelské příručky k Nextcloud verze latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Webové rozhraní Nextcloud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Soubory a synchronizace</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Přístup k souborům prostřednictvím webového rozhraní Nextcloud</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tagging-files">Označování souborů štítky</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comments">Komentáře</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#video-player">Přehrávač videí</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-controls">Ovládací prvky souborů</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#previewing-files">Náhledy obsahu souborů</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#navigating-inside-your-nextcloud">Pohyb po Nextcloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-status-icons">Ikony stavu sdílení</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-or-uploading-files-and-directories">Vytváření nebo nahrávání souborů a složek</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#selecting-files-or-folders">Vybírání souborů či složek</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filtering-the-files-view">Filtrování zobrazení souborů</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#moving-files">Přesouvání souborů</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-or-connecting-to-a-federation-share-link">Vytváření nebo připojování k odkazu na federované sdílení</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Přístup k souborům v Nextcloud prostřednictvím protokolu WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Správa smazaných souborů</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Synchronizace s desktopovými a mobilními platformami</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Using server-side encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Sdílení souborů</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Federovaná sdílení</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Provádění anonymních nahrání</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Nahrávání velkých souborů</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Kvóta úložiště</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Správa verzí</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projekty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Přenesení vlastnictví</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Používání federovaných sdílení</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Software pro podporu spolupráce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Klienti pro desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Nastavení vašich předvoleb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Zpřístupnění pro všechny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Používání dvoufázového ověřování se</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Správa připojených prohlížečů a zařízení</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Externí úložiště</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Soubory a synchronizace</a></li>
+      <li class="breadcrumb-item active">Přístup k souborům prostřednictvím webového rozhraní Nextcloud</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webgui.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="accessing-your-files-using-the-nextcloud-web-interface">
+<h1>Přístup k souborům prostřednictvím webového rozhraní Nextcloud<a class="headerlink" href="#accessing-your-files-using-the-nextcloud-web-interface" title="Link to this heading"></a></h1>
+<p>K souborům v Nextcloud je možné přistupovat prostřednictvím jeho webového rozhraní. Soubory je zde možné vytvářet, zobrazovat jejich náhledy, upravovat, mazat, sdílet a sdílet dál dalším. Správce vámi využívaného Nextcloud tyto funkce může vypnout, takže pokud vám některé chybí, obraťte se na něj.</p>
+<figure class="align-default">
+<img alt="Obrazovka ukazující pohled Soubory." src="../../_images/users-files.png" />
+</figure>
+<section id="tagging-files">
+<h2>Označování souborů štítky<a class="headerlink" href="#tagging-files" title="Link to this heading"></a></h2>
+<p>Souborům je možné přiřazovat štítky. K jejich vytváření se dostanete otevřením zobrazení Podrobností o souboru. Pak zadejte své štítky. Pokud chcete zadat více než jeden štítek, stiskněte za každým z nich klávesu Enter. Všechny štítky jsou systémové a jsou sdílené všemi uživateli daného Nextcloud serveru.</p>
+<figure class="align-default">
+<img alt="Vytváření štítků souborů." src="../../_images/files_page-7.png" />
+</figure>
+<p>Poté je možné soubory podle štítků filtrovat a to použitím filtru štítků v levém postranním panelu:</p>
+<figure class="align-default">
+<img alt="Zobrazování štítků souboru." src="../../_images/files_page-8.png" />
+</figure>
+</section>
+<section id="comments">
+<h2>Komentáře<a class="headerlink" href="#comments" title="Link to this heading"></a></h2>
+<p>Pokud chcete k libovolnému souboru či složce přidat nebo si přečíst komentář, použijte pohled Podrobnosti. Komentáře jsou viditelné každému, kdo má k souboru přístup:</p>
+<figure class="align-default">
+<img alt="Vytváření a zobrazování komentářů." src="../../_images/file_menu_comments_2.png" />
+</figure>
+</section>
+<section id="video-player">
+<h2>Přehrávač videí<a class="headerlink" href="#video-player" title="Link to this heading"></a></h2>
+<p>Videa je možné přehrávat přímo v Nexcloud aplikací Přehrávač videa a to pouhým kliknutím na soubor. Zda video takto půjde přehrát závisí na použitém webovém prohlížeči a formátu videa. Pokud správce vámi využívaného Nexcloud zapnul takovéto přehrávání videa a přesto ve vámi používaném webovém prohlížeči nefunguje, může se jednat o problém s prohlížečem. Které formáty multimédií jsou ve webových prohlížečích podporované, naleznete v <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility">https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility</a>.</p>
+<figure class="align-default">
+<img alt="Sledování filmu." src="../../_images/video_player_2.png" />
+</figure>
+</section>
+<section id="file-controls">
+<h2>Ovládací prvky souborů<a class="headerlink" href="#file-controls" title="Link to this heading"></a></h2>
+<p>Nextcloud can display thumbnail previews for various file types, such as images, audio files, and text files.
+The specific types supported are up to the server administrator.
+Hover your cursor over a file or folder to expose the controls for the following operations:</p>
+<dl>
+<dt>Oblíbené</dt><dd><p>Kliknutím na hvězdičku vlevo od ikony souboru ho přidáte mezi oblíbené:</p>
+<figure class="align-default">
+<img alt="Označování souborů jako oblíbené." src="../../_images/files_page-1.png" />
+</figure>
+<p>Všechny své oblíbené položky naleznete také pomocí filtru Oblíbené v postranním panelu vlevo.</p>
+</dd>
+<dt>Přetékací nabídka</dt><dd><p>Přetékací nabídka (tři tečky) zobrazuje podrobnosti o souboru a umožňuje soubory přejmenovávat, stahovat a mazat:</p>
+<figure class="align-default">
+<img alt="Přetékací nabídka." src="../../_images/files_page-3.png" />
+</figure>
+<p>Pohled Podrobnosti zobrazuje informace z Aktivity, Sdílení a Verze:</p>
+</dd>
+</dl>
+<figure class="align-default">
+<img alt="Obrazovka s podrobnostmi." src="../../_images/files_page-4.png" />
+</figure>
+<p>Ikona ozubeného kolečka <strong>Nastavení</strong> níže vlevo umožňuje zobrazovat nebo skrývat skryté soubory ve webovém rozhraní Nextloud. Říká se jim také tečkové soubory, protože jejich názvy začínají na tečku, např. <code class="docutils literal notranslate"><span class="pre">.mailfile</span></code>. Tečka operačnímu systému sděluje, že v prohlížečích souborového systému má tyto soubory skrýt – tedy pokud nezvolíte, že mají být zobrazovány. Obvykle se jedná o soubory s nastaveními, takže možnost je skrýt napomáhá udržování přehlednosti.</p>
+<figure class="align-default">
+<img alt="Skrývání nebo zobrazování skrytých souborů." src="../../_images/hidden_files.png" />
+</figure>
+</section>
+<section id="previewing-files">
+<h2>Náhledy obsahu souborů<a class="headerlink" href="#previewing-files" title="Link to this heading"></a></h2>
+<p>Kliknutím na název souboru si zobrazíte náhled jeho obsahu (pomocí vestavěných prohlížečů). Funguje to pro nekomprimované textové soubory, soubory formátu OpenDocument, videa a obrázky. Případně je toto možné i pro ostatní typy souborů, pokud správce Nextcloud zapnul příslušný modul. Pokud Nextcloud nemůže soubor zobrazit, zahájí namísto toho proces jeho stahování na váš počítač.</p>
+</section>
+<section id="navigating-inside-your-nextcloud">
+<h2>Pohyb po Nextcloud<a class="headerlink" href="#navigating-inside-your-nextcloud" title="Link to this heading"></a></h2>
+<p>Pro pohyb po složkách v Nextcloud stačí jednoduše kliknout na složku a otevřít ji tak a pak pomocí tlačítka zpět vámi používaného webového prohlížeče přejít zpět na předchozí úroveň. Nextcloud také v horní části oblasti Soubory poskytuje lištu s prvky pro navigaci.</p>
+</section>
+<section id="sharing-status-icons">
+<h2>Ikony stavu sdílení<a class="headerlink" href="#sharing-status-icons" title="Link to this heading"></a></h2>
+<p>Jakákoli složka, která je sdílena, je označena překryvnou ikonou <code class="docutils literal notranslate"><span class="pre">Sdíleno</span></code>. Sdílení veřejným odkazem jsou označena symbolem řetězení. Nesdílené složky nejsou označené:</p>
+<figure class="align-default">
+<img alt="Ikony stavu sdílení." src="../../_images/files_page-5.png" />
+</figure>
+</section>
+<section id="creating-or-uploading-files-and-directories">
+<h2>Vytváření nebo nahrávání souborů a složek<a class="headerlink" href="#creating-or-uploading-files-and-directories" title="Link to this heading"></a></h2>
+<p>Nahrávejte nebo vytvářejte nové soubory nebo složky přímo v Nextcloud složce kliknutím na tlačítko <em>Nové</em> v aplikaci Soubory:</p>
+<figure class="align-default">
+<img alt="Nabídka Nový soubor/složka/nahrání." src="../../_images/files_page-6.png" />
+</figure>
+<p>Tlačítko <em>Nové</em> poskytuje následující možnosti:</p>
+<dl class="simple">
+<dt>Šipka nahoru</dt><dd><p>Nahrajte soubory do Nextcloud ze svého počítače. Toto je možné udělat také jejich přetažením ze správce souborů, který v počítači používáte.</p>
+</dd>
+<dt>Textový soubor</dt><dd><p>Vytvoří nový textový soubor a přidá ho do složky, ve které se právě nacházíte.</p>
+</dd>
+<dt>Složka</dt><dd><p>Vytvoří novou složku v té, ve které se právě nacházíte.</p>
+</dd>
+</dl>
+</section>
+<section id="selecting-files-or-folders">
+<h2>Vybírání souborů či složek<a class="headerlink" href="#selecting-files-or-folders" title="Link to this heading"></a></h2>
+<p>Soubor/složku (či soubory/složky) je možné vybírat klikáním na jejich zaškrtávací kolonky. Pokud chcete vybrat všechny soubory ve složce, ve které se právě nacházíte, klikněte na zaškrtávací kolonku nacházející se na začátku výpisu souborů.</p>
+<p>Když vyberete vícero souborů, můžete je všechny smazat, nebo si je stáhnout jako ZIP soubor pomocí tlačítek <code class="docutils literal notranslate"><span class="pre">Smazat</span></code> nebo <code class="docutils literal notranslate"><span class="pre">Stáhnout</span></code>, která se objeví nahoře.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Pokud tlačítko <code class="docutils literal notranslate"><span class="pre">Stáhnout</span></code> není viditelné, správce tuto funkci vypnul.</p>
+</div>
+</section>
+<section id="filtering-the-files-view">
+<h2>Filtrování zobrazení souborů<a class="headerlink" href="#filtering-the-files-view" title="Link to this heading"></a></h2>
+<p>Levý postranní panel na stránce Soubory obsahuje několik filtrů pro rychlé řazení a správu vašich souborů.</p>
+<dl class="simple">
+<dt>Všechny soubory</dt><dd><p>Výchozí zobrazení; zobrazuje všechny soubory, ke kterým máte přístup.</p>
+</dd>
+<dt>Oblíbené</dt><dd><p>Soubory nebo složky označené žlutou hvězdičkou.</p>
+</dd>
+<dt>Nasdíleno vám</dt><dd><p>Zobrazí všechny soubory, nasdílené vám jiným uživatelem či skupinou.</p>
+</dd>
+<dt>Nasdíleno ostatním</dt><dd><p>Zobrazuje všechny soubory, které jste nasdíleli ostatním uživatelům či skupinám.</p>
+</dd>
+<dt>Sdíleno odkazem</dt><dd><p>Zobrazuje všechny soubory, které jste nasdíleli prostřednictvím veřejného odkazu.</p>
+</dd>
+<dt>Externí úložiště (volitelné)</dt><dd><p>Soubory na externích úložných zařízeních a službách, jako třeba Amazon S3, SMB/CIFS, FTP… ke kterým máte přístup.</p>
+</dd>
+</dl>
+</section>
+<section id="moving-files">
+<h2>Přesouvání souborů<a class="headerlink" href="#moving-files" title="Link to this heading"></a></h2>
+<p>Soubory a složky je možné přesouvat do libovolné složky pomocí přetahování.</p>
+</section>
+<section id="creating-or-connecting-to-a-federation-share-link">
+<h2>Vytváření nebo připojování k odkazu na federované sdílení<a class="headerlink" href="#creating-or-connecting-to-a-federation-share-link" title="Link to this heading"></a></h2>
+<p>Federované cloudové sdílení umožňuje připojovat si (mount) sdílení souborů z ostatních Nextcloud serverů a spravovat je stejně jako místní sdílení. O tom, jak vytvářet a připojovat se k novým sdílením v rámci federovaném cloudu pojednává <a class="reference internal" href="federated_cloud_sharing.html"><span class="doc">Používání federovaných sdílení</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Soubory a synchronizace" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="access_webdav.html" class="btn btn-neutral float-right" title="Přístup k souborům v Nextcloud prostřednictvím protokolu WebDAV" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 Czech
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Jazyky</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Verze</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Stahování</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Na službě Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Domovská stránka projektu</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Sestavení</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

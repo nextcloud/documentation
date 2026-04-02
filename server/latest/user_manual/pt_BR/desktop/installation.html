@@ -1,0 +1,802 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instalação &mdash; Documentação Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/desktop/installation.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5eb80f5b"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=71a39b36"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="next" title="Uso do Cliente de Sincronização" href="usage.html" />
+    <link rel="prev" title="Clientes de Desktop" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Pesquisar documentos" aria-label="Pesquisar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introdução ao manual do usuário do Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">A interface web do Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Arquivos &amp; sincronização</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Clientes de Desktop</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Instalação</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#system-requirements">Requisitos do Sistema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-the-windows-installation">Personalização da Instalação no Windows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#features">Recursos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Instalação</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#changing-installed-features">Alteração de Recursos Instalados</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installation-folder">Pasta de Instalação</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#disabling-automatic-updates">Desativação de Atualizações Automáticas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#launch-after-installation">Iniciar Após a Instalação</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#no-reboot-after-installation">Sem Reinicialização Após a Instalação</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-wizard">Assistente de Instalação</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html">Uso do Cliente de Sincronização</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macosvfs.html">macOS Virtual Files Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoupdate.html">O Atualizador Automático</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Canais de atualização</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conflicts.html">Conflitos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">Perguntas Frequentes (FAQ)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Configuração de suas preferências</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Acesso universal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Uso da autenticação de dois fatores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gerenciar navegadores e dispositivos conectados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Armazenamento externo</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Menu de navegação móvel" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Navegação da página">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Clientes de Desktop</a></li>
+      <li class="breadcrumb-item active">Instalação</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/installation.rst" class="fa fa-github"> Editar no GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation">
+<h1>Instalação<a class="headerlink" href="#installation" title="Link para este cabeçalho"></a></h1>
+<p>Você pode fazer download da versão mais recente do Cliente de Sincronização de Desktop Nextcloud  na <a class="reference external" href="https://nextcloud.com/download/#install-clients">página de download do Nextcloud</a>. Há clientes para Linux, macOS e Microsoft Windows.</p>
+<p>As versões de servidor atualmente compatíveis são as três últimas versões estáveis no momento da publicação. Isso significa que a série de versões latest é compatível com as versões principais estáveis do servidor. Consulte <a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule</a> para obter informações sobre as versões principais compatíveis.</p>
+<p>A instalação no macOS e no Windows é igual à de qualquer aplicativo de software: faça o download do programa e, em seguida, clique duas vezes nele para iniciar a instalação e siga o assistente de instalação. Depois de instalado e configurado, o cliente de sincronização se manterá automaticamente atualizado; consulte <a class="reference internal" href="autoupdate.html"><span class="doc">O Atualizador Automático</span></a> para obter mais informações.</p>
+<p>Os usuários do Linux devem seguir as instruções na página de download para adicionar o repositório apropriado para sua distribuição Linux, instalar a chave de assinatura e, em seguida, usar seus gerenciadores de pacotes para instalar o cliente de sincronização de desktop. Os usuários do Linux também atualizarão seus clientes de sincronização por meio do gerenciador de pacotes, e o cliente exibirá uma notificação quando uma atualização estiver disponível.</p>
+<p>Os usuários do Linux também devem ter um gerenciador de senhas ativado, como o GNOME Keyring ou o KWallet, para que o cliente de sincronização possa fazer login automaticamente.</p>
+<p>Você também encontrará links para arquivos de código-fonte e versões mais antigas na página de download.</p>
+<section id="system-requirements">
+<h2>Requisitos do Sistema<a class="headerlink" href="#system-requirements" title="Link para este cabeçalho"></a></h2>
+<ul class="simple">
+<li><p>Windows 10+ (somente 64 bits)</p></li>
+<li><p>macOS 12.0+ (somente 64 bits)</p></li>
+<li><dl class="simple">
+<dt>Linux (Ubuntu 24.04 or openSUSE 15.5 or Alma 8 or …) (64-bits only)</dt><dd><p>For Linux distributions, we support, if technically feasible, the current LTS releases.
+For BSD, we support them if technically feasible but we do not test.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>We do not support Citrix.</p>
+<ul class="simple">
+<li><p>We will do our best to advise Citrix users from the desktop client point of view.</p></li>
+<li><p>We will fix issues that are also reproducible on the standard supported systems.</p></li>
+<li><p>Everything else is outside of our scope.</p></li>
+</ul>
+</div>
+</section>
+<section id="customizing-the-windows-installation">
+<h2>Personalização da Instalação no Windows<a class="headerlink" href="#customizing-the-windows-installation" title="Link para este cabeçalho"></a></h2>
+<p>Se quiser apenas instalar o Cliente de Sincronização de Desktop Nextcloud em seu sistema local, basta iniciar o arquivo <cite>.msi</cite> e configurá-lo no assistente que aparece.</p>
+<section id="features">
+<h3>Recursos<a class="headerlink" href="#features" title="Link para este cabeçalho"></a></h3>
+<p>O instalador MSI oferece vários recursos que podem ser instalados ou removidos individualmente, que também podem ser controlados por meio da linha de comando; se você estiver automatizando a instalação, execute o seguinte comando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span>
+</pre></div>
+</div>
+<p>O comando instalará o Cliente de Sincronização de Desktop Nextcloud no local padrão com os recursos padrão ativados. Se quiser desativar, p. ex., os ícones de atalho da área de trabalho, basta alterar o comando acima para o seguinte:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REMOVE</span><span class="o">=</span><span class="n">DesktopShortcut</span>
+</pre></div>
+</div>
+<p>Consulte a tabela a seguir para obter uma lista dos recursos disponíveis:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Recurso</p></th>
+<th class="head"><p>Ativado por padrão</p></th>
+<th class="head"><p>Descrição</p></th>
+<th class="head"><p>Propriedade para desativar</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Cliente</p></td>
+<td><p>Sim, obrigatório</p></td>
+<td><p>O cliente em si</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>DesktopShortcut</p></td>
+<td><p>Sim</p></td>
+<td><p>Adiciona um atalho à área de trabalho</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NO_DESKTOP_SHORTCUT</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>StartMenuShortcuts</p></td>
+<td><p>Sim</p></td>
+<td><p>Adiciona um atalho ao menu Iniciar</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NO_START_MENU_SHORTCUTS</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>ShellExtensions</p></td>
+<td><p>Sim</p></td>
+<td><p>Adiciona integração com o Explorer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NO_SHELL_EXTENSIONS</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id1">
+<h3>Instalação<a class="headerlink" href="#id1" title="Link para este cabeçalho"></a></h3>
+<p>Você também pode optar por instalar apenas o próprio cliente usando o seguinte comando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="n">Client</span>
+</pre></div>
+</div>
+<p>Se, por exemplo, você quiser instalar tudo, exceto o recurso <code class="docutils literal notranslate"><span class="pre">DesktopShortcut</span></code> e o <code class="docutils literal notranslate"><span class="pre">ShellExtensions</span></code>, há duas possibilidades:</p>
+<ol class="arabic">
+<li><p>Você nomeia explicitamente todos os recursos que realmente deseja instalar (lista branca), onde o <code class="docutils literal notranslate"><span class="pre">Client</span></code> é sempre instalado de qualquer maneira:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="n">StartMenuShortcuts</span>
+</pre></div>
+</div>
+</li>
+<li><p>Você passa as propriedades <code class="docutils literal notranslate"><span class="pre">NO_DESKTOP_SHORTCUT</span></code> e <code class="docutils literal notranslate"><span class="pre">NO_SHELL_EXTENSIONS</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">NO_DESKTOP_SHORTCUT</span><span class="o">=</span><span class="s2">&quot;1&quot;</span> <span class="n">NO_SHELL_EXTENSIONS</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>O <code class="docutils literal notranslate"><span class="pre">.msi</span></code> Nextcloud lembra estas propriedades, portanto, você não precisa especificá-las nas atualizações.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Não é possível usá-los para alterar os recursos instalados; se quiser fazer isso, consulte a próxima seção.</p>
+</div>
+</section>
+<section id="changing-installed-features">
+<h3>Alteração de Recursos Instalados<a class="headerlink" href="#changing-installed-features" title="Link para este cabeçalho"></a></h3>
+<p>Você pode alterar os recursos instalados posteriormente usando as propriedades <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> e <code class="docutils literal notranslate"><span class="pre">ADDDEFAULT</span></code>.</p>
+<ol class="arabic">
+<li><p>Se quiser adicionar o atalho da área de trabalho posteriormente, execute o seguinte comando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="s2">&quot;DesktopShortcut&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Se você quiser removê-lo, basta executar o seguinte comando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REMOVE</span><span class="o">=</span><span class="s2">&quot;DesktopShortcut&quot;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>O Windows mantém o controle dos recursos instalados e o uso de <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> ou <code class="docutils literal notranslate"><span class="pre">ADDDEFAULT</span></code> afetará apenas os recursos mencionados.</p>
+<p>Compare <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa371194(v=vs.85).aspx">REMOVE</a> e <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa367518(v=vs.85).aspx">ADDDEFAULT</a> no Guia do Windows Installer.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Você não pode especificar <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> na instalação inicial, pois isso desativará todos os recursos.</p>
+</div>
+</section>
+<section id="installation-folder">
+<h3>Pasta de Instalação<a class="headerlink" href="#installation-folder" title="Link para este cabeçalho"></a></h3>
+<p>Você pode ajustar a pasta de instalação especificando a propriedade <code class="docutils literal notranslate"><span class="pre">INSTALLDIR</span></code> da seguinte forma:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">INSTALLDIR</span><span class="o">=</span><span class="s2">&quot;C:\Program Files\Non Standard Nextcloud Client Folder&quot;</span>
+</pre></div>
+</div>
+<p>Tenha cuidado ao usar o PowerShell em vez do <code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code>, pois pode ser difícil fazer o escape de espaços em branco corretamente. A especificação do <code class="docutils literal notranslate"><span class="pre">INSTALLDIR</span></code> desta forma só funciona na primeira instalação; não é possível simplesmente reinvocar o <code class="docutils literal notranslate"><span class="pre">.msi</span></code> com um caminho diferente. Se ainda precisar alterá-lo, desinstale-o primeiro e reinstale-o com o novo caminho.</p>
+</section>
+<section id="disabling-automatic-updates">
+<h3>Desativação de Atualizações Automáticas<a class="headerlink" href="#disabling-automatic-updates" title="Link para este cabeçalho"></a></h3>
+<p>Para desativar as atualizações automáticas, você pode passar a propriedade <code class="docutils literal notranslate"><span class="pre">SKIPAUTOUPDATE</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">SKIPAUTOUPDATE</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="launch-after-installation">
+<h3>Iniciar Após a Instalação<a class="headerlink" href="#launch-after-installation" title="Link para este cabeçalho"></a></h3>
+<p>Para iniciar o cliente automaticamente após a instalação, você pode passar a propriedade <code class="docutils literal notranslate"><span class="pre">LAUNCH</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">LAUNCH</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
+</pre></div>
+</div>
+<p>Esta opção também remove a caixa de seleção para permitir que os usuários decidam se desejam iniciar o cliente no modo não passivo/silencioso.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Esta opção não tem nenhum efeito sem a GUI.</p>
+</div>
+</section>
+<section id="no-reboot-after-installation">
+<h3>Sem Reinicialização Após a Instalação<a class="headerlink" href="#no-reboot-after-installation" title="Link para este cabeçalho"></a></h3>
+<p>O Nextcloud Client programa uma reinicialização após a instalação para garantir que a extensão do Explorer seja (des)carregada corretamente. Se você estiver cuidando da reinicialização por conta própria, poderá definir a propriedade <code class="docutils literal notranslate"><span class="pre">REBOOT</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REBOOT</span><span class="o">=</span><span class="n">ReallySuppress</span>
+</pre></div>
+</div>
+<p>Isso fará com que o <code class="docutils literal notranslate"><span class="pre">msiexec</span></code> saia com o erro <code class="docutils literal notranslate"><span class="pre">ERROR_SUCCESS_REBOOT_REQUIRED</span></code> (3010). Se as ferramentas de implantação interpretarem isso como um erro real e você quiser evitá-lo, talvez seja melhor definir a opção <code class="docutils literal notranslate"><span class="pre">DO_NOT_SCHEDULE_REBOOT</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">DO_NOT_SCHEDULE_REBOOT</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="installation-wizard">
+<h2>Assistente de Instalação<a class="headerlink" href="#installation-wizard" title="Link para este cabeçalho"></a></h2>
+<p>O assistente de instalação lhe conduz passo a passo pelas opções de configuração e configuração da conta. Primeiro, você precisa inserir o URL do seu servidor Nextcloud.</p>
+<img alt="formulário para escolher entre login e registro" src="../../_images/wizard_welcome.png" />
+<p>Se você já tiver uma conta em uma instância do Nextcloud, pressione o botão <code class="docutils literal notranslate"><span class="pre">Entrar</span></code>. Se você não tiver uma instância do Nextcloud e uma conta nela, talvez queira registrar uma conta em um provedor. Nesse caso, pressione <code class="docutils literal notranslate"><span class="pre">Registre-se</span> <span class="pre">com</span> <span class="pre">um</span> <span class="pre">provedor</span></code>. Lembre-se de que o cliente de desktop pode ter sido compilado sem suporte de provedores. Nesse caso, você não verá esta página.  Em vez disso, você verá a próxima página.</p>
+<img alt="formulário para inserir a URL do servidor Nextcloud" src="../../_images/wizard_setup.png" />
+<p>Digite o URL da sua instância Nextcloud. O URL é o mesmo URL que você digita no navegador quando tenta acessar a instância Nextcloud.</p>
+<img alt="formulário aguardando autorização" src="../../_images/wizard_flow2.png" />
+<p>Agora, o navegador web deve abrir e solicitar que você faça login na sua instância Nextcloud. Digite seu nome de usuário e senha no navegador web e conceda acesso. Depois de fazer isso, volte para o assistente. Lembre-se de que talvez não seja necessário digitar o nome de usuário e a senha se já estiver logado ao navegador.</p>
+<img alt="Selecione quais pastas remotas devem ser sincronizadas e em qual pasta local elas devem ser armazenadas." src="../../_images/wizard_advanced.png" />
+<p>Na tela de opções de pasta local, você pode sincronizar todos os seus arquivos no servidor Nextcloud ou selecionar pastas individuais. A pasta de sincronização local padrão é <code class="docutils literal notranslate"><span class="pre">Nextcloud</span></code>, em seu diretório pessoal. Você também pode alterar isso.</p>
+<p>Quando tiver concluído a seleção das pastas de sincronização, clique no botão Conectar no canto inferior direito. O cliente tentará se conectar ao servidor Nextcloud e, quando for bem-sucedido, o assistente se fechará. Agora você pode observar a atividade de sincronização se abrir a caixa de diálogo principal clicando no ícone da área de notificação.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Rodapé">
+        <a href="index.html" class="btn btn-neutral float-left" title="Clientes de Desktop" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="usage.html" class="btn btn-neutral float-right" title="Uso do Cliente de Sincronização" accesskey="n" rel="next">Próximo <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Direitos autorais 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 pt-BR
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Idiomas</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versões</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Em Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Página Inicial do Projeto</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Builds</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

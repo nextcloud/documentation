@@ -1,0 +1,393 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OCS FullTextSearch Collection API &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/client_apis/OCS/ocs-fulltextsearch-collections-api.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Remote wipe" href="../RemoteWipe/index.html" />
+    <link rel="prev" title="OCS Out-of-office API" href="ocs-out-of-office-api.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Clients and Client APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../general.html">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../activity-api.html">Activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../android_library/index.html">Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LoginFlow/index.html">Login Flow</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">OCS API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ocs-openapi.html">OCS OpenAPI tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-api-overview.html">OCS APIs overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-sharee-api.html">OCS Sharee API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-status-api.html">OCS Status API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-recommendations-api.html">OCS Recommendations API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-user-preferences-api.html">OCS user preferences API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-translation-api.html">OCS Translation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-textprocessing-api.html">OCS TextProcessing API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-text2image-api.html">OCS Text-To-Image API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-taskprocessing-api.html">OCS TaskProcessing API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-out-of-office-api.html">OCS Out-of-office API</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">OCS FullTextSearch Collection API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#concept-overview">Concept overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#first-steps">First steps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-the-collection-ocs-api">Using the collection OCS API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../RemoteWipe/index.html">Remote wipe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WebDAV/index.html">Webdav</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ClientIntegration/index.html">Client Integration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Clients and Client APIs</a></li>
+          <li class="breadcrumb-item"><a href="index.html">OCS API</a></li>
+      <li class="breadcrumb-item active">OCS FullTextSearch Collection API</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/client_apis/OCS/ocs-fulltextsearch-collections-api.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ocs-fulltextsearch-collection-api">
+<h1>OCS FullTextSearch Collection API<a class="headerlink" href="#ocs-fulltextsearch-collection-api" title="Link to this heading"></a></h1>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 27.</span></p>
+</div>
+<p>FullTextSearch includes an OCS API to index the content of your Nextcloud into an external search engine.</p>
+<section id="concept-overview">
+<h2>Concept overview<a class="headerlink" href="#concept-overview" title="Link to this heading"></a></h2>
+<p>Because your structure might already host its own search engine, the FullTextSearch apps provide an OCS API to helps you index your users’ content and maintain an up-to-date index.
+The OCS API will allow your script to:</p>
+<ul class="simple">
+<li><p>returns a list of not indexed, or freshly updated, document from Nextcloud,</p></li>
+<li><p>extract content from document,</p></li>
+<li><p>update internal index once a document have been indexed on your external search engine,</p></li>
+</ul>
+</section>
+<section id="first-steps">
+<h2>First steps<a class="headerlink" href="#first-steps" title="Link to this heading"></a></h2>
+<section id="installing-the-apps">
+<h3>Installing the apps<a class="headerlink" href="#installing-the-apps" title="Link to this heading"></a></h3>
+<p>On top of the <cite>fulltextsearch</cite> app, at least one content provider needs to be installed on the Nextcloud; meaning that a minimum of 2 apps have to be installed before using this feature:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./occ<span class="w"> </span>app:enable<span class="w"> </span>fulltextsearch<span class="w"> </span>files_fulltextsearch
+</pre></div>
+</div>
+</section>
+<section id="initializing-the-collection">
+<h3>Initializing the collection<a class="headerlink" href="#initializing-the-collection" title="Link to this heading"></a></h3>
+<p>Using <cite>occ</cite>, create a new collection that will be used to sync the content indexed on the external search engine with the current content of the Nextcloud.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./occ<span class="w"> </span>fulltextsearch:collection:init<span class="w"> </span><span class="nb">test</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><cite>test</cite> will be the name of the collection used in all example from this page.</p>
+</div>
+</section>
+<section id="linking-a-collection-to-a-user-account">
+<h3>Linking a collection to a user account<a class="headerlink" href="#linking-a-collection-to-a-user-account" title="Link to this heading"></a></h3>
+<p>By default this API can only be used with an admin account but, for security reason, you can choose to link a non-admin account and use this account when requesting the API.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./occ<span class="w"> </span>fulltextsearch:collection:link<span class="w"> </span><span class="nb">test</span><span class="w"> </span>user1
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Keep in mind that the linked account will have access to the content of all documents of all Nextcloud users through the API.</p>
+</div>
+</section>
+</section>
+<section id="using-the-collection-ocs-api">
+<h2>Using the collection OCS API<a class="headerlink" href="#using-the-collection-ocs-api" title="Link to this heading"></a></h2>
+<p>Once the collection have been initialized, the normal uses of this API implies that your script:</p>
+<ul class="simple">
+<li><p>make an OCS request to retrieve a list of document that have been created, modified and shared,</p></li>
+<li><p>make OCS requests to get the content for the documents from the list,</p></li>
+<li><p>index the content on your search engine and make an OCS request to confirm it,</p></li>
+<li><p>returns to first step until the list of document is empty,</p></li>
+</ul>
+<section id="retrieving-the-list-of-document-to-be-re-indexed">
+<h3>Retrieving the list of document to be (re-)indexed<a class="headerlink" href="#retrieving-the-list-of-document-to-be-re-indexed" title="Link to this heading"></a></h3>
+<p>The endpoint to get this list is:</p>
+<p><code class="docutils literal notranslate"><span class="pre">/ocs/v2.php/apps/fulltextsearch/collection/&lt;collection_name&gt;/index</span></code></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s2">&quot;https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/index?format=json&amp;length=50&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;OCS-APIRequest: true&quot;</span><span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;admin:password&quot;</span>
+<span class="go">{</span>
+<span class="go">    &quot;ocs&quot;: {</span>
+<span class="go">        &quot;meta&quot;: {</span>
+<span class="go">            &quot;status&quot;: &quot;ok&quot;,</span>
+<span class="go">            &quot;statuscode&quot;: 200,</span>
+<span class="go">            &quot;message&quot;: &quot;OK&quot;</span>
+<span class="go">        },</span>
+<span class="go">        &quot;data&quot;: [</span>
+<span class="go">            {</span>
+<span class="go">                &quot;url&quot;: &quot;https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/document/files/597996&quot;,</span>
+<span class="go">                &quot;status&quot;: 28</span>
+<span class="go">            }</span>
+<span class="go">        ]</span>
+<span class="go">    }</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<p>Details about the response:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">url</span></code> is the link to the document,</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">status</span></code> is a bitflag based on this list:</dt><dd><ul>
+<li><p><cite>1</cite> =&gt; document has already been marked as indexed before,</p></li>
+<li><p><cite>4</cite> =&gt; meta have been modified,</p></li>
+<li><p><cite>8</cite> =&gt; content have been modified,</p></li>
+<li><p><cite>16</cite> =&gt; parts have been modified</p></li>
+<li><p><cite>32</cite> =&gt; document have been removed</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="get-data-and-metadata-from-a-document">
+<h3>Get data and metadata from a document<a class="headerlink" href="#get-data-and-metadata-from-a-document" title="Link to this heading"></a></h3>
+<p>The endpoint to get data about a document is:</p>
+<p><code class="docutils literal notranslate"><span class="pre">/ocs/v2.php/apps/fulltextsearch/collection/&lt;collection_name&gt;/document/&lt;provider_id&gt;/&lt;document_id&gt;</span></code></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s2">&quot;https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/document/files/597996?format=json&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;OCS-APIRequest: true&quot;</span><span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;admin:password&quot;</span>
+<span class="go">{</span>
+<span class="go">    &quot;ocs&quot;: {</span>
+<span class="go">        &quot;meta&quot;: {</span>
+<span class="go">            &quot;status&quot;: &quot;ok&quot;,</span>
+<span class="go">            &quot;statuscode&quot;: 200,</span>
+<span class="go">            &quot;message&quot;: &quot;OK&quot;</span>
+<span class="go">        },</span>
+<span class="go">        &quot;data&quot;: {</span>
+<span class="go">            &quot;id&quot;: &quot;597996&quot;,</span>
+<span class="go">            &quot;providerId&quot;: &quot;files&quot;,</span>
+<span class="go">            &quot;access&quot;: {</span>
+<span class="go">                &quot;ownerId&quot;: &quot;user1&quot;,</span>
+<span class="go">                &quot;users&quot;: [&#39;user2&#39;, &#39;user3&#39;],</span>
+<span class="go">                &quot;groups&quot;: [&#39;group1&#39;],</span>
+<span class="go">                &quot;circles&quot;: [],</span>
+<span class="go">                &quot;links&quot;: []</span>
+<span class="go">            },</span>
+<span class="go">            &quot;index&quot;: {</span>
+<span class="go">                &quot;ownerId&quot;: &quot;user1&quot;,</span>
+<span class="go">                &quot;providerId&quot;: &quot;files&quot;,</span>
+<span class="go">                &quot;collection&quot;: &quot;test&quot;,</span>
+<span class="go">                &quot;source&quot;: &quot;files_local&quot;,</span>
+<span class="go">                &quot;documentId&quot;: &quot;597996&quot;,</span>
+<span class="go">                &quot;lastIndex&quot;: 0,</span>
+<span class="go">                &quot;errors&quot;: [],</span>
+<span class="go">                &quot;errorCount&quot;: 0,</span>
+<span class="go">                &quot;status&quot;: 28,</span>
+<span class="go">                &quot;options&quot;: []</span>
+<span class="go">            },</span>
+<span class="go">            &quot;title&quot;: &quot;640-240-max.png&quot;,</span>
+<span class="go">            &quot;link&quot;: &quot;https://cloud.example.net/index.php/f/597996&quot;,</span>
+<span class="go">            &quot;parts&quot;: {</span>
+<span class="go">                &quot;comments&quot;: &quot;&lt;user3&gt; This is a comment !&quot;</span>
+<span class="go">            },</span>
+<span class="go">            &quot;content&quot;: &quot;VGhlIHF1aWNrIGJyb3duIGZveApqdW1wcyBvdmVyCnRoZSBsYXp5IGRvZy4=&quot;,</span>
+<span class="go">            &quot;isContentEncoded&quot;: 1</span>
+<span class="go">        }</span>
+<span class="go">    }</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <cite>isContentEncoded</cite> is set to 1, content needs to be decoded</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;echo base64_decode(&#39;VGhlIHF1aWNrIGJyb3duIGZveApqdW1wcyBvdmVyCnRoZSBsYXp5IGRvZy4=&#39;);&quot;</span>
+<span class="go">The quick brown fox</span>
+<span class="go">jumps over</span>
+<span class="go">the lazy dog.</span>
+</pre></div>
+</div>
+</section>
+<section id="set-document-as-indexed">
+<h3>Set document as indexed<a class="headerlink" href="#set-document-as-indexed" title="Link to this heading"></a></h3>
+<p>Once a document has been indexed in your external search engine, you have to notice the FullTextSearch of this action. This is done by doing a <code class="docutils literal notranslate"><span class="pre">POST</span></code> request on the following path:</p>
+<p><code class="docutils literal notranslate"><span class="pre">/ocs/v2.php/apps/fulltextsearch/collection/&lt;collection_name&gt;/document/&lt;provider_id&gt;/&lt;document_id&gt;/done</span></code></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/document/files/597996/done&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;OCS-APIRequest: true&quot;</span><span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;admin:password&quot;</span>
+<span class="go">{</span>
+<span class="go">    &quot;ocs&quot;: {</span>
+<span class="go">        &quot;meta&quot;: {</span>
+<span class="go">            &quot;status&quot;: &quot;ok&quot;,</span>
+<span class="go">            &quot;statuscode&quot;: 200,</span>
+<span class="go">            &quot;message&quot;: &quot;OK&quot;</span>
+<span class="go">        },</span>
+<span class="go">        &quot;data&quot;: []</span>
+<span class="go">    }</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<p>Once set as indexed, the document will only returns to the list of document to be (re-)indexed if they get modified.</p>
+</section>
+<section id="reset-collection">
+<h3>Reset collection<a class="headerlink" href="#reset-collection" title="Link to this heading"></a></h3>
+<p>If needed, an endpoint is available to reset the whole index:</p>
+<p><code class="docutils literal notranslate"><span class="pre">/ocs/v2.php/apps/fulltextsearch/collection/&lt;collection_name&gt;/index</span></code></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>-X<span class="w"> </span>DELETE<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;user1:password&quot;</span><span class="w"> </span><span class="s2">&quot;https://cloud.example.net/ocs/v2.php/apps/fulltextsearch/collection/test/index&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;OCS-APIRequest: true&quot;</span><span class="w"> </span>-k
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ocs-out-of-office-api.html" class="btn btn-neutral float-left" title="OCS Out-of-office API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../RemoteWipe/index.html" class="btn btn-neutral float-right" title="Remote wipe" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Apr 02, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

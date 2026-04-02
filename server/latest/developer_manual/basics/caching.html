@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caching &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/basics/caching.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Logging" href="logging.html" />
+    <link rel="prev" title="Background jobs (Cron)" href="backgroundjobs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Basic concepts</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="request_lifecycle.html">Request lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routing.html">Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependency_injection.html">Dependency injection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="middlewares.html">Middlewares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="front-end/index.html">Front-end</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translations.html">Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Caching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#types-of-caches">Types of caches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#in-memory-cache">In-memory cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#local-cache">Local cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#distributed-cache">Distributed cache</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setting.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storage/index.html">Storage and database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="public_share_template.html">Public share template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Basic concepts</a></li>
+      <li class="breadcrumb-item active">Caching</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/basics/caching.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="caching">
+<h1>Caching<a class="headerlink" href="#caching" title="Link to this heading"></a></h1>
+<p>Results of expensive or slow operations can be cached to speed up Nextcloud and its apps.</p>
+<section id="types-of-caches">
+<h2>Types of caches<a class="headerlink" href="#types-of-caches" title="Link to this heading"></a></h2>
+<p>Nextcloud offers in-memory, local and distributed caches. The caching back-end (APCu, Redis, Memcached) is configurable.</p>
+<p>For single server setups, admins typically only configure one type of cache. Larger installations can have two types of cache. The Nextcloud API lets you pick a cache type. The following table tries to highlight the main advantages and disadvantages of each type.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>In-memory cache</p></th>
+<th class="head"><p>Local cache</p></th>
+<th class="head"><p>Distributed cache</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Latency</strong></p></td>
+<td><p>Low</p></td>
+<td><p>Low</p></td>
+<td><p>High</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Data scope</strong></p></td>
+<td><p>Same process</p></td>
+<td><p>Application server</p></td>
+<td><p>Full cluster</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Expiration</strong></p></td>
+<td><p>End of process</p></td>
+<td><p>TTL reached</p></td>
+<td><p>TTL reached</p></td>
+</tr>
+</tbody>
+</table>
+<p>For scalability it should be preferred to use local caches. A local cache has to be populated on each application server, but avoids creating a bottleneck of too much traffic on the distributed cache. A distributed cache is most useful for data that <em>has to be synchronized</em> across the full Nextcloud cluster.</p>
+</section>
+<section id="in-memory-cache">
+<h2>In-memory cache<a class="headerlink" href="#in-memory-cache" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">OCP\Cache\CappedMemoryCache</span></code> class is an in-memory cache that can be used like an array:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">lib/Service/PictureService.php</span><a class="headerlink" href="#id1" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Service</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\Cache\CappedMemoryCache</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PictureService</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$cache</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(){</span>
+<span class="hll">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CappedMemoryCache</span><span class="p">(</span><span class="mi">64</span><span class="p">);</span>
+</span>    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getPicture</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$url</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+<span class="hll">        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="p">[</span><span class="nv">$url</span><span class="p">]))</span> <span class="p">{</span>
+</span><span class="hll">            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="p">[</span><span class="nv">$url</span><span class="p">];</span>
+</span>        <span class="p">}</span>
+
+        <span class="c1">// Fetch picture and serialize result into $picture</span>
+
+<span class="hll">        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="p">[</span><span class="nv">$url</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$picture</span><span class="p">;</span>
+</span>        <span class="k">return</span> <span class="nv">$picture</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>A cache instance can also be built by the cache factory. This approach allows mocking the injected factory for finer control during <a class="reference internal" href="testing.html#testing-php"><span class="std std-ref">unit testing</span></a>:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">lib/Service/PictureService.php</span><a class="headerlink" href="#id2" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Service</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\ICacheFactory</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PictureService</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="nx">ICacheFactory</span> <span class="nv">$cacheFactory</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">ICacheFactory</span> <span class="nv">$cacheFactory</span><span class="p">){</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cacheFactory</span> <span class="o">=</span> <span class="nv">$cacheFactory</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getPicture</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$url</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+<span class="hll">        <span class="c1">// Initialize the cache. The instance has to be remembered because</span>
+</span><span class="hll">        <span class="c1">// each call to `createInMemory` returns a fresh, empty cache.</span>
+</span><span class="hll">        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="hll">            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cacheFactory</span><span class="o">-&gt;</span><span class="na">createInMemory</span><span class="p">(</span><span class="mi">64</span><span class="p">);</span>
+</span><span class="hll">        <span class="p">}</span>
+</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="p">[</span><span class="nv">$url</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="p">[</span><span class="nv">$url</span><span class="p">];</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Fetch picture and serialize result into $picture</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache</span><span class="p">[</span><span class="nv">$url</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$picture</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nv">$picture</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="local-cache">
+<h2>Local cache<a class="headerlink" href="#local-cache" title="Link to this heading"></a></h2>
+<p>A local cache instance can be acquired through the <code class="docutils literal notranslate"><span class="pre">\OCP\ICacheFactory</span></code> service. The factory can be injected:</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">lib/Service/PictureService.php</span><a class="headerlink" href="#id3" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Service</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\ICacheFactory</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PictureService</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="nx">ICacheFactory</span> <span class="nv">$cacheFactory</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">ICacheFactory</span> <span class="nv">$cacheFactory</span><span class="p">){</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cacheFactory</span> <span class="o">=</span> <span class="nv">$cacheFactory</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getPicture</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$url</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+<span class="hll">        <span class="nv">$cache</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cacheFactory</span><span class="o">-&gt;</span><span class="na">createLocal</span><span class="p">(</span><span class="s1">&#39;my-app-pictures&#39;</span><span class="p">);</span>
+</span><span class="hll">        <span class="nv">$cachedPicture</span> <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+</span>        <span class="k">if</span> <span class="p">(</span><span class="nv">$cachedPicture</span> <span class="o">!==</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$cachedPicture</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Fetch picture and serialize result into $picture</span>
+
+<span class="hll">        <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span> <span class="nv">$picture</span><span class="p">,</span> <span class="mi">6</span> <span class="o">*</span> <span class="mi">3600</span><span class="p">);</span> <span class="c1">// Cache result for 6h</span>
+</span>        <span class="k">return</span> <span class="nv">$picture</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="distributed-cache">
+<h2>Distributed cache<a class="headerlink" href="#distributed-cache" title="Link to this heading"></a></h2>
+<p>A distributed cache instance can be acquired through the <code class="docutils literal notranslate"><span class="pre">\OCP\ICacheFactory</span></code> service. The factory can be injected:</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">lib/Service/PictureService.php</span><a class="headerlink" href="#id4" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Service</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\ICacheFactory</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PictureService</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="nx">ICacheFactory</span> <span class="nv">$cacheFactory</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">ICacheFactory</span> <span class="nv">$cacheFactory</span><span class="p">){</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cacheFactory</span> <span class="o">=</span> <span class="nv">$cacheFactory</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getPicture</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$url</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+<span class="hll">        <span class="nv">$cache</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cacheFactory</span><span class="o">-&gt;</span><span class="na">createDistributed</span><span class="p">(</span><span class="s1">&#39;my-app-pictures&#39;</span><span class="p">);</span>
+</span><span class="hll">        <span class="nv">$cachedPicture</span> <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+</span>        <span class="k">if</span> <span class="p">(</span><span class="nv">$cachedPicture</span> <span class="o">!==</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$cachedPicture</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Fetch picture and serialize result into $picture</span>
+
+<span class="hll">        <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span> <span class="nv">$picture</span><span class="p">,</span> <span class="mi">6</span> <span class="o">*</span> <span class="mi">3600</span><span class="p">);</span> <span class="c1">// Cache result for 6h</span>
+</span>        <span class="k">return</span> <span class="nv">$picture</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="backgroundjobs.html" class="btn btn-neutral float-left" title="Background jobs (Cron)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="logging.html" class="btn btn-neutral float-right" title="Logging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Apr 02, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

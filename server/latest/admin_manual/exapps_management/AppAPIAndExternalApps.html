@@ -1,0 +1,878 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AppAPI and External Apps &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/admin_manual/exapps_management/AppAPIAndExternalApps.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
+
+
+
+
+
+const initStyles = () => {
+    const defaultStyle = document.createElement('style');
+    defaultStyle.textContent = `pre.mermaid {
+    /* Same as .mermaid-container > pre */
+    display: block;
+    width: 100%;
+}
+
+pre.mermaid > svg {
+    /* Same as .mermaid-container > pre > svg */
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}`;
+    document.head.appendChild(defaultStyle);
+
+    const fullscreenStyle = document.createElement('style');
+    fullscreenStyle.textContent = `.mermaid-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.mermaid-container > pre {
+    display: block;
+    width: 100%;
+}
+
+.mermaid-container > pre > svg {
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}
+
+.mermaid-fullscreen-btn {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 95vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-container-fullscreen pre.mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen .mermaid svg {
+    height: 100% !important;
+    width: 100% !important;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}`;
+    document.head.appendChild(fullscreenStyle);
+}
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    // We use a set of heuristics:
+    // 1. Check for common dark mode classes or attributes
+    // 2. Check computed background color brightness
+    if (document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark' ||
+        document.body.classList.contains('dark') ||
+        document.body.getAttribute('data-theme') === 'dark') {
+        // console.log("Dark theme detected via class/attribute");
+        return true;
+    }
+    if (document.documentElement.classList.contains('light') ||
+        document.documentElement.getAttribute('data-theme') === 'light' ||
+        document.body.classList.contains('light') ||
+        document.body.getAttribute('data-theme') === 'light') {
+        // console.log("Light theme detected via class/attribute");
+        return false;
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // console.log("Dark theme detected via prefers-color-scheme");
+        return true;
+    }
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        // console.log("Background color brightness:", brightness);
+        return brightness < 128;
+    }
+    // console.log("No dark or light theme detected, defaulting to light theme");
+    return false;
+};
+
+let darkTheme = isDarkTheme();
+let modal = null;
+let modalContent = null;
+let previousScrollOffset = [window.scrollX, window.scrollY];
+
+const runMermaid = async (rerun) => {
+    console.log("Running mermaid diagrams, rerun =", rerun);
+    // clear all existing mermaid charts
+    let all_mermaids = document.querySelectorAll(".mermaid");
+
+    if (rerun) {
+        all_mermaids.forEach((el) => {
+            if(!el.hasAttribute("data-original-code")) {
+                // store original code
+                // console.log(`Storing original code for first run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+            if(el.getAttribute("data-processed") === "true") {
+                // remove and restore original
+                el.removeAttribute("data-processed");
+                // console.log(`Restoring original code for re-run: `, el.getAttribute('data-original-code'));
+                el.innerHTML = el.getAttribute('data-original-code');
+            } else {
+                // store original code
+                // console.log(`Storing original code for re-run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+        });
+        await mermaid.run();
+    }
+
+    all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if ("False" === "True") {
+        const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
+        if(mermaids_to_add_zoom > 0) {
+            var svgs = d3.selectAll("");
+            if(all_mermaids.length !== mermaids_processed.length) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else if(svgs.size() !== mermaids_to_add_zoom) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else {
+                svgs.each(function() {
+                    var svg = d3.select(this);
+                    svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+                    var inner = svg.select("g");
+                    var zoom = d3.zoom().on("zoom", function(event) {
+                        inner.attr("transform", event.transform);
+                    });
+                    svg.call(zoom);
+                });
+            }
+        }
+    } else if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(() => runMermaid(false), 200);
+        return;
+    }
+
+    // Stop here if not adding fullscreen capability
+    if ("True" !== "True") return;
+
+    if (modal !== null ) {
+        // Destroy existing modal
+        modal.remove();
+        modal = null;
+        modalContent = null;
+    }
+
+    modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = ''
+        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            // Already processed, adjust button class if needed
+            const existingBtn = mermaidDiv.parentNode.querySelector('.mermaid-fullscreen-btn');
+            if (existingBtn) {
+                existingBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+            }
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+        fullscreenBtn.style.opacity = '50%';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            previousScrollOffset = [window.scroll, window.scrollY];
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.sdisplay = 'block';
+
+                if ("False" === "True") {
+                    setTimeout(() => {
+                        const g = svg.querySelector('g');
+                        if (g) {
+                            var svgD3 = d3.select(svg);
+                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
+                            var inner = svgD3.select("g");
+                            var zoom = d3.zoom().on("zoom", function(event) {
+                                inner.attr("transform", event.transform);
+                            });
+                            svgD3.call(zoom);
+                        }
+                    }, 100);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        container.appendChild(fullscreenBtn);
+    });
+};
+
+const load = async () => {
+    initStyles();
+
+    await runMermaid(true);
+
+    const reRunIfThemeChanges = async () => {
+        const newDarkTheme = isDarkTheme();
+        if (newDarkTheme !== darkTheme) {
+            darkTheme = newDarkTheme;
+            console.log("Theme change detected, re-running mermaid with", darkTheme ? "dark" : "default", "theme");
+            await mermaid.initialize(
+                {...JSON.parse(
+                    `{"startOnLoad": false}`
+                ),
+                ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+                }
+            );
+            await runMermaid(true);
+        }
+    };
+
+    // Update theme classes when theme changes
+    const themeObserver = new MutationObserver(reRunIfThemeChanges);
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+};
+
+
+
+
+
+console.log("Initializing mermaid with", darkTheme ? "dark" : "default", "theme");
+mermaid.initialize(
+    {...JSON.parse(
+        `{"startOnLoad": false}`
+    ),
+    ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+    }
+);
+
+window.addEventListener("load", load);
+window.runMermaid = runMermaid;</script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Deployment configurations" href="DeployConfigurations.html" />
+    <link rel="prev" title="ExApps management" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Critical changes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Files</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apps</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">ExApps management</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">AppAPI and External Apps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-appapi">Installing AppAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setup-deploy-daemon">Setup deploy daemon</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#harp">HaRP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker-socket-proxy">Docker Socket Proxy</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-exapps">Installing ExApps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#faq">FAQ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docker-socket-proxy-vs-harp">Docker Socket Proxy vs HaRP</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="DeployConfigurations.html">Deployment configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ManagingDeployDaemons.html">Managing Deploy Daemons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TestDeploy.html">Test Deploy Daemon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ManagingExApps.html">Managing ExApps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AdvancedDeployOptions.html">Advanced Deploy Options</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Groupware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Office</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_monitoring/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/">Community Help Forum</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">User Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">Developer Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/install/">Download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://apps.nextcloud.com">App Store</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/t/translation-knowledge-valid-for-the-entire-nextcloud-project-wiki/51550">Translations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Supported versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud Enterprise</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/blob/master/COPYING-README">License</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/">Nextcloud GmbH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">ExApps management</a></li>
+      <li class="breadcrumb-item active">AppAPI and External Apps</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/exapps_management/AppAPIAndExternalApps.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="appapi-and-external-apps">
+<h1>AppAPI and External Apps<a class="headerlink" href="#appapi-and-external-apps" title="Link to this heading"></a></h1>
+<p id="ai-app-api">Previously, Nextcloud only supported applications written in the PHP programming language.
+In order to support a wider range of use cases,
+an ecosystem for <strong>ExApps</strong> (short for “External Apps”) was introduced, allowing for the installation of apps as Docker containers.</p>
+<p>Most of our <a class="reference internal" href="../ai/index.html"><span class="doc">Artificial Intelligence</span></a> (AI) apps are developed as ExApps and thus may require some preparation of your Nextcloud instance before you can install them.</p>
+<section id="installing-appapi">
+<h2>Installing AppAPI<a class="headerlink" href="#installing-appapi" title="Link to this heading"></a></h2>
+<p>All ExApps require the <a class="reference external" href="https://apps.nextcloud.com/apps/app_api">AppAPI</a> Nextcloud app as a dependency.
+As of Nextcloud version 30.0.1, AppAPI is automatically installed by default.
+If AppAPI is not installed, you can still install it by simply navigating to the Apps management page in your Nextcloud instance and search for AppAPI from the Tools category.</p>
+</section>
+<section id="setup-deploy-daemon">
+<h2>Setup deploy daemon<a class="headerlink" href="#setup-deploy-daemon" title="Link to this heading"></a></h2>
+<p>A Deploy Daemon is the way for Nextcloud to install, communicate with, and control ExApps.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are using Nextcloud AIO with the “HaRP” or “Docker Socket Proxy” container enabled, a Deploy Daemon will be automatically created and configured to work out-of-the-box.
+Otherwise, follow the steps below to set up a Deploy Daemon from the AppAPI admin settings.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>After registering a Deploy Daemon, use the <strong>Test Deploy</strong> action to verify it is reachable and working.
+In the list of Deploy Daemons, click the <cite>…</cite> (three‑dots) menu beside the daemon you want to verify and choose Test Deploy.
+For details on what this check does and how to interpret the results, see <a class="reference internal" href="TestDeploy.html#test-deploy"><span class="std std-ref">Test Deploy</span></a>.</p>
+</div>
+<section id="harp">
+<span id="ai-app-api-harp"></span><h3>HaRP<a class="headerlink" href="#harp" title="Link to this heading"></a></h3>
+<div class="line-block">
+<div class="line">This is the newer and the <strong>recommended</strong> way to install ExApps.</div>
+<div class="line">It requires changes in the proxy of your Nextcloud instance. If you don’t have access to the proxy, you can use the usual method <a class="reference internal" href="#ai-app-api-dsp"><span class="std std-ref">described below</span></a>.</div>
+</div>
+<ol class="arabic">
+<li><p>Setup a Docker container called <a class="reference external" href="https://github.com/nextcloud/HaRP?tab=readme-ov-file#how-to-install-it">HaRP</a> that proxies access to Docker and to the ExApps for your Nextcloud instance. Be mindful of changing the values of <code class="docutils literal notranslate"><span class="pre">HP_SHARED_KEY</span></code> and <code class="docutils literal notranslate"><span class="pre">NC_INSTANCE_URL</span></code>.</p></li>
+<li><p>Go to AppAPI admin settings.</p></li>
+<li><p>Click on the “Register Daemon” button.</p></li>
+<li><div class="line-block">
+<div class="line">A filled form should appear. This default configuration <code class="docutils literal notranslate"><span class="pre">HaRP</span> <span class="pre">Proxy</span> <span class="pre">(Host)</span></code> should work for most setups. For Nextcloud AIO, use <code class="docutils literal notranslate"><span class="pre">HaRP</span> <span class="pre">All-in-One</span></code>.</div>
+<div class="line">If you are using Nextcloud in a custom docker network and would want the HaRP container to be limited to it, use the <code class="docutils literal notranslate"><span class="pre">HaRP</span> <span class="pre">Proxy</span> <span class="pre">(Docker)</span></code> option to have the fields pre-filled with the common options or change them manually.</div>
+<div class="line">Here, you should ensure the HaRP container itself is launched with the same network as your Nextcloud instance optionally with no ports exposed to the host in step 1, and the same docker network is mentioned in the <code class="docutils literal notranslate"><span class="pre">Network</span></code> field in the deploy config.</div>
+</div>
+</li>
+<li><p>Ensure the same shared key is used in the HaRP container and in the AppAPI settings.</p></li>
+<li><p>Click “Check connection” to verify that the configuration is correct.</p></li>
+<li><p>Click “Register” to save the Deploy Daemon configuration.</p></li>
+<li><p>Set up a location redirect in your Nextcloud’s main proxy configuration to redirect requests to the HaRP container. Some examples for popular reverse proxies can be found in <a class="reference external" href="https://github.com/nextcloud/harp?tab=readme-ov-file#configuring-your-reverse-proxy">Configuring Your Reverse Proxy</a> in the HaRP readme.</p></li>
+<li><p>Test the whole setup with “Test deploy” in the 3-dots menu of the Deploy Daemon.</p></li>
+</ol>
+<p>This is suitable for local setups where the Nextcloud server and the ExApps are on the same machine or in the same docker network.
+The ExApps in this configuration or the ExApp server need not expose any ExApp related port (23000-23999) necessarily to the host, nor do they need to be reachable from the host. They should be able to reach the HaRP container at the FRP port and the Nextcloud instance.
+For different/remote setups, see deployment configuration examples <a class="reference internal" href="DeployConfigurations.html"><span class="doc">here</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The existing ExApps can be migrated to use the new HaRP proxy following <a class="reference external" href="https://github.com/nextcloud/harp?tab=readme-ov-file#nextcloud-32-migrating-existing-exapps-from-dsp-to-harp">this guide</a>.</p>
+</div>
+</section>
+<section id="docker-socket-proxy">
+<span id="ai-app-api-dsp"></span><h3>Docker Socket Proxy<a class="headerlink" href="#docker-socket-proxy" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Setup a Docker container called <a class="reference external" href="https://github.com/nextcloud/docker-socket-proxy#readme">docker-socket-proxy</a> that proxies access to Docker for your Nextcloud instance.</p></li>
+<li><p>Go to the AppAPI admin settings.</p></li>
+<li><p>Click on the “Register Daemon” button.</p></li>
+<li><dl class="simple">
+<dt>Fill in the required fields:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Name</span></code>: unique name of the Deploy daemon</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Display</span> <span class="pre">name</span></code>: the name that will be displayed in the UI</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Deployment</span> <span class="pre">method</span></code>: by default, you will need to choose <code class="docutils literal notranslate"><span class="pre">docker_install</span></code> (<code class="docutils literal notranslate"><span class="pre">manual_install</span></code> is for development or custom use case of manual ExApp installation)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Daemon</span> <span class="pre">Host</span></code>: hostname/IP address + port of the Deploy daemon</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Nextcloud</span> <span class="pre">URL</span></code>: autofilled with current domain, you might need to change the protocol to http/https depending on your setup</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">as</span> <span class="pre">default</span> <span class="pre">daemon</span></code>: check if you want set new Deploy daemon as default</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">https</span></code>: check if your Deploy daemon (Docker Socket Proxy) is configured with TLS</p></li>
+<li><dl class="simple">
+<dt>Deploy Config:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Network</span></code>: Docker network name, depends on your networking setup, enforces to “host” if “Enable https” is checked</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HaProxy</span> <span class="pre">password</span></code>: password for Docker Socket Proxy, if it is configured with TLS</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Compute</span> <span class="pre">Device</span></code>: CPU, CUDA or ROCm, depending on your hardware config on Deploy daemon host machine</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">additional</span> <span class="pre">option</span></code> (see <a class="reference internal" href="ManagingDeployDaemons.html#additional-options-list"><span class="std std-ref">Additional options</span></a>): setup additional KEY + VALUE deploy config options</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Click “Check connection” to verify that the configuration is correct.</p></li>
+<li><p>Click “Register” to save the Deploy Daemon configuration.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For remote DSP setup, it should expose the ports on the host.</p>
+</div>
+<img alt="../_images/app_api_3.png" src="../_images/app_api_3.png" />
+<p>Deployment configuration examples can be found <a class="reference internal" href="DeployConfigurations.html"><span class="doc">here</span></a>.</p>
+</section>
+</section>
+<section id="installing-exapps">
+<h2>Installing ExApps<a class="headerlink" href="#installing-exapps" title="Link to this heading"></a></h2>
+<p>You can now install ExApps from the Nextcloud App Store by clicking “Install” on the respective app in the Apps page.
+If successful, the ExApp will be displayed under the “Your apps” list.</p>
+<img alt="../_images/exapp_list_example.png" src="../_images/exapp_list_example.png" />
+</section>
+<section id="faq">
+<h2>FAQ<a class="headerlink" href="#faq" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>I have two graphics cards XXX with 6/8/Y GB of ram each. How can I run something which does not fit into one graphics card?</dt><dd><ul>
+<li><p>Distributing models across multiple GPUs is currently not supported. You will need a GPU that fits all of the model you are trying to use.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>I have YYY graphics card that does not supports CUDA - can I use it and how?</dt><dd><ul>
+<li><p>No, our AI apps require GPUs with CUDA support to function at this time.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>What is the minimum VRAM size requirement for the GPU if I want to install multiple apps?</dt><dd><ul>
+<li><p>When running multiple ExApps on the same GPU, the GPU must hold the largest model amongst the apps you install.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Is it possible to add more graphics cards for my instance to enable parallel requests or to speed up one request?</dt><dd><ul>
+<li><p>Parallel processing of AI workloads for the same app with multiple GPUs is currently not supported.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Can I use the CPU and GPU in parallel for AI processing?</dt><dd><ul>
+<li><p>No, you can only process AI workloads on either the CPU or GPU for one app. For different apps, you can decide whether to run them on CPU or GPU.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="docker-socket-proxy-vs-harp">
+<h2>Docker Socket Proxy vs HaRP<a class="headerlink" href="#docker-socket-proxy-vs-harp" title="Link to this heading"></a></h2>
+<div class="line-block">
+<div class="line">HaRP can be seen as Docker Socket Proxy version 2.0. It does all what Docker Socket Proxy does, but also addresses the main pain point of ExApps not being reachable by the Nextcloud server (or AppAPI).</div>
+<div class="line"><a class="reference external" href="https://github.com/fatedier/frp">FRP</a> is used to create a tunnel between the ExApp and the HaRP container so there is no need for the ExApp containers to expose any ports to the host or to be reachable from the Nextcloud server.</div>
+<div class="line">The Nextcloud server can reach the ExApp containers through the HaRP container.</div>
+</div>
+<p>HaRP has an additional benefit of being able to proxy requests coming from the Web interface or an API to the ExApp container without being proxies through the Nextcloud server, saving resources, improving performance and supporting additional protocols like WebSockets.</p>
+<p>HaRP is the recommended way to run ExApps, but if you are not able to use it, Docker Socket Proxy is still supported.</p>
+<p>Frontend requests in case of Docker Socket Proxy:</p>
+<pre  class="mermaid">
+        graph LR;
+        subgraph Browser
+                A[Frontend]
+        end
+
+        B[Proxy]
+
+        subgraph Services behind the proxy
+                C[Docker Socket Proxy]
+                D[ExApp]
+                E[Nextcloud Server / AppAPI]
+        end
+
+        A --&gt; B
+        B --&gt;|Request to an ExApp| E --Converted to ExApp auth--&gt; D
+        B --&gt;|All other usual requests| E
+    </pre><p>Frontend requests in case of HaRP:</p>
+<pre  class="mermaid">
+        graph LR;
+        subgraph Browser
+                A[Frontend]
+        end
+
+        B[Proxy]
+
+        subgraph Services behind the proxy
+                C[HaRP]
+                D[ExApp]
+                E[Nextcloud Server / AppAPI]
+        end
+
+        B --All other usual requests--&gt; E
+        A --&gt; B
+        B --Direct request to an ExApp--&gt; C --Converted to ExApp auth--&gt; D
+        C --User auth validation--&gt; E
+    </pre></section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="ExApps management" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="DeployConfigurations.html" class="btn btn-neutral float-right" title="Deployment configurations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/admin_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/admin_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

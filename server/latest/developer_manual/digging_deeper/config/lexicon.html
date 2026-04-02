@@ -1,0 +1,375 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lexicon &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/digging_deeper/config/lexicon.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Classloader" href="../classloader.html" />
+    <link rel="prev" title="UserConfig" href="userconfig.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html">API reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Config &amp; Preferences</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="appconfig.html">AppConfig</a></li>
+<li class="toctree-l3"><a class="reference internal" href="userconfig.html">UserConfig</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Lexicon</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#concept-overview">Concept overview</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../context_chat.html">Context Chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../continuous_integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dashboard.html">Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deadlock.html">Deadlocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../email.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../files-metadata.html">Files Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../groupware/index.html">Groupware integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../http_client.html">HTTP Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../machinetranslation.html">Machine Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../oidc.html">OpenID Connect (Oidc)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../out_of_office.html">Out-of-office periods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../openmetrics.html">Open Metrics exporter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phonenumberutil.html">Phone number util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../psr.html">PSR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../profile.html">Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../profiler.html">Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference.html">Reference providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rest_apis.html">REST APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security.html">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup_checks.html">Setup checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../snowflake_ids.html">Snowflake IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../speech-to-text.html">Speech-To-Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../talk.html">Talk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../task_processing.html">Task Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../text_processing.html">Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../text2image.html">Text-To-Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../status.html">User Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_migration.html">User migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../web_host_metadata.html">Web Host Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../webdav_collection_preload.html">WebDAV collection preload events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../time.html">Working with time</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Digging deeper</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Config &amp; Preferences</a></li>
+      <li class="breadcrumb-item active">Lexicon</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/config/lexicon.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="lexicon">
+<h1>Lexicon<a class="headerlink" href="#lexicon" title="Link to this heading"></a></h1>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 32.</span></p>
+</div>
+<p>Since v32, Nextcloud provides a way to centralize the definition of your app’s configuration keys and values in a single place.</p>
+<section id="concept-overview">
+<h2>Concept overview<a class="headerlink" href="#concept-overview" title="Link to this heading"></a></h2>
+<p>Nextcloud includes the <code class="docutils literal notranslate"><span class="pre">ILexicon</span></code> API to create a <strong>Lexicon</strong> of your config keys.
+This lexicon allow developers to define the config keys of their apps, their value type and additional details.</p>
+<p id="lexicon-concepts">Enforcing a unique configuration for each of your config keys in a single location help avoid their misuse.</p>
+<dl class="simple">
+<dt>Details about each config key are:</dt><dd><ul class="simple">
+<li><p>config value expected type,</p></li>
+<li><p>a default value,</p></li>
+<li><p>a description of its use,</p></li>
+<li><p>lazy loading setting,</p></li>
+<li><p>flags the config key as sensitive or indexable</p></li>
+</ul>
+</dd>
+</dl>
+<section id="registering-your-lexicon">
+<h3>Registering your Lexicon<a class="headerlink" href="#registering-your-lexicon" title="Link to this heading"></a></h3>
+<p>The Lexicon is set in a local class that implements <cite>OCPConfigLexiconILexicon</cite> and registered from your <code class="docutils literal notranslate"><span class="pre">Application.php</span></code>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+    <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerConfigLexicon</span><span class="p">(</span><span class="nx">\OCA\MyApp\ConfigLexicon</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Example of the registered <code class="docutils literal notranslate"><span class="pre">ConfigLexicon.php</span></code>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">OCP\Config\Lexicon\Entry</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Config\Lexicon\ILexicon</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Config\Lexicon\Strictness</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Config\ValueType</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Lexicon</span> <span class="k">implements</span> <span class="nx">ILexicon</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getStrictness</span><span class="p">()</span><span class="o">:</span> <span class="nx">Strictness</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">Strictness</span><span class="o">::</span><span class="na">WARNING</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getAppConfigs</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="k">new</span> <span class="nx">Entry</span><span class="p">(</span><span class="s1">&#39;key1&#39;</span><span class="p">,</span> <span class="nx">ValueType</span><span class="o">::</span><span class="na">STRING</span><span class="p">,</span> <span class="s1">&#39;abcde&#39;</span><span class="p">,</span> <span class="s1">&#39;test key&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="nx">IAppConfig</span><span class="o">::</span><span class="na">FLAG_SENSITIVE</span><span class="p">),</span>
+            <span class="k">new</span> <span class="nx">Entry</span><span class="p">(</span><span class="s1">&#39;key2&#39;</span><span class="p">,</span> <span class="nx">ValueType</span><span class="o">::</span><span class="na">INT</span><span class="p">,</span> <span class="mi">12345</span><span class="p">,</span> <span class="s1">&#39;test key&#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getUserConfigs</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="k">new</span> <span class="nx">Entry</span><span class="p">(</span><span class="s1">&#39;key1&#39;</span><span class="p">,</span> <span class="nx">ValueType</span><span class="o">::</span><span class="na">STRING</span><span class="p">,</span> <span class="s1">&#39;abcde&#39;</span><span class="p">,</span> <span class="s1">&#39;test key&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="nx">IUserConfig</span><span class="o">::</span><span class="na">FLAG_SENSITIVE</span><span class="p">),</span>
+            <span class="k">new</span> <span class="nx">Entry</span><span class="p">(</span><span class="s1">&#39;key2&#39;</span><span class="p">,</span> <span class="nx">ValueType</span><span class="o">::</span><span class="na">INT</span><span class="p">,</span> <span class="mi">12345</span><span class="p">,</span> <span class="s1">&#39;test key&#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Each method <code class="docutils literal notranslate"><span class="pre">getUserConfigs()</span></code> and <code class="docutils literal notranslate"><span class="pre">getAppConfigs()</span></code> returns a list of <code class="docutils literal notranslate"><span class="pre">\OCP\Config\Lexicon\Entry</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">getStrictness()</span></code> is used to define the expected behavior of the process when reaching a config keys that is not listed in your app’s Config Lexicon.
+Must returns a value from enum <code class="docutils literal notranslate"><span class="pre">\OCP\Config\Lexicon\Strictness</span></code>.</p>
+<dl class="simple">
+<dt>Available values:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">::IGNORE</span></code> - does not limit the set/get on an unknown config key.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">::NOTICE</span></code> - does not limit the set/get on an unknown config key, but generate a notice in the logs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">::WARNING</span></code> - unknown config key will not be set, and get will returns the default value. A warning will be issued in the logs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">::EXCEPTION</span></code> - set/get on an unknown config key will generate an exception.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="config-lexicon-entry">
+<h3>Config Lexicon Entry<a class="headerlink" href="#config-lexicon-entry" title="Link to this heading"></a></h3>
+<p>Each config key is defined in a object through those arguments:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">new</span> <span class="nx">Entry</span><span class="p">(</span>
+    <span class="nb">key</span><span class="o">:</span> <span class="s1">&#39;my_config_key&#39;</span><span class="p">,</span>        <span class="c1">// config key</span>
+    <span class="nx">type</span><span class="o">:</span> <span class="nx">ValueType</span><span class="o">::</span><span class="na">STRING</span><span class="p">,</span>     <span class="c1">// expected value type when the code set/get value</span>
+    <span class="nx">defaultRaw</span><span class="o">:</span> <span class="s1">&#39;default value&#39;</span><span class="p">,</span> <span class="c1">// value to returns if a config value is not available in the database</span>
+    <span class="nx">definition</span><span class="o">:</span> <span class="s1">&#39;this is a description of the use for this config key&#39;</span><span class="p">,</span>
+    <span class="nx">lazy</span><span class="o">:</span> <span class="k">true</span><span class="p">,</span>                  <span class="c1">// config value is stored as lazy</span>
+    <span class="nx">flags</span><span class="o">:</span> <span class="nx">FLAG_SENSITIVE</span><span class="p">,</span>       <span class="c1">// value is sensitive and/or indexable, using IAppConfig::FLAG_*, IUserConfig::FLAG_*</span>
+    <span class="nx">deprecated</span><span class="o">:</span> <span class="k">false</span><span class="p">,</span>           <span class="c1">// if set to ``true`` will generate a notice entry in the nextcloud logs when called</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Unless if set to <code class="docutils literal notranslate"><span class="pre">null</span></code>, the default value set in the config lexicon overwrite the default value used as argument when calling <code class="docutils literal notranslate"><span class="pre">getValueString('my_config_key',</span> <span class="pre">'another</span> <span class="pre">default</span> <span class="pre">value');</span></code></p>
+</div>
+</section>
+<section id="preset">
+<h3>Preset<a class="headerlink" href="#preset" title="Link to this heading"></a></h3>
+<p>With 32, Nextcloud comes with a list of <cite>preset</cite> to ease the default user experience, based on the context of the instance.
+The selection of a preset is optional and can be done right after the setup of Nextcloud, and any time in the future using this occ command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./occ<span class="w"> </span>config:preset
+current<span class="w"> </span>preset:<span class="w"> </span>NONE
+$<span class="w"> </span>./occ<span class="w"> </span>config:preset<span class="w"> </span>PRIVATE
+current<span class="w"> </span>preset:<span class="w"> </span>PRIVATE
+</pre></div>
+</div>
+<p>If you want your app to have a different default value based on the selected Preset, you need to generate a Closure as <code class="docutils literal notranslate"><span class="pre">$defaultRaw</span></code> when generating the Lexicon Entry.
+The first parameter of the Closure is an Enum <code class="docutils literal notranslate"><span class="pre">'\OCP\Config\Lexicon\Preset'</span></code> that define the current Preset:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">new</span> <span class="nx">Entry</span><span class="p">(</span><span class="s1">&#39;key3&#39;</span><span class="p">,</span> <span class="nx">ValueType</span><span class="o">::</span><span class="na">STRING</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">(</span><span class="nx">Preset</span> <span class="nv">$p</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="o">=&gt;</span> <span class="k">match</span> <span class="p">(</span><span class="nv">$p</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">Preset</span><span class="o">::</span><span class="na">FAMILY</span> <span class="o">=&gt;</span> <span class="s1">&#39;family&#39;</span><span class="p">,</span>
+            <span class="nx">Preset</span><span class="o">::</span><span class="na">CLUB</span><span class="p">,</span> <span class="nx">Preset</span><span class="o">::</span><span class="na">MEDIUM</span> <span class="o">=&gt;</span> <span class="s1">&#39;club+medium&#39;</span><span class="p">,</span>
+            <span class="k">default</span> <span class="o">=&gt;</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span>
+        <span class="p">}),</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>Available values:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">::LARGE</span></code> - Large size organisation (&gt; 50k accounts)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">::MEDIUM</span></code> - Medium size organisation (&gt; 100 accounts)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">::SMALL</span></code> - Small size organisation (&lt; 100 accounts)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">::SHARED</span></code> - Shared hosting</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">::EDUCATION</span></code> - School/University</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">::CLUB</span></code> - Club/Association</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">::FAMILY</span></code> - Family</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">::PRIVATE</span></code> - Private</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="occ-config-app-get-details">
+<h3>./occ config:app:get –details<a class="headerlink" href="#occ-config-app-get-details" title="Link to this heading"></a></h3>
+<p>Details from the Lexicon can be extracted using the <code class="docutils literal notranslate"><span class="pre">occ</span></code> command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./occ<span class="w"> </span>config:app:get<span class="w"> </span>myapp<span class="w"> </span>my_config_key<span class="w"> </span>--details
+<span class="w">  </span>-<span class="w"> </span>app:<span class="w"> </span>myapp
+<span class="w">  </span>-<span class="w"> </span>key:<span class="w"> </span>my_config_key
+<span class="w">  </span>-<span class="w"> </span>value:<span class="w"> </span><span class="s1">&#39;a_value&#39;</span>
+<span class="w">  </span>-<span class="w"> </span>type:<span class="w"> </span>string
+<span class="w">  </span>-<span class="w"> </span>lazy:<span class="w"> </span><span class="nb">true</span>
+<span class="w">  </span>-<span class="w"> </span>description:
+<span class="w">  </span>-<span class="w"> </span>sensitive:<span class="w"> </span><span class="nb">false</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="userconfig.html" class="btn btn-neutral float-left" title="UserConfig" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../classloader.html" class="btn btn-neutral float-right" title="Classloader" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Apr 02, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

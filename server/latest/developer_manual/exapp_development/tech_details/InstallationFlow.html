@@ -1,0 +1,308 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>App Installation Flow &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/exapp_development/tech_details/InstallationFlow.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Deployment" href="Deployment.html" />
+    <link rel="prev" title="Technical details" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">ExApp development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DevSetup.html">Setting up dev environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development_overview/index.html">Development overview</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Technical details</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">App Installation Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#image-pulling-docker">Image Pulling (Docker)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#heartbeat">Heartbeat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#init">Init</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enabled">Enabled</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Deployment.html">Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Authentication.html">Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Translations.html">Translations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/index.html">AppAPI Nextcloud APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/index.html">Frequently Asked Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">ExApp development</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Technical details</a></li>
+      <li class="breadcrumb-item active">App Installation Flow</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/exapp_development/tech_details/InstallationFlow.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="app-installation-flow">
+<span id="id1"></span><h1>App Installation Flow<a class="headerlink" href="#app-installation-flow" title="Link to this heading"></a></h1>
+<section id="image-pulling-docker">
+<h2>Image Pulling (Docker)<a class="headerlink" href="#image-pulling-docker" title="Link to this heading"></a></h2>
+<p>AppAPI will first try to pull the Docker image whose <code class="docutils literal notranslate"><span class="pre">suffix</span></code> is equal to the value of <em>computeDevice</em>.</p>
+<p>The following values are available for <code class="docutils literal notranslate"><span class="pre">computeDevice</span></code>: <code class="docutils literal notranslate"><span class="pre">cpu</span></code>, <code class="docutils literal notranslate"><span class="pre">cuda</span></code>, or <code class="docutils literal notranslate"><span class="pre">rocm</span></code>.</p>
+<p>The suffix will be added as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>return $imageParams[&#39;image_src&#39;] . &#39;/&#39; .
+    $imageParams[&#39;image_name&#39;] . &#39;-&#39; . $daemonConfig[&#39;computeDevice&#39;][&#39;id&#39;] . &#39;:&#39; . $imageParams[&#39;image_tag&#39;];
+</pre></div>
+</div>
+<p>For <code class="docutils literal notranslate"><span class="pre">cpu</span></code>, AppAPI will first try to get the image from <code class="docutils literal notranslate"><span class="pre">ghcr.io/nextcloud/skeleton-cpu:latest</span></code>.
+In case the image is not found, <code class="docutils literal notranslate"><span class="pre">ghcr.io/nextcloud/skeleton:latest</span></code> will be pulled.</p>
+<p>If you as an application developer want to have a custom images for any of these values,
+you can push the extended images to the registry in addition to the base one.</p>
+</section>
+<section id="heartbeat">
+<h2>Heartbeat<a class="headerlink" href="#heartbeat" title="Link to this heading"></a></h2>
+<p>The first thing AppAPI does is deploy the application.</p>
+<p>In the case of Docker, this means:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>performing an image pull</p></li>
+<li><p>creating container from the docker image</p></li>
+<li><p>if the container supports <cite>healthcheck</cite> - AppAPI waits for the <cite>healthy</cite> status</p></li>
+<li><p>waiting until the “/heartbeat” endpoint becomes available with a <code class="docutils literal notranslate"><span class="pre">GET</span></code> request</p></li>
+</ol>
+</div></blockquote>
+<p>The application, in response to the “/heartbeat” request, should return: <code class="docutils literal notranslate"><span class="pre">{&quot;status&quot;:</span> <span class="pre">&quot;ok&quot;}</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The request to the <code class="docutils literal notranslate"><span class="pre">/heartbeat</span></code> endpoint is made without AppAPI authentication.</p>
+</div>
+</section>
+<section id="init">
+<h2>Init<a class="headerlink" href="#init" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Starting from this point, all requests made by AppAPI contain <a class="reference internal" href="Authentication.html#auth-headers"><span class="std std-ref">authentication headers</span></a>.</p>
+</div>
+<p>After the application is ready, which is determined by the previous step,
+AppAPI sends a <code class="docutils literal notranslate"><span class="pre">POST</span></code> request to the <code class="docutils literal notranslate"><span class="pre">/init</span></code> application endpoint.</p>
+<p><em>If the application does not need to carry out long initialization, it has an option to not implement “/init” endpoint, so
+AppAPI will get 404 or 501 error on it’s request, but you can consider that initialization to be done and this section can be skipped.</em></p>
+<p>In case you want to implement “/init” endpoint, your application should:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>In “/init” handler: return a Response with empty JSON data on AppAPI call.</p></li>
+<li><p>In background job: send an OCS request to <code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/ocs/v1.php/apps/app_api/ex-app/status</span></code> with the progress value.</p></li>
+</ol>
+</div></blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/ocs/v1.php/apps/app_api/apps/status/$APP_ID</span></code> is deprecated and will be removed in the future.</p>
+</div>
+<p>Possible values for <strong>progress</strong> are integers from 1 to 100;
+after receiving the value 100, the <strong>application is considered initialized and ready to work</strong>.</p>
+<p>If, at the initialization stage, the application has a critical error due to which its further operation is impossible,
+<code class="docutils literal notranslate"><span class="pre">&quot;error&quot;:</span> <span class="pre">&quot;some</span> <span class="pre">error&quot;</span></code>
+should be added to the <code class="docutils literal notranslate"><span class="pre">OCS</span> <span class="pre">request</span></code> for setting progress,
+with a short explanation at what stage this error occurred.</p>
+<p>Example of request payload with error:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;progress&quot;</span><span class="p">:</span> <span class="mi">67</span><span class="p">,</span> <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;connection error to huggingface.&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="enabled">
+<h2>Enabled<a class="headerlink" href="#enabled" title="Link to this heading"></a></h2>
+<p>After receiving <strong>progress: 100</strong> (<em>or when the ExApp is not implementing the “/init” endpoint</em>), AppAPI enables the application.</p>
+<p>To enable or disable the application, a PUT request is sent to the <code class="docutils literal notranslate"><span class="pre">/enabled</span></code> endpoint.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Unlike using a payload, this request utilizes a query parameter named <code class="docutils literal notranslate"><span class="pre">enabled</span></code> to specify the desired state.</p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">enabled</span></code> parameter accepts an integer value:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>1</cite> to enable the application</p></li>
+<li><p><cite>0</cite> to disable the application</p></li>
+</ul>
+</div></blockquote>
+<p>For example, to enable the application, the request would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>PUT http://ex-app:2432/enabled?enabled=1
+</pre></div>
+</div>
+<p>Similarly, to disable the application, the request would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>PUT http://ex-app:2432/enabled?enabled=0
+</pre></div>
+</div>
+<p>This approach ensures that the application’s state can be easily toggled using a simple query parameter.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">/enabled</span></code> endpoint shares both <strong>enabling</strong> and <strong>disabling</strong>,
+so the app should determine what is going on using the <code class="docutils literal notranslate"><span class="pre">enabled</span></code> input parameter of the request.</p>
+</div>
+<p>Inside the <code class="docutils literal notranslate"><span class="pre">/enabled</span></code> handler, the application should register all actions related to the Nextcloud, such as the UI and other stuff.</p>
+<p>The response for this request should contain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>for success, and if some error occurs during <strong>enabling</strong>, it should be present and not be empty:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;i can&#39;t handle enabling&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This is all the steps involved in the ExApp installation flow.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Technical details" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Deployment.html" class="btn btn-neutral float-right" title="Deployment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Apr 02, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

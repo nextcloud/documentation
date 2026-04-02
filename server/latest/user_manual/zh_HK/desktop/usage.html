@@ -1,0 +1,777 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-HK" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>使用同步客戶端 &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/desktop/usage.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=05269ba6"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=11dc2623"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="macOS Virtual Files Client" href="macosvfs.html" />
+    <link rel="prev" title="安裝" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest 用戶手冊介紹</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud Web 介面</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">檔案與同步</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">桌面客戶端</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">安裝</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">使用同步客戶端</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#systray-icon">系統托盤圖標</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-nextcloud-account-settings">配置 Nextcloud 帳戶設置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-new-accounts">添加新帳戶</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-manager-overlay-icons">檔案管理器覆蓋圖標</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-the-user-status">設置用戶狀態</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-from-your-desktop">從桌面共享</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general-window">常規窗口</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-network-window">使用網絡窗口</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-ignored-files-editor">使用被忽略檔案編輯器</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="macosvfs.html">macOS Virtual Files Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoupdate.html">自動更新器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updatechannel.html">更新頻道</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conflicts.html">衝突</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">常見問題</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">設置您的偏好</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">普遍存取</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">使用雙重身份驗證</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">管理已連接的瀏覽器和裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">外置儲存</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">桌面客戶端</a></li>
+      <li class="breadcrumb-item active">使用同步客戶端</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/usage.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-synchronization-client">
+<h1>使用同步客戶端<a class="headerlink" href="#using-the-synchronization-client" title="Link to this heading"></a></h1>
+<p>Nextcloud 桌面客戶端在背景運行，並在系統托盤（Windows、KDE）、選項單欄（macOS）或通知區域（Linux）顯示為圖標。</p>
+<figure class="align-default">
+<img alt="狀態圖標，綠色圓圈和白色勾號" src="../../_images/icon.png" />
+</figure>
+<p>狀態指示器使用圖標顯示您同步的當前狀態。綠色圓圈配白色勾號表示您的同步是最新的，並且您已連接到 Nextcloud 伺服器。</p>
+<figure class="align-default">
+<img alt="狀態圖標，藍色圓圈和白色半圓" src="../../_images/icon-syncing.png" />
+</figure>
+<p>藍色圖標配白色半圓表示正在進行同步。</p>
+<figure class="align-default">
+<img alt="狀態圖標，灰色圓圈和垂直平行線" src="../../_images/icon-paused.png" />
+</figure>
+<p>灰色圖標配平行線表示同步已暫停。（最有可能是您暫停的。）</p>
+<figure class="align-default">
+<img alt="狀態圖標，灰色圓圈和三個水平白點" src="../../_images/icon-offline.png" />
+</figure>
+<p>灰色圖標配三個白點表示您的同步客戶端已與 Nextcloud 伺服器失去連接。</p>
+<figure class="align-default">
+<img alt="狀態圖標，黃色圓圈中的符號「!」" src="../../_images/icon-information.png" />
+</figure>
+<p>當您看到黃色圓圈中的符號「！」時，這是信息圖標，您應該點擊它以查看其通知內容。</p>
+<figure class="align-default">
+<img alt="狀態圖標，紅色圓圈和白色「x」" src="../../_images/icon-error.png" />
+</figure>
+<p>紅色圓圈配白色「x」表示配置錯誤，例如登錄或伺服器 URL 錯誤。</p>
+<section id="systray-icon">
+<h2>系統托盤圖標<a class="headerlink" href="#systray-icon" title="Link to this heading"></a></h2>
+<p>右鍵單擊系統托盤圖標會打開一個選項單，以便快速訪問多個操作。</p>
+<figure class="align-default">
+<img alt="右鍵單擊同步客戶端選項單" src="../../_images/traymenu.png" />
+</figure>
+<p>此選項單提供以下選項：</p>
+<ul class="simple">
+<li><p>打開主對話框</p></li>
+<li><p>暫停同步／恢復同步</p></li>
+<li><p>設定</p></li>
+<li><p>退出 Nextcloud，登出並關閉客戶端</p></li>
+</ul>
+<p>左鍵單擊您的系統托盤圖標將打開桌面客戶端的主對話框。</p>
+<figure class="align-default">
+<img alt="主對話框" src="../../_images/main_dialog.png" />
+</figure>
+<p>主對話框顯示最近的活動、錯誤和伺服器通知。</p>
+<p>單擊主對話框後，再單擊用戶的頭像，可以打開設置。</p>
+</section>
+<section id="configuring-nextcloud-account-settings">
+<h2>配置 Nextcloud 帳戶設置<a class="headerlink" href="#configuring-nextcloud-account-settings" title="Link to this heading"></a></h2>
+<figure class="align-default">
+<img alt="主對話框" src="../../_images/settingsdialog.png" />
+</figure>
+<p>窗口頂部是每個配置的同步帳戶的選項卡，還有兩個選項卡用於一般和網絡設置。在您的帳戶選項卡上，您擁有以下功能：</p>
+<ul class="simple">
+<li><p>連接狀態，顯示您連接的 Nextcloud 伺服器和您的 Nextcloud 用戶名。</p></li>
+<li><p>伺服器上已用空間和可用空間。</p></li>
+<li><p>當前同步狀態。</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">**</span></a>添加資料夾同步連接**按鈕。</p></li>
+</ul>
+<p>位於同步狀態欄右側的小按鈕（溢出選項單）提供其他選項：</p>
+<ul class="simple">
+<li><p>打開資料夾</p></li>
+<li><p>選擇要同步的內容（僅在您的檔案樹折疊時顯示，並展開檔案樹）</p></li>
+<li><p>暫停同步 / 恢復同步</p></li>
+<li><p>移除資料夾同步連接</p></li>
+<li><p>可用性（僅在啟用虛擬檔案支持時可用）</p></li>
+<li><p>啟用虛擬檔案支持/禁用虛擬檔案支持</p></li>
+</ul>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>打開資料夾**會打開您的本地 Nextcloud 同步資料夾。</p>
+<p><strong>暫停同步**會暫停同步操作而不對您的帳戶進行任何更改。它會繼續更新檔案和資料夾列表，但不會下載或更新檔案。要停止所有同步活動，請使用 **移除資料夾同步連接</strong>。</p>
+<figure class="align-default">
+<img alt="同步操作的額外選項" src="../../_images/general_settings_folder_context_menu.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Nextcloud 不會保留目錄的 mtime（修改時間），但會更新檔案的 mtime。請參見 <a class="reference external" href="https://github.com/owncloud/core/issues/7009">同步時資料夾日期錯誤</a> 以獲取討論。</p>
+</div>
+</section>
+<section id="adding-new-accounts">
+<h2>添加新帳戶<a class="headerlink" href="#adding-new-accounts" title="Link to this heading"></a></h2>
+<p>您可以在桌面同步客戶端中配置多個 Nextcloud 帳戶。只需在任何帳戶標籤上單擊 <strong>帳戶</strong> &gt; <strong>添加新帳戶</strong> 按鈕以添加新帳戶，然後按照帳戶創建向導進行操作。新帳戶將作為新選項卡出現在設置對話框中，您可以隨時調整其設置。使用 <strong>帳戶</strong> &gt; <strong>移除</strong> 來刪除帳戶。</p>
+</section>
+<section id="file-manager-overlay-icons">
+<h2>檔案管理器覆蓋圖標<a class="headerlink" href="#file-manager-overlay-icons" title="Link to this heading"></a></h2>
+<p>Nextcloud 同步客戶端提供覆蓋圖標，除了正常的檔案類型圖標外，還為您的系統檔案管理器（Windows 的資源管理器、Mac 的 Finder 和 Linux 的 Nautilus）顯示 Nextcloud 檔案的同步狀態。</p>
+<p>覆蓋圖標類似於上述的系統托盤圖標。根據同步狀態和錯誤，它們在檔案和目錄上的行為不同。</p>
+<p>單個檔案的覆蓋圖標表示其當前的同步狀態。如果該檔案與伺服器版本同步，則顯示綠色勾號。</p>
+<p>如果該檔案被忽略同步，例如因為它在您的排除列表中，或因為它是符號鏈接，則顯示警告圖標。</p>
+<p>如果出現同步錯誤，或該檔案被列入黑名單，則顯示引人注目的紅色 X。</p>
+<p>如果該檔案等待同步或正在同步，則覆蓋圖標顯示藍色循環圖標。</p>
+<p>當客戶端處於離線狀態時，將不顯示任何圖標，表示該資料夾當前不同步，並且沒有更改同步到伺服器。</p>
+<p>已同步目錄的覆蓋圖標表示該目錄中檔案的狀態。如果有任何同步錯誤，則該目錄會標記為警告圖標。</p>
+<p>如果目錄包含被標記為警告圖標的忽略檔案，則不會改變父目錄的狀態。</p>
+</section>
+<section id="set-the-user-status">
+<h2>設置用戶狀態<a class="headerlink" href="#set-the-user-status" title="Link to this heading"></a></h2>
+<p>如果您在 Nextcloud 伺服器上安裝了用戶狀態應用，則可以從桌面客戶端設置您的用戶狀態。為此，打開主對話框，然後單擊您的頭像，再單擊三個點。在打開的選項單中單擊 <strong>設置狀態</strong>。</p>
+<figure class="align-default">
+<img alt="從主對話框中打開用戶狀態對話框。" src="../../_images/user_status_selector_main_dialog.png" />
+</figure>
+<p>在打開的對話框中，如果您單擊 <strong>在線</strong>、<strong>離開</strong>、<strong>勿擾</strong> 或 <strong>隱身</strong>，則可以設置您的在線狀態。您還可以使用下方的文本框設置自定義狀態消息，或選擇下面的預設狀態消息。如果單擊文本輸入框旁邊的表情符號按鈕，還可以設置自定義表情符號。最後，您可以設置用戶狀態何時應被清除。您可以通過單擊文本 <strong>清除狀態消息後</strong> 左側的按鈕來選擇清除用戶狀態的時間。</p>
+<figure class="align-default">
+<img alt="設置用戶狀態的對話框。" src="../../_images/user_status-selector_dialog.png" />
+</figure>
+<p>如果您對創建的狀態滿意，可以使用 <strong>設置狀態消息</strong> 按鈕啟用此狀態。如果您已設置狀態，可以通過單擊 <strong>清除狀態消息</strong> 按鈕來清除該狀態。</p>
+</section>
+<section id="sharing-from-your-desktop">
+<h2>從桌面共享<a class="headerlink" href="#sharing-from-your-desktop" title="Link to this heading"></a></h2>
+<p>Nextcloud 桌面同步客戶端與您的檔案管理器集成。macOS 使用 Finder，Windows 使用資源管理器。Linux 用戶必須根據使用的檔案管理器安裝附加包。例如，您可以使用 <code class="docutils literal notranslate"><span class="pre">nautilus-nextcloud``（Ubuntu/Debian）、``dolphin-nextcloud``（Kubuntu）、``nemo-nextcloud</span></code> 和 <code class="docutils literal notranslate"><span class="pre">caja-nextcloud</span></code>。您可以創建共享鏈接，並以與 Nextcloud 網頁界面相同的方式與內部 Nextcloud 用戶共享。</p>
+<p>在檔案管理器中，單擊一個檔案，在上下文選項單中轉到 <strong>Nextcloud</strong>，然後單擊 <strong>共享選項</strong> 以調出共享對話框。</p>
+<figure class="align-default">
+<img alt="從 Windows 資源管理器共享。" src="../../_images/share_context_menu.png" />
+</figure>
+<p>通過此對話框，您可以共享檔案。</p>
+<figure class="align-default">
+<img alt="共享對話框" src="../../_images/share_dialog.png" />
+</figure>
+</section>
+<section id="general-window">
+<h2>常規窗口<a class="headerlink" href="#general-window" title="Link to this heading"></a></h2>
+<p>常規窗口具有配置選項，例如 <strong>開機啟動時啟動</strong>、<strong>使用單色圖標</strong> 和 <strong>顯示伺服器通知</strong>。在此您將找到 <strong>編輯被忽略檔案</strong> 按鈕，以啟動被忽略檔案編輯器，以及 <strong>在下載大於 [資料夾大小] 的資料夾之前請求確認</strong>。</p>
+<figure class="align-default">
+<img alt="常規窗口包含配置選項。" src="../../_images/settings_general.png" />
+</figure>
+</section>
+<section id="using-the-network-window">
+<h2>使用網絡窗口<a class="headerlink" href="#using-the-network-window" title="Link to this heading"></a></h2>
+<p id="index-0">網絡設置窗口使您可以定義網絡代理設置，並限制下載和上傳帶寬。</p>
+<figure class="align-default">
+<img alt="../../_images/settings_network.png" src="../../_images/settings_network.png" />
+</figure>
+</section>
+<section id="using-the-ignored-files-editor">
+<span id="usingignoredfileseditor-label"></span><h2>使用被忽略檔案編輯器<a class="headerlink" href="#using-the-ignored-files-editor" title="Link to this heading"></a></h2>
+<p id="index-1">您可能有一些近端檔案或目錄不希望備份並存儲在伺服器上。要識別並排除這些檔案或目錄，您可以使用 <a href="#id1"><span class="problematic" id="id2">*</span></a>被忽略檔案編輯器*（常規選項卡）。</p>
+<figure class="align-default">
+<img alt="../../_images/ignored_files_editor.png" src="../../_images/ignored_files_editor.png" />
+</figure>
+<p>為方便起見，編輯器預填充了一個典型忽略模式的默認列表。這些模式包含在一個系統檔案中（通常是 <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code>），位於 Nextcloud 客戶端應用程序目錄中。您不能直接從編輯器修改這些預填充的模式。然而，如果需要，您可以將鼠標懸停在列表中的任何模式上，以顯示與該模式相關的路徑和檔案名，找到該檔案並編輯 <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code> 檔案。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>修改全局排除定義檔案可能會使客戶端無法使用或導致不期望的行為。</p>
+</div>
+<p>編輯器中的每一行包含一個忽略模式字符串。在創建自定義模式時，除了能夠使用正常字符來定義忽略模式外，您還可以使用通配符字符來匹配值。例如，您可以使用星號（<code class="docutils literal notranslate"><span class="pre">*</span></code>）來表示任意數量的字符，或使用問號（<code class="docutils literal notranslate"><span class="pre">?</span></code>）來表示單個字符。</p>
+<p>以斜杠字符（<code class="docutils literal notranslate"><span class="pre">/</span></code>）結尾的模式僅適用於被檢查路徑的目錄組件。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>編輯器目前不會對自定義條目進行語法正確性的驗證，因此您不會看到任何錯誤語法的警告。如果您的同步未按預期工作，請檢查您的語法。</p>
+</div>
+<p>列表中的每個模式字符串後面都有一個復選框。當復選框中包含勾號時，除了忽略與模式匹配的檔案或目錄組件外，任何匹配的檔案也被視為「瞬態元數據」，並由客戶端刪除。</p>
+<p>除了排除使用此列表中定義的模式的檔案和目錄外：</p>
+<ul class="simple">
+<li><p>Nextcloud 客戶端始終排除包含無法同步到其他檔案系統的字符的檔案。</p></li>
+<li><p>在同步過程中，導致個別錯誤三次的檔案將被刪除。然而，客戶端提供了對產生錯誤的檔案再重試三次同步的選項。</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="安裝" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="macosvfs.html" class="btn btn-neutral float-right" title="macOS Virtual Files Client" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 zh-HK
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 語言</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ 版本</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>下載</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>於 Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">項目主頁</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Builds</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

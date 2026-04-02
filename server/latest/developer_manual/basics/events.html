@@ -1,0 +1,1805 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/basics/events.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Front-end" href="front-end/index.html" />
+    <link rel="prev" title="Middlewares" href="middlewares.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Basic concepts</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="request_lifecycle.html">Request lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routing.html">Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependency_injection.html">Dependency injection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="middlewares.html">Middlewares</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Events</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ocp-event-dispatcher">OCP event dispatcher</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#naming-scheme">Naming scheme</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#writing-events">Writing events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#writing-a-listener">Writing a listener</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#available-events">Available Events</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#hooks">Hooks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#available-hooks">Available hooks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#session">Session</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usermanager">UserManager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#groupmanager">GroupManager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filesystem-root">Filesystem root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filesystem-scanner">Filesystem scanner</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#public-emitter">Public emitter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="front-end/index.html">Front-end</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translations.html">Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching.html">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setting.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storage/index.html">Storage and database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="public_share_template.html">Public share template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Basic concepts</a></li>
+      <li class="breadcrumb-item active">Events</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/basics/events.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="events">
+<span id="id1"></span><h1>Events<a class="headerlink" href="#events" title="Link to this heading"></a></h1>
+<p>Events are used to communicate between different aspects of the Nextcloud eco system. They are used in the Nextcloud server internally, for server-to-apps communication as well as inter-app communication.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The term “events” is a bit broad in Nextcloud and there are multiple ways of emitting them.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ocp-event-dispatcher">OCP event dispatcher</a></p></li>
+<li><p><a class="reference internal" href="#hooks">Hooks</a></p></li>
+<li><p><a class="reference internal" href="#public-emitter">Public Emitter</a></p></li>
+</ul>
+</section>
+<section id="ocp-event-dispatcher">
+<h2>OCP event dispatcher<a class="headerlink" href="#ocp-event-dispatcher" title="Link to this heading"></a></h2>
+<p>This mechanism is a versatile and typed approach to events in Nextcloud’s php code. It uses objects rather than just passing primitives or untyped arrays. This should help provide a better developer experience while lowering the risk of unexpected changes in the API that are hard to find after the initial implementation.</p>
+<section id="naming-scheme">
+<h3>Naming scheme<a class="headerlink" href="#naming-scheme" title="Link to this heading"></a></h3>
+<p>The name should reflect the subject and the actions. Suffixing event classes with <cite>Event</cite> makes it easier to recognize their purpose.</p>
+<p>For example, if a user is created, a <cite>UserCreatedEvent</cite> will be emitted.</p>
+<p>Events are usually emitted <em>after</em> the event has happened. If it’s emitted before, it should be prefixed with <cite>Before</cite>.</p>
+<p>Thus <cite>BeforeUserCreatedEvent</cite> is emitted <em>before</em> the user data is written to the database.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although you may choose to name your event classes differently, sticking to the convention will allow Nextcloud developers understand each other’s apps more easily.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For backwards compatibility with the Symfony class <a class="reference external" href="https://symfony.com/doc/current/components/event_dispatcher/generic_event.html">GenericEvent</a>, Nextcloud also provides a <code class="docutils literal notranslate"><span class="pre">\OCP\EventDispatcher\Event</span></code> class. With the release of Nextcloud 22 this class has been deprecated. Named and typed event classes should be used instead.</p>
+</div>
+</section>
+<section id="writing-events">
+<h3>Writing events<a class="headerlink" href="#writing-events" title="Link to this heading"></a></h3>
+<p>As a rule events are dedicated classes extending <code class="docutils literal notranslate"><span class="pre">\OCP\EventDispatcher\Event</span></code>.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\Event</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Event</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AddEvent</span> <span class="k">extends</span> <span class="nx">Event</span> <span class="p">{}</span>
+</pre></div>
+</div>
+<p>The event above allows signalling that <em>something happened</em>. But in many cases you want to actually transport data like the affected resource with the event. Then the events act as simple <a class="reference external" href="https://en.wikipedia.org/wiki/Data_transfer_object">data transfer objects</a>. Therefore they need a constructor that takes the arguments, private members to store them and getters to access the values in listeners.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IUser</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">UserCreatedEvent</span> <span class="k">extends</span> <span class="nx">Event</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="nx">IUser</span> <span class="nv">$user</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IUser</span> <span class="nv">$user</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">user</span> <span class="o">=</span> <span class="nv">$user</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getUser</span><span class="p">()</span><span class="o">:</span> <span class="nx">IUser</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">user</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="writing-a-listener">
+<h3>Writing a listener<a class="headerlink" href="#writing-a-listener" title="Link to this heading"></a></h3>
+<p>A listener can be a simple callback function (or anything else that is <a class="reference external" href="https://www.php.net/manual/en/language.types.callable.php">callable</a>, or a dedicated class.</p>
+<section id="listener-callbacks">
+<h4>Listener callbacks<a class="headerlink" href="#listener-callbacks" title="Link to this heading"></a></h4>
+<p>You can use simple callback to react on events. They will receive the event object as first and only parameter. You can type-hint the base <cite>Event</cite> class or the subclass you expect and register for.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\Event\AddEvent</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\App</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\IEventDispatcher</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\AppInfo</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+            <span class="cm">/* @var IEventDispatcher $dispatcher */</span>
+            <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nx">IEventDispatcher</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+            <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">addListener</span><span class="p">(</span><span class="nx">AddEvent</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nx">AddEvent</span> <span class="nv">$event</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// ...</span>
+            <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Type-hinting the actual event class will give you better IDE and static analyzers support. It’s generally safe to assume the dispatcher will not give you any other objects.</p>
+</div>
+</section>
+<section id="listener-classes">
+<h4>Listener classes<a class="headerlink" href="#listener-classes" title="Link to this heading"></a></h4>
+<p>A class that can handle an event will implement the <code class="docutils literal notranslate"><span class="pre">\OCP\EventDispatcher\IEventListener</span></code> interface. Class names should end with <cite>Listener</cite>.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\Event\AddEvent</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\IEventListener</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Event</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AddTwoListener</span> <span class="k">implements</span> <span class="nx">IEventListener</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nv">$event</span> <span class="nx">instanceOf</span> <span class="nx">AddEvent</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">addToCounter</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Php parameter type hints are not allowed to be more specific than the type hints on the interface, thus you can’t use <cite>AddEvent</cite> in the method signature but use an <cite>instanceOf</cite> instead.</p>
+</div>
+<p>In the <code class="docutils literal notranslate"><span class="pre">Application.php</span></code> the event and the listener class are connected. The class is instantiated only when the actual event is fired.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\Event\AddEvent</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCA\MyApp\Listener\AddTwoListener</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\App</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\IEventDispatcher</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\AppInfo</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+        <span class="cm">/* @var IEventDispatcher $eventDispatcher */</span>
+        <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">IEventDispatcher</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">addServiceListener</span><span class="p">(</span><span class="nx">AddEvent</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">AddTwoListener</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The listener is resolved via the DI container, therefore you can add a constructor and type-hint services required for processing the event.</p>
+</div>
+</section>
+</section>
+<section id="available-events">
+<h3>Available Events<a class="headerlink" href="#available-events" title="Link to this heading"></a></h3>
+<p>Here you find an overview of the public events that can be consumed in apps. See their source files for more details.</p>
+<section id="oca-dav-events-addressbookcreatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\AddressBookCreatedEvent</span></code><a class="headerlink" href="#oca-dav-events-addressbookcreatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered when a user creates a new address-book.</p>
+</section>
+<section id="oca-dav-events-addressbookdeletedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\AddressBookDeletedEvent</span></code><a class="headerlink" href="#oca-dav-events-addressbookdeletedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered when a user deletes an address-book.</p>
+</section>
+<section id="oca-dav-events-addressbookshareupdatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\AddressBookShareUpdatedEvent</span></code><a class="headerlink" href="#oca-dav-events-addressbookshareupdatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered when a user shares or unshares an address-book.</p>
+</section>
+<section id="oca-dav-events-addressbookupdatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\AddressBookUpdatedEvent</span></code><a class="headerlink" href="#oca-dav-events-addressbookupdatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered when a user updates an address-book.</p>
+</section>
+<section id="oca-dav-events-cachedcalendarobjectcreatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CachedCalendarObjectCreatedEvent</span></code><a class="headerlink" href="#oca-dav-events-cachedcalendarobjectcreatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered when a cached calendar object is being created while fetching a calendar-subscription.</p>
+</section>
+<section id="oca-dav-events-cachedcalendarobjectdeletedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CachedCalendarObjectDeletedEvent</span></code><a class="headerlink" href="#oca-dav-events-cachedcalendarobjectdeletedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered when a cached calendar object is being deleted while fetching a calendar-subscription.</p>
+</section>
+<section id="oca-dav-events-cachedcalendarobjectupdatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CachedCalendarObjectUpdatedEvent</span></code><a class="headerlink" href="#oca-dav-events-cachedcalendarobjectupdatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered when a cached calendar object is being updated while fetching a calendar-subscription.</p>
+</section>
+<section id="oca-dav-events-calendarcreatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CalendarCreatedEvent</span></code><a class="headerlink" href="#oca-dav-events-calendarcreatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered when a user creates a new calendar.</p>
+</section>
+<section id="oca-dav-events-calendardeletedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CalendarDeletedEvent</span></code><a class="headerlink" href="#oca-dav-events-calendardeletedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered when a user deletes a calendar.</p>
+</section>
+<section id="oca-dav-events-calendarobjectcreatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CalendarObjectCreatedEvent</span></code><a class="headerlink" href="#oca-dav-events-calendarobjectcreatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered when a user creates a calendar-object.</p>
+</section>
+<section id="oca-dav-events-calendarobjectdeletedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CalendarObjectDeletedEvent</span></code><a class="headerlink" href="#oca-dav-events-calendarobjectdeletedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered when a user deletes a calendar-object.</p>
+</section>
+<section id="oca-dav-events-calendarobjectupdatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CalendarObjectUpdatedEvent</span></code><a class="headerlink" href="#oca-dav-events-calendarobjectupdatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered when a user updates a calendar-object.</p>
+</section>
+<section id="oca-dav-events-calendarpublishedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CalendarPublishedEvent</span></code><a class="headerlink" href="#oca-dav-events-calendarpublishedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered when a user publishes a calendar.</p>
+</section>
+<section id="oca-dav-events-calendarshareupdatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CalendarShareUpdatedEvent</span></code><a class="headerlink" href="#oca-dav-events-calendarshareupdatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered when a user shares or unshares a calendar.</p>
+</section>
+<section id="oca-dav-events-calendarunpublishedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CalendarUnpublishedEvent</span></code><a class="headerlink" href="#oca-dav-events-calendarunpublishedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered when a user unpublishes calendar.</p>
+</section>
+<section id="oca-dav-events-calendarupdatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CalendarUpdatedEvent</span></code><a class="headerlink" href="#oca-dav-events-calendarupdatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered when a user updates a calendar.</p>
+</section>
+<section id="oca-dav-events-cardcreatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CardCreatedEvent</span></code><a class="headerlink" href="#oca-dav-events-cardcreatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered when a user creates a new card in an address-book.</p>
+</section>
+<section id="oca-dav-events-carddeletedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CardDeletedEvent</span></code><a class="headerlink" href="#oca-dav-events-carddeletedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered when a user deletes a card in an address-book.</p>
+</section>
+<section id="oca-dav-events-cardupdatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\CardUpdatedEvent</span></code><a class="headerlink" href="#oca-dav-events-cardupdatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered when a user updates a card in an address-book.</p>
+</section>
+<section id="oca-dav-events-sabrepluginaddevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCA\DAV\Events\SabrePluginAddEvent</span></code><a class="headerlink" href="#oca-dav-events-sabrepluginaddevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+<p>This event is triggered during the setup of the SabreDAV server to allow the registration of additional plugins.</p>
+</section>
+<section id="oca-dav-events-sabrepluginauthinitevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\SabrePluginAuthInitEvent</span></code><a class="headerlink" href="#oca-dav-events-sabrepluginauthinitevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered during the setup of the SabreDAV server to allow the registration of additional authentication backends.</p>
+</section>
+<section id="oca-dav-events-subscriptioncreatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\SubscriptionCreatedEvent</span></code><a class="headerlink" href="#oca-dav-events-subscriptioncreatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered when a user creates a new calendar-subscription.</p>
+</section>
+<section id="oca-dav-events-subscriptiondeletedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\SubscriptionDeletedEvent</span></code><a class="headerlink" href="#oca-dav-events-subscriptiondeletedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered when a user deletes a calendar-subscription.</p>
+</section>
+<section id="oca-dav-events-subscriptionupdatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\DAV\Events\SubscriptionUpdatedEvent</span></code><a class="headerlink" href="#oca-dav-events-subscriptionupdatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered when a user deletes a calendar-subscription.</p>
+</section>
+<section id="oca-federatedfilesharing-events-federatedshareaddedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\FederatedFileSharing\Events\FederatedShareAddedEvent</span></code><a class="headerlink" href="#oca-federatedfilesharing-events-federatedshareaddedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered when a federated share is successfully added.</p>
+</section>
+<section id="oca-files-event-loadadditionalscriptsevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\Files\Event\LoadAdditionalScriptsEvent</span></code><a class="headerlink" href="#oca-files-event-loadadditionalscriptsevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 17.</span></p>
+</div>
+<p>This event is triggered when the files app is rendered. It can be used to add additional scripts to the files app.</p>
+</section>
+<section id="oca-files-sharing-event-beforetemplaterenderedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\Files_Sharing\Event\BeforeTemplateRenderedEvent</span></code><a class="headerlink" href="#oca-files-sharing-event-beforetemplaterenderedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>Emitted before the rendering step of the public share page happens. The event holds a flag that specifies if it is the authentication page of a public share.</p>
+</section>
+<section id="oca-files-trashbin-events-movetotrashevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\Files_Trashbin\Events\MoveToTrashEvent</span></code><a class="headerlink" href="#oca-files-trashbin-events-movetotrashevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+<p>Emitted after a file or folder is moved to the trashbin.</p>
+</section>
+<section id="oca-settings-events-beforetemplaterenderedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\Settings\Events\BeforeTemplateRenderedEvent</span></code><a class="headerlink" href="#oca-settings-events-beforetemplaterenderedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered right before the user management template is rendered.</p>
+</section>
+<section id="oca-user-ldap-events-groupbackendregistered">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\User_LDAP\Events\GroupBackendRegistered</span></code><a class="headerlink" href="#oca-user-ldap-events-groupbackendregistered" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered right after the LDAP group backend is registered.</p>
+</section>
+<section id="oca-user-ldap-events-userbackendregistered">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\User_LDAP\Events\UserBackendRegistered</span></code><a class="headerlink" href="#oca-user-ldap-events-userbackendregistered" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>This event is triggered right after the LDAP user backend is registered.</p>
+</section>
+<section id="oca-viewer-event-loadviewer">
+<h4><code class="docutils literal notranslate"><span class="pre">\OCA\Viewer\Event\LoadViewer</span></code><a class="headerlink" href="#oca-viewer-event-loadviewer" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 17.</span></p>
+</div>
+<p>This event is triggered whenever the viewer is loaded and extensions should be loaded.</p>
+</section>
+<section id="ocp-accounts-userupdatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Accounts\UserUpdatedEvent</span></code><a class="headerlink" href="#ocp-accounts-userupdatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+<p>This event is triggered when the account data of a user was updated.</p>
+</section>
+<section id="ocp-app-events-appdisableevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\App\Events\AppDisableEvent</span></code><a class="headerlink" href="#ocp-app-events-appdisableevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 27.</span></p>
+</div>
+<p>This event is triggered when an app is disabled.</p>
+</section>
+<section id="ocp-app-events-appenableevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\App\Events\AppEnableEvent</span></code><a class="headerlink" href="#ocp-app-events-appenableevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 27.</span></p>
+</div>
+<p>This event is triggered when an app is enabled.</p>
+</section>
+<section id="ocp-app-events-appupdateevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\App\Events\AppUpdateEvent</span></code><a class="headerlink" href="#ocp-app-events-appupdateevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 27.</span></p>
+</div>
+<p>This event is triggered when an app is updated.</p>
+</section>
+<section id="ocp-app-managerevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\App\ManagerEvent</span></code><a class="headerlink" href="#ocp-app-managerevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 9.</span></p>
+</div>
+<p>Class ManagerEvent</p>
+</section>
+<section id="ocp-appframework-http-events-beforelogintemplaterenderedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\Http\Events\BeforeLoginTemplateRenderedEvent</span></code><a class="headerlink" href="#ocp-appframework-http-events-beforelogintemplaterenderedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+<p>Emitted before the rendering step of the login TemplateResponse.</p>
+</section>
+<section id="ocp-appframework-http-events-beforetemplaterenderedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\Http\Events\BeforeTemplateRenderedEvent</span></code><a class="headerlink" href="#ocp-appframework-http-events-beforetemplaterenderedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>Emitted before the rendering step of each TemplateResponse. The event holds a
+flag that specifies if an user is logged in.</p>
+</section>
+<section id="ocp-authentication-events-anyloginfailedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Authentication\Events\AnyLoginFailedEvent</span></code><a class="headerlink" href="#ocp-authentication-events-anyloginfailedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 26.</span></p>
+</div>
+<p>Emitted when the authentication fails</p>
+</section>
+<section id="ocp-authentication-events-loginfailedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Authentication\Events\LoginFailedEvent</span></code><a class="headerlink" href="#ocp-authentication-events-loginfailedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 19.</span></p>
+</div>
+<p>Emitted when the authentication fails, but only if the login name can be associated with an existing user.</p>
+</section>
+<section id="ocp-authentication-events-tokeninvalidatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Authentication\Events\TokenInvalidatedEvent</span></code><a class="headerlink" href="#ocp-authentication-events-tokeninvalidatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 32.</span></p>
+</div>
+<p>Emitted when an authentication token is invalidated.</p>
+</section>
+<section id="ocp-authentication-twofactorauth-registryevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Authentication\TwoFactorAuth\RegistryEvent</span></code><a class="headerlink" href="#ocp-authentication-twofactorauth-registryevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 15.</span></p>
+</div>
+</section>
+<section id="ocp-authentication-twofactorauth-twofactorproviderchallengefailed">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Authentication\TwoFactorAuth\TwoFactorProviderChallengeFailed</span></code><a class="headerlink" href="#ocp-authentication-twofactorauth-twofactorproviderchallengefailed" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+</section>
+<section id="ocp-authentication-twofactorauth-twofactorproviderchallengepassed">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Authentication\TwoFactorAuth\TwoFactorProviderChallengePassed</span></code><a class="headerlink" href="#ocp-authentication-twofactorauth-twofactorproviderchallengepassed" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+</section>
+<section id="ocp-authentication-twofactorauth-twofactorproviderdisabled">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Authentication\TwoFactorAuth\TwoFactorProviderDisabled</span></code><a class="headerlink" href="#ocp-authentication-twofactorauth-twofactorproviderdisabled" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+</section>
+<section id="ocp-authentication-twofactorauth-twofactorproviderforuserdisabled">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Authentication\TwoFactorAuth\TwoFactorProviderForUserDisabled</span></code><a class="headerlink" href="#ocp-authentication-twofactorauth-twofactorproviderforuserdisabled" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 22.</span></p>
+</div>
+</section>
+<section id="ocp-authentication-twofactorauth-twofactorproviderforuserenabled">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Authentication\TwoFactorAuth\TwoFactorProviderForUserEnabled</span></code><a class="headerlink" href="#ocp-authentication-twofactorauth-twofactorproviderforuserenabled" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 22.</span></p>
+</div>
+</section>
+<section id="ocp-authentication-twofactorauth-twofactorproviderforuserregistered">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Authentication\TwoFactorAuth\TwoFactorProviderForUserRegistered</span></code><a class="headerlink" href="#ocp-authentication-twofactorauth-twofactorproviderforuserregistered" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+</section>
+<section id="ocp-authentication-twofactorauth-twofactorproviderforuserunregistered">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Authentication\TwoFactorAuth\TwoFactorProviderForUserUnregistered</span></code><a class="headerlink" href="#ocp-authentication-twofactorauth-twofactorproviderforuserunregistered" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+</section>
+<section id="ocp-authentication-twofactorauth-twofactorprovideruserdeleted">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Authentication\TwoFactorAuth\TwoFactorProviderUserDeleted</span></code><a class="headerlink" href="#ocp-authentication-twofactorauth-twofactorprovideruserdeleted" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+</section>
+<section id="ocp-beforesabrepubliclyloadedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\BeforeSabrePubliclyLoadedEvent</span></code><a class="headerlink" href="#ocp-beforesabrepubliclyloadedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 26.</span></p>
+</div>
+<p>Dispatched before Sabre is loaded when accessing public webdav endpoints
+This can be used to inject a Sabre plugin for example</p>
+</section>
+<section id="ocp-calendar-events-calendarobjectcreatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Calendar\Events\CalendarObjectCreatedEvent</span></code><a class="headerlink" href="#ocp-calendar-events-calendarobjectcreatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 32.</span></p>
+</div>
+</section>
+<section id="ocp-calendar-events-calendarobjectdeletedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Calendar\Events\CalendarObjectDeletedEvent</span></code><a class="headerlink" href="#ocp-calendar-events-calendarobjectdeletedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 32.</span></p>
+</div>
+</section>
+<section id="ocp-calendar-events-calendarobjectmovedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Calendar\Events\CalendarObjectMovedEvent</span></code><a class="headerlink" href="#ocp-calendar-events-calendarobjectmovedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 32.</span></p>
+</div>
+</section>
+<section id="ocp-calendar-events-calendarobjectmovedtotrashevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Calendar\Events\CalendarObjectMovedToTrashEvent</span></code><a class="headerlink" href="#ocp-calendar-events-calendarobjectmovedtotrashevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 32.</span></p>
+</div>
+</section>
+<section id="ocp-calendar-events-calendarobjectrestoredevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Calendar\Events\CalendarObjectRestoredEvent</span></code><a class="headerlink" href="#ocp-calendar-events-calendarobjectrestoredevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 32.</span></p>
+</div>
+</section>
+<section id="ocp-calendar-events-calendarobjectupdatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Calendar\Events\CalendarObjectUpdatedEvent</span></code><a class="headerlink" href="#ocp-calendar-events-calendarobjectupdatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 32.</span></p>
+</div>
+</section>
+<section id="ocp-collaboration-autocomplete-autocompleteevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Collaboration\AutoComplete\AutoCompleteEvent</span></code><a class="headerlink" href="#ocp-collaboration-autocomplete-autocompleteevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 16.</span></p>
+</div>
+</section>
+<section id="ocp-collaboration-autocomplete-autocompletefilterevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Collaboration\AutoComplete\AutoCompleteFilterEvent</span></code><a class="headerlink" href="#ocp-collaboration-autocomplete-autocompletefilterevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+</section>
+<section id="ocp-collaboration-reference-renderreferenceevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Collaboration\Reference\RenderReferenceEvent</span></code><a class="headerlink" href="#ocp-collaboration-reference-renderreferenceevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 25.</span></p>
+</div>
+<p>Event emitted when apps might render references like link previews or smart picker widgets.
+This can be used to inject scripts for extending that.
+Further details can be found in the <a class="reference internal" href="../digging_deeper/reference.html#reference-providers"><span class="std std-ref">Reference providers</span></a> deep dive.</p>
+</section>
+<section id="ocp-collaboration-resources-loadadditionalscriptsevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Collaboration\Resources\LoadAdditionalScriptsEvent</span></code><a class="headerlink" href="#ocp-collaboration-resources-loadadditionalscriptsevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 25.</span></p>
+</div>
+<p>This event is used by apps to register their own frontend scripts for integrating
+projects in their app. Apps also need to dispatch the event in order to load
+scripts during page load</p>
+</section>
+<section id="ocp-comments-commentsentityevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Comments\CommentsEntityEvent</span></code><a class="headerlink" href="#ocp-comments-commentsentityevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 9.1.</span></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 28.0.0: </span>Dispatched as a typed event</p>
+</div>
+<p>Class CommentsEntityEvent</p>
+</section>
+<section id="ocp-comments-commentsevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Comments\CommentsEvent</span></code><a class="headerlink" href="#ocp-comments-commentsevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 9.</span></p>
+</div>
+<p>Class CommentsEvent</p>
+</section>
+<section id="ocp-config-beforepreferencedeletedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Config\BeforePreferenceDeletedEvent</span></code><a class="headerlink" href="#ocp-config-beforepreferencedeletedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 25.</span></p>
+</div>
+</section>
+<section id="ocp-config-beforepreferencesetevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Config\BeforePreferenceSetEvent</span></code><a class="headerlink" href="#ocp-config-beforepreferencesetevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 25.</span></p>
+</div>
+</section>
+<section id="ocp-console-consoleevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Console\ConsoleEvent</span></code><a class="headerlink" href="#ocp-console-consoleevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 9.</span></p>
+</div>
+<p>Class ConsoleEvent</p>
+</section>
+<section id="ocp-contacts-events-contactinteractedwithevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Contacts\Events\ContactInteractedWithEvent</span></code><a class="headerlink" href="#ocp-contacts-events-contactinteractedwithevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 19.</span></p>
+</div>
+<p>An event that allows apps to notify other components about an interaction
+between two users. This can be used to build better recommendations and
+suggestions in user interfaces.
+Emitters should add at least one identifier (uid, email, federated cloud ID)
+of the recipient of the interaction.</p>
+</section>
+<section id="ocp-db-events-addmissingcolumnsevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\DB\Events\AddMissingColumnsEvent</span></code><a class="headerlink" href="#ocp-db-events-addmissingcolumnsevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+<p>Event to allow apps to register information about missing database columns
+This event will be dispatched for checking on the admin settings and when running
+occ db:add-missing-columns which will then create those columns</p>
+</section>
+<section id="ocp-db-events-addmissingindicesevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\DB\Events\AddMissingIndicesEvent</span></code><a class="headerlink" href="#ocp-db-events-addmissingindicesevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+<p>Event to allow apps to register information about missing database indices
+This event will be dispatched for checking on the admin settings and when running
+occ db:add-missing-indices which will then create those indices</p>
+</section>
+<section id="ocp-db-events-addmissingprimarykeyevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\DB\Events\AddMissingPrimaryKeyEvent</span></code><a class="headerlink" href="#ocp-db-events-addmissingprimarykeyevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+<p>Event to allow apps to register information about missing database primary keys
+This event will be dispatched for checking on the admin settings and when running
+occ db:add-missing-primary-keys which will then create those keys</p>
+</section>
+<section id="ocp-directediting-registerdirecteditorevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\DirectEditing\RegisterDirectEditorEvent</span></code><a class="headerlink" href="#ocp-directediting-registerdirecteditorevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+<p>Event to allow to register the direct editor.</p>
+</section>
+<section id="ocp-eventdispatcher-genericevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\EventDispatcher\GenericEvent</span></code><a class="headerlink" href="#ocp-eventdispatcher-genericevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+<p>Class GenericEvent
+convenience re-implementation of SymfonyComponentGenericEvent against
+OCPEventDispatcherEvent</p>
+</section>
+<section id="ocp-federation-events-trustedserverremovedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Federation\Events\TrustedServerRemovedEvent</span></code><a class="headerlink" href="#ocp-federation-events-trustedserverremovedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 25.</span></p>
+</div>
+</section>
+<section id="ocp-files-cache-abstractcacheevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Cache\AbstractCacheEvent</span></code><a class="headerlink" href="#ocp-files-cache-abstractcacheevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 22.</span></p>
+</div>
+</section>
+<section id="ocp-files-cache-cacheentryinsertedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Cache\CacheEntryInsertedEvent</span></code><a class="headerlink" href="#ocp-files-cache-cacheentryinsertedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 21.</span></p>
+</div>
+<p>Event for when an existing entry in the cache gets inserted</p>
+</section>
+<section id="ocp-files-cache-cacheentryremovedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Cache\CacheEntryRemovedEvent</span></code><a class="headerlink" href="#ocp-files-cache-cacheentryremovedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 21.</span></p>
+</div>
+<p>Event for when an existing entry in the cache gets removed</p>
+</section>
+<section id="ocp-files-cache-cacheentryupdatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Cache\CacheEntryUpdatedEvent</span></code><a class="headerlink" href="#ocp-files-cache-cacheentryupdatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 21.</span></p>
+</div>
+<p>Event for when an existing entry in the cache gets updated</p>
+</section>
+<section id="ocp-files-cache-cacheinsertevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Cache\CacheInsertEvent</span></code><a class="headerlink" href="#ocp-files-cache-cacheinsertevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 16.</span></p>
+</div>
+<p>Event for when a new entry gets added to the cache</p>
+</section>
+<section id="ocp-files-cache-cacheupdateevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Cache\CacheUpdateEvent</span></code><a class="headerlink" href="#ocp-files-cache-cacheupdateevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 16.</span></p>
+</div>
+<p>Event for when an existing entry in the cache gets updated</p>
+</section>
+<section id="ocp-files-config-event-usermountaddedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Config\Event\UserMountAddedEvent</span></code><a class="headerlink" href="#ocp-files-config-event-usermountaddedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 31.</span></p>
+</div>
+<p>Event emitted when a user mount was added.</p>
+</section>
+<section id="ocp-files-config-event-usermountremovedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Config\Event\UserMountRemovedEvent</span></code><a class="headerlink" href="#ocp-files-config-event-usermountremovedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 31.</span></p>
+</div>
+<p>Event emitted when a user mount was removed.</p>
+</section>
+<section id="ocp-files-config-event-usermountupdatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Config\Event\UserMountUpdatedEvent</span></code><a class="headerlink" href="#ocp-files-config-event-usermountupdatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 31.</span></p>
+</div>
+<p>Event emitted when a user mount was moved.</p>
+</section>
+<section id="ocp-files-events-beforedirectfiledownloadevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\BeforeDirectFileDownloadEvent</span></code><a class="headerlink" href="#ocp-files-events-beforedirectfiledownloadevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 25.</span></p>
+</div>
+<p>This event is triggered when a user tries to download a file
+directly.</p>
+</section>
+<section id="ocp-files-events-beforefilescannedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\BeforeFileScannedEvent</span></code><a class="headerlink" href="#ocp-files-events-beforefilescannedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+<section id="ocp-files-events-beforefilesystemsetupevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\BeforeFileSystemSetupEvent</span></code><a class="headerlink" href="#ocp-files-events-beforefilesystemsetupevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 31.</span></p>
+</div>
+<p>Event triggered before the file system is setup</p>
+</section>
+<section id="ocp-files-events-beforefolderscannedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\BeforeFolderScannedEvent</span></code><a class="headerlink" href="#ocp-files-events-beforefolderscannedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+<section id="ocp-files-events-beforezipcreatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\BeforeZipCreatedEvent</span></code><a class="headerlink" href="#ocp-files-events-beforezipcreatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 25.</span></p>
+</div>
+<p>This event is triggered before a archive is created when a user requested
+downloading a folder or multiple files.
+By setting <cite>successful</cite> to false the tar creation can be aborted and the download denied.</p>
+</section>
+<section id="ocp-files-events-filecacheupdated">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\FileCacheUpdated</span></code><a class="headerlink" href="#ocp-files-events-filecacheupdated" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+<section id="ocp-files-events-filescannedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\FileScannedEvent</span></code><a class="headerlink" href="#ocp-files-events-filescannedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+<section id="ocp-files-events-folderscannedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\FolderScannedEvent</span></code><a class="headerlink" href="#ocp-files-events-folderscannedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+<section id="ocp-files-events-invalidatemountcacheevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\InvalidateMountCacheEvent</span></code><a class="headerlink" href="#ocp-files-events-invalidatemountcacheevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 24.</span></p>
+</div>
+<p>Used to notify the filesystem setup manager that the available mounts for a user have changed</p>
+</section>
+<section id="ocp-files-events-node-beforenodecopiedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\BeforeNodeCopiedEvent</span></code><a class="headerlink" href="#ocp-files-events-node-beforenodecopiedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+</section>
+<section id="ocp-files-events-node-beforenodecreatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\BeforeNodeCreatedEvent</span></code><a class="headerlink" href="#ocp-files-events-node-beforenodecreatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+</section>
+<section id="ocp-files-events-node-beforenodedeletedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\BeforeNodeDeletedEvent</span></code><a class="headerlink" href="#ocp-files-events-node-beforenodedeletedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+</section>
+<section id="ocp-files-events-node-beforenodereadevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\BeforeNodeReadEvent</span></code><a class="headerlink" href="#ocp-files-events-node-beforenodereadevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+</section>
+<section id="ocp-files-events-node-beforenoderenamedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\BeforeNodeRenamedEvent</span></code><a class="headerlink" href="#ocp-files-events-node-beforenoderenamedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+</section>
+<section id="ocp-files-events-node-beforenodetouchedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\BeforeNodeTouchedEvent</span></code><a class="headerlink" href="#ocp-files-events-node-beforenodetouchedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+</section>
+<section id="ocp-files-events-node-beforenodewrittenevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\BeforeNodeWrittenEvent</span></code><a class="headerlink" href="#ocp-files-events-node-beforenodewrittenevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+</section>
+<section id="ocp-files-events-node-filesystemtorndownevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\FilesystemTornDownEvent</span></code><a class="headerlink" href="#ocp-files-events-node-filesystemtorndownevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 24.</span></p>
+</div>
+<p>Event fired after the filesystem has been torn down</p>
+</section>
+<section id="ocp-files-events-node-nodecopiedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\NodeCopiedEvent</span></code><a class="headerlink" href="#ocp-files-events-node-nodecopiedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+</section>
+<section id="ocp-files-events-node-nodecreatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\NodeCreatedEvent</span></code><a class="headerlink" href="#ocp-files-events-node-nodecreatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+</section>
+<section id="ocp-files-events-node-nodedeletedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\NodeDeletedEvent</span></code><a class="headerlink" href="#ocp-files-events-node-nodedeletedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+</section>
+<section id="ocp-files-events-node-noderenamedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\NodeRenamedEvent</span></code><a class="headerlink" href="#ocp-files-events-node-noderenamedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+</section>
+<section id="ocp-files-events-node-nodetouchedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\NodeTouchedEvent</span></code><a class="headerlink" href="#ocp-files-events-node-nodetouchedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+</section>
+<section id="ocp-files-events-node-nodewrittenevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\NodeWrittenEvent</span></code><a class="headerlink" href="#ocp-files-events-node-nodewrittenevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+</section>
+<section id="ocp-files-events-nodeaddedtocache">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\NodeAddedToCache</span></code><a class="headerlink" href="#ocp-files-events-nodeaddedtocache" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+<section id="ocp-files-events-nodeaddedtofavorite">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\NodeAddedToFavorite</span></code><a class="headerlink" href="#ocp-files-events-nodeaddedtofavorite" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+</section>
+<section id="ocp-files-events-noderemovedfromcache">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\NodeRemovedFromCache</span></code><a class="headerlink" href="#ocp-files-events-noderemovedfromcache" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+<section id="ocp-files-events-noderemovedfromfavorite">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\NodeRemovedFromFavorite</span></code><a class="headerlink" href="#ocp-files-events-noderemovedfromfavorite" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+</section>
+<section id="ocp-files-objectstore-events-bucketcreatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\ObjectStore\Events\BucketCreatedEvent</span></code><a class="headerlink" href="#ocp-files-objectstore-events-bucketcreatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 33.</span></p>
+</div>
+</section>
+<section id="ocp-files-template-beforegettemplatesevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Template\BeforeGetTemplatesEvent</span></code><a class="headerlink" href="#ocp-files-template-beforegettemplatesevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 30.</span></p>
+</div>
+</section>
+<section id="ocp-files-template-filecreatedfromtemplateevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Template\FileCreatedFromTemplateEvent</span></code><a class="headerlink" href="#ocp-files-template-filecreatedfromtemplateevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 21.</span></p>
+</div>
+</section>
+<section id="ocp-files-template-registertemplatecreatorevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Files\Template\RegisterTemplateCreatorEvent</span></code><a class="headerlink" href="#ocp-files-template-registertemplatecreatorevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 30.</span></p>
+</div>
+</section>
+<section id="ocp-filesmetadata-event-metadatabackgroundevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\FilesMetadata\Event\MetadataBackgroundEvent</span></code><a class="headerlink" href="#ocp-filesmetadata-event-metadatabackgroundevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+<p>MetadataBackgroundEvent is an event similar to MetadataLiveEvent but dispatched
+on a background thread instead of live thread. Meaning there is no limit to
+the time required for the generation of your metadata.</p>
+</section>
+<section id="ocp-filesmetadata-event-metadataliveevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\FilesMetadata\Event\MetadataLiveEvent</span></code><a class="headerlink" href="#ocp-filesmetadata-event-metadataliveevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+<p>MetadataLiveEvent is an event initiated when a file is created or updated.
+The app contains the Node related to the created/updated file, and a FilesMetadata that already
+contains the currently known metadata.</p>
+<p>Setting new metadata, or modifying already existing metadata with different value, will trigger
+the save of the metadata in the database.</p>
+</section>
+<section id="ocp-filesmetadata-event-metadatanamedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\FilesMetadata\Event\MetadataNamedEvent</span></code><a class="headerlink" href="#ocp-filesmetadata-event-metadatanamedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+<p>MetadataNamedEvent is an event similar to MetadataBackgroundEvent completed with a target name,
+used to limit the refresh of metadata only listeners capable of filtering themselves out.
+Meaning that when using this event, your app must implement a filter on the event’s registered
+name returned by getName()</p>
+<dl class="simple">
+<dt>This event is mostly triggered when a registered name is added to the files scan</dt><dd><p>i.e. ./occ files:scan –generate-metadata [name]</p>
+</dd>
+</dl>
+</section>
+<section id="ocp-group-events-beforegroupchangedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Group\Events\BeforeGroupChangedEvent</span></code><a class="headerlink" href="#ocp-group-events-beforegroupchangedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 26.</span></p>
+</div>
+</section>
+<section id="ocp-group-events-beforegroupcreatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Group\Events\BeforeGroupCreatedEvent</span></code><a class="headerlink" href="#ocp-group-events-beforegroupcreatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+<section id="ocp-group-events-beforegroupdeletedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Group\Events\BeforeGroupDeletedEvent</span></code><a class="headerlink" href="#ocp-group-events-beforegroupdeletedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+<section id="ocp-group-events-beforeuseraddedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Group\Events\BeforeUserAddedEvent</span></code><a class="headerlink" href="#ocp-group-events-beforeuseraddedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+<section id="ocp-group-events-beforeuserremovedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Group\Events\BeforeUserRemovedEvent</span></code><a class="headerlink" href="#ocp-group-events-beforeuserremovedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+<section id="ocp-group-events-groupchangedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Group\Events\GroupChangedEvent</span></code><a class="headerlink" href="#ocp-group-events-groupchangedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 26.</span></p>
+</div>
+</section>
+<section id="ocp-group-events-groupcreatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Group\Events\GroupCreatedEvent</span></code><a class="headerlink" href="#ocp-group-events-groupcreatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+<section id="ocp-group-events-groupdeletedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Group\Events\GroupDeletedEvent</span></code><a class="headerlink" href="#ocp-group-events-groupdeletedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+<section id="ocp-group-events-subadminaddedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Group\Events\SubAdminAddedEvent</span></code><a class="headerlink" href="#ocp-group-events-subadminaddedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 21.</span></p>
+</div>
+</section>
+<section id="ocp-group-events-subadminremovedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Group\Events\SubAdminRemovedEvent</span></code><a class="headerlink" href="#ocp-group-events-subadminremovedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 21.</span></p>
+</div>
+</section>
+<section id="ocp-group-events-useraddedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Group\Events\UserAddedEvent</span></code><a class="headerlink" href="#ocp-group-events-useraddedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+<section id="ocp-group-events-userremovedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Group\Events\UserRemovedEvent</span></code><a class="headerlink" href="#ocp-group-events-userremovedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+<section id="ocp-log-audit-criticalactionperformedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Log\Audit\CriticalActionPerformedEvent</span></code><a class="headerlink" href="#ocp-log-audit-criticalactionperformedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 22.</span></p>
+</div>
+<p>Emitted when the admin_audit app should log an entry</p>
+</section>
+<section id="ocp-log-beforemessageloggedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Log\BeforeMessageLoggedEvent</span></code><a class="headerlink" href="#ocp-log-beforemessageloggedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+<p>Even for when a log item is being logged</p>
+</section>
+<section id="ocp-mail-events-beforemessagesent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Mail\Events\BeforeMessageSent</span></code><a class="headerlink" href="#ocp-mail-events-beforemessagesent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 19.</span></p>
+</div>
+<p>Emitted before a system mail is sent. It can be used to alter the message.</p>
+</section>
+<section id="ocp-navigation-events-loadadditionalentriesevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Navigation\Events\LoadAdditionalEntriesEvent</span></code><a class="headerlink" href="#ocp-navigation-events-loadadditionalentriesevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 31.</span></p>
+</div>
+</section>
+<section id="ocp-ocm-events-resourcetyperegisterevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\OCM\Events\ResourceTypeRegisterEvent</span></code><a class="headerlink" href="#ocp-ocm-events-resourcetyperegisterevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+<p>Use this event to register additional OCM resources before the API returns
+them in the OCM provider list and capability</p>
+</section>
+<section id="ocp-preview-beforepreviewfetchedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Preview\BeforePreviewFetchedEvent</span></code><a class="headerlink" href="#ocp-preview-beforepreviewfetchedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 25.0.1.</span></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 28.0.0: </span>the constructor arguments <code class="docutils literal notranslate"><span class="pre">$width</span></code>, <code class="docutils literal notranslate"><span class="pre">$height</span></code>, <code class="docutils literal notranslate"><span class="pre">$crop</span></code> and <code class="docutils literal notranslate"><span class="pre">$mode</span></code> are no longer nullable.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 31.0.0: </span>the constructor arguments <code class="docutils literal notranslate"><span class="pre">$mimeType</span></code> was added</p>
+</div>
+<p>Emitted before a file preview is being fetched.
+It can be used to block preview rendering by throwing a <code class="docutils literal notranslate"><span class="pre">OCP\Files\NotFoundException</span></code></p>
+</section>
+<section id="ocp-profile-beforetemplaterenderedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Profile\BeforeTemplateRenderedEvent</span></code><a class="headerlink" href="#ocp-profile-beforetemplaterenderedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 25.</span></p>
+</div>
+<p>Emitted before the rendering step of the public profile page happens.</p>
+</section>
+<section id="ocp-sabrepluginevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\SabrePluginEvent</span></code><a class="headerlink" href="#ocp-sabrepluginevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 8.2.</span></p>
+</div>
+</section>
+<section id="ocp-security-csp-addcontentsecuritypolicyevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Security\CSP\AddContentSecurityPolicyEvent</span></code><a class="headerlink" href="#ocp-security-csp-addcontentsecuritypolicyevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 17.</span></p>
+</div>
+<p>Allows to inject something into the default content policy. This is for
+example useful when you’re injecting Javascript code into a view belonging
+to another controller and cannot modify its Content-Security-Policy itself.
+Note that the adjustment is only applied to applications that use AppFramework
+controllers.</p>
+<p>WARNING: Using this API incorrectly may make the instance more insecure.
+Do think twice before adding whitelisting resources. Please do also note
+that it is not possible to use the <cite>disallowXYZ</cite> functions.</p>
+</section>
+<section id="ocp-security-events-generatesecurepasswordevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Security\Events\GenerateSecurePasswordEvent</span></code><a class="headerlink" href="#ocp-security-events-generatesecurepasswordevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+<p>Event to request a secure password to be generated.</p>
+<p>Since Nextcloud 31 this event also provides a <code class="docutils literal notranslate"><span class="pre">getContext</span></code> method
+allowing to apply different rules for different password context like account passwords or share passwords.</p>
+</section>
+<section id="ocp-security-events-validatepasswordpolicyevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Security\Events\ValidatePasswordPolicyEvent</span></code><a class="headerlink" href="#ocp-security-events-validatepasswordpolicyevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+<p>This event can be emitted to request a validation of a password.
+If a password policy app is installed and the password
+is invalid, an <cite>OCPHintException</cite> will be thrown.</p>
+<p>Since Nextcloud 31 this event also provides a <code class="docutils literal notranslate"><span class="pre">getContext</span></code> method
+allowing to apply different rules for different password context like account passwords or share passwords.</p>
+</section>
+<section id="ocp-security-featurepolicy-addfeaturepolicyevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Security\FeaturePolicy\AddFeaturePolicyEvent</span></code><a class="headerlink" href="#ocp-security-featurepolicy-addfeaturepolicyevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 17.</span></p>
+</div>
+<p>Event that allows to register a feature policy header to a request.</p>
+</section>
+<section id="ocp-settings-events-declarativesettingsgetvalueevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Settings\Events\DeclarativeSettingsGetValueEvent</span></code><a class="headerlink" href="#ocp-settings-events-declarativesettingsgetvalueevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 29.</span></p>
+</div>
+</section>
+<section id="ocp-settings-events-declarativesettingsregisterformevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Settings\Events\DeclarativeSettingsRegisterFormEvent</span></code><a class="headerlink" href="#ocp-settings-events-declarativesettingsregisterformevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 29.</span></p>
+</div>
+</section>
+<section id="ocp-settings-events-declarativesettingssetvalueevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Settings\Events\DeclarativeSettingsSetValueEvent</span></code><a class="headerlink" href="#ocp-settings-events-declarativesettingssetvalueevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 29.</span></p>
+</div>
+</section>
+<section id="ocp-share-events-beforesharecreatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Share\Events\BeforeShareCreatedEvent</span></code><a class="headerlink" href="#ocp-share-events-beforesharecreatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+</section>
+<section id="ocp-share-events-beforesharedeletedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Share\Events\BeforeShareDeletedEvent</span></code><a class="headerlink" href="#ocp-share-events-beforesharedeletedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+</section>
+<section id="ocp-share-events-shareacceptedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Share\Events\ShareAcceptedEvent</span></code><a class="headerlink" href="#ocp-share-events-shareacceptedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+</section>
+<section id="ocp-share-events-sharecreatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Share\Events\ShareCreatedEvent</span></code><a class="headerlink" href="#ocp-share-events-sharecreatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+<section id="ocp-share-events-sharedeletedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Share\Events\ShareDeletedEvent</span></code><a class="headerlink" href="#ocp-share-events-sharedeletedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 21.</span></p>
+</div>
+</section>
+<section id="ocp-share-events-sharedeletedfromselfevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Share\Events\ShareDeletedFromSelfEvent</span></code><a class="headerlink" href="#ocp-share-events-sharedeletedfromselfevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+</section>
+<section id="ocp-share-events-verifymountpointevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\Share\Events\VerifyMountPointEvent</span></code><a class="headerlink" href="#ocp-share-events-verifymountpointevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 19.</span></p>
+</div>
+</section>
+<section id="ocp-speechtotext-events-transcriptionfailedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\SpeechToText\Events\TranscriptionFailedEvent</span></code><a class="headerlink" href="#ocp-speechtotext-events-transcriptionfailedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 27.</span></p>
+</div>
+<p>This Event is emitted if a transcription of a media file using a Speech-To-Text provider failed</p>
+</section>
+<section id="ocp-speechtotext-events-transcriptionsuccessfulevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\SpeechToText\Events\TranscriptionSuccessfulEvent</span></code><a class="headerlink" href="#ocp-speechtotext-events-transcriptionsuccessfulevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 27.</span></p>
+</div>
+<p>This Event is emitted when a transcription of a media file happened successfully</p>
+</section>
+<section id="ocp-systemtag-managerevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\SystemTag\ManagerEvent</span></code><a class="headerlink" href="#ocp-systemtag-managerevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 9.</span></p>
+</div>
+<p>Class ManagerEvent</p>
+</section>
+<section id="ocp-systemtag-mapperevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\SystemTag\MapperEvent</span></code><a class="headerlink" href="#ocp-systemtag-mapperevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 9.</span></p>
+</div>
+<p>Class MapperEvent</p>
+</section>
+<section id="ocp-systemtag-systemtagsentityevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\SystemTag\SystemTagsEntityEvent</span></code><a class="headerlink" href="#ocp-systemtag-systemtagsentityevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 9.1.</span></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 28.0.0: </span>Dispatched as a typed event</p>
+</div>
+<p>Class SystemTagsEntityEvent</p>
+</section>
+<section id="ocp-taskprocessing-events-gettaskprocessingprovidersevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing\Events\GetTaskProcessingProvidersEvent</span></code><a class="headerlink" href="#ocp-taskprocessing-events-gettaskprocessingprovidersevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 32.</span></p>
+</div>
+<p>Event dispatched by the server to collect Task Processing Providers
+and custom Task Types from listeners (like AppAPI).
+Listeners should add their providers and task types using the
+addProvider() and addTaskType() methods.</p>
+</section>
+<section id="ocp-taskprocessing-events-taskfailedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing\Events\TaskFailedEvent</span></code><a class="headerlink" href="#ocp-taskprocessing-events-taskfailedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 30.</span></p>
+</div>
+</section>
+<section id="ocp-taskprocessing-events-tasksuccessfulevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\TaskProcessing\Events\TaskSuccessfulEvent</span></code><a class="headerlink" href="#ocp-taskprocessing-events-tasksuccessfulevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 30.</span></p>
+</div>
+</section>
+<section id="ocp-textprocessing-events-taskfailedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\TextProcessing\Events\TaskFailedEvent</span></code><a class="headerlink" href="#ocp-textprocessing-events-taskfailedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 27.1.</span></p>
+</div>
+</section>
+<section id="ocp-textprocessing-events-tasksuccessfulevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\TextProcessing\Events\TaskSuccessfulEvent</span></code><a class="headerlink" href="#ocp-textprocessing-events-tasksuccessfulevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 27.1.</span></p>
+</div>
+</section>
+<section id="ocp-texttoimage-events-taskfailedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\TextToImage\Events\TaskFailedEvent</span></code><a class="headerlink" href="#ocp-texttoimage-events-taskfailedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+</section>
+<section id="ocp-texttoimage-events-tasksuccessfulevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\TextToImage\Events\TaskSuccessfulEvent</span></code><a class="headerlink" href="#ocp-texttoimage-events-tasksuccessfulevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+</section>
+<section id="ocp-user-events-beforepasswordupdatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\BeforePasswordUpdatedEvent</span></code><a class="headerlink" href="#ocp-user-events-beforepasswordupdatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+<p>Emitted before the user password is updated.</p>
+</section>
+<section id="ocp-user-events-beforeusercreatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\BeforeUserCreatedEvent</span></code><a class="headerlink" href="#ocp-user-events-beforeusercreatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+<p>Emitted before a new user is created on the back-end.</p>
+</section>
+<section id="ocp-user-events-beforeuserdeletedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\BeforeUserDeletedEvent</span></code><a class="headerlink" href="#ocp-user-events-beforeuserdeletedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+<section id="ocp-user-events-beforeuseridunassignedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\BeforeUserIdUnassignedEvent</span></code><a class="headerlink" href="#ocp-user-events-beforeuseridunassignedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 31.</span></p>
+</div>
+<p>Emitted before removing the mapping between an external user and an internal userid</p>
+</section>
+<section id="ocp-user-events-beforeuserloggedinevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\BeforeUserLoggedInEvent</span></code><a class="headerlink" href="#ocp-user-events-beforeuserloggedinevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+<section id="ocp-user-events-beforeuserloggedinwithcookieevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\BeforeUserLoggedInWithCookieEvent</span></code><a class="headerlink" href="#ocp-user-events-beforeuserloggedinwithcookieevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+<p>Emitted before a user is logged in via remember-me cookies.</p>
+</section>
+<section id="ocp-user-events-beforeuserloggedoutevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\BeforeUserLoggedOutEvent</span></code><a class="headerlink" href="#ocp-user-events-beforeuserloggedoutevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+<p>Emitted before a user is logged out.</p>
+</section>
+<section id="ocp-user-events-outofofficechangedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\OutOfOfficeChangedEvent</span></code><a class="headerlink" href="#ocp-user-events-outofofficechangedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+<p>Emitted when a user’s out-of-office period has changed</p>
+</section>
+<section id="ocp-user-events-outofofficeclearedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\OutOfOfficeClearedEvent</span></code><a class="headerlink" href="#ocp-user-events-outofofficeclearedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+<p>Emitted when a user’s out-of-office period is cleared</p>
+</section>
+<section id="ocp-user-events-outofofficeendedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\OutOfOfficeEndedEvent</span></code><a class="headerlink" href="#ocp-user-events-outofofficeendedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+<p>Emitted when a user’s out-of-office period ended</p>
+</section>
+<section id="ocp-user-events-outofofficescheduledevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\OutOfOfficeScheduledEvent</span></code><a class="headerlink" href="#ocp-user-events-outofofficescheduledevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+<p>Emitted when a user’s out-of-office period is scheduled</p>
+</section>
+<section id="ocp-user-events-outofofficestartedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\OutOfOfficeStartedEvent</span></code><a class="headerlink" href="#ocp-user-events-outofofficestartedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+<p>Emitted when a user’s out-of-office period started</p>
+</section>
+<section id="ocp-user-events-passwordupdatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\PasswordUpdatedEvent</span></code><a class="headerlink" href="#ocp-user-events-passwordupdatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+<p>Emitted when the user password has been updated.</p>
+</section>
+<section id="ocp-user-events-postloginevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\PostLoginEvent</span></code><a class="headerlink" href="#ocp-user-events-postloginevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+<section id="ocp-user-events-userchangedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\UserChangedEvent</span></code><a class="headerlink" href="#ocp-user-events-userchangedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+<section id="ocp-user-events-usercreatedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\UserCreatedEvent</span></code><a class="headerlink" href="#ocp-user-events-usercreatedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+<p>Emitted when a new user has been created on the back-end.</p>
+</section>
+<section id="ocp-user-events-userdeletedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\UserDeletedEvent</span></code><a class="headerlink" href="#ocp-user-events-userdeletedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+<section id="ocp-user-events-userfirsttimeloggedinevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\UserFirstTimeLoggedInEvent</span></code><a class="headerlink" href="#ocp-user-events-userfirsttimeloggedinevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 28.</span></p>
+</div>
+</section>
+<section id="ocp-user-events-useridassignedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\UserIdAssignedEvent</span></code><a class="headerlink" href="#ocp-user-events-useridassignedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 31.</span></p>
+</div>
+<p>Emitted by backends (like user_ldap) when a user created externally is mapped for the first time and assigned a userid</p>
+</section>
+<section id="ocp-user-events-useridunassignedevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\UserIdUnassignedEvent</span></code><a class="headerlink" href="#ocp-user-events-useridunassignedevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 31.</span></p>
+</div>
+<p>Emitted after removing the mapping between an external user and an internal userid</p>
+</section>
+<section id="ocp-user-events-userlivestatusevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\UserLiveStatusEvent</span></code><a class="headerlink" href="#ocp-user-events-userlivestatusevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+</section>
+<section id="ocp-user-events-userloggedinevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\UserLoggedInEvent</span></code><a class="headerlink" href="#ocp-user-events-userloggedinevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+<section id="ocp-user-events-userloggedinwithcookieevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\UserLoggedInWithCookieEvent</span></code><a class="headerlink" href="#ocp-user-events-userloggedinwithcookieevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+<p>Emitted when a user has been successfully logged in via remember-me cookies.</p>
+</section>
+<section id="ocp-user-events-userloggedoutevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\Events\UserLoggedOutEvent</span></code><a class="headerlink" href="#ocp-user-events-userloggedoutevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+<p>Emitted when a user has been logged out successfully.</p>
+</section>
+<section id="ocp-user-getquotaevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\User\GetQuotaEvent</span></code><a class="headerlink" href="#ocp-user-getquotaevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>Event to allow apps to</p>
+</section>
+<section id="ocp-workflowengine-events-loadsettingsscriptsevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\WorkflowEngine\Events\LoadSettingsScriptsEvent</span></code><a class="headerlink" href="#ocp-workflowengine-events-loadsettingsscriptsevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 20.</span></p>
+</div>
+<p>Emitted when the workflow engine settings page is loaded.</p>
+</section>
+<section id="ocp-workflowengine-events-registerchecksevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\WorkflowEngine\Events\RegisterChecksEvent</span></code><a class="headerlink" href="#ocp-workflowengine-events-registerchecksevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+<section id="ocp-workflowengine-events-registerentitiesevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\WorkflowEngine\Events\RegisterEntitiesEvent</span></code><a class="headerlink" href="#ocp-workflowengine-events-registerentitiesevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+<section id="ocp-workflowengine-events-registeroperationsevent">
+<h4><code class="docutils literal notranslate"><span class="pre">OCP\WorkflowEngine\Events\RegisterOperationsEvent</span></code><a class="headerlink" href="#ocp-workflowengine-events-registeroperationsevent" title="Link to this heading"></a></h4>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 18.</span></p>
+</div>
+</section>
+</section>
+</section>
+<section id="hooks">
+<h2>Hooks<a class="headerlink" href="#hooks" title="Link to this heading"></a></h2>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 18: </span>Use the <a class="reference internal" href="#ocp-event-dispatcher">OCP event dispatcher</a> instead.</p>
+</div>
+<p>Hooks are used to execute code before or after an event has occurred. This is for instance useful to run cleanup code after users, groups or files have been deleted. Hooks should be registered in the <a class="reference internal" href="../app_development/bootstrap.html"><span class="doc">Bootstrapping process</span></a>.</p>
+<section id="available-hooks">
+<h3>Available hooks<a class="headerlink" href="#available-hooks" title="Link to this heading"></a></h3>
+<p>The scope is the first parameter that is passed to the <strong>listen</strong> method, the second parameter is the method and the third one the callback that should be executed once the hook is being called, e.g.:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="c1">// listen on user predelete</span>
+<span class="nv">$callback</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="nv">$user</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// your code that executes before $user is deleted</span>
+<span class="p">};</span>
+<span class="nv">$userManager</span><span class="o">-&gt;</span><span class="na">listen</span><span class="p">(</span><span class="s1">&#39;\OC\User&#39;</span><span class="p">,</span> <span class="s1">&#39;preDelete&#39;</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Hooks can also be removed by using the <strong>removeListener</strong> method on the object:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="c1">// delete previous callback</span>
+<span class="nv">$userManager</span><span class="o">-&gt;</span><span class="na">removeListener</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The following hooks are available:</p>
+</section>
+<section id="session">
+<h3>Session<a class="headerlink" href="#session" title="Link to this heading"></a></h3>
+<p>Injectable from the ServerContainer with the <code class="docutils literal notranslate"><span class="pre">\OCP\IUserSession</span></code> service.</p>
+<p>Hooks available in scope <strong>\OC\User</strong>:</p>
+<ul class="simple">
+<li><p><strong>preSetPassword</strong> (\OC\User\User $user, string $password, string $recoverPassword)</p></li>
+<li><p><strong>postSetPassword</strong> (\OC\User\User $user, string $password, string $recoverPassword)</p></li>
+<li><p><strong>changeUser</strong> (\OC\User\User $user, string $feature, string $value)</p></li>
+<li><p><strong>preDelete</strong> (\OC\User\User $user)</p></li>
+<li><p><strong>postDelete</strong> (\OC\User\User $user)</p></li>
+<li><p><strong>preCreateUser</strong> (string $uid, string $password)</p></li>
+<li><p><strong>postCreateUser</strong> (\OC\User\User $user)</p></li>
+<li><p><strong>preLogin</strong> (string $user, string $password)</p></li>
+<li><p><strong>postLogin</strong> (\OC\User\User $user, string $password)</p></li>
+<li><p><strong>logout</strong> ()</p></li>
+</ul>
+</section>
+<section id="usermanager">
+<h3>UserManager<a class="headerlink" href="#usermanager" title="Link to this heading"></a></h3>
+<p>Injectable from the ServerContainer with the <code class="docutils literal notranslate"><span class="pre">\OCP\IUserManager</span></code> service.</p>
+<p>Hooks available in scope <strong>\OC\User</strong>:</p>
+<ul class="simple">
+<li><p><strong>preSetPassword</strong> (\OC\User\User $user, string $password, string $recoverPassword)</p></li>
+<li><p><strong>postSetPassword</strong> (\OC\User\User $user, string $password, string $recoverPassword)</p></li>
+<li><p><strong>preDelete</strong> (\OC\User\User $user)</p></li>
+<li><p><strong>postDelete</strong> (\OC\User\User $user)</p></li>
+<li><p><strong>preCreateUser</strong> (string $uid, string $password)</p></li>
+<li><p><strong>postCreateUser</strong> (\OC\User\User $user, string $password)</p></li>
+</ul>
+</section>
+<section id="groupmanager">
+<h3>GroupManager<a class="headerlink" href="#groupmanager" title="Link to this heading"></a></h3>
+<p>Hooks available in scope <strong>\OC\Group</strong>:</p>
+<ul class="simple">
+<li><p><strong>preAddUser</strong> (\OC\Group\Group $group, \OC\User\User $user)</p></li>
+<li><p><strong>postAddUser</strong> (\OC\Group\Group $group, \OC\User\User $user)</p></li>
+<li><p><strong>preRemoveUser</strong> (\OC\Group\Group $group, \OC\User\User $user)</p></li>
+<li><p><strong>postRemoveUser</strong> (\OC\Group\Group $group, \OC\User\User $user)</p></li>
+<li><p><strong>preDelete</strong> (\OC\Group\Group $group)</p></li>
+<li><p><strong>postDelete</strong> (\OC\Group\Group $group)</p></li>
+<li><p><strong>preCreate</strong> (string $groupId)</p></li>
+<li><p><strong>postCreate</strong> (\OC\Group\Group $group)</p></li>
+</ul>
+</section>
+<section id="filesystem-root">
+<h3>Filesystem root<a class="headerlink" href="#filesystem-root" title="Link to this heading"></a></h3>
+<p>Injectable from the ServerContainer by calling the method <strong>getRootFolder()</strong>, <strong>getUserFolder()</strong> or <strong>getAppFolder()</strong>.</p>
+<p>To enable these events for your app you should add the following to your <cite>info.xml</cite> file:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;types&gt;</span>
+<span class="w">    </span><span class="nt">&lt;filesystem/&gt;</span>
+<span class="nt">&lt;/types&gt;</span>
+</pre></div>
+</div>
+<p>Filesystem hooks available in scope <strong>\OC\Files</strong>:</p>
+<ul class="simple">
+<li><p><strong>preWrite</strong> (\OCP\Files\Node $node)</p></li>
+<li><p><strong>postWrite</strong> (\OCP\Files\Node $node)</p></li>
+<li><p><strong>preCreate</strong> (\OCP\Files\Node $node)</p></li>
+<li><p><strong>postCreate</strong> (\OCP\Files\Node $node)</p></li>
+<li><p><strong>preDelete</strong> (\OCP\Files\Node $node)</p></li>
+<li><p><strong>postDelete</strong> (\OCP\Files\Node $node)</p></li>
+<li><p><strong>preTouch</strong> (\OCP\Files\Node $node, int $mtime)</p></li>
+<li><p><strong>postTouch</strong> (\OCP\Files\Node $node)</p></li>
+<li><p><strong>preCopy</strong> (\OCP\Files\Node $source, \OCP\Files\Node $target)</p></li>
+<li><p><strong>postCopy</strong> (\OCP\Files\Node $source, \OCP\Files\Node $target)</p></li>
+<li><p><strong>preRename</strong> (\OCP\Files\Node $source, \OCP\Files\Node $target)</p></li>
+<li><p><strong>postRename</strong> (\OCP\Files\Node $source, \OCP\Files\Node $target)</p></li>
+</ul>
+</section>
+<section id="filesystem-scanner">
+<h3>Filesystem scanner<a class="headerlink" href="#filesystem-scanner" title="Link to this heading"></a></h3>
+<p>Filesystem scanner hooks available in scope <strong>\OC\Files\Utils\Scanner</strong>:</p>
+<ul class="simple">
+<li><p><strong>scanFile</strong> (string $absolutePath)</p></li>
+<li><p><strong>scanFolder</strong> (string $absolutePath)</p></li>
+<li><p><strong>postScanFile</strong> (string $absolutePath)</p></li>
+<li><p><strong>postScanFolder</strong> (string $absolutePath)</p></li>
+</ul>
+</section>
+</section>
+<section id="public-emitter">
+<h2>Public emitter<a class="headerlink" href="#public-emitter" title="Link to this heading"></a></h2>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 18: </span>Use the <a class="reference internal" href="#ocp-event-dispatcher">OCP event dispatcher</a> instead.</p>
+</div>
+<p>tbd</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="middlewares.html" class="btn btn-neutral float-left" title="Middlewares" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="front-end/index.html" class="btn btn-neutral float-right" title="Front-end" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Apr 02, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

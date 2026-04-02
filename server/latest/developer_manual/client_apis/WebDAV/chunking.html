@@ -1,0 +1,300 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chunked file upload &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/client_apis/WebDAV/chunking.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="File bulk upload" href="bulkupload.html" />
+    <link rel="prev" title="Versions" href="versions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Clients and Client APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../general.html">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../activity-api.html">Activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../android_library/index.html">Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LoginFlow/index.html">Login Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../OCS/index.html">OCS API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../RemoteWipe/index.html">Remote wipe</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Webdav</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="basic.html">Basic APIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trashbin.html">Trashbin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="versions.html">Versions</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Chunked file upload</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#chunked-upload-v2">Chunked upload v2</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bulkupload.html">File bulk upload</a></li>
+<li class="toctree-l3"><a class="reference internal" href="comments.html">Comments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ClientIntegration/index.html">Client Integration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Clients and Client APIs</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Webdav</a></li>
+      <li class="breadcrumb-item active">Chunked file upload</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/client_apis/WebDAV/chunking.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chunked-file-upload">
+<h1>Chunked file upload<a class="headerlink" href="#chunked-file-upload" title="Link to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>Uploading large files is always a bit problematic as your connection can be interrupted
+which will fail your entire upload. Nextcloud has a chunking API where you can
+upload smaller chunks which will be assembled on the server once they are all uploaded.</p>
+<p>There are two versions of the chunking API. Version 1 is the original version and version 2 was built as a backward compatible extension to support uploads directly to supporting target storages like S3. Version 2 is the recommended version to use.</p>
+<p>Version 2 comes with a few additional requirements and limitations to consider (compared to version 1):</p>
+<ul class="simple">
+<li><p>Every request needs to have a <code class="docutils literal notranslate"><span class="pre">Destination</span></code> header present which specifies the target path of the file</p></li>
+<li><p>The naming of the individual chunks is limited to be a number between 1 and 10000</p></li>
+<li><p>The chunks will be assembled in the order of their names</p></li>
+<li><p>The size of chunks must be between 5MB and 5GB (except for the last chunk, which can be smaller)</p></li>
+<li><p>Chunks cannot be downloaded from the upload directory</p></li>
+</ul>
+<p>Nextcloud will expire the upload directory after 24 hours of inactivity. This means that if you start an upload and do not finish it within 24 hours, the upload directory will be deleted and the upload will fail.</p>
+</section>
+<section id="chunked-upload-v2">
+<h2>Chunked upload v2<a class="headerlink" href="#chunked-upload-v2" title="Link to this heading"></a></h2>
+<p>The API is only available for registered users of your instance. And uses the path:
+<code class="docutils literal notranslate"><span class="pre">&lt;server&gt;/remote.php/dav/uploads/&lt;userid&gt;</span></code>. For this guide we will assume:
+<code class="docutils literal notranslate"><span class="pre">https://server/remote.php/dav/uploads/roeland</span></code></p>
+<section id="starting-a-chunked-upload">
+<h3>Starting a chunked upload<a class="headerlink" href="#starting-a-chunked-upload" title="Link to this heading"></a></h3>
+<p>A chunked upload is handled in 1 folder. This is the location all the chunks
+are uploaded to.</p>
+<p>Start by creating a folder with a unique name. You can list the current available
+folder but if you take a random UUID chances of collision are tiny.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl -X MKCOL -u roeland:pass \</span>
+<span class="go">    https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0 \</span>
+<span class="go">    --header &#39;Destination: https://server/remote.php/dav/files/roeland/dest/file.zip&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="uploading-chunks">
+<h3>Uploading chunks<a class="headerlink" href="#uploading-chunks" title="Link to this heading"></a></h3>
+<p>Once a folder for the chunks has been created we can start uploading the chunks.</p>
+<ul class="simple">
+<li><p>The naming of the individual chunks is limited to be a number between 1 and 10000</p></li>
+<li><p>The chunks will be assembled in the order of their names</p></li>
+<li><p>The size of chunks must be between 5MB and 5GB (except for the last chunk, which can be smaller)</p></li>
+<li><p>To have the quota of the user checked, you need to provide the header <code class="docutils literal notranslate"><span class="pre">OC-Total-Length</span></code> with
+the total size of the file. It will reject the chunk with a <code class="docutils literal notranslate"><span class="pre">507</span> <span class="pre">Insufficient</span> <span class="pre">Storage</span> <span class="pre">error</span></code>.
+If you do not provide it, the upload will only fail on the <code class="docutils literal notranslate"><span class="pre">MOVE</span></code> assembling step.</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl -X PUT -u roeland:pass \</span>
+<span class="go">    https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0/00001 \</span>
+<span class="go">    --data-binary @chunk1 \</span>
+<span class="go">    --header &#39;Destination: https://server/remote.php/dav/files/roeland/dest/file.zip&#39; \</span>
+<span class="go">    --header &#39;OC-Total-Length: 15000000&#39;</span>
+
+<span class="go">curl -X PUT -u roeland:pass \</span>
+<span class="go">    https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0/00002 \</span>
+<span class="go">    --data-binary @chunk2 \</span>
+<span class="go">    --header &#39;Destination: https://server/remote.php/dav/files/roeland/dest/file.zip&#39; \</span>
+<span class="go">    --header &#39;OC-Total-Length: 15000000&#39;</span>
+</pre></div>
+</div>
+<p>This will upload 2 chunks of a file. The first chunk is 10MB in size and the second
+chunk is 5MB in size.</p>
+</section>
+<section id="assembling-the-chunks">
+<h3>Assembling the chunks<a class="headerlink" href="#assembling-the-chunks" title="Link to this heading"></a></h3>
+<p>Assembling the chunk on the server is a matter of initiating a move from the client.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl -X MOVE -u roeland:pass \</span>
+<span class="go">    https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0/.file \</span>
+<span class="go">    --header &#39;Destination: https://server/remote.php/dav/files/roeland/dest/file.zip&#39; \</span>
+<span class="go">    --header &#39;OC-Total-Length: 15000000&#39;</span>
+</pre></div>
+</div>
+<p>The server will now assemble the chunks and move the final file to the folder <code class="docutils literal notranslate"><span class="pre">dest/file.zip</span></code>.</p>
+<section id="setting-the-modification-time">
+<h4>Setting the modification time<a class="headerlink" href="#setting-the-modification-time" title="Link to this heading"></a></h4>
+<p>If a modification time should be set, you can by adding it as header with date as unixtime:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl -X MOVE -u roeland:pass</span>
+<span class="go">    --header &#39;Destination: https://server/remote.php/dav/files/roeland/dest/file.zip&#39; \</span>
+<span class="go">    --header &#39;X-OC-Mtime: 1547545326&#39; \</span>
+<span class="go">    --header &#39;OC-Total-Length: 15000000&#39;</span>
+</pre></div>
+</div>
+<p>Otherwise the current upload date will be used as modification date.</p>
+<p>The chunks and the temporary upload folder will be deleted afterwards.</p>
+</section>
+</section>
+<section id="aborting-the-upload">
+<h3>Aborting the upload<a class="headerlink" href="#aborting-the-upload" title="Link to this heading"></a></h3>
+<p>If the upload has to be aborted this is a simple matter or deleting the upload folder.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl -X DELETE -u roeland:pass \</span>
+<span class="go">    https://server/remote.php/dav/uploads/roeland/myapp-e1663913-4423-4efe-a9cd-26e7beeca3c0/</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="versions.html" class="btn btn-neutral float-left" title="Versions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bulkupload.html" class="btn btn-neutral float-right" title="File bulk upload" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Apr 02, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

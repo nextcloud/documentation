@@ -1,0 +1,856 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uso do aplicativo Contatos &mdash; Documentação Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/groupware/contacts.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5eb80f5b"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=71a39b36"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="next" title="Uso do aplicativo Calendário" href="calendar.html" />
+    <link rel="prev" title="Groupware" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Pesquisar documentos" aria-label="Pesquisar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introdução ao manual do usuário do Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">A interface web do Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Arquivos &amp; sincronização</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Uso do aplicativo Contatos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#adding-contacts">Adicionar Contatos</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#importing-virtual-contacts">Importação de Contatos Virtuais</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-contacts-manually">Adicionar Contatos Manualmente</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-or-remove-contact-information">Editar ou Remover Informações de Contato</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contact-picture">Imagem de Contato</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-multiple-contacts-at-a-time">Gerenciamento de vários Contatos ao mesmo tempo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#merging-duplicate-contacts">Mesclagem de Contatos duplicados</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#organize-your-contacts-with-contact-groups">Organizar seus Contatos com Grupos de Contatos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-and-managing-address-books">Adição e Gerenciamento de Catálogos de Endereços</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#teams">Equipes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-team">Criação de uma equipe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#team-roles">Funções de equipe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-members-to-a-team">Adicionar membros a uma equipe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#team-options">Opções de equipe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shared-items">Itens compartilhados</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Uso do aplicativo Calendário</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mail.html">Uso do aplicativo E-Mail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">Configuração de mensagens de ausência do escritório</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Sincronização com Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">Sincronização com iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">Sincronização com macOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Sincronização com Thunderbird</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Sincronização com o KDE Kontact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Sincronização com o desktop GNOME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Sincronização com Windows 10</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Clientes de Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Configuração de suas preferências</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Acesso universal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Uso da autenticação de dois fatores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gerenciar navegadores e dispositivos conectados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Armazenamento externo</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Menu de navegação móvel" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Navegação da página">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Groupware</a></li>
+      <li class="breadcrumb-item active">Uso do aplicativo Contatos</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/contacts.rst" class="fa fa-github"> Editar no GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-contacts-app">
+<h1>Uso do aplicativo Contatos<a class="headerlink" href="#using-the-contacts-app" title="Link para este cabeçalho"></a></h1>
+<p>O aplicativo Contatos não está habilitado por padrão no Nextcloud latest e precisa ser instalado separadamente de nossa Loja de Aplicativos.</p>
+<p>O aplicativo Nextcloud Contatos é semelhante a outros aplicativos de contatos móvel, mas com mais funcionalidades. Vamos examinar os recursos básicos que ajudarão você a manter seu catálogo de endereços no aplicativo.</p>
+<p>Abaixo, você aprenderá como adicionar contatos, editar ou remover contatos, fazer upload de uma foto de contato e gerenciar seus catálogos de endereços.</p>
+<section id="adding-contacts">
+<h2>Adicionar Contatos<a class="headerlink" href="#adding-contacts" title="Link para este cabeçalho"></a></h2>
+<p>Quando você acessa o aplicativo Contatos pela primeira vez, o catálogo de endereços do sistema contendo todos os usuários na instância que você tem permissão para ver, além de um catálogo de endereços padrão vazio, fica disponível:</p>
+<figure class="align-default" id="id1">
+<img alt="../../_images/contacts_empty.png" src="../../_images/contacts_empty.png" />
+<figcaption>
+<p><span class="caption-text"><em>Catálogo de Endereços Padrão (vazio)</em></span><a class="headerlink" href="#id1" title="Link para esta imagem"></a></p>
+</figcaption>
+</figure>
+<p>Para adicionar contatos ao seu catálogo de endereços, você pode usar um dos seguintes métodos:</p>
+<ul class="simple">
+<li><p>Importar contatos usando um arquivo Virtual Contact File (VCF/vCard)</p></li>
+<li><p>Adicionar contatos manualmente</p></li>
+</ul>
+<p>A maneira mais rápida de adicionar um contato é usar um arquivo Virtual Contact Files (VCF/vCard).</p>
+<section id="importing-virtual-contacts">
+<h3>Importação de Contatos Virtuais<a class="headerlink" href="#importing-virtual-contacts" title="Link para este cabeçalho"></a></h3>
+<p>Para importar contatos usando um arquivo VCF/vCard:</p>
+<ol class="arabic">
+<li><p>No canto superior esquerdo da tela, você tem o botão “Importar contatos” que é exibido apenas quando você ainda não possui nenhum contato.</p></li>
+<li><p>Localize “Configurações” na parte inferior da barra lateral esquerda, ao lado do botão de engrenagem:</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="Botão de engrenagem das configurações de contato" src="../../_images/contact_bottombar.png" />
+</figure>
+</div></blockquote>
+</li>
+<li><p>Clique no botão de engrenagem. O botão “Importar” do aplicativo Contatos será exibido:</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="Campo de Upload de Contatos" src="../../_images/contact_uploadbutton.png" />
+</figure>
+</div></blockquote>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>O aplicativo Contatos suporta apenas a importação de vCards versão 3.0 e 4.0.</p>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Clique no botão “Importar” e carregue seu arquivo VCF/vCard.</p></li>
+</ol>
+<p>Depois que a importação for concluída, você verá seu novo contato em seu catálogo de endereços.</p>
+</section>
+<section id="adding-contacts-manually">
+<h3>Adicionar Contatos Manualmente<a class="headerlink" href="#adding-contacts-manually" title="Link para este cabeçalho"></a></h3>
+<p>Se você não pode importar contatos virtuais, o aplicativo Contatos permite que você <strong>adicione contatos</strong> manualmente.</p>
+<p>Para criar um novo contato:</p>
+<ol class="arabic">
+<li><p>Clique no botão <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Novo</span> <span class="pre">contato</span></code>.</p>
+<p>A configuração Editar Visualização é aberta no campo Visualização de Aplicativo:</p>
+</li>
+</ol>
+<blockquote>
+<div><figure class="align-default">
+<img alt="../../_images/contact_new.png" src="../../_images/contact_new.png" />
+</figure>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Especifique as informações do novo contato e clique em Salvar.</p></li>
+<li><p>O modo de exibição será mostrado com os dados que você adicionou</p></li>
+</ol>
+<blockquote>
+<div><figure class="align-default">
+<img alt="../../_images/contact_view_mode.png" src="../../_images/contact_view_mode.png" />
+</figure>
+</div></blockquote>
+</section>
+<section id="edit-or-remove-contact-information">
+<h3>Editar ou Remover Informações de Contato<a class="headerlink" href="#edit-or-remove-contact-information" title="Link para este cabeçalho"></a></h3>
+<p>O aplicativo Contatos permite que você edite ou remova informações de contato.</p>
+<p>Para editar ou remover informações de contato:</p>
+<ol class="arabic simple">
+<li><p>Navegue até o contato específico que deseja modificar.</p></li>
+<li><p>Selecione as informações no campo que você deseja editar ou remover.</p></li>
+<li><p>Faça suas modificações ou clique na lixeira.</p></li>
+</ol>
+<p>As alterações ou remoções feitas em qualquer informação de contato são implementadas imediatamente.</p>
+<p>Nem todos os contatos serão editáveis ​​para você. O catálogo de endereços do sistema não permite que você modifique os dados de outra pessoa, apenas os seus. Seus próprios dados também podem ser modificados nas <a class="reference internal" href="../userpreferences.html"><span class="doc">configurações do usuário</span></a>.</p>
+</section>
+<section id="contact-picture">
+<h3>Imagem de Contato<a class="headerlink" href="#contact-picture" title="Link para este cabeçalho"></a></h3>
+<p>Para adicionar uma foto para seus novos contatos, clique no botão de upload:</p>
+<figure class="align-default">
+<img alt="Imagem de contato (botão de upload)" src="../../_images/contact_picture.png" />
+</figure>
+<p>Depois de definir uma imagem de contato, ela terá a seguinte aparência:</p>
+<figure class="align-default">
+<img alt="Imagem de contato (definida)" src="../../_images/contact_picture_set.png" />
+</figure>
+<p>Se você deseja fazer upload de uma nova, remova-a, visualize-a em tamanho real ou baixe-a, clique na imagem do contato para que as seguintes opções apareçam:</p>
+<figure class="align-default">
+<img alt="../../_images/contact_picture_options.png" src="../../_images/contact_picture_options.png" />
+</figure>
+<p>If the administrator allows updates from social media in the admin groupware settings,
+users can also retrieve contact pictures directly from social networks.
+In that case the contact needs to have stored a user name in the social media section.
+Each entry of a supported social network adds a download entry for the respective
+network. Currently, the following social networks are supported:</p>
+<ul class="simple">
+<li><p>Instagram</p></li>
+<li><p>Mastodon</p></li>
+<li><p>Tumblr</p></li>
+<li><p>Diaspora</p></li>
+<li><p>Xing</p></li>
+<li><p>Telegram</p></li>
+<li><p>Gravatar</p></li>
+</ul>
+<p>Social avatars are only retrieved if publicly available without login to the
+respective social network. In the contact user settings on the contacts page,
+you can activate auto-updates from social media. This will update avatars
+with social profile data on a weekly basis. Social networks are checked in the
+order listed above.</p>
+</section>
+</section>
+<section id="managing-multiple-contacts-at-a-time">
+<h2>Gerenciamento de vários Contatos ao mesmo tempo<a class="headerlink" href="#managing-multiple-contacts-at-a-time" title="Link para este cabeçalho"></a></h2>
+<p>O aplicativo Contatos permite selecionar vários contatos e realizar ações em lote neles. Para selecionar vários contatos, clique na foto do perfil de cada contato individualmente ou clique na foto do perfil do primeiro contato e, mantendo pressionada a tecla Shift, clique em outro contato na lista para selecionar todos os contatos entre o primeiro e o segundo.</p>
+<p>Isso abrirá um menu na parte superior da lista de contatos com várias ações que você pode realizar nos contatos selecionados:</p>
+<figure class="align-default">
+<img alt="Ações de seleção múltipla de contatos" src="../../_images/contact_multiselect.png" />
+</figure>
+<p>No modo em lote, o botão com o ícone de cruz desmarcará todos os contatos selecionados, enquanto o botão com o ícone de lixeira excluirá todos os contatos selecionados.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Talvez você não consiga modificar ou excluir determinados contatos, por exemplo, se eles estiverem em um catálogo de endereços somente leitura. Nesse caso, as ações relevantes serão desativadas.</p>
+</div>
+<section id="merging-duplicate-contacts">
+<h3>Mesclagem de Contatos duplicados<a class="headerlink" href="#merging-duplicate-contacts" title="Link para este cabeçalho"></a></h3>
+<p>Para mesclar contatos, selecione dois contatos e clique no botão “Mesclar contatos” na parte superior da lista de contatos. Isso abrirá uma caixa de diálogo que o ajudará a mesclar contatos duplicados. A caixa de diálogo de mesclagem mostrará os detalhes de ambos os contatos lado a lado, e você poderá escolher quais detalhes manter no contato mesclado.</p>
+<p>Quaisquer propriedades com um botão de opção (circular) só podem ter um valor, pelo que um dos dois valores deve ser selecionado (como o nome do contato, que só pode ter um valor), enquanto que as caixas de seleção (botões quadrados) permitem manter ambos os valores, se desejado (como números de telefone ou endereços de e-mail, que podem ter vários valores).</p>
+<p>Se algum dos contatos fizer parte de um ou mais grupos, por padrão, o contato mesclado fará parte de todos os grupos dos quais os dois contatos faziam parte. Você pode desmarcar qualquer grupo durante a mesclagem se não quiser que o contato mesclado faça parte deles.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Atualmente, você só pode mesclar dois contatos por vez e, naturalmente, só pode mesclar contatos que possam ser modificados por você. Se a ação de mesclagem estiver desativada, verifique se você selecionou contatos que atendam a essas condições.</p>
+</div>
+</section>
+</section>
+<section id="organize-your-contacts-with-contact-groups">
+<h2>Organizar seus Contatos com Grupos de Contatos<a class="headerlink" href="#organize-your-contacts-with-contact-groups" title="Link para este cabeçalho"></a></h2>
+<p>Grupos de Contatos ajudam a organizar seus contatos em grupos.</p>
+<p>Para criar um novo grupo de contatos, clique no sinal de mais (<code class="docutils literal notranslate"><span class="pre">+</span></code>) ao lado de “Grupos de contatos” na barra lateral esquerda.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Os grupos de contatos precisam ter pelo menos um membro para serem salvos. Observe que só é possível adicionar contatos de catálogos de endereços graváveis a grupos de contatos. Contatos de catálogos de endereços somente leitura, como o catálogo de endereços do sistema, não podem ser adicionados.</p>
+</div>
+</section>
+<section id="adding-and-managing-address-books">
+<h2>Adição e Gerenciamento de Catálogos de Endereços<a class="headerlink" href="#adding-and-managing-address-books" title="Link para este cabeçalho"></a></h2>
+<p>Clicar no botão “Configurações” (engrenagem) na parte inferior da barra lateral esquerda fornece acesso às configurações do aplicativo Contatos. Este campo mostra todos os catálogos de endereços disponíveis, certas opções para cada catálogo de endereços e permite que você crie novos catálogos de endereços, simplesmente especificando um nome do catálogo de endereços:</p>
+<figure class="align-default">
+<img alt="Adicionar catálogo de endereços nas configurações de contatos" src="../../_images/contact_manageaddressbook.png" />
+</figure>
+<p>As configurações de Contatos também é onde você pode compartilhar, exportar e excluir catálogos de endereços. Você encontrará os URLs CardDAV lá.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Os contatos em catálogos de endereços desativados não são exibidos no aplicativo Contatos e no menu Contatos.</p>
+</div>
+<p>Veja <a class="reference internal" href="index.html"><span class="doc">Groupware</span></a> para mais detalhes sobre como sincronizar seus catálogos de endereços com iOS, macOS, Thunderbird e outros clientes CardDAV.</p>
+</section>
+<section id="teams">
+<h2>Equipes<a class="headerlink" href="#teams" title="Link para este cabeçalho"></a></h2>
+<p>A colaboração informal ocorre dentro das organizações: um evento a ser organizado por algumas semanas, uma breve sessão de ideação entre membros de diferentes entidades, workshops, um lugar para brincar e apoiar a formação de equipes, ou simplesmente em organizações muito orgânicas em que a estrutura formal é reduzida ao mínimo.</p>
+<p>Por todos estes motivos, o Nextcloud oferece suporte às Equipes, um recurso incorporado ao aplicativo Contatos, em que cada usuário pode criar sua própria equipe, um agregado de contas definido pelo usuário. As equipes podem ser usadas posteriormente para compartilhar arquivos e pastas, adicionadas às conversas do Talk, como um grupo normal.</p>
+<figure class="align-default">
+<img alt="Equipes no menu esquerdo do aplicativo Contatos" src="../../_images/circle.png" />
+</figure>
+<section id="create-a-team">
+<h3>Criação de uma equipe<a class="headerlink" href="#create-a-team" title="Link para este cabeçalho"></a></h3>
+<p>No menu à esquerda, clique no + ao lado de Equipes. Defina um nome para a equipe. Na tela de configuração da equipe, você pode:</p>
+<ul class="simple">
+<li><p>adicionar membros à sua equipe</p></li>
+<li><p>ao clicar no menu de três pontos ao lado de um usuário, é possível modificar a função dele na equipe.</p></li>
+</ul>
+</section>
+<section id="team-roles">
+<h3>Funções de equipe<a class="headerlink" href="#team-roles" title="Link para este cabeçalho"></a></h3>
+<p>As equipes têm 4 tipos de funções:</p>
+<ul class="simple">
+<li><p>Membro</p></li>
+<li><p>Moderador</p></li>
+<li><p>Admin pode configurar opções da equipe (+permissões de moderador)</p></li>
+<li><p>Proprietário</p></li>
+</ul>
+<p><strong>Membro</strong></p>
+<p>Membro é a função com as permissões mais baixas. Um membro só pode acessar os recursos compartilhados com a equipe e visualizar os membros da equipe.</p>
+<p><strong>Moderador</strong></p>
+<p>Além das permissões de membro, um moderador pode convidar, confirmar convites e gerenciar membros da equipe.</p>
+<p><strong>Admin</strong></p>
+<p>Além das permissões de moderador, um administrador pode configurar as opções da equipe.</p>
+<p><strong>Proprietário</strong></p>
+<p>Além das permissões de administrador, um proprietário pode transferir a propriedade da equipe para outro membro da equipe. Só pode haver um único proprietário por equipe.</p>
+</section>
+<section id="add-members-to-a-team">
+<h3>Adicionar membros a uma equipe<a class="headerlink" href="#add-members-to-a-team" title="Link para este cabeçalho"></a></h3>
+<p>Contas locais, grupos, endereços de e-mail ou outras equipes podem ser adicionados como membros de uma equipe. Para um grupo ou uma equipe, a função se aplica a todos os membros do grupo ou da equipe.</p>
+</section>
+<section id="team-options">
+<h3>Opções de equipe<a class="headerlink" href="#team-options" title="Link para este cabeçalho"></a></h3>
+<p>Várias opções autoexplicativas estão disponíveis para configurar uma equipe, gerenciar convites e associação, visibilidade da equipe, permissão de associação a outras equipes e proteção por senha.</p>
+<p><strong>Prevent teams from being a member of another team</strong></p>
+<p>When this option is enabled, the team can no longer be directly added as a member of another team. However, this restriction only applies to new direct additions. Existing memberships are kept, and inherited memberships are still possible if this team belongs to a parent team that gets added elsewhere.</p>
+</section>
+<section id="shared-items">
+<h3>Itens compartilhados<a class="headerlink" href="#shared-items" title="Link para este cabeçalho"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Adicionado na versão 5.5.</span></p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/shared-items.png" src="../../_images/shared-items.png" />
+</figure>
+<p>Os itens compartilhados entre dois contatos serão exibidos no aplicativo de contatos. Isso inclui mídia, eventos de calendário, salas de bate-papo e cartões de Deck compartilhados, todos os quais estarão visíveis nos detalhes do contato. Esta funcionalidade é limitada aos contatos listados no catálogo de endereços do sistema. Atualmente, nosso sistema suporta apenas itens compartilhados entre dois contatos.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Rodapé">
+        <a href="index.html" class="btn btn-neutral float-left" title="Groupware" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="calendar.html" class="btn btn-neutral float-right" title="Uso do aplicativo Calendário" accesskey="n" rel="next">Próximo <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Direitos autorais 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 pt-BR
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Idiomas</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versões</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Em Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Página Inicial do Projeto</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Builds</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

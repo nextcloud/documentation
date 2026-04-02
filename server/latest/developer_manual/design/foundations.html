@@ -1,0 +1,425 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foundations &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/design/foundations.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Layout" href="layout.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Interface &amp; interaction design</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Foundations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#color">Color</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#primary-color">Primary color</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#background-color">Background color</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#text-color">Text color</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#status-and-indicators">Status and indicators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#typography">Typography</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#icons">Icons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#naming">Naming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wording">Wording</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="layout.html">Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layoutcomponents.html">Layout components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="atomiccomponents.html">Atomic components</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Interface &amp; interaction design</a></li>
+      <li class="breadcrumb-item active">Foundations</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/design/foundations.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="foundations">
+<h1>Foundations<a class="headerlink" href="#foundations" title="Link to this heading"></a></h1>
+<p>There are several design elements that are common to all Nextcloud apps. If you are developing for a platform that has its own design specifications, for example Android, it would be a good idea to keep those in mind while designing your app.</p>
+<p>For web apps, there is the <a class="reference external" href="https://nextcloud-vue-components.netlify.app/">Vue library</a> and the <a class="reference external" href="https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=db3839da-807b-8052-8002-576401e9a376&amp;section=interactions&amp;index=0&amp;share-id=11fde340-21f4-802e-8002-8d8d305e7ab5">Penpot design kit</a>.</p>
+<section id="color">
+<h2>Color<a class="headerlink" href="#color" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab128f3ffe2&amp;section=interactions&amp;index=3&amp;share-id=11fde340-21f4-802e-8002-8d8d305e7ab5">Penpot colors</a></p>
+<section id="primary-color">
+<h3>Primary color<a class="headerlink" href="#primary-color" title="Link to this heading"></a></h3>
+<figure class="align-default" id="id6">
+<img alt="../_images/colour-primary.svg" src="../_images/colour-primary.svg" />
+<figcaption>
+<p><span class="caption-text">#0082C9</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>While this is the primary color associated with Nextcloud and can be used to draw attention to an element, it is best to limit the usage of this to primary actions and other important elements.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The primary color can be customized by admins through theming, but the default experience will be Nextcloud blue. If the primary color is themed to something very light like a shade of yellow, the text or header icons will be inverted to dark automatically.</p>
+</div>
+<ul class="simple">
+<li><p>On web: <code class="docutils literal notranslate"><span class="pre">var(--color-primary-element)</span></code></p></li>
+<li><p>Android: uses default Material Design colors</p></li>
+<li><p>iOS: <a class="reference external" href="https://developer.apple.com/documentation/uikit/uicolor/3255070-systemfill">systemFill</a></p></li>
+<li><p>Desktop: <a class="reference external" href="https://doc.qt.io/qt-5/qpalette.html#ColorRole-enum">default Qt guidelines</a></p></li>
+</ul>
+</section>
+<section id="background-color">
+<h3>Background color<a class="headerlink" href="#background-color" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><figure class="align-default" id="id7">
+<img alt="../_images/colour-main-background.svg" src="../_images/colour-main-background.svg" />
+<figcaption>
+<p><span class="caption-text">Background for light theme: #FFFFFF</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</td>
+<td><figure class="align-default" id="id8">
+<img alt="../_images/colour-dark-theme-main-backgroud.svg" src="../_images/colour-dark-theme-main-backgroud.svg" />
+<figcaption>
+<p><span class="caption-text">Background for dark theme: #181818</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Nextcloud apps have a light and a dark theme, with appropriately chosen colors for all elements.</p>
+<ul class="simple">
+<li><p>On web: <code class="docutils literal notranslate"><span class="pre">var(--color-main-background)</span></code></p></li>
+<li><p>Android: uses default Material Design colors</p></li>
+<li><p>iOS: <a class="reference external" href="https://developer.apple.com/documentation/uikit/uicolor/3173140-systembackground">systemBackground</a></p></li>
+<li><p>Desktop: <a class="reference external" href="https://doc.qt.io/qt-5/qpalette.html#ColorRole-enum">default Qt guidelines</a></p></li>
+</ul>
+</section>
+<section id="text-color">
+<h3>Text color<a class="headerlink" href="#text-color" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><figure class="align-default" id="id9">
+<img alt="../_images/colour-main-text.svg" src="../_images/colour-main-text.svg" />
+<figcaption>
+<p><span class="caption-text">Text in light theme: #222222</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</td>
+<td><figure class="align-default" id="id10">
+<img alt="../_images/colour-dark-theme-main-text.svg" src="../_images/colour-dark-theme-main-text.svg" />
+<figcaption>
+<p><span class="caption-text">Text in dark theme: #D8D8D8</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</td>
+</tr>
+</tbody>
+</table>
+<p>This is the main color for the text in light theme, and in dark theme.</p>
+<ul class="simple">
+<li><p>On web: <code class="docutils literal notranslate"><span class="pre">var(--color-main-text)</span></code></p></li>
+<li><p>Android: uses default Material Design color “high emphasis”</p></li>
+<li><p>iOS: <a class="reference external" href="https://developer.apple.com/documentation/uikit/uicolor/3173131-label">label</a> (in UITextView, leave the default textColor)</p></li>
+<li><p>Desktop: <a class="reference external" href="https://doc.qt.io/qt-5/qpalette.html#ColorRole-enum">default Qt guidelines</a></p></li>
+</ul>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><figure class="align-default" id="id11">
+<img alt="../_images/colour-text-maxcontrast.svg" src="../_images/colour-text-maxcontrast.svg" />
+<figcaption>
+<p><span class="caption-text">Secondary text in light theme: #767676</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</td>
+<td><figure class="align-default" id="id12">
+<img alt="../_images/colour-dark-theme-text-maxcontrast.svg" src="../_images/colour-dark-theme-text-maxcontrast.svg" />
+<figcaption>
+<p><span class="caption-text">Secondary text in dark theme: #8C8C8C</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</td>
+</tr>
+</tbody>
+</table>
+<p>In addition, a softer color is used for secondary text like sublines, timestamps, and similar.</p>
+<ul class="simple">
+<li><p>On web:<code class="docutils literal notranslate"><span class="pre">var(--color-text-maxcontrast)</span></code></p></li>
+<li><p>Android: uses default Material Design color “medium emphasis”</p></li>
+<li><p>iOS: <a class="reference external" href="https://developer.apple.com/documentation/uikit/uicolor/3173136-secondarylabel">secondaryLabel</a></p></li>
+<li><p>Desktop: <a class="reference external" href="https://doc.qt.io/qt-5/qpalette.html#ColorRole-enum">default Qt guidelines</a></p></li>
+</ul>
+</section>
+<section id="status-and-indicators">
+<h3>Status and indicators<a class="headerlink" href="#status-and-indicators" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><figure class="align-default" id="id13">
+<img alt="../_images/color-info.svg" src="../_images/color-info.svg" />
+<figcaption>
+<p><span class="caption-text">Info: #006AA3</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</td>
+<td><figure class="align-default" id="id14">
+<img alt="../_images/color-success.svg" src="../_images/color-success.svg" />
+<figcaption>
+<p><span class="caption-text">Success: #46BA61</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</td>
+<td><figure class="align-default" id="id15">
+<img alt="../_images/color-error.svg" src="../_images/color-error.svg" />
+<figcaption>
+<p><span class="caption-text">Error: #E9322D</span><a class="headerlink" href="#id15" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</td>
+<td><figure class="align-default" id="id16">
+<img alt="../_images/color-warning.svg" src="../_images/color-warning.svg" />
+<figcaption>
+<p><span class="caption-text">Warning: #ECA700</span><a class="headerlink" href="#id16" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Interface elements associated with a status like info, success, error, or warning may also be colored to communicate the action better.</p>
+<p>While interface elements like buttons are colored differently depending on their action, the color of the text in that element is almost always either of the main text colors, that is light or dark.</p>
+<ul class="simple">
+<li><p>On web:</p>
+<ul>
+<li><p>Info color: <code class="docutils literal notranslate"><span class="pre">var(--color-info)</span></code></p></li>
+<li><p>Success color: <code class="docutils literal notranslate"><span class="pre">var(--color-success)</span></code></p></li>
+<li><p>Warning color: <code class="docutils literal notranslate"><span class="pre">var(--color-warning)</span></code></p></li>
+<li><p>Error color: <code class="docutils literal notranslate"><span class="pre">var(--color-error)</span></code></p></li>
+</ul>
+</li>
+<li><p>Android: Material Design guidelines</p></li>
+<li><p>iOS: <a class="reference external" href="https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/">Apple HIG colors</a></p>
+<ul>
+<li><p>success: systemGreen</p></li>
+<li><p>error: systemRed</p></li>
+</ul>
+</li>
+<li><p>Desktop: <a class="reference external" href="https://doc.qt.io/qt-5/qpalette.html#ColorRole-enum">default Qt guidelines</a></p></li>
+</ul>
+</section>
+</section>
+<section id="typography">
+<h2>Typography<a class="headerlink" href="#typography" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab128f3ffe2&amp;section=interactions&amp;index=1&amp;share-id=11fde340-21f4-802e-8002-8d8d305e7ab5">Penpot typography</a></p>
+<p>To ensure compatibility with different platforms, Nextcloud apps always use the native system font.</p>
+<p>For legibility, make sure that the text in your content uses:</p>
+<ul class="simple">
+<li><p><strong>Bold</strong> for emphasis</p></li>
+<li><p>A line height between 130% and 150%</p></li>
+<li><p>The default tracking of the font</p></li>
+<li><p>No <em>italics</em> or UPPER CASE as these text styles are less legible</p></li>
+</ul>
+<p>The text sizes for the different platforms are:</p>
+<ul class="simple">
+<li><p>Web: 16px for main text and sublines, <strong>20px bold</strong> for headings</p></li>
+<li><p>Android: 14sp for main text, 16sp for headings</p></li>
+<li><p>iOS: values from <a class="reference external" href="https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/typography#dynamic-type-sizes">Dynamic Type Sizes, for size Large (Default)</a></p></li>
+<li><p>Desktop: <a class="reference external" href="https://doc.qt.io/qt-5/qpalette.html#ColorRole-enum">default Qt guidelines</a></p></li>
+</ul>
+</section>
+<section id="icons">
+<h2>Icons<a class="headerlink" href="#icons" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=3f784c86-6c27-80c6-8002-6ab128f3ffe2&amp;section=interactions&amp;index=0&amp;share-id=11fde340-21f4-802e-8002-8d8d305e7ab5">Penpot icons</a></p>
+<img alt="Material icons" src="../_images/material-icons.png" />
+<p>Icons can be used to communicate the intent of an action, or to provide visual interest to the screen. We use monochrome icons on all platforms: <a class="reference external" href="https://fonts.google.com/icons?icon.set=Material+Symbols&amp;selected=Material+Symbols+Outlined:search:FILL&#64;0;wght&#64;400;GRAD&#64;0;opsz&#64;20&amp;icon.size=20">Material Symbols (not Material Icons, and 20 px default outlined)</a> for web, Android, Windows and Linux, and <a class="reference external" href="https://developer.apple.com/sf-symbols/">SF Symbols (default weight, scale and variant)</a> for iOS and macOS.</p>
+<p>This is except for the icon of the app itself, which can be a custom icon. Most use an app icon from Material Symbols as well though to keep consistency.</p>
+<p>Make sure to:</p>
+<ul class="simple">
+<li><p>Not overuse icons</p></li>
+<li><p>When possible, use text together with icons so it’s clear what they refer to</p></li>
+<li><p>For special cases like warnings, combine the icon with color to enhance its visibility</p></li>
+</ul>
+</section>
+<section id="naming">
+<h2>Naming<a class="headerlink" href="#naming" title="Link to this heading"></a></h2>
+<p>To be immediately understandable, we choose app names which are generic and easily translatable. Additionally, they are short and easily fit in the top navigation without being cut off.</p>
+<p>Files, Contacts, Calendar, and Mail do not need further explanation, which is why we recommend to choose a self-explanatory app name.</p>
+<p>Further good examples of this: Notes, Bookmarks, Maps, Forms, Tasks, Music.</p>
+</section>
+<section id="wording">
+<h2>Wording<a class="headerlink" href="#wording" title="Link to this heading"></a></h2>
+<p>The wording and language in your app sets the tone and approachability of your app.</p>
+<ul class="simple">
+<li><p>Nextcloud should always be written out, and only with a capital N. Not “NextCloud” or “Nc”.</p></li>
+<li><p>Be friendly and approachable, not condescending.</p></li>
+<li><p>Use understandable language, not technical jargon. For example, “link” is much better than “URL”, and explaining errors is better than showing error codes.</p></li>
+<li><p>Don’t write in ALL CAPS, as it is not as readable and comes off as shouting and aggressive. Also use Sentence case and not Capital Case, with the exception of product names like Nextcloud Talk, Nextcloud Hub, etc.</p></li>
+<li><p>We are a community, so better write “We are happy to announce” instead of “I am happy to announce”.</p></li>
+<li><p>If your app content is empty, it can be helpful to add an engaging message. “Add or import your first bookmark!” is much nicer than “No bookmarks yet”.</p></li>
+<li><p>Try to avoid using “my” or “your” like in “My files” or “Your files”, instead using “All files”. For longer sentences where it cannot be avoided, use “your”, never “my”.</p></li>
+<li><p>Use gender neutral language. This <a class="reference external" href="https://uxcontent.com/the-international-guide-to-gender-inclusive-writing/">international guide to gender-inclusive writing</a> contains info and examples on gender neutral wording for different languages.</p></li>
+<li><p>Use full names instead of only first names while addressing the person using your app.</p></li>
+<li><p>For any “Delete” action, give context to what it will delete, like “Delete conversation” or “Delete user” so that it is clear specifically for this destructive action.</p></li>
+<li><p>Keep language short and concise, and keep in mind that it should be easily translatable.</p></li>
+<li><p>Make sure to spellcheck anything you write.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="layout.html" class="btn btn-neutral float-right" title="Layout" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Apr 02, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

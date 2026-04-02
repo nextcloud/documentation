@@ -1,0 +1,282 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AppData &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/basics/storage/appdata.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Public share template" href="../public_share_template.html" />
+    <link rel="prev" title="Nextcloud filesystem API" href="filesystem.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Basic concepts</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../request_lifecycle.html">Request lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../routing.html">Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dependency_injection.html">Dependency injection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../middlewares.html">Middlewares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../front-end/index.html">Front-end</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../translations.html">Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../caching.html">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setting.html">Settings</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Storage and database</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="migrations.html">Migrations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html">Database access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filesystem.html">Nextcloud filesystem API</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">AppData</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-simple-filesystem">The simple filesystem</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../public_share_template.html">Public share template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing.html">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Basic concepts</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Storage and database</a></li>
+      <li class="breadcrumb-item active">AppData</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/basics/storage/appdata.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="appdata">
+<h1>AppData<a class="headerlink" href="#appdata" title="Link to this heading"></a></h1>
+<p>Often an app wants to store data. However not all data that is stored belongs with the users files.
+Often you just want a very simple storage to have some temp files. In order to facilitate this there
+is the AppData folder that provides each app with a private simple filesystem.</p>
+<p>Usage is almost trivial when your app is using the AppFramework.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller\MyController</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Files\IAppData</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IRequest</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MyController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+    <span class="sd">/** @var IAppData */</span>
+    <span class="k">private</span> <span class="nv">$appData</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$appName</span><span class="p">,</span>
+                                <span class="nx">IRequest</span> <span class="nv">$request</span><span class="p">,</span>
+                                <span class="nx">IAppData</span> <span class="nv">$appData</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$appName</span><span class="p">,</span> <span class="nv">$request</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">appData</span> <span class="o">=</span> <span class="nv">$appData</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This gives your controller access to the IAppData simple filesystem of your app.</p>
+<section id="the-simple-filesystem">
+<h2>The simple filesystem<a class="headerlink" href="#the-simple-filesystem" title="Link to this heading"></a></h2>
+<p>The <cite>IAppData</cite> uses the simple filesystem. This is a very simplified filesystem that will allow for easy
+mapping to for example memcaches. The filesystem has three elements: <cite>root</cite>, <cite>folder</cite>, <cite>file</cite>.</p>
+<p>The <cite>root</cite> can only contain folders. And each folder can only contain files. This is limited to keep
+things simple and to allow easy mapping to other backends. For example a sysadmin might chose to map the
+avatars to fast storage since they are used often.</p>
+<section id="root">
+<h3>Root<a class="headerlink" href="#root" title="Link to this heading"></a></h3>
+<p>The root element can only contain folders. There are 3 things you
+can do on a root element:</p>
+<ul class="simple">
+<li><p><cite>getFolder</cite>: get the folder you request</p></li>
+<li><p><cite>newFolder</cite>: creates a new folder</p></li>
+<li><p><cite>getDirectoryListing</cite>: lists all the folders in this root</p></li>
+</ul>
+</section>
+<section id="folder">
+<h3>Folder<a class="headerlink" href="#folder" title="Link to this heading"></a></h3>
+<p>A folder has a bit more options.</p>
+<ul class="simple">
+<li><p><cite>getDirectoryListing</cite>: lists all the files in the folder</p></li>
+<li><p><cite>fileExists</cite>: check if a file exists</p></li>
+<li><p><cite>getFile</cite>: get a file</p></li>
+<li><p><cite>newFile</cite>: create a new file</p></li>
+<li><p><cite>delete</cite>: delete a folder and its content</p></li>
+<li><p><cite>getName</cite>: get the name of the folder</p></li>
+</ul>
+</section>
+<section id="file">
+<h3>File<a class="headerlink" href="#file" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><cite>getName</cite>: get the name of the file</p></li>
+<li><p><cite>getSize</cite>: get the size of the file</p></li>
+<li><p><cite>getETag</cite>: get the ETag of the file</p></li>
+<li><p><cite>getMTime</cite>: get the modification time of the file</p></li>
+<li><p><cite>getContent</cite>: get the content of the file</p></li>
+<li><p><cite>putContent</cite>: write content to the file</p></li>
+<li><p><cite>delete</cite>: delete the file</p></li>
+<li><p><cite>getMimeType</cite>: get the mimetype of the file</p></li>
+<li><p><cite>read</cite>: get a resource for reading the file</p></li>
+<li><p><cite>write</cite>: get a resource for writing to the file</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="filesystem.html" class="btn btn-neutral float-left" title="Nextcloud filesystem API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../public_share_template.html" class="btn btn-neutral float-right" title="Public share template" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Apr 02, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

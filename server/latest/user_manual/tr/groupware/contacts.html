@@ -1,0 +1,858 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="tr" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kişiler uygulamasını kullanmak &mdash; Nextcloud latest User Manual latest belgelendirmesi</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/groupware/contacts.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=9f991a48"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=b0f24d8d"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Dizin" href="../genindex.html" />
+    <link rel="search" title="Ara" href="../search.html" />
+    <link rel="next" title="Takvim uygulamasını kullanmak" href="calendar.html" />
+    <link rel="prev" title="Groupware" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Belgeleri arayın" aria-label="Belgeleri arayın" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest kullanıcı rehberi giriş</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud site arayüzü</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Dosyalar ve eşitleme</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Kişiler uygulamasını kullanmak</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#adding-contacts">Kişileri eklemek</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#importing-virtual-contacts">Sanal kişileri içe aktarmak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-contacts-manually">Kişileri el ile eklemek</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-or-remove-contact-information">Kişi bilgilerini düzenlemek ve silmek</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contact-picture">Kişi görseli</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-multiple-contacts-at-a-time">Birkaç kişiyi aynı anda yönetmek</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#merging-duplicate-contacts">Çift kişileri birleştirmek</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#organize-your-contacts-with-contact-groups">Kişilerinizi kişi grupları ile düzenlemek</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-and-managing-address-books">Adres defterlerini eklemek ve yönetmek</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#teams">Takımlar</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-team">Bir takım oluşturmak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#team-roles">Takım rolleri</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-members-to-a-team">Takıma üyeler eklemek</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#team-options">Takım seçenekleri</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shared-items">Paylaşılmış ögeler</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Takvim uygulamasını kullanmak</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mail.html">E-posta uygulamasını kullanmak</a></li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">Ofis dışında iletilerini ayarlamak</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Android ile eşitlemek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">iOS ile eşitlemek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">macOS ile eşitlemek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Thunderbird ile eşitlemek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">KDE Kontact ile eşitlemek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">GNOME masaüstü ile eşitleme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Windows 10 ile eşitlemek</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Konuş</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Bilgisayar istemcileri</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Kullanıcı ayarları</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Evrensel erişim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">İki adımlı doğrulamayı kullanmak</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Bağlı tarayıcı ve aygıtların yönetimi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Dış depolama alanı</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Groupware</a></li>
+      <li class="breadcrumb-item active">Kişiler uygulamasını kullanmak</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/contacts.rst" class="fa fa-github"> GitHub'da Düzenle</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-contacts-app">
+<h1>Kişiler uygulamasını kullanmak<a class="headerlink" href="#using-the-contacts-app" title="Link to this heading"></a></h1>
+<p>Kişiler uygulaması, Nextcloud latest sürümünde varsayılan olarak kullanıma alınmamıştır. Uygulama mağazasından ayrıca kurulması gerekir.</p>
+<p>Nextcloud Kişiler uygulaması, diğer mobil iletişim uygulamalarına benzer, ancak daha fazla özellik sunar. Uygulamada adres defterinizi yönetmenize yardımcı olacak temel özellikleri inceleyelim.</p>
+<p>Aşağıda, kişileri nasıl ekleyeceğinizi, düzenleyeceğinizi ya da sileceğinizi, bir kişi görselini nasıl yükleyeceğinizi ve adres defterlerinizi nasıl yöneteceğinizi öğreneceksiniz.</p>
+<section id="adding-contacts">
+<h2>Kişileri eklemek<a class="headerlink" href="#adding-contacts" title="Link to this heading"></a></h2>
+<p>Kişiler uygulamasına ilk kez eriştiğinizde, görmenize izin verilen kopyadaki tüm kullanıcıların bulunduğu sistem adres defteri ve ayrıca boş bir varsayılan adres defteri hazırlanır:</p>
+<figure class="align-default" id="id1">
+<img alt="../../_images/contacts_empty.png" src="../../_images/contacts_empty.png" />
+<figcaption>
+<p><span class="caption-text"><em>Varsayılan adres defteri (boş)</em></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Adres defterinize kişi eklemek için aşağıdaki yöntemlerden birini kullanabilirsiniz:</p>
+<ul class="simple">
+<li><p>Kişileri sanal kişi dosyası (VCF/vCard) dosyası kullanarak içe aktarabilirsiniz</p></li>
+<li><p>Kişileri el ile ekleyebilirsiniz</p></li>
+</ul>
+<p>Kişi eklemenin en hızlı yolu, sanal kişi dosyası (VCF/vCard) kullanmaktır.</p>
+<section id="importing-virtual-contacts">
+<h3>Sanal kişileri içe aktarmak<a class="headerlink" href="#importing-virtual-contacts" title="Link to this heading"></a></h3>
+<p>Kişileri bir VCF/vCard dosyası kullanarak içe aktarmak için:</p>
+<ol class="arabic">
+<li><p>Ekranın sol üst tarafında, yalnızca henüz herhangi bir kişi kaydı olmadığında görüntülenen “Kişileri içe aktar” düğmesi bulunur.</p></li>
+<li><p>Dişli düğmesinin yanında, sol kenar çubuğunun altında “Ayarlar” seçeneğini bulun:</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="Kişi ayarları dişli düğmesi." src="../../_images/contact_bottombar.png" />
+</figure>
+</div></blockquote>
+</li>
+<li><p>Dişli düğmesine tıklayın. Kişiler uygulamasında “İçe aktar” düğmesi görüntülenir:</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="Kişiler yükleme alanı" src="../../_images/contact_uploadbutton.png" />
+</figure>
+</div></blockquote>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Kişiler uygulaması yalnızca vCard 3.0 ve 4.0 sürümlerinden içe aktarımı destekler.</p>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>“İçe aktar” düğmesine tıklayın ve VCF/vCard dosyanızı yükleyin.</p></li>
+</ol>
+<p>İçe aktarma tamamlandıktan sonra, yeni kişiyi adres defterinizde görebilirsiniz.</p>
+</section>
+<section id="adding-contacts-manually">
+<h3>Kişileri el ile eklemek<a class="headerlink" href="#adding-contacts-manually" title="Link to this heading"></a></h3>
+<p>Sanal kişileri içe aktaramıyorsanız, Kişiler uygulamasına el ile <strong>kişiler ekleyebilirsiniz</strong>.</p>
+<p>Yeni bir kişi eklemek için:</p>
+<ol class="arabic">
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Kişi</span> <span class="pre">ekle</span></code> düğmesine tıklayın.</p>
+<p>Uygulama görünümü alanında düzenleme görünümü yapılandırması açılır:</p>
+</li>
+</ol>
+<blockquote>
+<div><figure class="align-default">
+<img alt="../../_images/contact_new.png" src="../../_images/contact_new.png" />
+</figure>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Yeni kişi bilgilerini yazıp Kaydet üzerine tıklayın.</p></li>
+<li><p>Verileriniz eklendiğinde görünüm kipi görüntülenir</p></li>
+</ol>
+<blockquote>
+<div><figure class="align-default">
+<img alt="../../_images/contact_view_mode.png" src="../../_images/contact_view_mode.png" />
+</figure>
+</div></blockquote>
+</section>
+<section id="edit-or-remove-contact-information">
+<h3>Kişi bilgilerini düzenlemek ve silmek<a class="headerlink" href="#edit-or-remove-contact-information" title="Link to this heading"></a></h3>
+<p>Kişiler uygulamasında kişi bilgileri düzenlenebilir ya da silinebilir.</p>
+<p>Kişi bilgilerini düzenlemek ya da silmek için:</p>
+<ol class="arabic simple">
+<li><p>Düzenlemek istediğiniz kişiyi bulun.</p></li>
+<li><p>Düzenlemek ya da silmek istediğiniz bilginin bulunduğu alanı seçin.</p></li>
+<li><p>Değişiklikleri yapın ya da çöpe at üzerine tıklayın.</p></li>
+</ol>
+<p>Kişi bilgilerinde yaptığınız değişiklik ve silme işlemleri anında uygulanır.</p>
+<p>Tüm kişileri düzenleyemezsiniz. Sistem adres defteri, başka birinin verilerini değiştirmenize izin vermez. Yalnızca kendi verilerinizi değiştirebilirsiniz. Kendi verileriniz ayrıca <a class="reference internal" href="../userpreferences.html"><span class="doc">kullanıcı ayarları</span></a> bölümünden değiştirilebilir.</p>
+</section>
+<section id="contact-picture">
+<h3>Kişi görseli<a class="headerlink" href="#contact-picture" title="Link to this heading"></a></h3>
+<p>Kişi görseli eklemek için yükle düğmesine tıklayın:</p>
+<figure class="align-default">
+<img alt="Kişi görseli (yükleme düğmesi)" src="../../_images/contact_picture.png" />
+</figure>
+<p>Kişi görselini seçtiğinizde şu şekilde görüntülenir:</p>
+<figure class="align-default">
+<img alt="Kişi görseli (ayarlamak)" src="../../_images/contact_picture_set.png" />
+</figure>
+<p>Yeni bir görsel yüklemek, bu görseli silmek, tam boyutta görüntülemek ya da indirmek için kişi görseli üzerine tıklayarak şu seçenekleri görebilirsiniz:</p>
+<figure class="align-default">
+<img alt="../../_images/contact_picture_options.png" src="../../_images/contact_picture_options.png" />
+</figure>
+<p>If the administrator allows updates from social media in the admin groupware settings,
+users can also retrieve contact pictures directly from social networks.
+In that case the contact needs to have stored a user name in the social media section.
+Each entry of a supported social network adds a download entry for the respective
+network. Currently, the following social networks are supported:</p>
+<ul class="simple">
+<li><p>Instagram</p></li>
+<li><p>Mastodon</p></li>
+<li><p>Tumblr</p></li>
+<li><p>Diaspora</p></li>
+<li><p>Xing</p></li>
+<li><p>Telegram</p></li>
+<li><p>Gravatar</p></li>
+</ul>
+<p>Social avatars are only retrieved if publicly available without login to the
+respective social network. In the contact user settings on the contacts page,
+you can activate auto-updates from social media. This will update avatars
+with social profile data on a weekly basis. Social networks are checked in the
+order listed above.</p>
+</section>
+</section>
+<section id="managing-multiple-contacts-at-a-time">
+<h2>Birkaç kişiyi aynı anda yönetmek<a class="headerlink" href="#managing-multiple-contacts-at-a-time" title="Link to this heading"></a></h2>
+<p>Kişiler uygulaması, birden fazla kişi seçmenizi ve bunlar üzerinde toplu işlemler gerçekleştirmenizi sağlar. Birden fazla kişi seçmek için, her bir kişinin profil görseline ayrı ayrı tıklayın ya da ilk kişinin profil görseline tıkladıktan sona Shift tuşunu basılı tutarken, birinci ve sonuncu arasındaki tüm kişileri seçmek için listedeki başka bir kişiye tıklayın.</p>
+<p>Böylece seçilmiş kişiler üzerinde yapabileceğiniz çeşitli işlemlerin bulunduğu kişiler listesinin en üstünde bir menü görüntülenir:</p>
+<figure class="align-default">
+<img alt="Kişi çoklu seçim işlemleri" src="../../_images/contact_multiselect.png" />
+</figure>
+<p>Toplu işlem kipinde, çarpı simgeli düğme seçilmiş tüm kişilerin seçimini kaldırırken, çöp kutusu simgeli düğme seçilmiş tüm kişileri siler.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Örneğin salt okunur bir adres defterindeyseniz, belirli kişileri değiştiremeyebilir veya silemeyebilirsiniz. Bu durumda, ilgili işlemler kullanım dışı bırakılır.</p>
+</div>
+<section id="merging-duplicate-contacts">
+<h3>Çift kişileri birleştirmek<a class="headerlink" href="#merging-duplicate-contacts" title="Link to this heading"></a></h3>
+<p>Birleştirilecek iki kişiyi seçin. Ardından kişiler listesinin üst bölümündeki “Kişileri birleştir” simgeli düğmeye tıklayın. Çift kişileri birleştirmenize yardımcı olacak bir pencere açılır. Birleştirme penceresinde iki kişinin ayrıntıları yan yana görüntülenir ve birleştirilmiş kişide hangi ayrıntıların tutulacağını seçebilirsiniz.</p>
+<p>Radyo (daire) düğmesi bulunan herhangi bir özelliğin yalnızca bir değeri olabilir. Bu nedenle iki değerden biri seçilmelidir (yalnızca bir değeri olabilecek kişi adı gibi). Bu arada onay kutuları (kare düğmeler), istenirse her iki değeri de tutmanıza izin verir (birden fazla değeri olabilecek telefon numaraları veya e-posta adresleri gibi).</p>
+<p>Kişilerden herhangi biri bir ya da birkaç grubun üyesiyse, birleştirilen kişi, varsayılan olarak iki kişinin üyesi olduğu tüm grupların üyesi olur. Birleştirilmiş kişinin bunların üyesi olmasını istemiyorsanız, birleştirme sırasında herhangi bir grubun işaretini kaldırabilirsiniz.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Şu anda bir seferde yalnızca iki kişiyi birleştirebilirsiniz ve doğal olarak yalnızca sizin tarafınızdan değiştirilebilecek kişileri birleştirebilirsiniz. Birleştirme işlemi kullanım dışı bırakılmışsa, bu koşullara uygun kişileri seçip seçmediğinize bakın.</p>
+</div>
+</section>
+</section>
+<section id="organize-your-contacts-with-contact-groups">
+<h2>Kişilerinizi kişi grupları ile düzenlemek<a class="headerlink" href="#organize-your-contacts-with-contact-groups" title="Link to this heading"></a></h2>
+<p>Kişi grupları, kişilerinizi gruplar altında düzenlemenize yardımcı olur.</p>
+<p>Yeni bir kişi grubu eklemek için sol kenar çubuğunda “Kişi grupları” yanındaki artı simgesine tıklayın.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Kişi gruplarının kaydedilebilmesi için en az bir üyesinin bulunması gerekir. Yalnızca yazılabilir adres defterlerinden kişi gruplarına kişi ekleyebileceğinizi lütfen unutmayın. Kişiler, sistem adres defteri gibi salt okunur adres defterlerinden eklenemez.</p>
+</div>
+</section>
+<section id="adding-and-managing-address-books">
+<h2>Adres defterlerini eklemek ve yönetmek<a class="headerlink" href="#adding-and-managing-address-books" title="Link to this heading"></a></h2>
+<p>Sol kenar çubuğu altındaki “Ayarlar” (dişli) düğmesine tıklayarak, Kişiler uygulaması ayarlarına erişebilirsiniz. Bu alanda tüm kullanılabilir adres defterlerini ve her adres defterine özel ayarları görebilirsiniz. İstediğiniz adı vererek yeni adres defterleri ekleyebilirsiniz:</p>
+<figure class="align-default">
+<img alt="Kişi ayarlarından adres defteri eklemek" src="../../_images/contact_manageaddressbook.png" />
+</figure>
+<p>Kişi ayarları bölümünden de adres defterlerini paylaşabilir, dışa aktarabilir ve silebilirsiniz. CardDAV adreslerini orada bulabilirsiniz.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Kişiler uygulamasında ve Kişi menüsünde devre dışı bırakılmış adres defterlerindeki kişiler görüntülenmez..</p>
+</div>
+<p>Adres defterlerinizi iOS, macOS, Thunderbird ve diğer CardDAV istemcileri ile eşitlemek için <a class="reference internal" href="index.html"><span class="doc">Groupware</span></a> bölümüne bakabilirsiniz.</p>
+</section>
+<section id="teams">
+<h2>Takımlar<a class="headerlink" href="#teams" title="Link to this heading"></a></h2>
+<p>Resmi olmayan işbirliği kuruluşlar içinde yapılır: Birkaç haftalık bir etkinlik, farklı kuruluşlardan üyeler arasında kısa bir fikir geliştirme oturumu, atölye çalışmaları, şakalaşabileceğiniz ve ekip oluşturmayı destekleyebileceğiniz bir yer ya da yalnızca resmi yapının en azda tutulduğu çok organik kuruluşlar.</p>
+<p>Tüm bu nedenlerle Nextcloud, Kişiler uygulamasına gömülü bir özellik olan ve her kullanıcının kendi tanımlayabileceği bir hesap topluluğu olan Takımları destekler. Takımlar daha sonra normal bir grup gibi Konuş görüşmelerine eklenen dosya ve klasörleri paylaşmak için kullanılabilir.</p>
+<figure class="align-default">
+<img alt="Kişiler uygualaması sol menüsünde Takımlar" src="../../_images/circle.png" />
+</figure>
+<section id="create-a-team">
+<h3>Bir takım oluşturmak<a class="headerlink" href="#create-a-team" title="Link to this heading"></a></h3>
+<p>Sol menüden, Takımlar seçeneğinin yanındaki + üzerine tıklayın. Bir takım adı belirtin. Takım yapılandırma sayfasına geçerek şunları yapabilirsiniz:</p>
+<ul class="simple">
+<li><p>Takımınıza üyeler ekleyebilirsiniz</p></li>
+<li><p>Bir kullanıcının yanındaki üç nokta menüsüne tıklayarak, takım içindeki rolünü değiştirebilirsiniz.</p></li>
+</ul>
+</section>
+<section id="team-roles">
+<h3>Takım rolleri<a class="headerlink" href="#team-roles" title="Link to this heading"></a></h3>
+<p>Takımlarda 4 rol bulunur:</p>
+<ul class="simple">
+<li><p>Üye</p></li>
+<li><p>Sorumlu</p></li>
+<li><p>Yönetici takım seçeneklerini yapılandırabilir (+sorumlu izinleri)</p></li>
+<li><p>Sahip</p></li>
+</ul>
+<p><strong>Üye</strong></p>
+<p>Üye rolünde en düşük izinler bulunur. Bir üye, yalnızca takımla paylaşılan kaynaklara erişebilir ve takımın üyelerini görüntüleyebilir.</p>
+<p><strong>Sorumlu</strong></p>
+<p>Üye izinlerine ek olarak, bir sorumlu, takıma üyeleri çağırabilir, çağrıları onaylayabilir ve yönetebilir.</p>
+<p><strong>Yönetici</strong></p>
+<p>Sorumlu izinlerine ek olarak, bir yönetici takım ayarlarını yapılandırabilir.</p>
+<p><strong>Sahip</strong></p>
+<p>Yönetici izinlerine ek olarak bir sahip, takımın sahipliğini başka bir takım üyesine aktarabilir. Her takımda yalnızca bir tek sahip olabilir.</p>
+</section>
+<section id="add-members-to-a-team">
+<h3>Takıma üyeler eklemek<a class="headerlink" href="#add-members-to-a-team" title="Link to this heading"></a></h3>
+<p>Bir takıma, yerel hesaplar, gruplar, e-posta adresleri veya diğer takımlar üye olarak eklenebilir. Bir grup ya da takıma atanan rol, grubun ya da takımın tüm üyeleri için geçerli olur.</p>
+</section>
+<section id="team-options">
+<h3>Takım seçenekleri<a class="headerlink" href="#team-options" title="Link to this heading"></a></h3>
+<p>Bir takımın yapılandırma ayarlarında, çağrıları ve üyeliği yönetme, takımın görünürlüğü, diğer takım üyeliklerine izin verme ve parola koruması için çeşitli açıklayıcı seçenekler bulunur.</p>
+<p><strong>Prevent teams from being a member of another team</strong></p>
+<p>When this option is enabled, the team can no longer be directly added as a member of another team. However, this restriction only applies to new direct additions. Existing memberships are kept, and inherited memberships are still possible if this team belongs to a parent team that gets added elsewhere.</p>
+</section>
+<section id="shared-items">
+<h3>Paylaşılmış ögeler<a class="headerlink" href="#shared-items" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.5.</span></p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/shared-items.png" src="../../_images/shared-items.png" />
+</figure>
+<p>İki kişi arasında paylaşılan ögeler kişi uygulamasında görüntülenir. Bunlar medya, takvim etkinlikleri, sohbet odaları ve paylaşılan tahta kartlarından oluşur ve bunların tümü kişi bilgilerinde görünür olur. Bu özellik, sistem adres defterinde bulunan kişilerle sınırlıdır. Şu anda sistemimiz yalnızca iki kişi arasında paylaşılan ögeleri destekliyor.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Groupware" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Önceki</a>
+        <a href="calendar.html" class="btn btn-neutral float-right" title="Takvim uygulamasını kullanmak" accesskey="n" rel="next">Sonraki <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 Turkish
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Diller</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Sürümler</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>İndirmeler</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Okunacak Belgeler</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Proje Ana Sayfası</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Yapımlar</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

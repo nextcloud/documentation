@@ -1,0 +1,416 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Migrations &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/basics/storage/migrations.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Database access" href="database.html" />
+    <link rel="prev" title="Storage and database" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Basic concepts</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../request_lifecycle.html">Request lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../routing.html">Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dependency_injection.html">Dependency injection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../middlewares.html">Middlewares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../front-end/index.html">Front-end</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../translations.html">Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../caching.html">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setting.html">Settings</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Storage and database</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Migrations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#migration-1-schema-change">1. Migration 1: Schema change</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#migration-1-post-schema-change">2. Migration 1: Post schema change</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#migration-2-schema-change">3. Migration 2: Schema change</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#construction-of-migration-classes">Construction of migration classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#migrations-and-metadata">Migrations and Metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#console-commands">Console commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-indices">Adding indices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#replacing-indices">Replacing indices</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="database.html">Database access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filesystem.html">Nextcloud filesystem API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appdata.html">AppData</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../public_share_template.html">Public share template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing.html">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Basic concepts</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Storage and database</a></li>
+      <li class="breadcrumb-item active">Migrations</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/basics/storage/migrations.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="migrations">
+<span id="app-db-migrations"></span><h1>Migrations<a class="headerlink" href="#migrations" title="Link to this heading"></a></h1>
+<p>Migrations change the database schema and operate in three steps:</p>
+<ul class="simple">
+<li><p>Pre schema changes</p></li>
+<li><p>Schema changes</p></li>
+<li><p>Post schema changes</p></li>
+</ul>
+<p>Apps can have multiple migrations, which allows a way more flexible updating process.
+For example, you can rename a column while copying all the content with 3 steps
+packed in 2 migrations.</p>
+<p>The Nextcloud updater logic will look for your migration
+files in the apps <cite>lib/Migration</cite> folder.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While in theory you can run any code in the pre- and post-steps, we
+recommend not to use actual php classes. With migrations you can update
+from any old version to any new version as long as the migration steps
+are retained. Since they are also used for installation, you should
+keep them anyway. But this also means when you change a php class which
+you use in your migration, the code may be executed on different
+database/file/code standings when being ran in an upgrade situation.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since Nextcloud stores, which migrations have been executed already
+you must not “update” migrations. The recommendation is to keep them
+untouched as long as possible. You should only adjust it to make sure
+it still executes, but additional changes to the database should be done
+in a new migration.</p>
+</div>
+<section id="migration-1-schema-change">
+<h2>1. Migration 1: Schema change<a class="headerlink" href="#migration-1-schema-change" title="Link to this heading"></a></h2>
+<p>With this step the new column gets created:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">changeSchema</span><span class="p">(</span><span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">,</span> <span class="nx">\Closure</span> <span class="nv">$schemaClosure</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$options</span><span class="p">)</span> <span class="p">{</span>
+           <span class="sd">/** @var ISchemaWrapper $schema */</span>
+           <span class="nv">$schema</span> <span class="o">=</span> <span class="nv">$schemaClosure</span><span class="p">();</span>
+
+           <span class="nv">$table</span> <span class="o">=</span> <span class="nv">$schema</span><span class="o">-&gt;</span><span class="na">getTable</span><span class="p">(</span><span class="s1">&#39;twofactor_backupcodes&#39;</span><span class="p">);</span>
+
+           <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">addColumn</span><span class="p">(</span><span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="nx">\OCP\DB\Types</span><span class="o">::</span><span class="na">STRING</span><span class="p">,</span> <span class="p">[</span>
+                   <span class="s1">&#39;notnull&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+                   <span class="s1">&#39;length&#39;</span> <span class="o">=&gt;</span> <span class="mi">64</span><span class="p">,</span>
+           <span class="p">]);</span>
+
+           <span class="k">return</span> <span class="nv">$schema</span><span class="p">;</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="migration-1-post-schema-change">
+<h2>2. Migration 1: Post schema change<a class="headerlink" href="#migration-1-post-schema-change" title="Link to this heading"></a></h2>
+<p>In this step the content gets copied from the old to the new column.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This could also be done as part of the second migration as part of
+a pre schema change</p>
+</div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">postSchemaChange</span><span class="p">(</span><span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">,</span> <span class="nx">\Closure</span> <span class="nv">$schemaClosure</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$options</span><span class="p">)</span> <span class="p">{</span>
+       <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">getQueryBuilder</span><span class="p">();</span>
+       <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="s1">&#39;twofactor_backupcodes&#39;</span><span class="p">)</span>
+               <span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="s1">&#39;uid&#39;</span><span class="p">);</span>
+       <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">executeStatement</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="migration-2-schema-change">
+<h2>3. Migration 2: Schema change<a class="headerlink" href="#migration-2-schema-change" title="Link to this heading"></a></h2>
+<p>With this the old column gets removed.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span> <span class="k">public</span> <span class="k">function</span> <span class="nf">changeSchema</span><span class="p">(</span><span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">,</span> <span class="nx">\Closure</span> <span class="nv">$schemaClosure</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$options</span><span class="p">)</span> <span class="p">{</span>
+        <span class="sd">/** @var ISchemaWrapper $schema */</span>
+        <span class="nv">$schema</span> <span class="o">=</span> <span class="nv">$schemaClosure</span><span class="p">();</span>
+
+        <span class="nv">$table</span> <span class="o">=</span> <span class="nv">$schema</span><span class="o">-&gt;</span><span class="na">getTable</span><span class="p">(</span><span class="s1">&#39;twofactor_backupcodes&#39;</span><span class="p">);</span>
+        <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">dropColumn</span><span class="p">(</span><span class="s1">&#39;uid&#39;</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$schema</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="construction-of-migration-classes">
+<h2>Construction of migration classes<a class="headerlink" href="#construction-of-migration-classes" title="Link to this heading"></a></h2>
+<p>All migration classes are constructed via <a class="reference internal" href="../dependency_injection.html#id2"><span class="std std-ref">Dependency injection</span></a>. So if your migration
+steps need additional dependencies, these can be defined in the constructor of your migration
+class.</p>
+<p><strong>Example:</strong> If your migration needs to execute SQL statements, inject a <cite>OCP\IDBConnection</cite>
+instance into your migration class like this:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Version2404Date20220903071748</span> <span class="k">extends</span> <span class="nx">SimpleMigrationStep</span> <span class="p">{</span>
+   <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+      <span class="k">private</span> <span class="nx">IDBConnection</span> <span class="nv">$db</span>
+   <span class="p">)</span> <span class="p">{</span>
+   <span class="p">}</span>
+
+   <span class="k">public</span> <span class="k">function</span> <span class="nf">postSchemaChange</span><span class="p">(</span><span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">,</span> <span class="nx">\Closure</span> <span class="nv">$schemaClosure</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$options</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">getQueryBuilder</span><span class="p">();</span>
+      <span class="c1">// execute some SQL ...</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="migrations-and-metadata">
+<h2>Migrations and Metadata<a class="headerlink" href="#migrations-and-metadata" title="Link to this heading"></a></h2>
+<p>Since 30, details about migrations are available to administrator as metadata can be attached to your migration class by adding specific PHP Attributes:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">OCP\Migration\Attributes\CreateTable</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Migration\Attributes\ColumnType</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Migration\Attributes\ModifyColumn</span><span class="p">;</span>
+
+<span class="hll"><span class="p">#[</span><span class="nd">CreateTable</span><span class="p">(</span>
+</span><span class="hll">    <span class="nx">table</span><span class="o">:</span> <span class="s1">&#39;new_table&#39;</span><span class="p">,</span>
+</span><span class="hll">    <span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;Table is used to store things, but also to get more things&#39;</span><span class="p">,</span>
+</span><span class="hll">    <span class="nx">notes</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;this is a notice&#39;</span><span class="p">,</span> <span class="s1">&#39;and another one, if really needed&#39;</span><span class="p">]</span>
+</span><span class="hll"><span class="p">)]</span>
+</span><span class="hll"><span class="p">#[</span><span class="nd">ModifyColumn</span><span class="p">(</span><span class="nx">table</span><span class="o">:</span> <span class="s1">&#39;other_table&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;this_field&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">ColumnType</span><span class="o">::</span><span class="na">BIGINT</span><span class="p">)]</span>
+</span><span class="k">class</span> <span class="nc">Version30000Date20240729185117</span> <span class="k">extends</span> <span class="nx">SimpleMigrationStep</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">changeSchema</span><span class="p">(</span><span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">,</span> <span class="nx">Closure</span> <span class="nv">$schemaClosure</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$options</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">[</span><span class="o">...</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>List of available Migration Attributes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Migration\Attributes\AddColumn</span></code> if your migration implies the creation of a new column</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Migration\Attributes\AddIndex</span></code> if your migration adds a new index</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Migration\Attributes\CreateTable</span></code> if your migration creates a new table</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Migration\Attributes\DropColumn</span></code> if your migration drops a column</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Migration\Attributes\DropIndex</span></code> if your migration drops an index</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Migration\Attributes\DropTable</span></code> if your migration drops a table</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Migration\Attributes\ModifyColumn</span></code> if your migration modifies a column</p></li>
+</ul>
+</section>
+<section id="console-commands">
+<span id="migration-console-command"></span><h2>Console commands<a class="headerlink" href="#console-commands" title="Link to this heading"></a></h2>
+<p>There are some console commands, which should help developers to create or deal
+with migrations, which are only available if you are running your
+Nextcloud <strong>in debug mode</strong>:</p>
+<ul class="simple">
+<li><p><cite>migrations:execute</cite>: Executes a single migration version manually.
+The version argument is the class name of the migration, without the
+“Version” prefix. For example if your migration was named
+<cite>Version2404Date20220903071748</cite> the version would be <cite>2404Date20220903071748</cite>.</p></li>
+<li><p><cite>migrations:generate</cite>:
+This is needed to create a new migration file. This takes 2 arguments,
+first one is the <cite>appid</cite>, the second one should be the <cite>version`of your
+app as an integer. We recommend to use the major and minor digits of your apps
+version for that. This allows you to introduce a new migration in your branch
+for a Nextcloud version if there is already a migration path for a newer one
+in another branch. Since you can’t change this retroactive, we recommend to
+leave enough space in between and therefore map the numbers to 3 digits:
+`1.0.x =&gt; 1000</cite>, <cite>2.34.x =&gt; 2034</cite>, etc.</p></li>
+<li><p><cite>migrations:migrate</cite>: Execute a migration to a specified or the latest available version.</p></li>
+<li><p><cite>migrations:status</cite>: View the status of a set of migrations.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After generating a migration, you might need to run <cite>composer dump-autoload</cite>
+to be able to execute it.</p>
+</div>
+</section>
+<section id="adding-indices">
+<h2>Adding indices<a class="headerlink" href="#adding-indices" title="Link to this heading"></a></h2>
+<p>Adding indices to existing tables can take long time, especially on large tables. Therefore it is recommended to not add the indices in the migration itself, but to indicate the index requirement to the server by adding a listener for the <code class="docutils literal notranslate"><span class="pre">AddMissingIndicesEvent</span></code>. This way the migration can be executed in a separate step and do not block the upgrade process. For new installations the index should still be added to the migration that creates the table.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AddMissingIndicesListener</span> <span class="k">implements</span> <span class="nx">IEventListener</span> <span class="p">{</span>
+   <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$event</span> <span class="nx">instanceof</span> <span class="nx">AddMissingIndicesEvent</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">return</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">addMissingIndex</span><span class="p">(</span><span class="s1">&#39;my_table&#39;</span><span class="p">,</span> <span class="s1">&#39;my_index&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;column_a&#39;</span><span class="p">,</span> <span class="s1">&#39;column_b&#39;</span><span class="p">]);</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="replacing-indices">
+<h2>Replacing indices<a class="headerlink" href="#replacing-indices" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 29.0.0.</span></p>
+</div>
+<p>Similar to adding an index to an existing table, it could be necessary to replace one or more indices with a new one. To avoid a gap between dropping the old indices in a migration and adding the new one through <code class="docutils literal notranslate"><span class="pre">AddMissingIndicesEvent</span></code>, it is possible to do both at once in <code class="docutils literal notranslate"><span class="pre">AddMissingIndicesEvent</span></code>.</p>
+<p>If none of the previous indices are found, e.g. because they were optional and not created yet, the replacement index will be treated as <em>missing index</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure to not use the same index name for the new index as for old indices.</p>
+</div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ReplaceIndicesListener</span> <span class="k">implements</span> <span class="nx">IEventListener</span> <span class="p">{</span>
+   <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$event</span> <span class="nx">instanceof</span> <span class="nx">AddMissingIndicesEvent</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">return</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">replaceIndex</span><span class="p">(</span><span class="s1">&#39;my_table&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;my_old_index_one&#39;</span><span class="p">,</span> <span class="s1">&#39;my_old_index_two&#39;</span><span class="p">],</span> <span class="s1">&#39;my_new_index&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;column_a&#39;</span><span class="p">,</span> <span class="s1">&#39;column_b&#39;</span><span class="p">],</span> <span class="k">false</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Storage and database" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="database.html" class="btn btn-neutral float-right" title="Database access" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Apr 02, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

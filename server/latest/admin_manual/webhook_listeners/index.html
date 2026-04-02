@@ -1,0 +1,780 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Webhook Listeners &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/admin_manual/webhook_listeners/index.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Windmill Workflows" href="../windmill_workflows/index.html" />
+    <link rel="prev" title="The Smart Picker" href="../reference/smart_picker.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Critical changes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Webhook Listeners</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#listening-to-events">Listening to events</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#listing-registered-webhooks">Listing registered webhooks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filters">Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#speeding-up-webhook-dispatch">Speeding up webhook dispatch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#screen-or-tmux-session">Screen or tmux session</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#systemd-service">Systemd service</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#nextcloud-webhook-events">Nextcloud Webhook Events</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#payload-envelope">Payload envelope</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#node-files-folders-events">Node (Files / Folders) Events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#system-tag-events">System Tag Events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calendar-object-events">Calendar Object Events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#forms-app-events">Forms App Events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tables-app-events">Tables App Events</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Files</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Groupware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Office</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_monitoring/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/">Community Help Forum</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">User Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">Developer Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/install/">Download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://apps.nextcloud.com">App Store</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/t/translation-knowledge-valid-for-the-entire-nextcloud-project-wiki/51550">Translations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Supported versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud Enterprise</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/blob/master/COPYING-README">License</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/">Nextcloud GmbH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Webhook Listeners</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/webhook_listeners/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="webhook-listeners">
+<h1>Webhook Listeners<a class="headerlink" href="#webhook-listeners" title="Link to this heading"></a></h1>
+<section id="introduction">
+<span id="id1"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>Nextcloud supports sending notifications to external services whenever something
+important happens, such as when files are changed or updated.</p>
+</section>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The Webhook Listeners app enables your Nextcloud server to automatically notify
+external services whenever important events - such as file changes, uploads, or
+deletions - occur in your instance. By configuring webhook listeners, administrators
+can set up custom HTTP notifications (webhooks) that are triggered by specific
+internal events, allowing seamless integration with other platforms and automation of
+workflows without manual intervention.</p>
+<p>The app works by monitoring Nextcloud’s event system and dispatching HTTP
+requests to defined endpoints whenever a matching event takes place. Management and
+configuration of webhook listeners are handled via the Nextcloud OCS API and
+command-line tools. The app is ideal for scenarios where you want to connect Nextcloud
+with notification systems, external automation platforms, or custom integrations -
+without requiring manual polling.</p>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p>Enable the <code class="docutils literal notranslate"><span class="pre">webhook_listeners</span></code> app that comes bundled with Nextcloud - e.g.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>occ<span class="w"> </span>app:enable<span class="w"> </span>webhook_listeners
+</pre></div>
+</div>
+</section>
+<section id="listening-to-events">
+<h2>Listening to events<a class="headerlink" href="#listening-to-events" title="Link to this heading"></a></h2>
+<p>You can use the OCS API to add webhooks for specific events. See:
+<a class="reference external" href="https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index">Register a new webhook</a>.</p>
+<p>Note: When authenticating with the OCS API to register webhooks, the account you
+use must have administrator rights or delegated administrator rights.</p>
+<section id="listing-registered-webhooks">
+<h3>Listing registered webhooks<a class="headerlink" href="#listing-registered-webhooks" title="Link to this heading"></a></h3>
+<p>You can list all currently registered webhook listeners from the command line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>occ<span class="w"> </span>webhook_listeners:list
+</pre></div>
+</div>
+<p>By default this prints a table. Use the <code class="docutils literal notranslate"><span class="pre">--output</span></code> option to change the format.
+Each row contains the full configuration of a registered webhook</p>
+</section>
+<section id="filters">
+<h3>Filters<a class="headerlink" href="#filters" title="Link to this heading"></a></h3>
+<p>When registering a webhook listener, you can specify a filter parameter (<code class="docutils literal notranslate"><span class="pre">eventFilter</span></code>).
+The filter is evaluated against the <strong>complete webhook payload envelope</strong>, which has this
+structure:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;…&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;…event-specific fields…&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;…&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;…&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100000</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Filter keys use <strong>dot-notation</strong> to traverse into nested objects. For example:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">time</span></code> — matches the top-level Unix timestamp</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">user.uid</span></code> — matches the <code class="docutils literal notranslate"><span class="pre">uid</span></code> field inside the <code class="docutils literal notranslate"><span class="pre">user</span></code> object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">event.class</span></code> — matches the event’s fully-qualified class name inside <code class="docutils literal notranslate"><span class="pre">event</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">event.node.path</span></code> — matches the <code class="docutils literal notranslate"><span class="pre">path</span></code> field inside <code class="docutils literal notranslate"><span class="pre">event</span></code> → <code class="docutils literal notranslate"><span class="pre">node</span></code>
+(for node events)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">event.calendarId</span></code> — matches the <code class="docutils literal notranslate"><span class="pre">calendarId</span></code> field inside <code class="docutils literal notranslate"><span class="pre">event</span></code>
+(for calendar events)</p></li>
+</ul>
+<p>The value of the filter parameter must be a JSON object whose properties represent filter
+conditions. The <code class="docutils literal notranslate"><span class="pre">{}</span></code> object is an empty query, meaning no specific criteria are set, so
+all events are matched.</p>
+<p>If you want to match events triggered by a specific user, you can pass
+<code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;user.uid&quot;:</span> <span class="pre">&quot;bob&quot;</span> <span class="pre">}</span></code> to match all events associated with the user <code class="docutils literal notranslate"><span class="pre">bob</span></code>.</p>
+<p>To enforce multiple criteria, simply pass multiple properties:
+<code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;event.tableId&quot;:</span> <span class="pre">42,</span> <span class="pre">&quot;event.rowId&quot;:</span> <span class="pre">3</span> <span class="pre">}</span></code>.</p>
+<p>If you want to match values partially, you can use regular expressions:
+<code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;user.uid&quot;:</span> <span class="pre">&quot;/admin_.*/&quot;</span> <span class="pre">}</span></code> will match any user whose user ID starts with
+<code class="docutils literal notranslate"><span class="pre">admin_</span></code>. This can be especially useful for filesystem events when filtering by path:
+<code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;event.node.path&quot;:</span> <span class="pre">&quot;/^\\/.*\\/files\\/Special</span> <span class="pre">folder\\//&quot;</span> <span class="pre">}</span></code> will match files
+inside the <code class="docutils literal notranslate"><span class="pre">Special</span> <span class="pre">folder</span></code> of any user. Note that the slashes in the path need to be
+escaped with two backslashes: once because you are inside a JSON string, and once
+because you are inside a regular expression.</p>
+<p>You can also use comparison operators (<code class="docutils literal notranslate"><span class="pre">$e</span></code>, <code class="docutils literal notranslate"><span class="pre">$ne</span></code>, <code class="docutils literal notranslate"><span class="pre">$gt</span></code>, <code class="docutils literal notranslate"><span class="pre">$gte</span></code>,
+<code class="docutils literal notranslate"><span class="pre">$lt</span></code>, <code class="docutils literal notranslate"><span class="pre">$lte</span></code>, <code class="docutils literal notranslate"><span class="pre">$in</span></code>, <code class="docutils literal notranslate"><span class="pre">$nin</span></code>, <code class="docutils literal notranslate"><span class="pre">$all</span></code>, <code class="docutils literal notranslate"><span class="pre">$exists</span></code>, <code class="docutils literal notranslate"><span class="pre">$mod</span></code>) as well as
+logical operators (<code class="docutils literal notranslate"><span class="pre">$and</span></code>, <code class="docutils literal notranslate"><span class="pre">$or</span></code>, <code class="docutils literal notranslate"><span class="pre">$not</span></code>, <code class="docutils literal notranslate"><span class="pre">$nor</span></code>).</p>
+<p>For example, use <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;time&quot;:</span> <span class="pre">{</span> <span class="pre">&quot;$lt&quot;:</span> <span class="pre">1711971024</span> <span class="pre">}</span> <span class="pre">}</span></code> to accept
+only events prior to April 1st, 2024, and <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;time&quot;:</span> <span class="pre">{</span> <span class="pre">&quot;$not&quot;:</span> <span class="pre">{</span> <span class="pre">&quot;$lt&quot;:</span> <span class="pre">1711971024</span> <span class="pre">}</span> <span class="pre">}</span> <span class="pre">}</span></code>
+to accept events after April 1st, 2024.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;event.node.id&quot;:</span> <span class="pre">{</span> <span class="pre">&quot;$exists&quot;:</span> <span class="pre">true</span> <span class="pre">}</span> <span class="pre">}</span></code> to match only events where the node
+still has an ID (i.e. is not a <code class="docutils literal notranslate"><span class="pre">NonExistingFile</span></code>/<code class="docutils literal notranslate"><span class="pre">NonExistingFolder</span></code>).</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;event.class&quot;:</span> <span class="pre">&quot;OCP\\Files\\Events\\Node\\NodeCreatedEvent&quot;</span> <span class="pre">}</span></code> to match only
+<code class="docutils literal notranslate"><span class="pre">NodeCreatedEvent</span></code> events (backslashes must be escaped in JSON strings).</p>
+</section>
+<section id="speeding-up-webhook-dispatch">
+<h3>Speeding up webhook dispatch<a class="headerlink" href="#speeding-up-webhook-dispatch" title="Link to this heading"></a></h3>
+<p>This app uses background jobs to trigger registered webhooks. By default, webhooks
+are triggered every 5 minutes, as the default cron interval is set to 5 minutes.
+To trigger webhooks sooner, you can set up a background job worker.</p>
+<p>The following command will launch a worker for the webhook call background job:</p>
+<section id="screen-or-tmux-session">
+<h4>Screen or tmux session<a class="headerlink" href="#screen-or-tmux-session" title="Link to this heading"></a></h4>
+<p>Run the following <code class="docutils literal notranslate"><span class="pre">occ</span></code> command inside a screen or tmux session, preferably four
+or more times, to enable parallel processing of multiple requests by different users
+or the same user. It is best to run one command per screen session or tmux window/pane
+to keep logs visible and make each worker easy to restart.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="o">-</span><span class="n">e</span><span class="p">;</span> <span class="k">while</span> <span class="n">true</span><span class="p">;</span> <span class="n">do</span> <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">background</span><span class="o">-</span><span class="n">job</span><span class="p">:</span><span class="n">worker</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="s2">&quot;OCA\WebhookListeners\BackgroundJobs\WebhookCall&quot;</span><span class="p">;</span> <span class="n">done</span>
+</pre></div>
+</div>
+<p>For Nextcloud-AIO you should use this command on the host server.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="o">-</span><span class="n">e</span><span class="p">;</span> <span class="k">while</span> <span class="n">true</span><span class="p">;</span> <span class="n">do</span> <span class="n">sudo</span> <span class="n">docker</span> <span class="n">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">aio</span><span class="o">-</span><span class="n">nextcloud</span> <span class="n">docker</span> <span class="n">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">aio</span><span class="o">-</span><span class="n">nextcloud</span> <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">background</span><span class="o">-</span><span class="n">job</span><span class="p">:</span><span class="n">worker</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="s2">&quot;OCA\WebhookListeners\BackgroundJobs\WebhookCall&quot;</span><span class="p">;</span> <span class="n">done</span>
+</pre></div>
+</div>
+<p>You may want to adjust the number of workers and the timeout (in seconds) to your needs.
+The logs of the worker can be checked by attaching to the screen or tmux session.</p>
+</section>
+<section id="systemd-service">
+<h4>Systemd service<a class="headerlink" href="#systemd-service" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Create a systemd service file in <code class="docutils literal notranslate"><span class="pre">/etc/systemd/system/nextcloud-webhook-worker&#64;.service</span></code> with the following content:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Unit</span><span class="p">]</span>
+<span class="n">Description</span><span class="o">=</span><span class="n">Nextcloud</span> <span class="n">Webhook</span> <span class="n">worker</span> <span class="o">%</span><span class="n">i</span>
+<span class="n">After</span><span class="o">=</span><span class="n">network</span><span class="o">.</span><span class="n">target</span>
+
+<span class="p">[</span><span class="n">Service</span><span class="p">]</span>
+<span class="n">ExecStart</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">-</span><span class="n">webhook</span><span class="o">-</span><span class="n">worker</span><span class="o">/</span><span class="n">taskprocessing</span><span class="o">.</span><span class="n">sh</span> <span class="o">%</span><span class="n">i</span>
+<span class="n">Restart</span><span class="o">=</span><span class="n">always</span>
+<span class="n">StartLimitInterval</span><span class="o">=</span><span class="mi">60</span>
+<span class="n">StartLimitBurst</span><span class="o">=</span><span class="mi">10</span>
+
+<span class="p">[</span><span class="n">Install</span><span class="p">]</span>
+<span class="n">WantedBy</span><span class="o">=</span><span class="n">multi</span><span class="o">-</span><span class="n">user</span><span class="o">.</span><span class="n">target</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Create a shell script in <code class="docutils literal notranslate"><span class="pre">/opt/nextcloud-webhook-worker/taskprocessing.sh</span></code> with the following content and make sure to make it executable:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+<span class="n">echo</span> <span class="s2">&quot;Starting Nextcloud Webhook Worker $1&quot;</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">nextcloud</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">background</span><span class="o">-</span><span class="n">job</span><span class="p">:</span><span class="n">worker</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="s1">&#39;OCA\WebhookListeners\BackgroundJobs\WebhookCall&#39;</span>
+</pre></div>
+</div>
+<p>You may want to adjust the timeout to your needs (in seconds).</p>
+<ol class="arabic simple" start="3">
+<li><p>Enable and start the service 4 or more times:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for i in {1..4}; do systemctl enable --now nextcloud-webhook-worker@$i.service; done
+</pre></div>
+</div>
+<p>The status of the workers can be checked with (replace 1 with the worker number):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">systemctl</span> <span class="n">status</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">webhook</span><span class="o">-</span><span class="n">worker</span><span class="o">@</span><span class="mf">1.</span><span class="n">service</span>
+</pre></div>
+</div>
+<p>The list of workers can be checked with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">systemctl</span> <span class="nb">list</span><span class="o">-</span><span class="n">units</span> <span class="o">--</span><span class="nb">type</span><span class="o">=</span><span class="n">service</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">webhook</span><span class="o">-</span><span class="n">worker</span>
+</pre></div>
+</div>
+<p>The complete logs of the workers can be checked with (replace 1 with the worker number):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">journalctl</span> <span class="o">-</span><span class="n">xeu</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">webhook</span><span class="o">-</span><span class="n">worker</span><span class="o">@</span><span class="mf">1.</span><span class="n">service</span> <span class="o">-</span><span class="n">f</span>
+</pre></div>
+</div>
+<p>It is recommended to restart this worker at least once a day to make sure code changes are effective and avoid memory leaks, in this example the service restarts every 60 seconds.</p>
+</section>
+</section>
+</section>
+<section id="nextcloud-webhook-events">
+<h2>Nextcloud Webhook Events<a class="headerlink" href="#nextcloud-webhook-events" title="Link to this heading"></a></h2>
+<p>This is list of typically available events. It features the event ID and the available variables for filtering.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In addition to the events listed below (which are provided by Nextcloud server and included apps), optional apps may register their own webhook-compatible events. The exact set of events available on your server will depend on your Nextcloud version and installed apps. If you need to discover available events, consult your app documentation or refer to your app source code or the Nextcloud developer documentation.</p>
+</div>
+<section id="payload-envelope">
+<h3>Payload envelope<a class="headerlink" href="#payload-envelope" title="Link to this heading"></a></h3>
+<p>Every webhook HTTP POST body shares the same top-level structure:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Alice&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100000</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;event&quot;</span></code> is an object containing the event-specific data <strong>plus</strong> a <code class="docutils literal notranslate"><span class="pre">&quot;class&quot;</span></code> field
+holding the fully-qualified PHP class name (e.g.
+<code class="docutils literal notranslate"><span class="pre">&quot;OCP\\Files\\Events\\Node\\NodeCreatedEvent&quot;</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;user&quot;</span></code> is the user who triggered the event (<code class="docutils literal notranslate"><span class="pre">null</span></code> when no user session exists).
+Contains <code class="docutils literal notranslate"><span class="pre">&quot;uid&quot;</span></code> (string) and <code class="docutils literal notranslate"><span class="pre">&quot;displayName&quot;</span></code> (string).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;time&quot;</span></code> is an integer Unix timestamp of when the event was captured.</p></li>
+</ul>
+<p><strong>Note:</strong> Example payloads below are based on actual webhook HTTP POST payloads, using
+real JSON and data types. Field types are indicated by their value type: for example,
+<code class="docutils literal notranslate"><span class="pre">&quot;id&quot;:</span> <span class="pre">123</span></code> is an integer, not a string.</p>
+</section>
+<section id="node-files-folders-events">
+<h3>Node (Files / Folders) Events<a class="headerlink" href="#node-files-folders-events" title="Link to this heading"></a></h3>
+<p>Node events include those that act on a single node as well as those that act on two
+nodes (such as copy, rename, and restore). In single-node events, the <code class="docutils literal notranslate"><span class="pre">event</span></code> object
+includes a <code class="docutils literal notranslate"><span class="pre">node</span></code> object. In two-node events, it includes both a <code class="docutils literal notranslate"><span class="pre">source</span></code> and a
+<code class="docutils literal notranslate"><span class="pre">target</span></code> object. The examples below show the <strong>complete</strong> payloads.</p>
+<p><strong>1. Single-node events</strong></p>
+<p>Applies to:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\BeforeNodeCreatedEvent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\BeforeNodeTouchedEvent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\BeforeNodeWrittenEvent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\BeforeNodeReadEvent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\BeforeNodeDeletedEvent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\NodeCreatedEvent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\NodeTouchedEvent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\NodeWrittenEvent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\NodeDeletedEvent</span></code></p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OCP\\Files\\Events\\Node\\NodeCreatedEvent&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;node&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">437</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/admin/files/test-webhook.txt&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Admin&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100000</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;event.class&quot;</span></code> is the fully-qualified event class name (string)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;event.node.id&quot;</span></code> is an integer (unique node ID) — may be absent, see note below</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;event.node.path&quot;</span></code> is a string (file/folder path)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In some events (such as <code class="docutils literal notranslate"><span class="pre">NodeDeletedEvent</span></code> or when the node refers to a
+non-existent file or folder), the <code class="docutils literal notranslate"><span class="pre">node</span></code> object may not have an <code class="docutils literal notranslate"><span class="pre">id</span></code> field.
+This happens when the node no longer exists in the filesystem/database, and is
+represented in Nextcloud by an internal <code class="docutils literal notranslate"><span class="pre">NonExistingFile</span></code> or <code class="docutils literal notranslate"><span class="pre">NonExistingFolder</span></code>.
+In such cases, only the <code class="docutils literal notranslate"><span class="pre">path</span></code> field will be present. Always check for the
+presence of the <code class="docutils literal notranslate"><span class="pre">id</span></code> field in these payloads. Usually, the corresponding <code class="docutils literal notranslate"><span class="pre">Before*</span></code>
+event (such as <code class="docutils literal notranslate"><span class="pre">BeforeNodeDeletedEvent</span></code>) can be used if you require the <code class="docutils literal notranslate"><span class="pre">id</span></code> of
+the node before deletion.</p>
+</div>
+<p>Example of a deleted node webhook payload:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OCP\\Files\\Events\\Node\\NodeDeletedEvent&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;node&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/user/files/oldfile.txt&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;User&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100500</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>2. Two-node events</strong></p>
+<p>Applies to:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\NodeCopiedEvent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\NodeRenamedEvent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\NodeRestoredEvent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\BeforeNodeCopiedEvent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\BeforeNodeRestoredEvent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\Events\Node\BeforeNodeRenamedEvent</span></code></p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OCP\\Files\\Events\\Node\\NodeRestoredEvent&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">399</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/admin/files_trashbin/files/myfile.txt&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">437</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/admin/files/myfile.txt&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Admin&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100000</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;source&quot;</span></code> is an object representing the original node, with <code class="docutils literal notranslate"><span class="pre">&quot;id&quot;</span></code> (integer) and <code class="docutils literal notranslate"><span class="pre">&quot;path&quot;</span></code> (string)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;target&quot;</span></code> is an object representing the resulting/copied/restored/renamed node, with <code class="docutils literal notranslate"><span class="pre">&quot;id&quot;</span></code> (integer) and <code class="docutils literal notranslate"><span class="pre">&quot;path&quot;</span></code> (string)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For some two-node events, the <code class="docutils literal notranslate"><span class="pre">source</span></code> or <code class="docutils literal notranslate"><span class="pre">target</span></code> node may not have an <code class="docutils literal notranslate"><span class="pre">id</span></code> field, for instance if the node was deleted or is otherwise missing from the filesystem. Always check for the presence of the <code class="docutils literal notranslate"><span class="pre">id</span></code> field in these objects. Typically, if you need the <code class="docutils literal notranslate"><span class="pre">id</span></code> of a node just before deletion or change, the respective <code class="docutils literal notranslate"><span class="pre">Before*</span></code> event (such as <code class="docutils literal notranslate"><span class="pre">BeforeNodeRenamedEvent</span></code>) will include it.</p>
+</div>
+<p>Example of a two-node event (NodeRenamedEvent) where the source node is missing:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OCP\\Files\\Events\\Node\\NodeRenamedEvent&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/user/files/previousname.txt&quot;</span>
+<span class="w">     </span><span class="p">},</span>
+<span class="w">     </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">599</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/user/files/newname.txt&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Joe User&quot;</span>
+<span class="w">     </span><span class="p">},</span>
+<span class="w">     </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100000</span>
+<span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only these fields are guaranteed by Nextcloud core. Additional fields may appear if added by custom plugins or future versions.</p>
+</div>
+</section>
+<section id="system-tag-events">
+<h3>System Tag Events<a class="headerlink" href="#system-tag-events" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\SystemTag\TagAssignedEvent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\SystemTag\TagUnassignedEvent</span></code></p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OCP\\SystemTag\\TagAssignedEvent&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;objectType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;files&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;objectIds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;437&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;438&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;tagIds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">17</span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Admin&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100000</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="calendar-object-events">
+<h3>Calendar Object Events<a class="headerlink" href="#calendar-object-events" title="Link to this heading"></a></h3>
+<p>Calendar object events use two distinct payload formats, depending on the event.</p>
+<p><strong>Standard payload</strong></p>
+<p>Applies to:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Calendar\Events\CalendarObjectCreatedEvent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Calendar\Events\CalendarObjectDeletedEvent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Calendar\Events\CalendarObjectMovedToTrashEvent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Calendar\Events\CalendarObjectRestoredEvent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Calendar\Events\CalendarObjectUpdatedEvent</span></code></p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OCP\\Calendar\\Events\\CalendarObjectCreatedEvent&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;calendarId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;calendarData&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;work&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;{http://calendarserver.org/ns/}getctag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1736283&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;{http://sabredav.org/ns}sync-token&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9651</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VEVENT,VTODO&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;{urn:ietf:params:xml:ns:caldav}schedule-calendar-transp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;opaque&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;shares&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mailto:alice@example.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;commonName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;readOnly&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;{http://owncloud.org/ns}principal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;principal:users/alice&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;{http://owncloud.org/ns}group-share&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;objectData&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;event-20251111T100000Z.ics&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;lastmodified&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700099500</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;etag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;19fa45b394&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;calendarid&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4096</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;component&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VEVENT&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;classification&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;david&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;David&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100000</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Distinct payload for two-calendar events</strong></p>
+<p>Applies to:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Calendar\Events\CalendarObjectMovedEvent</span></code></p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OCP\\Calendar\\Events\\CalendarObjectMovedEvent&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sourceCalendarId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sourceCalendarData&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;work&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;targetCalendarId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;targetCalendarData&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;meetings&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;sourceShares&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mailto:alice@example.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;commonName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Alice&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;targetShares&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">       </span><span class="nt">&quot;href&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mailto:bob@example.com&quot;</span><span class="p">,</span>
+<span class="w">       </span><span class="nt">&quot;commonName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bob&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;objectData&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;event-20251111T100000Z.ics&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;david&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;David&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700100000</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="forms-app-events">
+<h3>Forms App Events<a class="headerlink" href="#forms-app-events" title="Link to this heading"></a></h3>
+<p>When the optional <code class="docutils literal notranslate"><span class="pre">forms</span></code> app is installed:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCA\Forms\Events\FormSubmittedEvent</span></code></p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OCA\\Forms\\Events\\FormSubmittedEvent&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;form&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;hash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;abc123def456&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Employee Feedback&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Annual employee feedback form.&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;ownerId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alice&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;fileId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1002</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;fileFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pdf&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;created&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700001000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;access&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;expires&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1702606600</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;isAnonymous&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;submitMultiple&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;showExpiration&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;lastUpdated&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700001200</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;submissionMessage&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;submission&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">220</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;formId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;userId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bob&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700001234</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bob&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bob&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700001234</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="tables-app-events">
+<h3>Tables App Events<a class="headerlink" href="#tables-app-events" title="Link to this heading"></a></h3>
+<p>When the optional <code class="docutils literal notranslate"><span class="pre">tables</span></code> app is installed:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCA\Tables\Event\RowAddedEvent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCA\Tables\Event\RowDeletedEvent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCA\Tables\Event\RowUpdatedEvent</span></code></p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OCA\\Tables\\Event\\RowAddedEvent&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tableId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;rowId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;previousValues&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;0&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Project X&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;1&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;2&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;active&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;carol&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Carol&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700054321</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For filtering or automation, always check the actual payload you receive, as it matches
+the JSON examples above, not PHPDoc or internal PHP array type style.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../reference/smart_picker.html" class="btn btn-neutral float-left" title="The Smart Picker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../windmill_workflows/index.html" class="btn btn-neutral float-right" title="Windmill Workflows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/admin_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/admin_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

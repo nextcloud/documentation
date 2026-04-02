@@ -1,0 +1,718 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="nn" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using server-side encryption &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/files/encrypting_files.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=38fd2a55"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Using end-to-end encryption" href="using_e2ee.html" />
+    <link rel="prev" title="Synkronisering på skrivebord og mobil" href="desktop_mobile_sync.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest brukar manual introduksjon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud Web interface</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Filer &amp; synkronisasjon</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Aksessere filene dine ved å bruke Nextcloud Web grensesnitt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Accessing Nextcloud files using WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Administrere sletta filer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Synkronisering på skrivebord og mobil</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using server-side encryption</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#encryption-faq">Kryptering FAQ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-can-encryption-be-disabled">Korleis kan kryptering bli deaktivert?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-possible-to-disable-encryption-with-the-recovery-key">Er det mogleg å deaktivere kryptering med gjenopprettings nøkkelen?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#can-encryption-be-disabled-without-the-user-s-password">Kan kryptering bli deaktivert utan brukaren sitt passord?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">Er det planlagt å flytte dette til den neste brukar innloggingen eller ein bakgrunns jobb?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-group-sharing-possible-with-the-recovery-key">Er gruppedeling mogleg med gjenopprettings nøkkelen?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-encryption">Bruk av kryptering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-encrypted-files">Deling av krypterte filer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#recovery-key-password">Gjenoppretting nøkkel passord</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#files-not-encrypted">Ikkje krypterte filer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#change-private-key-password">Endre privat nøkkel passord</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Fil Deling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Fødererte Delingar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Å lage anonyme opplastinger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Store fil opplastinger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Lagringskvote</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Version control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Prosjekter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Transfer Ownership</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Bruk av Føderale Delingar</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Snakk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting your preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal aksess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Bruk av to-stegs autentifisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Administrere tilkopla nettlesere og einingar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Ekstern lagring</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Filer &amp; synkronisasjon</a></li>
+      <li class="breadcrumb-item active">Using server-side encryption</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/encrypting_files.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-server-side-encryption">
+<h1>Using server-side encryption<a class="headerlink" href="#using-server-side-encryption" title="Link to this heading"></a></h1>
+<p>Nextcloud includes a server-side encryption app, and when it is enabled by
+your Nextcloud administrator all of your Nextcloud data files are automatically
+encrypted on the server.
+Encryption is server-wide, so when it is enabled you cannot choose to keep your
+files unencrypted. You don’t have to do anything special, as it uses your
+Nextcloud login as the password for your unique private encryption key. Just log
+out and in and manage and share your files as you normally do, and you can
+still change your password whenever you want.</p>
+<p>Hovedformålet er å kryptere filer på eksterne lagrings tenester som er tilkopla din Nextcloud tenar. Dette er ein enkel og sømlaus måte for å beskytte filene dine på ekstern lagring. Du kan dele dine eksterne filer gjennom Nextcloud den vanlege måten, men du kan ikkje dele dine krypterte filer direkte frå den eksterne lagringen som du nyttar. Grunnen til dette er at krypterings nøklene er lagret i din Nextcloud tenar, og er aldri eksponert til eksterne tjenesteleverandører.</p>
+<p>Om din Nextcloud tenar ikkje er kopla til nokon ekstern lagringsteneste, er det betre å nytte ei anna form for kryptering som fil-nivå eller full diskkryptering. Fordi nøklene er holdt på din Nextcloud tenar, er det mogleg for din Nextcloud administrator å snike i filene dine, og om tenaren er kompromittert kan inntrengeren få tilgang til filene dine. (Les  <a class="reference external" href="https://nextcloud.com/blog/encryption-in-nextcloud/">Kryptering i Nextcloud</a> for å lære meir.)</p>
+<section id="encryption-faq">
+<h2>Kryptering FAQ<a class="headerlink" href="#encryption-faq" title="Link to this heading"></a></h2>
+<section id="how-can-encryption-be-disabled">
+<h3>Korleis kan kryptering bli deaktivert?<a class="headerlink" href="#how-can-encryption-be-disabled" title="Link to this heading"></a></h3>
+<p>The only way to disable encryption is to run the <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">«decrypt all»</a>
+script, which decrypts all files and disables encryption.</p>
+</section>
+<section id="is-it-possible-to-disable-encryption-with-the-recovery-key">
+<h3>Er det mogleg å deaktivere kryptering med gjenopprettings nøkkelen?<a class="headerlink" href="#is-it-possible-to-disable-encryption-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>Yes, <em>if</em> every user uses the <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">file recovery key</a>, <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">«decrypt all»</a> will use it to decrypt all files.</p>
+</section>
+<section id="can-encryption-be-disabled-without-the-user-s-password">
+<h3>Kan kryptering bli deaktivert utan brukaren sitt passord?<a class="headerlink" href="#can-encryption-be-disabled-without-the-user-s-password" title="Link to this heading"></a></h3>
+<p>Om du ikkje har brukaren sitt passord eller <a href="#id3"><span class="problematic" id="id4">`fil gjenopprettings nøkkelen&lt;https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys&gt;`_</span></a>, så er det ingen måte å dekryptere alle filene på. Kva meir, å køyre det på innlogg vil være farleg, fordi du mest sannsynleg vil møte på tidsavbrot.</p>
+</section>
+<section id="is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">
+<h3>Er det planlagt å flytte dette til den neste brukar innloggingen eller ein bakgrunns jobb?<a class="headerlink" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job" title="Link to this heading"></a></h3>
+<p>Om me gjorde det, måtte me ha lagra innloggings passordet ditt i databasen. Dette kan bli sett på som eit sikkerheitsproblem, så ingenting som det er planlagt.</p>
+</section>
+<section id="is-group-sharing-possible-with-the-recovery-key">
+<h3>Er gruppedeling mogleg med gjenopprettings nøkkelen?<a class="headerlink" href="#is-group-sharing-possible-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>Om du meiner å legge til brukarar i grupper og få det til å fungere på magisk vis? Nei. Dette fungerer berre med hovednøkkelen.</p>
+</section>
+</section>
+<section id="using-encryption">
+<h2>Bruk av kryptering<a class="headerlink" href="#using-encryption" title="Link to this heading"></a></h2>
+<p>Nextcloud kryptering er så og sei sett det og gløymt det, men du har eit par andre alternativ du kan nytte.</p>
+<p>Når din Nextcloud administrator aktiverer kryptering for fyrste gong, må du logge av og deretter inn igjen for å skape dine krypterings nøkler og kryptere filene dine. Når kryptering har blitt aktivert på din Nextcloud tenar vil du kunne sjå ein gul banner på Fil siden din som varsler deg om å logge ut og så inn igjen:</p>
+<figure class="align-default">
+<img alt="../../_images/encryption1.png" src="../../_images/encryption1.png" />
+</figure>
+<p>Når du logger inn igjen tar det eit par minutter før det fungerer, avhengig av kor mange filer du har, og så  er du tilbake til din standard Nextcloud side.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption2.png" src="../../_images/encryption2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Du må aldri miste ditt Nextcloud passord, fordi då mister du tilgang til filene dine. Sjølv om det finnes eit alternativt gjenopprettings alternativ som din Nextcloud administrator kan aktivere; sjå Gjenopprettings Nøkkel Passord seksjon (nedanfor) for å lære om dette.</p>
+</div>
+</section>
+<section id="sharing-encrypted-files">
+<h2>Deling av krypterte filer<a class="headerlink" href="#sharing-encrypted-files" title="Link to this heading"></a></h2>
+<p>Berre brukarar som har private krypterings nøkler har tilgang til delte krypterte filer og mapper. Brukarar som ikkje endå har skapt deira private krypterings nøkler vil ikkje ha tilgang til krypterte delte filer; dei vil sjå mappene og fil namna, men ikkje kunne opne eller laste ned filer. Dei vil sjå ein gul varslings banner som seier «Kryptering Appen er aktivert men dine nøkler er ikkje initialisert, venleg logg ut og inn igjen.»</p>
+<p>Eigar av delte filer må kanskje dele på nytt filene etter at krypteringen er aktivert; brukarar som forsøker å aksessere delingen vil sjå ein melding som anbefaler dei å spørje fil eigaren om å dele filen på nytt med dei. For individuelle delinger, slutt å dele filen og deretter del den på nytt. For gruppe delinger, del med kva som helst individ som ikkje kan aksessere delingen. Dette oppdaterer krypteringen, og så kan dele eigaren fjerne dei individuelle delingene.</p>
+<section id="recovery-key-password">
+<h3>Gjenoppretting nøkkel passord<a class="headerlink" href="#recovery-key-password" title="Link to this heading"></a></h3>
+<p>Om din Nextcloud administrator har aktivert gjenoppretting nøkkel funksjonen, kan du velje å nytte denne funksjonen på din konto. Om du aktiverer «Passord gjenoppretting» vil administratoren kunne lese dine data med eit spesielt passord. Denne funksjonen gir administratoren mogelegheiten til å gjenopprette dine filer i tilfelle du mister ditt Nextcloud passord. Om gjenoppretting nøkkelen ikkje er aktivert, er det ingen måte å gjenopprette filene dine om du mister ditt innlogging passord.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption3.png" src="../../_images/encryption3.png" />
+</figure>
+</section>
+</section>
+<section id="files-not-encrypted">
+<h2>Ikkje krypterte filer<a class="headerlink" href="#files-not-encrypted" title="Link to this heading"></a></h2>
+<p>Kun dataene i filene dine er kryptert, og ikkje fil namna eller mappe strukturen. Desse filene er aldri kryptert:</p>
+<ul class="simple">
+<li><p>Gamle filer i papirkurven.</p></li>
+<li><p>Bilde miniatyrbilete frå Galleri appen.</p></li>
+<li><p>Førehandsvisningar frå Filer appen.</p></li>
+<li><p>Søkeindeksen frå den fulle tekst søke appen.</p></li>
+<li><p>Tredjepart applikasjon data</p></li>
+</ul>
+<p>Kun filer som er delt med tredjepart lagringsleverandører kan bli kryptert, resten av filene kan ikkje bli kryptert.</p>
+<section id="change-private-key-password">
+<h3>Endre privat nøkkel passord<a class="headerlink" href="#change-private-key-password" title="Link to this heading"></a></h3>
+<p>Dette alternativet er berre tilgjengeleg om kryptering passordet ikkje har blitt endra av administratoren, men berre innlogging passordet. Dette kan skje om din Nextcloud leverandør nytter ein ekstern brukar back-end (for eksempel, LDAP) og endret ditt innlogging passord ved å nytte back-end konfigureringen. I dette tilfellet, kan du sette ditt kryptering passord som ditt nye innlogging passord ved å gi ditt gamle innlogging passord og ditt nye. Kryptering appen fungerer berre om ditt innlogging passord og ditt kryptering passord er identisk.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-left" title="Synkronisering på skrivebord og mobil" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="using_e2ee.html" class="btn btn-neutral float-right" title="Using end-to-end encryption" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 Norwegian (NN)
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Languages</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versjoner</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Nedlastinger</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>På Les Dokumentene</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Prosjekt Heima</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Bygger</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

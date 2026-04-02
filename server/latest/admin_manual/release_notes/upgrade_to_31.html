@@ -1,0 +1,308 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upgrade to Nextcloud 31 &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/admin_manual/release_notes/upgrade_to_31.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Upgrade to Nextcloud 30" href="upgrade_to_30.html" />
+    <link rel="prev" title="Upgrade to Nextcloud 32" href="upgrade_to_32.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Critical changes</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#critical-changes">Critical changes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_33.html">Upgrade to Nextcloud 33</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_32.html">Upgrade to Nextcloud 32</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Upgrade to Nextcloud 31</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#system-requirements">System requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database-configuration">Database configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#php-configuration">PHP configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-configuration">Nextcloud configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#monitoring-counting-of-active-users">Monitoring: Counting of active users</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#previews">Previews</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#appapi-app-api-is-now-a-default-app">AppAPI (app_api) is now a default app</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_30.html">Upgrade to Nextcloud 30</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_28.html">Upgrade to Nextcloud 28</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_27.html">Upgrade to Nextcloud 27</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_26.html">Upgrade to Nextcloud 26</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#changelog">Changelog</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Files</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Groupware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Office</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_monitoring/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/">Community Help Forum</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">User Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">Developer Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/install/">Download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://apps.nextcloud.com">App Store</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/t/translation-knowledge-valid-for-the-entire-nextcloud-project-wiki/51550">Translations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Supported versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud Enterprise</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/blob/master/COPYING-README">License</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/">Nextcloud GmbH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Release notes</a></li>
+      <li class="breadcrumb-item active">Upgrade to Nextcloud 31</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/release_notes/upgrade_to_31.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="upgrade-to-nextcloud-31">
+<h1>Upgrade to Nextcloud 31<a class="headerlink" href="#upgrade-to-nextcloud-31" title="Link to this heading"></a></h1>
+<section id="system-requirements">
+<h2>System requirements<a class="headerlink" href="#system-requirements" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>PHP 8.1 is now deprecated but still supported.</p></li>
+<li><p>PHP 8.4 is now supported, but 8.3 is recommended.</p></li>
+</ul>
+</section>
+<section id="database-configuration">
+<h2>Database configuration<a class="headerlink" href="#database-configuration" title="Link to this heading"></a></h2>
+<p>Other row formats than <code class="docutils literal notranslate"><span class="pre">DYNAMIC</span></code> for MySQL and MariaDB databases will <a class="reference external" href="https://github.com/nextcloud/server/issues/34497">issue a warning since Nextcloud 24</a>,
+as they often cause performance issues.
+With Nextcloud 31 a <a class="reference external" href="https://github.com/nextcloud/server/pull/48547">more prominent new setup warning</a> for this was added.</p>
+<p>The row format can be changed via <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span></code> DDL commands during a maintenance window.
+Changing the row format from <code class="docutils literal notranslate"><span class="pre">COMPRESSED</span></code> to <code class="docutils literal notranslate"><span class="pre">DYNAMIC</span></code> requires about 2x the disk space and may take a long time depending on the size of the database.
+See the <a class="reference external" href="https://dev.mysql.com/doc/refman/en/innodb-row-format.html">MySQL documentation</a> for more information.
+If you’re not sure how to do this, you can <a class="reference external" href="https://help.nextcloud.com/t/upgrade-to-nextcloud-hub-10-31-0-0-incorrect-row-format-found-in-your-database/218366/">find some tips and tricks from the community</a>.</p>
+</section>
+<section id="php-configuration">
+<h2>PHP configuration<a class="headerlink" href="#php-configuration" title="Link to this heading"></a></h2>
+<p>We have a new setup warning to check if the memory reserved for APCu is high enough.
+If you see this warning, you should increase the memory reserved for APCu.
+You can do this by increasing the value of the <code class="docutils literal notranslate"><span class="pre">apc.shm_size</span></code> directive in your <code class="docutils literal notranslate"><span class="pre">php.ini</span></code> file.
+It is generally advised to review this value and increase it if necessary depending on your instance size.</p>
+</section>
+<section id="nextcloud-configuration">
+<h2>Nextcloud configuration<a class="headerlink" href="#nextcloud-configuration" title="Link to this heading"></a></h2>
+<section id="maximum-chunk-size">
+<h3>Maximum chunk size<a class="headerlink" href="#maximum-chunk-size" title="Link to this heading"></a></h3>
+<p>We have adjusted the default maximum chunk size for big file uploading.
+Previously it was set to 10MiB, it is now increased to 100MiB.</p>
+<p>Also the configuration was moved from an app configuration to the system configuration (<code class="docutils literal notranslate"><span class="pre">config.php</span></code>).
+If you set up a custom value previously the value will be automatically migrated to the system configuration during the update.
+But if you need to set a new custom value you need now to use the system configuration, see also <a class="reference internal" href="../configuration_files/big_file_upload_configuration.html#files-configure-max-chunk-size"><span class="std std-ref">Adjust chunk size on Nextcloud side</span></a>.</p>
+</section>
+</section>
+<section id="monitoring-counting-of-active-users">
+<h2>Monitoring: Counting of active users<a class="headerlink" href="#monitoring-counting-of-active-users" title="Link to this heading"></a></h2>
+<p>Starting with Nextcloud 31.0.6 the monitoring app was adjusted to count the active users in the same way as occ user:report and the support app.</p>
+</section>
+<section id="previews">
+<h2>Previews<a class="headerlink" href="#previews" title="Link to this heading"></a></h2>
+<p>Starting with Nextcloud 31.0.10, the preview provider for MP3 files, which reads cover images embedded in the files, is disabled by default for performance and stability reasons.
+See <a class="reference internal" href="../configuration_files/previews_configuration.html"><span class="doc">Previews configuration</span></a> for details on how to enable or disable the preview provider.</p>
+</section>
+<section id="appapi-app-api-is-now-a-default-app">
+<h2>AppAPI (app_api) is now a default app<a class="headerlink" href="#appapi-app-api-is-now-a-default-app" title="Link to this heading"></a></h2>
+<p>Starting with Nextcloud 30.0.1, the AppAPI app is included and enabled by default. See <a class="reference internal" href="../exapps_management/index.html"><span class="doc">ExApps management</span></a> for details.</p>
+<p>You can disable this app in the standard manner via the <em>Apps</em> menu if you do not expect to use AppAPI integrations in the near future.</p>
+<p>If AppAPI is disabled, other apps that depend on it will not be visible in the app store. AppAPI-related setup checks will also be deactivated.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="upgrade_to_32.html" class="btn btn-neutral float-left" title="Upgrade to Nextcloud 32" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="upgrade_to_30.html" class="btn btn-neutral float-right" title="Upgrade to Nextcloud 30" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/admin_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/admin_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

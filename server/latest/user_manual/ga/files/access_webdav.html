@@ -1,0 +1,1126 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ga" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rochtain ar chomhaid Nextcloud a fháil ag baint úsáide as WebDAV &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/files/access_webdav.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=d9c2735f"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Comhaid scriosta a bhainistiú" href="deleted_file_management.html" />
+    <link rel="prev" title="Teacht ar do chuid comhad ag baint úsáide as comhéadan Gréasáin Nextcloud" href="access_webgui.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest réamhrá lámhleabhar úsáideora</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Comhéadan Gréasáin Nextcloud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Comhaid &amp; sioncronú</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Teacht ar do chuid comhad ag baint úsáide as comhéadan Gréasáin Nextcloud</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Rochtain ar chomhaid Nextcloud a fháil ag baint úsáide as WebDAV</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#official-nextcloud-desktop-and-mobile-clients">Cliaint oifigiúla deisce agus soghluaiste Nextcloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#third-party-webdav-clients">Cliaint WebDAV tríú páirtí</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-linux">Comhaid a rochtain ag baint úsáide as Linux</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nautilus-file-manager">Nautilus bainisteoir comhad</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-with-kde-and-dolphin-file-manager">Comhaid a rochtain le bainisteoir comhad KDE agus Dolphin</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">Gléasanna WebDAV a chruthú ar an líne ordaithe Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues">Saincheisteanna aitheanta</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#problem">Fadhb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution">Réiteach</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Fadhb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Réiteach</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-macos">Comhaid a rochtain ag baint úsáide as macOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-microsoft-windows">Comhaid a rochtain ag baint úsáide as Microsoft Windows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-the-command-line">Tiomántáin a mhapáil leis an líne ordaithe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-windows-explorer">Tiomántáin a mhapáil le Windows Explorer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-cyberduck">Comhaid a rochtain ag úsáid Cyberduck</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-public-shares-over-webdav">Teacht ar scaireanna poiblí ar WebDAV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-problems">Fadhbanna aitheanta</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Fadhb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-1">Réiteach 1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-2">Réiteach 2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Fadhb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Réiteach</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Fadhb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#answer">Freagra</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Fadhb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Réiteach</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Fadhb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Réiteach</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-curl">Comhaid a rochtain ag baint úsáide as cURL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-winscp">Comhaid a rochtain ag baint úsáide as WinSCP</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Comhaid scriosta a bhainistiú</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Sioncronú deisce agus soghluaiste</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Using server-side encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Comhroinnt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Scaireanna Cónaidhme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Uaslódálacha gan ainm a dhéanamh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Uaslódálacha comhaid mhóra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Cuóta stórála</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Rialú leagan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Tionscadail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Úinéireacht Aistrithe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Ag baint úsáide as Scaireanna Cónaidhme</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Earraí grúpa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Caint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Cliaint Deisce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Ag socrú do shainroghanna</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Rochtain uilíoch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Ag baint úsáide as fíordheimhniú dhá-fhachtóir</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Bainistigh brabhsálaithe agus gléasanna nasctha</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Stóráil Sheachtrach</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Comhaid &amp; sioncronú</a></li>
+      <li class="breadcrumb-item active">Rochtain ar chomhaid Nextcloud a fháil ag baint úsáide as WebDAV</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webdav.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="accessing-nextcloud-files-using-webdav">
+<h1>Rochtain ar chomhaid Nextcloud a fháil ag baint úsáide as WebDAV<a class="headerlink" href="#accessing-nextcloud-files-using-webdav" title="Link to this heading"></a></h1>
+<p>Tacaíonn Nextcloud go hiomlán le prótacal WebDAV, agus is féidir leat ceangal agus sioncrónú le Comhaid Nextcloud thar WebDAV. Sa chaibidil seo, foghlaimeoidh tú conas Linux, macOS, Windows, agus gléasanna soghluaiste a nascadh le do fhreastalaí Nextcloud.</p>
+<p>Seasann WebDAV d’Údarú Dáilte agus Leaganacha. Is síneadh HTTP é a fhágann go bhfuil sé éasca comhaid a óstáiltear ar fhreastalaithe Gréasáin cianda a chruthú, a léamh agus a chur in eagar. Le cliant WebDAV, is féidir leat rochtain a fháil ar do chuid Comhaid Nextcloud (lena n-áirítear scaireanna) ar Linux, macOS agus Windows ar bhealach cosúil le haon sciar líonra cianda, agus fanacht sioncronaithe.</p>
+<p>Sula ndéanaimid WebDAV a chumrú, féachaimis go tapa ar an mbealach molta chun feistí cliant a nascadh le Nextcloud</p>
+<section id="official-nextcloud-desktop-and-mobile-clients">
+<h2>Cliaint oifigiúla deisce agus soghluaiste Nextcloud<a class="headerlink" href="#official-nextcloud-desktop-and-mobile-clients" title="Link to this heading"></a></h2>
+<p>Is é an bealach a mholtar chun ríomhaire a shioncronú le freastalaí Nextcloud ná úsáid a bhaint as <a class="reference external" href="https://nextcloud.com/install/#install-clients">cliaint sioncronaithe Nextcloud oifigiúil</a>. Is féidir leat an cliant a chumrú chun comhaid a shábháil in aon eolaire áitiúil agus is féidir leat na heolairí a roghnú ar fhreastalaí Nextcloud chun sioncronú leo. Taispeánann an cliant an stádas ceangail reatha agus logálann sé gach gníomhaíocht, ionas go mbeidh a fhios agat i gcónaí cé na comhaid iargúlta a íoslódáladh chuig do ríomhaire agus is féidir leat a fhíorú go bhfuil comhaid cruthaithe agus nuashonraithe ar do ríomhaire áitiúil sioncronaithe i gceart leis an bhfreastalaí.</p>
+<p>Is é an bealach molta chun gléasanna Android agus Apple iOS a shioncronú ná úsáid a bhaint as <a class="reference external" href="https://nextcloud.com/install/">aipeanna soghluaiste oifigiúla Nextcloud</a>.</p>
+<p>Chun na haipeanna oifigiúla Nextcloud a nascadh le freastalaí Nextcloud bain úsáid as an URL céanna a úsáideann tú chun Nextcloud a rochtain ó do bhrabhsálaí gréasáin - m.sh.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+</div>
+<p>Má tá Nextcloud suiteáilte i bhfo-eolaire ar a dtugtar &quot;nextcloud&quot;:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</section>
+<section id="third-party-webdav-clients">
+<h2>Cliaint WebDAV tríú páirtí<a class="headerlink" href="#third-party-webdav-clients" title="Link to this heading"></a></h2>
+<p>Más fearr leat, is féidir leat do ríomhaire a nascadh le do fhreastalaí Nextcloud trí úsáid a bhaint as aon chliant tríú páirtí a thacaíonn le prótacal WebDAV (lena n-áirítear an méid a d'fhéadfadh a bheith ionsuite i do chóras oibriúcháin).</p>
+<p>Is féidir leat aipeanna tríú páirtí atá in ann WebDAV a úsáid freisin chun do ghléas soghluaiste a nascadh le Nextcloud.</p>
+<p>Nuair a bhíonn cliaint tríú páirtí á n-úsáid agat, coinnigh i gcuimhne nach féidir iad a uasmhéadú le húsáid le Nextcloud nó cumais a chur i bhfeidhm a mheasann tú a bheith tábhachtach do do chás úsáide.</p>
+<p>I measc na gcliant móibíleacha a thuairiscigh baill pobail Nextcloud a úsáideann:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://foldersync.io/">FolderSync (Android)</a></p></li>
+<li><p><a href="#id12"><span class="problematic" id="id13">`WebDAV Navigator (iPhone) &lt; https://apps.apple.com/us/app/webdav-navigator/id382551345&gt;`_</span></a></p></li>
+</ul>
+<p>Tá an URL le húsáid agus aipeanna tríú páirtí á chumrú chun nascadh le Nextcloud beagán níos faide ná an URL do chliaint oifigiúla:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Má tá Nextcloud suiteáilte i bhfo-eolaire ar a dtugtar &quot;nextcloud&quot;:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Agus cliant WebDAV tríú páirtí á úsáid agat (lena n-áirítear cliant ionsuite do chórais oibriúcháin), ba cheart duit pasfhocal feidhmchláir a úsáid le haghaidh logáil isteach seachas do ghnáthfhocal faire. Ina theannta sin slándáil fheabhsaithe, méadaíonn an <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">fheidhmíocht seo go suntasach</a>. Chun pasfhocal feidhmchláir a chumrú, logáil isteach i gcomhéadan Gréasáin Nextcloud, cliceáil ar an abhatár sa bharr ar dheis agus roghnaigh <em>Socruithe pearsanta</em>. Ansin roghnaigh <em>Slándáil</em> sa bharra taobh clé agus scrollaigh go dtí an bun. Is féidir leat pasfhocal aip a chruthú ansin (is féidir a chúlghairm sa todhchaí freisin gan do phríomhfhocal faire úsáideora a athrú).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Sna samplaí seo a leanas, ba cheart duit URL do fhreastalaí Nextcloud a chur in ionad <strong>example.com/nextcloud</strong> (fág amach an chuid eolaire má tá an tsuiteáil i bhfréamh d'fhearainn), agus <strong>USERNAME</strong> leis an ainm úsáideora an úsáideora nasctha.</p>
+<p>See the WebDAV URL, to be found in Files Settings -&gt; WebDAV in the Files on your Nextcloud account.</p>
+<img alt="Screenshot of the Files settings showing the personal WebDAV link" src="../../_images/webdav_link.png" />
+</div>
+</section>
+<section id="accessing-files-using-linux">
+<h2>Comhaid a rochtain ag baint úsáide as Linux<a class="headerlink" href="#accessing-files-using-linux" title="Link to this heading"></a></h2>
+<p>Is féidir leat comhaid a rochtain i gcórais oibriúcháin Linux ag baint úsáide as na modhanna seo a leanas.</p>
+<section id="nautilus-file-manager">
+<h3>Nautilus bainisteoir comhad<a class="headerlink" href="#nautilus-file-manager" title="Link to this heading"></a></h3>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>Nuair a chumraíonn tú do chuntas Nextcloud sa ** <a class="reference external" href="../groupware/sync_gnome.html">Lárionad Rialaithe GNOME</a>, <a href="#id3"><span class="problematic" id="id4">**</span></a>beidh Nautilus gléasta ar do chomhaid go huathoibríoch mar chomhroinnt WebDAV, ach amháin má dhíroghnaíonn tú rochtain comhaid* <a href="#id5"><span class="problematic" id="id6">*</span></a>.</p>
+<p>Is féidir leat do chomhaid Nextcloud a shuiteáil de láimh freisin. Úsáid an prótacal `` davs://`` chun an bainisteoir comhad Nautilus a nascadh le do sciar Nextcloud:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">davs</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Mura bhfuil do nasc freastalaí slán le HTTPS, úsáid `` dav: //`` in ionad `` davs: //<a href="#id1"><span class="problematic" id="id2">``</span></a>:</p>
+</div>
+<img alt="Gabháil scáileáin de chumrú bainisteoir comhad Nautilus chun WebDAV a úsáid" src="../../_images/webdav_gnome3_nautilus.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Oibríonn an modh céanna do bhainisteoirí comhad eile a úsáideann GVFS, mar shampla MATE's Caja agus Cinnamon's Nemo.</p>
+</div>
+</section>
+<section id="accessing-files-with-kde-and-dolphin-file-manager">
+<h3>Comhaid a rochtain le bainisteoir comhad KDE agus Dolphin<a class="headerlink" href="#accessing-files-with-kde-and-dolphin-file-manager" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Téigh chuig Socruithe Córais -&gt; Líonrú -&gt; Cuntais Ar Líne</p></li>
+<li><p>Cliceáil &quot;Cuir Cuntas Leis...&quot;</p></li>
+<li><p>Cliceáil Nextcloud</p></li>
+<li><p>Cuir isteach seoladh do fhreastalaí</p></li>
+<li><p>Lean na treoracha ar an scáileán chun logáil isteach</p></li>
+<li><p>Tar éis logáil isteach, déan cinnte go gcumasaíonn tú &quot;Stóráil&quot; sa rannán &quot;Úsáid an Cuntas seo Le haghaidh&quot;.</p></li>
+<li><p>Is féidir leat rochtain a fháil ar do chuid comhad i nDolphin anois faoi &quot;Líonra&quot; sa bharra taoibh</p></li>
+<li><p>(Roghnach) Chun seo a chur leis mar aicearra sa bharra taoibh, cliceáil ar dheis ar &quot;Nextcloud Storage&quot; agus ansin &quot;Cuir le hÁiteanna&quot;</p></li>
+<li><p>(Roghnach) Chun an aicearra a shaincheapadh, cliceáil ar dheis ar an aicearra sa bharra taoibh ansin &quot;Cuir in Eagar...&quot; agus saincheap an deilbhín agus an lipéad mar is mian leat.</p></li>
+</ol>
+</section>
+</section>
+<section id="creating-webdav-mounts-on-the-linux-command-line">
+<h2>Gléasanna WebDAV a chruthú ar an líne ordaithe Linux<a class="headerlink" href="#creating-webdav-mounts-on-the-linux-command-line" title="Link to this heading"></a></h2>
+<p>Is féidir leat gléasanna WebDAV a chruthú ón líne ordaithe Linux. Tá sé seo úsáideach más fearr leat rochtain a fháil ar Nextcloud ar an mbealach céanna le cianchóras comhad ar bith eile. Léiríonn an sampla seo a leanas conas gléas pearsanta a chruthú agus é a shuiteáil go huathoibríoch gach uair a logáil tú isteach ar do ríomhaire Linux.</p>
+<ol class="arabic">
+<li><p>Suiteáil an tiománaí córas comhaid WebDAV `` davfs2``, a ligeann duit scaireanna WebDAV a fheistiú díreach mar aon chianchóras comhaid eile. Úsáid an t-ordú seo chun é a shuiteáil ar Debian/Ubuntu</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Bain úsáid as an ordú seo chun é a shuiteáil ar CentOS, Fedora, agus openSUSE</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Cuir tú féin leis an ngrúpa <code class="docutils literal notranslate"><span class="pre">davfs2</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usermod</span> <span class="o">-</span><span class="n">aG</span> <span class="n">davfs2</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Ansin cruthaigh eolaire <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code> i do eolaire baile don mount point, agus <code class="docutils literal notranslate"><span class="pre">.davfs2/</span></code> do do chomhad cumraíochta pearsanta:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">~/</span><span class="n">nextcloud</span>
+<span class="n">mkdir</span> <span class="o">~/.</span><span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Cóipeáil <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/rúin</span></code> go <code class="docutils literal notranslate"><span class="pre">~/.davfs2</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span>  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+</pre></div>
+</div>
+</li>
+<li><p>Socraigh tú féin mar an t-úinéir agus déan na ceadanna a léamh agus a scríobh úinéir amháin:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chown</span> <span class="o">&lt;</span><span class="n">linux_username</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">linux_username</span><span class="o">&gt;</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+<span class="n">chmod</span> <span class="mi">600</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+</pre></div>
+</div>
+</li>
+<li><p>Cuir do dhintiúir logáil isteach Nextcloud le deireadh an chomhaid <code class="docutils literal notranslate"><span class="pre">secrets</span></code>, ag baint úsáide as URL do fhreastalaí Nextcloud agus d'ainm úsáideora agus do phasfhocal Nextcloud:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/ &lt;username&gt; &lt;password&gt;
+or
+$PathToMountPoint $USERNAME $PASSWORD
+for example
+/home/user/nextcloud john 1234
+</pre></div>
+</div>
+</li>
+<li><p>Cuir an t-eolas gléasta le <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">linux_username</span><span class="o">&gt;/</span><span class="n">nextcloud</span> <span class="n">davfs</span> <span class="n">user</span><span class="p">,</span><span class="n">rw</span><span class="p">,</span><span class="n">auto</span> <span class="mi">0</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</li>
+<li><p>Ansin déan tástáil go suiteálann sé agus go bhfíordheimhníonn sé tríd an ordú seo a leanas a rith. Má shocraigh tú i gceart é ní bheidh ceadanna fréimhe uait:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mount</span> <span class="o">~/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</li>
+<li><p>Ba cheart go mbeifeá in ann é a dhíshuiteáil freisin:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">umount</span> <span class="o">~/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Anois, gach uair a logálann tú isteach ar do chóras Linux ba cheart go n-oibreodh do sciar Nextcloud go huathoibríoch trí WebDAV i do eolaire <code class="docutils literal notranslate"><span class="pre">~/nextcloud</span></code>. Más fearr leat é a shuiteáil de láimh, athraigh `` auto`` go `` noauto`` in <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code>.</p>
+</section>
+<section id="known-issues">
+<h2>Saincheisteanna aitheanta<a class="headerlink" href="#known-issues" title="Link to this heading"></a></h2>
+<section id="problem">
+<h3>Fadhb<a class="headerlink" href="#problem" title="Link to this heading"></a></h3>
+<p>Níl an acmhainn ar fáil go sealadach</p>
+</section>
+<section id="solution">
+<h3>Réiteach<a class="headerlink" href="#solution" title="Link to this heading"></a></h3>
+<p>Má bhíonn trioblóid agat nuair a chruthaíonn tú comhad san eolaire, cuir <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/davfs2.conf</span></code> in eagar agus cuir leis:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">use_locks</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>Fadhb<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>Teastas rabhaidh</p>
+</section>
+<section id="id2">
+<h3>Réiteach<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>Má úsáideann tú teastas féin-shínithe, gheobhaidh tú rabhadh. Chun é seo a athrú, ní mór duit <code class="docutils literal notranslate"><span class="pre">davfs2</span></code> a chumrú chun do theastas a aithint. Cóipeáil <code class="docutils literal notranslate"><span class="pre">mycertificate.pem</span></code> go <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/certs/</span></code>. Ansin cuir <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/davfs2.conf</span></code> in eagar agus déan trácht ar an líne <code class="docutils literal notranslate"><span class="pre">servercert</span></code>. Anois cuir cosán do theastas mar atá sa sampla seo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">servercert</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">davfs2</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">mycertificate</span><span class="o">.</span><span class="n">pem</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="accessing-files-using-macos">
+<h2>Comhaid a rochtain ag baint úsáide as macOS<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Tá <a class="reference external" href="http://sabre.io/dav/clients/finder/">sraith fadhbanna feidhmithe ag Aimsitheoir macOS</a> agus níor cheart é a úsáid ach amháin má ritheann freastalaí Nextcloud ar <strong>Apache</strong> agus <strong>mod_php* *, nó ** Nginx 1.3.8+</strong>. I measc na gcliant malartacha macOS-comhoiriúnach atá in ann rochtain a fháil ar scaireanna WebDAV tá aipeanna foinse oscailte cosúil le <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> (féach na treoracha <a href="#id14"><span class="problematic" id="id15">`anseo &lt; https://docs.nextcloud.com/server/latest/user_manual/files/access_webdav.html#accessing-files-using-cyberduck&gt;`_</span></a>) agus <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. I measc na gcliant tráchtála tá <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a href="#id16"><span class="problematic" id="id17">`Transmit &lt; https://panic.com/&gt;`_</span></a>, agus <a href="#id18"><span class="problematic" id="id19">`Ceannasaí a hAon &lt; https://mac.eltima.com/&gt;`_</span></a>.</p>
+</div>
+<p>Chun comhaid a rochtain tríd an Aimsitheoir macOS:</p>
+<ol class="arabic">
+<li><p>Ó bharrbharra roghchláir an Aimsitheoir, roghnaigh <strong>Téigh &gt; Ceangail le Freastalaí…</strong>:</p>
+<img alt="Gabháil scáileáin de do sheoladh freastalaí Nextcloud a chur isteach ar macOS" src="../../_images/osx_webdav1.png" />
+</li>
+<li><p>Nuair a osclaítear an fhuinneog <strong>Ceangail le Freastalaí…</strong>, cuir isteach seoladh WebDAV do fhreastalaí Nextcloud sa réimse <strong>Seoladh Freastalaí:</strong>, i.e.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">YOURDOMAIN</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<img alt="Gabháil scáileáin: Cuir isteach seoladh freastalaí Nextcloud sa bhosca dialóige &quot;Ceangail le Freastalaí...&quot;" src="../../_images/osx_webdav2.png" />
+</li>
+<li><p>Cliceáil <strong>Ceangail</strong>. Ba cheart go mbeadh do fhreastalaí WebDAV le feiceáil ar an Deasc mar thiomántán diosca roinnte.</p></li>
+</ol>
+</section>
+<section id="accessing-files-using-microsoft-windows">
+<h2>Comhaid a rochtain ag baint úsáide as Microsoft Windows<a class="headerlink" href="#accessing-files-using-microsoft-windows" title="Link to this heading"></a></h2>
+<p>Má úsáideann tú forfheidhmiú dúchais Windows de WebDAV, is féidir leat Nextcloud a mhapáil chuig tiomántán nua ag baint úsáide as Windows Explorer. Cuireann mapáil chuig tiomántán ar do chumas comhaid atá stóráilte ar fhreastalaí Nextcloud a bhrabhsáil ar an mbealach a bhrabhsálann tú comhaid atá stóráilte i dtiomántán líonra mapáilte.</p>
+<p>Teastaíonn nascacht líonra chun an ghné seo a úsáid. Más mian leat do chuid comhad a stóráil as líne, bain úsáid as an gCliant Deisce chun gach comhad ar do Nextcloud a shioncronú le heolaire amháin nó níos mó de do thiomáint crua áitiúil.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Windows 10 réamhshocraithe anois chun Fíordheimhniú Bunúsach a cheadú má tá HTTPS cumasaithe roimh do thiomáint a mhapáil.</p>
+<p>Ar leaganacha níos sine de Windows, ní mór duit cead a thabhairt do Bhunfhíordheimhniú a úsáid i gClárlann Windows:</p>
+<ul class="simple">
+<li><p>seol `` regedit`` agus déan nascleanúint chuig `` HKEY_LOCAL_MACHINE SYSTEM CurrentControlSet Services WebClient Parameters``.</p></li>
+<li><p>Cruthaigh nó cuir in eagar an luach <code class="docutils literal notranslate"><span class="pre">BasicAuthLevel</span></code> (Windows Vista, 7 agus 8), nó <code class="docutils literal notranslate"><span class="pre">UseBasicAuth</span></code> (Windows XP agus Windows Server 2003), `` DWORD`` agus socraigh a shonraí luacha go <code class="docutils literal notranslate"><span class="pre">1</span></code> le haghaidh naisc SSL. Ciallaíonn luach <code class="docutils literal notranslate"><span class="pre">0</span></code> go bhfuil Fíordheimhniú Bunúsach díchumasaithe, agus ceadaíonn luach `` 2`` naisc SSL agus neamh-SSL araon (ní mholtar).</p></li>
+<li><p>Ansin scoir Eagarthóir Clárlainne, agus atosaigh an ríomhaire.</p></li>
+</ul>
+</div>
+<section id="mapping-drives-with-the-command-line">
+<h3>Tiomántáin a mhapáil leis an líne ordaithe<a class="headerlink" href="#mapping-drives-with-the-command-line" title="Link to this heading"></a></h3>
+<p>Taispeánann an sampla seo a leanas conas tiomántán a mhapáil leis an líne ordaithe. Chun an tiomáint a mhapáil:</p>
+<ol class="arabic">
+<li><p>Oscail ordú pras i Windows.</p></li>
+<li><p>Cuir isteach an líne seo a leanas sa leid ordaithe chun mapáil chuig tiomántán Z an ríomhaire:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">drive_path</span><span class="o">&gt;/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span> <span class="n">yourpassword</span>
+</pre></div>
+</div>
+<p>le &lt;drive_path&gt; mar an URL chuig do fhreastalaí Nextcloud. Mar shampla:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span> <span class="n">yourpassword</span>
+</pre></div>
+</div>
+<p>Mapálann an ríomhaire comhaid do chuntais Nextcloud chuig an litir tiomántán Z.</p>
+</li>
+</ol>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>Má fhaigheann tú an earráid seo a leanas <code class="docutils literal notranslate"><span class="pre">Tharla</span> <span class="pre">earráid</span> <span class="pre">chórais</span> <span class="pre">67.</span> <span class="pre">Ní</span> <span class="pre">féidir</span> <span class="pre">ainm</span> <span class="pre">an</span> <span class="pre">líonra</span> <span class="pre">a</span> <span class="pre">aimsiú.</span></code>, nó dícheangail go minic, oscail an aip <strong>Seirbhísí</strong> agus cinntigh go bhfuil an tseirbhís <code class="docutils literal notranslate"><span class="pre">WebClient</span></code> ag rith agus tosaithe go huathoibríoch ag an am tosaithe.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Cé nach moltar é, is féidir leat an freastalaí Nextcloud a shuiteáil ag baint úsáide as HTTP freisin, rud a fhágann nach bhfuil an nasc criptithe.</p>
+<blockquote>
+<div><p>Má tá sé ar intinn agat naisc HTTP a úsáid ar ghléasanna agus tú in áit phoiblí, molaimid go láidir tollán VPN a úsáid chun an tslándáil riachtanach a sholáthar.</p>
+</div></blockquote>
+<p>Comhréir ordaithe eile is ea:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> \\<span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="nd">@ssl</span>\<span class="n">nextcloud</span>\<span class="n">remote</span><span class="o">.</span><span class="n">php</span>\<span class="n">dav</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span>
+<span class="n">yourpassword</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mapping-drives-with-windows-explorer">
+<h3>Tiomántáin a mhapáil le Windows Explorer<a class="headerlink" href="#mapping-drives-with-windows-explorer" title="Link to this heading"></a></h3>
+<p>Chun tiomántán a mhapáil le Microsoft Windows Explorer:</p>
+<ol class="arabic">
+<li><p>Oscail Windows Explorer ar do ríomhaire MS Windows.</p></li>
+<li><p>Cliceáil ar dheis ar iontráil <strong>Ríomhaire</strong> agus roghnaigh <strong>Map network drive…</strong> ón roghchlár anuas.</p></li>
+<li><p>Roghnaigh tiomántán líonra áitiúil ar mian leat Nextcloud a mhapáil chuige.</p></li>
+<li><p>Sonraigh an seoladh chuig do shampla Nextcloud, agus ina dhiaidh <strong>/remote.php/dav/files/USERNAME/</strong>.</p>
+<p>Mar shampla:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Maidir le freastalaithe atá cosanta ag SSL, seiceáil <strong>Athcheangail ag síniú isteach</strong> lena chinntiú go bhfuil an mhapáil leanúnach ar atosaithe ina dhiaidh sin. Más mian leat ceangal leis an bhfreastalaí Nextcloud mar úsáideoir eile, seiceáil <strong>Ceangail ag baint úsáide as dintiúir éagsúla</strong>.</p>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="Gabháil scáileáin de léarscáiliú WebDAV ar Windows Explorer" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" />
+</a>
+</figure>
+</li>
+</ol>
+<ol class="arabic simple" start="5">
+<li><p>Cliceáil ar an gcnaipe <code class="docutils literal notranslate"><span class="pre">Críochnaigh</span></code>.</p></li>
+</ol>
+<p>Léarscáileanna Windows Explorer an tiomántán líonra, ag cur do shampla Nextcloud ar fáil.</p>
+</section>
+</section>
+<section id="accessing-files-using-cyberduck">
+<h2>Comhaid a rochtain ag úsáid Cyberduck<a class="headerlink" href="#accessing-files-using-cyberduck" title="Link to this heading"></a></h2>
+<p>Is brabhsálaí foinse oscailte é <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> FTP, SFTP, WebDAV, OpenStack Swift, agus Amazon S3 atá deartha le haghaidh aistrithe comhad ar macOS agus Windows.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Úsáideann an sampla seo Cyberduck leagan 4.2.1.</p>
+</div>
+<p>Cyberduck a úsáid:</p>
+<ol class="arabic">
+<li><p>Sonraigh freastalaí gan aon fhaisnéis phrótacail tosaigh.</p>
+<p>Mar shampla: <code class="docutils literal notranslate"><span class="pre">example.com</span></code></p>
+</li>
+<li><p>Sonraigh an port cuí.</p>
+<p>Braitheann an calafort a roghnaíonn tú ar cibé an dtacaíonn nó nach dtacaíonn do fhreastalaí Nextcloud le SSL. Éilíonn Cyberduck go roghnaíonn tú cineál ceangail eile má tá sé beartaithe agat SSL a úsáid.</p>
+<dl class="simple">
+<dt>Mar shampla:</dt><dd><ul class="simple">
+<li><p>`` 80`` le haghaidh WebDAV neamhchriptithe</p></li>
+<li><p>`` 443`` le haghaidh WebDAV slán (HTTPS/SSL)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Úsáid an roghchlár anuas 'More Options' chun an chuid eile de do URL WebDAV a chur isteach sa réimse 'Conair'.</p>
+<p>Mar shampla: <code class="docutils literal notranslate"><span class="pre">remote.php/dav/files/USERNAME/</span></code></p>
+</li>
+</ol>
+<p>Anois cuireann Cyberduck ar chumas rochtain comhad ar an bhfreastalaí Nextcloud.</p>
+</section>
+<section id="accessing-public-shares-over-webdav">
+<h2>Teacht ar scaireanna poiblí ar WebDAV<a class="headerlink" href="#accessing-public-shares-over-webdav" title="Link to this heading"></a></h2>
+<p>Soláthraíonn Nextcloud an deis rochtain a fháil ar scaireanna poiblí gan ainm thar WebDAV.</p>
+<p>Chun an sciar poiblí a rochtain, oscail:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">public</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span>
+</pre></div>
+</div>
+<p>i gcliant WebDAV, bain úsáid as an comhartha scaire mar ainm úsáideora agus an pasfhocal comhroinnte (roghnach) mar an focal faire. Mar shampla, le nasc scaire <a class="reference external" href="https://example.com/s/kFy9Lek5sm928xP">https://example.com/s/kFy9Lek5sm928xP</a>, is é <code class="docutils literal notranslate"><span class="pre">kFy9Lek5sm928xP</span></code> an t-ainm úsáideora.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Socruithe</strong> → <strong>Riarachán</strong> → <strong>Roinnt</strong> → <strong>Ceadaigh d’úsáideoirí ar an bhfreastalaí seo scaireanna a sheoladh chuig freastalaithe eile</strong>. Ligeann an rogha seo freisin rochtain WebDAV ar scaireanna poiblí agus ní mór é a chumasú chun an ghné seo a oibriú, ach amháin má tá cURL á úsáid (féach thíos).</p>
+</div>
+</section>
+<section id="known-problems">
+<h2>Fadhbanna aitheanta<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
+<section id="id4">
+<h3>Fadhb<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>Ní nascann Windows le HTTPS.</p>
+</section>
+<section id="solution-1">
+<h3>Réiteach 1<a class="headerlink" href="#solution-1" title="Link to this heading"></a></h3>
+<p>Seans nach dtacaíonn Cliant Windows WebDAV le Tásc Ainm Freastalaí (SNI) ar naisc criptithe. Má thagann tú trasna ar earráid agus sampla Nextcloud criptithe ag SSL á shuiteáil agat, déan teagmháil le do sholáthraí maidir le seoladh IP tiomnaithe a shannadh do do fhreastalaí SSL-bhunaithe.</p>
+</section>
+<section id="solution-2">
+<h3>Réiteach 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
+<p>Seans nach dtacaíonn Cliant Windows WebDAV le naisc TLSv1.1 agus TLSv1.2. Má tá srian curtha agat le cumraíocht do fhreastalaí chun TLSv1.1 agus os a chionn amháin a sholáthar, seans go dteipfidh ar an gceangal le do fhreastalaí. Féach le do thoil ar dhoiciméadú <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> le haghaidh tuilleadh eolais.</p>
+</section>
+<section id="id5">
+<h3>Fadhb<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>Faigheann tú an teachtaireacht earráide seo a leanas: <strong>Earráid 0x800700DF: Sáraíonn méid an chomhaid an teorainn atá ceadaithe agus ní féidir é a shábháil.</strong></p>
+</section>
+<section id="id6">
+<h3>Réiteach<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p>Cuireann Windows teorainn leis an uasmhéid a fhéadfaidh comhad a aistriú ó nó chuig sciar WebDAV. Is féidir leat an luach <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> a mhéadú i <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code> trí chliceáil ar <a href="#id1"><span class="problematic" id="id2">**</span></a>Athraigh <a href="#id3"><span class="problematic" id="id4">**</span></a>.</p>
+<p>Chun an teorainn go dtí an t-uasluach 4GB a mhéadú, roghnaigh <strong>Deachúil</strong>, cuir isteach luach <code class="docutils literal notranslate"><span class="pre">4294967295</span></code>, agus atosaigh Windows nó atosaigh an tseirbhís <strong>WebClient</strong>.</p>
+</section>
+<section id="id7">
+<h3>Fadhb<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<p>Má chuirtear tiomántán WebDAV ar Windows leis na céimeanna thuasluaite, ní thaispeánfar an méid ceart spáis atá ar fáil sa Nextcloud agus ina ionad sin taispeánann sé méid an tiomántáin C: leis an spás atá ar fáil dó.</p>
+</section>
+<section id="answer">
+<h3>Freagra<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
+<p>Ar an drochuair, is teorannú é seo ar WebDAV féin, toisc nach dtugann sé bealach don chliant an spás saor in aisce atá ar fáil a fháil ón bhfreastalaí. Titeann Windows ar ais go huathoibríoch chun méid an tiomántáin C: a thaispeáint leis an spás atá ar fáil ina ionad. Mar sin, ar an drochuair, níl aon réiteach fíor ar an bhfadhb seo.</p>
+</section>
+<section id="id8">
+<h3>Fadhb<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<p>Theip ar rochtain a fháil ar do chuid comhad ó Microsoft Office trí WebDAV.</p>
+</section>
+<section id="id9">
+<h3>Réiteach<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<p>Déantar fadhbanna aitheanta agus a réitigh a dhoiciméadú san alt <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a>.</p>
+</section>
+<section id="id10">
+<h3>Fadhb<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>Ní féidir Nextcloud a mhapáil mar thiomáint WebDAV i Windows ag baint úsáide as teastas féin-shínithe.</p>
+</section>
+<section id="id11">
+<h3>Réiteach<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Rochtain ar do shampla Nextcloud tríd an mbrabhsálaí Gréasáin is fearr leat.</p></li>
+<li><p>Cliceáil ar aghaidh go dtí go bhfaighidh tú an earráid deimhnithe i líne stádais an bhrabhsálaí.</p></li>
+<li><p>Féach ar an deimhniú, ansin ón gcluaisín Sonraí, roghnaigh 'Cóipeáil go Comhad'.</p></li>
+<li><p>Sábháil an comhad ar do dheasc le hainm treallach, mar shampla <code class="docutils literal notranslate"><span class="pre">myNextcloud.pem</span></code>.</p></li>
+<li><p>Téigh go roghchlár Tosaigh &gt; Rith, clóscríobh MMC, agus cliceáil 'OK' chun Microsoft Management Console a oscailt.</p></li>
+<li><p>Téigh go Comhad &gt; Cuir leis/Bain Snap-In.</p></li>
+<li><p>Roghnaigh Deimhnithe, Cliceáil 'Add', roghnaigh 'Mo Chuntas Úsáideora', ansin 'Críochnaigh', agus ar deireadh 'OK'.</p></li>
+<li><p>Dig síos go Trust Root Certification Údaráis, Deimhnithe.</p></li>
+<li><p>Deaschliceáil Teastas, Roghnaigh Gach Tasc, agus Iompórtáil.</p></li>
+<li><p>Roghnaigh an teastas sábháilte ón Deasc.</p></li>
+<li><p>Roghnaigh Cuir gach Deimhniú sa Stór seo a leanas, agus cliceáil Brabhsáil.</p></li>
+<li><p>Seiceáil an Bosca a deir Show Physical Stores, leathnaigh amach Údaráis Deimhnithe Root Iontaofa, roghnaigh Ríomhaire Áitiúil ann, cliceáil 'OK', agus Comhlánaigh an Iompórtáil.</p></li>
+<li><p>Seiceáil an liosta chun a chinntiú go dtaispeánfar an teastas. Is dócha go mbeidh ort Athnuachan a dhéanamh sula bhfeiceann tú é.</p></li>
+<li><p>Scoir MMC.</p></li>
+</ol>
+<p>D'úsáideoirí Firefox:</p>
+<ol class="arabic simple">
+<li><p>Seoladh do bhrabhsálaí, téigh go roghchlár Feidhmchláir &gt; Stair &gt; Glan stair le déanaí...</p></li>
+<li><p>Roghnaigh 'Gach Rud' sa roghchlár anuas 'Raon ama le glanadh'</p></li>
+<li><p>Roghnaigh an ticbhosca 'Logálacha Gníomhacha'</p></li>
+<li><p>Cliceáil ar an gcnaipe 'Glan anois'</p></li>
+<li><p>Dún an brabhsálaí, ansin athoscail agus tástáil.</p></li>
+</ol>
+<p>Le haghaidh brabhsálaithe Chrome-bhunaithe (Chrome, Chromium, Microsoft Edge): úsáideoirí:</p>
+<ol class="arabic simple">
+<li><p>Oscail Painéal Rialúcháin Windows, nascleanúint síos go dtí Internet Options</p></li>
+<li><p>Sa chluaisín Ábhar, cliceáil ar an Clear SSL State cnaipe.</p></li>
+<li><p>Dún an brabhsálaí, ansin athoscail agus tástáil.</p></li>
+</ol>
+</section>
+</section>
+<section id="accessing-files-using-curl">
+<h2>Comhaid a rochtain ag baint úsáide as cURL<a class="headerlink" href="#accessing-files-using-curl" title="Link to this heading"></a></h2>
+<p>Ós rud é gur síneadh HTTP é WebDAV, is féidir cURL a úsáid chun oibríochtaí comhaid a scríobh.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Socruithe</strong> → <strong>Riarachán</strong> → <strong>Roinnt</strong> → <strong>Ceadaigh d’úsáideoirí ar an bhfreastalaí seo scaireanna a sheoladh chuig freastalaithe eile</strong>. Má tá an rogha seo díchumasaithe, ní mór an rogha <code class="docutils literal notranslate"><span class="pre">--header</span> <span class="pre">&quot;X-Requested-With:</span> <span class="pre">XMLHttpRequest&quot;</span></code> a chur ar aghaidh chuig cURL.</p>
+</div>
+<p>Chun fillteán a chruthú leis an dáta reatha mar ainm:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MKCOL<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>Chun comhad <code class="docutils literal notranslate"><span class="pre">error.log</span></code> a uaslódáil isteach san eolaire sin:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-T<span class="w"> </span>error.log<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">/error.log&quot;</span>
+</pre></div>
+</div>
+<p>Chun comhad a bhogadh:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MOVE<span class="w"> </span>--header<span class="w"> </span><span class="s1">&#39;Destination: https://example.com/nextcloud/remote.php/dav/files/USERNAME/target.jpg&#39;</span><span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/source.jpg
+</pre></div>
+</div>
+<p>Chun airíonna comhaid sa bhfréamhfhillteán a fháil:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>PROPFIND<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Depth: 1&quot;</span><span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/<span class="w"> </span><span class="p">|</span><span class="w"> </span>xml_pp
+<span class="w">    </span>&lt;?xml<span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="w"> </span><span class="nv">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>?&gt;
+&lt;d:multistatus<span class="w"> </span>xmlns:d<span class="o">=</span><span class="s2">&quot;DAV:&quot;</span><span class="w"> </span>xmlns:oc<span class="o">=</span><span class="s2">&quot;http://nextcloud.org/ns&quot;</span><span class="w"> </span>xmlns:s<span class="o">=</span><span class="s2">&quot;http://sabredav.org/ns&quot;</span>&gt;
+<span class="w">  </span>&lt;d:response&gt;
+<span class="w">    </span>&lt;d:href&gt;/nextcloud/remote.php/dav/files/USERNAME/&lt;/d:href&gt;
+<span class="w">    </span>&lt;d:propstat&gt;
+<span class="w">      </span>&lt;d:prop&gt;
+<span class="w">        </span>&lt;d:getlastmodified&gt;Tue,<span class="w"> </span><span class="m">13</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2015</span><span class="w"> </span><span class="m">17</span>:07:45<span class="w"> </span>GMT&lt;/d:getlastmodified&gt;
+<span class="w">        </span>&lt;d:resourcetype&gt;
+<span class="w">          </span>&lt;d:collection/&gt;
+<span class="w">        </span>&lt;/d:resourcetype&gt;
+<span class="w">        </span>&lt;d:quota-used-bytes&gt;163&lt;/d:quota-used-bytes&gt;
+<span class="w">        </span>&lt;d:quota-available-bytes&gt;11802275840&lt;/d:quota-available-bytes&gt;
+<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">&quot;561d3a6139d05&quot;</span>&lt;/d:getetag&gt;
+<span class="w">      </span>&lt;/d:prop&gt;
+<span class="w">      </span>&lt;d:status&gt;HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK&lt;/d:status&gt;
+<span class="w">    </span>&lt;/d:propstat&gt;
+<span class="w">  </span>&lt;/d:response&gt;
+<span class="w">  </span>&lt;d:response&gt;
+<span class="w">    </span>&lt;d:href&gt;/nextcloud/remote.php/dav/files/USERNAME/welcome.txt&lt;/d:href&gt;
+<span class="w">    </span>&lt;d:propstat&gt;
+<span class="w">      </span>&lt;d:prop&gt;
+<span class="w">        </span>&lt;d:getlastmodified&gt;Tue,<span class="w"> </span><span class="m">13</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2015</span><span class="w"> </span><span class="m">17</span>:07:35<span class="w"> </span>GMT&lt;/d:getlastmodified&gt;
+<span class="w">        </span>&lt;d:getcontentlength&gt;163&lt;/d:getcontentlength&gt;
+<span class="w">        </span>&lt;d:resourcetype/&gt;
+<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">&quot;47465fae667b2d0fee154f5e17d1f0f1&quot;</span>&lt;/d:getetag&gt;
+<span class="w">        </span>&lt;d:getcontenttype&gt;text/plain&lt;/d:getcontenttype&gt;
+<span class="w">      </span>&lt;/d:prop&gt;
+<span class="w">      </span>&lt;d:status&gt;HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK&lt;/d:status&gt;
+<span class="w">    </span>&lt;/d:propstat&gt;
+<span class="w">  </span>&lt;/d:response&gt;
+&lt;/d:multistatus&gt;
+</pre></div>
+</div>
+</section>
+<section id="accessing-files-using-winscp">
+<h2>Comhaid a rochtain ag baint úsáide as WinSCP<a class="headerlink" href="#accessing-files-using-winscp" title="Link to this heading"></a></h2>
+<p>Is cliant foinse oscailte saor in aisce SFTP, FTP, WebDAV, S3 agus SCP do Windows é <a href="#id1"><span class="problematic" id="id2">`</span></a>WinSCP &lt;<a class="reference external" href="https://winscp.net/eng/docs/introduction/">https://winscp.net/eng/docs/introduction/</a>&gt;. Is í an phríomhfheidhm atá aige ná comhad a aistriú idir ríomhaire áitiúil agus ríomhaire iargúlta. Thairis sin, cuireann WinSCP feidhmiúlacht scriptithe agus bainistíochta comhad bunúsach ar fáil.</p>
+<p>Is féidir <a class="reference external" href="https://winscp.net/eng/downloads.php/">a íoslódáil</a> an leagan iniompartha de WinSCP agus é a rith ar Linux tríd <a class="reference external" href="https://wiki.winehq.org/Main_Page/">Wine</a>.</p>
+<p>Chun WinSCP a rith ar Linux, íoslódáil fíon trí bhainisteoir pacáiste do dháileadh, ansin é a rith leis an ordú: `` fíon WinSCP.exe``.</p>
+<p>Chun nascadh le Nextcloud:</p>
+<ul class="simple">
+<li><p>Tosaigh WinSCP</p></li>
+<li><p>Brúigh 'Seisiún' sa roghchlár</p></li>
+<li><p>Brúigh an rogha roghchláir ‘Seisiún Nua’</p></li>
+<li><p>Socraigh an 'Prótacal Comhad' anuas go WebDAV</p></li>
+<li><p>Socraigh an anuas 'Criptiúchán' go criptiúchán intuigthe TLS/SSL</p></li>
+<li><p>Líon isteach an réimse óstainm: <code class="docutils literal notranslate"><span class="pre">example.com</span></code></p></li>
+<li><p>Líon isteach an réimse ainm úsáideora: <code class="docutils literal notranslate"><span class="pre">NEXTCLOUDUSERNAME</span></code></p></li>
+<li><p>Líon isteach réimse an fhocail faire: <code class="docutils literal notranslate"><span class="pre">NEXTCLOUDPASSWORD</span></code></p></li>
+<li><p>Brúigh an cnaipe 'Advanced...'</p></li>
+<li><p>Déan nascleanúint go dtí 'Comhshaol', 'Eolairí' ar an taobh clé</p></li>
+<li><p>Líon isteach an réimse 'Ianeolaire' leis an méid seo a leanas: <code class="docutils literal notranslate"><span class="pre">/nextcloud/remote.php/dav/files/NEXTCLOUDUDUSERNAME/</span></code></p></li>
+<li><p>Brúigh an cnaipe 'OK'</p></li>
+<li><p>Brúigh an cnaipe 'Sábháil'</p></li>
+<li><p>Roghnaigh na roghanna atá ag teastáil agus brúigh an cnaipe 'OK'</p></li>
+<li><p>Brúigh an cnaipe 'Logáil isteach' chun ceangal le Nextcloud</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Moltar pasfhocal aipe a úsáid don phasfhocal má úsáideann tú TOTP mar ní thuigeann WinSCP TOTP le Nextcloud tráth scríofa seo (2022-11-07).</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="access_webgui.html" class="btn btn-neutral float-left" title="Teacht ar do chuid comhad ag baint úsáide as comhéadan Gréasáin Nextcloud" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="deleted_file_management.html" class="btn btn-neutral float-right" title="Comhaid scriosta a bhainistiú" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 Irish
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Teangacha</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Leaganacha</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Íoslódálacha</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Ar Léigh na Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Tionscadal Baile</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Tógann</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

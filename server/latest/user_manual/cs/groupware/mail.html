@@ -1,0 +1,1343 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="cs" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Používání aplikace E-mail &mdash; Dokumentace pro Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/groupware/mail.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=672a239f"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=22e1c300"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Rejstřík" href="../genindex.html" />
+    <link rel="search" title="Vyhledávání" href="../search.html" />
+    <link rel="next" title="Nastavování zpráv „Jsem mimo kancelář“" href="absence.html" />
+    <link rel="prev" title="Používání aplikace Kalendář" href="calendar.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Úvod do uživatelské příručky k Nextcloud verze latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Webové rozhraní Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Soubory a synchronizace</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Software pro podporu spolupráce</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Používání aplikace Kontakty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Používání aplikace Kalendář</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Používání aplikace E-mail</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#managing-your-mail-account">Správa vašeho e-mailového účtu</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#switch-layout">Přepnout rozvržení</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#use-compact-mode">Use Compact Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#message-display-operation-mode">Režim zobrazení / operací se zprávami</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-new-mail-account">Přidání nového e-mailového účtu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#change-sort-order">Změna pořadí řazení</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sort-favorites-up">Sort favorites up</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scheduled-messages">Naplánované zprávy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#priority-inbox">Schránka pro přednostní zprávy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#all-inboxes">Všechny schránky</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#account-settings">Nastavení účtu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#move-messages-to-junk-folder">Přesunutí zpráv do složky Nevyžádané</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#refresh-mailbox">Refresh mailbox</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unified-search">Unified search</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search-in-mailbox">Hledat ve e-mailové schránce</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#advanced-search-in-mailbox">Pokročilé vyhledávání ve schránce</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enable-mail-body-search">Zapněte hledání v těle e-mailu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#account-delegation">Delegování účtu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automatic-trash-deletion">Automatické mazání koše</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#compose-messages">Napsání zprávy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#minimize-the-composer-modal">Minimalizace dialogu editoru zprávy</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#recipient-info-on-composer">Informace o příjemci na editoru</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mention-contacts">Zmínění kontaktů</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#text-blocks">Textové bloky</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#outbox">Odchozí pošta</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mailbox-actions">Akce ohledně e-mailové schránky</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-mailbox">Přidání schránky</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-submailbox">Přidání dílčí schránky</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shared-mailbox">Sdílená schránka</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#envelope-actions">Akce ohledně obálky</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-an-event">Vytvoření události</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-task">Vytvoření úkolu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-tags">Upravit štítky</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#change-color-for-tags">Změna barvy štítků</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete-tags">Mazání štítků</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ai-summary">AI shrnutí</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#quick-actions">Quick actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#message-actions">Akce ohledně zprávy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#unsubscribe-from-a-mailing-list">Odhlášení se z odběru e-mailové konference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#snooze">Odložit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#smart-replies">Chytré odpovědi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mail-translation">Překládání e-mailů</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#thread-summary">Shrnutí vlákna</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filtering-and-autoresponder">Filtrování a automatické odpovídání</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autoresponders">Automatické odpovědi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filter">Filtr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-filter-from-a-message">Vytvoření filtru ze zprávy</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#follow-up-reminders">Připomínky následných kroků</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#security">Zabezpečení</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#phishing-detection">Detekce rhybaření</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#internal-addresses">Interní adresy</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dashboard-integration">Napojení na nástěnku</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calendar-integration">Calendar integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#meeting-invitations">Meeting invitations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#meeting-invitation-automation">Meeting invitation automation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#keyboard-shortcuts">Keyboard shortcuts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">Nastavování zpráv „Jsem mimo kancelář“</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Synchronizace se systémem Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">Synchronizace se systémem iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">Synchronizace se systémem macOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Synchronizace s aplikací Thunderbird</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Synchronizace s aplikací KDE Kontact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Synchronizace s GNOME desktopem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Synchronizace se systémem Windows 10</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Klienti pro desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Nastavení vašich předvoleb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Zpřístupnění pro všechny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Používání dvoufázového ověřování se</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Správa připojených prohlížečů a zařízení</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Externí úložiště</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Software pro podporu spolupráce</a></li>
+      <li class="breadcrumb-item active">Používání aplikace E-mail</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/mail.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-mail-app">
+<h1>Používání aplikace E-mail<a class="headerlink" href="#using-the-mail-app" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Aplikace E-mail je nainstalovaná jako součást Nextcloud Hub už ve výchozím stavu, ale může být vypnutá. Požádejte o ní případně správce vámi využívané instance.</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/mail.png" src="../../_images/mail.png" />
+</figure>
+<section id="managing-your-mail-account">
+<h2>Správa vašeho e-mailového účtu<a class="headerlink" href="#managing-your-mail-account" title="Link to this heading"></a></h2>
+<section id="switch-layout">
+<h3>Přepnout rozvržení<a class="headerlink" href="#switch-layout" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.6.</span></p>
+</div>
+<ol class="arabic simple">
+<li><p>Přejděte do nastavení e-mailu</p></li>
+<li><p>Zvolte mezi <em>Seznam</em>, <em>Svislé rozdělení</em> a <em>Vodorovné rozdělení</em></p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/mail_layout.png" src="../../_images/mail_layout.png" />
+</figure>
+</section>
+<section id="use-compact-mode">
+<h3>Use Compact Mode<a class="headerlink" href="#use-compact-mode" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.7.0.</span></p>
+</div>
+<p>Compact mode offers a cleaner and more efficient way to view your messages. Avatars are hidden, selection checkboxes are always visible, and the preview of messages is removed. It saves space allowing you to see more emails at once.</p>
+<ol class="arabic simple">
+<li><p>Visit the mail settings</p></li>
+<li><p>Go to <strong>Appearance</strong></p></li>
+<li><p>Toggle the Compact Mode</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/use-compact-mode.png" src="../../_images/use-compact-mode.png" />
+</figure>
+</section>
+<section id="message-display-operation-mode">
+<h3>Režim zobrazení / operací se zprávami<a class="headerlink" href="#message-display-operation-mode" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.2.</span></p>
+</div>
+<p>Aplikace E-mail má schopnost přepínat mezi dvěma různými režimy zobrazování a operací se zprávami: <em>Ve vláknech</em> a <em>Samostatně</em>.</p>
+<p>V režimu <em>Ve vláknech</em> jsou zprávy seskupovány podle konverzací. V seznamu zpráv ve schránce jsou související zprávy naskládány na sebe tak, že jsou zobrazeny pouze ty nejnovější a veškeré související zprávy jsou zobrazovány v panelu zobrazení zprávy (po vybrání naskládané zprávy). To se hodí pro následování diskuzí a porozumění kontextu odpovědí. V tomto režimu jsou operace se zprávou (jako je přesunutí a smazání) uplatňovány na celé vlákno, což znamená, že když přesunete nebo smažete vlákno, bude se to týkat všech zpráv v rámci vlákna.</p>
+<p>V režimu <em>Samostatně</em> jsou zprávy zobrazovány jednotlivě, jak v seznamu zpráv ve schránce a panelu zobrazení zprávy a operace jako přesunutí či smazání se budou týkat pouze označené zprávy. Tento režim je užitečný pokud chcete spravovat zprávy odděleně bez toho, aby to postihlo celou konverzaci.</p>
+<ol class="arabic simple">
+<li><p>Přejděte do nastavení e-mailu</p></li>
+<li><p>Zvolte mezi <em>Ve vláknech</em> a <em>Samostatné</em></p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/mail_display-mode.png" src="../../_images/mail_display-mode.png" />
+</figure>
+</section>
+<section id="add-a-new-mail-account">
+<h3>Přidání nového e-mailového účtu<a class="headerlink" href="#add-a-new-mail-account" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Povolte aplikaci E-mail v Aplikacích</p></li>
+<li><p>Klikněte na ikonu e-mailu v záhlaví</p></li>
+<li><p>Vyplňte přihlašovací formulář (automaticky nebo ručně)</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/new-mail-account.png" src="../../_images/new-mail-account.png" />
+</figure>
+</section>
+<section id="change-sort-order">
+<h3>Změna pořadí řazení<a class="headerlink" href="#change-sort-order" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5.</span></p>
+</div>
+<ol class="arabic simple">
+<li><p>Přejděte do nastavení e-mailu</p></li>
+<li><p>Jděte do <em>Řazení</em></p></li>
+<li><p>Je možné zvolit od <em>Nejstarších</em> nebo <em>Nejnovějších</em></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Tato změna bude uplatněna napříč vašimi účty a schránkami</p>
+</div>
+</section>
+<section id="sort-favorites-up">
+<h3>Sort favorites up<a class="headerlink" href="#sort-favorites-up" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.7: </span>Nextcloud 31 or newer</p>
+</div>
+<p>This setting allows you to show messages set as favorite in a separate section on top of the message list.</p>
+<ol class="arabic simple">
+<li><p>Přejděte do nastavení e-mailu</p></li>
+<li><p>Go to <em>Appearance</em></p></li>
+<li><p>Enable sorting favorites up</p></li>
+</ol>
+</section>
+<section id="scheduled-messages">
+<span id="mail-scheduled-messages"></span><h3>Naplánované zprávy<a class="headerlink" href="#scheduled-messages" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Klikněte na tlačítko nové zprávy v levé horní části obrazovky</p></li>
+<li><p>Klikněte na nabídku akcí (…) v dialogu editoru zprávy</p></li>
+<li><p>Klikněte na <em>odeslat později</em></p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/scheduled-msg.png" src="../../_images/scheduled-msg.png" />
+</figure>
+</section>
+<section id="priority-inbox">
+<h3>Schránka pro přednostní zprávy<a class="headerlink" href="#priority-inbox" title="Link to this heading"></a></h3>
+<p>Přednostní schránka má dvě sekce: <em>Důležité</em> a <em>Ostatní</em>. Zprávy budou automaticky označovány jako důležité na základě toho, s jakými zprávami jste pracovali nebo je označili jako důležité. Zpočátku může být třeba důležitost měnit ručně a systém tak naučit, ale časem se tím vylepší.</p>
+<p>The automatic classification is optional. You can opt-out when setting up an account. The classification can also be turned on and off in the account settings at any time.</p>
+<figure class="align-default">
+<img alt="../../_images/priority-inbox.png" src="../../_images/priority-inbox.png" />
+</figure>
+</section>
+<section id="all-inboxes">
+<h3>Všechny schránky<a class="headerlink" href="#all-inboxes" title="Link to this heading"></a></h3>
+<p>Veškeré zprávy ze všech účtů, ke kterým jste přihlášení, zde budou chronologicky zobrazeny</p>
+</section>
+<section id="account-settings">
+<span id="mail-account-settings"></span><h3>Nastavení účtu<a class="headerlink" href="#account-settings" title="Link to this heading"></a></h3>
+<p>Nastavení vašeho účtu, jako:</p>
+<ol class="arabic simple">
+<li><p>Alternativní názvy</p></li>
+<li><p>Podpis</p></li>
+<li><p>Výchozí složky</p></li>
+<li><p>Automatické odpovědi</p></li>
+<li><p>Důvěryhodní odesilatelé</p></li>
+<li><p>…a další</p></li>
+</ol>
+<p>Je k dispozici v nabídce akcí u e-mailového účtu. Zde je možné upravovat, přidávat nebo odebírat nastavení, v závislosti na vašich potřebách.</p>
+</section>
+<section id="move-messages-to-junk-folder">
+<h3>Přesunutí zpráv do složky Nevyžádané<a class="headerlink" href="#move-messages-to-junk-folder" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<p>Když je označená jako nevyžádaná, aplikace E-mail jí umí přesunout do jiné složky.</p>
+<ol class="arabic simple">
+<li><p>Navštivte nastavení účtu</p></li>
+<li><p>Jděte na Výchozí složky</p></li>
+<li><p>Zkontrolujte že je vybrána složka pro nevyžádané zprávy</p></li>
+<li><p>Jděte do nastavení pro nevyžádané</p></li>
+<li><p>Klikněte na Přesunout zprávy do složky Nevyžádané</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/mail_move-message-to-junk-folder.png" src="../../_images/mail_move-message-to-junk-folder.png" />
+</figure>
+</section>
+<section id="refresh-mailbox">
+<h3>Refresh mailbox<a class="headerlink" href="#refresh-mailbox" title="Link to this heading"></a></h3>
+<p>You can manually trigger a sync of your mailbox by clicking the refresh button located at the top of the mailbox list.
+Starting from <code class="docutils literal notranslate"><span class="pre">version</span> <span class="pre">5.7</span></code> triggering the sync will also refresh the list of folders for the selected account.</p>
+</section>
+<section id="unified-search">
+<h3>Unified search<a class="headerlink" href="#unified-search" title="Link to this heading"></a></h3>
+<p>The Mail app integrates with Nextcloud’s <a class="reference internal" href="../webinterface.html#id1"><span class="std std-ref">unified search</span></a>
+feature (see <a class="reference internal" href="../webinterface.html"><span class="doc">Webové rozhraní Nextcloud</span></a> for details). You can search for emails across
+all your accounts using the search bar in the Nextcloud header.</p>
+<p>Mail searches email subjects and sender/recipient fields. To search email bodies,
+use the mailbox search feature in the app.</p>
+</section>
+<section id="search-in-mailbox">
+<h3>Hledat ve e-mailové schránce<a class="headerlink" href="#search-in-mailbox" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 2.1.</span></p>
+</div>
+<p>Na začátku seznamu obálek v libovolném rozvržení e-mailu, se zkratka na kolonku pro vyhledávání v předmětech e-mailů. Od <code class="docutils literal notranslate"><span class="pre">verze</span> <span class="pre">3.7</span></code> tento zástupce umožňuje vyhledávat v předmětu, příjemci či odesilateli a to ve výchozím stavu.</p>
+</section>
+<section id="advanced-search-in-mailbox">
+<h3>Pokročilé vyhledávání ve schránce<a class="headerlink" href="#advanced-search-in-mailbox" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<p>K funkci pokročilého vyhledávání se dostanete prostřednictvím dialogu nacházejícího se na konci zástupce pro vyhledávání.</p>
+</section>
+<section id="enable-mail-body-search">
+<h3>Zapněte hledání v těle e-mailu<a class="headerlink" href="#enable-mail-body-search" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5.</span></p>
+</div>
+<p>Nyní je možné vyhledávat i v tělech e-mailů, ale tuto funkci je třeba si výslovně zapnout, protože může způsobovat problémy s výkonem.</p>
+<p>Pro zapnutí:</p>
+<ol class="arabic simple">
+<li><p>Navštivte nastavení účtu</p></li>
+<li><p>Přejděte do hledání ve schránce</p></li>
+<li><p>Zapněte hledání v těle e-mailu</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Varování</p>
+<p>Pokud to chcete zapnout také pro sjednocené schránky, je třeba tak učinit v nastaveních E-mailu</p>
+</div>
+<p>Zapnutím bude hlavní vyhledávací kolonka nyní hledat jak v předmětech, tak v tělech e-mailů a v pokročilém vyhledávání se zobrazí zvlášť volba <strong>Tělo</strong>.</p>
+</section>
+<section id="account-delegation">
+<h3>Delegování účtu<a class="headerlink" href="#account-delegation" title="Link to this heading"></a></h3>
+<p>Tato aplikace umožňuje delegování účtů, takže uživatel může posílat e-maily z adresy jiného.</p>
+<ol class="arabic simple">
+<li><p>Je třeba, aby delegování bylo nastavené správcem na e-mailovém serveru</p></li>
+<li><p>Přidejte jinou e-mailovou adresu jako alternativní název pro váš vlastní e-mailový účet</p></li>
+<li><p>Při odesílání e-mailu vyberte alternativní název coby odesilatele</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Varování</p>
+<p>Pokud je uložen ve ve složce <em>Odeslané</em> vaší osobní schránky, může se stát, že odeslaný e-mail nebude vidět v původním účtu.</p>
+</div>
+</section>
+<section id="automatic-trash-deletion">
+<h3>Automatické mazání koše<a class="headerlink" href="#automatic-trash-deletion" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<p>Aplikace E-mail může automaticky mazat zprávy ve složce Koš po uplynutí určitého počtu dnů.</p>
+<ol class="arabic simple">
+<li><p>Navštivte nastavení účtu</p></li>
+<li><p>Jděte do Automatického mazání Koše</p></li>
+<li><p>Zadejte počet dnů po jejichž uplynutí mají být zprávy smazány</p></li>
+</ol>
+<p>Lhůtu ponechávání v Koši je možné vypnout nevyplněním kolonky nebo jejím nastavením na hodnotu 0 (nula).</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Takto zpracovány budou pouze e-maily smazané až po zapnutí lhůty ponechávání v Koši.</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/mail_trash_retention_settings.png" src="../../_images/mail_trash_retention_settings.png" />
+</figure>
+</section>
+</section>
+<section id="compose-messages">
+<h2>Napsání zprávy<a class="headerlink" href="#compose-messages" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Klikněte na novou zprávu v levé horní části obrazovky</p></li>
+<li><p>Začněte psát svou zprávu</p></li>
+</ol>
+<section id="minimize-the-composer-modal">
+<h3>Minimalizace dialogu editoru zprávy<a class="headerlink" href="#minimize-the-composer-modal" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.2.</span></p>
+</div>
+<p>Dialogové okno s editorem zpráv je možné minimalizovat v průběhu psaní nové zprávy, upravování existujícího konceptu nebo upravování zprávy z odeslaných. Stačí kliknout na tlačítko minimalizace vpravo nahoře dialogu nebo kliknout kamkoli mimo dialog.</p>
+<figure class="align-default">
+<img alt="../../_images/mail-minimize-composer.png" src="../../_images/mail-minimize-composer.png" />
+</figure>
+<p>K minimalizované z právě se vrátíte kliknutím kamkoli na indikátor ve spodní části obrazovky.</p>
+<figure class="align-default">
+<img alt="../../_images/mail-composer-indicator.png" src="../../_images/mail-composer-indicator.png" />
+</figure>
+<p>Kliknutím na tlačítko zavřít v dialogu nebo na indikátoru v pravém dolním rohu ukončí upravování zprávy. Koncept bude automaticky uložen do schránky s koncepty.</p>
+</section>
+</section>
+<section id="recipient-info-on-composer">
+<h2>Informace o příjemci na editoru<a class="headerlink" href="#recipient-info-on-composer" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.2.</span></p>
+</div>
+<p>Při přidávání prvního příjemce nebo kontaktu do kolonky „Pro“, zobrazí se vpravo podokno zobrazující podrobnosti o uloženém profilu takového kontaktu. Přidání druhého kontaktu tento seznam sbalí, a umožňuje vybrat a rozbalit jakýkoli kontakt, který jste přidali a zobrazit tak podrobnosti o něm. Pokud upřednostňujete zaměřit se čistě na psaní e-mailu, je možné podokno vpravo skrýt kliknutím na ikonu rozbalování v pravém horním rohu. Pro jeho opětovné zobrazení stačí kliknout na ikonu minimalizace ve stejném umístění.</p>
+</section>
+<section id="mention-contacts">
+<h2>Zmínění kontaktů<a class="headerlink" href="#mention-contacts" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.2.</span></p>
+</div>
+<p>Ve zprávě je možné zmiňovat kontakty a to zadáním <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> (zavináč) a poté výběrem kontaktu ze seznamu. Tím bude kontakt automaticky přidán coby příjemce.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Navrhovány budou pouze ty kontakty, které mají uvedenou platnou e-mailovou adresu.</p>
+</div>
+</section>
+<section id="text-blocks">
+<h2>Textové bloky<a class="headerlink" href="#text-blocks" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.2.</span></p>
+</div>
+<p>Textové bloky jsou předpřipravené úryvky textu, které můžete vložit do svého e-mailu. Je možné je vytvářet a spravovat v nastavení e-mailů. Do editoru je možné je vkládat napsáním <code class="docutils literal notranslate"><span class="pre">!</span></code> a poté vybráním bloku ze seznamu nebo z akcí editoru. Textové bloky je možné sdílet s uživateli a skupinami uživatelů.</p>
+</section>
+<section id="outbox">
+<h2>Odchozí pošta<a class="headerlink" href="#outbox" title="Link to this heading"></a></h2>
+<p>Pokud byla zpráva napsána a kliknuto na tlačítko „Odeslat“, bude zpráva přidána do složky Odeslané, která se nachází v levém dolním rohu postranního panelu vlevo.</p>
+<p>Je také možné nastavit datum a čas pro operaci odeslání na okamžik v budoucnosti (viz <a class="reference internal" href="#mail-scheduled-messages"><span class="std std-ref">Naplánované zprávy</span></a>) – zpráva bude ponechána v  poště k odeslání až do okamžiku vámi zvoleného data a času, poté bude automaticky odeslána.</p>
+<p>Složka „K odeslání“ se zobrazí je tehdy, pokud existuje nějaká zpráva, jejíž odeslání ještě nebylo dokončeno.</p>
+<p>Dokud není spuštěna operace „odeslat“, je možné kdykoli znovu otevřít editor zprávy ve složce „K odeslání“.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Pokud se při odesílání vyskytne chyba, objeví se jedno ze tří možných chybových hlášení:</p>
+<dl class="simple">
+<dt>Nebylo možné zkopírovat do schránky „Odeslané“</dt><dd><p>E-mail byl odeslán ale nebylo možné ho zkopírovat do složky „Odeslané“. Tato chyba bude obsloužena složkou pro odchozí poštu a bude proveden opětovný pokus o zkopírování.</p>
+</dd>
+<dt>Chyba e-mailového serveru</dt><dd><p>Odesílání nebylo úspěšné, přičemž skončilo ve stavu, kdy není možný opakovat pokus (např. SMTP server není dosažitelný). Složka odchozí pošty se pokusí zprávu znovu odeslat později.</p>
+</dd>
+<dt>Zprávu nebylo možné odeslat</dt><dd><p>Odesílání se mohlo (ale také nemuselo) nezdařit. E-mailový server nesdělil stav zprávy. Protože aplikace E-mail nemá žádný způsob, jak zjistit stav zprávy (odeslané nebo neodeslané), zpráva zůstane ve složce k odeslání a uživatel účtu rozhodne, jak pokračovat.</p>
+</dd>
+</dl>
+</div>
+</section>
+<section id="mailbox-actions">
+<h2>Akce ohledně e-mailové schránky<a class="headerlink" href="#mailbox-actions" title="Link to this heading"></a></h2>
+<section id="add-a-mailbox">
+<h3>Přidání schránky<a class="headerlink" href="#add-a-mailbox" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Otevřete nabídku akcí ohledně účtu</p></li>
+<li><p>Klikněte na přidání schránky</p></li>
+</ol>
+</section>
+<section id="add-a-submailbox">
+<h3>Přidání dílčí schránky<a class="headerlink" href="#add-a-submailbox" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Otevřete nabídku akcí ohledně schránky</p></li>
+<li><p>Klikněte na dílčí schránku</p></li>
+</ol>
+</section>
+<section id="shared-mailbox">
+<h3>Sdílená schránka<a class="headerlink" href="#shared-mailbox" title="Link to this heading"></a></h3>
+<p>Pokud vám schránka byla nasdílena s nějakými specifickými oprávněními, tato schránka se zobrazí jako nová s ikonou sdílení, jako níže:</p>
+<figure class="align-default">
+<img alt="../../_images/shared-mailbox-icon.png" src="../../_images/shared-mailbox-icon.png" />
+</figure>
+</section>
+</section>
+<section id="envelope-actions">
+<h2>Akce ohledně obálky<a class="headerlink" href="#envelope-actions" title="Link to this heading"></a></h2>
+<section id="create-an-event">
+<h3>Vytvoření události<a class="headerlink" href="#create-an-event" title="Link to this heading"></a></h3>
+<p>Vytvořte událost pro určitou zprávu/vlákno přímo prostřednictvím aplikace E-mail</p>
+<ol class="arabic simple">
+<li><p>Otevřete nabídku akcí ohledně obálky</p></li>
+<li><p>Klikněte na <em>Další akce</em></p></li>
+<li><p>Klikněte na <em>Vytvořit událost</em></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Pokud tuto funkci správce zapnul, bude vytvořen název události a její program.</p>
+</div>
+</section>
+<section id="create-a-task">
+<h3>Vytvoření úkolu<a class="headerlink" href="#create-a-task" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.2.</span></p>
+</div>
+<p>Vytvořte úkol pro určitou zprávu/vlákno přímo prostřednictvím aplikace E-mail</p>
+<ol class="arabic simple">
+<li><p>Otevřete nabídku akcí ohledně obálky</p></li>
+<li><p>Klikněte na <em>další akce</em></p></li>
+<li><p>Klikněte na <em>vytvořit úkol</em></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Úkoly jsou ukládány v podporovaných kalendářích. Pokud takový není k dispozici, je možné si takový vytvořit v aplikaci <a class="reference internal" href="calendar.html#calendar-app"><span class="std std-ref">Kalendář</span></a>.</p>
+</div>
+</section>
+<section id="edit-tags">
+<h3>Upravit štítky<a class="headerlink" href="#edit-tags" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Otevřete nabídku akcí ohledně obálky</p></li>
+<li><p>Klikněte na <em>Upravit štítky</em></p></li>
+<li><p>V dialogu štítků nastavte / zrušte nastavení štítků</p></li>
+</ol>
+</section>
+<section id="change-color-for-tags">
+<h3>Změna barvy štítků<a class="headerlink" href="#change-color-for-tags" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5.</span></p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/change-tag-color.png" src="../../_images/change-tag-color.png" />
+</figure>
+<p>Při vytváření štítku je mu náhodně přiřazena barva. Po uložení štítku je možné jeho barvu upravit. Tuto funkci je možné nalézt v dialogu akcí ohledně štítku.</p>
+</section>
+<section id="delete-tags">
+<h3>Mazání štítků<a class="headerlink" href="#delete-tags" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5.</span></p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/delete-tag.png" src="../../_images/delete-tag.png" />
+</figure>
+<p>Nyní je možné mazat štítky, které jste předtím vytvořili. K této funkci se dostanete:</p>
+<ol class="arabic simple">
+<li><p>Otevřít nabídku akcí obálky/vlákna.</p></li>
+<li><p>Vyberte Upravit štítky.</p></li>
+<li><p>V dialogu pro štítky otevřete nabídku akcí pro konkrétní štítek, který chcete smazat.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Mějte na paměti, že výchozí štítky, jako například Práce, Udělat, Osobní a Později není možné smazat – je možné je pouze přejmenovat.</p>
+</div>
+</section>
+<section id="ai-summary">
+<h3>AI shrnutí<a class="headerlink" href="#ai-summary" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.2.</span></p>
+</div>
+<p>Při prohlížení své schránky uvidíte coby náhled krátké shrnutí (vytvoření AI) svých e-mailů.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Mějte na paměti, že je třeba, aby funkci zapnul správce</p>
+</div>
+</section>
+</section>
+<section id="quick-actions">
+<h2>Quick actions<a class="headerlink" href="#quick-actions" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.5: </span>(Nextcloud 30)</p>
+</div>
+<p>Allows you to group action steps that you would normally perform on envelopes such as tagging, moving, marking as read … into quick actions that can be executed with a single click.
+Quick actions are scoped to one mail account and can be created and managed in the mail settings under „Quick actions“ or directly from the envelope action menu.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Some action steps such as <cite>Mark as spam</cite>, <cite>Move thread</cite> and <cite>Delete thread</cite> are mutually exclusive and cannot be part of the same quick action, they also can’t be re-ordered and will always be executed last.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Please note that quick actions will be performed on all messages in a thread when executed on one.</p>
+</div>
+</section>
+<section id="message-actions">
+<h2>Akce ohledně zprávy<a class="headerlink" href="#message-actions" title="Link to this heading"></a></h2>
+<section id="unsubscribe-from-a-mailing-list">
+<h3>Odhlášení se z odběru e-mailové konference<a class="headerlink" href="#unsubscribe-from-a-mailing-list" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.1.</span></p>
+</div>
+<p>Některé e-mailové konference a zpravodaje umožňují snadné zrušení odběru. Pokud aplikace E-mail zjistí zprávy od takového odesilatele, zobrazí tlačítko <em>Zrušit odebírání</em> vedle údaje o odesilateli. Pokud chcete přestat odebírat, klikněte a potvrďte.</p>
+</section>
+<section id="snooze">
+<h3>Odložit<a class="headerlink" href="#snooze" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<p>Odkládání zprávy či vlákna ho přesune do k tomu určené složky po dobu délky odkladu a zpráva nebo vlákno pak po jejím uplynutí bude přesunuta do původní složky.</p>
+<ol class="arabic simple">
+<li><p>Otevřete nabídku akcí obálky nebo vlákna</p></li>
+<li><p>Klikněte na <em>Odložit</em></p></li>
+<li><p>Vyberte na jak dlouho má být zpráva nebo vlákno odloženo</p></li>
+</ol>
+</section>
+<section id="smart-replies">
+<h3>Chytré odpovědi<a class="headerlink" href="#smart-replies" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.6.</span></p>
+</div>
+<p>Při otevření zprávy v aplikaci E-mail, tato navrhuje odpovědi, vytvořené AI. Stačí kliknout na navrhovanou odpověď a otevře se editor, ve které je předvyplněná.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Mějte na paměti, že je třeba, aby funkci zapnul správce</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Jaké jazyky jsou podporovány závisí na použitém LLM modelu</p>
+</div>
+</section>
+<section id="mail-translation">
+<h3>Překládání e-mailů<a class="headerlink" href="#mail-translation" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.2.</span></p>
+</div>
+<p>Máte možnost nechat si překládat zprávy do vámi nastaveného jazyka podobně, jako v Talk.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Mějte na paměti, že je třeba, aby funkce pro překládání byly zapnuté na serveru</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Od verze 5.3, pokud je LLM zapnuté správcem, budou navrhovány aktualizace</p>
+</div>
+</section>
+</section>
+<section id="thread-summary">
+<h2>Shrnutí vlákna<a class="headerlink" href="#thread-summary" title="Link to this heading"></a></h2>
+<p>Aplikace E-mail podporuje vytváření shrnutí vláken zpráv, které obsahují tři a více zpráv.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Mějte na paměti, že je třeba, aby funkci zapnul správce</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Mějte na paměti, že tato funkce pracuje dobře pouze s integration_openai. Místně provozovaným LLM typicky trvá odpověď příliš dlouho a pro požadavek na shrnutí nejspíš bude překročen časový limit, přičemž i tak vytvoří významnou zátěž pro systém.</p>
+</div>
+</section>
+<section id="filtering-and-autoresponder">
+<h2>Filtrování a automatické odpovídání<a class="headerlink" href="#filtering-and-autoresponder" title="Link to this heading"></a></h2>
+<p>Aplikace E-mail má editor pro Sieve skripty – rozhraní pro nastavování automatického odpovídání a filtrů. Sieve je třeba zapnout v <a class="reference internal" href="#mail-account-settings"><span class="std std-ref">nastavení účtu</span></a>.</p>
+<section id="autoresponders">
+<h3>Automatické odpovědi<a class="headerlink" href="#autoresponders" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5: </span>Automatické odpovědi se mohou řídit nastaveními systému.</p>
+</div>
+<p>Ve výchozím stavu je automatické odpovídání vypnuté. Je možné ho ručně zapnout, nebo se řídit nastaveními systému. Následující nastavení systému znamenají, že zpráva o dlouhodobé nepřítomnosti zadaná do <a class="reference internal" href="absence.html#groupware-absence"><span class="std std-ref">Sekce nastavení nepřítomnosti</span></a> je uplatněna automaticky.</p>
+</section>
+<section id="filter">
+<h3>Filtr<a class="headerlink" href="#filter" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.1.</span></p>
+</div>
+<p>E-mail 4.1 obsahuje jednoduchý editor pro nastavování pravidel filtru.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Import existujících filtrů není podporován. Nicméně, veškeré existující filtry zůstanou aktivní a nezměněné. Pro jistotu doporučujeme zazálohovat si své stávající skripty zazálohovat pomocí editoru Sieve skriptů.</p>
+</div>
+<section id="how-to-add-a-new-filter">
+<h4>Jak přidat nový filtr<a class="headerlink" href="#how-to-add-a-new-filter" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Otevřete nastavení svého účtu.</p></li>
+<li><p>Ověřte, že je pro váš účet Sieve zapnuté (viz nastavení pro Sieve server).</p></li>
+<li><p>Klikněte na Filtry.</p></li>
+<li><p>Nové pravidlo vytvoříte vybráním Nový filtr.</p></li>
+</ol>
+</section>
+<section id="how-to-delete-a-filter">
+<h4>Jak smazat filtr<a class="headerlink" href="#how-to-delete-a-filter" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Otevřete nastavení svého účtu.</p></li>
+<li><p>Ověřte, že je pro váš účet Sieve zapnuté (viz nastavení pro Sieve server).</p></li>
+<li><p>Klikněte na Filtry.</p></li>
+<li><p>Najeďte ukazatelem na filtr, který si přejete smazat, poté klikněte na ikonu koše.</p></li>
+</ol>
+</section>
+<section id="conditions">
+<h4>Podmínky<a class="headerlink" href="#conditions" title="Link to this heading"></a></h4>
+<p>Podmínky jsou uplatňovány na příchozí e-maily na vámi využívaném e-mailovém serveru, cílící na kolonky jako např. Předmět, Odesilatel a Příjemce. Podmínky pro tyto kolonky je možné definovat následujícími operátory:</p>
+<ul class="simple">
+<li><p><strong>je přesně</strong>. Přesná shoda. Je třeba, aby kolonka byla identická se zadanou hodnotou.</p></li>
+<li><p><strong>obsahuje</strong>: Shoda s částí řetězce. Kolonka odpovídá pokud je v ní zadaná hodnota obsažená. Například, „výkaznictví“ by odpovídalo „kazn“.</p></li>
+<li><p><strong>shoduje se</strong>: Shoda se vzorem pomocí zástupných znaků. Symbol „*“ představuje libovolný počet znaků (včetně žádného), zatímco „?“ představuje právě jeden znak. Například „<em>vykaz</em>“ by odpovídal „Vykazy_podnikani_2024“.</p></li>
+</ul>
+</section>
+<section id="actions">
+<h4>Akce<a class="headerlink" href="#actions" title="Link to this heading"></a></h4>
+<p>Akce jsou spouštěny když pozitivně vyjdou určené testy. K dispozici jsou následující akce:</p>
+<ul class="simple">
+<li><p><strong>fileinto</strong>:Přesune zprávu do určené složky.</p></li>
+<li><p><strong>addflag</strong>: Přidá zprávě příznak.</p></li>
+<li><p><strong>stop</strong>. Zastaví vykonávání filtrovacího skriptu. Po této sekci nebudou zpracovávány žádné další filtry.</p></li>
+</ul>
+</section>
+</section>
+<section id="create-a-filter-from-a-message">
+<h3>Vytvoření filtru ze zprávy<a class="headerlink" href="#create-a-filter-from-a-message" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.2.</span></p>
+</div>
+<p>Pokud chcete z dané zprávy vytvořit filtr, otevřete ji a poté otevřete nabídku kliknutím na tři tečky. Dále klikněte na „Další akce“ a poté „Vytvořit filtr e-mailů“.</p>
+<p>V dialogu vyberte podmínky pro hledání shody s příchozími zprávami a pokračujte kliknutím na „Vytvořit filtr e-mailů“.</p>
+<figure class="align-default">
+<img alt="../../_images/mail_create_filter_from_message.png" src="../../_images/mail_create_filter_from_message.png" />
+</figure>
+</section>
+</section>
+<section id="follow-up-reminders">
+<h2>Připomínky následných kroků<a class="headerlink" href="#follow-up-reminders" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.0.</span></p>
+</div>
+<p>Aplikace E-mail vám automaticky připomene, když na odchozí e-mail nepřijde žádná odpověď. Každý odeslaný e-mail bude zanalyzován AI a zjištěno tak tak zda je očekávána odpověď. Po čtyřech dnech se všechny relevantní e-maily zobrazí v prioritní schránce.</p>
+<p>Při kliknutí na takový e-mail se zobrazí tlačítko pro rychlé návazné kroky se všemi příjemci. Je také možné vypnout připomínky návazných kroků pro odeslaný e-mail.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Mějte na paměti, že je třeba, aby funkci zapnul správce.</p>
+</div>
+</section>
+<section id="security">
+<h2>Zabezpečení<a class="headerlink" href="#security" title="Link to this heading"></a></h2>
+<section id="phishing-detection">
+<h3>Detekce rhybaření<a class="headerlink" href="#phishing-detection" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.0.</span></p>
+</div>
+<p>Aplikace E-mail zkontroluje případné pokusy oklamat vás podvodnými e-maily a zobrazí uživateli varování.</p>
+<p>Kontroly jsou následující:</p>
+<ul class="simple">
+<li><p>Adresa odesilatele uložená v adresáři kontaktů se neshoduje s tou v e-mailovém účtu</p></li>
+<li><p>Odesilatel používá vlastní e-mailovou adresu, která neodpovídá adrese „Od“</p></li>
+<li><p>Datum, kdy mělo být odesláno, je nastaveno do budoucnosti</p></li>
+<li><p>Odkazy v těle zprávy neodkazují na zobrazený text</p></li>
+<li><p>Adresa „komu odpovědět“ není stejná jako adresa odesilatele</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Mějte na paměti, že varování neznamená, že je zpráva pokusem o podvod. Pouze znamená, že aplikace E-mail zjistila potenciální pokus o něj.</p>
+</div>
+</section>
+<section id="internal-addresses">
+<h3>Interní adresy<a class="headerlink" href="#internal-addresses" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.0.</span></p>
+</div>
+<p>Aplikace E-mail umožňuje přidávat interní adresy a domény a při odesílání a příjmu zprávy varuje uživatele, pokud se adresa nenachází na seznamu.</p>
+<p>Pro přidání interní adresy:</p>
+<ol class="arabic simple">
+<li><p>Otevřete nastavení e-mailu</p></li>
+<li><p>Přejděte do sekce Soukromí a zabezpečení</p></li>
+<li><p>Zapněte interní adresy kliknutím na zašktrtávátko</p></li>
+<li><p>Klikněte na tlačítko Přidat interní adresu</p></li>
+<li><p>Zadejte adresu nebo doménu a klikněte na Přidat</p></li>
+</ol>
+</section>
+</section>
+<section id="dashboard-integration">
+<h2>Napojení na nástěnku<a class="headerlink" href="#dashboard-integration" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 1.8.</span></p>
+</div>
+<p>Aplikace e-mail nabízí dva ovládací prvky navržené pro napojení na Nextcloud nástěnku:</p>
+<ul class="simple">
+<li><p>Nepřečtené e-maily: Ovládací prvek zobrazující nepřečtené e-maily.</p></li>
+<li><p>Důležité e-maily: Tento ovládací prvek zobrazuje e-maily které byly označené jako důležité.</p></li>
+</ul>
+<p>Tyto ovládací prvky využívají e-maily z e-mailových účtů, které jsou nastavené pro váš účet.</p>
+</section>
+<section id="calendar-integration">
+<h2>Calendar integration<a class="headerlink" href="#calendar-integration" title="Link to this heading"></a></h2>
+<p>The Mail app integrates with the Calendar app to help you manage meeting invitations and keep your calendar up to date.</p>
+<section id="meeting-invitations">
+<h3>Meeting invitations<a class="headerlink" href="#meeting-invitations" title="Link to this heading"></a></h3>
+<p>When you receive a message containing a meeting invitation, the Mail app automatically detects the attached calendar file and displays a formatted action section to help you respond.</p>
+<p>You can:</p>
+<ul class="simple">
+<li><p><strong>Accept</strong> the invitation</p></li>
+<li><p><strong>Decline</strong> the invitation</p></li>
+<li><p><strong>Tentatively accept</strong> the invitation</p></li>
+</ul>
+<p>Your response is sent directly from the Mail app, and the event is added to your primary calendar accordingly.</p>
+<p>You can also manually add a meeting invitation to a specific calendar:</p>
+<ol class="arabic simple">
+<li><p>Open the message with the meeting invitation</p></li>
+<li><p>Scroll to the bottom of the message to the attachments section</p></li>
+<li><p>Select the calendar file (usually with a .ics extension), then click the three dots menu.</p></li>
+<li><p>Click „Import in to calendar“ and choose the desired calendar.</p></li>
+</ol>
+</section>
+<section id="meeting-invitation-automation">
+<h3>Meeting invitation automation<a class="headerlink" href="#meeting-invitation-automation" title="Link to this heading"></a></h3>
+<p>When a meeting organizer sends updates to an existing event (such as time changes or location updates), the Mail app processes these automatically and updates the corresponding event in your calendar.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.7: </span>(Nextcloud 32 or newer)</p>
+</div>
+<p>You can also configure Mail to automatically add all new meeting invitations to your calendar without requiring manual acceptance. The invitations will be added to the calendar as tentative.</p>
+<p>To enable this feature:</p>
+<ol class="arabic simple">
+<li><p>Visit account settings of a specific mail account</p></li>
+<li><p>Navigate to Calendar settings section</p></li>
+<li><p>Enable <em>Automatically create tentative appointments in calendar</em></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>With this setting enabled, invitations will still appear in your mail list, but they will be automatically added to your calendar.</p>
+</div>
+</section>
+</section>
+<section id="keyboard-shortcuts">
+<h2>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Link to this heading"></a></h2>
+<p>The Mail app implements several keyboard shortcuts to speed up your experience.</p>
+<p>For a full list of the supported shortcuts, check out the Mail settings in your instance.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="calendar.html" class="btn btn-neutral float-left" title="Používání aplikace Kalendář" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="absence.html" class="btn btn-neutral float-right" title="Nastavování zpráv „Jsem mimo kancelář“" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 Czech
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Jazyky</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Verze</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Stahování</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Na službě Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Domovská stránka projektu</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Sestavení</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

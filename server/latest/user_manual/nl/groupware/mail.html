@@ -1,0 +1,1345 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="nl" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gebruik van de Mail app &mdash; Nextcloud latest User Manual latest documentatie</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/groupware/mail.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=26e4286d"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=e4d38c6a"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Zoeken" href="../search.html" />
+    <link rel="next" title="Het instellen van automatische afwezigheidsberichten" href="absence.html" />
+    <link rel="prev" title="Using the Calendar app" href="calendar.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Zoek in documentatie" aria-label="Zoek in documentatie" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigatiemenu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest gebruikershandleiding introductie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">De Nextcloud Web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Bestanden &amp; synchronisatie</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Gebruik van de contactpersonen-app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Using the Calendar app</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Gebruik van de Mail app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#managing-your-mail-account">Beheer van het Mail-account</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#switch-layout">Wijzig indeling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#use-compact-mode">Use Compact Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#message-display-operation-mode">Berichten tonen  / Werkingsmodus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-new-mail-account">Voeg een nieuw mailaccount toe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#change-sort-order">Wijzig sorteervolgorde</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sort-favorites-up">Sort favorites up</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scheduled-messages">Geplande berichten</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#priority-inbox">Prioriteitsinbox</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#all-inboxes">Alle inboxen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#account-settings">Accountinstellingen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#move-messages-to-junk-folder">Verplaats berichten naar de Junk map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#refresh-mailbox">Refresh mailbox</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unified-search">Unified search</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search-in-mailbox">Zoek in mailbox</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#advanced-search-in-mailbox">Geavanceerd zoeken in mailbox</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enable-mail-body-search">Schakel zoeken in mailtekst in</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#account-delegation">Accountdelegatie</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automatic-trash-deletion">Automatisch prullenbak legen</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#compose-messages">Maak berichten</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#minimize-the-composer-modal">Minimaliseer het berichtvenster</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#recipient-info-on-composer">Ontvangersinfo in het mailscherm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mention-contacts">Noem contactpersonen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#text-blocks">Text blocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#outbox">Te verzenden-map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mailbox-actions">Mailbox-acties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-mailbox">Voeg een mailbox toe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-submailbox">Voeg een submailbox toe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shared-mailbox">Gedeelde mailbox</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#envelope-actions">Envelop-acties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-an-event">Creëer een gebeurtenis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-task">Creëer een taak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-tags">Wijzig labels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#change-color-for-tags">Wijzig kleur voor labels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete-tags">Verwijder labels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ai-summary">AI samenvatting</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#quick-actions">Quick actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#message-actions">Bericht-acties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#unsubscribe-from-a-mailing-list">Verlaat mailinglijst</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#snooze">Sluimer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#smart-replies">Slimme antwoorden</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mail-translation">Mailvertaling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#thread-summary">Serie-samenvatting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filtering-and-autoresponder">Filteren en automatisch antwoorden</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autoresponders">Automatische antwoorden</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filter">Filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-filter-from-a-message">Creëer een filter vanuit een bericht</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#follow-up-reminders">Opvolgherinneringen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#security">Beveiliging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#phishing-detection">Phishing-detectie</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#internal-addresses">Interne adressen</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dashboard-integration">Dashboardintegratie</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calendar-integration">Calendar integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#meeting-invitations">Meeting invitations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#meeting-invitation-automation">Meeting invitation automation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#keyboard-shortcuts">Keyboard shortcuts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">Het instellen van automatische afwezigheidsberichten</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Synchronizing with Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">Synchronisatie met iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">Synchronizing with macOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Synchronisatie met Thunderbird</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Synchronizing with KDE Kontact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Synchronisatie met de GNOME-desktop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Synchronizing with Windows 10</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Het instellen van jouw voorkeuren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universele toegang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Gebruik maken van twee-factor authenticatie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Beheren van gekoppelde browsers en apparaten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Externe opslag</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Navigatiemenu voor mobiel" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Paginanavigatie">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Groupware</a></li>
+      <li class="breadcrumb-item active">Gebruik van de Mail app</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/mail.rst" class="fa fa-github"> Bewerk op GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-mail-app">
+<h1>Gebruik van de Mail app<a class="headerlink" href="#using-the-mail-app" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Notitie</p>
+<p>De Mail app is standaard geïnstalleerd in Nextcloud Hub maar kan worden uitgeschakeld. Neem hiervoor contact op met de beheerder.</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/mail.png" src="../../_images/mail.png" />
+</figure>
+<section id="managing-your-mail-account">
+<h2>Beheer van het Mail-account<a class="headerlink" href="#managing-your-mail-account" title="Link to this heading"></a></h2>
+<section id="switch-layout">
+<h3>Wijzig indeling<a class="headerlink" href="#switch-layout" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.6.</span></p>
+</div>
+<ol class="arabic simple">
+<li><p>Bezoek mailinstellingen</p></li>
+<li><p>Kies tussen <em>Lijst</em>, <em>Verticaal gesplitst</em> en <em>Horizontaal gesplitst</em></p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/mail_layout.png" src="../../_images/mail_layout.png" />
+</figure>
+</section>
+<section id="use-compact-mode">
+<h3>Use Compact Mode<a class="headerlink" href="#use-compact-mode" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.7.0.</span></p>
+</div>
+<p>Compact mode offers a cleaner and more efficient way to view your messages. Avatars are hidden, selection checkboxes are always visible, and the preview of messages is removed. It saves space allowing you to see more emails at once.</p>
+<ol class="arabic simple">
+<li><p>Visit the mail settings</p></li>
+<li><p>Go to <strong>Appearance</strong></p></li>
+<li><p>Toggle the Compact Mode</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/use-compact-mode.png" src="../../_images/use-compact-mode.png" />
+</figure>
+</section>
+<section id="message-display-operation-mode">
+<h3>Berichten tonen  / Werkingsmodus<a class="headerlink" href="#message-display-operation-mode" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.2.</span></p>
+</div>
+<p>Mail biedt de mogelijkheid te wisselen tussen twee verschillende opties om berichten te bekijken en behandelen: <em>Als Draad</em> en <em>Singleton/apart</em></p>
+<p>In <em>Threaded</em> modus worden berichten gegroepeerd op conversatie. Hierbij worden berichten die gerelateerd zijn, gestapeld getoond waarbij alleen het meest recente bericht zichtbaar is. De voorgaande berichten worden in een berichtenpaneel getoond als de gestapelde conversatie wordt geselecteerd. Dit is nuttig voor het volgen van discussies en het begrijpen van de context bij antwoorden. In deze modus worden acties als verplaatsen en verwijderen toegepast op de hele set berichten. Dit betekent dat het verwijderen van één bericht alle gerelateerde berichten verwijderd.</p>
+<p>In <em>Singleton</em> modus worden alle berichten apart getoond in zowel de mailbox berichtenlijst als het berichtenpaneel. Acties als verplaatsen of verwijderen gebeuren enkel op het geselecteerde bericht. Deze modus is nuttig als berichten apart moeten worden beheerd zonder alle gerelateerde berichten te beïnvloeden.</p>
+<ol class="arabic simple">
+<li><p>Bezoek mailinstellingen</p></li>
+<li><p>Kies tussen <em>Threaded</em> en <em>Singleton</em></p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/mail_display-mode.png" src="../../_images/mail_display-mode.png" />
+</figure>
+</section>
+<section id="add-a-new-mail-account">
+<h3>Voeg een nieuw mailaccount toe<a class="headerlink" href="#add-a-new-mail-account" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Schakel mail in vanuit de apps</p></li>
+<li><p>Klik op het mailicoon in de kop</p></li>
+<li><p>Vul het loginformulier in (auto of handmatig)</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/new-mail-account.png" src="../../_images/new-mail-account.png" />
+</figure>
+</section>
+<section id="change-sort-order">
+<h3>Wijzig sorteervolgorde<a class="headerlink" href="#change-sort-order" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5.</span></p>
+</div>
+<ol class="arabic simple">
+<li><p>Bezoek mailinstellingen</p></li>
+<li><p>Ga naar <em>Sorteren</em></p></li>
+<li><p>Kies hier <em>Oudste</em> of <em>Nieuwste</em> mail eerst</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Notitie</p>
+<p>Deze wijziging zal worden uitgevoerd op alle accounts en mailboxen</p>
+</div>
+</section>
+<section id="sort-favorites-up">
+<h3>Sort favorites up<a class="headerlink" href="#sort-favorites-up" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.7: </span>Nextcloud 31 or newer</p>
+</div>
+<p>This setting allows you to show messages set as favorite in a separate section on top of the message list.</p>
+<ol class="arabic simple">
+<li><p>Bezoek mailinstellingen</p></li>
+<li><p>Go to <em>Appearance</em></p></li>
+<li><p>Enable sorting favorites up</p></li>
+</ol>
+</section>
+<section id="scheduled-messages">
+<span id="mail-scheduled-messages"></span><h3>Geplande berichten<a class="headerlink" href="#scheduled-messages" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Klik knop voor nieuw bericht, linksboven in het scherm</p></li>
+<li><p>Klik het (…) actiemenu in de modale samensteller</p></li>
+<li><p>Klik <em>Verstuur later</em></p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/scheduled-msg.png" src="../../_images/scheduled-msg.png" />
+</figure>
+</section>
+<section id="priority-inbox">
+<h3>Prioriteitsinbox<a class="headerlink" href="#priority-inbox" title="Link to this heading"></a></h3>
+<p>Prioriteitsinbox heeft 2 secties: <em>Belangrijjk</em> en “Overig*. Berichten worden automatisch als belangrijk gemarkeerd, gebaseerd op welke berichten handmatig als belangrijk zijn gemarkeerd of waarmee interactie is geweest, In het begin moet mogelijk handmatig het belang worden gewijzigd om het systeem te onderwijzen, maar dit wordt na verloop van tijd beter.</p>
+<p>The automatic classification is optional. You can opt-out when setting up an account. The classification can also be turned on and off in the account settings at any time.</p>
+<figure class="align-default">
+<img alt="../../_images/priority-inbox.png" src="../../_images/priority-inbox.png" />
+</figure>
+</section>
+<section id="all-inboxes">
+<h3>Alle inboxen<a class="headerlink" href="#all-inboxes" title="Link to this heading"></a></h3>
+<p>Alle berichten van alle ingelogde accounts worden hier chonologisch getoond.</p>
+</section>
+<section id="account-settings">
+<span id="mail-account-settings"></span><h3>Accountinstellingen<a class="headerlink" href="#account-settings" title="Link to this heading"></a></h3>
+<p>Accountinstellingen zoals:</p>
+<ol class="arabic simple">
+<li><p>Aliassen</p></li>
+<li><p>Handtekening</p></li>
+<li><p>Standaardmappen</p></li>
+<li><p>Auto-antwoorder</p></li>
+<li><p>Vertrouwde afzenders</p></li>
+<li><p>..en meer</p></li>
+</ol>
+<p>Kan worden gevonden in het actiemenu van een mailaccount. Daar kunnen instellingen worden gewijzigd, toegevoegd of verwijderd alnaargelang gewenst is.</p>
+</section>
+<section id="move-messages-to-junk-folder">
+<h3>Verplaats berichten naar de Junk map<a class="headerlink" href="#move-messages-to-junk-folder" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<p>Mail kan een bericht gemarkeerd als ongewenst naar een andere map verplaatsen.</p>
+<ol class="arabic simple">
+<li><p>Bezoek accountinstellingen</p></li>
+<li><p>Ga naar Standaardmappen</p></li>
+<li><p>Controleer of een map is gekozen voor ongewenste berichten</p></li>
+<li><p>Ga naar ongewenste-berichten instellingen</p></li>
+<li><p>Klik Verplaats berichten naar Junk map</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/mail_move-message-to-junk-folder.png" src="../../_images/mail_move-message-to-junk-folder.png" />
+</figure>
+</section>
+<section id="refresh-mailbox">
+<h3>Refresh mailbox<a class="headerlink" href="#refresh-mailbox" title="Link to this heading"></a></h3>
+<p>You can manually trigger a sync of your mailbox by clicking the refresh button located at the top of the mailbox list.
+Starting from <code class="docutils literal notranslate"><span class="pre">version</span> <span class="pre">5.7</span></code> triggering the sync will also refresh the list of folders for the selected account.</p>
+</section>
+<section id="unified-search">
+<h3>Unified search<a class="headerlink" href="#unified-search" title="Link to this heading"></a></h3>
+<p>The Mail app integrates with Nextcloud’s <a class="reference internal" href="../webinterface.html#id1"><span class="std std-ref">unified search</span></a>
+feature (see <a class="reference internal" href="../webinterface.html"><span class="doc">De Nextcloud Web interface</span></a> for details). You can search for emails across
+all your accounts using the search bar in the Nextcloud header.</p>
+<p>Mail searches email subjects and sender/recipient fields. To search email bodies,
+use the mailbox search feature in the app.</p>
+</section>
+<section id="search-in-mailbox">
+<h3>Zoek in mailbox<a class="headerlink" href="#search-in-mailbox" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 2.1.</span></p>
+</div>
+<p>Bovenaan de lijst in elke mailindeling is een zoekveld-afkorting om emailonderwerpen te zoeken. Vanaf versie 3.7 staat deze snelkoppeling het toe om standaard op onderwerp, ontvanger of afzender te zoeken.</p>
+</section>
+<section id="advanced-search-in-mailbox">
+<h3>Geavanceerd zoeken in mailbox<a class="headerlink" href="#advanced-search-in-mailbox" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<p>Het geavanceerd zoeken kan worden gebruikt via een optie aan het eind van de zoek-snelkoppeling.</p>
+</section>
+<section id="enable-mail-body-search">
+<h3>Schakel zoeken in mailtekst in<a class="headerlink" href="#enable-mail-body-search" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5.</span></p>
+</div>
+<p>Zoeken in emailtekst is nu mogelijk. Dit is optioneel vanwege mogelijk performatie-implicaties.</p>
+<p>Om in te schakelen:</p>
+<ol class="arabic simple">
+<li><p>Bezoek accountinstellingen</p></li>
+<li><p>Ga naar Mailbox zoeken</p></li>
+<li><p>Schakel zoeken in mailtekst in</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Waarschuwing</p>
+<p>Ga naar Mail instellingen om dit in te schakelen voor gecombineerde mailboxen</p>
+</div>
+<p>Door dit in te schakelen zal de algemene zoekoptie zoeken in zowel onderwerpen als mailtekst, en een aparte <em>Body</em> optie zal in de geavanceerde zoekoptie verschijnen.</p>
+</section>
+<section id="account-delegation">
+<h3>Accountdelegatie<a class="headerlink" href="#account-delegation" title="Link to this heading"></a></h3>
+<p>De app staat accountdelegatie toe zodat een gebruiker mail kan versturen vanaf het adres van een ander.</p>
+<ol class="arabic simple">
+<li><p>De delegatie moet door een admin worden geconfigureerd op de mailserver.</p></li>
+<li><p>Voeg het andere emailadres toe als een alias van het eigen mailaccount</p></li>
+<li><p>Kies de alias als afzender bij het versturen van een email</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Waarschuwing</p>
+<p>De verzonden mail is mogelijk niet zichtbaar in het originele account als die mail in de persoonlijk <em>Verzonden</em> mailbox staat.</p>
+</div>
+</section>
+<section id="automatic-trash-deletion">
+<h3>Automatisch prullenbak legen<a class="headerlink" href="#automatic-trash-deletion" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<p>De Mail app kan berichten in de vuilnisbak na een aantal dagen  automatisch verwijderen.</p>
+<ol class="arabic simple">
+<li><p>Bezoek accountinstellingen</p></li>
+<li><p>Ga naar automatisch prullenbak legen</p></li>
+<li><p>Voer het aantal dagen in waarna berichten automatisch moeten worden verwijderd</p></li>
+</ol>
+<p>Schakel vuilnisbak tenetie uit door het veld leeg te laten of op 0 te zetten.</p>
+<div class="admonition note">
+<p class="admonition-title">Notitie</p>
+<p>Mails worden verwijderd als die naar de prullenbak werden verplaatst nadat automatisch verwijderen werd ingeschakeld.</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/mail_trash_retention_settings.png" src="../../_images/mail_trash_retention_settings.png" />
+</figure>
+</section>
+</section>
+<section id="compose-messages">
+<h2>Maak berichten<a class="headerlink" href="#compose-messages" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Klik Nieuw Bericht linksboven in het scherm</p></li>
+<li><p>Begin het bericht te schrijven</p></li>
+</ol>
+<section id="minimize-the-composer-modal">
+<h3>Minimaliseer het berichtvenster<a class="headerlink" href="#minimize-the-composer-modal" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.2.</span></p>
+</div>
+<p>The composer modal can be minimized while writing a new message, editing an existing draft or a message from the outbox. Simply click the minimize button on the top right of the modal or click anywhere outside the modal.</p>
+<figure class="align-default">
+<img alt="../../_images/mail-minimize-composer.png" src="../../_images/mail-minimize-composer.png" />
+</figure>
+<p>Een verkleind bericht kan hervat worden door ergens op de berichtindicator rechtsonder op het scherm te klikken.</p>
+<figure class="align-default">
+<img alt="../../_images/mail-composer-indicator.png" src="../../_images/mail-composer-indicator.png" />
+</figure>
+<p>Press close button on the modal or the indicator in the bottom right corner to stop editing a message. A draft will be saved automatically into your draft mailbox.</p>
+</section>
+</section>
+<section id="recipient-info-on-composer">
+<h2>Ontvangersinfo in het mailscherm<a class="headerlink" href="#recipient-info-on-composer" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.2.</span></p>
+</div>
+<p>Bij toevoegen van de eerste ontvanger of contactpersoon in het <em>Aan</em> veld, wordt rechts de bewaarde informatie van dat contact getoond. Toevoegen van een tweede ontvanger laat deze info. Kies een contact om diens details te zien. Bij het enkel willen schrijven van een email, kan dit rechterscherm verborgen worden door uit ‘uitklap’-icoon rechtsboven aan te klikken. Om het scherm weer te tonen hoeft enkel op het minimaliseer-icoon op dezelfde plek te worden geklikt.</p>
+</section>
+<section id="mention-contacts">
+<h2>Noem contactpersonen<a class="headerlink" href="#mention-contacts" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.2.</span></p>
+</div>
+<p>Contactpersonen kunnen in een bericht worden genoemd door een <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> te tikken en dan het contact uit een lijst te kiezen. Hierdoor wordt het contact automatisch als ontvanger toegevoegd.</p>
+<div class="admonition note">
+<p class="admonition-title">Notitie</p>
+<p>Alleen contactpersonen met een geldig emailadres zullen worden voorgesteld.</p>
+</div>
+</section>
+<section id="text-blocks">
+<h2>Text blocks<a class="headerlink" href="#text-blocks" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.2.</span></p>
+</div>
+<p>Text blocks are predefined snippets of text that can be inserted into your email. They can be created and managed in the mail settings.
+They can be inserted into the composer by typing <code class="docutils literal notranslate"><span class="pre">!</span></code> and then selecting the block from the list or from the composer actions.
+Text blocks can be shared with users and user groups.</p>
+</section>
+<section id="outbox">
+<h2>Te verzenden-map<a class="headerlink" href="#outbox" title="Link to this heading"></a></h2>
+<p>Als een bericht is geschreven en de <em>Verzenden</em>-knop is geklikt, dan wordt het bericht verplaatst naar de map Te Verzenden, die linksonder op de linkerzijbalk kan worden gevonden.</p>
+<p>Datum en tijd voor het verzenden kan ingesteld worden voor verzending in de toekomst (zie :ref: <cite>Geplande berichten &lt;mail-scheduled-messages&gt;</cite>)- het bericht wordt in de Te Verzenden map vastgehouden tot het gekozen tijdstip wordt bereikt. Dan wordt het bericht meteen verstuurd.</p>
+<p>De map Te Verzenden is alleen zichtbaar als er een bericht in staat om te worden verzonden.</p>
+<p>Het berichtenvenster kan altijd heropend worden voor een bericht in de Te Verzenden-map voordat de verzendtijd is verstreken.</p>
+<div class="admonition note">
+<p class="admonition-title">Notitie</p>
+<p>Als een fout optreedt bij het verzenden, dan zijn drie foutmeldingen mogelijk:</p>
+<dl class="simple">
+<dt>Kon niet naar “Verzonden” map kopiëren</dt><dd><p>De email was verzonden maar kon niet naar de map “Verzonden” worden verplaatst. De fout zal worden afgehandeld door de Te Verzenden-map en het verplaatsen wordt opnieuw geprobeerd.</p>
+</dd>
+<dt>Mailserver-fout</dt><dd><p>Het versturen is niet gelukt, met een status die opnieuw kan worden geprobeerd (b.v. de SMTP server kon niet worden bereikt). De Te Verzenden-map zal het versturen opnieuw proberen.</p>
+</dd>
+<dt>Bericht kon niet worden verstuurd</dt><dd><p>Versturen is al dan niet fout gegaan. De mailserver kan niet laten weten wat de status van het bericht is. Omdat de Mail app niet kan bepalen wat er gebeurd is (bericht wel of niet verstuurd), zal het bericht in de Te Verzenden-map blijven en de gebruiker moet bepalen hoe verder te gaan.</p>
+</dd>
+</dl>
+</div>
+</section>
+<section id="mailbox-actions">
+<h2>Mailbox-acties<a class="headerlink" href="#mailbox-actions" title="Link to this heading"></a></h2>
+<section id="add-a-mailbox">
+<h3>Voeg een mailbox toe<a class="headerlink" href="#add-a-mailbox" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Open het actiemenu van een account</p></li>
+<li><p>Klik voeg mailbox toe</p></li>
+</ol>
+</section>
+<section id="add-a-submailbox">
+<h3>Voeg een submailbox toe<a class="headerlink" href="#add-a-submailbox" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Open het actiemenu van een mailbox</p></li>
+<li><p>Klik voeg submailbox toe</p></li>
+</ol>
+</section>
+<section id="shared-mailbox">
+<h3>Gedeelde mailbox<a class="headerlink" href="#shared-mailbox" title="Link to this heading"></a></h3>
+<p>Als een mailbox werd gedeeld met specifieke rechten, zal die mailbox worden getoond als een nieuwe mailbox met een gedeeld-icoon als hieronder:</p>
+<figure class="align-default">
+<img alt="../../_images/shared-mailbox-icon.png" src="../../_images/shared-mailbox-icon.png" />
+</figure>
+</section>
+</section>
+<section id="envelope-actions">
+<h2>Envelop-acties<a class="headerlink" href="#envelope-actions" title="Link to this heading"></a></h2>
+<section id="create-an-event">
+<h3>Creëer een gebeurtenis<a class="headerlink" href="#create-an-event" title="Link to this heading"></a></h3>
+<p>Creëer een gebeurtenis voor een bepaald bericht/serie berichten direct via de Mail app</p>
+<ol class="arabic simple">
+<li><p>Open actiemenu van een envelop</p></li>
+<li><p>Klik <em>Meer acties</em></p></li>
+<li><p>Klik <em>Creëer gebeurtenis</em></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Notitie</p>
+<p>Gebeurtenistitel en een agenda worden aangemaakt als de beheerder dit heeft ingeschakeld.</p>
+</div>
+</section>
+<section id="create-a-task">
+<h3>Creëer een taak<a class="headerlink" href="#create-a-task" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.2.</span></p>
+</div>
+<p>Creëer een taak voor een bepaald bericht/serie berichten direct via de Mail app</p>
+<ol class="arabic simple">
+<li><p>Open actiemenu van een envelop</p></li>
+<li><p>Klik <em>meer acties</em></p></li>
+<li><p>Klik <em>creëer taak</em></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Notitie</p>
+<p>Taken worden opgeslagen in ondersteunde agenda’s. Als er geen compatibele agenda is kan een nieuwe worden aangemaakt met de <a class="reference internal" href="calendar.html#calendar-app"><span class="std std-ref">agenda app</span></a>.</p>
+</div>
+</section>
+<section id="edit-tags">
+<h3>Wijzig labels<a class="headerlink" href="#edit-tags" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Open actiemenu van een envelop</p></li>
+<li><p>Klik <em>Wijzig labels</em></p></li>
+<li><p>Schakel labels in of uit in het labels-scherm</p></li>
+</ol>
+</section>
+<section id="change-color-for-tags">
+<h3>Wijzig kleur voor labels<a class="headerlink" href="#change-color-for-tags" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5.</span></p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/change-tag-color.png" src="../../_images/change-tag-color.png" />
+</figure>
+<p>Bij aanmaak van een label wordt een willekeurige kleurig automatisch gekozen. Als een label is opgeslagen kan de kleur worden aangepast naar eigen voorkeur. Deze optie kan worden gevonde in het Label actiemenu.</p>
+</section>
+<section id="delete-tags">
+<h3>Verwijder labels<a class="headerlink" href="#delete-tags" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5.</span></p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/delete-tag.png" src="../../_images/delete-tag.png" />
+</figure>
+<p>Nu kunnen eerder gemaakte labels worden verwijderd. Om deze optie te gebruiken:</p>
+<ol class="arabic simple">
+<li><p>Open het actiemenu van een envelop of serie berichten.</p></li>
+<li><p>Kies Wijzig labels.</p></li>
+<li><p>Open het actiemenu voor het te verwijderen label binnen het label invoerscherm.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Notitie</p>
+<p>Let op: standaardlabels als Werk, Te doen, Persoonlijk en Later kunnen niet worden verwijderd, enkel hernoemd.</p>
+</div>
+</section>
+<section id="ai-summary">
+<h3>AI samenvatting<a class="headerlink" href="#ai-summary" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.2.</span></p>
+</div>
+<p>Bij het bekijken van de mailbox zal een korte AI-samenvatting van de emails verschijnen als voorbeschouwing.</p>
+<div class="admonition note">
+<p class="admonition-title">Notitie</p>
+<p>Let op: deze optie moet door de beheerder worden aangezet.</p>
+</div>
+</section>
+</section>
+<section id="quick-actions">
+<h2>Quick actions<a class="headerlink" href="#quick-actions" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.5: </span>(Nextcloud 30)</p>
+</div>
+<p>Allows you to group action steps that you would normally perform on envelopes such as tagging, moving, marking as read … into quick actions that can be executed with a single click.
+Quick actions are scoped to one mail account and can be created and managed in the mail settings under “Quick actions” or directly from the envelope action menu.</p>
+<div class="admonition note">
+<p class="admonition-title">Notitie</p>
+<p>Some action steps such as <cite>Mark as spam</cite>, <cite>Move thread</cite> and <cite>Delete thread</cite> are mutually exclusive and cannot be part of the same quick action, they also can’t be re-ordered and will always be executed last.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Notitie</p>
+<p>Please note that quick actions will be performed on all messages in a thread when executed on one.</p>
+</div>
+</section>
+<section id="message-actions">
+<h2>Bericht-acties<a class="headerlink" href="#message-actions" title="Link to this heading"></a></h2>
+<section id="unsubscribe-from-a-mailing-list">
+<h3>Verlaat mailinglijst<a class="headerlink" href="#unsubscribe-from-a-mailing-list" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.1.</span></p>
+</div>
+<p>Sommige mailinglijsten en nieuwsbrieven staan het toe om eenvoudig uit te schrijven. Als de Mail app zulke emails ontdekt dan zal een <em>Uitschrijven</em> knop verschijnen naast de afzenderinformatie. Klik en bevesting om van de lijst uit te schrijven.</p>
+</section>
+<section id="snooze">
+<h3>Sluimer<a class="headerlink" href="#snooze" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<p>Een bericht of serie berichten laten sluimeren verplaatst dit naar een aparte mailbox totdat de gekozen sluimerdatum is bereikt. Daarna wordt het bericht/de serie weer teruggezet naar de oorspronkelijke mailbox.</p>
+<ol class="arabic simple">
+<li><p>Open actiemenu van een envelop of serie.</p></li>
+<li><p>Klik <em>Sluimer</em></p></li>
+<li><p>Kies hoe lang het bericht of de serie moet sluimeren</p></li>
+</ol>
+</section>
+<section id="smart-replies">
+<h3>Slimme antwoorden<a class="headerlink" href="#smart-replies" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.6.</span></p>
+</div>
+<p>Als een bericht in de Mail app wordt geopend, zal dat AI-gegenereerde antwoorden voorstellen. Door op een voorgesteld antwoord te klikken zal de editor vooruit gevuld worden met dit antwoord.</p>
+<div class="admonition note">
+<p class="admonition-title">Notitie</p>
+<p>Let op: deze optie moet door de beheerder worden aangezet.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Notitie</p>
+<p>Ondersteunde talen hangen af van het gebruikte LLM (Large Language Model)</p>
+</div>
+</section>
+<section id="mail-translation">
+<h3>Mailvertaling<a class="headerlink" href="#mail-translation" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.2.</span></p>
+</div>
+<p>Berichten kunnen naar geconfigureerde talen worden vertaald, net als bij Talk</p>
+<div class="admonition note">
+<p class="admonition-title">Notitie</p>
+<p>Let op: vertaal-services moeten op de server geactiveerd worden</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Notitie</p>
+<p>Vertaling zullen worden voorgesteld als LLM door de admin is ingeschakeld (beschikbaar sinds versie 5.3)</p>
+</div>
+</section>
+</section>
+<section id="thread-summary">
+<h2>Serie-samenvatting<a class="headerlink" href="#thread-summary" title="Link to this heading"></a></h2>
+<p>De Mail app ondersteund het samenvatten van berichtseries die 3 of meer berichten bevatten.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Notitie</p>
+<p>Let op: deze optie moet door de beheerder worden aangezet.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Notitie</p>
+<p>Houd er rekening mee dat deze functie alleen goed werkt met integration_openai. Lokale LLM’s hebben te lang nodig om te reageren en het samenvattende verzoek zal waarschijnlijk een time-out krijgen en nog steeds een aanzienlijke systeembelasting veroorzaken.</p>
+</div>
+</section>
+<section id="filtering-and-autoresponder">
+<h2>Filteren en automatisch antwoorden<a class="headerlink" href="#filtering-and-autoresponder" title="Link to this heading"></a></h2>
+<p>De Mail app heeft een editor voor Sieve scripts, een interface om automatische antwoorden te configureren en een interface om filters in te stellen. Sieve moet in de <a class="reference internal" href="#mail-account-settings"><span class="std std-ref">accountinstellingen</span></a> worden aangezet.</p>
+<section id="autoresponders">
+<h3>Automatische antwoorden<a class="headerlink" href="#autoresponders" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5: </span>Automatische antwoorden kunnen systeeminstellingen volgen</p>
+</div>
+<p>Standaard staat automatisch antwoorden uit. Dit kan handmatig of via systeeminstellingen worden ingesteld. De volgende systeeminstellingen betekent dat de lange afwezigheidsmelding, ingevoerd in de <a class="reference internal" href="absence.html#groupware-absence"><span class="std std-ref">Afezigheidsinstallingen-sectie</span></a>, automatisch wordt toegepast,</p>
+</section>
+<section id="filter">
+<h3>Filter<a class="headerlink" href="#filter" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.1.</span></p>
+</div>
+<p>Mail 4.1 bevat een eenvoudige editor om filterregels te configureren.</p>
+<div class="admonition note">
+<p class="admonition-title">Notitie</p>
+<p>Import van bestaande filters wordt niet ondersteund. Echter, alle bestaande filters blijven actief en onveranderd. Advies: back up het bestaande script via de Sieve script editor, als beveiliging.</p>
+</div>
+<section id="how-to-add-a-new-filter">
+<h4>Hoe een nieuw filter toe te voegen<a class="headerlink" href="#how-to-add-a-new-filter" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Open de accountinstellingen</p></li>
+<li><p>Controleer of Sieve is ingeschakeld voor dit account (zie Sieve Server instellingen).</p></li>
+<li><p>Kllik op Filters.</p></li>
+<li><p>Kies Nieuw Filter om een niewe regel te maken.</p></li>
+</ol>
+</section>
+<section id="how-to-delete-a-filter">
+<h4>Hoe een filter te verwijderen<a class="headerlink" href="#how-to-delete-a-filter" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Open de accountinstellingen</p></li>
+<li><p>Controleer dat Sieve is ingeschakeld voor dit account (zie Sieve Server instellingen).</p></li>
+<li><p>Kllik op Filters.</p></li>
+<li><p>Houd de muiscursor over het te verwijderen filter, klik dan op het vuilnisbak-icoon.</p></li>
+</ol>
+</section>
+<section id="conditions">
+<h4>Voorwaarden<a class="headerlink" href="#conditions" title="Link to this heading"></a></h4>
+<p>Voorwaarden worden toegepast op inkomende emails en hebben betrekking op Onderwerp, Afzender en Ontvanger. De volgende operatoren kunnen voor deze vleden worden gebruikt om condities te definiëren:</p>
+<ul class="simple">
+<li><p><strong>is precies</strong>: een exacte match. Het veld moet gelijk zijn aan de doorgegeven waarde.</p></li>
+<li><p><strong>bevat</strong>: een match op onderdeel. De voorwaarde is geldig als de doorgegeven waarde ergens in het veld staat. Bijvoorbeeld “port” is geldig bij de waarde “rapport”.</p></li>
+<li><p><strong>overeenkomst</strong>: Een patroongelijkheid met wildcards. Het “*” symbool representeert een willekeurig aantal tekens (inclusief geen), terwijl “?” precies één teken representeert. Bijvoorbeeld, “<em>rapport</em>”  komt overeen met “Bedrijfsrapport 2024”.</p></li>
+</ul>
+</section>
+<section id="actions">
+<h4>Acties<a class="headerlink" href="#actions" title="Link to this heading"></a></h4>
+<p>Acties worden gestart als de opgegeven tests waar zijn. De volgende acties zijn beschikbaar:</p>
+<ul class="simple">
+<li><p><strong>fileNaar</strong>: Verplaatst het bericht naar een opgegeven map.</p></li>
+<li><p><strong>voegvlagtoe</strong>: Voegt een vlag/kenmerk aan het bericht toe.</p></li>
+<li><p><strong>stop</strong>: Stop de uitvoering van het filterscript. Verdere filters worden niet uitgevoerd na deze actie.</p></li>
+</ul>
+</section>
+</section>
+<section id="create-a-filter-from-a-message">
+<h3>Creëer een filter vanuit een bericht<a class="headerlink" href="#create-a-filter-from-a-message" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.2.</span></p>
+</div>
+<p>Om vanuit een gegeven bericht een filter te maken: open het bericht en klik op het menu (de drie puntjes).  Klik dan op “Meer acties” gevolgd door “Maak mail filter”.</p>
+<p>Kies in het dialoogvenster de voorwaarden om inkomende berichten te selecteren en klik dan op “Maak mail filter”.</p>
+<figure class="align-default">
+<img alt="../../_images/mail_create_filter_from_message.png" src="../../_images/mail_create_filter_from_message.png" />
+</figure>
+</section>
+</section>
+<section id="follow-up-reminders">
+<h2>Opvolgherinneringen<a class="headerlink" href="#follow-up-reminders" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.0.</span></p>
+</div>
+<p>De Mail app kan automatisch herinneringen genereren als een uitgaande mail geen antwoord heeft gekregen. Elke uitgaande mail wordt door een AI gecontroleerd of een antwoord verwacht wordt. Na vier dagen worden alle relevante mails in de voorrangs-inbox getoond.</p>
+<p>Een klik op zo’n email toont een knop voor een snelle opvolging naar alle ontvangers. het is ook mogelijk opvolgherinneringen voor een verstuurde email uit te schakelen.</p>
+<div class="admonition note">
+<p class="admonition-title">Notitie</p>
+<p>Let op: deze mogelijkheid moet door de admininstrator worden ingeschakeld.</p>
+</div>
+</section>
+<section id="security">
+<h2>Beveiliging<a class="headerlink" href="#security" title="Link to this heading"></a></h2>
+<section id="phishing-detection">
+<h3>Phishing-detectie<a class="headerlink" href="#phishing-detection" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.0.</span></p>
+</div>
+<p>De Mail app controleert op mogelijke phishing-pogingen en zal een waarschuwing aan de gebruiker tonen.</p>
+<p>De controles zijn de volgende:</p>
+<ul class="simple">
+<li><p>Het afzenderadres in het adresboek is niet gelijk aan het adres in het mail-account</p></li>
+<li><p>De afzender gebruikt een bijzonder emailadres dat niet gelijk is aaan het van-adres,</p></li>
+<li><p>De verzenddatum ligt in de toekomst</p></li>
+<li><p>Links in de berichttekst wijzen niet naar de getoonde tekst</p></li>
+<li><p>Het antwoord-aan adres is niet gelijk aan het afzenderadres</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Notitie</p>
+<p>Let op: de waarschuwing betekent niet dat het bericht een phishing-poging is. Het betekent enkel dat de Mail app een mogelijke phishing-posing heeft ontdekt.</p>
+</div>
+</section>
+<section id="internal-addresses">
+<h3>Interne adressen<a class="headerlink" href="#internal-addresses" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.0.</span></p>
+</div>
+<p>De Mail app laat het toe interne adressen en domeinen toe te voegen, en waarschuwt de gebruiker als het adres niet in de lijst staat, bij het verzenden en ontvangen van een bericht.</p>
+<p>Om een intern adres toe te voegen:</p>
+<ol class="arabic simple">
+<li><p>Open de mail-instellingen</p></li>
+<li><p>Navigeer naar Privacy en beveilligings-sectie</p></li>
+<li><p>Schakel interne adressen in door op de aanvinkbox te kliken</p></li>
+<li><p>Klik op de Voeg intern adres toe-knop</p></li>
+<li><p>Voer het adres of domein in en klik op Toevoegen</p></li>
+</ol>
+</section>
+</section>
+<section id="dashboard-integration">
+<h2>Dashboardintegratie<a class="headerlink" href="#dashboard-integration" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 1.8.</span></p>
+</div>
+<p>De mail app biedt twee widgets die ontworpen zijn voor integratie met het Nextcloud dashboard:</p>
+<ul class="simple">
+<li><p>Ongelezen emails: dit widget toont ongelezen emails.</p></li>
+<li><p>Belangrijke emails: dit widget toont emails die als belangrijk zijn gemarkeerd.</p></li>
+</ul>
+<p>Deze widgets gebruiken de emails van de email-accounts die voor het gebruikte account zijn ingesteld.</p>
+</section>
+<section id="calendar-integration">
+<h2>Calendar integration<a class="headerlink" href="#calendar-integration" title="Link to this heading"></a></h2>
+<p>The Mail app integrates with the Calendar app to help you manage meeting invitations and keep your calendar up to date.</p>
+<section id="meeting-invitations">
+<h3>Meeting invitations<a class="headerlink" href="#meeting-invitations" title="Link to this heading"></a></h3>
+<p>When you receive a message containing a meeting invitation, the Mail app automatically detects the attached calendar file and displays a formatted action section to help you respond.</p>
+<p>You can:</p>
+<ul class="simple">
+<li><p><strong>Accept</strong> the invitation</p></li>
+<li><p><strong>Decline</strong> the invitation</p></li>
+<li><p><strong>Tentatively accept</strong> the invitation</p></li>
+</ul>
+<p>Your response is sent directly from the Mail app, and the event is added to your primary calendar accordingly.</p>
+<p>You can also manually add a meeting invitation to a specific calendar:</p>
+<ol class="arabic simple">
+<li><p>Open the message with the meeting invitation</p></li>
+<li><p>Scroll to the bottom of the message to the attachments section</p></li>
+<li><p>Select the calendar file (usually with a .ics extension), then click the three dots menu.</p></li>
+<li><p>Click “Import in to calendar” and choose the desired calendar.</p></li>
+</ol>
+</section>
+<section id="meeting-invitation-automation">
+<h3>Meeting invitation automation<a class="headerlink" href="#meeting-invitation-automation" title="Link to this heading"></a></h3>
+<p>When a meeting organizer sends updates to an existing event (such as time changes or location updates), the Mail app processes these automatically and updates the corresponding event in your calendar.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.7: </span>(Nextcloud 32 or newer)</p>
+</div>
+<p>You can also configure Mail to automatically add all new meeting invitations to your calendar without requiring manual acceptance. The invitations will be added to the calendar as tentative.</p>
+<p>To enable this feature:</p>
+<ol class="arabic simple">
+<li><p>Visit account settings of a specific mail account</p></li>
+<li><p>Navigate to Calendar settings section</p></li>
+<li><p>Enable <em>Automatically create tentative appointments in calendar</em></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Notitie</p>
+<p>With this setting enabled, invitations will still appear in your mail list, but they will be automatically added to your calendar.</p>
+</div>
+</section>
+</section>
+<section id="keyboard-shortcuts">
+<h2>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Link to this heading"></a></h2>
+<p>The Mail app implements several keyboard shortcuts to speed up your experience.</p>
+<p>For a full list of the supported shortcuts, check out the Mail settings in your instance.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Voettekst">
+        <a href="calendar.html" class="btn btn-neutral float-left" title="Using the Calendar app" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Vorige</a>
+        <a href="absence.html" class="btn btn-neutral float-right" title="Het instellen van automatische afwezigheidsberichten" accesskey="n" rel="next">Volgende <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 Dutch
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Languages</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versies</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Op Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Project Homepagina</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Builds</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

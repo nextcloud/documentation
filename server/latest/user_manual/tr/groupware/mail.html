@@ -1,0 +1,1343 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="tr" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-posta uygulamasını kullanmak &mdash; Nextcloud latest User Manual latest belgelendirmesi</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/groupware/mail.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=9f991a48"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=b0f24d8d"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Dizin" href="../genindex.html" />
+    <link rel="search" title="Ara" href="../search.html" />
+    <link rel="next" title="Ofis dışında iletilerini ayarlamak" href="absence.html" />
+    <link rel="prev" title="Takvim uygulamasını kullanmak" href="calendar.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Belgeleri arayın" aria-label="Belgeleri arayın" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest kullanıcı rehberi giriş</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud site arayüzü</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Dosyalar ve eşitleme</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Kişiler uygulamasını kullanmak</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Takvim uygulamasını kullanmak</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">E-posta uygulamasını kullanmak</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#managing-your-mail-account">E-posta hesabınızı yönetmek</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#switch-layout">Yerleşimi değiştirmek</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#use-compact-mode">Use Compact Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#message-display-operation-mode">İleti görünümü / Çalışma kipi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-new-mail-account">Yeni bir e-posta hesabı ekleyin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#change-sort-order">Sıralamayı değiştirmek</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sort-favorites-up">Sort favorites up</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scheduled-messages">İletileri zamanlamak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#priority-inbox">Öncelikli gelen kutusu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#all-inboxes">Tüm gelen kutuları</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#account-settings">Hesap ayarları</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#move-messages-to-junk-folder">İletileri gereksiz klasörüne taşımak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#refresh-mailbox">Refresh mailbox</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unified-search">Unified search</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search-in-mailbox">E-posta kutusunda arama yapmak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#advanced-search-in-mailbox">E-posta kutusunda gelişmiş arama yapmak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enable-mail-body-search">E-posta içeriğinde arama yapmak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#account-delegation">Hesap yetkilendirmesi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automatic-trash-deletion">Otomatik çöp boşaltma</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#compose-messages">İleti oluşturmak</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#minimize-the-composer-modal">Oluşturucu penceresini küçültme</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#recipient-info-on-composer">Oluşturucuda alıcı bilgilerini görüntülemek</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mention-contacts">Kişileri anmak</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#text-blocks">Yazı blokları</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#outbox">Giden kutusu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mailbox-actions">E-posta kutusu işlemleri</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-mailbox">E-posta kutusu eklemek</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-submailbox">Bir alt e-posta kutusu eklemek</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shared-mailbox">Paylaşılan e-posta kutusu</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#envelope-actions">Zarf işlemleri</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-an-event">Bir etkinlik oluşturmak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-task">Bir görev oluşturmak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-tags">Etiketleri düzenlemek</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#change-color-for-tags">Etiketlerin rengini değiştirmek</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete-tags">Etiketleri silmek</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ai-summary">Yapay zeka ile özet çıkarmak</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#quick-actions">Quick actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#message-actions">İleti işlemleri</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#unsubscribe-from-a-mailing-list">Bir e-posta listesi aboneliğinden ayrılmak</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#snooze">Ertele</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#smart-replies">Akıllı yanıtlar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mail-translation">E-postaları çevirmek</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#thread-summary">Yazışmaları özetlemek</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filtering-and-autoresponder">Süzmek ve otomatik yanıtları kullanmak</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autoresponders">Otomatik yanıtlayıcılar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filter">Süzgeç</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-filter-from-a-message">Bir iletiden bir süzgeç oluşturmak</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#follow-up-reminders">Takip anımsatıcıları</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#security">Güvenlik</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#phishing-detection">Kimlik avı algılama</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#internal-addresses">İç adresler</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dashboard-integration">Pano bütünleştirmesi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calendar-integration">Calendar integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#meeting-invitations">Meeting invitations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#meeting-invitation-automation">Meeting invitation automation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#keyboard-shortcuts">Keyboard shortcuts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">Ofis dışında iletilerini ayarlamak</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Android ile eşitlemek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">iOS ile eşitlemek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">macOS ile eşitlemek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Thunderbird ile eşitlemek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">KDE Kontact ile eşitlemek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">GNOME masaüstü ile eşitleme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Windows 10 ile eşitlemek</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Konuş</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Bilgisayar istemcileri</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Kullanıcı ayarları</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Evrensel erişim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">İki adımlı doğrulamayı kullanmak</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Bağlı tarayıcı ve aygıtların yönetimi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Dış depolama alanı</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Groupware</a></li>
+      <li class="breadcrumb-item active">E-posta uygulamasını kullanmak</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/mail.rst" class="fa fa-github"> GitHub'da Düzenle</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-mail-app">
+<h1>E-posta uygulamasını kullanmak<a class="headerlink" href="#using-the-mail-app" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>E-posta uygulaması, varsayılan olarak Nextcloud Hub ile kurulmuş olarak gelir, ancak kullanımdan kaldırılabilir. Lütfen bunu yöneticinize sorun.</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/mail.png" src="../../_images/mail.png" />
+</figure>
+<section id="managing-your-mail-account">
+<h2>E-posta hesabınızı yönetmek<a class="headerlink" href="#managing-your-mail-account" title="Link to this heading"></a></h2>
+<section id="switch-layout">
+<h3>Yerleşimi değiştirmek<a class="headerlink" href="#switch-layout" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.6.</span></p>
+</div>
+<ol class="arabic simple">
+<li><p>E-posta ayarlarını değiştirmek</p></li>
+<li><p><em>Liste</em>, <em>Dikey bölünmüş</em> ya da <em>Yatay bölünmüş</em> olarak seçin</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/mail_layout.png" src="../../_images/mail_layout.png" />
+</figure>
+</section>
+<section id="use-compact-mode">
+<h3>Use Compact Mode<a class="headerlink" href="#use-compact-mode" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.7.0.</span></p>
+</div>
+<p>Compact mode offers a cleaner and more efficient way to view your messages. Avatars are hidden, selection checkboxes are always visible, and the preview of messages is removed. It saves space allowing you to see more emails at once.</p>
+<ol class="arabic simple">
+<li><p>Visit the mail settings</p></li>
+<li><p>Go to <strong>Appearance</strong></p></li>
+<li><p>Toggle the Compact Mode</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/use-compact-mode.png" src="../../_images/use-compact-mode.png" />
+</figure>
+</section>
+<section id="message-display-operation-mode">
+<h3>İleti görünümü / Çalışma kipi<a class="headerlink" href="#message-display-operation-mode" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.2.</span></p>
+</div>
+<p>E-posta, iki farklı ileti görünümü ve çalışma kipi arasında geçiş yapabilir: <em>Yazışma</em> ve <em>Tekil</em>.</p>
+<p><em>Yazışma</em> görünümde, iletiler görüşmeye göre gruplandırılır. E-posta kutusu ileti listesinde, ilgili iletiler bir araya toplanır. Böylece yalnızca son ileti görüntülenir. Yazışma iletisi seçildiğinde, tüm ilgili iletiler ileti görüntüleme panosunda görüntülenir. Böylece, yazışmaları izlemek ve yanıtların bağlamını anlamak kolaylaşır. Bu görünümde, taşıma ve silme gibi ileti işlemleri tüm gruba uygulanır. Yani bir yazışmayı taşıdığınızda ya da sildiğinizde, o yazışmadaki tüm iletiler etkilenir.</p>
+<p><em>Tekil</em> görünümünde, iletiler hem e-posta kutusu ileti listesinde hem de ileti görüntüleme panosunda ayrı ayrı görüntülenir. Taşıma ve silme gibi işlemler yalnızca seçilmiş iletiye uygulanır. Bu görünüm, tüm yazışmayı etkilemeden iletileri ayrı ayrı yönetmek için kullanışlıdır.</p>
+<ol class="arabic simple">
+<li><p>E-posta ayarlarını değiştirmek</p></li>
+<li><p><em>Yazışma</em> ya da <em>Tekil</em> olarak seçin</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/mail_display-mode.png" src="../../_images/mail_display-mode.png" />
+</figure>
+</section>
+<section id="add-a-new-mail-account">
+<h3>Yeni bir e-posta hesabı ekleyin<a class="headerlink" href="#add-a-new-mail-account" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Uygulamalardan e-posta uygulamasını kullanıma alın</p></li>
+<li><p>Başlıktaki e-posta simgesine tıklayın</p></li>
+<li><p>Oturum açma formunu doldurun (otomatik ya da el ile)</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/new-mail-account.png" src="../../_images/new-mail-account.png" />
+</figure>
+</section>
+<section id="change-sort-order">
+<h3>Sıralamayı değiştirmek<a class="headerlink" href="#change-sort-order" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5.</span></p>
+</div>
+<ol class="arabic simple">
+<li><p>E-posta ayarlarını değiştirmek</p></li>
+<li><p><em>Sıralama</em> bölümüne gidin</p></li>
+<li><p><em>Eskiden yeniye</em> ya da <em>Yeniden eskiye</em> olarak seçin</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Bu değişiklik tüm hesaplarınıza ve e-posta kutularınıza uygulanır</p>
+</div>
+</section>
+<section id="sort-favorites-up">
+<h3>Sort favorites up<a class="headerlink" href="#sort-favorites-up" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.7: </span>Nextcloud 31 or newer</p>
+</div>
+<p>This setting allows you to show messages set as favorite in a separate section on top of the message list.</p>
+<ol class="arabic simple">
+<li><p>E-posta ayarlarını değiştirmek</p></li>
+<li><p>Go to <em>Appearance</em></p></li>
+<li><p>Enable sorting favorites up</p></li>
+</ol>
+</section>
+<section id="scheduled-messages">
+<span id="mail-scheduled-messages"></span><h3>İletileri zamanlamak<a class="headerlink" href="#scheduled-messages" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Ekranın sol üstündeki yeni ileti düğmesine tıklayın</p></li>
+<li><p>Açılan düzenleyiciden (…) işlem menüsüne tıklayın</p></li>
+<li><p><em>Daha sonra gönder</em> üzerine tıklayın</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/scheduled-msg.png" src="../../_images/scheduled-msg.png" />
+</figure>
+</section>
+<section id="priority-inbox">
+<h3>Öncelikli gelen kutusu<a class="headerlink" href="#priority-inbox" title="Link to this heading"></a></h3>
+<p>Öncelikli gelen kutusunda, <em>Önemli</em> ve <em>Diğer</em> olmak üzere 2 bölüm bulunur. İletiler, yazıştığınız kişi ve konulara veya önemli olarak işaretlediğiniz iletilere göre kendiliğinden önemli olarak işaretlenir. Başlangıçta, sisteme öğretmek için önem düzeyini el ile seçmeniz gerekebilir. Bu davranış zamanla gelişir.</p>
+<p>The automatic classification is optional. You can opt-out when setting up an account. The classification can also be turned on and off in the account settings at any time.</p>
+<figure class="align-default">
+<img alt="../../_images/priority-inbox.png" src="../../_images/priority-inbox.png" />
+</figure>
+</section>
+<section id="all-inboxes">
+<h3>Tüm gelen kutuları<a class="headerlink" href="#all-inboxes" title="Link to this heading"></a></h3>
+<p>Oturum açmış olduğunuz tüm hesaplardan gelen tüm iletiler burada zamana göre görüntülenir.</p>
+</section>
+<section id="account-settings">
+<span id="mail-account-settings"></span><h3>Hesap ayarları<a class="headerlink" href="#account-settings" title="Link to this heading"></a></h3>
+<p>Hesap ayarlarınız şu şekildedir:</p>
+<ol class="arabic simple">
+<li><p>Takma adlar</p></li>
+<li><p>İmza</p></li>
+<li><p>Varsayılan klasörler</p></li>
+<li><p>Otomatik yanıtlayıcı</p></li>
+<li><p>Güvenilen göndericiler</p></li>
+<li><p>…ve diğer</p></li>
+</ol>
+<p>Bir e-posta hesabının işlemler menüsünde bulunabilir. Gerek duyduğunuz ayarları düzenleyebilir, ekleyebilir ya da kaldırabilirsiniz.</p>
+</section>
+<section id="move-messages-to-junk-folder">
+<h3>İletileri gereksiz klasörüne taşımak<a class="headerlink" href="#move-messages-to-junk-folder" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<p>Posta uygulaması, gereksiz olarak işaretlendiğinde bir iletiyi farklı bir klasöre taşıyabilir.</p>
+<ol class="arabic simple">
+<li><p>Hesap ayarlarına gidin</p></li>
+<li><p>Varsayılan klasörlere gidin</p></li>
+<li><p>Gereksiz iletiler için bir klasör seçildiğinden emin olun</p></li>
+<li><p>Gereksiz ayarlarına gidin</p></li>
+<li><p>İletiler gereksiz klasörüne taşınsın üzerine tıklayın</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/mail_move-message-to-junk-folder.png" src="../../_images/mail_move-message-to-junk-folder.png" />
+</figure>
+</section>
+<section id="refresh-mailbox">
+<h3>Refresh mailbox<a class="headerlink" href="#refresh-mailbox" title="Link to this heading"></a></h3>
+<p>You can manually trigger a sync of your mailbox by clicking the refresh button located at the top of the mailbox list.
+Starting from <code class="docutils literal notranslate"><span class="pre">version</span> <span class="pre">5.7</span></code> triggering the sync will also refresh the list of folders for the selected account.</p>
+</section>
+<section id="unified-search">
+<h3>Unified search<a class="headerlink" href="#unified-search" title="Link to this heading"></a></h3>
+<p>The Mail app integrates with Nextcloud’s <a class="reference internal" href="../webinterface.html#id1"><span class="std std-ref">unified search</span></a>
+feature (see <a class="reference internal" href="../webinterface.html"><span class="doc">Nextcloud site arayüzü</span></a> for details). You can search for emails across
+all your accounts using the search bar in the Nextcloud header.</p>
+<p>Mail searches email subjects and sender/recipient fields. To search email bodies,
+use the mailbox search feature in the app.</p>
+</section>
+<section id="search-in-mailbox">
+<h3>E-posta kutusunda arama yapmak<a class="headerlink" href="#search-in-mailbox" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 2.1.</span></p>
+</div>
+<p>Herhangi bir e-posta yerleşimindeki zarf listesinin en üstünde, e-posta konularını aramak için bir arama alanı kısayolu bulunur. <code class="docutils literal notranslate"><span class="pre">3.7</span> <span class="pre">sürümü</span></code> ile başlayarak, bu kısayol varsayılan olarak konuya, alıcıya (kime) veya göndericiye (kimden) göre arama yapmanızı sağlar.</p>
+</section>
+<section id="advanced-search-in-mailbox">
+<h3>E-posta kutusunda gelişmiş arama yapmak<a class="headerlink" href="#advanced-search-in-mailbox" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<p>Gelişmiş arama özelliğine arama kısayolunun sonundaki bir üste açılan pencereden erişebilirsiniz.</p>
+</section>
+<section id="enable-mail-body-search">
+<h3>E-posta içeriğinde arama yapmak<a class="headerlink" href="#enable-mail-body-search" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5.</span></p>
+</div>
+<p>Artık e-posta gövdelerinde arama yapılabiliyor. Bu özellik olası başarım sorunları nedeniyle isteğe bağlı olarak kullanıma alınır.</p>
+<p>Kullanıma almak için:</p>
+<ol class="arabic simple">
+<li><p>Hesap ayarlarına gidin</p></li>
+<li><p>E-posta kutusu arama bölümüne gidin</p></li>
+<li><p>E-posta içeriğinde arama yapmak</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Uyarı</p>
+<p>Birleşik e-posta kutuları için de kullanıma almak isterseniz, bu işlemi E-posta ayarlarından yapmanız gerekir</p>
+</div>
+<p>Kullanıma alındığında asıl arama kutusu artık eüpostaların hem konularında hem deiçeriklerinde arama yapar ve gelişmiş aramada ayrı bir <em>İçerik</em> seçeneği görüntülenir.</p>
+</section>
+<section id="account-delegation">
+<h3>Hesap yetkilendirmesi<a class="headerlink" href="#account-delegation" title="Link to this heading"></a></h3>
+<p>Uygulamada, bir kullanıcının diğerinin adresinden e-posta gönderebilmesi için hesap yetkilendirmesi yapılabilir.</p>
+<ol class="arabic simple">
+<li><p>Yetkilendirme, e-posta sunucusunda bir yönetici tarafından yapılandırılmalıdır.</p></li>
+<li><p>Diğer e-posta adresini kendi e-posta hesabınıza takma ad olarak ekleyin</p></li>
+<li><p>Bir e-posta gönderirken, gönderici olarak takma adı seçin</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Uyarı</p>
+<p>Kişisel <em>Gönderilmiş</em> kutunuzda tutuluyorsa, gönderilen e-posta özgün hesap tarafından görülemeyebilir.</p>
+</div>
+</section>
+<section id="automatic-trash-deletion">
+<h3>Otomatik çöp boşaltma<a class="headerlink" href="#automatic-trash-deletion" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<p>Posta uygulaması, belirli sayıda gün sonra çöp kutusundaki iletileri otomatik olarak silebilir.</p>
+<ol class="arabic simple">
+<li><p>Hesap ayarlarına gidin</p></li>
+<li><p>Otomatik çöp boşaltmaya git</p></li>
+<li><p>İletilerin kaç gün sonra silineceğini yazın</p></li>
+</ol>
+<p>Alanı boş bırakarak ya da 0 yazarak çöp tutmayı kapatabilirsiniz.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Yalnızca çöpleri tutma seçeneğini açtıktan sonra silinen e-postalar işlenir.</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/mail_trash_retention_settings.png" src="../../_images/mail_trash_retention_settings.png" />
+</figure>
+</section>
+</section>
+<section id="compose-messages">
+<h2>İleti oluşturmak<a class="headerlink" href="#compose-messages" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Ekranın sol üstündeki yeni ileti üzerine tıklayın</p></li>
+<li><p>İletinizi yazmaya başlayın</p></li>
+</ol>
+<section id="minimize-the-composer-modal">
+<h3>Oluşturucu penceresini küçültme<a class="headerlink" href="#minimize-the-composer-modal" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.2.</span></p>
+</div>
+<p>Oluşturucu kipi, yeni bir ileti yazarken, var olan bir taslağı veya giden kutusundaki bir iletiyi düzenlerken küçültülebilir. Penceresinin sağ üstündeki simge durumuna küçült düğmesine ya da pencerenin dışında herhangi bir yere tıklamanız yeterlidir.</p>
+<figure class="align-default">
+<img alt="../../_images/mail-minimize-composer.png" src="../../_images/mail-minimize-composer.png" />
+</figure>
+<p>Küçültülmüş iletinizi, ekranınızın sağ alt bölümündeki göstergenin herhangi bir yerine tıklayarak kaldığınız yerden sürdürebilirsiniz.</p>
+<figure class="align-default">
+<img alt="../../_images/mail-composer-indicator.png" src="../../_images/mail-composer-indicator.png" />
+</figure>
+<p>Bir iletiyi düzenlemeyi durdurmak için penceredeki kapat düğmesine ya da sağ alt köşedeki göstergeye tıklayın. E-posta kutunuza otomatik olarak bir taslak kaydedilir.</p>
+</section>
+</section>
+<section id="recipient-info-on-composer">
+<h2>Oluşturucuda alıcı bilgilerini görüntülemek<a class="headerlink" href="#recipient-info-on-composer" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.2.</span></p>
+</div>
+<p>İlk alıcınızı veya kişinizi “Kime” alanına eklediğinizde, o kişinin kaydedilmiş profil bilgilerinin görüntüleneceği bir sağ pano açılır. İkinci bir kişi eklemek, listeyi daraltarak, bilgilerini görüntülemek için eklediğiniz herhangi bir kişiyi seçmenizi ve genişletmenizi sağlar. Yalnızca oluşturucuda yazmaya odaklanmak isterseniz, sağ üst köşedeki genişlet simgesine tıklayarak sağ panoyu gizleyebilirsiniz. Sağ panonun yeniden görüntülenmesi için aynı konumdaki simgeye tıklamanız yeterlidir.</p>
+</section>
+<section id="mention-contacts">
+<h2>Kişileri anmak<a class="headerlink" href="#mention-contacts" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.2.</span></p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;</span></code> yazarak ve ardından listeden kişiyi seçerek iletinizde kişileri anabilirsiniz. Bunu yaptığınızda kişi otomatik olarak alıcılar arasına eklenir.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Yalnız geçerli bir e-posta adresi bulunan kişiler öneri olarak görüntülenir.</p>
+</div>
+</section>
+<section id="text-blocks">
+<h2>Yazı blokları<a class="headerlink" href="#text-blocks" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.2.</span></p>
+</div>
+<p>Yazı blokları, e-postanıza eklenebilecek önceden tanımlanmış yazı parçalarıdır. E-posta uygulamasının ayarlarından oluşturulabilir ve yönetilebilirler. Oluşturucuda <code class="docutils literal notranslate"><span class="pre">!</span></code> yazarak ve ardından listeden veya oluşturucu işlemlerinden bloğu seçerek eklenebilirler. Yazı blokları kullanıcılar ve kullanıcı gruplarıyla paylaşılabilir.</p>
+</section>
+<section id="outbox">
+<h2>Giden kutusu<a class="headerlink" href="#outbox" title="Link to this heading"></a></h2>
+<p>Bir ileti oluşturulduğunda ve “Gönder” düğmesine tıklandığında, ileti sol kenar çubuğunun sol alt köşesinde bulunan giden kutusuna eklenir.</p>
+<p>Ayrıca, gönderme işleminin tarihini ve saatini gelecekte bir zamana ayarlayabilirsiniz (ayrıntılı bilgi almak için <a class="reference internal" href="#mail-scheduled-messages"><span class="std std-ref">Zamanlanmış iletiler</span></a>). İleti belirlediğiniz tarih ve saat gelene kadar giden kutusunda tutulur, ve zamanı geldiğinde otomatik olarak gönderilir.</p>
+<p>Giden kutusu yalnızca giden kutusunda işlenmeyi bekleyen bir ileti bulunduğunda görüntülenir.</p>
+<p>“Gönder” işlemi tetiklenmeden önce istediğiniz bir zamanda giden kutusundaki bir ileti için oluşturucuyu yeniden açabilirsiniz.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Gönderim sırasında bir sorun oluştuğunda üç hata iletisinden biri görüntülenir:</p>
+<dl class="simple">
+<dt>“Gönderilmiş” kutusuna kopyalanamadı</dt><dd><p>E-posta gönderilmiştir ancak “Gönderilmiş” kutusuna kopyalanamamıştır. Bu hata giden kutusu tarafından işlenir ve kopyalama işlemi yeniden denenir.</p>
+</dd>
+<dt>E-posta sunucusu sorunu</dt><dd><p>Gönderim yapılamamıştır ama yeniden denenebilir (SMTP sunucusuna ulaşılamamıştır gibi). Giden kutusu iletiyi yeniden göndermeyi dener.</p>
+</dd>
+<dt>İleti gönderilemedi</dt><dd><p>İleti gönderilmiş ya da gönderilememiş olabilir. E-posta sunucusu bize iletinin durumunu söyleyemez. E-posta uygulamasının iletinin durumunu (gönderilmiş veya gönderilmemiş) durumunu belirlemenin bir yolu olmadığından, ileti giden kutusunda kalır ve hesap kullanıcısının nasıl ilerleyeceğine karar vermesi gerekir.</p>
+</dd>
+</dl>
+</div>
+</section>
+<section id="mailbox-actions">
+<h2>E-posta kutusu işlemleri<a class="headerlink" href="#mailbox-actions" title="Link to this heading"></a></h2>
+<section id="add-a-mailbox">
+<h3>E-posta kutusu eklemek<a class="headerlink" href="#add-a-mailbox" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Bir hesabın işlem menüsünü açın</p></li>
+<li><p>E-posta kutusu ekle üzerine tıklayın</p></li>
+</ol>
+</section>
+<section id="add-a-submailbox">
+<h3>Bir alt e-posta kutusu eklemek<a class="headerlink" href="#add-a-submailbox" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Bir e-posta kutusunun işlem menüsünü açın</p></li>
+<li><p>Alt e-posta kutusu ekle üzerine tıklayın</p></li>
+</ol>
+</section>
+<section id="shared-mailbox">
+<h3>Paylaşılan e-posta kutusu<a class="headerlink" href="#shared-mailbox" title="Link to this heading"></a></h3>
+<p>Size belirli izinler verilmiş bir e-posta kutusu paylaşıldıysa, bu e-posta kutusu aşağıdaki gibi bir paylaşım simgesiyle yeni bir posta kutusu olarak görüntülenir:</p>
+<figure class="align-default">
+<img alt="../../_images/shared-mailbox-icon.png" src="../../_images/shared-mailbox-icon.png" />
+</figure>
+</section>
+</section>
+<section id="envelope-actions">
+<h2>Zarf işlemleri<a class="headerlink" href="#envelope-actions" title="Link to this heading"></a></h2>
+<section id="create-an-event">
+<h3>Bir etkinlik oluşturmak<a class="headerlink" href="#create-an-event" title="Link to this heading"></a></h3>
+<p>Doğrudan e-posta uygulamasından belirli bir ileti ya da yazışma için bir etkinlik oluşturun</p>
+<ol class="arabic simple">
+<li><p>Bir zarfın işlem menüsünü açın</p></li>
+<li><p><em>Diğer işlemler</em> üzerine tıklayın</p></li>
+<li><p><em>Etkinlik ekle</em> üzerine tıklayın</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Yönetici etkinleştirdiyse, sizin için etkinlik başlığı ve gündem oluşturulur.</p>
+</div>
+</section>
+<section id="create-a-task">
+<h3>Bir görev oluşturmak<a class="headerlink" href="#create-a-task" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.2.</span></p>
+</div>
+<p>Doğrudan e-posta uygulamasından belirli bir ileti ya da yazışma için bir görev oluşturun</p>
+<ol class="arabic simple">
+<li><p>Bir zarfın işlem menüsünü açın</p></li>
+<li><p><em>Diğer işlemler</em> üzerine tıklayın</p></li>
+<li><p><em>Görev ekle</em> üzerine tıklayın</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Görevler, desteklenen takvimlere kaydedilir. Uyumlu bir takvim yoksa <a class="reference internal" href="calendar.html#calendar-app"><span class="std std-ref">calendar app</span></a> ile yeni bir takvim oluşturabilirsiniz.</p>
+</div>
+</section>
+<section id="edit-tags">
+<h3>Etiketleri düzenlemek<a class="headerlink" href="#edit-tags" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Bir zarfın işlem menüsünü açın</p></li>
+<li><p><em>Etiketleri düzenle</em> üzerine tıklayın</p></li>
+<li><p>Açılan pencereden etiketleri ekleyin ya da kaldırın</p></li>
+</ol>
+</section>
+<section id="change-color-for-tags">
+<h3>Etiketlerin rengini değiştirmek<a class="headerlink" href="#change-color-for-tags" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5.</span></p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/change-tag-color.png" src="../../_images/change-tag-color.png" />
+</figure>
+<p>Bir etiket oluşturulduktan sonra, otomatik olarak rastgele bir renk atanır. Etiket kaydedildikten sonra, rengini isteğinize göre değiştirebilirsiniz. Bu özellik etiket açılan penceresi işlem menüsünde bulunabilir.</p>
+</section>
+<section id="delete-tags">
+<h3>Etiketleri silmek<a class="headerlink" href="#delete-tags" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5.</span></p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/delete-tag.png" src="../../_images/delete-tag.png" />
+</figure>
+<p>Artık daha önce oluşturduğunuz etiketleri silebilirsiniz. Bu özelliğe erişmek için:</p>
+<ol class="arabic simple">
+<li><p>Bir zarfın ya da yazışmanın işlem menüsünü açın.</p></li>
+<li><p>Etiketleri düzenle üzerine tıklayın.</p></li>
+<li><p>Etiketler üste açılan penceresinde, silmek istediğiniz belirli bir etiketin işlem menüsünü açın.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>İş, Yapılacaklar, Kişisel ve Daha sonra gibi varsayılan etiketlerin silinemeyeceğini, yalnızca yeniden adlandırılabileceğini lütfen unutmayın.</p>
+</div>
+</section>
+<section id="ai-summary">
+<h3>Yapay zeka ile özet çıkarmak<a class="headerlink" href="#ai-summary" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.2.</span></p>
+</div>
+<p>E-posta kutunuza baktığınızda, e-postalarınızın yapay zeka tarafından oluşturulmuş kısa bir özetini ön izleme olarak görürsünüz.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Bu özelliğin yönetici tarafından açılmış olması gerektiğini lütfen unutmayın</p>
+</div>
+</section>
+</section>
+<section id="quick-actions">
+<h2>Quick actions<a class="headerlink" href="#quick-actions" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.5: </span>(Nextcloud 30)</p>
+</div>
+<p>Allows you to group action steps that you would normally perform on envelopes such as tagging, moving, marking as read … into quick actions that can be executed with a single click.
+Quick actions are scoped to one mail account and can be created and managed in the mail settings under “Quick actions” or directly from the envelope action menu.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Some action steps such as <cite>Mark as spam</cite>, <cite>Move thread</cite> and <cite>Delete thread</cite> are mutually exclusive and cannot be part of the same quick action, they also can’t be re-ordered and will always be executed last.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Please note that quick actions will be performed on all messages in a thread when executed on one.</p>
+</div>
+</section>
+<section id="message-actions">
+<h2>İleti işlemleri<a class="headerlink" href="#message-actions" title="Link to this heading"></a></h2>
+<section id="unsubscribe-from-a-mailing-list">
+<h3>Bir e-posta listesi aboneliğinden ayrılmak<a class="headerlink" href="#unsubscribe-from-a-mailing-list" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.1.</span></p>
+</div>
+<p>Bazı e-posta listeleri ve haber bültenleri kolayca abonelikten çıkmanıza izin verir. E-posta uygulaması iletinin böyle bir göndericiden geldiğini algılarsa, gönderen bilgilerinin yanında bir <em>Abonelikten ayrıl</em> düğmesi görüntülenir. Listeden ayrılmak için üzerine tıklayıp onaylayın.</p>
+</section>
+<section id="snooze">
+<h3>Ertele<a class="headerlink" href="#snooze" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<p>Bir iletiyi ya da yazışmayı ertelemek, seçilmiş erteleme tarihine ulaşılana ve ileti ya da yazışma özgün e-posta kutusuna geri taşınana kadar onu özel bir e-posta kutusuna taşır.</p>
+<ol class="arabic simple">
+<li><p>Bir zarfın ya da yazışmanın işlem menüsünü açın</p></li>
+<li><p><em>Ertele</em> üzerine tıklayın</p></li>
+<li><p>İleti ya da yazışmanın ne kadar süreyle erteleneceğini seçin</p></li>
+</ol>
+</section>
+<section id="smart-replies">
+<h3>Akıllı yanıtlar<a class="headerlink" href="#smart-replies" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.6.</span></p>
+</div>
+<p>E-posta uygulamasında bir ileti açtığınızda, yapay zeka tarafından oluşturulan yanıtlar önerilir. Yalnızca önerilen bir yanıta tıkladığınızda, oluşturucu bu yanıtı önceden doldurarak açılır.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Bu özelliğin yönetici tarafından açılmış olması gerektiğini lütfen unutmayın</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Desteklenen diller kullanılan büyük dil modeline bağlıdır</p>
+</div>
+</section>
+<section id="mail-translation">
+<h3>E-postaları çevirmek<a class="headerlink" href="#mail-translation" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.2.</span></p>
+</div>
+<p>İletileri Konuş uygulamasına benzer şekilde yapılandırılmış dillerinize çevirebilirsiniz.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Çeviri özelliklerinin sunucu üzerinde açılmış olması gerektiğini lütfen unutmayın</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>5.3 sürümünden başlayarak, büyük dil modeli yönetici tarafından açıldığında çeviriler önerilir</p>
+</div>
+</section>
+</section>
+<section id="thread-summary">
+<h2>Yazışmaları özetlemek<a class="headerlink" href="#thread-summary" title="Link to this heading"></a></h2>
+<p>E-posta uygulaması, 3 veya daha fazla ileti bulunan yazışmaları özetleyebilir.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Bu özelliğin yönetici tarafından açılmış olması gerektiğini lütfen unutmayın</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Lütfen bu özelliğin yalnızca integration_openai ile iyi çalıştığını unutmayın. Yerel büyük dil modellerinin yanıt vermesi çok uzun sürer ve özet isteği zaman aşımına uğrayabilir ve önemli bir sistem yükü oluşturabilir.</p>
+</div>
+</section>
+<section id="filtering-and-autoresponder">
+<h2>Süzmek ve otomatik yanıtları kullanmak<a class="headerlink" href="#filtering-and-autoresponder" title="Link to this heading"></a></h2>
+<p>E-posta uygulamasında, Sieve betikleri için bir düzenleyici, otomatik yanıtlayıcıları yapılandırmak için bir arayüz ve süzgeçleri yapılandırmak için bir arayüz bulunur. Sieve, <a class="reference internal" href="#mail-account-settings"><span class="std std-ref">hesap ayarları</span></a> içinden  açılmış olmalıdır.</p>
+<section id="autoresponders">
+<h3>Otomatik yanıtlayıcılar<a class="headerlink" href="#autoresponders" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5: </span>Otomatik yanıtlayıcı sistem ayarlarını kullanabilir.</p>
+</div>
+<p>Otomatik yanıtlayıcı varsayılan olarak kapalıdır. El ile ayarlanabilir veya sistem ayarlarını kullanabilir. Şu sistem ayarları, <a class="reference internal" href="absence.html#groupware-absence"><span class="std std-ref">Bulunmama ayarları</span></a> bölümüne yazılan uzun bulunmama iletisinin otomatik olarak uygulandığı anlamına gelir.</p>
+</section>
+<section id="filter">
+<h3>Süzgeç<a class="headerlink" href="#filter" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.1.</span></p>
+</div>
+<p>E-posta 4.1, uygulamasında süzgeç kurallarını yapılandırmak için basit bir düzenleyici bulunur.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Var olan süzgeçler içe aktarılmaz. Ancak, var olan tüm süzgeçler etkin ve değişmeden kalır. Önlem olarak var olan betik dosyanızı Sieve betik düzenleyicisi ile yedeklemenizi öneririz.</p>
+</div>
+<section id="how-to-add-a-new-filter">
+<h4>Yeni bir süzgeç eklemek<a class="headerlink" href="#how-to-add-a-new-filter" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Hesap ayarlarınızı açın.</p></li>
+<li><p>Hesabınızda Sieve özelliğinin açık olduğundan emin olun (Sieve sunucu ayarlarına bakın).</p></li>
+<li><p>Süzgeçler üzerine tıklayın.</p></li>
+<li><p>Yeni bir kural oluşturmak için Yeni süzgeç üzerine tıklayın.</p></li>
+</ol>
+</section>
+<section id="how-to-delete-a-filter">
+<h4>Bir süzgeci silmek<a class="headerlink" href="#how-to-delete-a-filter" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Hesap ayarlarınızı açın.</p></li>
+<li><p>Hesabınızda Sieve özelliğinin açık olduğundan emin olun (Sieve sunucu ayarlarına bakın).</p></li>
+<li><p>Süzgeçler üzerine tıklayın.</p></li>
+<li><p>Silmek istediğiniz süzgecin üzerinde gelin ve çöp kutusu simgesine tıklayın.</p></li>
+</ol>
+</section>
+<section id="conditions">
+<h4>Koşullar<a class="headerlink" href="#conditions" title="Link to this heading"></a></h4>
+<p>Koşullar, Konu, Gönderici ve Alıcı gibi alanları kullanarak e-posta sunucunuzdaki gelen e-postalara uygulanır. Bu alanların koşullarını tanımlamak için aşağıdaki seçenekleri kullanabilirsiniz:</p>
+<ul class="simple">
+<li><p><strong>tam olarak şu olan</strong>: Tam eşleşme. Alan belirtilen değer ile aynı olmalıdır.</p></li>
+<li><p><strong>şunu içeren</strong>: Alt dizge eşleşmesi. Alanın içinde belirtilen değer geçiyorsa eşleşir. Örnek: “por” ifadesi “rapor” dizgesi ile eşleşir.</p></li>
+<li><p><strong>şuna uyan</strong>: Genel arama karakterleri kullanan bir model. “*” simgesi herhangi bir sayıda karakteri ifade eder (boşluk ile), “?” simgesi tek bir krarakteri ifade eder. Örnek: “<em>rapor</em>” ifadesi “Kurumsal rapor 2024” dizgesi ile eşleşir.</p></li>
+</ul>
+</section>
+<section id="actions">
+<h4>İşlemler<a class="headerlink" href="#actions" title="Link to this heading"></a></h4>
+<p>Belirtilen koşullar gerçekleştiğinde işlemler tetiklenir. Şu işlemler kullanılabilir:</p>
+<ul class="simple">
+<li><p><strong>fileinto</strong>: İletiyi belirtilen klasöre taşır.</p></li>
+<li><p><strong>addflag</strong>: İletiye bir işaret ekler.</p></li>
+<li><p><strong>stop</strong>: Süzgeç betiğinin işlenmesini durdurur. Bu işlemden sonraki süzgeçler işlenmez.</p></li>
+</ul>
+</section>
+</section>
+<section id="create-a-filter-from-a-message">
+<h3>Bir iletiden bir süzgeç oluşturmak<a class="headerlink" href="#create-a-filter-from-a-message" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.2.</span></p>
+</div>
+<p>Belirli bir iletiden bir süzgeç oluşturmak için iletiyi açın ve ardından üç noktaya tıklayarak menüyü açın. “Diğer işlemler” üzerinde ve ardından “E-posta süzgeci oluştur” üzerine tıklayın.</p>
+<p>Pencerede, lütfen gelen iletilerle eşleşecek koşulları seçin ve “E-posta süzgeci oluştur” üzerine tıklayarak ilerleyin.</p>
+<figure class="align-default">
+<img alt="../../_images/mail_create_filter_from_message.png" src="../../_images/mail_create_filter_from_message.png" />
+</figure>
+</section>
+</section>
+<section id="follow-up-reminders">
+<h2>Takip anımsatıcıları<a class="headerlink" href="#follow-up-reminders" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.0.</span></p>
+</div>
+<p>E-posta uygulaması, giden bir e-postanın yanıt almadığını size otomatik olarak anımsatır. Gönderilen her e-posta, bir yanıt beklenip beklenmediğini denetlemek için bir yapay zeka tarafından incelenir. Dört gün sonra ilgili tüm e-postalar öncelikli gelen kutunuzda görüntülenir.</p>
+<p>Böyle bir e-postaya tıkladığınızda, tüm alıcıları hızlı bir şekilde takip edebileceğiniz bir düğme görüntülenir. Gönderilen bir e-posta için takip anımsatıcıları kapatılabilir de.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Bu özelliğin yönetici tarafından açılmış olması gerektiğini lütfen unutmayın.</p>
+</div>
+</section>
+<section id="security">
+<h2>Güvenlik<a class="headerlink" href="#security" title="Link to this heading"></a></h2>
+<section id="phishing-detection">
+<h3>Kimlik avı algılama<a class="headerlink" href="#phishing-detection" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.0.</span></p>
+</div>
+<p>E-posta uygulaması olası kimlik avı girişimlerini denetler ve kullanıcıya bir uyarı görüntüler.</p>
+<p>Denetimler şunlardır:</p>
+<ul class="simple">
+<li><p>Adres defterine kaydedilen gönderici adresi, e-posta hesabındaki adres ile aynı değil</p></li>
+<li><p>Gönderici, gönderici adresiyle eşleşmeyen özel bir e-posta adresi kullanıyor</p></li>
+<li><p>Gönderildiği tarih geleceğe ayarlanmış</p></li>
+<li><p>İleti içeriğindeki bağlantılar görüntülenen yazıdaki yere gitmiyor</p></li>
+<li><p>Yanıt adresi gönderici adresiyle aynı değil</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Uyarının iletinin bir kimlik avı girişimi olduğu anlamına gelmediğini lütfen unutmayın. Bu yalnızca E-posta uygulamasının olası bir kimlik avı girişimi algıladığı anlamına gelir.</p>
+</div>
+</section>
+<section id="internal-addresses">
+<h3>İç adresler<a class="headerlink" href="#internal-addresses" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.0.</span></p>
+</div>
+<p>E-posta uygulaması, iç adreslerin ve etki alanlarının eklenmesine izin verir. Adres listede yoksa, bir ileti gönderirken ve alırken kullanıcıyı uyarır.</p>
+<p>Bir iç adres eklemek için:</p>
+<ol class="arabic simple">
+<li><p>E-posta uygulamasının ayarlarını açın</p></li>
+<li><p>Gizlilik ve güvenlik bölümüne gidin</p></li>
+<li><p>İşaret kutusuna tıklayarak iç adreslerin kullanılmasını açın</p></li>
+<li><p>İç adres ekle düğmesine tıklayın</p></li>
+<li><p>Adresi ya da etki alanını yazıp Ekle üzerine tıklayın</p></li>
+</ol>
+</section>
+</section>
+<section id="dashboard-integration">
+<h2>Pano bütünleştirmesi<a class="headerlink" href="#dashboard-integration" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 1.8.</span></p>
+</div>
+<p>E-posta uygulaması, Nextcloud panosuyla bütünleşik kullanılabilen iki pano bileşeni sunar:</p>
+<ul class="simple">
+<li><p>Okunmamış e-postalar: Bu pano bileşeni okunmamış iletileri görüntüler.</p></li>
+<li><p>Önemli e-postalar: Bu pano bileşeni önemli olarak işaretlenmiş e-postaları görüntüler.</p></li>
+</ul>
+<p>Bu pano bileşenleri, hesabınız için ayarlanmış e-posta hesaplarından gelen e-postaları kullanır.</p>
+</section>
+<section id="calendar-integration">
+<h2>Calendar integration<a class="headerlink" href="#calendar-integration" title="Link to this heading"></a></h2>
+<p>The Mail app integrates with the Calendar app to help you manage meeting invitations and keep your calendar up to date.</p>
+<section id="meeting-invitations">
+<h3>Meeting invitations<a class="headerlink" href="#meeting-invitations" title="Link to this heading"></a></h3>
+<p>When you receive a message containing a meeting invitation, the Mail app automatically detects the attached calendar file and displays a formatted action section to help you respond.</p>
+<p>You can:</p>
+<ul class="simple">
+<li><p><strong>Accept</strong> the invitation</p></li>
+<li><p><strong>Decline</strong> the invitation</p></li>
+<li><p><strong>Tentatively accept</strong> the invitation</p></li>
+</ul>
+<p>Your response is sent directly from the Mail app, and the event is added to your primary calendar accordingly.</p>
+<p>You can also manually add a meeting invitation to a specific calendar:</p>
+<ol class="arabic simple">
+<li><p>Open the message with the meeting invitation</p></li>
+<li><p>Scroll to the bottom of the message to the attachments section</p></li>
+<li><p>Select the calendar file (usually with a .ics extension), then click the three dots menu.</p></li>
+<li><p>Click “Import in to calendar” and choose the desired calendar.</p></li>
+</ol>
+</section>
+<section id="meeting-invitation-automation">
+<h3>Meeting invitation automation<a class="headerlink" href="#meeting-invitation-automation" title="Link to this heading"></a></h3>
+<p>When a meeting organizer sends updates to an existing event (such as time changes or location updates), the Mail app processes these automatically and updates the corresponding event in your calendar.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.7: </span>(Nextcloud 32 or newer)</p>
+</div>
+<p>You can also configure Mail to automatically add all new meeting invitations to your calendar without requiring manual acceptance. The invitations will be added to the calendar as tentative.</p>
+<p>To enable this feature:</p>
+<ol class="arabic simple">
+<li><p>Visit account settings of a specific mail account</p></li>
+<li><p>Navigate to Calendar settings section</p></li>
+<li><p>Enable <em>Automatically create tentative appointments in calendar</em></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>With this setting enabled, invitations will still appear in your mail list, but they will be automatically added to your calendar.</p>
+</div>
+</section>
+</section>
+<section id="keyboard-shortcuts">
+<h2>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Link to this heading"></a></h2>
+<p>The Mail app implements several keyboard shortcuts to speed up your experience.</p>
+<p>For a full list of the supported shortcuts, check out the Mail settings in your instance.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="calendar.html" class="btn btn-neutral float-left" title="Takvim uygulamasını kullanmak" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Önceki</a>
+        <a href="absence.html" class="btn btn-neutral float-right" title="Ofis dışında iletilerini ayarlamak" accesskey="n" rel="next">Sonraki <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 Turkish
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Diller</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Sürümler</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>İndirmeler</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Okunacak Belgeler</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Proje Ana Sayfası</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Yapımlar</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

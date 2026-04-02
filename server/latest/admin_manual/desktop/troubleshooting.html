@@ -1,0 +1,600 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Troubleshooting &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/admin_manual/desktop/troubleshooting.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Groupware" href="../groupware/index.html" />
+    <link rel="prev" title="Command-line Account Setup" href="accountcommand.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Critical changes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Files</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Clients</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="options.html">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="massdeployment.html">Mass Deployment And Account Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Command Line Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accountcommand.html">Command-line Account Setup</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#identifying-basic-functionality-problems">Identifying Basic Functionality Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#csync-unknown-error">“CSync unknown error”</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connection-closed-message-when-syncing-files">“Connection closed” message when syncing files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connection-issues-with-the-macos-client-on-insecure-connections">Connection issues with the macOS client on “insecure” connections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#isolating-other-issues">Isolating other issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#log-files">Log Files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#obtaining-the-client-log-file">Obtaining the Client Log File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-debug-archive">Create Debug Archive</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#keyboard-shortcut">Keyboard shortcut</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#command-line">Command line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config-file">Config file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nextcloud-server-log-file">Nextcloud server Log File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#webserver-log-files">Webserver Log Files</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#core-dumps">Core Dumps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#citrix-workspace-known-issues">Citrix Workspace known issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Groupware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Office</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_monitoring/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/">Community Help Forum</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">User Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">Developer Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/install/">Download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://apps.nextcloud.com">App Store</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/t/translation-knowledge-valid-for-the-entire-nextcloud-project-wiki/51550">Translations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Supported versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud Enterprise</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/blob/master/COPYING-README">License</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/">Nextcloud GmbH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Desktop Clients</a></li>
+      <li class="breadcrumb-item active">Troubleshooting</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/desktop/troubleshooting.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="troubleshooting">
+<h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h1>
+<p>The following two general issues can result in failed synchronization:</p>
+<ul class="simple">
+<li><p>The server setup is incorrect.</p></li>
+<li><p>The client contains a bug.</p></li>
+</ul>
+<p>When reporting bugs, it is helpful if you first determine what part of the
+system is causing the issue.</p>
+<section id="identifying-basic-functionality-problems">
+<h2>Identifying Basic Functionality Problems<a class="headerlink" href="#identifying-basic-functionality-problems" title="Link to this heading"></a></h2>
+<dl class="field-list">
+<dt class="field-odd">Performing a general Nextcloud Server test<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The first step in troubleshooting synchronization issues is to verify that
+you can log on to the Nextcloud web application. To verify connectivity to the
+Nextcloud server try logging in via your Web browser.</p>
+<p>If you are not prompted for your username and password, or if a red warning
+box appears on the page, your server setup requires modification. Please verify
+that your server installation is working correctly.</p>
+</dd>
+<dt class="field-even">Ensure the WebDAV API is working<span class="colon">:</span></dt>
+<dd class="field-even"><p>If all desktop clients fail to connect to the Nextcloud Server, but access
+using the Web interface functions properly, the problem is often a
+misconfiguration of the WebDAV API.</p>
+<p>The Nextcloud Client uses the built-in WebDAV access of the server content.
+Verify that you can log on to Nextcloud’s WebDAV server. To verify connectivity
+with the Nextcloud WebDAV server:</p>
+<ul class="simple">
+<li><p>Open a browser window and enter the address to the Nextcloud WebDAV server.</p></li>
+</ul>
+<p>For example, if your Nextcloud instance is installed at
+<code class="docutils literal notranslate"><span class="pre">http://yourserver.com/nextcloud</span></code>, your WebDAV server address is
+<code class="docutils literal notranslate"><span class="pre">http://yourserver.com/nextcloud/remote.php/dav</span></code>.</p>
+<p>If you are prompted for your username and password but, after providing the
+correct credentials, authentication fails, please ensure that your
+authentication backend is configured properly.</p>
+</dd>
+<dt class="field-odd">Use a WebDAV command line tool to test<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A more sophisticated test method for troubleshooting synchronization issues
+is to use a WebDAV command line client and log into the Nextcloud WebDAV server.
+One such command line client – called <code class="docutils literal notranslate"><span class="pre">cadaver</span></code> – is available for Linux
+distributions. You can use this application to further verify that the WebDAV
+server is running properly using PROPFIND calls.</p>
+<p>As an example, after installing the <code class="docutils literal notranslate"><span class="pre">cadaver</span></code> app, you can issue the
+<code class="docutils literal notranslate"><span class="pre">propget</span></code> command to obtain various properties pertaining to the current
+directory and also verify WebDAV server connection.</p>
+</dd>
+</dl>
+</section>
+<section id="csync-unknown-error">
+<h2>“CSync unknown error”<a class="headerlink" href="#csync-unknown-error" title="Link to this heading"></a></h2>
+<p>If you see this error message stop your client, delete the
+<code class="docutils literal notranslate"><span class="pre">.sync_xxxxxxx.db</span></code> file, and then restart your client.
+There is a  hidden <code class="docutils literal notranslate"><span class="pre">.sync_xxxxxxx.db</span></code> file inside the folder of every account
+configured on your client.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please note that this will also erase some of your settings about which
+files to download.</p>
+</div>
+<p>See <a class="reference external" href="https://github.com/owncloud/client/issues/5226">https://github.com/owncloud/client/issues/5226</a> for more discussion of this
+issue.</p>
+</section>
+<section id="connection-closed-message-when-syncing-files">
+<h2>“Connection closed” message when syncing files<a class="headerlink" href="#connection-closed-message-when-syncing-files" title="Link to this heading"></a></h2>
+<p>This message can be caused by using chunks that are too big or time-outs that
+are set too liberally. You can configure the chunking behavior of the client in
+the config file. For example, change these settings:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">chunkSize</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">10000000</span></code> (10 MB)</p></td>
+<td><p>Specifies the chunk size of uploaded files in bytes.
+The client will dynamically adjust this size within the maximum and minimum bounds (see below).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">minChunkSize</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1000000</span></code> (1 MB)</p></td>
+<td><p>Specifies the minimum chunk size of uploaded files in bytes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">maxChunkSize</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">50000000</span></code> (1000 MB)</p></td>
+<td><p>Specifies the maximum chunk size of uploaded files in bytes.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">targetChunkUploadDuration</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">6000</span></code> (1 minute)</p></td>
+<td><p>Target duration in milliseconds for chunk uploads.
+The client adjusts the chunk size until each chunk upload takes approximately this long.
+Set to 0 to disable dynamic chunk sizing.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Setting <code class="docutils literal notranslate"><span class="pre">maxChunkSize</span></code> to 50000000, for example, will decrease the
+individual chunk to about 50 mb. This causes additional overhead but
+might be required in some situations, for example behind CloudFlare which
+has been seen limiting upload chunks to 100mb. In other situations,
+limiting <code class="docutils literal notranslate"><span class="pre">targetChunkUploadDuration</span></code> can help to avoid time-outs.</p>
+</section>
+<section id="connection-issues-with-the-macos-client-on-insecure-connections">
+<h2>Connection issues with the macOS client on “insecure” connections<a class="headerlink" href="#connection-issues-with-the-macos-client-on-insecure-connections" title="Link to this heading"></a></h2>
+<p>When using macOS devices to connect to a Nextcloud server that uses a what maybe
+be classified as an insecure connection (i.e. connecting to a server with a
+self-signed certificate, or a certificate with what Apple may consider an
+insufficiently secure cipher), the macOS client may not connect to the server.
+This is because macOS requires a valid certificate to establish a connection.</p>
+<p>To resolve this issue, you must ensure the server is signed with a certificate
+that is accepted by Apple’s App Transport Security requirements. More
+information on the requirements can be found in Apple’s documentation pages.</p>
+<p><a class="reference external" href="https://developer.apple.com/documentation/security/preventing-insecure-network-connections">https://developer.apple.com/documentation/security/preventing-insecure-network-connections</a></p>
+</section>
+<section id="isolating-other-issues">
+<h2>Isolating other issues<a class="headerlink" href="#isolating-other-issues" title="Link to this heading"></a></h2>
+<p>Other issues can affect synchronization of your Nextcloud files:</p>
+<ul>
+<li><p>If you find that the results of the synchronizations are unreliable, please
+ensure that the folder to which you are synchronizing is not shared with
+other synchronization applications.</p></li>
+<li><p>Synchronizing the same directory with Nextcloud and other synchronization
+software such as Unison, rsync, Microsoft Windows Offline Folders, or other
+cloud services such as Dropbox or Microsoft SkyDrive is not supported and
+should not be attempted. In the worst case, it is possible that synchronizing
+folders or files using Nextcloud and other synchronization software or
+services can result in data loss.</p></li>
+<li><p>If you find that only specific files are not synchronized, the
+synchronization protocol might be having an effect. Some files are
+automatically ignored because they are system files, other files might be
+ignored because their filename contains characters that are not supported on
+certain file systems. For more information about ignored files, see <cite>ignored-files</cite>.</p></li>
+<li><p>If you are operating your own server, and use the local storage backend (the
+default), make sure that Nextcloud has exclusive access to the directory.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The data directory on the server is exclusive to Nextcloud and must not be modified manually.</p>
+</div>
+</li>
+<li><p>If you are using a different file backend on the server, you can try to exclude a bug in the
+backend by reverting to the built-in backend.</p></li>
+<li><p>If you are experiencing slow upload/download speed or similar performance issues
+be aware that those could be caused by on-access virus scanning solutions, either
+on the server (like the files_antivirus app) or the client.</p></li>
+</ul>
+</section>
+<section id="log-files">
+<h2>Log Files<a class="headerlink" href="#log-files" title="Link to this heading"></a></h2>
+<p>Effectively debugging software requires as much relevant information as can be
+obtained.  To assist the Nextcloud support personnel, please try to provide as
+many relevant logs as possible. Log output can help  with tracking down
+problems and, if you report a bug, log output can help to resolve an issue more
+quickly.</p>
+<blockquote>
+<div><div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Log files contain sensitive information. You may wish to redact sensitive details or to only share limited excerpts.</p>
+</div>
+</div></blockquote>
+<section id="obtaining-the-client-log-file">
+<h3>Obtaining the Client Log File<a class="headerlink" href="#obtaining-the-client-log-file" title="Link to this heading"></a></h3>
+</section>
+<section id="create-debug-archive">
+<h3>Create Debug Archive<a class="headerlink" href="#create-debug-archive" title="Link to this heading"></a></h3>
+<p>Since the 3.1.0 release we made it easier for users to provide debug information: debug logging is enabled by default with expiration time set to 24 hours and under the “General” settings, you can click on “Create Debug Archive …” to pick the location of where the desktop client will export the logs and the database to a zip file.</p>
+<figure class="align-default">
+<img alt="Create debug archive" src="../_images/create_debug_archive.png" />
+</figure>
+</section>
+<section id="keyboard-shortcut">
+<h3>Keyboard shortcut<a class="headerlink" href="#keyboard-shortcut" title="Link to this heading"></a></h3>
+<p>Another way to obtain the client log file:</p>
+<ol class="arabic simple">
+<li><p>Open the Nextcloud Desktop Client.</p></li>
+<li><p>Press F12 or Ctrl-L on your keyboard.</p></li>
+</ol>
+<p>The Log Output window opens.</p>
+<figure class="align-default">
+<img alt="Log output" src="../_images/log_output_window.png" />
+</figure>
+<ol class="arabic simple" start="3">
+<li><p>Click the ‘Save’ button.</p></li>
+</ol>
+<p>The Save Log File window opens.</p>
+<figure class="align-default">
+<img alt="Save logfile" src="../_images/save_log_file.png" />
+</figure>
+<ol class="arabic simple" start="4">
+<li><p>Migrate to a location on your system where you want to save your log file.</p></li>
+<li><p>Name the log file and click the ‘Save’ button.</p></li>
+</ol>
+<blockquote>
+<div><p>The log file is saved in the location specified.</p>
+</div></blockquote>
+</section>
+<section id="command-line">
+<h3>Command line<a class="headerlink" href="#command-line" title="Link to this heading"></a></h3>
+<p>Alternatively, you can launch the Nextcloud Log Output window using the
+<code class="docutils literal notranslate"><span class="pre">--logwindow</span></code> command. After issuing this command, the Log Output window
+opens to show the current log. You can then follow the same procedures
+mentioned above to save the log to a file.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can also open a log window for an already running session, by
+restarting the client using the following command:</p>
+<ul class="simple">
+<li><p>Windows: <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files</span> <span class="pre">(x86)\Nextcloud\nextcloud.exe</span> <span class="pre">--logwindow</span></code></p></li>
+<li><p>macOS: <code class="docutils literal notranslate"><span class="pre">/Applications/nextcloud.app/Contents/MacOS/nextcloud</span> <span class="pre">--logwindow</span></code></p></li>
+<li><p>Linux: <code class="docutils literal notranslate"><span class="pre">nextcloud</span> <span class="pre">--logwindow</span></code></p></li>
+</ul>
+</div>
+</div></blockquote>
+</section>
+<section id="config-file">
+<h3>Config file<a class="headerlink" href="#config-file" title="Link to this heading"></a></h3>
+<p>The Nextcloud client enables you to save log files directly to a predefined file
+or directory.  This is a useful option for troubleshooting sporadic issues as
+it enables you to log large amounts of data and bypass the limited buffer
+settings associated with the log window.</p>
+<p>To enable logging to a directory, stop the client and add the following to the General section in the configuration file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">General</span><span class="p">]</span>
+<span class="n">logDebug</span><span class="o">=</span><span class="n">true</span>
+<span class="n">logExpire</span><span class="o">=&lt;</span><span class="n">hours</span><span class="o">&gt;</span>
+<span class="n">logDir</span><span class="o">=&lt;</span><span class="nb">dir</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Independent of platform you must use slash (/) as a path separator:</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Correct: C:/Temp</p></li>
+<li><p>Not correct: C:Temp</p></li>
+</ul>
+</div>
+</div></blockquote>
+<p>As an example, to keep log data for two days in a directory called temp:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">General</span><span class="p">]</span>
+<span class="n">logDebug</span><span class="o">=</span><span class="n">true</span>
+<span class="n">logExpire</span><span class="o">=</span><span class="mi">48</span>
+<span class="n">logDir</span><span class="o">=</span><span class="n">C</span><span class="p">:</span><span class="o">/</span><span class="n">Temp</span>
+</pre></div>
+</div>
+<p>Once you restart the client, you will find the log file in the <code class="docutils literal notranslate"><span class="pre">&lt;dir&gt;</span></code> defined in <code class="docutils literal notranslate"><span class="pre">logDir</span></code>.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You will find the configuration file in the following locations:</p>
+<ul class="simple">
+<li><p>Microsoft Windows systems: <code class="docutils literal notranslate"><span class="pre">%APPDATA%\Nextcloud\nextcloud.cfg</span></code></p></li>
+<li><p>macOS systems: <code class="docutils literal notranslate"><span class="pre">$HOME/Library/Preferences/Nextcloud/nextcloud.cfg</span></code></p></li>
+<li><p>Linux distributions: <code class="docutils literal notranslate"><span class="pre">$HOME/.config/Nextcloud/nextcloud.cfg</span></code></p></li>
+</ul>
+</div>
+</div></blockquote>
+<p>Alternatively, you can start the client in the command line with parameters:</p>
+<ol class="arabic simple">
+<li><p>To save to a file, start the client using the <code class="docutils literal notranslate"><span class="pre">--logfile</span> <span class="pre">&lt;file&gt;</span></code> command,
+where <code class="docutils literal notranslate"><span class="pre">&lt;file&gt;</span></code> is the filename to which you want to save the file.</p></li>
+<li><p>To save to a directory, start the client using the <code class="docutils literal notranslate"><span class="pre">--logdir</span> <span class="pre">&lt;dir&gt;</span></code> command, where <code class="docutils literal notranslate"><span class="pre">&lt;dir&gt;</span></code>
+is an existing directory.</p></li>
+</ol>
+<p>When using the <code class="docutils literal notranslate"><span class="pre">--logdir</span></code> command, each sync run creates a new file. To limit
+the amount of data that accumulates over time, you can specify the
+<code class="docutils literal notranslate"><span class="pre">--logexpire</span> <span class="pre">&lt;hours&gt;</span></code> command. When combined with the <code class="docutils literal notranslate"><span class="pre">--logdir</span></code> command,
+the client automatically erases saved log data in the directory that is older
+than the specified number of hours.</p>
+<p>As an example, to define a test where you keep log data for two days, you can
+issue the following command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">nextcloud</span> <span class="pre">--logdir</span> <span class="pre">/tmp/nextcloud_logs</span> <span class="pre">--logexpire</span> <span class="pre">48</span>
+<span class="pre">`</span></code></p>
+</section>
+<section id="nextcloud-server-log-file">
+<h3>Nextcloud server Log File<a class="headerlink" href="#nextcloud-server-log-file" title="Link to this heading"></a></h3>
+<p>The Nextcloud server also maintains an Nextcloud specific log file. This log file
+must be enabled through the Nextcloud Administration page. On that page, you can
+adjust the log level. We recommend that when setting the log file level that
+you set it to a verbose level like <code class="docutils literal notranslate"><span class="pre">Debug</span></code> or <code class="docutils literal notranslate"><span class="pre">Info</span></code>.</p>
+<p>You can view the server log file using the web interface or you can open it
+directly from the file system in the Nextcloud server data directory.</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Need more information on this.  How is the log file accessed?
+Need to explore procedural steps in access and in saving this file … similar
+to how the log file is managed for the client.  Perhaps it is detailed in the
+Admin Guide and a link should be provided from here.  I will look into that
+when I begin heavily editing the Admin Guide.</p>
+</div>
+</section>
+<section id="webserver-log-files">
+<h3>Webserver Log Files<a class="headerlink" href="#webserver-log-files" title="Link to this heading"></a></h3>
+<p>It can be helpful to view your webserver’s error log file to isolate any
+Nextcloud-related problems. For Apache on Linux, the error logs are typically
+located in the <code class="docutils literal notranslate"><span class="pre">/var/log/apache2</span></code> directory. Some helpful files include the
+following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">error_log</span></code> – Maintains errors associated with PHP code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">access_log</span></code> – Typically records all requests handled by the server; very
+useful as a debugging tool because the log line contains information specific
+to each request and its result.</p></li>
+</ul>
+<p>You can find more information about Apache logging at
+<code class="docutils literal notranslate"><span class="pre">http://httpd.apache.org/docs/current/logs.html</span></code>.</p>
+</section>
+</section>
+<section id="core-dumps">
+<h2>Core Dumps<a class="headerlink" href="#core-dumps" title="Link to this heading"></a></h2>
+<p>On macOS and Linux systems, and in the unlikely event the client software
+crashes, the client is able to write a core dump file.  Obtaining a core dump
+file can assist Nextcloud Customer Support tremendously in the debugging
+process.</p>
+<p>To enable the writing of core dump files, you must define the
+<code class="docutils literal notranslate"><span class="pre">OWNCLOUD_CORE_DUMP</span></code> environment variable on the system.</p>
+<p>For example:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">OWNCLOUD_CORE_DUMP=1</span> <span class="pre">nextcloud</span>
+<span class="pre">`</span></code></p>
+<p>This command starts the client with core dumping enabled and saves the files in
+the current working directory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Core dump files can be fairly large.  Before enabling core dumps on
+your system, ensure that you have enough disk space to accommodate these files.
+Also, due to their size, we strongly recommend that you properly compress any
+core dump files prior to sending them to Nextcloud Customer Support.</p>
+</div>
+</section>
+<section id="citrix-workspace-known-issues">
+<h2>Citrix Workspace known issues<a class="headerlink" href="#citrix-workspace-known-issues" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>These are known issues when running the desktop client in a Citrix workspace:</dt><dd><ul class="simple">
+<li><p>The Windows user’s Roaming profile needs to be persisted between sessions.
+The failure on doing so will result in result in users having to set up their account again in every new session.</p></li>
+<li><p>The user’s synchronization folder also needs to be persisted between sessions.
+The client will throw errors because it can not find the sync folder once the users logs in a new session.</p></li>
+<li><p>Every time the user logs in a Citrix environment, it creates a session with the desktop client and in that session the client will sync the user’s files,
+that can quickly lead to the storage running out of space.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="accountcommand.html" class="btn btn-neutral float-left" title="Command-line Account Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../groupware/index.html" class="btn btn-neutral float-right" title="Groupware" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/admin_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/admin_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

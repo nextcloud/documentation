@@ -1,0 +1,885 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adapting ExApps to HaRP &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/exapp_development/development_overview/ExAppHarpIntegration.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
+
+
+
+
+
+const initStyles = () => {
+    const defaultStyle = document.createElement('style');
+    defaultStyle.textContent = `pre.mermaid {
+    /* Same as .mermaid-container > pre */
+    display: block;
+    width: 100%;
+}
+
+pre.mermaid > svg {
+    /* Same as .mermaid-container > pre > svg */
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}`;
+    document.head.appendChild(defaultStyle);
+
+    const fullscreenStyle = document.createElement('style');
+    fullscreenStyle.textContent = `.mermaid-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.mermaid-container > pre {
+    display: block;
+    width: 100%;
+}
+
+.mermaid-container > pre > svg {
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}
+
+.mermaid-fullscreen-btn {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 95vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-container-fullscreen pre.mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen .mermaid svg {
+    height: 100% !important;
+    width: 100% !important;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}`;
+    document.head.appendChild(fullscreenStyle);
+}
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    // We use a set of heuristics:
+    // 1. Check for common dark mode classes or attributes
+    // 2. Check computed background color brightness
+    if (document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark' ||
+        document.body.classList.contains('dark') ||
+        document.body.getAttribute('data-theme') === 'dark') {
+        // console.log("Dark theme detected via class/attribute");
+        return true;
+    }
+    if (document.documentElement.classList.contains('light') ||
+        document.documentElement.getAttribute('data-theme') === 'light' ||
+        document.body.classList.contains('light') ||
+        document.body.getAttribute('data-theme') === 'light') {
+        // console.log("Light theme detected via class/attribute");
+        return false;
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // console.log("Dark theme detected via prefers-color-scheme");
+        return true;
+    }
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        // console.log("Background color brightness:", brightness);
+        return brightness < 128;
+    }
+    // console.log("No dark or light theme detected, defaulting to light theme");
+    return false;
+};
+
+let darkTheme = isDarkTheme();
+let modal = null;
+let modalContent = null;
+let previousScrollOffset = [window.scrollX, window.scrollY];
+
+const runMermaid = async (rerun) => {
+    console.log("Running mermaid diagrams, rerun =", rerun);
+    // clear all existing mermaid charts
+    let all_mermaids = document.querySelectorAll(".mermaid");
+
+    if (rerun) {
+        all_mermaids.forEach((el) => {
+            if(!el.hasAttribute("data-original-code")) {
+                // store original code
+                // console.log(`Storing original code for first run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+            if(el.getAttribute("data-processed") === "true") {
+                // remove and restore original
+                el.removeAttribute("data-processed");
+                // console.log(`Restoring original code for re-run: `, el.getAttribute('data-original-code'));
+                el.innerHTML = el.getAttribute('data-original-code');
+            } else {
+                // store original code
+                // console.log(`Storing original code for re-run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+        });
+        await mermaid.run();
+    }
+
+    all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if ("False" === "True") {
+        const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
+        if(mermaids_to_add_zoom > 0) {
+            var svgs = d3.selectAll("");
+            if(all_mermaids.length !== mermaids_processed.length) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else if(svgs.size() !== mermaids_to_add_zoom) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else {
+                svgs.each(function() {
+                    var svg = d3.select(this);
+                    svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+                    var inner = svg.select("g");
+                    var zoom = d3.zoom().on("zoom", function(event) {
+                        inner.attr("transform", event.transform);
+                    });
+                    svg.call(zoom);
+                });
+            }
+        }
+    } else if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(() => runMermaid(false), 200);
+        return;
+    }
+
+    // Stop here if not adding fullscreen capability
+    if ("True" !== "True") return;
+
+    if (modal !== null ) {
+        // Destroy existing modal
+        modal.remove();
+        modal = null;
+        modalContent = null;
+    }
+
+    modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = ''
+        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            // Already processed, adjust button class if needed
+            const existingBtn = mermaidDiv.parentNode.querySelector('.mermaid-fullscreen-btn');
+            if (existingBtn) {
+                existingBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+            }
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+        fullscreenBtn.style.opacity = '50%';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            previousScrollOffset = [window.scroll, window.scrollY];
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.sdisplay = 'block';
+
+                if ("False" === "True") {
+                    setTimeout(() => {
+                        const g = svg.querySelector('g');
+                        if (g) {
+                            var svgD3 = d3.select(svg);
+                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
+                            var inner = svgD3.select("g");
+                            var zoom = d3.zoom().on("zoom", function(event) {
+                                inner.attr("transform", event.transform);
+                            });
+                            svgD3.call(zoom);
+                        }
+                    }, 100);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        container.appendChild(fullscreenBtn);
+    });
+};
+
+const load = async () => {
+    initStyles();
+
+    await runMermaid(true);
+
+    const reRunIfThemeChanges = async () => {
+        const newDarkTheme = isDarkTheme();
+        if (newDarkTheme !== darkTheme) {
+            darkTheme = newDarkTheme;
+            console.log("Theme change detected, re-running mermaid with", darkTheme ? "dark" : "default", "theme");
+            await mermaid.initialize(
+                {...JSON.parse(
+                    `{"startOnLoad": false}`
+                ),
+                ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+                }
+            );
+            await runMermaid(true);
+        }
+    };
+
+    // Update theme classes when theme changes
+    const themeObserver = new MutationObserver(reRunIfThemeChanges);
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+};
+
+
+
+
+
+console.log("Initializing mermaid with", darkTheme ? "dark" : "default", "theme");
+mermaid.initialize(
+    {...JSON.parse(
+        `{"startOnLoad": false}`
+    ),
+    ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+    }
+);
+
+window.addEventListener("load", load);
+window.runMermaid = runMermaid;</script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Technical details" href="../tech_details/index.html" />
+    <link rel="prev" title="ExApp lifecycle" href="ExAppLifecycle.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">ExApp development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../DevSetup.html">Setting up dev environment</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Development overview</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ExAppDevelopmentSteps.html">ExApp development</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ExAppOverview.html">ExApp overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ExAppLifecycle.html">ExApp lifecycle</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Adapting ExApps to HaRP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#key-integration-considerations">Key integration considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#steps-needed-to-adapt-an-exapp">Steps needed to adapt an ExApp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-your-exapp-with-a-non-root-user">Running your ExApp with a non-root user</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#integration-test-example">Integration test example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tech_details/index.html">Technical details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/index.html">Frequently Asked Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">ExApp development</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Development overview</a></li>
+      <li class="breadcrumb-item active">Adapting ExApps to HaRP</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/exapp_development/development_overview/ExAppHarpIntegration.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="adapting-exapps-to-harp">
+<h1>Adapting ExApps to HaRP<a class="headerlink" href="#adapting-exapps-to-harp" title="Link to this heading"></a></h1>
+<pre  class="mermaid">
+        graph LR
+  Client[Client] --&gt;|connects| NC[Nextcloud Proxy]
+  NC --&gt;|connects| HaRP[HaRP - FRP proxy]
+  HaRP --&gt;|forwards| ExApp[ExApp container]
+  ExApp --&gt;|runs FRP client| HaRP
+  AppAPI[Nextcloud AppAPI] --&gt;|manage certs| ExApp
+    </pre><section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
+<p>HaRP is a reverse proxy system designed to simplify the deployment workflow
+for Nextcloud 32’s AppAPI.</p>
+<p>It enables direct communication between clients and ExApps, bypassing
+the Nextcloud instance to improve performance and reduce the complexity
+traditionally associated with <cite>DockerSocketProxy</cite> setups.</p>
+<p>HaRP provides an <a class="reference external" href="https://github.com/fatedier/frp">FRP-based</a>
+transport for ExApps and recommends copying
+<a class="reference external" href="https://github.com/nextcloud/HaRP/blob/main/exapps_dev/start.sh">start.sh</a>
+into your ExApp image and using it as the container entrypoint.
+The script installs or starts the FRP client and executes your app process.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We strongly recommend starting support for HaRP in ExApps from the start
+of Nextcloud 32, as the old <a class="reference external" href="https://github.com/nextcloud/docker-socket-proxy">DSP</a>
+way will be deprecated and marked for removal in Nextcloud 35.</p>
+<p>Adding HaRP support is fully compatible with the existing DSP system,
+so you won’t need to maintain two separate release types of your ExApp.</p>
+</div>
+</section>
+<section id="key-integration-considerations">
+<h2>Key integration considerations<a class="headerlink" href="#key-integration-considerations" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Connecting to HaRP with FRPC</strong>: Your ExApp does not need to expose any ports to the host
+or be reachable from the Nextcloud server. The FRP client (<cite>FRPC</cite>) inside your ExApp
+container will create an outbound connection to HaRP, which will proxy
+requests from clients to your ExApp.</p></li>
+<li><p><strong>File permissions</strong>: AppAPI may copy certificate files into the container and
+execute commands inside it. If your container runs the main process as a
+non-root service user, AppAPI’s file writes or execs may fail unless the
+receiving paths are writable/readable by that user.</p></li>
+<li><p><strong>Certs and FRP config</strong>: HaRP expects FRP cert files to be accessible under
+<cite>/certs/frp</cite> (client.crt, client.key, ca.crt). The FRP client configuration
+path used by many example <cite>start.sh</cite> scripts is <cite>/frpc.toml</cite>.</p></li>
+<li><p><strong>Root-only commands</strong>: Some setup steps (for example updating CA bundles with
+<cite>update-ca-certificates</cite>) require root; AppAPI may need to run those using
+<cite>docker exec …</cite> when setting up containers.</p></li>
+</ul>
+</section>
+<section id="steps-needed-to-adapt-an-exapp">
+<h2>Steps needed to adapt an ExApp<a class="headerlink" href="#steps-needed-to-adapt-an-exapp" title="Link to this heading"></a></h2>
+<p>1. Copy the <a class="reference external" href="https://github.com/nextcloud/HaRP/blob/main/exapps_dev/start.sh">start.sh</a>
+script from the exapps_dev folder of the HaRP repository into your Docker image
+(e.g., using a <cite>COPY</cite> instruction).</p>
+<p>2. In your ExApp’s Dockerfile, set the <cite>ENTRYPOINT</cite> to execute <cite>start.sh</cite> followed by
+the <strong>command and arguments required to launch</strong> your actual application. The <cite>start.sh</cite>
+script will launch the FRP client if needed and then use <cite>exec</cite> to
+run the command you provide as arguments.</p>
+<p>3. Ensure the <cite>curl</cite> command-line utility is installed in your ExApp’s Docker image,
+as it’s needed by the following script to download the FRP client.</p>
+<p>4. Add the following lines to your Dockerfile to automatically include the FRP
+client binaries in your Docker image:</p>
+<blockquote>
+<div><div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="c"># Download and install FRP client</span>
+<span class="k">RUN</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-ex<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">ARCH</span><span class="o">=</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ARCH</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aarch64&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span><span class="nv">FRP_URL</span><span class="o">=</span><span class="s2">&quot;https://raw.githubusercontent.com/nextcloud/HaRP/main/exapps_dev/frp_0.61.1_linux_arm64.tar.gz&quot;</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span><span class="nv">FRP_URL</span><span class="o">=</span><span class="s2">&quot;https://raw.githubusercontent.com/nextcloud/HaRP/main/exapps_dev/frp_0.61.1_linux_amd64.tar.gz&quot;</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="k">fi</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Downloading FRP client from </span><span class="nv">$FRP_URL</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>curl<span class="w"> </span>-L<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$FRP_URL</span><span class="s2">&quot;</span><span class="w"> </span>-o<span class="w"> </span>/tmp/frp.tar.gz<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>tar<span class="w"> </span>-C<span class="w"> </span>/tmp<span class="w"> </span>-xzf<span class="w"> </span>/tmp/frp.tar.gz<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>mv<span class="w"> </span>/tmp/frp_0.61.1_linux_*<span class="w"> </span>/tmp/frp<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>cp<span class="w"> </span>/tmp/frp/frpc<span class="w"> </span>/usr/local/bin/frpc<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>chmod<span class="w"> </span>+x<span class="w"> </span>/usr/local/bin/frpc<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span>/tmp/frp<span class="w"> </span>/tmp/frp.tar.gz
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For Alpine 3.21 Linux you can just install FRP from repo using apk add frp command.</p>
+</div>
+</div></blockquote>
+</section>
+<section id="running-your-exapp-with-a-non-root-user">
+<h2>Running your ExApp with a non-root user<a class="headerlink" href="#running-your-exapp-with-a-non-root-user" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In <a class="reference external" href="https://docs.docker.com/build/building/best-practices/#user">Docker Build best practices</a>,
+it is recommended to run application containers as non-root users for security reasons
+whenever possible.</p>
+</div>
+<p>To run the main process as a non-root user while remaining compatible with HaRP and AppAPI,
+ensure the following:</p>
+<ol class="arabic">
+<li><p>Keep image default user as <cite>root</cite>, drop to less privileged service user at runtime.</p>
+<ul class="simple">
+<li><p>Make it easy for AppAPI to perform privileged operations (copying files,
+setting permissions, running <cite>update-ca-certificates</cite>) by leaving the
+container default user as <cite>root</cite> in the image.</p></li>
+<li><p>Drop privileges for the main process in the <cite>ENTRYPOINT</cite> using <cite>gosu</cite>
+or <cite>su-exec</cite> so the runtime process runs as a non-root service user.</p></li>
+</ul>
+<p>Example snippet (Dockerfile):</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.12-alpine</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">app</span>
+
+<span class="k">ARG</span><span class="w"> </span><span class="nv">USER</span><span class="o">=</span>serviceuser
+
+<span class="k">ENV</span><span class="w"> </span><span class="nv">USER</span><span class="o">=</span><span class="nv">$USER</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">HOME</span><span class="o">=</span>/home/<span class="nv">$USER</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">GOSU_VERSION</span><span class="o">=</span><span class="m">1</span>.19
+
+<span class="c"># ... other Dockerfile instructions ..</span>
+
+<span class="c"># Install GOSU</span>
+<span class="k">RUN</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-eux<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="se">\</span>
+<span class="w">  </span>apk<span class="w"> </span>add<span class="w"> </span>--no-cache<span class="w"> </span>--virtual<span class="w"> </span>.gosu-deps<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>ca-certificates<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>dpkg<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gnupg<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="se">\</span>
+<span class="w">  </span><span class="nv">dpkgArch</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F-<span class="w"> </span><span class="s1">&#39;{ print $NF }&#39;</span><span class="k">)</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>wget<span class="w"> </span>-O<span class="w"> </span>/usr/local/bin/gosu<span class="w"> </span><span class="s2">&quot;https://github.com/tianon/gosu/releases/download/</span><span class="nv">$GOSU_VERSION</span><span class="s2">/gosu-</span><span class="nv">$dpkgArch</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>wget<span class="w"> </span>-O<span class="w"> </span>/usr/local/bin/gosu.asc<span class="w"> </span><span class="s2">&quot;https://github.com/tianon/gosu/releases/download/</span><span class="nv">$GOSU_VERSION</span><span class="s2">/gosu-</span><span class="nv">$dpkgArch</span><span class="s2">.asc&quot;</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="se">\</span>
+<span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">GNUPGHOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>mktemp<span class="w"> </span>-d<span class="k">)</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>gpg<span class="w"> </span>--batch<span class="w"> </span>--keyserver<span class="w"> </span>hkps://keys.openpgp.org<span class="w"> </span>--recv-keys<span class="w"> </span>B42F6819007F00F88E364FD4036A9C25BF357DD4<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>gpg<span class="w"> </span>--batch<span class="w"> </span>--verify<span class="w"> </span>/usr/local/bin/gosu.asc<span class="w"> </span>/usr/local/bin/gosu<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>gpgconf<span class="w"> </span>--kill<span class="w"> </span>all<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$GNUPGHOME</span><span class="s2">&quot;</span><span class="w"> </span>/usr/local/bin/gosu.asc<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="se">\</span>
+<span class="w">  </span>apk<span class="w"> </span>del<span class="w"> </span>--no-network<span class="w"> </span>.gosu-deps<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="se">\</span>
+<span class="w">  </span>chmod<span class="w"> </span>+x<span class="w"> </span>/usr/local/bin/gosu
+
+<span class="c"># Use gosu in combination with start.sh</span>
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/bin/sh&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;exec gosu \&quot;$USER\&quot; /start.sh python3 -u main.py&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See the <a class="reference external" href="https://github.com/tianon/gosu/blob/master/INSTALL.md">gosu documentation</a>
+for more details.</p>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Ensure FRP config and cert paths are prepared for the service user</p>
+<ul class="simple">
+<li><p><strong>Create `/frpc.toml`</strong> or the directory that will contain it at image build
+time and set ownership to the service user so at runtime <cite>start.sh</cite> can
+write to it without requiring root.</p></li>
+<li><p><strong>Create directory `/certs/frp`</strong> and make it readable by the service user.
+AppAPI will copy cert files into that folder by using a <cite>docker cp …</cite> command
+with the default container user (which is still <cite>root</cite>). By setting the directory
+owner to the service user, we will ensure the service user can read the certs at runtime.</p></li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<div><p>Use some similar commands in your Dockerfile:</p>
+<blockquote>
+<div><div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">RUN</span><span class="w"> </span>touch<span class="w"> </span>/frpc.toml<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/certs/frp<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>chown<span class="w"> </span><span class="nv">$USER</span>:<span class="nv">$USER</span><span class="w"> </span>/frpc.toml<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>chown<span class="w"> </span>-R<span class="w"> </span><span class="nv">$USER</span>:<span class="nv">$USER</span><span class="w"> </span>/certs/frp<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/frpc.toml
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<p><strong>Putting it all together:</strong></p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.12-alpine</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">app</span>
+
+<span class="k">ARG</span><span class="w"> </span><span class="nv">USER</span><span class="o">=</span>serviceuser
+
+<span class="k">ENV</span><span class="w"> </span><span class="nv">USER</span><span class="o">=</span><span class="nv">$USER</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">HOME</span><span class="o">=</span>/home/<span class="nv">$USER</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">GOSU_VERSION</span><span class="o">=</span><span class="m">1</span>.19
+
+<span class="c"># Install dependencies and create service user. You might want to</span>
+<span class="c"># add additional packages depending on your app requirements.</span>
+<span class="c"># Make sure curl and FRP are installed.</span>
+<span class="k">RUN</span><span class="w"> </span>apk<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>apk<span class="w"> </span>add<span class="w"> </span>--no-cache<span class="w"> </span>curl<span class="w"> </span>frp<span class="w"> </span>ca-certificates<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>adduser<span class="w"> </span>-D<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>touch<span class="w"> </span>/frpc.toml<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/certs/frp<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>chown<span class="w"> </span><span class="nv">$USER</span>:<span class="nv">$USER</span><span class="w"> </span>/frpc.toml<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>chown<span class="w"> </span>-R<span class="w"> </span><span class="nv">$USER</span>:<span class="nv">$USER</span><span class="w"> </span>/certs/frp<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/frpc.toml
+
+<span class="c"># Install GOSU</span>
+<span class="k">RUN</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-eux<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="se">\</span>
+<span class="w">  </span>apk<span class="w"> </span>add<span class="w"> </span>--no-cache<span class="w"> </span>--virtual<span class="w"> </span>.gosu-deps<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>ca-certificates<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>dpkg<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gnupg<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="se">\</span>
+<span class="w">  </span><span class="nv">dpkgArch</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F-<span class="w"> </span><span class="s1">&#39;{ print $NF }&#39;</span><span class="k">)</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>wget<span class="w"> </span>-O<span class="w"> </span>/usr/local/bin/gosu<span class="w"> </span><span class="s2">&quot;https://github.com/tianon/gosu/releases/download/</span><span class="nv">$GOSU_VERSION</span><span class="s2">/gosu-</span><span class="nv">$dpkgArch</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>wget<span class="w"> </span>-O<span class="w"> </span>/usr/local/bin/gosu.asc<span class="w"> </span><span class="s2">&quot;https://github.com/tianon/gosu/releases/download/</span><span class="nv">$GOSU_VERSION</span><span class="s2">/gosu-</span><span class="nv">$dpkgArch</span><span class="s2">.asc&quot;</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="se">\</span>
+<span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">GNUPGHOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>mktemp<span class="w"> </span>-d<span class="k">)</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>gpg<span class="w"> </span>--batch<span class="w"> </span>--keyserver<span class="w"> </span>hkps://keys.openpgp.org<span class="w"> </span>--recv-keys<span class="w"> </span>B42F6819007F00F88E364FD4036A9C25BF357DD4<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>gpg<span class="w"> </span>--batch<span class="w"> </span>--verify<span class="w"> </span>/usr/local/bin/gosu.asc<span class="w"> </span>/usr/local/bin/gosu<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>gpgconf<span class="w"> </span>--kill<span class="w"> </span>all<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$GNUPGHOME</span><span class="s2">&quot;</span><span class="w"> </span>/usr/local/bin/gosu.asc<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="se">\</span>
+<span class="w">  </span>apk<span class="w"> </span>del<span class="w"> </span>--no-network<span class="w"> </span>.gosu-deps<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="se">\</span>
+<span class="w">  </span>chmod<span class="w"> </span>+x<span class="w"> </span>/usr/local/bin/gosu
+
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+
+<span class="c"># Copy your app code</span>
+<span class="k">COPY</span><span class="w"> </span>--chown<span class="o">=</span><span class="nv">$USER</span>:<span class="nv">$USER</span><span class="w"> </span>&lt;files&gt;<span class="w"> </span>.
+
+<span class="c"># Copy the start.sh script and make it executable</span>
+<span class="k">COPY</span><span class="w"> </span>--chown<span class="o">=</span><span class="nv">$USER</span>:<span class="nv">$USER</span><span class="w"> </span>start.sh<span class="w"> </span>/start.sh
+<span class="k">RUN</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/start.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>chown<span class="w"> </span>-R<span class="w"> </span><span class="nv">$USER</span>:<span class="nv">$USER</span><span class="w"> </span>/app<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="c"># Run the start.sh as entrypoint with non-root user and point it to your app</span>
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/bin/sh&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;exec gosu \&quot;$USER\&quot; /start.sh python3 -u main.py&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="integration-test-example">
+<h2>Integration test example<a class="headerlink" href="#integration-test-example" title="Link to this heading"></a></h2>
+<p>An example test suite used to validate HaRP support for an ExApp is available
+in the <cite>workflow_ocr_backend</cite> repository (example commit that added HaRP
+support and tests):</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/R0Wi-DEV/workflow_ocr_backend/blob/f5ae6efb6e4a3307328a188898968abf000511ab/test/test_harp_integration.py">https://github.com/R0Wi-DEV/workflow_ocr_backend/blob/f5ae6efb6e4a3307328a188898968abf000511ab/test/test_harp_integration.py</a></p></li>
+</ul>
+<p>This test demonstrates automated verification of FRP connection and runtime
+behaviour; it can be used as a reference when adding CI checks for HaRP
+compatibility.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ExAppLifecycle.html" class="btn btn-neutral float-left" title="ExApp lifecycle" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../tech_details/index.html" class="btn btn-neutral float-right" title="Technical details" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Apr 02, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

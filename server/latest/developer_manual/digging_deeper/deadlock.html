@@ -1,0 +1,333 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deadlocks &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/digging_deeper/deadlock.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Debugging" href="debugging.html" />
+    <link rel="prev" title="Dashboard" href="dashboard.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/index.html">Config &amp; Preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="context_chat.html">Context Chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="continuous_integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard.html">Dashboard</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Deadlocks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#understanding-the-locking-situation">Understanding the locking situation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mitigations">Mitigations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ignoring-deadlocks">Ignoring deadlocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#retrying-deadlocks">Retrying deadlocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avoiding-deadlocks">Avoiding deadlocks</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files-metadata.html">Files Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupware/index.html">Groupware integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html">HTTP Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="machinetranslation.html">Machine Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oidc.html">OpenID Connect (Oidc)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="out_of_office.html">Out-of-office periods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openmetrics.html">Open Metrics exporter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonenumberutil.html">Phone number util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psr.html">PSR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile.html">Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiler.html">Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">Reference providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_apis.html">REST APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_checks.html">Setup checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snowflake_ids.html">Snowflake IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speech-to-text.html">Speech-To-Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talk.html">Talk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task_processing.html">Task Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_processing.html">Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text2image.html">Text-To-Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status.html">User Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">User migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_host_metadata.html">Web Host Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webdav_collection_preload.html">WebDAV collection preload events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html">Working with time</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Digging deeper</a></li>
+      <li class="breadcrumb-item active">Deadlocks</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/deadlock.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="deadlocks">
+<h1>Deadlocks<a class="headerlink" href="#deadlocks" title="Link to this heading"></a></h1>
+<p>Deadlocks are a classic problem in transactional databases, but <strong>they
+are not dangerous unless they are so frequent that you cannot run
+certain transactions at all</strong>. Normally, you must write your
+applications so that they are always prepared to re-issue a transaction
+if it gets rolled back because of a deadlock.</p>
+<section id="understanding-the-locking-situation">
+<h2>Understanding the locking situation<a class="headerlink" href="#understanding-the-locking-situation" title="Link to this heading"></a></h2>
+<p>MySQL/MariaDB automatically detects transaction deadlocks and rolls back
+a transaction or transactions to break the deadlock. It tries to pick
+small transactions to roll back, where the size of a transaction is
+determined by the number of rows inserted, updated, or deleted.</p>
+<p>In order to fix a deadlock you will need to get an understanding of the
+scenarios where deadlocks occur in your application by analyzing the
+Nextcloud log for patterns in the deadlock errors. The Nextcloud log
+will only show the transaction that was rolled back in this case so in
+order to properly understand the deadlock scenario it is required to
+obtain further information from the database server. By default you can
+find the last detected deadlock in the output of
+<code class="docutils literal notranslate"><span class="pre">SHOW</span> <span class="pre">ENGINE</span> <span class="pre">INNODB</span> <span class="pre">STATUS</span></code> however <code class="docutils literal notranslate"><span class="pre">innodb_print_all_deadlocks</span></code> can
+be used as a setting to write all occurring deadlocks to the server
+logs. Those give detailed insight about which queries are holding a lock
+and are causing the query from Nextcloud to run into a deadlock.</p>
+</section>
+<section id="mitigations">
+<h2>Mitigations<a class="headerlink" href="#mitigations" title="Link to this heading"></a></h2>
+<p>There are basically 3 options on how deadlocks can be handled properly.
+It is not critical for all use case to handle them, however as per
+recommendation of MySQL/MariaDB the application should be prepared to
+handle them properly.</p>
+<section id="ignoring-deadlocks">
+<h3>Ignoring deadlocks<a class="headerlink" href="#ignoring-deadlocks" title="Link to this heading"></a></h3>
+<p>There are some scenarios where a deadlock could be safely ignored, like
+when updating a timestamp that is likely already being updated by
+another concurrent request. In this case developers can catch the
+exception and ignore the failed transaction.</p>
+<ul class="simple">
+<li><p>Potentially useful API wrapper:
+<a class="reference external" href="https://github.com/nextcloud/server/pull/38030">https://github.com/nextcloud/server/pull/38030</a></p></li>
+<li><p>Valid case example: <a class="reference external" href="https://github.com/nextcloud/server/pull/37820">https://github.com/nextcloud/server/pull/37820</a></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>try {
+      // Database transaction that runs into the deadlock
+    $qb-&gt;executeStatement();
+} catch (DbalException $e) {
+      // ignore the failure
+        $this-&gt;logger-&gt;info(&quot;Deadlock detected, but ignored&quot;, [&#39;exception&#39; =&gt; $e]);
+}
+</pre></div>
+</div>
+</section>
+<section id="retrying-deadlocks">
+<h3>Retrying deadlocks<a class="headerlink" href="#retrying-deadlocks" title="Link to this heading"></a></h3>
+<p>In other cases it might be feasible to just retry the specific database
+transactions. In this case the exception needs to be caught and the
+transaction needs to be re-issued. It is recommended to limit the amount
+if retries in case the deadlock occurring regularly. In this case you
+may follow the next section.</p>
+<p>An example how to do that can be found in
+<a class="reference external" href="https://github.com/nextcloud/server/pull/34302">https://github.com/nextcloud/server/pull/34302</a></p>
+<p>Starting with Nextcloud 27 there is also a useful helper method
+<code class="docutils literal notranslate"><span class="pre">atomicRetry</span></code> which makes retrying transactions a lot simpler:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>class MyClass {
+  use \OCP\AppFramework\Db\TTransactional;
+
+  public function myFunction() {
+     $this-&gt;atomicRetry(function() {
+       // Database transaction that runs into the deadlock
+       $qb-&gt;executeStatement();
+     }, $this-&gt;connection, 5);
+  }
+}
+</pre></div>
+</div>
+</section>
+<section id="avoiding-deadlocks">
+<h3>Avoiding deadlocks<a class="headerlink" href="#avoiding-deadlocks" title="Link to this heading"></a></h3>
+<p>While not always possible due to the concurrency that may happen on
+Nextcloud, it might be feasible to refactor logic so that the load of
+concurrent writes to a table or columns is reduced or only one request
+may hold a lock at a table row at the same time.</p>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://dev.mysql.com/doc/refman/8.0/en/innodb-deadlocks.html">https://dev.mysql.com/doc/refman/8.0/en/innodb-deadlocks.html</a></p></li>
+<li><p><a class="reference external" href="https://dev.mysql.com/doc/refman/8.0/en/innodb-deadlocks-handling.html">https://dev.mysql.com/doc/refman/8.0/en/innodb-deadlocks-handling.html</a></p></li>
+<li><p><a class="reference external" href="https://percona.community/blog/2018/09/24/minimize-mysql-deadlocks-3-steps/">https://percona.community/blog/2018/09/24/minimize-mysql-deadlocks-3-steps/</a></p></li>
+<li><p><a class="reference external" href="https://www.percona.com/blog/enable-innodb_print_all_deadlocks-parameter-to-get-all-deadlock-information-in-mysqld-error-log/">https://www.percona.com/blog/enable-innodb_print_all_deadlocks-parameter-to-get-all-deadlock-information-in-mysqld-error-log/</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dashboard.html" class="btn btn-neutral float-left" title="Dashboard" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="debugging.html" class="btn btn-neutral float-right" title="Debugging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Apr 02, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

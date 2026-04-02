@@ -1,0 +1,1341 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="uk-UA" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Використання програми «Пошта &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/groupware/mail.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=e691f3da"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=0958edf7"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Індекс" href="../genindex.html" />
+    <link rel="search" title="Пошук" href="../search.html" />
+    <link rel="next" title="Налаштування повідомлень поза офісом" href="absence.html" />
+    <link rel="prev" title="Використання програми «Календар" href="calendar.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Вступ до посібника користувача Nextcloud (latest)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Інтерфейс веб-версії Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Файли та синхронізація</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Програмне забезпечення для групової роботи</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Використання програми «Контакти</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Використання програми «Календар</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Використання програми «Пошта</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#managing-your-mail-account">Керування поштовим акаунтом</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#switch-layout">Розташування вимикачів</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#use-compact-mode">Use Compact Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#message-display-operation-mode">Відображення повідомлень / Режим роботи</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-new-mail-account">Додайте новий поштовий акаунт</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#change-sort-order">Змінити порядок сортування</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sort-favorites-up">Sort favorites up</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scheduled-messages">Повідомлення за розкладом</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#priority-inbox">Пріоритетні вхідні</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#all-inboxes">Всі вхідні</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#account-settings">Налаштування облікового запису</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#move-messages-to-junk-folder">Перемістити повідомлення до папки «Спам</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#refresh-mailbox">Refresh mailbox</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unified-search">Unified search</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search-in-mailbox">Пошук у поштовій скриньці</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#advanced-search-in-mailbox">Розширений пошук у поштовій скриньці</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enable-mail-body-search">Увімкнути пошук по тілу листа</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#account-delegation">Делегування рахунку</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automatic-trash-deletion">Автоматичне видалення сміття</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#compose-messages">Складання повідомлень</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#minimize-the-composer-modal">Мінімізація модальності композитора</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#recipient-info-on-composer">Інформація про одержувача про композитора</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mention-contacts">Вказати контакти</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#text-blocks">Текстові блоки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#outbox">Вихідні</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mailbox-actions">Дії в поштовій скриньці</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-mailbox">Додати поштову скриньку</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-submailbox">Додати підпоштову скриньку</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shared-mailbox">Спільна поштова скринька</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#envelope-actions">Конвертні дії</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-an-event">Створити подію</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-task">Створіть завдання</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-tags">Редагування тегів</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#change-color-for-tags">Змінити колір для тегів</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete-tags">Видалення тегів</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ai-summary">Резюме ШІ</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#quick-actions">Quick actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#message-actions">Дії з повідомленнями</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#unsubscribe-from-a-mailing-list">Відмовитися від розсилки</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#snooze">Засинай.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#smart-replies">Розумні відповіді</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mail-translation">Переклад пошти</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#thread-summary">Короткий зміст теми</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filtering-and-autoresponder">Фільтрація та автовідповідач</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autoresponders">Автовідповідачі</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filter">Фільтри</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-filter-from-a-message">Створіть фільтр з повідомлення</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#follow-up-reminders">Нагадування про подальші дії</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#security">Безпека</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#phishing-detection">Виявлення фішингу</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#internal-addresses">Внутрішні адреси</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dashboard-integration">Інтеграція з панеллю інструментів</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calendar-integration">Calendar integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#meeting-invitations">Meeting invitations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#meeting-invitation-automation">Meeting invitation automation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#keyboard-shortcuts">Keyboard shortcuts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">Налаштування повідомлень поза офісом</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Синхронізація з Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">Синхронізація з iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">Синхронізація з MacOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Синхронізація з Thunderbird</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Синхронізація з KDE Kontact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Синхронізація з робочим столом GNOME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Синхронізація з Windows 10</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Розмови</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Десктопні клієнти</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Налаштуйте ваші вподобання</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Універсальний доступ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Використання двофакторної аутентифікації</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Керуйте підключеними браузерами та пристроями</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Зовнішнє сховище</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Програмне забезпечення для групової роботи</a></li>
+      <li class="breadcrumb-item active">Використання програми «Пошта</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/mail.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-mail-app">
+<h1>Використання програми «Пошта<a class="headerlink" href="#using-the-mail-app" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Додаток «Пошта» за замовчуванням встановлюється з Nextcloud Hub, але його можна вимкнути. Будь ласка, запитайте про це у свого адміністратора.</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/mail.png" src="../../_images/mail.png" />
+</figure>
+<section id="managing-your-mail-account">
+<h2>Керування поштовим акаунтом<a class="headerlink" href="#managing-your-mail-account" title="Link to this heading"></a></h2>
+<section id="switch-layout">
+<h3>Розташування вимикачів<a class="headerlink" href="#switch-layout" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.6.</span></p>
+</div>
+<ol class="arabic simple">
+<li><p>Відвідайте налаштування пошти</p></li>
+<li><p>Виберіть між <em>Список</em>, <em>Вертикальне розділення</em> та <em>Горизонтальне розділення</em>.</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/mail_layout.png" src="../../_images/mail_layout.png" />
+</figure>
+</section>
+<section id="use-compact-mode">
+<h3>Use Compact Mode<a class="headerlink" href="#use-compact-mode" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.7.0.</span></p>
+</div>
+<p>Compact mode offers a cleaner and more efficient way to view your messages. Avatars are hidden, selection checkboxes are always visible, and the preview of messages is removed. It saves space allowing you to see more emails at once.</p>
+<ol class="arabic simple">
+<li><p>Visit the mail settings</p></li>
+<li><p>Go to <strong>Appearance</strong></p></li>
+<li><p>Toggle the Compact Mode</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/use-compact-mode.png" src="../../_images/use-compact-mode.png" />
+</figure>
+</section>
+<section id="message-display-operation-mode">
+<h3>Відображення повідомлень / Режим роботи<a class="headerlink" href="#message-display-operation-mode" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.2.</span></p>
+</div>
+<p>Пошта має можливість перемикатися між двома різними режимами перегляду та роботи з повідомленнями: <em>потоковий</em> та <em>одиночний</em>.</p>
+<p>У режимі <em>Потокові</em> повідомлення групуються за темою розмови. У списку повідомлень поштової скриньки пов’язані повідомлення об’єднуються у стос, тож відображається лише останнє повідомлення, а всі пов’язані повідомлення показуються на панелі повідомлень після того, як вибрано повідомлення, що об’єднано у стос. Це корисно для відстеження дискусій і розуміння контексту відповідей. У цьому режимі операції над повідомленнями, такі як переміщення і видалення, застосовуються до всієї теми, тобто, коли ви переміщуєте або видаляєте тему, це впливає на всі повідомлення в цій темі.</p>
+<p>У режимі <em>Одиночка</em> повідомлення відображаються окремо, як у списку повідомлень поштової скриньки, так і на панелі відображення повідомлень, а такі операції, як переміщення і видалення, застосовуються лише до вибраного повідомлення. Цей режим корисний, коли ви хочете керувати повідомленнями окремо, не впливаючи на всю розмову.</p>
+<ol class="arabic simple">
+<li><p>Відвідайте налаштування пошти</p></li>
+<li><p>Вибирайте між <em>Різьблені</em>, <em>Одинарні</em></p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/mail_display-mode.png" src="../../_images/mail_display-mode.png" />
+</figure>
+</section>
+<section id="add-a-new-mail-account">
+<h3>Додайте новий поштовий акаунт<a class="headerlink" href="#add-a-new-mail-account" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Увімкнути поштову програму з додатків</p></li>
+<li><p>Натисніть на іконку пошти в заголовку</p></li>
+<li><p>Заповніть форму входу (автоматично або вручну)</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/new-mail-account.png" src="../../_images/new-mail-account.png" />
+</figure>
+</section>
+<section id="change-sort-order">
+<h3>Змінити порядок сортування<a class="headerlink" href="#change-sort-order" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5.</span></p>
+</div>
+<ol class="arabic simple">
+<li><p>Відвідайте налаштування пошти</p></li>
+<li><p>Перейдіть до <em>Сортування</em>.</p></li>
+<li><p>Ви можете вибрати спочатку <em>старіші</em> або <em>нові</em> листи</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Ця зміна буде застосована до всіх ваших акаунтів і поштових скриньок</p>
+</div>
+</section>
+<section id="sort-favorites-up">
+<h3>Sort favorites up<a class="headerlink" href="#sort-favorites-up" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.7: </span>Nextcloud 31 or newer</p>
+</div>
+<p>This setting allows you to show messages set as favorite in a separate section on top of the message list.</p>
+<ol class="arabic simple">
+<li><p>Відвідайте налаштування пошти</p></li>
+<li><p>Go to <em>Appearance</em></p></li>
+<li><p>Enable sorting favorites up</p></li>
+</ol>
+</section>
+<section id="scheduled-messages">
+<span id="mail-scheduled-messages"></span><h3>Повідомлення за розкладом<a class="headerlink" href="#scheduled-messages" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Натисніть кнопку «Нове повідомлення» у верхньому лівому куті екрана</p></li>
+<li><p>Клацніть меню дій (…) на модальному композиторі</p></li>
+<li><p>Натисніть <em>відправити пізніше</em>.</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/scheduled-msg.png" src="../../_images/scheduled-msg.png" />
+</figure>
+</section>
+<section id="priority-inbox">
+<h3>Пріоритетні вхідні<a class="headerlink" href="#priority-inbox" title="Link to this heading"></a></h3>
+<p>Пріоритетні вхідні мають 2 розділи <em>Важливі</em> та <em>Інші</em>. Повідомлення будуть автоматично позначені як важливі на основі того, з якими повідомленнями ви взаємодіяли або позначили їх як важливі. На початку вам, можливо, доведеться вручну змінювати важливість, щоб навчити систему, але з часом вона буде покращуватися.</p>
+<p>The automatic classification is optional. You can opt-out when setting up an account. The classification can also be turned on and off in the account settings at any time.</p>
+<figure class="align-default">
+<img alt="../../_images/priority-inbox.png" src="../../_images/priority-inbox.png" />
+</figure>
+</section>
+<section id="all-inboxes">
+<h3>Всі вхідні<a class="headerlink" href="#all-inboxes" title="Link to this heading"></a></h3>
+<p>Тут будуть показані всі повідомлення з усіх облікових записів, в які ви увійшли, в хронологічному порядку.</p>
+</section>
+<section id="account-settings">
+<span id="mail-account-settings"></span><h3>Налаштування облікового запису<a class="headerlink" href="#account-settings" title="Link to this heading"></a></h3>
+<p>Налаштування вашого облікового запису, такі як:</p>
+<ol class="arabic simple">
+<li><p>Псевдоніми</p></li>
+<li><p>Підпис</p></li>
+<li><p>Папки за замовчуванням</p></li>
+<li><p>Автовідповідач</p></li>
+<li><p>Надійні відправники</p></li>
+<li><p>..і не тільки</p></li>
+</ol>
+<p>Знаходиться в меню дій поштового акаунта. Там ви можете редагувати, додавати або видаляти налаштування залежно від ваших потреб.</p>
+</section>
+<section id="move-messages-to-junk-folder">
+<h3>Перемістити повідомлення до папки «Спам<a class="headerlink" href="#move-messages-to-junk-folder" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<p>Пошта може перемістити повідомлення до іншої папки, якщо його позначено як спам.</p>
+<ol class="arabic simple">
+<li><p>Відвідайте налаштування облікового запису</p></li>
+<li><p>Перейдіть до папок за замовчуванням</p></li>
+<li><p>Переконайтеся, що для небажаних повідомлень вибрано папку</p></li>
+<li><p>Перейдіть до налаштувань Небажане</p></li>
+<li><p>Натисніть Перемістити повідомлення до папки «Небажані</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/mail_move-message-to-junk-folder.png" src="../../_images/mail_move-message-to-junk-folder.png" />
+</figure>
+</section>
+<section id="refresh-mailbox">
+<h3>Refresh mailbox<a class="headerlink" href="#refresh-mailbox" title="Link to this heading"></a></h3>
+<p>You can manually trigger a sync of your mailbox by clicking the refresh button located at the top of the mailbox list.
+Starting from <code class="docutils literal notranslate"><span class="pre">version</span> <span class="pre">5.7</span></code> triggering the sync will also refresh the list of folders for the selected account.</p>
+</section>
+<section id="unified-search">
+<h3>Unified search<a class="headerlink" href="#unified-search" title="Link to this heading"></a></h3>
+<p>The Mail app integrates with Nextcloud’s <a class="reference internal" href="../webinterface.html#id1"><span class="std std-ref">unified search</span></a>
+feature (see <a class="reference internal" href="../webinterface.html"><span class="doc">Інтерфейс веб-версії Nextcloud</span></a> for details). You can search for emails across
+all your accounts using the search bar in the Nextcloud header.</p>
+<p>Mail searches email subjects and sender/recipient fields. To search email bodies,
+use the mailbox search feature in the app.</p>
+</section>
+<section id="search-in-mailbox">
+<h3>Пошук у поштовій скриньці<a class="headerlink" href="#search-in-mailbox" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 2.1.</span></p>
+</div>
+<p>У верхній частині списку конвертів у будь-якому макеті листа є ярлик поля пошуку для пошуку теми листа. Починаючи з <code class="docutils literal notranslate"><span class="pre">версії</span> <span class="pre">3.7</span></code>, цей ярлик за замовчуванням дозволяє шукати за темою, одержувачем (кому) або відправником (від).</p>
+</section>
+<section id="advanced-search-in-mailbox">
+<h3>Розширений пошук у поштовій скриньці<a class="headerlink" href="#advanced-search-in-mailbox" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<p>Ви можете отримати доступ до нашого розширеного пошуку за допомогою модального вікна, розташованого в кінці ярлика пошуку.</p>
+</section>
+<section id="enable-mail-body-search">
+<h3>Увімкнути пошук по тілу листа<a class="headerlink" href="#enable-mail-body-search" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5.</span></p>
+</div>
+<p>Тепер можна шукати в тілі листа, ця функція доступна за бажанням через потенційні проблеми з продуктивністю.</p>
+<p>Щоб увімкнути його:</p>
+<ol class="arabic simple">
+<li><p>Відвідайте налаштування облікового запису</p></li>
+<li><p>Перейти до пошуку поштових скриньок</p></li>
+<li><p>Увімкнути пошук по тілу листа</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Попередження</p>
+<p>Якщо ви хочете увімкнути цю функцію для об’єднаних поштових скриньок, вам потрібно зробити це в налаштуваннях пошти</p>
+</div>
+<p>Увімкнувши цю опцію, основне вікно пошуку тепер буде шукати як в темах, так і в тілах листів, а в розширеному пошуку з’явиться окрема опція <em>Тіло</em>.</p>
+</section>
+<section id="account-delegation">
+<h3>Делегування рахунку<a class="headerlink" href="#account-delegation" title="Link to this heading"></a></h3>
+<p>Додаток дозволяє делегувати акаунти, щоб один користувач міг надсилати електронні листи з адреси іншого.</p>
+<ol class="arabic simple">
+<li><p>Делегування має бути налаштоване на поштовому сервері адміністратором</p></li>
+<li><p>Додайте іншу адресу електронної пошти як псевдонім для власного облікового запису</p></li>
+<li><p>Надсилаючи імейл, виберіть псевдонім як відправника</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Попередження</p>
+<p>Надісланий імейл може бути невидимим для оригінального акаунта, якщо він зберігається у вашій особистій поштовій скриньці <em>Відправлені</em>.</p>
+</div>
+</section>
+<section id="automatic-trash-deletion">
+<h3>Автоматичне видалення сміття<a class="headerlink" href="#automatic-trash-deletion" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<p>Програма «Пошта» може автоматично видаляти повідомлення в папці «Смітник» через певну кількість днів.</p>
+<ol class="arabic simple">
+<li><p>Відвідайте налаштування облікового запису</p></li>
+<li><p>Перейдіть до Автоматичне видалення сміття</p></li>
+<li><p>Введіть кількість днів, через яку повідомлення мають бути видалені</p></li>
+</ol>
+<p>Вимкніть збереження сміття, залишивши поле порожнім або встановивши значення 0.</p>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Оброблятимуться лише листи, видалені після увімкнення фільтрації сміття.</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/mail_trash_retention_settings.png" src="../../_images/mail_trash_retention_settings.png" />
+</figure>
+</section>
+</section>
+<section id="compose-messages">
+<h2>Складання повідомлень<a class="headerlink" href="#compose-messages" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Натисніть нове повідомлення у верхньому лівому куті екрана</p></li>
+<li><p>Почніть писати своє повідомлення</p></li>
+</ol>
+<section id="minimize-the-composer-modal">
+<h3>Мінімізація модальності композитора<a class="headerlink" href="#minimize-the-composer-modal" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.2.</span></p>
+</div>
+<p>Модальне вікно редактора можна згорнути під час написання нового повідомлення, редагування існуючого чернетки або повідомлення з папки «Вихідні». Просто натисніть кнопку згорнути у верхньому правому куті модального вікна або натисніть будь-де за межами модального вікна.</p>
+<figure class="align-default">
+<img alt="../../_images/mail-minimize-composer.png" src="../../_images/mail-minimize-composer.png" />
+</figure>
+<p>Ви можете відновити згорнуте повідомлення, натиснувши в будь-якому місці на індикатор у правому нижньому куті екрана.</p>
+<figure class="align-default">
+<img alt="../../_images/mail-composer-indicator.png" src="../../_images/mail-composer-indicator.png" />
+</figure>
+<p>Натисніть кнопку «Закрити» на модальному вікні або індикатор у правому нижньому куті, щоб припинити редагування повідомлення. Чернетка буде автоматично збережена у вашій папці чернеток.</p>
+</section>
+</section>
+<section id="recipient-info-on-composer">
+<h2>Інформація про одержувача про композитора<a class="headerlink" href="#recipient-info-on-composer" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.2.</span></p>
+</div>
+<p>Коли ви додаєте першого одержувача або контакт у полі «Кому», з’являється права панель, що відображає збережені дані профілю цього контакту. При додаванні другого контакту список згорнеться, і ви зможете вибрати і розгорнути будь-який доданий вами контакт, щоб переглянути його дані. Якщо ви бажаєте зосередитися виключно на написанні тексту в композиторі, ви можете приховати праву панель, натиснувши іконку розгортання у верхньому правому куті. Щоб знову відобразити праву панель, просто натисніть іконку згортання в тому ж місці.</p>
+</section>
+<section id="mention-contacts">
+<h2>Вказати контакти<a class="headerlink" href="#mention-contacts" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.2.</span></p>
+</div>
+<p>Ви можете вказати контакти у своєму повідомленні, набравши <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> і вибравши контакт зі списку. При цьому контакт буде автоматично додано до списку одержувачів.</p>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Будуть запропоновані лише контакти з дійсною адресою електронної пошти.</p>
+</div>
+</section>
+<section id="text-blocks">
+<h2>Текстові блоки<a class="headerlink" href="#text-blocks" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.2.</span></p>
+</div>
+<p>Текстові блоки — це заздалегідь визначені фрагменти тексту, які можна вставляти в електронні листи. Їх можна створювати та керувати ними в налаштуваннях пошти. Їх можна вставляти в редактор, набравши «!» і вибравши блок зі списку або з дій редактора. Текстові блоки можна ділитися з користувачами та групами користувачів.</p>
+</section>
+<section id="outbox">
+<h2>Вихідні<a class="headerlink" href="#outbox" title="Link to this heading"></a></h2>
+<p>Після того, як повідомлення було створено і натиснуто кнопку «Відправити», воно додається до скриньки «Вихідні», яку можна знайти в нижньому лівому кутку лівої бічної панелі.</p>
+<p>Ви також можете встановити дату і час відправлення на певний момент у майбутньому (див. <a class="reference internal" href="#mail-scheduled-messages"><span class="std std-ref">Заплановані повідомлення</span></a>) - повідомлення буде зберігатися у папці «Вхідні» до тих пір, поки не настане обрана вами дата і час, після чого воно буде надіслано автоматично.</p>
+<p>Вхідні повідомлення відображаються лише тоді, коли в ній є повідомлення, що очікують на обробку.</p>
+<p>Ви можете повторно відкрити композитор для повідомлення у поштовій скриньці в будь-який час до того, як буде виконано операцію «відправити».</p>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Якщо під час надсилання виникає помилка, можливі три повідомлення про помилку:</p>
+<dl class="simple">
+<dt>Не вдалося скопіювати до поштової скриньки «Відправлені»</dt><dd><p>Лист було надіслано, але його не вдалося скопіювати до скриньки «Надіслані». Ця помилка буде оброблена вихідною скринькою, і операцію копіювання буде повторено.</p>
+</dd>
+<dt>Помилка поштового сервера</dt><dd><p>Відправлення було невдалим із станом, який можна повторити (наприклад, не вдалося зв’язатися з SMTP-сервером). Поштова скринька спробує надіслати повідомлення ще раз.</p>
+</dd>
+<dt>Повідомлення не вдалося відправити</dt><dd><p>Відправлення могло не відбутися, а могло і не відбутися. Поштовий сервер не може повідомити нам про стан повідомлення. Оскільки програма Пошта не має можливості визначити стан повідомлення (надіслано чи не надіслано), воно залишиться у скриньці «Вхідні», а користувач акаунта має вирішити, як діяти далі.</p>
+</dd>
+</dl>
+</div>
+</section>
+<section id="mailbox-actions">
+<h2>Дії в поштовій скриньці<a class="headerlink" href="#mailbox-actions" title="Link to this heading"></a></h2>
+<section id="add-a-mailbox">
+<h3>Додати поштову скриньку<a class="headerlink" href="#add-a-mailbox" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Відкрийте меню дій облікового запису</p></li>
+<li><p>Натисніть додати поштову скриньку</p></li>
+</ol>
+</section>
+<section id="add-a-submailbox">
+<h3>Додати підпоштову скриньку<a class="headerlink" href="#add-a-submailbox" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Відкрийте меню дій поштової скриньки</p></li>
+<li><p>Натисніть додати підскриньку</p></li>
+</ol>
+</section>
+<section id="shared-mailbox">
+<h3>Спільна поштова скринька<a class="headerlink" href="#shared-mailbox" title="Link to this heading"></a></h3>
+<p>Якщо до поштової скриньки було надано спільний доступ з певними правами, ця скринька відображатиметься як нова скринька зі значком спільного доступу, як показано нижче:</p>
+<figure class="align-default">
+<img alt="../../_images/shared-mailbox-icon.png" src="../../_images/shared-mailbox-icon.png" />
+</figure>
+</section>
+</section>
+<section id="envelope-actions">
+<h2>Конвертні дії<a class="headerlink" href="#envelope-actions" title="Link to this heading"></a></h2>
+<section id="create-an-event">
+<h3>Створити подію<a class="headerlink" href="#create-an-event" title="Link to this heading"></a></h3>
+<p>Створіть подію для певного повідомлення/теми безпосередньо через поштову програму</p>
+<ol class="arabic simple">
+<li><p>Відкрийте меню дій конверта</p></li>
+<li><p>Натисніть <em>Більше дій</em>.</p></li>
+<li><p>Натисніть <em>Створити подію</em>.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Назва події та порядок денний створюються для вас, якщо адміністратор увімкнув цю функцію.</p>
+</div>
+</section>
+<section id="create-a-task">
+<h3>Створіть завдання<a class="headerlink" href="#create-a-task" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.2.</span></p>
+</div>
+<p>Створіть завдання для певного повідомлення/теми безпосередньо через поштову програму</p>
+<ol class="arabic simple">
+<li><p>Відкрийте меню дій конверта</p></li>
+<li><p>Натисніть <em>більше дій</em>.</p></li>
+<li><p>Натисніть <em>створити завдання</em>.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Завдання зберігаються у підтримуваних календарях. Якщо сумісного календаря немає, ви можете створити новий за допомогою програми <a class="reference internal" href="calendar.html#calendar-app"><span class="std std-ref">calendar</span></a>.</p>
+</div>
+</section>
+<section id="edit-tags">
+<h3>Редагування тегів<a class="headerlink" href="#edit-tags" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Відкрийте меню дій конверта</p></li>
+<li><p>Натисніть <em>Редагувати теги</em>.</p></li>
+<li><p>У модальному режимі тегів, встановлення/зняття тегів</p></li>
+</ol>
+</section>
+<section id="change-color-for-tags">
+<h3>Змінити колір для тегів<a class="headerlink" href="#change-color-for-tags" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5.</span></p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/change-tag-color.png" src="../../_images/change-tag-color.png" />
+</figure>
+<p>При створенні тегу автоматично обирається випадковий колір. Після збереження тегу ви можете гнучко налаштувати його колір відповідно до своїх уподобань. Цю функцію можна знайти в меню модальних дій тегу.</p>
+</section>
+<section id="delete-tags">
+<h3>Видалення тегів<a class="headerlink" href="#delete-tags" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5.</span></p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/delete-tag.png" src="../../_images/delete-tag.png" />
+</figure>
+<p>Тепер у вас є можливість видаляти теги, які ви створили раніше. Щоб отримати доступ до цієї функції:</p>
+<ol class="arabic simple">
+<li><p>Відкрийте меню дій конверта/теми.</p></li>
+<li><p>Виберіть Редагувати теги.</p></li>
+<li><p>У модальному вікні тегів відкрийте меню дій для конкретного тегу, який ви хочете видалити.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Зверніть увагу, що теги за замовчуванням, такі як Work, To do, Personal і Later, не можна видалити, їх можна лише перейменувати.</p>
+</div>
+</section>
+<section id="ai-summary">
+<h3>Резюме ШІ<a class="headerlink" href="#ai-summary" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.2.</span></p>
+</div>
+<p>Переглядаючи свою поштову скриньку, ви побачите короткий підсумок ваших листів, згенерований штучним інтелектом, у вигляді попереднього перегляду.</p>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Зверніть увагу, що ця функція має бути ввімкнена адміністратором</p>
+</div>
+</section>
+</section>
+<section id="quick-actions">
+<h2>Quick actions<a class="headerlink" href="#quick-actions" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.5: </span>(Nextcloud 30)</p>
+</div>
+<p>Allows you to group action steps that you would normally perform on envelopes such as tagging, moving, marking as read … into quick actions that can be executed with a single click.
+Quick actions are scoped to one mail account and can be created and managed in the mail settings under «Quick actions» or directly from the envelope action menu.</p>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Some action steps such as <cite>Mark as spam</cite>, <cite>Move thread</cite> and <cite>Delete thread</cite> are mutually exclusive and cannot be part of the same quick action, they also can’t be re-ordered and will always be executed last.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Please note that quick actions will be performed on all messages in a thread when executed on one.</p>
+</div>
+</section>
+<section id="message-actions">
+<h2>Дії з повідомленнями<a class="headerlink" href="#message-actions" title="Link to this heading"></a></h2>
+<section id="unsubscribe-from-a-mailing-list">
+<h3>Відмовитися від розсилки<a class="headerlink" href="#unsubscribe-from-a-mailing-list" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.1.</span></p>
+</div>
+<p>Деякі списки розсилки та інформаційні бюлетені дозволяють легко відписатися від них. Якщо програма «Пошта» виявить повідомлення від такого відправника, вона покаже кнопку <em>Відписатися</em> поруч з інформацією про відправника. Натисніть і підтвердіть, щоб відписатися від списку.</p>
+</section>
+<section id="snooze">
+<h3>Засинай.<a class="headerlink" href="#snooze" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<p>Відкладення повідомлення або теми переміщує їх до спеціальної поштової скриньки, доки не настане вибрана дата відкладення, після чого повідомлення або тему буде повернуто до початкової поштової скриньки.</p>
+<ol class="arabic simple">
+<li><p>Відкрити меню дій конверта або нитки</p></li>
+<li><p>Натисніть <em>Спящий режим</em>.</p></li>
+<li><p>Виберіть, як довго повідомлення або тему буде відкладено в режимі очікування</p></li>
+</ol>
+</section>
+<section id="smart-replies">
+<h3>Розумні відповіді<a class="headerlink" href="#smart-replies" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.6.</span></p>
+</div>
+<p>Коли ви відкриваєте повідомлення у програмі «Пошта», вона пропонує відповіді, згенеровані штучним інтелектом. Якщо просто натиснути на запропоновану відповідь, відкриється композитор з попередньо заповненою відповіддю.</p>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Зверніть увагу, що ця функція має бути ввімкнена адміністратором</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Підтримувані мови залежать від використовуваної великої мовної моделі</p>
+</div>
+</section>
+<section id="mail-translation">
+<h3>Переклад пошти<a class="headerlink" href="#mail-translation" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.2.</span></p>
+</div>
+<p>Ви можете перекладати повідомлення на налаштовані вами мови так само, як і в програмі Talk.</p>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Зверніть увагу, що на сервері мають бути ввімкнені функції перекладу</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Починаючи з версії 5.3, якщо адміністратор увімкнув LLM, будуть пропонуватися переклади.</p>
+</div>
+</section>
+</section>
+<section id="thread-summary">
+<h2>Короткий зміст теми<a class="headerlink" href="#thread-summary" title="Link to this heading"></a></h2>
+<p>Поштова програма підтримує підсумовування потоків повідомлень, які містять 3 або більше повідомлень.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Зверніть увагу, що ця функція має бути ввімкнена адміністратором</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Зверніть увагу, що ця функція добре працює лише з integration_openai. Локальні LLM занадто довго відповідають, і запит на зведення, швидше за все, закінчиться в тайм-ауті, що все одно створить значне навантаження на систему.</p>
+</div>
+</section>
+<section id="filtering-and-autoresponder">
+<h2>Фільтрація та автовідповідач<a class="headerlink" href="#filtering-and-autoresponder" title="Link to this heading"></a></h2>
+<p>У додатку «Пошта» є редактор скриптів Sieve, інтерфейс для налаштування автовідповідачів та інтерфейс для налаштування фільтрів. Sieve має бути увімкнено у налаштуваннях акаунта <a class="reference internal" href="#mail-account-settings"><span class="std std-ref">аккаунта</span></a>.</p>
+<section id="autoresponders">
+<h3>Автовідповідачі<a class="headerlink" href="#autoresponders" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5: </span>Автовідповідач може слідувати налаштуванням системи.</p>
+</div>
+<p>Автовідповідач за замовчуванням вимкнено. Його можна ввімкнути вручну або слідувати системним налаштуванням. Дотримання системних налаштувань означає, що повідомлення про тривалу відсутність, введене на сторінці <a class="reference internal" href="absence.html#groupware-absence"><span class="std std-ref">Налаштування відсутності</span></a>, буде застосовуватися автоматично.</p>
+</section>
+<section id="filter">
+<h3>Фільтри<a class="headerlink" href="#filter" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.1.</span></p>
+</div>
+<p>Mail 4.1 містить простий редактор для налаштування правил фільтрації.</p>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Імпорт існуючих фільтрів не підтримується. Проте, всі існуючі фільтри залишаться активними і незмінними.  Ми рекомендуємо створити резервну копію вашого поточного скрипта за допомогою редактора скриптів Sieve як запобіжний захід.</p>
+</div>
+<section id="how-to-add-a-new-filter">
+<h4>Як додати новий фільтр<a class="headerlink" href="#how-to-add-a-new-filter" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Відкрийте налаштування свого облікового запису.</p></li>
+<li><p>Переконайтеся, що Sieve увімкнено для вашого облікового запису (див. налаштування сервера Sieve).</p></li>
+<li><p>Натисніть на «Фільтри».</p></li>
+<li><p>Виберіть Новий фільтр, щоб створити нове правило.</p></li>
+</ol>
+</section>
+<section id="how-to-delete-a-filter">
+<h4>Як видалити фільтр<a class="headerlink" href="#how-to-delete-a-filter" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Відкрийте налаштування свого облікового запису.</p></li>
+<li><p>Переконайтеся, що Sieve увімкнено для вашого облікового запису (див. налаштування сервера Sieve).</p></li>
+<li><p>Натисніть на «Фільтри».</p></li>
+<li><p>Наведіть курсор на фільтр, який ви хочете видалити, а потім натисніть значок кошика.</p></li>
+</ol>
+</section>
+<section id="conditions">
+<h4>Умови<a class="headerlink" href="#conditions" title="Link to this heading"></a></h4>
+<p>Умови застосовуються до вхідних імейлів на вашому поштовому сервері до таких полів, як Тема, Відправник та Отримувач. Ви можете використовувати наступні оператори для визначення умов для цих полів:</p>
+<ul class="simple">
+<li><p><a href="#id1"><span class="problematic" id="id2">**</span></a>Точнісінько: Точний збіг. Поле має бути ідентичним наданому значенню.</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">**</span></a>міститься в цьому рядку: Збіг підрядка. Поле збігається, якщо вказане значення міститься в ньому. Наприклад, «report» буде відповідати «port».</p></li>
+<li><p><strong>співпадіння</strong>: Збіг шаблону з використанням підстановочних знаків. Символ «*» представляє будь-яку кількість символів (включаючи жодного), тоді як «?» представляє рівно один символ. Наприклад, «<em>report</em>» буде відповідати «Бізнес-звіт 2024».</p></li>
+</ul>
+</section>
+<section id="actions">
+<h4>Дії<a class="headerlink" href="#actions" title="Link to this heading"></a></h4>
+<p>Дії запускаються, коли вказані тести є істинними. Доступні наступні дії:</p>
+<ul class="simple">
+<li><p><strong>fileinto</strong>: Переміщує повідомлення до вказаної теки.</p></li>
+<li><p><strong>addflag</strong>: Додає прапорець до повідомлення.</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">**</span></a>стоп: Зупиняє виконання скрипта фільтра. Після цієї дії подальші фільтри не будуть оброблятися.</p></li>
+</ul>
+</section>
+</section>
+<section id="create-a-filter-from-a-message">
+<h3>Створіть фільтр з повідомлення<a class="headerlink" href="#create-a-filter-from-a-message" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.2.</span></p>
+</div>
+<p>Щоб створити фільтр з певного повідомлення, відкрийте це повідомлення, а потім відкрийте меню, натиснувши на три крапки. Далі натисніть «Інші дії», а потім «Створити поштовий фільтр».</p>
+<p>У діалоговому вікні, будь ласка, виберіть умови, яким мають відповідати вхідні повідомлення, і продовжте, натиснувши «Створити поштовий фільтр».</p>
+<figure class="align-default">
+<img alt="../../_images/mail_create_filter_from_message.png" src="../../_images/mail_create_filter_from_message.png" />
+</figure>
+</section>
+</section>
+<section id="follow-up-reminders">
+<h2>Нагадування про подальші дії<a class="headerlink" href="#follow-up-reminders" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.0.</span></p>
+</div>
+<p>Додаток «Пошта» автоматично нагадає вам, якщо вихідний лист не отримав відповіді. Кожен надісланий лист буде проаналізовано штучним інтелектом, щоб перевірити, чи очікується відповідь. Через чотири дні всі відповідні листи з’являться у вашій пріоритетній поштовій скриньці.</p>
+<p>При натисканні на такий імейл буде показана кнопка для швидкого переходу до всіх одержувачів. Також є можливість відключити нагадування для відправленого листа.</p>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Зверніть увагу, що ця функція має бути ввімкнена адміністратором.</p>
+</div>
+</section>
+<section id="security">
+<h2>Безпека<a class="headerlink" href="#security" title="Link to this heading"></a></h2>
+<section id="phishing-detection">
+<h3>Виявлення фішингу<a class="headerlink" href="#phishing-detection" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.0.</span></p>
+</div>
+<p>Додаток «Пошта» перевірятиме потенційні спроби фішингу і показуватиме користувачеві попередження.</p>
+<p>Перевірка відбувається наступним чином:</p>
+<ul class="simple">
+<li><p>Адреса відправника, збережена в адресній книзі, не збігається з адресою в поштовому акаунті</p></li>
+<li><p>Відправник використовує власну адресу електронної пошти, яка не збігається з адресою відправника</p></li>
+<li><p>Дата відправлення встановлюється в майбутньому</p></li>
+<li><p>Посилання в тілі повідомлення не вказують на текст, що відображається</p></li>
+<li><p>Адреса відповіді не збігається з адресою відправника</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>Зверніть увагу, що це попередження не означає, що повідомлення є спробою фішингу. Воно лише означає, що програма «Пошта» виявила потенційну спробу фішингу.</p>
+</div>
+</section>
+<section id="internal-addresses">
+<h3>Внутрішні адреси<a class="headerlink" href="#internal-addresses" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.0.</span></p>
+</div>
+<p>Додаток «Пошта» дозволяє додавати внутрішні адреси та домени, а також попереджає користувача, якщо адреса відсутня у списку, під час надсилання та отримання повідомлення.</p>
+<p>Щоб додати внутрішню адресу:</p>
+<ol class="arabic simple">
+<li><p>Відкрийте налаштування пошти</p></li>
+<li><p>Перейдіть до розділу Конфіденційність та безпека</p></li>
+<li><p>Увімкніть внутрішні адреси, натиснувши на прапорець</p></li>
+<li><p>Натисніть кнопку Додати внутрішню адресу</p></li>
+<li><p>Введіть адресу або домен і натисніть Додати</p></li>
+</ol>
+</section>
+</section>
+<section id="dashboard-integration">
+<h2>Інтеграція з панеллю інструментів<a class="headerlink" href="#dashboard-integration" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 1.8.</span></p>
+</div>
+<p>Поштова програма пропонує два віджети, призначені для інтеграції з панеллю управління Nextcloud:</p>
+<ul class="simple">
+<li><p>Непрочитані листи: Цей віджет відображає непрочитані електронні листи.</p></li>
+<li><p>Важливі листи: цей віджет показує листи, які були позначені як важливі.</p></li>
+</ul>
+<p>Ці віджети використовують електронні листи з електронних поштових скриньок, які налаштовані для вашого облікового запису.</p>
+</section>
+<section id="calendar-integration">
+<h2>Calendar integration<a class="headerlink" href="#calendar-integration" title="Link to this heading"></a></h2>
+<p>The Mail app integrates with the Calendar app to help you manage meeting invitations and keep your calendar up to date.</p>
+<section id="meeting-invitations">
+<h3>Meeting invitations<a class="headerlink" href="#meeting-invitations" title="Link to this heading"></a></h3>
+<p>When you receive a message containing a meeting invitation, the Mail app automatically detects the attached calendar file and displays a formatted action section to help you respond.</p>
+<p>You can:</p>
+<ul class="simple">
+<li><p><strong>Accept</strong> the invitation</p></li>
+<li><p><strong>Decline</strong> the invitation</p></li>
+<li><p><strong>Tentatively accept</strong> the invitation</p></li>
+</ul>
+<p>Your response is sent directly from the Mail app, and the event is added to your primary calendar accordingly.</p>
+<p>You can also manually add a meeting invitation to a specific calendar:</p>
+<ol class="arabic simple">
+<li><p>Open the message with the meeting invitation</p></li>
+<li><p>Scroll to the bottom of the message to the attachments section</p></li>
+<li><p>Select the calendar file (usually with a .ics extension), then click the three dots menu.</p></li>
+<li><p>Click «Import in to calendar» and choose the desired calendar.</p></li>
+</ol>
+</section>
+<section id="meeting-invitation-automation">
+<h3>Meeting invitation automation<a class="headerlink" href="#meeting-invitation-automation" title="Link to this heading"></a></h3>
+<p>When a meeting organizer sends updates to an existing event (such as time changes or location updates), the Mail app processes these automatically and updates the corresponding event in your calendar.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.7: </span>(Nextcloud 32 or newer)</p>
+</div>
+<p>You can also configure Mail to automatically add all new meeting invitations to your calendar without requiring manual acceptance. The invitations will be added to the calendar as tentative.</p>
+<p>To enable this feature:</p>
+<ol class="arabic simple">
+<li><p>Visit account settings of a specific mail account</p></li>
+<li><p>Navigate to Calendar settings section</p></li>
+<li><p>Enable <em>Automatically create tentative appointments in calendar</em></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>With this setting enabled, invitations will still appear in your mail list, but they will be automatically added to your calendar.</p>
+</div>
+</section>
+</section>
+<section id="keyboard-shortcuts">
+<h2>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Link to this heading"></a></h2>
+<p>The Mail app implements several keyboard shortcuts to speed up your experience.</p>
+<p>For a full list of the supported shortcuts, check out the Mail settings in your instance.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="calendar.html" class="btn btn-neutral float-left" title="Використання програми «Календар" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="absence.html" class="btn btn-neutral float-right" title="Налаштування повідомлень поза офісом" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 uk-UA
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Мови</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Версії</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Завантаження</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Прочитайте документацію</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Головна Проєкту</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Побудови</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

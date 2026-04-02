@@ -1,0 +1,718 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ar" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using server-side encryption &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/files/encrypting_files.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=403a031f"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=87cb2081"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="بحث" href="../search.html" />
+    <link rel="next" title="Using end-to-end encryption" href="using_e2ee.html" />
+    <link rel="prev" title="المُزامَنة مع سطح المكتب و الهواتف" href="desktop_mobile_sync.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">نكست كلاود nextcloud الإصدار latest دليل المستخدم - المُقدِّمة</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">واجهة وب نكست كلاود The Nextcloud Web interface</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">الملفات &amp; التزامن</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">الوصول إلى ملفاتك باستخدام واجهة ويب نكست كلاود</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">الوصول إلى ملفات نكست كلاود باستعمال WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">إدارة الملفات المحذوفة</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">المُزامَنة مع سطح المكتب و الهواتف</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using server-side encryption</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#encryption-faq">الأسئلة الشائعة حول التشفير</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-can-encryption-be-disabled">كيف يمكن تعطيل التشفير؟</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-possible-to-disable-encryption-with-the-recovery-key">هل من الممكن تعطيل التشفير باستخدام مفتاح الاسترداد  recovery key؟</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#can-encryption-be-disabled-without-the-user-s-password">هل يمكن تعطيل التشفير بدون كلمة مرور المستخدم؟</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">هل من المخطط نقل هذا إلى تسجيل دخول المستخدم التالي أو وظيفة الخلفية؟</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-group-sharing-possible-with-the-recovery-key">هل مشاركة المجموعة ممكنة باستخدام مفتاح الاسترداد؟</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-encryption">استعمال التشفير</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-encrypted-files">مشاركة الملفات المشفرة</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#recovery-key-password">كلمة مرور مفاتيح الاسترداد</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#files-not-encrypted">الملفات غير مشفر</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#change-private-key-password">قم بتغيير كلمة مرور المفتاح الخاص private key password</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">مشاركة الملفات</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">مشاركات اتحادية</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">تمكين عمليات رفع مجهولة</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">رفع ملفات كبيرة</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">الحصة التخزينية Storage quota</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">إدارة النُّسَخ Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">المشاريع Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">نقل المِلْكِيَّة</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">إستعمال المشاركات الاتحادية Federated Shares</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">أدوات العمل التعاوني Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">&quot;المحادثة&quot; Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">تعيين تفضيلاتك</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">&quot;الوصول للجميع&quot; universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">استخدام التحقُّق المُثنَّى من الهُوِيَّة  two-factor authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">إدارة المتصفحات والأجهزة المتصلة</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">التخزين الخارجي</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">الملفات &amp; التزامن</a></li>
+      <li class="breadcrumb-item active">Using server-side encryption</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/encrypting_files.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-server-side-encryption">
+<h1>Using server-side encryption<a class="headerlink" href="#using-server-side-encryption" title="Link to this heading"></a></h1>
+<p>Nextcloud includes a server-side encryption app, and when it is enabled by
+your Nextcloud administrator all of your Nextcloud data files are automatically
+encrypted on the server.
+Encryption is server-wide, so when it is enabled you cannot choose to keep your
+files unencrypted. You don't have to do anything special, as it uses your
+Nextcloud login as the password for your unique private encryption key. Just log
+out and in and manage and share your files as you normally do, and you can
+still change your password whenever you want.</p>
+<p>الغرض الرئيسي منه هو تشفير الملفات على وحدات التخزين القصيّة remote المتصلة بخادوم نكست كلاود خاصتك. يمكنك مشاركة ملفاتك القصيّة من خلال نكست كلاود بالطريقة المعتادة؛ ولكن لا يمكنك مشاركة ملفاتك المشفرة مباشرة من الخدمة القصيّة التي تستخدمها؛ لأن مفاتيح التشفير مخزنة على خادوم نكست كلاود خاصّتك و لا يتم إظهارها أبدًا لمقدمي الخدمة الخارجيين.</p>
+<p>إذا لم يكن خادوم نكست كلاود خاصّتك متصلاً بأي خدمات تخزين قصيّة remote، فمن الأفضل استخدام بعض أشكال التشفير الأخرى مثل التشفير على مستوى الملف أو تشفير القرص بالكامل. نظرًا لأنه يتم الاحتفاظ بالمفاتيح على خاددوم نكست كلاود خاصّتك، فمن الممكن لمشرف نكست كلاود عندك أن يتطفل على ملفاتك. كما أنه إذا ما تمكن أحدٌ ما من اختراق الخادوم، فقد يتمكن هذا الدخيل من الوصول إلى ملفاتك. (لمعرفة المزيد، اقرأ <a href="#id1"><span class="problematic" id="id2">`</span></a>التشفير في Nextcloud &lt;<a class="reference external" href="https://nextcloud.com/blog/encryption-in-nextcloud/">https://nextcloud.com/blog/encryption-in-nextcloud/</a>&gt; <a href="#id3"><span class="problematic" id="id4">`</span></a>_.)</p>
+<section id="encryption-faq">
+<h2>الأسئلة الشائعة حول التشفير<a class="headerlink" href="#encryption-faq" title="Link to this heading"></a></h2>
+<section id="how-can-encryption-be-disabled">
+<h3>كيف يمكن تعطيل التشفير؟<a class="headerlink" href="#how-can-encryption-be-disabled" title="Link to this heading"></a></h3>
+<p>الطريقة الوحيدة لتعطيل التشفير هي تشغيل الأمر السطري: &quot;decrypt all&quot; &lt;<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label</a>&gt;`_، والذي يقوم بفك تشفير جميع الملفات وتعطيل التشفير.</p>
+</section>
+<section id="is-it-possible-to-disable-encryption-with-the-recovery-key">
+<h3>هل من الممكن تعطيل التشفير باستخدام مفتاح الاسترداد  recovery key؟<a class="headerlink" href="#is-it-possible-to-disable-encryption-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>نعم، <em>إذا</em> استخدم كل مستخدم مفتاح استرداد الملف file recovery keyـ  &lt;<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys</a>&gt;`_،  &quot;decrypt all&quot; &lt;<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label</a>&gt;`_ فسوف يستخدمه لفك تشفير جميع الملفات.</p>
+</section>
+<section id="can-encryption-be-disabled-without-the-user-s-password">
+<h3>هل يمكن تعطيل التشفير بدون كلمة مرور المستخدم؟<a class="headerlink" href="#can-encryption-be-disabled-without-the-user-s-password" title="Link to this heading"></a></h3>
+<p>إذا لم يكن لديك كلمة مرور المستخدمين أو <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">مفتاح استرداد الملف file recovery key ـ</a>، فلا توجد طريقة لفك تشفير جميع الملفات. علاوة على ذلك، فإن تشغيله عند تسجيل الدخول سيكون أمراً خطيراً، لأنه من المرجح استنفاد المهل الزمنية.</p>
+</section>
+<section id="is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">
+<h3>هل من المخطط نقل هذا إلى تسجيل دخول المستخدم التالي أو وظيفة الخلفية؟<a class="headerlink" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job" title="Link to this heading"></a></h3>
+<p>إذا فعلنا ذلك، فسنحتاج إلى تخزين كلمة المرور لتسجيل دخولك في قاعدة البيانات. قد يُنظر إلى هذا على أنه مشكلة أمنية؛ لذلك لم يتم التخطيط لأي شيء من هذا القبيل.</p>
+</section>
+<section id="is-group-sharing-possible-with-the-recovery-key">
+<h3>هل مشاركة المجموعة ممكنة باستخدام مفتاح الاسترداد؟<a class="headerlink" href="#is-group-sharing-possible-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>إذا كنت تقصد إضافة مستخدمين إلى مجموعات وجعلها تعمل بطريقة سحرية؟ لا ، هذا يعمل فقط مع المفتاح الرئيسي.</p>
+</section>
+</section>
+<section id="using-encryption">
+<h2>استعمال التشفير<a class="headerlink" href="#using-encryption" title="Link to this heading"></a></h2>
+<p>يتم تعيين تشفير نكست كلاود إلى حد كبير و نسيانه؛ و لكن لديك بعض الخيارات التي يمكنك استخدامها.</p>
+<p>عندما يقوم مشرف نكست كلاود عندك بتمكين التشفير للمرة الأولى، يجب عليك أن تخرج ثم تدخل من جديد لإنشاء مفتاحك للتشفير و لتشفير ملفاتك. عند تمكين التشفير على خادومك، سوف ترى شريطاً أصفر على صفحة الملفات يدعوك للخروج ثم الدخول.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption1.png" src="../../_images/encryption1.png" />
+</figure>
+<p>عندما تدخل مجدّداً، سوف تستغرق بضع دائماً لتعمل، و ذلك بحسب عدد الملفات التي لديك، و ستعود إلى صفحتك التلقائية على نكست كلاود.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption2.png" src="../../_images/encryption2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">ملاحظة</p>
+<p>يجب ألا تفقد كلمة مرور نكست كلاود أباً، لأنك ستفقد الوصول إلى ملفاتك أبداً كذلك. على الرغم من وجود خيار استرداد اختياري قد يقوم مشرف نكست كلاود بتمكينه. راجع قسم &quot;كلمة مرور مفاتيح الاسترداد&quot; Recovery Key Password (أدناه) للتعرف على هذا.</p>
+</div>
+</section>
+<section id="sharing-encrypted-files">
+<h2>مشاركة الملفات المشفرة<a class="headerlink" href="#sharing-encrypted-files" title="Link to this heading"></a></h2>
+<p>المستخدمون الذين لديهم مفاتيح تشفير خاصة وحدهم يمكنهم الوصول إلى الملفات والمجلدات المشفرة المشتركة. لن يتمكن المستخدمون الذين لم يُنشئوا مفاتيح التشفير الخاصة بهم من الوصول إلى الملفات المشتركة المشفرة. سيرون المجلدات و أسماء الملفات، لكن لن يتمكنوا من فتح الملفات أو تنزيلها. سيرون لافتة تحذير صفراء تقول &quot;تمّ تمكين تطبيق التشفير و لكن لم يتم تهيئة مفاتيحك الخاصة. يرجى تسجيل الخروج ثم تسجيل الدخول مرة أخرى.&quot;</p>
+<p>قد يحتاج مالكو المشاركة إلى إعادة مشاركة الملفات بعد تمكين التشفير. سيرى المستخدمون الذين يحاولون الوصول إلى المشاركة رسالة تنصحهم بمطالبة مالك المشاركة بإعادة مشاركة الملف معهم. بالنسبة للمشاركات الفردية، قم بإلغاء مشاركة الملف و إعادة مشاركته. بالنسبة لمشاركات المجموعة، شارك مع الأشخاص الذين لم يعد بإمكانهم الوصول إلى المشاركة. يقوم هذا بتحديث التشفير. و من ثَمّ يُمكن لمالك المشاركة إزالة المشاركات الفردية.</p>
+<section id="recovery-key-password">
+<h3>كلمة مرور مفاتيح الاسترداد<a class="headerlink" href="#recovery-key-password" title="Link to this heading"></a></h3>
+<p>إذا قام مشرف نكست كلاود عندك بتمكين ميزة مفتاح الاسترداد، فيمكنك اختيار استعمال هذه الميزة لحسابك. إذا قمت بتمكين &quot;استعادة كلمة المرور Password recovery&quot;، سيمكن للمشرف قراءة بياناتك بكلمة مرور خاصة. تتيح هذه الميزة للمشرف استعادة ملفاتك في حالة فقدك لكلمة مرورك للدخول إلى نكست كلاود. إذا لم يتم تمكين مفتاح الاسترداد، فلا توجد طريقة لاستعادة ملفاتك إذا فَقَدتَ كلمة مرور تسجيل الدخول الخاصة بك.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption3.png" src="../../_images/encryption3.png" />
+</figure>
+</section>
+</section>
+<section id="files-not-encrypted">
+<h2>الملفات غير مشفر<a class="headerlink" href="#files-not-encrypted" title="Link to this heading"></a></h2>
+<p>فقط البيانات في ملفك تم تشفيرها؛ و ليس أسماء الملفات أو هيكلية المجلدات. هذه الملفات لا تُشفَّر  مطلقاً:</p>
+<ul class="simple">
+<li><p>الملفات القديمة في سلة المهملات.</p></li>
+<li><p>الصورة المصغرة thumnails من معرِض الصِّوَر</p></li>
+<li><p>المعاينات من تطبيق الملفات</p></li>
+<li><p>فهرسة البحث search index في تطبيق البحث النصي الشامل full text search app.</p></li>
+<li><p>بيانات التطبيقات الخارجية</p></li>
+</ul>
+<p>يمكن فقط تشفير الملفات التي تتم مشاركتها مع مزوِّدِي التخزين التابعين لجهات خارجية، وقد لا يتم تشفير بقية الملفات.</p>
+<section id="change-private-key-password">
+<h3>قم بتغيير كلمة مرور المفتاح الخاص private key password<a class="headerlink" href="#change-private-key-password" title="Link to this heading"></a></h3>
+<p>يتوفر هذا الخيار فقط إذا لم يغير المشرف كلمة مرور التشفير encryption password؛ و لكن فقط كلمة مرور تسجيل الدخول. يمكن أن يحدث هذا إذا كان مزود نكست كلاود خاصّتك يستعمل واجهة مستخدم خارجية (على سبيل المثال: LDAP) و قام بتغيير كلمة مرور تسجيل الدخول باستخدام هذا التكوين الخلفي. في هذه الحالة، يمكنك تعيين كلمة مرور التشفير على كلمة مرور تسجيل الدخول الجديدة من خلال توفير كلمة مرور تسجيل الدخول القديمة و الجديدة. لا يعمل تطبيق التشفير إلا إذا كانت كلمة مرور تسجيل الدخول و كلمة مرور التشفير متطابقتان.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-left" title="المُزامَنة مع سطح المكتب و الهواتف" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="using_e2ee.html" class="btn btn-neutral float-right" title="Using end-to-end encryption" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 Arabic
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Languages</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ الإصدارات</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>التحميل</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>قراءة دليل الارشادات</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">الصفحة الرئيسية للمشروع</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">الملفات التنفيذية المبنية builds</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

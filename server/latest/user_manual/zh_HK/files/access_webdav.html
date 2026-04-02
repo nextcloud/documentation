@@ -1,0 +1,1125 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-HK" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>透過 WebDAV 協定存取 Nextcloud 上的檔案 &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/files/access_webdav.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=05269ba6"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=11dc2623"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="管理已删除的檔案" href="deleted_file_management.html" />
+    <link rel="prev" title="使用 Nextcloud 網頁介面存取您的檔案" href="access_webgui.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest 用戶手冊介紹</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud Web 介面</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">檔案與同步</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">使用 Nextcloud 網頁介面存取您的檔案</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">透過 WebDAV 協定存取 Nextcloud 上的檔案</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#official-nextcloud-desktop-and-mobile-clients">官方 Nextcloud 桌面和流動客戶端</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#third-party-webdav-clients">第三方 WebDAV 客戶端</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-linux">使用 Linux 存取檔案</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nautilus-file-manager">Nautilus 檔案管理器</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-with-kde-and-dolphin-file-manager">使用 KDE 和 Dolphin 檔案管理器存取檔案</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">在 Linux 指令行中創建 WebDAV 挂載</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues">已知問題</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#problem">問題</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution">解決方案</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">問題</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">解決方案</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-macos">使用 macOS 存取檔案</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-microsoft-windows">使用 Microsoft Windows 存取檔案</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-the-command-line">使用命令行映射驅動器</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-windows-explorer">使用 Windows 檔案總管映射驅動器</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-cyberduck">使用 Cyberduck 存取檔案</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-public-shares-over-webdav">通過 WebDAV 存取公共共享</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-problems">已知問題</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">問題</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-1">解決方案 1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-2">解決方案 2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">問題</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">解決方案</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">問題</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#answer">回答</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">問題</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">解決方案</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">問題</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">解決方案</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-curl">使用 cURL 存取檔案</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-winscp">使用 WinSCP 存取檔案</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">管理已删除的檔案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">桌面電腦和移動設備同步</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Using server-side encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">檔案共享</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">聯邦共享</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">進行匿名上傳</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">大型檔案上傳</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">存儲配額</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">版本控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">項目</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">轉移擁有權</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">使用聯邦共享</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">桌面客戶端</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">設置您的偏好</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">普遍存取</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">使用雙重身份驗證</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">管理已連接的瀏覽器和裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">外置儲存</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">檔案與同步</a></li>
+      <li class="breadcrumb-item active">透過 WebDAV 協定存取 Nextcloud 上的檔案</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webdav.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="accessing-nextcloud-files-using-webdav">
+<h1>透過 WebDAV 協定存取 Nextcloud 上的檔案<a class="headerlink" href="#accessing-nextcloud-files-using-webdav" title="Link to this heading"></a></h1>
+<p>Nextcloud 完全支援 WebDAV 協定，您可以通過 WebDAV 連接和同步 Nextcloud 檔案。在本章中，您將學習如何將 Linux、macOS、Windows 和流動裝置連接到您的 Nextcloud 伺服器。</p>
+<p>WebDAV 代表分散式創作及版本控制。它是一種 HTTP 擴展，便於創建、閱讀和編輯托管在遠端 Web 伺服器上的檔案。使用 WebDAV 客戶端您可以像存取任何遠端網絡共享一樣，在 Linux、macOS 和 Windows 上存取您的 Nextcloud 檔案（包括共享），並保持同步。</p>
+<p>在我們開始配置 WebDAV 之前，讓我們快速看一下將客戶端設備連接到 Nextcloud 的推薦方式。</p>
+<section id="official-nextcloud-desktop-and-mobile-clients">
+<h2>官方 Nextcloud 桌面和流動客戶端<a class="headerlink" href="#official-nextcloud-desktop-and-mobile-clients" title="Link to this heading"></a></h2>
+<p>推薦將電腦與 Nextcloud 伺服器同步的方式是使用 <a class="reference external" href="https://nextcloud.com/install/#install-clients">官方 Nextcloud 同步客戶端</a>。您可以配置客戶端將檔案保存在任何本地目錄中，並選擇要與之同步的 Nextcloud 伺服器上的目錄。客戶端顯示當前的連接狀態並記錄所有活動，因此您始終知道哪些遠端檔案已下載到您的 PC，並可以驗證在近端 PC 上創建和更新的檔案是否與伺服器正確同步。</p>
+<p>推薦將 Android 和 Apple iOS 設備同步的方式是使用 <a class="reference external" href="https://nextcloud.com/install/">官方 Nextcloud 流動應用程式</a>。</p>
+<p>要將官方 Nextcloud 應用程式連接到 Nextcloud 伺服器，請使用您在網頁瀏覽器中存取 Nextcloud 時使用的相同 URL，例如:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+</div>
+<p>如果 Nextcloud 安裝在名為 &quot;nextcloud&quot; 的子目錄中：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</section>
+<section id="third-party-webdav-clients">
+<h2>第三方 WebDAV 客戶端<a class="headerlink" href="#third-party-webdav-clients" title="Link to this heading"></a></h2>
+<p>如果您願意，您也可以使用任何支持 WebDAV 協議的第三方客戶端（包括可能內建於您的操作系統中的客戶端）將電腦連接到您的 Nextcloud 伺服器。</p>
+<p>您還可以使用支持 WebDAV 的第三方應用程式將流動裝置連接到 Nextcloud。</p>
+<p>使用第三方客戶端時，請注意，它們可能未針對 Nextcloud 進行優化，或未實現您認為對您的使用案例重要的功能。</p>
+<p>Nextcloud 社區成員報告使用的流動客戶端包括：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://foldersync.io/">FolderSync (Android)</a></p></li>
+<li><p><a class="reference external" href="https://apps.apple.com/us/app/webdav-navigator/id382551345">WebDAV Navigator (iPhone)</a></p></li>
+</ul>
+<p>用於配置第三方應用程式以連接到 Nextcloud 的 URL 比官方客戶端的 URL 稍長:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>如果 Nextcloud 安裝在名為 &quot;nextcloud&quot; 的子目錄中：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>使用第三方 WebDAV 客戶端（包括您的操作系統內建的客戶端）時，您應使用應用程式密碼登錄，而不是常規密碼。此外，改進的安全性使得這 <cite>顯著提高了性能 &lt;https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151&gt;_</cite>。要配置應用程式密碼，請登錄 Nextcloud 網頁介面，點擊右上角的頭像，然後選擇 <em>個人設定</em>。然後在左側邊欄中選擇 <em>安全性</em>，向下滾動到最底部。在那裡，您可以創建應用程式密碼（未來也可以撤銷，而無需更改主用戶密碼）。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>在以下示例中，您應將 <strong>example.com/nextcloud</strong> 替換為您的 Nextcloud 伺服器的 URL（如果安裝在您的域根目錄中，請省略目錄部分），並將 <strong>USERNAME</strong> 替換為連接用戶的用戶名。</p>
+<p>See the WebDAV URL, to be found in Files Settings -&gt; WebDAV in the Files on your Nextcloud account.</p>
+<img alt="Screenshot of the Files settings showing the personal WebDAV link" src="../../_images/webdav_link.png" />
+</div>
+</section>
+<section id="accessing-files-using-linux">
+<h2>使用 Linux 存取檔案<a class="headerlink" href="#accessing-files-using-linux" title="Link to this heading"></a></h2>
+<p>您可以使用以下方法在 Linux 操作系統中存取檔案。</p>
+<section id="nautilus-file-manager">
+<h3>Nautilus 檔案管理器<a class="headerlink" href="#nautilus-file-manager" title="Link to this heading"></a></h3>
+<p><strong>當您在</strong> <a class="reference external" href="../groupware/sync_gnome.html">GNOME 控制中心</a> 中配置您的 Nextcloud 帳戶時，<strong>您的檔案將自動被 Nautilus 作為 WebDAV 共享掛載，除非您取消選擇檔案存取</strong>。</p>
+<p>您還可以手動掛載您的 Nextcloud 檔案。使用 <code class="docutils literal notranslate"><span class="pre">davs://</span></code> 協議將 Nautilus 檔案管理器連接到您的 Nextcloud 共享:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">davs</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果您的伺服器連接未加密 HTTPS，則使用 <code class="docutils literal notranslate"><span class="pre">dav://</span></code> 而不是 <code class="docutils literal notranslate"><span class="pre">davs://</span></code>：</p>
+</div>
+<img alt="配置 Nautilus 檔案管理器使用 WebDAV 的截圖" src="../../_images/webdav_gnome3_nautilus.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>相同的方法適用於使用 GVFS 的其他檔案管理器，如 MATE 的 Caja 和 Cinnamon 的 Nemo。</p>
+</div>
+</section>
+<section id="accessing-files-with-kde-and-dolphin-file-manager">
+<h3>使用 KDE 和 Dolphin 檔案管理器存取檔案<a class="headerlink" href="#accessing-files-with-kde-and-dolphin-file-manager" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>前往系統設定 -&gt; 網絡 -&gt; 在線帳戶</p></li>
+<li><p>點擊 &quot;添加帳戶...&quot;</p></li>
+<li><p>點擊 Nextcloud</p></li>
+<li><p>輸入您的伺服器地址</p></li>
+<li><p>按照螢幕上的指示登錄</p></li>
+<li><p>登錄後，確保在「用此帳戶做什麼」部分啟用「儲存」</p></li>
+<li><p>現在您可以在 Dolphin 的側邊欄的「網絡」中存取您的檔案</p></li>
+<li><p>(非強制的) 要將其作為側邊欄的快捷方式，右鍵單擊「Nextcloud 存儲」，然後選擇「添加到位置」</p></li>
+<li><p>(非強制的) 要自定義快捷方式，右鍵單擊側邊欄中的快捷方式，然後選擇「編輯...」，隨意自定義圖標和標籤</p></li>
+</ol>
+</section>
+</section>
+<section id="creating-webdav-mounts-on-the-linux-command-line">
+<h2>在 Linux 指令行中創建 WebDAV 挂載<a class="headerlink" href="#creating-webdav-mounts-on-the-linux-command-line" title="Link to this heading"></a></h2>
+<p>您可以從 Linux 指令行創建 WebDAV 挂載。如果您希望以與其他遠端檔案系統挂載相同的方式存取 Nextcloud，這將非常有用。以下示例顯示了如何創建個人挂載，並在每次登入到 Linux 電腦時自動掛載。</p>
+<ol class="arabic">
+<li><p>安裝 <code class="docutils literal notranslate"><span class="pre">davfs2</span></code> WebDAV 檔案系統驅動程序，這允許您像其他任何遠程檔案系統一樣掛載 WebDAV 共享。使用此命令在 Debian/Ubuntu 上安裝它:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>使用此命令在 CentOS、Fedora 和 openSUSE 上安裝它:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>將自己添加到 <code class="docutils literal notranslate"><span class="pre">davfs2</span></code> 組:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usermod</span> <span class="o">-</span><span class="n">aG</span> <span class="n">davfs2</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>然後在您的主目錄中創建一個 <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code> 目錄作為掛載點，並為您的個人配置檔案創建 <code class="docutils literal notranslate"><span class="pre">.davfs2/</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">~/</span><span class="n">nextcloud</span>
+<span class="n">mkdir</span> <span class="o">~/.</span><span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>將 <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/secrets</span></code> 複製到 <code class="docutils literal notranslate"><span class="pre">~/.davfs2</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span>  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+</pre></div>
+</div>
+</li>
+<li><p>將自己設置為所有者，並將權限設置為僅限讀寫所有者:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chown</span> <span class="o">&lt;</span><span class="n">linux_username</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">linux_username</span><span class="o">&gt;</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+<span class="n">chmod</span> <span class="mi">600</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+</pre></div>
+</div>
+</li>
+<li><p>將您的 Nextcloud 登錄憑據添加到 <code class="docutils literal notranslate"><span class="pre">secrets</span></code> 檔案的末尾，使用您的 Nextcloud 伺服器 URL 和您的 Nextcloud 用戶名及密碼:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/ &lt;username&gt; &lt;password&gt;
+or
+$PathToMountPoint $USERNAME $PASSWORD
+for example
+/home/user/nextcloud john 1234
+</pre></div>
+</div>
+</li>
+<li><p>將掛載資訊添加到 <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">linux_username</span><span class="o">&gt;/</span><span class="n">nextcloud</span> <span class="n">davfs</span> <span class="n">user</span><span class="p">,</span><span class="n">rw</span><span class="p">,</span><span class="n">auto</span> <span class="mi">0</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</li>
+<li><p>然後通過運行以下命令測試它是否正常掛載和身份驗證。如果您正確設置，則不需要根權限:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mount</span> <span class="o">~/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</li>
+<li><p>您也應該能夠卸載它:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">umount</span> <span class="o">~/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>現在，每次登錄到您的 Linux 系統時，您的 Nextcloud 共享應該會自動通過 WebDAV 在您的 <code class="docutils literal notranslate"><span class="pre">~/nextcloud</span></code> 目錄中掛載。如果您希望手動掛載，請在 <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code> 中將 <code class="docutils literal notranslate"><span class="pre">auto</span></code> 更改為 <code class="docutils literal notranslate"><span class="pre">noauto</span></code>。</p>
+</section>
+<section id="known-issues">
+<h2>已知問題<a class="headerlink" href="#known-issues" title="Link to this heading"></a></h2>
+<section id="problem">
+<h3>問題<a class="headerlink" href="#problem" title="Link to this heading"></a></h3>
+<p>資源暫時不可用</p>
+</section>
+<section id="solution">
+<h3>解決方案<a class="headerlink" href="#solution" title="Link to this heading"></a></h3>
+<p>如果您在目錄中創建檔案時遇到問題，請編輯 <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/davfs2.conf</span></code> 並添加:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">use_locks</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>問題<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>證書警告</p>
+</section>
+<section id="id2">
+<h3>解決方案<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>如果您使用自簽名證書，則會收到警告。要更改此情況，您需要配置 <code class="docutils literal notranslate"><span class="pre">davfs2</span></code> 以識別您的證書。將 <code class="docutils literal notranslate"><span class="pre">mycertificate.pem</span></code> 複製到 <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/certs/</span></code>。然後編輯 <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/davfs2.conf</span></code> 並取消註釋行 <code class="docutils literal notranslate"><span class="pre">servercert</span></code>。現在按照此示例添加證書的路徑:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">servercert</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">davfs2</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">mycertificate</span><span class="o">.</span><span class="n">pem</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="accessing-files-using-macos">
+<h2>使用 macOS 存取檔案<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>macOS Finder 存在一系列實現問題 <a class="reference external" href="http://sabre.io/dav/clients/finder/">http://sabre.io/dav/clients/finder/</a>，應僅在 Nextcloud 伺服器運行於 <strong>Apache</strong> 和 <strong>mod_php</strong> 或 <strong>Nginx 1.3.8+</strong> 時使用。可存取 WebDAV 共享的替代 macOS 相容客戶端包括開源應用程序，如 <a class="reference external" href="https://docs.nextcloud.com/server/latest/user_manual/files/access_webdav.html#accessing-files-using-cyberduck">Cyberduck &lt;https://cyberduck.io/&gt;`_（請參見指導 `在此</a>）和 <a class="reference external" href="https://filezilla-project.org">Filezilla</a>。商業客戶端包括 <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>，<a class="reference external" href="https://binarynights.com/">Forklift</a>，<a class="reference external" href="https://panic.com/">Transmit</a> 和 <a class="reference external" href="https://mac.eltima.com/">Commander One</a>。</p>
+</div>
+<p>通過 macOS Finder 存取檔案：</p>
+<ol class="arabic">
+<li><p>在 Finder 的頂部選項單欄中，選擇 <strong>前往 &gt; 連接到伺服器…</strong>：</p>
+<img alt="在 macOS 上輸入您的 Nextcloud 伺服器地址的截圖" src="../../_images/osx_webdav1.png" />
+</li>
+<li><p>當 <strong>連接到伺服器…</strong> 窗口打開時，在 <strong>伺服器地址：</strong> 字段中輸入您的 Nextcloud 伺服器的 WebDAV 地址，即:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">YOURDOMAIN</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<img alt="截圖：在 &quot;連接到伺服器…&quot; 對話框中輸入 Nextcloud 伺服器地址" src="../../_images/osx_webdav2.png" />
+</li>
+<li><p>點擊 <strong>連接</strong>。您的 WebDAV 伺服器應該會顯示在桌面上作為共享磁碟驅動器。</p></li>
+</ol>
+</section>
+<section id="accessing-files-using-microsoft-windows">
+<h2>使用 Microsoft Windows 存取檔案<a class="headerlink" href="#accessing-files-using-microsoft-windows" title="Link to this heading"></a></h2>
+<p>如果您使用 Windows 的原生 WebDAV 實現，可以使用 Windows 檔案總管將 Nextcloud 映射到新驅動器。映射到驅動器使您能夠以瀏覽映射網絡驅動器中存儲的檔案的方式瀏覽存儲在 Nextcloud 伺服器上的檔案。</p>
+<p>使用此功能需要網絡連接。如果您希望離線存儲檔案，請使用桌面客戶端將 Nextcloud 上的所有檔案同步到本地硬碟的某一或多個目錄中。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Windows 10 現在映射您的硬碟之前，如果啟用了 HTTPS，則 Windows 10 現在默認允許基本身份驗證。</p>
+<p>在舊版本的 Windows 上，您必須在 Windows 註冊表中允許使用基本身份驗證：</p>
+<ul class="simple">
+<li><p>啟動 <code class="docutils literal notranslate"><span class="pre">regedit</span></code> 並導航到 <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters</span></code>。</p></li>
+<li><p>創建或編輯 <code class="docutils literal notranslate"><span class="pre">BasicAuthLevel``（Windows</span> <span class="pre">Vista、7</span> <span class="pre">和</span> <span class="pre">8）或</span> <span class="pre">``UseBasicAuth``（Windows</span> <span class="pre">XP</span> <span class="pre">和</span> <span class="pre">Windows</span> <span class="pre">Server</span> <span class="pre">2003）``DWORD</span></code> 值，並將其值數據設置為 <code class="docutils literal notranslate"><span class="pre">1</span></code> 以進行 SSL 連接。值 <code class="docutils literal notranslate"><span class="pre">0</span></code> 表示禁用基本身份驗證，值 <code class="docutils literal notranslate"><span class="pre">2</span></code> 允許 SSL 和非 SSL 連接（不建議使用）。</p></li>
+<li><p>然後退出註冊表編輯器並重新啟動電腦。</p></li>
+</ul>
+</div>
+<section id="mapping-drives-with-the-command-line">
+<h3>使用命令行映射驅動器<a class="headerlink" href="#mapping-drives-with-the-command-line" title="Link to this heading"></a></h3>
+<p>以下示例顯示了如何使用命令行映射驅動器。要映射驅動器：</p>
+<ol class="arabic">
+<li><p>在 Windows 中打開命令提示符。</p></li>
+<li><p>在命令提示符中輸入以下行以映射到電腦的 Z 驅動器:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">drive_path</span><span class="o">&gt;/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span> <span class="n">yourpassword</span>
+</pre></div>
+</div>
+<p>其中 &lt;drive_path&gt; 是指向您的 Nextcloud 伺服器的 URL。例如:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span> <span class="n">yourpassword</span>
+</pre></div>
+</div>
+<p>電腦將您的 Nextcloud 帳戶的檔案映射到驅動器字母 Z。</p>
+</li>
+</ol>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>如果您收到以下錯誤 <code class="docutils literal notranslate"><span class="pre">系統錯誤</span> <span class="pre">67</span> <span class="pre">已發生。找不到網絡名稱。</span></code>，或頻繁斷線，請打開 <strong>服務</strong> 應用程式，並確保 <code class="docutils literal notranslate"><span class="pre">WebClient</span></code> 服務正在運行並在啟動時自動啟動。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>雖然不建議這樣做，但您也可以使用 HTTP 挂載 Nextcloud 伺服器，這樣連接將不會加密。</p>
+<blockquote>
+<div><p>如果您打算在公共場所的設備上使用 HTTP 連接，我們強烈建議使用 VPN 隧道來提供必要的安全性。</p>
+</div></blockquote>
+<p>另一種命令語法是:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> \\<span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="nd">@ssl</span>\<span class="n">nextcloud</span>\<span class="n">remote</span><span class="o">.</span><span class="n">php</span>\<span class="n">dav</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span>
+<span class="n">yourpassword</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mapping-drives-with-windows-explorer">
+<h3>使用 Windows 檔案總管映射驅動器<a class="headerlink" href="#mapping-drives-with-windows-explorer" title="Link to this heading"></a></h3>
+<p>使用 Microsoft Windows 檔案總管映射驅動器：</p>
+<ol class="arabic">
+<li><p>在您的 MS Windows 電腦上打開 Windows 檔案總管。</p></li>
+<li><p>右鍵單擊 <strong>電腦</strong> 條目，然後從下拉選項單中選擇 <strong>映射網絡驅動器…</strong>。</p></li>
+<li><p>選擇一個您希望將 Nextcloud 映射到的本地網絡驅動器。</p></li>
+<li><p>指定指向您的 Nextcloud 實例的地址，後面跟著 <strong>/remote.php/dav/files/USERNAME/</strong>。</p>
+<p>例如:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>對於受 SSL 保護的伺服器，勾選 <strong>登錄時重新連接</strong> 以確保映射在後續重啟時持久。如果您希望以不同用戶身份連接到 Nextcloud 伺服器，請勾選 <strong>使用不同憑證連接</strong>。</p>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="在 Windows 檔案總管上映射 WebDAV 的截圖" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" />
+</a>
+</figure>
+</li>
+</ol>
+<ol class="arabic simple" start="5">
+<li><p>點擊 <code class="docutils literal notranslate"><span class="pre">完成</span></code> 按鈕。</p></li>
+</ol>
+<p>Windows 檔案總管映射網絡驅動器，使您的 Nextcloud 實例可用。</p>
+</section>
+</section>
+<section id="accessing-files-using-cyberduck">
+<h2>使用 Cyberduck 存取檔案<a class="headerlink" href="#accessing-files-using-cyberduck" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://cyberduck.io/">Cyberduck</a> 是一款開源的 FTP、SFTP、WebDAV、OpenStack Swift 和 Amazon S3 瀏覽器，旨在進行 macOS 和 Windows 上的檔案傳輸。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>本示例使用 Cyberduck 版本 4.2.1。</p>
+</div>
+<p>要使用 Cyberduck：</p>
+<ol class="arabic">
+<li><p>指定一個不帶任何前導協議信息的伺服器。</p>
+<p>例如：<code class="docutils literal notranslate"><span class="pre">example.com</span></code></p>
+</li>
+<li><p>指定適當的端口。</p>
+<p>您選擇的端口取決於您的 Nextcloud 伺服器是否支持 SSL。如果您打算使用 SSL，Cyberduck 要求您選擇不同的連接類型。</p>
+<dl class="simple">
+<dt>例如：</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">80</span></code> 用於未加密的 WebDAV</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">443</span></code> 用於安全的 WebDAV（HTTPS/SSL）</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>使用 '更多選項' 下拉選項單將其餘的 WebDAV URL 添加到 '路徑' 字段中。</p>
+<p>例如：<code class="docutils literal notranslate"><span class="pre">remote.php/dav/files/USERNAME/</span></code></p>
+</li>
+</ol>
+<p>現在 Cyberduck 啟用了對 Nextcloud 伺服器的檔案存取。</p>
+</section>
+<section id="accessing-public-shares-over-webdav">
+<h2>通過 WebDAV 存取公共共享<a class="headerlink" href="#accessing-public-shares-over-webdav" title="Link to this heading"></a></h2>
+<p>Nextcloud 提供了通過 WebDAV 匿名存取公共分享的可能性。</p>
+<p>要存取公共共享，請打開:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">public</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span>
+</pre></div>
+</div>
+<p>在 WebDAV 客戶端中，使用共享權杖作為用戶名，並將（可選）共享密碼作為密碼。例如，對於共享連結 <a class="reference external" href="https://example.com/s/kFy9Lek5sm928xP">https://example.com/s/kFy9Lek5sm928xP</a>，<code class="docutils literal notranslate"><span class="pre">kFy9Lek5sm928xP</span></code> 將是用戶名。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>設置</strong> → <strong>管理</strong> → <strong>共享</strong> → <strong>允許此伺服器上的用戶將共享發送到其他伺服器</strong>。此選項還允許通過 WebDAV 存取公共共享，並需要啟用此功能，除非使用 cURL（見下文）。</p>
+</div>
+</section>
+<section id="known-problems">
+<h2>已知問題<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
+<section id="id4">
+<h3>問題<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>Windows 無法使用 HTTPS 連接。</p>
+</section>
+<section id="solution-1">
+<h3>解決方案 1<a class="headerlink" href="#solution-1" title="Link to this heading"></a></h3>
+<p>Windows WebDAV 客戶端可能不支持加密連接上的伺服器名稱指示（SNI）。如果您在掛載 SSL 加密的 Nextcloud 實例時遇到錯誤，請聯繫您的提供商為您的 SSL 基於的伺服器分配專用 IP 地址。</p>
+</section>
+<section id="solution-2">
+<h3>解決方案 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
+<p>Windows WebDAV 客戶端可能不支持 TLSv1.1 和 TLSv1.2 連接。如果您已限制伺服器配置僅提供 TLSv1.1 及以上，則與伺服器的連接可能會失敗。請參考 <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> 文檔以獲取更多信息。</p>
+</section>
+<section id="id5">
+<h3>問題<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>您收到以下錯誤消息：<strong>錯誤 0x800700DF：檔案大小超過了允許的限制，無法保存。</strong></p>
+</section>
+<section id="id6">
+<h3>解決方案<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p>Windows 限制從 WebDAV 共享傳輸的檔案的最大大小。您可以通過單擊 <strong>修改</strong> 來增加 <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WebClient\\Parameters</span></code> 中的 <code class="docutils literal notranslate"><span class="pre">FileSizeLimitInBytes</span></code> 值。</p>
+<p>要將限制提高到最大值 4GB，選擇 <strong>十進制</strong>，輸入值 &quot;4294967295&quot;，然後重啟 Windows 或重新啟動 <strong>WebClient</strong> 服務。</p>
+</section>
+<section id="id7">
+<h3>問題<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<p>根據上述步驟在 Windows 上添加 WebDAV 驅動器不會顯示 Nextcloud 可用空間的正確大小，而是顯示 C: 驅動器的大小及其可用空間。</p>
+</section>
+<section id="answer">
+<h3>回答<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
+<p>不幸的是，這是 WebDAV 本身的限制，因為它不提供客戶端從伺服器獲取可用空間的方法。Windows 自動回退到顯示 C: 驅動器的大小及其可用空間。因此不幸的是，對於這個問題沒有真正的解決方案。</p>
+</section>
+<section id="id8">
+<h3>問題<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<p>通過 WebDAV 存取 Microsoft Office 中的檔案失敗。</p>
+</section>
+<section id="id9">
+<h3>解決方案<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<p>已知問題及其解決方案記載在 <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a> 文章中。</p>
+</section>
+<section id="id10">
+<h3>問題<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>無法使用自簽名證書在 Windows 中將 Nextcloud 映射為 WebDAV 驅動器。</p>
+</section>
+<section id="id11">
+<h3>解決方案<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>通過您喜愛的 Web 瀏覽器存取您的 Nextcloud 實例。</p></li>
+<li><p>點擊直到您在瀏覽器狀態行中遇到證書錯誤。</p></li>
+<li><p>檢視證書，然後在「詳細資料」標籤中選擇「複製到檔案」。</p></li>
+<li><p>將檔案保存到桌面，隨意命名，例如 <code class="docutils literal notranslate"><span class="pre">myNextcloud.pem</span></code>。</p></li>
+<li><p>轉到開始選項單 &gt; 運行，輸入 MMC，然後點擊「確定」以打開 Microsoft 管理控制台。</p></li>
+<li><p>轉到 檔案 &gt; 添加/移除管理單元。</p></li>
+<li><p>選擇「憑證」，點擊「添加」，選擇「我的帳戶」，然後點擊「完成」，最後點擊「確定」。</p></li>
+<li><p>深入到受信任的根證書頒發機構，證書。</p></li>
+<li><p>右鍵單擊證書，選擇所有任務，然後導入。</p></li>
+<li><p>從桌面選擇已保存的證書。</p></li>
+<li><p>選擇將所有證書放置在以下存儲中，然後點擊 瀏覽。</p></li>
+<li><p>勾選「顯示實體儲存」的選項，展開「受信任的根憑證授權中心」，選擇「近端電腦」，然後點擊「確定」，完成導入。</p></li>
+<li><p>檢查列表以確保證書顯示。您可能需要刷新才能看到它。</p></li>
+<li><p>退出 MMC。</p></li>
+</ol>
+<p>對於 Firefox 用戶：</p>
+<ol class="arabic simple">
+<li><p>啟動您的瀏覽器，前往 應用程式選項單 &gt; 歷史紀錄 &gt; 清除最近的歷史紀錄...</p></li>
+<li><p>在 '要清除的時間範圍' 下拉選項單中選擇 '所有'。</p></li>
+<li><p>選擇 '活動登錄' 復選框</p></li>
+<li><p>點擊 '立即清除' 按鈕</p></li>
+<li><p>關閉瀏覽器，然後重新打開並測試。</p></li>
+</ol>
+<p>對於基於 Chrome 的瀏覽器（Chrome、Chromium、Microsoft Edge）用戶：</p>
+<ol class="arabic simple">
+<li><p>打開 Windows 控制面板，向下導航到 互聯網選項</p></li>
+<li><p>在內容選項卡中，點擊 清除 SSL 狀態 按鈕。</p></li>
+<li><p>關閉瀏覽器，然後重新打開並測試。</p></li>
+</ol>
+</section>
+</section>
+<section id="accessing-files-using-curl">
+<h2>使用 cURL 存取檔案<a class="headerlink" href="#accessing-files-using-curl" title="Link to this heading"></a></h2>
+<p>由於 WebDAV 是 HTTP 的擴展，因此可以使用 cURL 來編寫檔案操作腳本。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>設置</strong> → <strong>管理</strong> → <strong>共享</strong> → <strong>允許此伺服器上的用戶將共享發送到其他伺服器</strong>。如果此選項被禁用，則需要將選項 <code class="docutils literal notranslate"><span class="pre">--header</span> <span class="pre">&quot;X-Requested-With:</span> <span class="pre">XMLHttpRequest&quot;</span></code> 傳遞給 cURL。</p>
+</div>
+<p>要創建一個以當前日期命名的資料夾：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MKCOL<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>要將檔案 <code class="docutils literal notranslate"><span class="pre">error.log</span></code> 上傳到該目錄：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-T<span class="w"> </span>error.log<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">/error.log&quot;</span>
+</pre></div>
+</div>
+<p>要移動檔案：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MOVE<span class="w"> </span>--header<span class="w"> </span><span class="s1">&#39;Destination: https://example.com/nextcloud/remote.php/dav/files/USERNAME/target.jpg&#39;</span><span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/source.jpg
+</pre></div>
+</div>
+<p>要獲取根資料夾中的檔案屬性：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>PROPFIND<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Depth: 1&quot;</span><span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/<span class="w"> </span><span class="p">|</span><span class="w"> </span>xml_pp
+<span class="w">    </span>&lt;?xml<span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="w"> </span><span class="nv">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>?&gt;
+&lt;d:multistatus<span class="w"> </span>xmlns:d<span class="o">=</span><span class="s2">&quot;DAV:&quot;</span><span class="w"> </span>xmlns:oc<span class="o">=</span><span class="s2">&quot;http://nextcloud.org/ns&quot;</span><span class="w"> </span>xmlns:s<span class="o">=</span><span class="s2">&quot;http://sabredav.org/ns&quot;</span>&gt;
+<span class="w">  </span>&lt;d:response&gt;
+<span class="w">    </span>&lt;d:href&gt;/nextcloud/remote.php/dav/files/USERNAME/&lt;/d:href&gt;
+<span class="w">    </span>&lt;d:propstat&gt;
+<span class="w">      </span>&lt;d:prop&gt;
+<span class="w">        </span>&lt;d:getlastmodified&gt;Tue,<span class="w"> </span><span class="m">13</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2015</span><span class="w"> </span><span class="m">17</span>:07:45<span class="w"> </span>GMT&lt;/d:getlastmodified&gt;
+<span class="w">        </span>&lt;d:resourcetype&gt;
+<span class="w">          </span>&lt;d:collection/&gt;
+<span class="w">        </span>&lt;/d:resourcetype&gt;
+<span class="w">        </span>&lt;d:quota-used-bytes&gt;163&lt;/d:quota-used-bytes&gt;
+<span class="w">        </span>&lt;d:quota-available-bytes&gt;11802275840&lt;/d:quota-available-bytes&gt;
+<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">&quot;561d3a6139d05&quot;</span>&lt;/d:getetag&gt;
+<span class="w">      </span>&lt;/d:prop&gt;
+<span class="w">      </span>&lt;d:status&gt;HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK&lt;/d:status&gt;
+<span class="w">    </span>&lt;/d:propstat&gt;
+<span class="w">  </span>&lt;/d:response&gt;
+<span class="w">  </span>&lt;d:response&gt;
+<span class="w">    </span>&lt;d:href&gt;/nextcloud/remote.php/dav/files/USERNAME/welcome.txt&lt;/d:href&gt;
+<span class="w">    </span>&lt;d:propstat&gt;
+<span class="w">      </span>&lt;d:prop&gt;
+<span class="w">        </span>&lt;d:getlastmodified&gt;Tue,<span class="w"> </span><span class="m">13</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2015</span><span class="w"> </span><span class="m">17</span>:07:35<span class="w"> </span>GMT&lt;/d:getlastmodified&gt;
+<span class="w">        </span>&lt;d:getcontentlength&gt;163&lt;/d:getcontentlength&gt;
+<span class="w">        </span>&lt;d:resourcetype/&gt;
+<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">&quot;47465fae667b2d0fee154f5e17d1f0f1&quot;</span>&lt;/d:getetag&gt;
+<span class="w">        </span>&lt;d:getcontenttype&gt;text/plain&lt;/d:getcontenttype&gt;
+<span class="w">      </span>&lt;/d:prop&gt;
+<span class="w">      </span>&lt;d:status&gt;HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK&lt;/d:status&gt;
+<span class="w">    </span>&lt;/d:propstat&gt;
+<span class="w">  </span>&lt;/d:response&gt;
+&lt;/d:multistatus&gt;
+</pre></div>
+</div>
+</section>
+<section id="accessing-files-using-winscp">
+<h2>使用 WinSCP 存取檔案<a class="headerlink" href="#accessing-files-using-winscp" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://winscp.net/eng/docs/introduction/">WinSCP</a> 是一款開源的免費 SFTP、FTP、WebDAV、S3 和 SCP 客戶端，適用於 Windows。它的主要功能是進行本地電腦和遠程電腦之間的檔案傳輸。此外，WinSCP 還提供腳本和基本的檔案管理功能。</p>
+<p>您可以 <a class="reference external" href="https://winscp.net/eng/downloads.php/">下載</a> WinSCP 的可攜版本，並通過 <a class="reference external" href="https://wiki.winehq.org/Main_Page/">Wine</a> 在 Linux 上運行。</p>
+<p>要在 Linux 上運行 WinSCP，請通過您的發行版的包管理器下載 wine，然後使用命令 <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code> 運行它。</p>
+<p>要連接到 Nextcloud：</p>
+<ul class="simple">
+<li><p>啟動 WinSCP</p></li>
+<li><p>在選項單中按 '會話'</p></li>
+<li><p>按 '新建會話' 選項單選項</p></li>
+<li><p>將 '檔案協定' 下拉選項單設置為 WebDAV</p></li>
+<li><p>將 '加密' 下拉選項單設置為 TLS/SSL 隱式加密</p></li>
+<li><p>填寫主機名字段：<code class="docutils literal notranslate"><span class="pre">example.com</span></code></p></li>
+<li><p>填寫用戶名欄位：<code class="docutils literal notranslate"><span class="pre">NEXTCLOUDUSERNAME</span></code></p></li>
+<li><p>填寫密碼字段：<code class="docutils literal notranslate"><span class="pre">NEXTCLOUDPASSWORD</span></code></p></li>
+<li><p>按 '高級...' 按鈕</p></li>
+<li><p>在左側導航到 '環境'，'目錄'</p></li>
+<li><p>在 '遠程目錄' 字段中填寫以下內容：<code class="docutils literal notranslate"><span class="pre">/nextcloud/remote.php/dav/files/NEXTCLOUDUSERNAME/</span></code></p></li>
+<li><p>按 '確定' 按鈕</p></li>
+<li><p>按 '保存' 按鈕</p></li>
+<li><p>選擇所需的選項，然後按 '確定' 按鈕</p></li>
+<li><p>按 '登錄' 按鈕以連接到 Nextcloud</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果您使用 TOTP，建議使用應用程式密碼作為密碼，因為 WinSCP 在撰寫本文時不理解與 Nextcloud 的 TOTP（2022-11-07）。</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="access_webgui.html" class="btn btn-neutral float-left" title="使用 Nextcloud 網頁介面存取您的檔案" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="deleted_file_management.html" class="btn btn-neutral float-right" title="管理已删除的檔案" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 zh-HK
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 語言</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ 版本</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>下載</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>於 Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">項目主頁</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Builds</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

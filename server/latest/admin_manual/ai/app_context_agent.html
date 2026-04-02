@@ -1,0 +1,831 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>App: Context Agent (context_agent) &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/admin_manual/ai/app_context_agent.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="App: Summary Bot (Talk chat summarize bot)" href="app_summary_bot.html" />
+    <link rel="prev" title="App: Context Chat" href="app_context_chat.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Critical changes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Files</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apps</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Artificial Intelligence</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_assistant.html">Nextcloud Assistant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_translate2.html">App: Local Machine translation 2 (translate2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_llm2.html">App: Local large language model (llm2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_stt_whisper2.html">App: Local Whisper Speech-To-Text (stt_whisper2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_text2image_stablediffusion2.html">App: Local Image Generation (text2image_stablediffusion2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_recognize.html">App: Recognize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_context_chat.html">App: Context Chat</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">App: Context Agent (context_agent)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#currently-implemented-tools">Currently implemented tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#artificial-intelligence-tools">Artificial intelligence tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-tools">Calendar tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tasks-tools">Tasks tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#circles-teams-tools">Circles/teams tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contacts-tools">Contacts tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cookbook-tools">Cookbook tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deck-tools">Deck tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#files-tools">Files tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#forms-tools">Forms tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search-tools">Search tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#share-tools">Share tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#talk-tools">Talk tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#miscellaneous-tools">Miscellaneous tools</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#combining-tools">Combining tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-tools-using-mcp">Custom Tools using MCP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#model-requirements">Model requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-nextcloud-mcp-server">Using Nextcloud MCP Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scaling">Scaling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app-store">App store</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#repository">Repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-limitations">Known Limitations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="app_summary_bot.html">App: Summary Bot (Talk chat summarize bot)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_text2speech_kokoro.html">App: Local Text-To-Speech (text2speech_kokoro)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app_live_transcription.html">App: Live Transcription and Translation in Nextcloud Talk (live_transcription)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai_as_a_service.html">AI as a Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="insight_and_debugging.html">Insight and debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eu_ai_act.html">Legal: Compliance with EU AI Act</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Groupware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Office</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_monitoring/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/">Community Help Forum</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">User Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">Developer Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/install/">Download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://apps.nextcloud.com">App Store</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/t/translation-knowledge-valid-for-the-entire-nextcloud-project-wiki/51550">Translations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Supported versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud Enterprise</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/blob/master/COPYING-README">License</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/">Nextcloud GmbH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Artificial Intelligence</a></li>
+      <li class="breadcrumb-item active">App: Context Agent (context_agent)</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/ai/app_context_agent.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="app-context-agent-context-agent">
+<h1>App: Context Agent (context_agent)<a class="headerlink" href="#app-context-agent-context-agent" title="Link to this heading"></a></h1>
+<p id="ai-app-context-agent">The <em>context_agent</em> app is the app that provides AI agent functionality in Nextcloud’s “Chat with AI” feature and acts as a backend for the <a class="reference internal" href="app_assistant.html#ai-app-assistant"><span class="std std-ref">Nextcloud Assistant app</span></a>. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.</p>
+<p>When the Context Agent app is installed the AI Chat in Nextcloud Assistant will be able to interact with your Nextcloud apps via virtual integrations that are called “tools”. They allow the Assistant to perform actions in your Nextcloud upon sending instructions in a chat message.
+Tool groups are only available if their requirements are met. They can be en- and disabled in the AI admin settings.</p>
+<section id="currently-implemented-tools">
+<h2>Currently implemented tools<a class="headerlink" href="#currently-implemented-tools" title="Link to this heading"></a></h2>
+<section id="artificial-intelligence-tools">
+<h3>Artificial intelligence tools<a class="headerlink" href="#artificial-intelligence-tools" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Ask a question to context chat (requires <a class="reference internal" href="app_context_chat.html#ai-app-context-chat"><span class="std std-ref">Context Chat</span></a>)</p>
+<ul>
+<li><p>Example prompt: <em>“What is the company’s sick leave process?”</em></p></li>
+</ul>
+</li>
+<li><p>Transcribe a media file (requires Transcribe audio task type enabled)</p>
+<ul>
+<li><p>Example prompt: <em>“Can you transcribe the following file? https://mycloud.com/f/9825679”</em> (Can be selected via smart picker.)</p></li>
+</ul>
+</li>
+<li><p>Generate documents (requires <a class="reference external" href="https://apps.nextcloud.com/apps/richdocuments">Nextcloud Office</a>)</p>
+<ul>
+<li><p>Example prompt: <em>“Can you generate me a slide deck for my presentation about cats?”</em></p></li>
+<li><p>Example prompt: <em>“Can you generate me a spreadsheet with some plausible numbers for countries and their population count?”</em></p></li>
+<li><p>Example prompt: <em>“Can you generate me a pdf with an outline about what to see in Berlin?”</em></p></li>
+</ul>
+</li>
+<li><p>Generate images (requires Image generation task type enabled)</p>
+<ul>
+<li><p>Example prompt: <em>“Can you generate me an image of a cartoon drawing of a roman soldier typing something on a laptop?”</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="calendar-tools">
+<h3>Calendar tools<a class="headerlink" href="#calendar-tools" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>List the user’s calendars</p>
+<ul>
+<li><p>Example prompt: <em>“List my calendars”</em></p></li>
+</ul>
+</li>
+<li><p>Schedule an event in the user’s calendar</p>
+<ul>
+<li><p>Example prompt: <em>“Schedule an event with Andrew tomorrow at noon.”</em></p></li>
+</ul>
+</li>
+<li><p>Find free times in users’ calendar</p>
+<ul>
+<li><p>Example prompt: <em>“Find a free 1-hour slot for a meeting with me and Marco next week.”</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tasks-tools">
+<h3>Tasks tools<a class="headerlink" href="#tasks-tools" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Create a task</p>
+<ul>
+<li><p>Example prompt: <em>“Create a task for grocery shopping with due date tomorrow.”</em></p></li>
+</ul>
+</li>
+<li><p>List tasks</p>
+<ul>
+<li><p>Example prompt: <em>“List my outstanding tasks”</em></p></li>
+</ul>
+</li>
+<li><p>Complete a task</p>
+<ul>
+<li><p>Example prompt: <em>“Mark the grocery shopping task as completed.”</em></p></li>
+</ul>
+</li>
+<li><p>Update a task’s details</p>
+<ul>
+<li><p>Example prompt: <em>“Change the priority of the grocery shopping task to the highest possible priority.”</em></p></li>
+<li><p>Example prompt: <em>“Change the due date of my work report task to the beginning of next week.”</em></p></li>
+</ul>
+</li>
+<li><p>Delete a task</p>
+<ul>
+<li><p>Example prompt: <em>“Delete the grocery shopping task in my tasks.”</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="circles-teams-tools">
+<h3>Circles/teams tools<a class="headerlink" href="#circles-teams-tools" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>List circles</p>
+<ul>
+<li><p>Example prompt: <em>“List all my teams.”</em></p></li>
+</ul>
+</li>
+<li><p>List circle members</p>
+<ul>
+<li><p>Example prompt: <em>“List all members of my Content Marketing team.”</em></p></li>
+</ul>
+</li>
+<li><p>Create new circle</p>
+<ul>
+<li><p>Example prompt: <em>“Create a new team called ‘Hiking group’.”</em></p></li>
+</ul>
+</li>
+<li><p>Add members to circles</p>
+<ul>
+<li><p>Example prompt: <em>“Add Ralph to the Hiking group team.”</em></p></li>
+</ul>
+</li>
+<li><p>Remove members from circles</p>
+<ul>
+<li><p>Example prompt: <em>“Remove ralph from the Hiking group team.”</em></p></li>
+</ul>
+</li>
+<li><p>Change circle details</p>
+<ul>
+<li><p>Example prompt: <em>“Change the name of the Hiking group team to ‘Outdoor group’.”</em></p></li>
+<li><p>Example prompt: <em>“Add the following description to the Hiking group team: We go hiking together once a month. Come join us.”</em></p></li>
+</ul>
+</li>
+<li><p>Delete a circle</p>
+<ul>
+<li><p>Example prompt: <em>“Delete the Hiking group team.”</em></p></li>
+</ul>
+</li>
+<li><p>Share a file with a circle</p>
+<ul>
+<li><p>Example prompt: <em>“Share my Hiking plans.md file with the Hiking group team.”</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="contacts-tools">
+<h3>Contacts tools<a class="headerlink" href="#contacts-tools" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Find a contact</p>
+<ul>
+<li><p>Example prompt: <em>“What is Anna’s email address?”</em></p></li>
+</ul>
+</li>
+<li><p>Find a user’s ID</p>
+<ul>
+<li><p>Example prompt: <em>“What is Ralph’s userID?”</em></p></li>
+</ul>
+</li>
+<li><p>Find the current user’s details</p>
+<ul>
+<li><p>Example prompt: <em>“Where do I live?”</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="cookbook-tools">
+<h3>Cookbook tools<a class="headerlink" href="#cookbook-tools" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>List recipes</p>
+<ul>
+<li><p>Example prompt: <em>“List my recipes.”</em></p></li>
+</ul>
+</li>
+<li><p>Search for recipes</p>
+<ul>
+<li><p>Example prompt: <em>“Do I have any Spaghetti recipes?”</em></p></li>
+</ul>
+</li>
+<li><p>Get recipe details</p>
+<ul>
+<li><p>Example prompt: <em>“Can you give me the details of my Spaghetti Carbonara recipe?”</em></p></li>
+</ul>
+</li>
+<li><p>Create a new recipe</p>
+<ul>
+<li><p>Example prompt: <em>“Create a recipe for Guacamole in my cookbook.”</em></p></li>
+</ul>
+</li>
+<li><p>Delete a recipe</p>
+<ul>
+<li><p>Example prompt: <em>“Remove the Guacamole recipe from my cookbook.”</em></p></li>
+</ul>
+</li>
+<li><p>List recipe categories</p>
+<ul>
+<li><p>Example prompt: <em>“Which recipe categories do I have in my cookbook?”</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="deck-tools">
+<h3>Deck tools<a class="headerlink" href="#deck-tools" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>List deck boards</p>
+<ul>
+<li><p>Example prompt: <em>“List the deck boards I have access to.”</em></p></li>
+</ul>
+</li>
+<li><p>Add a new card</p>
+<ul>
+<li><p>Example prompt: <em>“Can you add a card with title ‘Repair kitchen sink’ to my Personal deck board?”</em></p></li>
+</ul>
+</li>
+<li><p>Add a label to a card</p>
+<ul>
+<li><p>Example prompt: <em>“Can you add the label ‘Urget’ to the ‘repair kitchen sink’ card in my personal deck board?”</em></p></li>
+</ul>
+</li>
+<li><p>Assign a card to a user</p>
+<ul>
+<li><p>Example prompt: <em>“Can you assign the ‘Repair kitchen sink’ card in my Personal deck board to Andrew?”</em></p></li>
+</ul>
+</li>
+<li><p>Delete a card</p>
+<ul>
+<li><p>Example prompt: <em>“Delete the ‘Repair kitchen sink’ card in my Personal deck board.”</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="files-tools">
+<h3>Files tools<a class="headerlink" href="#files-tools" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Get contents of a file</p>
+<ul>
+<li><p>Example prompt: <em>“Can you fetch the following file in my documents? Design/Planning.md”</em></p></li>
+<li><p>Example prompt: <em>“Can you fetch the following file in my documents? https://mycloud.com/f/98543234”</em></p></li>
+</ul>
+</li>
+<li><p>Retrieve folder tree</p>
+<ul>
+<li><p>Example prompt: <em>“List my files.”</em></p></li>
+</ul>
+</li>
+<li><p>Create a public link for a file or folder</p>
+<ul>
+<li><p>Example prompt: <em>“Create a public link for the following file: Design/Planning.md”</em></p></li>
+</ul>
+</li>
+<li><p>Create a new file</p>
+<ul>
+<li><p>Example prompt: <em>“Create a new file Ideas.md in my files and fill it with ideas for hiking destinations in the black forest.”</em></p></li>
+</ul>
+</li>
+<li><p>Create a new folder</p>
+<ul>
+<li><p>Example prompt: <em>“Create a new folder ‘Hiking plans’ in my files.”</em></p></li>
+</ul>
+</li>
+<li><p>Move a file</p>
+<ul>
+<li><p>Example prompt: <em>“Move the Ideas.md file into the Hiking plans folder.”</em></p></li>
+</ul>
+</li>
+<li><p>Copy a file</p>
+<ul>
+<li><p>Example prompt: <em>“Copy the Ideas.md file into my Notes folder.”</em></p></li>
+</ul>
+</li>
+<li><p>Delete a file</p>
+<ul>
+<li><p>Example prompt: <em>“Delete the Ideas.md file.”</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="forms-tools">
+<h3>Forms tools<a class="headerlink" href="#forms-tools" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>List all forms</p>
+<ul>
+<li><p>Example prompt: <em>“List all the forms I have access to.”</em></p></li>
+</ul>
+</li>
+<li><p>Get details of a form</p>
+<ul>
+<li><p>Example prompt: <em>“Can you give me all details about the Retreat signup form?”</em></p></li>
+</ul>
+</li>
+<li><p>Add a question to a form</p>
+<ul>
+<li><p>Example prompt: <em>“Add the following question to the retreat signup form: ‘Number of days attending’.”</em></p></li>
+</ul>
+</li>
+<li><p>Retrieve all responses of a form</p>
+<ul>
+<li><p>Example prompt: <em>“List all responses to the Retreat signup form.”</em></p></li>
+</ul>
+</li>
+<li><p>Update form settings</p>
+<ul>
+<li><p>Example prompt: <em>“Make the Retreat signup form expire end of next week.”</em></p></li>
+</ul>
+</li>
+<li><p>Delete a form</p>
+<ul>
+<li><p>Example prompt: <em>“Delete the Retreat signup form.”</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="search-tools">
+<h3>Search tools<a class="headerlink" href="#search-tools" title="Link to this heading"></a></h3>
+<p>All search providers in Nextcloud are also automatically available as tools.</p>
+<ul class="simple">
+<li><p>Search for files</p>
+<ul>
+<li><p>Example prompt: <em>“List all the powerpoint presentations in my files with file ending pptx.”</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="share-tools">
+<h3>Share tools<a class="headerlink" href="#share-tools" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>List shares</p>
+<ul>
+<li><p>Example prompt: <em>“List all files that were shared with me.”</em></p></li>
+<li><p>Example prompt: <em>“List the shares of the Design/Ideas.md file.”</em></p></li>
+</ul>
+</li>
+<li><p>Share a file or folder with a user</p>
+<ul>
+<li><p>Example prompt: <em>“Share the Design/Ideas.md file with the user martin.”</em></p></li>
+</ul>
+</li>
+<li><p>Share a file or folder with a group</p>
+<ul>
+<li><p>Example prompt: <em>“Share the Design/Ideas.md file with the group Designers.”</em></p></li>
+</ul>
+</li>
+<li><p>Update a share’s permissions</p>
+<ul>
+<li><p>Example prompt: <em>“Only allow martin read only access on the share of the Design/Ideas.md file.”</em></p></li>
+</ul>
+</li>
+<li><p>Delete a share</p>
+<ul>
+<li><p>Example prompt: <em>“Remove the share of the Design/Ideas.md file with martin.”</em></p></li>
+</ul>
+</li>
+<li><p>List user groups</p>
+<ul>
+<li><p>Example prompt: <em>“Which user groups are there?”</em></p></li>
+</ul>
+</li>
+<li><p>Retrieve share details</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Example prompt: <em>“Does martin have write access to the Design/Ideas.md file I shared with him?”</em></p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="talk-tools">
+<h3>Talk tools<a class="headerlink" href="#talk-tools" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>List the user’s talk conversations (requires <a class="reference external" href="https://apps.nextcloud.com/apps/spreed">Talk</a>)</p>
+<ul>
+<li><p>Example prompt: <em>“List my talk conversations”</em></p></li>
+</ul>
+</li>
+<li><p>List messages in a talk conversation (requires <a class="reference external" href="https://apps.nextcloud.com/apps/spreed">Talk</a>)</p>
+<ul>
+<li><p>Example prompt: <em>“List the latest messages in my conversation with Andrew”</em></p></li>
+</ul>
+</li>
+<li><p>Send a message to a talk conversation (requires <a class="reference external" href="https://apps.nextcloud.com/apps/spreed">Talk</a>)</p>
+<ul>
+<li><p>Example prompt: <em>“Can you send a joke to Andrew in talk?”</em></p></li>
+</ul>
+</li>
+<li><p>Create a public talk conversation (requires <a class="reference external" href="https://apps.nextcloud.com/apps/spreed">Talk</a>)</p>
+<ul>
+<li><p>Example prompt: <em>“Can you create a new public talk conversation titled ‘Press conference’?”</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="miscellaneous-tools">
+<h3>Miscellaneous tools<a class="headerlink" href="#miscellaneous-tools" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Get coordinates for an Address from Open Street Maps Nomatim</p>
+<ul>
+<li><p>Example prompt: <em>“What are the coordinates for Berlin, Germany?”</em></p></li>
+</ul>
+</li>
+<li><p>Get the URL for a map of a location using Open Street Maps</p>
+<ul>
+<li><p>Example prompt: <em>“Can you show me a map of New York, please”</em></p></li>
+</ul>
+</li>
+<li><p>Get the current weather at a location</p>
+<ul>
+<li><p>Example prompt: <em>“How is the weather in Berlin?”</em></p></li>
+</ul>
+</li>
+<li><p>Search for youtube videos</p>
+<ul>
+<li><p>Example prompt: <em>“Show me the youtube video of the Nextcloud hub 10 launch.”</em></p></li>
+</ul>
+</li>
+<li><p>Search Duckduckgo</p>
+<ul>
+<li><p>Example prompt: <em>“Show me search results for quick pasta recipes, please.”</em></p></li>
+</ul>
+</li>
+<li><p>Send an email via Nextcloud Mail (requires <a class="reference external" href="https://apps.nextcloud.com/apps/mail">Mail</a>)</p>
+<ul>
+<li><p>Example prompt: <em>“Send a test email from my carry&#64;company.com account to Andrew&#64;company.com”</em></p></li>
+</ul>
+</li>
+<li><p>Determine public transport routes (requires a <a class="reference external" href="https://www.here.com/">HERE</a> API key configured in the admin settings)</p>
+<ul>
+<li><p>Example prompt: <em>“How can I get from Würzburg Hauptbahnhof to Berlin Hauptbahnhof?”</em></p></li>
+</ul>
+</li>
+<li><p>List all projects in OpenProject (requires the <a class="reference external" href="https://apps.nextcloud.com/apps/integration_openproject">OpenProject integration</a>)</p>
+<ul>
+<li><p>Example prompt: <em>“List all my projects in OpenProject, please”</em></p></li>
+</ul>
+</li>
+<li><p>List all available assignees of a project in OpenProject (requires the <a class="reference external" href="https://apps.nextcloud.com/apps/integration_openproject">OpenProject integration</a>)</p>
+<ul>
+<li><p>Example prompt: <em>“List all available assignees for the ‘Product launch’ project in OpenProject”</em></p></li>
+</ul>
+</li>
+<li><p>Create a new work package in a given project in OpenProject (requires the <a class="reference external" href="https://apps.nextcloud.com/apps/integration_openproject">OpenProject integration</a>)
+* Example prompt: <em>“Create a work package called ‘Publish release video’ in the ‘Product launch’ project in OpenProject”</em></p></li>
+</ul>
+</section>
+</section>
+<section id="combining-tools">
+<h2>Combining tools<a class="headerlink" href="#combining-tools" title="Link to this heading"></a></h2>
+<p>These tools can also be combined by the agent to fulfil tasks like the following:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>“How is the weather where Andrew lives?”</em></p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Uses contacts to look up Andrew’s address and then checks the weather</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p><em>“How is the weather where I live?”</em></p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Look up the current user’s address and then checks the weather</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p><em>“Send an email from carry&#64;company.com to Andrew”</em></p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Uses contacts to look up Andrew’s email and then sends an email</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<ul class="simple">
+<li><p><em>“Which of my files are from Anna?”</em></p>
+<ul>
+<li><p>Looks up Anna’s userID and searches for files that belong to her</p></li>
+</ul>
+</li>
+<li><p><em>“Send the content of my draft.md file to Andrew in Talk”</em></p>
+<ul>
+<li><p>Gets the content of the file and sends it in a 1-1 Talk conversation with Andrew</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="custom-tools-using-mcp">
+<h2>Custom Tools using MCP<a class="headerlink" href="#custom-tools-using-mcp" title="Link to this heading"></a></h2>
+<p>Model Context Protocol (MCP) is a protocol that enables Large Language Models (LLMs) to interact with external data sources and tools.
+The Context Agent app allows administrators to extend its capabilities by adding custom services via MCP. This can be configured in the admin settings under “MCP Config,” where you can provide a JSON configuration in the following format:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;service-name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://service-url.com/endpoint&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;transport&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;streamable_http&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<ul>
+<li><p>This app is built as an External App and thus depends on AppAPI v3.1.0 or higher</p></li>
+<li><p>Nextcloud AIO is supported</p></li>
+<li><p>No GPU is necessary for Context Agent but one might be useful if you use it with a self-hosted provider like llm2</p></li>
+<li><p>CPU Sizing</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>At least 1GB of system RAM</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<ol class="arabic simple" start="0">
+<li><p>Make sure the <a class="reference internal" href="app_assistant.html#ai-app-assistant"><span class="std std-ref">Nextcloud Assistant app</span></a> is installed</p></li>
+<li><p><a class="reference internal" href="../exapps_management/AppAPIAndExternalApps.html#ai-app-api"><span class="std std-ref">Install AppAPI and setup a Deploy Demon</span></a></p></li>
+<li><p>Install the “Context Agent” ExApp via the “Apps” page in the Nextcloud web admin user interface</p></li>
+<li><p>Install a text generation backend like <a class="reference internal" href="app_llm2.html#ai-app-llm2"><span class="std std-ref">llm2</span></a> or <a class="reference internal" href="ai_as_a_service.html#ai-ai-as-a-service"><span class="std std-ref">integration_openai</span></a> via the “Apps” page in Nextcloud</p></li>
+</ol>
+<section id="model-requirements">
+<h3>Model requirements<a class="headerlink" href="#model-requirements" title="Link to this heading"></a></h3>
+<p>This app requires underlying Large language models to support tool calling. The default model in <em>llm2</em> does support tool calling since version 2.4.0.
+Other models that may give good results are:</p>
+<ul class="simple">
+<li><p>Google Gemma 3 12B or higher</p></li>
+<li><p>Mistral 3 small 24B</p></li>
+<li><p>Qwen 2.5 8B or higher (May not work well with languages other than English)</p></li>
+<li><p>Watt Tool 8B or higher</p></li>
+</ul>
+<p>See <a class="reference internal" href="app_llm2.html#ai-app-llm2"><span class="std std-ref">llm2 documentation</span></a> on how to configure alternate models.</p>
+</section>
+</section>
+<section id="using-nextcloud-mcp-server">
+<h2>Using Nextcloud MCP Server<a class="headerlink" href="#using-nextcloud-mcp-server" title="Link to this heading"></a></h2>
+<p>Context Agent exposes an MCP server that can be used by other large language models or applications to access the tools provided by Context Agent.
+The server will be available at <cite>https://your-nextcloud-domain.com/index.php/apps/app_api/proxy/context_agent/mcp/</cite>, and
+it requires authentication via an app password passed in the <cite>Authorization</cite> header. Ex: <cite>Authorization: Bearer &lt;app-password&gt;</cite>.</p>
+</section>
+<section id="scaling">
+<h2>Scaling<a class="headerlink" href="#scaling" title="Link to this heading"></a></h2>
+<p>It is currently not possible to scale this app, we are working on this.</p>
+</section>
+<section id="app-store">
+<h2>App store<a class="headerlink" href="#app-store" title="Link to this heading"></a></h2>
+<p>You can also find the app in our app store, where you can write a review: <a class="reference external" href="https://apps.nextcloud.com/apps/context_agent">https://apps.nextcloud.com/apps/context_agent</a></p>
+</section>
+<section id="repository">
+<h2>Repository<a class="headerlink" href="#repository" title="Link to this heading"></a></h2>
+<p>You can find the app’s code repository on GitHub where you can report bugs and contribute fixes and features: <a class="reference external" href="https://github.com/nextcloud/context_agent">https://github.com/nextcloud/context_agent</a></p>
+<p>Nextcloud customers should file bugs directly with our Support system.</p>
+</section>
+<section id="known-limitations">
+<h2>Known Limitations<a class="headerlink" href="#known-limitations" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Make sure to test the language model you are using in concert with this app for whether they meet the use-case’s quality requirements</p></li>
+<li><p>Most models have difficulties with languages other than English. Some sometimes answer in another language than used by the user.</p></li>
+<li><p>Customer support is available upon request, however we can’t solve false or problematic output, most performance issues, or other problems caused by the underlying model.
+Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI). We still try to optimize this as far as possible, so if you encounter any false or problematic output, you can report it <a class="reference external" href="https://github.com/nextcloud/context_agent/issues/51">in a dedicated Github issue</a> to help us improve this app.</p></li>
+<li><p>When multiple MCP services are configured that have tools with the same name undefined behavior will occur.</p></li>
+<li><p>Only remote MCP services are supported (streamable_http transport).</p></li>
+<li><p>MCP services that require different access tokens for each user are not currently supported.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="app_context_chat.html" class="btn btn-neutral float-left" title="App: Context Chat" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="app_summary_bot.html" class="btn btn-neutral float-right" title="App: Summary Bot (Talk chat summarize bot)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/admin_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/admin_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,684 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profiles &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/admin_manual/configuration_user/profile_configuration.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="User authentication with OpenID Connect" href="user_auth_oidc.html" />
+    <link rel="prev" title="Instruction set for apps" href="instruction_set_for_apps.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Critical changes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Files</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="user_configuration.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reset_admin_password.html">Resetting a lost admin password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reset_user_password.html">Resetting a user password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_password_policy.html">User password policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two_factor-auth.html">Two-factor authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap.html">User authentication with LDAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_cleanup.html">LDAP user cleanup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_api.html">The LDAP configuration API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_provisioning_api.html">User provisioning API</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Profiles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#set-the-profile-default-for-new-users">Set the profile default for new users</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#disable-profiles-globally">Disable profiles globally</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#profile-field-visibility-settings">Profile field visibility settings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#defaults">Defaults</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#property-visibility-scopes">Property visibility scopes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scope-visibility-matrix">Scope visibility matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#known-user-rule-for-private-scope">Known-user rule for <code class="docutils literal notranslate"><span class="pre">Private</span></code> scope</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-local-users-can-see">What local users can see</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-verify-scope-behavior">How to verify scope behavior</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scope-defaults-and-precedence">Scope defaults and precedence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#default-scope-values-reference">Default scope values (reference)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#override-default-scopes-in-config-php">Override default scopes in <code class="docutils literal notranslate"><span class="pre">config.php</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#faq-how-to-lock-profile-visibility-down">FAQ: How to lock profile visibility down</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_oidc.html">User authentication with OpenID Connect</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Groupware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Office</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_monitoring/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/">Community Help Forum</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">User Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">Developer Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/install/">Download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://apps.nextcloud.com">App Store</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/t/translation-knowledge-valid-for-the-entire-nextcloud-project-wiki/51550">Translations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Supported versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud Enterprise</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/blob/master/COPYING-README">License</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/">Nextcloud GmbH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">User management</a></li>
+      <li class="breadcrumb-item active">Profiles</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_user/profile_configuration.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="profiles">
+<span id="profile"></span><h1>Profiles<a class="headerlink" href="#profiles" title="Link to this heading"></a></h1>
+<p>The user profile displays information about an account.
+Profiles are enabled by default.</p>
+<p>Users can enable or disable their own profile in <strong>Personal settings</strong> under
+<strong>Personal info</strong>.</p>
+<p>As an administrator, you can:</p>
+<ul class="simple">
+<li><p>set the default profile state for new users, and</p></li>
+<li><p>disable profiles globally.</p></li>
+</ul>
+<p>Profile data can also be used by other features (for example the
+<a class="reference internal" href="../groupware/contacts.html#system-address-book"><span class="std std-ref">system address book</span></a>), but what is exposed depends
+on privacy controls.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Profile visibility is layered.</p>
+<ul class="simple">
+<li><p><strong>Profile enablement</strong> determines if the profile feature is active at all.</p></li>
+<li><p><strong>Profile field visibility settings</strong> control whether a field is shown.</p></li>
+<li><p><strong>Account property scopes</strong> (for example <code class="docutils literal notranslate"><span class="pre">private</span></code>, <code class="docutils literal notranslate"><span class="pre">local</span></code>, <code class="docutils literal notranslate"><span class="pre">federated</span></code>,
+<code class="docutils literal notranslate"><span class="pre">published</span></code>) define the intended audience for each property.</p></li>
+<li><p><strong>Discovery restrictions</strong> (for example sharing/autocomplete enumeration rules)
+can further reduce what other accounts can find or see.</p></li>
+</ul>
+<p>In short: effective visibility is the most restrictive result of all applicable controls.</p>
+</div>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<section id="set-the-profile-default-for-new-users">
+<h3>Set the profile default for new users<a class="headerlink" href="#set-the-profile-default-for-new-users" title="Link to this heading"></a></h3>
+<p>In <strong>Administration settings</strong> -&gt; <strong>Basic settings</strong>, use the profile default toggle.</p>
+<figure class="align-default">
+<img alt="../_images/profile_default_setting.png" src="../_images/profile_default_setting.png" />
+</figure>
+<p>You can also set this via <code class="docutils literal notranslate"><span class="pre">occ</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">settings</span> <span class="n">profile_enabled_by_default</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;0&quot;</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--value=&quot;1&quot;</span></code> to enable it by default again.</p>
+<p>See <a class="reference internal" href="../occ_command.html"><span class="doc">Using the occ command</span></a> for more <code class="docutils literal notranslate"><span class="pre">occ</span></code> usage details.</p>
+</section>
+<section id="disable-profiles-globally">
+<h3>Disable profiles globally<a class="headerlink" href="#disable-profiles-globally" title="Link to this heading"></a></h3>
+<p>To disable profile functionality for all users, add this to <code class="docutils literal notranslate"><span class="pre">config.php</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;profile.enabled&#39;</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="profile-field-visibility-settings">
+<h2>Profile field visibility settings<a class="headerlink" href="#profile-field-visibility-settings" title="Link to this heading"></a></h2>
+<p>Each profile field has its own <strong>profile visibility</strong> setting (stored per user in the
+profile configuration):</p>
+<ul class="simple">
+<li><p><strong>Show to everyone</strong> (<code class="docutils literal notranslate"><span class="pre">show</span></code>): visible to anyone, including unauthenticated visitors,
+<em>subject to the field’s property scope</em>.</p></li>
+<li><p><strong>Show to logged in accounts only</strong> (<code class="docutils literal notranslate"><span class="pre">show_users_only</span></code>): visible only to authenticated
+users, <em>subject to the field’s property scope</em>.</p></li>
+<li><p><strong>Hide</strong> (<code class="docutils literal notranslate"><span class="pre">hide</span></code>): never shown on profile surfaces regardless of property scope.</p></li>
+</ul>
+<p>These correspond to the visibility options in <strong>Personal settings</strong> -&gt; <strong>Personal info</strong>
+-&gt; <strong>Edit your Profile visibility</strong>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Effective visibility is the most restrictive result of <strong>both</strong> controls:
+the profile visibility setting and the property scope.</p>
+</div>
+<section id="defaults">
+<h3>Defaults<a class="headerlink" href="#defaults" title="Link to this heading"></a></h3>
+<p>By default, most profile fields are configured as <strong>Show to everyone</strong>, while some
+contact-related fields default to <strong>Show to logged in accounts only</strong>.</p>
+<p>Administrators should note that these defaults are independent from the default
+<em>property scopes</em> described below.</p>
+</section>
+</section>
+<section id="property-visibility-scopes">
+<span id="profile-property-scopes"></span><h2>Property visibility scopes<a class="headerlink" href="#property-visibility-scopes" title="Link to this heading"></a></h2>
+<p>User properties (Display name, Address, Website, Role, etc.) have visibility scopes:
+Private, Local, Federated, Published.</p>
+<p>These scopes are evaluated per attribute. A profile being reachable does not imply
+that all its attributes are visible.</p>
+<p>The visibility scopes are:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Private<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The most restrictive level. Data is hidden from public profiles, federation, and
+public lookup. On the local server, it is only shown in specific features and
+typically only to authenticated users who have a recognized relationship with the
+account owner (for example, as a known contact).</p>
+</dd>
+<dt class="field-even">Local<span class="colon">:</span></dt>
+<dd class="field-even"><p>Contact details visible on the local instance and in some public contexts where
+profile/account attributes are required (for example owner/uploader metadata).
+Not shared to federated servers and not published to the public lookup server.</p>
+</dd>
+<dt class="field-odd">Federated<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Contact details visible on the local instance, in relevant public contexts,
+and on trusted federated servers.</p>
+</dd>
+<dt class="field-even">Published<span class="colon">:</span></dt>
+<dd class="field-even"><p>Contact details visible on the local instance, in relevant public contexts,
+on trusted federated servers, and published to the public lookup server.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Public lookup server</strong>: a public directory used to find users across Nextcloud instances.
+Only profile fields marked Published may be exposed there.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Not all fields are eligible for lookup publication even if their scope is set to
+<code class="docutils literal notranslate"><span class="pre">Published</span></code>. Some fields are intentionally never published (for example Biography,
+Headline, Organisation, Role, Birthdate).</p>
+<p>In other words: <code class="docutils literal notranslate"><span class="pre">Published</span></code> is necessary but not always sufficient for lookup publication.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>A reachable profile does not mean all attributes are public. Each attribute is
+filtered by its own scope, and effective visibility can also depend on the
+consuming feature.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>On profile surfaces, the effective visibility is the more restrictive of
+profile-visibility settings and property scope.</p>
+</div>
+<section id="scope-visibility-matrix">
+<h3>Scope visibility matrix<a class="headerlink" href="#scope-visibility-matrix" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Scope</p></th>
+<th class="head"><p>User themself [1]</p></th>
+<th class="head"><p>Other users on same local instance</p></th>
+<th class="head"><p>Public contexts (feature-dependent)</p></th>
+<th class="head"><p>Trusted federation</p></th>
+<th class="head"><p>Public lookup server</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Private</p></td>
+<td><p>Yes</p></td>
+<td><p>Limited on profile surfaces:
+authenticated + known-user relation required [3]</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>Local</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes (where applicable) [2]</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>Federated</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes (where applicable) [2]</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>Published</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes (where applicable) [2]</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+</tbody>
+</table>
+<p>Notes:</p>
+<ol class="arabic simple">
+<li><p>Scope primarily governs exposure to others; owner access follows account/endpoint behavior.</p></li>
+<li><p>Public-context visibility depends on feature path; scope alone does not guarantee display.</p></li>
+<li><p>Some non-profile surfaces may exclude Private-scoped properties entirely (for example
+generated system address book cards), even for authenticated users.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The matrix describes <strong>profile visibility behavior</strong>. Other consuming features may apply
+additional filtering and may not expose Private-scoped properties at all.</p>
+</div>
+</section>
+<section id="known-user-rule-for-private-scope">
+<h3>Known-user rule for <code class="docutils literal notranslate"><span class="pre">Private</span></code> scope<a class="headerlink" href="#known-user-rule-for-private-scope" title="Link to this heading"></a></h3>
+<p>For <code class="docutils literal notranslate"><span class="pre">Private</span></code> properties, Nextcloud may allow visibility on specific local feature
+paths only when the requester is considered a <em>known user</em> of the target user.</p>
+<p>In practical terms, this relation is derived by server-side <em>known-contact matching</em>.
+In current Nextcloud versions this matching is primarily established via <strong>phone-number
+matching</strong> (for example through the Talk mobile contact integration), and it is directional
+(e.g., Alice might be known to Bob, but Bob isn’t necessarily known to Alice).
+Users are always known to themselves.</p>
+</section>
+<section id="what-local-users-can-see">
+<h3>What local users can see<a class="headerlink" href="#what-local-users-can-see" title="Link to this heading"></a></h3>
+<p>A common question is what one user can see about another user on the same instance.</p>
+<p>In general, profile visibility is controlled by each property’s scope, but the
+exact UI/API surface depends on the consuming feature (for example profile page,
+share dialogs, search, mentions, Contacts, and other integrations).</p>
+<p>For local users on the same instance:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Private</span></code>: not generally visible to all local users; visibility is restricted
+on applicable paths to authenticated users that satisfy the known-user relation
+and other feature constraints.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Local</span></code>: visible on the local instance.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Federated</span></code>: visible on the local instance (and also shared with trusted federated servers).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Published</span></code>: visible on the local instance (and also federated + public lookup).</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>System address book exposure is scope-aware and context-aware:
+private/empty-scope properties are excluded from generated cards, and
+federated reads strip local-scoped properties.</p>
+</div>
+</section>
+<section id="how-to-verify-scope-behavior">
+<h3>How to verify scope behavior<a class="headerlink" href="#how-to-verify-scope-behavior" title="Link to this heading"></a></h3>
+<p>Because effective visibility can vary by feature path, administrators should verify
+scope behavior in their own deployment.</p>
+<p>Recommended test procedure:</p>
+<ol class="arabic simple">
+<li><p>Create test users:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">alice</span></code> (target profile owner)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bob</span></code> (authenticated local user)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">charlie</span></code> (second local user for control)</p></li>
+</ul>
+</li>
+<li><p>As <code class="docutils literal notranslate"><span class="pre">alice</span></code>, set distinct test values for profile fields and assign different
+scopes where possible (for example Private vs Local via the UI, and Federated/Published
+via API/administrative tooling if supported in your deployment).</p></li>
+<li><p>Verify as <code class="docutils literal notranslate"><span class="pre">alice</span></code>:</p>
+<ul class="simple">
+<li><p>Confirm owner-visible values as expected.</p></li>
+</ul>
+</li>
+<li><p>Verify as <code class="docutils literal notranslate"><span class="pre">bob</span></code> (authenticated local user):</p>
+<ul class="simple">
+<li><p>Check the feature paths used in your instance (for example profile page,
+user card, share dialog, search, mentions, Contacts integrations).</p></li>
+<li><p>Confirm <code class="docutils literal notranslate"><span class="pre">Local/Federated/Published</span></code> fields are visible where expected.</p></li>
+<li><p>Confirm <code class="docutils literal notranslate"><span class="pre">Private</span></code> fields are visible only on paths that satisfy the known-user
+relation and other feature constraints.</p></li>
+</ul>
+</li>
+<li><p>Verify as unauthenticated user (private browser session):</p>
+<ul class="simple">
+<li><p>Confirm only public-appropriate fields are visible.</p></li>
+</ul>
+</li>
+<li><p>Verify federation/publication behavior (if enabled):</p>
+<ul class="simple">
+<li><p>From a trusted federated server, confirm Federated/Published behavior.</p></li>
+<li><p>Confirm only Published fields are exposed to the public lookup server.</p></li>
+</ul>
+</li>
+<li><p>Re-test with a newly created user after changing
+<code class="docutils literal notranslate"><span class="pre">account_manager.default_property_scope</span></code>:</p>
+<ul class="simple">
+<li><p>Confirm new defaults apply only to newly initialized accounts.</p></li>
+<li><p>Confirm existing users retain stored scopes unless explicitly changed.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="scope-defaults-and-precedence">
+<h3>Scope defaults and precedence<a class="headerlink" href="#scope-defaults-and-precedence" title="Link to this heading"></a></h3>
+<p>Visibility is determined per property using this order:</p>
+<ol class="arabic simple">
+<li><p><strong>Server defaults</strong> from <code class="docutils literal notranslate"><span class="pre">OC\Accounts\AccountManager::DEFAULT_SCOPES</span></code>.</p></li>
+<li><p><strong>Administrator default override</strong> via <code class="docutils literal notranslate"><span class="pre">account_manager.default_property_scope</span></code>.</p></li>
+<li><p><strong>User-set value</strong> in personal/profile settings (subject to server-side constraints).</p></li>
+</ol>
+<p>Practical implications:</p>
+<ul class="simple">
+<li><p>Admin overrides in <code class="docutils literal notranslate"><span class="pre">account_manager.default_property_scope</span></code> are applied at account
+initialization and therefore affect <strong>new users</strong>.</p></li>
+<li><p>Existing users keep already stored scopes unless changed explicitly.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PROPERTY_DISPLAYNAME</span></code> and <code class="docutils literal notranslate"><span class="pre">PROPERTY_EMAIL</span></code> cannot be <code class="docutils literal notranslate"><span class="pre">Private</span></code>; server-side
+validation/enforcement requires at least <code class="docutils literal notranslate"><span class="pre">Local</span></code>.</p></li>
+</ul>
+</section>
+<section id="default-scope-values-reference">
+<h3>Default scope values (reference)<a class="headerlink" href="#default-scope-values-reference" title="Link to this heading"></a></h3>
+<p>Default values are defined in server code and may change over time. The authoritative
+source is the <code class="docutils literal notranslate"><span class="pre">DEFAULT_SCOPES</span></code> constant in <code class="docutils literal notranslate"><span class="pre">OC\Accounts\AccountManager</span></code>:
+<a class="reference external" href="https://github.com/nextcloud/server/blob/master/lib/private/Accounts/AccountManager.php">latest source</a>.</p>
+<p>Example defaults (verify against your deployed version):</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Default visibility scope</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Display name</p></td>
+<td><p>Federated</p></td>
+</tr>
+<tr class="row-odd"><td><p>Address</p></td>
+<td><p>Local</p></td>
+</tr>
+<tr class="row-even"><td><p>Website</p></td>
+<td><p>Local</p></td>
+</tr>
+<tr class="row-odd"><td><p>Email</p></td>
+<td><p>Federated</p></td>
+</tr>
+<tr class="row-even"><td><p>Avatar</p></td>
+<td><p>Federated</p></td>
+</tr>
+<tr class="row-odd"><td><p>Phone</p></td>
+<td><p>Local</p></td>
+</tr>
+<tr class="row-even"><td><p>Twitter</p></td>
+<td><p>Local</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bluesky</p></td>
+<td><p>Local</p></td>
+</tr>
+<tr class="row-even"><td><p>Fediverse</p></td>
+<td><p>Local</p></td>
+</tr>
+<tr class="row-odd"><td><p>Organisation</p></td>
+<td><p>Local</p></td>
+</tr>
+<tr class="row-even"><td><p>Role</p></td>
+<td><p>Local</p></td>
+</tr>
+<tr class="row-odd"><td><p>Headline</p></td>
+<td><p>Local</p></td>
+</tr>
+<tr class="row-even"><td><p>Biography</p></td>
+<td><p>Local</p></td>
+</tr>
+<tr class="row-odd"><td><p>Birthdate</p></td>
+<td><p>Local</p></td>
+</tr>
+<tr class="row-even"><td><p>Pronouns</p></td>
+<td><p>Federated</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="override-default-scopes-in-config-php">
+<h3>Override default scopes in <code class="docutils literal notranslate"><span class="pre">config.php</span></code><a class="headerlink" href="#override-default-scopes-in-config-php" title="Link to this heading"></a></h3>
+<p>To override one or several default visibility scopes for <em>new users</em>, use
+<code class="docutils literal notranslate"><span class="pre">account_manager.default_property_scope</span></code> (default: empty array):</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">&#39;account_manager.default_property_scope&#39; =&gt; [</span>
+<span class="x">  \OCP\Accounts\IAccountManager::PROPERTY_PHONE =&gt; \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,</span>
+<span class="x">  \OCP\Accounts\IAccountManager::PROPERTY_ROLE =&gt; \OCP\Accounts\IAccountManager::SCOPE_FEDERATED,</span>
+<span class="x">]</span>
+</pre></div>
+</div>
+<p>In the above example, phone and role are overwritten to <code class="docutils literal notranslate"><span class="pre">Private</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Federated</span></code> respectively.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">\OCP\Accounts\IAccountManager</span></code> constants for both property keys and scope values.</p>
+</div>
+</section>
+<section id="faq-how-to-lock-profile-visibility-down">
+<h3>FAQ: How to lock profile visibility down<a class="headerlink" href="#faq-how-to-lock-profile-visibility-down" title="Link to this heading"></a></h3>
+<p>If your goal is maximum privacy:</p>
+<ol class="arabic">
+<li><p>Disable profiles globally (strictest option):</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">&#39;profile.enabled&#39; =&gt; false,</span>
+</pre></div>
+</div>
+<p>Effect:</p>
+<ul class="simple">
+<li><p>Profile functionality is removed.</p></li>
+<li><p>Profile-based discoverability/usability features are reduced accordingly.</p></li>
+</ul>
+</li>
+<li><p>If profiles must remain enabled, set restrictive defaults for new users:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">&#39;account_manager.default_property_scope&#39; =&gt; [</span>
+<span class="x">  \OCP\Accounts\IAccountManager::PROPERTY_ADDRESS =&gt; \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,</span>
+<span class="x">  \OCP\Accounts\IAccountManager::PROPERTY_PHONE =&gt; \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,</span>
+<span class="x">  \OCP\Accounts\IAccountManager::PROPERTY_WEBSITE =&gt; \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,</span>
+<span class="x">  \OCP\Accounts\IAccountManager::PROPERTY_TWITTER =&gt; \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,</span>
+<span class="x">  \OCP\Accounts\IAccountManager::PROPERTY_BLUESKY =&gt; \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,</span>
+<span class="x">  \OCP\Accounts\IAccountManager::PROPERTY_FEDIVERSE =&gt; \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,</span>
+<span class="x">  \OCP\Accounts\IAccountManager::PROPERTY_ORGANISATION =&gt; \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,</span>
+<span class="x">  \OCP\Accounts\IAccountManager::PROPERTY_ROLE =&gt; \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,</span>
+<span class="x">  \OCP\Accounts\IAccountManager::PROPERTY_HEADLINE =&gt; \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,</span>
+<span class="x">  \OCP\Accounts\IAccountManager::PROPERTY_BIOGRAPHY =&gt; \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,</span>
+<span class="x">  \OCP\Accounts\IAccountManager::PROPERTY_BIRTHDATE =&gt; \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,</span>
+<span class="x">  \OCP\Accounts\IAccountManager::PROPERTY_PRONOUNS =&gt; \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,</span>
+<span class="x">  \OCP\Accounts\IAccountManager::PROPERTY_AVATAR =&gt; \OCP\Accounts\IAccountManager::SCOPE_PRIVATE,</span>
+<span class="x">]</span>
+</pre></div>
+</div>
+<p>Notes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PROPERTY_DISPLAYNAME</span></code> and <code class="docutils literal notranslate"><span class="pre">PROPERTY_EMAIL</span></code> cannot be set to <code class="docutils literal notranslate"><span class="pre">Private</span></code>; server-side enforcement requires at least <code class="docutils literal notranslate"><span class="pre">Local</span></code>.</p></li>
+<li><p>Defaults apply to <strong>new users</strong>. Existing users keep stored scopes unless changed.</p></li>
+</ul>
+</li>
+</ol>
+<section id="what-becomes-limited-when-you-lock-it-down">
+<h4>What becomes limited when you lock it down?<a class="headerlink" href="#what-becomes-limited-when-you-lock-it-down" title="Link to this heading"></a></h4>
+<p>With more restrictive scopes (especially <code class="docutils literal notranslate"><span class="pre">Private</span></code>), expect reduced visibility in:</p>
+<ul class="simple">
+<li><p>User discovery/search/user cards</p></li>
+<li><p>Share dialogs and mention/autocomplete context</p></li>
+<li><p>Public/share-related contexts where account metadata may be shown</p></li>
+<li><p>Federated visibility of profile attributes</p></li>
+<li><p>Public lookup publication (only <code class="docutils literal notranslate"><span class="pre">Published</span></code> appears there)</p></li>
+</ul>
+<p>In short: tighter privacy reduces profile-based convenience and discoverability.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="instruction_set_for_apps.html" class="btn btn-neutral float-left" title="Instruction set for apps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="user_auth_oidc.html" class="btn btn-neutral float-right" title="User authentication with OpenID Connect" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/admin_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/admin_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

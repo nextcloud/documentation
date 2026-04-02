@@ -1,0 +1,268 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Templates &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/basics/front-end/templates.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="JavaScript" href="js.html" />
+    <link rel="prev" title="Front-end" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Basic concepts</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../request_lifecycle.html">Request lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../routing.html">Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dependency_injection.html">Dependency injection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../controllers.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../middlewares.html">Middlewares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../events.html">Events</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Front-end</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Templates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#including-templates">Including templates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#including-css-and-javascript">Including CSS and JavaScript</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#including-images">Including images</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="js.html">JavaScript</a></li>
+<li class="toctree-l3"><a class="reference internal" href="css.html">CSS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theming.html">Theming support</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../translations.html">Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../caching.html">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setting.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../storage/index.html">Storage and database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../public_share_template.html">Public share template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing.html">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Basic concepts</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Front-end</a></li>
+      <li class="breadcrumb-item active">Templates</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/basics/front-end/templates.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="templates">
+<h1>Templates<a class="headerlink" href="#templates" title="Link to this heading"></a></h1>
+<p>Nextcloud provides its own templating system which is basically plain PHP with some additional functions and preset variables. All the parameters which have been passed from the <a class="reference internal" href="../controllers.html"><span class="doc">controller</span></a> are available in an array called <strong>$_[]</strong>, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;something&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>can be accessed through:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$_[&#39;key&#39;]
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To prevent XSS the following PHP <strong>functions for printing are forbidden: echo, print() and &lt;?=</strong>. Instead use the <strong>p()</strong> function for printing your values. Should you require unescaped printing, <strong>double check for XSS</strong> and use: <code class="xref php php-func docutils literal notranslate"><span class="pre">print_unescaped()</span></code>.</p>
+</div>
+<p>Printing values is done by using the <code class="xref php php-func docutils literal notranslate"><span class="pre">p()</span></code> function, printing HTML is done by using <code class="xref php php-func docutils literal notranslate"><span class="pre">print_unescaped()</span></code>.</p>
+<p><code class="file docutils literal notranslate"><span class="pre">templates/main.php</span></code></p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="k">foreach</span><span class="p">(</span><span class="nv">$_</span><span class="p">[</span><span class="s1">&#39;entries&#39;</span><span class="p">]</span> <span class="k">as</span> <span class="nv">$entry</span><span class="p">){</span> <span class="cp">?&gt;</span>
+<span class="x">  &lt;p&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$entry</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="cp">&lt;?php</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="including-templates">
+<h2>Including templates<a class="headerlink" href="#including-templates" title="Link to this heading"></a></h2>
+<p>Templates can also include other templates by using the <strong>$this-&gt;inc(‘templateName’)</strong> method.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">print_unescaped</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">inc</span><span class="p">(</span><span class="s1">&#39;sub.inc&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span>
+</pre></div>
+</div>
+<p>The parent variables will also be available in the included templates, but should you require it, you can also pass new variables to it by using the second optional parameter as array for <strong>$this-&gt;inc</strong>.</p>
+<p><code class="file docutils literal notranslate"><span class="pre">templates/sub.inc.php</span></code></p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">I</span> <span class="nx">am</span> <span class="nx">included</span><span class="p">,</span> <span class="nx">but</span> <span class="nx">I</span> <span class="nx">can</span> <span class="nx">still</span> <span class="nx">access</span> <span class="nx">the</span> <span class="nx">parents</span> <span class="nx">variables</span><span class="o">!&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$_</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]);</span> <span class="cp">?&gt;</span>
+
+<span class="cp">&lt;?php</span> <span class="nx">print_unescaped</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">inc</span><span class="p">(</span><span class="s1">&#39;other_template&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;variable&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;value&#39;</span><span class="p">)));</span> <span class="cp">?&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="including-css-and-javascript">
+<h2>Including CSS and JavaScript<a class="headerlink" href="#including-css-and-javascript" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is deprecated, please use <code class="docutils literal notranslate"><span class="pre">addScript</span></code> and <code class="docutils literal notranslate"><span class="pre">addStyle</span></code> in your controller instead.
+See <a class="reference internal" href="js.html#applicationjs"><span class="std std-ref">JavaScript</span></a> for more information.</p>
+</div>
+<p>To include CSS or JavaScript use the <strong>style</strong> and <strong>script</strong> functions:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="nx">script</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="s1">&#39;script&#39;</span><span class="p">);</span>  <span class="c1">// add js/script.js</span>
+<span class="nx">style</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="s1">&#39;style&#39;</span><span class="p">);</span>  <span class="c1">// add css/style.css</span>
+</pre></div>
+</div>
+</section>
+<section id="including-images">
+<h2>Including images<a class="headerlink" href="#including-images" title="Link to this heading"></a></h2>
+<p>To generate links to images use the <strong>image_path</strong> function:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">img</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&quot;&lt;?php print_unescaped(image_path(&#39;myapp&#39;, &#39;app.png&#39;)); ?&gt;&quot;</span> <span class="o">/&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Front-end" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="js.html" class="btn btn-neutral float-right" title="JavaScript" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Apr 02, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

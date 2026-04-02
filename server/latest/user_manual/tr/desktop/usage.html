@@ -1,0 +1,779 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="tr" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eşitleme istemcisini kullanmak &mdash; Nextcloud latest User Manual latest belgelendirmesi</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/desktop/usage.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=9f991a48"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=b0f24d8d"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Dizin" href="../genindex.html" />
+    <link rel="search" title="Ara" href="../search.html" />
+    <link rel="next" title="macOS Virtual Files Client" href="macosvfs.html" />
+    <link rel="prev" title="Kurulum" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Belgeleri arayın" aria-label="Belgeleri arayın" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest kullanıcı rehberi giriş</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud site arayüzü</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Dosyalar ve eşitleme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Konuş</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Bilgisayar istemcileri</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Kurulum</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Eşitleme istemcisini kullanmak</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#systray-icon">Sistem tepsisi simgesi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-nextcloud-account-settings">Nextcloud hesap ayarlarını yapılandırmak</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-new-accounts">Yeni hesapları eklemek</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-manager-overlay-icons">Dosya yöneticisi kaplama simgeleri</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-the-user-status">Kullanıcı durumunu ayarlamak</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-from-your-desktop">Bilgisayarınızdan paylaşmak</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general-window">Genel pencere</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-network-window">Ağ penceresini kullanmak</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-ignored-files-editor">Yok sayılan dosyalar düzenleyicisini kullanmak</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="macosvfs.html">macOS Virtual Files Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoupdate.html">Otomatik güncelleyici</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Güncelleme kanalları</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conflicts.html">Çakışmalar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">SSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Kullanıcı ayarları</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Evrensel erişim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">İki adımlı doğrulamayı kullanmak</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Bağlı tarayıcı ve aygıtların yönetimi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Dış depolama alanı</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Bilgisayar istemcileri</a></li>
+      <li class="breadcrumb-item active">Eşitleme istemcisini kullanmak</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/usage.rst" class="fa fa-github"> GitHub'da Düzenle</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-synchronization-client">
+<h1>Eşitleme istemcisini kullanmak<a class="headerlink" href="#using-the-synchronization-client" title="Link to this heading"></a></h1>
+<p>Nextcloud bilgisayar istemcisi arka planda kalır ve sistem tepsisinde (Windows, KDE), menü çubuğunda (macOS) veya bildirim alanında (Linux) bir simge olarak görünür.</p>
+<figure class="align-default">
+<img alt="Durum simgesi, yeşil daire ve beyaz tamam işareti" src="../../_images/icon.png" />
+</figure>
+<p>Durum göstergesi, geçerli eşitleme durumunu belirtmek için simgeler kullanır. Beyaz tamam işaretli yeşil daire, eşitlemenin güncel olduğunu ve Nextcloud sunucunuza bağlı olduğunuzu söyler.</p>
+<figure class="align-default">
+<img alt="Durum simgesi, mavi daire ve beyaz yarım daireler" src="../../_images/icon-syncing.png" />
+</figure>
+<p>Beyaz yarım daireler bulunan mavi simge, eşitlemenin sürdüğünü gösterir.</p>
+<figure class="align-default">
+<img alt="Durum simgesi, gri daire ve dikey paralel  çizgiler" src="../../_images/icon-paused.png" />
+</figure>
+<p>Paralel çizgiler bulunan gri simge, eşitlemenin duraklatıldığını gösterir. (Büyük olasılıkla sizin tarafınızdan.)</p>
+<figure class="align-default">
+<img alt="Durum simgesi, gri daire ve üç yatay beyaz  nokta" src="../../_images/icon-offline.png" />
+</figure>
+<p>Üç beyaz noktalı gri simge, eşitleme istemcinizin Nextcloud sunucunuzla bağlantısının kesildiğini gösterir.</p>
+<figure class="align-default">
+<img alt="Durum simgesi, sarı daire içinde &quot;!&quot; işareti" src="../../_images/icon-information.png" />
+</figure>
+<p>“!” işareti olan sarı bir daire gördüğünüzde Bu bilgi simgesidir, bu yüzden size ne söyleyeceğini görmek için tıklamalısınız.</p>
+<figure class="align-default">
+<img alt="Durum simgesi, kırmızı daire ve beyaz x" src="../../_images/icon-error.png" />
+</figure>
+<p>Beyaz “x” ile kırmızı daire, geçersiz bir oturum açma veya sunucu adresi gibi bir yapılandırma sorununu gösterir.</p>
+<section id="systray-icon">
+<h2>Sistem tepsisi simgesi<a class="headerlink" href="#systray-icon" title="Link to this heading"></a></h2>
+<p>Sistem tepsisi simgesine sağ tıklandığında, birkaç işleme hızlı erişmek için bir menü açılır.</p>
+<figure class="align-default">
+<img alt="Eşitleme istemcisi sağ tık menüsü" src="../../_images/traymenu.png" />
+</figure>
+<p>Bu menüde şu seçenekler bulunur:</p>
+<ul class="simple">
+<li><p>Ana pencereyi aç</p></li>
+<li><p>Eşitlemeyi duraklat/sürdür</p></li>
+<li><p>Ayarlar</p></li>
+<li><p>Nextcloud uygulamasından çık, oturumu ve istemciyi kapatır</p></li>
+</ul>
+<p>Sistem tepsisi simgesine sol tıklamak, bilgisayar istemcisinin ana penceresini açar.</p>
+<figure class="align-default">
+<img alt="Ana pencere" src="../../_images/main_dialog.png" />
+</figure>
+<p>Ana pencerede son etkinlikler, hatalar ve sunucu bildirimleri görüntülenir.</p>
+<p>Ana pencereye ve ardından kullanıcının avatarına tıkladığınızda Ayarlar açılır.</p>
+</section>
+<section id="configuring-nextcloud-account-settings">
+<h2>Nextcloud hesap ayarlarını yapılandırmak<a class="headerlink" href="#configuring-nextcloud-account-settings" title="Link to this heading"></a></h2>
+<figure class="align-default">
+<img alt="Ana pencere" src="../../_images/settingsdialog.png" />
+</figure>
+<p>Pencerenin en üstünde, yapılandırılmış her eşitleme hesabı için sekmeler ile Genel ve Ağ ayarları için diğer iki sekme bulunur. Hesap sekmelerinizde şu özelliklere görebilirsiniz:</p>
+<ul class="simple">
+<li><p>Hangi Nextcloud sunucusuna bağlı olduğunuzu ve Nextcloud kullanıcı adınızı gösteren bağlantı durumu.</p></li>
+<li><p>Sunucuda kullanılmış ve kullanılabilecek alan.</p></li>
+<li><p>Geçerli eşitleme durumu.</p></li>
+<li><p><strong>Klasör eşitleme bağlantısı ekle</strong> düğmesi.</p></li>
+</ul>
+<p>Eşitleme durum çubuğunun sağında bulunan üç noktalı küçük düğme (taşma menüsü) ek seçenekler sunar:</p>
+<ul class="simple">
+<li><p>Klasörü aç</p></li>
+<li><p>Nelerin eşitleneceğini seçin (Bu, yalnızca dosya ağacınız daraltıldığında görünür ve dosya ağacını genişletir)</p></li>
+<li><p>Eşitlemeyi duraklat/sürdür</p></li>
+<li><p>Klasör eşitleme bağlantısını kaldır</p></li>
+<li><p>Kullanılabilirlik (Yalnızca sanal dosya desteği açıksa kullanılabilir)</p></li>
+<li><p>Sanal dosya desteğini aç/kapat</p></li>
+</ul>
+<p><strong>Klasörü aç</strong> yerel Nextcloud eşitleme klasörünüzü açar.</p>
+<p><strong>Eşitlemeyi duraklat</strong> hesabınızda herhangi bir değişiklik yapmadan eşitleme işlemlerini duraklatır. Dosyaları indirmeden veya güncellemeden dosya ve klasör listelerini güncellemeyi sürdürür. Tüm eşitleme etkinliklerini durdurmak için <strong>Klasör eşitleme bağlantısını kaldır</strong> seçeneğini kullanın.</p>
+<figure class="align-default">
+<img alt="Eşitleme işlemleri için ek seçenekler" src="../../_images/general_settings_folder_context_menu.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Nextcloud, dosyalardaki mtimes verisini güncellese de klasörlerin mtime verisini (değiştirilme zamanını) korumaz. Ayrıntılı bilgi almak için ` Eşitlemede klasör tarihi yanlış &lt;<a class="reference external" href="https://github.com/owncloud/core/issues/7009">https://github.com/owncloud/core/issues/7009</a>&gt;`_ tartışmasına bakabilirsiniz.</p>
+</div>
+</section>
+<section id="adding-new-accounts">
+<h2>Yeni hesapları eklemek<a class="headerlink" href="#adding-new-accounts" title="Link to this heading"></a></h2>
+<p>Bilgisayar eşitleme istemcinizde birden fazla Nextcloud hesabı yapılandırabilirsiniz. Yeni bir hesap eklemek için herhangi bir hesap sekmesinde <strong>Hesap</strong> &gt; <strong>Yeni ekle</strong> düğmesine tıklamanız ve ardından hesap oluşturma yardımcısını izlemeniz yeterlidir. Yeni hesap, ayarlarını istediğiniz zaman değiştirebileceğiniz ayarlar penceresinde yeni bir sekme olarak görüntülenir. Hesapları silmek için <strong>Hesap</strong> &gt; <strong>Kaldır</strong> seçeneğini kullanabilirsiniz.</p>
+</section>
+<section id="file-manager-overlay-icons">
+<h2>Dosya yöneticisi kaplama simgeleri<a class="headerlink" href="#file-manager-overlay-icons" title="Link to this heading"></a></h2>
+<p>Nextcloud eşitleme istemcisi, Nextcloud dosyalarınızın eşitlenme durumunu belirtmek için sistem dosya yöneticiniz (Windows üzerinde Explorer, Mac üzerine Finder ve Linux üzerinde Nautilus) için normal dosya türü simgelerine ek olarak kaplama simgeleri görüntüler.</p>
+<p>Kaplama simgeleri, yukarıda anılan sistem tepsisi simgelerine benzer. Eşitleme durumuna ve sorunlara göre dosyalarda ve klasörlerde farklı davranırlar.</p>
+<p>Tek bir dosyanın kaplama simgesi, geçerli eşitlenme durumunu gösterir. Dosya sunucu sürümüyle eşitse, yeşil bir tamam işareti görüntülenir.</p>
+<p>Dosya eşitlemede yok sayılıyorsa bir uyarı simgesi görüntülenir. Örneğin dosya katılmayacaklar listenizde olabilir veya sembolik bir bağlantı olabilir.</p>
+<p>Bir eşitleme sorunu varsa veya dosya kara listeye alınmışsa, göz alıcı bir kırmızı X görüntülenir.</p>
+<p>Dosya eşitlenmeyi bekliyorsa veya şu anda eşitleniyorsa, mavi bir döngü simgesi görüntülenir.</p>
+<p>İstemci çevrim dışı olduğunda, klasörün şu anda eşitlenmediğini yansıtmak için hiçbir simge görüntülenmez ve hiçbir değişiklik sunucuyla eşitlenmez.</p>
+<p>Eşitlenmiş bir klasörün kaplama simgesi, klasördeki dosyaların durumunu gösterir. Herhangi bir eşitleme sorunu varsa, klasörde bir uyarı simgesi görüntülenir.</p>
+<p>Bir klasörde, uyarı simgeleriyle işaretlenmiş yok sayılan dosyalar bulunuyorsa üst klasörlerin durumu değişmez.</p>
+</section>
+<section id="set-the-user-status">
+<h2>Kullanıcı durumunu ayarlamak<a class="headerlink" href="#set-the-user-status" title="Link to this heading"></a></h2>
+<p>Nextcloud sunucunuzda kullanıcı durumu uygulaması kurulmuş ise, bilgisayar istemcisinden kullanıcı durumunuzu ayarlayabilirsiniz. Bunu yapmak için ana pencereyi açın. Ardından avatarınıza ve ardından üç noktaya tıklayın. Açılan menüden <strong>Durumu ayarla</strong> üzerine tıklayın.</p>
+<figure class="align-default">
+<img alt="Ana pencerede kullanıcı durumu penceresini açın." src="../../_images/user_status_selector_main_dialog.png" />
+</figure>
+<p>Açılan pencerede, <strong>Çevrim içi</strong>, <strong>Uzakta</strong>, <strong>Rahatsız etme</strong> ya da <strong>Görünmez</strong> üzerine tıklayarak çevrim içi durumunuzu ayarlayabilirsiniz. Ayrıca aşağıdaki yazı alanından özel bir durum iletisi ayarlayabilir ya da aşağıdaki hazır durum iletilerinden birini seçebilirsiniz. Yazı giriş alanının yanındaki emojinin bulunduğu düğmeye tıklarsanız özel bir emoji de ayarlayabilirsiniz. Son olarak, kullanıcı durumunuzun ne zaman kaldırılacağını ayarlamak isteyebilirsiniz. <strong>Durum iletisi şu süre sonunda kaldırılsın</strong> yazının sol tarafındaki düğmeye tıklayarak kullanıcı durumunun kaldırılacağı süreyi seçebilirsiniz .</p>
+<figure class="align-default">
+<img alt="Kullanıcı durumunu ayarlama penceresi." src="../../_images/user_status-selector_dialog.png" />
+</figure>
+<p>Oluşturduğunuz durum seçeneğinden memnunsanız, bu durumu <strong>Durum iletisini ayarla</strong> düğmesiyle etkinleştirebilirsiniz. Zaten bir durum ayarınız varsa, <strong>Durum iletisini kaldır</strong> düğmesine tıklayarak durumu kaldırabilirsiniz.</p>
+</section>
+<section id="sharing-from-your-desktop">
+<h2>Bilgisayarınızdan paylaşmak<a class="headerlink" href="#sharing-from-your-desktop" title="Link to this heading"></a></h2>
+<p>Nextcloud bilgisayar eşitleme istemcisi macOS üzerinde Finder ve Windows üzerinde Dosya gezgini dosya yöneticinizle bütünleşir. Linux kullanıcıları, kullanılan dosya yöneticisine bağlı olarak ek bir paket kurmalıdır. Örneğin <code class="docutils literal notranslate"><span class="pre">nautilus-nextcloud</span></code> (Ubuntu/Debian), <code class="docutils literal notranslate"><span class="pre">dolphin-nextcloud</span></code> (Kubuntu), <code class="docutils literal notranslate"><span class="pre">nemo-nextcloud</span></code> ve <code class="docutils literal notranslate"><span class="pre">caja-nextcloud</span></code> kullanılabilir. Paylaşım bağlantıları oluşturabilir ve Nextcloud internet arayüzünde olduğu gibi iç Nextcloud kullanıcılarıyla paylaşabilirsiniz.</p>
+<p>Dosya gezgininizde bir dosyaya tıklayın ve sağ tık menüsünden <strong>Nextcloud</strong> üzerine gidin. Ardından Paylaş penceresini açmak için <strong>Paylaşım seçenekleri</strong> üzerine tıklayın.</p>
+<figure class="align-default">
+<img alt="Windows dosya gezgini ile paylaşmak." src="../../_images/share_context_menu.png" />
+</figure>
+<p>Bu pencereden bir dosyayı paylaşabilirsiniz.</p>
+<figure class="align-default">
+<img alt="Paylaşım penceresi" src="../../_images/share_dialog.png" />
+</figure>
+</section>
+<section id="general-window">
+<h2>Genel pencere<a class="headerlink" href="#general-window" title="Link to this heading"></a></h2>
+<p>Genel pencerede <strong>Sistem başlagıcında çalıştırılsın</strong>, <strong>Tek renkli simgeler kullanılsın</strong> ve <strong>Sunucu bildirimlerini görüntülensin</strong> gibi yapılandırma seçenekleri bulunur. Burada, yok sayılacak dosyalar düzenleyicisini başlatmak için <strong>Yok sayılan dosyaları düzenle</strong> düğmesini ve <strong>[klasör boyutundan] daha büyük klasörleri indirmeden önce onay istensin</strong> seçeneklerini göreceksiniz.</p>
+<figure class="align-default">
+<img alt="Yapılandırma seçenekleri ile genel pencere." src="../../_images/settings_general.png" />
+</figure>
+</section>
+<section id="using-the-network-window">
+<h2>Ağ penceresini kullanmak<a class="headerlink" href="#using-the-network-window" title="Link to this heading"></a></h2>
+<p id="index-0">Ağ ayarları penceresi, ağ vekil sunucusu ayarlarını yapmanızı ve indirme ile yükleme bant genişliği sınırlarını belirlemenizi sağlar.</p>
+<figure class="align-default">
+<img alt="../../_images/settings_network.png" src="../../_images/settings_network.png" />
+</figure>
+</section>
+<section id="using-the-ignored-files-editor">
+<span id="usingignoredfileseditor-label"></span><h2>Yok sayılan dosyalar düzenleyicisini kullanmak<a class="headerlink" href="#using-the-ignored-files-editor" title="Link to this heading"></a></h2>
+<p id="index-1">Sunucuda yedeklemek ve saklamak istemediğiniz bazı yerel dosyalarınız veya klasörleriniz olabilir. Bu dosyaları veya klasörleri tanımlamak ve eşitlemeye katmamak için <em>Yok sayılan dosyalar düzenleyicisi</em> (Genel sekmesinde) kullanabilirsiniz.</p>
+<figure class="align-default">
+<img alt="../../_images/ignored_files_editor.png" src="../../_images/ignored_files_editor.png" />
+</figure>
+<p>Size kolaylık sağlamak için düzenleyici, sık kullanılan yok sayma kalıplarının listesiyle önceden doldurulmuş olarak görüntülenir. Bu kalıplar, Nextcloud istemcisinin uygulama klasöründe bulunan bir sistem dosyasında (genellikle <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst`)</span> <span class="pre">bulunur.</span> <span class="pre">Bu</span> <span class="pre">hazır</span> <span class="pre">kalıpları</span> <span class="pre">doğrudan</span> <span class="pre">düzenleyiciden</span> <span class="pre">değiştiremezsiniz.</span> <span class="pre">Bununla</span> <span class="pre">birlikte,</span> <span class="pre">gerekirse,</span> <span class="pre">o</span> <span class="pre">model</span> <span class="pre">ile</span> <span class="pre">ilişkili</span> <span class="pre">yolu</span> <span class="pre">ve</span> <span class="pre">dosya</span> <span class="pre">adını</span> <span class="pre">göstermek,</span> <span class="pre">dosyayı</span> <span class="pre">bulmak</span> <span class="pre">ve</span> <span class="pre">``sync-exclude.lst</span></code> dosyasını düzenlemek için listedeki herhangi bir modelin üzerine gelebilirsiniz.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Genel katılmayacak ögeler tanım dosyasını değiştirmek, istemcinin çalışmasını engelleyebilir veya istenmeyen davranışlara neden olabilir.</p>
+</div>
+<p>Düzenleyicideki her satırda bir yok sayma modeli dizgesi bulunur. Özel modeller oluştururken, bir yok sayma kalıbı tanımlamak için normal karakterleri kullanabileceğiniz gibi, değerleri eşleştirmek için genel arama  karakterleri kullanabilirsiniz. Örneğin, rastgele sayıda karakter için yıldız (<code class="docutils literal notranslate"><span class="pre">*</span></code>), tek bir karakter için soru işareti (<a href="#id1"><span class="problematic" id="id2">``</span></a>? <a href="#id3"><span class="problematic" id="id4">``</span></a>) kullanabilirsiniz.</p>
+<p>Bölü karakteri (<code class="docutils literal notranslate"><span class="pre">/</span></code>) ile biten modeller, denetlenecek yolun yalnızca klasör bölümüne uygulanır.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Şu anda düzenleyici özel kayıtların sözdizimsel doğruluğuna bakmıyor. Bu nedenle sözdizimi yanlış herhangi bir uyarı görmeyeceksiniz. Eşitlemeniz beklediğiniz gibi çalışmıyorsa sözdiziminizi denetleyin.</p>
+</div>
+<p>Listedeki her model dizgesinin yanında bir işaret kutusu bulunur. İşaret kutusu işaretlendiğinde, model ile eşleşen dosya veya klasör yok sayılır ve eşleşen herhangi bir dosya “kısa üst veri” olarak kabul edilirek istemci tarafından kaldırılır.</p>
+<p>Bu listede tanımlanan kalıpları kullanan dosyaların ve klasörlerin katılamamasının yanında:</p>
+<ul class="simple">
+<li><p>Nextcloud istemcisi, adında diğer dosya sistemlerinde eşitlenemeyen karakterler bulunan dosyaları hiç bir zaman eşitlemeye katmaz.</p></li>
+<li><p>Bir eşitleme sırasında üç kez hataya neden olan dosyalar kaldırılır. Bununla birlikte, istemci, hataya yol açan dosyaları eşitlemeyi üç kez daha yeniden deneme seçeneği sunar.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Kurulum" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Önceki</a>
+        <a href="macosvfs.html" class="btn btn-neutral float-right" title="macOS Virtual Files Client" accesskey="n" rel="next">Sonraki <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 Turkish
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Diller</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Sürümler</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>İndirmeler</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Okunacak Belgeler</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Proje Ana Sayfası</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Yapımlar</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

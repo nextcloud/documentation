@@ -1,0 +1,1343 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="el" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Χρήση της εφαρμογής Αλληλογραφίας &mdash; Τεκμηρίωση του Nextcloud latest User Manual - latest</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/groupware/mail.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=ba845f4f"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=e109e2be"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Ευρετήριο" href="../genindex.html" />
+    <link rel="search" title="Αναζήτηση" href="../search.html" />
+    <link rel="next" title="Ρύθμιση μηνυμάτων απουσίας" href="absence.html" />
+    <link rel="prev" title="Χρήση της εφαρμογής Ημερολόγιο" href="calendar.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Εισαγωγή εγχειριδίου χρήστη Nextcloud |έκδοση|</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Η Διεπαφή Web του Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Αρχεία και συγχρονισμός</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Χρήση της εφαρμογής Επαφές</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Χρήση της εφαρμογής Ημερολόγιο</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Χρήση της εφαρμογής Αλληλογραφίας</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#managing-your-mail-account">Διαχείριση του λογαριασμού αλληλογραφίας σας</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#switch-layout">Αλλαγή διάταξης</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#use-compact-mode">Use Compact Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#message-display-operation-mode">Προβολή Μηνυμάτων / Λειτουργική Λειτουργία</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-new-mail-account">Προσθήκη νέου λογαριασμού αλληλογραφίας</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#change-sort-order">Αλλαγή σειράς ταξινόμησης</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sort-favorites-up">Sort favorites up</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scheduled-messages">Προγραμματισμένα μηνύματα</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#priority-inbox">Γραμματοκιβώτιο προτεραιότητας</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#all-inboxes">Όλα τα εισερχόμενα</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#account-settings">Ρυθμίσεις λογαριασμού</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#move-messages-to-junk-folder">Μετακίνηση μηνυμάτων στον φάκελο Ανεπιθύμητων</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#refresh-mailbox">Refresh mailbox</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unified-search">Unified search</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search-in-mailbox">Αναζήτηση στο γραμματοκιβώτιο</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#advanced-search-in-mailbox">Προχωρημένη αναζήτηση στο γραμματοκιβώτιο</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enable-mail-body-search">Ενεργοποίηση αναζήτησης σώματος μηνύματος</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#account-delegation">Ανάθεση λογαριασμού</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automatic-trash-deletion">Αυτόματη διαγραφή απορριμμάτων</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#compose-messages">Σύνθεση μηνυμάτων</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#minimize-the-composer-modal">Ελαχιστοποίηση του μοντάλου σύνθεσης</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#recipient-info-on-composer">Πληροφορίες παραλήπτη στον συνθέτη</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mention-contacts">Αναφορά επαφών</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#text-blocks">Μπλοκ κειμένου</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#outbox">Εξερχόμενα</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mailbox-actions">Ενέργειες γραμματοκιβωτίου</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-mailbox">Προσθήκη γραμματοκιβωτίου</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-submailbox">Προσθήκη υπογραμματοκιβωτίου</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shared-mailbox">Κοινόχρηστο γραμματοκιβώτιο</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#envelope-actions">Ενέργειες περιεχομένων</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-an-event">Δημιουργία συμβάντος</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-task">Δημιουργία εργασίας</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-tags">Επεξεργασία ετικετών</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#change-color-for-tags">Αλλαγή χρώματος για ετικέτες</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete-tags">Διαγραφή ετικετών</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ai-summary">Σύνοψη ΤΝ</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#quick-actions">Quick actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#message-actions">Ενέργειες μηνυμάτων</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#unsubscribe-from-a-mailing-list">Απεγγραφή από μια λίστα αλληλογραφίας</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#snooze">Αναβολή</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#smart-replies">Έξυπνες απαντήσεις</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mail-translation">Μετάφραση αλληλογραφίας</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#thread-summary">Σύνοψη συνομιλίας</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filtering-and-autoresponder">Φιλτράρισμα και αυτόματος απαντητής</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autoresponders">Αυτόματοι απαντητές</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filter">Φίλτρο</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-filter-from-a-message">Δημιουργία φίλτρου από ένα μήνυμα</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#follow-up-reminders">Υπενθυμίσεις παρακολούθησης</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#security">Ασφάλεια</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#phishing-detection">Ανίχνευση phishing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#internal-addresses">Εσωτερικές διευθύνσεις</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dashboard-integration">Ενσωμάτωση πίνακα ελέγχου</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calendar-integration">Calendar integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#meeting-invitations">Meeting invitations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#meeting-invitation-automation">Meeting invitation automation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#keyboard-shortcuts">Keyboard shortcuts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">Ρύθμιση μηνυμάτων απουσίας</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Συγχρονισμός με Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">Συγχρονισμός με iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">Συγχρονισμός με macOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Συγχρονισμός με Thunderbird</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Συγχρονισμός με KDE Kontact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Συγχρονισμός με την επιφάνεια εργασίας GNOME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Συγχρονισμός με Windows 10</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Πελάτες Επιφάνειας Εργασίας</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Ορισμός των προτιμήσεών σας</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Καθολική Πρόσβαση</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Χρήση ελέγχου ταυτότητας δύο παραγόντων</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Διαχείριση συνδεδεμένων προγραμμάτων περιήγησης και συσκευών</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Εξωτερικός χώρος αποθήκευσης</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Groupware</a></li>
+      <li class="breadcrumb-item active">Χρήση της εφαρμογής Αλληλογραφίας</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/mail.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-mail-app">
+<h1>Χρήση της εφαρμογής Αλληλογραφίας<a class="headerlink" href="#using-the-mail-app" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Η εφαρμογή Αλληλογραφίας εγκαθίσταται από προεπιλογή με το Nextcloud Hub, αλλά μπορεί να απενεργοποιηθεί. Παρακαλώ ρωτήστε τον Διαχειριστή σας για αυτό.</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/mail.png" src="../../_images/mail.png" />
+</figure>
+<section id="managing-your-mail-account">
+<h2>Διαχείριση του λογαριασμού αλληλογραφίας σας<a class="headerlink" href="#managing-your-mail-account" title="Link to this heading"></a></h2>
+<section id="switch-layout">
+<h3>Αλλαγή διάταξης<a class="headerlink" href="#switch-layout" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.6.</span></p>
+</div>
+<ol class="arabic simple">
+<li><p>Επισκεφτείτε τις ρυθμίσεις αλληλογραφίας</p></li>
+<li><p>Επιλέξτε μεταξύ <em>Λίστας</em>, <em>Κατακόρυφης διάσπασης</em> και <em>Οριζόντιας διάσπασης</em></p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/mail_layout.png" src="../../_images/mail_layout.png" />
+</figure>
+</section>
+<section id="use-compact-mode">
+<h3>Use Compact Mode<a class="headerlink" href="#use-compact-mode" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.7.0.</span></p>
+</div>
+<p>Compact mode offers a cleaner and more efficient way to view your messages. Avatars are hidden, selection checkboxes are always visible, and the preview of messages is removed. It saves space allowing you to see more emails at once.</p>
+<ol class="arabic simple">
+<li><p>Visit the mail settings</p></li>
+<li><p>Go to <strong>Appearance</strong></p></li>
+<li><p>Toggle the Compact Mode</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/use-compact-mode.png" src="../../_images/use-compact-mode.png" />
+</figure>
+</section>
+<section id="message-display-operation-mode">
+<h3>Προβολή Μηνυμάτων / Λειτουργική Λειτουργία<a class="headerlink" href="#message-display-operation-mode" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.2.</span></p>
+</div>
+<p>Η Αλληλογραφία έχει τη δυνατότητα εναλλαγής μεταξύ δύο διαφορετικών λειτουργιών προβολής και λειτουργίας μηνυμάτων: <em>Συνομιλία</em> και <em>Μονό</em>.</p>
+<p>Στη λειτουργία <em>Συνομιλία</em>, τα μηνύματα ομαδοποιούνται ανά συνομιλία. Στη λίστα μηνυμάτων του γραμματοκιβωτίου, τα σχετικά μηνύματα στοιβάζονται έτσι ώστε να εμφανίζεται μόνο το πιο πρόσφατο μήνυμα και όλα τα σχετικά μηνύματα εμφανίζονται στο πλαίσιο προβολής μηνυμάτων αφού επιλεγεί το στοιβαγμένο μήνυμα. Αυτό είναι χρήσιμο για την παρακολούθηση συζητήσεων και την κατανόηση του πλαισίου των απαντήσεων. Σε αυτή τη λειτουργία, λειτουργίες μηνυμάτων όπως η μετακίνηση και η διαγραφή ισχύουν για ολόκληρη τη συνομιλία, πράγμα που σημαίνει ότι όταν μετακινείτε ή διαγράφετε μια συνομιλία, όλα τα μηνύματα εντός αυτής της συνομιλίας επηρεάζονται.</p>
+<p>Στη λειτουργία <em>Μονό</em>, τα μηνύματα εμφανίζονται μεμονωμένα, τόσο στη λίστα μηνυμάτων του γραμματοκιβωτίου όσο και στο πλαίσιο προβολής μηνυμάτων και λειτουργίες όπως η μετακίνηση και η διαγραφή ισχύουν μόνο για το επιλεγμένο μήνυμα. Αυτή η λειτουργία είναι χρήσιμη όταν θέλετε να διαχειριστείτε μηνύματα ξεχωριστά χωρίς να επηρεάζετε ολόκληρη τη συνομιλία.</p>
+<ol class="arabic simple">
+<li><p>Επισκεφτείτε τις ρυθμίσεις αλληλογραφίας</p></li>
+<li><p>Επιλέξτε μεταξύ <em>Συνομιλία</em>, <em>Μονό</em></p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/mail_display-mode.png" src="../../_images/mail_display-mode.png" />
+</figure>
+</section>
+<section id="add-a-new-mail-account">
+<h3>Προσθήκη νέου λογαριασμού αλληλογραφίας<a class="headerlink" href="#add-a-new-mail-account" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Ενεργοποιήστε την εφαρμογή αλληλογραφίας από τις εφαρμογές</p></li>
+<li><p>Κάντε κλικ στο εικονίδιο αλληλογραφίας στην κεφαλίδα</p></li>
+<li><p>Συμπληρώστε τη φόρμα σύνδεσης (αυτόματα ή χειροκίνητα)</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/new-mail-account.png" src="../../_images/new-mail-account.png" />
+</figure>
+</section>
+<section id="change-sort-order">
+<h3>Αλλαγή σειράς ταξινόμησης<a class="headerlink" href="#change-sort-order" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5.</span></p>
+</div>
+<ol class="arabic simple">
+<li><p>Επισκεφτείτε τις ρυθμίσεις αλληλογραφίας</p></li>
+<li><p>Μεταβείτε στην <em>Ταξινόμηση</em></p></li>
+<li><p>Μπορείτε να επιλέξετε <em>Παλαιότερα</em> ή <em>Νεότερα</em> μηνύματα πρώτα</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Αυτή η αλλαγή θα ισχύσει για όλους τους λογαριασμούς και τα γραμματοκιβώτια σας</p>
+</div>
+</section>
+<section id="sort-favorites-up">
+<h3>Sort favorites up<a class="headerlink" href="#sort-favorites-up" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.7: </span>Nextcloud 31 or newer</p>
+</div>
+<p>This setting allows you to show messages set as favorite in a separate section on top of the message list.</p>
+<ol class="arabic simple">
+<li><p>Επισκεφτείτε τις ρυθμίσεις αλληλογραφίας</p></li>
+<li><p>Go to <em>Appearance</em></p></li>
+<li><p>Enable sorting favorites up</p></li>
+</ol>
+</section>
+<section id="scheduled-messages">
+<span id="mail-scheduled-messages"></span><h3>Προγραμματισμένα μηνύματα<a class="headerlink" href="#scheduled-messages" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Κάντε κλικ στο κουμπί νέου μηνύματος στην επάνω αριστερή γωνία της οθόνης σας</p></li>
+<li><p>Κάντε κλικ στο μενού ενεργειών (…) στον μοντάλο σύνθεσης</p></li>
+<li><p>Κάντε κλικ στο <em>αποστολή αργότερα</em></p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/scheduled-msg.png" src="../../_images/scheduled-msg.png" />
+</figure>
+</section>
+<section id="priority-inbox">
+<h3>Γραμματοκιβώτιο προτεραιότητας<a class="headerlink" href="#priority-inbox" title="Link to this heading"></a></h3>
+<p>Το γραμματοκιβώτιο προτεραιότητας έχει 2 ενότητες <em>Σημαντικά</em> και <em>Άλλα</em>. Τα μηνύματα θα σημειώνονται αυτόματα ως σημαντικά με βάση ποια μηνύματα αλληλεπιδράσατε ή σημειώσατε ως σημαντικά. Στην αρχή μπορεί να χρειαστεί να αλλάξετε χειροκίνητα τη σημασία για να διδάξετε το σύστημα, αλλά θα βελτιωθεί με το χρόνο.</p>
+<p>The automatic classification is optional. You can opt-out when setting up an account. The classification can also be turned on and off in the account settings at any time.</p>
+<figure class="align-default">
+<img alt="../../_images/priority-inbox.png" src="../../_images/priority-inbox.png" />
+</figure>
+</section>
+<section id="all-inboxes">
+<h3>Όλα τα εισερχόμενα<a class="headerlink" href="#all-inboxes" title="Link to this heading"></a></h3>
+<p>Όλα τα μηνύματα από όλους τους λογαριασμούς που έχετε συνδεθεί, θα εμφανίζονται εδώ χρονολογικά.</p>
+</section>
+<section id="account-settings">
+<span id="mail-account-settings"></span><h3>Ρυθμίσεις λογαριασμού<a class="headerlink" href="#account-settings" title="Link to this heading"></a></h3>
+<p>Οι ρυθμίσεις του λογαριασμού σας όπως:</p>
+<ol class="arabic simple">
+<li><p>Ψευδώνυμα</p></li>
+<li><p>Υπογραφή</p></li>
+<li><p>Προεπιλεγμένοι Φάκελοι</p></li>
+<li><p>Αυτόματος απαντητής</p></li>
+<li><p>Έμπιστοι αποστολείς</p></li>
+<li><p>..και άλλα</p></li>
+</ol>
+<p>Μπορούν να βρεθούν στο μενού ενεργειών ενός λογαριασμού αλληλογραφίας. Εκεί μπορείτε να επεξεργαστείτε, να προσθέσετε ή να αφαιρέσετε ρυθμίσεις ανάλογα με τις ανάγκες σας.</p>
+</section>
+<section id="move-messages-to-junk-folder">
+<h3>Μετακίνηση μηνυμάτων στον φάκελο Ανεπιθύμητων<a class="headerlink" href="#move-messages-to-junk-folder" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<p>Η Αλληλογραφία μπορεί να μετακινήσει ένα μήνυμα σε διαφορετικό φάκελο όταν σημειωθεί ως ανεπιθύμητο.</p>
+<ol class="arabic simple">
+<li><p>Επισκεφτείτε τις Ρυθμίσεις λογαριασμού</p></li>
+<li><p>Μεταβείτε στους Προεπιλεγμένους φακέλους</p></li>
+<li><p>Ελέγξτε ότι έχει επιλεγεί ένας φάκελος για τα ανεπιθύμητα μηνύματα</p></li>
+<li><p>Μεταβείτε στις Ρυθμίσεις ανεπιθύμητων</p></li>
+<li><p>Κάντε κλικ στο Μετακίνηση μηνυμάτων στον φάκελο Ανεπιθύμητων</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/mail_move-message-to-junk-folder.png" src="../../_images/mail_move-message-to-junk-folder.png" />
+</figure>
+</section>
+<section id="refresh-mailbox">
+<h3>Refresh mailbox<a class="headerlink" href="#refresh-mailbox" title="Link to this heading"></a></h3>
+<p>You can manually trigger a sync of your mailbox by clicking the refresh button located at the top of the mailbox list.
+Starting from <code class="docutils literal notranslate"><span class="pre">version</span> <span class="pre">5.7</span></code> triggering the sync will also refresh the list of folders for the selected account.</p>
+</section>
+<section id="unified-search">
+<h3>Unified search<a class="headerlink" href="#unified-search" title="Link to this heading"></a></h3>
+<p>The Mail app integrates with Nextcloud’s <a class="reference internal" href="../webinterface.html#id1"><span class="std std-ref">unified search</span></a>
+feature (see <a class="reference internal" href="../webinterface.html"><span class="doc">Η Διεπαφή Web του Nextcloud</span></a> for details). You can search for emails across
+all your accounts using the search bar in the Nextcloud header.</p>
+<p>Mail searches email subjects and sender/recipient fields. To search email bodies,
+use the mailbox search feature in the app.</p>
+</section>
+<section id="search-in-mailbox">
+<h3>Αναζήτηση στο γραμματοκιβώτιο<a class="headerlink" href="#search-in-mailbox" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 2.1.</span></p>
+</div>
+<p>Στην κορυφή της λίστας περιεχομένων σε οποιαδήποτε διάταξη αλληλογραφίας, υπάρχει μια συντόμευση πεδίου αναζήτησης για αναζήτηση θεμάτων email. Από την <code class="docutils literal notranslate"><span class="pre">έκδοση</span> <span class="pre">3.7</span></code>, αυτή η συντόμευση σας επιτρέπει να αναζητάτε από προεπιλογή ανά θέμα, παραλήπτη (προς) ή αποστολέα (από).</p>
+</section>
+<section id="advanced-search-in-mailbox">
+<h3>Προχωρημένη αναζήτηση στο γραμματοκιβώτιο<a class="headerlink" href="#advanced-search-in-mailbox" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<p>Μπορείτε να αποκτήσετε πρόσβαση στη δυνατότητα προχωρημένης αναζήτησής μας μέσω ενός μοντάλου που βρίσκεται στο τέλος της συντόμευσης αναζήτησης.</p>
+</section>
+<section id="enable-mail-body-search">
+<h3>Ενεργοποίηση αναζήτησης σώματος μηνύματος<a class="headerlink" href="#enable-mail-body-search" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5.</span></p>
+</div>
+<p>Τα σώματα μηνυμάτων μπορούν πλέον να αναζητηθούν, αυτή η λειτουργία είναι προαιρετική λόγω πιθανών ζητημάτων απόδοσης.</p>
+<p>Για να το ενεργοποιήσετε:</p>
+<ol class="arabic simple">
+<li><p>Επισκεφτείτε τις Ρυθμίσεις λογαριασμού</p></li>
+<li><p>Μεταβείτε στην Αναζήτηση γραμματοκιβωτίου</p></li>
+<li><p>Ενεργοποίηση αναζήτησης σώματος μηνύματος</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Προειδοποίηση</p>
+<p>Εάν θέλετε να το ενεργοποιήσετε και για ενοποιημένα γραμματοκιβώτια, πρέπει να το κάνετε στις Ρυθμίσεις αλληλογραφίας</p>
+</div>
+<p>Ενεργοποιώντας το, το κύριο πλαίσιο αναζήτησης θα αναζητά τώρα τόσο σε θέματα όσο και σε σώματα μηνυμάτων, και μια ξεχωριστή επιλογή <em>Σώμα</em> θα εμφανιστεί στην προχωρημένη αναζήτηση.</p>
+</section>
+<section id="account-delegation">
+<h3>Ανάθεση λογαριασμού<a class="headerlink" href="#account-delegation" title="Link to this heading"></a></h3>
+<p>Η εφαρμογή επιτρέπει την ανάθεση λογαριασμού, ώστε ένας χρήστης να μπορεί να στέλνει email από τη διεύθυνση ενός άλλου.</p>
+<ol class="arabic simple">
+<li><p>Η ανάθεση πρέπει να ρυθμιστεί στον διακομιστή αλληλογραφίας από έναν διαχειριστή</p></li>
+<li><p>Προσθέστε την άλλη διεύθυνση email ως ψευδώνυμο για τον δικό σας λογαριασμό email</p></li>
+<li><p>Κατά την αποστολή email, επιλέξτε το ψευδώνυμο ως αποστολέα</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Προειδοποίηση</p>
+<p>Το απεσταλμένο email μπορεί να μην είναι ορατό στον αρχικό λογαριασμό εάν είναι αποθηκευμένο στο προσωπικό σας γραμματοκιβώτιο <em>Απεσταλμένα</em>.</p>
+</div>
+</section>
+<section id="automatic-trash-deletion">
+<h3>Αυτόματη διαγραφή απορριμμάτων<a class="headerlink" href="#automatic-trash-deletion" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<p>Η εφαρμογή Αλληλογραφίας μπορεί να διαγράφει αυτόματα μηνύματα στον φάκελο απορριμμάτων μετά από έναν ορισμένο αριθμό ημερών.</p>
+<ol class="arabic simple">
+<li><p>Επισκεφτείτε τις Ρυθμίσεις λογαριασμού</p></li>
+<li><p>Μεταβείτε στην Αυτόματη διαγραφή απορριμμάτων</p></li>
+<li><p>Εισάγετε τον αριθμό των ημερών μετά τις οποίες θα πρέπει να διαγραφούν τα μηνύματα</p></li>
+</ol>
+<p>Απενεργοποιήστε τη διατήρηση απορριμμάτων αφήνοντας το πεδίο κενό ή ορίζοντάς το σε 0.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Μόνο τα email που διαγράφηκαν μετά την ενεργοποίηση της διατήρησης απορριμμάτων θα επεξεργαστούν.</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/mail_trash_retention_settings.png" src="../../_images/mail_trash_retention_settings.png" />
+</figure>
+</section>
+</section>
+<section id="compose-messages">
+<h2>Σύνθεση μηνυμάτων<a class="headerlink" href="#compose-messages" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Κάντε κλικ στο νέο μήνυμα στην επάνω αριστερή γωνία της οθόνης σας</p></li>
+<li><p>Αρχίστε να γράφετε το μήνυμά σας</p></li>
+</ol>
+<section id="minimize-the-composer-modal">
+<h3>Ελαχιστοποίηση του μοντάλου σύνθεσης<a class="headerlink" href="#minimize-the-composer-modal" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.2.</span></p>
+</div>
+<p>Το μοντάλο σύνθεσης μπορεί να ελαχιστοποιηθεί ενώ γράφετε ένα νέο μήνυμα, επεξεργάζεστε ένα υπάρχον προσχέδιο ή ένα μήνυμα από τα εξερχόμενα. Απλώς κάντε κλικ στο κουμπί ελαχιστοποίησης στην επάνω δεξιά γωνία του μοντάλου ή κάντε κλικ οπουδήποτε έξω από το μοντάλο.</p>
+<figure class="align-default">
+<img alt="../../_images/mail-minimize-composer.png" src="../../_images/mail-minimize-composer.png" />
+</figure>
+<p>Μπορείτε να συνεχίσετε το ελαχιστοποιημένο μήνυμά σας κάνοντας κλικ οπουδήποτε στον δείκτη στην κάτω δεξιά γωνία της οθόνης σας.</p>
+<figure class="align-default">
+<img alt="../../_images/mail-composer-indicator.png" src="../../_images/mail-composer-indicator.png" />
+</figure>
+<p>Πατήστε το κουμπί κλεισίματος στο μοντάλο ή τον δείκτη στην κάτω δεξιά γωνία για να σταματήσετε την επεξεργασία ενός μηνύματος. Ένα προσχέδιο θα αποθηκευτεί αυτόματα στο γραμματοκιβώτιο προσχεδίων σας.</p>
+</section>
+</section>
+<section id="recipient-info-on-composer">
+<h2>Πληροφορίες παραλήπτη στον συνθέτη<a class="headerlink" href="#recipient-info-on-composer" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.2.</span></p>
+</div>
+<p>Όταν προσθέτετε τον πρώτο σας παραλήπτη ή επαφή στο πεδίο «Προς», θα εμφανιστεί ένα δεξιό παράθυρο που εμφανίζει τις αποθηκευμένες λεπτομέρειες προφίλ αυτής της επαφής. Η προσθήκη δεύτερης επαφής θα συμπτύξει τη λίστα, επιτρέποντάς σας να επιλέξετε και να αναπτύξετε οποιαδήποτε επαφή που προσθέσατε για να δείτε τις λεπτομέρειές της. Εάν προτιμάτε να εστιάζετε αποκλειστικά στη γραφή στον συνθέτη, μπορείτε να αποκρύψετε το δεξιό παράθυρο κάνοντας κλικ στο εικονίδιο ανάπτυξης στην επάνω δεξιά γωνία. Για να εμφανίσετε ξανά το δεξιό παράθυρο, απλώς κάντε κλικ στο εικονίδιο ελαχιστοποίησης στην ίδια θέση.</p>
+</section>
+<section id="mention-contacts">
+<h2>Αναφορά επαφών<a class="headerlink" href="#mention-contacts" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.2.</span></p>
+</div>
+<p>Μπορείτε να αναφέρετε επαφές στο μήνυμά σας πληκτρολογώντας <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> και στη συνέχεια επιλέγοντας την επαφή από τη λίστα. Με αυτόν τον τρόπο η επαφή θα προστεθεί αυτόματα ως παραλήπτης.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Μόνο επαφές με έγκυρη διεύθυνση email θα προτείνονται.</p>
+</div>
+</section>
+<section id="text-blocks">
+<h2>Μπλοκ κειμένου<a class="headerlink" href="#text-blocks" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.2.</span></p>
+</div>
+<p>Τα μπλοκ κειμένου είναι προκαθορισμένα αποσπάσματα κειμένου που μπορούν να εισαχθούν στο email σας. Μπορούν να δημιουργηθούν και να διαχειριστούν στις ρυθμίσεις αλληλογραφίας. Μπορούν να εισαχθούν στον συνθέτη πληκτρολογώντας <code class="docutils literal notranslate"><span class="pre">!</span></code> και στη συνέχεια επιλέγοντας το μπλοκ από τη λίστα ή από τις ενέργειες του συνθέτη. Τα μπλοκ κειμένου μπορούν να κοινοποιηθούν με χρήστες και ομάδες χρηστών.</p>
+</section>
+<section id="outbox">
+<h2>Εξερχόμενα<a class="headerlink" href="#outbox" title="Link to this heading"></a></h2>
+<p>Όταν ένα μήνυμα έχει συντεθεί και πατηθεί το κουμπί «Αποστολή», το μήνυμα προστίθεται στα εξερχόμενα που μπορούν να βρεθούν στην κάτω αριστερή γωνία της αριστερής πλαϊνής γραμμής.</p>
+<p>Μπορείτε επίσης να ορίσετε την ημερομηνία και ώρα για τη λειτουργία αποστολής σε κάποιο σημείο στο μέλλον (δείτε <a class="reference internal" href="#mail-scheduled-messages"><span class="std std-ref">Προγραμματισμένα μηνύματα</span></a>)- το μήνυμα θα παραμείνει στα εξερχόμενα μέχρι να φτάσει η επιλεγμένη ημερομηνία και ώρα, στη συνέχεια θα αποσταλεί αυτόματα.</p>
+<p>Τα εξερχόμενα είναι ορατά μόνο όταν υπάρχει ένα μήνυμα που περιμένει να το χειριστεί τα εξερχόμενα.</p>
+<p>Μπορείτε να ξανανοίξετε τον συνθέτη για ένα μήνυμα στα εξερχόμενα ανά πάσα στιγμή πριν ενεργοποιηθεί η λειτουργία «αποστολή».</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Όταν παρουσιαστεί σφάλμα κατά την αποστολή, είναι δυνατά τρία μηνύματα σφάλματος:</p>
+<dl class="simple">
+<dt>Δεν ήταν δυνατή η αντιγραφή στο γραμματοκιβώτιο «Απεσταλμένα»</dt><dd><p>Το email στάλθηκε αλλά δεν μπορούσε να αντιγραφεί στο γραμματοκιβώτιο «Απεσταλμένα». Αυτό το σφάλμα θα χειριστεί από τα εξερχόμενα και η λειτουργία αντιγραφής θα δοκιμαστεί ξανά.</p>
+</dd>
+<dt>Σφάλμα διακομιστή αλληλογραφίας</dt><dd><p>Η αποστολή ήταν ανεπιτυχής με μια κατάσταση που μπορεί να επαναληφθεί (π.χ.: ο διακομιστής SMTP δεν μπορούσε να προσεγγιστεί). Τα εξερχόμενα θα επαναλάβουν την αποστολή του μηνύματος.</p>
+</dd>
+<dt>Το μήνυμα δεν μπορούσε να αποσταλεί</dt><dd><p>Η αποστολή μπορεί να απέτυχε ή όχι. Ο διακομιστής αλληλογραφίας δεν μπορεί να μας πει την κατάσταση του μηνύματος. Εφόσον η εφαρμογή Αλληλογραφίας δεν έχει τρόπο να προσδιορίσει την κατάσταση του μηνύματος (απεσταλμένο ή μη απεσταλμένο) το μήνυμα θα παραμείνει στα εξερχόμενα και ο χρήστης του λογαριασμού πρέπει να αποφασίσει πώς να προχωρήσει.</p>
+</dd>
+</dl>
+</div>
+</section>
+<section id="mailbox-actions">
+<h2>Ενέργειες γραμματοκιβωτίου<a class="headerlink" href="#mailbox-actions" title="Link to this heading"></a></h2>
+<section id="add-a-mailbox">
+<h3>Προσθήκη γραμματοκιβωτίου<a class="headerlink" href="#add-a-mailbox" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Ανοίξτε το μενού ενεργειών ενός λογαριασμού</p></li>
+<li><p>Κάντε κλικ στην προσθήκη γραμματοκιβωτίου</p></li>
+</ol>
+</section>
+<section id="add-a-submailbox">
+<h3>Προσθήκη υπογραμματοκιβωτίου<a class="headerlink" href="#add-a-submailbox" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Ανοίξτε το μενού ενεργειών ενός γραμματοκιβωτίου</p></li>
+<li><p>Κάντε κλικ στην προσθήκη υπογραμματοκιβωτίου</p></li>
+</ol>
+</section>
+<section id="shared-mailbox">
+<h3>Κοινόχρηστο γραμματοκιβώτιο<a class="headerlink" href="#shared-mailbox" title="Link to this heading"></a></h3>
+<p>Εάν ένα γραμματοκιβώτιο κοινοποιήθηκε μαζί σας με ορισμένα συγκεκριμένα δικαιώματα, αυτό το γραμματοκιβώτιο θα εμφανιστεί ως νέο γραμματοκιβώτιο με ένα εικονίδιο κοινής χρήσης όπως παρακάτω:</p>
+<figure class="align-default">
+<img alt="../../_images/shared-mailbox-icon.png" src="../../_images/shared-mailbox-icon.png" />
+</figure>
+</section>
+</section>
+<section id="envelope-actions">
+<h2>Ενέργειες περιεχομένων<a class="headerlink" href="#envelope-actions" title="Link to this heading"></a></h2>
+<section id="create-an-event">
+<h3>Δημιουργία συμβάντος<a class="headerlink" href="#create-an-event" title="Link to this heading"></a></h3>
+<p>Δημιουργήστε ένα συμβάν για ένα συγκεκριμένο μήνυμα/συνομιλία απευθείας μέσω της εφαρμογής αλληλογραφίας</p>
+<ol class="arabic simple">
+<li><p>Ανοίξτε το μενού ενεργειών ενός περιεχομένου</p></li>
+<li><p>Κάντε κλικ στο <em>Περισσότερες ενέργειες</em></p></li>
+<li><p>Κάντε κλικ στο <em>Δημιουργία συμβάντος</em></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Ο τίτλος συμβάντος και μια ημερήσια διάταξη δημιουργούνται για εσάς εάν ο διαχειριστής το έχει ενεργοποιήσει.</p>
+</div>
+</section>
+<section id="create-a-task">
+<h3>Δημιουργία εργασίας<a class="headerlink" href="#create-a-task" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.2.</span></p>
+</div>
+<p>Δημιουργήστε μια εργασία για ένα συγκεκριμένο μήνυμα/συνομιλία απευθείας μέσω της εφαρμογής αλληλογραφίας</p>
+<ol class="arabic simple">
+<li><p>Ανοίξτε το μενού ενεργειών ενός περιεχομένου</p></li>
+<li><p>Κάντε κλικ στο <em>περισσότερες ενέργειες</em></p></li>
+<li><p>Κάντε κλικ στο <em>δημιουργία εργασίας</em></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Οι εργασίες αποθηκεύονται σε υποστηριζόμενα ημερολόγια. Εάν δεν υπάρχει συμβατό ημερολόγιο, μπορείτε να δημιουργήσετε ένα νέο με την <a class="reference internal" href="calendar.html#calendar-app"><span class="std std-ref">εφαρμογή ημερολογίου</span></a>.</p>
+</div>
+</section>
+<section id="edit-tags">
+<h3>Επεξεργασία ετικετών<a class="headerlink" href="#edit-tags" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Ανοίξτε το μενού ενεργειών ενός περιεχομένου</p></li>
+<li><p>Κάντε κλικ στο <em>Επεξεργασία ετικετών</em></p></li>
+<li><p>Στο μοντάλο ετικετών, ορίστε/αποεπιλέξτε ετικέτες</p></li>
+</ol>
+</section>
+<section id="change-color-for-tags">
+<h3>Αλλαγή χρώματος για ετικέτες<a class="headerlink" href="#change-color-for-tags" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5.</span></p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/change-tag-color.png" src="../../_images/change-tag-color.png" />
+</figure>
+<p>Κατά τη δημιουργία μιας ετικέτας, επιλέγεται αυτόματα ένα τυχαία εκχωρημένο χρώμα. Μόλις αποθηκευτεί η ετικέτα, έχετε την ευελιξία να προσαρμόσετε το χρώμα της σύμφωνα με τις προτιμήσεις σας. Αυτή η λειτουργία μπορεί να βρεθεί στο μενού ενεργειών του μοντάλου Ετικέτας.</p>
+</section>
+<section id="delete-tags">
+<h3>Διαγραφή ετικετών<a class="headerlink" href="#delete-tags" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5.</span></p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/delete-tag.png" src="../../_images/delete-tag.png" />
+</figure>
+<p>Έχετε πλέον τη δυνατότητα να διαγράφετε ετικέτες που έχετε δημιουργήσει προηγουμένως. Για να αποκτήσετε πρόσβαση σε αυτή τη λειτουργία:</p>
+<ol class="arabic simple">
+<li><p>Ανοίξτε το μενού ενεργειών ενός περιεχομένου/συνομιλίας.</p></li>
+<li><p>Επιλέξτε Επεξεργασία ετικετών.</p></li>
+<li><p>Εντός του μοντάλου ετικετών, ανοίξτε το μενού ενεργειών για τη συγκεκριμένη ετικέτα που θέλετε να διαγράψετε.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Λάβετε υπόψη ότι οι προεπιλεγμένες ετικέτες όπως Εργασία, Να γίνει, Προσωπικό και Αργότερα δεν μπορούν να διαγραφούν, μπορούν μόνο να μετονομαστούν.</p>
+</div>
+</section>
+<section id="ai-summary">
+<h3>Σύνοψη ΤΝ<a class="headerlink" href="#ai-summary" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.2.</span></p>
+</div>
+<p>Όταν κοιτάτε το γραμματοκιβώτιό σας, θα βλέπετε μια σύντομη ΤΝ που δημιουργήθηκε σύνοψη των email σας ως προεπισκόπηση.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Λάβετε υπόψη ότι η λειτουργία πρέπει να ενεργοποιηθεί από τον διαχειριστή</p>
+</div>
+</section>
+</section>
+<section id="quick-actions">
+<h2>Quick actions<a class="headerlink" href="#quick-actions" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.5: </span>(Nextcloud 30)</p>
+</div>
+<p>Allows you to group action steps that you would normally perform on envelopes such as tagging, moving, marking as read … into quick actions that can be executed with a single click.
+Quick actions are scoped to one mail account and can be created and managed in the mail settings under «Quick actions» or directly from the envelope action menu.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Some action steps such as <cite>Mark as spam</cite>, <cite>Move thread</cite> and <cite>Delete thread</cite> are mutually exclusive and cannot be part of the same quick action, they also can’t be re-ordered and will always be executed last.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Please note that quick actions will be performed on all messages in a thread when executed on one.</p>
+</div>
+</section>
+<section id="message-actions">
+<h2>Ενέργειες μηνυμάτων<a class="headerlink" href="#message-actions" title="Link to this heading"></a></h2>
+<section id="unsubscribe-from-a-mailing-list">
+<h3>Απεγγραφή από μια λίστα αλληλογραφίας<a class="headerlink" href="#unsubscribe-from-a-mailing-list" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.1.</span></p>
+</div>
+<p>Ορισμένες λίστες αλληλογραφίας και ενημερωτικά δελτία επιτρέπουν την εύκολη απεγγραφή. Εάν η εφαρμογή Αλληλογραφίας εντοπίζει μηνύματα από έναν τέτοιο αποστολέα, θα εμφανίσει ένα κουμπί <em>Απεγγραφή</em> δίπλα στις πληροφορίες του αποστολέα. Κάντε κλικ και επιβεβαιώστε για να απεγγραφείτε από τη λίστα.</p>
+</section>
+<section id="snooze">
+<h3>Αναβολή<a class="headerlink" href="#snooze" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<p>Η αναβολή ενός μηνύματος ή συνομιλίας το μετακινεί σε ένα αφοσιωμένο γραμματοκιβώτιο μέχρι να φτάσει η επιλεγμένη ημερομηνία αναβολής και το μήνυμα ή η συνομιλία μετακινείται πίσω στο αρχικό γραμματοκιβώτιο.</p>
+<ol class="arabic simple">
+<li><p>Ανοίξτε το μενού ενεργειών ενός περιεχομένου ή συνομιλίας</p></li>
+<li><p>Κάντε κλικ στο <em>Αναβολή</em></p></li>
+<li><p>Επιλέξτε για πόσο διάστημα πρέπει να αναβληθεί το μήνυμα ή η συνομιλία</p></li>
+</ol>
+</section>
+<section id="smart-replies">
+<h3>Έξυπνες απαντήσεις<a class="headerlink" href="#smart-replies" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.6.</span></p>
+</div>
+<p>Όταν ανοίγετε ένα μήνυμα στην εφαρμογή Αλληλογραφίας, προτείνει απαντήσεις που δημιουργούνται από ΤΝ. Απλώς κάνοντας κλικ σε μια προτεινόμενη απάντηση, ο συνθέτης ανοίγει με την απάντηση προ-συμπληρωμένη.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Λάβετε υπόψη ότι η λειτουργία πρέπει να ενεργοποιηθεί από τον διαχειριστή</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Οι υποστηριζόμενες γλώσσες εξαρτώνται από το χρησιμοποιούμενο μεγάλο γλωσσικό μοντέλο</p>
+</div>
+</section>
+<section id="mail-translation">
+<h3>Μετάφραση αλληλογραφίας<a class="headerlink" href="#mail-translation" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.2.</span></p>
+</div>
+<p>Μπορείτε να μεταφράζετε μηνύματα στις διαμορφωμένες γλώσσες σας παρόμοια με τη Συνομιλία.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Λάβετε υπόψη ότι οι λειτουργίες μετάφρασης πρέπει να ενεργοποιηθούν στο διακομιστή</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Από την έκδοση 5.3, εάν το LLM είναι ενεργοποιημένο από τον διαχειριστή, θα προτείνονται μεταφράσεις</p>
+</div>
+</section>
+</section>
+<section id="thread-summary">
+<h2>Σύνοψη συνομιλίας<a class="headerlink" href="#thread-summary" title="Link to this heading"></a></h2>
+<p>Η εφαρμογή αλληλογραφίας υποστηρίζει τη σύνοψη συνομιλιών μηνυμάτων που περιέχουν 3 ή περισσότερα μηνύματα.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Λάβετε υπόψη ότι η λειτουργία πρέπει να ενεργοποιηθεί από τον διαχειριστή</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Λάβετε υπόψη ότι αυτή η λειτουργία λειτουργεί καλά μόνο με το integration_openai. Τα τοπικά LLM χρειάζονται πολύ χρόνο για να απαντήσουν και το αίτημα σύνοψης πιθανότατα θα λήξει το χρονικό όριο και θα δημιουργήσει ακόμα σημαντικό φόρτο συστήματος.</p>
+</div>
+</section>
+<section id="filtering-and-autoresponder">
+<h2>Φιλτράρισμα και αυτόματος απαντητής<a class="headerlink" href="#filtering-and-autoresponder" title="Link to this heading"></a></h2>
+<p>Η εφαρμογή Αλληλογραφίας έχει έναν επεξεργαστή για σενάρια Sieve, μια διεπαφή για τη διαμόρφωση αυτόματων απαντητών και μια διεπαφή για τη διαμόρφωση φίλτρων. Το Sieve πρέπει να ενεργοποιηθεί στις <a class="reference internal" href="#mail-account-settings"><span class="std std-ref">ρυθμίσεις λογαριασμού</span></a>.</p>
+<section id="autoresponders">
+<h3>Αυτόματοι απαντητές<a class="headerlink" href="#autoresponders" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.5: </span>Ο αυτόματος απαντητής μπορεί να ακολουθεί τις ρυθμίσεις συστήματος.</p>
+</div>
+<p>Ο αυτόματος απαντητής είναι απενεργοποιημένος από προεπιλογή. Μπορεί να οριστεί χειροκίνητα ή να ακολουθήσει τις ρυθμίσεις συστήματος. Η παρακολούθηση των ρυθμίσεων συστήματος σημαίνει ότι το μακρύ μήνυμα απουσίας που εισάγεται στην <a class="reference internal" href="absence.html#groupware-absence"><span class="std std-ref">ενότητα ρυθμίσεων απουσίας</span></a> εφαρμόζεται αυτόματα.</p>
+</section>
+<section id="filter">
+<h3>Φίλτρο<a class="headerlink" href="#filter" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.1.</span></p>
+</div>
+<p>Η Αλληλογραφία 4.1 περιλαμβάνει έναν απλό επεξεργαστή για τη διαμόρφωση κανόνων φίλτρου.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Δεν υποστηρίζεται η εισαγωγή υπαρχόντων φίλτρων. Ωστόσο, όλα τα υπάρχοντα φίλτρα θα παραμείνουν ενεργά και αμετάβλητα. Συνιστούμε να δημιουργήσετε αντίγραφο ασφαλείας του τρέχοντος σεναρίου σας μέσω του επεξεργαστή σεναρίου Sieve ως προφύλαξη.</p>
+</div>
+<section id="how-to-add-a-new-filter">
+<h4>Πώς να Προσθέσετε ένα Νέο Φίλτρο<a class="headerlink" href="#how-to-add-a-new-filter" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Ανοίξτε τις ρυθμίσεις του λογαριασμού σας.</p></li>
+<li><p>Επαληθεύστε ότι το Sieve είναι ενεργοποιημένο για τον λογαριασμό σας (δείτε τις ρυθμίσεις διακομιστή Sieve).</p></li>
+<li><p>Κάντε κλικ στα Φίλτρα.</p></li>
+<li><p>Επιλέξτε Νέο Φίλτρο για να δημιουργήσετε έναν νέο κανόνα.</p></li>
+</ol>
+</section>
+<section id="how-to-delete-a-filter">
+<h4>Πώς να Διαγράψετε ένα Φίλτρο<a class="headerlink" href="#how-to-delete-a-filter" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Ανοίξτε τις ρυθμίσεις του λογαριασμού σας.</p></li>
+<li><p>Βεβαιωθείτε ότι το Sieve είναι ενεργοποιημένο για τον λογαριασμό σας (δείτε τις ρυθμίσεις διακομιστή Sieve).</p></li>
+<li><p>Κάντε κλικ στα Φίλτρα.</p></li>
+<li><p>Τοποθετήστε το δείκτη πάνω από το φίλτρο που θέλετε να διαγράψετε και, στη συνέχεια, κάντε κλικ στο εικονίδιο απορριμμάτων.</p></li>
+</ol>
+</section>
+<section id="conditions">
+<h4>Συνθήκες<a class="headerlink" href="#conditions" title="Link to this heading"></a></h4>
+<p>Οι συνθήκες εφαρμόζονται σε εισερχόμενα email στον διακομιστή αλληλογραφίας σας, στοχεύοντας πεδία όπως Θέμα, Αποστολέας και Παραλήπτης. Μπορείτε να χρησιμοποιήσετε τους ακόλουθους τελεστές για να ορίσετε συνθήκες για αυτά τα πεδία:</p>
+<ul class="simple">
+<li><p><strong>είναι ακριβώς</strong>: Ακριβής αντιστοίχιση. Το πεδίο πρέπει να είναι πανομοιότυπο με την παρεχόμενη τιμή.</p></li>
+<li><p><strong>περιέχει</strong>: Αντιστοίχιση υποσυμβολοσειράς. Το πεδίο ταιριάζει εάν η παρεχόμενη τιμή περιέχεται σε αυτό. Για παράδειγμα, το «report» θα ταίριαζε με το «port».</p></li>
+<li><p><strong>ταιριάζει</strong>: Αντιστοίχιση προτύπου χρησιμοποιώντας μπαλαντέρ. Το σύμβολο «*» αντιπροσωπεύει οποιονδήποτε αριθμό χαρακτήρων (συμπεριλαμβανομένου του κανενός), ενώ το «?» αντιπροσωπεύει ακριβώς έναν χαρακτήρα. Για παράδειγμα, το «<em>report</em>» θα ταίριαζε με το «Business report 2024».</p></li>
+</ul>
+</section>
+<section id="actions">
+<h4>Ενέργειες<a class="headerlink" href="#actions" title="Link to this heading"></a></h4>
+<p>Οι ενέργειες ενεργοποιούνται όταν οι καθορισμένοι έλεγχοι είναι αληθείς. Οι ακόλουθες ενέργειες είναι διαθέσιμες:</p>
+<ul class="simple">
+<li><p><strong>fileinto</strong>: Μετακινεί το μήνυμα σε έναν καθορισμένο φάκελο.</p></li>
+<li><p><strong>addflag</strong>: Προσθέτει μια σημαία στο μήνυμα.</p></li>
+<li><p><strong>stop</strong>: Διακόπτει την εκτέλεση του σεναρίου φίλτρου. Δεν θα επεξεργαστούν περαιτέρω φίλτρα μετά από αυτήν την ενέργεια.</p></li>
+</ul>
+</section>
+</section>
+<section id="create-a-filter-from-a-message">
+<h3>Δημιουργία φίλτρου από ένα μήνυμα<a class="headerlink" href="#create-a-filter-from-a-message" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.2.</span></p>
+</div>
+<p>Για να δημιουργήσετε ένα φίλτρο από ένα δεδομένο μήνυμα, ανοίξτε το μήνυμα και, στη συνέχεια, ανοίξτε το μενού κάνοντας κλικ στις τρεις κουκκίδες. Στη συνέχεια, κάντε κλικ στο «Περισσότερες ενέργειες» ακολουθούμενο από «Δημιουργία φίλτρου αλληλογραφίας.»</p>
+<p>Στο παράθυρο διαλόγου, επιλέξτε τις συνθήκες για να ταιριάζουν τα εισερχόμενα μηνύματα και συνεχίστε κάνοντας κλικ στο «Δημιουργία φίλτρου αλληλογραφίας.»</p>
+<figure class="align-default">
+<img alt="../../_images/mail_create_filter_from_message.png" src="../../_images/mail_create_filter_from_message.png" />
+</figure>
+</section>
+</section>
+<section id="follow-up-reminders">
+<h2>Υπενθυμίσεις παρακολούθησης<a class="headerlink" href="#follow-up-reminders" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.0.</span></p>
+</div>
+<p>Η εφαρμογή Αλληλογραφίας θα σας υπενθυμίζει αυτόματα όταν ένα εξερχόμενο email δεν λάβει απάντηση. Κάθε απεσταλμένο email θα αναλυθεί από μια ΤΝ για να ελεγχθεί εάν αναμένεται απάντηση. Μετά από τέσσερις ημέρες όλα τα σχετικά email θα εμφανίζονται στο γραμματοκιβώτιο προτεραιότητάς σας.</p>
+<p>Όταν κάνετε κλικ σε ένα τέτοιο email, θα εμφανιστεί ένα κουμπί για γρήγορη παρακολούθηση με όλους τους παραλήπτες. Είναι επίσης δυνατό να απενεργοποιήσετε τις υπενθυμίσεις παρακολούθησης για ένα απεσταλμένο email.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Λάβετε υπόψη ότι η λειτουργία πρέπει να ενεργοποιηθεί από τον διαχειριστή.</p>
+</div>
+</section>
+<section id="security">
+<h2>Ασφάλεια<a class="headerlink" href="#security" title="Link to this heading"></a></h2>
+<section id="phishing-detection">
+<h3>Ανίχνευση phishing<a class="headerlink" href="#phishing-detection" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.0.</span></p>
+</div>
+<p>Η εφαρμογή Αλληλογραφίας θα ελέγχει για πιθανές απόπειρες phishing και θα εμφανίζει μια προειδοποίηση στον χρήστη.</p>
+<p>Οι έλεγχοι είναι οι ακόλουθοι:</p>
+<ul class="simple">
+<li><p>Η διεύθυνση αποστολέα που αποθηκεύεται στο βιβλίο διευθύνσεων δεν είναι η ίδια με αυτή του λογαριασμού αλληλογραφίας</p></li>
+<li><p>Ο αποστολέας χρησιμοποιεί μια προσαρμοσμένη διεύθυνση email που δεν ταιριάζει με τη διεύθυνση από</p></li>
+<li><p>Η ημερομηνία αποστολής ορίζεται στο μέλλον</p></li>
+<li><p>Οι σύνδεσμοι στο σώμα του μηνύματος δεν δείχνουν στο εμφανιζόμενο κείμενο</p></li>
+<li><p>Η διεύθυνση απάντησης δεν είναι η ίδια με τη διεύθυνση αποστολέα</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Λάβετε υπόψη ότι η προειδοποίηση δεν σημαίνει ότι το μήνυμα είναι απόπειρα phishing. Σημαίνει μόνο ότι η εφαρμογή Αλληλογραφίας εντόπισε μια πιθανή απόπειρα phishing.</p>
+</div>
+</section>
+<section id="internal-addresses">
+<h3>Εσωτερικές διευθύνσεις<a class="headerlink" href="#internal-addresses" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.0.</span></p>
+</div>
+<p>Η εφαρμογή Αλληλογραφίας επιτρέπει την προσθήκη εσωτερικών διευθύνσεων και domains και θα προειδοποιεί τον χρήστη εάν η διεύθυνση δεν βρίσκεται στη λίστα, κατά την αποστολή και κατά τη λήψη ενός μηνύματος.</p>
+<p>Για να προσθέσετε μια εσωτερική διεύθυνση:</p>
+<ol class="arabic simple">
+<li><p>Ανοίξτε τις ρυθμίσεις αλληλογραφίας</p></li>
+<li><p>Πλοηγηθείτε στην ενότητα Απόρρητο και ασφάλεια</p></li>
+<li><p>Ενεργοποιήστε τις εσωτερικές διευθύνσεις κάνοντας κλικ στο πλαίσιο ελέγχου</p></li>
+<li><p>Κάντε κλικ στο κουμπί Προσθήκη εσωτερικής διεύθυνσης</p></li>
+<li><p>Εισάγετε τη διεύθυνση ή το domain και κάντε κλικ στο Προσθήκη</p></li>
+</ol>
+</section>
+</section>
+<section id="dashboard-integration">
+<h2>Ενσωμάτωση πίνακα ελέγχου<a class="headerlink" href="#dashboard-integration" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 1.8.</span></p>
+</div>
+<p>Η εφαρμογή αλληλογραφίας προσφέρει δύο widget σχεδιασμένα για ενσωμάτωση με τον πίνακα ελέγχου του Nextcloud:</p>
+<ul class="simple">
+<li><p>Μη αναγνωσμένα email: Αυτό το widget εμφανίζει μη αναγνωσμένα email.</p></li>
+<li><p>Σημαντικά email: Αυτό το widget εμφανίζει email που έχουν σημειωθεί ως σημαντικά.</p></li>
+</ul>
+<p>Αυτά τα widget χρησιμοποιούν τα email από τους λογαριασμούς email που έχουν ρυθμιστεί για τον λογαριασμό σας.</p>
+</section>
+<section id="calendar-integration">
+<h2>Calendar integration<a class="headerlink" href="#calendar-integration" title="Link to this heading"></a></h2>
+<p>The Mail app integrates with the Calendar app to help you manage meeting invitations and keep your calendar up to date.</p>
+<section id="meeting-invitations">
+<h3>Meeting invitations<a class="headerlink" href="#meeting-invitations" title="Link to this heading"></a></h3>
+<p>When you receive a message containing a meeting invitation, the Mail app automatically detects the attached calendar file and displays a formatted action section to help you respond.</p>
+<p>You can:</p>
+<ul class="simple">
+<li><p><strong>Accept</strong> the invitation</p></li>
+<li><p><strong>Decline</strong> the invitation</p></li>
+<li><p><strong>Tentatively accept</strong> the invitation</p></li>
+</ul>
+<p>Your response is sent directly from the Mail app, and the event is added to your primary calendar accordingly.</p>
+<p>You can also manually add a meeting invitation to a specific calendar:</p>
+<ol class="arabic simple">
+<li><p>Open the message with the meeting invitation</p></li>
+<li><p>Scroll to the bottom of the message to the attachments section</p></li>
+<li><p>Select the calendar file (usually with a .ics extension), then click the three dots menu.</p></li>
+<li><p>Click «Import in to calendar» and choose the desired calendar.</p></li>
+</ol>
+</section>
+<section id="meeting-invitation-automation">
+<h3>Meeting invitation automation<a class="headerlink" href="#meeting-invitation-automation" title="Link to this heading"></a></h3>
+<p>When a meeting organizer sends updates to an existing event (such as time changes or location updates), the Mail app processes these automatically and updates the corresponding event in your calendar.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.7: </span>(Nextcloud 32 or newer)</p>
+</div>
+<p>You can also configure Mail to automatically add all new meeting invitations to your calendar without requiring manual acceptance. The invitations will be added to the calendar as tentative.</p>
+<p>To enable this feature:</p>
+<ol class="arabic simple">
+<li><p>Visit account settings of a specific mail account</p></li>
+<li><p>Navigate to Calendar settings section</p></li>
+<li><p>Enable <em>Automatically create tentative appointments in calendar</em></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>With this setting enabled, invitations will still appear in your mail list, but they will be automatically added to your calendar.</p>
+</div>
+</section>
+</section>
+<section id="keyboard-shortcuts">
+<h2>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Link to this heading"></a></h2>
+<p>The Mail app implements several keyboard shortcuts to speed up your experience.</p>
+<p>For a full list of the supported shortcuts, check out the Mail settings in your instance.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="calendar.html" class="btn btn-neutral float-left" title="Χρήση της εφαρμογής Ημερολόγιο" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="absence.html" class="btn btn-neutral float-right" title="Ρύθμιση μηνυμάτων απουσίας" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 Greek
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Γλώσσες</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Εκδόσεις</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Λήψεις</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Στο Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Αρχική Σελίδα Έργου</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Παραλλαγές</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

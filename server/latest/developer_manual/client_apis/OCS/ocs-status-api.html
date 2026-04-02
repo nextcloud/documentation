@@ -1,0 +1,548 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OCS Status API &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/client_apis/OCS/ocs-status-api.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="OCS Recommendations API" href="ocs-recommendations-api.html" />
+    <link rel="prev" title="OCS Sharee API" href="ocs-sharee-api.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Clients and Client APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../general.html">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../activity-api.html">Activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../android_library/index.html">Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LoginFlow/index.html">Login Flow</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">OCS API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ocs-openapi.html">OCS OpenAPI tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-api-overview.html">OCS APIs overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-sharee-api.html">OCS Sharee API</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">OCS Status API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#user-status-status-manipulation">User Status - Status Manipulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user-status-predefined-statuses">User Status - Predefined statuses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user-status-retrieve-statuses">User Status - Retrieve statuses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user-status-restore-backup">User status - Restore backup</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-recommendations-api.html">OCS Recommendations API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-user-preferences-api.html">OCS user preferences API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-translation-api.html">OCS Translation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-textprocessing-api.html">OCS TextProcessing API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-text2image-api.html">OCS Text-To-Image API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-taskprocessing-api.html">OCS TaskProcessing API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-out-of-office-api.html">OCS Out-of-office API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-fulltextsearch-collections-api.html">OCS FullTextSearch Collection API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../RemoteWipe/index.html">Remote wipe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WebDAV/index.html">Webdav</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ClientIntegration/index.html">Client Integration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Clients and Client APIs</a></li>
+          <li class="breadcrumb-item"><a href="index.html">OCS API</a></li>
+      <li class="breadcrumb-item active">OCS Status API</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/client_apis/OCS/ocs-status-api.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ocs-status-api">
+<h1>OCS Status API<a class="headerlink" href="#ocs-status-api" title="Link to this heading"></a></h1>
+<p>The OCS Status API allows you to access and modify status API from outside over pre-defined OCS calls.</p>
+<p>The base URL for all calls to the Status API is: <code class="docutils literal notranslate"><span class="pre">&lt;nextcloud_base_url&gt;/ocs/v2.php/apps/user_status/api/v1/user_status</span></code></p>
+<p>All calls to OCS endpoints require the <code class="docutils literal notranslate"><span class="pre">OCS-APIRequest</span></code> header to be set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<section id="user-status-status-manipulation">
+<h2>User Status - Status Manipulation<a class="headerlink" href="#user-status-status-manipulation" title="Link to this heading"></a></h2>
+<section id="fetch-your-own-status">
+<h3>Fetch your own status<a class="headerlink" href="#fetch-your-own-status" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Required capability: <code class="docutils literal notranslate"><span class="pre">user_status</span></code></p></li>
+<li><p>Method: <code class="docutils literal notranslate"><span class="pre">GET</span></code></p></li>
+<li><p>Endpoint: <code class="docutils literal notranslate"><span class="pre">/</span></code></p></li>
+<li><dl class="simple">
+<dt>Response:</dt><dd><ul>
+<li><dl class="simple">
+<dt>Status code:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">404</span> <span class="pre">Not</span> <span class="pre">Found</span></code> If the user does not have a status set</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="set-your-own-status">
+<h3>Set your own status<a class="headerlink" href="#set-your-own-status" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Required capability: <code class="docutils literal notranslate"><span class="pre">user_status</span></code></p></li>
+<li><p>Method: <code class="docutils literal notranslate"><span class="pre">PUT</span></code></p></li>
+<li><p>Endpoint: <code class="docutils literal notranslate"><span class="pre">/status</span></code></p></li>
+<li><p>Data:</p></li>
+</ul>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>field</p></td>
+<td><p>type</p></td>
+<td><p>Description</p></td>
+<td><p>Allowed values</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">statusType</span></code></p></td>
+<td><p>string</p></td>
+<td><p>New status for the authenticated user</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">online</span></code>, <code class="docutils literal notranslate"><span class="pre">away</span></code>, <code class="docutils literal notranslate"><span class="pre">dnd</span></code>, <code class="docutils literal notranslate"><span class="pre">invisible</span></code>, <code class="docutils literal notranslate"><span class="pre">offline</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Response:</dt><dd><ul>
+<li><dl class="simple">
+<dt>Status code:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code> If the sent status-type is not valid</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="set-a-custom-message-predefined">
+<h3>Set a custom message (predefined)<a class="headerlink" href="#set-a-custom-message-predefined" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Required capability: <code class="docutils literal notranslate"><span class="pre">user_status</span></code></p></li>
+<li><p>Method: <code class="docutils literal notranslate"><span class="pre">PUT</span></code></p></li>
+<li><p>Endpoint: <code class="docutils literal notranslate"><span class="pre">/message/predefined</span></code></p></li>
+<li><p>Data:</p></li>
+</ul>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>field</p></td>
+<td><p>type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">messageId</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Message-Id of the predefined message</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">clearAt</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Unix Timestamp representing the time to clear the status</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Response:</dt><dd><ul>
+<li><dl class="simple">
+<dt>Status code:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code> If the sent messageId does not exist</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code> If the Unix timestamp is in the past</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="set-a-custom-message-user-defined">
+<h3>Set a custom message (user-defined)<a class="headerlink" href="#set-a-custom-message-user-defined" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Required capability: <code class="docutils literal notranslate"><span class="pre">user_status</span></code>, <code class="docutils literal notranslate"><span class="pre">supports_emoji</span></code> for <code class="docutils literal notranslate"><span class="pre">statusIcon</span></code> support</p></li>
+<li><p>Method: <code class="docutils literal notranslate"><span class="pre">PUT</span></code></p></li>
+<li><p>Endpoint: <code class="docutils literal notranslate"><span class="pre">/message/custom</span></code></p></li>
+<li><p>Data:</p></li>
+</ul>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>field</p></td>
+<td><p>type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">statusIcon</span></code></p></td>
+<td><p>string/null</p></td>
+<td><p>The icon picked by the user (must be an emoji, at most one)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">message</span></code></p></td>
+<td><p>string</p></td>
+<td><p>The custom message picked by the user</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">clearAt</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Unix Timestamp representing the time to clear the status</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Response:</dt><dd><ul>
+<li><dl class="simple">
+<dt>Status code:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code> If the <cite>statusIcon</cite> is not a an emoji or more than one emoji</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code> If the <cite>message</cite> is too long</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code> If the Unix timestamp is in the past</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="clear-message">
+<h3>Clear message<a class="headerlink" href="#clear-message" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Required capability: <code class="docutils literal notranslate"><span class="pre">user_status</span></code></p></li>
+<li><p>Method: <code class="docutils literal notranslate"><span class="pre">DELETE</span></code></p></li>
+<li><p>Endpoint: <code class="docutils literal notranslate"><span class="pre">/message</span></code></p></li>
+<li><dl class="simple">
+<dt>Response:</dt><dd><ul>
+<li><dl class="simple">
+<dt>Status code:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+<section id="user-status-predefined-statuses">
+<h2>User Status - Predefined statuses<a class="headerlink" href="#user-status-predefined-statuses" title="Link to this heading"></a></h2>
+<p>Base endpoint ics: <code class="docutils literal notranslate"><span class="pre">/ocs/v2.php/apps/user_status/api/v1/predefined_statuses</span></code></p>
+<section id="fetch-the-list-of-predefined-statuses">
+<h3>Fetch the list of predefined statuses<a class="headerlink" href="#fetch-the-list-of-predefined-statuses" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Required capability: <code class="docutils literal notranslate"><span class="pre">user_status</span></code></p></li>
+<li><p>Method: <code class="docutils literal notranslate"><span class="pre">GET</span></code></p></li>
+<li><p>Endpoint: <code class="docutils literal notranslate"><span class="pre">/</span></code></p></li>
+<li><dl class="simple">
+<dt>Response:</dt><dd><ul>
+<li><dl class="simple">
+<dt>Status code:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+<section id="user-status-retrieve-statuses">
+<h2>User Status - Retrieve statuses<a class="headerlink" href="#user-status-retrieve-statuses" title="Link to this heading"></a></h2>
+<p>Base endpoint ics: <code class="docutils literal notranslate"><span class="pre">/ocs/v2.php/apps/user_status/api/v1/statuses</span></code></p>
+<section id="fetch-a-list-of-all-set-user-statuses">
+<h3>Fetch a list of all set user-statuses<a class="headerlink" href="#fetch-a-list-of-all-set-user-statuses" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Required capability: <code class="docutils literal notranslate"><span class="pre">user_status</span></code></p></li>
+<li><p>Method: <code class="docutils literal notranslate"><span class="pre">GET</span></code></p></li>
+<li><p>Endpoint: <code class="docutils literal notranslate"><span class="pre">/</span></code></p></li>
+<li><p>Data:</p></li>
+</ul>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>field</p></td>
+<td><p>type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">limit</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Limit for pagination</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">offset</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Offset for pagination</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Response:</dt><dd><ul>
+<li><dl class="simple">
+<dt>Status code:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="fetch-a-specific-user-s-status">
+<h3>Fetch a specific user’s status<a class="headerlink" href="#fetch-a-specific-user-s-status" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Required capability: <code class="docutils literal notranslate"><span class="pre">user_status</span></code></p></li>
+<li><p>Method: <code class="docutils literal notranslate"><span class="pre">GET</span></code></p></li>
+<li><p>Endpoint: <code class="docutils literal notranslate"><span class="pre">/{userId}</span></code></p></li>
+<li><dl class="simple">
+<dt>Response:</dt><dd><ul>
+<li><dl class="simple">
+<dt>Status code:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">404</span> <span class="pre">Not</span> <span class="pre">Found</span></code> If the user does not have a status set</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="fetch-a-user-s-backup-status">
+<h3>Fetch a user’s backup status<a class="headerlink" href="#fetch-a-user-s-backup-status" title="Link to this heading"></a></h3>
+<p>In some scenarios the user’s status can be overwritten automatically, e.g. by joining a call in Nextcloud Talk,
+or when the availability automation is enabled. In this case the userId can be prefixed with an <cite>_</cite> underscore,
+to get the original user status. When a user status is returned and the <code class="docutils literal notranslate"><span class="pre">user_status</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">restore</span></code> capability
+is available, the backup status should be added as an item in the predefined status list. Clicking that should then
+do an API call to <a class="reference internal" href="#user-status-restore-backup">User status - Restore backup</a> should be done.</p>
+<ul class="simple">
+<li><p>Required capability: <code class="docutils literal notranslate"><span class="pre">user_status</span></code></p></li>
+<li><p>Method: <code class="docutils literal notranslate"><span class="pre">GET</span></code></p></li>
+<li><p>Endpoint: <code class="docutils literal notranslate"><span class="pre">/_{userId}</span></code></p></li>
+<li><dl class="simple">
+<dt>Response:</dt><dd><ul>
+<li><dl class="simple">
+<dt>Status code:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">404</span> <span class="pre">Not</span> <span class="pre">Found</span></code> If the user does not have a backup status set</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="files-sharing">
+<h3>Files Sharing<a class="headerlink" href="#files-sharing" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>The user-status is also exposed via the following Files Sharing APIs:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/ocs/v2.php/apps/files_sharing/api/v1/sharees</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/ocs/v2.php/apps/files_sharing/api/v1/sharees_recommended</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/ocs/v2.php/apps/files_sharing/api/v1/shares</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/ocs/v2.php/apps/files_sharing/api/v1/shares/inherited</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/ocs/v2.php/apps/files_sharing/api/v1/shares/pending</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/ocs/v2.php/apps/files_sharing/api/v1/shares/{id}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/ocs/v2.php/apps/files_sharing//api/v1/shares</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/ocs/v2.php/apps/files_sharing/api/v1/shares/{id}</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</section>
+<section id="user-status-restore-backup">
+<h2>User status - Restore backup<a class="headerlink" href="#user-status-restore-backup" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Required capability: <code class="docutils literal notranslate"><span class="pre">user_status</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">restore</span></code></p></li>
+<li><p>Method: <code class="docutils literal notranslate"><span class="pre">DELETE</span></code></p></li>
+<li><p>Endpoint: <code class="docutils literal notranslate"><span class="pre">/revert/{messageId}</span></code></p></li>
+<li><dl class="simple">
+<dt>Response:</dt><dd><ul>
+<li><dl class="simple">
+<dt>Status code:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ocs-sharee-api.html" class="btn btn-neutral float-left" title="OCS Sharee API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ocs-recommendations-api.html" class="btn btn-neutral float-right" title="OCS Recommendations API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Apr 02, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

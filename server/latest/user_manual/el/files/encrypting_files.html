@@ -1,0 +1,718 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="el" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using server-side encryption &mdash; Τεκμηρίωση του Nextcloud latest User Manual - latest</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/files/encrypting_files.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=ba845f4f"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=e109e2be"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Ευρετήριο" href="../genindex.html" />
+    <link rel="search" title="Αναζήτηση" href="../search.html" />
+    <link rel="next" title="Using end-to-end encryption" href="using_e2ee.html" />
+    <link rel="prev" title="Συγχρονισμός σταθερών υπολογιστών και κινητών" href="desktop_mobile_sync.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Εισαγωγή εγχειριδίου χρήστη Nextcloud |έκδοση|</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Η Διεπαφή Web του Nextcloud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Αρχεία και συγχρονισμός</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Πρόσβαση στα αρχεία σας χρησιμοποιώντας τη διεπαφή Web Nextcloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Πρόσβαση σε αρχεία Nextcloud χρησιμοποιώντας το WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Διαχείριση διαγραμμένων αρχείων</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Συγχρονισμός σταθερών υπολογιστών και κινητών</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using server-side encryption</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#encryption-faq">Συχνές ερωτήσεις κρυπτογράφησης</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-can-encryption-be-disabled">Πώς μπορεί να απενεργοποιηθεί η κρυπτογράφηση;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-possible-to-disable-encryption-with-the-recovery-key">Είναι δυνατόν να απενεργοποιήσετε την κρυπτογράφηση με το κλειδί ανάκτησης;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#can-encryption-be-disabled-without-the-user-s-password">Μπορεί η κρυπτογράφηση να απενεργοποιηθεί χωρίς το συνθηματικό του χρήστη;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">Σχεδιάζεται να μεταφερθεί αυτό στην επόμενη σύνδεση χρήστη ή σε μια εργασία στο παρασκήνιο;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-group-sharing-possible-with-the-recovery-key">Είναι δυνατή η κοινή χρήση ομάδας με το κλειδί ανάκτησης;</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-encryption">Χρησιμοποιώντας κρυπτογράφηση</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-encrypted-files">Κοινή χρήση κρυπτογραφημένων αρχείων</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#recovery-key-password">Συνθηματικό κλειδιού ανάκτησης</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#files-not-encrypted">Τα αρχεία δεν είναι κρυπτογραφημένα</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#change-private-key-password">Αλλαγή συνθηματικού ιδιωτικού κλειδιού</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Κοινή χρήση αρχείων</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Ομοσπονδιακά Κοινόχρηστα</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Πραγματοποίηση ανώνυμων μεταφορτώσεων</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Μεγάλες μεταφορτώσεις αρχείων</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Όριο αποθήκευσης</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Έλεγχος εκδόσεων</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Έργα</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Μεταβίβαση Ιδιοκτησίας</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Χρήση Κοινοποιήσεων Ομοσπονδίας</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Πελάτες Επιφάνειας Εργασίας</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Ορισμός των προτιμήσεών σας</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Καθολική Πρόσβαση</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Χρήση ελέγχου ταυτότητας δύο παραγόντων</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Διαχείριση συνδεδεμένων προγραμμάτων περιήγησης και συσκευών</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Εξωτερικός χώρος αποθήκευσης</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Αρχεία και συγχρονισμός</a></li>
+      <li class="breadcrumb-item active">Using server-side encryption</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/encrypting_files.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-server-side-encryption">
+<h1>Using server-side encryption<a class="headerlink" href="#using-server-side-encryption" title="Link to this heading"></a></h1>
+<p>Nextcloud includes a server-side encryption app, and when it is enabled by
+your Nextcloud administrator all of your Nextcloud data files are automatically
+encrypted on the server.
+Encryption is server-wide, so when it is enabled you cannot choose to keep your
+files unencrypted. You don’t have to do anything special, as it uses your
+Nextcloud login as the password for your unique private encryption key. Just log
+out and in and manage and share your files as you normally do, and you can
+still change your password whenever you want.</p>
+<p>Ο κύριος σκοπός της είναι η κρυπτογράφηση αρχείων σε απομακρυσμένες υπηρεσίες αποθήκευσης που είναι συνδεδεμένες με τον διακομιστή Nextcloud σας. Αυτός είναι ένας εύκολος και απρόσκοπτος τρόπος προστασίας των αρχείων σας σε απομακρυσμένη αποθήκευση. Μπορείτε να μοιραστείτε τα απομακρυσμένα αρχεία σας μέσω του Nextcloud με τον συνήθη τρόπο, ωστόσο δεν μπορείτε να μοιραστείτε τα κρυπτογραφημένα αρχεία σας απευθείας από την απομακρυσμένη υπηρεσία που χρησιμοποιείτε, επειδή τα κλειδιά κρυπτογράφησης αποθηκεύονται στον διακομιστή Nextcloud σας και δεν εκτίθενται ποτέ σε εξωτερικούς πάροχους υπηρεσιών.</p>
+<p>Εάν ο διακομιστής Nextcloud σας δεν είναι συνδεδεμένος με οποιεσδήποτε απομακρυσμένες υπηρεσίες αποθήκευσης, τότε είναι καλύτερο να χρησιμοποιήσετε κάποια άλλη μορφή κρυπτογράφησης όπως κρυπτογράφηση σε επίπεδο αρχείου ή ολόκληρου δίσκου. Επειδή τα κλειδιά διατηρούνται στον διακομιστή Nextcloud σας, είναι δυνατόν ο διαχειριστής του Nextcloud σας να κρυφακούσει στα αρχεία σας, και εάν ο διακομιστής παραβιαστεί, ο εισβολέας μπορεί να αποκτήσει πρόσβαση στα αρχεία σας. (Διαβάστε <a class="reference external" href="https://nextcloud.com/blog/encryption-in-nextcloud/">Κρυπτογράφηση στο Nextcloud</a> για να μάθετε περισσότερα.)</p>
+<section id="encryption-faq">
+<h2>Συχνές ερωτήσεις κρυπτογράφησης<a class="headerlink" href="#encryption-faq" title="Link to this heading"></a></h2>
+<section id="how-can-encryption-be-disabled">
+<h3>Πώς μπορεί να απενεργοποιηθεί η κρυπτογράφηση;<a class="headerlink" href="#how-can-encryption-be-disabled" title="Link to this heading"></a></h3>
+<p>Ο μόνος τρόπος για να απενεργοποιήσετε την κρυπτογράφηση είναι να εκτελέσετε το σενάριο <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">«αποκρυπτογράφηση όλων»</a>, το οποίο αποκρυπτογραφεί όλα τα αρχεία και απενεργοποιεί την κρυπτογράφηση.</p>
+</section>
+<section id="is-it-possible-to-disable-encryption-with-the-recovery-key">
+<h3>Είναι δυνατόν να απενεργοποιήσετε την κρυπτογράφηση με το κλειδί ανάκτησης;<a class="headerlink" href="#is-it-possible-to-disable-encryption-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>Ναι, <em>εάν</em> κάθε χρήστης χρησιμοποιεί το <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">κλειδί ανάκτησης αρχείων</a>, το <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">«αποκρυπτογράφηση όλων»</a> θα το χρησιμοποιήσει για να αποκρυπτογραφήσει όλα τα αρχεία.</p>
+</section>
+<section id="can-encryption-be-disabled-without-the-user-s-password">
+<h3>Μπορεί η κρυπτογράφηση να απενεργοποιηθεί χωρίς το συνθηματικό του χρήστη;<a class="headerlink" href="#can-encryption-be-disabled-without-the-user-s-password" title="Link to this heading"></a></h3>
+<p>Εάν δεν έχετε το συνθηματικό των χρηστών ή το <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">κλειδί ανάκτησης αρχείων</a>, τότε δεν υπάρχει τρόπος να αποκρυπτογραφήσετε όλα τα αρχεία. Επιπλέον, η εκτέλεσή του κατά τη σύνδεση θα ήταν επικίνδυνη, επειδή πιθανότατα θα αντιμετωπίζατε χρονικά όρια.</p>
+</section>
+<section id="is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">
+<h3>Σχεδιάζεται να μεταφερθεί αυτό στην επόμενη σύνδεση χρήστη ή σε μια εργασία στο παρασκήνιο;<a class="headerlink" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job" title="Link to this heading"></a></h3>
+<p>Εάν το κάναμε αυτό, τότε θα πρέπει να αποθηκεύσουμε το συνθηματικό σας στη βάση δεδομένων. Αυτό θα μπορούσε να θεωρηθεί ως ζήτημα ασφάλειας, οπότε κάτι τέτοιο δεν έχει σχεδιαστεί.</p>
+</section>
+<section id="is-group-sharing-possible-with-the-recovery-key">
+<h3>Είναι δυνατή η κοινή χρήση ομάδας με το κλειδί ανάκτησης;<a class="headerlink" href="#is-group-sharing-possible-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>Αν εννοείτε την προσθήκη χρηστών σε ομάδες και να λειτουργεί μαγικά; Όχι. Αυτό λειτουργεί μόνο με το κύριο κλειδί.</p>
+</section>
+</section>
+<section id="using-encryption">
+<h2>Χρησιμοποιώντας κρυπτογράφηση<a class="headerlink" href="#using-encryption" title="Link to this heading"></a></h2>
+<p>Η κρυπτογράφηση Nextcloud είναι αρκετά ρυθμισμένη και ξεχάστε την, αλλά έχετε μερικές επιλογές που μπορείτε να χρησιμοποιήσετε.</p>
+<p>Όταν ο διαχειριστής του Nextcloud σας ενεργοποιεί την κρυπτογράφηση για πρώτη φορά, πρέπει να αποσυνδεθείτε και στη συνέχεια να συνδεθείτε ξανά για να δημιουργήσετε τα κλειδιά κρυπτογράφησής σας και να κρυπτογραφήσετε τα αρχεία σας. Όταν η κρυπτογράφηση έχει ενεργοποιηθεί στον διακομιστή Nextcloud σας, θα δείτε ένα κίτρινο πανό στη σελίδα Αρχεία σας που σας προειδοποιεί να αποσυνδεθείτε και στη συνέχεια να συνδεθείτε ξανά:</p>
+<figure class="align-default">
+<img alt="../../_images/encryption1.png" src="../../_images/encryption1.png" />
+</figure>
+<p>Όταν συνδεθείτε ξανά, χρειάζονται λίγα λεπτά για να λειτουργήσει, ανάλογα με τον αριθμό των αρχείων που έχετε και, στη συνέχεια, επιστρέφετε στην προεπιλεγμένη σελίδα Nextcloud.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption2.png" src="../../_images/encryption2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Δεν πρέπει ποτέ να χάσετε το συνθηματικό Nextcloud, επειδή θα χάσετε την πρόσβαση στα αρχεία σας. Παρόλο που υπάρχει μια προαιρετική επιλογή ανάκτησης που μπορεί να ενεργοποιήσει ο διαχειριστής του Nextcloud. Ανατρέξτε στην ενότητα Συνθηματικό κλειδιού ανάκτησης (παρακάτω) για να μάθετε σχετικά.</p>
+</div>
+</section>
+<section id="sharing-encrypted-files">
+<h2>Κοινή χρήση κρυπτογραφημένων αρχείων<a class="headerlink" href="#sharing-encrypted-files" title="Link to this heading"></a></h2>
+<p>Μόνο οι χρήστες που διαθέτουν ιδιωτικά κλειδιά κρυπτογράφησης έχουν πρόσβαση σε κοινόχρηστα κρυπτογραφημένα αρχεία και φακέλους. Οι χρήστες που δεν έχουν δημιουργήσει ακόμη τα ιδιωτικά τους κλειδιά κρυπτογράφησης δεν θα έχουν πρόσβαση σε κρυπτογραφημένα κοινόχρηστα αρχεία. Θα δουν φακέλους και ονόματα αρχείων, αλλά δεν θα μπορούν να ανοίξουν ή να κατεβάσουν τα αρχεία. Θα δουν ένα κίτρινο πανό προειδοποίησης που θα λέει «Η εφαρμογή κρυπτογράφησης είναι ενεργοποιημένη, αλλά τα κλειδιά σας δεν έχουν αρχικοποιηθεί, αποσυνδεθείτε και συνδεθείτε ξανά.»</p>
+<p>Οι κάτοχοι κοινής χρήσης ενδέχεται να χρειαστεί να κάνουν κοινή χρήση αρχείων μετά την ενεργοποίηση της κρυπτογράφησης. Οι χρήστες που προσπαθούν να αποκτήσουν πρόσβαση στην κοινή χρήση θα δουν ένα μήνυμα που τους συμβουλεύει να ζητήσουν από τον κάτοχο της κοινής χρήσης να μοιραστεί ξανά το αρχείο μαζί τους. Για μεμονωμένες κοινοποιήσεις, καταργήστε την κοινή χρήση και μοιραστείτε ξανά το αρχείο. Για ομαδικές κοινοποιήσεις, μοιραστείτε με άτομα που δεν έχουν πρόσβαση στην κοινή χρήση. Αυτό ενημερώνει την κρυπτογράφηση και, στη συνέχεια, ο κάτοχος κοινής χρήσης μπορεί να καταργήσει τις μεμονωμένες κοινές χρήσεις.</p>
+<section id="recovery-key-password">
+<h3>Συνθηματικό κλειδιού ανάκτησης<a class="headerlink" href="#recovery-key-password" title="Link to this heading"></a></h3>
+<p>Εάν ο διαχειριστής του Nextcloud έχει ενεργοποιήσει τη δυνατότητα κλειδιού ανάκτησης, μπορείτε να επιλέξετε να χρησιμοποιήσετε αυτήν τη λειτουργία για τον λογαριασμό σας. Εάν ενεργοποιήσετε την «Ανάκτηση συνθηματικούς», ο διαχειριστής μπορεί να διαβάσει τα δεδομένα σας με έναν ειδικό συνθηματικό. Αυτή η δυνατότητα επιτρέπει στον διαχειριστή να ανακτήσει τα αρχεία σας σε περίπτωση που χάσετε το συνθηματικό Nextcloud. Εάν το κλειδί ανάκτησης δεν είναι ενεργοποιημένο, τότε δεν υπάρχει τρόπος επαναφοράς των αρχείων σας εάν χάσετε το συνθηματικό σας.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption3.png" src="../../_images/encryption3.png" />
+</figure>
+</section>
+</section>
+<section id="files-not-encrypted">
+<h2>Τα αρχεία δεν είναι κρυπτογραφημένα<a class="headerlink" href="#files-not-encrypted" title="Link to this heading"></a></h2>
+<p>Μόνο τα δεδομένα στα αρχεία σας είναι κρυπτογραφημένα και όχι τα ονόματα αρχείων ή οι δομές φακέλων. Αυτά τα αρχεία δεν είναι ποτέ κρυπτογραφημένα:</p>
+<ul class="simple">
+<li><p>Παλιά αρχεία στον κάδο απορριμμάτων.</p></li>
+<li><p>Μικρογραφίες εικόνας από την εφαρμογή Gallery.</p></li>
+<li><p>Προεπισκοπήσεις από την εφαρμογή Files.</p></li>
+<li><p>Το ευρετήριο αναζήτησης από την εφαρμογή αναζήτησης πλήρους κειμένου.</p></li>
+<li><p>Δεδομένα εφαρμογής τρίτου μέρους</p></li>
+</ul>
+<p>Μόνο εκείνα τα αρχεία που κοινοποιούνται με πάροχους αποθήκευσης τρίτων μπορούν να κρυπτογραφηθούν, τα υπόλοιπα αρχεία ενδέχεται να μην είναι κρυπτογραφημένα.</p>
+<section id="change-private-key-password">
+<h3>Αλλαγή συνθηματικού ιδιωτικού κλειδιού<a class="headerlink" href="#change-private-key-password" title="Link to this heading"></a></h3>
+<p>Αυτή η επιλογή είναι διαθέσιμη μόνο εάν το συνθηματικό κρυπτογράφησης δεν έχει αλλάξει από τον διαχειριστή, αλλά μόνο το συνθηματικό σύνδεσης. Αυτό μπορεί να συμβεί εάν ο πάροχος Nextcloud σας χρησιμοποιεί ένα εξωτερικό back-end χρήστη (για παράδειγμα, LDAP) και άλλαξε το συνθηματικό σύνδεσής σας χρησιμοποιώντας αυτήν τη διαμόρφωση back-end. Σε αυτήν την περίπτωση, μπορείτε να ορίσετε το συνθηματικό κρυπτογράφησής σας στον νέο συνθημτικό σύνδεσής σας παρέχοντας τον παλιό και το νέο συνθηματικό σύνδεσης. Η εφαρμογή Κρυπτογράφησης λειτουργεί μόνο εάν το συνθηματικό σύνδεσης και το συνθηματικό κρυπτογράφησής σας είναι πανομοιότυποι.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-left" title="Συγχρονισμός σταθερών υπολογιστών και κινητών" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="using_e2ee.html" class="btn btn-neutral float-right" title="Using end-to-end encryption" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 Greek
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Γλώσσες</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Εκδόσεις</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Λήψεις</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Στο Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Αρχική Σελίδα Έργου</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Παραλλαγές</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

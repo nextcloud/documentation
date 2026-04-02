@@ -1,0 +1,1165 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="el" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Χρήση της εφαρμογής Ημερολόγιο &mdash; Τεκμηρίωση του Nextcloud latest User Manual - latest</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/groupware/calendar.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=ba845f4f"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=e109e2be"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Ευρετήριο" href="../genindex.html" />
+    <link rel="search" title="Αναζήτηση" href="../search.html" />
+    <link rel="next" title="Χρήση της εφαρμογής Αλληλογραφίας" href="mail.html" />
+    <link rel="prev" title="Χρήση της εφαρμογής Επαφές" href="contacts.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Εισαγωγή εγχειριδίου χρήστη Nextcloud |έκδοση|</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Η Διεπαφή Web του Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Αρχεία και συγχρονισμός</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Χρήση της εφαρμογής Επαφές</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Χρήση της εφαρμογής Ημερολόγιο</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#managing-your-calendars">Διαχείριση των ημερολογίων σας</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-calendar">Δημιουργία νέου Ημερολογίου</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-a-calendar">Εισαγωγή Ημερολογίου</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-an-event-add-ics-event">Εισαγωγή Συμβάντος/Προσθήκη Συμβάντος .ics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-export-or-delete-a-calendar">Επεξεργασία, Εξαγωγή ή Διαγραφή Ημερολογίου</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-transparency">Διαφάνεια Ημερολογίου</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing-calendars">Κοινοποίηση ημερολογίων</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#federated-calendar-sharing">Federated calendar sharing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#publishing-a-calendar">Δημοσίευση ημερολογίου</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-widget">Widget Ημερολογίου</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subscribe-to-a-calendar">Εγγραφή σε Ημερολόγιο</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subscribe-to-a-holiday-calendar">Εγγραφή σε Ημερολόγιο Αργιών</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-events">Διαχείριση Συμβάντων</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-event">Δημιουργία νέου συμβάντος</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-talk-conversation">Προσθήκη συνομιλίας Talk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-duplicate-or-delete-an-event">Επεξεργασία, αντιγραφή ή διαγραφή συμβάντος</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#invite-attendees-to-an-event">Πρόσκληση συμμετεχόντων σε συμβάν</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checking-attendees-busy-times">Έλεγχος απασχολημένου χρόνου των συμμετεχόντων</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#assign-rooms-and-resources-to-an-event">Ανάθεση αίθουσων και πόρων σε συμβάν</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#room-availability">Διαθεσιμότητα αίθουσας</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-attachments-to-events">Προσθήκη συνημμένων σε συμβάντα</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-up-reminders">Ρύθμιση υπενθυμίσεων</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-recurring-options">Προσθήκη επιλογών επανάληψης</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trash-bin">Κάδος απορριμμάτων</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automated-user-status">Αυτοματοποιημένη Κατάσταση Χρήστη</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#responding-to-invitations">Απάντηση σε προσκλήσεις</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#availability-working-hours">Διαθεσιμότητα (Ώρες Εργασίας)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#birthday-calendar">Ημερολόγιο γενεθλίων</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#appointments">Ραντεβού</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-an-appointment-configuration">Δημιουργία διαμόρφωσης ραντεβού</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#booking-an-appointment">Κράτηση ραντεβού</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#working-with-the-booked-appointment">Εργασία με το κλεισμένο ραντεβού</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-talk-room-for-booked-appointments">Δημιουργία αίθουσας Talk για κλεισμένα ραντεβού</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#proposals">Proposals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#managing-proposals">Managing proposals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-proposal">Creating a proposal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#editing-a-proposal">Editing a proposal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#viewing-a-proposal-progress">Viewing a proposal progress</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notifications-for-a-proposed-meeting">Notifications for a proposed meeting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#responding-to-a-proposed-meeting">Responding to a proposed meeting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mail.html">Χρήση της εφαρμογής Αλληλογραφίας</a></li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">Ρύθμιση μηνυμάτων απουσίας</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Συγχρονισμός με Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">Συγχρονισμός με iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">Συγχρονισμός με macOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Συγχρονισμός με Thunderbird</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Συγχρονισμός με KDE Kontact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Συγχρονισμός με την επιφάνεια εργασίας GNOME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Συγχρονισμός με Windows 10</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Πελάτες Επιφάνειας Εργασίας</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Ορισμός των προτιμήσεών σας</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Καθολική Πρόσβαση</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Χρήση ελέγχου ταυτότητας δύο παραγόντων</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Διαχείριση συνδεδεμένων προγραμμάτων περιήγησης και συσκευών</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Εξωτερικός χώρος αποθήκευσης</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Groupware</a></li>
+      <li class="breadcrumb-item active">Χρήση της εφαρμογής Ημερολόγιο</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/calendar.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-calendar-app">
+<span id="calendar-app"></span><h1>Χρήση της εφαρμογής Ημερολόγιο<a class="headerlink" href="#using-the-calendar-app" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Η εφαρμογή Ημερολόγιο εγκαθίσταται από προεπιλογή με το Nextcloud Hub, αλλά μπορεί να απενεργοποιηθεί. Παρακαλώ ρωτήστε τον Διαχειριστή σας για αυτό.</p>
+</div>
+<p>Η εφαρμογή Ημερολόγιο του Nextcloud λειτουργεί παρόμοια με άλλες εφαρμογές ημερολογίου με τις οποίες μπορείτε να συγχρονίσετε τα Nextcloud ημερολόγια και τα συμβάντα σας.</p>
+<p>Όταν αποκτήσετε για πρώτη φορά πρόσβαση στην εφαρμογή Ημερολόγιο, θα δημιουργηθεί ένα προεπιλεγμένο πρώτο ημερολόγιο για εσάς.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_application.png" src="../../_images/calendar_application.png" />
+</figure>
+<section id="managing-your-calendars">
+<h2>Διαχείριση των ημερολογίων σας<a class="headerlink" href="#managing-your-calendars" title="Link to this heading"></a></h2>
+<section id="create-a-new-calendar">
+<h3>Δημιουργία νέου Ημερολογίου<a class="headerlink" href="#create-a-new-calendar" title="Link to this heading"></a></h3>
+<p>Εάν σκοπεύετε να δημιουργήσετε ένα νέο ημερολόγιο χωρίς να μεταφέρετε παλαιά δεδομένα από το προηγούμενο ημερολόγιό σας, η δημιουργία ενός νέου ημερολογίου είναι ο τρόπος που πρέπει να ακολουθήσετε.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_create_1.png"><img alt="../../_images/calendar_create_1.png" src="../../_images/calendar_create_1.png" style="width: 604.0px; height: 480.8px;" />
+</a>
+</figure>
+<ol class="arabic simple">
+<li><p>Κάντε κλικ στο <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Νέο</span> <span class="pre">Ημερολόγιο</span></code> στην αριστερή πλαϊνή μπάρα.</p></li>
+<li><p>Πληκτρολογήστε ένα όνομα για το νέο σας ημερολόγιο, π.χ. «Εργασία», «Σπίτι» ή «Σχεδιασμός Μάρκετινγκ».</p></li>
+<li><p>Αφού κάνετε κλικ στο σημάδι ελέγχου, το νέο σας ημερολόγιο δημιουργείται και μπορεί να συγχρονιστεί σε όλες τις συσκευές σας, να συμπληρωθεί με νέα συμβάντα και να κοινοποιηθεί με τους φίλους και συναδέλφους σας.</p></li>
+</ol>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_create_2.png"><img alt="../../_images/calendar_create_2.png" src="../../_images/calendar_create_2.png" style="width: 603.2px; height: 478.40000000000003px;" />
+</a>
+</figure>
+</section>
+<section id="import-a-calendar">
+<h3>Εισαγωγή Ημερολογίου<a class="headerlink" href="#import-a-calendar" title="Link to this heading"></a></h3>
+<p>Εάν θέλετε να μεταφέρετε το ημερολόγιό σας και τα αντίστοιχα συμβάντα του στην εγκατάσταση Nextcloud σας, η εισαγωγή είναι ο καλύτερος τρόπος για να το κάνετε.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_importing.png"><img alt="../../_images/calendar_importing.png" src="../../_images/calendar_importing.png" style="width: 697.5px; height: 225.0px;" />
+</a>
+</figure>
+<ol class="arabic simple">
+<li><p>Κάντε κλικ στο εικονίδιο ρυθμίσεων με την ετικέτα <code class="docutils literal notranslate"><span class="pre">Ρυθμίσεις</span> <span class="pre">Ημερολογίου</span></code> στα αριστερά-κάτω.</p></li>
+<li><p>After clicking on <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">Calendar</span></code>, found in the <code class="docutils literal notranslate"><span class="pre">General</span></code> section, you can select one or more calendar files
+from your local device to upload.</p></li>
+<li><p>Επιλέξτε ένα <code class="docutils literal notranslate"><span class="pre">Ημερολόγιο</span> <span class="pre">για</span> <span class="pre">εισαγωγή</span> <span class="pre">σε</span></code>.</p></li>
+<li><p>Η μεταφόρτωση μπορεί να πάρει κάποιο χρόνο και εξαρτάται από το πόσο μεγάλο είναι το ημερολόγιο που εισάγετε. Μια μπλε γραμμή προόδου θα εμφανιστεί κάτω από τις «Ρυθμίσεις Ημερολογίου».</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Η εφαρμογή Ημερολόγιο του Nextcloud υποστηρίζει μόνο αρχεία <code class="docutils literal notranslate"><span class="pre">.ics</span></code> συμβατά με το iCalendar, όπως ορίζεται στο RFC 5545.</p>
+</div>
+</section>
+<section id="import-an-event-add-ics-event">
+<h3>Εισαγωγή Συμβάντος/Προσθήκη Συμβάντος .ics<a class="headerlink" href="#import-an-event-add-ics-event" title="Link to this heading"></a></h3>
+<p>Σε πολλά μέρη, μπορείτε να κατεβάσετε λεπτομέρειες συμβάντος ως αρχείο .ics, ή μέσω ενός κουμπιού που γράφει «ical», «Apple Calendar» ή «Outlook».</p>
+<ol class="arabic simple">
+<li><p>Κάντε κλικ στο εικονίδιο ρυθμίσεων με την ετικέτα <code class="docutils literal notranslate"><span class="pre">Ρυθμίσεις</span> <span class="pre">Ημερολογίου</span></code> στα αριστερά-κάτω.</p></li>
+<li><p>Αφού κάνετε κλικ στο <code class="docutils literal notranslate"><span class="pre">Εισαγωγή</span> <span class="pre">ημερολογίου</span></code> μπορείτε να επιλέξετε ένα ή περισσότερα αρχεία ημερολογίου από την τοπική σας συσκευή για μεταφόρτωση.</p></li>
+<li><p>Επιλέξτε ένα <code class="docutils literal notranslate"><span class="pre">Ημερολόγιο</span> <span class="pre">για</span> <span class="pre">εισαγωγή</span> <span class="pre">σε</span></code>.</p></li>
+<li><p>Η μεταφόρτωση μπορεί να πάρει κάποιο χρόνο και εξαρτάται από το πόσο μεγάλο είναι το ημερολόγιο/συμβάν που εισάγετε. Μια μπλε γραμμή προόδου θα εμφανιστεί κάτω από τις «Ρυθμίσεις Ημερολογίου».</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Η εφαρμογή Ημερολόγιο του Nextcloud υποστηρίζει μόνο αρχεία <code class="docutils literal notranslate"><span class="pre">.ics</span></code> συμβατά με το iCalendar, όπως ορίζεται στο RFC 5545.</p>
+</div>
+</section>
+<section id="edit-export-or-delete-a-calendar">
+<h3>Επεξεργασία, Εξαγωγή ή Διαγραφή Ημερολογίου<a class="headerlink" href="#edit-export-or-delete-a-calendar" title="Link to this heading"></a></h3>
+<p>Μερικές φορές μπορεί να θέλετε να αλλάξετε το χρώμα ή ολόκληρο το όνομα ενός προηγούμενου εισαγμένου ή δημιουργημένου ημερολογίου. Μπορεί επίσης να θέλετε να το εξαγάγετε στον τοπικό σας σκληρό δίσκο ή να το διαγράψετε για πάντα.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Παρακαλώ να θυμάστε ότι η διαγραφή ενός ημερολογίου είναι μια μη αντιστρέψιμη ενέργεια. Μετά τη διαγραφή, δεν υπάρχει τρόπος επαναφοράς του ημερολογίου εκτός εάν έχετε ένα τοπικό αντίγραφο ασφαλείας.</p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/calendar_dropdown.png" src="../../_images/calendar_dropdown.png" />
+</figure>
+<p>Κάντε κλικ στο εικονίδιο «στυλό» του αντίστοιχου ημερολογίου. Θα δείτε ένα νέο αναδυόμενο παράθυρο που θα σας επιτρέψει να αλλάξετε το όνομα και το χρώμα του ημερολογίου, και κουμπιά για διαγραφή ή εξαγωγή του ημερολογίου.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_settings.png" src="../../_images/calendar_settings.png" />
+</figure>
+</section>
+<section id="calendar-transparency">
+<h3>Διαφάνεια Ημερολογίου<a class="headerlink" href="#calendar-transparency" title="Link to this heading"></a></h3>
+<p>Μπορείτε να ενεργοποιήσετε/απενεργοποιήσετε το πλαίσιο ελέγχου «Να μην εμφανίζομαι ποτέ ως απασχολημένος (όρισε το ημερολόγιο ως διαφανές)» για να επηρεάσετε εάν τα συμβάντα αυτού του ημερολογίου λαμβάνονται υπόψη στους υπολογισμούς Ελεύθερου/Απασχολημένου χρόνου. Εάν είναι επιλεγμένο, κανένα συμβάν σε αυτό το ημερολόγιο δεν θα λαμβάνεται υπόψη, το πρόγραμμά σας θα είναι πάντα ελεύθερο, ανεξάρτητα από τις ρυθμίσεις των συμβάντων.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_transparency.png" src="../../_images/calendar_transparency.png" />
+</figure>
+</section>
+<section id="sharing-calendars">
+<h3>Κοινοποίηση ημερολογίων<a class="headerlink" href="#sharing-calendars" title="Link to this heading"></a></h3>
+<p>You may share your calendar with local users, groups or with remote users on federated servers.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_sharing_1.png" src="../../_images/calendar_sharing_1.png" />
+</figure>
+<p>Τα ημερολόγια μπορούν να κοινοποιηθούν με δικαίωμα εγγραφής ή μόνο για ανάγνωση. Όταν ένα ημερολόγιο κοινοποιείται με δικαίωμα εγγραφής, οι χρήστες με τους οποίους κοινοποιείται το ημερολόγιο θα μπορούν να δημιουργούν νέα συμβάντα στο ημερολόγιο καθώς και να επεξεργάζονται και να διαγράφουν τα υπάρχοντα.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_sharing_2.png" src="../../_images/calendar_sharing_2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Οι κοινοποιήσεις ημερολογίων προς το παρόν δεν μπορούν να γίνουν αποδεκτές ή να απορριφθούν. Εάν θέλετε να σταματήσετε να έχετε ένα ημερολόγιο που κάποιος κοινοποίησε μαζί σας, μπορείτε να κάνετε κλικ στο μενού 3 τελειών δίπλα στο ημερολόγιο στη λίστα ημερολογίων και να κάνετε κλικ στο «Μη κοινοποίηση από εμένα». Για να επαναφέρετε μια κοινοποίηση, το ημερολόγιο μπορεί να κοινοποιηθεί ξανά, είτε για ολόκληρη την ομάδα, επαναφέροντας όλες τις μη κοινοποιήσεις, είτε για έναν μόνο χρήστη.</p>
+</div>
+</section>
+<section id="federated-calendar-sharing">
+<h3>Federated calendar sharing<a class="headerlink" href="#federated-calendar-sharing" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 32.0.0.</span></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Άλλαξε στην έκδοση 33.0.0: </span>Federated calendar shares support read/write access.</p>
+</div>
+<p>Sharing a calendar with a user on another Nextcloud instance works just like sharing with a local user.
+The difference is that you need to use the federated user identifier as the recipient, which has the format
+<code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;instance&gt;</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">alice&#64;cloud.example.com</span></code>).</p>
+<p>Starting with Nextcloud 33, federated shares support full read/write access, allowing remote users to
+create, edit, and delete events in the shared calendar. In Nextcloud 32, federated shares were read-only.</p>
+</section>
+<section id="publishing-a-calendar">
+<h3>Δημοσίευση ημερολογίου<a class="headerlink" href="#publishing-a-calendar" title="Link to this heading"></a></h3>
+<p>Τα ημερολόγια μπορούν να δημοσιευτούν μέσω ενός δημόσιου συνδέσμου για να τα κάνουν ορατά (μόνο για ανάγνωση) σε εξωτερικούς χρήστες. Μπορείτε να δημιουργήσετε έναν δημόσιο σύνδεσμο ανοίγοντας το μενού κοινοποίησης για ένα ημερολόγιο και κάνοντας κλικ στο « + » δίπλα στο « Σύνδεσμος κοινοποίησης ». Μόλις δημιουργηθεί, μπορείτε να αντιγράψετε τον δημόσιο σύνδεσμο στο πρόχειρό σας ή να τον στείλετε μέσω email.</p>
+<p>Υπάρχει επίσης ένας « κώδικας ενσωμάτωσης » που παρέχει ένα HTML iframe για να ενσωματώσετε το ημερολόγιό σας σε δημόσιες σελίδες.</p>
+<p>Πολλαπλά ημερολόγια μπορούν να κοινοποιηθούν μαζί προσθέτοντας τα μοναδικά τους διακριτικά στο τέλος ενός συνδέσμου ενσωμάτωσης. Τα μεμονωμένα διακριτικά μπορούν να βρεθούν στο τέλος του δημόσιου συνδέσμου κάθε ημερολογίου. Η πλήρης διεύθυνση θα μοιάζει με <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/index.php/apps/calendar/embed/&lt;διακριτικό1&gt;-&lt;διακριτικό2&gt;-&lt;διακριτικό3&gt;</span></code></p>
+<p>Για να αλλάξετε την προεπιλεγμένη προβολή ή ημερομηνία ενός ενσωματωμένου ημερολογίου, πρέπει να παρέχετε μια διεύθυνση URL που μοιάζει με <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/index.php/apps/calendar/embed/&lt;διακριτικό&gt;/&lt;προβολή&gt;/&lt;ημερομηνία&gt;</span></code>. Σε αυτήν τη διεύθυνση URL πρέπει να αντικαταστήσετε τις ακόλουθες μεταβλητές:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;διακριτικό&gt;</span></code> με το διακριτικό του ημερολογίου,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;προβολή&gt;</span></code> με μία από τις <code class="docutils literal notranslate"><span class="pre">dayGridMonth</span></code>, <code class="docutils literal notranslate"><span class="pre">timeGridWeek</span></code>, <code class="docutils literal notranslate"><span class="pre">timeGridDay</span></code>, <code class="docutils literal notranslate"><span class="pre">listMonth</span></code>, <code class="docutils literal notranslate"><span class="pre">listWeek</span></code>, <code class="docutils literal notranslate"><span class="pre">listDay</span></code>. Η προεπιλεγμένη προβολή είναι <code class="docutils literal notranslate"><span class="pre">dayGridMonth</span></code> και η συνήθως χρησιμοποιούμενη λίστα είναι <code class="docutils literal notranslate"><span class="pre">listMonth</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;ημερομηνία&gt;</span></code> με <code class="docutils literal notranslate"><span class="pre">now</span></code> ή οποιαδήποτε ημερομηνία με την ακόλουθη μορφή <code class="docutils literal notranslate"><span class="pre">&lt;έτος&gt;-&lt;μήνας&gt;-&lt;ημέρα&gt;</span></code> (π.χ. <code class="docutils literal notranslate"><span class="pre">2019-12-28</span></code>).</p></li>
+</ul>
+<p>Στη δημόσια σελίδα, οι χρήστες μπορούν να λάβουν τον σύνδεσμο συνδρομής για το ημερολόγιο και να εξαγάγουν ολόκληρο το ημερολόγιο απευθείας.</p>
+</section>
+<section id="calendar-widget">
+<h3>Widget Ημερολογίου<a class="headerlink" href="#calendar-widget" title="Link to this heading"></a></h3>
+<p>Μπορείτε να ενσωματώσετε τα ημερολόγιά σας σε υποστηριζόμενες εφαρμογές όπως το <code class="docutils literal notranslate"><span class="pre">Talk</span></code>, το <code class="docutils literal notranslate"><span class="pre">Notes</span></code>, κ.λπ… είτε κοινοποιώντας τον δημόσιο σύνδεσμο για να κάνετε την ενσωμάτωση ορατή (μόνο για ανάγνωση) σε όλους τους χρήστες είτε χρησιμοποιώντας τον εσωτερικό σύνδεσμο για να την κάνετε ιδιωτική.</p>
+</section>
+<section id="subscribe-to-a-calendar">
+<h3>Εγγραφή σε Ημερολόγιο<a class="headerlink" href="#subscribe-to-a-calendar" title="Link to this heading"></a></h3>
+<p>Μπορείτε να εγγραφείτε σε ημερολόγια iCal απευθείας μέσα στο Nextcloud σας. Υποστηρίζοντας αυτό το διαλειτουργικό πρότυπο (RFC 5545) κάναμε το Nextcloud ημερολόγιο συμβατό με το Google Calendar, το Apple iCloud και πολλούς άλλους διακομιστές ημερολογίου με τους οποίους μπορείτε να ανταλλάξετε τα ημερολόγιά σας, συμπεριλαμβανομένων συνδέσμων συνδρομής από ημερολόγια που δημοσιεύονται σε άλλες εγκαταστάσεις Nextcloud, όπως περιγράφηκε παραπάνω.</p>
+<ol class="arabic simple">
+<li><p>Κάντε κλικ στο <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Νέο</span> <span class="pre">ημερολόγιο</span></code> στην αριστερή πλαϊνή μπάρα</p></li>
+<li><p>Κάντε κλικ στο <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Νέα</span> <span class="pre">συνδρομή</span> <span class="pre">από</span> <span class="pre">σύνδεσμο</span> <span class="pre">(μόνο</span> <span class="pre">ανάγνωση)</span></code></p></li>
+<li><p>Πληκτρολογήστε ή επικολλήστε τον σύνδεσμο του κοινοποιημένου ημερολογίου στο οποίο θέλετε να εγγραφείτε.</p></li>
+</ol>
+<p>Ολοκληρώθηκε. Οι συνδρομές σας σε ημερολόγια θα ενημερώνονται τακτικά.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Οι συνδρομές ανανεώνονται κάθε εβδομάδα από προεπιλογή. Ο διαχειριστής σας μπορεί να έχει αλλάξει αυτήν τη ρύθμιση.</p>
+</div>
+</section>
+<section id="subscribe-to-a-holiday-calendar">
+<h3>Εγγραφή σε Ημερολόγιο Αργιών<a class="headerlink" href="#subscribe-to-a-holiday-calendar" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 4.4.</span></p>
+</div>
+<p>Μπορείτε να εγγραφείτε σε ένα ημερολόγιο αργιών μόνο για ανάγνωση που παρέχεται από το <a class="reference external" href="https://www.thunderbird.net/calendar/holidays/">Thunderbird</a>.</p>
+<ol class="arabic simple">
+<li><p>Κάντε κλικ στο <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Νέο</span> <span class="pre">ημερολόγιο</span></code> στην αριστερή πλαϊνή μπάρα</p></li>
+<li><p>Κάντε κλικ στο <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Προσθήκη</span> <span class="pre">ημερολογίου</span> <span class="pre">αργιών</span></code></p></li>
+<li><p>Βρείτε τη χώρα ή την περιοχή σας και κάντε κλικ στο <code class="docutils literal notranslate"><span class="pre">Εγγραφή</span></code></p></li>
+</ol>
+</section>
+</section>
+<section id="managing-events">
+<h2>Διαχείριση Συμβάντων<a class="headerlink" href="#managing-events" title="Link to this heading"></a></h2>
+<section id="create-a-new-event">
+<h3>Δημιουργία νέου συμβάντος<a class="headerlink" href="#create-a-new-event" title="Link to this heading"></a></h3>
+<p>Τα συμβάντα μπορούν να δημιουργηθούν κάνοντας κλικ στην περιοχή όταν το συμβάν έχει προγραμματιστεί. Στην ημερήσια και εβδομαδιαία προβολή του ημερολογίου, απλώς κάνετε κλικ, τραβάτε και αφήνετε τον δείκτη σας πάνω από την περιοχή όπου λαμβάνει χώρα το συμβάν.</p>
+<p>Κάνοντας κλικ στο κουμπί της υδρόγειου εμφανίζεται ο επιλογέας ζώνης ώρας. Μπορείτε να επιλέξετε διαφορετικές ζώνες ώρας για την έναρξη και το τέλος του συμβάντος σας. Αυτό είναι χρήσιμο όταν ταξιδεύετε.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_new-event_week.png" src="../../_images/calendar_new-event_week.png" />
+</figure>
+<p>Η μηνιαία προβολή απαιτεί μόνο ένα κλικ στην περιοχή της επιλεγμένης ημέρας.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_new-event_month.png" src="../../_images/calendar_new-event_month.png" />
+</figure>
+<p>Μετά από αυτό, μπορείτε να πληκτρολογήσετε το όνομα του συμβάντος (π.χ. <strong>Συνάντηση με τον Linus</strong>), να επιλέξετε το ημερολόγιο στο οποίο θέλετε να αποθηκεύσετε το συμβάν (π.χ. <strong>Προσωπικό</strong>, <strong>Συμβάντα Κοινότητας</strong>), να ελέγξετε και να συγκεκριμενοποιήσετε τη χρονική διάρκεια ή να ορίσετε το συμβάν ως συμβάν ολόκληρης της ημέρας. Προαιρετικά, μπορείτε να καθορίσετε μια τοποθεσία και μια περιγραφή.</p>
+<p>Εάν θέλετε να επεξεργαστείτε προχωρημένες λεπτομέρειες όπως οι <strong>Συμμετέχοντες</strong> ή οι <strong>Υπενθυμίσεις</strong>, ή εάν θέλετε να ορίσετε το συμβάν ως επαναλαμβανόμενο συμβάν, κάντε κλικ στο κουμπί <code class="docutils literal notranslate"><span class="pre">Περισσότερα</span></code> για να ανοίξετε τον προχωρημένο επεξεργαστή.</p>
+</section>
+<section id="add-talk-conversation">
+<h3>Προσθήκη συνομιλίας Talk<a class="headerlink" href="#add-talk-conversation" title="Link to this heading"></a></h3>
+<p>Μπορείτε να συμπεριλάβετε μια υπάρχουσα συνομιλία Talk στο συμβάν σας κάνοντας κλικ στο «Προσθήκη συνομιλίας Talk». Για να δείτε τη λίστα των υπαρχουσών συνομιλιών Talk, βεβαιωθείτε ότι η εφαρμογή Talk είναι ενεργοποιημένη. Εάν θέλετε να δημιουργήσετε μια νέα συνομιλία Talk, μπορείτε να το κάνετε απευθείας από το ίδιο παράθυρο.</p>
+<figure class="align-default">
+<img alt="../../_images/add-talk-room.png" src="../../_images/add-talk-room.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Εάν θέλετε πάντα να ανοίγετε τον προχωρημένο επεξεργαστή αντί του απλού αναδυόμενου επεξεργαστή συμβάντων, αποεπιλέξτε την επιλογή <code class="docutils literal notranslate"><span class="pre">Ενεργοποίηση</span> <span class="pre">απλοποιημένου</span> <span class="pre">επεξεργαστή</span></code> στην ενότητα <code class="docutils literal notranslate"><span class="pre">Ρυθμίσεις</span></code> της εφαρμογής.</p>
+</div>
+<p>Κάνοντας κλικ στο μπλε κουμπί <code class="docutils literal notranslate"><span class="pre">Δημιουργία</span></code> θα δημιουργηθεί τελικά το συμβάν.</p>
+</section>
+<section id="edit-duplicate-or-delete-an-event">
+<h3>Επεξεργασία, αντιγραφή ή διαγραφή συμβάντος<a class="headerlink" href="#edit-duplicate-or-delete-an-event" title="Link to this heading"></a></h3>
+<p>Εάν θέλετε να επεξεργαστείτε, να αντιγράψετε ή να διαγράψετε ένα συγκεκριμένο συμβάν, πρέπει πρώτα να κάνετε κλικ στο συμβάν.</p>
+<p>Μετά από αυτό, θα μπορείτε να επαναορίσετε όλες τις λεπτομέρειες του συμβάντος και να ανοίξετε τον προχωρημένο επεξεργαστή κάνοντας κλικ στο <code class="docutils literal notranslate"><span class="pre">Περισσότερα</span></code>.</p>
+<p>Κάνοντας κλικ στο κουμπί <code class="docutils literal notranslate"><span class="pre">Ενημέρωση</span></code> θα ενημερωθεί το συμβάν. Για να ακυρώσετε τις αλλαγές σας, κάντε κλικ στο εικονίδιο κλεισίματος πάνω δεξιά του αναδυόμενου παραθύρου ή του προχωρημένου επεξεργαστή.</p>
+<p>Εάν ανοίξετε την προχωρημένη προβολή και κάνετε κλικ στο μενού τριών τελειών δίπλα στο όνομα του συμβάντος, έχετε την επιλογή να εξαγάγετε το συμβάν ως αρχείο <code class="docutils literal notranslate"><span class="pre">.ics</span></code> ή να αφαιρέσετε το συμβάν από το ημερολόγιό σας.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_event_menu.png" src="../../_images/calendar_event_menu.png" />
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Πρακτική συμβουλή</p>
+<p>Εάν διαγράψετε συμβάντα, θα μεταφερθούν στον <a class="reference internal" href="#calendar-trash-bin"><span class="std std-ref">κάδο απορριμμάτων</span></a>. Μπορείτε να επαναφέρετε κατά λάθος διαγραμμένα συμβάντα εκεί.</p>
+</div>
+<p>Μπορείτε επίσης να εξαγάγετε, να αντιγράψετε ή να διαγράψετε ένα συμβάν από τον βασικό επεξεργαστή.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_event_menu_modal.png" src="../../_images/calendar_event_menu_modal.png" />
+</figure>
+</section>
+<section id="invite-attendees-to-an-event">
+<span id="calendar-attendees"></span><h3>Πρόσκληση συμμετεχόντων σε συμβάν<a class="headerlink" href="#invite-attendees-to-an-event" title="Link to this heading"></a></h3>
+<p>Μπορείτε να προσθέσετε συμμετέχοντες σε ένα συμβάν για να τους ενημερώσετε ότι είναι προσκεκλημένοι. Θα λάβουν μια πρόσκληση μέσω email και θα μπορούν να επιβεβαιώσουν ή να ακυρώσουν τη συμμετοχή τους στο συμβάν. Οι συμμετέχοντες μπορεί να είναι άλλοι χρήστες στις εγκαταστάσεις Nextcloud σας, επαφές στους φακέλους διευθύνσεών σας και άμεσες διευθύνσεις email. Μπορείτε επίσης να αλλάξετε το επίπεδο συμμετοχής ανά συμμετέχοντα ή να απενεργοποιήσετε τις πληροφορίες email για έναν συγκεκριμένο συμμετέχοντα.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_invitation_level.png"><img alt="../../_images/calendar_event_invitation_level.png" src="../../_images/calendar_event_invitation_level.png" style="width: 811.2px; height: 380.8px;" />
+</a>
+</figure>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Άλλαξε στην έκδοση 25: </span>Οι σύνδεσμοι απάντησης email συμμετεχόντων δεν προσφέρουν πλέον πεδία για προσθήκη σχολίου ή πρόσκληση επιπλέον επισκεπτών στο συμβάν.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Πρακτική συμβουλή</p>
+<p>Όταν προσθέτετε άλλους χρήστες Nextcloud ως συμμετέχοντες σε ένα συμβάν, μπορείτε να αποκτήσετε πρόσβαση στις πληροφορίες ελεύθερου/απασχολημένου χρόνου τους, εάν είναι διαθέσιμες, βοηθώντας σας να καθορίσετε πότε είναι η καλύτερη χρονική θυρίδα για το συμβάν σας. Ορίστε τις <a class="reference internal" href="#calendar-working-hours"><span class="std std-ref">ώρες εργασίας</span></a> σας για να ενημερώσετε τους άλλους πότε είστε διαθέσιμος. Οι πληροφορίες ελεύθερου/απασχολημένου χρόνου είναι διαθέσιμες μόνο για άλλους χρήστες στην ίδια εγκατάσταση Nextcloud.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Προσοχή</p>
+<p>Η διαχείριση του διακομιστή πρέπει να ρυθμίσει τον διακομιστή email στην καρτέλα <code class="docutils literal notranslate"><span class="pre">Βασικές</span> <span class="pre">ρυθμίσεις</span></code>, καθώς αυτό το mail θα χρησιμοποιηθεί για την αποστολή προσκλήσεων.</p>
+</div>
+<p>Υπόμνημα κατάστασης πρόσκλησης (ως συμμετέχοντας):</p>
+<ul class="simple">
+<li><p><strong>Γεμάτο συμβάν</strong>: Έχετε αποδεχτεί</p></li>
+<li><p><strong>Διαγραμμισμένο</strong>: Έχετε απορρίψει</p></li>
+<li><p><strong>Ράβδωση</strong>: Δοκιμαστικά</p></li>
+<li><p><strong>Κενό συμβάν</strong>: Δεν έχετε απαντήσει ακόμα</p></li>
+</ul>
+<p>Εάν είστε ο διοργανωτής και όλοι οι συμμετέχοντες σας απέρριψαν, το συμβάν θα είναι κενό με ένα σύμβολο προειδοποίησης.</p>
+</section>
+<section id="checking-attendees-busy-times">
+<h3>Έλεγχος απασχολημένου χρόνου των συμμετεχόντων<a class="headerlink" href="#checking-attendees-busy-times" title="Link to this heading"></a></h3>
+<p>Αφού προσθέσετε συμμετέχοντες σε ένα συμβάν, μπορείτε να κάνετε κλικ στο <code class="docutils literal notranslate"><span class="pre">Εύρεση</span> <span class="pre">χρόνου</span></code> για να εμφανίσετε το παράθυρο «Ελεύθερος / Απασχολημένος». Σας επιτρέπει να δείτε πότε κάθε συμμετέχοντας έχει άλλα συμβάντα και μπορεί να σας βοηθήσει να αποφασίσετε για μια χρονική στιγμή που όλοι είναι ελεύθεροι.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_free_busy_modal.png"><img alt="../../_images/calendar_free_busy_modal.png" src="../../_images/calendar_free_busy_modal.png" style="width: 942.0px; height: 752.4px;" />
+</a>
+</figure>
+<p>Τα δικά σας μπλοκ απασχολημένου χρόνου θα εμφανίζονται με το ίδιο χρώμα με το προσωπικό σας ημερολόγιο, οι ώρες εκτός γραφείου σας θα εμφανίζονται με γκρι, και οι ώρες απασχολημένου χρόνου των άλλων συμμετεχόντων θα έχουν το ίδιο χρώμα με το avatar τους που εμφανίζεται στον προχωρημένο επεξεργαστή.</p>
+<p>Μπορείτε να επιλέξετε μια χρονική θυρίδα για το συμβάν απευθείας στο ημερολόγιο.</p>
+</section>
+<section id="assign-rooms-and-resources-to-an-event">
+<h3>Ανάθεση αίθουσων και πόρων σε συμβάν<a class="headerlink" href="#assign-rooms-and-resources-to-an-event" title="Link to this heading"></a></h3>
+<p>Παρόμοια με τους συμμετέχοντες, μπορείτε να προσθέσετε αίθουσες και πόρους στα συμβάντα σας. Το σύστημα θα διασφαλίσει ότι κάθε αίθουσα και πόρος κλείνονται χωρίς σύγκρουση. Την πρώτη φορά που ένας χρήστης προσθέτει την αίθουσα ή τον πόρο σε ένα συμβάν, θα εμφανίζεται ως αποδεκτή. Οποιαδήποτε περαιτέρω συμβάντα σε επικαλυπτόμενες ώρες θα εμφανίζουν την αίθουσα ή τον πόρο ως απορριφθέντα.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Οι αίθουσες και οι πόροι δεν διαχειρίζονται από το ίδιο το Nextcloud και η εφαρμογή Ημερολόγιο δεν θα σας επιτρέψει να προσθέσετε ή να αλλάξετε έναν πόρο. Ο Διαχειριστής σας πρέπει να εγκαταστήσει και πιθανώς να διαμορφώσει back ends πόρων πριν μπορέσετε να τους χρησιμοποιήσετε ως χρήστης.</p>
+</div>
+</section>
+<section id="room-availability">
+<h3>Διαθεσιμότητα αίθουσας<a class="headerlink" href="#room-availability" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.0.</span></p>
+</div>
+<p>Εάν η εφαρμογή «Αίθουσες και Πόροι Ημερολογίου» είναι εγκατεστημένη στην εγκατάστασή σας, μπορείτε τώρα να βρείτε τη <code class="docutils literal notranslate"><span class="pre">Διαθεσιμότητα</span> <span class="pre">αίθουσας</span></code> στην ενότητα <code class="docutils literal notranslate"><span class="pre">Πόροι</span></code>. Παραθέτει όλες τις υπάρχουσες αίθουσες. Μπορείτε να ελέγξετε τη διαθεσιμότητα κάθε αίθουσας με τρόπο παρόμοιο με τον έλεγχο της κατάστασης ελεύθερου/απασχολημένου χρόνου των συμμετεχόντων σε συμβάντα.</p>
+<figure class="align-default">
+<img alt="../../_images/room_availability.png" src="../../_images/room_availability.png" />
+</figure>
+</section>
+<section id="add-attachments-to-events">
+<h3>Προσθήκη συνημμένων σε συμβάντα<a class="headerlink" href="#add-attachments-to-events" title="Link to this heading"></a></h3>
+<p>Μπορείτε να εισάγετε συνημμένα στα συμβάντα σας είτε μεταφορτώνοντάς τα είτε προσθέτοντάς τα από αρχεία</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_adding_attachments.png"><img alt="../../_images/calendar_adding_attachments.png" src="../../_images/calendar_adding_attachments.png" style="width: 790.4000000000001px; height: 382.40000000000003px;" />
+</a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Τα συνημμένα μπορούν να προστεθούν κατά τη δημιουργία νέων συμβάντων ή την επεξεργασία υπαρχόντων. Τα νέα μεταφορτωμένα αρχεία θα αποθηκεύονται από προεπιλογή στον φάκελο ημερολογίου στον ριζικό κατάλογο.</p>
+</div>
+<p>Μπορείτε να αλλάξετε το φάκελο συνημμένων πηγαίνοντας στις <code class="docutils literal notranslate"><span class="pre">Ρυθμίσεις</span> <span class="pre">Ημερολογίου</span></code> στην κάτω αριστερή γωνία και αλλάζοντας την <code class="docutils literal notranslate"><span class="pre">προεπιλεγμένη</span> <span class="pre">τοποθεσία</span> <span class="pre">συνημμένων</span></code>.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_attachments_location.png"><img alt="../../_images/calendar_attachments_location.png" src="../../_images/calendar_attachments_location.png" style="width: 389.4px; height: 357.0px;" />
+</a>
+</figure>
+</section>
+<section id="set-up-reminders">
+<h3>Ρύθμιση υπενθυμίσεων<a class="headerlink" href="#set-up-reminders" title="Link to this heading"></a></h3>
+<p>Μπορείτε να ρυθμίσετε υπενθυμίσεις για να ειδοποιηθείτε πριν από ένα συμβάν. Οι τρέχοντες υποστηριζόμενες μέθοδοι ειδοποίησης είναι:</p>
+<ul class="simple">
+<li><p>Ειδοποιήσεις email</p></li>
+<li><p>Ειδοποιήσεις Nextcloud</p></li>
+</ul>
+<p>Μπορείτε να ορίσετε υπενθυμίσεις σε χρόνο σχετικό με το συμβάν ή σε συγκεκριμένη ημερομηνία.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_reminders.png"><img alt="../../_images/calendar_event_reminders.png" src="../../_images/calendar_event_reminders.png" style="width: 507.20000000000005px; height: 284.0px;" />
+</a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Μόνο ο κάτοχος του ημερολογίου και τα άτομα ή οι ομάδες με τους οποίους το ημερολόγιο κοινοποιείται με δικαίωμα εγγραφής θα λαμβάνουν ειδοποιήσεις. Εάν δεν λαμβάνετε καμία ειδοποίηση αλλά πιστεύετε ότι θα πρέπει, ο Διαχειριστής σας μπορεί επίσης να έχει απενεργοποιήσει αυτήν τη λειτουργία για τον διακομιστή σας.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Εάν συγχρονίζετε το ημερολόγιό σας με κινητές συσκευές ή άλλους πελάτες τρίτων, οι ειδοποιήσεις μπορεί επίσης να εμφανίζονται εκεί.</p>
+</div>
+</section>
+<section id="add-recurring-options">
+<h3>Προσθήκη επιλογών επανάληψης<a class="headerlink" href="#add-recurring-options" title="Link to this heading"></a></h3>
+<p>Ένα συμβάν μπορεί να οριστεί ως «επαναλαμβανόμενο», ώστε να μπορεί να συμβαίνει κάθε μέρα, εβδομάδα, μήνα ή χρόνο. Μπορούν να προστεθούν συγκεκριμένοι κανόνες για να οριστεί ποια μέρα της εβδομάδας συμβαίνει το συμβάν ή πιο σύνθετοι κανόνες, όπως κάθε τέταρτη Τετάρτη κάθε μήνα.</p>
+<p>Μπορείτε επίσης να καθορίσετε πότε τερματίζεται η επανάληψη.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_event_repeat.png"><img alt="../../_images/calendar_event_repeat.png" src="../../_images/calendar_event_repeat.png" style="width: 519.2px; height: 557.6px;" />
+</a>
+</figure>
+</section>
+<section id="trash-bin">
+<span id="calendar-trash-bin"></span><h3>Κάδος απορριμμάτων<a class="headerlink" href="#trash-bin" title="Link to this heading"></a></h3>
+<p>Εάν διαγράψετε συμβάντα, εργασίες ή ένα ημερολόγιο στο Ημερολόγιο, τα δεδομένα σας δεν έχουν χαθεί ακόμη. Αντίθετα, αυτά τα αντικείμενα θα συλλέγονται σε έναν <em>κάδο απορριμμάτων</em>. Αυτό σας προσφέρει τη δυνατότητα να αναιρέσετε μια διαγραφή. Μετά από μια περίοδο που είναι 30 ημέρες από προεπιλογή (η διαχείρισή σας μπορεί να έχει αλλάξει αυτήν τη ρύθμιση), αυτά τα αντικείμενα θα διαγραφούν μόνιμα. Μπορείτε επίσης να διαγράψετε μόνιμα αντικείμενα νωρίτερα, εάν το επιθυμείτε.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_trash_bin.png" src="../../_images/calendar_trash_bin.png" />
+</figure>
+<p>Τα κουμπιά <code class="docutils literal notranslate"><span class="pre">Άδειασμα</span> <span class="pre">κάδου</span> <span class="pre">απορριμμάτων</span></code> θα διαγράψουν όλο το περιεχόμενο του κάδου απορριμμάτων σε ένα βήμα.</p>
+<div class="admonition tip">
+<p class="admonition-title">Πρακτική συμβουλή</p>
+<p>Ο κάδος απορριμμάτων είναι προσβάσιμος μόνο από την εφαρμογή Ημερολόγιο. Οποιαδήποτε συνδεδεμένη εφαρμογή ή εφαρμογή δεν θα μπορεί να εμφανίσει το περιεχόμενό του. Ωστόσο, συμβάντα, εργασίες και ημερολόγια που διαγράφονται σε συνδεδεμένες εφαρμογές ή εφαρμογές θα καταλήξουν επίσης στον κάδο απορριμμάτων.</p>
+</div>
+</section>
+<section id="automated-user-status">
+<span id="calendar-working-hours"></span><h3>Αυτοματοποιημένη Κατάσταση Χρήστη<a class="headerlink" href="#automated-user-status" title="Link to this heading"></a></h3>
+<p>Όταν έχετε ένα προγραμματισμένο συμβάν ημερολογίου που έχει κατάσταση «ΑΠΑΣΧΟΛΗΜΕΝΟΣ», η κατάσταση χρήστη σας θα οριστεί αυτόματα σε «Σε συνάντηση» εκτός εάν έχετε ορίσει τον εαυτό σας σε «Μην Ενοχλείτε» ή «Αόρατος». Μπορείτε να αντικαταστήσετε την κατάσταση με ένα προσαρμοσμένο μήνυμα ανά πάσα στιγμή ή να ορίσετε τα συμβάντα του ημερολογίου σας σε «ΕΛΕΥΘΕΡΟ». Τα διαφανή ημερολόγια θα αγνοούνται.</p>
+</section>
+</section>
+<section id="responding-to-invitations">
+<h2>Απάντηση σε προσκλήσεις<a class="headerlink" href="#responding-to-invitations" title="Link to this heading"></a></h2>
+<p>Μπορείτε να απαντήσετε απευθείας σε προσκλήσεις μέσα στην εφαρμογή. Κάντε κλικ στο συμβάν και επιλέξτε την κατάσταση συμμετοχής σας. Μπορείτε να απαντήσετε σε μια πρόσκληση αποδεχόμενος, απορρίπτοντας ή αποδεχόμενος δοκιμαστικά.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_accept_simple_editor.png"><img alt="../../_images/calendar_accept_simple_editor.png" src="../../_images/calendar_accept_simple_editor.png" style="width: 663.2px; height: 477.6px;" />
+</a>
+</figure>
+<p>Μπορείτε επίσης να απαντήσετε σε μια πρόσκληση από τον προχωρημένο επεξεργαστή.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/calendar_accept_advanced_editor.png"><img alt="../../_images/calendar_accept_advanced_editor.png" src="../../_images/calendar_accept_advanced_editor.png" style="width: 800.0px; height: 160.8px;" />
+</a>
+</figure>
+</section>
+<section id="availability-working-hours">
+<h2>Διαθεσιμότητα (Ώρες Εργασίας)<a class="headerlink" href="#availability-working-hours" title="Link to this heading"></a></h2>
+<p>Η γενική διαθεσιμότητα ανεξάρτητα από τα προγραμματισμένα συμβάντα μπορεί να οριστεί στις ρυθμίσεις groupware του Nextcloud. Αυτές οι ρυθμίσεις θα αντικατοπτρίζονται στην προβολή ελεύθερου/απασχολημένου χρόνου όταν <a class="reference internal" href="#calendar-attendees"><span class="std std-ref">προγραμματίζετε μια συνάντηση με άλλα άτομα</span></a> στο Ημερολόγιο. Ορισμένοι συνδεδεμένοι πελάτες όπως το Thunderbird θα εμφανίζουν επίσης αυτά τα δεδομένα.</p>
+<figure class="align-default">
+<img alt="../../_images/caldav_availability.png" src="../../_images/caldav_availability.png" />
+</figure>
+<p>Μπορείτε να διαμορφώσετε εφάπαξ απουσίες πάνω από τη συνηθισμένη σας διαθεσιμότητα στην <a class="reference internal" href="absence.html#groupware-absence"><span class="std std-ref">ενότητα ρυθμίσεων απουσίας</span></a>.</p>
+</section>
+<section id="birthday-calendar">
+<h2>Ημερολόγιο γενεθλίων<a class="headerlink" href="#birthday-calendar" title="Link to this heading"></a></h2>
+<p>Το ημερολόγιο γενεθλίων είναι ένα αυτόματα δημιουργούμενο ημερολόγιο που θα ανακτά αυτόματα τα γενέθλια από τις επαφές σας. Ο μόνος τρόπος επεξεργασίας αυτού του ημερολογίου είναι συμπληρώνοντας τις επαφές σας με ημερομηνίες γενεθλίων. Δεν μπορείτε να επεξεργαστείτε απευθείας αυτό το ημερολόγιο από την εφαρμογή ημερολογίου.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Εάν δεν βλέπετε το ημερολόγιο γενεθλίων, ο Διαχειριστής σας μπορεί να το έχει απενεργοποιήσει για τον διακομιστή σας.</p>
+</div>
+</section>
+<section id="appointments">
+<h2>Ραντεβού<a class="headerlink" href="#appointments" title="Link to this heading"></a></h2>
+<p>Από το Ημερολόγιο v3, η εφαρμογή μπορεί να δημιουργήσει χρονικές θυρίδες ραντεβού που μπορούν να κλείσουν άλλοι χρήστες Nextcloud αλλά και άτομα χωρίς λογαριασμό στην εγκατάσταση. Τα ραντεβού προσφέρουν λεπτομερή έλεγχο για το πότε είστε πιθανώς ελεύθεροι για συνάντηση. Αυτό μπορεί να εξαλείψει την ανάγκη για αλληλογραφία email για να καθοριστεί μια ημερομηνία και ώρα.</p>
+<p>Σε αυτήν την ενότητα θα χρησιμοποιήσουμε τον όρο <em>διοργανωτής</em> για το άτομο που κατέχει το ημερολόγιο και ρυθμίζει τις χρονικές θυρίδες ραντεβού. Ο <em>συμμετέχων</em> είναι το άτομο που κλείνει μία από τις θυρίδες.</p>
+<section id="creating-an-appointment-configuration">
+<h3>Δημιουργία διαμόρφωσης ραντεβού<a class="headerlink" href="#creating-an-appointment-configuration" title="Link to this heading"></a></h3>
+<p>Ως διοργανωτής ραντεβού ανοίγετε την κύρια διεπαφή web του Ημερολογίου. Στην αριστερή πλαϊνή μπάρα θα βρείτε μια ενότητα για ραντεβού, όπου μπορείτε να ανοίξετε τον διάλογο για τη δημιουργία ενός νέου.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_new.png" src="../../_images/appointment_new.png" />
+</figure>
+<p>Μία από τις βασικές πληροφορίες κάθε ραντεβού είναι ένας τίτλος που περιγράφει το τι αφορά το ραντεβού (π.χ. «Ατομική συνομιλία» όταν ένας διοργανωτής θέλει να προσφέρει σε συναδέλφους μια προσωπική κλήση), πού θα πραγματοποιηθεί το ραντεβού και μια πιο λεπτομερής περιγραφή του τι αφορά αυτό το ραντεβού.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_basics.png" src="../../_images/appointment_config_basics.png" />
+</figure>
+<p>Η διάρκεια του ραντεβού μπορεί να επιλεγεί από μια προκαθορισμένη λίστα. Στη συνέχεια, μπορείτε να ορίσετε την επιθυμητή αύξηση. Η αύξηση είναι ο ρυθμός με τον οποίο είναι διαθέσιμες οι πιθανές χρονικές θυρίδες. Για παράδειγμα, μπορείτε να έχετε θυρίδες μίας ώρας, αλλά τις προσφέρετε σε βήματα των 30 λεπτών, ώστε ένας συμμετέχων να μπορεί να κλείσει στις 9:00 π.μ. αλλά και στις 9:30 π.μ. Προαιρετικές πληροφορίες σχετικά με την τοποθεσία και μια περιγραφή δίνουν στους συμμετέχοντες περισσότερο πλαίσιο. Κάθε κλεισμένο ραντεβού θα καταγραφεί σε ένα από τα ημερολόγιά σας, ώστε να μπορείτε να επιλέξετε σε ποιο θα πρέπει να είναι. Τα ραντεβού μπορούν να είναι <em>δημόσια</em> ή <em>ιδιωτικά</em>. Τα δημόσια ραντεβού μπορούν να ανακαλυφθούν μέσω της σελίδας προφίλ ενός χρήστη Nextcloud. Τα ιδιωτικά ραντεβού είναι προσβάσιμα μόνο από τα άτομα που λαμβάνουν το μυστικό URL.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_calendar_settings.png" src="../../_images/appointment_config_calendar_settings.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Μόνο οι χρονικές θυρίδες που δεν έρχονται σε σύγκρουση με υπάρχοντα συμβάντα στα ημερολόγιά σας θα εμφανίζονται στους συμμετέχοντες.</p>
+</div>
+<p>Ο διοργανωτής ενός ραντεβού μπορεί να καθορίσει σε ποιες ώρες της εβδομάδας είναι γενικά δυνατή η κράτηση μιας χρονικής θυρίδας. Αυτό θα μπορούσε να είναι οι ώρες εργασίας αλλά και οποιοδήποτε άλλο προσαρμοσμένο πρόγραμμα.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_booking_hours.png" src="../../_images/appointment_config_booking_hours.png" />
+</figure>
+<p>Ορισμένα ραντεβού απαιτούν χρόνο προετοιμασίας, π.χ. όταν συναντάστε σε ένα χώρο και πρέπει να οδηγήσετε μέχρι εκεί. Ο διοργανωτής μπορεί να επιλέξει να ορίσει μια χρονική διάρκεια που πρέπει να είναι ελεύθερη. Μόνο οι χρονικές θυρίδες που δεν έρχονται σε σύγκρουση με άλλα συμβάντα κατά τη διάρκεια του χρόνου προετοιμασίας θα είναι διαθέσιμες. Επιπλέον, υπάρχει η επιλογή να καθοριστεί ένας χρόνος μετά από κάθε ραντεβού που πρέπει να είναι ελεύθερος. Για να αποτραπεί ένας συμμετέχων από το να κλείσει με πολύ μικρή προθεσμία, είναι δυνατό να ρυθμιστεί πόσο σύντομα μπορεί να πραγματοποιηθεί το επόμενο δυνατό ραντεβού. Ο ορισμός ενός μέγιστου αριθμού θυρίδων ανά ημέρα μπορεί να περιορίσει πόσα ραντεβού μπορούν πιθανώς να κλείσουν από τους συμμετέχοντες.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_limits.png" src="../../_images/appointment_config_limits.png" />
+</figure>
+<p>Το διαμορφωμένο ραντεβού θα εμφανιστεί στη συνέχεια στην αριστερή πλαϊνή μπάρα. Μέσω του μενού τριών τελειών, μπορείτε να δείτε μια προεπισκόπηση του ραντεβού. Μπορείτε να αντιγράψετε τον σύνδεσμο προς το ραντεβού και να τον μοιραστείτε με τους στόχους συμμετεχόντων σας, ή να τους αφήσετε να ανακαλύψουν το δημόσιο ραντεβού σας μέσω της σελίδας προφίλ. Μπορείτε επίσης να επεξεργαστείτε ή να διαγράψετε τη διαμόρφωση του ραντεβού.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_config_options.png" src="../../_images/appointment_config_options.png" />
+</figure>
+</section>
+<section id="booking-an-appointment">
+<h3>Κράτηση ραντεβού<a class="headerlink" href="#booking-an-appointment" title="Link to this heading"></a></h3>
+<p>Η σελίδα κράτησης εμφανίζει σε έναν συμμετέχοντα τον τίτλο, την τοποθεσία, την περιγραφή και τη διάρκεια ενός ραντεβού. Για μια επιλεγμένη ημέρα θα υπάρχει μια λίστα με όλες τις πιθανές χρονικές θυρίδες. Σε ημέρες χωρίς διαθέσιμες θυρίδες, πολλές συγκρούσεις ή ένα επιτευχθέν ημερήσιο μέγιστο όριο ήδη κλεισμένων ραντεβού, η λίστα μπορεί να είναι κενή.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/appointment_booking_1.png"><img alt="../../_images/appointment_booking_1.png" src="../../_images/appointment_booking_1.png" style="width: 926.4000000000001px; height: 592.0px;" />
+</a>
+</figure>
+<p>Για την κράτηση, οι συμμετέχοντες πρέπει να εισάγουν ένα όνομα και μια διεύθυνση email. Προαιρετικά, μπορούν επίσης να προσθέσουν ένα σχόλιο.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/appointment_booking_2.png"><img alt="../../_images/appointment_booking_2.png" src="../../_images/appointment_booking_2.png" style="width: 745.6px; height: 463.20000000000005px;" />
+</a>
+</figure>
+<p>Όταν η κράτηση είναι επιτυχής, ένας διάλογος επιβεβαίωσης θα εμφανιστεί στον συμμετέχοντα.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_3.png" src="../../_images/appointment_booking_3.png" />
+</figure>
+<p>Για να επαληθευτεί ότι η διεύθυνση email του συμμετέχοντος είναι έγκυρη, θα αποσταλεί ένα email επιβεβαίωσης σε αυτόν.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_confirmation_email.png" src="../../_images/appointment_booking_confirmation_email.png" />
+</figure>
+<p>Μόνο αφού ο συμμετέχοντας κάνει κλικ στον σύνδεσμο επιβεβαίωσης από το email, η κράτηση ραντεβού θα γίνει αποδεκτή και θα προωθηθεί στον διοργανωτή.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_confirmation_dialogue.png" src="../../_images/appointment_booking_confirmation_dialogue.png" />
+</figure>
+<p>Ο συμμετέχοντας θα λάβει ένα άλλο email που επιβεβαιώνει τις λεπτομέρειες του ραντεβού του.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_booking_email_2.png" src="../../_images/appointment_booking_email_2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Εάν μια χρονική θυρίδα δεν έχει επιβεβαιωθεί, θα συνεχίσει να εμφανίζεται ως διαθέσιμη για κράτηση. Μέχρι τότε, η χρονική θυρίδα μπορεί επίσης να κλειστεί από έναν άλλο χρήστη που επιβεβαιώνει την κράτησή του νωρίτερα. Το σύστημα θα ανιχνεύσει τη σύγκρουση και θα προσφέρει να επιλέξετε μια νέα χρονική θυρίδα.</p>
+</div>
+</section>
+<section id="working-with-the-booked-appointment">
+<h3>Εργασία με το κλεισμένο ραντεβού<a class="headerlink" href="#working-with-the-booked-appointment" title="Link to this heading"></a></h3>
+<p>Μόλις ολοκληρωθεί η κράτηση, ο διοργανωτής θα βρει ένα συμβάν στο ημερολόγιό του με τις λεπτομέρειες του ραντεβού και τον <a class="reference internal" href="#calendar-attendees"><span class="std std-ref">συμμετέχοντα</span></a>.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_calendar_event.png" src="../../_images/appointment_calendar_event.png" />
+</figure>
+<p>Εάν το ραντεβού έχει ενεργοποιημένη τη ρύθμιση «Προσθήκη χρόνου πριν από το συμβάν» ή «Προσθήκη χρόνου μετά το συμβάν», θα εμφανίζονται ως ξεχωριστά συμβάντα στο ημερολόγιο για τον διοργανωτή.</p>
+<figure class="align-default">
+<img alt="../../_images/appointment_calendar_prep.png" src="../../_images/appointment_calendar_prep.png" />
+</figure>
+<p>Όπως και με οποιοδήποτε άλλο συμβάν που έχει συμμετέχοντες, οι αλλαγές και οι ακυρώσεις θα ενεργοποιούν μια ειδοποίηση στο email του συμμετέχοντα.</p>
+<p>Εάν οι συμμετέχοντες επιθυμούν να ακυρώσουν το ραντεβού, πρέπει να επικοινωνήσουν με τον διοργανωτή, ώστε ο διοργανωτής να μπορέσει να ακυρώσει ή ακόμα και να διαγράψει το συμβάν.</p>
+</section>
+<section id="create-talk-room-for-booked-appointments">
+<h3>Δημιουργία αίθουσας Talk για κλεισμένα ραντεβού<a class="headerlink" href="#create-talk-room-for-booked-appointments" title="Link to this heading"></a></h3>
+<p>Μπορείτε να δημιουργήσετε μια αίθουσα Talk απευθείας από την εφαρμογή ημερολογίου για ένα κλεισμένο ραντεβού. Η επιλογή μπορεί να βρεθεί στο παράθυρο “Δημιουργία ραντεβού”. Ένας μοναδικός σύνδεσμος θα δημιουργηθεί για κάθε κλεισμένο ραντεβού και θα αποσταλεί μέσω του email επιβεβαίωσης όταν επιλέξετε αυτήν την επιλογή.</p>
+</section>
+</section>
+<section id="proposals">
+<h2>Proposals<a class="headerlink" href="#proposals" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 6.0.0.</span></p>
+</div>
+<p>Finding a meeting time for a group of participants can be challenging. As of Calendar v6, a new feature was introduced that allows users to create proposals for meeting times.
+This means that instead of just booking a time, or searching for a available time in the free busy view, participants can vote on a set of proposed times for a meeting.
+The organizer can then review the participants” preferences and choose the most suitable time for the meeting.</p>
+<section id="managing-proposals">
+<h3>Managing proposals<a class="headerlink" href="#managing-proposals" title="Link to this heading"></a></h3>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_list.png" src="../../_images/calendar_proposal_list.png" />
+</figure>
+<p>The proposal list in the left sidebar shows all the proposals that the user has created. The list shows the title of the proposal, the number of responded participants and a status of whether all participants have responded.</p>
+<p>The user can click on the three dot menu next to a proposal item to edit, delete or view an existing proposal.</p>
+</section>
+<section id="creating-a-proposal">
+<h3>Creating a proposal<a class="headerlink" href="#creating-a-proposal" title="Link to this heading"></a></h3>
+<p>To create a new proposal a user can click on the plus icon next to the «Meeting Proposals» header at the top of the proposal list. This will open a modal where the user can enter all the relevant details for the proposed meeting.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_create.png" src="../../_images/calendar_proposal_create.png" />
+</figure>
+<p>The proposal editor has some basic fields that are similar to the event editor, such as title, description, location, duration and participants selection, that the user can fill out. These details are then used to inform the participants about the proposed meeting and times.</p>
+<p>The key difference is the «Proposed times» selection, where the user can select multiple time slots for a meeting. The user can add as many time slots as they want, and each time slot can be edited or removed as needed.</p>
+<p>Once the user has filled out all the required details, title, duration, participants and selected the proposed times, they can click the «Create» button to create the proposal. This will save the proposal and send notifications to all the selected participants.</p>
+</section>
+<section id="editing-a-proposal">
+<h3>Editing a proposal<a class="headerlink" href="#editing-a-proposal" title="Link to this heading"></a></h3>
+<p>A user can edit an existing proposal by clicking on the three dot menu next to a proposal item in the proposal list and selecting «Edit». This will open the same modal as when creating a new proposal, but with all the existing details filled out.</p>
+<p>After making any necessary changes, the user can click the «Update» button to save the changes. This will also send notifications to all the participants about the updated proposal.</p>
+</section>
+<section id="viewing-a-proposal-progress">
+<h3>Viewing a proposal progress<a class="headerlink" href="#viewing-a-proposal-progress" title="Link to this heading"></a></h3>
+<p>Users can view the progress of a proposal by clicking on the proposal item in the proposal list or clicking «View» in the three dot menu. This will open a detailed view of the proposal, with all details and a times and participants matrix, showing all the proposed times and participants” responses.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_view.png" src="../../_images/calendar_proposal_view.png" />
+</figure>
+<p>In this view, the user can see which participants have responded to the proposal and their preferences for each proposed time. The user can also see the total number of votes for each proposed time, which can help them decide on the best time for the meeting.</p>
+<p>Once the user has reviewed the participants” responses, they can select the most popular time for the meeting by clicking on the «Create» button at the end of the date/participant matrix. This will create a new event in the user’s calendar and send notifications to all participants about the confirmed meeting time.</p>
+</section>
+<section id="notifications-for-a-proposed-meeting">
+<h3>Notifications for a proposed meeting<a class="headerlink" href="#notifications-for-a-proposed-meeting" title="Link to this heading"></a></h3>
+<p>Users will receive email notifications for various events related to a proposed meeting, including:</p>
+<ul class="simple">
+<li><p>When a new proposal is created</p></li>
+<li><p>When a proposal is updated</p></li>
+<li><p>When a proposal is deleted</p></li>
+<li><p>When the final meeting time is confirmed</p></li>
+</ul>
+<p>These notifications help all participants stay informed and engaged throughout the proposal process.</p>
+<p>The notification emails contain the basic details for the proposed meeting, like title, description, location, duration, and proposed times. They also include a link to the response page, where participants can see all the details and respond to the proposed times.</p>
+</section>
+<section id="responding-to-a-proposed-meeting">
+<h3>Responding to a proposed meeting<a class="headerlink" href="#responding-to-a-proposed-meeting" title="Link to this heading"></a></h3>
+<p>Participants can respond to a proposed meeting by clicking on the link in the notification email. This will open the detailed view of the proposed meeting, where they can see all the proposed times, other participants” and their responses, and select their availability/preferences for each proposed time.</p>
+<figure class="align-default">
+<img alt="../../_images/calendar_proposal_respond.png" src="../../_images/calendar_proposal_respond.png" />
+</figure>
+<p>Participants can select their availability for each proposed time by selecting their preference on the corresponding line in the times and participants matrix. They can choose from three options: «Yes», «No», or «Maybe». Once they have made their selections, they can click the «Submit» button to save their responses.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="contacts.html" class="btn btn-neutral float-left" title="Χρήση της εφαρμογής Επαφές" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mail.html" class="btn btn-neutral float-right" title="Χρήση της εφαρμογής Αλληλογραφίας" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 Greek
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Γλώσσες</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Εκδόσεις</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Λήψεις</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Στο Read the Docs</dt>
+        <dd>
+          <a href="///projects//?fromdocs=">Αρχική Σελίδα Έργου</a>
+        </dd>
+        <dd>
+          <a href="///builds//?fromdocs=">Παραλλαγές</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
