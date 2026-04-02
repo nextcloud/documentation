@@ -425,16 +425,22 @@ The system config key should be preferred for new installations.
 Workflow log
 ------------
 
-By default, the workflow log is stored to `flow.log` in the data folder.
+The **workflowengine** app records events related to Nextcloud Flow
+(automated workflows configured under *Administration settings → Flow*).
+By default, these events are written to ``flow.log`` inside the data
+directory.
 
-The path of the workflow log can be set as follows:
+The path of the workflow log can be changed with:
 
 ::
 
-	occ config:app:set workflowengine logfile --value=/var/log/nextcloud/flow.log
+    occ config:app:set workflowengine logfile --value=/var/log/nextcloud/flow.log
 
-Set the value to `/dev/null` to avoid storing the log.
+To disable workflow logging entirely, redirect the output to ``/dev/null``:
 
+::
+
+    occ config:app:set workflowengine logfile --value=/dev/null
 
 Temporary overrides
 -------------------
