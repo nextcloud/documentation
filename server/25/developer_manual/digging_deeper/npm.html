@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NPM &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Notifications" href="notifications.html" />
+    <link rel="prev" title="JavaScript APIs" href="javascript-apis.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="continuous_integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html">HTTP Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">NPM</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#npm-build">npm build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#npm-run-dev-npm-run-watch">npm run dev, npm run watch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#npm-test">npm test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#npm-run-lint-optional">npm run lint (optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psr.html">PSR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_apis.html">REST APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talk.html">Talk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard.html">Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupware/index.html">Groupware integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_host_metadata.html">Web Host Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status.html">User Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile.html">Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">User migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiler.html">Profiler</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Nextcloud design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Digging deeper</a></li>
+      <li class="breadcrumb-item active">NPM</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/npm.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="npm">
+<span id="app-npm"></span><h1>NPM<a class="headerlink" href="#npm" title="Link to this heading"></a></h1>
+<p>The node package manager <code class="docutils literal notranslate"><span class="pre">npm</span></code> is a widely used tool to manage JavaScript dependencies. In
+order to make the project setup easier for everybody, we recommend to follow the convention
+of typical scripts like <code class="docutils literal notranslate"><span class="pre">build</span></code>, <code class="docutils literal notranslate"><span class="pre">watch</span></code> and <code class="docutils literal notranslate"><span class="pre">test</span></code> in the <code class="docutils literal notranslate"><span class="pre">package.json</span></code> file.</p>
+<p>You can find more info about this convention on blog posts like this <a class="reference external" href="https://www.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/">https://www.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/</a>.</p>
+<section id="npm-build">
+<span id="app-npm-build"></span><h2>npm build<a class="headerlink" href="#npm-build" title="Link to this heading"></a></h2>
+<p>Once <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span></code> (<code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">i</span></code> for short) has been run to install all dependencies specified
+on <code class="docutils literal notranslate"><span class="pre">package.json</span></code>, one typically has to build the project. Building can happen with tools like
+Webpack, Grunt or similar. To unify the build command across Nextcloud apps, just add the build
+command(s) as <code class="docutils literal notranslate"><span class="pre">build</span></code> script to your.</p>
+<p>For apps that use webpack, this might look like this:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;myapp&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;build&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;webpack --node-env production --progress --hide-modules --config webpack.prod.js&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;devDependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;webpack&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^5.65.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;webpack-cli&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^4.9.1&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can then run <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">build</span></code> in your app’s root directory to invoke the build process.</p>
+<p>See the <a class="reference external" href="https://docs.npmjs.com/cli/build">npm-build docs</a> for more info.</p>
+</section>
+<section id="npm-run-dev-npm-run-watch">
+<h2>npm run dev, npm run watch<a class="headerlink" href="#npm-run-dev-npm-run-watch" title="Link to this heading"></a></h2>
+<p>Since building the release version of JavaScript scripts can be slow, apps often have a dedicated
+build step for development that builds faster and enables debug output. Additionally, it can instructs
+the bundler to listen to file changes and (incrementally) rebuild the project.</p>
+<p>This command should be added to <code class="docutils literal notranslate"><span class="pre">package.json</span></code> as <code class="docutils literal notranslate"><span class="pre">dev</span></code>  and <code class="docutils literal notranslate"><span class="pre">watch</span></code> script:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;myapp&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;build&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;webpack --node-env production --progress --hide-modules --config webpack.prod.js&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;dev&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;webpack --node-env development --progress --config webpack.dev.js&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;watch&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;webpack --node-env development --progress --watch --config webpack.dev.js&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;devDependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;webpack&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^5.65.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;webpack-cli&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^4.9.1&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The development build is invoked with <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">run</span> <span class="pre">dev</span></code> or if you want to leave the process running and update on every change made to the source files, <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">run</span> <span class="pre">watch</span></code>.</p>
+</section>
+<section id="npm-test">
+<h2>npm test<a class="headerlink" href="#npm-test" title="Link to this heading"></a></h2>
+<p>Npm will run the <code class="docutils literal notranslate"><span class="pre">test</span></code> script when <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">test</span></code> is run, hence you might want to specify the
+test command(s) like this:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mocha-webpack --webpack-config webpack.test.js --require src/tests/setup.js \&quot;src/tests/**/*.spec.js\&quot;&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>More info about this command can be found in the <a class="reference external" href="https://docs.npmjs.com/cli/test">npm-test documentation</a>.</p>
+</section>
+<section id="npm-run-lint-optional">
+<h2>npm run lint (optional)<a class="headerlink" href="#npm-run-lint-optional" title="Link to this heading"></a></h2>
+<p>Nextcloud apps that use linting tools for consistent code formatting typically add a <code class="docutils literal notranslate"><span class="pre">lint</span></code> script to their
+<code class="docutils literal notranslate"><span class="pre">package.json</span></code> and install the appropriate <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/eslint-config">eslint config</a>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;lint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eslint --ext .js,.vue src&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;lint:fix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eslint --ext .js,.vue src --fix&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If style linting is a separate script, <code class="docutils literal notranslate"><span class="pre">stylelint</span></code> shall be used as conventional script name.
+You can find the standard nextcloud <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/stylelint-config">stylelint config</a> on npm too.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;stylelint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stylelint src&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stylelint:fix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stylelint src --fix&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="javascript-apis.html" class="btn btn-neutral float-left" title="JavaScript APIs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="notifications.html" class="btn btn-neutral float-right" title="Notifications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/22/developer_manual">22</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/23/developer_manual">23</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/24/developer_manual">24</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upgrade to Nextcloud 19 &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Upgrade to Nextcloud 18" href="upgrade_to_18.html" />
+    <link rel="prev" title="Upgrade to Nextcloud 20" href="upgrade_to_20.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">App publishing and maintenance</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../release_process.html">Release process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_signing.html">Code signing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing.html">App store publishing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release_automation.html">Release Automation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">App upgrade guide</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_25.html">Upgrade to Nextcloud 25</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_24.html">Upgrade to Nextcloud 24</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_23.html">Upgrade to Nextcloud 23</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_22.html">Upgrade to Nextcloud 22</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_21.html">Upgrade to Nextcloud 21</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_20.html">Upgrade to Nextcloud 20</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Upgrade to Nextcloud 19</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#front-end-changes">Front-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#back-end-changes">Back-end changes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_18.html">Upgrade to Nextcloud 18</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_17.html">Upgrade to Nextcloud 17</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_16.html">Upgrade to Nextcloud 16</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_15.html">Upgrade to Nextcloud 15</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_14.html">Upgrade to Nextcloud 14</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Nextcloud design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">App publishing and maintenance</a></li>
+          <li class="breadcrumb-item"><a href="index.html">App upgrade guide</a></li>
+      <li class="breadcrumb-item active">Upgrade to Nextcloud 19</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/app_publishing_maintenance/app_upgrade_guide/upgrade_to_19.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="upgrade-to-nextcloud-19">
+<h1>Upgrade to Nextcloud 19<a class="headerlink" href="#upgrade-to-nextcloud-19" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Critical changes were collected <a class="reference external" href="https://github.com/nextcloud/server/issues/18479">on GitHub</a>. See the original ticket for links to the pull requests and tickets.</p>
+</div>
+<section id="front-end-changes">
+<h2>Front-end changes<a class="headerlink" href="#front-end-changes" title="Link to this heading"></a></h2>
+<section id="babel-polyfill-removal">
+<h3>Babel Polyfill removal<a class="headerlink" href="#babel-polyfill-removal" title="Link to this heading"></a></h3>
+<p>Nextcloud 19 no longer ships a global Babel Polyfill but uses core-js instead. Make sure your front-end scripts don’t reply on polyfilled browser APIs.</p>
+</section>
+<section id="jquery-deprecation">
+<h3>jQuery deprecation<a class="headerlink" href="#jquery-deprecation" title="Link to this heading"></a></h3>
+<p>As of Nextcloud 19, the global <cite>jquery</cite> and <cite>$</cite> are deprecated for apps. While the library won’t be removed immediately to give developers time to adapt, we encourage you to either replace it with another library or simply use a bundling tool like webpack to scope it to your own. The library will be upgraded in Nextcloud in future versions of Nextcloud and there are breaking changes in the newer versions of jQuery.</p>
+</section>
+<section id="deprecated-global-variables">
+<h3>Deprecated global variables<a class="headerlink" href="#deprecated-global-variables" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.currentUser</span></code>: use <code class="docutils literal notranslate"><span class="pre">getCurrentUser</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/auth">https://www.npmjs.com/package/&#64;nextcloud/auth</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.filePath</span></code>: use <code class="docutils literal notranslate"><span class="pre">generateFilePath</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/router">https://www.npmjs.com/package/&#64;nextcloud/router</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.generateUrl</span></code>: use <code class="docutils literal notranslate"><span class="pre">generateUrl</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/router">https://www.npmjs.com/package/&#64;nextcloud/router</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.get</span></code>: use <a class="reference external" href="https://lodash.com/docs#get">https://lodash.com/docs#get</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.getCurrentUser</span></code>: use <code class="docutils literal notranslate"><span class="pre">getCurrentUser</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/auth">https://www.npmjs.com/package/&#64;nextcloud/auth</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.getRootPath</span></code>: use <code class="docutils literal notranslate"><span class="pre">getRootUrl</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/router">https://www.npmjs.com/package/&#64;nextcloud/router</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.imagePath</span></code>: use <code class="docutils literal notranslate"><span class="pre">imagePath</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/router">https://www.npmjs.com/package/&#64;nextcloud/router</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.linkTo</span></code>: use <code class="docutils literal notranslate"><span class="pre">linkTo</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/router">https://www.npmjs.com/package/&#64;nextcloud/router</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.linkToOCS</span></code>: use <code class="docutils literal notranslate"><span class="pre">generateOcsUrl</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/router">https://www.npmjs.com/package/&#64;nextcloud/router</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.linkToRemote</span></code>: use <code class="docutils literal notranslate"><span class="pre">generateRemoteUrl</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/router">https://www.npmjs.com/package/&#64;nextcloud/router</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.set</span></code>: use <a class="reference external" href="https://lodash.com/docs#set">https://lodash.com/docs#set</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OC.webroot</span></code>: use <code class="docutils literal notranslate"><span class="pre">getRootUrl</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/router">https://www.npmjs.com/package/&#64;nextcloud/router</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP.Toast.*</span></code>: use <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/dialogs">https://www.npmjs.com/package/&#64;nextcloud/dialogs</a></p></li>
+</ul>
+</section>
+<section id="removed-globals">
+<h3>Removed globals<a class="headerlink" href="#removed-globals" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">getURLParameter</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">formatDate</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">humanFileSize</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">relative_modified_date</span></code></p></li>
+</ul>
+</section>
+<section id="removed-libraries">
+<h3>Removed libraries<a class="headerlink" href="#removed-libraries" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">marked</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="back-end-changes">
+<h2>Back-end changes<a class="headerlink" href="#back-end-changes" title="Link to this heading"></a></h2>
+<section id="symfony-update">
+<h3>Symfony update<a class="headerlink" href="#symfony-update" title="Link to this heading"></a></h3>
+<p>Symfony was updated to <a class="reference external" href="https://github.com/symfony/symfony/blob/4.4/CHANGELOG-4.4.md">v4.4</a>. The most important change for apps is to return an int value from CLI commands. Returning null (explicitly or implicitly) won’t be allowed in future versions of Symfony.</p>
+</section>
+<section id="deprecation-of-injection-of-named-services">
+<h3>Deprecation of injection of named services<a class="headerlink" href="#deprecation-of-injection-of-named-services" title="Link to this heading"></a></h3>
+<p>Apps had been able to query core services like the implementation of the interface <code class="docutils literal notranslate"><span class="pre">\OCP\ITagManager</span></code> as <code class="docutils literal notranslate"><span class="pre">TagManager</span></code>. To unify the service resolution with type hints for the constructor injection, the named resolution is deprecated, logs warnings and will be removed in the future. Use the fully-qualifier class name (with the <cite>::class</cite> constant) instead:</p>
+<p>If you had</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$tagManager = \OC::$server-&gt;query(&#39;TagManager&#39;);</span>
+</pre></div>
+</div>
+<p>change your code to</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$tagManager = \OC::$server-&gt;query(\OCP\ITagManager::class);</span>
+</pre></div>
+</div>
+<p>On constructor arguments you should always type-hint the service by its interface. If you do so already, nothing changes for you.</p>
+</section>
+<section id="new-apis">
+<h3>New APIs<a class="headerlink" href="#new-apis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Authentication\Events\LoginFailedEvent</span></code> class added</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Comments\IComment::getReferenceId</span></code> method added</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Comments\IComment::setReferenceId</span></code> method added</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Contacts\Events\ContactInteractedWithEvent</span></code> class added</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\EventDispatcher\IEventDispatcher::removeListener</span></code> method added</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\ITags::TAG_FAVORITE</span></code> constant added</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Mail\Events\BeforeMessageSent</span></code> class added</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Lock\LockedException::getExistingLock</span></code> method added</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Share\Events\VerifyMountPointEvent</span></code> class added</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Share\IManager::allowEnumeration</span></code> method added</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Share\IManager::limitEnumerationToGroups</span></code> method added</p></li>
+</ul>
+</section>
+<section id="changed-apis">
+<h3>Changed APIs<a class="headerlink" href="#changed-apis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\User\Events\BeforeUserLoggedInEvent::getUsername</span></code> now correctly returns a string and not an <code class="docutils literal notranslate"><span class="pre">\OCP\IUser</span></code></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="upgrade_to_20.html" class="btn btn-neutral float-left" title="Upgrade to Nextcloud 20" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="upgrade_to_18.html" class="btn btn-neutral float-right" title="Upgrade to Nextcloud 18" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/22/developer_manual">22</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/23/developer_manual">23</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/24/developer_manual">24</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OCS Recommendations API &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="OCS user preferences API" href="ocs-user-preferences-api.html" />
+    <link rel="prev" title="OCS Status API" href="ocs-status-api.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Nextcloud design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Clients and Client APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../general.html">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../android_library/index.html">Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WebDAV/index.html">Webdav</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">OCS API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ocs-api-overview.html">OCS APIs overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-sharee-api.html">OCS Sharee API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-status-api.html">OCS Status API</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">OCS Recommendations API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#recommendations-retrieval">Recommendations - Retrieval</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-user-preferences-api.html">OCS user preferences API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../LoginFlow/index.html">Login Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../RemoteWipe/index.html">Remote wipe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../activity-api.html">Activity API</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Clients and Client APIs</a></li>
+          <li class="breadcrumb-item"><a href="index.html">OCS API</a></li>
+      <li class="breadcrumb-item active">OCS Recommendations API</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/client_apis/OCS/ocs-recommendations-api.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ocs-recommendations-api">
+<h1>OCS Recommendations API<a class="headerlink" href="#ocs-recommendations-api" title="Link to this heading"></a></h1>
+<p>The OCS Recommendations API allows you to get a list of recommended files and folders with recent activity.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This API requires the Recommendations app to be enabled.</p>
+</div>
+<p>The base URL for all calls to the share API is: <em>&lt;nextcloud_base_url&gt;/ocs/v2.php/apps/recommendations/api/v1/</em></p>
+<p>All calls to OCS endpoints require the <code class="docutils literal notranslate"><span class="pre">OCS-APIRequest</span></code> header to be set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This API is <strong>experimental</strong> and can change in the future without further notice!</p>
+</div>
+<section id="recommendations-retrieval">
+<h2>Recommendations - Retrieval<a class="headerlink" href="#recommendations-retrieval" title="Link to this heading"></a></h2>
+<section id="fetch-user-controlled-recommendations">
+<h3>Fetch user-controlled recommendations<a class="headerlink" href="#fetch-user-controlled-recommendations" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Method: <code class="docutils literal notranslate"><span class="pre">GET</span></code></p></li>
+<li><p>Endpoint: <code class="docutils literal notranslate"><span class="pre">/recommendations</span></code></p></li>
+<li><dl class="simple">
+<dt>Response:</dt><dd><ul>
+<li><dl class="simple">
+<dt>Status code:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Result:</dt><dd><ul>
+<li><p><cite>enabled</cite> (boolean) True if recommendations are enabled for user. False otherwise.</p></li>
+<li><p><cite>recommendations</cite> (list, optional) List of recommended files and folders, if the user enabled recommendations.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="fetch-user-setting-and-recommendations">
+<h3>Fetch user setting and recommendations<a class="headerlink" href="#fetch-user-setting-and-recommendations" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Method: <code class="docutils literal notranslate"><span class="pre">GET</span></code></p></li>
+<li><p>Endpoint: <code class="docutils literal notranslate"><span class="pre">/recommendations/always</span></code></p></li>
+<li><dl class="simple">
+<dt>Response:</dt><dd><ul>
+<li><dl class="simple">
+<dt>Status code:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Result:</dt><dd><ul>
+<li><p><cite>enabled</cite> (boolean) True if recommendations are enabled for user. False otherwise.</p></li>
+<li><p><cite>recommendations</cite> (list) List of recommended files and folders, independent of the users decision.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ocs-status-api.html" class="btn btn-neutral float-left" title="OCS Status API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ocs-user-preferences-api.html" class="btn btn-neutral float-right" title="OCS user preferences API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/22/developer_manual">22</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/23/developer_manual">23</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/24/developer_manual">24</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

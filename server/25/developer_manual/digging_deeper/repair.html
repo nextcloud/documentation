@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Repair steps &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="REST APIs" href="rest_apis.html" />
+    <link rel="prev" title="Public Pages" href="publicpage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="continuous_integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html">HTTP Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psr.html">PSR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Repair steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-repair-step">Creating a repair step</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#outputting-information">Outputting information</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#register-a-repair-step">Register a repair-step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#repair-step-types">Repair-step types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rest_apis.html">REST APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talk.html">Talk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard.html">Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupware/index.html">Groupware integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_host_metadata.html">Web Host Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status.html">User Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile.html">Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">User migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiler.html">Profiler</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Nextcloud design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Digging deeper</a></li>
+      <li class="breadcrumb-item active">Repair steps</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/repair.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="repair-steps">
+<h1>Repair steps<a class="headerlink" href="#repair-steps" title="Link to this heading"></a></h1>
+<p>Repair steps are methods which are executed by Nextcloud on certain
+events which directly affect the app. You can use these repair steps to run
+code when your app is installed, uninstalled, upgraded etc. It’s called repair
+steps because they are frequently used to fix things automatically.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Don’t use the <code class="docutils literal notranslate"><span class="pre">install.php</span></code> files anymore! This method is deprecated and is known to cause issues.</p>
+</div>
+<section id="creating-a-repair-step">
+<h2>Creating a repair step<a class="headerlink" href="#creating-a-repair-step" title="Link to this heading"></a></h2>
+<p>A repair step is an implementation of the  <code class="docutils literal notranslate"><span class="pre">OCP\Migration\IRepairStep</span></code> interface.
+By convention these classes are placed in the <strong>lib/Migration</strong> directory.
+The following repairstep will log a message when executed.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Migration</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\Migration\IOutput</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Migration\IRepairStep</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Psr\Log\LoggerInterface</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MyRepairStep</span> <span class="k">implements</span> <span class="nx">IRepairStep</span> <span class="p">{</span>
+
+      <span class="sd">/** @var LoggerInterface */</span>
+      <span class="k">protected</span> <span class="nv">$logger</span><span class="p">;</span>
+
+      <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">LoggerInterface</span> <span class="nv">$logger</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span> <span class="o">=</span> <span class="nv">$logger</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="sd">/**</span>
+<span class="sd">       * Returns the step&#39;s name</span>
+<span class="sd">       */</span>
+      <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
+              <span class="k">return</span> <span class="s1">&#39;A demonstration repair step!&#39;</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="sd">/**</span>
+<span class="sd">       * @param IOutput $output</span>
+<span class="sd">       */</span>
+      <span class="k">public</span> <span class="k">function</span> <span class="nf">run</span><span class="p">(</span><span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s2">&quot;Hello world from MyRepairStep!&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;app&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;MyApp&quot;</span><span class="p">]);</span>
+      <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="outputting-information">
+<h3>Outputting information<a class="headerlink" href="#outputting-information" title="Link to this heading"></a></h3>
+<p>A repair step can generate information while running, using the
+<code class="docutils literal notranslate"><span class="pre">OCP\Migration\IOutput</span></code> parameter to the <code class="docutils literal notranslate"><span class="pre">run</span></code> method.
+Using the <code class="docutils literal notranslate"><span class="pre">info</span></code> and <code class="docutils literal notranslate"><span class="pre">warning</span></code> methods a message can be shown in the console.
+In order to show a progressbar, firstly call the <code class="docutils literal notranslate"><span class="pre">startProgress</span></code> method.
+The maximum number of steps can be adjusted by passing it as argument to the
+<code class="docutils literal notranslate"><span class="pre">startProgress</span></code> method. After every step run the <code class="docutils literal notranslate"><span class="pre">advance</span></code> method. Once all steps are finished run the <code class="docutils literal notranslate"><span class="pre">finishProgress</span></code>
+method.</p>
+<p>The following function will sleep for 10 seconds and show the progress:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="sd">/**</span>
+<span class="sd"> * @param IOutput $output</span>
+<span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">run</span><span class="p">(</span><span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nv">$output</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s2">&quot;This step will take 10 seconds.&quot;</span><span class="p">);</span>
+      <span class="nv">$output</span><span class="o">-&gt;</span><span class="na">startProgress</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+      <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nb">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+              <span class="nv">$output</span><span class="o">-&gt;</span><span class="na">advance</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="nv">$output</span><span class="o">-&gt;</span><span class="na">finishProgress</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="register-a-repair-step">
+<h2>Register a repair-step<a class="headerlink" href="#register-a-repair-step" title="Link to this heading"></a></h2>
+<p>To register a repair-step in Nextcloud you have to define the repair-setp in the <code class="docutils literal notranslate"><span class="pre">info.xml</span></code>
+file. The following example registers a repair-step which will be executed after installation
+of the app:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;info</span><span class="w"> </span><span class="na">xmlns:xsi=</span><span class="w"> </span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<span class="w">      </span><span class="na">xsi:noNamespaceSchemaLocation=</span><span class="s">&quot;https://apps.nextcloud.com/schema/apps/info.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;id&gt;</span>myapp<span class="nt">&lt;/id&gt;</span>
+<span class="w">      </span><span class="nt">&lt;name&gt;</span>My<span class="w"> </span>App<span class="nt">&lt;/name&gt;</span>
+<span class="w">      </span><span class="nt">&lt;summary&gt;</span>A<span class="w"> </span>test<span class="w"> </span>app<span class="nt">&lt;/summary&gt;</span>
+<span class="w">      </span>...
+<span class="w">      </span><span class="nt">&lt;repair-steps&gt;</span>
+<span class="w">              </span><span class="nt">&lt;install&gt;</span>
+<span class="w">                      </span><span class="nt">&lt;step&gt;</span>OCA\MyApp\Migration\MyRepairStep<span class="nt">&lt;/step&gt;</span>
+<span class="w">              </span><span class="nt">&lt;/install&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/repair-steps&gt;</span>
+<span class="nt">&lt;/info&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="repair-step-types">
+<h2>Repair-step types<a class="headerlink" href="#repair-step-types" title="Link to this heading"></a></h2>
+<p>The following repair steps are available:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">install</span></code> This repair step will be executed when installing the app. This means it is executed every time the app is enabled (using the Web interface or the CLI).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">uninstall</span></code> This repair step will be executed when uninstalling the app, and when disabling the app.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pre-migration</span></code> This repair step will be executed just before the database is migrated during an update of the app.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">post-migration</span></code> This repair step will be executed just after the database is migrated during an update of the app.  This repair step will also be executed when running the <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">maintenance:repair</span></code> command</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">live-migration</span></code> This repair step will be scheduled to be run in the background (e.g. using cron), therefore it is unpredictable when it will run. If the job isn’t required right after the update of the app and the job would take a long time this is the best choice.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="publicpage.html" class="btn btn-neutral float-left" title="Public Pages" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rest_apis.html" class="btn btn-neutral float-right" title="REST APIs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/22/developer_manual">22</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/23/developer_manual">23</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/24/developer_manual">24</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

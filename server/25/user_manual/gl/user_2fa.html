@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="gl" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usando a autenticación de dous factores &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=405d16d4"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/translations.js?v=e560d967"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Xestionar os navegadores conectados e os dispositivos" href="session_management.html" />
+    <link rel="prev" title="Acceso universal" href="universal_access.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Introdución ao manual de usuario do Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whats_new.html">Que hai de novo para os usuarios do Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webinterface.html">A interface web do Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files/index.html">Ficheiros e sincronización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Axustando as suas preferencias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="universal_access.html">Acceso universal</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usando a autenticación de dous factores</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-two-factor-authentication">Configurando a autenticación de dous factores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-in-case-you-lost-your-2nd-factor">Códigos de recuperación no caso de que perda o segundo factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logging-in-with-two-factor-authentication">Iniciar sesión con autenticación de dous factores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-two-factor-authentication-with-hardware-tokens">Usar a autenticación de dous factores con testemuños de hardware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-client-applications-with-two-factor-authentication">Usando aplicacións de cliente con autenticación de dous factores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#considerations">Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="session_management.html">Xestionar os navegadores conectados e os dispositivos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/index.html">Almacenamento externo</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="contents.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Usando a autenticación de dous factores</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/user_2fa.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-two-factor-authentication">
+<h1>Usando a autenticación de dous factores<a class="headerlink" href="#using-two-factor-authentication" title="Ligazón a este título"></a></h1>
+<p>A autenticación de dous factores (2FA) é un xeito de protexer a súa conta do Nextcloud contra o acceso non autorizado. Funciona requirindo dúas «probas» diferentes da súa identidade. Por exemplo, <em>algo que sabe</em> (como un contrasinal) e <em>algo que ten</em> como unha clave física. Normalmente, o primeiro factor é un contrasinal como o que xa ten e o segundo pode ser unha mensaxe de texto que recibe ou un código que xere no seu teléfono ou noutro dispositivo (<em>algo que ten</em>). Nextcloud admite unha ampla variedade de segundos factores e pódense engadir máis.</p>
+<p>Unha vez que o administrador activa unha aplicación de autenticación de dous factores, pode activala e configurala en <a class="reference internal" href="userpreferences.html"><span class="doc">Axustando as suas preferencias</span></a>. Deseguido pode ver como.</p>
+<section id="configuring-two-factor-authentication">
+<h2>Configurando a autenticación de dous factores<a class="headerlink" href="#configuring-two-factor-authentication" title="Ligazón a este título"></a></h2>
+<p>Nos seus axustes persoais, busque a configuración de autenticación de segundo factor. Neste exemplo, TOTP é un código baseado no tempo compatíbel con Google Authenticator:</p>
+<figure class="align-default">
+<img alt="TOTP configuration." src="../_images/totp_enable.png" />
+</figure>
+<p>Verá o seu segredo e un código QR que pode ser escaneado pola apli TOTP no seu teléfono (ou outro dispositivo). Dependendo da aplicación ou da ferramenta, escriba o código ou escanee o QR e o seu dispositivo amosará un código de inicio de sesión que cambia cada 30 segundos.</p>
+</section>
+<section id="recovery-codes-in-case-you-lost-your-2nd-factor">
+<h2>Códigos de recuperación no caso de que perda o segundo factor<a class="headerlink" href="#recovery-codes-in-case-you-lost-your-2nd-factor" title="Ligazón a este título"></a></h2>
+<p>Sempre debería xerar códigos de seguridade para 2FA. Se o seu segundo dispositivo é roubado ou non funciona, poderá usar un destes códigos para desbloquear a súa conta. Funcionan efectivamente como un segundo factor de seguridade. Para obter os códigos de seguridade, diríxase aos seus Axustes persoais e vexa nos axustes de Autenticación de segundo factor. Escolla <em>Xerar códigos de seguridade</em>:</p>
+<figure class="align-default">
+<img alt="2FA backup code generator" src="../_images/2fa_backupcode_1.png" />
+</figure>
+<p>Despois, verá unha lista de códigos de seguridade de uso único:</p>
+<figure class="align-default">
+<img alt="2FA backup codes" src="../_images/2fa_backupcode_2.png" />
+</figure>
+<p>Debería gardar estes códigos nun lugar seguro, nalgún lugar onde os poida atopar. Non os poña onde o seu segundo factor como o teléfono móbil, pero asegúrese de que se o perde, aínda ten o outro. Mantelos na casa probabelmente sexa o mellor.</p>
+</section>
+<section id="logging-in-with-two-factor-authentication">
+<h2>Iniciar sesión con autenticación de dous factores<a class="headerlink" href="#logging-in-with-two-factor-authentication" title="Ligazón a este título"></a></h2>
+<p>Despois de saír da sesión e ter que volver a iniciar sesión, verá unha solicitude para introducir o código TOTP no navegador. Se activa non só o factor TOTP senón tamén outro, verá unha pantalla de selección na que pode escoller o método de dous factores para este inicio de sesión. Seleccione TOTP:</p>
+<figure class="align-default">
+<img alt="Choosing a two-factor authentication method." src="../_images/totp_login_1.png" />
+</figure>
+<p>Agora, só ten que introducir o seu código:</p>
+<figure class="align-default">
+<img alt="Entering TOTP code at login." src="../_images/totp_login_2.png" />
+</figure>
+<p>Se o código foi correcto, será dirixido á súa conta no Nextcloud.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dado que o código está baseado no tempo, é importante que o reloxo do servidor e do teléfono intelixente estean case en sincronía. Unha deriva de poucos segundos non será un problema.</p>
+</div>
+</section>
+<section id="using-two-factor-authentication-with-hardware-tokens">
+<h2>Usar a autenticación de dous factores con testemuños de hardware<a class="headerlink" href="#using-two-factor-authentication-with-hardware-tokens" title="Ligazón a este título"></a></h2>
+<p>Pode usar a autenticación de dous factores baseada en testemuños de hardware. Sábese que os seguintes dispositivos funcionan:</p>
+<ul class="simple">
+<li><p>Baseado en TOTP:</p>
+<ul>
+<li><p><a class="reference external" href="https://shop.nitrokey.com/shop/product/nitrokey-pro-2-3">Nitrokey Pro</a></p></li>
+<li><p><a class="reference external" href="https://shop.nitrokey.com/shop">Nitrokey Storage</a></p></li>
+</ul>
+</li>
+<li><p>Baseado en FIDO U2F:</p>
+<ul>
+<li><p><a class="reference external" href="https://shop.nitrokey.com/shop/product/nitrokey-fido-u2f-20">Nitrokey FIDO U2F</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="using-client-applications-with-two-factor-authentication">
+<h2>Usando aplicacións de cliente con autenticación de dous factores<a class="headerlink" href="#using-client-applications-with-two-factor-authentication" title="Ligazón a este título"></a></h2>
+<p>Unha vez activada a 2FA, os seus clientes xa non poderán conectarse só co seu contrasinal a non ser que teñan compatibilidade para a autenticación de dous factores. Para solucionar isto, debe xerar contrasinais específicos do dispositivo para cada un deles. Vexa <a class="reference internal" href="session_management.html"><span class="doc">Xestionar os navegadores conectados e os dispositivos</span></a> para obter máis información sobre como facelo.</p>
+</section>
+<section id="considerations">
+<h2>Considerations<a class="headerlink" href="#considerations" title="Ligazón a este título"></a></h2>
+<p>If you use WebAuthn to login to your Nextcloud be sure to not use the same token for 2FA. As this
+would mean you are again only using a single factor.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="universal_access.html" class="btn btn-neutral float-left" title="Acceso universal" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="session_management.html" class="btn btn-neutral float-right" title="Xestionar os navegadores conectados e os dispositivos" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+<dd><a href="/server/latest/user_manual/ar/">ar</a></dd>
+<dd><a href="/server/latest/user_manual/br/">br</a></dd>
+<dd><a href="/server/latest/user_manual/ca/">ca</a></dd>
+<dd><a href="/server/latest/user_manual/cs/">cs</a></dd>
+<dd><a href="/server/latest/user_manual/da/">da</a></dd>
+<dd><a href="/server/latest/user_manual/de/">de</a></dd>
+<dd><a href="/server/latest/user_manual/el/">el</a></dd>
+<dd><a href="/server/latest/user_manual/en/">en</a></dd>
+<dd><a href="/server/latest/user_manual/es/">es</a></dd>
+<dd><a href="/server/latest/user_manual/eu/">eu</a></dd>
+<dd><a href="/server/latest/user_manual/fr/">fr</a></dd>
+<dd><a href="/server/latest/user_manual/gl/">gl</a></dd>
+<dd><a href="/server/latest/user_manual/id/">id</a></dd>
+<dd><a href="/server/latest/user_manual/it/">it</a></dd>
+<dd><a href="/server/latest/user_manual/ja_JP/">ja_JP</a></dd>
+<dd><a href="/server/latest/user_manual/ko/">ko</a></dd>
+<dd><a href="/server/latest/user_manual/nl/">nl</a></dd>
+<dd><a href="/server/latest/user_manual/nn/">nn</a></dd>
+<dd><a href="/server/latest/user_manual/pl/">pl</a></dd>
+<dd><a href="/server/latest/user_manual/pt_BR/">pt_BR</a></dd>
+<dd><a href="/server/latest/user_manual/pt_PT/">pt_PT</a></dd>
+<dd><a href="/server/latest/user_manual/ro/">ro</a></dd>
+<dd><a href="/server/latest/user_manual/ru/">ru</a></dd>
+<dd><a href="/server/latest/user_manual/si/">si</a></dd>
+<dd><a href="/server/latest/user_manual/sk_SK/">sk_SK</a></dd>
+<dd><a href="/server/latest/user_manual/sv/">sv</a></dd>
+<dd><a href="/server/latest/user_manual/ta/">ta</a></dd>
+<dd><a href="/server/latest/user_manual/th/">th</a></dd>
+<dd><a href="/server/latest/user_manual/tr/">tr</a></dd>
+<dd><a href="/server/latest/user_manual/uk/">uk</a></dd>
+<dd><a href="/server/latest/user_manual/zh_CN/">zh_CN</a></dd>
+<dd><a href="/server/latest/user_manual/zh_HK/">zh_HK</a></dd>
+<dd><a href="/server/latest/user_manual/zh_TW/">zh_TW</a></dd>
+          <!--Here goes the Langs-->
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versións</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/22/user_manual">22</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/23/user_manual">23</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/24/user_manual">24</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Descargas</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>En «Read the Docs»</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Inicio do proxecto</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Compilacións</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
