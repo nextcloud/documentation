@@ -133,6 +133,7 @@ The following optional parameters can also be set in :file:`config/config.php`:
     ::
 
         "loglevel_dirty_database_queries" => 0,
+
 syslog
 ~~~~~~
 
@@ -446,3 +447,5 @@ Temporary overrides
 -------------------
 
 You can override the config.php log level for ``occ`` commands as :ref:`documented here<occ_debugging>`.
+
+.. _PHP date function: http://www.php.net/manual/en/function.date.php
